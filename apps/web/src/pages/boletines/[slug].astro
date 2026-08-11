@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('boletines');
+  return entries.map((entry) => ({
+    params: { slug: entry.id.replace(/\.md$/, '') },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, fecha, tipo, items, resumen, fuente, tags } = entry.data;
+---
+<BaseLayout title={title} description={resumen}>
+  <article>
+    <header class="mb-10 pb-6 border-b border-[var(--color-border)]">
+      <div class="text-xs text-muted mb-3 flex gap-4">
+        <time datetime={fecha.toISOString()}>
+          {fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+        </time>
+        <span class="uppercase tracking-wider">{tipo}</span>
+        {fuente && <span>· {fuente}</span>}
+        {items !== undefined && <span>· {items} items</span>}
+      </div>
+      <h1 class="font-serif text-3xl mb-3">{title}</h1>
+      {resumen && <p class="text-muted">{resumen}</p>}
+      {tags.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          {tags.map((t) => (
+            <span class="px-2 py-0.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded">#{t}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="prose-read">
+      <Content />
+    </div>
+
+    <footer class="mt-16 pt-6 border-t border-[var(--color-border)] text-xs text-muted">
+      <a href="/">← Volver al índice</a>
+    </footer>
+  </article>
+</BaseLayout>

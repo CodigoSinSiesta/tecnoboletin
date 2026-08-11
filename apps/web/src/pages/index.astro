@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BoletinCard from '../components/BoletinCard.astro';
+
+const boletines = (await getCollection('boletines')).sort(
+  (a, b) => b.data.fecha.getTime() - a.data.fecha.getTime(),
+);
+---
+<BaseLayout title="Inicio">
+  <section class="mb-12">
+    <h1 class="font-serif text-3xl mb-3">Tecnoboletín</h1>
+    <p class="text-muted max-w-2xl">
+      Cada mañana, los boletines de tendencias y blogs de Código Sin Siesta, ya enriquecidos y listos para leer con calma.
+      Sin trackers, sin nube forzada. Hecho con Astro 5, alojado en GitHub Pages.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
+      Boletines ({boletines.length})
+    </h2>
+    <div class="grid gap-4 md:grid-cols-2">
+      {boletines.map((b) => <BoletinCard entry={b} />)}
+    </div>
+    {boletines.length === 0 && (
+      <p class="text-muted">
+        Aún no hay boletines sincronizados. Cuando el script de sync ejecute por primera vez, aparecerán aquí.
+      </p>
+    )}
+  </section>
+</BaseLayout>

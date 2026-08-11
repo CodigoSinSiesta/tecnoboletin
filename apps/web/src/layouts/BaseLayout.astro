@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Lectura cómoda de los boletines de Código Sin Siesta' } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} · Tecnoboletín</title>
+  </head>
+  <body class="min-h-screen bg-bg text-text">
+    <header class="border-b border-[var(--color-border)]">
+      <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="/" class="font-serif text-xl">
+          Tecnoboletín
+        </a>
+        <nav class="text-sm flex gap-5">
+          <a href="/" class="text-muted hover:text-text">Boletines</a>
+          <a href="/fuentes" class="text-muted hover:text-text">Fuentes</a>
+          <a href="/temas" class="text-muted hover:text-text">Temas</a>
+        </nav>
+      </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-10">
+      <slot />
+    </main>
+    <footer class="border-t border-[var(--color-border)] mt-20">
+      <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-muted flex justify-between">
+        <span>Código Sin Siesta · proyecto personal de Alejandro de la Fuente</span>
+        <span>Astro 5 · listo para Supabase</span>
+      </div>
+    </footer>
+  </body>
+</html>

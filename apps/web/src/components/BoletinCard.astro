@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'boletines'>;
+}
+
+const { entry } = Astro.props;
+const { title, fecha, tipo, items, resumen, tags } = entry.data;
+const slug = entry.id.replace(/\.md$/, '');
+---
+<article class="border border-[var(--color-border)] rounded-lg p-6 bg-[var(--color-surface)] hover:border-[var(--color-accent)] transition">
+  <div class="flex items-center justify-between text-xs text-muted mb-3">
+    <time datetime={fecha.toISOString()}>
+      {fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+    </time>
+    <span class="uppercase tracking-wider">{tipo}</span>
+  </div>
+  <h2 class="font-serif text-xl mb-2">
+    <a href={`/boletines/${slug}`}>{title}</a>
+  </h2>
+  {resumen && <p class="text-sm text-muted mb-3">{resumen}</p>}
+  <div class="flex items-center justify-between text-xs text-muted">
+    <span>{items ?? '—'} items</span>
+    <div class="flex gap-2">
+      {tags.slice(0, 4).map((t) => (
+        <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded">#{t}</span>
+      ))}
+    </div>
+  </div>
+</article>
