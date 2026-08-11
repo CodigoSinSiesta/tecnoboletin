@@ -34,11 +34,6 @@ jobs:
         working-directory: apps/web
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - name: Upload build output
         uses: actions/upload-pages-artifact@v3
         with:
