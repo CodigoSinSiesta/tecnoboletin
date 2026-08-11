@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "date": "2026-08-04",
+  "perfiles": {
+    "carlos": {
+      "_source_file": "2026-08-04-carlos.md",
+      "boletin": "2026-08-04",
+      "honestidad": 9,
+      "items_evaluados": 12,
+      "items_ok": 9,
+      "items_problema": [
+        {
+          "idx": 7,
+          "motivo": "\"yc-software/qm 'multiplayer agent harness' — claim marketing. ¿Qué resuelve que no resuelva Orca?\"",
+          "sugerencia": "\"investigar antes de bajar la confianza; ángulo potencial: 'kanban multiplayer real-time'.\""
+        },
+        {
+          "idx": 10,
+          "motivo": "\"jamiepine/voicebox: sin updates de producto en 2+ meses. Lifecycle unknown.\"",
+          "sugerencia": "\"marcar 'maintenance risk'.\""
+        },
+        {
+          "idx": 12,
+          "motivo": "\"karpathy/autoresearch: NOASSERTION declarado por el propio autor. NO adoptable como dependencia, sí como referencia conceptual.\"",
+          "sugerencia": "\"tema_principal 'ai-research-agent' OK; nota permanente 'no-adoptable'.\""
+        }
+      ],
+      "globales": [
+        "\"TencentDB-Agent-Memory confirmado con datos: +59% en PersonaMem, -61% tokens con cache OpenClaw. Es la pieza editorial del día.\"",
+        "\"el cluster 'local-first LLM' se afianza con antirez/ds4 (C) + ds4 no usa GGUF.\"",
+        "\"deepseek-reasonix en `main-v2`: migración de TS a Go. Buena historia editorial para 'qué optimiza Go para inference'.\""
+      ]
+    },
+    "dani": {
+      "_source_file": "2026-08-04-dani.md",
+      "boletin": "2026-08-04",
+      "honestidad": 8,
+      "items_evaluados": 12,
+      "items_ok": 6,
+      "items_problema": [
+        {
+          "idx": 1,
+          "motivo": "\"meat 'abridged-diff viewer' — no sé qué es un diff\"",
+          "sugerencia": "\"sustituir por: 'una herramienta que resume los cambios de código hechos por la IA para que tú solo revises lo importante'\""
+        },
+        {
+          "idx": 4,
+          "motivo": "\"trycompai/crm suena a spam de LinkedIn\"",
+          "sugerencia": "\"aclarar: 'CRM (sistema de gestion de clientes) donde el agente rellena los datos por ti'\""
+        },
+        {
+          "idx": 9,
+          "motivo": "\"antirez/ds4 — ¿quién es antirez?\"",
+          "sugerencia": "\"nota al margen: 'autor de Redis, ingeniero veterano'\""
+        },
+        {
+          "idx": 7,
+          "motivo": "\"yc-software/qm suena a ganster de Wall Street\"",
+          "sugerencia": "\"explicar: 'tablero tipo Trello donde humanos e IAs trabajan juntos'\""
+        }
+      ],
+      "globales": [
+        "\"los items del 4 son muy variados: 6 categorías distintas en un solo día. Como junior no veo el hilo conductor.\"",
+        "\"los items con marcas conocidas (Cloudflare, OpenAI, Microsoft) me danconfianza aunque sea irracional.\""
+      ]
+    },
+    "maria": {
+      "_source_file": "2026-08-04-maria.md",
+      "boletin": "2026-08-04",
+      "honestidad": 9,
+      "items_evaluados": 12,
+      "items_ok": 2,
+      "items_problema": [
+        {
+          "idx": 3,
+          "motivo": "\"livekit/agents: detección semántica de turno. No tengo idea qué significa 'turno' en este contexto\"",
+          "sugerencia": "\"aclarar: 'software para asistentes de voz que detecta cuándo dejas de hablar (no cuando dejas de respirar)'\""
+        },
+        {
+          "idx": 4,
+          "motivo": "\"trycompai/crm: 'agente que guarda notas por ti' me interesa. ¿Qué puede hacer?\"",
+          "sugerencia": "\"ejemplos: 'programar reuniones, redactar emails de seguimiento, recordar fechas de cliente'\""
+        },
+        {
+          "idx": 10,
+          "motivo": "\"jamiepine/voicebox: voice studio suena interesante para creadores\"",
+          "sugerencia": "\"explicar: 'app de escritorio para crear voces de IA y hacer podcasts sin saber programar'\""
+        }
+      ],
+      "globales": [
+        "\"el item 4 (trycompai/crm) es lo único que me llama del boletín. Para perfil civil, 11 de 12 son ignorables.\"",
+        "\"el item 8 (deepseek-reasonix 'prefix-cache stability') es la primera vez que leo un término y no sé ni por dónde empezar a entenderlo.\""
+      ]
+    }
+  },
+  "timestamp": "2026-08-11T19:28:15.083759+00:00"
+}

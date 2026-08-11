@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "date": "2026-08-09",
+  "perfiles": {
+    "carlos": {
+      "_source_file": "2026-08-09-carlos.md",
+      "boletin": "2026-08-09",
+      "honestidad": 9,
+      "items_evaluados": 14,
+      "items_ok": 11,
+      "items_problema": [
+        {
+          "idx": 2,
+          "motivo": "\"shepherd-agents/shepherd: alpha + 'developed with strong AI assistance' entra a categoria 'research-grade', no producción. Confianza debería ser < 0.7.\"",
+          "sugerencia": "\"bajar confianza a 0.65 y marcar 'research-grade' en notas.\""
+        },
+        {
+          "idx": 10,
+          "motivo": "\"MiroFish AGPL-3.0: 'swarm intelligence engine' recuerda a AutoGPT 2023. Riesgo de hype histórico.\"",
+          "sugerencia": "\"bajar confianza a 0.7 y enlazar a su benchmark si existe.\""
+        }
+      ],
+      "globales": [
+        "\"el cluster 'agent-runtime' confirma que la categoría está madura (5 contendientes en 7 días).\"",
+        "\"el sub-cluster 'agent-security' (AgentHound + Microsoft governance + iFixAi en este boletín) se está separando en 'defensivo' y 'ofensivo'. Es un eje editorial claro.\""
+      ]
+    },
+    "dani": {
+      "_source_file": "2026-08-09-dani.md",
+      "boletin": "2026-08-09",
+      "honestidad": 8,
+      "items_evaluados": 14,
+      "items_ok": 8,
+      "items_problema": [
+        {
+          "idx": 0,
+          "motivo": "\"TradingAgents: 'consejo de agentes LLM que debaten' suena a IA jugando a ser comité. ¿Por qué no usar uno solo bueno?\"",
+          "sugerencia": "\"explicar primero que la diversidad de perspectives reduce sesgo individual — 'como tener 5 analistas en lugar de 1'\""
+        },
+        {
+          "idx": 4,
+          "motivo": "\"phone-harness: conectas tu IA al iPhone. Suena útil pero ¿qué tareas puede hacer realmente?\"",
+          "sugerencia": "\"añadir ejemplos concretos: 'rellenar formularios, mandar emails, manejar apps'\""
+        },
+        {
+          "idx": 5,
+          "motivo": "\"iFixAi con 'inspecciones estructuradas' sobre comportamiento. ¿Qué tipo de comportamiento evalúa exactamente?\"",
+          "sugerencia": "\"ejemplos: 'verifica que el agente no se invente datos, no dé respuestas peligrosas, no se atasque en bucles'\""
+        }
+      ],
+      "globales": [
+        "\"los items de hoy son muy técnicos. Como junior entiendo 4-5 de 14 sin tener que buscar.\"",
+        "\"el tema 'agent-security' me importa más que 'agent-runtime' pero los resúmenes asumen que quiero saber ambos a fondo.\""
+      ]
+    },
+    "maria": {
+      "_source_file": "2026-08-09-maria.md",
+      "boletin": "2026-08-09",
+      "honestidad": 8,
+      "items_evaluados": 14,
+      "items_ok": 2,
+      "items_problema": [
+        {
+          "idx": 4,
+          "motivo": "\"'dejar que un coding agent controle tu iPhone' — me da miedo. ¿Qué pasa si se equivoca?\"",
+          "sugerencia": "\"mencionar los límites: 'puede pulsar botones y escribir texto, pero no acceder a contraseñas del banco sin confirmación'\""
+        },
+        {
+          "idx": 7,
+          "motivo": "\"harveyai/harvey-labs suena a una marca de cosmética o al protagonista de una peli\"",
+          "sugerencia": "\"especificar: 'empresa de IA legal valorada en 5.000 millones que publica benchmarks para que pruebes su tecnología'\""
+        },
+        {
+          "idx": 11,
+          "motivo": "\"VibeVoice y Microsoft — suena a 'Vibe' de app de citas\"",
+          "sugerencia": "\"aclarar: 'software de Microsoft para clonar voces con IA, gratis y open source'\""
+        }
+      ],
+      "globales": [
+        "\"el item 6 (Understand Anything con 78k estrellas) tendría que ser EL item del día para audiencia civil — convierte tu código en un mapa visual — pero se queda enterrado en item 6\"",
+        "\"los items de hoy son demasiado densos. Como civil me saturo en 3 items.\""
+      ]
+    }
+  },
+  "timestamp": "2026-08-11T19:28:15.089955+00:00"
+}

@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "date": "2026-08-10",
+  "perfiles": {
+    "carlos": {
+      "_source_file": "2026-08-10-carlos.md",
+      "perfil": "carlos",
+      "boletin": "2026-08-10",
+      "honestidad": 8,
+      "items_evaluados": 13,
+      "items_ok": 9,
+      "items_problema": [
+        {
+          "idx": 5,
+          "motivo": "\"Kun tiene NOASSERTION. La confianza 0.85 es alta para algo con licencia que bloquea adopción producción.\"",
+          "sugerencia": "\"bajar a 0.7 y añadir nota explícita sobre license risk.\""
+        },
+        {
+          "idx": 6,
+          "motivo": "\"gstack tiene 'engagement farming' risk: ratio stars/forks 6.6 indica consumo, no contribución. No es un issue técnico per se, pero la taxonomía debería distinguir 'community traction' de 'engineering substance'.\"",
+          "sugerencia": "\"añadir campo 'engagement_ratio' y un módulo editorial que lo comente.\""
+        },
+        {
+          "idx": 7,
+          "motivo": "\"agency-agents es el mismo patrón que gstack: prompts empaquetados como producto. Tema común, no diferenciable en JSON.\"",
+          "sugerencia": "\"fusionar en un solo concepto 'setup-as-content' con gstack y Nutlope/hallmark.\""
+        },
+        {
+          "idx": 10,
+          "motivo": "\"pangolin y nitro (idx 9) tienen ambos NOASSERTION y están ambos trending. Confianza 0.82-0.83 es optimista.\"",
+          "sugerencia": "\"verificación LICENSE previa, bajar a 0.7-0.75.\""
+        }
+      ],
+      "globales": [
+        "\"el conjunto del día tiene 5 items con license NOASSERTION o AGPL-3.0. Es un patrón consistente — el radar del día está sesgado hacia 'infra con licencia weird'. Merece nota editorial aparte.\"",
+        "\"el clúster 'coding-agent-runtime' se confirma con 3 contendientes serios. La diferenciación se pierde en tema_principal (todos el mismo).\"",
+        "\"los 'temas_secundarios' son demasiado granulares — items comparten 3-4 tags y pierde valor discriminante.\""
+      ]
+    },
+    "dani": {
+      "_source_file": "2026-08-10-dani.md",
+      "boletin": "2026-08-10",
+      "honestidad": 7,
+      "items_evaluados": 13,
+      "items_ok": 5,
+      "items_problema": [
+        {
+          "idx": 0,
+          "motivo": "\"vectorize-io/hindsight suena a 'mirar atrás' pero no sé qué es. Necesito: 'memoria para que tu agente recuerde conversaciones pasadas entre sesiones' antes de usar el nombre del repo.\"",
+          "sugerencia": "\"el resumen_2_lineas debería empezar con el problema humano, no el nombre del repo.\""
+        },
+        {
+          "idx": 2,
+          "motivo": "\"InsForge con 12.7k★ en 1 año. ¿Por qué este y no Supabase? El resumen no me dice qué gano cambiando.\"",
+          "sugerencia": "\"añadir 'porque Supabase está pensado para humanos que rellenan formularios' en una línea antes de la propuesta técnica.\""
+        },
+        {
+          "idx": 5,
+          "motivo": "\"electron+tui+deepseek. No sé qué es TUI. Ni electron. Ni deepseek. Tres siglas seguidas.\"",
+          "sugerencia": "\"sustituir acrónimos por 'interfaz visual de escritorio, terminal interactiva, modelos de IA'\""
+        },
+        {
+          "idx": 7,
+          "motivo": "\"agencia-agents: 'una agencia AI completa' me suena a org comercial fraudulenta.\"",
+          "sugerencia": "\"re-enmarcar como 'equipo virtual de IAs para tareas específicas, configurable'\""
+        },
+        {
+          "idx": 8,
+          "motivo": "\"AGPL-3.0 suena a licencia rara. ¿Me afecta?\"",
+          "sugerencia": "\"una línea: 'significa que si modificas y sirves el código, debes publicar los cambios'\""
+        }
+      ],
+      "globales": [
+        "\"los resúmenes son densos. Como junior, necesito una sola frase al inicio que explique POR QUÉ me debería importar\"",
+        "\"todas las items tienen una métrica (estrellas, forks, último push). Para decidir rapido me sirve más 'cuántos proyectos reales lo usan' que números absolutos\""
+      ]
+    },
+    "maria": {
+      "_source_file": "2026-08-10-maria.md",
+      "boletin": "2026-08-10",
+      "honestidad": 9,
+      "items_evaluados": 13,
+      "items_ok": 2,
+      "items_problema": [
+        {
+          "idx": 0,
+          "motivo": "\"'memoria vectorial canónica para AI agents' — no sé qué es 'canónica' en este contexto ni por qué me importa a mí\"",
+          "sugerencia": "\"explicar primero qué problema resuelve: 'tu IA olvida lo que le dijiste ayer'\""
+        },
+        {
+          "idx": 1,
+          "motivo": "\"Rust + multiplexer + tmux — tres términos técnicos sin contexto. Salgo del item.\"",
+          "sugerencia": "\"empezar con: 'herramienta para coordinar varias IAs trabajando a la vez en el mismo proyecto'\""
+        },
+        {
+          "idx": 3,
+          "motivo": "\"knowledge graph + tree-sitter + memgraph: ¿qué me cambia esto en mi día a día?\"",
+          "sugerencia": "\"el resumen debería arrancar con 'cuando un modelo busca código entre mil archivos, este le muestra solo lo relevante'\""
+        },
+        {
+          "idx": 8,
+          "motivo": "\"openobserve suena a un organismo regulador. Saltaría.\"",
+          "sugerencia": "\"sustituir por 'monitor de tu servidor web que incluye cuánto cobran tus IAs por llamada'\""
+        }
+      ],
+      "globales": [
+        "\"el 80% de los items del boletín están escritos en lenguaje de programador. Para audiencia civil, 0 son entendibles sin leer 5 párrafos más\"",
+        "\"si la web pública es para mí y similares, el 90% del contenido es inaccesible. Si es para devs, está OK\"",
+        "\"faltaría un 'para qué me sirve a mí' en cada item, aunque sea una sola línea\""
+      ]
+    }
+  },
+  "timestamp": "2026-08-11T19:28:15.091262+00:00"
+}

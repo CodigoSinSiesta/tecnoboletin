@@ -1,0 +1,113 @@
+---
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const { default: fs } = await import('node:fs/promises');
+  const base = path.join(process.cwd(), 'src', 'data', 'boletines');
+  const entries = await fs.readdir(base, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+    .map((e) => ({ params: { date: e.name } }));
+}
+
+const { date } = Astro.params;
+const base = path.join(process.cwd(), 'src', 'data', 'boletines', date);
+
+let enriched: any = null;
+let reviews: any = null;
+let edges: any[] = [];
+try {
+  enriched = JSON.parse(await readFile(path.join(base, 'enriched.json'), 'utf-8'));
+} catch {}
+try {
+  reviews = JSON.parse(await readFile(path.join(base, 'reviews.json'), 'utf-8'));
+} catch {}
+try {
+  edges = (await readFile(path.join(base, 'edges.jsonl'), 'utf-8'))
+    .split('\n').filter(Boolean).map((l: string) => JSON.parse(l));
+} catch {}
+
+const items: any[] = enriched?.items || [];
+const perfiles = reviews?.perfiles || {};
+const stats = enriched?.stats || {};
+---
+<BaseLayout title={`Boletin ${date}`}>
+  <header class="mb-10 pb-6 border-b border-[var(--color-border)]">
+    <div class="text-xs text-muted mb-3 flex gap-4 flex-wrap">
+      <time>{date}</time>
+      <span class="uppercase tracking-wider">agentico-v2</span>
+      <span>{items.length} items</span>
+      {stats.items_rejected ? <span>· {stats.items_rejected} rechazados</span> : null}
+    </div>
+    <h1 class="font-serif text-3xl mb-3">Boletin {date}</h1>
+    {enriched?.resumen_ejecutivo && <p class="text-muted">{enriched.resumen_ejecutivo}</p>}
+  </header>
+
+  <section class="mb-12">
+    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Items clasificados</h2>
+    <div class="space-y-6">
+      {items.map((it) => (
+        <article class="border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
+          <header class="flex items-center justify-between mb-2">
+            <span class="font-mono text-xs text-muted">#{it.idx}</span>
+            <span class="text-xs px-2 py-0.5 bg-[var(--color-bg)] rounded">{it.clasificacion?.tipo}</span>
+          </header>
+          <h3 class="font-serif text-lg mb-2">
+            <a href={it.url} target="_blank" rel="noopener">{it.titulo}</a>
+          </h3>
+          <p class="text-sm text-text mb-3">{it.clasificacion?.resumen_2_lineas}</p>
+          <div class="flex flex-wrap gap-2 text-xs items-center">
+            <span class="px-2 py-0.5 bg-[var(--color-accent)] text-black rounded font-semibold">{it.clasificacion?.tema_principal}</span>
+            {(it.clasificacion?.temas_secundarios || []).map((t: string) => (
+              <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded">#{t}</span>
+            ))}
+            <span class="text-muted">confianza: {Number(it.clasificacion?.confianza).toFixed(2)}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Reviews</h2>
+    <p class="text-muted text-xs mb-4">
+      <em>Importante: estas reviews son interpretaciones del propio agente en los roles de Carlos (tecnico), Dani (junior) y Maria (novato con interes). NO son perfiles humanos reales. Serviran como base para iterar el formato cuando incorporemos evaluacion humana.</em>
+    </p>
+    <div class="grid md:grid-cols-3 gap-4">
+      {Object.entries(perfiles).map(([perfil, r]: any) => (
+        <article class="border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
+          <header class="mb-3 flex items-center justify-between">
+            <h3 class="font-sans text-sm uppercase tracking-wider">{perfil}</h3>
+            <span class="text-xs text-muted">honestidad {r.honestidad}/10</span>
+          </header>
+          {(r as any).globales && (
+            <ul class="text-xs text-muted space-y-2">
+              {(r as any).globales.slice(0, 3).map((g: string) => <li>· {g}</li>)}
+            </ul>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
+      Edges propuestos ({edges.length})
+    </h2>
+    <div class="space-y-1">
+      {edges.slice(0, 25).map((e) => (
+        <div class="font-mono text-xs text-muted">
+          {e.src} <span class="text-[var(--color-accent)]">--[{e.rel}]--&gt;</span> {e.dst}
+        </div>
+      ))}
+      {edges.length > 25 && <p class="text-xs text-muted mt-3">…y {edges.length - 25} edges mas</p>}
+    </div>
+  </section>
+
+  <footer class="mt-16 pt-6 border-t border-[var(--color-border)] text-xs text-muted">
+    <a href="/">&larr; Indice</a>
+    {enriched?.boletin_origen && <span class="ml-3">· Fuente: {enriched.boletin_origen}</span>}
+  </footer>
+</BaseLayout>

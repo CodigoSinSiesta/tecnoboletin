@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "date": "2026-08-08",
+  "perfiles": {
+    "carlos": {
+      "_source_file": "2026-08-08-carlos.md",
+      "boletin": "2026-08-08",
+      "honestidad": 9,
+      "items_evaluados": 14,
+      "items_ok": 10,
+      "items_problema": [
+        {
+          "idx": 0,
+          "motivo": "\"mattpocock/skills 209k★ y obra/superpowers 268k★ son el mismo nicho con filosofías opuestas (library vs framework). Tratar como contendientes es correcto.\"",
+          "sugerencia": "\"ninguna — el JSON está bien; es el editorial el que tiene que enfrentar las dos.\""
+        },
+        {
+          "idx": 7,
+          "motivo": "\"PrimeIntellect-ai/prime-agent: claims vagos sobre 'self-improving RLM'. README no concreta mecanismo. \"",
+          "sugerencia": "\"bajar confianza a 0.7 y marcar 'pending verification' hasta que se publique mechanism.\""
+        }
+      ],
+      "globales": [
+        "\"este boletín es semánticamente muy denso: 14 items, 6 contendientes top-100 GitHub.\"",
+        "\"la taxonomía 'claude-code-skill-pack' vs 'agentic-skills-framework' separa bien Matt Pocock y obra. Mantener.\"",
+        "\"el cluster browser-for-ai (obscura + agent-browser) está bien diferenciado pero la frontera con simplemente 'browser' se pierde.\""
+      ]
+    },
+    "dani": {
+      "_source_file": "2026-08-08-dani.md",
+      "boletin": "2026-08-08",
+      "honestidad": 7,
+      "items_evaluados": 14,
+      "items_ok": 7,
+      "items_problema": [
+        {
+          "idx": 0,
+          "motivo": "\"mattpocock/skills con 209k estrellas suena a hype\"",
+          "sugerencia": "\"el resumen_2_lineas debería mencionar que es real (lanzado por Total TypeScript, autor conocido)\""
+        },
+        {
+          "idx": 4,
+          "motivo": "\"earendil-works/pi con 85k estrellas. No sé qué es 'agent toolkit'.\"",
+          "sugerencia": "\"explicar: 'programa para que los desarrolladores monten agentes IA sin elegir un framework gigante'\""
+        },
+        {
+          "idx": 7,
+          "motivo": "\"prime-agent promete 'se auto-mejora'. ¿Eso significa que reescribe su propio código? Suena raro.\"",
+          "sugerencia": "\"aclarar que es optimización del workflow, no auto-modificación de código\""
+        }
+      ],
+      "globales": [
+        "\"9 de 14 items son skills/frameworks de coding agents. Como junior, no sé cuál elegir. Falta una matriz comparativa.\"",
+        "\"los items con 'agent-browser' (idx 6 y 11) me confunden — ¿son la misma cosa?\""
+      ]
+    },
+    "maria": {
+      "_source_file": "2026-08-08-maria.md",
+      "boletin": "2026-08-08",
+      "honestidad": 9,
+      "items_evaluados": 14,
+      "items_ok": 1,
+      "items_problema": [
+        {
+          "idx": 2,
+          "motivo": "\"code-review-graph reduce 'tokens' un 71x. ¿Qué son tokens? ¿Por qué me importa a mí?\"",
+          "sugerencia": "\"empezar por: 'cuando programas con IA, gasta mucho en decirle qué archivo leer. Esta herramienta le dice solo lo importante.'\""
+        },
+        {
+          "idx": 9,
+          "motivo": "\"loopx. Suena a app de fitness.\"",
+          "sugerencia": "\"cambiar a algo más identificable: 'software que organiza tareas de IA con estados verificables'\""
+        },
+        {
+          "idx": 13,
+          "motivo": "\"anydoc me interesa (parsea Word/PPT a Markdown) pero el resumen es demasiado técnico. No sé qué es Markdown.\"",
+          "sugerencia": "\"sustituir por: 'convierte tus documentos de Office a texto limpio, útil para que una IA los lea'\""
+        }
+      ],
+      "globales": [
+        "\"el boletín del 8 está poblado de frameworks para programadores. Yo, civil, no entiendo 12 de 14.\"",
+        "\"lo único que me engancha: anydoc (documentos a texto) y code-review-graph (IA que gasta menos). Pero llegar a ellos requiere leer todo lo demás.\"",
+        "\"los items que usan 'kebab-case' como 'claude-code-skill-pack' me parecen ruido. Como civil, prefiero 'habilidades para programar con IA'.\""
+      ]
+    }
+  },
+  "timestamp": "2026-08-11T19:28:15.088695+00:00"
+}

@@ -11,8 +11,12 @@ const boletines = defineCollection({
     items: z.number().int().nonnegative().optional(),
     resumen: z.string().optional(),
     tags: z.array(z.string()).default([]),
-    // El enriquecido se mete en otro archivo adyacente: *.enriched.json
   }),
 });
+
+// Datos enriquecidos: por boletín, { enriched, reviews, edges } generados por
+// la skill tecnoboletin-enricher. Cada carpeta apps/web/src/data/boletines/<date>/
+// contiene los archivos JSON/JSONL. Astro los lee directamente via node:fs en cada
+// página dinámica (no se modelan como collection para evitar problemas de path).
 
 export const collections = { boletines };
