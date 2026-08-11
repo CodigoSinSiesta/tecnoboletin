@@ -13,20 +13,26 @@ export async function getStaticPaths() {
 }
 
 const { date } = Astro.params;
-const base = path.join(process.cwd(), 'src', 'data', 'boletines', date);
+const rawBase = import.meta.env.BASE_URL ?? '/';
+const base = rawBase.replace(/\/?$/, '/');
+const dataBase = path.join(process.cwd(), 'src', 'data', 'boletines', date);
 
 let enriched: any = null;
 let reviews: any = null;
 let edges: any[] = [];
+let editorial: any = null;
 try {
-  enriched = JSON.parse(await readFile(path.join(base, 'enriched.json'), 'utf-8'));
+  enriched = JSON.parse(await readFile(path.join(dataBase, 'enriched.json'), 'utf-8'));
 } catch {}
 try {
-  reviews = JSON.parse(await readFile(path.join(base, 'reviews.json'), 'utf-8'));
+  reviews = JSON.parse(await readFile(path.join(dataBase, 'reviews.json'), 'utf-8'));
 } catch {}
 try {
-  edges = (await readFile(path.join(base, 'edges.jsonl'), 'utf-8'))
+  edges = (await readFile(path.join(dataBase, 'edges.jsonl'), 'utf-8'))
     .split('\n').filter(Boolean).map((l: string) => JSON.parse(l));
+} catch {}
+try {
+  editorial = JSON.parse(await readFile(path.join(dataBase, 'editorial.json'), 'utf-8'));
 } catch {}
 
 const items: any[] = enriched?.items || [];
@@ -44,6 +50,81 @@ const stats = enriched?.stats || {};
     <h1 class="font-serif text-3xl mb-3">Boletin {date}</h1>
     {enriched?.resumen_ejecutivo && <p class="text-muted">{enriched.resumen_ejecutivo}</p>}
   </header>
+
+  {editorial && (
+    <section class="mb-12 border border-[var(--color-accent)] rounded-lg p-6 bg-[var(--color-surface)]">
+      <header class="mb-5">
+        <h2 class="font-sans text-sm uppercase tracking-wider mb-2">Lectura editorial</h2>
+        <p class="text-xs text-muted">
+          Síntesis integrada por los perfiles sintéticos
+          {editorial.perfiles_involucrados && editorial.perfiles_involucrados.length > 0 && (
+            <span> ({editorial.perfiles_involucrados.join(', ')})</span>
+          )}
+          . Conecta este boletín con tu stack local-first, tu grafo de conocimiento y la línea editorial de CSS.
+        </p>
+      </header>
+
+      {editorial.posicionamiento && (
+        <article class="mb-5">
+          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Posicionamiento</h3>
+          <p class="text-sm text-text whitespace-pre-wrap">{editorial.posicionamiento}</p>
+        </article>
+      )}
+
+      {editorial.convergencia_stack_css && (
+        <article class="mb-5">
+          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Convergencia con tu stack</h3>
+          <p class="text-sm text-text whitespace-pre-wrap">{editorial.convergencia_stack_css}</p>
+        </article>
+      )}
+
+      {editorial.cruzado_grafo && (
+        <article class="mb-5">
+          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Cruzado con tu grafo</h3>
+          <p class="text-sm text-text whitespace-pre-wrap">{editorial.cruzado_grafo}</p>
+        </article>
+      )}
+
+      {editorial.tendencias_5_boletines && (
+        <article class="mb-5">
+          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Tendencias (5-6 boletines)</h3>
+          <p class="text-sm text-text whitespace-pre-wrap">{editorial.tendencias_5_boletines}</p>
+        </article>
+      )}
+
+      {editorial.alertas && editorial.alertas.length > 0 && (
+        <article class="mb-5">
+          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Alertas honestas</h3>
+          <ul class="text-sm text-text space-y-2">
+            {editorial.alertas.map((a: string) => (
+              <li class="border-l-2 border-[var(--color-accent)] pl-3">· {a}</li>
+            ))}
+          </ul>
+        </article>
+      )}
+
+      {editorial.acciones_concretas && editorial.acciones_concretas.length > 0 && (
+        <article>
+          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-3">Acciones concretas</h3>
+          <div class="space-y-3">
+            {editorial.acciones_concretas.map((a: any) => (
+              <div class="border border-[var(--color-border)] rounded p-3 bg-[var(--color-bg)]">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class={
+                    a.tipo === 'explora' ? 'px-2 py-0.5 bg-[var(--color-accent)] text-black rounded text-xs font-semibold' :
+                    a.tipo === 'vigilar' ? 'px-2 py-0.5 bg-yellow-900/40 text-yellow-200 rounded text-xs font-semibold' :
+                    'px-2 py-0.5 bg-blue-900/40 text-blue-200 rounded text-xs font-semibold'
+                  }>{a.tipo}</span>
+                  <span class="text-xs text-muted">item #{a.item_idx}</span>
+                </div>
+                <p class="text-sm text-text">{a.razon}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      )}
+    </section>
+  )}
 
   <section class="mb-12">
     <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Items clasificados</h2>
