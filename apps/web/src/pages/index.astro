@@ -1,11 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BoletinCard from '../components/BoletinCard.astro';
 
-const boletines = (await getCollection('boletines')).sort(
-  (a, b) => b.data.fecha.getTime() - a.data.fecha.getTime(),
-);
+const rawBase = import.meta.env.BASE_URL ?? '/';
+const base = rawBase.replace(/\/?$/, '/');
+
+const boloDir = path.join(process.cwd(), 'src', 'content', 'boletines');
+const markdownBoletines = (await readdir(boloDir).catch(() => [] as string[]))
+  .filter((f) => f.endsWith('.md'))
+  .map((f) => f.replace(/\.md$/, ''))
+  .filter((s) => /^\d{4}-\d{2}-\d{2}/.test(s));
+
+const dataDir = path.join(process.cwd(), 'src', 'data', 'boletines');
+const dataEntries = await readdir(dataDir, { withFileTypes: true });
+const enrichedDates = dataEntries
+  .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
+  .map((e) => e.name)
+  .sort()
+  .reverse();
 ---
 <BaseLayout title="Inicio">
   <section class="mb-12">
@@ -16,17 +29,52 @@ const boletines = (await getCollection('boletines')).sort(
     </p>
   </section>
 
-  <section>
+  <section class="mb-12">
     <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
-      Boletines ({boletines.length})
+      Boletines enriquecidos
     </h2>
+    <p class="text-muted text-sm mb-4">
+      {enrichedDates.length} boletines procesados con items clasificados (tipo, tema, confianza) y 3 reviews por perfil.
+      <a href={`${base}enriquecido/`} class="text-muted underline">Ver índice completo &rarr;</a>
+    </p>
     <div class="grid gap-4 md:grid-cols-2">
-      {boletines.map((b) => <BoletinCard entry={b} />)}
+      {enrichedDates.slice(0, 6).map((d) => (
+        <a href={`${base}enriquecido/${d}/`} class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)] hover:border-[var(--color-accent)] transition">
+          <h3 class="font-serif text-lg">Boletin {d}</h3>
+        </a>
+      ))}
     </div>
-    {boletines.length === 0 && (
-      <p class="text-muted">
-        Aún no hay boletines sincronizados. Cuando el script de sync ejecute por primera vez, aparecerán aquí.
+  </section>
+
+  {markdownBoletines.length > 0 && (
+    <section class="mb-12">
+      <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
+        Boletines sin enriquecer ({markdownBoletines.length})
+      </h2>
+      <p class="text-muted text-xs mb-3">
+        Boletines sincronizados desde el vault que aún no han pasado por el enriquecedor.
       </p>
-    )}
+      <ul class="text-sm space-y-2">
+        {markdownBoletines.map((slug) => (
+          <li>
+            <a href={`${base}boletines/${slug}/`} class="text-muted hover:text-text">{slug}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section>
+    <div class="grid md:grid-cols-2 gap-4">
+      <a href={`${base}fuentes`} class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
+        <h3 class="font-serif text-lg">Fuentes</h3>
+        <p class="text-muted text-sm">Próximamente: índice de fuentes recurrentes del lote.</p>
+      </a>
+      <a href={`${base}temas`} class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
+        <h3 class="font-serif text-lg">Temas</h3>
+        <p class="text-muted text-sm">Próximamente: nube de temas con peso por mes.</p>
+      </a>
+    </div>
   </section>
 </BaseLayout>
+
