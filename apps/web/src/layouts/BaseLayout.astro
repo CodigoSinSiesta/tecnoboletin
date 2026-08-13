@@ -4,9 +4,14 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  /** Clave de la sección activa en la nav, para resaltar la pill correcta.
+   *  Se pasa explícitamente en vez de derivarla de Astro.url.pathname
+   *  porque en build estático con `base: '/tecnoboletin'` esa comparación
+   *  es fragil (barras finales, base incluida o no según la página). */
+  activeNav?: 'boletines' | 'enriquecido' | 'fuentes' | 'temas';
 }
 
-const { title, description = 'Lectura cómoda de los boletines de Código Sin Siesta' } = Astro.props;
+const { title, description = 'Lectura cómoda de los boletines de Código Sin Siesta', activeNav } = Astro.props;
 
 // Base URL: en Astro 5, `import.meta.env.BASE_URL` devuelve `/tecnoboletin`
 // (sin barra final). Para concatenar rutas seguras, almacenamos la barra final
@@ -14,12 +19,11 @@ const { title, description = 'Lectura cómoda de los boletines de Código Sin Si
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 
 const nav = [
-  { href: base, label: 'Boletines' },
-  { href: `${base}enriquecido/`, label: 'Enriquecidos' },
-  { href: `${base}fuentes/`, label: 'Fuentes' },
-  { href: `${base}temas/`, label: 'Temas' },
-];
-const currentPath = Astro.url.pathname;
+  { key: 'boletines', href: base, label: 'Boletines' },
+  { key: 'enriquecido', href: `${base}enriquecido/`, label: 'Enriquecidos' },
+  { key: 'fuentes', href: `${base}fuentes/`, label: 'Fuentes' },
+  { key: 'temas', href: `${base}temas/`, label: 'Temas' },
+] as const;
 ---
 <!doctype html>
 <html lang="es">
@@ -49,7 +53,7 @@ const currentPath = Astro.url.pathname;
         </a>
         <nav class="text-sm flex gap-1 -mr-2">
           {nav.map((item) => {
-            const active = item.href === base ? currentPath === base : currentPath.startsWith(item.href);
+            const active = item.key === activeNav;
             return (
               <a
                 href={item.href}
