@@ -1,0 +1,382 @@
+{
+  "version": 2,
+  "date": "2026-08-13",
+  "boletin_origen": "2026-08-13-trending.md",
+  "resumen_ejecutivo": "- **`omnigent-ai/omnigent` debuta como meta-harness agent-agnóstico con desktop nativo**: Apache-2.0, Python, 8.7k★ en 2 meses, alpha. Orquesta Claude Code/Codex/Cursor/OpenCode/Hermes/Pi desde terminal, browser, phone y desktop macOS. Es la respuesta OSS al \"agent framework fatigue\": en lugar de competir con LangChain o CrewAI, se posiciona como capa de orquestación cross-provider que ya usa a Hermes como citizen.\n- **`cursor/plugins` oficializa el marketplace de plugins de Cursor con 24 plugins oficiales**: MIT, TypeScript, 2.6k★ en 7 meses. Skills + MCP servers + rules en un único formato `.cursor-plugin/plugin.json`. Incluye integraciones nativas con Salesforce, Gmail, Drive, Calendar, Gong, HubSpot y orquestadores de sub-agents paralelos. Es la señal más clara hasta la fecha de que Cursor se está convirtiendo en plataforma, no solo en IDE.\n- **`paradigmxyz/centaur` materializa \"BYO harness\" para equipos con Slack como front-end**: Python + Kubernetes sandboxes, Apache-2.0/MIT dual, 1.1k★ en 3 meses. Self-hosted agent platform donde mencionas al bot en Slack, asigna un sandbox aislado y trae de vuelta el resultado. Compite con la dirección \"enterprise agent\" de Embabel pero con UX Slack-first en lugar de JVM-first.\n- **`run-llama/liteparse` abre el parser PDF de LlamaIndex a Rust multi-lenguaje**: Apache-2.0, Rust core + bindings Python/Node/WASM, 12k★ en 6 meses. Reemplaza el wrapper propietario LlamaParse con una versión OSS enfocada en \"fast and light\" — bounding boxes, complexity detection, OCR pluggable, multimodal. Es el \"doc parser for RAG\" más pulido del momento sin lock-in cloud.\n- **`VectifyAI/OpenKB` ejecuta la idea de Karpathy de \"wiki compilada por LLM\" en producción**: Apache-2.0, Python, 3.6k★ en 4 meses. PageIndex vectorless retrieval + wiki compiler que se mantiene sincronizado en lugar de \"redescubrir desde cero en cada query\" como RAG tradicional. La categoría \"knowledge compounds over time\" compite con la narrativa clásica de RAG.\n- **Cierre**: Fuentes consultadas: Trendshift daily, GitHub Trending daily (main + typescript + python + rust + go slices), GitHub REST API para verificación de los 13 candidatos. Blogwatcher 08:00 no publicó archivo `*-blogs.md` (sin actualización desde 2026-07-05), así que este boletín no duplica contenido previo.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "omnigent-ai/omnigent",
+      "url": "https://github.com/omnigent-ai/omnigent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, Python (con desktop nativo en Swift para macOS), 8.758 ★, 1.320 forks, alpha. Capa de orquestación agent-agnóstica que envuelve Claude Code, Codex, Cursor, OpenCode, Hermes, Pi y harnesses custom definidos en YAML. Sesiones sincronizadas entre terminal, browser, phone y desktop app.",
+        "por_que_importa": "Omnigent se posiciona como capa de orquestación agent-agnóstica por encima de los harnesses (Claude Code, Codex, Cursor, OpenCode, Hermes, Pi y los definidos en YAML), no como competidor de LangChain o CrewAI. Para un lector de CSS que se pregunta \"¿cómo orquesto N coding agents sin atarme a un vendor?\" — el dolor recurrente del ecosistema desde mayo — la respuesta práctica es esta: un polyglot agent runtime con sandbox pluggable (Modal, Daytona, Blaxel, E2B, CoreWeave, K8s, Boxlite, OpenShell). El detalle relevante para nosotros: Hermes aparece como first-class citizen, no como integración afterthought. Caveat honesto: el proyecto está en alpha con 907 issues abiertos, así que cualquier adopción en producción conviene blindarla con el sandbox.",
+        "madurez_senales": "**8.758★** · 1.320 forks · Python · creado 2026-06-11 · último push 2026-08-13 · licencia **Apache-2.0**. Repo original (fork=False, parent=None). Default branch: main. 907 issues abiertos (alto — esperable en alpha). Homepage: https://omnigent.ai. Topics: agent-framework, agent-governance, agent-orchestration, claude-code, codex, coding-agents, llm, multi-agent, python, sandbox. README declara \"status: alpha\" explícitamente. Features verificadas: colaboración multi-device con session handoff, supervisor de N agentes simultáneos, BYOK + Claude/ChatGPT subscription, share-session para co-drive, cloud sandboxes pluggables.",
+        "accion_sugerida": "**vigilar** (alpha con API inestable; no se recomienda para producción todavía)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:omnigent-ai/omnigent",
+          "rel": "implements",
+          "dst": "concept:cross-harness-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:omnigent-ai/omnigent",
+          "rel": "competes_with",
+          "dst": "repo:sindresorhus/...",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:omnigent-ai/omnigent",
+          "rel": "relevant_to",
+          "dst": "concept:agent-orchestration",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "omnigent-ai-omnigent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, TypeScript, 2.673 ★, 213 forks en 7 meses. Repositorio raíz que define `.cursor-plugin/plugin.json` (manifest por plugin), agrupa plugins oficiales de Cursor en una única estructura de marketplace y conecta con servidores MCP de Salesforce, Gmail, Drive, Calendar, Gong, HubSpot, Apollo, Ashby, Intercom, Docusign, X, Navan y Circleback vía remote MCP.",
+        "por_que_importa": "Cursor pivota de IDE a plataforma de agents, y este repo es la prueba: un marketplace de plugins oficiales definidos por un manifest `.cursor-plugin/plugin.json`, con tres líneas claras — agent skills (`continual-learning`, `cli-for-agent`), team workflows (`cursor-team-kit`, `thermos` para code review con sub-agents de seguridad y corrección) e integraciones SaaS vía remote MCP (Salesforce, Gmail, Drive, Calendar, Gong, HubSpot, Apollo, Ashby, Intercom, Docusign, X, Navan, Circleback). El plugin `orchestrate` reparte tareas con planners/workers/verifiers. Es el movimiento más nítido del año hacia un ecosistema OSS de agents alrededor de un IDE. Conexión con boletines previos: ya cubrimos a Claude Code el 2026-07-28 como competidor directo en este nicho, y el 2026-07-31 tratamos el concepto de agent-skills-spec que aquí se materializa en formato plugin. Caveat menor: la API de GitHub no detecta la licencia automáticamente, pero el archivo LICENSE confirma MIT.",
+        "madurez_senales": "**2.673★** · 213 forks · TypeScript · creado 2026-01-23 · último push 2026-08-11 · licencia **MIT** (verificado en LICENSE file). Repo original. 30 issues abiertos. Sin license field en API (NONE) — discrepancia menor; LICENSE file real es MIT. Default branch: main. 24 plugins oficiales listados. Categorías: Developer Tools (12), Productivity (3), Integrations (9). Estructura: `.cursor-plugin/marketplace.json` raíz + cada plugin con `plugin.json`, `skills/`, `rules/`, `mcp.json`, `README.md`, `CHANGELOG.md`, `LICENSE`. Topics oficiales: cli, codex, cursor, gpt-operator, hermes-agent, plugin, plugins, skills (verificar).",
+        "accion_sugerida": "**leer** (entender el formato `.cursor-plugin/plugin.json` es tendencia clara para los próximos 6 meses)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cursor/plugins",
+          "rel": "implements",
+          "dst": "concept:plugin-marketplace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cursor/plugins",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:cursor/plugins",
+          "rel": "implements",
+          "dst": "concept:agent-skills-spec",
+          "primera_mencion": "2026-07-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cursor-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "paradigmxyz/centaur",
+      "url": "https://github.com/paradigmxyz/centaur",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Python + Kubernetes sandboxes, Apache-2.0/MIT dual (verificado en el archivo LICENSE), 1.115 ★, 203 forks, 3 meses. Plataforma self-hosted donde mencionas `@centaur` en Slack, asigna un sandbox de K8s aislado con shell/git/Python/Node/Bun, ejecuta Amp/Codex/Claude Code/harness custom y devuelve progreso y resultado final en el thread de Slack.",
+        "por_que_importa": "Centaur ataca el hueco del agent corporativo desde un ángulo distinto al de Embabel (que vimos el 2026-08-12 y va por la JVM enterprise): la UX es Slack-first, no IDE-first — mencionas `@centaur` en un canal, asigna un sandbox de K8s aislado con shell/git/Python/Node/Bun, ejecuta Amp/Codex/Claude Code o un harness custom, y devuelve progreso y resultado en el mismo thread. Lo que lo hace atractivo para CSS: BYO harness (cualquier agente CLI), durable workflows con sleep/resume/wait-for-events, credential boundaries (los agentes usan servicios aprobados sin ver API keys en crudo), replayable state y organization overlays para que cada equipo añada sus tools y prompts sin fork. Es la alternativa OSS más seria a la dirección \"enterprise agent\" que están tomando Adept, Temporal y Cohere. Ya cubrimos este clúster temático el 2026-08-12, lo que ayuda a leer Centaur como continuación y no como novedad aislada.",
+        "madurez_senales": "**1.115★** · 203 forks · Python · creado 2026-05-18 · último push 2026-08-13 · licencia **Apache-2.0/MIT dual** (LICENSE file dice \"Licensed under either of Apache 2.0 or MIT\"). GitHub API marca NOASSERTION por dual license — adopción segura, ambos permissive. Default branch: main. 87 issues abiertos. Homepage: https://centaur.run. Features verificadas: Slack-native threads, K8s sandbox lifecycle, durable transcript storage, credential injection (no raw keys), replayable state, organization overlays.",
+        "accion_sugerida": "**explorar** (la dirección \"self-hosted + Slack + BYO harness\" es la más prometedora para orgs que no pueden usar Cursor/BYOK público)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:paradigmxyz/centaur",
+          "rel": "implements",
+          "dst": "concept:enterprise-agents",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:paradigmxyz/centaur",
+          "rel": "competes_with",
+          "dst": "repo:embabel/embabel-agent",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:paradigmxyz/centaur",
+          "rel": "relevant_to",
+          "dst": "concept:cross-harness-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paradigmxyz-centaur",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "run-llama/liteparse",
+      "url": "https://github.com/run-llama/liteparse",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, núcleo en Rust con bindings para Python, Node.js y WASM, 12.080 ★, 828 forks, 6 meses. Parser de PDF, DOCX, XLSX, PPTX e imágenes sin dependencias en la nube, con bounding boxes espaciales, OCR pluggable (Tesseract empaquetado, servidor HTTP para EasyOCR/PaddleOCR/custom), complexity detection (decide si necesita OCR o LLM) y output estructurado para pipelines de RAG.",
+        "por_que_importa": "LlamaIndex separó lo que era el wrapper propietario LlamaParse (cloud) del motor OSS subyacente, y Liteparse es ese motor: parser de PDF, DOCX, XLSX, PPTX e imágenes sin dependencias en la nube, con núcleo en Rust y bindings para Python, Node.js y WASM. Para un lector de CSS que sigue pipelines de ingestión para RAG, es la pieza de referencia en 2026: bounding boxes espaciales, OCR pluggable (Tesseract empaquetado o servidor HTTP para EasyOCR/PaddleOCR/custom), complexity detection que decide si una página necesita OCR o LLM antes de pagarlo, y output estructurado listo para retrieval. El propio README marca el límite honestamente: \"para documentos complejos (tablas densas, multi-columna, gráficas, texto manuscrito o PDFs escaneados) vas a obtener mejores resultados con LlamaParse\" — el OSS cubre el 80% del 80%, y eso es justo lo que la mayoría de pipelines necesita antes de plantear cloud. Caveat de rigor: el campo `license` en la API devuelve NOASSERTION aunque el archivo LICENSE es Apache-2.0, algo a confirmar si vas a redistribuir.",
+        "madurez_senales": "**12.080★** · 828 forks · Rust · creado 2026-02-09 · último push 2026-08-13 · licencia **Apache-2.0**. Repo original. Default branch: main. 26 issues abiertos (proyecto maduro). Homepage: https://developers.llamaindex.ai/liteparse/. Topics: document-ocr, document-processing, ocr, ocr-recognition, pdf, pdf-parser, text-extraction. Distribuido vía crates.io, npm (`@llamaindex/liteparse` y `@llamaindex/liteparse-wasm`), PyPI (`liteparse`). CI badge verde. Features: PDFium para spatial parsing, complexity heuristic pre-OCR, screenshot generation para LLM agents, Markdown/JSON/Text output, multi-language bindings, multi-platform (Linux/macOS Intel+ARM/Windows).",
+        "accion_sugerida": "**probar** (el binario Rust está en crates.io; instalable sin lock-in cloud)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:run-llama/liteparse",
+          "rel": "implements",
+          "dst": "concept:document-parser",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:run-llama/liteparse",
+          "rel": "competes_with",
+          "dst": "repo:VectifyAI/OpenKB",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:run-llama/liteparse",
+          "rel": "relevant_to",
+          "dst": "company:llamaindex",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "run-llama-liteparse",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "VectifyAI/OpenKB",
+      "url": "https://github.com/VectifyAI/OpenKB",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, Python, 3.677 ★, 390 forks, 4 meses. Sistema CLI que compila documentos raw (PDF, DOCX, MD, PPTX, HTML, XLSX, CSV, texto y URLs) en una knowledge base estilo wiki estructurada con summaries, concept pages, entity pages y cross-links mantenidos en sync. Retrieval vectorless basado en PageIndex tree indexing — sin embeddings, sin vector DB.",
+        "por_que_importa": "OpenKB materializa la idea que Karpathy aireó en marzo de 2026: en lugar de redescubrir el conocimiento desde cero en cada query como hace el RAG tradicional, compilarlo una vez y mantenerlo. El sistema toma documentos raw (PDF, DOCX, MD, PPTX, HTML, XLSX, CSV, texto, URLs) y construye una wiki estructurada con summaries, concept pages, entity pages y cross-links en sync, todo con retrieval vectorless basado en PageIndex tree indexing — sin embeddings, sin vector DB. Para un lector de CSS, el ángulo doble: por un lado desafía la assumption de que RAG = embeddings; por otro, trae una Skill Factory que destila agent skills redistribuibles directamente desde la wiki, y soporta Google OKF (Open Knowledge Format) para portabilidad entre herramientas. Caveat editorial que conviene vigilar: el último push es del 2026-07-22, más de tres semanas sin commit, lo que puede ser receso veraniego o un slowdown real del proyecto — mejor no apostar una migración grande hasta ver movimiento en las próximas semanas.",
+        "madurez_senales": "**3.677★** · 390 forks · Python · creado 2026-04-04 · último push **2026-07-22** (vigilar — 3+ semanas sin commit, puede ser receso de verano o slowdown) · licencia **Apache-2.0**. Repo original. Default branch: main. 37 issues abiertos. Homepage: https://pageindex.ai. Topics: agents, ai, knowledge-base, llm, rag, retrieval. README declara architecture: \"wiki foundation\" (compila y mantiene) + \"generators\" (query/chat/Skill Factory). Output format: Google OKF-compliant wiki pages con cross-references y entity pages auto-extraídos.",
+        "accion_sugerida": "**explorar** (la idea de \"knowledge compounds\" cambia el cálculo de cualquier pipeline RAG — vale la pena clonar y probar contra un corpus pequeño)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:VectifyAI/OpenKB",
+          "rel": "implements",
+          "dst": "concept:compiled-knowledge-base",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VectifyAI/OpenKB",
+          "rel": "implements",
+          "dst": "concept:vectorless-retrieval",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VectifyAI/OpenKB",
+          "rel": "competes_with",
+          "dst": "repo:infiniflow/ragflow",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vectifyai-openkb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "web-infra-dev/midscene",
+      "url": "https://github.com/web-infra-dev/midscene",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "UI automation vision-driven para web, Android, iOS, HarmonyOS y desktop sin selectores de DOM. Se integra con OpenClaw (cubierto ayer) vía Midscene Skills.",
+        "por_que_importa": "",
+        "madurez_senales": "14.562★, 1.119 forks, push 2026-08-13, TypeScript, MIT",
+        "accion_sugerida": "vigilar — relevante para QA agentic y Playwright/Vitest + AI",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "web-infra-dev-midscene",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Lightricks/LTX-2",
+      "url": "https://github.com/Lightricks/LTX-2",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Modelo DiT audio-video foundation de Lightricks, primer DiT con audio y vídeo sincronizados en un solo modelo, 22B parámetros, paper en arXiv 2601.03233. Flag: license NOASSERTION — antes de producción, leer el archivo LICENSE real y verificar los términos.",
+        "por_que_importa": "",
+        "madurez_senales": "8.779★, 1.400 forks, push 2026-08-12, Python, **NOASSERTION**",
+        "accion_sugerida": "vigilar — (potencial fuerte para video-gen OSS, pero licencia ambigua)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lightricks-ltx-2",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "yamadashy/repomix",
+      "url": "https://github.com/yamadashy/repomix",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Empaqueta un repo entero en un único archivo AI-friendly (Claude, ChatGPT, DeepSeek, Gemini, Gemma, Llama, Grok). Patrocinado por Warp y CodeRabbit.",
+        "por_que_importa": "",
+        "madurez_senales": "27.806★, 1.486 forks, push 2026-08-11, TypeScript, MIT",
+        "accion_sugerida": "leer — la pieza \"pack repo to LLM\" más veterana, vale entender su approach y compararlo con alternativas",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yamadashy-repomix",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "smtg-ai/claude-squad",
+      "url": "https://github.com/smtg-ai/claude-squad",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Terminal app para correr Claude Code, Codex, Gemini y Aider en workspaces aislados en paralelo. Instalable con Homebrew como `cs`. Compite con `egoist/waku` (cubierto ayer), pero es CLI-first. Flag: AGPL-3.0 — copyleft fuerte, no recomendable para productos SaaS propietarios.",
+        "por_que_importa": "",
+        "madurez_senales": "8.302★, 601 forks, push 2026-07-30, Go, **AGPL-3.0**",
+        "accion_sugerida": "vigilar — (útil para open-core, problemático para SaaS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "smtg-ai-claude-squad",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "hugohe3/ppt-master",
+      "url": "https://github.com/hugohe3/ppt-master",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "AI que convierte documentos o temas en decks de PowerPoint nativos (no screenshots): shapes nativos, transiciones, animaciones, charts y tablas con datos de respaldo, audio narración desde speaker notes y soporte de plantillas propias en `.pptx`.",
+        "por_que_importa": "",
+        "madurez_senales": "46.050★, 3.744 forks, push 2026-08-12, Python, MIT",
+        "accion_sugerida": "vigilar — la pieza \"AI→native PPT\" más pulida del momento; competidor directo de Gamma/Tome en OSS",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hugohe3-ppt-master",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "guillaumemeyer/watermarks-remover",
+      "url": "https://github.com/guillaumemeyer/watermarks-remover",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Elimina marcas de procedencia de IA multi-vendor: higiene de texto Unicode, hooks de reescritura estadística y C2PA/metadata de PNG, JPEG, SVG, PDF, DOCX y HTML.",
+        "por_que_importa": "",
+        "madurez_senales": "3.181★, 310 forks, push 2026-08-13, Python, MIT",
+        "accion_sugerida": "leer — el ángulo \"AI provenance removal\" es controvertido y técnicamente interesante; vale un artículo sobre la carrera \"watermark vs remover\"",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "guillaumemeyer-watermarks-remover",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

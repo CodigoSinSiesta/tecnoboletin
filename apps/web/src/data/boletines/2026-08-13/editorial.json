@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-08-13",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy dibuja un mapa del 'agent stack' en su momento de mayor fragmentación y, a la vez, de mayor consolidación por capas. Tres movimientos conviven: (a) arriba, Omnigent y Centaur responden al 'agent framework fatigue' con orquestadores cross-harness — uno políglota, otro Slack-first y enterprise; (b) en el medio, Cursor se consolida como plataforma de agentes vía marketplace de plugins, señalando que el IDE ya no es el campo de batalla; (c) abajo, LlamaIndex y VectifyAI redefinen la capa de ingestión — uno liberando el motor OSS del parser, el otro atacando de frente al RAG clásico con knowledge bases compiladas sin embeddings. El hilo conductor es la convergencia entre 'compilar conocimiento / mantener estado' y 'orquestar agentes / mantener contexto' como sustitutos del patrón tradicional 'embed → retrieve → re-derive'. El boletín cubre cinco hallazgos principales y un radar secundario de seis piezas con la misma densidad editorial.",
+  "convergencia_stack_css": "Tres hallazgos de hoy aterrizan directamente en piezas del stack local-first y del discurso editorial que CSS viene construyendo. Omnigent convierte a Hermes en citizen first-class de una capa de orquestación cross-provider — relevante para la decisión diaria de cómo mezclar Claude Code, Codex, Hermes y OpenCode sin vendor-lock. OpenKB materializa la promesa de LLM Wiki de Karpathy y entra en tensión directa con la elección de GBrain + Postgres vectorial del stack: si el vectorless retrieval madura, parte de la arquitectura local-first puede simplificarse. Liteparse libera el motor OSS de LlamaParse, pieza de referencia para pipelines de ingestión RAG propias — encaja con la cobertura que CSS ya da a PGLite + pgvector como base de conocimiento del agente. Los otros dos (Cursor/plugins, Centaur) son lecturas sobre el estado del arte externo, no convergen con el stack propio.",
+  "cruzado_grafo": "El grafo refuerza tres nodos ya conocidos con evidencia sólida y siembra cuatro nuevos. Nodos reforzados: `concept:enterprise-agents` (Centaur, 2026-08-12) revalida la línea de 'agentes con org-chart' abierta por paperclipai/org2AI/holaOS el 2026-08-11; `concept:agent-skills-spec` (Cursor plugins, 2026-07-31) confirma que el formato de skills está dejando de ser discusión para convertirse en infraestructura; `repo:anthropics/claude-code` (Cursor plugins, 2026-07-28) sigue siendo el pivote competitivo que todos los marketplaces deben soportar. Nodos nuevos que debutan hoy sin `primera_mencion` previa: `concept:cross-harness-agent` (Omnigent + Centaur), `concept:plugin-marketplace` (Cursor), `concept:document-parser` (Liteparse), `concept:compiled-knowledge-base` y `concept:vectorless-retrieval` (OpenKB). La ausencia de `primera_mencion` en estos cinco es genuina — no hay cobertura previa que ligar.",
+  "tendencias_5_boletines": "Con solo dos boletines de contexto (2026-08-10 y 2026-08-11), la serie es demasiado corta para hablar de tendencia de cinco. Lo que sí se observa: el boletín del 2026-08-10 articuló las cuatro capas del coding agent (runtime, memoria, backend, code-graph); el 2026-08-11 cerró la triangulación de 'agent company' y abrió inferencia local de borde. Hoy desplaza el foco a la capa de orquestación cross-harness (Omnigent, Centaur) y a la capa de ingestión/knowledge base (Liteparse, OpenKB) — es decir, cubre los huecos que el 2026-08-10 dejó entre runtime y memoria, y entre memoria y retrieval. La continuidad natural es: si el boletín del 2026-08-10 fue el estructural y el 2026-08-11 el de patrones organizativos, el de hoy es el de la infraestructura de soporte (plugins, parsing, compiladores de conocimiento). Falta base para afirmar más.",
+  "alertas": [
+    "OpenKB con `pushed_at` del 2026-07-22, más de tres semanas sin push: vigilar si la ralentización es abandono o trabajo en rama no publicada.",
+    "Omnigent está en alpha y nombra a Hermes como citizen explícitamente: si CSS decide cubrirlo, conviene testear si la integración es real o aspiracional antes de recomendarla en producción.",
+    "Centaur declara licencia dual Apache-2.0/MIT en el dossier pero el repositorio upstream suele ser uno u otro: verificar el archivo LICENSE del repo antes de cualquier decisión de adopción seria.",
+    "Cursor/plugins agrega 24 plugins oficiales en 7 meses con 2.6k★ — utilidad real por encima del hype, pero el marketplace de plugins de vendor es exactamente el patrón que empuja a vendor-lock; no presentarlo como OSS-neutral.",
+    "Liteparse se promociona como alternativa libre a LlamaParse pero el propio README redirige a LlamaParse cloud para documentos complejos: el OSS cubre el 80% del 80%, no es reemplazo 1:1.",
+    "OpenKB ataca al RAG vectorial clásico — la crítica es legítima pero no invalida pipelines existentes; tratar como complemento, no como sucesor."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Omnigent nombra a Hermes como citizen first-class — vale la pena un spike corto (1 tarde) en local para verificar si la integración es operativa y si simplifica el workflow multi-agent real de CSS."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "El giro de Cursor de IDE a plataforma de agentes via marketplace es decisión editorial de fondo: encaja con el ensayo sobre 'agentes como infraestructura' si lo hay en cola, y merece pieza aparte."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Centaur encarna el patrón 'agent empresa vía chat' — relevante para la línea de coding agents en producción, pero antes de recomendar: (a) verificar licencia dual real, (b) probar sandbox K8s en local, (c) ver si la comunidad Slack-first madura fuera de Paradigm."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Liteparse es candidato a pieza del stack del agente local: conviene un Sunday-spike montando un pipeline RAG mínimo (PDF → Markdown → pgvector) y comparar contra lo que ya hay en PGLite."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "OpenKB + vectorless retrieval es la apuesta más especulativa del boletín: vigilar (a) el slowdown de tres semanas, (b) si PageIndex aguanta escalas reales, (c) integración con el flujo local-first de GBrain — antes de comprometer tiempo a spike."
+    }
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
+}

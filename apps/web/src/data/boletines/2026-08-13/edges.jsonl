@@ -1,0 +1,37 @@
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-omnigent-ai-omnigent", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-omnigent-ai-omnigent", "dst": "tema:omnigent-ai-omnigent", "rel": "trata", "added": "2026-08-13"}
+{"src": "repo:omnigent-ai/omnigent", "dst": "concept:cross-harness-agent", "rel": "implements", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:omnigent-ai/omnigent", "dst": "repo:sindresorhus/...", "rel": "competes_with", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:omnigent-ai/omnigent", "dst": "concept:agent-orchestration", "rel": "relevant_to", "added": "2026-08-13", "primera_mencion": null}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-cursor-plugins", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-cursor-plugins", "dst": "tema:cursor-plugins", "rel": "trata", "added": "2026-08-13"}
+{"src": "repo:cursor/plugins", "dst": "concept:plugin-marketplace", "rel": "implements", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:cursor/plugins", "dst": "repo:anthropics/claude-code", "rel": "competes_with", "added": "2026-08-13", "primera_mencion": "2026-07-28"}
+{"src": "repo:cursor/plugins", "dst": "concept:agent-skills-spec", "rel": "implements", "added": "2026-08-13", "primera_mencion": "2026-07-31"}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-paradigmxyz-centaur", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-paradigmxyz-centaur", "dst": "tema:paradigmxyz-centaur", "rel": "trata", "added": "2026-08-13"}
+{"src": "repo:paradigmxyz/centaur", "dst": "concept:enterprise-agents", "rel": "implements", "added": "2026-08-13", "primera_mencion": "2026-08-12"}
+{"src": "repo:paradigmxyz/centaur", "dst": "repo:embabel/embabel-agent", "rel": "competes_with", "added": "2026-08-13", "primera_mencion": "2026-08-12"}
+{"src": "repo:paradigmxyz/centaur", "dst": "concept:cross-harness-agent", "rel": "relevant_to", "added": "2026-08-13", "primera_mencion": null}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-run-llama-liteparse", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-run-llama-liteparse", "dst": "tema:run-llama-liteparse", "rel": "trata", "added": "2026-08-13"}
+{"src": "repo:run-llama/liteparse", "dst": "concept:document-parser", "rel": "implements", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:run-llama/liteparse", "dst": "repo:VectifyAI/OpenKB", "rel": "competes_with", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:run-llama/liteparse", "dst": "company:llamaindex", "rel": "relevant_to", "added": "2026-08-13", "primera_mencion": null}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-vectifyai-openkb", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-vectifyai-openkb", "dst": "tema:vectifyai-openkb", "rel": "trata", "added": "2026-08-13"}
+{"src": "repo:VectifyAI/OpenKB", "dst": "concept:compiled-knowledge-base", "rel": "implements", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:VectifyAI/OpenKB", "dst": "concept:vectorless-retrieval", "rel": "implements", "added": "2026-08-13", "primera_mencion": null}
+{"src": "repo:VectifyAI/OpenKB", "dst": "repo:infiniflow/ragflow", "rel": "competes_with", "added": "2026-08-13", "primera_mencion": null}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-web-infra-dev-midscene", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-web-infra-dev-midscene", "dst": "tema:web-infra-dev-midscene", "rel": "trata", "added": "2026-08-13"}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-lightricks-ltx-2", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-lightricks-ltx-2", "dst": "tema:lightricks-ltx-2", "rel": "trata", "added": "2026-08-13"}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-yamadashy-repomix", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-yamadashy-repomix", "dst": "tema:yamadashy-repomix", "rel": "trata", "added": "2026-08-13"}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-smtg-ai-claude-squad", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-smtg-ai-claude-squad", "dst": "tema:smtg-ai-claude-squad", "rel": "trata", "added": "2026-08-13"}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-hugohe3-ppt-master", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-hugohe3-ppt-master", "dst": "tema:hugohe3-ppt-master", "rel": "trata", "added": "2026-08-13"}
+{"src": "boletin:2026-08-13", "dst": "item:https-github-com-guillaumemeyer-watermarks-remover", "rel": "menciona", "added": "2026-08-13"}
+{"src": "item:https-github-com-guillaumemeyer-watermarks-remover", "dst": "tema:guillaumemeyer-watermarks-remover", "rel": "trata", "added": "2026-08-13"}
