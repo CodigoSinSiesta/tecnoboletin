@@ -11,8 +11,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Paquete de \"skills para ingenieros reales\" — behaviors modulares para coding agents (TDD, debugging, code review) extraídos directamente del directorio `.agents/` de Matt Pocock (Total TypeScript, ~60k suscriptores), distribuidos como Claude Code plugin oficial y vía `npx skills add`.",
-        "por_que_importa": "Matt Pocock es una de las voces más respetadas en TypeScript/Angular y rara vez hace hype. Su tesis: \"GSD, BMAD, Spec-Kit toman el control y dificultan debuggear bugs del proceso\". Ofrece skills small + composable + modelo-agnóstico, con un setup de 30s y un comando `/setup-matt-pocock-skills` por repo. Para CSS: el contraste es directo con `obra/superpowers` (que tiende a tomar control total del flujo) — Pocock apuesta por skills pequeños que el agente invoca. Es el enfoque \"library\" vs \"framework\" aplicado a agent behavior.",
+        "que_es": "Paquete de \"skills para ingenieros reales\": behaviors modulares para coding agents (TDD, debugging, code review) extraídos directamente del directorio `.agents/` de Matt Pocock (Total TypeScript, ~60k suscriptores), distribuidos como Claude Code plugin oficial y vía `npx skills add`.",
+        "por_que_importa": "Matt Pocock (Total TypeScript, ~60k suscriptores) es una voz poco dada al hype, y su tesis ataca de frente los frameworks tipo GSD/BMAD/Spec-Kit: \"toman el control y dificultan debuggear bugs del proceso\". Su paquete ofrece skills pequeñas, componibles y modelo-agnósticas, con un setup de 30s y un comando `/setup-matt-pocock-skills` por repo. Para CSS el contraste es directo con `obra/superpowers` (que tiende a apropiarse del flujo entero); Pocock defiende lo opuesto: skills pequeñas que el agente invoca bajo demanda. Es el debate \"library vs framework\" aplicado a comportamiento de agente, y por eso conviene leer las dos piezas juntas.",
         "madurez_senales": "**209.150★** · 18.068 forks · Shell · creado 2026-02-03 · último push 2026-08-07 · licencia **MIT**. Descripción oficial: \"Skills for Real Engineers. Straight from my .agents directory.\". Topics: _(sin topics configurados — el repo se hizo discoverable solo por momentum)_.",
         "accion_sugerida": "**leer** (instalar en un repo piloto y comparar con `obra/superpowers`)",
         "descripcion_raw": ""
@@ -54,7 +54,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Metodología completa de desarrollo software para coding agents (Claude Code, Codex, Cursor, Gemini CLI, Pi, Kimi, OpenCode...) construida sobre skills composables que se activan automáticamente. El agente, antes de escribir código, te entrevista para sacar la spec y luego opera en subagent-driven-development con TDD estricto.",
-        "por_que_importa": "La tracción es la señal — 268k★, 24k forks, en GitHub Trending daily, plugin oficial Anthropic. La filosofía es opuesta a la de Pocock: en vez de skills pequeñas invocadas bajo demanda, superpowers *own el proceso* desde el primer mensaje (TDD, YAGNI, DRY, subagent-driven development). El autor vende servicios comerciales vía `primeradiant.com`, así que hay un modelo de negocio claro detrás. Para CSS: el contraste \"framework completo\" vs \"library mínima\" es un eje editorial natural para hablar del skill layer.",
+        "por_que_importa": "La tracción es la señal: 268k★, 24k forks, plugin oficial Anthropic y GitHub Trending diario. Su filosofía es la opuesta a la de Pocock: en vez de skills pequeñas invocadas bajo demanda, superpowers toma el control del proceso desde el primer mensaje (TDD, YAGNI, DRY, subagent-driven development). El autor vende servicios comerciales en `primeradiant.com`, así que hay un modelo de negocio claro detrás. Para CSS el contraste \"framework completo\" vs \"library mínima\" es un eje editorial natural para hablar del skill layer. En este mismo boletín (ver ítem anterior) cubrimos el enfoque opuesto de Pocock; leerlos seguidos es la mejor forma de entender el dilema.",
         "madurez_senales": "**268.899★** · 24.010 forks · Shell · creado 2025-10-09 · último push 2026-08-08 (hoy) · licencia **MIT**. Descripción oficial: \"An agentic skills framework & software development methodology that works.\". Topics: `ai`, `brainstorming`, `coding`, `obra`, `sdlc`, `skills`, `subagent-driven-development`, `superpowers`.",
         "accion_sugerida": "**leer** (revisar `/skills` y la skill `brainstorming`; comparar con Pocock)",
         "descripcion_raw": ""
@@ -96,7 +96,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Herramienta Python que construye un mapa estructural del codebase con Tree-sitter, lo expone vía MCP a cualquier coding agent (Codex, Claude Code, Cursor, Windsurf, Gemini CLI, Antigravity, OpenCode...) y publica resultados que demuestran reducción 71x de tokens en reviews sobre el corpus de Flask.",
-        "por_que_importa": "Es exactamente la pieza que faltaba entre el stack local-first de CSS y el agente que programa. El CLI `code-review-graph install` autodetecta qué agentes tienes instalados y configura el MCP server para todos; `build` parsea incrementalmente con Tree-sitter y mantiene el grafo actualizado. Los benchmarks publicados (143k tokens → 2k tokens en review de Flask) son concretos y reproducibles. Es el primo OSS directo de `graphify` pero más específico (orientado a review, no a graph genérico). Si querés que el coding agent lea solo lo que necesita en lugar de dump del repo entero, esta es la respuesta lista-para-usar.",
+        "por_que_importa": "Es la pieza que faltaba entre el stack local-first de CSS y el agente que programa: un mapa estructural del codebase (vía Tree-sitter) expuesto como MCP server a cualquier coding agent. El CLI `code-review-graph install` autodetecta los agentes instalados y configura el server para todos; `build` parsea incrementalmente y mantiene el grafo actualizado. El benchmark publicado (review de Flask: 143k → 2k tokens, una reducción 71x) es concreto y reproducible. Es el primo OSS directo de `graphify` que ya tenemos indexado, pero más específico (orientado a review, no a grafo genérico). Si quieres que el coding agent lea solo lo que necesita en lugar de un dump del repo entero, esta es la respuesta lista para usar.",
         "madurez_senales": "**29.380★** · 2.698 forks · Python · creado 2026-02-26 · último push 2026-08-02 · licencia **MIT**. Descripción oficial: \"Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.\". Topics: `ai-coding`, `claude`, `claude-code`, `code-review`, `graphrag`, `incremental`, `knowledge-graph`, `llm`, `mcp`, `python`, `static-analysis`, `tree-sitter`.",
         "accion_sugerida": "**explorar** (instalar con `pipx install code-review-graph` en un proyecto piloto y medir el ahorro real de tokens)",
         "descripcion_raw": ""
@@ -143,8 +143,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Infraestructura Python \"graph-native\" para sistemas AI context-aware y auditables — combina knowledge graph, ontology, context graphs, decision intelligence, GraphRAG y provenance tracking en un solo paquete de 50MB de código.",
-        "por_que_importa": "Es el competidor OSS más serio en el espacio de grafos para AI enterprise (donde juegan Glean, Hebbia, Palantir Foundry). La diferencia editorial: `semantica` no intenta ser un vector store más — ofrece un modelo ontológico completo donde cada nodo lleva provenance y la búsqueda es GraphRAG semántica. Para CSS: si en algún momento querés construir un agente que \"explique\" de dónde salió cada respuesta (cosa que PGLite+pgvector puede hacer pero con más boilerplate), semantica lo trae pre-construido. El grafo de conocimiento de CSS puede inspirarse en su modelo.",
+        "que_es": "Infraestructura Python \"graph-native\" para sistemas AI context-aware y auditables: combina knowledge graph, ontology, context graphs, decision intelligence, GraphRAG y provenance tracking en un solo paquete de 50MB de código.",
+        "por_que_importa": "Es el competidor OSS más serio en el espacio de grafos para AI enterprise (donde juegan Glean, Hebbia, Palantir Foundry), pero con un ángulo distinto: no pretende ser un vector store más, sino un paquete único (50MB) que combina knowledge graph, ontology, context graphs, decision intelligence, GraphRAG y provenance tracking. Cada nodo lleva su provenance y la búsqueda es GraphRAG semántica, lo que lo diferencia de PGLite+pgvector (que puede hacer algo similar pero con más boilerplate). Para CSS es relevante como inspiración para el propio grafo de conocimiento: si en algún momento queremos construir un agente que explique de dónde salió cada respuesta, `semantica` trae eso pre-construido y vale la pena estudiar su modelo ontológico.",
         "madurez_senales": "**2.425★** · 313 forks · Python · creado 2025-06-25 · último push 2026-08-08 (hoy) · licencia **MIT**. Descripción oficial: \"Graph-Native Infrastructure for Context and Accountable AI Systems\". Topics: `agent-memory`, `ai-governance`, `ai-infrastructure`, `context-engineering`, `context-graphs`, `data-engineering`, `decision-intelligence`, `developer-tools`, `explainable-ai`, `generative-ai`, `graph-rag`, `knowledge-graph`, `llm`, `ontology`, `provenance`, `python`, `reasoning`, `semantic-search`.",
         "accion_sugerida": "**vigilar** (revisar la sección \"Ontology\" y la integración con MCP cuando publique server)",
         "descripcion_raw": ""
@@ -186,8 +186,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Toolkit TypeScript para construir coding agents: API unificada sobre múltiples LLMs, agent loop, TUI interactivo y CLI. La idea es un \"Pi\" — un daemon que sirve de backend común para experimentar con agentes sin atarse a un framework.",
-        "por_que_importa": "85k★ con un solo autor (earendil-works) es señal de calidad + comunidad consolidada. Aterriza en GitHub Trending TypeScript hoy. La propuesta: en lugar de elegir entre LangChain/LlamaIndex/AutoGen, das una API única y montas el agent loop encima. El TUI (terminal UI) que incluye vale la pena verlo — es donde el agent debugging es más transparente. Para CSS: si en algún momento querés mostrar \"cómo se ve un coding agent por dentro\", `pi` es el ejemplo más didáctico.",
+        "que_es": "Toolkit TypeScript para construir coding agents: API unificada sobre múltiples LLMs, agent loop, TUI interactivo y CLI. La idea es un \"Pi\": un daemon que sirve de backend común para experimentar con agentes sin atarse a un framework.",
+        "por_que_importa": "85k★ con un solo autor (earendil-works) es señal de calidad y comunidad consolidada, y aterriza en GitHub Trending TypeScript el día de hoy. La propuesta concreta: en lugar de elegir entre LangChain/LlamaIndex/AutoGen, ofrece una API unificada sobre múltiples LLMs, agent loop, TUI interactivo y CLI; el \"Pi\" es un daemon que sirve de backend común para experimentar sin atarse a un framework. El TUI incluido merece verse aparte: es donde el debugging del agent loop es más transparente. Para CSS, si en algún momento queremos mostrar \"cómo se ve un coding agent por dentro\", `pi` es probablemente el ejemplo más didáctico que existe hoy en TypeScript.",
         "madurez_senales": "**85.382★** · 10.594 forks · TypeScript · creado 2025-08-09 · último push 2026-08-07 · licencia **MIT**. Descripción oficial: \"AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\". Topics: _(sin topics configurados)_.",
         "accion_sugerida": "**vigilar** (probar el TUI en un repo pequeño: `npx pi`)",
         "descripcion_raw": ""
@@ -228,8 +228,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Core system minimalista en Go para construir agentes: provee el \"substrate\" — scheduling, message passing, persistence — sobre el que corren los agentes del tipo de `earendil/pi` o `loopx`.",
-        "por_que_importa": "Reciente (creado 2026-05-13), todavía pequeño (1.1k★) pero el push de hoy y trending en Go indican momentum. El ángulo: si la mayoría de agent frameworks viven en Python/JS, este apuesta por Go por motivos de performance + concurrency. Para CSS: vale la pena ver qué decisiones arquitectónicas tomó — si el substrate usa algo canónico como message passing estilo Erlang o va custom. Es un deep dive potencial para entender el \"metal\" sobre el que corren los agents.",
+        "que_es": "Core system minimalista en Go para construir agentes: provee el \"substrate\" (scheduling, message passing, persistence) sobre el que corren los agentes del tipo de `earendil/pi` o `loopx`.",
+        "por_que_importa": "Reciente (creado 2026-05-13) y todavía pequeño (1.1k★), pero el push de hoy y trending en Go indican momentum. El ángulo es deliberado: si la mayoría de agent frameworks viven en Python/JS, este apuesta por Go por motivos de performance y concurrencia. Para CSS vale como deep dive de arquitectura: entender qué decisiones tomó el substrate (scheduling, message passing, persistence) es la mejor forma de ver el \"metal\" sobre el que corren agentes como el `earendil/pi` que cubrimos en este mismo boletín. La limitación honesta: con 216 forks y ~3 meses de vida, todavía hay que tratarlo como experimental, no como base estable.",
         "madurez_senales": "**1.113★** · 216 forks · Go · creado 2026-05-13 · último push 2026-08-08 (hoy) · licencia **Apache-2.0**. Descripción oficial: \"Agent Substrate: the core system\". Topics: _(sin topics configurados)_.",
         "accion_sugerida": "**explorar** (clonar y leer `cmd/`, revisar decisiones de concurrencia)",
         "descripcion_raw": ""
@@ -265,7 +265,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Headless browser escrito en Rust con antidetect built-in, drop-in replacement de Playwright/Puppeteer, pensado específicamente para AI agents y scraping a escala.",
-        "por_que_importa": "20k★ en 4 meses (creado 2026-04-13) y trending hoy en Rust es una señal fuerte — el espacio \"browser for AI\" se está moviendo del lado JS hacia el lado Rust por motivos de stealth + concurrencia. Los topics (`antidetect`, `antidetect-browser`, `headless`, `playwright`, `puppeteer`, `rust`) lo posicionan como competidor directo de Fortress, Scrapling StealthyFetcher y Playwright vanilla. Para CSS: si alguna vez necesitamos scraping de sitios con DataDome/Cloudflare Turnstile, obscura es otra opción OSS a evaluar (junto a `tiliondev/fortress` que ya cubrimos).",
+        "por_que_importa": "20k★ en 4 meses (creado 2026-04-13) y trending hoy en Rust es señal fuerte: el espacio \"browser for AI\" se está moviendo del lado JS al lado Rust por stealth y concurrencia. Los topics (`antidetect`, `antidetect-browser`, `playwright`, `puppeteer`, `rust`) lo posicionan como competidor directo de Playwright vanilla, Scrapling StealthyFetcher y Fortress. Para CSS, si alguna vez necesitamos scraping de sitios con DataDome o Cloudflare Turnstile, `obscura` se suma a `tiliondev/fortress` (que ya cubrimos en boletines anteriores) como opción OSS a evaluar.",
         "madurez_senales": "**20.640★** · 1.486 forks · Rust · creado 2026-04-13 · último push 2026-08-08 (hoy) · licencia **Apache-2.0**. Descripción oficial: \"The headless browser for AI agents and web scraping\". Topics: `antidetect`, `antidetect-browser`, `browser`, `browser-automation`, `cdp`, `headless`, `playwright`, `puppeteer`, `rust`.",
         "accion_sugerida": "**leer** (revisar docs/API; comparar contra Playwright vanilla + Scrapling StealthyFetcher)",
         "descripcion_raw": ""
@@ -306,8 +306,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Agente TypeScript \"RLM\" (Reinforcement Learning Meta) que se automejora en coding workflows y tareas autónomas de larga duración. La tesis: el agente no solo ejecuta — aprende de sus propias runs y ajusta su comportamiento en el siguiente intento.",
-        "por_que_importa": "Trendshift #1 del día, 7k★ y push hoy. La pregunta editorial es importante: ¿realmente se \"automejora\" o es un wrapper de eval+prompt-tuning? El README es vago sobre el mecanismo. La promesa es la misma que `AutoGPT` (también trending hoy, 11 años de historia) vendía en 2023. Para CSS: merece un análisis honesto — si el self-improvement es real, es la pieza que faltaba para agentes en producción; si es hype, hay que decirlo.",
+        "que_es": "Agente TypeScript \"RLM\" (Reinforcement Learning Meta) que se automejora en coding workflows y tareas autónomas de larga duración. La tesis: el agente no solo ejecuta, sino que aprende de sus propias runs y ajusta su comportamiento en el siguiente intento.",
+        "por_que_importa": "Trendshift #1 del día, 7k★ y push hoy, pero la promesa exige cautela: el README no explica claramente el mecanismo de \"self-improvement\", así que no se puede distinguir si el agente aprende de verdad de sus runs o si es un wrapper de eval + prompt-tuning. La tesis (el agente ajusta su comportamiento entre runs) es la misma que `AutoGPT` vendía en 2023, y por eso conviene no venderla sin verificar. Para CSS merece un análisis honesto: si el self-improvement es real, es la pieza que faltaba para agentes en producción; si es hype, hay que decirlo. Lectura mínima antes de adoptar: la sección del repo que describe el bucle de aprendizaje y, si existe, un paper o eval reproducible detrás.",
         "madurez_senales": "**7.091★** · 583 forks · TypeScript · creado 2026-05-08 · último push 2026-08-08 (hoy) · licencia **MIT**. Descripción oficial: \"A self-improving RLM agent for coding workflows and long-running autonomous tasks.\". Topics: _(sin topics configurados)_.",
         "accion_sugerida": "**explorar** (clonar, leer `src/`, identificar mecanismo concreto de \"self-improvement\")",
         "descripcion_raw": ""
@@ -341,7 +341,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Context intelligence layer para AI agents: un binario Rust local con 76 tools MCP que decide qué lee el agente, recuerda qué aprendió y reduce tokens 60-90%. Topics: `context-engineering`, `mcp`, `token-optimization`",
+        "que_es": "Context intelligence layer para AI agents: un binario Rust local con 76 tools MCP que decide qué lee el agente, recuerda qué aprendió y reduce tokens 60-90%. Topics: `context-engineering`, `mcp`, `token-optimization`.",
         "por_que_importa": "",
         "madurez_senales": "3.546★ · push 2026-08-08 · Rust · Apache-2.0",
         "accion_sugerida": ": explorar",
@@ -370,7 +370,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Skills oficiales de Google para coding agents (Cloud, Gemini CLI). Trending en paralelo al resto del ecosystem de skills",
+        "que_es": "Skills oficiales de Google para coding agents (Cloud, Gemini CLI). Trending en paralelo al resto del ecosistema de skills.",
         "por_que_importa": "",
         "madurez_senales": "16.375★ · push 2026-08-07 · Python · Apache-2.0",
         "accion_sugerida": ": vigilar",
@@ -398,7 +398,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Skill para que el agente produzca diagramas de arquitectura hermosos y verificables como HTML self-contained. Encaja con `creative/architecture-diagram` de CSS",
+        "que_es": "Skill para que el agente produzca diagramas de arquitectura hermosos y verificables como HTML self-contained. Encaja con `creative/architecture-diagram` de CSS.",
         "por_que_importa": "",
         "madurez_senales": "10.295★ · push 2026-08-06 · HTML · MIT",
         "accion_sugerida": ": leer",
@@ -426,7 +426,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "CLI minimalista de Vercel Labs para browser automation por agentes. Trending en Rust. Más simple que obscura; apunta a \"uso inmediato vía CLI\" en lugar de \"library integrable\"",
+        "que_es": "CLI minimalista de Vercel Labs para browser automation por agentes. Trending en Rust. Más simple que obscura; apunta a \"uso inmediato vía CLI\" en lugar de \"library integrable\".",
         "por_que_importa": "",
         "madurez_senales": "40.177★ · push 2026-08-08 · Rust · Apache-2.0",
         "accion_sugerida": ": vigilar",
@@ -455,7 +455,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Loop engineering state kernel para equipos de agentes long-running: durable goals, quota-aware auto-wake, executable todos, verifiable handoffs. Compite con `agent-substrate`",
+        "que_es": "Loop engineering state kernel para equipos de agentes long-running: durable goals, quota-aware auto-wake, executable todos, verifiable handoffs. Compite con `agent-substrate`.",
         "por_que_importa": "",
         "madurez_senales": "3.461★ · push 2026-08-08 · Python · MIT",
         "accion_sugerida": ": vigilar",
@@ -484,7 +484,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Conversor Word/PPT/Excel/PDF/RTF/EPUB/CSV → Markdown limpio con bindings Node.js y Python. Reentra tras 3 días. El hermano \"document parser\" del ecosistema firecrawl",
+        "que_es": "Conversor Word/PPT/Excel/PDF/RTF/EPUB/CSV → Markdown limpio con bindings Node.js y Python. Reentra tras 3 días. El hermano \"document parser\" del ecosistema firecrawl.",
         "por_que_importa": "",
         "madurez_senales": "11.394★ · push 2026-08-07 · Rust · MIT",
         "accion_sugerida": ": vigilar",
@@ -511,9 +511,11 @@
     "items_total": 14,
     "items_hallazgo_principal": 8,
     "items_radar_secundario": 6,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

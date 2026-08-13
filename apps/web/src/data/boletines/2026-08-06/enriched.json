@@ -11,8 +11,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "agente abierto para coding e investigación de larga duración que combina un REPL IPython persistente, subagentes programables, daemon, objetivos y un “Continual Harness” refinable con cambios pequeños y reversibles.",
-        "por_que_importa": "es una implementación concreta de dos ideas que suelen quedarse en papers: contexto tratado como variable programable y aprendizaje operativo persistente sin reescribir el system prompt base. Permite una comparación técnica directa con memoria, skills, crons y delegación de Hermes.",
+        "que_es": "agente abierto para coding e investigación de larga duración que combina un REPL IPython persistente, subagentes programables, daemon, objetivos y un \"Continual Harness\" refinable con cambios pequeños y reversibles.",
+        "por_que_importa": "Prime-agent aterriza dos ideas que casi siempre se quedan en papers: tratar el contexto como una variable programable y mantener aprendizaje operativo entre ejecuciones sin tocar el prompt base. En la práctica lo hace con un REPL IPython persistente, subagentes invocables, un daemon y un “Continual Harness” que se afina con cambios pequeños y reversibles, así que es directamente comparable con la memoria, las skills, los crons y la delegación de Hermes. Lo vimos asomar como competidor de Hermes en el boletín del 2026-07-08, y reusa el runtime de earendil-works/pi que ya cubrimos el 2026-07-30.",
         "madurez_senales": "**2.149 estrellas · 156 forks · TypeScript · creado 2026-05-08 · último push 2026-08-06 · MIT**. Descripción oficial: “A self-improving RLM agent for coding workflows and long-running autonomous tasks.” Topics: ninguno configurado. El README advierte que ejecuta Python y comandos con permisos del usuario y **no es un sandbox**.",
         "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
@@ -60,8 +60,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "entorno de productividad usado dentro de Cloudflare que ofrece agentes con contexto empresarial, “Gadgets” —aplicaciones privadas generadas por IA— y Gatekeepers con seguridad basada en capacidades.",
-        "por_que_importa": "presenta una arquitectura distinta al patrón SaaS: cada usuario recibe instancias aisladas y modificables de sus apps. Su idea más publicable es la aprobación diferida: el Gatekeeper simula efectos para que el agente continúe y agrupa las acciones reales para revisión posterior.",
+        "que_es": "entorno de productividad usado dentro de Cloudflare que ofrece agentes con contexto empresarial, \"Gadgets\" —aplicaciones privadas generadas por IA— y Gatekeepers con seguridad basada en capacidades.",
+        "por_que_importa": "El interés para nosotros no es Cloudflare como tal, sino el patrón de producto: cada usuario tiene instancias aisladas y editables de sus propias apps, en vez de un SaaS único compartido. Lo más publicable es la aprobación diferida: el Gatekeeper simula efectos para que el agente siga avanzando y acumula las acciones reales para revisarlas en lote, algo que choca de frente con el dilema autonomía vs. control que cualquier montaje multi-perfil acaba topándose. Es un complemento natural del agent-governance-toolkit de Microsoft que cubrimos el 2026-07-09, porque ambos trabajan el mismo problema (seguridad y supervisión de agentes) desde lados distintos del mostrador.",
         "madurez_senales": "**3.547 estrellas · 235 forks · TypeScript · creado 2026-04-15 · último push 2026-08-06 · Apache-2.0**. Descripción oficial: “Agent workspace built on Cloudflare Workers for creating documents, building apps, and running agents with your company’s context and systems.” Topics: ninguno. El propio proyecto marca la versión 2 como **early access**; puede correr localmente sobre Wrangler/workerd, aunque su arquitectura está estrechamente alineada con Workers y Durable Objects.",
         "accion_sugerida": "**leer**.",
         "descripcion_raw": ""
@@ -110,7 +110,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "kernel de estado local y agnóstico al runtime que conserva objetivos, gates, tareas, evidencias, cuotas, leases y handoffs entre Codex, Claude Code, Cursor u otros agentes.",
-        "por_que_importa": "su modelo se describe explícitamente como un **Kanban nativo para agentes**, muy cercano al flujo multi-perfil local. La distinción útil es que LoopX no intenta ser el agente: gobierna turnos acotados y conserva evidencia verificable entre ejecuciones.",
+        "por_que_importa": "su modelo se describe explícitamente como un Kanban nativo para agentes, muy cercano al flujo multi-perfil local. La distinción útil es que LoopX no intenta ser el agente: gobierna turnos acotados y conserva evidencia verificable entre ejecuciones.",
         "madurez_senales": "**2.412 estrellas · 176 forks · Python · creado 2026-05-31 · último push 2026-08-06 · MIT**. Descripción oficial: “Lightweight loop engineering state kernel for long-running AI agent teams…” Topics: `agent-control-plane`, `agent-ops`, `ai-agents`, `codex`, `long-running-agents`, `loop-engineering`, `workflow-automation`. El README declara trayectorias públicas de más de 200 horas transcurridas, aclarando que no equivalen a 200 horas de autonomía continua.",
         "accion_sugerida": "**probar**.",
         "descripcion_raw": ""
@@ -158,7 +158,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "motor Go de inteligencia de código que indexa AST y contratos entre repositorios, expone CLI/MCP/API/web UI y se distribuye como binario local sin dependencia obligatoria de modelos.",
-        "por_que_importa": "compite directamente con el stack Graphify + codebase-memory en el terreno más valioso: responder impacto, callers, contratos HTTP/gRPC/eventos y relaciones cross-repo sin releer archivos completos. Declara 257 gramáticas, 175 herramientas MCP y soporte explícito para Hermes.",
+        "por_que_importa": "Gortex entra en el terreno más caro para nosotros: responder impacto, callers, contratos HTTP/gRPC/eventos y relaciones cross-repo sin releer el código. Ahí compite de frente con el stack Graphify + codebase-memory que ya cubrimos el 2026-07-04, con la diferencia de que lo entrega todo en un único binario Go local, con CLI, MCP, API y web UI, y declara 257 gramáticas, 175 herramientas MCP y soporte explícito para Hermes. Si las cifras se sostienen en uso real, deja el “local-first” como argumento de venta y no como experimento: es un competidor serio que hay que probar en uno de nuestros proyectos antes de hablar de sustituir nada.",
         "madurez_senales": "**1.088 estrellas · 97 forks · Go · creado 2026-04-06 · último push 2026-08-05 · Apache-2.0**. Descripción oficial: motor de code intelligence local basado en grafo, con CLI, MCP y API. Topics: `code-analysis`, `graphrag`, `knowledge-graph`, `local-first`, `mcp-server`, `context-window-optimization`, entre otros. Señales positivas: CI, releases firmadas, SLSA 3 y telemetría desactivada por defecto. Claims de “hasta 50× menos tokens” y benchmarks: aún no verificados de forma independiente.",
         "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
@@ -206,8 +206,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "extracción de la infraestructura reutilizable de Gas Town en un SDK con configuración `city.toml`, routing de trabajo, supervisor reconciliador, tracking Beads y múltiples proveedores de runtime.",
-        "por_que_importa": "convierte una metáfora rígida de “Town” en primitivas configurables. Soporta tmux, subprocess, exec, ACP, Kubernetes y herdr, por lo que sirve como referencia seria para separar tablero, estado y runtime en una arquitectura multi-agente.",
+        "que_es": "extracción de la infraestructura reutilizable de Gas Town en un SDK con configuración city.toml, routing de trabajo, supervisor reconciliador, tracking Beads y múltiples proveedores de runtime.",
+        "por_que_importa": "convierte una metáfora rígida de \"Town\" en primitivas configurables. Soporta tmux, subprocess, exec, ACP, Kubernetes y herdr, por lo que sirve como referencia seria para separar tablero, estado y runtime en una arquitectura multi-agente.",
         "madurez_senales": "**1.077 estrellas · 347 forks · Go · creado 2026-02-22 · último push 2026-08-06 · MIT**. Descripción oficial: “Orchestration-builder SDK for multi-agent coding workflows.” Topics: ninguno configurado. Riesgo operativo: el camino por defecto añade tmux, Beads y Dolt; existe backend de archivos para reducir dependencias.",
         "accion_sugerida": "**leer**.",
         "descripcion_raw": ""
@@ -370,7 +370,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "prueba de concepto de un lenguaje de programación específico para orquestaciones de IA. Licencia **NOASSERTION**: no adoptarlo como dependencia sin leer el LICENSE real",
+        "que_es": "prueba de concepto de un lenguaje de programación específico para orquestaciones de IA. Licencia NOASSERTION: no adoptarlo como dependencia sin leer el LICENSE real",
         "por_que_importa": "",
         "madurez_senales": "**1.791 estrellas**, último push **2026-08-05**, **Rust**",
         "accion_sugerida": "sugerida: vigilar",
@@ -397,9 +397,11 @@
     "items_total": 10,
     "items_hallazgo_principal": 5,
     "items_radar_secundario": 5,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/5 items reescritos; rechazados por longitud sospechosa: [2, 4]; faltantes en respuesta: [2, 4]",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

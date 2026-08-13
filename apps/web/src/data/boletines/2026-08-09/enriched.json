@@ -11,8 +11,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Framework Python basado en el paper arXiv 2412.20138 que monta un consejo de agentes LLM (analistas fundamental, sentiment, news, técnico + risk manager) que debaten y emiten operaciones de trading en cadenas reales con backtests sobre datos históricos.",
-        "por_que_importa": "Es la referencia académica más sólida para multi-agent en producción: paper peer-reviewed, 96k★, 18k forks, 7 meses en GitHub Trending. Demuestra que el patrón 'roles especializados + debate + risk manager' funciona en un dominio cuantitativo. La pregunta editorial obvia: ¿se generaliza a otros dominios (legal, code review, devops)? Harvey LAB (legal) ya está siguiendo la misma idea. Para CSS: si escribimos sobre 'analyst council' como patrón agentic, este es el paper que citamos.",
+        "que_es": "Framework Python basado en el paper arXiv 2412.20138 que monta un consejo de agentes LLM (analistas fundamental, sentiment, news y técnico, más un risk manager) que debaten y emiten operaciones de trading en cadenas reales, con backtests sobre datos históricos.",
+        "por_que_importa": "Es la referencia académica más sólida para multi-agent en producción: paper peer-reviewed (arXiv 2412.20138), 96k★, 18k forks, 7 meses en GitHub Trending. Demuestra que el patrón 'roles especializados + debate + risk manager' funciona en un dominio cuantitativo con backtests sobre datos históricos reales. La pregunta editorial obvia: ¿se generaliza a otros dominios (legal, code review, devops)? Para CSS: si escribimos sobre 'analyst council' como patrón agentic, este es el paper que citamos. Y conviene recordar que el 2026-07-18 ya cubrimos a su competidor más directo, Vibe-Trading (HKUDS), con el que comparte el nicho de multi-agent trading sobre cadenas reales; ahora añadimos la vertiente académica-peer-reviewed que aquel no tenía.",
         "madurez_senales": "**96,654★** · 18,673 forks · Python · creado 2024-12-28 · último push 2026-07-18 · licencia **Apache-2.0**. Descripción oficial: _TradingAgents: Multi-Agents LLM Financial Trading Framework_. Topics: agent, finance, llm, multiagent, trading.",
         "accion_sugerida": "**leer**",
         "descripcion_raw": ""
@@ -59,8 +59,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Framework Python (Apache-2.0, paper propio en xyz-lab.ai) que ofrece runtime extensible para agents de larga duración: multi-turn execution, tool orchestration, context management, recovery, y benchmark evaluation. Cada trace preserva el estado visible al modelo para soportar replay, evaluación o exportación SFT filtrada.",
-        "por_que_importa": "Resuelve el problema que todos los frameworks agentic tienen: capturar el rastro exacto de lo que vio el modelo en cada paso. AxisAgentic no es 'otro agent loop' — es el equivalente de OpenTelemetry + State Machine para agents. La referencia 'Web Search' y 'WideSearch' muestran la utilidad real. Para CSS: si vamos a hablar de observability de agents (junto a iFixAi, MS Governance, Shepherd), AxisAgentic entra como capa de runtime, no de auditoría. Diferencia clave: governance mira policy, runtime mira trazas.",
+        "que_es": "Framework Python (Apache-2.0, paper propio en xyz-lab.ai) que ofrece un runtime extensible para agents de larga duración: multi-turn execution, tool orchestration, context management, recovery y benchmark evaluation. Cada trace preserva el estado visible por el modelo para soportar replay, evaluación o exportación SFT filtrada.",
+        "por_que_importa": "Resuelve un problema que todos los frameworks agentic comparten y pocos atacan de frente: capturar el rastro exacto de lo que vio el modelo en cada paso. AxisAgentic no es 'otro agent loop' más, es el equivalente de OpenTelemetry (estándar de observabilidad) + máquina de estados para agents: cada trace preserva el estado visible por el modelo para soportar replay, evaluación o exportación de datos para SFT (fine-tuning supervisado). Las referencias 'Web Search' y 'WideSearch' del repo muestran la utilidad real con benchmarks. Para CSS, encaja en la conversación sobre observability de agents junto a iFixAi, MS Governance y Shepherd, pero como capa de runtime (qué vio el modelo y por qué decidió lo que decidió), no de auditoría de policy. Diferencia clave: governance mira cumplimiento de reglas, runtime mira trazas. Y como ya vimos el 2026-07-18 con agent-substrate, el terreno de los substrates para agents se está moviendo rápido; AxisAgentic entra como competidor en esa misma línea.",
         "madurez_senales": "**1,101★** · 139 forks · Python · creado 2026-07-23 · último push 2026-07-24 · licencia **Apache-2.0**. Descripción oficial: _AxisAgentic: An Extensible Runtime and Trajectory-Collection Framework for Long-Horizon Agents._. Topics: _(sin topics)_.",
         "accion_sugerida": "**explorar**",
         "descripcion_raw": ""
@@ -107,7 +107,7 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Runtime Python (MIT, alpha, paper arXiv 2605.10913) que graba la ejecución de un agent como un trace durable e inspeccionable, con workspace outputs retenidos. Un meta-agent puede forkear, hacer replay, revertir o aplicar selectivamente. Sandboxing OS-level via Seatbelt (macOS) y Landlock (Linux).",
+        "que_es": "Runtime Python (MIT, alpha, paper arXiv 2605.10913) que graba la ejecución de un agent como un trace durable e inspeccionable, con workspace outputs retenidos. Un meta-agent puede forkear, hacer replay, revertir o aplicar cambios de forma selectiva. Sandboxing a nivel de SO vía Seatbelt (macOS) y Landlock (Linux).",
         "por_que_importa": "Shepherd es a los agents lo que Git es al código: un substrate que vuelve la ejecución reversible. Es lo más cercano a 'undo + branching' aplicado a agents. El paper está ahí. Para CSS: si AxisAgentic es OpenTelemetry, Shepherd es Git-for-agents. Complementa agent-substrate (el substrate minimal de Go) añadiendo la pieza de reversibilidad. Vale un deep-dive cuando salga de alpha.",
         "madurez_senales": "**1,914★** · 155 forks · Python · creado 2026-06-24 · último push 2026-07-21 · licencia **MIT**. Descripción oficial: _A runtime substrate that turns an agent's execution into a reversible, Git-like trace, so meta-agents can observe, fork, replay, and revert any run. Couples agent and environments in a copy-on-write fork ~5x faster than docker commit, with ~95% KV-cache reuse on replay. Framework built for meta-agents to supervise, optimize, and train other agents_. Topics: mcts-rl, meta-agents, meta-optimization, runtime-supervision, tree-rl, workflow-automation.",
         "accion_sugerida": "**vigilar**",
@@ -156,8 +156,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Wrapper Python (MIT, 69k★ en 5 meses) que da a los coding agents capacidad de lectura y búsqueda sobre las plataformas que más consume el público chino: Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu. Encapsula 'cuál API funciona hoy, cuál se rompió, cuál necesita cookies'.",
-        "por_que_importa": "Aunque está muy orientado al mercado chino (Bilibili/XHS no importan tanto al lector de CSS), el patrón es editorialmente potente: 'internet access layer para agents' es una categoría nueva. El repositorio subió 70k estrellas en 5 meses, lo que indica dolor real: los agentes necesitan acceso a internet pero las APIs cambian y rompen constantemente. Para CSS: vale la pena comentar el patrón; podríamos construir algo equivalente para el stack occidental (Hacker News, Lobsters, dev.to, X, Reddit, arXiv).",
+        "que_es": "Wrapper Python (MIT, 69k★ en 5 meses) que da a los coding agents capacidad de lectura y búsqueda sobre las plataformas que más consume el público chino: Twitter, Reddit, YouTube, GitHub, Bilibili y XiaoHongShu. Encapsula el conocimiento de 'qué API funciona hoy, cuál se rompió y cuál necesita cookies'.",
+        "por_que_importa": "Aunque está muy orientado al mercado chino (Bilibili y XiaoHongShu no son plataformas que el lector de CSS consulte a diario), el patrón que encapsula sí es editorialmente potente: una 'capa de acceso a internet para agents' que abstrae el dolor real de qué API funciona hoy, cuál se rompió y cuál necesita cookies. Los números lo avalan: 69k estrellas y 5.8k forks en apenas 5 meses indican que el dolor es genuino y compartido, no solo regional. Para CSS vale la pena quedarse con el patrón, no con la lista de sitios: podríamos construir algo equivalente para el stack occidental (Hacker News, Lobsters, dev.to, X, Reddit, arXiv) y resolver un problema equivalente. Y un apunte de continuidad: el 2026-08-08 ya cubrimos MCP (Model Context Protocol) como herramienta de referencia en este tipo de capas; Agent-Reach se apoya justo en ese mismo protocolo.",
         "madurez_senales": "**69,147★** · 5,817 forks · Python · creado 2026-02-24 · último push 2026-08-06 · licencia **MIT**. Descripción oficial: _Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees._. Topics: agent-infrastructure, ai-agent, ai-search, automation, bilibili, claude-code, cli, cursor.",
         "accion_sugerida": "**vigilar**",
         "descripcion_raw": ""
@@ -200,7 +200,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Harness Python minimalista (MIT, 358★, creado hace 2 días) que conecta un LLM directamente al iPhone vía macOS iPhone Mirroring: `screencapture` + Vision OCR como 'ojos', HID-level CGEvents como 'manos'. El agente escribe su propio helper Python en `agent-workspace/agent_helpers.py` durante la ejecución.",
-        "por_que_importa": "Es la pieza que faltaba entre computer-use (Claude Desktop, OpenAI Operator) y el smartphone real. La elegancia: no toca el teléfono, usa el mirroring nativo del SO. No necesita WDA (WebDriverAgent), ni Jailbreak, ni Xcode. 358 estrellas y 2 días de vida → va a crecer rápido si Apple no cierra el hole. Para CSS: si cubrimos computer-use y queremos mostrar que el smartphone es el próximo frontier, este es el ejemplo más limpio. Compárese con Android (scrcpy + uiautomator).",
+        "por_que_importa": "Es la pieza que faltaba entre computer-use (Claude Desktop, OpenAI Operator) y el smartphone real. La elegancia del enfoque es que no toca el teléfono: usa el mirroring nativo de macOS (iPhone Mirroring) con `screencapture` + Vision OCR como 'ojos' y CGEvents a nivel HID (eventos de hardware de bajo nivel, los mismos que usa el sistema para simular teclado y ratón) como 'manos'. El truco del repo — que el propio agent escriba su helper Python en `agent-workspace/agent_helpers.py` durante la ejecución — le da una plasticidad interesante. No necesita WDA (WebDriverAgent, la pieza que usa Appium para iOS), ni jailbreak, ni Xcode. Las 358 estrellas y 2 días de vida son una señal de adopción temprana, no de tracción consolidada, y el riesgo real es que Apple cierre el agujero de Mirroring en cualquier release. Para CSS: si cubrimos computer-use, este es el ejemplo más limpio de que el smartphone es el próximo frontier, y la comparativa con Android (scrcpy + uiautomator) es obligada.",
         "madurez_senales": "**358★** · 27 forks · Python · creado 2026-08-07 · último push 2026-08-07 · licencia **MIT**. Descripción oficial: _let your agent control your phone_. Topics: _(sin topics)_.",
         "accion_sugerida": "**explorar**",
         "descripcion_raw": ""
@@ -249,7 +249,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Suite Python (Apache-2.0, 7.5k★, 1671 tareas en 24 áreas de práctica legal) que ejecuta inspecciones automatizadas sobre el comportamiento de un agent — el propio agent o uno externo — y devuelve un scoring reproducible. Se ejecuta como CLI, servidor o librería.",
-        "por_que_importa": "Resuelve el problema clave de los agents en producción: ¿cómo sé si mi agent está haciendo lo correcto y no sólo lo que parece correcto? iFixAi ataca la auditoría desde el lado '¿qué podría fallar?' (45 inspecciones estructuradas) en lugar de '¿qué outcome obtuve?'. Complementa microsoft/agent-governance-toolkit (que mira policy/sandbox) y Microsoft OpenSSF Scorecard. Para CSS: si vamos a hablar de 'el próximo bottleneck de los coding agents es la auditoría', iFixAi es el primer OSS maduro.",
+        "por_que_importa": "Resuelve la pregunta clave de cualquier agent en producción: ¿cómo sé que está haciendo lo correcto y no solo lo que parece correcto? iFixAi ataca la auditoría desde el lado '¿qué podría fallar?', con 45 inspecciones estructuradas sobre 1671 tareas en 24 áreas de práctica legal, en vez de quedarse en '¿qué outcome obtuve?'. Eso lo distingue: no mide resultado final, mide comportamiento del agent paso a paso, y devuelve un scoring reproducible. Se ejecuta como CLI, servidor o librería, lo que lo hace encajable en pipelines existentes. Para CSS, si vamos a sostener la tesis de que 'el próximo bottleneck de los coding agents es la auditoría', iFixAi es el primer OSS maduro del lado de la inspección; complementa a microsoft/agent-governance-toolkit (que mira policy/sandbox) y a Microsoft OpenSSF Scorecard (que evalúa seguridad de proyectos open source), pero no los duplica.",
         "madurez_senales": "**7,579★** · 677 forks · Python · creado 2026-04-27 · último push 2026-08-07 · licencia **Apache-2.0**. Descripción oficial: _Independent Auditing of AI Agents. Run by human or the agent itself, to answer the most crucial question in the AI Agent Economy. Is the agent doing what is supposed to do? With iFixAi you can have this answer in less than 120 seconds._. Topics: agent-evaluation, ai, ai-alignment, ai-evaluation, ai-governance, ai-safety, cli, diagnostic-tool.",
         "accion_sugerida": "**vigilar**",
         "descripcion_raw": ""
@@ -303,8 +303,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Pipeline TypeScript (MIT, 78k★ en 5 meses) que toma cualquier codebase, knowledge base o docs y lo convierte en un grafo de conocimiento interactivo explorable, buscable y consultable. Compatible con Claude Code, Codex, Cursor, Copilot, Gemini CLI.",
-        "por_que_importa": "Es la competencia directa de `tirth8205/code-review-graph` y de Graphify, pero con un giro: en vez de optimizar tokens (code-review-graph) o producir grafos para grafos (Graphify), la propuesta es que el grafo sea _interactivo y navegable_ — una capa visual sobre el codebase. Para CSS: encaja con la línea editorial de 'el código como dato navegable' que llevamos varios boletines. Merece comparativa head-to-head con code-review-graph y semantica.",
+        "que_es": "Pipeline TypeScript (MIT, 78k★ en 5 meses) que toma cualquier codebase, knowledge base o docs y lo convierte en un grafo de conocimiento interactivo, explorable, buscable y consultable. Compatible con Claude Code, Codex, Cursor, Copilot y Gemini CLI.",
+        "por_que_importa": "Es la competencia directa de code-review-graph y de Graphify, pero con un giro claro: en vez de optimizar tokens (code-review-graph) o producir grafos para grafos (Graphify), la propuesta es que el grafo sea interactivo y navegable, una capa visual consultable sobre el codebase. Los 78k★ en 5 meses y la compatibilidad con Claude Code, Codex, Cursor, Copilot y Gemini CLI indican que el problema de 'explorar un codebase' lo sufre mucha gente, no solo nosotros. Para CSS encaja con la línea editorial de 'el código como dato navegable' que llevamos varios boletines y merecería una comparativa head-to-head con code-review-graph y con semantica. Doscontinuidades útiles: el 2026-07-18 ya cubrimos a code-review-graph, su competidor más directo en el nicho de 'grafo de codebase para coding agents', y el 2026-08-08 cubrimos el concepto de local-first code intelligence al que Understand-Anything se suma como vertiente visual, no local.",
         "madurez_senales": "**78,252★** · 6,569 forks · TypeScript · creado 2026-03-15 · último push 2026-07-30 · licencia **MIT**. Descripción oficial: _Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more._. Topics: antigravity-skills, business-knowledge, claude-code, claude-skills, codebase-analysis, codex, codex-skills, developer-tools-ai-agent.",
         "accion_sugerida": "**leer**",
         "descripcion_raw": ""
@@ -352,7 +352,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Benchmark open-source para evaluar AI agents en trabajo legal realista (24 áreas de práctica, 1671 tareas). De Harvey, la startup legal-AI de $5B valuation",
+        "que_es": "Benchmark open-source para evaluar AI agents en trabajo legal realista (24 áreas de práctica, 1671 tareas). De Harvey, la startup legal-AI con $5B de valuation.",
         "por_que_importa": "",
         "madurez_senales": "670★, push 2026-08-07, Python",
         "accion_sugerida": "leer — patrón 'benchmark-as-content' para otros dominios",
@@ -380,7 +380,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Toolkit Python (MIT, Microsoft) con policy enforcement, zero-trust identity, sandboxing y release approvals para AI agents. OpenSSF Scorecard integrado",
+        "que_es": "Toolkit Python (MIT, Microsoft) con policy enforcement, zero-trust identity, sandboxing y release approvals para AI agents. OpenSSF Scorecard integrado.",
         "por_que_importa": "",
         "madurez_senales": "5,812★, push 2026-08-08, Python",
         "accion_sugerida": "vigilar — primera propuesta de governance con pedigree enterprise",
@@ -409,7 +409,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Cliente CLI en TypeScript para Hindsight (memoria vectorial). AI coding agent para terminal con hash-anchored edits, LSP, soporte Python. Mismo autor que `pi` (85k★)",
+        "que_es": "Cliente CLI en TypeScript para Hindsight (memoria vectorial). AI coding agent para terminal con hash-anchored edits, LSP y soporte Python. Mismo autor que `pi` (85k★).",
         "por_que_importa": "",
         "madurez_senales": "23,103★, push 2026-08-09, TypeScript",
         "accion_sugerida": "probar — instalar con `npx oh-my-pi`",
@@ -439,7 +439,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Swarm intelligence engine: miles de agents con memoria ejecutan simulaciones sociales para predecir outcomes a partir de semillas reales (news, signals financieras). Patrón 'rehearse-the-future'",
+        "que_es": "Swarm intelligence engine: miles de agents con memoria ejecutan simulaciones sociales para predecir outcomes a partir de semillas reales (news, signals financieras). Patrón 'rehearse-the-future'.",
         "por_que_importa": "",
         "madurez_senales": "70,761★, push 2026-08-03, Python, AGPL-3.0",
         "accion_sugerida": "vigilar — AGPL-3.0 bloquea adopción como dependencia; usar como referencia conceptual",
@@ -468,7 +468,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Open-source frontier voice AI de Microsoft (52k★, MIT). Ya referenciado en el grafo, re-trending",
+        "que_es": "Open-source frontier voice AI de Microsoft (52k★, MIT). Ya referenciado en el grafo, re-trending.",
         "por_que_importa": "",
         "madurez_senales": "52,254★, push 2026-07-24, Python",
         "accion_sugerida": "vigilar — alternativa OSS a ElevenLabs para TTS conversacional",
@@ -496,7 +496,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Browser verdaderamente independiente de Andreas Kling (creado 2024, BSD-2, sin Chromium/WebKit). Trending hoy por impulso general",
+        "que_es": "Browser verdaderamente independiente de Andreas Kling (creado en 2024, BSD-2, sin Chromium ni WebKit). Trending hoy por impulso general.",
         "por_que_importa": "",
         "madurez_senales": "65,065★, push 2026-08-08, C++",
         "accion_sugerida": "vigilar — no es AI, pero si escribimos sobre 'el stack de un browser moderno' cabe la nota",
@@ -525,7 +525,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "TTS que cabe en CPU y bolsillo (Kyutai, MIT). 100M parámetros, corre en laptop sin GPU",
+        "que_es": "TTS que cabe en CPU y bolsillo (Kyutai, MIT). 100M de parámetros, corre en laptop sin GPU.",
         "por_que_importa": "",
         "madurez_senales": "8,184★, push 2026-07-16, Python",
         "accion_sugerida": "explorar — pieza del stack local-first de voice AI; encaja con FluidVoice (ya en grafo)",
@@ -552,9 +552,11 @@
     "items_total": 14,
     "items_hallazgo_principal": 7,
     "items_radar_secundario": 7,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/7 items reescritos; rechazados por longitud sospechosa: [2]; faltantes en respuesta: [2]",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

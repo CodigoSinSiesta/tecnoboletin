@@ -12,7 +12,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Parser multi-formato (DOCX, PPTX, XLSX, ODT, RTF, EPUB, CSV, PDF → Markdown) escrito en Rust con bindings oficiales Node.js y Python; **el gemelo \"document-side\"** del proyecto Firecrawl (que era web-side).",
-        "por_que_importa": "Reemplaza una stack completa de ingest documental. Para lectores que tenéis agentes que digieren PDFs/DOCXs/PPTs, el tener un único binario nativo con bindings Python es oro - ademas OSS-MIT. Distinto al `firecrawl/pdf-inspector` que cubrimos ayer (solo inspección/clasificación de PDFs), anydoc es **extracción + conversión** completa.",
+        "por_que_importa": "Si tienes agentes que ingieren PDFs, DOCX o PPTs, esta pieza te ahorra montar una pipeline propia: un único binario Rust con bindings oficiales de Python y Node convierte los formatos a Markdown directamente, bajo licencia MIT. Sustituye el clásico combo de librerías separadas por documento y, como contrapunto editorial, se distingue del `firecrawl/pdf-inspector` que cubrimos en el boletín anterior: aquel solo inspecciona y clasifica PDFs; anydoc extrae contenido y lo convierte a Markdown utilizable.",
         "madurez_senales": "Estrellas totales: **2.346** · Forks: 97 · Lenguaje: Rust · Fecha creación: **2026-08-03** (hace **2 días**) · Último push: 2026-08-04 · Licencia: **MIT** · Topics: [] (sin topics configurados) · Descripción oficial: *\"Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown. Built in Rust, with Node.js and Python bindings.\"*",
         "accion_sugerida": "**explorar** - clonar y comparar rendimiento contra MarkItDown sobre el mismo DOCX complejo. Si pasa el smoke test, es candidato serio para cualquier pipeline de RAG/agent.",
         "descripcion_raw": ""
@@ -61,7 +61,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Herramienta open-source de **auditoría de AI agents** que responde en <120s a la pregunta *¿el agente hace lo que se supone que debe hacer?*; soporta ejecución por humanos o por el propio agente.",
-        "por_que_importa": "Es el lado **OSS-académico-normativo** del governance. Sus topics (`eu-ai-act`, `iso-42001`, `nist-ai-rmf`, `owasp-llm`, `prompt-injection`, `hallucination-detection`) lo posicionan para empresas que necesitan justificar compliance, no solo defenderse. Pareja perfecta con uber/ADR (producción defensiva) - los dos juntos cubren el espectro compliance + threat-model.",
+        "por_que_importa": "Es la capa OSS-académica para auditar agentes en menos de dos minutos: responde a la pregunta «¿el agente hace lo que se supone?» con ejecución humana o autónoma. Sus topics (`eu-ai-act`, `iso-42001`, `nist-ai-rmf`, `owasp-llm`, `prompt-injection`, `hallucination-detection`) lo orientan a empresas que necesitan justificar compliance, no solo defenderse. Ya cubrimos el concepto de governance AI y su pareja natural uber/ADR en el boletín del 2026-07-24; los dos juntos siguen siendo el par más claro que hemos visto para cubrir compliance externo + threat-model interno, así que este hallazgo refuerza la tendencia antes que abrir una nueva línea.",
         "madurez_senales": "Estrellas totales: **5.412** · Forks: 678 · Lenguaje: Python · Fecha creación: 2026-04-27 · Último push: 2026-08-04 · Licencia: **Apache-2.0** · Topics: `agent-evaluation`, `ai`, `ai-alignment`, `ai-evaluation`, `ai-governance`, `ai-safety`, `cli`, `diagnostic-tool`, `eu-ai-act`, `hallucination-detection`, `iso-42001`, `llm-evaluation`, `llm-security`, `nist-ai-rmf`, `owasp-llm`, `prompt-injection`, `python`, `responsible-ai`, `risk-assessment`, `risk-management`",
         "accion_sugerida": "**leer** - el README explica el modelo de auditoría en detalle. Si trabajas con agentes en producción regulada (UE, salud, finanzas), vale una hora de lectura.",
         "descripcion_raw": ""
@@ -109,8 +109,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "**ADR (Agent Defense & Risk)** - framework interno de Uber para asegurar agentes AI en producción vía observabilidad + benchmark + threat detection. Topics: `agent-security`, `ai-security`, `benchmark`, `prompt-injection`, `threat-detection`, MCP-aware.",
-        "por_que_importa": "Es la **primera vez que una bigtech libera su capa de seguridad para agentes** de forma OSS-Apache-2.0. Tiene 796 estrella (poco maduro como proyecto público) pero **deployed at Uber** (el claims del README importa porque implica carga real). El pairing con iFixAi es la lectura obvia: iFixAi audita desde fuera, uber/ADR protege desde dentro.",
+        "que_es": "**ADR (Agent Defense & Risk)** — framework interno de Uber para asegurar agentes AI en producción vía observabilidad + benchmark + threat detection. Topics: `agent-security`, `ai-security`, `benchmark`, `prompt-injection`, `threat-detection`, MCP-aware.",
+        "por_que_importa": "Uber libera bajo Apache-2.0 la capa que usa en producción para asegurar agentes AI: observabilidad, benchmark y detección de amenazas, con soporte explícito de MCP. Es pronto en términos de comunidad (796 estrellas, 72 forks) pero relevante precisamente porque es código que ya corre a escala Uber, no un prototipo. Lo cubrimos junto al concepto de ai_governance y enterprise_ai_readiness el 2026-08-03, y la lectura útil para nuestros lectores es esta: iFixAi audita desde fuera si el agente cumple, uber/ADR protege desde dentro en tiempo de ejecución; combinar ambos cubre el ciclo compliance + defensa que un equipo serio necesita antes de poner agentes en producción.",
         "madurez_senales": "Estrellas totales: **796** · Forks: 72 · Lenguaje: Python · Fecha creación: 2026-04-19 · Último push: 2026-08-03 · Licencia: **Apache-2.0** · Topics: `agent-security`, `ai-agents`, `ai-security`, `benchmark`, `claude`, `claude-code`, `codex`, `cursor`, `llm-security`, `mcp`, `model-context-protocol`, `prompt-injection`, `threat-detection`",
         "accion_sugerida": "**vigilar** - muy nuevo en público pero con pedigree. Esperar a que tenga ≥2k estrella y release 1.0 antes de explorar a fondo; ahora mismo **leer el whitepaper/descripción** ya es buen input para un artículo sobre enterprise agent defense.",
         "descripcion_raw": ""
@@ -158,8 +158,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Plugin oficial del equipo **Every** (de los creadores de la metodología *Compound Engineering*) para **Claude Code, Codex, Cursor** a la vez. 23.9k estrella - ya es mainstream.",
-        "por_que_importa": "Confirma la **commoditización de skills para coding agents**. Ya no es \"obra/superpowers vs addyosmani/agent-skills\"; ahora cada vendor edita su plugin. EveryInc (la empresa detrás de la newsletter Compound) subió su propia implementación - la metodología se hace producto. Útil para nuestros lectores porque **un solo plugin cubre Claude + Codex + Cursor**, lo que reduce el coste de cambio entre coding agents.",
+        "que_es": "Plugin oficial del equipo **Every** (de los creadores de la metodología *Compound Engineering*) para **Claude Code, Codex, Cursor** a la vez. 23.9k estrellas — ya es mainstream.",
+        "por_que_importa": "El equipo Every (autor de la metodología Compound Engineering) convierte esa metodología en un plugin oficial que sirve a la vez para Claude Code, Codex y Cursor. Con 23.9k estrellas es ya mainstream y confirma la commoditización de skills para coding agents: cada vendor edita su propia versión y obra/superpowers ya no es el único referente. Para el lector, el valor concreto es reducir el coste de cambio entre coding agents: un mismo plugin te sigue si alternas entre herramientas, en lugar de reescribir flujos cada vez.",
         "madurez_senales": "Estrellas totales: **23.941** · Forks: 1.958 · Lenguaje: TypeScript · Fecha creación: 2025-10-09 · Último push: 2026-08-05 (hoy) · Licencia: **MIT** · Topics: `compound`, `engineering`",
         "accion_sugerida": "**explorar** - si trabajas con Claude Code y/o Cursor, instalar el plugin y comparar contra superpowers/monty. Lectura rápida del README (en su mayoría sobreescribe skills ya existentes).",
         "descripcion_raw": ""
@@ -208,7 +208,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "*\"A persistent workspace for development work that self-improves and continues beyond one session\"*. Agente Python con claim específico: el workspace **se reescribe a sí mismo** entre sesiones para mejorar. Integra con Kiro (otro producto AWS-style).",
-        "por_que_importa": "Se mete en un cluster que ya tenemos nutrido (HKUDS/nanobot, screenpipe, obra/superpowers, TencentDB-Agent-Memory) - todos juegan en el espacio *memoria/continuidad entre sesiones*. KiroCrew es el primero que hace **auto-modificación del propio workspace como feature**, no solo memoria persistente.",
+        "por_que_importa": "Se suma al cluster de proyectos que ya cubrimos en boletines anteriores sobre memoria y continuidad entre sesiones (HKUDS/nanobot, screenpipe, obra/superpowers, TencentDB-Agent-Memory), con HKUDS/nanobot apareciendo por primera vez el 2026-07-16. La particularidad de KiroCrew no es la memoria persistente, que ya vimos en otros, sino que el workspace se reescribe a sí mismo entre sesiones para mejorar: es la primera vez, dentro de este grupo, que la auto-modificación del propio entorno del agente es la feature central y no un extra.",
         "madurez_senales": "Estrellas totales: **665** · Forks: 52 · Lenguaje: Python · Fecha creación: 2026-07-16 · Último push: **2026-08-05 (hoy)** · Licencia: **Apache-2.0** · Topics: `agent`, `agentic-ai`, `agents`, `ai-agent`, `ai-agents`, `automation`, `devtools`, `kiro`, `llm`",
         "accion_sugerida": "**vigilar** - nuevo (665 estrella, 3 semanas de vida). Esperar a que tenga ≥2k estrella y release más maduro. Si el claim \"se auto-mejora\" se sostiene, es candidato a deep-dive.",
         "descripcion_raw": ""
@@ -255,7 +255,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "*reentry*. Memoria jerárquica para agents con datos publicados (-61% tokens en WideSearch)",
+        "que_es": "*reentry*. Memoria jerárquica para agents con datos publicados (-61% tokens en WideSearch).",
         "por_que_importa": "",
         "madurez_senales": "14.234 estrella, TS, MIT",
         "accion_sugerida": "leer README para confirmar el módulo Code-Graph que no exploramos ayer",
@@ -285,7 +285,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "*\"All you need. Nothing you don't\"* project management self-hosted (Hono + React). Alternativa OSS a Jira/Linear sin features de relleno",
+        "que_es": "*\"All you need. Nothing you don't\"* project management self-hosted (Hono + React). Alternativa OSS a Jira/Linear sin features de relleno.",
         "por_que_importa": "",
         "madurez_senales": "7.386 estrella, TS, MIT",
         "accion_sugerida": "explorar si tienes fatiga de Jira",
@@ -314,7 +314,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "MCP server que permite a Claude Code/Desktop construir workflows n8n desde lenguaje natural",
+        "que_es": "MCP server que permite a Claude Code/Desktop construir workflows n8n desde lenguaje natural.",
         "por_que_importa": "",
         "madurez_senales": "22.602 estrella, TS, MIT",
         "accion_sugerida": "vigilar — interesante si combinas Hermes + MCP + n8n**",
@@ -342,7 +342,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "*\"The free coding agent\"*. Coding agent de código abierto sin coste",
+        "que_es": "*\"The free coding agent\"*. Coding agent de código abierto sin coste.",
         "por_que_importa": "",
         "madurez_senales": "8.333 estrella, TS, Apache-2.0",
         "accion_sugerida": "explorar — si la promesa de \"free\" se sostiene,**",
@@ -371,7 +371,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "SDK open-source para llevar cualquier agente a cualquier chat (Slack, Teams, Discord, Telegram) con UI interactiva nativa",
+        "que_es": "SDK open-source para llevar cualquier agente a cualquier chat (Slack, Teams, Discord, Telegram) con UI interactiva nativa.",
         "por_que_importa": "",
         "madurez_senales": "217 estrella, TS, MIT, 16 días de vida",
         "accion_sugerida": "leer — producto complementario al channels pattern de nanobot**",
@@ -400,7 +400,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Skill para AI agents: *\"Make your agent think like the laziest senior dev. The best code is the code you never wrote.\"* Filosofía YAGNI aplicada",
+        "que_es": "Skill para AI agents: *\"Make your agent think like the laziest senior dev. The best code is the code you never wrote.\"* Filosofía YAGNI aplicada.",
         "por_que_importa": "",
         "madurez_senales": "96.170 estrella, JS, MIT",
         "accion_sugerida": "leer — el claim editorial es bueno aunque las estrella parecen infladas**",
@@ -428,7 +428,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "*\"Turn documents into AI-ready Markdown with visual understanding\"*. Compite directamente con firecrawl/anydoc pero en Go y con VLM multimodal",
+        "que_es": "*\"Turn documents into AI-ready Markdown with visual understanding\"*. Compite directamente con firecrawl/anydoc pero en Go y con VLM multimodal.",
         "por_que_importa": "",
         "madurez_senales": "434 estrella, Go, MIT",
         "accion_sugerida": "vigilar — comparar rendimiento contra anydoc cuando tenga ≥1k estrella**",
@@ -457,7 +457,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "+ **Jakubantalik/thinking-orbs** (1.618 estrella, TS, MIT) — UI/UX libraries para AI products: morphing de iconos y loaders \"thinking\" para agent UIs",
+        "que_es": "+ **Jakubantalik/thinking-orbs** (1.618 estrellas, TS, MIT) — UI/UX libraries para AI products: morphing de iconos y loaders \"thinking\" para agent UIs.",
         "por_que_importa": "",
         "madurez_senales": "519 estrella, TS, MIT",
         "accion_sugerida": "ignorar (no es nuestro segmento) salvo que construyas UI para AI",
@@ -483,9 +483,11 @@
     "items_total": 13,
     "items_hallazgo_principal": 5,
     "items_radar_secundario": 8,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

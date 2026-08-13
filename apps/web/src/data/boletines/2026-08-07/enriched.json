@@ -11,8 +11,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Sistema de archivos virtual que vive dentro de una Durable Object (SQLite autoritativo) y expone tres backends ejecutables intercambiables: contenedor Linux con FUSE, shell via Vercel just-bash, o ECMAScript module en Dynamic Worker.",
-        "por_que_importa": "Ayer cubrimos `cloudflare/cloudflare-os` como el workspace corporativo. Hoy, `cloudflare/computer` (Trendshift #3, GitHub Trending all +891/d) se posiciona como el runtime sobre el que ese workspace se ejecuta. La pieza interesante es `workspace.runtime.exec(source, { backend })`: el mismo endpoint acepta shell, JavaScript o contenedor sin cambiar la API. Ejemplos incluyen `@cloudflare/think` (chat agent que usa la workspace como cwd) y `tutorial` (endpoint que escribe markdown y lanza `pandoc` en el contenedor para producir un PDF). El proyecto está marcado PREVIEW ONLY: APIs inestables, no production-ready, pero la dirección es clara. Para CSS: Cloudflare está construyendo el equivalente agent-native de un S3+Lambda+EC2, todo sobre Workers. Si escribimos sobre la separación workspace/runtime, este es el caso de estudio.",
+        "que_es": "Sistema de archivos virtual que vive dentro de una Durable Object (SQLite autoritativo) y expone tres backends ejecutables intercambiables: contenedor Linux con FUSE, shell vía Vercel just-bash o módulo ECMAScript en Dynamic Worker.",
+        "por_que_importa": "El boletín de ayer cubrió `cloudflare/cloudflare-os` como el workspace corporativo; hoy `cloudflare/computer` (Trendshift #3, GitHub Trending all +891/d) aparece como el runtime sobre el que ese workspace se ejecuta. La pieza interesante es `workspace.runtime.exec(source, { backend })`: el mismo endpoint acepta shell, JavaScript o contenedor sin cambiar la API — los ejemplos incluyen `@cloudflare/think` (un chat agent que usa la workspace como cwd) y `tutorial` (un endpoint que escribe markdown y lanza `pandoc` dentro del contenedor para producir un PDF). Está marcado PREVIEW ONLY: las APIs son inestables y no está listo para producción, pero la dirección es clara. Para CSS: Cloudflare está construyendo el equivalente agent-native de un S3 + Lambda + EC2, todo sobre Workers. Si escribimos sobre la separación workspace/runtime, este es el caso de estudio.",
         "madurez_senales": "**5,042★** · 254 forks · TypeScript · creado 2026-07-09 · último push 2026-08-06 · licencia **MIT**. Descripción oficial: \"Cloudflare Computer is a virtual filesystem that lives inside a Durable Object. The Durable Object holds the authoritative state in SQLite and exposes one pluggable execution surface through workspace.runtime.\". Topics: _(sin topics configurados)_.",
         "accion_sugerida": "**leer**",
         "descripcion_raw": ""
@@ -59,8 +59,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "CRD y controller de Kubernetes (bajo SIG Apps) que gestiona sandboxes como singleton pods con identidad estable, almacenamiento persistente y warm pools. Delega el aislamiento de bajo nivel a runtimes como gVisor o Kata Containers.",
-        "por_que_importa": "Señal de que el patrón 'agente como workload Kubernetes' ya es mainstream. Hoy, en GitHub Trending Go (+71/d), con 3.433★, Apache-2.0 y página de docs propia (agent-sandbox.sigs.k8s.io). El modelo mental: un Sandbox es un Pod de un solo contenedor, stateful, con identidad de red estable — diferente de Deployments (stateless) o StatefulSets (numerados). El CRD añade extensiones: `SandboxTemplate`, `SandboxClaim` y `SandboxWarmPool` (pre-warmed). Esta es la pieza que faltaba en el grafo: entre `TencentCloud/CubeSandbox` (aislamiento microVM) y `NVIDIA/OpenShell` (sandbox runtime), ahora Kubernetes tiene su propio primitivo. Para CSS: el siguiente paso natural si queremos desplegar agentes en producción sin reescribir cada proyecto. El deep-dive debe mirar `SandboxWarmPool` — el truco de pre-warming reduce cold-start, que es exactamente el problema que tenés con cold agents en runtime de Hermes.",
+        "que_es": "CRD y controller de Kubernetes (bajo SIG Apps) que gestiona sandboxes como pods singleton con identidad estable, almacenamiento persistente y warm pools. Delega el aislamiento de bajo nivel a runtimes como gVisor o Kata Containers.",
+        "por_que_importa": "Señal de que el patrón «agente como workload Kubernetes» ya es mainstream. Hoy en GitHub Trending Go (+71/d), 3.433★, Apache-2.0, con docs propios en agent-sandbox.sigs.k8s.io. El modelo mental: un Sandbox es un Pod de un solo contenedor, con estado e identidad de red estable — distinto de un Deployment (stateless) o un StatefulSet (numerados). El CRD añade extensiones: `SandboxTemplate`, `SandboxClaim` y `SandboxWarmPool` (pre-warmed). El aislamiento de bajo nivel se delega a runtimes como gVisor o Kata Containers. Esta es la pieza que faltaba en el grafo: entre `TencentCloud/CubeSandbox` (aislamiento microVM) y `NVIDIA/OpenShell` (sandbox runtime), ahora Kubernetes tiene su propio primitivo. Para CSS: el siguiente paso natural si queremos desplegar agentes en producción sin reescribir cada proyecto. El deep-dive debe mirar `SandboxWarmPool` — el truco de pre-warming reduce el cold-start, que es exactamente el problema que aparece con cold agents en el runtime de Hermes.",
         "madurez_senales": "**3,433★** · 437 forks · Go · creado 2026-05-21 · último push 2026-08-06 · licencia **Apache-2.0**. Descripción oficial: \"agent-sandbox enables easy management of isolated, stateful, singleton workloads, ideal for use cases like AI agent runtimes.\". Topics: `kubernetes`, `sandbox`, `agent-runtime`, `cncf`.",
         "accion_sugerida": "**explorar**",
         "descripcion_raw": ""
@@ -107,8 +107,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "CLI + TypeScript SDK oficial de OpenAI (`@openai/codex-security`) que encuentra, valida y arregla vulnerabilidades de seguridad. Usa Codex como motor de inferencia pero acepta OpenRouter, Fireworks, AWS Bedrock o cualquier API compatible.",
-        "por_que_importa": "El movimiento editorial del día: OpenAI publica el scanner con su propia marca. 9.174★, Apache-2.0, TypeScript, push 2026-08-07 (hoy). El CLI expone `scan .` con `--mode deep`, `--workers`, `--subagents` y `--stop-after-no-new N` — parámetros que mapean 1:1 a como un agente de seguridad autónomo opera. Lo significativo para CSS: (a) admite otros modelos via `--provider openrouter --model anthropic/claude-sonnet-4.5`, lo que significa que la 'ventaja Codex' no es lock-in sino defaults; (b) el flujo `scans compare BEFORE AFTER` empareja hallazgos por root cause y detecta reopens/resolved — esto es exactamente lo que necesitan los pipelines de security en CI; (c) completa el triángulo que `uber/ADR` (defensivo) y `AgentHound` (ofensivo) ya formaban: ahora el vendor original del agente publica su propio stack. Si escribimos sobre AI-for-security, este es el anchor.",
+        "que_es": "CLI + SDK oficial en TypeScript de OpenAI (`@openai/codex-security`) que encuentra, valida y arregla vulnerabilidades de seguridad. Usa Codex como motor de inferencia, pero acepta OpenRouter, Fireworks, AWS Bedrock o cualquier API compatible.",
+        "por_que_importa": "El 2026-07-29 cubrimos el triángulo que `uber/ADR` (defensivo) y `AgentHound` (ofensivo) formaban en el espacio de seguridad de agentes — y notamos que faltaba el vendor original con su propio stack. Hoy OpenAI cierra ese hueco: publica `openai/codex-security` (9.174★, Apache-2.0, TypeScript, push 2026-08-07) como CLI + SDK oficial. El CLI expone `scan .` con `--mode deep`, `--workers`, `--subagents` y `--stop-after-no-new N`, parámetros que mapean 1:1 a cómo opera un agente de seguridad autónomo. Lo que importa para CSS: (a) admite otros modelos vía `--provider openrouter --model anthropic/claude-sonnet-4.5`, así que la ventaja Codex no es lock-in sino defaults razonables; (b) el flujo `scans compare BEFORE AFTER` empareja hallazgos por root cause y detecta reopens/resolved — exactamente lo que necesitan los pipelines de seguridad en CI; (c) confirma el patrón «vendor-native security scanner» que ya anticipamos. Si escribimos sobre AI-for-security, este es el anchor.",
         "madurez_senales": "**9,174★** · 630 forks · TypeScript · creado 2026-07-21 · último push 2026-08-07 · licencia **Apache-2.0**. Descripción oficial: \"OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities in your code.\". Topics: `codex`, `openai`, `security`, `sast`, `vulnerability-scanner`.",
         "accion_sugerida": "**leer**",
         "descripcion_raw": ""
@@ -156,8 +156,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Plataforma de event streaming en Rust con SQL interface que unifica CDC, procesamiento incremental, materialised views y serving sub-100ms, reemplazando el stack clásico por un solo sistema.",
-        "por_que_importa": "Reentra con propuesta renovada: el tagline del README ahora es literalmente 'Event Streaming for Agentic AI'. 9.224★, Apache-2.0, Rust, push 2026-08-07. La tesis editorial: los agentes necesitan datos siempre frescos y consultables a baja latencia; el stack actual encadena Debezium (CDC) + Kafka (transporte) + Flink (procesamiento) + DB (serving) — cada hop añade latencia. RisingWave ejecuta todo en un solo sistema con materialised views que se actualizan incrementalmente. Sub-100ms end-to-end freshness, p99 de 10-20ms en el row store, y export nativo a Apache Iceberg. Para CSS: si vas a construir agentes que consulten estado de tu negocio en tiempo real (y muchos de los nuestros lo hacen, desde el briefing skill hasta el blogwatcher), esta es la pieza que faltaba entre 'trigger' y 'respuesta'. El modelo 'un SQL, una vista materializada, un agente que la pregunta' es el patrón a copiar.",
+        "que_es": "Plataforma de event streaming en Rust con interfaz SQL que unifica CDC, procesamiento incremental, materialised views y serving sub-100ms, reemplazando el stack clásico por un solo sistema.",
+        "por_que_importa": "Reentra con propuesta renovada: el tagline del README ahora es literalmente «Event Streaming for Agentic AI». 9.224★, Apache-2.0, Rust, push 2026-08-07. El problema que ataca: los agentes necesitan datos siempre frescos y consultables a baja latencia, pero el stack actual encadena Debezium (CDC) + Kafka (transporte) + Flink (procesamiento) + DB (serving) — cada hop suma latencia. RisingWave unifica todo en un solo sistema con materialised views que se actualizan incrementalmente; freshness end-to-end sub-100ms, p99 de 10-20ms en el row store, y export nativo a Apache Iceberg. Conecta directamente con Código Sin Siesta: el 2026-08-03 cubrimos `NousResearch/hermes-agent`, y ese tipo de agente (briefing skill, blogwatcher) pregunta constantemente por estado fresco. El modelo «un SQL, una vista materializada, un agente que la pregunta» es el patrón a copiar si querés eliminar el batching entre trigger y respuesta.",
         "madurez_senales": "**9,224★** · 810 forks · Rust · creado 2021-08-15 · último push 2026-08-07 · licencia **Apache-2.0**. Descripción oficial: \"RisingWave is an event streaming platform for agentic AI. It continuously ingests data from databases, event streams, and webhooks, processes it incrementally, and serves fresh results at low latency, replacing the traditional event streaming stack (e.g., Debezium + Kafka + Flink + serving DB) with a single system.\". Topics: `streaming`, `agentic-ai`, `sql`, `rust`, `iceberg`, `cdc`.",
         "accion_sugerida": "**vigilar**",
         "descripcion_raw": ""
@@ -205,8 +205,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Framework full-stack en TypeScript (engine + UI + render) para crear y editar hojas de cálculo, procesadores de texto y presentaciones en el navegador, con modelo de datos unificado y API server-side.",
-        "por_que_importa": "Reentra tras 31 días fuera del radar (visto por última vez el 2026-07-07). 14.062★, Apache-2.0, TypeScript, push 2026-08-07. La tesis editorial: los agentes necesitan producir y editar documentos de Office de forma programática, no 'generar HTML que se parece a un Excel'. Univer expone un modelo de datos unificado (snapshots + snapshots inmutables, plugins tipados, render server-side), lo que permite a un agente producir `.xlsx`, `.docx`, `.pptx` legítimos sin renderizar visualmente. Compite con `iofficeai/officecli` (CLI C#) que cubrimos en 2026-07-07 — pero Univer es el primer SDK que cualquier agente JS-based puede usar directamente. Para CSS: la intersección de 'agente que escribe' + 'documento que humanos pueden abrir' es uno de los problemas más comunes. Esta es la pieza que faltaba en tu toolkit si alguna vez quieres que un agente produzca una propuesta de proyecto en `.docx` real.",
+        "que_es": "Framework full-stack en TypeScript (engine + UI + render) para crear y editar hojas de cálculo, procesadores de texto y presentaciones en el navegador, con modelo de datos unificado y API del lado servidor.",
+        "por_que_importa": "Reentra tras 31 días fuera del radar (lo vimos por última vez el 2026-07-07 junto a `iofficeai/officecli`, la CLI en C# para Office). Hoy `dream-num/univer` reaparece con 14.062★, Apache-2.0, TypeScript, push 2026-08-07. El problema que aborda: los agentes necesitan producir y editar documentos de Office de forma programática, no «generar HTML que se parece a un Excel». Univer ofrece un modelo de datos unificado (snapshots + snapshots inmutables, plugins tipados, render del lado servidor), lo que permite a un agente basado en JS producir `.xlsx`, `.docx`, `.pptx` legítimos sin renderizar visualmente. Frente a `iofficeai/officecli` (que cubrimos el 2026-07-07), Univer es el primer SDK que cualquier agente en JS puede usar directamente — Office programático deja de requerir C#. Para CSS: la intersección de «agente que escribe» + «documento que humanos pueden abrir» es uno de los problemas más comunes. Si alguna vez querés que un agente produzca una propuesta de proyecto en `.docx` real, esta es la pieza que faltaba en el toolkit.",
         "madurez_senales": "**14,062★** · 1,257 forks · TypeScript · creado 2023-04-17 · último push 2026-08-07 · licencia **Apache-2.0**. Descripción oficial: \"Univer is a full-stack framework for creating and editing spreadsheets, word processor and presentation. Build your own collaborative spreadsheet, word processor, and presentation in your app.\". Topics: `spreadsheet`, `word-processor`, `presentation`, `office`, `typescript`, `engine`.",
         "accion_sugerida": "**explorar**",
         "descripcion_raw": ""
@@ -254,7 +254,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Tu propio framework re-entra en GitHub Trending Python (+601/d). Sube de 224k a 227k en cuatro días; 44.273 forks, 26.7k issues abiertas. La release de esta semana sigue el ciclo de cron-retention",
+        "que_es": "Tu propio framework reentra en GitHub Trending Python (+601/d). Sube de 224k a 227k en cuatro días; 44.273 forks, 26,7k issues abiertas. La release de esta semana sigue el ciclo de cron-retention.",
         "por_que_importa": "",
         "madurez_senales": "226.750★ · push 2026-08-07 · Python · MIT",
         "accion_sugerida": ": vigilar",
@@ -283,7 +283,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Control plane open-source para 'agentic engineering': orquesta coding agents, runs, deployments y gates en un solo canvas. Alternativa OSS a LangSmith + Linear para equipos de agentes",
+        "que_es": "Control plane open-source para «agentic engineering»: orquesta coding agents, runs, deployments y gates en un solo canvas. Alternativa OSS a LangSmith + Linear para equipos de agentes.",
         "por_que_importa": "",
         "madurez_senales": "4.816★ · push 2026-08-06 · Go · Apache-2.0",
         "accion_sugerida": ": vigilar",
@@ -312,7 +312,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Librería Rust para inspeccionar, clasificar y extraer texto de PDFs. Detecta scanned vs. textual de forma inteligente. Hermana menor de `firecrawl/anydoc` (cubierto antes)",
+        "que_es": "Librería en Rust para inspeccionar, clasificar y extraer texto de PDFs. Detecta de forma inteligente si son escaneados o textuales. Hermana menor de `firecrawl/anydoc` (cubierto antes).",
         "por_que_importa": "",
         "madurez_senales": "12.687★ · push 2026-08-06 · Rust · MIT",
         "accion_sugerida": ": vigilar",
@@ -341,7 +341,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Production-grade engineering skills para coding agents. Addy Osmani (Google Chrome). Reentra tras 28 días con cadencia estable",
+        "que_es": "Production-grade engineering skills para coding agents. Addy Osmani (Google Chrome). Reentra tras 28 días con cadencia estable.",
         "por_que_importa": "",
         "madurez_senales": "83.203★ · push 2026-08-06 · JavaScript · MIT",
         "accion_sugerida": ": leer",
@@ -369,7 +369,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "AI-native proxy server y data plane para agentic apps: smart LLM routing, observability y políticas. Reentra tras 24 días",
+        "que_es": "AI-native proxy server y data plane para apps agentic: smart LLM routing, observability y políticas. Reentra tras 24 días.",
         "por_que_importa": "",
         "madurez_senales": "6.978★ · push 2026-08-06 · Rust · Apache-2.0",
         "accion_sugerida": ": vigilar",
@@ -398,7 +398,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Graph database sobre GraphBLAS con sparse adjacency matrix. Baja latencia para grafos con muchas relaciones. Útil si adoptás zvec (in-process vector) o gortex (grafo de código) y necesitás grafo de conocimiento persistente",
+        "que_es": "Graph database sobre GraphBLAS con sparse adjacency matrix. Baja latencia para grafos con muchas relaciones. Útil si adoptás zvec (in-process vector) o gortex (grafo de código) y necesitás un grafo de conocimiento persistente.",
         "por_que_importa": "",
         "madurez_senales": "5.391★ · push 2026-08-07 · Rust · NOASSERTION",
         "accion_sugerida": ": vigilar",
@@ -429,9 +429,11 @@
     "items_total": 11,
     "items_hallazgo_principal": 5,
     "items_radar_secundario": 6,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

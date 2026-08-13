@@ -12,7 +12,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "plugin/skill que captura todo lo que el agente hace durante una sesión (tool calls, prompts, outputs), lo comprime con AI y lo persiste en SQLite para búsqueda semántica entre sesiones. Es memoria comprimida específica para Claude Code, con MCP search tools.",
-        "por_que_importa": "es la implementación más pulida y popular del patrón agente-con-memoria-entre-sesiones que ya cubrimos con `syncable-dev/memtrace-public` (memoria estructural bi-temporal), `kangarooking/cangjie-skill` (destilación de contenido en skills) y `microsoft/skill-recorder` (grabar sesiones como skills reutilizables). Apache-2.0 limpio, npm v13.4.0, 30+ traducciones del README (incluye español). Madurez: 7.7k forks, +100 stars/día, push 2026-08-02.",
+        "por_que_importa": "Es la implementación más pulida y popular del patrón agente-con-memoria-persistente entre sesiones que ya cubrimos en el boletín 2026-07-11 con `syncable-dev/memtrace-public` (memoria estructural bi-temporal), en piezas previas sobre `kangarooking/cangjie-skill` (destilación de contenido en skills) y `microsoft/skill-recorder` (grabar sesiones como skills reutilizables). La diferencia práctica: aquí la compresión es automática tras cada tool call, no algo que el usuario dispara, y la búsqueda semántica entre sesiones llega vía MCP search tools ya integrados. Apache-2.0 limpio, npm v13.4.0, README traducido a 30+ idiomas (incluye español), +100 stars/día, push 2026-08-02. Para un lector de Código Sin Siesta: si trabajas con Claude Code y quieres que el agente recuerde contexto entre sesiones sin montar tu propia pipeline, es el camino más corto hoy.",
         "madurez_senales": "89.281 ⭐ · 7.773 forks · JavaScript · Apache-2.0 · descripción oficial: \"Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, …\" · creado en 2026-Q1 · último push 2026-08-02 · npm package con 13.4.0 · 30+ i18n del README · mencionado en awesome-claude-code",
         "accion_sugerida": "explorar — clonar, evaluar la salida de búsqueda semántica sobre sesiones reales, comparar con tu propio `~/.hermes/memories/`.",
         "descripcion_raw": ""
@@ -59,8 +59,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "convierte coding agents en compañeros de equipo — los agentes tienen perfil, aparecen en el board, levantan blockers, postan comentarios y crean issues. Squads añaden routing jerárquico. Multi-runtime (daemon local + cloud) y multi-workspace.",
-        "por_que_importa": "el README nombra explícitamente a Hermes entre 14 harnesses soportados: Works with Claude Code, Codex, CodeBuddy, GitHub Copilot CLI, OpenCode, OpenClaw, Hermes, Pi, Cursor Agent, Kimi, Kiro CLI, Antigravity, Qoder CLI, Trae CLI. Tesis editorial fuerte: el ecosistema está estandarizando adapters hacia agentes, no hacia chats. Licencia: README/License reportan Apache-2.0 PERO el archivo LICENSE tiene una Part I con condiciones adicionales (verificar antes de build-dep — patrón conocido desde Fortress, Wigolo, memtrace).",
+        "que_es": "convierte coding agents en compañeros de equipo: los agentes tienen perfil, aparecen en el board, levantan blockers, postean comentarios y crean issues. Squads añaden routing jerárquico. Multi-runtime (daemon local + cloud) y multi-workspace.",
+        "por_que_importa": "El README nombra explícitamente a Hermes entre 14 harnesses soportados (Claude Code, Codex, CodeBuddy, GitHub Copilot CLI, OpenCode, OpenClaw, Hermes, Pi, Cursor Agent, Kimi, Kiro CLI, Antigravity, Qoder CLI, Trae CLI): ya cubrimos la primera mención de este proyecto en el boletín 2026-07-03 cuando aún estaba en fase temprana, y el competidor `stablyai/orca` que también abordamos el 2026-07-09. La tesis editorial que refuerza: el ecosistema está estandarizando adapters hacia agentes, no hacia chats. Para el lector: suscríbete a un squad, los agentes tienen perfil, aparecen en el board, levantan blockers, postean comentarios y crean issues; el routing jerárquico de squads añade estructura. Caveat de licencia: el README declara Apache-2.0 pero el archivo LICENSE tiene una Part I con condiciones adicionales (patrón conocido desde Fortress, Wigolo, memtrace) — verificar antes de meterlo como build-dep.",
         "madurez_senales": "43.194 ⭐ · 5.474 forks · Go · NOASSERTION en GitHub API (license personalizada en el archivo, base Apache-2.0) · creado 2026-Q2 · último push 2026-08-01 · Homebrew tap oficial `multica-ai/tap/multica` · Discord activo · self-hosting documentado · +211 stars/día",
         "accion_sugerida": "vigilar — leer el LICENSE Part I completo antes de recomendar como dependencia. Mientras tanto, instalar vía brew y probar el flujo de assign-issue-to-agent.",
         "descripcion_raw": ""
@@ -113,7 +113,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "coding agent para terminal atado a DeepSeek como único proveedor, diseñado alrededor de la invariante de prefix-cache estable para minimizar coste de tokens en sesiones largas. CLI `reasonix` (alias `dsnix`).",
-        "por_que_importa": "las cifras concretas del README son notables: un usuario real consumió 435M input tokens en un día con **99.82% cache hit** → ~$12 vs ~$61 del mismo workload sin cache en `v4-flash`. Esto encaja con la idea que defendimos antes: la compresión de tokens (caveman, rtk, pxpipe) es input-side; Reasonix hace cache-stability en output/runtime. MIT limpio, Go rewrite activo en `main-v2`, v0.x con canales QQ como remote channel (legacy TypeScript en mantenimiento).",
+        "por_que_importa": "Las cifras concretas del README son el gancho: un usuario real consumió 435M input tokens en un día con 99.82% cache hit → ~$12 frente a ~$61 del mismo workload sin cache en `v4-flash`. Ya cubrimos proyectos vecinos en boletines previos: el competidor `HKUDS/nanobot` el 2026-07-18 y `openai/codex` el 2026-07-10. Esto encaja con la línea que venimos defendiendo: la compresión de tokens (caveman, rtk, pxpipe) trabaja en el lado de la entrada; Reasonix hace cache-stability en output/runtime, manteniendo un prefix estable para que DeepSeek reuse el prefill entre turnos. MIT limpio, rewrite activo en Go (`main-v2`), v0.x con canales QQ como remote channel (legacy TypeScript en mantenimiento). CLI `reasonix` con alias `dsnix`. Para el lector de CSS: si usas DeepSeek como backend y tus sesiones largas sangran presupuesto, el ROI del cache-stability es la palanca más fuerte que hemos visto esta semana.",
         "madurez_senales": "28.621 ⭐ · 1.842 forks · Go · MIT · último push 2026-08-02 · npm `reasonix` y `dsnix` · CI workflow · Discord bilingüe · case study documentado · benchmarks en `/benchmarks/real-world-cache` · +274 stars/día",
         "accion_sugerida": "leer — el case study de cache-stability es publicable. Instalable vía `npm i -g reasonix` con clave DeepSeek.",
         "descripcion_raw": ""
@@ -168,7 +168,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "motor de automatización open source que orquesta workflows agentic a través de Git, LLMs, CI/CD, observability e infra, con ejecución durable, aprobaciones y console UI versionada en git (`canvas.yaml` + `console.yaml`). Beta con producto real.",
-        "por_que_importa": "la tesis coincide con `oomol-lab/open-connector` (OAuth unificado) y `superplanehq/skills` para agentes externos. Ofrece un patrón concreto: apps versionadas con workflow graph + UI custom + memoria scoped + agente integrado. Componentes para Claude/Cursor/OpenAI/Perplexity + integraciones para GitHub/GitLab/AWS/Lambda/PagerDuty/incident tools. Caso de uso flagship: progressive delivery con rollback gated. Apache-2.0.",
+        "por_que_importa": "La tesis coincide con la que ya cubrimos el 2026-07-09 al hablar de `stablyai/orca` (el competidor más directo en agent-orchestration) y conecta con `oomol-lab/open-connector` (OAuth unificado) y `superplanehq/skills` para agentes externos. Aporta un patrón concreto y portable: apps versionadas con workflow graph + UI custom en git (`canvas.yaml` + `console.yaml`) + memoria scoped + agente integrado, con componentes para Claude/Cursor/OpenAI/Perplexity e integraciones para GitHub/GitLab/AWS/Lambda/PagerDuty. Caso de uso flagship: progressive delivery con rollback gated. Apache-2.0, demo container `ghcr.io/superplanehq/superplane-demo:stable`, cloud beta en `app.superplane.com`. Para el lector: si ya montas CI/CD con agentes externos y quieres governance y approvals sobre esos workflows, este es el molde más explícito que hemos visto.",
         "madurez_senales": "4.386 ⭐ · 422 forks · Go · Apache-2.0 · último push 2026-08-01 · demo container `ghcr.io/superplanehq/superplane-demo:stable` · cloud beta en `app.superplane.com` · Semaphore CI · Discord · docs en docs.superplane.com · +20 stars/día",
         "accion_sugerida": "probar — levantar el demo container (`docker pull ghcr.io/superplanehq/superplane-demo:stable && docker run -p 3000:3000`) y replicar el ejemplo de PR preview environments.",
         "descripcion_raw": ""
@@ -216,7 +216,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "motor de inferencia C nativo y deliberadamente estrecho para DeepSeek V4 Flash (target principal, incluso en MacBook 96GB con SSD streaming), GLM 5.2 y DeepSeek V4 PRO en workstations grandes. Backends Metal/CUDA/ROCm, multi-GPU y pipeline parallelism. Por el creador de Redis.",
-        "por_que_importa": "encaja en la línea de local-first LLM que ya cubrimos con `airllm`, `llama.cpp` y `JustVugg/colibri`. La diferencia clave: ds4 NO usa GGUF (`ds4.c` no linkea contra GGML pero reconoce la deuda con llama.cpp por los quant layouts adaptados bajo MIT). Construido específicamente para DeepSeek V4 con tolerancia a routed-expert quantization agresiva. Beta, fast-changing. Crítica editorial: el README admite developed-with-strong-assistance-from GPT 5.5, 5.6, Claude Fable — punto a favor de transparencia, no resta valor pero matiza la narrativa de single-author. Multi-GPU L40S Ada test: 120 t/s agregado, 2000 t/s prefill.",
+        "por_que_importa": "Encaja en la línea de local-first LLM que ya cubrimos el 2026-07-20 con `airllm`, y conecta con la línea de `ggml-org/llama.cpp` (aquí sin primera_mencion, pero referencia obligada). La diferencia clave: ds4 NO usa GGUF. `ds4.c` no linkea contra GGML pero reconoce en deuda técnica los quant layouts adaptados de llama.cpp bajo MIT. Construido específicamente para DeepSeek V4 con tolerancia a routed-expert quantization agresiva; corre el V4 Flash incluso en MacBook 96GB con SSD streaming. Por el creador de Redis (antirez), que publica un README + CONTRIBUTING + QA_BEFORE_RELEASES unusually detallados — betatesting visible. Multi-GPU L40S Ada test: 120 t/s agregado, 2000 t/s prefill. Matiz editorial que conviene transparentar: el propio README admite que el desarrollo contó con asistencia fuerte de GPT 5.5, 5.6 y Claude Fable — un punto a favor de honestidad, no resta valor pero matiza la narrativa de single-author. Beta, fast-changing, +150 stars/día. Para el lector de CSS: si quieres correr DeepSeek V4 fuera de la nube sin atarte al ecosistema GGUF, esta es la alternativa nativa más seria ahora mismo.",
         "madurez_senales": "19.782 ⭐ · 1.758 forks · C · MIT · último push 2026-08-01 · autor Salvatore Sanfilippo (antirez, creador de Redis) · README + CONTRIBUTING + QA_BEFORE_RELEASES + gguf-tools/ · +150 stars/día",
         "accion_sugerida": "vigilar — esperar a la primera release estable antes de instalar. Si tienes Mac M-series 96GB, es la opción más optimizada para V4 Flash.",
         "descripcion_raw": ""
@@ -270,8 +270,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "runtime que convierte websites, sesiones de browser, apps Electron y herramientas locales en interfaces deterministas para humanos y agentes. Adapters built-in para Bilibili, Zhihu, Xiaohongshu, Reddit, HN, Twitter/X; skill `opencli-browser` para que el agente navegue/cliquees/llene forms en el Chrome logueado del usuario.",
-        "por_que_importa": "resuelve el problema darle-ojos-al-agente-sin-pagar-Apify que ya tratamos en la idea #29 (Scrapling + Obscura + Agent-Reach). OpenCLI es la pieza que faltaba para el caso necesito-el-feed-logueado-del-usuario, no la versión pública. El bridge funciona vía extensión de Chrome + daemon local → no scrapea, automatiza el browser del usuario. Apache-2.0 limpio. Desktop app OpenCLIApp (macOS/Windows) con system tray.",
+        "que_es": "runtime que convierte websites, sesiones de browser, apps Electron y herramientas locales en interfaces deterministas para humanos y agentes. Adapters built-in para Bilibili, Zhihu, Xiaohongshu, Reddit, HN, Twitter/X; skill `opencli-browser` para que el agente navegue, cliquee y llene forms en el Chrome logueado del usuario.",
+        "por_que_importa": "Resuelve el problema darle-ojos-al-agente-sin-pagar-Apify que ya tratamos en el boletín 2026-07-20 al hablar de Scrapling + Obscura + Agent-Reach, y conecta con la línea de web-scraping-viability que abrimos el 2026-07-07. OpenCLI es la pieza que faltaba para el caso necesito-el-feed-logueado-del-usuario, no la versión pública: el bridge funciona vía extensión de Chrome + daemon local, automatiza el browser del usuario en lugar de scrapear. Adapters built-in para Bilibili, Zhihu, Xiaohongshu, Reddit, HN, Twitter/X, y la skill `opencli-browser` permite al agente navegar, cliquear y llenar forms en el Chrome ya logueado del usuario. Apache-2.0 limpio, Desktop app OpenCLIApp (macOS/Windows) con system tray, `opencli doctor` para verificación. Para el lector: si monitorizas cuentas autenticadas o pipelines que dependen de estado de sesión, este patrón (extensión + daemon) es lo más cercano a una solución determinista sin vulnerar ToS.",
         "madurez_senales": "27.572 ⭐ · 2.708 forks · JavaScript · Apache-2.0 · último push 2026-07-30 · npm `@jackwener/opencli` · Chrome Web Store extension · Desktop app · `opencli doctor` para verificación · docs bilingües · +47 stars/día",
         "accion_sugerida": "explorar — instalar la extensión Chrome + el CLI y probar `opencli doctor`. Caso de uso inmediato: sustituir el flujo manual de capturar threads de X para el blogwatcher.",
         "descripcion_raw": ""
@@ -319,7 +319,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "aplicación de escritorio open source de speech-to-text que corre completamente offline, extensible, y reemplaza Wispr/Superwhisper. UI simple, hotkey global, output directo al campo de texto activo.",
-        "por_que_importa": "entra en el cluster voice-AI-en-el-borde que cubrimos con `microsoft/VibeVoice` + `VibeASR.cpp` (BitNet) y `QwenAudio/qwen-audio-agent`. Handy es la capa de aplicación: no un modelo, sino el producto terminado. MIT, Rust, multiplataforma. Si VibeASR.cpp te dio el modelo edge, Handy te da el producto final. Bonus: integra con agentes vía clipboard injection.",
+        "por_que_importa": "Entra en el cluster voice-AI-en-el-borde que cubrimos con `microsoft/VibeVoice` + `VibeASR.cpp` (BitNet en el borde) y `QwenAudio/qwen-audio-agent`. Handy es la capa de aplicación: no un modelo, sino el producto terminado que reemplaza Wispr/Superwhisper. Si VibeASR.cpp te dio el modelo edge, Handy te da el producto final: UI simple, hotkey global, output directo al campo de texto activo, totalmente offline con Whisper.cpp local. MIT, Rust, multiplataforma (app nativa, Tauri probable, a confirmar en code). Bonus relevante para audiencias de CSS: integra con agentes vía clipboard injection, lo que lo convierte en pieza de glue entre dictado y flujos agentic. Para el lector: si buscas un sustituto open source de Wispr/Superwhisper que no mande audio a la nube, es la propuesta más pulida en este momento.",
         "madurez_senales": "28.406 ⭐ · 2.481 forks · Rust · MIT · último push 2026-08-01 · app nativa (Tauri probablemente, a confirmar en code) · modelo Whisper.cpp local · +147 stars/día",
         "accion_sugerida": "probar — instalar, configurar hotkey, comparar latencia con VibeASR.cpp en tu hardware.",
         "descripcion_raw": ""
@@ -366,7 +366,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "CLI minimalista Git-Ship-Done para releases deterministas",
+        "que_es": "CLI minimalista Git-Ship-Done para releases deterministas.",
         "por_que_importa": "",
         "madurez_senales": "7.567⭐, último push 2026-08-02, JavaScript, MIT",
         "accion_sugerida": "vigilar — si quieres reemplazar tu flujo actual de release scripts por algo opinativo, merece un deep-dive",
@@ -395,7 +395,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "agente de research bursátil personal para A-shares/HK/US, pensado para ejecutarse con tu propio LLM",
+        "que_es": "agente de research bursátil personal para A-shares/HK/US, pensado para ejecutarse con tu propio LLM.",
         "por_que_importa": "",
         "madurez_senales": "1.495⭐, último push 2026-07-31, TypeScript, MIT",
         "accion_sugerida": "vigilar — útil para validar la tesis agente-personal-memoria si operas mercados",
@@ -419,7 +419,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "gateway unificado una-API-172-proveedores-AI con auto-fallback. Temprano pero coincide con la tesis de `diegosouzapw/OmniRoute`",
+        "que_es": "gateway unificado una-API-172-proveedores-AI con auto-fallback. Temprano pero coincide con la tesis de `diegosouzapw/OmniRoute`.",
         "por_que_importa": "",
         "madurez_senales": "101⭐, último push 2026-08-01, Rust, MIT",
         "accion_sugerida": "vigilar — comparar arquitectura cuando tenga releases",
@@ -453,7 +453,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "system-of-action-for-AI-native-cybersecurity, donde intent becomes governed execution, evidence becomes operational memory. Tesis fuerte, autor nuevo",
+        "que_es": "system-of-action-for-AI-native-cybersecurity, donde intent becomes governed execution y evidence becomes operational memory. Tesis fuerte, autor nuevo.",
         "por_que_importa": "",
         "madurez_senales": "5.460⭐, último push 2026-07-31, Go, Apache-2.0",
         "accion_sugerida": "explorar — clonar y leer el SPEC de intents/evidence",
@@ -482,7 +482,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "lecciones curadas para empezar con Copilot Studio",
+        "que_es": "lecciones curadas para empezar con Copilot Studio.",
         "por_que_importa": "",
         "madurez_senales": "3.132⭐, último push 2026-08-02, JavaScript, MIT",
         "accion_sugerida": "ignorar para CSS — (vendor-specific Copilot Studio), pero **vigilar** como referencia de curriculum agent-ready",
@@ -506,7 +506,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "agents running research on single-GPU nanochat training. Famoso pero **no adoptable como dependencia**",
+        "que_es": "agents running research on single-GPU nanochat training. Famoso pero no adoptable como dependencia.",
         "por_que_importa": "",
         "madurez_senales": "92.763⭐, último push 2026-03-26, Python, **SIN LICENSE** → NOASSERTION",
         "accion_sugerida": "vigilar — solo como referencia conceptual de AI-research-agent, NO instalar",
@@ -534,7 +534,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "colección de skills para hacer que los agentes hablen/se comporten como coreanos (locale pack)",
+        "que_es": "colección de skills para hacer que los agentes hablen/se comporten como coreanos (locale pack).",
         "por_que_importa": "",
         "madurez_senales": "6.786⭐, último push 2026-08-01, JavaScript, MIT",
         "accion_sugerida": "vigilar — patrón replicable para localización cultural de skills (español, japonés, etc.)",
@@ -563,7 +563,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "1B-param LLM en $10 board + 256MB RAM. ⚠️ stale (sin push en 5+ meses)",
+        "que_es": "1B-param LLM en $10 board + 256MB RAM. ⚠️ stale (sin push en 5+ meses).",
         "por_que_importa": "",
         "madurez_senales": "1.877⭐, último push 2026-02-22, C, MIT",
         "accion_sugerida": "vigilar con cautela — la tesis es interesante pero el proyecto no recibe atención",
@@ -590,9 +590,11 @@
     "items_total": 15,
     "items_hallazgo_principal": 7,
     "items_radar_secundario": 8,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

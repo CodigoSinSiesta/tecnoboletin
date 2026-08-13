@@ -12,7 +12,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "El agent de Nous Research que ya cubrimos extensamente cruza 224.483★, 43.4k forks, push diario y aparece en GitHub Trending Python (+468★/d) tras la release que retiene one-shot cron jobs en lugar de borrarlos al terminar.",
-        "por_que_importa": "Es el framework que el usuario corre localmente como 'Ibid'. Hoy su repo upstream tiene 224k★, 26.958 issues abiertas y 43.4k forks — es decir, ha entrado al top-100 absoluto de GitHub. La release de hoy (commit d1afa16) corrige un bug en cron retention: 'fix(cron): retain completed one-shot jobs instead of deleting them on completion'. Esto es relevante porque tu propio `~/.hermes/cron/` y el wrapper que ejecuta este boletín están en esa superficie. MIT limpio.",
+        "por_que_importa": "Es el framework que tú mismo corres localmente como 'Ibid'. Hoy el repo upstream cruza 224.483★, 43.437 forks y entra en GitHub Trending Python (+468★/d) tras la release que retiene one-shot cron jobs en lugar de borrarlos al terminar (commit d1afa16: 'fix(cron): retain completed one-shot jobs instead of deleting them on completion'). Para CSS importa porque tu propio `~/.hermes/cron/` y el wrapper que ejecuta este boletín viven justo en esa superficie. MIT limpio, creado el 2025-07-22, push diario. Ya cubrimos a Hermes-Agent el 2026-07-03 en el boletín cuando lo situamos frente a openai-codex y claude-code; hoy vuelve a aparecer con un fix pequeño pero de alto impacto operativo.",
         "madurez_senales": "224,483 ⭐ · 43,437 forks · Python · MIT · creado 2025-07-22 · último push 2026-08-03 · descripción: \"The agent that grows with you\" · topics: ai, ai-agent, claude, claude-code, codex, hermes...",
         "accion_sugerida": "vigilar",
         "descripcion_raw": ""
@@ -60,7 +60,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Desktop app (Electron) que graba tu sesión on-screen y usa GitHub Copilot CLI para reconstruirla como intent + ordered steps, generando Skills reutilizables para Microsoft Scout, Copilot Cowork o Copilot Studio.",
-        "por_que_importa": "Confirma la tesis de la que ya escribimos: 'grabar sesiones como skills' es ahora un patrón mainstream. Esta es la versión de Microsoft, post lanzamiento 2026-07-29. Reutiliza el mismo dominio de tu propia `hermes-agent-skill-authoring` skill: una sesión real → SKILL.md reificable. Microsoft aporta 1.023★ y un release v0.3.1 esta semana. MIT. Aunque el target es Copilot CLI (no Hermes), la gramática 'screen recording → structured skill' es portable. Mide cuánto tarda el ciclo completo (grabar 5 min, generar skill, ejecutar skill) para comparar con el flujo manual que tú usas.",
+        "por_que_importa": "Es la versión de Microsoft del patrón 'grabar sesiones como skills' que ya cubrimos en CSS: una desktop app Electron (Microsoft/skill-recorder, 1.024★, MIT, creada 2026-07-29) que graba tu sesión on-screen y usa GitHub Copilot CLI para reconstruirla como intent + ordered steps, generando Skills reutilizables para Microsoft Scout, Copilot Cowork o Copilot Studio. Aunque el target es Copilot CLI (no Hermes), la gramática 'screen recording → SKILL.md reificable' es portable y reusa el mismo dominio de tu skill `hermes-agent-skill-authoring`. La release v0.3.1 de esta semana demuestra que el flujo está vivo. Medir cuánto tarda el ciclo completo (grabar 5 min, generar skill, ejecutar skill) te sirve para comparar con el flujo manual que ya usas.",
         "madurez_senales": "1,024 ⭐ · 110 forks · TypeScript · MIT · creado 2026-07-29 · último push 2026-08-03 · descripción: \"Desktop app that records your on-screen work session and uses the GitHub Copilot CLI to reconstruct it as an intent + ordered steps, then builds a reusable Skill or Automation for Microsoft Scout, Microsoft Copilot Cowork, or Copilot Studio.\" · topics: agent-skills, ai-agents, automation, copilot, copilot-cli, copilot-cowork...",
         "accion_sugerida": "leer",
         "descripcion_raw": ""
@@ -108,7 +108,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Engine de inferencia en C99 portable (sin BLAS, sin framework, sin GPU) que corre Kimi K3 (2.78T parámetros) en una sola CPU con 8.24 GB de RAM. AVX2, MXFP4, MoE.",
-        "por_que_importa": "Es la respuesta low-level a '¿puedo correr un modelo frontera sin GPU?'. Mismo autor y misma semana que `sqliteai/waste` (que extiende el concepto a NVMe). Juntos forman una dupla input/output: waste hace streaming de pesos activados desde disco, kimi-k3-in-c los evalúa. El repo hermano sqliteai/waste (1.243★, C, Apache-2.0, push 2026-08-03) reusa el mismo motor y permite correr el modelo entero por encima de la RAM disponible. C99 puro con SIMD es directamente importable a tu pipeline local si algún día quieres inferencia sin Ollama. Para CSS es un caso editorial claro: el límite 'GPU = obligatorio' está muerto, y dos devs independientes lo están demostrando en la misma semana.",
+        "por_que_importa": "FareedKhan-dev/kimi-k3-in-c es la respuesta low-level a '¿puedo correr un modelo frontera sin GPU?': un engine en C99 portable (sin BLAS, sin framework, sin GPU, con AVX2, MXFP4 y MoE) que corre Kimi K3 (2.78T parámetros) en una sola CPU con 8.24 GB de RAM. 455★, Apache-2.0, creado y empujado el 2026-08-01. Forma dupla con `sqliteai/waste` del mismo autor (1.243★, C, Apache-2.0, push 2026-08-03): waste hace streaming de pesos activados desde disco, kimi-k3-in-c los evalúa, permitiendo correr el modelo entero por encima de la RAM disponible. La tesis 'GPU = obligatorio' está muerta y dos repos independientes la desmontan en la misma semana. Ya cubrimos a ollama como referencia local el 2026-07-04; esta pieza apunta al mismo hueco desde el lado contrario. C99 puro con SIMD es directamente importable a tu pipeline local si algún día quieres inferencia sin Ollama.",
         "madurez_senales": "455 ⭐ · 56 forks · C · Apache-2.0 · creado 2026-08-01 · último push 2026-08-01 · descripción: \"A 2.78-trillion-parameter Kimi K3 running inference on a single CPU in 8.24 GB of RAM. Portable C99: no BLAS, no framework, no GPU.\" · topics: avx2, c99, cpu-inference, inference-engine, kimi-k3, linear-attention...",
         "accion_sugerida": "explorar",
         "descripcion_raw": ""
@@ -162,7 +162,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Plataforma low-code/no-code en TypeScript (Next.js + React) para construir, desplegar y orquestar agentes. v0.7.52 publicada esta semana, soporta OpenAI, Anthropic, Gemini y DeepSeek; integra RAG, chatbot, multi-agente.",
-        "por_que_importa": "29.307★ y push diario desde hace meses. Es el competidor open-source directo de n8n/Langflow para orquestación de agentes, pero con énfasis en multi-provider y workflows largos. Aunque ya cubrimos alternativas similares (multica, paperclip), Sim destaca por su cadencia de release y porque la release de esta semana ('v0.7.52: span sanitization, highlight tables and files text to chat, settings UX') muestra foco en UX de chat multi-archivo — un patrón que tu propio `codigosinsiesta-briefing` skill hace a mano. Apache-2.0 limpio, 3.750 forks, 246 issues abiertas. No apta como dependencia si solo quieres orquestar tus 3-4 agentes, pero como referencia de UX sí.",
+        "por_que_importa": "simstudioai/sim es el competidor open-source directo de n8n/Langflow para orquestar agentes, pero con énfasis en multi-provider (OpenAI, Anthropic, Gemini, DeepSeek) y workflows largos. 29.307★, 3.750 forks, Apache-2.0, push diario, release v0.7.52 esta semana con foco en UX de chat multi-archivo ('span sanitization, highlight tables and files text to chat, settings UX'): un patrón que tu skill `codigosinsiesta-briefing` hace a mano. No apta como dependencia para tus 3-4 agentes, pero sí como referencia de UX. Ya cubrimos a multica el 2026-08-02 en el contexto de agent-orchestration; Sim entra al radar como competidor directo.",
         "madurez_senales": "29,307 ⭐ · 3,750 forks · TypeScript · Apache-2.0 · creado 2025-01-05 · último push 2026-08-03 · descripción: \"Build, deploy, and orchestrate AI agents. Sim is the central intelligence layer for your AI workforce.\" · topics: agent-workflow, agents, anthropic, chatbot, deepseek, gemini...",
         "accion_sugerida": "vigilar",
         "descripcion_raw": ""
@@ -210,8 +210,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Harness open-source de ByteDance para tareas que duran minutos a horas: research + code + create con sandboxes, memoria, tools, skills, subagentes y message gateway. Construido sobre LangChain/LangGraph con TypeScript y Python.",
-        "por_que_importa": "Ya apareció en boletines previos pero hoy confirma posición: 79.050★ (sube desde 78k del 2-08), push diario, releases activos en la línea `langmanus` (fork mantenido por la comunidad). Su valor para CSS no es adoptarlo (es un LangGraph app) sino estudiar su arquitectura: divide 'long-horizon agent' en 4 piezas (memory, skills, subagents, gateway) — la misma división que el grafo de conocimiento de tu propio `~/.hermes/skills/` está descubriendo. MIT limpio. El README menciona explícitamente que el message gateway es intercambiable — interesante para tu setup donde Telegram está colisionado con hermesbot.",
+        "que_es": "Harness open-source de ByteDance para tareas que duran de minutos a horas: research + code + create con sandboxes, memoria, tools, skills, subagentes y message gateway. Construido sobre LangChain/LangGraph con TypeScript y Python.",
+        "por_que_importa": "bytedance/deer-flow es el harness open-source para tareas long-horizon (research + code + create con sandboxes, memoria, tools, skills, subagentes y message gateway), construido sobre LangChain/LangGraph en TypeScript y Python. 79.050★, 10.789 forks, MIT, push diario. No interesa adoptarlo (es un LangGraph app), sino estudiar su arquitectura: divide 'long-horizon agent' en 4 piezas (memory, skills, subagents, gateway), la misma partición que el grafo de conocimiento de tu `~/.hermes/skills/` está descubriendo. El detalle de que el message gateway es intercambiable es directamente relevante para tu setup donde Telegram está colisionado con hermesbot. Ya cubrimos a deer-flow el 2026-07-10 cuando lo situamos frente a langgraph y al patrón skills/memory/subagents.",
         "madurez_senales": "79,050 ⭐ · 10,789 forks · Python · MIT · creado 2025-05-07 · último push 2026-08-03 · descripción: \"An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.\" · topics: agentic, deep-research, harness, langchain, langgraph, langmanus...",
         "accion_sugerida": "leer",
         "descripcion_raw": ""
@@ -260,7 +260,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Coding agent en terminal escrito en TypeScript (con core en Rust vía Bun) que introduce 'hash-anchored edits' para que el modelo edite el archivo exacto que cree estar editando, evitando que un tool-call viejo corrompa el árbol. Incluye LSP, browser, multi-provider y subagentes.",
-        "por_que_importa": "El concepto 'hash-anchored edits' es la pieza que más te falta como usuario de Hermes: hoy, si un tool-call llega tarde, el árbol puede quedar inconsistente. La idea de Pi es que cada edit lleva un hash del estado esperado del archivo, y si el hash no coincide el tool-call se rechaza. Es 21.405★, MIT, 938 issues abiertas y push diario. No es adoptable directamente (es su propio agente), pero el patrón es un patch pequeño que podría integrarse en un wrapper de Hermes. Para un artículo de CSS es ángulo: 'por qué tus tools fallan silenciosamente cuando el modelo se distrae, y cómo un hash-anchor lo arregla'.",
+        "por_que_importa": "can1357/oh-my-pi introduce 'hash-anchored edits': cada tool-call lleva un hash del estado esperado del archivo y, si el hash no coincide al ejecutarse, se rechaza. 21.405★, 2.038 forks, MIT, push diario. Es justo la pieza que más te falta como usuario de Hermes: hoy, si un tool-call llega tarde, el árbol puede quedar inconsistente porque el modelo cree estar editando un archivo cuyo contenido ya cambió. Pi lo resuelve con un patrón pequeño y portable que podría integrarse en un wrapper de Hermes sin tener que adoptar el agente entero. Incluye además LSP, browser, multi-provider y subagentes. Ya cubrimos a oh-my-pi el 2026-07-10 cuando lo situamos frente a openai-codex, claude-code y al propio concepto hash-anchored-edits. Ángulo editorial directo: 'por qué tus tools fallan silenciosamente cuando el modelo se distrae, y cómo un hash-anchor lo arregla'.",
         "madurez_senales": "21,405 ⭐ · 2,038 forks · TypeScript · MIT · creado 2025-12-31 · último push 2026-08-03 · descripción: \"⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more\" · topics: ai-agent, ai-coding-agent, anthropic, bun, claude, cli...",
         "accion_sugerida": "explorar",
         "descripcion_raw": ""
@@ -310,7 +310,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Framework de Uber para asegurar agentes AI en producción: observabilidad, security benchmarking y threat detection. Apache-2.0, Python, ya desplegado internamente en Uber. Soporta Claude Code, Codex, Cursor y MCP.",
-        "por_que_importa": "Es el primer repo enterprise-grade con foco exclusivo en seguridad de agentes. Mientras la conversación pública gira en torno a 'qué hace el agente', Uber ya publica su solución a 'qué pasa cuando el agente es comprometido'. Tiene 302★ (joven) pero la marca Uber le da legitimidad inmediata. Los topics incluyen prompt-injection, mcp, claude, codex, threat-detection. Para CSS es relevante porque: (a) si alguna vez montas agentes en producción para clientes, necesitas esto; (b) la integración con MCP es la prueba de que 'MCP security' ya es un sub-campo real. Combina bien con `adithyan-ak/AgentHound` (red-team) del radar: ADR defensivo, AgentHound ofensivo.",
+        "por_que_importa": "uber/ADR es el primer repo enterprise-grade con foco exclusivo en seguridad de agentes AI: observabilidad, security benchmarking y threat detection. Apache-2.0, Python, ya desplegado internamente en Uber, 303★ (joven pero con legitimidad inmediata por la marca). Mientras la conversación pública gira en torno a 'qué hace el agente', Uber publica su solución a 'qué pasa cuando el agente es comprometido'. Soporta Claude Code, Codex, Cursor y MCP, lo que confirma que 'MCP security' ya es un sub-campo real. Para CSS importa si alguna vez montas agentes en producción para clientes. Se complementa con `adithyan-ak/AgentHound` (red-team ofensivo): ADR defensivo, AgentHound ofensivo, dos caras del mismo problema.",
         "madurez_senales": "303 ⭐ · 36 forks · Python · Apache-2.0 · creado 2026-04-19 · último push 2026-08-01 · descripción: \"ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.\" · topics: agent-security, ai-security, benchmark, claude, claude-code, codex...",
         "accion_sugerida": "vigilar",
         "descripcion_raw": ""
@@ -359,7 +359,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Hub de memoria a nivel de equipo para AI agents. Convierte conversaciones, docs y código en 4 assets reusables (Chat Memory, Skill, LLM-Wiki, Code-Graph) compartibles entre agentes y frameworks. MIT confirmado en el archivo LICENSE (no NOASSERTION espurio).",
-        "por_que_importa": "Cuando lo verifiqué con GitHub API devolvía NOASSERTION, pero el LICENSE file en main es MIT puro. Es la confirmación de que la API de GitHub falla para muchos repos con LICENSE correcto (patrón conocido del skill web-scraping-viability). Lo importante es que el producto (memoria compartida cross-agent) entra al radar: 11.447★, push 2026-07-29, vector-search, local-first, openclaw-plugin, embedding, long-term-memory. Para CSS: si algún día quieres que tu agente 'recuerde' entre sí con tu segundo agente, este es el formato que se está estandarizando en el ecosistema. La lista de 4 assets (Chat Memory / Skill / LLM-Wiki / Code-Graph) es exactamente tu pila: ya tienes las dos últimas (obsidian + graphify).",
+        "por_que_importa": "TencentCloud/TencentDB-Agent-Memory es un hub de memoria a nivel de equipo para AI agents: convierte conversaciones, docs y código en 4 assets reusables (Chat Memory, Skill, LLM-Wiki, Code-Graph) compartibles entre agentes y frameworks. 11.447★, 1.079 forks, TypeScript, MIT verificado en el LICENSE file (GitHub API devuelve NOASSERTION por un bug conocido que ya documentamos con la skill web-scraping-viability). Para CSS importa porque los 4 assets del estándar son exactamente tu pila: ya tienes LLM-Wiki (Obsidian) y Code-Graph (Graphify); los otros dos (Chat Memory y Skill) son los huecos que faltan para que tu agente 'recuerde' entre sí con un segundo agente. Ya cubrimos a TencentDB-Agent-Memory el 2026-07-10 cuando entró al radar como implementador del formato four-asset-memory, y el 2026-07-04 lo situamos como complemento de graphify.",
         "madurez_senales": "11,447 ⭐ · 1,079 forks · TypeScript · MIT (verificado en LICENSE file; GH API reporta NOASSERTION) · creado 2026-04-07 · último push 2026-07-29 · descripción: \"TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.\" · topics: agent, embedding, llm, local-first, long-term-memory, memory...",
         "accion_sugerida": "leer",
         "descripcion_raw": ""
@@ -435,7 +435,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": ") — Open Brain: 'one DB + one AI gateway + one chat channel' para que cualquier AI se enchufe. 4.372★, Supabase, MCP, memory-layer-for-ai. Licencia FSL-1.1-MIT: usable para evaluación, no para shipping como dependencia",
+        "que_es": "Open Brain: 'one DB + one AI gateway + one chat channel' para que cualquier AI se enchufe. 4.372★, Supabase, MCP, memory-layer-for-ai. Licencia FSL-1.1-MIT: usable para evaluación, no para shipping como dependencia",
         "por_que_importa": "",
         "madurez_senales": "4.372★ · push 2026-08-02 · TypeScript · FSL-1.1-MIT (NO open source — restricciones comerciales 2 años",
         "accion_sugerida": ": leer — _Tesis de 'infra para thinking' similar a lo que Hermes hace; útil como referencia aunque la licencia limita adopción._",
@@ -551,7 +551,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": ") — Alternativa open-source a Claude Cowork, powered by opencode. 20k★, push diario, fork activo. Licencia dual MIT + Fair Source para /ee (modelo conocido de Sentry)",
+        "que_es": "Alternativa open-source a Claude Cowork, powered by opencode. 20k★, push diario, fork activo. Licencia dual MIT + Fair Source para /ee (modelo conocido de Sentry)",
         "por_que_importa": "",
         "madurez_senales": "20.510★ · push 2026-08-03 · TypeScript · MIT (con Fair Source para /ee",
         "accion_sugerida": ": leer — _Si Cowork es la nueva superficie de Anthropic, OpenWork es la respuesta OSS con opencode como motor — relevante si Cowork entra a tu flujo._",
@@ -609,7 +609,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "· push reciente · Gradio WebUI) — WebUI Gradio para TTS (Edge-TTS, Kokoro) y zero-shot voice cloning. Apunta al hueco entre 'demo de modelo' y 'app usable'",
+        "que_es": "WebUI Gradio para TTS (Edge-TTS, Kokoro) y zero-shot voice cloning. Push reciente. Apunta al hueco entre 'demo de modelo' y 'app usable'",
         "por_que_importa": "",
         "madurez_senales": "(no verificado a fondo",
         "accion_sugerida": ": vigilar — _Voice cloning y TTS siguen moviéndose rápido (junto a jamiepine/voicebox); voice-pro añade zero-shot._",
@@ -631,9 +631,11 @@
     "items_total": 16,
     "items_hallazgo_principal": 8,
     "items_radar_secundario": 8,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "16/16 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

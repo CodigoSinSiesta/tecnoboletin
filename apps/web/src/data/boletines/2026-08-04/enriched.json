@@ -11,8 +11,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "un *abridged-diff viewer* para diffs de agentes",
-        "por_que_importa": "Encaja con la línea editorial de Código Sin Siesta: revisar código escrito por agentes es el problema nuevo. La filosofía explícita del README («no revises nil-checks, revisa conceptos») es buen material para un artículo sobre workflow de code review humano↔IA. Ademas ocupa el #1 de Trendshift diario con solo 1.1k estrellas - señal de momentum temprano, no de hype.",
+        "que_es": "Un *abridged-diff viewer* para diffs de agentes",
+        "por_que_importa": "Encaja con la línea editorial de Código Sin Siesta: revisar código escrito por agentes es el problema nuevo, y aquí la filosofía explícita del README («no revises nil-checks, revisa conceptos») es material directo para un artículo sobre workflow de code review humano↔IA. Además ocupa el #1 de Trendshift diario con solo 1.1k estrellas: señal de momentum temprano, no de hype. Compite en el espacio de asistentes de coding donde ya situamos a Aider, lo que lo convierte en un punto de comparación útil para quien esté decidiendo stack.",
         "madurez_senales": "Estrellas totales: **1,094** · Forks: 34 · Lenguaje: Go · Fecha creación: 2026-07-01 · Último push: 2026-08-03 · Licencia: Apache-2.0 · Topics: - · Fuentes del ranking: trendshift_daily",
         "accion_sugerida": "**explorar** - instalar `go install meat.dev/cmd/meat@latest`, probar sobre un commit grande reciente (DeepSeek-Reasonix `main-v2` sería un banco de pruebas ideal).",
         "descripcion_raw": ""
@@ -58,8 +58,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "filesystem virtual para agentes en Durable Objects",
-        "por_que_importa": "Es la pieza que faltaba para correr agentes completos sobre la infra de Cloudflare sin servidor clásico. Tres backends enchufables (container con FUSE mount real, isolate shell con `just-bash`, isolate JS con `node:fs/promises` y `ws:git`/`ws:artifacts`). Preview solo - no producción - pero la arquitectura es la primera referencia sería del año para «agent-as-a-service» en edge.",
+        "que_es": "Filesystem virtual para agentes en Durable Objects",
+        "por_que_importa": "Es la pieza que faltaba para correr agentes completos sobre la infra de Cloudflare sin servidor clásico. Ofrece tres backends enchufables según el caso: container con FUSE mount real, isolate shell con `just-bash`, e isolate JS con `node:fs/promises` y `ws:git`/`ws:artifacts` (interfaces tipo WebSocket que simulan git y almacenamiento de artefactos). El repo está marcado como preview, no producción, pero su arquitectura lo convierte en la primera referencia seria del año para el patrón «agent-as-a-service» en edge. Para un lector de Código Sin Siesta interesa porque baja la barrera a desplegar agentes sobre Cloudflare Workers sin renunciar a estado tipo filesystem.",
         "madurez_senales": "Estrellas totales: **600** · Forks: 34 · Lenguaje: TypeScript · Fecha creación: 2026-06-05 · Último push: 2026-08-03 · Licencia: MIT · Topics: - · Fuentes del ranking: trendshift_daily",
         "accion_sugerida": "**vigilar** — seguir la rampa de releases; no producir contra el hasta que salga de preview. Atento al posible MCP server de Cloudflare sobre esta base.",
         "descripcion_raw": ""
@@ -106,8 +106,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "office suite AI-native con byte-preserving round-trip",
-        "por_que_importa": "El angulo interesante no es «otra office suite con IA», sino el **byte-preserving paragraph patch** sobre `.docx`: solo regenera los párrafos sucios, el resto del archivo se conserva byte-a-byte. Eso resuelve el problema clasico de «abro en Word y se rompe el layout». Stack: cinco apps Electron + motor TS compartido + sidecar Rust (calamine + IronCalc) para xlsx + HarfBuzz para texto. Releases firmados v0.4.110 para macOS Apple Silicon y Windows x64.",
+        "que_es": "Office suite AI-native con byte-preserving round-trip",
+        "por_que_importa": "El ángulo interesante no es «otra office suite con IA», sino el byte-preserving paragraph patch sobre `.docx`: solo regenera los párrafos sucios, el resto del archivo se conserva byte a byte, lo que resuelve el problema clásico de «abro en Word y se rompe el layout». El stack es concreto: cinco apps Electron + motor TypeScript compartido + sidecar en Rust (calamine para lectura de xlsx e IronCalc como motor de cálculo) + HarfBuzz para modelado de texto. Hay releases firmados v0.4.110 para macOS Apple Silicon y Windows x64, y el repo es apache-2.0 con 866 estrellas y 117 forks en apenas tres días. Para el lector de Código Sin Siesta aporta un patrón técnico replicable: edición asistida por IA sobre formatos binarios sin corromper el archivo original.",
         "madurez_senales": "Estrellas totales: **866** · Forks: 117 · Lenguaje: TypeScript · Fecha creación: 2026-07-31 · Último push: 2026-08-03 · Licencia: Apache-2.0 · Topics: ai, docx, electron, office-suite, pdf, pptx, xlsx · Fuentes del ranking: trendshift_daily",
         "accion_sugerida": "**leer** - bajar el repo, leer `packages/docx-engine` y `packages/agent-core`. Buen material para un artículo sobre «round-trip preservando bytes» y por que importa para ofimática sería.",
         "descripcion_raw": ""
@@ -154,8 +154,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "framework Python para agentes de voz en tiempo real",
-        "por_que_importa": "No estaba en seen: aparece ahora con 12.1k estrellas y sigue empujándose en agosto 2026. Diferenciadores reales frente a VibeVoice/HF speech-to-speech: **detección semántica de turno** (transformer, no heurística), **MCP nativo con una línea de código**, scheduling de jobs y dispatch, integración con SIP para llamadas. Stack open-source completo (server WebRTC incluido). Apache-2.0. Ecosistema JS hermano en `livekit/agents-js`.",
+        "que_es": "Framework Python para agentes de voz en tiempo real",
+        "por_que_importa": "No lo teníamos en seen: aparece ahora con 12.1k estrellas (forks 3461) y sigue empujándose en agosto 2026. Sus diferenciadores reales frente a alternativas como VibeVoice o los modelos speech-to-speech de HuggingFace son: detección semántica de turno mediante un transformer (no heurística), MCP nativo con una sola línea de código, scheduling de jobs y dispatch, e integración con SIP para llamadas reales. El stack es open-source completo e incluye server WebRTC propio; la licencia es Apache-2.0. Tiene además un ecosistema hermano en JS (`livekit/agents-js`). Para el lector de Código Sin Siesta es relevante porque baja el suelo de entrada a construir agentes de voz en producción sin tener que montar la infraestructura de transporte a mano.",
         "madurez_senales": "Estrellas totales: **12,142** · Forks: 3461 · Lenguaje: Python · Fecha creación: 2023-10-19 · Último push: 2026-08-04 · Licencia: Apache-2.0 · Topics: agents, ai, openai, real-time, video, voice · Fuentes del ranking: trendshift_daily+ghtrending_daily+ghtrending_python",
         "accion_sugerida": "**explorar** - clonar y ejecutar el ejemplo mínimo. Comparar contra jamiepine/voicebox (voice studio, en radar) y Panniantong/Agent-Reach (que ya esta en seen).",
         "descripcion_raw": ""
@@ -203,8 +203,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "CRM agentic-first, el agente como producto principal",
-        "por_que_importa": "Tesis explícita del README: «el CRM es donde el agente guarda sus notas, no donde el humano rellena formularios». Construido sobre Bun + Postgres + agente `eve`. 3.6k estrellas en un mes, MIT. Buen contrapunto a la moda de «chatbot atado a la derecha del formulario». Material para un post sobre el patrón «agent-as-primary-surface».",
+        "que_es": "CRM agentic-first: el agente como producto principal",
+        "por_que_importa": "La tesis del README es explícita y rompe con la inercia del sector: «el CRM es donde el agente guarda sus notas, no donde el humano rellena formularios». Está construido sobre Bun + Postgres con un agente propio llamado `eve`, lleva 3.6k estrellas en apenas un mes y es MIT. Es un contrapunto útil a la moda de «chatbot atado a la derecha del formulario» y da material para un post sobre el patrón «agent-as-primary-surface», donde la interfaz primaria es el agente y la base de datos es su memoria, no un formulario humano. Su vínculo con el concepto `openclaw_agent_harness` lo hace directamente accionable para nuestro stack de trabajo con agentes.",
         "madurez_senales": "Estrellas totales: **3,638** · Forks: 390 · Lenguaje: TypeScript · Fecha creación: 2026-07-31 · Último push: 2026-08-03 · Licencia: MIT · Topics: - · Fuentes del ranking: trendshift_daily",
         "accion_sugerida": "**leer** - analizar el flujo de trabajo del agente (cola, schedule, qué tareas se auto-asigna) y compararlo con CRM tradicionales.",
         "descripcion_raw": ""
@@ -252,8 +252,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "memoria jerarquica para agentes con datos publicados",
-        "por_que_importa": "Reaparece en Trendshift con crecimiento significativo (ver bloque de madurez). Lo más valioso: **datos concretos** sobre WideSearch (33%->50% pass-rate, +51% relativo), SWE-bench (58.4%->64.2%, +9.9%), PersonaMem (48%->76%, +59%) y **-61% tokens** cuando se enchufa como plugin a OpenClaw. La arquitectura L0 Conversation -> L1 Atom -> L2 Scenario -> L3 Persona es la mejor concreción OSS del año del patron «memoria jerarquica». El README incluye badge explícito de **Hermes Gateway** - es OSS-native al stack que ya tenemos.",
+        "que_es": "Memoria jerárquica para agentes con datos publicados",
+        "por_que_importa": "Reaparece en Trendshift con crecimiento significativo: pasa de 12.4k estrellas a una base ya consolidada con 1.178 forks en cuatro meses, lo que indica tracción real más allá del hype inicial. Lo más valioso son los datos concretos que aporta: en WideSearch el pass-rate sube de 33% a 50% (+51% relativo), en SWE-bench de 58.4% a 64.2% (+9.9%) y en PersonaMem de 48% a 76% (+59%); además, enchufado como plugin a OpenClaw reduce el consumo de tokens un 61%. Su arquitectura L0 Conversation → L1 Atom → L2 Scenario → L3 Persona es la mejor concreción OSS del año del patrón «memoria jerárquica». El README incluye badge explícito de Hermes Gateway y el repo declara el topic `openclaw-plugin`, por lo que es OSS nativo al stack que ya cubrimos en el boletín del 2026-07-10, donde presentamos por primera vez la idea de memoria jerárquica y a `hermes_agent` como herramienta complementaria; este repo es la pieza que aterriza ese patrón con cifras.",
         "madurez_senales": "Estrellas totales: **12,468** · Forks: 1178 · Lenguaje: TypeScript · Fecha creación: 2026-04-07 · Último push: 2026-08-03 · Licencia: MIT · Topics: agent, ai-agent, embedding, llm, local-first, long-term-memory, memory, openclaw-plugin, vector-search · Fuentes del ranking: trendshift_daily+ghtrending_daily+ghtrending_typescript · Crecimiento vs primera mención: **+5536⭐ desde primera mención (+79.9%)**",
         "accion_sugerida": "**explorar** - el plugin declara compatibilidad con OpenClaw >=2026.3.13. Verificar si funciona con Hermes Agent (deberia, segun la badge). Si si, es material para un post «memoria jerarquica en Hermes».",
         "descripcion_raw": ""
@@ -301,8 +301,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "coding agent migrado a Go (main-v2) con prefix-cache stability",
-        "por_que_importa": "Aparece en trending porque **migró de TS a Go** (`main-v2`) y dejó el TS legacy en bug-fixes-only. La tesis central: «prefix-cache stability — engineered so token costs stay low across long sessions, you can leave it running». 30k estrellas, MIT, badges Top 2 en Agents y Top 3 en LLMs por velocidad (oosmetrics). Tiene Discord activo, npm `reasonix`, y un set de benchmarks propio. Buen candidato para discutir el trade-off TS↔Go en coding agents.",
+        "que_es": "Coding agent migrado a Go (main-v2) con prefix-cache stability",
+        "por_que_importa": "Entra en trending porque migró de TypeScript a Go en su rama `main-v2`, dejando la versión TS original en modo bug-fixes-only. La tesis central del repo es «prefix-cache stability — engineered so token costs stay low across long sessions, you can leave it running», es decir, diseñan el flujo para que el caché de prefijos del proveedor (los tokens ya procesados al inicio de la conversación) se mantenga estable entre turnos y no se invalide con cada cambio. Con 30k estrellas, licencia MIT, badges Top 2 en Agents y Top 3 en LLMs por velocidad (oosmetrics), Discord activo, distribución por npm como `reasonix` y un set de benchmarks propio, es un caso de estudio sólido para discutir el trade-off TS↔Go en coding agents. Compite directamente con `claude_code` y, al igual que en el boletín del 2026-08-02 donde ya lo mencionamos, encaja con nuestra línea de local-first: ejecuta DeepSeek R1 en local con cache estable de prefijos, lo que lo hace atractivo para quien quiera minimizar dependencia de APIs cloud.",
         "madurez_senales": "Estrellas totales: **30,256** · Forks: 1946 · Lenguaje: Go · Fecha creación: 2026-04-21 · Último push: 2026-08-04 · Licencia: MIT · Topics: agent, agent-framework, ai-agent, ai-coding, cli, coding-agent, deepseek, developer-tools, ink, llm, prompt-caching, r1, terminal, tool-use, tui, typescript · Fuentes del ranking: trendshift_daily+ghtrending_daily+ghtrending_go · Crecimiento vs primera mención: **+1635⭐ desde primera mención (+5.7%)**",
         "accion_sugerida": "**explorar** - clonar `main-v2`, ejecutar demo, comparar tiempo de arranque y consumo de memoria vs la versión TS. Material para un artículo sobre reescrituras Go en agentes.",
         "descripcion_raw": ""
@@ -564,9 +564,11 @@
     "items_total": 15,
     "items_hallazgo_principal": 7,
     "items_radar_secundario": 8,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

@@ -12,7 +12,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Memoria vectorial server-side (Python, MIT, 19.4k★) para AI agents: 'retain' ingiere hechos, 'recall' los recupera con biografías y límites, y el sistema aprende qué recordar. Pensado como servicio gestionado en `hindsight.vectorize.io` con SDKs Python/JS/Go.",
-        "por_que_importa": "Es la pieza OSS canónica de \"agent memory\" en 2026. Sustituye al patrón clásico de \"vector store + embeddings\" por una capa con ciclo de vida (retain/recall) y semántica de \"qué vale la pena recordar\". Ya está integrado como backend por `earendil-works/pi` (CLI del propio autor can1357, 86k★) vía `can1357/oh-my-pi` (23k★). Para CSS: si vamos a hablar de memoria persistente para coding agents, este es el ejemplo a explicar — y la comparación con mem0/zep/cognee cae por su peso. Release v0.9.0 del 2026-08-07.",
+        "por_que_importa": "Es la pieza OSS canónica de 'agent memory' en 2026: sustituye el patrón clásico de 'vector store + embeddings' por una capa con ciclo de vida (retain/recall) y semántica de 'qué vale la pena recordar'. Para CSS es el ejemplo a explicar si vamos a hablar de memoria persistente para coding agents — y la comparación con mem0/zep/cognee cae por su peso. Ya cubrimos el 2026-08-08 la integración del propio autor can1357 como backend de `earendil-works/pi` (su CLI de 86k★) vía `can1357/oh-my-pi` (23k★), que es la señal de adopción real que importa aquí. Release v0.9.0 del 2026-08-07.",
         "madurez_senales": "**19,429★** · 1,252 forks · Python · creado 2025-10-30 · último push 2026-08-10 · licencia **MIT**. Topics: agentic-ai, agents, ai-memory, memory. Último release: v0.9.0 (2026-08-07), con cadencia semanal (v0.8.6, v0.8.5, v0.8.4 en julio).",
         "accion_sugerida": "**leer**",
         "descripcion_raw": ""
@@ -60,7 +60,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Runtime escrito en Rust (Apache-2.0, 26.6k★ en 4 meses) que define \"el runtime donde viven tus coding agents\": multiplexa sesiones de Claude Code, Codex, Cursor y otros agents CLI en workspaces compartidos, con TUI propio y soporte tmux. Reemplaza a tmux + scripts bash para coordinar agents.",
-        "por_que_importa": "Resuelve el dolor concreto que ya cubrimos con `ShawnPana/phone-harness` y `cloudflare/computer`: ¿cómo encadenas, observas y compartes contexto entre varios agents? Herdr lo hace en Rust (no en Python como AxisAgentic/Shepherd) y se posiciona como la capa de bajo nivel — un multiplexer para coding agents. Topics notables: claude-code, codex, tmux, terminal-multiplexer, tui. Para CSS: encaja con el patrón 'runtime de agent' que el boletín de ayer abrió — pero esta vez es el contendiente 'no-Python' del espacio.",
+        "por_que_importa": "Resuelve un dolor concreto que ya cubrimos el 2026-08-07 con `cloudflare/computer`: ¿cómo encadenas, observas y compartes contexto entre varios coding agents? Herdr lo hace en Rust (no en Python como otros contendientes del espacio) y se posiciona como la capa de bajo nivel: un multiplexer para Claude Code, Codex, Cursor y otros agents CLI en workspaces compartidos, con TUI propio y soporte tmux. Para CSS encaja con el patrón 'runtime de coding agent' como el contendiente 'no-Python' del segmento, y por su rol de transporte complementa a `vectorize-io/hindsight` (capa de memoria). Cadencia de release: v0.8.0.",
         "madurez_senales": "**26,632★** · 1,870 forks · Rust · creado 2026-03-27 · último push 2026-08-10 · licencia **Apache-2.0**. Topics: agent, agent-orchestration, ai, ai-agents, claude-code, cli, codex, coding-agents, developer-tools, multiplexer, rust, terminal, tui, tmux, workspace-manager. Cadencia de release: v0.8.0 (2026-08-03) + preview builds diarios; v0.7.5 el 2026-07-21.",
         "accion_sugerida": "**explorar**",
         "descripcion_raw": ""
@@ -114,7 +114,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Backend TypeScript (Apache-2.0, 12.7k★ en 1 año) que ofrece a un coding agent database, auth, storage, compute, hosting y AI gateway como una sola API. Reemplaza el stack Supabase/Firebase cuando el cliente es un agent, no un humano.",
-        "por_que_importa": "Hay un gap editorial claro: los coding agents necesitan backend completo (DB + auth + storage) para entregar apps reales, pero Supabase/Firebase asumen UI humana. InsForge reorienta el contrato API al cliente-agente: el agent llama a InsForge directamente para provisionar y desplegar. Stack: Next.js + Deno + Postgres + pgvector + OAuth2. v2.3.0 publicado hace 3 días. Para CSS: si vamos a hablar de 'el stack mínimo para shippear una app con un coding agent de 0 a producción', InsForge es la pieza OSS de referencia — compite directamente con los setups de Supabase + Replit.",
+        "por_que_importa": "Hay un gap editorial claro: los coding agents necesitan backend completo (DB + auth + storage) para entregar apps reales, pero Supabase/Firebase asumen UI humana. InsForge reorienta el contrato API al cliente-agente: el agent llama a InsForge directamente para provisionar y desplegar, sobre Next.js + Deno + Postgres + pgvector + OAuth2. Para CSS es la pieza OSS de referencia si hablamos de 'el stack mínimo para shippear una app con un coding agent de 0 a producción'; compite directamente con los setups Supabase + Replit. v2.3.0 publicado el 2026-08-07.",
         "madurez_senales": "**12,690★** · 1,125 forks · TypeScript · creado 2025-07-29 · último push 2026-08-10 · licencia **Apache-2.0**. Topics: ai, ai-agents, coding, deno, embeddings, insforge, nextjs, oauth2, pgvector, postgresql, realtime, vectors, websockets. Cadencia de release: v2.3.0 (2026-08-07), v2.2.9 (2026-07-28), 4-5 releases/mes.",
         "accion_sugerida": "**leer**",
         "descripcion_raw": ""
@@ -169,7 +169,7 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Pipeline Python (MIT, 3.2k★) que parsea monorepos multi-lenguaje con tree-sitter + AST, construye un knowledge graph en Memgraph y lo expone vía MCP server para que cualquier coding agent (Claude Code, Codex, Cursor) consulte y edite código con búsqueda semántica y contextual.",
-        "por_que_importa": "El espacio \"codebase-as-graph\" tiene ahora cinco contendientes OSS: code-review-graph, Understand Anything, semantica, Graphify, y code-graph-rag. La diferencia de este: integra MCP server + Memgraph out-of-the-box — los otros asumen que tú montas el lado transporte. Cadencia de release brutal (3 versiones en 2 días: 0.0.589, 0.0.586, 0.0.584). Para CSS: comparativa head-to-head con Understand Anything y semantica, pero sobre todo para entender '¿cuál es el contrato mínimo que necesita un graph de codebase para ser útil a un agent?'.",
+        "por_que_importa": "El espacio 'codebase-as-graph' tiene ahora cinco contendientes OSS (code-review-graph, Understand Anything, semantica, Graphify y code-graph-rag). La diferencia de este: integra MCP server + Memgraph out-of-the-box; los otros asumen que tú montas el lado transporte. Cadencia de release brutal (3 versiones en 2 días: 0.0.589, 0.0.586, 0.0.584). Para CSS sirve para una comparativa head-to-head — sobre todo para entender 'cuál es el contrato mínimo que necesita un graph de codebase para ser útil a un agent'. Ya cubrimos el 2026-08-09 a Understand Anything como competidor directo, y el 2026-08-08 a semantica y a tree-sitter como pieza compartida en el espacio.",
         "madurez_senales": "**3,220★** · 531 forks · Python · creado 2025-06-16 · último push 2026-08-10 · licencia **MIT**. Topics (20): ai, ast, claude-code, code-analysis, codebase-search, developer-tools, graph-database, knowledge-graph, llm, mcp, mcp-server, memgraph, monorepo, multi-language, rag, retrieval-augmented-generation, semantic-search, tree-sitter. Cadencia de release: 0.0.589 (2026-08-10), 0.0.586 (2026-08-09), 0.0.584 (2026-08-09). Actividad diaria clara.",
         "accion_sugerida": "**explorar**",
         "descripcion_raw": ""
@@ -223,8 +223,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "IDE/agéntico (Agentic Development Environment, ADE) en TypeScript (MIT, 41k★ en 5 meses) que orquesta una flota de coding agents paralelos (Claude Code, Codex, Cursor, OpenCode) sobre worktrees de git. Disponible en desktop, mobile y VPS. YC-backed.",
-        "por_que_importa": "El patrón \"ejecutar N coding agents en paralelo sobre el mismo repo, cada uno en su worktree\" ya tenía BrowserOS, cloudflare/computer, y danielmiessler/LifeOS en el radar. Orca entra como el contendiente con pedigree YC y soporte mobile — la categoría 'ADE' se consolida. Para CSS: si cubrimos 'coding agents en paralelo' (ya mencionado en el radar del 2026-08-09 con oh-my-pi), Orca es la pieza que faltaba con UX mobile. Topics notables: ade, agent-ide, parallel-agents, yc-backed, worktrees.",
+        "que_es": "IDE agéntico (Agentic Development Environment, ADE) en TypeScript (MIT, 41k★ en 5 meses) que orquesta una flota de coding agents paralelos (Claude Code, Codex, Cursor, OpenCode) sobre worktrees de git. Disponible en desktop, mobile y VPS. YC-backed.",
+        "por_que_importa": "El patrón 'ejecutar N coding agents en paralelo sobre el mismo repo, cada uno en su worktree' ya lo cubrimos el 2026-07-16 con cloudflare/computer y earendil-works/pi como referencias del segmento. Orca entra como el contendiente con pedigree YC y soporte mobile (desktop + mobile + VPS), el primero del segmento con esa cobertura. Para CSS es la pieza que faltaba en la comparativa: 'coding agents en paralelo' con UX mobile. Topics notables: ade, agent-ide, parallel-agents, yc-backed, worktrees.",
         "madurez_senales": "**41,110★** · 2,876 forks · TypeScript · creado 2026-03-17 · último push 2026-08-10 · licencia **MIT**. Topics: ade, agent-ide, ai-agents, claude-code, cli, codex, cursor-agent, devtools, ghostty, ide, mobile-app, opencode, orchestration, parallel-agents, pi, terminal, worktrees, yc-backed. Cadencia alta (push diario).",
         "accion_sugerida": "**vigilar**",
         "descripcion_raw": ""
@@ -272,8 +272,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Runtime TypeScript (NOASSERTION license, 6k★ en 2 meses) que combina GUI desktop (Electron) y TUI para correr agents (Claude/OpenAI-compatible/DeepSeek) en local. Pensado para coding, writing, design, research y automation desde una sola ventana.",
-        "por_que_importa": "La idea de \"workspace local-first para agents\" ya tiene a `danielmiessler/LifeOS` en el radar y a Hermes Agent (el runtime del propio usuario) como referencia. Kun entra como el primer contendiente OSS con GUI + TUI en el mismo binario. **Advertencia license NOASSERTION**: antes de recomendar adopción como dependencia de producción, abrir el LICENSE real en el repo. Para CSS: encaja con la línea editorial 'local-first AI' (FluidVoice, pocket-tts) que llevamos varios boletines.",
+        "que_es": "Runtime TypeScript (licencia NOASSERTION, 6k★ en 2 meses) que combina GUI desktop (Electron) y TUI para correr agents (Claude/OpenAI-compatible/DeepSeek) en local. Pensado para coding, writing, design, research y automation desde una sola ventana.",
+        "por_que_importa": "La idea de 'workspace local-first para agents' ya tiene a Hermes Agent (el runtime del propio usuario) y a `danielmiessler/LifeOS` como referencias. Kun entra como el primer contendiente OSS que combina GUI desktop (Electron) y TUI en el mismo binario, para correr agents Claude/OpenAI-compatible/DeepSeek en local. Para CSS encaja con la línea editorial 'local-first AI' que llevamos varios boletines. Advertencia práctica: la licencia es NOASSERTION (no MIT ni Apache) — antes de recomendar adopción como dependencia de producción hay que abrir el LICENSE real del repo y leer qué permite y qué no, porque NOASSERTION no garantiza explícitamente derechos de uso comercial.",
         "madurez_senales": "**6,060★** · 572 forks · TypeScript · creado 2026-05-21 · último push 2026-08-07 · licencia **NOASSERTION**. Topics: agentic-workflow, ai-agent, ai-assistant, ai-design, automation, coding-agent, deepseek, desktop-app, electron, llm, local-first, mcp, multi-agent, openai-compatible, productivity, react, tui, typescript, writing-assistant. Cadencia de release: 5 versiones en agosto (v0.2.37 → v0.2.33). Activo.",
         "accion_sugerida": "**vigilar** (con cautela hasta confirmar license)",
         "descripcion_raw": ""
@@ -321,8 +321,8 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Repositorio TypeScript (MIT, 127k★ en 5 meses) que distribuye \"el setup exacto de Claude Code de Garry Tan\": 23 herramientas que desempeñan distintos roles (CEO, Designer, Eng Manager, Release Manager, Doc Engineer, QA). No tiene releases — es contenido, no plataforma.",
-        "por_que_importa": "Es el ejemplo más viral del patrón \"setup-as-content\": convertir una configuración personal de Claude Code en un producto distribuible con marca de autoridad. Compite con Nutlope/hallmark (anti-AI-slop design skill, 5k★) y con addyosmani/agent-skills (production-grade engineering skills). La pregunta editorial: ¿qué se aprende de empaquetar skills así? Para CSS: comparado con `garrytan/gstack`, `addyosmani/agent-skills` (visto en el radar del 2026-08-09) tiene más rigor técnico — pero el de Garry Tan tiene 100k★ más.",
+        "que_es": "Repositorio TypeScript (MIT, 127k★ en 5 meses) que distribuye \"el setup exacto de Claude Code de Garry Tan\": 23 herramientas que desempeñan distintos roles (CEO, Designer, Eng Manager, Release Manager, Doc Engineer, QA). No tiene releases: es contenido, no plataforma.",
+        "por_que_importa": "Es el ejemplo más viral del patrón 'setup-as-content': convertir una configuración personal de Claude Code en un producto distribuible con marca de autoridad (Garry Tan, ex presidente de Y Combinator). Distribuye 23 herramientas que desempeñan distintos roles (CEO, Designer, Eng Manager, Release Manager, Doc Engineer, QA). No tiene releases: es contenido, no plataforma. Para CSS la pregunta editorial útil no es '¿lo adopto?' sino 'qué se aprende de empaquetar skills así'. Comparado con `addyosmani/agent-skills` (que cubrimos en el radar del 2026-08-09 y tiene más rigor técnico) y con `Nutlope/hallmark` (anti-AI-slop design skill, 5k★), el de Garry Tan suma 100k★ más por la marca personal, no por profundidad técnica — y eso es en sí mismo una lección sobre distribución en el ecosistema agentic.",
         "madurez_senales": "**127,250★** · 19,167 forks · TypeScript · creado 2026-03-11 · último push 2026-08-08 · licencia **MIT**. Sin topics, sin releases, descripción minimal: \"Use Garry Tan's exact Claude Code setup: 23 opinionated tools\". Ratio stars/forks 6.6 — más alto que la media (típicamente 3-5), señal de consumo vs contribución.",
         "accion_sugerida": "**vigilar** (calidad editorial cuestionable pese a las estrellas)",
         "descripcion_raw": ""
@@ -368,7 +368,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "\"A complete AI agency at your fingertips\" — 141k★ en 10 meses, lenguaje Shell (sólo orquestación de prompts). Verificado: fork=False, parent=None, no es mirror. Sin releases",
+        "que_es": "\"A complete AI agency at your fingertips\": 141k★ en 10 meses, lenguaje Shell (solo orquestación de prompts). Verificado: fork=False, parent=None, no es mirror. Sin releases.",
         "por_que_importa": "",
         "madurez_senales": "141,135★, push 2026-08-06, Shell, MIT",
         "accion_sugerida": "vigilar — patrón \"AI agency as content\" (misma familia que gstack/hallmark). El ratio stars/forks 6.1 también sugiere consumo",
@@ -396,7 +396,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Plataforma OSS de observabilidad (logs/metrics/traces/frontend/LLM). Drop-in replacement de Datadog/Splunk con LLM observability integrado. Topics notables: datadog, elasticsearch, grafana, kibana, prometheus, opentelemetry",
+        "que_es": "Plataforma OSS de observabilidad (logs, metrics, traces, frontend, LLM). Drop-in replacement de Datadog/Splunk con LLM observability integrado. Topics notables: datadog, elasticsearch, grafana, kibana, prometheus, opentelemetry.",
         "por_que_importa": "",
         "madurez_senales": "20,746★, push 2026-08-10, TypeScript, AGPL-3.0",
         "accion_sugerida": "vigilar — AGPL-3.0 bloquea adopción SaaS pero es OSS puro para self-hosted; pieza clave para 'observability stack del coding agent'",
@@ -425,7 +425,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Re-entry de ayer (radar 2026-08-09). Ya en grafo",
+        "que_es": "Re-entry de ayer (radar 2026-08-09). Ya en grafo.",
         "por_que_importa": "",
         "madurez_senales": "",
         "accion_sugerida": "ignorar — (sin release nuevo)",
@@ -449,7 +449,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Server toolkit de la gente de Nuxt/unstorage. Estable, 4 años en producción, trending hoy",
+        "que_es": "Server toolkit de la gente de Nuxt/unstorage. Estable, 4 años en producción, trending hoy.",
         "por_que_importa": "",
         "madurez_senales": "11,095★, push 2026-08-10, TypeScript, NOASSERTION",
         "accion_sugerida": "leer — si hablamos de servidores web para agents, Nitro merece nota",
@@ -478,7 +478,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "VPN identity-aware + reverse proxy tunneled sobre WireGuard® con OIDC. Self-hosted zero-trust",
+        "que_es": "VPN identity-aware + reverse proxy tunneled sobre WireGuard® con OIDC. Self-hosted zero-trust.",
         "por_que_importa": "",
         "madurez_senales": "22,158★, push 2026-08-10, TypeScript, NOASSERTION",
         "accion_sugerida": "vigilar — si cubrimos infra zero-trust para agents, Pangolin es referencia",
@@ -505,9 +505,11 @@
     "items_total": 12,
     "items_hallazgo_principal": 7,
     "items_radar_secundario": 5,
-    "llm_backend": "none",
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
