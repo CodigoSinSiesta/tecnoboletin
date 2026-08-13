@@ -1,0 +1,433 @@
+{
+  "version": 2,
+  "date": "2026-07-11",
+  "boletin_origen": "2026-07-11-trending.md",
+  "resumen_ejecutivo": "- **`syncable-dev/memtrace-public` (Trendshift + GH Trending Python daily, debut, v0.8.22 hoy)** aterriza como **memoria estructural bi-temporal para AI coding agents**: AST graph persistido, **cero llamadas a LLM**, **MCP-native**, con soporte explícito declarado a **Cursor · Claude Code · Codex · Hermes · VS Code · Windsurf** (es la **tercera mención de Hermes como target soportado** en un repo externo en 11 días). El runtime está escrito en Rust (binding vía npm `memtrace`). Conecta de inmediato con el stack `mcp_codebase_memory_*` que ya tienes cargado. **Riesgo a marcar: LICENSE file es EULA propietario, NO OSS** (revocable, no commercial, no redistribution).\n- **`SmileLikeYe/agent-chief` (Trendshift #25, debut, MIT, Python, v0.4.0 hoy)** es la **capa de atención local-first para agentes**: 24 eventos → 1 interrupción (96% interceptados), 75% muere en hard rules sin tocar el LLM, $0.104/1k events con DeepSeek. Conecta con MCP y los agentes enchufan como tools. Local-first, sin cloud, sin telemetry. Para CSS encaja con `airoboros/awesome-scratchpad-agent` y con el debate \"harness vs model\" en el grafo.\n- **`browseros-ai/BrowserOS` v0.47.10 \"BrowserClaw launch\" (2026-07-10, AGPL v3, 11.815★, Chromium fork)** introduce **AI agents nativos en Chromium** con tu propia API key u Ollama local. Compite con **Perplexity Comet / ChatGPT Atlas / Dia** sobre la capa de privacidad. AGPL v3 es GPL-family, código abierto pero copyleft fuerte — vale auditar antes de forkear. Distribución multiplataforma (mac/Windows/Linux/AppImage/.deb).\n- **`Nutlope/hallmark` (Trendshift #9, debut, MIT, CSS, 3.736★)** es la **design skill anti-AI-slop** made by **Together AI**: 20 themes × 4 verbos × 57 slop-test gates × pre-emit self-critique. Genera UI que se ve distinta para briefs distintos (no template swap). Compatible con Claude Code, Cursor, Codex. **Tesis editorial directa: la categoría \"design quality skill\" emerge como nuevo eje dentro de agent-skills** y Complementa a `addyosmani/agent-skills`, `obra/superpowers`, `vercel-labs/agent-skills`.\n- **`entireio/cli` v0.8.43-nightly (GH Trending Go daily, MIT, 4.735★, debut)** captura **sesiones de AI agents en git workflow**: rewind + resume checkpoints, branch separada para contexto de agente, prompts/responses/files indexados junto al commit. Compatible con Claude Code, Codex, Gemini, Pi. Distribución vía Homebrew tap + install.sh. **Encaja con el cron del snapshot 03:00 y con la nota diaria 22:00** — son piezas paralelas de \"no perder el contexto\".\n- **`amap-cvlab/ABot-World-0-5B-LF` (GH Trending Python, debut, Apache-2.0, 233★, release 2026-07-09)** demuestra que **un world model interactivo cabe en una sola RTX 5090 desktop**: 720p, 16 FPS, 1.2 s latency, 19 GB GPU, **infinite rollout** sin prompt switching (entrenado con su `LongForcing`). Modelo 0.5B publicado en HuggingFace + dataset 500h abierto ayer 2026-07-10. Conecta con el paper arXiv **OpenCoF (Chain-of-Frame, 2607.08763)** y con el concepto `embodied-world-model` ya en grafo.\n- **`microsoft/pg_durable` v0.2.3 + rc1 (GH Trending Rust daily, NOASSERTION = PostgreSQL License, 2.352★)** trae **durable execution dentro de PostgreSQL**: workflows como SQL steps con checkpoints persistentes, recovery automático post-crash. Lanzado dentro de **Azure HorizonDB**. Reduce el stack típico de \"cron + queue + workers + status tables\" a un solo motor dentro de Postgres. Conecta con `malisper/pgrust` (otra reescritura Postgres en Rust trending) — **señal de movimiento fuerte sobre el runtime Postgres**.\n- **`larksuite/cli` v1.0.68 (GH Trending Go daily, MIT, 15.475★)** oficializa una **CLI agent-native para Lark/Feishu con 26 AI Agent Skills incluidas** (Messenger/Docs/Base/Sheets/Slides/Calendar/Mail/Tasks/Meetings/Markdown). Tres capas: shortcuts → API commands → raw API. **Marca la pauta: vendors enterprise (Lark) publican CLIs \"AI-Agent-first\"** como categoría diferenciada — encaja con `mcp__feishu_drive`/`mcp__feishu_doc` del stack del usuario.\n- **Fuentes consultadas:** Trendshift daily (25 entradas via JSON-LD ItemList), GitHub Trending daily + 5 lenguajes (87 entradas únicas), GitHub REST API con verificación individual de 35 repos. Se contrastó con `2026-07-11-arxiv.md` (10 papers, en particular `2607.08740 \"Workflow as Knowledge\"` que encaja con `memtrace-public` + `agent-chief`).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "syncable-dev/memtrace-public",
+      "url": "https://github.com/syncable-dev/memtrace-public",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "transforma tu codebase en un **knowledge graph vivo consultable en milisegundos** para AI coding agents: cada función, clase, call edge y versión a lo largo de toda la sesión, **sin re-leer archivos** ni romper lo que el agente no ve. Tres propiedades estructurales: **(a) bi-temporal** (time-travel queries sobre código histórico), **(b) zero LLM calls** (toda la inteligencia viene del AST graph + storage), **(c) replay-aware** (zero blind refactors). Runtime escrito en **Rust**, bindings vía npm, soporta **20+ lenguajes**, **MCP-native**. El README lista explícitamente: **Cursor · Claude Code · Codex · Hermes · VS Code · Windsurf**. v0.8.22 publicado hoy mismo.",
+        "por_que_importa": "cierra la pieza que faltaba en el stack **local-first code-intelligence** del usuario. Hoy `mcp_codebase_memory_*` da 14 MCP tools (index_repository/search_graph/query_graph/trace_path/get_code_snippet/etc) sobre un LSP graph en RAM-first. `memtrace-public` ataca la misma necesidad desde otro ángulo: **graph persistente + bi-temporal + MCP-native + compatible Hermes** declarado. La mención a Hermes en el README es señal directa (tercera mención enterprise en 11 días, después de `tokscale` topics y `TencentCloud/TencentDB-Agent-Memory` badge). **Riesgo importante: el LICENSE es EULA propietario Syncable Dev (NO OSS)** — revocable, sin uso comercial, sin redistribución. Free tier personal, pero el cierre del grifo es decisión unilateral del vendor. Antes de adoptar: leer el EULA completo y decidir si la conveniencia del graph bi-temporal pesa más que el lock-in.",
+        "madurez_senales": "421★ · NOASSERTION (real = Proprietary EULA Syncable Dev) · Python runtime + Rust core · creado 2025-10-01 (aprox, no verificado exacto) · último push 2026-07-10 (hace horas) · release **v0.8.22 (2026-07-10)**. Tópicos: `agent-memory`, `ai-agents`, `bi-temporal-graph`, `claude-code`, `code-intelligence`, `code-search`. Discord activo. Site memtrace.io.",
+        "accion_sugerida": "explorar (clonar, leer EULA completo en `LICENSE`, instalar vía `npm i memtrace`, levantar el MCP server, indexar un proyecto piloto pequeño y comparar resultados con `mcp_codebase_memory_search_graph`; auditar si el bi-temporal de verdad aporta valor sobre el LSP graph actual; si encaja, documentar como alternativa válida para proyectos donde el grafo efímero del LSP no basta; si la EULA bloquea, pasar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "syncable-dev/memtrace-public",
+          "rel": "implements",
+          "dst": "bi-temporal-code-graph",
+          "primera_mencion": null
+        },
+        {
+          "src": "syncable-dev/memtrace-public",
+          "rel": "competes_with",
+          "dst": "DeusData/codebase-memory-mcp",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "syncable-dev/memtrace-public",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "syncable-dev/memtrace-public",
+          "rel": "relevant_to",
+          "dst": "arxiv-2607.08740",
+          "primera_mencion": null
+        },
+        {
+          "src": "syncable-dev/memtrace-public",
+          "rel": "risk",
+          "dst": "proprietary-eula-vendor-lock",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "syncable-dev-memtrace-public",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "SmileLikeYe/agent-chief",
+      "url": "https://github.com/SmileLikeYe/agent-chief",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**capa intermedia entre tú y todo lo que reclama tu atención** (agentes, heartbeats, CI, RSS, watchers). Cada evento se evalúa localmente; el resultado es una y solo una de tres acciones: **(1) interrumpirte** (solo cuando vale, llegando con un plan), **(2) despachar trabajo a tus agentes** (verificando el resultado), **(3) recordar silenciosamente**. Métricas medidas en el README con demo replay determinista (`make readme-metrics`): 24 events → 1 interruption (96% interceptados: 14 bloqueados outright, resto batched/dispatched/remembered). **75% de eventos muere en hard rules en microsegundos sin tocar el LLM**. **70% cache hit en judge input tokens** (stable-prefix prompts). **$0.104 / 1.000 events** con DeepSeek list prices, cache-aware. Local-first, no cloud, no telemetry, MIT, Python 3.12+, Ruff, PyPI.",
+        "por_que_importa": "introduce el patrón **\"chief of staff\"** (atención curada + verificada) que faltaba en el grafo. Hoy el stack tiene el lado productivista (codegen agents como `aaif-goose/goose`, `openai/codex`, `can1357/oh-my-pi`) y el lado memoria (TencentDB Agent Memory, memtrace-public), pero no hay un **interruptor honesto entre evento y humano**. Para un operador con muchos agentes corriendo (Claude Code + Codex + Cron snapshot + Blogwatcher + Boletín + Nota diaria), `agent-chief` resuelve exactamente el dolor de \"todo grita, nada prioriza\". El local-first + open-source lo hacen adoptable sin vendor lock-in.",
+        "madurez_senales": "453★ · MIT · Python · release **v0.4.0 (2026-07-10)** + v0.3.1 (2026-07-06). CI badge verde. PyPI publicado. Ruff badge. Tópicos: `harness`, `harness-engineering`, `llm`, `local-first`.",
+        "accion_sugerida": "explorar (clonar, `pip install agent-chief`, correr el demo replay con `make readme-metrics`, probar conexión vía MCP contra uno de los agentes ya en uso, simular el flujo \"evento llega → chief evalúa → decide\" contra el patrón de los crons del usuario — si encaja, vale mapear dónde se enchufa la decisión entre `blogwatcher-cli` y el siguiente boletín).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "SmileLikeYe/agent-chief",
+          "rel": "implements",
+          "dst": "chief-of-staff-attention-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "SmileLikeYe/agent-chief",
+          "rel": "complements",
+          "dst": "aaif-goose/goose",
+          "primera_mencion": null
+        },
+        {
+          "src": "SmileLikeYe/agent-chief",
+          "rel": "complements",
+          "dst": "smile-like-ye/agent-chief",
+          "primera_mencion": null
+        },
+        {
+          "src": "SmileLikeYe/agent-chief",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "SmileLikeYe/agent-chief",
+          "rel": "solves",
+          "dst": "attention-overload-multi-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "smilelikeye-agent-chief",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "browseros-ai/BrowserOS",
+      "url": "https://github.com/browseros-ai/BrowserOS",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Chromium fork open-source que ejecuta AI agents de forma nativa**: usas tu propia API key u **Ollama local** (los datos no salen de tu máquina). Build cross-platform con binarios firmados: macOS (.dmg), Windows (.exe), Linux (AppImage, .deb). Distribución: `files.browseros.com/download/BrowserOS.dmg` etc. Release **v0.47.10 \"BrowserClaw launch\" (2026-07-10)** + nightly firmado diario. Discord + Slack activos. Licencia **AGPL v3** (copyleft fuerte: forkear requiere abrir el código).",
+        "por_que_importa": "es **el primer browser con AI-agent runtime nativo que respeta privacy-first**, y compite directamente con Perplexity Comet / ChatGPT Atlas / Dia (todos closed-source). Para el stack del usuario (cuyo perfil default es local-first, Ollama + DeepSeek), **BrowserOS ofrece el \"browser companion\" que completa el bucle**: lo que ya haces con `mcp__chrome_devtools` o `vercel-labs/agent-browser` desde fuera, BrowserOS lo hace desde dentro del browser. AGPL v3 bloquea adopción cerrada pero abre camino a fork propio.",
+        "madurez_senales": "11.815★ · 1.320 forks (aprox) · AGPL v3 · TypeScript (Chromium fork) · creado 2025-08-15 (aprox, no verificado exacto) · último push 2026-07-11 (hace minutos). Releases firmadas daily con nightly channel.",
+        "accion_sugerida": "vigilar (no instalar todavía; revisar qué aporta \"BrowserClaw launch\" sobre el release anterior; comparar con `vercel-labs/agent-browser` y con `ChromeDevTools/chrome-devtools-mcp` que ya cubren el caso de uso desde fuera; auditar si vale la pena el binario nativo vs la integración MCP que ya tienes; si el patrón \"agentes en el browser\" madura, vale escribir un post comparativo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "browseros-ai/BrowserOS",
+          "rel": "implements",
+          "dst": "privacy-first-agentic-browser",
+          "primera_mencion": null
+        },
+        {
+          "src": "browseros-ai/BrowserOS",
+          "rel": "competes_with",
+          "dst": "perplexity-comet-chatgpt-atlas-dia",
+          "primera_mencion": null
+        },
+        {
+          "src": "browseros-ai/BrowserOS",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "browseros-ai/BrowserOS",
+          "rel": "uses",
+          "dst": "ollama",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "browseros-ai/BrowserOS",
+          "rel": "risk",
+          "dst": "agpl-v3-copyleft",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "browseros-ai-browseros",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Nutlope/hallmark",
+      "url": "https://github.com/Nutlope/hallmark",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**design skill para Claude Code, Cursor y Codex** que **rechaza explícitamente generar UI con look AI-generated**. Cuatro verbos: **(default) build UI** (elige macroestructura + tema + 57 slop-test gates + pre-emit self-critique), **`hallmark audit <target>`** (punch list sin editar), **`hallmark redesign <target>`** (nueva huella, mantiene IA + brand), **`hallmark study <screenshot|URL>`** (extrae DNA: macroestructura, type-pairing, color anchor; rechaza pixel-clones y templates pagos; opcionalmente emite `design.md` portable). Made by **Together AI**. **20 themes × 4 verbos × 57 slop-test gates** documentados. El README declara: \"Two pages by Hallmark for two different briefs feel like different sites, not colour-swaps of the same template.\"",
+        "por_que_importa": "completa la **categoría \"design quality skill\"** que estaba ausente en el grafo. Hoy el radar tiene skills de spec (`agentskills/agentskills`), skills de workflow (`addyosmani/agent-skills`, `obra/superpowers`, `vercel-labs/agent-skills`), skills de seguridad (`microsoft/agent-governance-toolkit`), skills de research (`mvanhorn/last30days-skill`), pero **faltaba el eje \"calidad visual / anti-slop\"**. Hallmark es la primera referencia seria: gating explícito + audit + redesign + study como verbs independientes. Made by Together AI (no individual hobbyist), con demo live y 20 themes reales. Para CSS el ángulo editorial es claro: \"La nueva categoría skills-para-agents es design quality, no solo productividad.\"",
+        "madurez_senales": "3.736★ · MIT · CSS · creado 2026-04-27 · último push 2026-06-26. Sin release formal (skills son CSS+markdown). Demo live funcional con 20 themes.",
+        "accion_sugerida": "leer (clonar, instalar la skill en Claude Code/Codex, correr `hallmark audit` contra 2-3 sitios CSS de referencia, comparar con `pbakaus/impeccable` y con las \"popular-web-designs\" skill que tienes; si la diferencia entre hallmark/impeccable/otros encaja con la tesis editorial \"design quality es la nueva categoría\", escribir un post \"skills para design quality en agentes 2026\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Nutlope/hallmark",
+          "rel": "implements",
+          "dst": "anti-slop-design-skill",
+          "primera_mencion": null
+        },
+        {
+          "src": "Nutlope/hallmark",
+          "rel": "complements",
+          "dst": "addyosmani/agent-skills",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "Nutlope/hallmark",
+          "rel": "complements",
+          "dst": "vercel-labs/agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "Nutlope/hallmark",
+          "rel": "relevant_to",
+          "dst": "pbakaus/impeccable",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nutlope-hallmark",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "entireio/cli",
+      "url": "https://github.com/entireio/cli",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI que **se enchufa en tu workflow git para capturar sesiones de AI agents mientras trabajas**. Cada commit queda asociado al transcript completo (prompt/response, files touched, token usage, tool calls). Funcionalidades: **(a) rewind a un checkpoint conocido y resume** seamless, **(b) branch separada para contexto de agente** (git history limpio), **(c) búsqueda indexada de \"prompt → cambio → commit\"**, **(d) audit trail para compliance**. Compatible con Claude Code, Codex, Gemini, Pi. Distribución: `brew tap entireio/tap && brew install --cask entire` o `curl -fsSL https://entire.io/install.sh | bash`. Cadencia nightly.",
+        "por_que_importa": "completa el **eje \"no perder contexto\"** que el usuario ya tiene parcialmente con el **cron snapshot 03:00**, el **blogwatcher 08:00**, el **boletín 09:10**, la **nota diaria 22:00**. `entireio/cli` hace lo mismo pero al nivel de las sesiones individuales de coding agents. Si una sesión Codex se sale del cauce a las 14:00, `entire rewind` te devuelve al último commit limpio con el prompt original. Encaja también con `syncable-dev/memtrace-public` (que captura estructura del código): son capas diferentes (memtrace = código, entire = sesión).",
+        "madurez_senales": "4.735★ · MIT · Go · release **v0.8.43-nightly (2026-07-11)** firmado. Homebrew tap oficial. Install script. Tópicos: `agents`, `ai`, `claude`, `developer`, `developer-platform`, `gemini`.",
+        "accion_sugerida": "probar (instalar vía brew o install.sh, correr `entire init` en un repo piloto pequeño, ejecutar una sesión Codex/Claude Code, verificar que el transcript se asocia al commit; probar `entire rewind` desde un commit y medir fricción; si el flujo encaja con el snapshot 03:00, documentar cómo se complementan).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "entireio/cli",
+          "rel": "implements",
+          "dst": "agent-session-capture",
+          "primera_mencion": null
+        },
+        {
+          "src": "entireio/cli",
+          "rel": "complements",
+          "dst": "syncable-dev/memtrace-public",
+          "primera_mencion": null
+        },
+        {
+          "src": "entireio/cli",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "entireio/cli",
+          "rel": "complements",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "entireio-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "amap-cvlab/ABot-World",
+      "url": "https://github.com/amap-cvlab/ABot-World",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**world model interactivo \"infinito\"** que corre en **una sola NVIDIA RTX 5090 desktop GPU**: 720p, 16 FPS, **1.2 s latency**, 19 GB GPU memory. Responde a acciones del usuario en tiempo real (no playback pasivo). Soporta **rollout abierto sin límite de duración** mediante entrenamiento **`LongForcing`** (sin prompt switching). Modelo **ABot-World-0-5B-LF** publicado 2026-07-09 (0.5B parámetros) + código de inferencia + demo gradio local + playground online. **Dataset 500h de vídeo con action annotations abierto 2026-07-10** (anunciado ayer). Amap CV Lab (AutoNavi / Alibaba group).",
+        "por_que_importa": "demuestra que **el world-model + interactive video deja de ser privilegio de data centers** y aterriza en desktop. Para el usuario con hardware modesto y preferencia local-first, esto redefine qué se puede correr en casa. Encaja con el paper arXiv **OpenCoF (Chain-of-Frame, 2607.08763)** que argumenta razonamiento visual desplegado en fotogramas en lugar de tokens: `ABot-World` es la materialización industrial de esa tesis. Conecta con el concepto `embodied-world-model` ya en grafo (visto el 2026-07-09). Release fresco (ayer), adopción incipiente.",
+        "madurez_senales": "233★ · Apache-2.0 · Python (modelo en PyTorch) · creado 2026-04-16 · último push 2026-07-10 (hace horas). Sin release formal (código + modelo en HF).",
+        "accion_sugerida": "leer (no instalar todavía el modelo 0.5B — pesa ~10 GB y la demo gradio ya cubre el caso de uso; leer el paper de `LongForcing` cuando aparezca en arXiv, comparar con Genie 3 de Google; si CSS escribe sobre embodied agents / world models, este es el anchor principal para \"el estado del arte en local en 2026\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "amap-cvlab/ABot-World",
+          "rel": "implements",
+          "dst": "desktop-world-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "amap-cvlab/ABot-World",
+          "rel": "relevant_to",
+          "dst": "arxiv-2607.08763-opencof",
+          "primera_mencion": null
+        },
+        {
+          "src": "amap-cvlab/ABot-World",
+          "rel": "solves",
+          "dst": "desktop-only-world-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "amap-cvlab/ABot-World",
+          "rel": "complements",
+          "dst": "huggingface/speech-to-speech",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "amap-cvlab-abot-world",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "microsoft/pg_durable",
+      "url": "https://github.com/microsoft/pg_durable",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**durable execution dentro de PostgreSQL**. Workflows definidos como **grafos de SQL steps** que Postgres ejecuta y va **checkpointando** paso a paso. Si la DB crashea, se reinicia, o un step falla, la ejecución **resume desde el último checkpoint durable** sin tener que reconstruir estado a mano. PostgreSQL 17 & 18. Licencia **PostgreSQL License** (NOASSERTION en API = NOASSERTION porque es la PostgreSQL License, no OSI-standard pero sí permisiva estilo BSD). Release **v0.2.4-rc1 (2026-07-02)** + v0.2.3 (2026-06-17). **Lanzado dentro de Azure HorizonDB** (servicio cloud PostgreSQL de Microsoft, \"engineered for performance and built with pg_durable inside\").",
+        "por_que_importa": "reduce el stack típico \"cron + queue + workers + status tables\" a **un solo motor dentro de Postgres**. Para un stack local-first con preferencia por Postgres (el usuario ya tiene PGLite + Postgres + pgvector en su stack), `pg_durable` es la pieza que faltaba para **workflows agentic durables sin Temporal/Celery externo**. Conecta con `malisper/pgrust` (1633★, AGPL-3.0) y `t8y2/dbx` (9693★, Apache-2.0): **el ecosistema Postgres está en plena efervescencia en Rust**.",
+        "madurez_senales": "2.352★ · NOASSERTION (PostgreSQL License, leer LICENSE.txt) · Rust · creado 2026-02-13 · último push 2026-07-06. Tópicos: `ai-pipelines`, `ai-workflows`, `durable-execution`, `durable-functions`, `durable-workflows`, `postgresql`. Quick example + docs en repo.",
+        "accion_sugerida": "explorar (clonar, leer LICENSE.txt para confirmar términos exactos, levantar Postgres 17 en Docker con la extensión, correr el Quick Example con un workflow de 5 steps; comparar con Temporal/Celery para casos donde la complejidad justifica servicio externo; si encaja con `PGLite` del stack, auditar instalación como extensión embebida).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/pg_durable",
+          "rel": "implements",
+          "dst": "in-database-durable-execution",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/pg_durable",
+          "rel": "complements",
+          "dst": "malisper/pgrust",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/pg_durable",
+          "rel": "relevant_to",
+          "dst": "pglite-postgres",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/pg_durable",
+          "rel": "risk",
+          "dst": "noassertion-license",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-pg-durable",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "larksuite/cli",
+      "url": "https://github.com/larksuite/cli",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**CLI oficial de Lark/Feishu** mantenida por el equipo de larksuite (grupo Bytedance). Cubre **18 dominios de negocio**: Messenger, Docs, Base, Sheets, Slides, Calendar, Mail, Tasks, Meetings, Markdown. **200+ comandos** estructurados + **26 AI Agent Skills** incluidas, compatibles con AI tools populares. Tres capas: **Shortcuts** (human & AI friendly) → **API Commands** (sincronizadas con la plataforma) → **Raw API** (cobertura completa). Seguridad: **input injection protection**, **terminal output sanitization**, **OS-native keychain credential storage**. MIT. Documentación bilingüe (zh/en).",
+        "por_que_importa": "marca la pauta: **vendors enterprise (Lark/Feishu en este caso, Bytedance) publican CLIs explícitamente \"AI-Agent-first\"** como categoría diferenciada. Esto encaja con la presencia de `mcp__feishu_doc` y `mcp__feishu_drive` en el toolset del usuario, que son la **superficie MCP paralela** al CLI de Lark. Para el perfil default de Hermes (que ya tiene estos MCPs cargados), la CLI oficial de Lark ofrece un canal alternativo cuando los MCPs fallen o cuando el usuario quiera scripting puro sin pasar por MCP. Tesis editorial: \"El formato CLI agent-native se está convirtiendo en estándar de facto para vendors enterprise.\"",
+        "madurez_senales": "15.475★ · MIT · Go (>=1.23) · release **v1.0.68 (2026-07-09)** + v1.0.67 (2026-07-08). Cadencia diaria. Documentación bilingüe oficial. Channels Discord/Slack.",
+        "accion_sugerida": "leer (clonar, leer docs de las 26 AI Agent Skills incluidas, comparar el shape de skill con el de `google-labs-code/stitch-skills` y `mattpocock/skills`; si CSS escribe sobre el patrón \"vendor enterprise + AI agent skills oficiales\", este es el anchor para el lado Asia/Pacific).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "larksuite/cli",
+          "rel": "implements",
+          "dst": "agent-native-enterprise-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "larksuite/cli",
+          "rel": "complements",
+          "dst": "mcp__feishu_drive",
+          "primera_mencion": null
+        },
+        {
+          "src": "larksuite/cli",
+          "rel": "relevant_to",
+          "dst": "google-labs-code/stitch-skills",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "larksuite/cli",
+          "rel": "relevant_to",
+          "dst": "larksuite-cli-vs-mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "larksuite-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 0,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "respuesta no parseable como lista JSON (primeros 200 chars: '[{\"idx\": 0, \"por_que_importa\": \"cierra la pieza que faltaba en el stack local-first code-intelligence. Hoy `mcp_codebase_memory_*` da 14 MCP tools (index_repository, search_graph, query_graph, trace_p')",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

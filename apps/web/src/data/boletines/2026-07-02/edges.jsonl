@@ -1,0 +1,37 @@
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-langchain-ai-openwiki", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-langchain-ai-openwiki", "dst": "tema:1-langchain-ai-openwiki", "rel": "trata", "added": "2026-07-02"}
+{"src": "langchain-ai/openwiki", "dst": "agent-targeted-docs", "rel": "implements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "langchain-ai/openwiki", "dst": "agent-skills-distribution", "rel": "implements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "langchain-ai/openwiki", "dst": "humanlayer/12-factor-agents", "rel": "complements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-openai-codex-plugin-cc", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-openai-codex-plugin-cc", "dst": "tema:2-openai-codex-plugin-cc", "rel": "trata", "added": "2026-07-02"}
+{"src": "openai/codex-plugin-cc", "dst": "multi-provider-routing", "rel": "enables", "added": "2026-07-02", "primera_mencion": null}
+{"src": "openai/codex-plugin-cc", "dst": "hermes-agent", "rel": "relevant_to", "added": "2026-07-02", "primera_mencion": null}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-tencentcloud-cubesandbox", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-tencentcloud-cubesandbox", "dst": "tema:3-tencentcloud-cubesandbox", "rel": "trata", "added": "2026-07-02"}
+{"src": "TencentCloud/CubeSandbox", "dst": "agent-sandbox", "rel": "implements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "TencentCloud/CubeSandbox", "dst": "parallel-agents-orchestration", "rel": "relevant_to", "added": "2026-07-02", "primera_mencion": null}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-allenai-olmocr", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-allenai-olmocr", "dst": "tema:4-allenai-olmocr", "rel": "trata", "added": "2026-07-02"}
+{"src": "allenai/olmocr", "dst": "pdf-ingestion-llm", "rel": "implements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "allenai/olmocr", "dst": "css-articulos", "rel": "relevant_to", "added": "2026-07-02", "primera_mencion": null}
+{"src": "allenai/olmocr", "dst": "graphify", "rel": "complements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-deusdata-codebase-memory-mcp", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-deusdata-codebase-memory-mcp", "dst": "tema:deep-dive", "rel": "trata", "added": "2026-07-02"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "MCP-based-agent-memory", "rel": "implements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "DeusData/codebase-memory-mcp", "dst": "graphify", "rel": "complements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "DeusData/codebase-memory-mcp", "dst": "mcp-registry", "rel": "implements", "added": "2026-07-02", "primera_mencion": null}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-juliusbrussee-caveman", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-juliusbrussee-caveman", "dst": "tema:juliusbrussee-caveman", "rel": "trata", "added": "2026-07-02"}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-dayuanjiang-next-ai-draw-io", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-dayuanjiang-next-ai-draw-io", "dst": "tema:dayuanjiang-next-ai-draw-io", "rel": "trata", "added": "2026-07-02"}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-yorukot-superfile", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-yorukot-superfile", "dst": "tema:yorukot-superfile", "rel": "trata", "added": "2026-07-02"}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-erincatto-box3d", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-erincatto-box3d", "dst": "tema:erincatto-box3d", "rel": "trata", "added": "2026-07-02"}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-rommapp-romm", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-rommapp-romm", "dst": "tema:rommapp-romm", "rel": "trata", "added": "2026-07-02"}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-mai-with-u-maibot", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-mai-with-u-maibot", "dst": "tema:mai-with-u-maibot", "rel": "trata", "added": "2026-07-02"}
+{"src": "boletin:2026-07-02", "dst": "item:https-github-com-op7418-guizang-social-card-skill", "rel": "menciona", "added": "2026-07-02"}
+{"src": "item:https-github-com-op7418-guizang-social-card-skill", "dst": "tema:op7418-guizang-social-card-skill", "rel": "trata", "added": "2026-07-02"}

@@ -1,0 +1,583 @@
+{
+  "version": 2,
+  "date": "2026-07-01",
+  "boletin_origen": "2026-07-01-trending.md",
+  "resumen_ejecutivo": "- **CC Switch 1.x** entra a la conversación como el primer \"GUI manager\" multi-tool que lista **oficialmente Hermes Agent** entre sus 7 proveedores soportados (junto a Claude Code, Codex, Gemini CLI, OpenCode, OpenClaw). Implicación directa para CSS: si Alejandro quiere unificar la config de su propio Hermes con la de los demás coding agents, esta es la pieza de referencia.\n- **Obscura (Rust, 10k ⭐)** se posiciona como el primer headless browser \"agent-first\" — 30 MB de RAM frente a 200+ MB de headless Chrome, antidetect integrado, drop-in con Playwright/Puppeteer. Tiene el ángulo exacto para la skill `web-scraping-viability`: viable sin proxies residenciales.\n- **Dao Code** (Tigición) es un coding agent terminal en TS que **explota el cache pricing de DeepSeek V4** (byte-stable prefixes, forks que reusan prefix) y presume **30× más barato que Opus 4.8** en SWE-bench-style reales (13/14 tareas). Skills/MCP/Hooks + Claude Code config compatible. Vale un watch.\n- **Matt Pocock Skills** + **Karpathy CLAUDE.md** refuerzan el patrón \"skills de autor conocido\" como la nueva distribución de metodologías de engineering. `npx skills` consolida el canal.\n- **TabFM (Google Research)** abre la puerta a zero-shot tabular con interface scikit-learn. No es producto oficial de Google, pero el paper de HN#24 ya marca la dirección.\n- Fuentes consultadas: GitHub Trending daily, Trendshift home, GitHub REST API cuando aplica. No se duplica el bulletin de blogs 08:00 (Vercel, HN, Pragmatic Engineer, OpenAI, Simon Willison).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "farion1231/cc-switch",
+      "url": "https://github.com/farion1231/cc-switch",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App de escritorio (Tauri 2) que centraliza la configuración de providers, MCP servers y Skills para **7 herramientas**: Claude Code, Claude Desktop, Codex, Gemini CLI, OpenCode, OpenClaw y **Hermes Agent**. Importación one-click con más de 50 provider presets (AWS Bedrock, NVIDIA NIM, relays comunitarios), tray quick-switch y cloud sync vía Dropbox/OneDrive/iCloud/WebDAV.",
+        "por_que_importa": "Es la primera GUI que trata a Hermes Agent como ciudadano de primera en el ecosistema multi-agent: junto a Claude Code, Codex, Gemini CLI u OpenClaw, puedes importar la config con un clic. La capa de providers se persiste en SQLite con writes atómicos, así que no se corrompen los archivos de configuración al alternar entre herramientas. Encaja con el flujo local-first del lector de Código Sin Siesta: tray app ligera, providers locales y sync opcional vía Dropbox/OneDrive/iCloud/WebDAV sin pasar por un servidor del proyecto.",
+        "madurez_senales": "111 490 ⭐ · 7 390 forks · Rust (frontend Tauri + TS) · MIT · creado 2025-08-04 · último push 2026-07-01 · https://ccswitch.io",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cc-switch",
+          "rel": "supports",
+          "dst": "hermes-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "cc-switch",
+          "rel": "competes_with",
+          "dst": "diegosouzapw/OmniRoute",
+          "primera_mencion": null
+        },
+        {
+          "src": "cc-switch",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "farion1231-cc-switch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "h4ckf0r0day/obscura",
+      "url": "https://github.com/h4ckf0r0day/obscura",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Engine headless browser escrito en Rust con V8 embebido, CDP y drop-in con Playwright/Puppeteer. Diseñado para web scraping y AI agents a escala. Tabla comparativa: 30 MB de RAM frente a los 200+ MB de Chrome, binario de 70 MB, antidetect integrado y page load de 85 ms frente a unos 500 ms. Acaban de alcanzar los 10k ⭐.",
+        "por_que_importa": "Cambia el cálculo de viabilidad de scraping tal y como lo aplica la skill `web-scraping-viability`: hasta ahora se asumía que sites con DataDome u otros WAF comerciales exigían Apify + proxies residenciales, y con Obscura el primer test de acceso directo tiene muchas más probabilidades de pasar. El motor OSS sigue siendo Apache-2.0 sin feature gating, y los 30 MB de RAM frente a los 200+ MB de Chrome, el binario de 70 MB y el page load de 85 ms lo hacen viable como runtime por defecto para agentes de scraping. La capa Obscura Cloud (managed + residential proxies) llega después, pero el motor principal ya resuelve el antidetect.",
+        "madurez_senales": "17 041 ⭐ · 1 187 forks · Rust · Apache-2.0 · creado 2026-04-13 · último push 2026-07-01 · https://obscura.sh",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "obscura",
+          "rel": "complements",
+          "dst": "D4Vinci/Scrapling",
+          "primera_mencion": null
+        },
+        {
+          "src": "obscura",
+          "rel": "competes_with",
+          "dst": "Panniantong/Agent-Reach",
+          "primera_mencion": null
+        },
+        {
+          "src": "obscura",
+          "rel": "solves",
+          "dst": "stealth-scraping",
+          "primera_mencion": null
+        },
+        {
+          "src": "obscura",
+          "rel": "relevant_to",
+          "dst": "web-scraping-viability",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "h4ckf0r0day-obscura",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "tigicion/dao-code",
+      "url": "https://github.com/tigicion/dao-code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI coding agent (`dao`) en TypeScript con 1M de context usando DeepSeek V4 Pro, byte-stable prefixes para exprimir el prefix-cache y forks que reusan cache para memory y reflection. Skills, MCP, Hooks y config compatible con Claude Code. Chinese-first pero bilingüe EN/",
+        "por_que_importa": "El caso de uso pragmático está en los números: ¥1.07 por 7 tareas estilo SWE-bench y 95.8% de cache hit con DeepSeek V4 Pro. La técnica de byte-stable prefixes para reusar prefix-cache entre forks es replicable a cualquier modelo con cache pricing, no es un truco atado a DeepSeek. La CLI `dao` es compatible con Skills, MCP y Hooks de Claude Code, así que encaja con el ecosistema de Hermes sin reescribir nada, aunque el repo es joven (v0.x, 869 ⭐) y la adopción aún es incipiente.",
+        "madurez_senales": "869 ⭐ · 19 forks · TypeScript · MIT · creado 2026-06-08 · último push 2026-06-29 · npm: `dao-code` · v0.x temprana, repo activo pero adopción aún incipiente",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "dao-code",
+          "rel": "implements",
+          "dst": "prefix-cache-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "dao-code",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": null
+        },
+        {
+          "src": "dao-code",
+          "rel": "uses",
+          "dst": "DeepSeek-V4",
+          "primera_mencion": null
+        },
+        {
+          "src": "dao-code",
+          "rel": "relevant_to",
+          "dst": "hermes-skills",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigicion-dao-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Colección de skills de agent del autor de Total TypeScript. Distribución vía `npx skills@latest add mattpocock/skills`. Filosofía explícita: \"small, easy to adapt, composable. Work with any model. Based on decades of engineering experience.\" Skills destacadas: `/grill-me` y `/grill-with-docs` (alignment vía grilling session), `CONTEXT.md` para shared language dev/domain y `/triage`.",
+        "por_que_importa": "Compite con `obra/superpowers` y `vercel-labs/skills` en el eje de distribución de skills, pero con filosofía opuesta: el autor (Matt Pocock, conocido por Total TypeScript) ofrece skills opt-in una a una en vez de un bundle monolítico, y el peso recae en el developer. Ataca directamente el failure mode más común de Claude Code y Codex: el misalignment entre lo que pide el dev y lo que ejecuta el agente, vía `/grill-me` y `/grill-with-docs` como sesiones de grilling, `CONTEXT.md` para fijar un lenguaje compartido dev/dominio, y `/triage` para ordenar trabajo.",
+        "madurez_senales": "152 159 ⭐ · 13 152 forks · Shell · MIT · creado 2026-02-03 · último push 2026-06-30 · newsletter 60k devs",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "mattpocock/skills",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": null
+        },
+        {
+          "src": "mattpocock/skills",
+          "rel": "competes_with",
+          "dst": "vercel-labs/skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "mattpocock/skills",
+          "rel": "implements",
+          "dst": "agent-skills-distribution",
+          "primera_mencion": null
+        },
+        {
+          "src": "mattpocock/skills",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mattpocock-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Un único `CLAUDE.md` de 65 líneas que condensa observaciones de Karpathy sobre errores comunes de LLM coding. 4 principios: **Think Before Coding** (state assumptions), **Simplicity First** (minimum code, no speculative), **Surgical Changes** (touch only what you must) y **Goal-Driven Execution** (success criteria, loop until verified).",
+        "por_que_importa": "las 4 secciones son universalmente aplicables a cualquier sesión de coding agent. Es una pieza muy concreta que se puede cargar en Hermes como skill adicional sin más infraestructura. Tendencia macro: la \"guía de estilo para agentes\" se está consolidando como artefacto.",
+        "madurez_senales": "185 537 ⭐ · 19 024 forks · sin lang declarado · sin license declarada (verificar LICENSE file) · creado 2026-01-27 · último push 2026-04-20",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "karpathy-skills",
+          "rel": "implements",
+          "dst": "agent-behavior-guidelines",
+          "primera_mencion": null
+        },
+        {
+          "src": "karpathy-skills",
+          "rel": "complements",
+          "dst": "humanlayer/12-factor-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "karpathy-skills",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-andrej-karpathy-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Agent Development Environment (ADE) con desktop y mobile companion que orquesta coding agents (Codex, Claude Code, OpenCode, Pi) en parallel git worktrees. Terminales Ghostty-class con WebGL, mobile app para monitor/steer y design mode (clic en cualquier UI → manda HTML/CSS/screenshot al agent).",
+        "por_que_importa": "Si el patrón fan-out (lanzar el mismo prompt contra cinco coding agents a la vez) se vuelve mainstream, el flujo local de un solo agent se queda corto: Orca es un ADE que orquesta Codex, Claude Code, OpenCode y Pi en worktrees git paralelos, con terminales Ghostty-class renderizadas vía WebGL, una mobile app para monitorizar y steering remoto, y un design mode que traduce cualquier clic en una UI a HTML/CSS/screenshot enviado al agent. Compite directamente con `AgentWrapper/agent-orchestrator` y `ogulcancelik/herdr`, y la novedad práctica frente a ellos es el mobile companion. Va backed por YC.",
+        "madurez_senales": "9 858 ⭐ · 666 forks · TypeScript · MIT · creado 2026-03-17 · último push 2026-07-01 · https://onOrca.dev · YC-backed",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "stablyai/orca",
+          "rel": "competes_with",
+          "dst": "AgentWrapper/agent-orchestrator",
+          "primera_mencion": null
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "competes_with",
+          "dst": "ogulcancelik/herdr",
+          "primera_mencion": null
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "implements",
+          "dst": "parallel-agents-orchestration",
+          "primera_mencion": null
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "google-research/tabfm",
+      "url": "https://github.com/google-research/tabfm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Tabular Foundation Model para clasificación/regresión zero-shot en datasets con columnas mixtas. In-context learning: pasas tu train como contexto y predice sin entrenar. Backend en JAX o PyTorch. \"Not an officially supported Google product\", pero un paper de HN lo presenta.",
+        "por_que_importa": "Para datasets pequeños o medianos sin etiquetar, TabFM elimina el paso de entrenar: pasas el train como contexto y predice, igual que un LLM hace in-context learning pero sobre columnas mixtas (numéricas y categóricas). Es el equivalente tabular de TimesFM y corre en JAX o PyTorch. Casos de uso concretos para un dev: clasificación de issues, scoring de PRs y detección de label noise en datasets de evaluación de agentes. El aviso Not an officially supported Google product y los 207 ⭐ invitan a tratarlo como experimento prometedor, no como producto estable.",
+        "madurez_senales": "207 ⭐ · 18 forks · Python · Apache-2.0 · creado 2026-06-16 · último push 2026-07-01 · v1.0.0 release",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "tabfm",
+          "rel": "implements",
+          "dst": "foundation-models-tabular",
+          "primera_mencion": null
+        },
+        {
+          "src": "tabfm",
+          "rel": "complements",
+          "dst": "timesfm",
+          "primera_mencion": null
+        },
+        {
+          "src": "tabfm",
+          "rel": "relevant_to",
+          "dst": "agent-evaluation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-research-tabfm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "altic-dev/FluidVoice",
+      "url": "https://github.com/altic-dev/FluidVoice",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App de dictado para macOS con STT on-device (Nemotron Speech 3.5, Parakeet Flash, Apple Speech y Whisper) y \"Fluid Intelligence\": una capa de AI enhancement local para formatting, capitalization y post-processing, sin cloud ni API keys. Alternativa local a Wispr Flow. v1.6.0 con rebuild de Parakeet casi a cero delay.",
+        "por_que_importa": "Cubre una necesidad muy concreta del flujo de Código Sin Siesta: dictado on-device en macOS para redactar artículos largos sin pasar por la nube, con varios motores STT locales (Nemotron Speech 3.5, Parakeet Flash, Apple Speech y Whisper) elegibles. La capa Fluid Intelligence hace formatting, capitalización y post-procesado también en local, sin API keys, alineado con el stack local-first. Reemplaza a Wispr Flow en local con la misma propuesta de valor. La licencia es GPL-3.0, no MIT, así que si el proyecto del lector es código cerrado hay que revisar las implicaciones de redistribución antes de integrarlo.",
+        "madurez_senales": "5 102 ⭐ · 311 forks · Swift · GPL-3.0 · creado 2025-09-21 · último push 2026-07-01 · https://altic.dev/fluid",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "FluidVoice",
+          "rel": "implements",
+          "dst": "on-device-stt",
+          "primera_mencion": null
+        },
+        {
+          "src": "FluidVoice",
+          "rel": "complements",
+          "dst": "ollama",
+          "primera_mencion": null
+        },
+        {
+          "src": "FluidVoice",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "altic-dev-fluidvoice",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "ripienaar/free-for-dev",
+      "url": "https://github.com/ripienaar/free-for-dev",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Catálogo clásico de SaaS/PaaS/IaaS con free tiers",
+        "por_que_importa": "",
+        "madurez_senales": "88k ⭐, MIT, último push 2026-07-01",
+        "accion_sugerida": "vigilar — (la edición 2026 trae categorías AI nuevas, merece scan de vez en cuando)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ripienaar-free-for-dev",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Lista pública de APIs gratuitas",
+        "por_que_importa": "",
+        "madurez_senales": "350k+ ⭐, MIT",
+        "accion_sugerida": "ignorar — (universalmente conocido, baja densidad de novedad)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "public-apis-public-apis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "microsoft/AI-For-Beginners",
+      "url": "https://github.com/microsoft/AI-For-Beginners",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "12 semanas / 24 lecciones, syllabus introductorio",
+        "por_que_importa": "",
+        "madurez_senales": "40k ⭐, MIT",
+        "accion_sugerida": "ignorar — (util como referencia para nuevos lectores de CSS, no para Alejandro)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-ai-for-beginners",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Mebus/cupp",
+      "url": "https://github.com/Mebus/cupp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Common User Passwords Profiler (wordlist generator para pentesting)",
+        "por_que_importa": "",
+        "madurez_senales": "6k ⭐, GPL-3.0, creado 2012",
+        "accion_sugerida": "ignorar — (proyecto histórico de seguridad ofensiva, sin aplicación CSS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mebus-cupp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "Robbyant/lingbot-map",
+      "url": "https://github.com/Robbyant/lingbot-map",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Foundation model feed-forward 3D para reconstruir escenas desde streaming data",
+        "por_que_importa": "",
+        "madurez_senales": "9k ⭐, Apache-2.0, Python",
+        "accion_sugerida": "vigilar — (paper reciente, lejos del radar CSS pero apunta a embodied AI)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "robbyant-lingbot-map",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "liweiyi88/onedump",
+      "url": "https://github.com/liweiyi88/onedump",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "DB admin/backup tool multi-database",
+        "por_que_importa": "",
+        "madurez_senales": "971 ⭐, MIT, Go",
+        "accion_sugerida": "vigilar — (útil para backups programados de la DB de Graphify)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "liweiyi88-onedump",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "CoreBunch/Instatic",
+      "url": "https://github.com/CoreBunch/Instatic",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Self-hosted visual CMS \"running in 1 minute\"",
+        "por_que_importa": "",
+        "madurez_senales": "1.6k ⭐, MIT, TypeScript",
+        "accion_sugerida": "ignorar — (nicho sin AI diferenciado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "corebunch-instatic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 15,
+      "titulo": "baairon/torlink",
+      "url": "https://github.com/baairon/torlink",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Torrent CLI zero-config",
+        "por_que_importa": "",
+        "madurez_senales": "1.8k ⭐, MIT, TypeScript",
+        "accion_sugerida": "ignorar — (fuera de scope)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "baairon-torlink",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 16,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "16/16 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/8 items reescritos; rechazados por longitud sospechosa: [4]; faltantes en respuesta: [4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-07-12",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-12 no presenta una sola noticia dominante: presenta la maduración simultánea de tres capas distintas del stack agentic, todas ellas en producción. El hilo conductor es la 'agent-skill lifecycle' entendida en sentido amplio — desde el skill como objeto distribuible (next-ai-draw-io pasando de Next.js app a MCP server firmado en npm vía OIDC), pasando por el skill como metodología y sub-categoría persistente del SDLC (obra/superpowers v6.1.1 limpiando packaging para portabilidad entre harnesses), hasta el skill como capacidad runtime ya consolidada en el escritorio del desarrollador (DesktopCommanderMCP saltando de 6.638 a 7.834★ en 48 h y abriéndose a Gemini CLI). Lo que comparten los tres hallazgos no es una tecnología, es un momento: el ecosistema deja de discutir 'qué es un skill' y empieza a discutir 'cómo se publica, cómo se mantiene entre harnesses, cómo se ejecuta en distintos sustratos'. Es un boletín de consolidación, no de anuncio.",
+  "convergencia_stack_css": "Los tres hallazgos de hoy encajan directamente con el stack local-first y las líneas editoriales ya conocidas de Código Sin Siesta. next-ai-draw-io materializa el patrón agent-skill lifecycle que CSS ya cubrió el 2026-07-05 y que el cron parallel-repo-explore-bulletin ya ejecuta como skill invocable — el siguiente paso, distribuir skills propios como packages npm firmados, es directamente accionable para el lector de CSS. obra/superpowers confirma la categoría agentic skills framework que CSS lleva siguiendo desde el 2026-07-03 con su nodo agent-skills-spec en el grafo, y su búsqueda de portabilidad entre harnesses coincide con la decisión editorial de CSS de mantenerse agente-agnóstico. DesktopCommanderMCP, por su parte, cierra el hueco del MCP de system-tier (terminal + filesystem + diff editing) que complementaría al chrome-devtools-mcp ya mapeado y correría junto a BrowserOS en una pila agentic local: exactamente el tipo de pieza que el stack local-first de un lector de CSS estaba esperando.",
+  "cruzado_grafo": "Los tres hallazgos de hoy refuerzan nodos ya existentes del grafo, todos con `primera_mencion` previa: next-ai-draw-io se conecta con next-ai-draw-io-momentum, mcp-registry y agent-skills-mcp-integration, todos introducidos el 2026-07-05; obra/superpowers refuerza agent-skills-spec (2026-07-03), compite con addyosmani/agent-skills (2026-07-03), complementa vercel-labs/skills (2026-07-03) y es relevant_to Nutlope/hallmark (2026-07-03); DesktopCommanderMCP implementa desktop-terminal-agent-runtime (2026-07-10), complementa chrome-devtools-mcp (2026-07-03), es relevant_to hermes-agent (2026-07-08) y a browseros-ai/BrowserOS (2026-07-10). Ninguno de los tres hallazgos principales de hoy introduce un nodo nuevo al grafo — el boletín de hoy es de profundización, no de descubrimiento.",
+  "tendencias_5_boletines": "Mirando el contexto de días previos recibido (2026-07-10 y 2026-07-11), el boletín de hoy cierra una secuencia clara de tres días sobre la consolidación del stack agentic: el 2026-07-10 hablaba del salto a '¿podemos correr un frontier OSS serio en hardware modesto?' y mapeaba piezas como BrowserOS y el runtime de escritorio; el 2026-07-11 trataba el momento en que el ecosistema pasa de 'piezas sueltas a sistema operativo' con seis hallazgos en producción más Microsoft en Postgres; hoy, 2026-07-12, la tesis se estrecha sobre el agent-skill lifecycle como categoría madura. La convergencia entre los tres días es notable: lo que el 2026-07-10 veía como piezas y el 2026-07-11 como sistema, hoy aparece ya con su ciclo de release, packaging entre harnesses y runtime de system-tier funcionando — el stack agentic local-first tiene, al menos a nivel de evidencia, las capas mínimas cubiertas. No tengo contexto de los días 2026-07-06 a 2026-07-09, así que cualquier afirmación sobre la ventana completa de cinco boletines sería especulación.",
+  "alertas": [
+    "obra/superpowers tiene 740★/día en trending después de 8 días sin aparecer, pero ese número corresponde a un pico de release, no a tracción orgánica sostenida — conviene no leerlo como señal de adopción masiva.",
+    "next-ai-draw-io es debut en trending hoy con 33.364★ acumulados, pero los 3 commits en 24 h son del propio 2026-07-12: el 'momentum' podría ser release-driven y no de comunidad, conviene vigilar si aguanta trending mañana sin release fresco.",
+    "DesktopCommanderMCP pasó de 6.638 a 7.834★ en 48 h — un salto de ~1.200★ en dos días es alto y vale la pena comprobar si hay_RELEASE-embudo (release + README change) detrás antes de interpretarlo como crecimiento de uso real.",
+    "El término 'agent-skill lifecycle' es una lectura editorial del editor, no una categoría auto-declarada por ninguno de los tres proyectos: si se replica en próximos boletines conviene etiquetarlo explícitamente como tesis editorial."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "El paso de next-ai-draw-io de Next.js app a MCP server firmado en npm vía OIDC es exactamente el patrón de empaquetado de skills propios que el lector de CSS podría replicar; merece nota dedicada con el detalle técnico de los commits #890 y #891."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "obra/superpowers v6.1.1 (2026-07-02) reorganiza ejemplos para alejarse de Codex y limpiar packaging hacia portabilidad entre harnesses — clave para confirmar si la categoría agentic-skills framework aguanta como sub-categoría o se diluye."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Probar DesktopCommanderMCP como pieza del stack local-first junto a chrome-devtools-mcp y BrowserOS para verificar el encaje real: terminal + filesystem + diff editing + integración con Gemini CLI es la pieza de system-tier que faltaba."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "El salto de 6.638 a 7.834★ en 48 h + la apertura a Gemini CLI merecen una nota corta sobre el cierre del hueco system-tier MCP en el stack agentic local-first, enlazando con los nodos ya en el grafo (desktop-terminal-agent-runtime, BrowserOS, chrome-devtools-mcp)."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,335 @@
+{
+  "version": 2,
+  "date": "2026-07-18",
+  "boletin_origen": "2026-07-18-trending.md",
+  "resumen_ejecutivo": "- **xAI publica `grok-build`**: el primer coding agent oficial de xAI debuta con 17.215★ y 3.151 forks en solo cuatro días (Apache-2.0, Rust, TUI fullscreen interactivo). Es la primera señal seria de que xAI quiere competir en el segmento \"agent coding\" más allá de los chatbots.\n- **Tokio-rs presenta `topcoat`**: el equipo oficial de Tokio (Rust async runtime) lanza un framework web \"batteries-included\" en Rust. Señal de que el ecosistema Rust se está armando con su propio Leptos/Axum-Plus, no solo adoptando tooling JS.\n- **`bojieli/ai-agent-book` es el libro que necesitábamos**: 10 capítulos open source (Apache-2.0) que cubren la fórmula `Agent = LLM + Contexto + Herramientas` con código ejecutable. Estructura: agent basics → context engineering → memoria/RAG → tools/MCP → coding agent → eval → post-training → self-evolution → multimodal → multi-agent. En chino pero traducible.\n- **HKUDS/Vibe-Trading entra al radar formal**: 24.737★, MIT, Python, releases quincenales (`v0.1.11` el 2026-07-10 con India equity + factores fundamentales). Completa el zoo HKUDS: DeepTutor (educación), nanobot (agente general), Vibe-Trading (finanzas). Patrón de equipo: tres productos verticales sobre el mismo runtime.\n- **`tirth8205/code-review-graph`** sube a 19.869★ en 4 meses: grafo persistente del codebase que reduce el contexto que el agente necesita leer. Categoría \"code intel graph\" madura al lado de `codebase-memory-mcp` (visto en grafo) y de `Graphify-Labs/graphify`.\n- **Tendencia estructural del día**: cuatro vendors con coding agents oficiales (xAI Grok Build, Anthropic Claude Code, OpenAI Codex, Google Antigravity SDK) **más** un zoo chino cada vez más serio (HKUDS, Alibaba page-agent). El segmento \"agente coding\" ya no es un mercado libre de open source — la frontera la marca el vendor con su harness.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (Python, TypeScript, Rust, Go, JavaScript), GitHub REST API para verificación.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "xai-org/grok-build",
+      "url": "https://github.com/xai-org/grok-build",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "el primer coding agent oficial de xAI",
+        "por_que_importa": "Item sin contenido: no hay descripcion, senales de madurez ni relacion con el grafo. No puedo reescribir lo que no se, asi que queda marcado como hueco editorial.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xai-org-grok-build",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "tokio-rs/topcoat",
+      "url": "https://github.com/tokio-rs/topcoat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework web oficial del equipo Tokio",
+        "por_que_importa": "Item sin contenido: no hay descripcion, senales de madurez ni relacion con el grafo. No puedo reescribir lo que no se, asi que queda marcado como hueco editorial.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tokio-rs-topcoat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "bojieli/ai-agent-book",
+      "url": "https://github.com/bojieli/ai-agent-book",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "libro open source sobre AI Agents (10 capítulos)",
+        "por_que_importa": "Item sin contenido: no hay descripcion, senales de madurez ni relacion con el grafo. No puedo reescribir lo que no se, asi que queda marcado como hueco editorial.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bojieli-ai-agent-book",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "HKUDS/Vibe-Trading",
+      "url": "https://github.com/HKUDS/Vibe-Trading",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente de trading multi-agente del grupo HKUDS",
+        "por_que_importa": "Item sin contenido: no hay descripcion, senales de madurez ni relacion con el grafo. No puedo reescribir lo que no se, asi que queda marcado como hueco editorial.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-vibe-trading",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "tirth8205/code-review-graph",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "grafo persistente del codebase para code review",
+        "por_que_importa": "Item sin contenido: no hay descripcion, senales de madurez ni relacion con el grafo. No puedo reescribir lo que no se, asi que queda marcado como hueco editorial.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tirth8205-code-review-graph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "RyanCodrai/turbovec",
+      "url": "https://github.com/RyanCodrai/turbovec",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Vector index sobre TurboQuant, escrito en Rust con bindings Python. AVX-512 + NEON SIMD, compite con FAISS",
+        "por_que_importa": "",
+        "madurez_senales": "13.404★, Python, MIT, creado 2026-03-26, último push 2026-06-10",
+        "accion_sugerida": "vigilar — (PyPI `turbovec` ya disponible; verificar si `Lance`/`pgvector` lo complementan o lo desplazan)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ryancodrai-turbovec",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "OpenMOSS/MOSS-Transcribe-Diarize",
+      "url": "https://github.com/OpenMOSS/MOSS-Transcribe-Diarize",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Modelo SOTA open source 0.9B para entender audio largo multi-speaker. Del equipo OpenMOSS (Kyutai Moshi)",
+        "por_que_importa": "",
+        "madurez_senales": "575★, Python, Apache-2.0, push 2026-07-15",
+        "accion_sugerida": "vigilar — (audio entiende/multi-speaker cubre un nicho que la skill `youtube-content` no resuelve — pre-candidato a integración cuando aparezca una skill de transcripción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openmoss-moss-transcribe-diarize",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "kvcache-ai/ktransformers",
+      "url": "https://github.com/kvcache-ai/ktransformers",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Framework para optimizar inferencia/fine-tune de LLMs heterogéneos (CPU+GPU mixto). Releases activos (`v0.6.3` el 2026-06-21)",
+        "por_que_importa": "",
+        "madurez_senales": "17.756★, Python, Apache-2.0, creado 2024-07-26",
+        "accion_sugerida": "vigilar — (relevante para setup local-first con GPU limitada + CPU disponible)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kvcache-ai-ktransformers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "superplanehq/superplane",
+      "url": "https://github.com/superplanehq/superplane",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Control plane open source para agentic engineering (orquestación de eventos + Kubernetes + Python). Releases semanales",
+        "por_que_importa": "",
+        "madurez_senales": "4.002★, Go, Apache-2.0, v0.29.0 el 2026-07-16",
+        "accion_sugerida": "vigilar — (encaja con el patrón \"control plane\" si CSS escribe sobre arquitecturas agentic en producción; comparar con `agentgateway` y `agent-substrate`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superplanehq-superplane",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "t8y2/dbx",
+      "url": "https://github.com/t8y2/dbx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Cliente de base de datos cross-platform de 20MB: MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, ClickHouse. GUI + TUI",
+        "por_que_importa": "",
+        "madurez_senales": "10.219★, Rust, Apache-2.0, push 2026-07-18",
+        "accion_sugerida": "vigilar — (utilidad para CSS; útil si algún tutorial requiere inspeccionar Postgres local)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "t8y2-dbx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "agent-substrate/substrate",
+      "url": "https://github.com/agent-substrate/substrate",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Agent Substrate: the core system\". 162 issues abiertos, release `v0.0.0` inicial",
+        "por_que_importa": "",
+        "madurez_senales": "795★, Go, Apache-2.0, push 2026-07-17",
+        "accion_sugerida": "vigilar — con cuidado (claim ambicioso, evidencia temprana; el ratio issues/stars es alto — 20%, señal de churn)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-substrate-substrate",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Fei-Away/Codex-Dream-Skin",
+      "url": "https://github.com/Fei-Away/Codex-Dream-Skin",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skin/template para Codex. Licencia NOASSERTION bloquea adopción empresarial",
+        "por_que_importa": "",
+        "madurez_senales": "9.088★, JavaScript, NOASSERTION, push 2026-07-17",
+        "accion_sugerida": "ignorar — (sin LICENSE clara; la tracción es por marca, no por producto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fei-away-codex-dream-skin",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "nethical6/conversation-steganography",
+      "url": "https://github.com/nethical6/conversation-steganography",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Esconder mensajes secretos en conversaciones \"normales\" usando LLMs",
+        "por_que_importa": "",
+        "madurez_senales": "370★, Go, GPL-3.0, debut hoy",
+        "accion_sugerida": "vigilar — (categoría exótica pero interesante para enseñar LLM capabilities; GPL-3.0 limita adopción comercial pero permite experimentar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nethical6-conversation-steganography",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

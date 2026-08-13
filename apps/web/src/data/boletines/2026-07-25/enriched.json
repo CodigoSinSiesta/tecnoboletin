@@ -1,0 +1,359 @@
+{
+  "version": 2,
+  "date": "2026-07-25",
+  "boletin_origen": "2026-07-25-trending.md",
+  "resumen_ejecutivo": "- **Visa publica VVAH, su harness agentic de seguridad (Python, Apache-2.0)** — un pipeline SAST en 4 fases / 11 etapas construido sobre aprendizajes de Project Glasswing. Es la primera vez que una red de pagos tier-1 open-sourcea su infra interna de vulnerabilidad agentic; el ángulo editorial es fuerte: las grandes empresas están externalizando pipelines defensivos como código abierto para acelerar el ecosistema.\n- **Google/magika vuelve a trending (17.5k ⭐, Python+Rust, Apache-2.0)** — el detector de tipos de archivo con deep learning que Google usa internamente para enrutar Gmail, Drive y Safe Browsing reaparece en trending tres meses después de su última release. Es la demostración canónica de que \"ML de pocos MB en CPU\" sigue siendo infra crítica en 2026.\n- **permissionlesstech/bitchat (27.6k ⭐ en 12 meses)** — la app de mensajería Bluetooth mesh + Nostr de Jack Dorsey duplicó estrellas en un mes. No es estrictamente IA/dev pero consolida el patrón \"infra descentralizada, peer-to-peer, sin cuentas\" como tendencia duradera.\n- **visa/visa-vulnerability-agentic-harness, headroomlabs-ai/headroom y oraios/serena** confirman un cluster emergente: \"pipelines agentic de seguridad + memoria semántica + compresión de contexto\" como la nueva frontera del tooling enterprise para coding agents. Visa, headroom y serena aparecen juntos en trending por primera vez.\n- 12 repos nuevos de un total de 31 únicos entre GitHub Trending y Trendshift; resto son repeticiones de días previos con señal sostenida. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub REST API.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "visa/visa-vulnerability-agentic-harness",
+      "url": "https://github.com/visa/visa-vulnerability-agentic-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "visa-visa-vulnerability-agentic-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "google/magika",
+      "url": "https://github.com/google/magika",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-magika",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "permissionlesstech/bitchat",
+      "url": "https://github.com/permissionlesstech/bitchat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "permissionlesstech-bitchat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "yorukot/superfile",
+      "url": "https://github.com/yorukot/superfile",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yorukot-superfile",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Lordog/dive-into-llms",
+      "url": "https://github.com/Lordog/dive-into-llms",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lordog-dive-into-llms",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Pumpkin-MC/Pumpkin",
+      "url": "https://github.com/Pumpkin-MC/Pumpkin",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pumpkin-mc-pumpkin",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "CoreBunch/Instatic",
+      "url": "https://github.com/CoreBunch/Instatic",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "corebunch-instatic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "OtterMind/Chat2DB",
+      "url": "https://github.com/OtterMind/Chat2DB",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ottermind-chat2db",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "chrislgarry/Apollo-11",
+      "url": "https://github.com/chrislgarry/Apollo-11",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Código fuente original del Apollo 11 Guidance Computer. Es histórico y de archivo: no es IA ni dev, pero aparece como tendencia estable cada aniversario.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 71445, push 2026-07-15, Assembly, NOASSERTION",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chrislgarry-apollo-11",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "makerspet/oomwoo",
+      "url": "https://github.com/makerspet/oomwoo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Robot aspirador open source para montar uno mismo (Raspberry Pi + ROS2 + LiDAR 2D + ESP32). Sirve como ejemplo de «impresión 3D + ROS en domótica autoalojada».",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 6078, push 2026-07-25, Python, Apache-2.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "makerspet-oomwoo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "permissionlesstech/bitchat-android",
+      "url": "https://github.com/permissionlesstech/bitchat-android",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Versión Android de bitchat, gemela del repositorio en Swift.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 5973, push 2026-07-12, Kotlin, GPL-3.0",
+        "accion_sugerida": "vigilar — (paralelo al repo iOS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "permissionlesstech-bitchat-android",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "iv-org/invidious",
+      "url": "https://github.com/iv-org/invidious",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Front-end alternativo a YouTube que no requiere cuenta de Google. Es una tendencia estable de larga duración, ya mencionada en boletines previos.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 20713, push 2026-07-23, Crystal, AGPL-3.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "iv-org-invidious",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "ComposioHQ/awesome-claude-skills",
+      "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Lista curada de skills para Claude. Ya apareció en días previos y sigue empujando como referencia.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ verificado vía API 2026-07-24, Python",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "composiohq-awesome-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "headroomlabs-ai/headroom",
+      "url": "https://github.com/headroomlabs-ai/headroom",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Proxy de compresión de contexto. Candidato a análisis en profundidad en próximos boletines.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 50k+, push diario, Python, Apache-2.0",
+        "accion_sugerida": "explorar — (si Alejandro confirma interés)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "headroomlabs-ai-headroom",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/8 items reescritos; faltantes en respuesta: [0, 1, 2, 3, 4, 5, 6, 7]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

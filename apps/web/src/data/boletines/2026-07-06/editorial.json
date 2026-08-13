@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-06",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy cierra un tríptico que llevaba tres días formándose: si el 3 de julio mostró cómo se estandarizan y transportan las skills (Agent Skills spec, ECC, obras tipo obra/superpowers), y el 5 mostró cómo se les enganchan interfaces, contenedores y arneses (T3MP3ST, drawio-skill, terax-ai, claude-skills), hoy aparece el problema que faltaba en medio: cómo se persiste y coordina el trabajo que esas skills están haciendo. planning-with-files y gastown no añaden una skill más al catálogo: añaden una capa de planeación persistente y orquestación multi-agente con estado git-backed, justo lo que los coding agents pierden cada vez que se reinicia el proceso. En paralelo, zvec introduce una alternativa reproducible al stack RAG de tres piezas (Postgres + pgvector + servidor externo), y awesome-claude-code empieza a delatar que el catálogo de skills está cruzando el umbral donde la curaduría pesa más que la cantidad.",
+  "convergencia_stack_css": "Tres hallazgos de hoy aterrizan directamente sobre piezas ya desplegadas en el stack local-first de CSS. planning-with-files implementa agent-skills-spec (ya cubierto el 03-07) y complementa Graphify con planeación en archivos — el mismo patrón de memoria persistida en disco que Hermes ya usa vía Obsidian + kanban en filesystem, y que el subagente coder/planner/qa ejecuta a diario. gastown es relevante_to hermes-agent y complementa obra/superpowers: si el tablero Kanban interno es hoy el equivalente manual de un agente coordinador, gastown dibuja la versión agentic-git-backed del mismo problema. zvec, por su parte, complementa Graphify con un vector DB in-process Apache-2.0 que elimina la dependencia de un servidor separado, alineado con la preferencia local-first del stack.",
+  "cruzado_grafo": "El grafo se refuerza de forma neta en los nodos agent-skills-spec y obra/superpowers (ambos con primera mención 2026-07-03) gracias a planning-with-files y gastown, que vuelven a tocarlos desde dos ángulos nuevos: especificación cumplida + planeación persistente, y orquestación + estado git-backed. Graphify-Labs/graphify (primera mención 2026-07-04) aparece complementado dos veces hoy, por zvec y por planning-with-files — señal de que la conversación sobre Graphify está pasando de \"cómo se mapea\" a \"cómo se persiste y se consulta\". hermes-agent (primera mención 2026-07-03) reaparece como relevant_to de gastown, lo que mantiene viva la línea de orquestación multi-perfil. css-articulos (primera mención 2026-07-04) recibe una entrada nueva vía RuView como tema publicable. No hay primera_mencion para in-process-vector-db, faiss, file-based-agent-planning, agent-orchestrator-runtime, noassertion-license-risk ni wifi-csi-sensing: esos nodos nacen hoy en el grafo.",
+  "tendencias_5_boletines": "Visto en conjunto con el 03-07 (estandarización de skills y diversificación de interfaces) y el 05-07 (arneses, skills acumulativas y contenedores alternativos para coding agents), el boletín de hoy consolida una tendencia clara de tres días: el centro de gravedad del ecosistema agentic se está moviendo del modelo a la infraestructura que lo rodea — planeación persistente, orquestación con estado, catálogos que crecen más rápido que su curaduría y, en paralelo, infraestructura de datos reproducible para RAG. Sin contexto previo a 03-07 no se podría leer esta coherencia; el contexto recibido alcanza para confirmar la tendencia, no para cuantificarla.",
+  "alertas": [
+    "awesome-claude-code arrastra riesgo de licencia noassertion en parte de su catálogo: enlazarla como referencia exige curaduría previa de cada skill que se recomiende.",
+    "El número 24k★ y 16k★ de planning-with-files y gastown es tracción muy alta para repos tan verticales — conviene verificar mantenimiento real (frecuencia de commits, issues abiertos, releases firmadas) antes de proponer adopción.",
+    "gastown habla de escalar a 20-30 agentes concurrentes: claim ambicioso que choca con los límites prácticos de rate-limit compartidos (la propia clave DeepSeek de CSS es ejemplo de ello); el marketing del repo va por delante de evidencia reproducible.",
+    "zvec v0.5.0 es release reciente (12 jun 2026) con API todavía joven; los benchmarks de latencia que circulan son del propio vendor — falta contraste independiente antes de recomendarlo como reemplazo de pgvector.",
+    "RuView mezcla hardware (ESP32), un orquestador propietario (Cognitum Seed) y un modelo open source cuantizado: el eslabón comercial no es open source, así que \"reproducible\" sólo aplica a la capa WiFi/CSI."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "planning-with-files es la pieza que más directamente mapea al patrón kanban-en-filesystem de CSS; merece un artículo corto sobre si el completion gate determinista cubre el hueco de memoria entre /clear en Hermes."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "gastown concreta la pregunta que el contexto del 03-07 dejó abierta: cómo coordinar coder/planner/qa con estado git-backed en lugar de traspasos manuales. Vale un deep-dive antes de proponer cualquier cambio al tablero."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "zvec Apache-2.0 in-process encaja con la preferencia local-first; explorar si permite simplificar el setup RAG de CSS frente a Postgres+pgvector y bajo qué coste de query."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "awesome-claude-code cruzando 800 entradas marca el umbral donde la curaduría pesa más que el catálogo; vigilar de cerca qué repos se consolidan como referencia y cuáles se quedan en moda."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "RuView es atípico para la línea agentic pero publicable como historia corta de edge AI + WiFi CSI + Matter; proponer como artículo independiente en css-articulos en lugar de forzar su encaje en el tríptico de skills."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

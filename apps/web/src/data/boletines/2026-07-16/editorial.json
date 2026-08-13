@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-16",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy es un mapa del stack agéntico que se está consolidando silenciosamente alrededor del MCP: un agente ligero con pedigree académico (HKUDS/nanobot), un gateway dedicado al tráfico agéntico (agentgateway), un framework fullstack de MCP (mcp-use), un SDK oficial de un gigante fintech entrando al terreno de los agentes (Stripe /ai), una capa de memoria local continua (screenpipe), un formato de columna multimodal (lance) y un framework de 'AI teams' con gobierno (clowder). El hilo conductor no es una moda ni un framework nuevo: es que las piezas para montar agentes serios — runtime ligero, gateway de tráfico, memoria persistente, formato de datos, gobierno multi-agente y entrada a dinero real — están dejando de ser proyectos sueltos y empiezan a encajar como infraestructura. Siete hallazgos, todos con ángulo técnico claro y ninguno con hype vacío: es un día para tomar nota del tablero, no para correr a adoptarlo todo.",
+  "convergencia_stack_css": "Hay convergencia real con el stack local-first de CSS, pero hay que leerla con cuidado. Screenpipe encaja directamente con la línea Obsidian + memoria local buscable (cambio de licencia reciente lo deja source-available, no open source puro — relevante para el criterio 'local-first sin atarse a SaaS'). Agentgateway y mcp-use encajan en la pregunta práctica que ya apareció en el boletín del 14-07 sobre 'con qué harness ejecuto al agente': son la capa de transporte/gateway que falta entre un runtime ligero tipo nanobot y un MCP server real. Lance-format entra en el lado datos del stack (PGLite/pgvector ya cubre búsqueda semántica; lance sería la pieza para datos multimodales). El resto (Stripe /ai, clowder) queda más lejos del núcleo local-first pero señala hacia dónde se mueve el dinero.",
+  "cruzado_grafo": "Ninguno de los hallazgos de hoy trae `primera_mencion` en los datos recibidos, así que no corresponde hablar de nodos reforzados ni de fechas previas en el grafo. Lo que sí aparece por primera vez hoy, y queda como nodos nuevos a marcar, son: el grupo HKUDS como cluster reproducible de investigación agéntica (nanobot se suma a DeepTutor y Vibe-Trading del mismo grupo), la categoría 'gateway agéntico' con agentgateway, y la entrada formal de Stripe al terreno agente vía SDK dedicado. Estos tres nodos conviene etiquetarlos en el grafo para cruzarlos cuando lleguen proyectos vecinos en próximas semanas.",
+  "tendencias_5_boletines": "El contexto de continuidad recibido cubre solo dos días previos (14-07 y 15-07), no cinco boletines, así que cualquier lectura de 'tendencia a 5 días' sería inventada. Con lo que hay: el 14-07 preguntó '¿con qué harness ejecuto al agente?' y propuso respuesta desde tooling; el 15-07 preguntó '¿qué partes del trabajo de oficina se están reescribiendo primero para agentes?'. El boletín de hoy desplaza la pregunta un paso más abajo — '¿qué infraestructura de transporte, memoria y datos necesita ese agente para ser serio?' — y lo responde con piezas concretas (gateway, memoria local, formato columna, framework fullstack MCP). Es continuación natural, no salto de tema.",
+  "alertas": [
+    "screenpipe cambió de licencia el 06/10 y ya no es open source puro: es source-available. Si entra al stack local-first de CSS, hay que revisar términos antes de depender de él.",
+    "Stripe /ai es SDK oficial pero no es open source del repo del boletín: confirmar licencia del SDK antes de cualquier evaluación seria.",
+    "agentgateway se autodescribe como 'CNCF-aligned' por topics (kubernetes, mcp, service-mesh): eso no es pertenencia formal a CNCF. Tratar la etiqueta como marketing hasta verificar.",
+    "clowder-ai (zts212653) no tiene tracción visible comparable al resto del boletín: el ángulo 'AI teams con gobierno' es interesante pero el autor es individual y el riesgo de abandono es real.",
+    "HKUDS/nanobot presume 45k estrellas en 5 meses: cifra impresionante pero a validar contra GitHub API; los repos académicos chinos suelen tener estrella-inflación por compartirse en wechat/qq."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "screenpipe es la pieza que más directamente encaja con el stack local-first de CSS (memoria local + Obsidian); vale la pena prototipar una ingesta de pipe → vault y medir coste real antes de adoptarlo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "HKUDS/nanobot tiene el perfil ligero + respaldo académico que cuadra con la línea 'agente serio sin atarse a OpenAI/Anthropic'; clonarlo en ~/proyectos/ y compararlo con el setup actual de Hermes vale la pena."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "agentgateway señala la capa de transporte agéntico que el boletín del 14-07 dejó abierta. No adoptarlo aún, pero seguir su evolución: si madura, cambia cómo se montan los MCP servers en producción."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "mcp-use consolida el lado 'framework fullstack de MCP' que cualquier operador local-first va a tocar tarde o temprano; es material natural para un artículo corto explicando qué resuelve frente a un cliente MCP a secas."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "lance-format cubre multimodal en columna, pieza que el stack actual (pgvector) no aborda bien. Vigilar sin integrar: si PGLite/pgvector se queda corto para imágenes/audio, lance es el sustituto natural."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

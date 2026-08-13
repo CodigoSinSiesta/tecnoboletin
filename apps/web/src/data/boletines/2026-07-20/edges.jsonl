@@ -1,0 +1,50 @@
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-hkuds-nanobot", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-hkuds-nanobot", "dst": "tema:hkuds-nanobot", "rel": "trata", "added": "2026-07-20"}
+{"src": "HKUDS/nanobot", "dst": "Hermes", "rel": "complements", "added": "2026-07-20", "primera_mencion": "2026-07-18"}
+{"src": "HKUDS/nanobot", "dst": "personal_agent_runtime", "rel": "implements", "added": "2026-07-20", "primera_mencion": "2026-07-18"}
+{"src": "nanobot", "dst": "MCP_protocol", "rel": "uses", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-github-copilot-sdk", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-github-copilot-sdk", "dst": "tema:github-copilot-sdk", "rel": "trata", "added": "2026-07-20"}
+{"src": "github/copilot-sdk", "dst": "OpenAI_Agents_SDK", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "copilot-sdk", "dst": "agent_in_your_own_app", "rel": "enables", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-moonshotai-kimi-cli", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-moonshotai-kimi-cli", "dst": "tema:moonshotai-kimi-cli", "rel": "trata", "added": "2026-07-20"}
+{"src": "MoonshotAI/kimi-cli", "dst": "Anthropic_Claude_Code", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "kimi-cli", "dst": "OpenAI_Codex_CLI", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-1jehuang-jcode", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-1jehuang-jcode", "dst": "tema:1jehuang-jcode", "rel": "trata", "added": "2026-07-20"}
+{"src": "jcode", "dst": "minimal_agent_harness", "rel": "implements", "added": "2026-07-20", "primera_mencion": null}
+{"src": "jcode", "dst": "agent_loop_best_practices", "rel": "inspires", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-canner-wrenai", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-canner-wrenai", "dst": "tema:canner-wrenai", "rel": "trata", "added": "2026-07-20"}
+{"src": "WrenAI", "dst": "text_to_sql_reliability", "rel": "solves", "added": "2026-07-20", "primera_mencion": null}
+{"src": "WrenAI", "dst": "proprietary_text_to_sql_solutions", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "WrenAI", "dst": "open_context_layer_pattern", "rel": "uses", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-every-app-open-seo", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-every-app-open-seo", "dst": "tema:every-app-open-seo", "rel": "trata", "added": "2026-07-20"}
+{"src": "open-seo", "dst": "seo_automation_for_agents", "rel": "solves", "added": "2026-07-20", "primera_mencion": null}
+{"src": "open-seo", "dst": "Semrush", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "open-seo", "dst": "Ahrefs", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "open-seo", "dst": "MCP_protocol", "rel": "uses", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-panniantong-agent-reach", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:panniantong-agent-reach", "rel": "trata", "added": "2026-07-20"}
+{"src": "Agent-Reach", "dst": "Scrapling", "rel": "complements", "added": "2026-07-20", "primera_mencion": null}
+{"src": "Agent-Reach", "dst": "Obscura", "rel": "complements", "added": "2026-07-20", "primera_mencion": null}
+{"src": "Agent-Reach", "dst": "social_media_blocking", "rel": "solves", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-lyogavin-airllm", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-lyogavin-airllm", "dst": "tema:lyogavin-airllm", "rel": "trata", "added": "2026-07-20"}
+{"src": "airllm", "dst": "local_70B_inference", "rel": "enables", "added": "2026-07-20", "primera_mencion": null}
+{"src": "airllm", "dst": "GGUF_offloading", "rel": "competes_with", "added": "2026-07-20", "primera_mencion": null}
+{"src": "airllm", "dst": "Hermes_local_LLM_strategy", "rel": "relevant_to", "added": "2026-07-20", "primera_mencion": null}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-trycua-cua", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-trycua-cua", "dst": "tema:trycua-cua", "rel": "trata", "added": "2026-07-20"}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-astrbotdevs-astrbot", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-astrbotdevs-astrbot", "dst": "tema:astrbotdevs-astrbot", "rel": "trata", "added": "2026-07-20"}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-sentient-os-labs-sentient-os", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-sentient-os-labs-sentient-os", "dst": "tema:sentient-os-labs-sentient-os", "rel": "trata", "added": "2026-07-20"}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-oblien-openship", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-oblien-openship", "dst": "tema:oblien-openship", "rel": "trata", "added": "2026-07-20"}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-earthtojake-text-to-cad", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-earthtojake-text-to-cad", "dst": "tema:earthtojake-text-to-cad", "rel": "trata", "added": "2026-07-20"}
+{"src": "boletin:2026-07-20", "dst": "item:https-github-com-dioxuslabs-dioxus", "rel": "menciona", "added": "2026-07-20"}
+{"src": "item:https-github-com-dioxuslabs-dioxus", "dst": "tema:dioxuslabs-dioxus", "rel": "trata", "added": "2026-07-20"}

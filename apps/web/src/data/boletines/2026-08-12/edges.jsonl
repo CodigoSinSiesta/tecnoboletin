@@ -1,0 +1,52 @@
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-boundaryml-baml", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-boundaryml-baml", "dst": "tema:boundaryml-baml", "rel": "trata", "added": "2026-08-12"}
+{"src": "repo:BoundaryML/baml", "dst": "concept:agent-dsl-layer", "rel": "implements", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:BoundaryML/baml", "dst": "concept:tool-schema-via-prompting", "rel": "competes_with", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:BoundaryML/baml", "dst": "concept:structured-data-extraction", "rel": "relevant_to", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:BoundaryML/baml", "dst": "concept:agent_harness", "rel": "relevant_to", "added": "2026-08-12", "primera_mencion": null}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-nvidia-nemo-switchyard", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-nvidia-nemo-switchyard", "dst": "tema:nvidia-nemo-switchyard", "rel": "trata", "added": "2026-08-12"}
+{"src": "repo:NVIDIA-NeMo/Switchyard", "dst": "concept:model_router_for_coding_agent", "rel": "implements", "added": "2026-08-12", "primera_mencion": "2026-08-11"}
+{"src": "repo:NVIDIA-NeMo/Switchyard", "dst": "repo:duolahypercho/codex-router", "rel": "competes_with", "added": "2026-08-12", "primera_mencion": "2026-08-11"}
+{"src": "repo:NVIDIA-NeMo/Switchyard", "dst": "company:nvidia", "rel": "relevant_to", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:NVIDIA-NeMo/Switchyard", "dst": "concept:local-multimodal-inference", "rel": "complements", "added": "2026-08-12", "primera_mencion": "2026-08-11"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-cactus-compute-needle", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-cactus-compute-needle", "dst": "tema:cactus-compute-needle", "rel": "trata", "added": "2026-08-12"}
+{"src": "repo:cactus-compute/needle", "dst": "concept:tiny-foundation-model", "rel": "implements", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:cactus-compute/needle", "dst": "concept:on-device-agent", "rel": "enables", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:cactus-compute/needle", "dst": "repo:antirez/h3.c", "rel": "complements", "added": "2026-08-12", "primera_mencion": "2026-08-11"}
+{"src": "repo:cactus-compute/needle", "dst": "framework:tinygrad", "rel": "relevant_to", "added": "2026-08-12", "primera_mencion": null}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-egoist-waku", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-egoist-waku", "dst": "tema:egoist-waku", "rel": "trata", "added": "2026-08-12"}
+{"src": "repo:egoist/waku", "dst": "concept:local-first-agent-workspace", "rel": "implements", "added": "2026-08-12", "primera_mencion": "2026-08-10"}
+{"src": "repo:egoist/waku", "dst": "framework:gpui", "rel": "uses", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:egoist/waku", "dst": "repo:openclaw/openclaw", "rel": "competes_with", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:egoist/waku", "dst": "repo:paperclipai/paperclip", "rel": "competes_with", "added": "2026-08-12", "primera_mencion": "2026-08-11"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-embabel-embabel-agent", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-embabel-embabel-agent", "dst": "tema:embabel-embabel-agent", "rel": "trata", "added": "2026-08-12"}
+{"src": "repo:embabel/embabel-agent", "dst": "concept:agent_harness", "rel": "implements", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:embabel/embabel-agent", "dst": "framework:spring", "rel": "relevant_to", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:embabel/embabel-agent", "dst": "concept:langchain", "rel": "competes_with", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:embabel/embabel-agent", "dst": "concept:enterprise-agents", "rel": "enables", "added": "2026-08-12", "primera_mencion": null}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-tencent-hunyuan-hunyuan3d-worldclaw", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-tencent-hunyuan-hunyuan3d-worldclaw", "dst": "tema:tencent-hunyuan-hunyuan3d-worldclaw", "rel": "trata", "added": "2026-08-12"}
+{"src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw", "dst": "concept:agentic-3d-generation", "rel": "implements", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw", "dst": "company:tencent", "rel": "relevant_to", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw", "dst": "company:worldlabs", "rel": "competes_with", "added": "2026-08-12", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw", "dst": "concept:open-world-gen-from-text", "rel": "enables", "added": "2026-08-12", "primera_mencion": null}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-calesthio-openmontage", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-calesthio-openmontage", "dst": "tema:calesthio-openmontage", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-rtk-ai-rtk", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-rtk-ai-rtk", "dst": "tema:rtk-ai-rtk", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-antigmalabs-ante", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-antigmalabs-ante", "dst": "tema:antigmalabs-ante", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-lightningpixel-modly", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-lightningpixel-modly", "dst": "tema:lightningpixel-modly", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-tencent-weknora", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-tencent-weknora", "dst": "tema:tencent-weknora", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-krillinai-krillinai", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-krillinai-krillinai", "dst": "tema:krillinai-krillinai", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-index-tts-index-tts", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-index-tts-index-tts", "dst": "tema:index-tts-index-tts", "rel": "trata", "added": "2026-08-12"}
+{"src": "boletin:2026-08-12", "dst": "item:https-github-com-spinabot-brigade", "rel": "menciona", "added": "2026-08-12"}
+{"src": "item:https-github-com-spinabot-brigade", "dst": "tema:spinabot-brigade", "rel": "trata", "added": "2026-08-12"}

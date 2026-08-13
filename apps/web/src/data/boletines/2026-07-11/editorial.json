@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-07-11",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-11 no habla de un solo proyecto: habla del momento en que el ecosistema de AI coding agents pasa de piezas sueltas a un sistema operativo con sus capas visibles. Hoy entran seis/seis hallazgos en producción (más Microsoft en Postgres) y el hilo conductor es claro: alrededor del runtime de un agente ya hay oferta seria para (a) memoria estructural del código (memtrace-public), (b) atención humana curada (agent-chief), (c) navegador nativo con agentes (BrowserOS), (d) captura de sesión al nivel del commit (entireio/cli), (e) calidad visual explícita como skill (hallmark), (f) mundo interactivo en desktop (ABot-World). Cada uno resuelve un dolor distinto del mismo bucle. Lo que hace especial al día es que ya no estamos mirando benchmarks: estamos viendo el andamiaje operativo del agente adoptado en serio.",
+  "convergencia_stack_css": "La convergencia con el stack local-first de CSS es fuerte y explícita. Tres hallazgos aterrizan directo sobre piezas que el usuario ya tiene cargadas: memtrace-public se monta sobre la categoría mcp_codebase_memory_* (14 tools hoy, ahora con graph persistente bi-temporal y mención a Hermes como target soportado); agent-chief viene a llenar el hueco de atención que ya tensiona tener Cron snapshot 03:00 + blogwatcher 08:00 + boletín 09:10 + nota diaria 22:00 corriendo en paralelo; entireio/cli formaliza el patrón rewind a commit limpio que el cron snapshot hace al nivel filesystem. BrowserOS completa el bucle local-first con Ollama/DeepSeek usando Chrome DevTools MCP. Hallmark entra por la línea editorial \"calidad sobre velocidad, criterio sobre hype\" (skills anti-slop). Microsoft/pg_durable encaja con PGLite/Postgres/pgvector como pieza durable-execution, aunque con la matización de la licencia NOASSERTION. ABot-World es la pieza menos alineada con el stack actual (requiere RTX 5090) pero refuerza la tesis local-first en interactive AI.",
+  "cruzado_grafo": "El grafo de hoy se refuerza en tres frentes y abre dos nodos nuevos. Se consolidan: NousResearch/hermes-agent (mencionado por memtrace-public, agent-chief y entireio/cli — suma a las dos menciones previas del 2026-07-08), ollama (visto en 2026-07-04, ahora usado por BrowserOS), obra/superpowers (visto 2026-07-03, complementado por entireio/cli), ChromeDevTools/chrome-devtools-mcp (visto 2026-07-03, complementado por BrowserOS), DeusData/codebase-memory-mcp (visto 2026-07-04, ahora competido por memtrace-public). Aparecen por primera vez hoy como nodos diferenciados: bi-temporal-code-graph, chief-of-staff-attention-layer, privacy-first-agentic-browser, anti-slop-design-skill, agent-session-capture, desktop-world-model, in-database-durable-execution, agent-native-enterprise-cli. Notable: huggingface/speech-to-speech (visto 2026-07-09) entra en relación con ABot-World, y arxiv-2607.08763 (sin mención previa) conecta con la tesis world-model. larksuite/cli abre el nodo larksuite-cli-vs-mcp que en sí mismo es un meta-análisis, no un proyecto.",
+  "tendencias_5_boletines": "Mirando los tres boletines previos disponibles (2026-07-09, 2026-07-10 y el fragmento de 2026-07-08), se ve una aceleración, no una meseta: del 09 al 11 el foco se mueve desde consolidación de pesos pesados (Microsoft/Google moviéndose sobre design/charts para agentes) hacia capas especializadas del runtime del agente. El 2026-07-10 ya marcaba el giro hacia 'frontier OSS en hardware modesto' (Colibri/GLM-5.2); hoy la dirección es complementaria — los modelos ya caben en desktop, faltan las capas de soporte (memoria, atención, duración, calidad visual). El boletín de hoy cierra el arco local-first-stack que empezó el 09: ya no son anécdotas, son un sistema con todas sus piezas visibles. Tendencia clara: la categoría 'herramientas para el agente' (no para el modelo, no para el humano) se convierte en el centro de gravedad del radar.",
+  "alertas": [
+    "memtrace-public: la licencia es EULA propietario Syncable Dev, NO OSS — revocable, sin uso comercial, sin redistribución. Antes de cualquier adopción operativa leer el EULA completo; el free tier personal no protege de un cierre unilateral del grifo.",
+    "microsoft/pg_durable: la licencia aparece como NOASSERTION en la API de GitHub. PostgreSQL License es permisiva, pero la falta de afirmación clara en el repo merece verificación directa en LICENSE antes de meterlo en stack de producción.",
+    "BrowserOS: AGPL v3 cierra la puerta a adopción cerrada pero hace viable un fork propio si el proyecto original cambia de rumbo; tener esa red de seguridad en mente.",
+    "Hallmark: la categoría 'anti-slop design skill' es reciente (debut) y la promesa de 57 slop-test gates + self-critique pre-emit es ambiciosa — esperar validación independiente antes de apostar flujo editorial por encima de revisión humana.",
+    "ABot-World: 0.5B parámetros es pequeño pero requiere RTX 5090 (19 GB VRAM); no encaja con hardware modesto del usuario. La tesis es interesante, la adopción local hoy no es realista.",
+    "agent-chief: métricas del README (24 eventos → 1 interrupción, 96% interceptados, $0.104/1k events) están medidas por el propio autor sobre su propio demo replay — útiles como indicio, no como benchmark externo."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "El patrón 'chief of staff' resuelve un dolor concreto y creciente: el usuario ya corre 4 crons en paralelo más múltiples agentes; la pieza de atención curada es la que más diálogo editorial abre con la audiencia de CSS."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "memtrace-public es la pieza que más directamente se monta sobre el stack mcp_codebase_memory_* del usuario; vale la pena clonar el repo y, sobre todo, leer el EULA propiedad por propiedad antes de cualquier prueba en ~/proyectos/."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 7,
+      "razon": "larksuite/cli confirma la categoría 'agent-native enterprise CLI' como estándar de facto. Vigilar próximos vendors (Salesforce, Atlassian, Notion) que publiquen CLIs con la misma estructura para mapear el patrón."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Hallmark abre la línea editorial 'skills-para-agents de calidad visual, no solo productividad', perfectamente alineada con el eje 'criterio sobre hype' de CSS; es un ángulo para un próximo ensayo"
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 6,
+      "razon": "microsoft/pg_durable encaja con el stack PGLite/Postgres/pgvector; conviene probar en local el patrón de workflows durables como SQL graphs y verificar la licencia PostgreSQL directamente en el archivo LICENSE del repo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

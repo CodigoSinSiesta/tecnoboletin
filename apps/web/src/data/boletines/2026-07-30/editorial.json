@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-30",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-30 no trata un lanzamiento aislado sino un fenómeno estructural: la plomería de los agentes —el runtime que los ejecuta, la identidad que los firma, el harness que los limita en RAM, el router que decide qué skill invocar y el canal de auditoría por donde dejan rastro— se está abriendo como código industrial al mismo ritmo al que se cerraron los modelos durante el último año. Los seis hallazgos convergen en una tesis operativa: lo que hace un año era \"framework de un investigador\" ahora llega como producto con dos años de uso interno (Alibaba), con Fair Source y MCP remoto (Different AI), con relay Nostr firmado de extremo a extremo (Block) o con un truco de I/O a SSD que baja 13× el presupuesto de memoria (Turbo-Fieldfare). El hilo conductor del día es la madurez de la infraestructura agentic: cuando la commoditización de los satélites (tema del boletín anterior) ya está asumida, lo que entra en juego es cuánto cuesta, cuánta RAM pisa, qué licencia tiene y quién audita cada acción.",
+  "convergencia_stack_css": "Cuatro de los seis hallazgos tocan directamente el stack local-first de Código Sin Siesta. turbo-fieldfare baja el listón de RAM para correr modelos de 26B en un Mac de 8 GB — exactamente el lado de \"modelo grande en hardware modesto\" que cubre el stack con Ollama + DeepSeek pero ahora con un MoE de frontera. openwork ofrece un MCP remoto que reusa skills entre agentes, el mismo problema que GBrain/PGLite resuelve como knowledge graph y que el flujo Kanban de Hermes cubre como delegación entre perfiles. jcode completa el cuadrante de coding harnesses eficientes en RAM (Rust, MIT) donde hoy mismo podría correr la pieza que Hermes no implementa como runtime. Y reverse-skill demuestra que el patrón \"skill como router + auto-mejora\" —el mismo patrón que anima las skills del propio Hermes— se extiende a dominios sensibles como reversing y pentesting, validando la inversión editorial en habilidades estructuradas.",
+  "cruzado_grafo": "El boletín de hoy consolida tres categorías del grafo con nueva evidencia y abre dos nodos por primera vez. Se refuerzan: `agentic-code-review` (cubierto el 2026-07-24 con varias implementaciones; entra Alibaba Open Review como referencia industrial por escala), `coding-agents` y la pugna con `openai/codex-security` (ambos fijados el 2026-07-24, ahora con cifras de adopción), `human-agent-workspace` y `Nostr` como sustrato (2026-07-24), el cuadrante competitivo de coding harnesses con `earendil-works/pi` y `stablyai/orca` (2026-07-20 y 2026-07-09), la competencia de runtimes locales con `llama.cpp` (2026-07-21) y el conector multi-agente con `oomol-lab/open-connector` (mencionado ayer, 2026-07-29). Aparecen hoy por primera vez, sin `primera_mencion` previa en el grafo: `MLX` como competidor de runtime (la fecha queda pendiente de fijar), `local-first-26b-on-8gb-mac` como capacidad habilitada, `skill-router-pattern` y `security-agents` como categoría nueva, y `multi-agent-workflows` con el nodo de riesgo `fair-source-ee-tier` ligado a openwork.",
+  "tendencias_5_boletines": "Recibí contexto de continuidad de los días 2026-07-29 y 2026-07-28; no hay resumen explícito de los cinco últimos boletines, así que la lectura se limita a esa ventana de dos días. En ese tramo se observa una transición clara: el 2026-07-28 fue un monográfico vertical de Moonshot (modelo + infraestructura + comunicación), el 2026-07-29 pivotó hacia la plomería agentic (autenticación, memoria compartida, superficies de seguridad programables, conocimiento empaquetado como producto) y el 2026-07-30 concreta esa plomería con seis artefactos abiertos. La tendencia de tres días apunta a que el centro de gravedad editorial del mes se ha movido del \"qué modelo\" al \"qué hace viable al agente en producción\"; si esa línea se mantiene, cabe esperar más código abierto de runtimes, harnesses y routers de skills en los próximos boletines, y menos cobertura de modelos frontera salvo cuando arrastran consigo su infraestructura.",
+  "alertas": [
+    "alibaba/open-code-review declara 1/9 de tokens frente a Claude Code con mayor precisión y F1, pero el benchmark es interno y autodeclarado en el README; tratarlo como referencia industrial exige replicación externa antes de elevarlo a tesis.",
+    "different-ai/openwork separa núcleo MIT y capa empresarial bajo Fair Source en `ee/`: el riesgo no es legal pero sí de gobernanza — quien lo adopte debe saber que la pieza diferencial (MCP remoto, capabilities reutilizables) puede quedar fuera del alcance open source si cambia la licencia.",
+    "block/buzz apuesta por Nostr como substrate de identidad y log: la decisión arquitectónica es elegante pero concentra un riesgo único (dependencia de relays públicos, resistencia a spam, futuro del protocolo) que no es trivial para equipos de producción.",
+    "1jehuang/jcode se autodefine como \"el más eficiente en RAM\" sin benchmark reproducible público frente a `pi`/`Orca`/`OpenCode`; el reclamo merece la categoría pero todavía no la prueba.",
+    "drumih/turbo-fieldfare promete Gemma 4 26B-A4B en ~2 GB de RAM gracias a streaming selectivo de expertos desde SSD: la cifra depende del modelo concreto, del tamaño de SSD y de la latencia aceptable — \"2 GB de RAM\" sin contexto de I/O es una métrica incompleta."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "turbo-fieldfare merece un artículo técnico sobre cómo mover I/O a SSD cambia el techo de local-first; clonar el repo y medir latencia vs MLX/llama.cpp en un Mac de 8 GB daría material propio."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Alibaba Open Review es candidato natural para un artículo sobre code-review como skill programable industrial; conectar con el trabajo existente de CSS en revisión y con la categoría `agentic-code-review` del grafo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "block/buzz redefine el audit trail para equipos humano+agente sobre Nostr; seguir tracción de estrellas, relays adoptados y si Block lo usa en producción más allá del repo público."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "openwork empaqueta el patrón MCP remoto + SaaS + cliente open source; vigilar cambios de licencia en `ee/`, disponibilidad real del MCP público y si reemplaza o complementa a `oomol-lab/open-connector`."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "reverse-skill valida que el patrón \"skill como router\" funciona fuera del código; revisar su `README_AI.md` y estructura de field-journal para extraer patrones reutilizables en las skills del propio Hermes."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

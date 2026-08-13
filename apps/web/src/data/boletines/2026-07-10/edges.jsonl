@@ -1,0 +1,44 @@
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-justvugg-colibri", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-justvugg-colibri", "dst": "tema:justvugg-colibri", "rel": "trata", "added": "2026-07-10"}
+{"src": "JustVugg/colibri", "dst": "disk-streamed-inference", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "JustVugg/colibri", "dst": "jamesob/local-llm", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-04"}
+{"src": "JustVugg/colibri", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-10", "primera_mencion": "2026-07-08"}
+{"src": "JustVugg/colibri", "dst": "speculative-decoding", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-can1357-oh-my-pi", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:can1357-oh-my-pi", "rel": "trata", "added": "2026-07-10"}
+{"src": "can1357/oh-my-pi", "dst": "ide-aware-coding-agent", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "can1357/oh-my-pi", "dst": "openai/codex", "rel": "competes_with", "added": "2026-07-10", "primera_mencion": null}
+{"src": "can1357/oh-my-pi", "dst": "ChromeDevTools/chrome-devtools-mcp", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-03"}
+{"src": "can1357/oh-my-pi", "dst": "badlogic/pi-mono", "rel": "uses", "added": "2026-07-10", "primera_mencion": null}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-microsoft-skillopt", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-microsoft-skillopt", "dst": "tema:microsoft-skillopt", "rel": "trata", "added": "2026-07-10"}
+{"src": "microsoft/SkillOpt", "dst": "nightly-self-evolving-skills", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "microsoft/SkillOpt", "dst": "usestrix/strix", "rel": "uses", "added": "2026-07-10", "primera_mencion": "2026-07-05"}
+{"src": "addyosmani/agent-skills", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-10", "primera_mencion": "2026-07-03"}
+{"src": "addyosmani/agent-skills", "dst": "obra/superpowers", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-03"}
+{"src": "microsoft/SkillOpt", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-10", "primera_mencion": "2026-07-08"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:tencentcloud-tencentdb-agent-memory", "rel": "trata", "added": "2026-07-10"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "agent-long-term-memory", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "NousResearch/hermes-agent", "rel": "supports", "added": "2026-07-10", "primera_mencion": "2026-07-08"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "TencentCloud/CubeSandbox", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-09"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "noassertion-license-risk", "rel": "risk", "added": "2026-07-10", "primera_mencion": "2026-07-06"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "tinyhumansai/openhuman", "rel": "relevant_to", "added": "2026-07-10", "primera_mencion": null}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-ruvnet-ruview", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-ruvnet-ruview", "dst": "tema:ruvnet-ruview", "rel": "trata", "added": "2026-07-10"}
+{"src": "ruvnet/RuView", "dst": "wifi-densepose", "rel": "implements", "added": "2026-07-10", "primera_mencion": "2026-07-06"}
+{"src": "ruvnet/RuView", "dst": "openhue", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-06"}
+{"src": "ruvnet/RuView", "dst": "esp32-csi", "rel": "uses", "added": "2026-07-10", "primera_mencion": "2026-07-06"}
+{"src": "ruvnet/RuView", "dst": "agentic-decision-systems", "rel": "relevant_to", "added": "2026-07-10", "primera_mencion": "2026-07-05"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-wonderwhy-er-desktopcommandermcp", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-wonderwhy-er-desktopcommandermcp", "dst": "tema:wonderwhy-er-desktopcommandermcp", "rel": "trata", "added": "2026-07-10"}
+{"src": "wonderwhy-er/DesktopCommanderMCP", "dst": "filesystem-mcp-server", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "wonderwhy-er/DesktopCommanderMCP", "dst": "ChromeDevTools/chrome-devtools-mcp", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-03"}
+{"src": "wonderwhy-er/DesktopCommanderMCP", "dst": "DeusData/codebase-memory-mcp", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-04"}
+{"src": "wonderwhy-er/DesktopCommanderMCP", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-10", "primera_mencion": "2026-07-08"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-inky-open-knowledge", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-inky-open-knowledge", "dst": "tema:inky-open-knowledge", "rel": "trata", "added": "2026-07-10"}
+{"src": "inkeep/open-knowledge", "dst": "ai-native-markdown-editor", "rel": "implements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "inkeep/open-knowledge", "dst": "rowboatlabs/rowboat", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-08"}
+{"src": "inkeep/open-knowledge", "dst": "withmarbleapp/os-taxonomy", "rel": "complements", "added": "2026-07-10", "primera_mencion": null}
+{"src": "inkeep/open-knowledge", "dst": "gpl-3-license-risk", "rel": "risk", "added": "2026-07-10", "primera_mencion": null}

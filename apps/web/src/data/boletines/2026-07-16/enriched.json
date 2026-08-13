@@ -1,0 +1,383 @@
+{
+  "version": 2,
+  "date": "2026-07-16",
+  "boletin_origen": "2026-07-16-trending.md",
+  "resumen_ejecutivo": "- **HKUDS/nanobot** es el nuevo agente open-source chino que rompe esquemas: 45k estrellas en 5 meses, MIT, \"ligero, para tools/chats/workflows\", del mismo grupo que publicó DeepTutor y Vibe-Trading. Tercer mono del zoo HKUDS después de sus éxitos de RAG y tutoring.\n- **Stripe publica `/ai`**: el primer SDK oficial de Stripe para construir fintech con agentes (TypeScript + Python, MCP, workflows). Datos verificados por GitHub API.\n- **agentgateway** (Rust, Apache-2.0, CNCF-aligned topics: kubernetes, mcp, service-mesh) se posiciona como el \"proxy nginx de la era agéntica\": gateway API dedicado a agentes y MCP servers.\n- **screenpipe** (YC S26, Rust, 20k stars, 100% local) captura pantalla+audio 24/7 y los expone como memoria buscable para agentes. Cambio de licencia reciente (06/10) lo deja como source-available, no open source puro. Conecta directamente con la stack local-first de Hermes + Obsidian.\n- **mcp-use/mcp-use** se consolida como framework fullstack de MCP (cliente + gateway + UI + apps). 10k stars, MIT, soporta Apps SDK de ChatGPT, Claude Connectors y MCP servers.\n- **Lance** (Rust+Python, Apache-2.0, 6.8k stars) está reemergiendo: formato columna \"Lakehouse for multimodal AI\" con vector index + versioning, 100x más rápido que Parquet en random access. Sustituto natural para construir memory stores de agentes.\n- **Tendencias estructurales**: el stack agéntico se bifurca en dos carriles — ① kits de \"AI teams\" con rol/gobierno (clowder-ai, orca), ② infraestructura de gateway/protocolo (agentgateway, mcp-use). Mantener vigilados ambos.\n- Fuentes consultadas: Trendshift daily (intento, bloqueado por vet de hostname), GitHub Trending daily TS/PY/Rust + weekly TS, GitHub REST API para verificación (38 metadatos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "HKUDS/nanobot",
+      "url": "https://github.com/HKUDS/nanobot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente open-source ligero del grupo HKUDS",
+        "por_que_importa": "El grupo HKUDS (Hong Kong University Data Science) lleva tiempo publicando investigación reproducible sobre agentes; este lanzamiento porque acerca al terreno ligero un agente open-source con respaldo académico, no solo el típico demo de un unknown. Si te interesa montar algo serio sin atarte a OpenAI o Anthropic, este tipo de proyecto es donde mirar antes de decidir",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-nanobot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "agentgateway",
+      "url": "https://github.com/agentgateway/agentgateway",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "proxy agéntico tipo service-mesh",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentgateway",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "stripe/ai",
+      "url": "https://github.com/stripe/ai",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "primer SDK oficial de Stripe para fintech con agentes",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stripe-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "screenpipe/screenpipe",
+      "url": "https://github.com/screenpipe/screenpipe",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "memoria local 24/7 para agentes (YC S26)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "screenpipe-screenpipe",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "mcp-use/mcp-use",
+      "url": "https://github.com/mcp-use/mcp-use",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework fullstack de MCP",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mcp-use-mcp-use",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "lance-format/lance",
+      "url": "https://github.com/lance-format/lance",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "formato columna multimodal para IA",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lance-format-lance",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "zts212653/clowder-ai",
+      "url": "https://github.com/zts212653/clowder-ai",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework de \"AI teams\" con gobierno",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zts212653-clowder-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "PrimeIntellect-ai/prime-rl",
+      "url": "https://github.com/PrimeIntellect-ai/prime-rl",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "RL agéntico a escala, complemento directo a los papers TRACE y Terminal-Bench del boletín arxiv de hoy",
+        "por_que_importa": "",
+        "madurez_senales": "1.671 ⭐, último push 2026-07-16, Python, Apache-2.0",
+        "accion_sugerida": "vigilar — (puede ser stack clave para entrenar agentes)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "primeintellect-ai-prime-rl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "datawhalechina/hello-agents",
+      "url": "https://github.com/datawhalechina/hello-agents",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "tutorial chino canónico de agentic, 66k stars pero licencia NOASSERTION (manual, no código, verificar si permite traducción/adaptación)",
+        "por_que_importa": "",
+        "madurez_senales": "66.536 ⭐, último push 2026-07-10, Python, NOASSERTION",
+        "accion_sugerida": "leer — (recurso de referencia chino, sintetizar para audiencia hispana)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "datawhalechina-hello-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "mcp-use/mcp-use +",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Ya cubierto en hallazgos** (relevante sólo para dedupe)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mcp-use-mcp-use",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "xingkongliang/skills-manager",
+      "url": "https://github.com/xingkongliang/skills-manager",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "desktop app que sincroniza AI skills entre 15+ IDEs (Cursor, Claude Code, Codex, Copilot, …)",
+        "por_que_importa": "",
+        "madurez_senales": "3.070 ⭐, último push 2026-07-14, Rust, MIT",
+        "accion_sugerida": "vigilar — (si la fragmentación de \"skills\" sigue, estos van a ser infraestructura)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xingkongliang-skills-manager",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "mksglu/context-mode +",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "millionco/react-doctor** (13.865 ⭐, último push 2026-07-16, TypeScript, NOASSERTION, creado 2026-02-13) — \"Your agent writes bad React. This catches it\". Linter especializado para código escrito por agentes",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (categoría nueva: \"linter de LLM\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "snap-stanford/Biomni",
+      "url": "https://github.com/snap-stanford/Biomni",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agente biomédico generalista de Stanford",
+        "por_que_importa": "",
+        "madurez_senales": "3.476 ⭐, último push 2026-07-13, Python, Apache-2.0",
+        "accion_sugerida": "vigilar — (es la frontera de agentes científicos, útil como benchmark propio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snap-stanford-biomni",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "influxdata/influxdb",
+      "url": "https://github.com/influxdata/influxdb",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "aparición clásica por release reciente, pero no es descubrimiento nuevo",
+        "por_que_importa": "",
+        "madurez_senales": "31.650 ⭐, último push 2026-07-15, Rust, Apache-2.0",
+        "accion_sugerida": "ignorar — (ya conocido)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "influxdata-influxdb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "actions/checkout",
+      "url": "https://github.com/actions/checkout",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "action core, trending probablemente por release de seguridad",
+        "por_que_importa": "",
+        "madurez_senales": "8.522 ⭐, último push 2026-07-15, TypeScript, MIT",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "actions-checkout",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "1/7 items reescritos; rechazados por longitud sospechosa: [1, 2, 3, 4, 5, 6]; faltantes en respuesta: [1, 2, 3, 4, 5, 6]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

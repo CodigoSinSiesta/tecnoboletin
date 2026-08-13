@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-22",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-22 es un episodio de 'piezas de complemento', no de nuevos paradigmas. El hilo conductor es claro: ya dimos por sentada la commoditización del runtime agéntico en días previos, y hoy lo que entran al radar son los satélites que orbitan alrededor de ese runtime — proxies de compresión de tokens, navegadores stealth a nivel source, descubridores de modelos hardware-aware, implementaciones de referencia de deep research y plataformas de text-to-SQL con gobernanza. No hay ningún 'modelo nuevo' ni 'agente nuevo' que cambie el marco mental; lo que hay son cinco o seis utilidades que, combinadas, completan el catálogo que un equipo de CSS necesitaría para montar una pila agéntica local-first de calidad. Es, en otras palabras, un día de consolidación del catálogo.",
+  "convergencia_stack_css": "Tres hallazgos de hoy encajan de forma directa con líneas editoriales ya trabajadas por CSS: nanobot (idx 0) sigue reforzando el clúster de personal_ai_agent_runtime que ya cubrimos con cognee y earendil-works/pi; llmfit (idx 3) aterriza como pieza complementaria local-first de la cobertura de llama.cpp y ktransformers del 2026-07-21, respondiendo a la pregunta '¿qué modelo concreto descargo con mi hardware?'; y CloakBrowser (idx 2) alimenta el lado web-scraping-viability cuando el target bloquea por fingerprint de navegador. El resto (rtk, open_deep_research, WrenAI) son piezas más exploratorias que no chocan con el stack pero tampoco lo refuerzan con la misma fuerza.",
+  "cruzado_grafo": "Varios nodos se refuerzan con mención previa verificable: el concepto personal_ai_agent_runtime reaparece como destino de HKUDS/nanobot con primera_mencion del 2026-07-16; agent_memory_storage también conecta con nanobot desde el 2026-07-16; la relación nanobot → PrefectHQ/fastmcp ya viene del 2026-07-21; rtk-ai/rtk como complemento de nanobot viene del 2026-07-18; CloakBrowser como competidor de tiliondev/fortress viene del 2026-07-08; llmfit como complemento de llama.cpp y de ktransformers viene del 2026-07-21; y open_deep_research como complemento de nanobot viene del 2026-07-18. Hoy también aparecen por primera vez en el grafo (primera_mencion nula en los datos) los nodos concept:token_compression_proxy (rtk), concept:source_level_stealth_browser (CloakBrowser), concept:hardware_aware_model_discovery (llmfit), concept:deep_research_agent (open_deep_research), concept:ai_native_business_intelligence (WrenAI) y concept:text_to_sql_governance (WrenAI), más la alerta de riesgo NOASSERTION_license asociada a WrenAI.",
+  "tendencias_5_boletines": "Con solo dos días previos en el contexto (2026-07-20 y 2026-07-21) no hay base suficiente para hablar de '5 boletines', pero el triángulo ya se ve: el 2026-07-20 dejó claro que el runtime agéntico es commoditizado; el 2026-07-21 bajó un piso hacia la infraestructura de red y memoria (agentgateway, opencodex, fastmcp, cognee, llama.cpp, ktransformers); hoy, 2026-07-22, baja otro piso hacia las utilidades complementarias (compresión de tokens, stealth a nivel source, descubridor de modelos por hardware, deep research de referencia, text-to-SQL gobernado). La trayectoria de tres días apunta a un CSS que va del 'qué agente elegir' al 'qué envuelvo alrededor del agente'.",
+  "alertas": [
+    "rtk-ai/rtk: la cifra de ahorro 60-90% viene del propio repo; conviene validarla en un workflow real antes de citarla como definitiva en un artículo.",
+    "AlexsJones/llmfit: la métrica de 30k★ viene del campo del repo y no está cotejada con una fuente externa.",
+    "Canner/WrenAI: licencia NOASSERTION bloquea adopción como dependencia en cualquier proyecto serio; leer LICENSE antes de cualquier integración.",
+    "HKUDS/nanobot: el claim '281 módulos importan limpio en smoke test' y la métrica de '46k★' vienen del dato recibido, no de una verificación independiente; no presentar como benchmark hasta cotejar.",
+    "CloakBrowser: el claim '30 MB RAM' sale del README y conviene medirlo en un scraping real antes de publicarlo como cifra de producción."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "nanobot es el contendiente más serio del segmento personal agent open source; vale la pena un artículo dedicado que lo compare cara a cara con earendil-works/pi y AstrBot antes de que el catálogo de CSS crezca sin marco."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "rtk encaja con una serie pendiente sobre 'ahorrar tokens sin cambiar de modelo'; validar el claim 60-90% en un workflow real con un coding agent es el paso que falta antes de escribir."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "llmfit cierra el bucle 'tengo hardware, ¿qué modelo corro?' que ya teníamos abierto con llama.cpp y ktransformers; mándalo a quien esté preparando contenido local-first."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "WrenAI es referencia canónica de text-to-SQL con gobernanza, pero la licencia NOASSERTION obliga a leer el LICENSE a fondo antes de recomendarlo; no incorporar al catálogo hasta resolver."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "open_deep_research es la implementación de referencia del paper del propio LangChain; conviene seguir su evolución por si se convierte en el 'estándar de facto' del patrón deep research agent y aparece en un futuro artículo de razonamiento de horizonte largo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

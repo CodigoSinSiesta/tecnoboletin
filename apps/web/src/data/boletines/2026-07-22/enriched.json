@@ -1,0 +1,455 @@
+{
+  "version": 2,
+  "date": "2026-07-22",
+  "boletin_origen": "2026-07-22-trending.md",
+  "resumen_ejecutivo": "- **Deep-dive del día: `HKUDS/nanobot` (46k★, MIT)** — agente personal open source con 22 canales de chat (Telegram/Discord/Slack/WhatsApp/Mattermost...), modelo de memoria \"Dream\", MCP, WebUI propia, agent loop de ~16k LOC. Instalable con un comando (`curl install.sh | sh`), 281 módulos importan limpio en smoke test. Es el contendiente más serio del segmento \"agente personal open source\" frente a `earendil-works/pi` y a `AstrBotDevs/AstrBot`.\n- **El nuevo patrón es \"ahorra tokens antes de gastar\"**: `rtk-ai/rtk` (72k★, Rust, Apache-2.0) entra al radar como CLI proxy que reduce 60-90% el consumo de tokens de salida en comandos dev comunes. Implicación: en coding agents la optimización ya no es solo \"qué modelo\" sino \"qué envuelvo alrededor del modelo\". Complementa el clúster `tool-call-loop` que ya tenemos mapeado.\n- **Stealth browser a nivel source (no JS)**: `CloakHQ/CloakBrowser` (29k★, MIT) entra como drop-in Playwright con patches de fingerprint a nivel source — competidor directo de `tiliondev/fortress` (visto 2026-07-15). La categoría \"browser indetectable\" pasa de \"truco JS\" a \"parches en el binario de Chromium\", un salto de capa.\n- **Local-first inference sigue diversificándose**: `AlexsJones/llmfit` (30k★, Rust, MIT) detecta qué modelo corre en tu hardware específico. Encaja con el trío `llama.cpp + airllm + ktransformers` que vimos el 2026-07-21, ahora con una pieza de \"discovery\" — el siguiente paso natural es \"¿qué tengo?\" antes de \"¿cómo lo ejecuto?\".\n- **Día flojo en Trendshift**: el front page sólo exponía 2 repos vía HTML estático (`oomol-lab/open-connector`, `Knuspii/CrunchyCleaner`) — ya vistos. **GitHub Trending daily** (sin filtro + Python/TypeScript/Rust) proporcionó el grueso del material de calidad. Fuentes consultadas: Trendshift daily (escasez), GitHub Trending daily (19 repos en main + 15 Python + 17 TS + 16 Rust), GitHub API para metadatos de los hallazgos.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "HKUDS/nanobot",
+      "url": "https://github.com/HKUDS/nanobot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Runtime open source de agente personal con 22 integraciones de chat (Telegram, Discord, Slack, WhatsApp, Mattermost, Feishu, QQ, WeChat, Matrix, DingTalk, Napcat, QQBot, etc.), WebUI propia servida desde el wheel, sistema de memoria long-term llamado \"Dream\" (consolidación nocturna), MCP para tools externos, cron y automatizaciones, API OpenAI-compatible para integraciones, SDK Python. CLI verificado: `nanobot --version` reporta `🐈 nanobot v0.2.2`, `nanobot status` falla limpio por falta de provider (esperado), `nanobot agent -m \"ping\"` crea el workspace (~/.nanobot/) y aborta en el LLM call sin provider configurado.",
+        "por_que_importa": "Junto con `cognee` (Apache-2.0, memoria agéntica con grafo de conocimiento) y `earendil-works/pi` (~70k★, TypeScript, TUI unificada), nanobot completa el trío de runtimes de agente personal open source que ya cubrimos en boletines anteriores (nanobot y el concepto de personal_ai_agent_runtime los introdujimos el 2026-07-16, y los otros dos comparten ese mismo espacio). La diferencia concreta frente a los otros dos: nanobot se posiciona explícitamente como \"personal agent que te pertenece\", anti-monopolio-vendor, y además trae 22 integraciones de chat y MCP para tools externos. Si CSS escribe sobre cómo elegir tu runtime agéntico en 2026, nanobot es candidato obligatorio del catálogo.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:HKUDS/nanobot",
+          "rel": "implements",
+          "dst": "concept:personal_ai_agent_runtime",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "nanobot",
+          "rel": "competes_with",
+          "dst": "earendil-works/pi",
+          "primera_mencion": null
+        },
+        {
+          "src": "nanobot",
+          "rel": "competes_with",
+          "dst": "AstrBotDevs/AstrBot",
+          "primera_mencion": null
+        },
+        {
+          "src": "nanobot",
+          "rel": "uses",
+          "dst": "PrefectHQ/fastmcp",
+          "primera_mencion": "2026-07-21"
+        },
+        {
+          "src": "nanobot",
+          "rel": "relevant_to",
+          "dst": "concept:agent_memory_storage",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-nanobot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "rtk-ai/rtk",
+      "url": "https://github.com/rtk-ai/rtk",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Single-binary Rust que envuelve comandos dev (`ls`, `cat`, `grep`, `git log`, `npm test`, ...) y reescribe su salida a formas comprimidas optimizadas para LLMs. El claim: en workflows agénticos típicos (claude code / codex / opencode), gasta entre 60% y 90% menos tokens en resultados de tool calls. Apache-2.0.",
+        "por_que_importa": "El ángulo \"ahorrar dinero en API\" siempre interesa a quien usa coding agents a diario. Tomando el precio de Anthropic Sonnet como referencia aproximada (~3 $/M input, ~15 $/M output), una reducción del 70% en el output de herramientas comprime el coste por sesión casi a la tercera parte. Es la pieza complementaria que faltaba entre el agente y el proveedor, y de hecho ya cubrimos esa misma función complementaria el 2026-07-18 al hablar de cómo encaja con nanobot. Caveat: la cifra de ahorro (60-90%) sale del propio repo y habría que validarla en un workflow real antes de citarla como definitiva.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "rtk-ai/rtk",
+          "rel": "implements",
+          "dst": "concept:token_compression_proxy",
+          "primera_mencion": null
+        },
+        {
+          "src": "rtk",
+          "rel": "complements",
+          "dst": "HKUDS/nanobot",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "rtk",
+          "rel": "complements",
+          "dst": "Claude-Code/Codex",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rtk-ai-rtk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "CloakHQ/CloakBrowser",
+      "url": "https://github.com/CloakHQ/CloakBrowser",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Chromium fork (no JS-level patches como Camoufox/StealthyFetcher) con modificaciones de fingerprint directamente en el código fuente del navegador. Drop-in Playwright replacement. Los 30/30 tests que pasan incluyen CreepJS, Sannysoft, BrowserScan, IPHey y Cloudflare. 30 MB RAM según README.",
+        "por_que_importa": "Complementa el skill `web-scraping-viability` que ya usamos. Si el target bloquea por fingerprint a nivel de navegador (worker / iframe probes), CloakBrowser es el camino que evita pagar Apify, porque parchea el fingerprint en código fuente de Chromium en vez de hacerlo a nivel JS como hacen Camoufox o StealthyFetcher. **No compite con Scrapling directamente**: Scrapling es Python-first con cuatro fetchers y un mini-Scrapy, mientras CloakBrowser es un Chromium fork de bajo nivel; son piezas distintas del mismo puzzle. El grafo lo marca como competidor de `tiliondev/fortress`, relación que establecimos el 2026-07-08.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "CloakBrowser",
+          "rel": "implements",
+          "dst": "concept:source_level_stealth_browser",
+          "primera_mencion": null
+        },
+        {
+          "src": "CloakBrowser",
+          "rel": "competes_with",
+          "dst": "tiliondev/fortress",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "CloakBrowser",
+          "rel": "relevant_to",
+          "dst": "concept:anti_bot_bypass",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloakhq-cloakbrowser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "AlexsJones/llmfit",
+      "url": "https://github.com/AlexsJones/llmfit",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI Rust que prueba cientos de modelos y proveedores contra tu hardware específico (RAM, VRAM, CPU, GPU) y dice cuáles corren, a qué velocidad, y con qué cuantización. Soporta GGUF, MLX, Unsloth. 30k★, MIT.",
+        "por_que_importa": "Pieza que faltaba en el clúster local-first inference. Tras cubrir `llama.cpp` y `ktransformers` el 2026-07-21, la pregunta lógica del lector era \"vale, ¿y qué modelo concreto descargo con mi hardware?\". `llmfit` la responde con un solo comando que mide tu máquina real (RAM, VRAM, CPU, GPU) y propone candidatos concretos con cuantización. Útil como columna vertebral de un artículo tipo \"elige tu modelo local sin leerte 200 GB de quantization tables\". Caveat: la métrica de adopción (30k★) sale del campo del repo y convendría cotejarla antes de publicarla.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "llmfit",
+          "rel": "implements",
+          "dst": "concept:hardware_aware_model_discovery",
+          "primera_mencion": null
+        },
+        {
+          "src": "llmfit",
+          "rel": "complements",
+          "dst": "llama.cpp",
+          "primera_mencion": "2026-07-21"
+        },
+        {
+          "src": "llmfit",
+          "rel": "complements",
+          "dst": "kvcache-ai/ktransformers",
+          "primera_mencion": "2026-07-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alexsjones-llmfit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "langchain-ai/open_deep_research",
+      "url": "https://github.com/langchain-ai/open_deep_research",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Implementación de referencia del paper \"Open Deep Research\" del equipo LangChain: un agente multi-step que planifica, busca, lee, sintetiza y reporta. Modular (puedes cambiar el LLM, el search, el summarizer). MIT.",
+        "por_que_importa": "Si Alejandro cubre alguna vez \"agentes de deep research\" o \"agentes que escriben papers por ti\", este es el repo canónico: es la implementación de referencia del paper \"Open Deep Research\" del propio equipo LangChain. Su existencia sirve como evidencia de que el patrón \"research agent + LLM + tools + iteración\" ya está estandarizado y es reutilizable más allá del paper original. Encaja con el pendiente `cognee` (memoria agéntica) como segundo pilar del clúster \"agentes de razonamiento de horizonte largo\", y el grafo ya lo enlaza como complemento de HKUDS/nanobot desde el boletín del 2026-07-18.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "open_deep_research",
+          "rel": "relevant_to",
+          "dst": "concept:deep_research_agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "open_deep_research",
+          "rel": "complements",
+          "dst": "HKUDS/nanobot",
+          "primera_mencion": "2026-07-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "langchain-ai-open-deep-research",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Canner/WrenAI",
+      "url": "https://github.com/Canner/WrenAI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plataforma open source de \"Generative BI\" — convierte preguntas en lenguaje natural a SQL confiable, dashboards y charts a través de 20+ data sources (PostgreSQL, BigQuery, DuckDB, MySQL, ...). Usa una \"open context layer\" para gobernar el acceso (definir qué tablas puede tocar el LLM, qué columnas son sensibles, qué métricas canónicas).",
+        "por_que_importa": "Es la pieza de **text-to-SQL con gobernanza** que faltaba. Si en algún momento CSS cubre \"agentes que tocan datos reales\", WrenAI es la referencia — pero la licencia NOASSERTION bloquea adopción como dependencia. Cautela: leer LICENSE antes de cualquier integración seria.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "WrenAI",
+          "rel": "implements",
+          "dst": "concept:ai_native_business_intelligence",
+          "primera_mencion": null
+        },
+        {
+          "src": "WrenAI",
+          "rel": "relevant_to",
+          "dst": "concept:text_to_sql_governance",
+          "primera_mencion": null
+        },
+        {
+          "src": "WrenAI",
+          "rel": "risk",
+          "dst": "NOASSERTION_license",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "canner-wrenai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"The most intelligent agent harness for code\" — coding agent harness en Rust con MCP nativo. Topics: `ai-agent, ai-coding-agent, claude, cli, coding-agent, llm, mcp, openai, rust`. Compite directamente con `QwenLM/qwen-code` y `MoonshotAI/kimi-cli`.",
+        "por_que_importa": "",
+        "madurez_senales": "10.496★ · Rust · MIT · push 2026-07-22",
+        "accion_sugerida": "vigilar — su claim (\"the most intelligent\") requiere un benchmark real antes de creerlo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1jehuang-jcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Coding agent CLI oficial de Qwen (Alibaba). 26k★ en 13 meses es tr",
+        "por_que_importa": "",
+        "madurez_senales": "26.212★ · TypeScript · Apache-2.0 · push 2026-07-22",
+        "accion_sugerida": "seria para un agente específico de modelo — Acción: **vigilar** — buen complemento si usas Qwen localmente",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "qwenlm-qwen-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "dottxt-ai/outlines",
+      "url": "https://github.com/dottxt-ai/outlines",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Generación estructurada sobre LLMs (JSON/CFG/regex/symbolic constraints). Alternativa moderna a `instructor-ai/instructor`.",
+        "por_que_importa": "",
+        "madurez_senales": "14.930★ · Python · Apache-2.0 · push 2026-07-22",
+        "accion_sugerida": "leer — útil para cualquier tool que necesite parsing estricto de output LLM",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dottxt-ai-outlines",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "git-ai-project/git-ai",
+      "url": "https://github.com/git-ai-project/git-ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Extensión de git para trackear qué código fue generado por IA (`git ai blame`). Complementa el flujo de coding agents: te dice qué commit fue \"human-written\" vs \"AI-assisted\".",
+        "por_que_importa": "",
+        "madurez_senales": "2.324★ · Rust · Apache-2.0 · push 2026-07-22",
+        "accion_sugerida": "probar — instalación local directa",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "git-ai-project-git-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "agegr/pi-web",
+      "url": "https://github.com/agegr/pi-web",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Web UI para el pi coding agent (`earendil-works/pi`). MIT, joven pero complementa el TUI de pi.",
+        "por_que_importa": "",
+        "madurez_senales": "1.843★ · TypeScript · MIT · push 2026-07-21",
+        "accion_sugerida": "vigilar — si te interesa pi pero quieres browser en vez de terminal",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agegr-pi-web",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ModernRelay/omnigraph",
+      "url": "https://github.com/ModernRelay/omnigraph",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Graph engine lakehouse-native con git-style workflows, MCP server integrado. Topics: `apache-arrow, context-graph, datafusion, graph-database, knowledge-graph, lakehouse, lance, mcp, rust, s3`.",
+        "por_que_importa": "",
+        "madurez_senales": "951★ · Rust · MIT · push 2026-07-21",
+        "accion_sugerida": "vigilar — pieza de infraestructura interesante si cubre knowledge-graph a escala",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "modernrelay-omnigraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "tradesdontlie/tradingview-mcp",
+      "url": "https://github.com/tradesdontlie/tradingview-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "MCP server para TradingView.",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado",
+        "accion_sugerida": "ignorar — lateral a menos que cubras trading",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tradesdontlie-tradingview-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/6 items reescritos; rechazados por longitud sospechosa: [5]; faltantes en respuesta: [5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

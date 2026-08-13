@@ -1,0 +1,47 @@
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-microsoft-vibevoice", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-microsoft-vibevoice", "dst": "tema:microsoft-vibevoice", "rel": "trata", "added": "2026-07-31"}
+{"src": "VibeVoice", "dst": "huggingface/speech-to-speech", "rel": "competes_with", "added": "2026-07-31", "primera_mencion": "2026-07-09"}
+{"src": "VibeVoice-ASR-BitNet", "dst": "voice-ai-on-cpu-edge", "rel": "enables", "added": "2026-07-31", "primera_mencion": null}
+{"src": "VibeVoice", "dst": "open-source-frontier-voice", "rel": "implements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-paddlepaddle-paddleocr", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-paddlepaddle-paddleocr", "dst": "tema:paddlepaddle-paddleocr", "rel": "trata", "added": "2026-07-31"}
+{"src": "PaddleOCR", "dst": "pdf-to-structured-data", "rel": "solves", "added": "2026-07-31", "primera_mencion": null}
+{"src": "PaddleOCR", "dst": "unstructured-io/unstructured", "rel": "competes_with", "added": "2026-07-31", "primera_mencion": null}
+{"src": "PaddleOCR", "dst": "document-ai-oss", "rel": "implements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-mvanhorn-last30days-skill", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-mvanhorn-last30days-skill", "dst": "tema:mvanhorn-last30days-skill", "rel": "trata", "added": "2026-07-31"}
+{"src": "last30days", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-31", "primera_mencion": "2026-07-03"}
+{"src": "last30days", "dst": "cross-platform-recency-research", "rel": "solves", "added": "2026-07-31", "primera_mencion": null}
+{"src": "last30days", "dst": "hermes-skills-system", "rel": "integrates_with", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-kangarooking-cangjie-skill", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-kangarooking-cangjie-skill", "dst": "tema:kangarooking-cangjie-skill", "rel": "trata", "added": "2026-07-31"}
+{"src": "cangjie-skill", "dst": "alchaincyf/nuwa-skill", "rel": "complements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "cangjie-skill", "dst": "content-to-skill-distillation", "rel": "implements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "cangjie-skill", "dst": "RIA-TV", "rel": "uses", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-butterbase-ai-butterbase", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-butterbase-ai-butterbase", "dst": "tema:butterbase-ai-butterbase", "rel": "trata", "added": "2026-07-31"}
+{"src": "butterbase", "dst": "supabase", "rel": "competes_with", "added": "2026-07-31", "primera_mencion": null}
+{"src": "butterbase", "dst": "mcp-first-baas", "rel": "implements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "butterbase", "dst": "local-agent-infra", "rel": "enables", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-oomol-lab-open-connector", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-oomol-lab-open-connector", "dst": "tema:oomol-lab-open-connector", "rel": "trata", "added": "2026-07-31"}
+{"src": "open-connector", "dst": "butterbase", "rel": "complements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "open-connector", "dst": "mcp-saas-gateway", "rel": "implements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "open-connector", "dst": "oauth-per-skill", "rel": "solves", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-affaan-m-ecc", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-affaan-m-ecc", "dst": "tema:affaan-m-ecc", "rel": "trata", "added": "2026-07-31"}
+{"src": "ecc", "dst": "cross-harness-agent-os", "rel": "implements", "added": "2026-07-31", "primera_mencion": null}
+{"src": "ecc", "dst": "obra/superpowers", "rel": "competes_with", "added": "2026-07-31", "primera_mencion": "2026-07-03"}
+{"src": "ecc", "dst": "agentskills.io-spec", "rel": "integrates_with", "added": "2026-07-31", "primera_mencion": null}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-1jehuang-jcode", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-1jehuang-jcode", "dst": "tema:1jehuang-jcode", "rel": "trata", "added": "2026-07-31"}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "dst": "tema:chromedevtools-chrome-devtools-mcp", "rel": "trata", "added": "2026-07-31"}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-huggingface-speech-to-speech", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-huggingface-speech-to-speech", "dst": "tema:huggingface-speech-to-speech", "rel": "trata", "added": "2026-07-31"}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-openai-codex-security", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-openai-codex-security", "dst": "tema:openai-codex-security", "rel": "trata", "added": "2026-07-31"}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-07-31"}
+{"src": "boletin:2026-07-31", "dst": "item:https-github-com-pascalorg-editor", "rel": "menciona", "added": "2026-07-31"}
+{"src": "item:https-github-com-pascalorg-editor", "dst": "tema:pascalorg-editor", "rel": "trata", "added": "2026-07-31"}

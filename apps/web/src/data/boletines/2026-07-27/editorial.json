@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-07-27",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-27 consolida una tesis que llevaba varios días madurando: la commoditización del runtime agéntico ya está cerrada y lo que entra ahora al radar es la capa de gobernanza y orquestación que se monta encima. Hoy destilan tres ejes: la unificación de harnesses (t3code como primer umbrella UI multi-motor que adopta los cuatro providers ya cubiertos en CSS), la seguridad del nuevo perímetro (SkillSpector de NVIDIA y claude-skill-antivirus como primera generación de antivirus para skills de agentes), y un radar secundario con tres piezas que apuntan al mismo problema desde ángulos distintos (scriptc para scripting tipado, cindy como runtime auxiliar, khazix-skills como catálogo). El hilo conductor es claro: cuando los agentes se vuelven commodity, lo que se vuelve estratégico es cómo los gobiernas, los auditas y los combinas.",
+  "convergencia_stack_css": "La convergencia con el stack local-first de CSS es directa y múltiple. Primero, el clúster `cross-harness-agent` (Codex, Claude Code, Cursor CLI, OpenCode) que CSS viene cubriendo desde hace semanas tiene hoy su primer pegamento explícito: t3code los lanza a todos desde un solo panel, exactamente la tesis \"un agente, varios motores\" que el boletín del 2026-07-22 ya dejó caer como satélite del runtime agéntico. Segundo, el espacio skill-security que abren SkillSpector y claude-skill-antivirus no es tangencial al stack: si CSS promueve flujos donde los agentes cargan skills dinámicamente, la pregunta por cómo auditar esos skills antes de cargarlos deja de ser opcional. Tercero, el radar secundario (scriptc, cindy, khazix-skills) entra como material de seguimiento para vigilar sierten el mismo clúster o abren uno nuevo.",
+  "cruzado_grafo": "Los hallazgos de hoy no traen `primera_mencion` explícita en los datos recibidos, así que no asigno fechas previas: cualquier nodo reforzado aquí lo es por recurrencia temática, no por cita cruzada verificable. Lo que sí se puede afirmar desde los datos: el concepto de 'umbrella UI multi-harness' (t3code) no aparecía nombrado en los boletines previos recibidos como contexto, y los conceptos de 'skill antivirus' / 'skill vulnerability scanner' (SkillSpector, claude-skill-antivirus) tampoco habían sido etiquetados como categoría propia en el contexto del 2026-07-22 ni 2026-07-21. La relación con nodos previos es por vecindad temática con el clúster `cross-harness-agent` y con la commoditización del runtime agéntico, no por mención explícita.",
+  "tendencias_5_boletines": "El contexto de continuidad recibido cubre solo dos días previos (2026-07-22 y 2026-07-21), no cinco, así que cualquier lectura de 'tendencia a 5 boletines' sería inventada. Con lo que sí hay: el 2026-07-21 detectó infraestructura de red y memoria debajo de los agentes (gateways, MCP, knowledge graphs), y el 2026-07-22 cerró la commoditización del runtime agéntico y empezó a mirar los satélites. Hoy el satélite dominante es la gobernanza: combinar harnesses, auditar skills, securizar el nuevo perímetro. La trayectoria en tres días es clara: agentes → infraestructura de soporte → gobernanza del conjunto. Falta contexto para saber si es lineal o cíclico.",
+  "alertas": [
+    "t3code tiene 15.2k★ pero los datos no permiten distinguir si el repo es orgánico o si hubo un push de momentum reciente; tratarlo como consolidación del clúster, no como hype de un solo día.",
+    "SkillSpector es de NVIDIA y eso le da visibilidad, pero 13.8k★ en un repo de seguridad recién movido al espacio agent-skills merece verificación: ¿la tracción es por mérito técnico o por distribución del vendor?",
+    "claude-skill-antivirus (74★) y SkillSpector (13.8k★) cubren el mismo problema con escalas muy distintas; no asumir que son el mismo tipo de herramienta — uno audita un corpus público (SkillsMP), el otro define patrones de vulnerabilidad.",
+    "El radar secundario (scriptc, cindy, khazix-skills) viene sin métricas en el resumen ejecutivo: no se puede afirmar tracción real sin abrir cada repo, y conviene vigilar antes de promover.",
+    "Cuidado con presentar t3code como 'el umbrella UI' en singular: puede haber otros forks/alternativas con menos estrella que el resumen ejecutivo no haya priorizado.",
+    "La categoría 'skill security' es nueva y los dos proyectos que la cubren son de julio; es pronto para declararla categoría consolidada, todavía es señal temprana."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "t3code es el primer umbrella UI multi-harness que adopta explícitamente los cuatro providers del clúster CSS; abre la puerta a un writeup sobre cómo combinar Codex/Claude Code/Cursor CLI/OpenCode sin casarse con uno."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "SkillSpector de NVIDIA define 68 patrones / 17 categorías de vulnerabilidades en skills; conviene aterrizar el número real y entender si los patrones son auditables o solo declarativos antes de citarlo como referencia."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "claude-skill-antivirus ya auditó 71.577 skills de SkillsMP y tiene 9 motores; el ángulo práctico (qué encuentra en un corpus real) es más útil que el de SkillSpector para un post aplicado."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "vercel-labs/scriptc entra como radar sin métricas en el resumen; antes de promoting, confirmar lengua madura, tracción y si realmente encaja en el clúster de orquestación o es ornamento."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "La categoría 'skill-trust-and-safety' es lo más publicable del boletín:SkillSpector (rigor industrial) + claude-skill-antivirus (corpus auditado) son los dos flancos de un mismo argumento que CSS puede defender mejor que nadie."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

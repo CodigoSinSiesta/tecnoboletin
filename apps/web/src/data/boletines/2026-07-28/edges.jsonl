@@ -1,0 +1,35 @@
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-moonshotai-kimi-k3", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-moonshotai-kimi-k3", "dst": "tema:moonshotai-kimi-k3", "rel": "trata", "added": "2026-07-28"}
+{"src": "repo:MoonshotAI/Kimi-K3", "dst": "concept:kimi-delta-attention", "rel": "implements", "added": "2026-07-28", "primera_mencion": null}
+{"src": "repo:MoonshotAI/Kimi-K3", "dst": "company:moonshotai", "rel": "developed_by", "added": "2026-07-28", "primera_mencion": null}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-kvcache-ai-agentenv", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-kvcache-ai-agentenv", "dst": "tema:kvcache-ai-agentenv", "rel": "trata", "added": "2026-07-28"}
+{"src": "repo:kvcache-ai/AgentENV", "dst": "concept:agentic-rl-training", "rel": "enables", "added": "2026-07-28", "primera_mencion": null}
+{"src": "repo:kvcache-ai/AgentENV", "dst": "repo:MoonshotAI/Kimi-K3", "rel": "powers_training_of", "added": "2026-07-28", "primera_mencion": null}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-moonshotai-moonep", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-moonshotai-moonep", "dst": "tema:moonshotai-moonep", "rel": "trata", "added": "2026-07-28"}
+{"src": "repo:MoonshotAI/MoonEP", "dst": "concept:expert-parallelism", "rel": "implements", "added": "2026-07-28", "primera_mencion": null}
+{"src": "repo:MoonshotAI/MoonEP", "dst": "company:moonshotai", "rel": "developed_by", "added": "2026-07-28", "primera_mencion": null}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-sgl-project-sglang", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-sgl-project-sglang", "dst": "tema:sgl-project-sglang", "rel": "trata", "added": "2026-07-28"}
+{"src": "repo:sgl-project/sglang", "dst": "repo:MoonshotAI/Kimi-K3", "rel": "competes_with", "added": "2026-07-28", "primera_mencion": null}
+{"src": "repo:sgl-project/sglang", "dst": "repo:MoonshotAI/Kimi-K3", "rel": "serves", "added": "2026-07-28", "primera_mencion": null}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-anthropics-claude-code", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-anthropics-claude-code", "dst": "tema:anthropics-claude-code", "rel": "trata", "added": "2026-07-28"}
+{"src": "repo:anthropics/claude-code", "dst": "repo:0xwilliamortiz/openclaude-improved", "rel": "forked_by", "added": "2026-07-28", "primera_mencion": null}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-0xwilliamortiz-openclaude-improved", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-0xwilliamortiz-openclaude-improved", "dst": "tema:0xwilliamortiz-openclaude-improved", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-icebird1998-drawio-scientific-illustrator", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-icebird1998-drawio-scientific-illustrator", "dst": "tema:icebird1998-drawio-scientific-illustrato", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-moonshotai-flashkda", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-moonshotai-flashkda", "dst": "tema:moonshotai-flashkda", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-cocofhu-approving", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-cocofhu-approving", "dst": "tema:cocofhu-approving", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-joyceql-magic-resume", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-joyceql-magic-resume", "dst": "tema:joyceql-magic-resume", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-tamnd-kage", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-tamnd-kage", "dst": "tema:tamnd-kage", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-nanmicoder-mediacrawler", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-nanmicoder-mediacrawler", "dst": "tema:nanmicoder-mediacrawler", "rel": "trata", "added": "2026-07-28"}
+{"src": "boletin:2026-07-28", "dst": "item:https-github-com-apache-cassandra", "rel": "menciona", "added": "2026-07-28"}
+{"src": "item:https-github-com-apache-cassandra", "dst": "tema:apache-cassandra", "rel": "trata", "added": "2026-07-28"}

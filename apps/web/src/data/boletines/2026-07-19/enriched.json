@@ -1,0 +1,406 @@
+{
+  "version": 2,
+  "date": "2026-07-19",
+  "boletin_origen": "2026-07-19-trending.md",
+  "resumen_ejecutivo": "- **Día flojo en GitHub Trending, fuerte en Trendshift**: GH Trending solo trae 11 repos (varios son viejos conocidos) y Trendshift sí tiene sangre nueva relacionada con agentes, voz local y seguridad.\n- **El ganador del día es `vercel-labs/deepsec`**: primer \"security harness\" estilo coding-agent que he visto — merece entrada en el grafo como nuevo nodo de la familia `agent-security`.\n- **`KnockOutEZ/wigolo`** confirma una tesis que llevaba semanas madurando: búsqueda web **local-first para coding agents vía MCP** sin API keys ni nube. Si funciona como promete, cambia la ecuación del scraping personal.\n- **Voice-agents locales**: la dupla `moonshine-ai/moonshine` (C++, 9k★, 4 años madurando) + `handy-computer/transcribe.cpp` (ggml STT) marcan el camino del ASR/TTS on-device — relevante si CSS entra en podcasts o voice clones.\n- **Dato estructural preocupante**: `elder-plinius/G0DM0D3` (AGPL-3.0, \"liberated AI chat\") acumula 9.5k★ en 5 meses; es hermano del polémico `T3MP3ST`. **Riesgo legal alto**: usar AGPL en producto SaaS obliga a abrir tu código. Vigilar, no adoptar.\nFuentes consultadas: Trendshift daily (vía API no documentada — extraído de IDs de página server-side), GitHub Trending daily (parsed HTML), GitHub REST API para metadatos de 22 candidatos. Nota: el blogwatcher de las 08:00 no produjo archivo hoy (`2026-07-19-blogs.md` ausente), así que este boletín no evita duplicación con el resumen matinal — si existiera ese archivo habría que revisar manualmente.\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "vercel-labs/deepsec",
+      "url": "https://github.com/vercel-labs/deepsec",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Deepsec es un harness de seguridad que encuentra vulnerabilidades en tu codebase usando coding agents. Hilo conductor: el equipo de Vercel Labs reconoce que el auge de agents equivale a superficie de ataque nueva.",
+        "por_que_importa": "el ángulo de \"agentes que auditan agentes\" encaja con la cobertura CSS de seguridad + agentes. También es señal del movimiento Vercel Labs: ya tienen skills y ahora sec-tools.",
+        "madurez_senales": "5,504★ · 321 forks · TypeScript · Apache-2.0 · creado 2026-04-30 · último push 2026-07-19 (activo) · sin topics declarados.",
+        "accion_sugerida": "**explorar** — clonar y auditar qué modelo usan, qué niveles (SAST/SCA/secrets), y si corre contra el repo CSS sin reformas. Si el diseño es plug-in, artículo corto: \"Deepsec: cómo Vercel Labs convirtió un coding-agent en auditor\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vercel-labs/deepsec",
+          "rel": "implements",
+          "dst": "agent-security-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/deepsec",
+          "rel": "complements",
+          "dst": "vercel-labs/skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "vercel-labs/deepsec",
+          "rel": "competes_with",
+          "dst": "sast-tools-traditional",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-deepsec",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "KnockOutEZ/wigolo",
+      "url": "https://github.com/KnockOutEZ/wigolo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor MCP self-hosted de search/fetch/crawl/research para Claude Code / Cursor / cualquier cliente MCP. Tagline: \"no API keys, no cloud, $0/query\". Reemplaza a Tavily/Exa/Perplexity para uso personal.",
+        "por_que_importa": "confirma la tendencia de lo que ya analizaste hace 3 semanas con Scrapling+Obscura (la skill `web-scraping-viability` referencia Obscura como drop-in). Wigolo va un paso más allá: lo empaqueta como MCP server, lo que lo hace accesible desde el mismo Hermes con un tool más, sin tocar código Python.",
+        "madurez_senales": "1,381★ · 90 forks · TypeScript · licencia NOASSERTION (verificar LICENSE antes de build-dependencia, como enseña `web-scraping-viability`) · creado 2026-04-12 · último push 2026-07-19 (beta pública hoy) · topics: `mcp`, `mcp-server`, `local-first`, `web-search`, `web-crawler`, `rag`, `claude`.",
+        "accion_sugerida": "**probar** — instalar y conectar al MCP de Hermes; revisar LICENSE (la GH API dice NOASSERTION); auditar el indexer para entender si almacena queries. Si es estable, post: \"Wigolo + Hermes MCP: búsqueda web gratis desde tu propio agent\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "KnockOutEZ/wigolo",
+          "rel": "implements",
+          "dst": "local-first-web-search",
+          "primera_mencion": null
+        },
+        {
+          "src": "KnockOutEZ/wigolo",
+          "rel": "complements",
+          "dst": "hermes-mcp-toolset",
+          "primera_mencion": null
+        },
+        {
+          "src": "KnockOutEZ/wigolo",
+          "rel": "competes_with",
+          "dst": "tavily",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "knockoutez-wigolo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "ibelick/ui-skills",
+      "url": "https://github.com/ibelick/ui-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "catálogo de skills orientadas a tareas de interfaz/UI (animaciones, layout, accesibilidad, color) que un coding agent invoca. De ibelick, autor conocido en la comunidad React/Vercel por demos de UI minimalistas.",
+        "por_que_importa": "si Alejandro escribe sobre skills como estándar, ibelick/ui-skills es el primer caso de skills-no-coding: mismo SKILL.md, dominio no programático. Mueve el centro de gravedad del estándar Anthropic de \"coders que delegan\" a \"designers que delegan\".",
+        "madurez_senales": "5,186★ · 223 forks · TypeScript · MIT · creado 2026-01-07 · último push 2026-07-17 · topics: `skills`, `ui-skills` (autodefinido como nuevo tag).",
+        "accion_sugerida": "**leer** — bucear 30 min, contar cuántas skills trae, cuáles son verdaderamente reutilizables vs showcase. Material directo para artículo: \"Las skills ya no son solo código: ui-skills de ibelick abren la puerta a agentes de diseño\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ibelick/ui-skills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "ibelick/ui-skills",
+          "rel": "extends",
+          "dst": "vercel-labs/skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "ibelick/ui-skills",
+          "rel": "relevant_to",
+          "dst": "css-design-debate",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ibelick-ui-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repositorio-curso de 39k★ que enseña AI engineering \"from scratch\" cubriendo transformers, RL, agents, MCP, RAG y swarm intelligence. Construye X toy models para entender cada capa.",
+        "por_que_importa": "el repositorio es un recurso de pedagogía en sí mismo, pero más interesante es que su autor (Rohit Ghumare, Krutrim AI) está detrás de una serie reciente sobre arquitecturas agent. Posible contrapunto crítico al hype si CSS cubre \"el HypeCYCLE de AI agents en 2026\".",
+        "madurez_senales": "39,234★ · 6,564 forks · Python · MIT · creado 2026-03-18 · último push 2026-06-25 (alta densidad de issues/PRs, ritmo de release no se ve desde la API pero la página trending indica actividad actual) · 20 topics declarados (incluye `from-scratch`, `tutorial`, `course`, `mcp`, `rust`).",
+        "accion_sugerida": "**vigilar** — no aporta descubrimientos técnicos, pero su **curación** de qué incluir/excluir en AI engineering vale como termómetro. Cita rápida de CSS puede usarlo como espejo: \"Si 39k devs están estudiando esto, ¿qué debería CSS cubrir que aún no cubre?\"",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "rohitg00/ai-engineering-from-scratch",
+          "rel": "implements",
+          "dst": "ai-curriculum-open-source",
+          "primera_mencion": null
+        },
+        {
+          "src": "rohitg00/ai-engineering-from-scratch",
+          "rel": "competes_with",
+          "dst": "karpathy/zero-to-hero",
+          "primera_mencion": null
+        },
+        {
+          "src": "rohitg00/ai-engineering-from-scratch",
+          "rel": "relevant_to",
+          "dst": "css-formacion-ia",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rohitg00-ai-engineering-from-scratch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "lopopolo/harness-engineering",
+      "url": "https://github.com/lopopolo/harness-engineering",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Ryan Lopopolo (Infield, ex Anthropic) publicó su \"anthology, field guide, and agent context bundle for harness engineering\". Menos de 24h desde el primer commit (2026-07-18) y ya tiene tracción. Es la primera fuente primaria sobre cómo construir un harness para coding agents escrita por alguien que trabajó dentro de uno.",
+        "por_que_importa": "Ryan Lopopolo es una voz con autoridad —sale de Anthropic, donde escribió sobre \"harness engineering\" como disciplina. Si CSS cubre el tema \"construir tu propio Claude Code\", este es el texto fundacional.",
+        "madurez_senales": "288★ · 15 forks · Python · CC-BY-4.0 (libre hasta para uso comercial con atribución) · creado 2026-07-18 (ayer) · último push 2026-07-18 (contenido inicial, esperable que crezca) · sin topics declarados.",
+        "accion_sugerida": "**leer** — clonar y leer en una sesión. Si contiene insights no triviales (y por la fuente deberían estarlo), artículo tipo \"Harness engineering: cómo Anthropic piensa por dentro y qué se puede clonar gratis\" con permiso por la CC-BY-4.0.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "lopopolo/harness-engineering",
+          "rel": "implements",
+          "dst": "harness-engineering-as-discipline",
+          "primera_mencion": null
+        },
+        {
+          "src": "lopopolo/harness-engineering",
+          "rel": "authored_by",
+          "dst": "ryan-lopopolo",
+          "primera_mencion": null
+        },
+        {
+          "src": "lopopolo/harness-engineering",
+          "rel": "complements",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lopopolo-harness-engineering",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "PostHog/posthog",
+      "url": "https://github.com/PostHog/posthog",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "plataforma product-analytics self-hosted que ahora incluye AI observability, session replay, flags, experiments y un MCP server. Tendencia porque posiciona \"PostHog = el Datadog de la era de los agents\".",
+        "por_que_importa": "",
+        "madurez_senales": "36,691★, Python, NOASSERTION license — verificar antes de buildear",
+        "accion_sugerida": "vigilar — licencia necesita lectura directa del LICENSE antes de recomendar adopción enterprise",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "posthog-posthog",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "moonshine-ai/moonshine",
+      "url": "https://github.com/moonshine-ai/moonshine",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "STT/TTS/intent-recognition de muy baja latencia, madurado durante 2 años. Funciona on-device.",
+        "por_que_importa": "",
+        "madurez_senales": "9,066★, C++, NOASSERTION — verificar",
+        "accion_sugerida": "explorar — si la licencia es OK, статья: \"Moonshine vs Whisper para voice-agents locales: latencia, tamaño, languages\"",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moonshine-ai-moonshine",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "handy-computer/transcribe.cpp",
+      "url": "https://github.com/handy-computer/transcribe.cpp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "runtime ggml/gguf para speech-to-text con 16+ model families. Complementa moonshine en la familia \"STT on-device\".",
+        "por_que_importa": "",
+        "madurez_senales": "460★, C++, MIT",
+        "accion_sugerida": "leer README — para confirmar si soporta moonshine como modelo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "handy-computer-transcribe-cpp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "oomol-lab/open-connector",
+      "url": "https://github.com/oomol-lab/open-connector",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "auth gateway open-source que conecta 1000+ SaaS providers a AI agents vía SDK/CLI/MCP/HTTP/OpenAPI. Sustituye a Zapier/Make.com para el mundo de agents.",
+        "por_que_importa": "",
+        "madurez_senales": "2,953★, TypeScript, Apache-2.0",
+        "accion_sugerida": "explorar — comparar con Composio y `agentgateway/agentgateway` (pendiente deep-dive)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oomol-lab-open-connector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "stupside/castor",
+      "url": "https://github.com/stupside/castor",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "pipe de video desde una URL a tu TV en tiempo real: descarga, transcodifica, transmite e incrusta subtítulos. C++ viene incluido vía ffmpeg.",
+        "por_que_importa": "",
+        "madurez_senales": "283★, Go, MIT",
+        "accion_sugerida": "vigilar — nicho pero elegante",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stupside-castor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "SirAllap/agentglass",
+      "url": "https://github.com/SirAllap/agentglass",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "dashboard tipo Mission Control para AI coding agents en local: muestra uso, costes y proyectos en paralelo. Creado hace horas.",
+        "por_que_importa": "",
+        "madurez_senales": "78★, TypeScript, MIT",
+        "accion_sugerida": "vigilar — si crece, alternativa open a `wonderwhy-er/DesktopCommanderMCP` + un panel",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sirallap-agentglass",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "elder-plinius/G0DM0D3",
+      "url": "https://github.com/elder-plinius/G0DM0D3",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"LIBERATED AI CHAT\", sucesor conceptual de T3MP3ST. AGPL-3.0 obliga a abrir todo código derivado que se sirva por red.",
+        "por_que_importa": "",
+        "madurez_senales": "9,575★, TypeScript, AGPL-3.0 — **riesgo legal**",
+        "accion_sugerida": "ignorar para uso SaaS — ; **vigilar** la tesis de \"frontends sin login para LLMs locales\" sin copiar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elder-plinius-g0dm0d3",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

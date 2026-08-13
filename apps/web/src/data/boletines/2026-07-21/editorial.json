@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-21",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy no va de un nuevo modelo ni de un nuevo agente, sino de la infraestructura de red y memoria que se estáificando debajo de ambos. Tres piezas convergen en el mismo plano: el proxy agéntico (agentgateway) y el LLM gateway (opencodex) por un lado, y la memoria persistente basada en knowledge graph (cognee) por el otro; a su alrededor, fastmcp consolida el Model Context Protocol como capa estandarizada, ktransformers re-entra como pieza experimental para la pata heterogénea del inference local, y Unlimited-OCR abre un frente nuevo — extracción robusta sobre documentos largos — que conecta directamente con cómo un agente llenaría esa memoria. El hilo conductor es claro: 2026 ya no es el año de los agentes, es el año del plumbing que rodea a los agentes, y ese plumbing está alcanzando masa crítica en categorías diferenciadas (proxy, gateway, MCP, memory, OCR, inference)",
+  "convergencia_stack_css": "Cuatro hallazgos de hoy se enchufan de forma natural al stack local-first y a la línea editorial de CSS. agentgateway es el complemento de red que falta entre Hermes y el resto (auth, rate limit, observability, federar MCP) y sustituye el patrón 'el agente llama a pelo' por un gateway gobernado de forma neutral; opencodex ofrece el mismo plano de abstracción pero en el extremo del modelo, y encaja con la línea de alternar entre Ollama, DeepSeek y otros proveedores sin tocar el código del agente. cognee es directamente relevante para sustituciones pendientes en el propio stack: el knowledge graph auto-hospedado con extracción y embeddings es exactamente la pieza que un Hermes/Ibid necesita para memoria real de proyecto, no solo ventana de contexto, y aparece como alternativa sólida al pendiente screenpipe. Por último, ktransformers apuntala la tríada local-first LLM (llama.cpp + airllm + ktransformers) ya cubierta en los dos últimos boletines, manteniendo vivo el patrón 'modelos grandes en hardware modesto'.",
+  "cruzado_grafo": "El grafo se refuerza en varios ejes ya conocidos y añade nodos nuevos sin reclamar falsas genealogías. El concepto 'agentic_proxy' se ancla con agentgateway siguiendo la línea de 2026-07-16 y se refuerza como categoría diferenciada frente a cloudflare/kumo (cubierto el 2026-07-04); 'llm_provider_proxy' aparece por primera vez con opencodex, que complementa a diegosouzapw/OmniRoute (2026-07-09) y compite con OpenRouter. El eje MCP se consolida: fastmcp implementa 'mcp_protocol' con primera mención en 2026-07-16 y se apoya en mcp-use/mcp-use, también de ese día. En el eje memoria, cognee entra como implementador de 'agent_memory_storage' con primera mención 2026-07-16 y se conecta con 'longitudinal_memory' (nodo nuevo) y con el patrón 'open_context_layer_pattern' (nuevo); Unlimited-OCR se marca como relevant_to ese mismo 'agent_memory_storage' del 2026-07-16, enlazando OCR y memoria por primera vez. ktransformers no aporta primera_mencion explícita y habilita un nodo nuevo, 'local_70B_inference', complementando a airllm (2026-07-20).",
+  "tendencias_5_boletines": "Solo con dos días de contexto previo (2026-07-20 y 2026-07-19) no se puede hablar todavía de 'tendencia a 5 boletines' con base estadística, pero el triángulo que dibujan los tres días sí cuenta una historia coherente. 2026-07-19 vio nacer oficios nuevos alrededor del harness agéntico; 2026-07-20 declaró la commoditización del runtime agéntico; y 2026-07-21 muestra la consolidación del plumbing — proxy, gateway, MCP, memoria, OCR, inference experimental — que ese runtime necesita para ser serio. El siguiente paso esperable del patrón es que las categorías empiecen a cruzarse: gateways que ya hablan MCP, memorias que ya indexan OCR, frameworks de inference que asumen un proxy delante. No hay todavía señales de relevo de los actores principales (OpenRouter, llama.cpp, Anthropic SDK), pero sí una fragmentación sana por debajo.",
+  "alertas": [
+    "Unlimited-OCR no declara topics en el repo y el último push es de hace casi tres semanas: la tracción en estrellas (15.7k) no garantiza mantenimiento activo, vigilar antes de recomendar en serio.",
+    "ktransformers se autodefine como framework experimental, no producto: encaja como referencia, no como dependencia de producción.",
+    "opencodex es juvenil (1.335★, creado hace un mes): cubre un nicho (LLM gateway) que ya tieneOpenRouter maduro, su valor real depende de cuánto crezca.",
+    "cognee es la alternativa más prometedora a screenpipe, pero el pendiente de evaluación debe medir la complejidad real de montarlo y mantenerlo, no solo el feature list.",
+    "agentgateway va por v1.4.0-alpha.2: la gobernanza neutral (Linux Foundation) es buena señal, pero una alpha sigue siendo alpha — no dar por sentada la estabilidad de la API."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "cognee es la pieza de memoria persistente con knowledge graph que el stack local-first necesita; candidato natural para un deep-dive en próximos días, sobre todo frente al lastre de licencia de screenpipe."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "agentgateway aporta la capa de red gobernada y neutral (auth, rate limit, MCP, A2A) que el runtime agéntico de CSS todavía no tiene cubierta; merece una visita técnica por su combinación Linux Foundation + alpha.2."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "fastmcp consolida que MCP ya es capa estandarizada; útil contar cómo encaja con el resto del stack y por qué los readers deberían preferirlo sobre el SDK oficial de Anthropic en Python."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Unlimited-OCR abre un frente nuevo (extracción robusta sobre documentos largos) pero faltan señales de mantenimiento; conviene revisitar en 2-3 boletines para confirmar tracción real y calidad con docs complejos."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "ktransformers cierra la tríada local-first LLM (llama.cpp + airllm + ktransformers) ya cubierta; repartir la tríada con los readers ayuda a entender cuándo usar cada pieza según el hardware."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

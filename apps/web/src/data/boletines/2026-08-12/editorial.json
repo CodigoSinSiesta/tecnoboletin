@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-08-12",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-08-12 cierra una semana de infraestructura agentic con un perfil marcadamente 'capa intermedia': lo que cruza el radar hoy no son agentes completos ni modelos nuevos desde cero, sino las piezas que se cuelan entre el LLM y el código del usuario. BAML declara un DSL para forzar salidas válidas, Switchyard traduce y enruta entre dialectos de API, Needle comprime un agente entero a 14 MB, Waku unifica historiales dispersos de múltiples coding agents, embabel-agent mete el patrón agentic dentro del Spring que ya corre en producción JVM, y WorldClaw empuja ese patrón hacia la generación 3D. El hilo conductor es claro: la conversación del sector ha dejado de girar en torno al 'qué puede hacer el agente' y se ha desplazado a 'cómo se enchufa al sistema que ya tienes', sea un modelo abierto local, una JVM corporativa o un sandbox 3D. Es un boletín con sabor a plumbing, no a demo.",
+  "convergencia_stack_css": "Cuatro de los seis hallazgos principales conectan de forma directa con líneas editoriales ya conocidas de CSS. BAML materializa la idea de capa declarativa entre el LLM y el código, justo el hueco que el boletín del 2026-08-10 dejaba abierto al articular las cuatro capas del stack del coding agent. Switchyard institucionaliza el patrón 'agente que habla OpenAI por delante y modelo local por detrás' que el 2026-08-11 abrió con codex-router y que aquí se vuelve agnóstico de cliente y con respaldo de NVIDIA. Needle y Waku prolongan la línea local-first del propio 2026-08-11: Needle lo lleva al extremo del wearable o el móvil sin GPU, Waku lo lleva al escritorio nativo con GPUI, manteniendo la sesión y el historial en la máquina del usuario sin cuenta ni servicio remoto. embabel-agent es el que menos encaje directo tiene con el stack habitual de CSS, pero abre una puerta relevante: agentes con la seriedad de producción que exige Spring, en un lenguaje que la mayoría del software corporativo ya habla.",
+  "cruzado_grafo": "El boletín de hoy no aporta nodos completamente nuevos al grafo; más bien consolida y conecta nodos que ya estaban en construcción. Los refuerzos principales son tres: el concepto `model_router_for_coding_agent`, que ya tenía primera mención del 2026-08-11 con codex-router y hoy se ve robustecido por una implementación oficial de NVIDIA; el concepto `local-first-agent-workspace`, que ya vivía desde el 2026-08-10 y hoy suma a Waku como variante nativa y agnóstica de proveedor frente a paperclipai/paperclip; y el concepto `tiny-foundation-model` con `on-device-agent`, que se complementan explícitamente con `antirez/h3.c` (primera mención 2026-08-11) como otro ataque al mismo problema desde la inferencia multimodal de borde. Aparecen también por primera vez en el grafo las relaciones del repo `embabel/embabel-agent` con `concept:agent_harness` y `concept:enterprise-agents`, y la de `Tencent-Hunyuan/Hunyuan3D-WorldClaw` con `concept:agentic-3d-generation`, sin primera_mencion previa, lo que los marca como entradas nuevas del boletín de hoy.",
+  "tendencias_5_boletines": "Los tres boletines que componen el contexto de continuidad (2026-08-10, 2026-08-11 y el propio 2026-08-12) dibujan una secuencia coherente pero corta, insuficiente para hablar de tendencia de cinco boletines. El 2026-08-10 puso nombre a las cuatro capas del stack del coding agent (runtime, memoria, backend de aplicación, grafo de código). El 2026-08-11 atacó tres frentes en paralelo: triangulación del patrón 'agent company / system of record' con tres contendientes, inferencia local de borde con antirez, y agentes con org-chart. Hoy, 2026-08-12, la conversación se ha desplazado hacia la capa intermedia: conectores, proxies, DSLs, frameworks de producción JVM y modelos tan pequeños que caben en un wearable. La lectura honesta es que tenemos tres puntos de una curva que apunta a 'infraestructura agentic seria' como línea dominante del momento, pero declarar una tendencia de cinco boletines con tres puntos sería sobreajuste.",
+  "alertas": [
+    "Tencent-Hunyuan/Hunyuan3D-WorldClaw no declara licencia explícita en el repo (7 días de vida, sin descripción): no se puede tratar como software libre sin verificación adicional antes de cualquier uso o redistribución.",
+    "Las cifras comparativas de cactus-compute/needle ('5x-70x smaller, 2 bits vs f16') frente a FunctionGemma y Apple FM vienen del propio proyecto y el boletín no las ha verificado con benchmarks externos.",
+    "NVIDIA-NeMo/Switchyard está marcado como pre-alpha en su propio README: la API y los algoritmos de enrutamiento pueden cambiar sin aviso, así que adoptarlo en producción ahora mismo es prematuro.",
+    "egoist/waku arrastra GPL-3.0: si se integra dentro de un proyecto de código propietario o se redistribuye, las obligaciones de la licencia aplican y conviene revisarlas antes de adoptarlo.",
+    "BoundaryML/baml tiene una base real (3 años, 8.9k★, Apache-2.0) pero la métrica de 'compilación más rápida que Go' es autorreportada y merece una medición independiente antes de convertirla en argumento de adopción.",
+    "embabel/embabel-agent presume señales de producción (Maven Central, Docker, SonarQube), pero su tracción real frente a Semantic Kernel o LangChain4j en JVM aún no está contrastada con datos de adopción verificables."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "BAML es la pieza más veterana y menos hype del boletín; vale la pena probarla en un caso real de extracción estructurada para ver si grammar-constrained decoding elimina de verdad el 'rezar por JSON válido' que hoy arreglamos con retries y validadores."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Switchyard es pre-alpha pero la combinación 'oficial de NVIDIA + agnóstico de cliente' lo hace candidato serio a convertirse en la referencia del patrón proxy/router; conviene revisarlo cuando salga del pre-alpha."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "El dato '45M parámetros, 14 MB, tool calling + grammar-constrained en dispositivo' es el tipo de cifra que cambia la conversación sobre 'agente local = necesitas una GPU', ideal para una pieza corta de CSS sobre el nuevo suelo de lo on-device."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Waku ataca un dolor concreto de cualquiera que use más de un coding agent a la vez (sesiones dispersas en silos); probar la app nativa y contrastarla con alternativas web como paperclipai/paperclip daría material para un artículo de 'estaciones de trabajo agentic'."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "WorldClaw es interesante por la convergencia agentic + 3D, pero sin licencia declarada ni descripción en el repo no se puede recomendar todavía; mejor seguirle el rastro y reevaluar cuando aclaren la licencia."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

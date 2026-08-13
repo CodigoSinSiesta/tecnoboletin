@@ -1,0 +1,432 @@
+{
+  "version": 2,
+  "date": "2026-07-13",
+  "boletin_origen": "2026-07-13-trending.md",
+  "resumen_ejecutivo": "- **`ruvnet/ruflo` (+142⭐/hoy, MIT, TypeScript, 64.218⭐) reventó hoy como meta-harness de agentes con 100+ agentes especializados, 314 MCP tools, 60+ comandos, 30 skills, plugin para Claude Code + npm paquete Codex + daemon**. Su descripción en GitHub menciona \"**native Claude Code / Codex / Hermes**\" — **cuarta mención enterprise de Hermes/Nous-style en 12 días**, después de `syncable-dev/memtrace-public`, `TencentCloud/TencentDB-Agent-Memory` y `MadsLorentzen/ai-job-search`. Release v3.25.6 firmado 2026-07-09. **Pero ojo:** el README no nombra \"Hermes\" explícitamente y los topics son `claude-code`, `codex`, `harness`, `mcp-server` sin \"hermes\" — la mención es solo en la descripción del repo y podría referirse al modelo NVIDIA Hermes u otro. Lo trato como **señal con asterisco, no como integración real**.\n- **`ColeMurray/background-agents` (TypeScript, MIT, debut, 2.333⭐) \"Open-Inspect\"** es la **implementación open-source del \"background agent\" de Ramp** ([builders.ramp.com/post/why-we-built-our-background-agent](https://builders.ramp.com/post/why-we-built-our-background-agent)). Agentes que corren en background mientras tú haces otra cosa. Encaja directo con el debate \"harness vs model\" del grafo y complementa a `usestrix/strix` (que es security automation). Actividad caliente: **último push hace minutos**.\n- **`HKUDS/Vibe-Trading` (Python, MIT, debut, 20.922⭐) \"Vibe-Trading: Your Personal Trading Agent\"** aterriza como **agente personal de trading con multi-agent, MCP-native, backtesting integrado, soporte a 100+ LLMs, publicado en PyPI como `vibe-trading-ai`**. El enfoque \"personal trading agent\" con vibe-coding está marcando tendencia — unir `virattt/ai-hedge-fund` (en radar), `MervinPraison/PraisonAI`, ahora Vibe-Trading. Conecta con el paper arXiv del 2026-07-13 \"**Agora: razonamiento en agentes LLM mediante asignación por subasta**\" (2607.09600) que aterriza justo este mecanismo.\n- **`heygen-com/hyperframes` (TypeScript, Apache-2.0, debut, 34.574⭐, npm `hyperframes`) \"Write HTML. Render video. Built for agents.\"** introduce **un renderer que convierte HTML declarativo + GSAP/FFmpeg en vídeo programable, nativamente agent-friendly**. MCP server incluido, soporta workflows de Puppeteer + canvas animado. Producto HeyGen oficial: encaja con su línea de \"AI agents para contenido en vídeo\". Compatible con el cluster \"video AI for agents\" que el grafo tiene pendiente.\n- **`teng-lin/notebooklm-py` (Python, MIT, debut, 17.674⭐) \"NotebookLM unofficial Python API + agentic skill\"** expone programáticamente **todo NotebookLM**, incluyendo features que el web UI no ofrece. Topics: `claude-skills`, `claude`, `google-notebooklm`, `agentic-skill`. Compatible con Claude Code, Codex y **OpenClaw**. Encaja directo con el skill category (`Nutlope/hallmark`, `pbakaus/impeccable` del 2026-07-11).\n- **`lingfengQAQ/webnovel-writer` (Python, GPL-3.0, debut detectado, 5.645⭐, v6.2.1) \"Claude Code plugin para escritura de novelas largas\"** ataca directamente el **dolor \"olvido y alucinación en longform\"** (paper arXiv \"Memoria persistente selectiva y compartida\" 2607.09493 de hoy, mejora 79→96% completion, 97x coste). Incluye `.claude-plugin/marketplace.json` (instalable como plugin), v7 RFC abierto el 2026-07-12. GPL-3.0 copyleft fuerte pero trade-off aceptable si se enchufa en Claude Code.\n- **`microsoft/TRELLIS.2` (Python, MIT, debut, 8.715⭐) \"Native and Compact Structured Latents for 3D Generation\"** publica **TRELLIS.2 con paper arXiv 2512.14692** (anterior release era el primer TRELLIS en HuggingFace, ahora esta v2 con \"compact structured latents\"). 4B params en HF, demo online. No es core CSS pero marca el movimiento 3D-en-Rust/PyTorch alineado con el stack local-first del usuario.\n- **`Crosstalk-Solutions/project-nomad` (TypeScript, Apache-2.0, debut, 33.927⭐)** es **un \"survival computer offline\" autocontenido**: trae herramientas críticas, knowledge y AI para mantenerte informado y autónomo sin internet. Nicho, no CSS, pero curioso como ejemplo de \"AI offline-first como producto distribuible\" (encaja con el debate local-first de Ollama + Hermes).\n- **Fuentes consultadas:** GitHub Trending daily (14 repos), GitHub Trending Python (16), TypeScript (13), JavaScript (12) = 55 entradas únicas tras dedupe. Trendshift home (404 SPA) + Trendshift `/github-trending-repositories` (lista histórica) + página de detalle `trendshift.io/repositories/{id}` con JSON-LD embebido. GitHub REST API para verificación individual de 18 repos. Arxiv del 2026-07-13 cruzado para evitar duplicar (paper 4 \"Memoria persistente\" + paper 5 \"El fallo como proceso\" sí conectados; resto sin doblez).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "ruvnet/ruflo",
+      "url": "https://github.com/ruvnet/ruflo",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**meta-harness de agentes open-source** que se enchufa como plugin a Claude Code (marketplace oficial `ruvnet/ruflo`) o como CLI standalone (`npx ruflo init`). Aporta **100+ agentes especializados coordinados en swarm, 314 MCP tools, 60+ comandos, 30 skills, daemon persistente, sistema de hooks** que amplía Claude Code/Codex con memoria auto-optimizada, RAG federado, comunicación entre máquinas y guardrails de seguridad enterprise. Después de `init`, el usuario sigue usando Claude Code normalmente y los hooks enrutan tareas, aprenden patrones y coordinan agentes en background. **Multiplica en 2 la agentic surface area**.",
+        "por_que_importa": "Es la primera herramienta open-source del grafo que se publica como plugin simultáneo para Claude Code y Codex — hasta ahora los dos runtimes vivían en silos. Encaja con la racha de menciones a Hermes en repos externos (syncable-dev/memtrace-public, TencentCloud/TencentDB-Agent-Memory, MadsLorentzen/ai-job-search, todos ya cubiertos en boletines previos como el 2026-07-11 y 2026-07-08). Matiz importante: la descripción de GitHub dice \"native Claude Code / Codex / Hermes and many more Integrated\", pero el README oficial solo lista Claude Code y Codex; los topics son `claude-code`, `codex`, `harness`, `mcp-server`, sin \"hermes\". La mención probablemente se refiere al modelo Hermes de NVIDIA, no a Nous Hermes, así que no hay que leerla como confirmación de integración real con Hermes. Si quieres probarlo, lo más concreto del día: `npx ruflo init` y luego seguir usando Claude Code normalmente — los hooks se encargan de enrutar y coordinar el swarm en background.",
+        "madurez_senales": "64.218★ · 7.606 forks · MIT · TypeScript · creado 2025-06-02 (hace 13 meses) · último push 2026-07-13 hace minutos · release **v3.25.6 (2026-07-09)** \"main-red unblock + Cursor hook + #2612 heal\", v3.25.5 (2026-07-08), v3.25.4 (2026-07-08). Topics: `agentic-ai`, `agentic-framework`, `agentic-workflow`, `agents`, `ai-agents`, `ai-assistant`, `ai-coding`, `ai-skills`, `autonomous-agents`, `claude-code`, `codex`, `harness`, `mcp-server`, `multi-agent`, `multi-agent-systems`, `npm`, `skills`, `swarm`, `swarm-intelligence`, `typescript`. CLAUDE.md 55.8 KB en repo.",
+        "accion_sugerida": "leer (clonar, leer CLAUDE.md (55.8 KB), instalar via `npx ruflo init` en un proyecto piloto pequeño, ejecutar `ruflo init` y revisar qué hooks se instalan; auditar si la auto-routing de tareas choca con `obra/superpowers` (también meta-harness de skills) o si convive; importante verificar la afirmación \"Hermes\" en la descripción antes de citarla como integración real).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ruvnet/ruflo",
+          "rel": "implements",
+          "dst": "agent-meta-harness-with-hooks",
+          "primera_mencion": null
+        },
+        {
+          "src": "ruvnet/ruflo",
+          "rel": "complements",
+          "dst": "syncable-dev/memtrace-public",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "ruvnet/ruflo",
+          "rel": "complements",
+          "dst": "SmileLikeYe/agent-chief",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "ruvnet/ruflo",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "ruvnet/ruflo",
+          "rel": "complements",
+          "dst": "aaif-goose/goose",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "ruvnet/ruflo",
+          "rel": "risk",
+          "dst": "swarm-coordination-complexity",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruflo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "ColeMurray/background-agents",
+      "url": "https://github.com/ColeMurray/background-agents",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "implementación **open-source** del **background agent de Ramp** (el de pago que code/CI en background). Agentes que corren **de forma asíncrona en background** mientras tú trabajas en otra cosa. Open-Inspect es el componente que **inspecciona código** en background, ejecuta tareas largas y notifica al humano cuando termina",
+        "por_que_importa": "Cierra el cuadrante que faltaba en el grafo de Codigo Sin Siesta: ya teníamos agentes síncronos (aaif-goose/goose, Codex, Claude Code), un chief-of-staff que decide qué interrumpir (SmileLikeYe/agent-chief, cubierto el 2026-07-11), y session capture (entireio/cli). Ahora se incorpora la categoría \"background agent\" como pieza diferenciada. Encaja con HeyGen Hyperframes (también async) y con tareas largas como las que asume lingfengQAQ/webnovel-writer. Para tu flujo ya background-first (cron snapshot 03:00, blogwatcher 08:00, boletín 09:10, nota diaria 22:00) encaja de forma directa: agentes que corren mientras tú haces otra cosa y te notifican al terminar replican exactamente el patrón de Open-Inspect sobre código. El repo es joven (creado 2026-01-25, README corto, topics vacíos) pero el push de hoy muestra actividad real.",
+        "madurez_senales": "2.333★ · 345 forks · MIT · TypeScript · creado 2026-01-25 · **último push 2026-07-13 hace minutos** (commit fresquísimo). 54 issues abiertos. Topics vacíos (raro). README = ~150 líneas (proyecto joven).",
+        "accion_sugerida": "explorar (clonar, leer el README de Ramp en `builders.ramp.com/post/why-we-built-our-background-agent`, instalar localmente, ejecutar el demo contra un repo pequeño, comparar con la versión open-source — esto es material para un post \"qué patrones del background-agent de Ramp open-source el mercado cubre\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "implements",
+          "dst": "background-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "inspired_by",
+          "dst": "ramp-inspector",
+          "primera_mencion": null
+        },
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "complements",
+          "dst": "SmileLikeYe/agent-chief",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "complements",
+          "dst": "lingfengQAQ/webnovel-writer",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "colemurray-background-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "HKUDS/Vibe-Trading",
+      "url": "https://github.com/HKUDS/Vibe-Trading",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**agente personal de trading con interfaz vibe-coding**: \"Tu agente personal de trading en un comando\". Características verificadas del README: **API + MCP server, 100+ LLMs soportados, multi-agent, backtesting, topics oficiales = `ai-agent`, `algorithmic-trading`, `backtesting`, `fintech`, `llm`, `mcp`, `multi-agent`, `python`, `quan...`** (truncado a 80 chars). README disponible en inglés, chino, japonés, coreano y árabe. Publicado en PyPI como `vibe-trading-ai`. HKUDS = Hong Kong University Data Science lab (los mismos autores de `LightRAG`, `HiRAG`, `VL-RAG`).",
+        "por_que_importa": "Aterriza la categoría \"personal trading agent\" que ya cubrimos con virattt/ai-hedge-fund el 2026-04-29 y conecta con MervinPraison/PraisonAI. Es el tercer contendiente en tu radar y, de los tres, el más production-ready: MIT, en PyPI como `vibe-trading-ai`, MCP server y 100+ LLMs soportados. Tiene además una coincidencia editorial directa con el paper de hoy 2607.09600 (Agora): Agora propone subastar cada paso de razonamiento entre modelos por competencia corregida, y Vibe-Trading ya es multi-LLM por diseño — el subastador encaja de forma natural sobre este tipo de stacks. Los autores son HKUDS (Hong Kong University Data Science), los mismos de LightRAG/HiRAG/VL-RAG, lo que da señal de provenance académica. Tema editorial natural: \"Tres visiones de trading agent — cuál se come a cuál\".",
+        "madurez_senales": "20.922★ · 3.645 forks · MIT · Python · creado 2026-04-01 · **último push 2026-07-13 hace horas (4h)** · 8 issues abiertos (señal de buena salud de comunidad). Topics completos: `ai-agent`, `algorithmic-trading`, `backtesting`, `fintech`, `llm`, `mcp`, `multi-agent`, `python`, `quant`, `trading`, `trading-agent`.",
+        "accion_sugerida": "explorar (clonar, `pip install vibe-trading-ai`, conectar el MCP server en Claude Code o localmente, ejecutar el demo de backtesting contra el paper `Agora` para comparar routing de subastas vs routing por competencia simple — si encaja, escribir post \"Vibe-Trading vs ai-hedge-fund vs PraisonAI: tres rutas al trading agent personal\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "HKUDS/Vibe-Trading",
+          "rel": "implements",
+          "dst": "personal-trading-agent-mcp-native",
+          "primera_mencion": null
+        },
+        {
+          "src": "HKUDS/Vibe-Trading",
+          "rel": "competes_with",
+          "dst": "virattt/ai-hedge-fund",
+          "primera_mencion": null
+        },
+        {
+          "src": "HKUDS/Vibe-Trading",
+          "rel": "complements",
+          "dst": "MervinPraison/PraisonAI",
+          "primera_mencion": null
+        },
+        {
+          "src": "HKUDS/Vibe-Trading",
+          "rel": "relevant_to",
+          "dst": "arxiv-2607.09600-agora",
+          "primera_mencion": null
+        },
+        {
+          "src": "HKUDS/Vibe-Trading",
+          "rel": "inspired_by",
+          "dst": "HKUDS/LightRAG",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-vibe-trading",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "heygen-com/hyperframes",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**framework open-source oficial de HeyGen** que convierte HTML declarativo (contenedor + GSAP animaciones + canvas) en **vídeo programable**. Built for agents: expone una API limpia + un MCP server por encima de Puppeteer/FFmpeg, así un coding agent puede generar vídeo sin tener que pelearse con el navegador. Catálogo público de bloques: `data-chart`, etc. Playground online y showcase.",
+        "por_que_importa": "Tres frentes. (a) Es el primer vendor comercial especializado en AI-video (HeyGen) que abre su runtime como open-source para que coding agents lo usen — replica el patrón que ya vimos en larksuite/cli con \"AI agent skills oficiales\" y en Nutlope/hallmark con Together AI, ambos cubiertos el 2026-07-11. (b) Para tu stack de generación de contenido (boletín, blog, próximas demos), un agent que emita vídeo a partir de HTML encaja con un futuro tipo \"el boletín trae un MP4 con el resumen\" sin renderizado manual. (c) Aporta la pieza \"video as HTML\" que presupone el paper 2607.09544 sobre VLMs que fallan al contar — la representación declarativa en lugar de píxeles facilita el conteo y la comprensión de escenas. Riesgo editorial: al ser Apache-2.0 de un vendor comercial, conviene vigilar la dirección del proyecto porque la promesa de openness puede ajustarse si cambia el modelo de negocio.",
+        "madurez_senales": "34.574★ · 3.249 forks · Apache-2.0 · TypeScript (Node ≥22) · creado 2026-03-10 · **último push 2026-07-13 hace minutos** · 192 issues abiertos (señal de adopción rápida). Topics: `ai`, `animation`, `ffmpeg`, `framework`, `gsap`, `html`, `mcp`, `puppeteer`, `rendering`, `typescript`, `video`. Discord oficial. Playground online funcional.",
+        "accion_sugerida": "leer (clonar, instalar npm `hyperframes`, ejecutar el quickstart, examinar el MCP server, escribir un script que reciba un HTML simple (ej: gráfico de barras embebido) y genere un MP4 de 5s; documentar si encaja con un futuro \"boletín con vídeo anexo\" — si encaja, escribir post \"Por qué HeyGen hyperframes importa: HTML declarativo para agentes de vídeo\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "heygen-com/hyperframes",
+          "rel": "implements",
+          "dst": "declarative-html-to-video",
+          "primera_mencion": null
+        },
+        {
+          "src": "heygen-com/hyperframes",
+          "rel": "complements",
+          "dst": "Nutlope/hallmark",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "heygen-com/hyperframes",
+          "rel": "complements",
+          "dst": "larksuite/cli",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "heygen-com/hyperframes",
+          "rel": "relevant_to",
+          "dst": "arxiv-2607.09544-vlm-counting",
+          "primera_mencion": null
+        },
+        {
+          "src": "heygen-com/hyperframes",
+          "rel": "uses",
+          "dst": "ffmpeg",
+          "primera_mencion": null
+        },
+        {
+          "src": "heygen-com/hyperframes",
+          "rel": "risk",
+          "dst": "commercial-vendor-os-iff-ication",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heygen-com-hyperframes",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "teng-lin/notebooklm-py",
+      "url": "https://github.com/teng-lin/notebooklm-py",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**API Python no oficial** + **agentic skill** para **Google NotebookLM** (el cuaderno con AI de Google que sube PDFs/vídeos y responde con grounding estricto). Expone programáticamente **todas** las features del producto, incluidas las que el web UI no ofrece. Topics oficiales: `agentic-skill`, `api`, `claude`, `claude-skills`, `google-notebooklm`, `notebooklm`, `notebooklm-api`, `notebooklm-skill`, `python`. Compatible con Claude Code, Codex y **OpenClaw**. Publicado en PyPI.",
+        "por_que_importa": "El patrón \"skill-vs-API\" se materializa: NotebookLM (el cuaderno con AI de Google) tiene ahora una agentic skill open-source instalable en Claude Code, en el mismo formato que ya cubrimos el 2026-07-11 con Nutlope/hallmark y pbakaus/impeccable. Para tu stack abre una puerta concreta: el blogwatcher o la nota diaria podrían consultar NotebookLM para grounding rápido sobre artículos largos en lugar de re-procesarlos, reutilizando los PDFs/vídeos que ya tienes subidos ahí. La API es no oficial, así que la fragilidad es real si Google cambia el web UI — conviene leer el README para ver qué features cubre hoy y cuáles asume que pueden romperse. La compatibilidad declarada con Claude Code, Codex y OpenClaw (otro nombre para OpenClaw) lo hace portable entre los runtimes que ya manejas.",
+        "madurez_senales": "17.674★ · 2.395 forks · MIT · Python · creado 2026-01-07 · **último push 2026-07-13 hace horas (35 min)** · 13 issues abiertos. README declara \"comprehensive\". Python 3.10-3.14 soportado.",
+        "accion_sugerida": "explorar (clonar, `pip install notebooklm-py`, probar a subir un PDF de prueba y preguntar programáticamente; auditar si NotebookLM sigue accesible sin cuenta Google paid; comparar con el patrón que usa `ChromeDevTools/chrome-devtools-mcp` para DevTools — ambos wrappean productos Google en servidores MCP).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "teng-lin/notebooklm-py",
+          "rel": "implements",
+          "dst": "notebooklm-agentic-skill",
+          "primera_mencion": null
+        },
+        {
+          "src": "teng-lin/notebooklm-py",
+          "rel": "complements",
+          "dst": "Nutlope/hallmark",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "teng-lin/notebooklm-py",
+          "rel": "complements",
+          "dst": "pbakaus/impeccable",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "teng-lin/notebooklm-py",
+          "rel": "relevant_to",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "teng-lin/notebooklm-py",
+          "rel": "risk",
+          "dst": "unofficial-api-fragility",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "teng-lin-notebooklm-py",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "lingfengQAQ/webnovel-writer",
+      "url": "https://github.com/lingfengQAQ/webnovel-writer",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**plugin para Claude Code** (instalable vía `.claude-plugin/marketplace.json`) que **orquesta la escritura de novelas largas** (target: 200 = 2M caracteres chinos, cientos de capítulos). Sistema completo: **inicialización de setting → outline de arcos → escritura cap a cap → revisión → sedimentación de memoria → consulta de estado → dashboard read-only**. La tesis explícita en chino dice: \"** AI ，、、**\" — que es exactamente el dolor de \"olvido y alucinación en longform\" que ataca el paper de hoy arXiv 2607.09493 \"**Memoria persistente selectiva y compartida para sistemas LLM agénticos**\" (mejora 79%→96% completion, reduce 97x el coste por invocación). v6.2.1 estable; **v7 RFC abierto el 2026-07-12** (Discussions #118, Issue #119)",
+        "por_que_importa": "Es un testimonio industrial, fuera del paper, del problema \"AI no recuerda en longform\": escritores chinos lo están usando para novelas serializadas (el género de las web novels, publicación diaria). Complementa directamente al paper 2607.09493 sobre memoria persistente selectiva y compartida para LLMs agénticos — el paper demuestra el problema en abstracto, este plugin lo sufre a escala. Si una memoria persistente selectiva baja el coste por invocación 97x y sube la completion del 79% al 96%, la pregunta concreta para tu stack es: ¿vale la pena adoptarla como capa sobre los crons largos que ya tienes (blogwatcher mensual, generación de informes largos, webnovel-writer)? El proyecto tiene release cadence semanal y un v7 RFC abierto el 2026-07-12 (Discussions #118, Issue #119), lo que da señal de roadmap activo. Licencia GPL-3.0: si integras derivados en código propio,a — tenerlo presente antes de adoptar",
+        "madurez_senales": "5.704★ según Trendshift (API oficial GitHub da 5.645★ con discrepancia de 59) · 980-1.002 forks (Trendshift) · GPL-3.0 · Python 3.10+ · creado 2026-01-02 · **último push 2026-07-07** (hace 6 días; release cadence ~semanal). Topics: `RAG` (único declarado). Trending constante desde marzo 2026: 11-85⭐/día. Plugin marketplace: `.claude-plugin/marketplace.json` (instalable vía `claude plugin install`). 29 issues abiertos.",
+        "accion_sugerida": "leer (clonar, revisar el RFC v7 abierto en Discussions #118, leer el plugin `marketplace.json` para entender estructura; instalar como plugin en Claude Code en local; auditar si el patrón \"memoria sedimentada por capítulo\" se podría reutilizar para los crons largos del usuario como el blogwatcher mensual o el boletín semanal).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "lingfengQAQ/webnovel-writer",
+          "rel": "implements",
+          "dst": "longform-coherence-system",
+          "primera_mencion": null
+        },
+        {
+          "src": "lingfengQAQ/webnovel-writer",
+          "rel": "relevant_to",
+          "dst": "arxiv-2607.09493-persistent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "lingfengQAQ/webnovel-writer",
+          "rel": "complements",
+          "dst": "syncable-dev/memtrace-public",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "lingfengQAQ/webnovel-writer",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "lingfengQAQ/webnovel-writer",
+          "rel": "risk",
+          "dst": "gpl-v3-copyleft",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lingfengqaq-webnovel-writer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "microsoft/TRELLIS.2",
+      "url": "https://github.com/microsoft/TRELLIS.2",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**segunda versión de TRELLIS**, modelo de Microsoft para **3D generation a partir de image/text**. La novedad son los **\"Native and Compact Structured Latents\"** — una representación latente jerárquica que reduce drásticamente el tamaño del modelo manteniendo la calidad. Disponible en HuggingFace como `microsoft/TRELLIS.2-4B` (4B parámetros). Demo online en HF Spaces. v1 era más pesado; esta v2 está optimizada para correr en hardware más modesto.",
+        "por_que_importa": "Se alinea con amap-cvlab/ABot-World (cubierto el 2026-07-11, world model de 0.5B params en 1× RTX 5090) en un movimiento claro de Microsoft y Alibaba hacia 3D generation y world models en local. Para tu preferencia local-first, `TRELLIS.2-4B` en HuggingFace vuelve la generación 3D accesible a desktop sin datacenter. Cobertura editorial natural: \"el stack local-first de 3D AI en 2026 ya da para desktop — TRELLIS.2 + ABot-World + Ollama multimodel = pipeline casero\". Conecta además con el paper de hoy 2607.09657 sobre preentrenamiento visual escalable: TRELLIS.2 es ejemplo industrial de entrenar una representación visual estructurada (los \"Native and Compact Structured Latents\") en lugar de píxeles crudos. La limitación honesta: aunque el modelo está optimizado, sigue necesitando GPU decente en desktop — conviene revisar los requisitos de VRAM antes de planificar una demo local.",
+        "madurez_senales": "8.715★ · 1.076 forks · MIT · Python (PyTorch) · creado 2025-11-26 · último push 2026-07-10 (hace 3 días). 139 issues abiertos. Topics: vacío (raro para Microsoft). Modelo en HuggingFace · Demo online · Project page oficial.",
+        "accion_sugerida": "leer (clonar, leer el paper arXiv 2512.14692, descargar el modelo de HuggingFace, ejecutar el demo online primero; si encaja con el stack local-first, documentar el coste real de inferencia en GPU modesta y compararlo con `amap-cvlab/ABot-World`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/TRELLIS.2",
+          "rel": "implements",
+          "dst": "compact-3d-structured-latents",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/TRELLIS.2",
+          "rel": "complements",
+          "dst": "amap-cvlab/ABot-World",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "microsoft/TRELLIS.2",
+          "rel": "relevant_to",
+          "dst": "arxiv-2607.09657-visual-pretraining",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/TRELLIS.2",
+          "rel": "risk",
+          "dst": "desktop-3d-gpu-needed",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-trellis-2",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "nats-io/nats-server",
+      "url": "https://github.com/nats-io/nats-server",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "y `Cloudflare/skills` (TS, 6 forks vía 2026-07-12) — Cloudflare skills oficiales",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si encaja con el patrón \"vendor + skills\" tras `larksuite/cli` y `Nutlope/hallmark`; baja prioridad)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nats-io-nats-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 1,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

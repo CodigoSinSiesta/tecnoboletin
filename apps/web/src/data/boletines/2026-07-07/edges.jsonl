@@ -1,0 +1,55 @@
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-firecrawl-firecrawl", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-firecrawl-firecrawl", "dst": "tema:firecrawl-firecrawl", "rel": "trata", "added": "2026-07-07"}
+{"src": "firecrawl/firecrawl", "dst": "web-scraping-as-service", "rel": "implements", "added": "2026-07-07", "primera_mencion": "2026-07-05"}
+{"src": "firecrawl/firecrawl", "dst": "D4Vinci/Scrapling", "rel": "competes_with", "added": "2026-07-07", "primera_mencion": "2026-07-05"}
+{"src": "firecrawl/firecrawl", "dst": "agpl-web-service-risk", "rel": "risk", "added": "2026-07-07", "primera_mencion": null}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-iofficeai-officecli", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-iofficeai-officecli", "dst": "tema:iofficeai-officecli", "rel": "trata", "added": "2026-07-07"}
+{"src": "iOfficeAI/OfficeCLI", "dst": "office-suite-for-agents", "rel": "implements", "added": "2026-07-07", "primera_mencion": null}
+{"src": "iOfficeAI/OfficeCLI", "dst": "agentic-decision-systems", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-05"}
+{"src": "iOfficeAI/OfficeCLI", "dst": "dream-num/univer", "rel": "complements", "added": "2026-07-07", "primera_mencion": null}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:tencentcloud-tencentdb-agent-memory", "rel": "trata", "added": "2026-07-07"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "MCP-based-agent-memory", "rel": "implements", "added": "2026-07-07", "primera_mencion": null}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "hermes-agent", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "Graphify-Labs/graphify", "rel": "complements", "added": "2026-07-07", "primera_mencion": "2026-07-04"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-shadcn-improve", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-shadcn-improve", "dst": "tema:shadcn-improve", "rel": "trata", "added": "2026-07-07"}
+{"src": "shadcn/improve", "dst": "plan-as-product", "rel": "implements", "added": "2026-07-07", "primera_mencion": null}
+{"src": "shadcn/improve", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "shadcn/improve", "dst": "OthmanAdi/planning-with-files", "rel": "complements", "added": "2026-07-07", "primera_mencion": "2026-07-06"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-alibaba-page-agent", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-alibaba-page-agent", "dst": "tema:alibaba-page-agent", "rel": "trata", "added": "2026-07-07"}
+{"src": "alibaba/page-agent", "dst": "in-page-gui-agent", "rel": "implements", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "alibaba/page-agent", "dst": "ChromeDevTools/chrome-devtools-mcp", "rel": "complements", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "alibaba/page-agent", "dst": "agentic-decision-systems", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-diegosouzapw-omniroute", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-diegosouzapw-omniroute", "dst": "tema:diegosouzapw-omniroute", "rel": "trata", "added": "2026-07-07"}
+{"src": "diegosouzapw/OmniRoute", "dst": "agent-gateway", "rel": "implements", "added": "2026-07-07", "primera_mencion": null}
+{"src": "diegosouzapw/OmniRoute", "dst": "multi-provider-routing", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "diegosouzapw/OmniRoute", "dst": "OpenRouter", "rel": "competes_with", "added": "2026-07-07", "primera_mencion": null}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-alirezarezvani-claude-skills", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-alirezarezvani-claude-skills", "dst": "tema:alirezarezvani-claude-skills", "rel": "trata", "added": "2026-07-07"}
+{"src": "alirezarezvani/claude-skills", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "alirezarezvani/claude-skills", "dst": "hermes-agent", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
+{"src": "alirezarezvani/claude-skills", "dst": "awesome-list-saturation", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-05"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-7", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-7", "dst": "tema:langchain-ai-openwiki-8-038-typescript-m", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-8", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-8", "dst": "tema:kenn-io-agentsview-4-035-go-mit-push-202", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-9", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-9", "dst": "tema:composiohq-awesome-claude-skills-67-032-", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-10", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-10", "dst": "tema:tauricresearch-tradingagents-91-466-pyth", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-11", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-11", "dst": "tema:agentscope-ai-qwenpaw-21-098-python-apac", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-12", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-12", "dst": "tema:dream-num-univer-13-502-typescript-apach", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-13", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-13", "dst": "tema:karpathy-nanogpt-60-865-python-mit-ltimo", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-14", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-14", "dst": "tema:robbyant-lingbot-vision-153-python-apach", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-15", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-15", "dst": "tema:soycaporal-ternlight-135-python-mit-push", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:idx-16", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:idx-16", "dst": "tema:infisical-agent-vault-1-829-go-noasserti", "rel": "trata", "added": "2026-07-07"}

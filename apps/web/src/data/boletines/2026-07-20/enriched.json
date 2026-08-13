@@ -1,0 +1,499 @@
+{
+  "version": 2,
+  "date": "2026-07-20",
+  "boletin_origen": "2026-07-20-trending.md",
+  "resumen_ejecutivo": "- **Día marcado por SDKs y CLIs agénticos**: github/copilot-sdk (oficial), MoonshotAI/kimi-cli (alternativa china madura) y 1jehuang/jcode (harness minimalista en Rust) coinciden en trending el mismo día. El patrón \"agent runtime se commodity\" se confirma: ya no basta con el modelo, la pregunta es el shell.\n- **HKUDS/nanobot** despega hasta 45.913★ y sigue con releases activos (v0.2.2 \"Durability Release\", 2026-06-23). Es el agente personal open-source más serio para comparar con Hermes CLI: multi-canal, MCP, WebUI, deploy one-click a Render.\n- **Panniantong/Agent-Reach** (58k★) y **trycua/cua** (20k★) consolidan el espacio \"periféricos del agente\": plugins de lectura web y computer-use. **WrenAI** (16k★) entra en el radar de texto-a-SQL con gobernanza — útil para el ángulo \"agentes confiables\".\n- **airllm** sigue creciendo (23k★) y trae inferencia de 70B en GPU de 4GB vía disk-offloading. Relevante para el ángulo local-first / hardware modesto de CSS.\n- **every-app/open-seo** propone una alternativa open source a Semrush/Ahrefs vía MCP — encaja con la línea editorial de CSS sobre cómo construir herramientas SEO con la pila agéntica. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "HKUDS/nanobot",
+      "url": "https://github.com/HKUDS/nanobot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Runtime agéntico personal ultraligero con WebUI, canales (Telegram, Discord, Slack, WeChat, Email, Mattermost), MCP, memoria persistente vía \"Dream\", SDK de Python y API compatible con OpenAI.",
+        "por_que_importa": "Es el rival más maduro y comparable a Hermes/Ibid en el segmento de agentes personales open source, y ya lo cubrimos el 2026-07-18 como competidor y como implementación de un runtime de agente personal. Desde entonces ha seguido avanzando: la v0.2.2 acaba de sacar el 'Durability Release', con transcripts segmentados, controles de runtime para el SDK de Python y mejor gestión de automatizaciones. Detalle práctico: trae README en español y deploy one-click a Render, lo que baja la barrera para probarlo frente a setups más DIY.",
+        "madurez_senales": "45.913★ · 8.118 forks · Python · creado 2026-02-01 · último push 2026-07-20 (hoy) · MIT · topics: ai, ai-agent, claude-code, codex, nanobot, openclaw.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "HKUDS/nanobot",
+          "rel": "complements",
+          "dst": "Hermes",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "HKUDS/nanobot",
+          "rel": "implements",
+          "dst": "personal_agent_runtime",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "nanobot",
+          "rel": "uses",
+          "dst": "MCP_protocol",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-nanobot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "github/copilot-sdk",
+      "url": "https://github.com/github/copilot-sdk",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "SDK oficial multiplataforma de GitHub para embeber Copilot Agent en apps y servicios propios (Java como repo principal).",
+        "por_que_importa": "Es la señal de que GitHub quiere que Copilot Agent se distribuya como SDK integrable, no solo como extensión de IDE. Para un escritor técnico o un equipo que construye agentes, la lectura concreta es: si tu idea era meter un 'Copilot' dentro de tu propia app, ya hay un SDK oficial en Java con el que competir o integrarse, en vez de pelear contra la extensión. El dato de 'entrada fría pero estable' en trending sugiere que el revuelo mediático aún no llegó, aunque el repo esté activo a fecha de hoy.",
+        "madurez_senales": "10.003★ · Java · último push 2026-07-20 · MIT · 39★ hoy en trending (entrada fría pero estable).",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "github/copilot-sdk",
+          "rel": "competes_with",
+          "dst": "OpenAI_Agents_SDK",
+          "primera_mencion": null
+        },
+        {
+          "src": "copilot-sdk",
+          "rel": "enables",
+          "dst": "agent_in_your_own_app",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-copilot-sdk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "MoonshotAI/kimi-cli",
+      "url": "https://github.com/MoonshotAI/kimi-cli",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Kimi Code CLI is your next CLI agent\": agente en terminal del equipo chino MoonshotAI (los mismos que hacen Kimi/MoE).",
+        "por_que_importa": "Lo interesante no es solo Kimi como modelo, sino que MoonshotAI publique ahora su propio agente CLI: confirma que el patrón 'agente en la terminal' ya es tabla en Asia, no solo en el stack occidental (Claude Code, Codex CLI). 410 estrellas en un día es una tracción seria para tratarse de un CLI recién salido. Merece un análisis comparado para ver qué decisiones de UX y de modelo replican o rompen respecto a los agentes CLI que ya hemos cubierto.",
+        "madurez_senales": "10.002★ · Python · último push 2026-07-16 · Apache-2.0 · 410★ hoy en trending.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "MoonshotAI/kimi-cli",
+          "rel": "competes_with",
+          "dst": "Anthropic_Claude_Code",
+          "primera_mencion": null
+        },
+        {
+          "src": "kimi-cli",
+          "rel": "competes_with",
+          "dst": "OpenAI_Codex_CLI",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moonshotai-kimi-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Harness (\"arnés\") minimalista para coding agents escrito en Rust. Un único autor.",
+        "por_que_importa": "Es el ejemplo perfecto del ángulo 'menos es más': un harness para coding agents escrito en Rust por un único autor, con 9.080 estrellas y 235 estrellas hoy en trending, lo que indica que la comunidad valora el minimalismo tanto como el autor. Sirve como material para un artículo sobre mínimos viables del agent loop: qué piezas son imprescindibles y cuáles son framework fluff que se puede uno ahorrar. Riesgo real a tener en cuenta: single-maintainer, así que cualquier decisión de adoptarlo en serio depende de cuán cómodo te quedas atado a una sola persona.",
+        "madurez_senales": "9.080★ · Rust · último push 2026-07-20 · MIT · 235★ hoy en trending. Riesgo: single-maintainer.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "jcode",
+          "rel": "implements",
+          "dst": "minimal_agent_harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "jcode",
+          "rel": "inspires",
+          "dst": "agent_loop_best_practices",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1jehuang-jcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Canner/WrenAI",
+      "url": "https://github.com/Canner/WrenAI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "GenBI open source que convierte NL → SQL con una \"open context layer\" (definiciones de métricas, linaje) sobre más de 20 fuentes (BigQuery, Snowflake, Postgres, ClickHouse, Redshift, Databricks).",
+        "por_que_importa": "El ángulo \"agentes confiables sobre datos\" es uno de los cuellos de botella reales para empresas. La capa de contexto gobernado es lo que diferencia a WrenAI del típico \"conecta un LLM a tu DB\".",
+        "madurez_senales": "16.326★ · Python · último push 2026-07-20 · license NOASSERTION (verificar antes de adopción; probablemente open source pero el campo no es SPDX estándar). 121★ hoy.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "WrenAI",
+          "rel": "solves",
+          "dst": "text_to_sql_reliability",
+          "primera_mencion": null
+        },
+        {
+          "src": "WrenAI",
+          "rel": "competes_with",
+          "dst": "proprietary_text_to_sql_solutions",
+          "primera_mencion": null
+        },
+        {
+          "src": "WrenAI",
+          "rel": "uses",
+          "dst": "open_context_layer_pattern",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "canner-wrenai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "every-app/open-seo",
+      "url": "https://github.com/every-app/open-seo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Toolkit SEO open source (keyword research, backlink analysis, GSC MCP, etc.). Su atractivo es ofrecer las funciones de Semrush/Ahrefs sin coste por consulta y exponiendo un servidor MCP para que coding agents lo consuman.",
+        "por_que_importa": "Si haces SEO para clientes desde la terminal o como agente, esta es la pieza que faltaba: GSC vía MCP más datos SERP/backlinks locales.",
+        "madurez_senales": "5.187★ · TypeScript · último push 2026-07-19 · MIT · topics: backlink-analysis, google-search-console-mcp, keyword-research, mcp.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "open-seo",
+          "rel": "solves",
+          "dst": "seo_automation_for_agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "open-seo",
+          "rel": "competes_with",
+          "dst": "Semrush",
+          "primera_mencion": null
+        },
+        {
+          "src": "open-seo",
+          "rel": "competes_with",
+          "dst": "Ahrefs",
+          "primera_mencion": null
+        },
+        {
+          "src": "open-seo",
+          "rel": "uses",
+          "dst": "MCP_protocol",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "every-app-open-seo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Colección de adaptadores para que un agente lea Twitter/X, Reddit, YouTube, Bilibili, GitHub y más. Resuelve un problema recurrente: la mayoría de plataformas bloquean a los bots; Agent-Reach aporta los trucos, cookies y endpoints que ya conoce.",
+        "por_que_importa": "Pieza de \"periféricos web\" del agente; complementa a Scrapling/Obscura en la línea \"darle ojos al agente sin pagar Apify\".",
+        "madurez_senales": "58.405★ (sorprendentemente alto) · Python · último push 2026-07-17 · MIT · topics: agent-infrastructure, ai-search, automation.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Agent-Reach",
+          "rel": "complements",
+          "dst": "Scrapling",
+          "primera_mencion": null
+        },
+        {
+          "src": "Agent-Reach",
+          "rel": "complements",
+          "dst": "Obscura",
+          "primera_mencion": null
+        },
+        {
+          "src": "Agent-Reach",
+          "rel": "solves",
+          "dst": "social_media_blocking",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "panniantong-agent-reach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "lyogavin/airllm",
+      "url": "https://github.com/lyogavin/airllm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Disk-offloading agresivo para correr LLMs de 70B en GPUs tan pequeñas como 4 GB de VRAM. El modelo vive en RAM/disco y se mueve a la GPU capa por capa.",
+        "por_que_importa": "El sueño \"70B en el portátil\" es uno de los hilos recurrentes del canal local-first. Si realmente funciona en hardware modesto, redefine qué se puede hacer sin datacenter.",
+        "madurez_senales": "23.737★ · Jupyter Notebook (raro como lenguaje principal — núcleo Python) · último push 2026-07-16 · Apache-2.0 · 358★ hoy.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "airllm",
+          "rel": "enables",
+          "dst": "local_70B_inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "airllm",
+          "rel": "competes_with",
+          "dst": "GGUF_offloading",
+          "primera_mencion": null
+        },
+        {
+          "src": "airllm",
+          "rel": "relevant_to",
+          "dst": "Hermes_local_LLM_strategy",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lyogavin-airllm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "trycua/cua",
+      "url": "https://github.com/trycua/cua",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Drivers open source y benchmarks para computer-use 2.0 en flotas cross-OS.",
+        "por_que_importa": "",
+        "madurez_senales": "20.295★, MIT, push 2026-07-20",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trycua-cua",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "AstrBotDevs/AstrBot",
+      "url": "https://github.com/AstrBotDevs/AstrBot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Framework agéntico multi-IM (QQ, WeChat, Telegram, Discord, Slack).",
+        "por_que_importa": "",
+        "madurez_senales": "36.799★, AGPL-3.0, push 2026-07-20",
+        "accion_sugerida": "leer (AGPL bloquea adopción en productos cerrados, pero el código es referencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "astrbotdevs-astrbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Sentient-OS-Labs/sentient-os",
+      "url": "https://github.com/Sentient-OS-Labs/sentient-os",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"OS\" on-device que entiende tu vida y se anticipa; Swift, AGPL, ultraverde.",
+        "por_que_importa": "",
+        "madurez_senales": "97★, AGPL-3.0, push 2026-07-20",
+        "accion_sugerida": "vigilar (no verificado si hay demo que funcione, tomar con pinzas)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sentient-os-labs-sentient-os",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "oblien/openship",
+      "url": "https://github.com/oblien/openship",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Plataforma de deployment self-hosted para apps de agentes.",
+        "por_que_importa": "",
+        "madurez_senales": "3.599★, Apache-2.0, push 2026-07-19",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oblien-openship",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "earthtojake/text-to-cad",
+      "url": "https://github.com/earthtojake/text-to-cad",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skills de agente para CAD (build123d) y diseño hardware.",
+        "por_que_importa": "",
+        "madurez_senales": "8.435★, MIT, push 2026-07-11",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earthtojake-text-to-cad",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "DioxusLabs/dioxus",
+      "url": "https://github.com/DioxusLabs/dioxus",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Framework Rust para web, desktop y mobile.",
+        "por_que_importa": "",
+        "madurez_senales": "37.098★, Apache-2.0, push 2026-07-11",
+        "accion_sugerida": "vigilar (conviene cuando busque \"una sola base de código para app de escritorio ligera\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dioxuslabs-dioxus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/8 items reescritos; rechazados por longitud sospechosa: [4, 5, 6, 7]; faltantes en respuesta: [4, 5, 6, 7]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

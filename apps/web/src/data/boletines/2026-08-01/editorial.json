@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-08-01",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy consolida una tesis que llevaba gestándose dos días: la plomería de los agentes —harness, gobernanza, skill-distillation, grafos y review CLI— se está abriendo como código industrial al mismo ritmo al que se cerraron los modelos. La diferencia frente al 30 y 31 de julio es que ya no hablamos de la categoría en abstracto: hoy aparece la implementación concreta de cada pieza. QM cubre el multi-tenant que faltaba entre Claude Code personal y plataformas enterprise pesadas; ratchet cierra el open loop de inyectar reglas a un agente sin verificarlas; Skill Recorder automatiza el paso más caro del authoring de skills; tuicr resuelve la fricción de la review en TUI; y waste y pgGraph demuestran que el local-first ya no es toys, es producción. El hilo conductor es menos 'qué descubrimos' y más 'qué hueco del stack se ha tapado hoy'.",
+  "convergencia_stack_css": "La convergencia con el stack local-first y las líneas editoriales de CSS es la más fuerte de los últimos boletines. Tres hallazgos aterrizan directamente en piezas que ya teníamos en radar: sqliteai/waste entra como competidor explícito de Ollama (cubierto el 2026-07-04), revalidando la apuesta por inferencia local pero llevando el techo de parámetros a 2.78T; Evokoa/pgGraph completa la capa de grafos donde Graphify era el prototipo, dando la versión Postgres vanilla con Cypher-like y Apache-2.0; y microsoft/skill-recorder conecta con la línea de hermes-agent-skill-authoring y claude_skills_format, automatizando el paso de documentar un SKILL.md a mano. A esto se suman firecrawl/pdf-inspector (pieza de scraping/document processing) y 0xwilliamortiz/ratchet (governance barata para Claude Code), que aunque no tocan directamente el stack reportado, encajan en la línea editorial de 'plomería de agentes' que CSS viene construyendo.",
+  "cruzado_grafo": "Hay tres refuerzos explícitos del grafo sobre nodos ya conocidos: Ollama aparece como competidor de WASTE (primera_mencion 2026-07-04), Graphify aparece como complemento de pgGraph (primera_mencion 2026-07-04), confirmando que la línea local-first / knowledge-graph-stack tiene continuidad real. El resto de nodos del grafo asociados a los hallazgos de hoy (agent_harness, moe_streaming_inference, pdf_classification, agent_governance, skill_creation, cli_code_review) no traen primera_mencion en los datos recibidos, así que no se les puede atribuir una fecha previa sin riesgo de fabricarla. Cabe destacar que tampoco aparecen hoy nuevas menciones a nodos estructurales que ya teníamos —el grafo no crece, pero los nodos existentes se engordan con evidencia de que la categoría se está llenando de implementaciones concretas.",
+  "tendencias_5_boletines": "El contexto de continuidad disponible es de solo dos días (30 y 31 de julio), lo cual es insuficiente para hablar de cinco boletines con base firme; mejor declararlo explícito. Con esos dos días, lo que se observa es una secuencia limpia: el 30 de julio se abre la tesis de 'la plomería de los agentes se industrializa'; el 31 de julio se aterriza con la trinidad skill-distillation + BaaS MCP-first + gateway SaaS-MCP; y el 1 de agosto cada hueco de esa trinidad más el del harness multi-tenant reciben una implementación concreta (Skill Recorder, ratchet, pgGraph, QM). La tendencia real no es de cinco boletines sino de tres, y apunta a que la próxima hornada cubrirá huecos adyacentes: identity de agentes, observability/Audit log, y marketplaces de skills ya verificadas.",
+  "alertas": [
+    "Los claims de rendimiento de WASTE (982 GB de Kimi K3 a 0.5 tok/s en 64 GB de RAM) vienen del README del proyecto y no se han replicado independientemente; tratarlos como demostración de concepto, no como benchmark establecido.",
+    "pgGraph se presenta como extensión Apache-2.0 en ghcr.io, pero la madurez real (tests, cobertura Postgres 14-18, soporte Cypher-like) conviene validarla antes de recomendarla para producción frente a Apache AGE o pgvector con recursivos.",
+    "QM resuelve un hueco real pero asume workspaces Slack-first; si el equipo no vive en Slack, el valor de la multi-tenencia se diluye bastante.",
+    "tuicr promete round-trip real con GitHub/GitLab, pero la fricción real de adopción no es la TUI sino los rate limits y scopes de token; falta ver si aguanta un flujo de review sostenido."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "pgGraph cierra el círculo de la línea editorial de knowledge-graph-stack local-first que CSS viene cubriendo desde julio; es el relevo natural de Graphify cuando se quiere Postgres de verdad, y conviene mencionarlo en el próximo artículo sobre la capa de grafos."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "WASTE revalida la línea de inferencia local pero moviendo el techo a multi-TB; merece un deep-dive que contraste con Ollama, vLLM y llama.cpp en el mismo MacBook M-series para saber qué aporta realmente frente a lo que ya teníamos en el radar."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "ratchet es governance barata para Claude Code con un patrón replicable (PostToolUse hook + ruleset + reporte al modelo); encaja con la línea de hermes-agent-skill-authoring y vale la pena evaluarlo como pieza del propio workflow de Ibid."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "QM cubre un hueco multi-tenant real (el intermedio entre Claude Code personal y Slack-first enterprise); vigilar su tracción real —estrellas, contributors, despliegues fuera del YC demo— antes de recomendarlo como capa de aislamiento para equipos pequeños."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Skill Recorder automatiza el paso más caro del authoring de SKILL.md que CSS ya documenta en hermes-agent-skill-authoring; encaja directamente con la línea editorial de skills y con la cobertura previa de claude_skills_format."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-07-01",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy cierra un trío de movimientos alrededor del coding agent del propio lector: distribución de skills (Matt Pocock opt-in y Karpathy condensado en un único CLAUDE.md), gestión unificada de providers (CC Switch 1.x que ya lista a Hermes Agent como ciudadano de primera) y orquestación multi-agent (Orca con worktrees paralelos y mobile companion). El hilo conductor es la infraestructura periférica del agente: ya no se discute tanto qué modelo corre el loop, sino cómo se carga conocimiento procedural, cómo se persiste la config y cómo se ejecutan varios agentes en paralelo. Dao Code y Obscura aportan las dos novedades técnicas más accionables —prefix-cache engineering aplicado a un agente completo y un headless browser agent-first que cambia la aritmética del scraping— mientras TabFM y FluidVoice son adyacentes y útiles pero no centrales.",
+  "convergencia_stack_css": "Cuatro hallazgos de hoy tocan directamente el stack local-first y las líneas editoriales de CSS: CC Switch unifica providers locales y cloud sync opcional vía WebDAV sin pasar por servidor del proyecto, alineado con el flujo de Hermes; Obscura encaja con la skill `web-scraping-viability` porque el primer test de acceso directo ya no exige proxies residenciales; Dao Code replica la técnica de byte-stable prefixes sobre cualquier modelo con cache pricing, no solo DeepSeek, lo que la hace generalizable al uso de DeepSeek V4 desde Hermes; FluidVoice cubre la brecha de dictado on-device en macOS para redactar artículos sin salir del stack local. Matt Pocock skills y el CLAUDE.md de Karpathy son piezas inmediatamente instalables como skills adicionales en cualquier agente.",
+  "cruzado_grafo": "Ningún hallazgo de hoy trae `primera_mencion` real en los datos recibidos, así que ninguna de estas relaciones se puede fechar como recurrente: cc-switch → hermes-agent (supports), cc-switch → OmniRoute (competes_with), obscura → Scrapling (complements), obscura → stealth-scraping (solves), dao-code → prefix-cache-engineering (implements), dao-code → superpowers (competes_with), karpathy-skills → 12-factor-agents (complements), orca → parallel-agents-orchestration (implements), tabfm → foundation-models-tabular (implements), FluidVoice → on-device-stt (implements). Aparecen nodos nuevos probables en el grafo (prefix-cache-engineering, foundation-models-tabular, on-device-stt) pero sin fecha previa que confirmar. La lectura honesta es que hoy no hay refuerzo fechado de relaciones anteriores; todo el conocido es de primera aparición en este boletín.",
+  "tendencias_5_boletines": "No dispongo de contexto de continuidad real más allá del fragmento del 2026-06-30 incluido, que habla de la fragmentación del ecosistema de coding agents en tres planos (habilidades, gestión, orquestación). El boletín de hoy refuerza exactamente ese diagnóstico: Matt Pocock y Karpathy cubren el plano de habilidades, CC Switch cubre el plano de gestión de providers, y Orca con agent-orchestrator y herdr cubren el plano de orquestación. Con un solo día previo recibido no puedo hablar de tendencia a 5 boletines sin inventar, así que el contexto queda en 'señal estructural de ayer hecha explícita hoy' y nada más.",
+  "alertas": [
+    "Dao Code presume 30× más barato que Opus 4.8 en 13/14 tareas estilo SWE-bench; el repo tiene 869 ⭐ y v0.x, la métrica es del propio autor y conviene replicarla antes de extraer conclusiones.",
+    "Obscura alcanza 10k ⭐ y presume 30 MB de RAM frente a 200+ MB de Chrome; los benchmarks son de la propia tabla del repo, falta validación independiente en sites con DataDome real.",
+    "CC Switch incluye a Hermes Agent como soportado 'oficialmente'; conviene verificar la versión de Hermes soportada y el estado de SQLite con writes atómicos antes de fiarle la config local.",
+    "FluidVoice es GPL-3.0, no MIT: si el proyecto del lector es código cerrado hay que revisar implicaciones de redistribución antes de integrarlo.",
+    "TabFM se etiqueta 'Not an officially supported Google product' y tiene 207 ⭐; tratar como experimento, no como producto estable.",
+    "Orca está respaldado por YC pero es una capa de orquestación sobre agentes externos; la propuesta asume que el lector ya mantiene múltiples coding agents activos, no aporta valor en flujos de un solo agente."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Instalar Obscura y correr un test de viabilidad contra un site con DataDome que antes exigía Apify + proxies residenciales; documentar si el primer intento pasa o no, eso decide si actualiza la skill `web-scraping-viability`."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Cargar el CLAUDE.md de Karpathy como skill adicional en Hermes y aplicarlo a una sesión real de coding para validar si los 4 principios (think, simplicity, surgical, goal-driven) son exportables tal cual o hay que adaptarlos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Vigilar Dao Code durante 2-3 boletines: comprobar si la técnica de byte-stable prefixes se replica con DeepSeek V4 desde Hermes, y si la promesa de 30× frente a Opus 4.8 se sostiene en un benchmark independiente."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "CC Switch 1.x es la primera GUI que trata a Hermes Agent como ciudadano de primera entre los coding agents principales; es contenido accionable para un artículo de CSS sobre unificación de config de coding agents."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 7,
+      "razon": "FluidVoice cubre dictado on-device en macOS con Fluid Intelligence local; encaja en la línea local-first de CSS y la limitación GPL-3.0 merece una nota editorial honesta."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-31",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-31 deja de mirar a los modelos y se centra en la capa de industrialización que los hace usables en producción: voz frontier que baja al edge-CPU, OCR de referencia reorientado a document-AI para RAG, y sobre todo la trinidad de skill-distillation + BaaS MCP-first + gateway SaaS-MCP, que por primera vez aparece completa en un mismo boletín. El hilo conductor es la tesis ya anticipada en 29 y 30 de julio —la plomería de los agentes se está abriendo como código industrial al ritmo al que se cerraron los modelos—, pero hoy esa plomería se concreta en piezas OSS descargables: la voz ya no necesita nube, los documentos ya no necesitan Textract, y los agentes ya no necesitan cablear Supabase ni OAuth a mano. Es el día en que el stack local-first para coding agents pasa de eslogan a repos clonables.",
+  "convergencia_stack_css": "Tres hallazgos de hoy encajan directamente con el stack local-first y el ángulo de coding agents que CSS viene defendiendo: VibeVoice-ASR-BitNet corre ASR multilingüe en CPU de 3 hilos sin GPU, lo que materializa el interés del blog por voz on-device; butterbase-ai/butterbase aterriza la idea BaaS + MCP-first con Apache-2.0 y Postgres, encajando con el eje local-first para coding agents; y oomol-lab/open-connector cubre el cableado con 1000+ SaaS vía MCP, la pieza que le faltaba al patrón 'una capability, muchos agentes'. PaddleOCR también conecta con el stack: su pipeline pdf2markdown es asimilación directa para pipelines RAG de documentos sobre el grafo local.",
+  "cruzado_grafo": "Tres nodos del grafo reciben refuerzo explícito con fecha previa: el arco voice-AI-on-cpu se confirma al volver a aparecer huggingface/speech-to-speech (mencionado el 2026-07-09) compitiendo con VibeVoice; el patrón skill-as-product se refuerza con last30days-skill volviendo a trending tras su primera mención del 2026-07-03 e integrándose con el sistema de skills de Hermes; y la pugna por el SO cross-harness se reactiva con ecc como rival declarado de obra/superpowers (cubierto el 2026-07-03). El resto de aristas del boletín de hoy —document-ai-oss, mcp-first-baas, mcp-saas-gateway, content-to-skill-distillation, RIA-TV++— son nodos nuevos sin primera_mencion previa.",
+  "tendencias_5_boletines": "Sumando los tres días recientes con contexto (29 y 30 de julio y este 31), la tendencia editorial de la semana es nítida: tras una fase de hype centrada en modelos, el boletín pivota hacia la commoditización de los satélites del agente —autenticación, memoria, gateways, OCR, voz edge, skills portables— y el boletín de hoy la cierra con la confirmación de que esa commoditización es ya descargable, no solo conceptual. La recurrencia importa: open-connector y ecc acumulan dos y tres días en trending respectivamente, señal de tracción real más allá del lanzamiento.",
+  "alertas": [
+    "ecc mezcla +804 stars/día con una card de sponsor prominente: la tracción puede estar amplificada por promoción, no solo por adopción orgánica.",
+    "last30days-skill presenta un volumen de crecimiento (55k ⭐, +378 stars/día) fuera de lo habitual para un skill técnico; conviene revisar la distribución de estrellas antes de leerlo como prueba cerrada de skill-as-product a escala.",
+    "butterbase aparece en 2.9k ⭐ sin datos de recurrencia en trending todavía: un solo día no basta para validar que el patrón BaaS + MCP-first es estable frente a Supabase.",
+    "oomol-lab/open-connector crecer 287 ⭐ en 48 h es señal positiva, pero el repo promete 1000+ proveedores SaaS vía gateway único: la promesa merece auditoría de qué porcentaje está realmente cableado y funcional vs. esqueleto.",
+    "VibeVoice-ASR-BitNet presume RTF<1 en CPU de 3 hilos sin especificar hardware exactos; ese dato conviene replicarlo antes de sacarlo en titulares de voz on-device."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "VibeVoice-ASR-BitNet baja el voice-AI al edge-CPU; encaja directo con el ángulo local-first y da pie a un artículo frente a speech-to-speech sobre convergencia OSS en voz."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Butterbase es BaaS + MCP-first Apache-2.0 con Postgres, auth y storage: pieza concreta para un artículo sobre stacks local-first para coding agents sin cablear Supabase a mano."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "PaddleOCR reorientado a document-AI + pdf2markdown es el rival OSS directo de Textract y Google Document AI; soporta un artículo sobre extracción documental open source en pipelines RAG."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "cangjie-skill cierra el lado de skill-distillation que faltaba en el grafo (destilar contenido, no personas), útil para un artículo sobre bibliotecas y vídeos que se convierten en skills ejecutables."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 6,
+      "razon": "ecc vs. obra/superpowers por convertirse en el SO cross-harness canónico ya está en; seguir el duelo unos días antes de decidir artículo, porque la card de sponsor puede estar sesgando la tracción"
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

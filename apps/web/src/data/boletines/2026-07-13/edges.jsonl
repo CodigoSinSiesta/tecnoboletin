@@ -1,0 +1,51 @@
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-ruvnet-ruflo", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-ruvnet-ruflo", "dst": "tema:ruvnet-ruflo", "rel": "trata", "added": "2026-07-13"}
+{"src": "ruvnet/ruflo", "dst": "agent-meta-harness-with-hooks", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "ruvnet/ruflo", "dst": "syncable-dev/memtrace-public", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "ruvnet/ruflo", "dst": "SmileLikeYe/agent-chief", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "ruvnet/ruflo", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": "2026-07-08"}
+{"src": "ruvnet/ruflo", "dst": "aaif-goose/goose", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "ruvnet/ruflo", "dst": "swarm-coordination-complexity", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-colemurray-background-agents", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-colemurray-background-agents", "dst": "tema:colemurray-background-agents", "rel": "trata", "added": "2026-07-13"}
+{"src": "ColeMurray/background-agents", "dst": "background-coding-agent", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "ColeMurray/background-agents", "dst": "ramp-inspector", "rel": "inspired_by", "added": "2026-07-13", "primera_mencion": null}
+{"src": "ColeMurray/background-agents", "dst": "SmileLikeYe/agent-chief", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "ColeMurray/background-agents", "dst": "lingfengQAQ/webnovel-writer", "rel": "complements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-hkuds-vibe-trading", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-hkuds-vibe-trading", "dst": "tema:hkuds-vibe-trading", "rel": "trata", "added": "2026-07-13"}
+{"src": "HKUDS/Vibe-Trading", "dst": "personal-trading-agent-mcp-native", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "HKUDS/Vibe-Trading", "dst": "virattt/ai-hedge-fund", "rel": "competes_with", "added": "2026-07-13", "primera_mencion": null}
+{"src": "HKUDS/Vibe-Trading", "dst": "MervinPraison/PraisonAI", "rel": "complements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "HKUDS/Vibe-Trading", "dst": "arxiv-2607.09600-agora", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": null}
+{"src": "HKUDS/Vibe-Trading", "dst": "HKUDS/LightRAG", "rel": "inspired_by", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-heygen-com-hyperframes", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-heygen-com-hyperframes", "dst": "tema:heygen-com-hyperframes", "rel": "trata", "added": "2026-07-13"}
+{"src": "heygen-com/hyperframes", "dst": "declarative-html-to-video", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "heygen-com/hyperframes", "dst": "Nutlope/hallmark", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "heygen-com/hyperframes", "dst": "larksuite/cli", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "heygen-com/hyperframes", "dst": "arxiv-2607.09544-vlm-counting", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": null}
+{"src": "heygen-com/hyperframes", "dst": "ffmpeg", "rel": "uses", "added": "2026-07-13", "primera_mencion": null}
+{"src": "heygen-com/hyperframes", "dst": "commercial-vendor-os-iff-ication", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-teng-lin-notebooklm-py", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-teng-lin-notebooklm-py", "dst": "tema:teng-lin-notebooklm-py", "rel": "trata", "added": "2026-07-13"}
+{"src": "teng-lin/notebooklm-py", "dst": "notebooklm-agentic-skill", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "teng-lin/notebooklm-py", "dst": "Nutlope/hallmark", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "teng-lin/notebooklm-py", "dst": "pbakaus/impeccable", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "teng-lin/notebooklm-py", "dst": "ChromeDevTools/chrome-devtools-mcp", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": "2026-07-03"}
+{"src": "teng-lin/notebooklm-py", "dst": "unofficial-api-fragility", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-lingfengqaq-webnovel-writer", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-lingfengqaq-webnovel-writer", "dst": "tema:lingfengqaq-webnovel-writer", "rel": "trata", "added": "2026-07-13"}
+{"src": "lingfengQAQ/webnovel-writer", "dst": "longform-coherence-system", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "lingfengQAQ/webnovel-writer", "dst": "arxiv-2607.09493-persistent-memory", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": null}
+{"src": "lingfengQAQ/webnovel-writer", "dst": "syncable-dev/memtrace-public", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "lingfengQAQ/webnovel-writer", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": "2026-07-08"}
+{"src": "lingfengQAQ/webnovel-writer", "dst": "gpl-v3-copyleft", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-microsoft-trellis-2", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-microsoft-trellis-2", "dst": "tema:microsoft-trellis-2", "rel": "trata", "added": "2026-07-13"}
+{"src": "microsoft/TRELLIS.2", "dst": "compact-3d-structured-latents", "rel": "implements", "added": "2026-07-13", "primera_mencion": null}
+{"src": "microsoft/TRELLIS.2", "dst": "amap-cvlab/ABot-World", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
+{"src": "microsoft/TRELLIS.2", "dst": "arxiv-2607.09657-visual-pretraining", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": null}
+{"src": "microsoft/TRELLIS.2", "dst": "desktop-3d-gpu-needed", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-nats-io-nats-server", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-nats-io-nats-server", "dst": "tema:nats-io-nats-server", "rel": "trata", "added": "2026-07-13"}

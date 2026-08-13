@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-19",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy gira en torno a una sola idea: los coding agents ya tienen suficiente tracción como para que alrededor suyo aparezca toda una capa de oficios nuevos — seguridad (deepsec), búsqueda local (wigolo), skills de diseño (ibelick/ui-skills), pedagogía desde cero (rohitg00/ai-engineering-from-scratch) y, sobre todo, la ingeniería del propio harness como disciplina con nombre propio (lopopolo/harness-engineering). El hilo conductor no es una librería viral sino la maduración: hace meses hablábamos de 'agentes que programan'; hoy hablamos de quién los audita, quién les da contexto, quién les enseña a buscar sin nube, quién les escribe skills que no son código y quién pone por escrito cómo se construye el envoltorio que los hace útiles. Es un boletín denso en primitivas agénticas y ligero en herramientas de consumo.",
+  "convergencia_stack_css": "Tres hallazgos de hoy encajan directamente con líneas ya trabajadas en Código Sin Siesta. Wigolo confirma la apuesta local-first de scraping/búsqueda que ya cubre la skill `web-scraping-viability` (Scrapling + Obscura) y abre una vía MCP directa contra Hermes sin tocar Python. lopopolo/harness-engineering se apoya explícitamente en `obra/superpowers` (cubierto el 2026-07-03) y es la fuente primaria que faltaba si CSS decide escribir sobre 'construir tu propio Claude Code'. Por último, ibelick/ui-skills amplía el estándar Anthropic de skills al dominio no-código, lo que dialoga con la cobertura previa de `vercel-labs/skills` y con el debate de diseño css-design-debate que ya está en el grafo. Los hallazgos de voz local (moonshine, transcribe.cpp) y el repo-curso de rohitg00 quedan como material de reserva sin pieza directa del stack activada hoy.",
+  "cruzado_grafo": "Hoy se refuerzan dos nodos que ya tenían fecha previa (`primera_mencion` real en los datos): el estándar `agent-skills-spec` y `vercel-labs/skills`, ambos del 2026-07-03, ahora extendidos por ibelick/ui-skills al terreno UI y complementados por deepsec dentro del paraguas Vercel Labs. También reaparece `obra/superpowers` (2026-07-03) como contrapunto autorizado al texto de Lopopolo. El resto de relaciones —`agent-security-harness`, `local-first-web-search`, `hermes-mcp-toolset`, `tavily`, `harness-engineering-as-discipline`, `ryan-lopopolo`, `ai-curriculum-open-source`, `karpathy/zero-to-hero`, `css-formacion-ia`, `sast-tools-traditional` y `css-design-debate`— llegan sin `primera_mencion`, así que las trato como nodos nuevos en esta edición, no como continuidades.",
+  "tendencias_5_boletines": "Con solo dos boletines previos en el contexto de continuidad (16 y 15 de julio) no hay base para hablar de una tendencia de cinco; lo que sí se ve, mirando hacia atrás, es que el tema 'MCP como capa universal' del 16-jul y la pregunta 'qué partes del trabajo de oficina se reescriben primero para agentes' del 15-jul se concretan hoy en piezas muy específicas: wigolo lleva MCP al scraping personal, ibelick/ui-skills lleva las skills al diseño, deepsec lleva los agentes a la auditoría de seguridad y Lopopolo pone nombre a la disciplina del harness. La sensación editorial es que pasamos de 'los agentes son el tema' a 'los agentes ya tienen oficios propios', y el boletín de hoy es el primer corte que muestra ese salto con claridad.",
+  "alertas": [
+    "wigolo promete 'no API keys, no cloud, $0/query' pero no se ha validado empíricamente su calidad de resultados frente a Tavily/Exa; tratarlo como reemplazo directo sin probar es prematuro.",
+    "deepsec está en Vercel Labs (experimental) y su adopción real fuera del repo es desconocida; el claim de 'security harness' necesita caso de uso concreto antes de presentarlo como producto.",
+    "rohitg00/ai-engineering-from-scratch con 39k★ y TLDR 'from scratch' suele esconder una re-explicación de material ya cubierto por Karpathy/HuggingFace; riesgo de inflar contenido pedagógico que no aporta frente a las fuentes primarias.",
+    "G0DM0D3 (AGPL-3.0, 9.5k★ en 5 meses) marca el dato estructural más incómodo del día por licencia y origen; cualquier pieza derivada debe revisar implicaciones AGPL antes de integrarlo.",
+    "ibelick/ui-skills es del mismo autor que las demos minimalistas de Vercel: el catálogo es interesante pero su madurez como 'skills de diseño' invocables por agentes aún es declarativa, no demostrada en flujos largos."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "lopopolo/harness-engineering es la fuente primaria que faltaba sobre construcción de harness; leerlo a fondo abre un posible artículo CSS sobre 'construir tu propio Claude Code' con base sólida."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "wigolo es el primer servidor MCP de búsqueda local-first usable desde Hermes sin código; vale la pena probarlo como reemplazo de Tavily/Exa en el flujo de research."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "deepsec introduce el ángulo 'agentes que auditan agentes' que merece entrada explícita en el debate CSS de seguridad + agentes, aunque sea como pieza exploratoria."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "ibelick/ui-skills mueve el estándar de skills al terreno diseño; conviene seguirlo para ver si se convierte en referencia cuando CSS trate skills-no-coding o diseño agéntico."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "rohitg00/ai-engineering-from-scratch puede ser buen contrapunto crítico al hype si CSS cubre 'el HypeCYCLE de AI agents en 2026'; conviene leerlo antes para decidir si aporta o duplica."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

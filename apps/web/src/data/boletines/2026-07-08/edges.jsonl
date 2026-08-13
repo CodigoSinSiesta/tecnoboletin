@@ -1,0 +1,37 @@
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-tiliondev-fortress", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-tiliondev-fortress", "dst": "tema:tiliondev-fortress", "rel": "trata", "added": "2026-07-08"}
+{"src": "tiliondev/fortress", "dst": "engine-level-stealth", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "tiliondev/fortress", "dst": "D4Vinci/Scrapling", "rel": "complements", "added": "2026-07-08", "primera_mencion": "2026-07-05"}
+{"src": "tiliondev/fortress", "dst": "noassertion-license-risk", "rel": "risk", "added": "2026-07-08", "primera_mencion": "2026-07-06"}
+{"src": "tiliondev/fortress", "dst": "web-scraping-viability", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-07"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-anthropics-skills", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-anthropics-skills", "dst": "tema:anthropics-skills", "rel": "trata", "added": "2026-07-08"}
+{"src": "anthropics/skills", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
+{"src": "anthropics/skills", "dst": "hermes-skills", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
+{"src": "anthropics/skills", "dst": "awesome-list-saturation", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-07"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-nousresearch-hermes-agent", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:nousresearch-hermes-agent", "rel": "trata", "added": "2026-07-08"}
+{"src": "NousResearch/hermes-agent", "dst": "hermes-agent", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
+{"src": "NousResearch/hermes-agent", "dst": "agentskills.io", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "NousResearch/hermes-agent", "dst": "Honcho", "rel": "uses", "added": "2026-07-08", "primera_mencion": null}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-rowboatlabs-rowboat", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-rowboatlabs-rowboat", "dst": "tema:rowboatlabs-rowboat", "rel": "trata", "added": "2026-07-08"}
+{"src": "rowboatlabs/rowboat", "dst": "personal-ai-coworker", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "rowboatlabs/rowboat", "dst": "MCP-based-agent-memory", "rel": "uses", "added": "2026-07-08", "primera_mencion": null}
+{"src": "rowboatlabs/rowboat", "dst": "TencentCloud/TencentDB-Agent-Memory", "rel": "complements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "rowboatlabs/rowboat", "dst": "css-articulos", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-04"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-voltagent-awesome-design-md", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-voltagent-awesome-design-md", "dst": "tema:voltagent-awesome-design-md", "rel": "trata", "added": "2026-07-08"}
+{"src": "VoltAgent/awesome-design-md", "dst": "design-md-spec", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "VoltAgent/awesome-design-md", "dst": "agent-behavior-guidelines", "rel": "complements", "added": "2026-07-08", "primera_mencion": "2026-07-05"}
+{"src": "VoltAgent/awesome-design-md", "dst": "frontend-taste-skill", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-04"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-vercel-labs-agent-browser", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:vercel-labs-agent-browser", "rel": "trata", "added": "2026-07-08"}
+{"src": "vercel-labs/agent-browser", "dst": "browser-automation-cli", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "vercel-labs/agent-browser", "dst": "ChromeDevTools/chrome-devtools-mcp", "rel": "complements", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
+{"src": "vercel-labs/agent-browser", "dst": "agentic-decision-systems", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-05"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-mvanhorn-last30days-skill", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-mvanhorn-last30days-skill", "dst": "tema:mvanhorn-last30days-skill", "rel": "trata", "added": "2026-07-08"}
+{"src": "mvanhorn/last30days-skill", "dst": "recency-research-skill", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "mvanhorn/last30days-skill", "dst": "hermes-skills", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
+{"src": "mvanhorn/last30days-skill", "dst": "cheahjs/free-llm-api-resources", "rel": "complements", "added": "2026-07-08", "primera_mencion": null}

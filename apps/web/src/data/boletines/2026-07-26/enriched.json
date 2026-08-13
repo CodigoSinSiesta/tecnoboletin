@@ -1,0 +1,431 @@
+{
+  "version": 2,
+  "date": "2026-07-26",
+  "boletin_origen": "2026-07-26-trending.md",
+  "resumen_ejecutivo": "- **andrewyng/openworker (rank #2 Trendshift, MIT, Python, 5.4k ⭐ en 6 días)** — nuevo proyecto de Andrew Ng orientado a \"AI agent worker\" sobre Python, todavía sin descripción pública pero ya con 736 forks y cadencia diaria de push. Es el lanzamiento más llamativo del día y consolida la tesis \"harness > model\".\n- **block/buzz (rank #1 GitHub trending, Apache-2.0, Rust, 12.3k ⭐)** — plataforma \"hive mind communication\" de Block (Jack Dorsey), monorepo de 405 MB. 2491 estrellas/día en GitHub trending; consolida el giro de Block hacia \"infra agentic + comunicación multi-agente\" tras bitchat.\n- **exoharness/exo (Rust, MIT, 410 ⭐, trending #6)** — primer agente recursivo y self-evolving documentado: \"fully recursive, able to safely edit all aspects of itself at runtime to get better at your tasks\". Tema candente del mes y referencia para el debate harness engineering vs prompt engineering.\n- **agentscope-ai/QwenPaw (Apache-2.0, Python, 27k ⭐)** — asistente personal de Alibaba/Tongyi con `agent-harness`, `loop-engineering` y skills como ciudadanos de primera clase. Es la versión \"oficial china\" del patrón superpowers/skills y entra en el clúster cross-harness-agent del grafo.\n- **RyanCodrai/turbovec (MIT, Python+Rust, 14.3k ⭐)** — índice vectorial basado en TurboQuant con bindings Python y optimizaciones AVX-512/NEON. Reposiciona el espacio RAG local-first al reducir drásticamente el coste de memoria de embeddings.\n- Día flojo en material nuevo y exclusivo: 14 de los 18 GitHub-trending y 18 de los 24 Trendshift ya aparecieron en boletines anteriores (bitchat, Chat2DB, Kronos, superpowers, mattpocock/skills, alibaba/open-code-review, Instatic, dive-into-llms, awesome-claude-skills, etc.). El blogwatcher 08:00 tampoco escribió su archivo hoy (último boletín de blogs es 2026-07-05), así que este boletín asume blogs \"fríos\" y maximiza cobertura de trendshift + GitHub trending. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub REST API para verificación.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "andrewyng/openworker",
+      "url": "https://github.com/andrewyng/openworker",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "andrewyng-openworker",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "block/buzz",
+      "url": "https://github.com/block/buzz",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "block-buzz",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "exoharness/exo",
+      "url": "https://github.com/exoharness/exo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "exoharness-exo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "agentscope-ai/QwenPaw",
+      "url": "https://github.com/agentscope-ai/QwenPaw",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentscope-ai-qwenpaw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "img2threejs/img2threejs",
+      "url": "https://github.com/img2threejs/img2threejs",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "img2threejs-img2threejs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "RyanCodrai/turbovec",
+      "url": "https://github.com/RyanCodrai/turbovec",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ryancodrai-turbovec",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "aipoch/open-science",
+      "url": "https://github.com/aipoch/open-science",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aipoch-open-science",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "MengTo/Skills",
+      "url": "https://github.com/MengTo/Skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "No hay datos disponibles para evaluar este item.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mengto-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "slvDev/esp32-ai",
+      "url": "https://github.com/slvDev/esp32-ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Firmware/conjunto de herramientas para correr LLMs pequeños en microcontroladores ESP32. Muy nuevo (3 días), sin descripción oficial",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 945, push 2026-07-23, Python, sin licencia API",
+        "accion_sugerida": "vigilar — (verificar licencia antes de adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "slvdev-esp32-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "nyblnet/bento",
+      "url": "https://github.com/nyblnet/bento",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Repo sin descripción oficial; por el tamaño (21 MB) y los topics vacíos, parece ser una caja de herramientas frontend multi-IA",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 1890, push 2026-07-26, TypeScript, MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nyblnet-bento",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "opengeos/GeoLibre",
+      "url": "https://github.com/opengeos/GeoLibre",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "GIS cloud-native que corre en navegador, escritorio, móvil y Jupyter Notebooks. Stack: Tauri + DuckDB + MapLibre",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 1953, push 2026-07-26, TypeScript, MIT",
+        "accion_sugerida": "vigilar — (no verificado más allá de la API)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opengeos-geolibre",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "palmier-io/palmier-pro",
+      "url": "https://github.com/palmier-io/palmier-pro",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Editor de vídeo para macOS con integración MCP y soporte de Seedance2",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 12315, push 2026-07-26, Swift, GPL-3.0",
+        "accion_sugerida": "vigilar — (GPL-3.0 bloquea adopción como dep)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "palmier-io-palmier-pro",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "andrewyng/aisuite",
+      "url": "https://github.com/andrewyng/aisuite",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Interfaz unificada para múltiples proveedores de GenAI. El «andrewyng» del nombre es Andrew Ng. Estable desde 2024, sigue empujando",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 15273, push 2026-07-25, Python, MIT",
+        "accion_sugerida": "leer — (referencia de abstracción cross-provider)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "andrewyng-aisuite",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "floci-io/floci",
+      "url": "https://github.com/floci-io/floci",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Alternativa open-source a LocalStack para emular AWS localmente",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 17640, push 2026-07-23, Java, MIT",
+        "accion_sugerida": "vigilar — (no verificado más allá de la API; competidor claro de LocalStack/elasticmq)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "floci-io-floci",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "Automattic/harper",
+      "url": "https://github.com/Automattic/harper",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Corrector gramatical offline y privacy-first, usado por la extensión de Chrome de Harper",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 13509, push 2026-07-24, Rust, Apache-2.0",
+        "accion_sugerida": "vigilar — (sigue creciendo fuera del radar AI; útil como ejemplo \"ML en WASM\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "automattic-harper",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 15,
+      "titulo": "mchughalex/skate3recomp",
+      "url": "https://github.com/mchughalex/skate3recomp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Recompilación nativa de Skate 3 (juego de 2010) para Windows/Linux/macOS. Nicho de gaming/reverse-engineering",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 729, push 2026-07-24, C++, sin licencia API",
+        "accion_sugerida": "ignorar — (no es IA/dev, sin licencia verificable)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mchughalex-skate3recomp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 16,
+      "titulo": "NanmiCoder/MediaCrawler",
+      "url": "https://github.com/NanmiCoder/MediaCrawler",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Crawler multiplataforma chino (Xiaohongshu, Douyin, Kuaishou, Bilibili, Weibo, Baidu, Zhihu)",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 57511, push 2026-07-24, Python, NOASSERTION",
+        "accion_sugerida": "vigilar — (alto interés técnico pero licencia NOASSERTION bloquea adopción — verificar el archivo LICENSE antes de cualquier uso)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nanmicoder-mediacrawler",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 17,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 9,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "17/17 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

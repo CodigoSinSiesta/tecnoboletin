@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-15",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy es deliberadamente pequeño y por eso mismo útil: cuatro hallazgos, dos de ellos con ángulo técnico claro para CSS y los otros dos con señal editorial más débil. El hilo conductor no es una moda sino una pregunta práctica que reaparece — ¿qué partes del trabajo de oficina (documentos, diagramas, notas) están siendo reescritas primero para agentes en lugar de para humanos? — y los dos hallazgos principales (OfficeCLI y Bonsai-demo) la atacan desde lados opuestos del mismo problema: la entrada/salida de datos estructurados con un agente (OfficeCLI) y el modelo que cabe en el dispositivo que ejecuta ese agente (Bonsai-demo). El resto del boletín — Reflect rewrite y un archify para diagramas — son señales laterales, no titulares.",
+  "convergencia_stack_css": "OfficeCLI conecta directamente con la línea editorial local-first y de agent tooling ya cubierta en boletines previos: si CSS ya trata los skills como objetos distribuibles y la agent-skill lifecycle como ciclo maduro, una suite Office nativa para agentes es exactamente el tipo de superficie que ese stack tiene que empezar a tocar. Bonsai-demo conecta con la línea de modelos pequeños/efficient-on-device que CSS ha vigilado antes; un 27B con visión corriendo en un iPhone es la confirmación práctica de que el 'edge inference' ya no es promesa. Reflect-open y archify tocan áreas (note-taking, diagramas) donde CSS ya tiene pieza propia — Obsidian como vault y Excalidraw/Mermaid como herramienta de diagramas — por lo que la lectura correcta no es 'adoptar', sino 'vigilar si desplazan o complementan'.",
+  "cruzado_grafo": "Los cuatro hallazgos llegan sin `primera_mencion` en los datos de hoy, así que no se puede afirmar que refuercen nodos ya cubiertos en boletines anteriores; lo honesto es registrarlos como entradas nuevas en el grafo (suite Office para agentes, 27B visión on-device, rewrite open de Reflect, skill de diagramas de arquitectura) y dejar que un boletín futuro los conecte con menciones previas cuando aparezcan relaciones reales. La única conexión implícita con contexto reciente es de tipo temático — los boletines del 2026-07-12 y 2026-07-14 trataban la maduración del stack agentic y del harness del agente — pero esa es lectura editorial, no relación de grafo verificada.",
+  "tendencias_5_boletines": "Tomando solo los dos días previos recibidos como contexto explícito (2026-07-12 y 2026-07-14), el boletín de hoy encaja como una continuación natural: ambos previos trataban la consolidación de capas del stack agentic y la pregunta práctica 'con qué harness ejecuto al agente'. Hoy la conversación se desplaza un escalón hacia abajo — de la infraestructura del agente a las superficies que el agente tiene que tocar (documentos Office, notas, diagramas) y al hardware que ejecuta el modelo. No hay base suficiente en los datos para hablar de tendencia a 5 boletines; eso requeriría más contexto del que se ha proporcionado.",
+  "alertas": [
+    "multica-ai/andrej-karpathy-skills: 192k ⭐ inflados por eco mediático, último push 2026-04-20 y sin LICENSE (NOASSERTION) — no usar como referencia técnica ni enlazar sin caveat.",
+    "Cursor 0day filtrado por Mindgard: claim de vuln 'forzada' requiere lectura del advisory original antes de reproducir; riesgo de hype si se cita solo el titular.",
+    "CVE TS-2026-009 (Tailscale SSH, root access): severidad alta pero afecta superficie específica (Tailnet SSH admin) — matizar quién está realmente expuesto.",
+    "OfficeCLI y Bonsai-demo son demos/early-stage con tracción social alta pero historial de mantenimiento corto: no presentarlos como productos consolidados.",
+    "Reflect-open: un 'rewrite open' de un producto comercial cerrado (Reflect) suele tener gap grande entre demo y producto usable — leer el scope real antes de comparar con Obsidian."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el hallazgo más angular del día para el stack agentic de CSS: vale la pena mirar qué tipo de 'comandos Office' expone y si el modelo de skill es reutilizable."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Confirmar el claim de '27B con visión en iPhone' con la paper/repo real: tamaño de modelo, quantización y latencia reportada, no solo el titular de HN."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Competidor directo en el espacio donde CSS ya usa Obsidian; no adoptar, pero seguir si su modelo open amenaza el vault local-first."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Solapa con la línea de diagramas (Excalidraw/Mermaid) que CSS ya cubre; observar si se posiciona como skill MCP consumible o como app independiente."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "La lectura 'edge inference ya no es promesa, es demo pública con 552 pts en HN' merece una nota editorial corta, no solo un bullet de radar."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-06-30",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "Hoy el boletín no muestra una sola noticia dominante sino una señal estructural: el ecosistema de coding agents está dejando de ser 'el modelo + un wrapper' y se está partiendo en tres planos que se consolidan a la vez. El plano de habilidades (obra/superpowers, vercel-labs/skills, humanlayer/12-factor-agents) define cómo un agente carga, versiona y distribuye conocimiento procedural. El plano de herramientas normalizadas (ChromeDevTools/chrome-devtools-mcp, DeusData/codebase-memory-mcp) confirma que MCP ya es el bus por defecto para dar capacidades a los agentes, no un experimento. Y el plano de 'mundo exterior para agentes' (Scrapling, Agent-Reach, llmfit) cubre lo que falta cuando el agente tiene que leer la web, aguantar cambios de DOM y saber qué modelo cabe en su máquina. El hilo conductor no es una librería concreta: es que las tres capas se están estandarizando en paralelo, lo que vuelve obsoleta la idea de comparar agentes solo por su modelo base.",
+  "convergencia_stack_css": "El bloque de hoy toca el stack local-first de Código Sin Siesta en al menos dos puntos verificables. Primero, llmfit resuelve exactamente el problema operativo de elegir modelo para Ollama/DeepSeek según VRAM y es la pieza que faltaba para no improvisar ese mapeo a mano. Segundo, el patrón MCP server (chrome-devtools-mcp, codebase-memory-mcp) conecta directamente con la línea de dar herramientas a agentes ya presente en el stack. El resto — skills como formato distribuible vía npm, scraping adaptativo, 12-factor-agents como metodología — son adyacentes: no son piezas del stack local-first, pero condicionan cómo se diseña y se versiona el propio stack en los próximos meses.",
+  "cruzado_grafo": "Los hallazgos de hoy no traen campos `primera_mencion` poblados en los datos recibidos, así que no se puede afirmar que ningún nodo se refuerce desde una cobertura previa del boletín: cualquier mención anterior habría que inventarla y se omite. Lo que sí queda explícito es la aparición simultánea de tres familias de nodos que no tenían representación consolidada en días anteriores con este volumen: skills/agents skills como artefacto distribuible (obra/superpowers, vercel-labs/skills), MCP servers como categoría estable (ChromeDevTools, DeusData) y utilidades web-para-agentes (Scrapling, Agent-Reach). Estas tres familias son entradas nuevas del grafo a partir de hoy y deberían anclar futuras menciones cruzadas.",
+  "tendencias_5_boletines": "No se recibió contexto de continuidad de boletines previos recientes en los datos de hoy, así que no hay base para encajar este boletín en una tendencia de 5 días: cualquier afirmación de 'veníamos viendo X' sería invención. Lo que sí se puede decir sin contexto es que, dentro de un único día, la simultaneidad de skills estandarizadas + MCP + web-para-agentes dibuja una dirección coherente — los agentes se están volviendo plataformas modulares — pero eso es lectura de hoy, no trayectoria.",
+  "alertas": [
+    "obra/superpowers y vercel-labs/skills son frameworks de skills para coding agents; superpowers además empaqueta metodología editorial. Hay riesgo de solapamiento conceptual con las skills de Hermes: revisar si resuelven el mismo problema o si son complementarias antes de Adoptar nada.",
+    "ChromeDevTools/chrome-devtools-mcp es oficial de Google pero sigue siendo un server MCP de la categoría 'driver de navegador': usarlo bien presupone entender qué expone la DevTools Protocol, no es magia plug-and-play.",
+    "D4Vinci/Scrapling presume scraping 'adaptativo' frente a cambios de DOM; el claim de robustez hay que validarlo contra páginas reales con cambios frecuentes antes de fiarle pipelines productivos.",
+    "humanlayer/12-factor-agents es más una propuesta metodológica que un repo ejecutable: su tracción como repo puede no corresponderse con tracción real como estándar de facto.",
+    "DeusData/codebase-memory-mcp promete memoria persistente sobre código, pero 'memory' sobre codebase es un espacio ya saturado (vector stores, Aider context, etc.); hay que mirar qué lo diferencia objetivamente."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "obra/superpowers define skills + metodología para coding agents y entra con +884★/d; conviene abrir el repo y leer qué skill format propone y si choca o complementa el formato actual de las skills de Hermes."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 7,
+      "razon": "AlexsJones/llmfit es directamente accionable para el stack local-first: instalarlo y probarlo contra la máquina actual para mapear qué modelos de Ollama/DeepSeek caben de verdad, en lugar de mantener ese mapeo a mano."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "vercel-labs/skills introduce `npx skills` como canal de distribución vía npm; afecta a cómo se publican y descubren agent skills, incluida la línea editorial de CSS."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "chrome-devtools-mcp consolida MCP como bus estándar; vale la pena seguirlo unas semanas para ver si otros vendors (Mozilla, Apple) publican servers equivalentes y si emerge un patrón común."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 6,
+      "razon": "D4Vinci/Scrapling + Panniantong/Agent-Reach cubren el lado 'web para agentes' (scraping adaptativo + acceso a Twitter/Reddit/YouTube); es un hallazgo con ángulo práctico claro para el público de CSS."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

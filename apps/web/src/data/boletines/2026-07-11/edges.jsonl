@@ -1,0 +1,51 @@
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-syncable-dev-memtrace-public", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-syncable-dev-memtrace-public", "dst": "tema:syncable-dev-memtrace-public", "rel": "trata", "added": "2026-07-11"}
+{"src": "syncable-dev/memtrace-public", "dst": "bi-temporal-code-graph", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "syncable-dev/memtrace-public", "dst": "DeusData/codebase-memory-mcp", "rel": "competes_with", "added": "2026-07-11", "primera_mencion": "2026-07-04"}
+{"src": "syncable-dev/memtrace-public", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": "2026-07-08"}
+{"src": "syncable-dev/memtrace-public", "dst": "arxiv-2607.08740", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}
+{"src": "syncable-dev/memtrace-public", "dst": "proprietary-eula-vendor-lock", "rel": "risk", "added": "2026-07-11", "primera_mencion": null}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-smilelikeye-agent-chief", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-smilelikeye-agent-chief", "dst": "tema:smilelikeye-agent-chief", "rel": "trata", "added": "2026-07-11"}
+{"src": "SmileLikeYe/agent-chief", "dst": "chief-of-staff-attention-layer", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "SmileLikeYe/agent-chief", "dst": "aaif-goose/goose", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "SmileLikeYe/agent-chief", "dst": "smile-like-ye/agent-chief", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "SmileLikeYe/agent-chief", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": "2026-07-08"}
+{"src": "SmileLikeYe/agent-chief", "dst": "attention-overload-multi-agent", "rel": "solves", "added": "2026-07-11", "primera_mencion": null}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-browseros-ai-browseros", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-browseros-ai-browseros", "dst": "tema:browseros-ai-browseros", "rel": "trata", "added": "2026-07-11"}
+{"src": "browseros-ai/BrowserOS", "dst": "privacy-first-agentic-browser", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "browseros-ai/BrowserOS", "dst": "perplexity-comet-chatgpt-atlas-dia", "rel": "competes_with", "added": "2026-07-11", "primera_mencion": null}
+{"src": "browseros-ai/BrowserOS", "dst": "ChromeDevTools/chrome-devtools-mcp", "rel": "complements", "added": "2026-07-11", "primera_mencion": "2026-07-03"}
+{"src": "browseros-ai/BrowserOS", "dst": "ollama", "rel": "uses", "added": "2026-07-11", "primera_mencion": "2026-07-04"}
+{"src": "browseros-ai/BrowserOS", "dst": "agpl-v3-copyleft", "rel": "risk", "added": "2026-07-11", "primera_mencion": null}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-nutlope-hallmark", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-nutlope-hallmark", "dst": "tema:nutlope-hallmark", "rel": "trata", "added": "2026-07-11"}
+{"src": "Nutlope/hallmark", "dst": "anti-slop-design-skill", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "Nutlope/hallmark", "dst": "addyosmani/agent-skills", "rel": "complements", "added": "2026-07-11", "primera_mencion": "2026-07-10"}
+{"src": "Nutlope/hallmark", "dst": "vercel-labs/agent-skills", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "Nutlope/hallmark", "dst": "pbakaus/impeccable", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-entireio-cli", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-entireio-cli", "dst": "tema:entireio-cli", "rel": "trata", "added": "2026-07-11"}
+{"src": "entireio/cli", "dst": "agent-session-capture", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "entireio/cli", "dst": "syncable-dev/memtrace-public", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "entireio/cli", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": "2026-07-08"}
+{"src": "entireio/cli", "dst": "obra/superpowers", "rel": "complements", "added": "2026-07-11", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-amap-cvlab-abot-world", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-amap-cvlab-abot-world", "dst": "tema:amap-cvlab-abot-world", "rel": "trata", "added": "2026-07-11"}
+{"src": "amap-cvlab/ABot-World", "dst": "desktop-world-model", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "amap-cvlab/ABot-World", "dst": "arxiv-2607.08763-opencof", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}
+{"src": "amap-cvlab/ABot-World", "dst": "desktop-only-world-model", "rel": "solves", "added": "2026-07-11", "primera_mencion": null}
+{"src": "amap-cvlab/ABot-World", "dst": "huggingface/speech-to-speech", "rel": "complements", "added": "2026-07-11", "primera_mencion": "2026-07-09"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-microsoft-pg-durable", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-microsoft-pg-durable", "dst": "tema:microsoft-pg-durable", "rel": "trata", "added": "2026-07-11"}
+{"src": "microsoft/pg_durable", "dst": "in-database-durable-execution", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "microsoft/pg_durable", "dst": "malisper/pgrust", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "microsoft/pg_durable", "dst": "pglite-postgres", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}
+{"src": "microsoft/pg_durable", "dst": "noassertion-license", "rel": "risk", "added": "2026-07-11", "primera_mencion": null}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-larksuite-cli", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-larksuite-cli", "dst": "tema:larksuite-cli", "rel": "trata", "added": "2026-07-11"}
+{"src": "larksuite/cli", "dst": "agent-native-enterprise-cli", "rel": "implements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "larksuite/cli", "dst": "mcp__feishu_drive", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
+{"src": "larksuite/cli", "dst": "google-labs-code/stitch-skills", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": "2026-07-09"}
+{"src": "larksuite/cli", "dst": "larksuite-cli-vs-mcp", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}

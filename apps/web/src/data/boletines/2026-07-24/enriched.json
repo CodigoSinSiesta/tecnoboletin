@@ -1,0 +1,335 @@
+{
+  "version": 2,
+  "date": "2026-07-24",
+  "boletin_origen": "2026-07-24-trending.md",
+  "resumen_ejecutivo": "- **Headroom entra al radar como pieza de producción seria**: 62k⭐ y release v0.32 semanal con commits activos hoy. Es la pieza de compresión de contexto que faltaba para coding agents; complementa a `block/buzz` (cubierto ayer) en el stack de reducción de tokens.\n- **`oraios/serena` es la otra mitad del puzzle**: MCP toolkit de retrieval/edición semántica sobre el código. Un commit de hoy de `headroom` literalmente dice 'Serena is the code-memory MCP' — ya se referencian como stack complementario.\n- **Alibaba libera su code review híbrido** (deterministic + LLM) como open source, 12k⭐ en 2 meses. Buena confirmación de que el patrón 'pipelines deterministas primero, LLM después' está ganando tracción enterprise.\n- **Apple Silicon vuelve al centro**: `Rapid-MLX` afirma 4.2x sobre Ollama con MLX y 0.08s TTFT cacheado. Si los benchmarks son ciertos cambia la decisión local-first para mac.\n- **Tooling no-LLM sigue madurando**: `Automattic/harper` (Rust+WASM grammar checker, 12.5k⭐) demuestra que la vía determinista funciona para nichos donde el LLM sobra. `likec4/likec4` consolida architecture-as-code después de 4 años.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (Python/Rust/TypeScript/Go), GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "headroomlabs-ai/headroom",
+      "url": "https://github.com/headroomlabs-ai/headroom",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "Sin datos suficientes para reescritura significativa: el item llega con todos los campos vacios (que_es, por_que_importa, madurez_senales, relacion_grafo). No puedo mejorar lo que no existe, asi que el resultado es honestamente vacio.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "headroomlabs-ai-headroom",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "Sin datos suficientes para reescritura significativa: el item llega con todos los campos vacios (que_es, por_que_importa, madurez_senales, relacion_grafo). No puedo mejorar lo que no existe, asi que el resultado es honestamente vacio.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-open-code-review",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "oraios/serena",
+      "url": "https://github.com/oraios/serena",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "Sin datos suficientes para reescritura significativa: el item llega con todos los campos vacios (que_es, por_que_importa, madurez_senales, relacion_grafo). No puedo mejorar lo que no existe, asi que el resultado es honestamente vacio.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oraios-serena",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Automattic/harper",
+      "url": "https://github.com/Automattic/harper",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "Sin datos suficientes para reescritura significativa: el item llega con todos los campos vacios (que_es, por_que_importa, madurez_senales, relacion_grafo). No puedo mejorar lo que no existe, asi que el resultado es honestamente vacio.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "automattic-harper",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "raullenchai/Rapid-MLX",
+      "url": "https://github.com/raullenchai/Rapid-MLX",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "Sin datos suficientes para reescritura significativa: el item llega con todos los campos vacios (que_es, por_que_importa, madurez_senales, relacion_grafo). No puedo mejorar lo que no existe, asi que el resultado es honestamente vacio.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "raullenchai-rapid-mlx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "shiyu-coder/Kronos",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "Sin datos suficientes para reescritura significativa: el item llega con todos los campos vacios (que_es, por_que_importa, madurez_senales, relacion_grafo). No puedo mejorar lo que no existe, asi que el resultado es honestamente vacio.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shiyu-coder-kronos",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Microsoft/SkillOpt",
+      "url": "https://github.com/Microsoft/SkillOpt",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Optimizador text-space para entrenar skills reutilizables en agentes frozen (self-evolving). Ya visto el 10-jul, ahora con cadencia diaria de push",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 14821, push 2026-07-24, Python",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-skillopt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Fission-AI/OpenSpec",
+      "url": "https://github.com/Fission-AI/OpenSpec",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Spec-driven development para coding assistants: PRDs + specs + planning como contexto. 62k⭐ en <12 meses — nicho SDD en pleno boom",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 62368, push 2026-07-23, TypeScript",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fission-ai-openspec",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Agent harness 'the most intelligent' en Rust con MCP nativo. Visto el 20-jul; hoy reaparece con push fresco",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 11071, push 2026-07-24, Rust",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1jehuang-jcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "citrolabs/ego-lite",
+      "url": "https://github.com/citrolabs/ego-lite",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Navegador 'fastest browser for AI agents to run web automation'. Closed-source pero descarga gratuita — competidor directo de Scrapling/Obscura/Fortress a nivel de aplicación",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 1936, push 2026-07-24, JavaScript",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "citrolabs-ego-lite",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "likec4/likec4",
+      "url": "https://github.com/likec4/likec4",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Architecture-as-code: diagramas C4 vivos generados desde el código. 4 años de desarrollo, 4.8k⭐ — alternativa OSS a Structurizr",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 4801, push 2026-07-23, TypeScript",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "likec4-likec4",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ifixai-ai/iFixAi",
+      "url": "https://github.com/ifixai-ai/iFixAi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Diagnóstico de misalignment operacional para agentes: 45 inspecciones, mapeado a EU AI Act, NIST AI RMF, ISO 42001. Buen ejemplo de 'governance tools' para AI",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 2085, push 2026-07-23, Python",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ifixai-ai-ifixai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "palmier-io/palmier-pro",
+      "url": "https://github.com/palmier-io/palmier-pro",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Editor de vídeo macOS nativo pensado para AI (MCP + Claude + Seedance 2). GPL-3.0, Apple Silicon-only, 11.5k⭐",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 11456, push 2026-07-23, Swift",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "palmier-io-palmier-pro",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

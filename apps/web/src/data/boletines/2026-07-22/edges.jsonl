@@ -1,0 +1,45 @@
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-hkuds-nanobot", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-hkuds-nanobot", "dst": "tema:hkuds-nanobot", "rel": "trata", "added": "2026-07-22"}
+{"src": "repo:HKUDS/nanobot", "dst": "concept:personal_ai_agent_runtime", "rel": "implements", "added": "2026-07-22", "primera_mencion": "2026-07-16"}
+{"src": "nanobot", "dst": "earendil-works/pi", "rel": "competes_with", "added": "2026-07-22", "primera_mencion": null}
+{"src": "nanobot", "dst": "AstrBotDevs/AstrBot", "rel": "competes_with", "added": "2026-07-22", "primera_mencion": null}
+{"src": "nanobot", "dst": "PrefectHQ/fastmcp", "rel": "uses", "added": "2026-07-22", "primera_mencion": "2026-07-21"}
+{"src": "nanobot", "dst": "concept:agent_memory_storage", "rel": "relevant_to", "added": "2026-07-22", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-rtk-ai-rtk", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-rtk-ai-rtk", "dst": "tema:rtk-ai-rtk", "rel": "trata", "added": "2026-07-22"}
+{"src": "rtk-ai/rtk", "dst": "concept:token_compression_proxy", "rel": "implements", "added": "2026-07-22", "primera_mencion": null}
+{"src": "rtk", "dst": "HKUDS/nanobot", "rel": "complements", "added": "2026-07-22", "primera_mencion": "2026-07-18"}
+{"src": "rtk", "dst": "Claude-Code/Codex", "rel": "complements", "added": "2026-07-22", "primera_mencion": null}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-cloakhq-cloakbrowser", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-cloakhq-cloakbrowser", "dst": "tema:cloakhq-cloakbrowser", "rel": "trata", "added": "2026-07-22"}
+{"src": "CloakBrowser", "dst": "concept:source_level_stealth_browser", "rel": "implements", "added": "2026-07-22", "primera_mencion": null}
+{"src": "CloakBrowser", "dst": "tiliondev/fortress", "rel": "competes_with", "added": "2026-07-22", "primera_mencion": "2026-07-08"}
+{"src": "CloakBrowser", "dst": "concept:anti_bot_bypass", "rel": "relevant_to", "added": "2026-07-22", "primera_mencion": null}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-alexsjones-llmfit", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-alexsjones-llmfit", "dst": "tema:alexsjones-llmfit", "rel": "trata", "added": "2026-07-22"}
+{"src": "llmfit", "dst": "concept:hardware_aware_model_discovery", "rel": "implements", "added": "2026-07-22", "primera_mencion": null}
+{"src": "llmfit", "dst": "llama.cpp", "rel": "complements", "added": "2026-07-22", "primera_mencion": "2026-07-21"}
+{"src": "llmfit", "dst": "kvcache-ai/ktransformers", "rel": "complements", "added": "2026-07-22", "primera_mencion": "2026-07-21"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-langchain-ai-open-deep-research", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-langchain-ai-open-deep-research", "dst": "tema:langchain-ai-open-deep-research", "rel": "trata", "added": "2026-07-22"}
+{"src": "open_deep_research", "dst": "concept:deep_research_agent", "rel": "relevant_to", "added": "2026-07-22", "primera_mencion": null}
+{"src": "open_deep_research", "dst": "HKUDS/nanobot", "rel": "complements", "added": "2026-07-22", "primera_mencion": "2026-07-18"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-canner-wrenai", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-canner-wrenai", "dst": "tema:canner-wrenai", "rel": "trata", "added": "2026-07-22"}
+{"src": "WrenAI", "dst": "concept:ai_native_business_intelligence", "rel": "implements", "added": "2026-07-22", "primera_mencion": null}
+{"src": "WrenAI", "dst": "concept:text_to_sql_governance", "rel": "relevant_to", "added": "2026-07-22", "primera_mencion": null}
+{"src": "WrenAI", "dst": "NOASSERTION_license", "rel": "risk", "added": "2026-07-22", "primera_mencion": null}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-1jehuang-jcode", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-1jehuang-jcode", "dst": "tema:1jehuang-jcode", "rel": "trata", "added": "2026-07-22"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-qwenlm-qwen-code", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-qwenlm-qwen-code", "dst": "tema:qwenlm-qwen-code", "rel": "trata", "added": "2026-07-22"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-dottxt-ai-outlines", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-dottxt-ai-outlines", "dst": "tema:dottxt-ai-outlines", "rel": "trata", "added": "2026-07-22"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-git-ai-project-git-ai", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-git-ai-project-git-ai", "dst": "tema:git-ai-project-git-ai", "rel": "trata", "added": "2026-07-22"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-agegr-pi-web", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-agegr-pi-web", "dst": "tema:agegr-pi-web", "rel": "trata", "added": "2026-07-22"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-modernrelay-omnigraph", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-modernrelay-omnigraph", "dst": "tema:modernrelay-omnigraph", "rel": "trata", "added": "2026-07-22"}
+{"src": "boletin:2026-07-22", "dst": "item:https-github-com-tradesdontlie-tradingview-mcp", "rel": "menciona", "added": "2026-07-22"}
+{"src": "item:https-github-com-tradesdontlie-tradingview-mcp", "dst": "tema:tradesdontlie-tradingview-mcp", "rel": "trata", "added": "2026-07-22"}

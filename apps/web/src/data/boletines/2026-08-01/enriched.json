@@ -1,0 +1,456 @@
+{
+  "version": 2,
+  "date": "2026-08-01",
+  "boletin_origen": "2026-08-01-trending.md",
+  "resumen_ejecutivo": "- **QM (yc-software)** se posiciona como la capa multi-tenant entre Claude Code personal y plataformas enterprise: workspaces aislados, skills scopeados, abstracción de modelo. Tendencia clara: el \"harness\" se commodityza por debajo del modelo.\n- **WASTE (sqliteai)** rompe la barrera de los 2.78T parámetros en local con streaming MoE + NVMe. Es la confirmación técnica de que el \"modelo demasiado grande para correr en casa\" es un problema de ingeniería, no de tamaño.\n- **Tres piezas complementan el stack de agentes y grafos de CSS**: `firecrawl/pdf-inspector` para ingesta de PDFs sin OCR, `0xwilliamortiz/ratchet` para gobernanza de agentes (PostToolUse hook que mide cada edición), y `Evokoa/pgGraph` para query de grafos en Postgres nativo.\n- **Microsoft Skill Recorder** formaliza el workflow \"graba una vez, el agente repite\": de la sesión humana a un `SKILL.md` ejecutable por Copilot/Claude. Conecta directamente con `hermes-agent-skill-authoring`.\n- **tuicr** es la mejor TUI de code review con round-trip a GitHub/GitLab en 2026: keybindings vim, soporta git/jj/mercurial, exporta reviews reales.\nFuentes consultadas: Trendshift daily (25 repos), GitHub Trending daily (12 repos), GitHub REST API para verificación de metadata.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "yc-software/qm",
+      "url": "https://github.com/yc-software/qm",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Harness multi-agente para empresas: workspaces aislados en Slack y web, con memoria, skills y crons scopeados por persona/canal.",
+        "por_que_importa": "El espacio de \"agent harness\" tenía un hueco entre Claude Code (consumidor) y plataformas enterprise pesadas estilo Slack-first. QM rellena ese hueco con workspaces aislados (Slack y web), memoria, skills y crons scoped por persona/canal, más permisos y skill packs versionados y abstracción de modelo (Pi, OpenCode, Codex, Claude Code). Para el lector de CSS importa porque es exactamente la capa que un equipo pequeño necesita para no saltar directo a enterprise: instalas, defines scopes y el harness se ocupa de aislar a cada agente sin escribir infraestructura custom.",
+        "madurez_senales": "⭐ 2,891 · 🍴 264 · TypeScript · 📅 2026-07-29 · 🔄 2026-08-01 · 📜 MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "yc-software/qm",
+          "rel": "implements",
+          "dst": "agent_harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "yc-software/qm",
+          "rel": "complements",
+          "dst": "claude_code",
+          "primera_mencion": null
+        },
+        {
+          "src": "yc-software/qm",
+          "rel": "solves",
+          "dst": "team_agent_isolation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yc-software-qm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "sqliteai/waste",
+      "url": "https://github.com/sqliteai/waste",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor C embebible que corre Kimi K3 (2.78T parámetros) en una laptop de 64 GB streaming desde NVMe; sin dependencias.",
+        "por_que_importa": "Demuestra con un ejecutable en C que el límite de \"modelos gigantes solo en cloud\" se rompe combinando streaming desde NVMe con caché de expertos MoE: 982 GB de Kimi K3 corren a 0.5 tok/s en un MacBook M-series con 64 GB de RAM. Ya cubrimos el terreno del inference local con Ollama el 2026-07-04; waste entra como competidor directo de Ollama, con la diferencia de apostar por modelos MoE multi-TB en vez de densos ajustados a VRAM. Para el lector de CSS importa porque convierte el \"local-first\" en una opción real para modelos frontier, no solo para 7B-13B.",
+        "madurez_senales": "⭐ 386 · 🍴 36 · C · 📅 2026-07-28 · 🔄 2026-08-01 · 📜 Apache-2.0",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "sqliteai/waste",
+          "rel": "implements",
+          "dst": "moe_streaming_inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "sqliteai/waste",
+          "rel": "uses",
+          "dst": "kimi_k3",
+          "primera_mencion": null
+        },
+        {
+          "src": "sqliteai/waste",
+          "rel": "solves",
+          "dst": "llm_local_constraint",
+          "primera_mencion": null
+        },
+        {
+          "src": "sqliteai/waste",
+          "rel": "competes_with",
+          "dst": "ollama",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sqliteai-waste",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "firecrawl/pdf-inspector",
+      "url": "https://github.com/firecrawl/pdf-inspector",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Librería Rust (bindings Python/Node/WASM) para clasificar PDFs en <50ms sin OCR: distingue text-based vs scanned y extrae a Markdown preservando tablas.",
+        "por_que_importa": "El truco clave que justifica la librería: ~54% de los PDFs no necesitan OCR, y pdf-inspector los clasifica en <50 ms saltándose ese coste. Cuando el PDF es text-based, extrae a Markdown preservando tablas (detección dual: rectángulos + heurística), orden multi-columna y CIDs Unicode; está implementado en Rust con bindings para Python, Node y WASM, y lo lanza el equipo detrás de Firecrawl, así que encaja como pieza del pipeline de scraping/document processing que ya hemos tocado en CSS.",
+        "madurez_senales": "⭐ 2,062 · 🍴 172 · Rust · 📅 2026-02-06 · 🔄 2026-08-01 · 📜 MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "firecrawl/pdf-inspector",
+          "rel": "implements",
+          "dst": "pdf_classification",
+          "primera_mencion": null
+        },
+        {
+          "src": "firecrawl/pdf-inspector",
+          "rel": "uses",
+          "dst": "rust_pdf_parsing",
+          "primera_mencion": null
+        },
+        {
+          "src": "firecrawl/pdf-inspector",
+          "rel": "complements",
+          "dst": "firecrawl",
+          "primera_mencion": null
+        },
+        {
+          "src": "firecrawl/pdf-inspector",
+          "rel": "relevant_to",
+          "dst": "document_processing",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "firecrawl-pdf-inspector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "0xwilliamortiz/ratchet",
+      "url": "https://github.com/0xwilliamortiz/ratchet",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Hook PostToolUse para agentes que mide cada edición contra un ruleset inyectado y reporta al modelo en tiempo real; la complejidad solo crece si el agente justifica cada adición.",
+        "por_que_importa": "Resuelve un patrón clásico de los agentes coding: inyectas reglas minimalistas (pref stdlib, no deps, diff pequeño) en el prompt del agente y luego no hay nada que las verifique, queda un open loop. Ratchet lo cierra con un hook PostToolUse que mide cada edición contra el ruleset y reporta al modelo en tiempo real, dentro de la misma sesión. Para el lector de CSS importa porque es governance barata para Claude Code y similares: si trabajas con agentes que tocan código, puedes frenar la deriva sin montar un sistema de revisión externo.",
+        "madurez_senales": "⭐ 402 · 🍴 43 · JavaScript · 📅 2026-07-31 · 🔄 2026-07-31 · 📜 MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "0xwilliamortiz/ratchet",
+          "rel": "implements",
+          "dst": "agent_governance",
+          "primera_mencion": null
+        },
+        {
+          "src": "0xwilliamortiz/ratchet",
+          "rel": "uses",
+          "dst": "claude_code_hooks",
+          "primera_mencion": null
+        },
+        {
+          "src": "0xwilliamortiz/ratchet",
+          "rel": "solves",
+          "dst": "agent_drift",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "0xwilliamortiz-ratchet",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "microsoft/skill-recorder",
+      "url": "https://github.com/microsoft/skill-recorder",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Graba una sesión tuya haciendo una tarea y la convierte en un SKILL.md ejecutable por el agente (Claude / Copilot CLI), usando las herramientas nativas del agente en vez de replay.",
+        "por_que_importa": "Es el \"RPA del humano para agentes\": grabas una sesión tuya haciendo una tarea, Copilot reconstruye el intent y los steps, y el resultado es un SKILL.md nativo que el agente (Claude o Copilot CLI) ejecuta con sus propias herramientas, no como replay. Para el lector de CSS importa porque automatiza el paso más caro del workflow de skills —documentar un flujo a mano— y encima encaja con Automation (schedule/trigger) y con el formato claude_skills_format que ya cubrimos.",
+        "madurez_senales": "⭐ 218 · 🍴 25 · TypeScript · 📅 2026-07-29 · 🔄 2026-07-30 · 📜 MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/skill-recorder",
+          "rel": "implements",
+          "dst": "skill_creation",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/skill-recorder",
+          "rel": "uses",
+          "dst": "github_copilot_cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/skill-recorder",
+          "rel": "relevant_to",
+          "dst": "claude_skills_format",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-skill-recorder",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Evokoa/pgGraph",
+      "url": "https://github.com/Evokoa/pgGraph",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Extensión Postgres (Apache-2.0) que añade capacidades de grafo (Cypher-like) sobre los datos existentes, sin ETL ni base separada.",
+        "por_que_importa": "Graphify/PGLite ya estaban en el radar de CSS como stack de grafos desde el 2026-07-04; pgGraph es la versión \"production\" para Postgres vanilla —extensión Apache-2.0 escrita en Rust que añade Cypher-like sobre los datos existentes sin ETL ni base separada, soportando Postgres 14–18 con imagen Docker en ghcr.io. Para el lector de CSS importa porque completa el knowledge_graph_stack local-first: donde Graphify era el prototipo, pgGraph es lo que desplegarías cuando el grafo tiene que vivir en Postgres de verdad.",
+        "madurez_senales": "⭐ 664 · 🍴 53 · Rust · 📅 2026-05-13 · 🔄 2026-08-01 · 📜 NOASSERTION",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Evokoa/pgGraph",
+          "rel": "implements",
+          "dst": "graph_on_postgres",
+          "primera_mencion": null
+        },
+        {
+          "src": "Evokoa/pgGraph",
+          "rel": "complements",
+          "dst": "graphify",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "Evokoa/pgGraph",
+          "rel": "relevant_to",
+          "dst": "knowledge_graph_stack",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "evokoa-pggraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "agavra/tuicr",
+      "url": "https://github.com/agavra/tuicr",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "TUI de code review estilo GitHub en terminal, con keybindings vim; exporta reviews reales a GitHub/GitLab y soporta git/jj/mercurial.",
+        "por_que_importa": "Hay docenas de TUIs de diff pero pocas que cierren el round-trip con las APIs reales de GitHub/GitLab. tuicr lo hace: keybindings vim, soporta git/jj/mercurial, y las reviews que haces en terminal se publican de verdad, no se quedan en local. Para el lector de CSS importa porque apunta a ser el \"ratchet\" del code review — instalar, revisar, publicar — y entra como competidor directo de alternativas tipo a_review_tui en un nicho donde la fricción de volver a la web mata la adopción.",
+        "madurez_senales": "⭐ 2,203 · 🍴 175 · Rust · 📅 2026-01-08 · 🔄 2026-07-31 · 📜 MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "agavra/tuicr",
+          "rel": "implements",
+          "dst": "cli_code_review",
+          "primera_mencion": null
+        },
+        {
+          "src": "agavra/tuicr",
+          "rel": "uses",
+          "dst": "ratatui",
+          "primera_mencion": null
+        },
+        {
+          "src": "agavra/tuicr",
+          "rel": "competes_with",
+          "dst": "a_review_tui",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agavra-tuicr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "usekaneo/kaneo",
+      "url": "https://github.com/usekaneo/kaneo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Project management minimalista self-hosted (TypeScript, MIT). 5.2k ⭐, ya activo desde 2024.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 5,276 · 🍴 459 · TypeScript · 📅 2024-12-31 · 🔄 2026-07-30 · 📜 MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "usekaneo-kaneo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "chatwoot/chatwoot",
+      "url": "https://github.com/chatwoot/chatwoot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Live-chat omnichannel OSS (Ruby, NOASSERTION — AGPL-style). 35k ⭐, alternativa a Intercom/Zendesk.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 35,216 · 🍴 8,444 · Ruby · 📅 2019-08-14 · 🔄 2026-07-31 · 📜 NOASSERTION",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chatwoot-chatwoot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Yu9191/wloc",
+      "url": "https://github.com/Yu9191/wloc",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Modifica el location spoofing de Apple (gs-loc), soporta Surge/QuantumultX/Loon/Stash. 7k ⭐ (NOASSERTION — licencia a verificar antes de adopción).",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 7,178 · 🍴 1,410 · JavaScript · 📅 2026-06-24 · 🔄 2026-06-27 · 📜 NOASSERTION",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yu9191-wloc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "geo-tp/ESP32-Bit-Pirate",
+      "url": "https://github.com/geo-tp/ESP32-Bit-Pirate",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Firmware ESP32 multi-protocolo (UART, I2C, SPI, Wi-Fi, BLE, Sub-GHz) con CLI web. 5k ⭐, MIT.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 5,137 · 🍴 415 · C++ · 📅 2025-07-05 · 🔄 2026-07-27 · 📜 MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "geo-tp-esp32-bit-pirate",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "l00sed/termixer",
+      "url": "https://github.com/l00sed/termixer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "DJ mixer TUI para TidalCycles (Rust, ratatui, MPV + SuperCollider). Nicho, pero calidad alta.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 131 · 🍴 6 · Rust · 📅 2026-07-31 · 🔄 2026-07-31 · 📜 MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "l00sed-termixer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

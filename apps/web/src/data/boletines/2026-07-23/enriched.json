@@ -1,0 +1,552 @@
+{
+  "version": 2,
+  "date": "2026-07-23",
+  "boletin_origen": "2026-07-23-trending.md",
+  "resumen_ejecutivo": "- **SkillOpt v0.2.0 de Microsoft cambia el clúster \"skills\"**: el paper arXiv 2605.23904 trata el `SKILL.md` como estado entrenable del agente (epochs, learning rate textual, held-out validation gate) y suma `skillopt-sleep` (consolidación nocturna offline). 14.5k★, MIT, ya integrado con Claude Code, Codex, Copilot, Devin y referencia a OpenClaw. Si CSS cubre \"skills evolution\", este es el paper a leer.\n- **OmniRoute reescribe la economía del coding agent** (MIT, 25.8k★, +1.6k/día): un endpoint para 250 proveedores (90+ gratis), auto-fallback, y compresión RTK + Caveman integrada (15–95% tokens). Si los números aguantan auditoría, configurar Claude Code \"gratis\" deja de ser un meme y pasa a ser setup normal. **Ya tiene commits HOY** (grok-web Cloudflare anti-bot + audit de cifras).\n- **Corsair (Apache-2.0, 5.4k★) entra como capa de permisos para agentes**: 4 modos (`open / cautious / strict / readonly`), multi-tenancy, webhooks firmados. Complementa el clúster \"agent governance\" que ya tenemos (Tokscale, OpenShell). Útil para el post \"tu agente puede tocar Gmail sin que se desboque\".\n- **wigolo confirma AGPL-3.0 (no NOASSERTION)**: local-first web search MCP server, ya marcado por la skill `web-scraping-viability` como \"verificar LICENSE antes de build-dep\". Confirmado hoy — la licencia es AGPL-3.0, así que sirve como \"engine tras tu agente\" pero no como dependencia de SaaS cerrado. Sigue la estela de Scrapling + Obscura + Fortress.\n- **El \"cinturón de agent harnesses\" se completa con Orca + jcode**: Orca (stablyai/orca, 26k★, MIT) ya corre Codex + Claude Code + OpenCode + Pi en worktrees paralelos con companion móvil; jcode (1jehuang/jcode, 10k★, MIT, Rust) añade un tercer contender contra `pi-mono` y `nanobot`. La pregunta de 2026 ya no es \"qué agente usar\" sino \"qué orchestrator + qué harness + qué gateway\".\n- **Patrón del día**: integración vertical. SkillOpt entrena skills, Orca orquesta harnesses, OmniRoute abstrae providers, Corsair gobierna tools, wigolo sirve web local. Cada pieza cubre un hueco que faltaba. **Fuentes consultadas: Trendshift daily (31 repos), GitHub Trending daily (19 main + 17 Python + 17 TS + 15 Rust), GitHub API + curl a LICENSE/README para los hallazgos.**",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "microsoft/SkillOpt",
+      "url": "https://github.com/microsoft/SkillOpt",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paper + herramienta (PyPI `skillopt`) que trata el `SKILL.md` como estado entrenable de un agente congelado. Train loop = rollout → reflect → aggregate → select → update → evaluate, con held-out validation gate que rechaza cualquier edición que no supere el baseline. Multi-backend (OpenAI / Azure / Claude / Qwen / MiniMax) y multi-harness (chat directo, Codex CLI, Claude Code CLI). El release v0.2.0 (2026-07-02) añade `skillopt-sleep` (consolidación nocturna offline) y shells de integración para Claude Code, Codex, Copilot, Devin + referencia a **OpenClaw** (atribución directa al agente del usuario de Codex).",
+        "por_que_importa": "encaja en el clúster \"skills evolution\" que ya cubrimos en boletines anteriores con agentskills.io, obra/superpowers, addyosmani/agent-skills, vercel-labs/skills y mattpocock/skills. Microsoft trae ahora la pieza formal: paper con resultados en 6 benchmarks × 7 modelos × 3 harnesses (52/52 celdas best-or-tied-best). El ángulo es \"skills con método, no con vibes\": el SKILL.md se entrena como un estado del agente congelado, con held-out validation que rechaza cualquier edición que no supere al baseline. Si CSS escribe sobre \"tu SKILL.md se entrena como un LoRA\", este es el paper. El release v0.2.0 trae además `skillopt-sleep` (consolidación nocturna offline) y shells de integración para Claude Code, Codex, Copilot y Devin, con referencia explícita a OpenClaw (atribución directa al agente del usuario de Codex).",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/SkillOpt",
+          "rel": "implements",
+          "dst": "concept:skill_optimization",
+          "primera_mencion": null
+        },
+        {
+          "src": "SkillOpt",
+          "rel": "relevant_to",
+          "dst": "repo:agentskills/agentskills",
+          "primera_mencion": null
+        },
+        {
+          "src": "SkillOpt",
+          "rel": "relevant_to",
+          "dst": "repo:obra/superpowers",
+          "primera_mencion": null
+        },
+        {
+          "src": "SkillOpt",
+          "rel": "complements",
+          "dst": "repo:virgiliojr94/book-to-skill",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-skillopt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "diegosouzapw/OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway HTTP que expone un único endpoint compatible con OpenAI/Anthropic y lo enruta a 250 proveedores (90+ con tier gratis). Auto-fallback entre proveedores, soporta Claude Code, Codex, Cursor, Cline, Copilot, Antigravity. Integración explícita de **RTK + Caveman** (15–95% token savings). README declara ~1.6B tokens gratis/mes agregados. NPM `omniroute` + Docker + Electron (Desktop/PWA). MIT.",
+        "por_que_importa": "si la auditoría de cifras aguanta (los commits de hoy re-auditan los números y hay un test suite visible), OmniRoute cambia la ecuación económica del coding agent personal: un único endpoint compatible con OpenAI/Anthropic que enruta a 250 proveedores (90+ con tier gratis), con auto-fallback y soporte para Claude Code, Codex, Cursor, Cline, Copilot y Antigravity. Cruza directamente con `rtk-ai/rtk` (visto el 2026-07-22) y `JuliusBrussee/caveman` (visto el 2026-07-04), ambos ya cubiertos en boletines previos; OmniRoute es la pieza que faltaba para articular el artículo \"configura tu Claude Code para gastar $0\" sin caer en vaporware. Cautela honesta: las cifras de ~1.6B tokens gratis/mes agregados vienen del autor en el README y todavía no hay benchmark reproducible de terceros que las confirme, así que toca verificar antes de citarlas.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:diegosouzapw/OmniRoute",
+          "rel": "implements",
+          "dst": "concept:ai_gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "OmniRoute",
+          "rel": "uses",
+          "dst": "concept:token_compression_proxy",
+          "primera_mencion": null
+        },
+        {
+          "src": "OmniRoute",
+          "rel": "complements",
+          "dst": "repo:rtk-ai/rtk",
+          "primera_mencion": null
+        },
+        {
+          "src": "OmniRoute",
+          "rel": "competes_with",
+          "dst": "repo:portkey/gateway",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diegosouzapw-omniroute",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "escritorio (Electron, macOS/Windows/Linux) que orquesta Codex, ClaudeCode, OpenCode y Pi side-by-side, cada uno en su propio worktree de git. Mobile companion (iOS App Store + TestFlight + Android APK). Features: parallel worktrees (1 prompt → 5 worktrees), design mode (click en Chromium → CSS/HTML/screenshot al prompt), GitHub/Linear nativos, SSH worktrees remotos. 26k★, MIT.",
+        "por_que_importa": "ya cubrimos el 2026-07-16 el concepto de parallel_agent_orchestration dentro de la idea #17 del log (\"Tres formas de orquestar multi-agentes hoy: superpowers vs gastown vs planning-with-files\") y la idea #21 (\"Chief of Staff\"). Orca es la cuarta vía: escritorio Electron multiplataforma (macOS/Windows/Linux) con companion móvil (iOS App Store + TestFlight + Android APK) que corre Codex, ClaudeCode, OpenCode y Pi side-by-side, cada uno en su propio worktree. El ángulo diferenciador frente a gastown/superpowers es la UI de escritorio y el companion móvil, más el design mode (click en Chromium → CSS/HTML/screenshot al prompt) y los SSH worktrees remotos. Si CSS escribe sobre \"agentes a escala de equipo pequeño\", Orca es el ADE canónico open source del verano 2026 (26k★, MIT).",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "implements",
+          "dst": "concept:parallel_agent_orchestration",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "Orca",
+          "rel": "integrates_with",
+          "dst": "repo:earendil-works/pi",
+          "primera_mencion": null
+        },
+        {
+          "src": "Orca",
+          "rel": "relevant_to",
+          "dst": "concept:worktree_per_agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "Orca",
+          "rel": "complements",
+          "dst": "repo:cognee",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "KnockOutEZ/wigolo",
+      "url": "https://github.com/KnockOutEZ/wigolo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor MCP para agentes (Claude Code, Cursor, Codex, Gemini CLI, VS Code, Windsurf, Zed, Antigravity, LangChain, CrewAI, LlamaIndex, Vercel AI SDK, n8n) que expone `search / fetch / crawl / extract / cache / find-similar / research` local-first. Sin API keys para los tools básicos. Backend opcional: Gemini (gratis), Anthropic, OpenAI, Ollama (total local). `npx wigolo init` arranca el motor local. Soporta auth sessions, headless fallback anti-bot.",
+        "por_que_importa": "encaja directamente con la skill `web-scraping-viability` que ya usamos en el flujo de investigación; el 2026-07-19 lo marcamos como `primera_mencion` con la nota Wigolo NOASSERTION — verificar LICENSE antes de build-dep. Hoy queda confirmado: el badge del LICENSE dice AGPL-3.0, lo que significa que sirve como engine detrás de un agente open source pero NO como dependencia de SaaS cerrado (la AGPL obliga a publicar el código completo de cualquier servicio que lo use de forma remota, incluido el front de tu SaaS). Es la respuesta \"todo-en-uno MCP\" al trío Scrapling + Obscura + Fortress que cubrimos el 2026-07-15: un único servidor MCP local-first con `search / fetch / crawl / extract / cache / find-similar / research`, sin API keys para los tools básicos, backend opcional Gemini/Anthropic/OpenAI/Ollama y arranque con `npx wigolo init`. Compatible con Claude Code, Cursor, Codex, Gemini CLI, VS Code, Windsurf, Zed, Antigravity, LangChain, CrewAI, LlamaIndex, Vercel AI SDK y n8n.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:KnockOutEZ/wigolo",
+          "rel": "implements",
+          "dst": "concept:local_first_web_mcp",
+          "primera_mencion": "2026-07-19"
+        },
+        {
+          "src": "wigolo",
+          "rel": "competes_with",
+          "dst": "repo:Scrapling",
+          "primera_mencion": null
+        },
+        {
+          "src": "wigolo",
+          "rel": "relevant_to",
+          "dst": "concept:web_scraping_viability",
+          "primera_mencion": null
+        },
+        {
+          "src": "wigolo",
+          "rel": "risk",
+          "dst": "AGPL-3.0",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "knockoutez-wigolo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "corsairdev/corsair",
+      "url": "https://github.com/corsairdev/corsair",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Unified Integration Layer for Agents\". MCP server que da acceso a integraciones (Slack, GitHub, Gmail, ...) con **4 modos de permiso** por integración: `open / cautious / strict / readonly`. El agente nunca ve las credenciales (envelope encryption con KEK controlada por el usuario). Multi-tenancy. Webhooks firmados por plugin. Es el \"approve-or-deny\" UI que faltaba en el clúster governance.",
+        "por_que_importa": "encaja con la idea #20 del log (\"Cuatro capas para poner un AI agent en producción: governance + sandbox + cost analytics + orchestration\"). Corsair es la pieza de governance que faltaba en OSS: un MCP server con envelope encryption (el agente nunca ve las credenciales, la KEK la controla el usuario) y 4 modos de permiso por integración (`open / cautious / strict / readonly`), con webhooks firmados por plugin y multi-tenancy. Lo más cercano que vimos antes fue el chief-of-staff de SmileLikeYe/agent-chief (cubierto el 2026-07-11), pero ese resuelve orquestación de tareas, no gating de permisos; Corsair es el \"approve-or-deny\" UI que faltaba en el clúster governance. Detalle de rigor: la API decía NOASSERTION pero el LICENSE real del repo es Apache-2.0 (pitfall típico a verificar a mano antes de citar licencia).",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:corsairdev/corsair",
+          "rel": "implements",
+          "dst": "concept:agent_integration_layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "Corsair",
+          "rel": "solves",
+          "dst": "concept:agent_permission_gating",
+          "primera_mencion": null
+        },
+        {
+          "src": "Corsair",
+          "rel": "complements",
+          "dst": "repo:NVIDIA/OpenShell",
+          "primera_mencion": null
+        },
+        {
+          "src": "Corsair",
+          "rel": "complements",
+          "dst": "repo:SmileLikeYe/agent-chief",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "corsairdev-corsair",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "earendil-works/pi",
+      "url": "https://github.com/earendil-works/pi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "monorepo `pi-mono` con `@earendil-works/pi-coding-agent` (CLI), `pi-agent-core` (runtime), `pi-ai` (multi-provider LLM API unificada), `pi-tui` (differential-rendered TUI). MIT. \"Supply-chain hardening\" muy serio: deps pinned a versiones exactas, `.npmrc save-exact=true`, `min-release-age=2`, `npm audit signatures`. Tres patrones de containerización documentados: **Gondolin extension** (micro-VM local para tools), Docker plano, OpenShell.",
+        "por_que_importa": "el monorepo pi-mono ya está en nuestro radar desde el 2026-07-22 (cubre ideas #17, #21 y #22) y vuelve hoy porque Orca lo integra explícitamente como uno de los agentes soportados, además de los 5 fixes de hoy. El ángulo nuevo respecto a la cobertura previa es Gondolin, una extensión de micro-VM local para ejecutar tools sin fugas: la pieza \"OpenShell-light\" que faltaba en el segmento sandbox, junto a las opciones Docker plano y OpenShell que el propio repo documenta. El rigor de supply-chain es un punto a destacar (deps pinned a versión exacta, `min-release-age=2`, `npm audit signatures`), pero queda como observación de higiene, no como resultado validado por terceros. Si CSS cubre \"isolation patterns para coding agents\", Gondolin es el OSS menos conocido del trío.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:earendil-works/pi",
+          "rel": "implements",
+          "dst": "concept:agent_harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "pi",
+          "rel": "integrates_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "pi",
+          "rel": "competes_with",
+          "dst": "repo:HKUDS/nanobot",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "pi",
+          "rel": "competes_with",
+          "dst": "repo:1jehuang/jcode",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earendil-works-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "tirth8205/code-review-graph",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Python package + MCP server que construye un mapa estructural de tu codebase con **tree-sitter**, lo mantiene incremental, y lo expone vía MCP para que el coding agent lea sólo lo necesario. Auto-instala para 14 plataformas (Codex, Claude Code, CodeBuddy Code, Cursor, Windsurf, Zed, Continue, OpenCode, Antigravity, Gemini CLI, Qwen, Qoder, Kiro, GitHub Copilot). Claim del benchmark: 38x–528x menos tokens en tareas de review reales.",
+        "por_que_importa": "competencia directa con codebase-memory-mcp (DeusData) y con Graphify (este último cubierto el 2026-07-04); el propio repo code-review-graph lo marcamos como `primera_mencion` el 2026-07-18. El ángulo diferenciador es el trade-off técnico: code-review-graph es estructural puro (tree-sitter incremental sobre el AST), codebase-memory-mcp es semántico (LSP + call graph) y Graphify es graph general con embeddings. Tres aproximaciones distintas al mismo problema —\"no hagas que tu agente relea todo el codebase\"— que juntas dan una comparativa seria. Auto-instala para 14 plataformas (Codex, Claude Code, CodeBuddy Code, Cursor, Windsurf, Zed, Continue, OpenCode, Antigravity, Gemini CLI, Qwen, Qoder, Kiro, GitHub Copilot). Cautela con el claim: el benchmark \"38x–528x menos tokens\" viene del repo y no hemos visto reproducción independiente, así que conviene contrastarlo antes de citarlo como cifra dura.",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tirth8205/code-review-graph",
+          "rel": "implements",
+          "dst": "concept:codebase_graph_mcp",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "crg",
+          "rel": "competes_with",
+          "dst": "repo:DeusData/codebase-memory-mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "crg",
+          "rel": "competes_with",
+          "dst": "repo:Graphify-Labs/graphify",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tirth8205-code-review-graph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "ComposioHQ/awesome-claude-skills",
+      "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "directorio de skills de Claude. README y LICENSE ambos 404 en `main` (probable fork/rename). **No open source verificable**; queda como referencia histórica pero no se puede adoptar.",
+        "por_que_importa": "",
+        "madurez_senales": "68.984★, push 2026-05-22 → STALE hace 2 meses, Python",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "composiohq-awesome-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"The most intelligent agent harness for code\". Instalador one-liner (`curl -fsSL https://jcode.sh/install | bash`), commits recientes (renombró \"Flagship\" → \"Solo\", integró Fable 5, excluyó Nemotron Super por unstable). Rama `master`, no `main` (rareza).",
+        "por_que_importa": "",
+        "madurez_senales": "10.830★, Rust, MIT",
+        "accion_sugerida": "vigilar — (deep-dive candidato si no hay otro más urgente)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1jehuang-jcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "virgiliojr94/book-to-skill",
+      "url": "https://github.com/virgiliojr94/book-to-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "convierte PDFs técnicos en `SKILL.md` para Claude Code. Commits modestos pero constante (`fix(pdf): decode pdftotext output as UTF-8`). Útil para \"meter un libro entero en el contexto del agente\".",
+        "por_que_importa": "",
+        "madurez_senales": "9.376★, Python, MIT",
+        "accion_sugerida": "probar — con un libro real",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "virgiliojr94-book-to-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "bojieli/ai-agent-book",
+      "url": "https://github.com/bojieli/ai-agent-book",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "libro open source en chino de Li Bojie \"Entender los AI Agents en profundidad\". PDF compilado + código por capítulo. **El +3.297 estrellas/día es enorme**, probablemente empujado por la comunidad china.",
+        "por_que_importa": "",
+        "madurez_senales": "17.639★, +3.297/día, Python, Apache-2.0",
+        "accion_sugerida": "vigilar — + considerar traducción/resumen si CSS quiere audiencia china",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bojieli-ai-agent-book",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ayghri/i-have-adhd",
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"A skill for your coding agent to stop it from burying the answer. ADHD-friendly output.\" Curiosidad útil, prompt que fuerza respuestas no enterradas.",
+        "por_que_importa": "",
+        "madurez_senales": "8.642★, Python, MIT",
+        "accion_sugerida": "leer — el SKILL.md (literal)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ayghri-i-have-adhd",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "block/buzz",
+      "url": "https://github.com/block/buzz",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"A hive mind communication platform\". Sin descripción técnica detallada en README, sólo el tagline. Subió 3.252/día, probablemente hype.",
+        "por_que_importa": "",
+        "madurez_senales": "4.630★, Rust, Apache-2.0",
+        "accion_sugerida": "vigilar — (sin invertir tiempo hasta confirmar qué hace)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "block-buzz",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "agegr/pi-web",
+      "url": "https://github.com/agegr/pi-web",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Web UI for the pi coding agent\". Complementa `earendil-works/pi` con UI.",
+        "por_que_importa": "",
+        "madurez_senales": "2.154★, TypeScript, MIT",
+        "accion_sugerida": "vigilar — (no visto antes en detalle)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agegr-pi-web",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "rohitg00/ai-engineering-from-scratch",
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "curso \"Learn it. Build it. Ship it for others.\" Curiosidad: 42k★ en 4 meses sin push reciente (último 2026-06-25).",
+        "por_que_importa": "",
+        "madurez_senales": "42.521★, Python, MIT",
+        "accion_sugerida": "vigilar — (revisar si el contenido está completo o es WIP abandonado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rohitg00-ai-engineering-from-scratch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

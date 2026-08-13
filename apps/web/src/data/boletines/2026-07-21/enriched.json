@@ -1,0 +1,485 @@
+{
+  "version": 2,
+  "date": "2026-07-21",
+  "boletin_origen": "2026-07-21-trending.md",
+  "resumen_ejecutivo": "- **Día del \"agent proxy layer\"**: `agentgateway/agentgateway` (Linux Foundation, v1.4.0-alpha.2 publicado HOY), `lidge-jun/opencodex` (proxy universal para Codex/Claude Code con 20+ modelos) y `PrefectHQ/fastmcp` (MCP server/client Python, 26.6k★) coinciden en trending — la capa de red para agentes se está consolidando como categoría propia, al margen del modelo.\n- **Memoria agéntica madura y de la mano de Hermes**: `topoteretes/cognee` (28.9k★) entra fuerte como \"AI memory platform for agents\" con self-hosted knowledge graph — encaja directamente con el pendiente `pending_screenpipe` y con la línea \"long-term memory\" del grafo.\n- **OCR open source de calidad industrial**: `baidu/Unlimited-OCR` (15.7k★, MIT) entra al radar con \"one-shot long-horizon parsing\" — útil como pieza de extracción para el ángulo \"agentes sobre datos no estructurados\".\n- **Infra de inferencia heterogénea**: `kvcache-ai/ktransformers` (18.8k★, Apache-2.0) re-trending con marco flexible para optimizaciones de inferencia/fine-tune — el complemento de bajo nivel que faltaba junto a `airllm` (visto el 2026-07-20).\n- **Heads-up blogwatcher**: el archivo `2026-07-21-blogs.md` no se ha generado hoy, así que este boletín cubre la franja completa sin duplicación. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "agentgateway/agentgateway",
+      "url": "https://github.com/agentgateway/agentgateway",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Proxy L7 nativo para tráfico entre agentes y entre agente↔tool, con soporte para LLM gateway (OpenAI/Anthropic/Gemini/Bedrock), MCP gateway (federación de tools, stdio/HTTP/SSE/Streamable, OAuth), A2A gateway, inference routing vía Kubernetes Gateway API, guardrails multicapa y CEL como motor de políticas.",
+        "por_que_importa": "Es el \"Envoy para agentes\": un proxy L7 nativo para tráfico entre agentes y entre agente y herramientas, con gateway para LLMs (OpenAI/Anthropic/Gemini/Bedrock), para MCP (federación de tools en stdio/HTTP/SSE/Streamable, con OAuth), para A2A, y routing vía Kubernetes Gateway API, incluyendo guardrails multicapa y CEL como motor de políticas. Sustituye el patrón \"tu agente llama a OpenAI a pelo\" por \"tu agente pasa por agentgateway → auth, rate limit, observability, guardrails y failover ya dentro\". Pocas alternativas open source combinan release activo (v1.4.0-alpha.2 hoy) con gobernanza neutral (Linux Foundation, CHARTER.md, TSC público). Ya cubrimos el concepto de proxy agéntico el 2026-07-16 y a su competidor cloudflare/kumo el 2026-07-04; a corto plazo encaja como infraestructura complementaria a Hermes/Ibid.",
+        "madurez_senales": "3.968★ · 661 forks · Rust (2024 edition) · creado 2025-... · último push 2026-07-21 (hoy) · Apache-2.0 · 13 sub-crates en workspace, 1 binary + UI + Kubernetes controller.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "implements",
+          "dst": "concept:agentic_proxy",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "agentgateway",
+          "rel": "complements",
+          "dst": "Hermes",
+          "primera_mencion": null
+        },
+        {
+          "src": "agentgateway",
+          "rel": "enables",
+          "dst": "agent-to-agent_protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "agentgateway",
+          "rel": "competes_with",
+          "dst": "cloudflare/kumo",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentgateway-agentgateway",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "lidge-jun/opencodex",
+      "url": "https://github.com/lidge-jun/opencodex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Proxy que unifica el acceso a 20+ LLMs (Claude, Gemini, Grok, DeepSeek, Ollama, OpenRouter, Kiro...) exponiéndolos con API OpenAI-compatible. Pensado para enchufarlo a Codex CLI, Codex App, Codex SDK y Claude Code sin tocar su código. TypeScript, MIT.",
+        "por_que_importa": "Unifica el acceso a más de 20 LLMs (Claude, Gemini, Grok, DeepSeek, Ollama, OpenRouter, Kiro, etc.) detrás de una API compatible con OpenAI, pensado como drop-in para Codex CLI, Codex App, Codex SDK y Claude Code sin modificar su código. El caso de uso concreto: si quieres usar Codex CLI con un modelo local o con Anthropic desde una suscripción que no es la oficial, es un solo binario que lo habilita. Su juventud (1.335★, 84 forks, creado hace un mes) muestra que el nicho de \"AI gateway\" está verde pero en tracción. Es competidor de OpenRouter y complemento de diegosouzapw/OmniRoute, que ya cubrimos el 2026-07-09.",
+        "madurez_senales": "1.335★ · 84 forks · TypeScript · creado 2026-06-18 (hace 1 mes) · último push 2026-07-21 (hoy) · MIT · topics: ai-gateway, codex, codex-cli, claude-code, deepseek, llm-proxy, ollama, openrouter.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "lidge-jun/opencodex",
+          "rel": "implements",
+          "dst": "concept:llm_provider_proxy",
+          "primera_mencion": null
+        },
+        {
+          "src": "opencodex",
+          "rel": "complements",
+          "dst": "diegosouzapw/OmniRoute",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "opencodex",
+          "rel": "competes_with",
+          "dst": "OpenRouter",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lidge-jun-opencodex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "PrefectHQ/fastmcp",
+      "url": "https://github.com/PrefectHQ/fastmcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework Python mantenido por Prefect (los mismos de Prefect Orion) para construir servers y clients del Model Context Protocol con una API rápida y pythónica. 26.6k★, Apache-2.0, empujado por la inercia del protocolo MCP en todo el ecosistema agéntico.",
+        "por_que_importa": "Si escribes tools para agentes en Python, es el camino de menor fricción actual: su API es más pythónica y concisa que el SDK oficial de Anthropic, que es más verboso. Su tracción (26.6k★, mantenido por Prefect, los mismos de Prefect Orion) confirma que el Model Context Protocol ya pasó de experimento a capa estandarizada del ecosistema agéntico. Para Hermes, todo lo que hagamos exponiendo skills como MCP se monta sobre piezas de este tipo. Cubrimos MCP el 2026-07-16 y también a mcp-use como complemento en esa misma fecha.",
+        "madurez_senales": "26.642★ · 2.166 forks · Python · creado 2024-11-30 · último push 2026-07-21 (hoy) · Apache-2.0 · topics: agents, mcp, mcp-clients, mcp-servers, mcp-tools, model-context-protocol, python.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "PrefectHQ/fastmcp",
+          "rel": "implements",
+          "dst": "concept:mcp_protocol",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "fastmcp",
+          "rel": "enables",
+          "dst": "python_mcp_servers",
+          "primera_mencion": null
+        },
+        {
+          "src": "fastmcp",
+          "rel": "complements",
+          "dst": "repo:mcp-use/mcp-use",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "prefecthq-fastmcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "topoteretes/cognee",
+      "url": "https://github.com/topoteretes/cognee",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Cognee es la plataforma open source de memoria AI para agentes\" — motor de knowledge graph auto-hospedado que da a los agentes memoria persistente entre sesiones, combinando extracción de grafos, embeddings y relaciones semánticas.",
+        "por_que_importa": "Es un motor de knowledge graph auto-hospedado para dar memoria persistente entre sesiones a los agentes, combinando extracción de grafos, embeddings y relaciones semánticas. Encaja con la línea \"long-term memory\" del grafo y aparece como competidor directo de screenpipe/screenpipe, que ya cubrimos el 2026-07-16 y queda lastrado por el cambio de licencia NOASSERTION. Su modelo \"knowledge graph + vector + LLM extraction\" es justamente la pieza que un stack como Hermes/Ibid necesita para tener memoria real de proyecto, no solo ventana de contexto. Buena señal de que la categoría \"memoria de agente\" ya tiene un candidato open source serio: Apache-2.0, 28.9k★, releases activos. Candidato natural para un deep-dive en próximos días.",
+        "madurez_senales": "28.889★ · 2.749 forks · Python · creado 2023-08-16 · último push 2026-07-20 · Apache-2.0 · topics: agent-memory, ai-memory, cognitive-architecture, context-engineering, graph-database, graph-rag, knowledge, knowledge-graph, memory-management, vector-database.",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "topoteretes/cognee",
+          "rel": "solves",
+          "dst": "concept:agent_memory_storage",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "cognee",
+          "rel": "uses",
+          "dst": "concept:longitudinal_memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "cognee",
+          "rel": "implements",
+          "dst": "open_context_layer_pattern",
+          "primera_mencion": null
+        },
+        {
+          "src": "cognee",
+          "rel": "competes_with",
+          "dst": "screenpipe/screenpipe",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "topoteretes-cognee",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "kvcache-ai/ktransformers",
+      "url": "https://github.com/kvcache-ai/ktransformers",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework para experimentar con optimizaciones heterogéneas de inferencia y fine-tuning de LLMs (offloading a CPU, cuantización, KV cache, scheduling). Apache-2.0, 18.8k★, mantenido por el grupo de kvcache-ai (Berkeley-ish). Re-trending en GitHub Trending daily.",
+        "por_que_importa": "Completa la tríada \"local-first LLM\" que ya cubrimos: `llama.cpp` como base de CPU/GGUF, `airllm` para correr 70B en unos 4GB de RAM (visto el 2026-07-20), y ahora `ktransformers` para la pata heterogénea y consciente del KV cache. Frente a `llama.cpp`, `ktransformers` ofrece optimizaciones más finas —offloading a CPU, cuantización, gestión de KV cache, scheduling— cuando necesitas control granular de dónde van los pesos y la memoria de atención. Sigue siendo un framework experimental, no un producto listo para producción, pero su reaparición en GitHub Trending mantiene vivo el patrón \"modelos grandes en hardware modesto\".",
+        "madurez_senales": "18.792★ · 1.463 forks · Python · creado 2024-07-26 · último push 2026-07-20 (ayer) · Apache-2.0 · topics: [] (no declarados).",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "kvcache-ai/ktransformers",
+          "rel": "enables",
+          "dst": "concept:local_70B_inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "ktransformers",
+          "rel": "complements",
+          "dst": "lyogavin/airllm",
+          "primera_mencion": "2026-07-20"
+        },
+        {
+          "src": "ktransformers",
+          "rel": "competes_with",
+          "dst": "llama.cpp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kvcache-ai-ktransformers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "baidu/Unlimited-OCR",
+      "url": "https://github.com/baidu/Unlimited-OCR",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "OCR de horizonte largo de un solo paso (one-shot long-horizon parsing), capaz de procesar documentos extensos sin dividir en páginas y emitir estructura jerárquica. MIT, 15.7k★, salida reciente (2026-06-18).",
+        "por_que_importa": "Es un OCR de horizonte largo que procesa documentos extensos de un solo paso, sin partir en páginas, y emite estructura jerárquica. La ventaja concreta para un pipeline de extracción sobre PDFs, contratos, papers o escaneos largos: elimina el error clásico de fragmentar y perder referencias cruzadas entre páginas (cabeceras, pies, tablas anchas, notas). Encaja con la línea \"agentes sobre datos no estructurados\", que ya cubre el ángulo de almacenamiento de memoria de agente desde el 2026-07-16. Frente a allenai/olmocr, la diferencia a vigilar es si la salida jerárquica one-shot aguanta documentos reales conレイアウト complejo, porque el repo aún no declara topics y el último push es de hace casi tres semanas.",
+        "madurez_senales": "15.751★ · 1.408 forks · Python · creado 2026-06-18 · último push 2026-07-03 · MIT · topics: [].",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "baidu/Unlimited-OCR",
+          "rel": "solves",
+          "dst": "long_document_parsing",
+          "primera_mencion": null
+        },
+        {
+          "src": "Unlimited-OCR",
+          "rel": "competes_with",
+          "dst": "allenai/olmocr",
+          "primera_mencion": null
+        },
+        {
+          "src": "Unlimited-OCR",
+          "rel": "relevant_to",
+          "dst": "concept:agent_memory_storage",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "baidu-unlimited-ocr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "microsoft/graphrag",
+      "url": "https://github.com/microsoft/graphrag",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Microsoft resucita su graph-RAG en trending; encaja con el ángulo \"RAG con grafos\" y se solapa con cognee.",
+        "por_que_importa": "",
+        "madurez_senales": "34.648★, MIT, push 2026-07-20",
+        "accion_sugerida": "vigilar (puede ser que Microsoft esté empujándolo de nuevo tras meses en barbecho)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-graphrag",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "koala73/worldmonitor",
+      "url": "https://github.com/koala73/worldmonitor",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Dashboard OSINT de inteligencia geopolítica con agregación AI y MCP server propio.",
+        "por_que_importa": "",
+        "madurez_senales": "63.047★, NOASSERTION, push 2026-07-21, TypeScript",
+        "accion_sugerida": "vigilar (no verificado si la licencia NOASSERTION es copyleft-comercial o simple Apache con SPDX mal catalogado — adoptar con cuidado; interesante como ejemplo de \"agregador de señales\" en producción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "koala73-worldmonitor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Robbyant/lingbot-map",
+      "url": "https://github.com/Robbyant/lingbot-map",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Foundation model feed-forward para reconstruir escenas 3D a partir de datos en streaming (robotics/embodied AI).",
+        "por_que_importa": "",
+        "madurez_senales": "14.424★, Apache-2.0, push 2026-07-20, Python",
+        "accion_sugerida": "ignorar (lateral a CSS salvo artículo de embodied AI)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "robbyant-lingbot-map",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "microsoft/Ontology-Playground",
+      "url": "https://github.com/microsoft/Ontology-Playground",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Webapp para diseñar ontologías visualmente y exportar RDF/XML, sin backend.",
+        "por_que_importa": "",
+        "madurez_senales": "1.821★, MIT, push 2026-06-19, TypeScript",
+        "accion_sugerida": "vigilar (útil como pieza educativa si se hace un artículo sobre \"cómo construir un grafo de conocimiento desde cero\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-ontology-playground",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Colección de \"AI agency\" como Claude Code skills preempaquetadas (frontend, Reddit, reality checkers).",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado, Shell, push reciente",
+        "accion_sugerida": "vigilar (ya visto en el radar del 2026-07-19, no ha subido — tomar con pinzas)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "msitarzewski-agency-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "handy-computer/transcribe.cpp",
+      "url": "https://github.com/handy-computer/transcribe.cpp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "ggml STT para 16+ familias de modelos.",
+        "por_que_importa": "",
+        "madurez_senales": "visto 2026-07-19, push 2026-07-19, C++",
+        "accion_sugerida": "ignorar (ya cubierto en radar previo, lateral a menos que se escriba sobre audio agéntico)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "handy-computer-transcribe-cpp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "chenglou/freerange",
+      "url": "https://github.com/chenglou/freerange",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Static `@fit` checks para layout TypeScript.",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado, TS, push reciente",
+        "accion_sugerida": "ignorar (nicho CSS-in-JS, no toca IA)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chenglou-freerange",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "hoainho/img2threejs",
+      "url": "https://github.com/hoainho/img2threejs",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Imagen → modelo Three.js procedural sin assets.",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado, Python, push 2026-07-15",
+        "accion_sugerida": "ignorar (lateral, solo relevante para un post de 3D agéntico)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hoainho-img2threejs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

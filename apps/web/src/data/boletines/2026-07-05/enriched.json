@@ -1,0 +1,311 @@
+{
+  "version": 2,
+  "date": "2026-07-05",
+  "boletin_origen": "2026-07-05-trending.md",
+  "resumen_ejecutivo": "- **T3MP3ST** (#1 en Trendshift, 3 días de vida): framework multi-agente de red teaming que se enchufa a Claude Code, Codex o **Hermes** — sin claves API, claims reproducibles (90.1 % pass@1 sobre XBEN), licencia AGPL-3.0. Tesis editorial fuerte: \"tu coding agent ya es un cazador de zero-days, solo le faltaba el arnés\".\n- **Agents365-ai/drawio-skill** (5.2 k★, MIT): skill que convierte prompts en `.drawio` y exporta a PNG/SVG/PDF — soporta codebases (Py/TS/Go/Rust), Terraform, K8s, compose y SQL DDL. Compite directamente con `DayuanJiang/next-ai-draw-io` (ya en el grafo). Compatible con el format Agent Skills, así que encaja con tu skill system.\n- **bradautomates/claude-video** (3.2 k★, MIT): `/watch` descarga, extrae frames, transcribe y se lo entrega a Claude como contexto. Complemento del tipo \"Claude ahora ve vídeo de verdad\", no solo frames sueltos.\n- **crynta/terax-ai** (8.1 k★, Apache-2.0): workspace AI-nativo en terminal de 7 MB (Tauri/Rust). Compite por el mismo puesto de control que Cursor/Claude Code pero sin IDE.\n- **alirezarezvani/claude-skills** (20.2 k★, MIT): \"el mega-paquete\" de 337 skills + 30 agentes + 70 comandos custom. Vale mirarlo como referencia de cobertura aunque su granularidad no es lo ideal para producción.\n- **ZhuLinsen/daily_stock_analysis** (54.4 k★, MIT,Python): sistema LLM de análisis bursátil multi-mercado con dashboard y notificaciones. Caso de estudio de \"agente de decisión\" autónomo, muy viral en Asia.\n- **Usagi-org/ai-goofish-monitor** (13 k★, MIT): monitor Playwright+AI sobre Xianyu (marketplace chino) con admin UI completa. Caso real de scraping-as-a-service para nicho.\n- También: **CoplayDev/unity-mcp** (11.7 k★) consolida su puesto como bridge MCP estándar para Unity Editor; **cheahjs/free-llm-api-resources** (25 k★) sigue siendo el repositorio-curado de APIs LLM gratuitas; **asgeirtj/system_prompts_leaks** (49 k★) acaba de actualizar con los prompts de Fable 5, Opus 4.8 y Codex.\nEl blogwatcher de las 08:00 ya cubrió la actualización de Fable en sqlite-utils, mejor-modelos-peores-tools (Armin Ronacher sobre Opus 4.8/Sonnet 5), Mistral Leanstral 1.5, DBOS workflow y Safari MCP server. **Aquí no los repetimos.**\nFuentes consultadas: Trendshift daily (25 repos), GitHub Trending daily global/Python/Rust/TypeScript (18 + 12 + 12 repos), GitHub REST API (12/12 verificados para hallazgos principales), READMEs inspeccionados para T3MP3ST y Agents365-ai/drawio-skill.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "elder-plinius/T3MP3ST",
+      "url": "https://github.com/elder-plinius/T3MP3ST",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "meta-harness de red teaming para coding agents",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elder-plinius-t3mp3st",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Agents365-ai/drawio-skill",
+      "url": "https://github.com/Agents365-ai/drawio-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "diagramas `.drawio` desde prompt (compatible con Agent Skills)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agents365-ai-drawio-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "bradautomates/claude-video",
+      "url": "https://github.com/bradautomates/claude-video",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "`/watch` para que Claude vea cualquier vídeo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bradautomates-claude-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "crynta/terax-ai",
+      "url": "https://github.com/crynta/terax-ai",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "workspace terminal AI-nativo de 7 MB",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "crynta-terax-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "alirezarezvani/claude-skills",
+      "url": "https://github.com/alirezarezvani/claude-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "la librería-enciclopedia de 337 skills",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alirezarezvani-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente LLM bursátil multi-mercado",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhulinsen-daily-stock-analysis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Usagi-org/ai-goofish-monitor",
+      "url": "https://github.com/Usagi-org/ai-goofish-monitor",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "scraping Playwright+AI con admin UI completo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "usagi-org-ai-goofish-monitor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "CoplayDev/unity-mcp",
+      "url": "https://github.com/CoplayDev/unity-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "bridge MCP para Unity Editor (assets, scenes y scripts)",
+        "por_que_importa": "",
+        "madurez_senales": "11 699 ★, último push 2026-07-05, C# MIT",
+        "accion_sugerida": "vigilar — (consolidado, mainstream, no explorable profundo sin contexto Unity)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coplaydev-unity-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "cheahjs/free-llm-api-resources",
+      "url": "https://github.com/cheahjs/free-llm-api-resources",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "lista curada de APIs LLM gratuitas",
+        "por_que_importa": "",
+        "madurez_senales": "25 156 ★, último push 2026-07-03, Python, sin licencia explícita — **no verificado** si uso comercial es válido",
+        "accion_sugerida": "leer — (recurso, no proyecto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cheahjs-free-llm-api-resources",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "dotnet/skills",
+      "url": "https://github.com/dotnet/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "skills para que coding agents trabajen con .NET/C#",
+        "por_que_importa": "",
+        "madurez_senales": "3 867 ★, último push 2026-07-03, C# MIT",
+        "accion_sugerida": "vigilar — (si CSS toca .NET alguna vez)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dotnet-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "asgeirtj/system_prompts_leaks",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "extractos de system prompts de Fable 5, Opus 4.8, Codex, Gemini y Grok, entre otros",
+        "por_que_importa": "",
+        "madurez_senales": "49 138 ★, último push 2026-07-05, JavaScript CC0-1.0",
+        "accion_sugerida": "leer — (recurso para entender comportamiento de modelos, útil para escribir skills)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "asgeirtj-system-prompts-leaks",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "karpathy/nanoGPT",
+      "url": "https://github.com/karpathy/nanoGPT",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "sigue apareciendo en Trendshift; el repo canónico minimalista de GPT para training y fine-tuning",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado directamente, ~32 k★ histórico",
+        "accion_sugerida": "ignorar — para trending — eternamente trending, ya lo conoces",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "karpathy-nanogpt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/7 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4, 5, 6]; faltantes en respuesta: [0, 1, 2, 3, 4, 5, 6]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

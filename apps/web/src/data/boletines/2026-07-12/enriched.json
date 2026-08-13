@@ -1,0 +1,290 @@
+{
+  "version": 2,
+  "date": "2026-07-12",
+  "boletin_origen": "2026-07-12-trending.md",
+  "resumen_ejecutivo": "- **`DayuanJiang/next-ai-draw-io` (GitHub Trending TypeScript daily, debut, Apache-2.0, 33.364★ hoy)** aterriza con **3 commits en las últimas 24 h**: fix del timeout de 30 s en `edit_diagram` reemplazándolo por comparación de contenido (#890), **auto-publish del MCP server a npm via OIDC trusted publishing (#891)** y **Xiaomi MiMo como nuevo AI provider (#887)**. Lo más relevante no es el draw.io con IA — es la **cadena release**: el proyecto pasó de Next.js app standalone a un MCP server publicado automáticamente. La señal es \"agent-skill lifecycle\": skills que ahora se distribuyen por npm con CI firmado, no solo por README.\n- **`obra/superpowers` (GitHub Trending Shell daily, 740★/día, MIT, 252.608★ hoy)** vuelve a trending después de 8 días, esta vez impulsado por su **release v6.1.1 (2026-07-02)** que arregló el Codex SessionStart hook re-registration y añadió Codex portal packaging. La lectura: el \"agentic skills framework\" sigue consolidándose como categoría, no como moda — obra compite directamente con addyosmani/agent-skills, vercel-labs/agent-skills, mattpocock/skills y code-yeongyu/oh-my-openagent, y los ciclos de release dictan el trending.\n- **`wonderwhy-er/DesktopCommanderMCP` (GitHub Trending TypeScript daily, 909★/día, MIT, 7.834★ hoy)** es **el segundo día consecutivo en trending** (ayer 6.638★, hoy 7.834★ → +1.196★ en 24 h). v0.2.44 del 2026-07-09 sigue empujando, y el repositorio se está convirtiendo en **la pieza de \"el agente toca tu terminal\" para Claude Code**: terminal control, file system search y diff file editing vía MCP. Combinado con BrowserOS (visto el 2026-07-11) dibuja un mapa claro: AI agents entran al sistema operativo, no al navegador.\n- **Día flojo en lo nuevo** — `oven-sh/bun`, `hashicorp/terraform`, `vercel/next.js`, `abseil/abseil-cpp`, `home-assistant/core`, `prisma/prisma` y `nuxt/nuxt` siguen copando trending daily por inercia (stars evergreen), y de los 24 repos en la lista solo **1 es debut real para CSS**. La acción del día es más curaduría que descubrimiento: confirmamos momentum sobre repos vistos el 2026-07-04/09/10/11 y dejamos 1 radar con señal conceptual sólida pero sin repo open todavía. Fuentes consultadas: GitHub Trending daily (24 entradas, regex extracción propia), HN top+best (88 ítems), GitHub REST API verificación individual de 7 repos.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "DayuanJiang/next-ai-draw-io",
+      "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación Next.js que integra IA con draw.io para crear, modificar y mejorar diagramas por lenguaje natural. Lo que importa hoy no es el producto: son **3 commits en las últimas 24 h** (todos del 2026-07-12): **(a)** `fix(mcp): replace edit_diagram 30s time gate with content comparison (#890)` — elimina un time gate arbitrario en `edit_diagram` y lo sustituye por comparación de contenido; **(b)** `ci: auto-publish mcp-server to npm via OIDC trusted publishing (#891)` — activa el ciclo \"el CI publica el MCP server en npm usando tokens OIDC\"; **(c)** `feat: add MiMo (Xiaomi) as AI provider (#887)` — añade el modelo abierto de Xiaomi como proveedor soportado.",
+        "por_que_importa": "El patrón agent skill deja de ser un .md suelto y se convierte en package publicable: este proyecto, que ya cubrimos el 2026-07-05 como nodo de momentum del ecosistema skills, demuestra el siguiente paso al compilarse como MCP server distribuible en npm con CI firmado mediante OIDC trusted publishing. Si el patrón se replica, los lectores de CSS pueden pasar de instalar skills via git clone a hacerlo via npx sin perder auditabilidad, lo cual encaja con el cron parallel-repo-explore-bulletin (que ya opera como skill invocable) y abre la puerta a empaquetar skills propios como packages npm firmados. El fix que sustituye el time gate arbitrario de edit_diagram por comparación de contenido es la guinda técnica: muestra que el repo no solo añade features, también está endureciendo contratos del propio MCP.",
+        "madurez_senales": "33.364★ · 3.611 forks · Apache-2.0 · TypeScript · creado 2025-03-23 · último push **2026-07-12T06:33:21Z** (hace horas). Topics: `ai`, `diagrams`, `productivity`. **Sin release formal** (proyecto Next.js + publicaciones npm sin tags). El repo ya estaba en el grafo desde 2026-07-02 (visto en `2026-07-02-bulletins`) pero **sin release day**; este commit triple lo convierte en hallazgo principal hoy.",
+        "accion_sugerida": "explorar (clonar, revisar el CI workflow del OIDC trusted publishing para entender el setup mínimo, comprobar si la publicación npm está activa y qué `npm i -g @next-ai-draw-io/mcp-server` (no verificado nombre exacto) funciona, contrastar el patrón con Anthropic/Vercel skills; si el patrón MCP-from-skill se confirma replicable, vale un post específico sobre agent-skill lifecycle 2026).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "DayuanJiang/next-ai-draw-io",
+          "rel": "implements",
+          "dst": "next-ai-draw-io-momentum",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "DayuanJiang/next-ai-draw-io",
+          "rel": "uses",
+          "dst": "mcp-registry",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "DayuanJiang/next-ai-draw-io",
+          "rel": "relevant_to",
+          "dst": "agent-skills-mcp-integration",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "DayuanJiang/next-ai-draw-io",
+          "rel": "complements",
+          "dst": "google-labs-code/stitch-skills",
+          "primera_mencion": "2026-07-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dayuanjiang-next-ai-draw-io",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Framework agentic de skills + metodología de desarrollo de software**. Skills como objetos primarios del SDLC, brainstorming estructurado y subagent-driven development. Lo que trajo trending hoy (740★/día, después de 8 días sin aparecer) es **v6.1.1 del 2026-07-02** (\"fix Codex SessionStart hook re-registration, add Codex portal packaging\"). Los commits del 2026-07-01 / 2026-07-02 muestran un ciclo de packaging activo: preservan/stripe de hooks en Codex portal package, refrescan docs, reorganizan ejemplos para alejarse de Codex. Topics del repo: `ai`, `brainstorming`, `coding`, `obra`, `sdlc`, `skills`, `subagent-driven-development`, `superpowers`.",
+        "por_que_importa": "Confirma que la categoría agentic skills framework ya no es hype sino sub-categoría persistente del ecosistema, tesis que ya cubrimos el 2026-07-03 cuando anotamos su nodo agent-skills-spec en el grafo. La v6.1.1 publicada el 2026-07-02 limpia el packaging para Codex portal mientras reorganiza ejemplos para alejarse de él: señal de que el proyecto busca portabilidad entre harnesses, no lock-in con uno solo. Para un lector de CSS la lectura útil es entender la fisura: no existe un agente-skills monolítico, hay al menos siete categorías funcionales compitiendo (obra como metodología, addyosmani como policy, mattpocock como platform, komposthq como curated lists, Nutlope/hallmark como design quality — ya en el grafo desde el 2026-07-03 con la misma etiqueta relevant_to), y saber en cuál te sitúas es más importante que elegir el repo con más estrellas.",
+        "madurez_senales": "252.608★ · 22.555 forks · MIT · Shell · creado 2025-10-09 (no verificado exacto) · último push **2026-07-10T15:58:09Z**. Release **v6.1.1 (2026-07-02)** + v6.1.0 (2026-06-30). Cadencia release weekly con packaging fixes. HN coverage (Simon Willison, 2025-10-10). En el grafo desde 2026-06-30.",
+        "accion_sugerida": "leer (instalar la skill en `~/.claude/skills/superpowers/`, leer el SKILL.md que viene con v6.1.1, contrastar la metodología \"brainstorming → subagent-driven-development\" con la metodología \"design quality first\" de hallmark; comparar el packaging Codex de obra con el MCP-server-npm-publishing de next-ai-draw-io. Si el ángulo \"skills framework se ha diversificado en 7 categorías\" encaja con el público de CSS, escribir un post \"El ecosistema de skills para agentes en 2026: taxonomía por función\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "obra/superpowers",
+          "rel": "relevant_to",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "obra/superpowers",
+          "rel": "competes_with",
+          "dst": "addyosmani/agent-skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "obra/superpowers",
+          "rel": "complements",
+          "dst": "vercel-labs/skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "obra/superpowers",
+          "rel": "relevant_to",
+          "dst": "Nutlope/hallmark",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "obra-superpowers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "wonderwhy-er/DesktopCommanderMCP",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server para Claude que da control de terminal, búsqueda en file system y diff file editing**. El package `gemini-cli-extension` (en topics) confirma que se integra también con Gemini CLI, no solo Claude. Topics: `agent`, `ai`, `code-analysis`, `code-generation`, `gemini-cli-extension`, `mcp`, `terminal-ai`, `terminal-automation`, `vibe-coding`. Visto el 2026-07-10 a 6.638★, hoy 2026-07-12 a 7.834★ → **+1.196★ en 48 h** (1.098/día efectivo si contamos solo crecimiento natural; el impulso de trending infla).",
+        "por_que_importa": "Este MCP server de terminal+filesystem —que ya mapeamos el 2026-07-10 como nodo desktop-terminal-agent-runtime y el 2026-07-03 como complemento del chrome-devtools-mcp— rellena un hueco concreto del stack local-first del usuario: faltaba un MCP de system-tier que diera al agente terminal, búsqueda en filesystem y edición por diff atómico. Mientras BrowserOS (cubierto el 2026-07-10) opera dentro del navegador, este opera dentro del terminal: no compiten, se complementan, y combinados el agente deja de solo preguntar sobre el repo para editar archivos con diffs verificables. La aparición del paquete gemini-cli-extension confirma que el patrón ya no es solo de Claude; la recurrencia en trending dos días seguidos (junto al salto de 6.638 a 7.834★ en 48 h, ya recogido en el grafo el 2026-07-08 como relevant_to hermes-agent) refuerza que la tracción es real y no un pico aislado.",
+        "madurez_senales": "7.834★ · 978 forks · MIT · TypeScript · creado 2024-12-04 · último push **2026-07-10T20:11:58Z**. Release **v0.2.44 (2026-07-09)**. **Recurrencia en trending: día consecutivo (2026-07-10 y 2026-07-11/12 según tracking del estado)** — esto es señal fuerte de uptake real, no un pico puntual.",
+        "accion_sugerida": "explorar (clonar, `npm i -g @wonderwhy-er/desktop-commander-mcp` (nombre exacto no verificado), probar `terminal_run`, `file_search`, `diff_edit` desde Claude Code local; comparar con `mcp__shell_server` y `mcp__file_system` si los tienes cargados; auditar el `gemini-cli-extension` package para confirmar el cross-runtime. Si la recurrencia continúa, vale un post específico sobre \"MCP del system tier: por qué DesktopCommanderMCP y BrowserOS son las dos puntas del agent-OS map 2026\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "implements",
+          "dst": "desktop-terminal-agent-runtime",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "relevant_to",
+          "dst": "browseros-ai/BrowserOS",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wonderwhy-er-desktopcommandermcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "n0-computer/iroh",
+      "url": "https://github.com/n0-computer/iroh",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Librería de QUIC + NAT traversal con API \"dial by key\". Por qué importa: **el blog post oficial `iroh.computer/blog/mesh-llm` (top de HN hoy a 194 pts)** explica cómo Mesh LLM agrupa GPU pools de varias máquinas en una API OpenAI-compatible encima de iroh. No hay repo público separado todavía (`n0-computer/mesh-llm` 404; `iroh-computer/mesh-llm` 404).",
+        "por_que_importa": "",
+        "madurez_senales": "11.537★, MIT, Rust, Apache-2.0, pushed_at 2026-07-10",
+        "accion_sugerida": "vigilar — si en próximos días aparece repo público, será un hallazgo principal de hecho (no verificado availability)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "n0-computer-iroh",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "davila7/claude-code-templates",
+      "url": "https://github.com/davila7/claude-code-templates",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "CLI tool para configurar y monitorizar Claude Code. Último release con tag es **v1.28.3 del 2025-11-15**; los pushes de hoy son commits en main sin nuevo tag. El repo está **publicando commits pero sin release tag visible** desde noviembre: investigar si es \"rolling main\" o si hay un tag nuevo no listado.",
+        "por_que_importa": "",
+        "madurez_senales": "29.094★, MIT, Python, pushed_at **2026-07-12T04:17:50Z**",
+        "accion_sugerida": "leer — el estado de release, no instalar todavía (releases viejos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "davila7-claude-code-templates",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "malisper/pgrust",
+      "url": "https://github.com/malisper/pgrust",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Postgres reescrito en Rust, pasando el 100% del regression test. Commit de hoy 2026-07-10 \"Add update on new WIP pgrust version and performance\", con link a un signup de pgrust updates. AGPL-3.0 es copyleft fuerte; incompatible con adopción cerrada. Ya visto el 2026-07-11, **re-pulsado hoy con commit de performance**: no es debut, pero la \"new WIP pgrust version\" es lead para vigilar si pasa a release formal.",
+        "por_que_importa": "",
+        "madurez_senales": "2.178★, AGPL-3.0, Rust, pushed_at 2026-07-10",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "malisper-pgrust",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "anthropics/claude-cookbooks",
+      "url": "https://github.com/anthropics/claude-cookbooks",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Colección oficial de notebooks Anthropic para Claude. Repos evergreen; no es hallazgo editorial para CSS.",
+        "por_que_importa": "",
+        "madurez_senales": "Jupyter Notebook, 219★/d, último push reciente aunque no verificado exacto",
+        "accion_sugerida": "ignorar — salvo que se necesite un cookbook concreto",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-claude-cookbooks",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "google-labs-code/stitch-skills",
+      "url": "https://github.com/google-labs-code/stitch-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Library oficial de Agent Skills para Stitch MCP. **No ha tenido push en casi 2 semanas**; el push de hoy no es real, el trending es momentum residual de su entrada el 2026-07-09.",
+        "por_que_importa": "",
+        "madurez_senales": "TypeScript, 7.147★, Apache-2.0, pushed_at 2026-06-29",
+        "accion_sugerida": "ignorar — salvo que vuelva a empujar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-labs-code-stitch-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 3,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/3 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

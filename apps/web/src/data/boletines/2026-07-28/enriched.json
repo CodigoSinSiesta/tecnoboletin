@@ -1,0 +1,394 @@
+{
+  "version": 2,
+  "date": "2026-07-28",
+  "boletin_origen": "2026-07-28-trending.md",
+  "resumen_ejecutivo": "- **Moonshot AI publica Kimi K3** — primer modelo abierto de 3T parámetros (2.8T total, 104B activos, 16/896 expertos) sobre arquitectura Kimi Delta Attention (KDA) + Attention Residuals. 1M tokens de contexto, multimodal nativo, agentic coding como caso de uso principal. Licencia propia `Kimi K3 License` (NOASSERTION en API). Una declaración técnica fuerte que redefine el techo de los modelos abiertos chinos.\n- **AgentENV (kvcache-ai)** — plataforma distribuida de microVMs Firecracker que entrenó a Kimi K3 vía RL agentic. Snapshot en <50ms, fork nativo, ublk I/O, memoria ballooning. Es la infra oculta del lanzamiento: sin AgentENV, K3 no escala.\n- **MoonEP (MoonshotAI)** — biblioteca de comunicación Expert Parallelism que resuelve el imbalance de tokens en MoE con expertos redundantes dinámicos. Benchmarks muestran comm-time plano bajo maxvio alto, donde DeepEP degrada. Complemento técnico de K3.\n- **sglang (sgl-project)** — framework de serving LLM de alto rendimiento, Apache-2.0, 30k⭐, soporte day-0 para DeepSeek-V4 y Nemotron 3. El runtime estándar de facto para inference de modelos abiertos frontier. Convive con vLLM y TensorRT-LLM.\n- **Claude Code en Trendshift** — `anthropics/claude-code` (139k⭐, Python, MIT efectivo via Anthropic ToS) reentra en el radar de Trendshift tras semanas de baja actividad. No estaba en `seen_items` por un gap histórico del normalizador; desde ahora queda registrado.\n- **Tres forks/alternativas a claude-code en el radar** — `0xwilliamortiz/openclaude-improved` (multi-provider, MIT/NOASSERTION), sumados a `charmbracelet/crush` y `macro-inc/macro` ya vistos, configuran el cluster de \"Claude Code compatible open-source\".\nFuentes consultadas: Trendshift daily, GitHub Trending daily (TS/PY/Rust) + weekly TS, GitHub REST API para verificación (12 metadatos verificados). Blogwatcher 08:00 y arxiv 08:00 de hoy no entregaron archivo — se documenta el gap; no hay solapamiento temático a evitar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "MoonshotAI/Kimi-K3",
+      "url": "https://github.com/MoonshotAI/Kimi-K3",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Modelo abierto MoE de 2.8T parámetros totales (104B activos, 16/896 expertos), construido sobre Kimi Delta Attention + Attention Residuals. Context de 1M de tokens, multimodal nativo (texto + imagen + vídeo), optimizado para agentic coding y knowledge work.",
+        "por_que_importa": "Primer modelo abierto 3T-class del mundo, en la línea que ya cubrimos en CSS de DeepSeek-V3/V4 y Qwen3-Max pero a una escala 3x mayor. Marca el techo de los modelos abiertos en 2026: 2.8T parámetros totales con solo 104B activos (MoE 16/896 expertos), contexto de 1M de tokens y multimodal nativo texto+imagen+vídeo. Lo lanza Moonshot AI, el laboratorio detrás de Kimi y comparable en ambición a lo que fue Llama 3 en su día. Caveat editorial honesto: la API de GitHub reporta licencia NOASSERTION; el README declara una Kimi K3 License propia que parece permisiva para research pero con restricciones comerciales no leídas en detalle (**no verificado**), así que no afirmar uso comercial libre sin revisar la licencia.",
+        "madurez_senales": "Estrellas: 2,418 (no verificado el delta — el repo tiene 1 día, Trendshift lo capta en pico) · Forks: (no verificado en esta run) · Lenguaje: Python (la repo principal, no el modelo) · Creado: 2026-07-28 (push_at) · Último push: 2026-07-28 · Licencia: NOASSERTION (API) — README declara \"Kimi K3 License\" propia · Topics: (vacío) · Descripción oficial: \"Open Frontier Intelligence\"",
+        "accion_sugerida": "leer (tech report y arquitecturas KDA/AttnRes antes de opinar; el ángulo editorial \"primer modelo abierto 3T\" merece artículo propio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:MoonshotAI/Kimi-K3",
+          "rel": "implements",
+          "dst": "concept:kimi-delta-attention",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MoonshotAI/Kimi-K3",
+          "rel": "developed_by",
+          "dst": "company:moonshotai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moonshotai-kimi-k3",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "kvcache-ai/AgentENV",
+      "url": "https://github.com/kvcache-ai/AgentENV",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plataforma distribuida para ejecutar entornos de agentes a escala, construida sobre Firecracker microVMs + overlaybd + ublk. Snapshot en <50ms, fork nativo y memory ballooning. Es la infra que Moonshot AI usó para entrenar Kimi K3 con RL agentic.",
+        "por_que_importa": "Pieza nueva en el stack local-first que faltaba: sandboxes agentic con snapshot/fork rápido (<50ms). Antes de AgentENV, entrenar un agente con RL a escala requería Kubernetes + gVisor + mucho código glue a medida; AgentENV lo condensa en una binaria Rust con CLI `aenv` y API HTTP. Es la misma infra que Moonshot AI usó para entrenar Kimi K3 con RL agentic, lo que la valida en producción frontier y la baja al alcance de equipos pequeños. Caveat operativo: exige `/dev/kvm` y kernel 6.8+, no portable a Mac/Windows. Para CSS/Alejandro: ángulo \"infra de entrenamiento agentic made simple, equivalente a Docker para RLHF\": un ready-made sin vendor lock-in para experimentar con agentic RL.",
+        "madurez_senales": "Estrellas: 1,072 · Forks: (no verificado) · Lenguaje: Rust · Creado: 2026 (push_at 2026-07-28 indica release muy reciente) · Último push: 2026-07-28 · Licencia: MIT · Topics: (no verificado) · Descripción oficial: \"AgentENV (AENV) is a distributed platform for running agent environments at scale\"",
+        "accion_sugerida": "explorar (release muy nuevo, conviene leer docs y verificar reproducibilidad en Ubuntu 24.04 antes de recomendar; ver warning oficial sobre exposición a red pública)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:kvcache-ai/AgentENV",
+          "rel": "enables",
+          "dst": "concept:agentic-rl-training",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:kvcache-ai/AgentENV",
+          "rel": "powers_training_of",
+          "dst": "repo:MoonshotAI/Kimi-K3",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kvcache-ai-agentenv",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "MoonshotAI/MoonEP",
+      "url": "https://github.com/MoonshotAI/MoonEP",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Biblioteca de comunicación para Expert Parallelism (EP) en entrenamiento MoE. Mantiene la carga de tokens perfectamente balanceada entre ranks mediante expertos redundantes dinámicos planificados online. Dispatch/combine zero-copy y shapes estáticos.",
+        "por_que_importa": "El cluster de entrenamiento de modelos open-weight frontier depende de comunicación MoE eficiente. Hoy el estándar informal es DeepEP (DeepSeek); MoonEP se postula como alternativa con menos overhead cuando el router desbalancea y manda muchos tokens al mismo experto, usando expertos redundantes dinámicos planificados online para mantener la carga balanceada y dispatch/combine zero-copy. Para CSS/Alejandro: el stack OSS de training frontier se compone de muchas piezas — DeepEP, Megatron, ahora MoonEP — y ya cubrimos la tendencia general en boletines anteriores. Caveat honesto: el README asume familiarity con EP/MoE internals; no es lectura para principiantes.",
+        "madurez_senales": "Estrellas: 628 · Forks: (no verificado) · Lenguaje: Python (binding/CUDA kernels) · Creado: 2026 (push_at 2026-07-28, repo fresco) · Último push: 2026-07-28 · Licencia: MIT · Topics: (vacío) · Descripción oficial: \"MoonEP: A Perfectly Balanced Expert Parallelism Library via Dynamic Redundant Experts\"",
+        "accion_sugerida": "vigilar (repos de infra de training son valiosos pero el ciclo de adopción es lento; mejor esperar a que algún lab no-Moonshot lo integre en sus training stack)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:MoonshotAI/MoonEP",
+          "rel": "implements",
+          "dst": "concept:expert-parallelism",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MoonshotAI/MoonEP",
+          "rel": "developed_by",
+          "dst": "company:moonshotai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moonshotai-moonep",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "sgl-project/sglang",
+      "url": "https://github.com/sgl-project/sglang",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework de alto rendimiento para servir LLMs. Soporta day-0 a DeepSeek-V4, Nemotron 3, MiMo-V2-Flash, Mistral Large 3 y Higgs Audio v3. Apache-2.0, 30k⭐, mantenido por LMSYS.",
+        "por_que_importa": "Si ejecutas modelos abiertos frontier en local (DeepSeek-V4, GLM-5.2, Kimi-K3) o en tu propio cluster, SGLang es el runtime canónico 2026 que convierte \"modelo en HuggingFace\" en \"endpoint HTTP funcional con batch, speculative decoding, paged attention y multi-LoRA\". Mantenido por LMSYS (30k⭐, Apache-2.0) y con soporte day-0 a DeepSeek-V4, Nemotron 3 y MiMo-V2-Flash, entre otros. Compite en paridad con vLLM y en varios benchmarks (p. ej. el blog de 2026-06 sobre DFlash speculative decoding) lo supera. Caveat: consume GPU memory; no es la opción frugal. Para setups chicos, llama.cpp + Ollama siguen mandando. Para CSS/Alejandro: si bajas Kimi-K3 a local, SGLang es la respuesta práctica.",
+        "madurez_senales": "Estrellas: 30,831 · Forks: (no verificado) · Lenguaje: Python · Creado: (no verificado) · Último push: 2026-07-28 · Licencia: Apache-2.0 · Topics: (no verificado) · Descripción oficial: \"SGLang is a high-performance serving framework for large language models and vision-language models\"",
+        "accion_sugerida": "leer (revisar el blog `2026-06-15-next-generation-speculative-decoding-dflash-v2/` para entender qué hay debajo; ángulo para artículo \"qué cambia en inference 2026\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:sgl-project/sglang",
+          "rel": "competes_with",
+          "dst": "repo:MoonshotAI/Kimi-K3",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:sgl-project/sglang",
+          "rel": "serves",
+          "dst": "repo:MoonshotAI/Kimi-K3",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sgl-project-sglang",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Herramienta CLI agentic de Anthropic para coding: vive en la terminal, entiende tu codebase, automatiza tareas rutinarias y flujos git. 139k⭐, creado en febrero de 2025, Python puro.",
+        "por_que_importa": "Claude Code (139k⭐, Python, creado feb 2025) es referencia estable del ecosistema de coding agents comerciales desde hace meses; su reaparición en Trendshift daily indica release o fix mayor reciente (push 2026-07-25). El repo no estaba en `seen_items` por un gap del normalizador de estado; desde hoy queda registrado. Para CSS/Alejandro: el ángulo relevante es el contraste con el OSS — Claude Code es comercial (repo source-available sin LICENSE formal), mientras alternativas como `charmbracelet/crush` (Go) y `0xwilliamortiz/openclaude-improved` (TS) cubren el lado open-source. La tesis editorial: los coding agents comerciales están empujando a la comunidad OSS a producir forks multi-provider; ya hay tres alternativas activas en el radar.",
+        "madurez_senales": "Estrellas: 139,356 · Forks: 22,375 · Lenguaje: Python · Creado: 2025-02-22 · Último push: 2026-07-25 · Licencia: (no verificado) — repo Anthropic interno, source-available sin LICENSE formal · Topics: (vacío) · Descripción oficial: \"Claude Code is an agentic coding tool that lives in your terminal\"",
+        "accion_sugerida": "vigilar (monitorear releases y comparativa con forks OSS; el ángulo editorial está ya en `content_ideas_log`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/claude-code",
+          "rel": "forked_by",
+          "dst": "repo:0xwilliamortiz/openclaude-improved",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-claude-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "0xwilliamortiz/openclaude-improved",
+      "url": "https://github.com/0xwilliamortiz/openclaude-improved",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Fork open source de Claude Code con soporte multi-provider (cloud + local models vía Bun/Node). El README declara MIT, pero la API reporta NOASSERTION (license real no verificada).",
+        "por_que_importa": "",
+        "madurez_senales": "577⭐, push 2026-07-26, TypeScript",
+        "accion_sugerida": "vigilar — (potencial competidor OSS de Claude Code; el ángulo fork + multi-LLM es editorialmente potente pero la licencia requiere verificación antes de cualquier adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "0xwilliamortiz-openclaude-improved",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "icebird1998/drawio-scientific-illustrator",
+      "url": "https://github.com/icebird1998/drawio-scientific-illustrator",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Plugin de Codex con MCP server localhost-only que controla draw.io desktop en vivo para ilustración científica paso a paso. MIT verificado.",
+        "por_que_importa": "",
+        "madurez_senales": "978⭐, push 2026-07-21, JavaScript",
+        "accion_sugerida": "explorar — (encaja con la tesis de CSS sobre agent skills que producen UI; el patrón \"MCP + desktop app tradicional\" merece deep-dive)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "icebird1998-drawio-scientific-illustrato",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "MoonshotAI/FlashKDA",
+      "url": "https://github.com/MoonshotAI/FlashKDA",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Kernels CUDA optimizados para Kimi Delta Attention. MIT.",
+        "por_que_importa": "",
+        "madurez_senales": "764⭐, push 2026-05-26, Cuda",
+        "accion_sugerida": "vigilar — (release algo antiguo ya, pero parte del trío Kimi-K3 ecosystem)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moonshotai-flashkda",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "cocofhu/approving",
+      "url": "https://github.com/cocofhu/approving",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Plataforma open-source self-hostable para workflows de aprobación de OS. MIT.",
+        "por_que_importa": "",
+        "madurez_senales": "73⭐, push 2026-07-28, Go",
+        "accion_sugerida": "vigilar — (release fresco, baja tracción, dudoso alcance editorial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cocofhu-approving",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "JOYCEQL/magic-resume",
+      "url": "https://github.com/JOYCEQL/magic-resume",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Editor online de CVs con IA. NOASSERTION (license no verificada — el README sólo menciona \"official website magicv.art\", lo que sugiere servicio comercial).",
+        "por_que_importa": "",
+        "madurez_senales": "9,029⭐, push 2026-07-27, TypeScript",
+        "accion_sugerida": "ignorar — (producto comercial con SaaS implícito; la NOASSERTION y el flujo \"free online editor → sitio oficial\" lo descartan como dependencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "joyceql-magic-resume",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "tamnd/kage",
+      "url": "https://github.com/tamnd/kage",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Herramienta de \"shadowing\" web: clona un sitio offline eliminando JS, manteniendo CSS + fonts + images, usando Chrome headless real. MIT.",
+        "por_que_importa": "",
+        "madurez_senales": "2,937⭐, push 2026-07-11, Go",
+        "accion_sugerida": "probar — (caso de uso real para archive/research; instalable via Homebrew/Scoop/apt)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tamnd-kage",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "NanmiCoder/MediaCrawler",
+      "url": "https://github.com/NanmiCoder/MediaCrawler",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Scrapers chinos para Xiaohongshu, Douyin, Kuaishou, Bilibili, Weibo, Zhihu y Baidu Tieba.",
+        "por_que_importa": "",
+        "madurez_senales": "stars no verificados en API, Python",
+        "accion_sugerida": "ignorar — (multi-issue: scraping agresivo en ToS-protected platforms, dudosa legalidad bajo GDPR-equivalent chinese, no alineado con la dirección de web-scraping-viability)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nanmicoder-mediacrawler",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "apache/cassandra",
+      "url": "https://github.com/apache/cassandra",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "DB distribuida NoSQL trending por razones legacy. Apache-2.0.",
+        "por_que_importa": "",
+        "madurez_senales": "10,008⭐, push 2026-07-27, Java",
+        "accion_sugerida": "ignorar — (fuera del scope IA/dev; bajo relevancia editorial para CSS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apache-cassandra",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

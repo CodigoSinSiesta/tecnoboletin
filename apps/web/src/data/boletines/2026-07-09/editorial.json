@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-09",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-09 marca el momento en que las piezas sueltas de los últimos días dejan de ser anécdotas y se ven como un stack: el eje del día es la consolidación por parte de pesos pesados. Microsoft y Google moviéndose el mismo día sobre design/charts para agentes (flint-chart + stitch-skills) cierran lo que VoltAgent/awesome-design-md dejó a medias el 2026-07-08; Microsoft publica agent-governance-toolkit y aterriza la tesis abstracta de OWASP Agentic Top 10 en código MIT; NVIDIA mantiene OpenShell como sandbox determinista sin red con inferencia local ONNX+CUDA en Rust. Alrededor de ese núcleo, dos productos distintos para el mismo problema de orquestación multi-agente (stablyai/orca frente a rowboatlabs/rowboat) y una utilidad concreta (tokscale) que por fin unifica el analytics de gasto de tokens en todos los runtimes que el propio boletín viene cubriendo. El hilo conductor es menos 'qué herramienta nueva sale' y más 'qué categoría deja de ser experimental y entra en fase de estándar': design-to-agents, governance, sandbox, token-analytics, orquestación de coding agents.",
+  "convergencia_stack_css": "La convergencia con el stack local-first y las líneas editoriales de Código Sin Siesta es la más fuerte de los últimos boletines. NVIDIA/OpenShell (Rust, Apache-2.0, ONNX+CUDA) encaja directamente con la pieza de inferencia local sobre el stack PGLite + pgvector + DeepSeek y con la cobertura previa del 2026-07-08 sobre NousResearch/hermes-agent: ofrece la capa de aislamiento sin red que ese stack local-first necesita para correr agentes sin filtrar al exterior. junhoyeo/tokscale conecta porque su topic list incluye literalmente 'hermes', permitiendo auditar coste por agente por día sobre el propio setup. microsoft/agent-governance-toolkit aterriza governance (policy-as-code, zero-trust, sandboxing) en piezas reproducibles, que es exactamente el siguiente paso lógico de la conversación enterprise-agent-readiness que el boletín ya tiene abierta. Y flint-chart + stitch-skills dan al lector los componentes ejecutables para un post reproducible sobre agentes que diseñan sin romper el design system — ángulo alineado con la línea editorial de CSS.",
+  "cruzado_grafo": "El grafo se refuerza en cuatro frentes simultáneos. (1) El nodo design-md-spec, cuya primera mención es 2026-07-08 vía VoltAgent/awesome-design-md, gana hoy un implementador first-party de Google (stitch-skills) que hereda el relevo. (2) El nodo agent-orchestrator-runtime, primera mención 2026-07-06, recibe un segundo competidor en dos días con orca (que compite con rowboatlabs/rowboat, primera mención 2026-07-08), confirmando que el patrón 'orquestar coding agents sobre worktrees' ya tiene tracción real. (3) El nodo agentic-decision-systems, primera mención 2026-07-05, se ve reforzado por dos aterrizajes concretos hoy: agent-governance-toolkit (policy + zero-trust + reliability) y lingbot-video (world model para embodied intelligence). (4) El nodo NousResearch/hermes-agent, primera mención 2026-07-08, aparece dos veces más hoy como relevant_to desde tokscale y desde NVIDIA/OpenShell, lo que confirma que el runtime ya tiene visibilidad transversal en el ecosistema. Tres nodos aparecen por primera vez sin mención previa documentada: chart-specs-for-agents (flint-chart), agent-governance-owasp (el toolkit Microsoft), y agent-sandbox-runtime (OpenShell) — y los tres merecen vigilancia porque son los que consolidan las categorías del día.",
+  "tendencias_5_boletines": "Recibí contexto de dos días previos (2026-07-07 y 2026-07-06) y eso basta para trazar una línea clara, aunque no son cinco. El 2026-07-06 cerró el tríptico skills-spec → interfaces/arneses → persistencia/coordinación. El 2026-07-07 añadió la capa 'agente que produce y opera cosas reales' (OfficeCLI, page-agent, shadcn/improve). El boletín de hoy da el siguiente paso lógico: convertir ese agente que produce en un agente que produce *con governance, sandbox y analytics*. La tendencia sostenida es que cada categoría que el boletín toca pasa por tres fases: primero un proyecto experimental, luego dos o tres contendientes en pocos días, y por último un first-party de Microsoft/Google/NVIDIA/Microsoft que la convierte en estándar. Design-to-agents, governance y sandbox han llegado a esa tercera fase en este boletín; orquestación multi-agent está en la segunda.",
+  "alertas": [
+    "Robbyant/lingbot-world-v2 (270★, NOASSERTION) arrastra un riesgo de licencia real, exactamente el patrón que el boletín del 2026-07-06 ya marcó con noassertion-license-risk: auditar antes de cualquier uso en producto, especialmente porque su gemelo lingbot-video sí es Apache-2.0 y la asimetría es confusa.",
+    "microsoft/agent-governance-toolkit parte con la mejor posición para estándar de facto en governance agentic, pero todavía no lo es:badge Microsoft + cita OWASP es señal, no garantía. Conviene no venderlo como definitivo hasta ver tracción real fuera del repo.",
+    "stablyai/orca suma 703 stars/día y un push de hace minutos: eso es momentum real, pero también típico de proyectos YC recién presentados — la métrica de stars/día se aplana rápido y conviene juzgarlo por commits y releases, no solo por la curva inicial.",
+    "NVIDIA/OpenShell no tiene topics definidos en el repo a fecha del boletín: no hay confirmación pública de integración con Hermes, solo cercanía temática. Tratar la conexión Hermes↔OpenShell como hipótesis, no como hecho.",
+    "stitch-skills tiene su último push del 2026-06-29 y flint-chart del 2026-07-09: la cadencia de mantenimiento entre los dos implementadores first-party no es simétrica, y eso puede importar si se monta un tutorial reproducible."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "flint-chart + stitch-skills dan los componentes ejecutables para un post reproducible 'agente que diseña sin romper el design system': es exactamente la intersección entre la línea editorial de CSS (design systems) y la cobertura de skills-for-agents."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "microsoft/agent-governance-toolkit aterriza governance en piezas concretas (policy-as-code, zero-trust, sandboxing, reliability) y cita OWASP Agentic Top 10 — vale la pena un deep-dive sobre cómo aplicarlo al setup local-first antes de tratarlo como estándar."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "stablyai/orca es momentum real (703 stars/día, YC S26) pero muy recién presentado; conviene revisar en 2-3 boletines si los commits y releases acompañan la curva de stars antes de recomendarlo frente a rowboat."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "NVIDIA/OpenShell ofrece sandbox sin red por defecto + ONNX/CUDA en Rust, la pieza que faltaba para correr agentes sobre el stack PGLite+pgvector+DeepSeek sin filtrar al exterior — pero hay que confirmar la integración real con Hermes antes de afirmarla."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "lingbot-world-v2 con NOASSERTION y lingbot-video con Apache-2.0 forman una asimetría de licencia que conviene seguir de cerca: si el gemelo termina relicensiándose o si se confirman usos comerciales, cambia la lectura del proyecto entero."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

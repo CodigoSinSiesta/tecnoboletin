@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-04",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy es un cierre de semana sobre infraestructura para coding agents con un giro editorial inesperado: dos hallazgos (obra/superpowers y agentskills/agentskills) son técnicamente el mismo tema cubierto desde dos lados — el framework competidor y el spec oficial que ya cumplimos — y un tercero (Graphify-Labs/graphify) resulta ser producto de la misma categoría que tú ya tienes publicado bajo el mismo nombre, con colisión de en PyPI incluida. El hilo conductor es metodología y portabilidad: cómo se organizan las capacidades del agente (skills + SKILL.md), cómo se disciplina su uso (Superpowers obliga a invocar skills antes de actuar; loop-engineering mide un score), y cómo se baja la factura cuando el contexto crece (pxpipe convierte texto en imágenes). El boletín deja a CSS con una posición incómoda y rentable: conforme con el estándar sin haberlo buscado, con un competidor comercial encima, y con un homónimo en PyPI que conviene vigilar antes de publicar nada",
+  "convergencia_stack_css": "Tres hallazgos tocan el stack local-first directamente. agentskills/agentskills confirma que tu sistema de 24+ skills de Hermes cumple el spec Agent Skills al 100% (lowercase, ≤64 chars, ≤1024 chars, estructura canónica con references/templates/scripts/assets), lo que convierte una auditoría defensiva en un argumento editorial de calidad. Graphify-Labs/graphify es tu misma categoría de producto (CLI que convierte carpetas en knowledge graph con salida graph.json/graph.html/obsidian/wiki/GRAPH_REPORT.md) y publica en PyPI como `graphifyy` por colisión de nombre — relevante porque tu propio Graphify local genera el mismo tipo de outputs y el riesgo de naming ya es real en el ecosistema. loop-engineering encaja con el flujo Kanban de los perfiles coder/planner/qa que ya usas: `loop-audit` como CI check sobre las skills, `loop-init` con score tras scaffolding, y `loop-context` como memoria persistente. La mejora técnica concreta que abre el homónimo Graphify-Labs es Claude vision sobre contenido multimodal (PDFs, capturas, tweets), algo que tu Graphify local no hace todavía.",
+  "cruzado_grafo": "Los nodos agent-skills-spec, cross-harness-agent y hermes-skills, mencionados por primera vez el 2026-07-03, aparecen hoy reforzados por tres vías distintas: obra/superpowers los implementa como competidor, agentskills/agentskills como spec canónico, y Graphify-Labs/graphify también implementa agent-skills-spec. Esto convierte ese trío de nodos en el núcleo estable de la semana: tres repos distintos validan que el concepto está maduro y estandarizado. El nodo loop-engineering aparece por primera vez hoy sin `primera_mencion` previa, aunque ya tiene una arista `competes_with` hacia obra/superpowers que sí estaba en el grafo del 2026-07-03. input-token-compression y Fable-5 son nodos nuevos sin cobertura previa. El riesgo graphify-name-collision es nuevo hoy y conecta con tu propio nodo graphify, lo que abre la primera arista defensiva del grafo hacia un homónimo externo.",
+  "tendencias_5_boletines": "Con solo dos días de contexto previo (2026-07-03 y 2026-07-02) no se puede hablar todavía de tendencia a cinco boletines; lo que sí se ve es una secuencia clara en los tres días: el 2026-07-02 cerró la semana pivotando del modelo hacia la infraestructura del agente (contexto, segunda opinión, ejecución), el 2026-07-03 abrió la lectura de skills y portabilidad (Agent Skills spec, cross-harness), y el 2026-07-04 consolida ese eje con auditoría de conformidad, framework competidor comercializado y herramienta de medición cuantitativa. La dirección se mantiene: cada boletín añade una capa más de disciplina y métricas al rededor del agente. Falta contexto de los días 2026-07-01 hacia atrás para confirmar que el giro es estructural y no coyuntural.",
+  "alertas": [
+    "agentskills/agentskills y Graphify-Labs/graphify comparten el repo `agentskills/agentskills` en GitHub pero Graphify-Labs tiene su propio repo `Graphify-Labs/graphify`; el dato del resumen ejecutivo que dice 22.086★ corresponde al spec, no al homónimo.",
+    "Graphify-Labs/graphify ya está publicando en PyPI como `graphifyy` por colisión de nombre; conviene revisar si afecta a cualquier publicación futura de tu propio Graphify en PyPI.",
+    "obra/superpowers está comercializado por Prima Radiant LLC y vende servicios enterprise; el repo OSS (MIT) coexiste con un negocio por encima — el ecosistema de skills tiene un actor conincentivos comerciales alineados con la adopción del estándar.",
+    "pxpipe (59-70% menos tokens) solo funciona con modelos multimodales completos; Opus 4.8 falla al contar frases en imágenes, así que la métrica anunciada no se traslada limpiamente a Claude.",
+    "La métrica '71,5× menos tokens' de Graphify-Labs es del autor y no hay auditoría independiente publicada; tomar como referencia direccional, no como benchmark."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "obra/superpowers tiene la metodología de pipeline (brainstorm → spec → plan → TDD → review → finish) que Hermes no encadena; vale la pena leer `writing-skills` y los 14 SKILL.md para extraer patrones aplicables a tus skills, sin copiar la obligación de invocación previa."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "La auditoría que confirma que las 24+ skills de Hermes cumplen el spec Agent Skills al 100% es un artículo natural de CSS con ángulo 'cumplimos el estándar desde el día uno'; bajo riesgo y alto retorno editorial."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Graphify-Labs/graphify es tu misma categoría y ya chocó por el nombre en PyPI; monitorizar releases y posible trademark para no toparte con ellos si decides publicar el tuyo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "loop-engineering trae el ángulo cuantitativo que falta en el flujo Kanban (score tras scaffolding, CI checks, presupuesto); encaja directo con tus perfiles coder/planner/qa y vale como contraste técnico frente a Superpowers."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "pxpipe + caveman es la pareja input/output compression; si CSS escribe sobre economía de tokens para Claude Code, este combo es el ejemplo más concreto del momento, aunque con la matización de multimodal-only."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

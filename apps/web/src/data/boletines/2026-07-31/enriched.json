@@ -1,0 +1,468 @@
+{
+  "version": 2,
+  "date": "2026-07-31",
+  "boletin_origen": "2026-07-31-trending.md",
+  "resumen_ejecutivo": "- **microsoft/VibeVoice + microsoft/VibeASR.cpp** consolida el edge voice-AI OSS de Microsoft: BitNet 1.58 GB corre ASR en CPU sin GPU (release del 2026-07-23) y el repo de TTS/ASR roza los 52k ⭐. Densidad de señal industrial muy alta.\n- **PaddlePaddle/PaddleOCR** reaparece con 86k ⭐ gracias al `paddleocr-vl` y `pdf2markdown`: el OCR chino clásico vuelve a ser la pieza que faltaba en pipelines RAG de documentos.\n- **mvanhorn/last30days-skill** (55k ⭐, push hoy) ya es el “agent-led search engine” canónico distribuido por `npx skills add` para 50+ hosts — y ya está instalado localmente en Hermes.\n- **kangarooking/cangjie-skill** (5.7k ⭐) lanza el patrón inverso a nuwa-skill: destilar **contenido** (libros, videos, podcasts) en skills ejecutables, no personas. Complementa el eje skill-distillation del grafo.\n- **butterbase-ai/butterbase** (2.9k ⭐, Apache-2.0) publica un BaaS open source (Postgres + auth + storage + AI gateway + MCP) que apunta a la franja Supabase-con-MCP-first.\n- **oomol-lab/open-connector** tercer día consecutivo en trending — la integración SaaS↔agentes consolida tracción (3471→3758 ⭐ en 48h).\n- **affaan-m/ecc** sigue sumando +800 stars/día en la card de sponsor; la “SO cross-harness” sigue siendo el imán editorial de la semana. Fuentes consultadas: Trendshift daily, GitHub Trending daily TS/PY/Rust/Go, GitHub REST API para verificación (31 metadatos verificados). Blogwatcher 08:00 y arxiv 08:00 de hoy no entregaron archivo para 2026-07-31 — se documenta el gap, no hay solapamiento a evitar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "microsoft/VibeVoice",
+      "url": "https://github.com/microsoft/VibeVoice",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "voz frontier OSS de Microsoft con dos módulos: VibeVoice-ASR (transcripción unificada multilingüe de audios de 60 min en una sola pasada) y VibeVoice-Realtime-TTS (síntesis con voces experimentales). El repo satélite `microsoft/VibeASR.cpp` añade inferencia edge en CPU.",
+        "por_que_importa": "El release del 2026-07-23 (`VibeVoice-ASR-BitNet`, de 4,62 a 1,58 GB, RTF<1 en CPU de 3 hilos, sin GPU) demuestra que la voice-AI ya corre en hardware modesto sin nube; abre el mercado de transcripción on-device y encaja con el interés del blog en local-first voice. Ya cubrimos el otro polo voice-AI el 2026-07-09 con `huggingface/speech-to-speech`, que también está trending hoy: con VibeVoice lo que se confirma es que la frontera OSS está bajando a la vez al edge-CPU.",
+        "madurez_senales": "★51.637 · ⑂5.726 · Python · creado 2025-08-25 · último push 2026-07-24 · MIT · descripción oficial “Open-Source Frontier Voice AI” · 1 release de ASR-BitNet reciente (2026-07-23) · topics no listados en el repo principal (pero sí `vibevoice-asr`, `vibevoice-realtime-0.5b`). Repo satellite VibeASR.cpp: C++/edge inference (no verificado en detalle en este run).",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "VibeVoice",
+          "rel": "competes_with",
+          "dst": "huggingface/speech-to-speech",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "VibeVoice-ASR-BitNet",
+          "rel": "enables",
+          "dst": "voice-ai-on-cpu-edge",
+          "primera_mencion": null
+        },
+        {
+          "src": "VibeVoice",
+          "rel": "implements",
+          "dst": "open-source-frontier-voice",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-vibevoice",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "PaddlePaddle/PaddleOCR",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "OCR de referencia chino que vuelve a trending ahora con `paddleocr-vl` (modelo visión-lenguaje) y el pipeline `pdf2markdown` para RAG.",
+        "por_que_importa": "PaddleOCR (86k ⭐, Apache-2.0, 5 años de historia) reorienta su roadmap hacia document parsing for AI: extracción estructurada desde PDF o imagen hacia agentes RAG. Es referencia obligada para un artículo sobre extracción documental open source frente a APIs comerciales como Textract o Google Document AI, y comparte terreno con `unstructured-io/unstructured` (otra OSS del mismo nicho) como pieza a comparar.",
+        "madurez_senales": "★86.625 · ⑂11.109 · Python · creado 2020-05-08 · último push 2026-07-22 · Apache-2.0 · descripción oficial “Turn any PDF or image document into structured data for your AI” · topics: `ai4science`, `chineseocr`, `document-parsing`, `document-translation`, `kie`, `ocr`, `paddleocr-vl`, `pdf-extractor-rag`, `pdf-parser`, `pdf2markdown`, `pp-ocr`, `pp-structure`, `rag`.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "PaddleOCR",
+          "rel": "solves",
+          "dst": "pdf-to-structured-data",
+          "primera_mencion": null
+        },
+        {
+          "src": "PaddleOCR",
+          "rel": "competes_with",
+          "dst": "unstructured-io/unstructured",
+          "primera_mencion": null
+        },
+        {
+          "src": "PaddleOCR",
+          "rel": "implements",
+          "dst": "document-ai-oss",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paddlepaddle-paddleocr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill open source que se postula como “agent-led search engine scored by upvotes/likes/real money, not editors”: busca en paralelo en Reddit, X, YouTube, TikTok, HN, Polymarket, GitHub y arXiv, y sintetiza con un agente juez. Se distribuye con `npx skills add` para más de 50 hosts de Agent Skills y con `plugin install` en Claude Code.",
+        "por_que_importa": "Es el caso canónico de skill-as-product: se instala con un único `npx skills add`, vive dentro del estándar Agent Skills y aporta valor real (datos que ninguna IA tiene de forma nativa por separado, Reddit/X/YouTube/HN/Polymarket/GitHub/arXiv en paralelo con un juez agente). Ya cubrimos este patrón de skill-as-product el 2026-07-03 en el boletín, y según el state.json está instalado localmente en Hermes, así que sirve como referencia concreta de cómo construir skills distribuibles que aguanten un trending sostenido (55k ⭐, +378 stars/día).",
+        "madurez_senales": "★55.730 · ⑂4.795 · Python · creado 2026-01-23 · último push 2026-07-31 · MIT · descripción oficial “AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web” · topics: `ai-prompts`, `ai-skill`, `clawhub`, `deep-research`, `hackernews`, `openclaw`, `polymarket`, `reddit`, `research`, `social-media`, `trends`, `twitter`, `web-search`, `youtube`. README multilingüe (incluye español nativo).",
+        "accion_sugerida": "**leer** (revisar la versión upstream vs. local instalada).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "last30days",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "last30days",
+          "rel": "solves",
+          "dst": "cross-platform-recency-research",
+          "primera_mencion": null
+        },
+        {
+          "src": "last30days",
+          "rel": "integrates_with",
+          "dst": "hermes-skills-system",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvanhorn-last30days-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "kangarooking/cangjie-skill",
+      "url": "https://github.com/kangarooking/cangjie-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pipeline `RIA-TV++` que destila libros, vídeos largos, podcasts y entrevistas en skill packs ejecutables para Claude Code, Cursor y OpenClaw. Siete fases: Adler overview → 5 extractores paralelos → triple verificación → RIA++ → Zettelkasten → stress test → delivery.",
+        "por_que_importa": "Ocupa el lado complementario del grafo de skill-distillation: donde `nuwa-skill` destila personas (la forma de trabajar de alguien), `cangjie-skill` destila contenido (la metodología empaquetada en un libro, vídeo o podcast, vía el pipeline RIA-TV++ en 7 fases: Adler overview, 5 extractores paralelos, triple verificación, RIA++, Zettelkasten, stress test y delivery). Es el patrón tu próxima skill no la escribes tú: la destilas, y es material directo para un artículo sobre bibliotecas que se convierten en skills ejecutables en Claude Code, Cursor u OpenClaw.",
+        "madurez_senales": "★5.669 · ⑂717 · Python · creado 2026-04-16 · último push 2026-07-31 · MIT · topics: `agent-workflows`, `ai-skills`, `automation`, `book-to-skill`, `knowledge-distillation`, `prompt-engineering`, `skill-generator`, `templates`. Sitio web propio (cangjie-skill.pages.dev) con catálogo visual de Skill Packs.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cangjie-skill",
+          "rel": "complements",
+          "dst": "alchaincyf/nuwa-skill",
+          "primera_mencion": null
+        },
+        {
+          "src": "cangjie-skill",
+          "rel": "implements",
+          "dst": "content-to-skill-distillation",
+          "primera_mencion": null
+        },
+        {
+          "src": "cangjie-skill",
+          "rel": "uses",
+          "dst": "RIA-TV",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kangarooking-cangjie-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "butterbase-ai/butterbase",
+      "url": "https://github.com/butterbase-ai/butterbase",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "backend-as-a-service open source (Postgres, auth, storage, functions, AI gateway) con superficie **MCP** nativa. Se posiciona como alternativa a Supabase para stacks de coding agents.",
+        "por_que_importa": "Aterriza la idea BaaS + MCP-first que veníamos escuchando en el espacio de `oomol-lab/open-connector` y los SDK de `modelcontextprotocol/*`: si tu agente necesita Postgres, auth y storage con MCP ya cableado, Butterbase evita cablear Supabase a mano. Es Apache-2.0, TypeScript y se posiciona como alternativa OSS a Supabase para stacks de coding agents, encajando con el ángulo local-first para coding agents del blog.",
+        "madurez_senales": "★2.890 · ⑂146 · TypeScript · creado 2026-05-20 · último push 2026-07-30 · Apache-2.0 · descripción oficial “Open-source backend-as-a-service. Postgres, auth, storage, functions, AI gateway, MCP” · topics: `baas`, `backend-as-a-service`, `mcp`, `open-source`, `postgres`, `supabase-alternative`, `typescript`.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "butterbase",
+          "rel": "competes_with",
+          "dst": "supabase",
+          "primera_mencion": null
+        },
+        {
+          "src": "butterbase",
+          "rel": "implements",
+          "dst": "mcp-first-baas",
+          "primera_mencion": null
+        },
+        {
+          "src": "butterbase",
+          "rel": "enables",
+          "dst": "local-agent-infra",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "butterbase-ai-butterbase",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "oomol-lab/open-connector",
+      "url": "https://github.com/oomol-lab/open-connector",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway open source que conecta más de 1000 proveedores SaaS con agentes AI vía SDK, CLI, MCP, HTTP y OpenAPI. Recurrencia: tercer día consecutivo en trending (de 3471 a 3758 ⭐ en 48 h).",
+        "por_que_importa": "Tercer día consecutivo en trending (de 3471 a 3758 ⭐ en 48 h, +290 forks): esa persistencia es señal de adopción real más allá del hype. Es la pieza que faltaba para que el patrón una capability, muchos agentes no requiera cablear OAuth a mano para cada SaaS (1000+ proveedores vía SDK/CLI/MCP/HTTP/OpenAPI). Complementa a Butterbase por el lado de las integraciones: mientras Butterbase cubre Postgres+auth+storage, open-connector cubre el cableado con el resto del SaaS.",
+        "madurez_senales": "★3.758 · ⑂290 · TypeScript · creado 2026-06-29 · último push 2026-07-31 · Apache-2.0 · topics: `agent-tools`, `ai-agents`, `api-gateway`, `automation`, `cli`, `cloudflare-workers`, `connectors`, `integration-platform`, `mcp`, `oauth`, `oomol`, `openapi`, `sdk`, `self-hosted`, `typescript`.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "open-connector",
+          "rel": "complements",
+          "dst": "butterbase",
+          "primera_mencion": null
+        },
+        {
+          "src": "open-connector",
+          "rel": "implements",
+          "dst": "mcp-saas-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "open-connector",
+          "rel": "solves",
+          "dst": "oauth-per-skill",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oomol-lab-open-connector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "affaan-m/ecc",
+      "url": "https://github.com/affaan-m/ecc",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema operativo cross-harness para coding agents: skills, instincts, memory, security y research-first development para Claude Code, Codex, Cursor y más de 6 harnesses. Recurrencia: +804 stars/día, segundo día en trending (236k ⭐ totales).",
+        "por_que_importa": "Segundo día en trending con +804 stars/día y 236k ⭐ totales, dominando la card de sponsor con la tesis del SO cross-harness: skills, instincts, memory, security y research-first development portables sobre Claude Code, Codex, Cursor y más de 6 harnesses. Reafirma la línea editorial del blog: el ganador en skills para agentes no va a ser un harness, va a ser un sistema portable sobre cualquier harness. Ya cubrimos el rival más claro el 2026-07-03 con `obra/superpowers`, y la pelea con superpowers por convertirse en el SO de referencia es material editorial de primer nivel para artículos sobre la convergencia del estándar.",
+        "madurez_senales": "★236.389 · ⑂35.943 · JavaScript · creado 2026-01-18 · último push 2026-07-29 · MIT · topics: `ai-agents`, `anthropic`, `claude`, `claude-code`, `developer-tools`, `llm`, `mcp`, `productivity`.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ecc",
+          "rel": "implements",
+          "dst": "cross-harness-agent-os",
+          "primera_mencion": null
+        },
+        {
+          "src": "ecc",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "ecc",
+          "rel": "integrates_with",
+          "dst": "agentskills.io-spec",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "“most RAM efficient harness”; segundo día en trending, consolida la franja `jcode`/`pi`/`orca`",
+        "por_que_importa": "",
+        "madurez_senales": "★14.301, push 2026-07-31, Rust, MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1jehuang-jcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Chrome DevTools para coding agents; recurrencia con +80 stars/día sostenidos",
+        "por_que_importa": "",
+        "madurez_senales": "★48.174, push 2026-07-30, TS, Apache-2.0",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chromedevtools-chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "huggingface/speech-to-speech",
+      "url": "https://github.com/huggingface/speech-to-speech",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agentes de voz locales; empuja el mismo eje que VibeVoice",
+        "por_que_importa": "",
+        "madurez_senales": "★9.291, push 2026-07-30, Python, Apache-2.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "huggingface-speech-to-speech",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "CLI/SDK para security scanning; tercer día visto",
+        "por_que_importa": "",
+        "madurez_senales": "★7.332, push 2026-07-31, TS, Apache-2.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-codex-security",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "ADE para flotas de agentes paralelos; referencia del cuadrante competitivo",
+        "por_que_importa": "",
+        "madurez_senales": "★34.146, push 2026-07-31, TS, MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "pascalorg/editor",
+      "url": "https://github.com/pascalorg/editor",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "editor 3D arquitectónico; trending por curiosidad, sin ángulo CSS directo",
+        "por_que_importa": "",
+        "madurez_senales": "★20.260, push 2026-07-30, TS, MIT",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pascalorg-editor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

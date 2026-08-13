@@ -1,0 +1,57 @@
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-microsoft-skillopt", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-microsoft-skillopt", "dst": "tema:microsoft-skillopt", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:microsoft/SkillOpt", "dst": "concept:skill_optimization", "rel": "implements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "SkillOpt", "dst": "repo:agentskills/agentskills", "rel": "relevant_to", "added": "2026-07-23", "primera_mencion": null}
+{"src": "SkillOpt", "dst": "repo:obra/superpowers", "rel": "relevant_to", "added": "2026-07-23", "primera_mencion": null}
+{"src": "SkillOpt", "dst": "repo:virgiliojr94/book-to-skill", "rel": "complements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-diegosouzapw-omniroute", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-diegosouzapw-omniroute", "dst": "tema:diegosouzapw-omniroute", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:diegosouzapw/OmniRoute", "dst": "concept:ai_gateway", "rel": "implements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "OmniRoute", "dst": "concept:token_compression_proxy", "rel": "uses", "added": "2026-07-23", "primera_mencion": null}
+{"src": "OmniRoute", "dst": "repo:rtk-ai/rtk", "rel": "complements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "OmniRoute", "dst": "repo:portkey/gateway", "rel": "competes_with", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:stablyai/orca", "dst": "concept:parallel_agent_orchestration", "rel": "implements", "added": "2026-07-23", "primera_mencion": "2026-07-16"}
+{"src": "Orca", "dst": "repo:earendil-works/pi", "rel": "integrates_with", "added": "2026-07-23", "primera_mencion": null}
+{"src": "Orca", "dst": "concept:worktree_per_agent", "rel": "relevant_to", "added": "2026-07-23", "primera_mencion": null}
+{"src": "Orca", "dst": "repo:cognee", "rel": "complements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-knockoutez-wigolo", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-knockoutez-wigolo", "dst": "tema:knockoutez-wigolo", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:KnockOutEZ/wigolo", "dst": "concept:local_first_web_mcp", "rel": "implements", "added": "2026-07-23", "primera_mencion": "2026-07-19"}
+{"src": "wigolo", "dst": "repo:Scrapling", "rel": "competes_with", "added": "2026-07-23", "primera_mencion": null}
+{"src": "wigolo", "dst": "concept:web_scraping_viability", "rel": "relevant_to", "added": "2026-07-23", "primera_mencion": null}
+{"src": "wigolo", "dst": "AGPL-3.0", "rel": "risk", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-corsairdev-corsair", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-corsairdev-corsair", "dst": "tema:corsairdev-corsair", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:corsairdev/corsair", "dst": "concept:agent_integration_layer", "rel": "implements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "Corsair", "dst": "concept:agent_permission_gating", "rel": "solves", "added": "2026-07-23", "primera_mencion": null}
+{"src": "Corsair", "dst": "repo:NVIDIA/OpenShell", "rel": "complements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "Corsair", "dst": "repo:SmileLikeYe/agent-chief", "rel": "complements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-earendil-works-pi", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-earendil-works-pi", "dst": "tema:earendil-works-pi", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:earendil-works/pi", "dst": "concept:agent_harness", "rel": "implements", "added": "2026-07-23", "primera_mencion": null}
+{"src": "pi", "dst": "repo:stablyai/orca", "rel": "integrates_with", "added": "2026-07-23", "primera_mencion": "2026-07-16"}
+{"src": "pi", "dst": "repo:HKUDS/nanobot", "rel": "competes_with", "added": "2026-07-23", "primera_mencion": "2026-07-16"}
+{"src": "pi", "dst": "repo:1jehuang/jcode", "rel": "competes_with", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-tirth8205-code-review-graph", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-tirth8205-code-review-graph", "dst": "tema:tirth8205-code-review-graph", "rel": "trata", "added": "2026-07-23"}
+{"src": "repo:tirth8205/code-review-graph", "dst": "concept:codebase_graph_mcp", "rel": "implements", "added": "2026-07-23", "primera_mencion": "2026-07-18"}
+{"src": "crg", "dst": "repo:DeusData/codebase-memory-mcp", "rel": "competes_with", "added": "2026-07-23", "primera_mencion": null}
+{"src": "crg", "dst": "repo:Graphify-Labs/graphify", "rel": "competes_with", "added": "2026-07-23", "primera_mencion": null}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-composiohq-awesome-claude-skills", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-composiohq-awesome-claude-skills", "dst": "tema:composiohq-awesome-claude-skills", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-1jehuang-jcode", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-1jehuang-jcode", "dst": "tema:1jehuang-jcode", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-virgiliojr94-book-to-skill", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-virgiliojr94-book-to-skill", "dst": "tema:virgiliojr94-book-to-skill", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-bojieli-ai-agent-book", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-bojieli-ai-agent-book", "dst": "tema:bojieli-ai-agent-book", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-ayghri-i-have-adhd", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-ayghri-i-have-adhd", "dst": "tema:ayghri-i-have-adhd", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-block-buzz", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-block-buzz", "dst": "tema:block-buzz", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-agegr-pi-web", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-agegr-pi-web", "dst": "tema:agegr-pi-web", "rel": "trata", "added": "2026-07-23"}
+{"src": "boletin:2026-07-23", "dst": "item:https-github-com-rohitg00-ai-engineering-from-scratch", "rel": "menciona", "added": "2026-07-23"}
+{"src": "item:https-github-com-rohitg00-ai-engineering-from-scratch", "dst": "tema:rohitg00-ai-engineering-from-scratch", "rel": "trata", "added": "2026-07-23"}

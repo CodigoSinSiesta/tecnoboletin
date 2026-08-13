@@ -1,0 +1,36 @@
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-microsoft-flint-chart", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-microsoft-flint-chart", "dst": "tema:microsoft-flint-chart", "rel": "trata", "added": "2026-07-09"}
+{"src": "microsoft/flint-chart", "dst": "chart-specs-for-agents", "rel": "implements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "google-labs-code/stitch-skills", "dst": "design-md-spec", "rel": "implements", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "microsoft/flint-chart", "dst": "VoltAgent/awesome-design-md", "rel": "complements", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "google-labs-code/stitch-skills", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-09", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-07-09"}
+{"src": "stablyai/orca", "dst": "agent-orchestrator-runtime", "rel": "implements", "added": "2026-07-09", "primera_mencion": "2026-07-06"}
+{"src": "stablyai/orca", "dst": "rowboatlabs/rowboat", "rel": "competes_with", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "stablyai/orca", "dst": "git-worktrees", "rel": "uses", "added": "2026-07-09", "primera_mencion": null}
+{"src": "stablyai/orca", "dst": "vercel-labs/agent-browser", "rel": "complements", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-junhoyeo-tokscale", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-junhoyeo-tokscale", "dst": "tema:junhoyeo-tokscale", "rel": "trata", "added": "2026-07-09"}
+{"src": "junhoyeo/tokscale", "dst": "token-usage-analytics", "rel": "implements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "junhoyeo/tokscale", "dst": "steipete/CodexBar", "rel": "complements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "junhoyeo/tokscale", "dst": "kenn-io/agentsview", "rel": "complements", "added": "2026-07-09", "primera_mencion": "2026-07-07"}
+{"src": "junhoyeo/tokscale", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-microsoft-agent-governance-toolkit", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "tema:microsoft-agent-governance-toolkit", "rel": "trata", "added": "2026-07-09"}
+{"src": "microsoft/agent-governance-toolkit", "dst": "agent-governance-owasp", "rel": "implements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "microsoft/agent-governance-toolkit", "dst": "TencentCloud/CubeSandbox", "rel": "complements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "microsoft/agent-governance-toolkit", "dst": "agentic-decision-systems", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": "2026-07-05"}
+{"src": "microsoft/agent-governance-toolkit", "dst": "enterprise-agent-readiness", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": null}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-robbyant-lingbot-video", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-robbyant-lingbot-video", "dst": "tema:robbyant-lingbot-video", "rel": "trata", "added": "2026-07-09"}
+{"src": "Robbyant/lingbot-video", "dst": "embodied-world-model", "rel": "implements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "Robbyant/lingbot-video", "dst": "alibaba/page-agent", "rel": "complements", "added": "2026-07-09", "primera_mencion": "2026-07-03"}
+{"src": "Robbyant/lingbot-world-v2", "dst": "noassertion-license-risk", "rel": "risk", "added": "2026-07-09", "primera_mencion": "2026-07-06"}
+{"src": "Robbyant/lingbot-video", "dst": "agentic-decision-systems", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": "2026-07-05"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-nvidia-openshell", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-nvidia-openshell", "dst": "tema:nvidia-openshell", "rel": "trata", "added": "2026-07-09"}
+{"src": "NVIDIA/OpenShell", "dst": "agent-sandbox-runtime", "rel": "implements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "NVIDIA/OpenShell", "dst": "TencentCloud/CubeSandbox", "rel": "complements", "added": "2026-07-09", "primera_mencion": null}
+{"src": "NVIDIA/OpenShell", "dst": "local-llm", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": null}
+{"src": "NVIDIA/OpenShell", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": "2026-07-08"}

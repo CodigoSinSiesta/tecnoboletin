@@ -1,0 +1,33 @@
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-oomol-lab-open-connector", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-oomol-lab-open-connector", "dst": "tema:oomol-lab-open-connector", "rel": "trata", "added": "2026-07-29"}
+{"src": "open-connector", "dst": "agent-integration-gateway", "rel": "implements", "added": "2026-07-29", "primera_mencion": null}
+{"src": "open-connector", "dst": "hermes-agent", "rel": "complements", "added": "2026-07-29", "primera_mencion": "2026-07-03"}
+{"src": "open-connector", "dst": "MCP", "rel": "uses", "added": "2026-07-29", "primera_mencion": null}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-openai-codex-security", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-openai-codex-security", "dst": "tema:openai-codex-security", "rel": "trata", "added": "2026-07-29"}
+{"src": "openai/codex-security", "dst": "agentic-security-analysis", "rel": "implements", "added": "2026-07-29", "primera_mencion": null}
+{"src": "openai/codex-security", "dst": "NVIDIA/SkillSpector", "rel": "complements", "added": "2026-07-29", "primera_mencion": "2026-07-27"}
+{"src": "openai/codex-security", "dst": "coding-agents", "rel": "relevant_to", "added": "2026-07-29", "primera_mencion": null}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-bholmesdev-hubble-md", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-bholmesdev-hubble-md", "dst": "tema:bholmesdev-hubble-md", "rel": "trata", "added": "2026-07-29"}
+{"src": "hubble.md", "dst": "human-agent-shared-notes", "rel": "implements", "added": "2026-07-29", "primera_mencion": null}
+{"src": "hubble.md", "dst": "Obsidian", "rel": "complements", "added": "2026-07-29", "primera_mencion": null}
+{"src": "hubble.md", "dst": "agent-long-term-memory", "rel": "complements", "added": "2026-07-29", "primera_mencion": "2026-07-10"}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-opengeos-geolibre", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-opengeos-geolibre", "dst": "tema:opengeos-geolibre", "rel": "trata", "added": "2026-07-29"}
+{"src": "GeoLibre", "dst": "DuckDB", "rel": "uses", "added": "2026-07-29", "primera_mencion": null}
+{"src": "GeoLibre", "dst": "MapLibre", "rel": "uses", "added": "2026-07-29", "primera_mencion": null}
+{"src": "GeoLibre", "dst": "local-first-geospatial-analysis", "rel": "enables", "added": "2026-07-29", "primera_mencion": null}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-calesthio-openmontage", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-calesthio-openmontage", "dst": "tema:calesthio-openmontage", "rel": "trata", "added": "2026-07-29"}
+{"src": "OpenMontage", "dst": "agentic-video-production", "rel": "implements", "added": "2026-07-29", "primera_mencion": null}
+{"src": "OpenMontage", "dst": "agent-skills", "rel": "uses", "added": "2026-07-29", "primera_mencion": null}
+{"src": "OpenMontage", "dst": "AGPL-service-obligations", "rel": "risk", "added": "2026-07-29", "primera_mencion": null}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-mshumer-claude-of-duty", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-mshumer-claude-of-duty", "dst": "tema:mshumer-claude-of-duty", "rel": "trata", "added": "2026-07-29"}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-hello245m-free-stockdb", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-hello245m-free-stockdb", "dst": "tema:hello245m-free-stockdb", "rel": "trata", "added": "2026-07-29"}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-versenilvis-iris", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-versenilvis-iris", "dst": "tema:versenilvis-iris", "rel": "trata", "added": "2026-07-29"}
+{"src": "boletin:2026-07-29", "dst": "item:https-github-com-diplukdas-linkmap", "rel": "menciona", "added": "2026-07-29"}
+{"src": "item:https-github-com-diplukdas-linkmap", "dst": "tema:diplukdas-linkmap", "rel": "trata", "added": "2026-07-29"}

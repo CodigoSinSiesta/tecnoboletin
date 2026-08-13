@@ -1,0 +1,47 @@
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-yc-software-qm", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-yc-software-qm", "dst": "tema:yc-software-qm", "rel": "trata", "added": "2026-08-01"}
+{"src": "yc-software/qm", "dst": "agent_harness", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "yc-software/qm", "dst": "claude_code", "rel": "complements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "yc-software/qm", "dst": "team_agent_isolation", "rel": "solves", "added": "2026-08-01", "primera_mencion": null}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-sqliteai-waste", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-sqliteai-waste", "dst": "tema:sqliteai-waste", "rel": "trata", "added": "2026-08-01"}
+{"src": "sqliteai/waste", "dst": "moe_streaming_inference", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "sqliteai/waste", "dst": "kimi_k3", "rel": "uses", "added": "2026-08-01", "primera_mencion": null}
+{"src": "sqliteai/waste", "dst": "llm_local_constraint", "rel": "solves", "added": "2026-08-01", "primera_mencion": null}
+{"src": "sqliteai/waste", "dst": "ollama", "rel": "competes_with", "added": "2026-08-01", "primera_mencion": "2026-07-04"}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-firecrawl-pdf-inspector", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "tema:firecrawl-pdf-inspector", "rel": "trata", "added": "2026-08-01"}
+{"src": "firecrawl/pdf-inspector", "dst": "pdf_classification", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "firecrawl/pdf-inspector", "dst": "rust_pdf_parsing", "rel": "uses", "added": "2026-08-01", "primera_mencion": null}
+{"src": "firecrawl/pdf-inspector", "dst": "firecrawl", "rel": "complements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "firecrawl/pdf-inspector", "dst": "document_processing", "rel": "relevant_to", "added": "2026-08-01", "primera_mencion": null}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-0xwilliamortiz-ratchet", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-0xwilliamortiz-ratchet", "dst": "tema:0xwilliamortiz-ratchet", "rel": "trata", "added": "2026-08-01"}
+{"src": "0xwilliamortiz/ratchet", "dst": "agent_governance", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "0xwilliamortiz/ratchet", "dst": "claude_code_hooks", "rel": "uses", "added": "2026-08-01", "primera_mencion": null}
+{"src": "0xwilliamortiz/ratchet", "dst": "agent_drift", "rel": "solves", "added": "2026-08-01", "primera_mencion": null}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-microsoft-skill-recorder", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:microsoft-skill-recorder", "rel": "trata", "added": "2026-08-01"}
+{"src": "microsoft/skill-recorder", "dst": "skill_creation", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "microsoft/skill-recorder", "dst": "github_copilot_cli", "rel": "uses", "added": "2026-08-01", "primera_mencion": null}
+{"src": "microsoft/skill-recorder", "dst": "claude_skills_format", "rel": "relevant_to", "added": "2026-08-01", "primera_mencion": null}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-evokoa-pggraph", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-evokoa-pggraph", "dst": "tema:evokoa-pggraph", "rel": "trata", "added": "2026-08-01"}
+{"src": "Evokoa/pgGraph", "dst": "graph_on_postgres", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "Evokoa/pgGraph", "dst": "graphify", "rel": "complements", "added": "2026-08-01", "primera_mencion": "2026-07-04"}
+{"src": "Evokoa/pgGraph", "dst": "knowledge_graph_stack", "rel": "relevant_to", "added": "2026-08-01", "primera_mencion": null}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-agavra-tuicr", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-agavra-tuicr", "dst": "tema:agavra-tuicr", "rel": "trata", "added": "2026-08-01"}
+{"src": "agavra/tuicr", "dst": "cli_code_review", "rel": "implements", "added": "2026-08-01", "primera_mencion": null}
+{"src": "agavra/tuicr", "dst": "ratatui", "rel": "uses", "added": "2026-08-01", "primera_mencion": null}
+{"src": "agavra/tuicr", "dst": "a_review_tui", "rel": "competes_with", "added": "2026-08-01", "primera_mencion": null}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-usekaneo-kaneo", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-usekaneo-kaneo", "dst": "tema:usekaneo-kaneo", "rel": "trata", "added": "2026-08-01"}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-chatwoot-chatwoot", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-chatwoot-chatwoot", "dst": "tema:chatwoot-chatwoot", "rel": "trata", "added": "2026-08-01"}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-yu9191-wloc", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-yu9191-wloc", "dst": "tema:yu9191-wloc", "rel": "trata", "added": "2026-08-01"}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-geo-tp-esp32-bit-pirate", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-geo-tp-esp32-bit-pirate", "dst": "tema:geo-tp-esp32-bit-pirate", "rel": "trata", "added": "2026-08-01"}
+{"src": "boletin:2026-08-01", "dst": "item:https-github-com-l00sed-termixer", "rel": "menciona", "added": "2026-08-01"}
+{"src": "item:https-github-com-l00sed-termixer", "dst": "tema:l00sed-termixer", "rel": "trata", "added": "2026-08-01"}

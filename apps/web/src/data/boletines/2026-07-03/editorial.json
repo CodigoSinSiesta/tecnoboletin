@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-03",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy amplía la lectura de la infraestructura para coding agents desde dos ángulos complementarios: la estandarización y portabilidad de las skills, por un lado, y la diversificación de las interfaces y entornos de ejecución, por otro. Agent Skills y ECC abordan cómo se organizan y transportan las capacidades del agente; page-agent, hermex y Zero muestran respectivamente interacción ligera dentro de la página, acceso móvil y ejecución local mult proveedor. La selección también actúa como filtro: no todo lo que aparece bajo nombres cercanos a Hermes es integrable con Hermes, y la tracción por sí sola no sustituye una auditoría técnica.",
+  "convergencia_stack_css": "La convergencia más clara está en Agent Skills, que coincide con la estructura de `SKILL.md` y progressive disclosure usada por las skills de Hermes, y en Zero, alineado con el enfoque local-first y mult proveedor basado en Ollama y DeepSeek. page-agent también resulta relevante para las demos y aplicaciones web, mientras que hermex aporta un patrón útil de cliente móvil SwiftUI aunque no sea un cliente del Hermes Agent de Nous Research. ECC conecta directamente con Hermes mediante una guía específica, pero debe auditarse antes de adoptarlo.",
+  "cruzado_grafo": "Hoy aparecen o se refuerzan nodos como `agent-skills-spec`, `hermes-skills`, `cross-harness-agent`, `in-page-gui-agent`, `hermes-name-collision`, `multi-provider-routing` y las relaciones de Agent Skills y ECC con `obra/superpowers`, además de la complementariedad entre page-agent y Chrome DevTools MCP. Todos los registros de `primera_mencion` recibidos son nulos, por lo que el grafo no aporta evidencia de una cobertura anterior fechada para ninguno de estos nodos o conceptos. La relación de riesgo de hermex con `hermes-name-collision` queda especialmente reforzada por la advertencia explícita de que no es el cliente del Hermes Agent de Nous Research.",
+  "tendencias_5_boletines": "El contexto disponible de los días 1 y 2 de julio muestra una tendencia sostenida hacia la infraestructura que rodea al coding agent: distribución y condensación de skills, gestión de providers y orquestación, seguidas ahora por estandarización de skills, portabilidad entre harnesses, interfaces de control más ligeras y ejecución local. La comparación sugiere que el centro de gravedad se está desplazando del modelo concreto hacia la combinación de contexto, capacidades, interfaz y control del proveedor. No hay contexto suficiente de cinco boletines completos, así que esta lectura se limita a la secuencia recibida de los días recientes.",
+  "alertas": [
+    "La compatibilidad de las skills de Hermes con Agent Skills requiere auditoría formal antes de considerarse cumplimiento total.",
+    "La trayectoria de ECC y sus 225.363 estrellas no demuestran por sí solas la calidad técnica de su guía para Hermes.",
+    "Hermex no es un cliente de Nous Research Hermes Agent; existe riesgo de confusión por el nombre.",
+    "Zero es demasiado joven para considerarlo una alternativa fiable sin pruebas en proyectos reales.",
+    "La relación entre page-agent y Chrome DevTools MCP es complementaria según el grafo, no una prueba de integración efectiva."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Auditar el frontmatter y la estructura de las skills de Hermes frente a la especificación Agent Skills, y validar el resultado con una skill de ejemplo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Leer y probar la guía específica de ECC para Hermes, comprobando qué funciones son utilizables y cuáles son simples promesas o superficiales"
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "El agente GUI dentro de la página puede interesar para demos y dashboards sin API, como complemento más ligero a la automatización completa del navegador."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Mantenerlo como referencia de arquitectura y UX para un futuro cliente móvil, evitando asociarlo o integrarlo con el Hermes Agent equivocado."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Probar Zero con un caso aislado y proveedores locales, especialmente Ollama, antes de confiarle tareas cotidianas o proyectos reales."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

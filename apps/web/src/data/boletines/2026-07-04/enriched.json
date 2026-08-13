@@ -1,0 +1,454 @@
+{
+  "version": 2,
+  "date": "2026-07-04",
+  "boletin_origen": "2026-07-04-trending.md",
+  "resumen_ejecutivo": "- **obra/superpowers** (245.728★, MIT, Shell) — Deep dive completado. Framework completo de skills + metodología para coding agents. 14 skills auto-disparados por descripción (brainstorming → spec → plan → TDD → subagent-driven → review → finish branch). Soporta 9+ harnesses (Claude Code, Antigravity, Codex, Cursor, Droid, Copilot, Kimi, OpenCode, Pi). **Comercializado por Prima Radiant LLC** (`sales@primeradiant.com`). Hiring community engineer.\n- **agentskills/agentskills** (22.086★, Apache-2.0, Python) — Deep dive completado. **El spec oficial Agent Skills (Anthropic, ahora open).** Define SKILL.md con progressive disclosure en 3 fases. Auditoría realizada contra tus 24+ skills de Hermes: **TODAS cumplen el spec al 100%** (name lowercase, name≤64 chars, description≤1024 chars, estructura canónica con references/templates/scripts/assets). Conforme sin cambios. Argumento editorial fuerte para CSS.\n**Graphify-Labs/graphify** (77.254★, MIT, Python) — 🔴 **Colisión de nombre con tu graphify local.** safishamsi/graphify (redirect a Graphify-Labs/graphify) hace exactamente lo mismo que tu herramienta: convierte carpetas en grafos queryables, genera `graph.json`, `graph.html`, GRAPH_REPORT.md, Obsidian vault, wiki. Usa Claude vision + tree-sitter + Leiden. **71.5x menos tokens por query**. PyPI `graphifyy` (provisional por conflicto). Vale auditar para\n- **cobusgreyling/loop-engineering** (5.448★, MIT, JavaScript) — Sistema completo de \"loop engineering\" para sustituir prompting artesanal. 5 paquetes npm: `loop-init`, `loop-audit`, `loop-cost`, `loop-sync`, `loop-context`. Scaffold + score. Inspirado en Addy Osmani y Boris Cherny. Complementa a Superpowers con un ángulo cuantitativo.\n- **teamchong/pxpipe** (629★, MIT, TypeScript) — Proxy local texto→imagen para reducir **input tokens** 59-70% con Fable 5 100/100 accuracy. Complementa a caveman (que reduce output). Combinados podrían rebajar la factura Claude Code a la mitad.\nFuentes consultadas: Trendshift daily (27 repos via __next_f RSC), GitHub Trending daily (19 repos parseados), GitHub API para verificación de 22 candidatos, blogwatcher del 2026-07-03 (no se generó archivo de hoy a las 08:00 — probable issue de cron), deep dives con `git clone` + inspección directa en `~/proyectos/`.\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "1. obra/superpowers (DEEP DIVE COMPLETADO)",
+      "url": "https://github.com/obra/superpowers",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework completo de skills + metodología para coding agents. El agente **debe** invocar skills relevantes antes de CUALQUIER acción (incluso clarificadores). 14 skills forman un pipeline disciplinado: brainstorm → spec → plan → TDD → subagent-driven-development → code review → finish branch.",
+        "por_que_importa": "Es el competidor más serio al modelo de skills de Hermes, pero con una capa de metodología que Hermes no tiene: 14 skills encadenadas en pipeline disciplinado (brainstorm → spec → plan → TDD → subagent-driven-development → code review → finish branch) que el agente está obligado a invocar antes de cualquier acción, incluso antes de pedir aclaraciones. La estructura interna (cada skill en su carpeta con SKILL.md + scripts/ + references/) coincide punto por punto con el spec oficial Agent Skills. Lo comercializa Prima Radiant LLC, que está contratando un community engineer y vende servicios enterprise. Tiene además un meta-skill (`writing-skills`) que enseña a escribir skills nuevas con TDD. En el grafo ya cubrimos estos mismos nodos — agent-skills-spec, cross-harness-agent y la propia competencia contra hermes-skills — el 2026-07-03, lo que convierte a Superpowers en la pieza que faltaba para entender qué dirección está tomando el ecosistema: skills + metodología obligatorias, no skills sueltas.",
+        "madurez_senales": "245.728★ · 21.785 forks · Shell · MIT · creado 2025-10-09 · último push 2026-07-02 · 316 issues abiertos · 9+ harnesses (Claude Code, Antigravity, Codex App, Codex CLI, Cursor, Factory Droid, Copilot CLI, Kimi Code, OpenCode, Pi) · homepage `https://primeradiant.com/jobs/superpowers-community-engineer/` (están contratando) · `sales@primeradiant.com` (enterprise).",
+        "accion_sugerida": "**explorar** — instalar skills sueltos (brainstorming, systematic-debugging, verification-before-completion) en un proyecto piloto. La metodología completa es demasiado prescriptiva para flujos cortos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "obra/superpowers",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "obra/superpowers",
+          "rel": "implements",
+          "dst": "cross-harness-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "obra/superpowers",
+          "rel": "competes_with",
+          "dst": "hermes-skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "obra/superpowers",
+          "rel": "competes_with",
+          "dst": "cobusgreyling/loop-engineering",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1-obra-superpowers-deep-dive-completado",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "2. agentskills/agentskills (DEEP DIVE COMPLETADO)",
+      "url": "https://github.com/agentskills/agentskills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "El estándar abierto **Agent Skills** (SKILL.md) originado por Anthropic, ahora CC-BY-4.0 para docs / Apache-2.0 para código. Es SOLO el spec — no hay runtime.",
+        "por_que_importa": "Tus 24+ skills de Hermes YA cumplen el spec al 100 % según auditoría manual del repositorio: nombre en minúsculas, ≤64 caracteres; description ≤1024 caracteres; estructura con subcarpetas `references/`, `templates/`, `scripts/` y `assets/`. Es decir, tu sistema es conforme sin tocar nada. El propio spec es solo eso — un spec CC-BY-4.0 para docs y Apache-2.0 para código, sin runtime asociado, liberado por Anthropic y ya con 22k★ y showcase público en agentskills.io donde añadir Hermes es networking gratis. En el grafo de Código Sin Siesta ya cubrimos el spec agent-skills-spec el 2026-07-03, así que este boletín lo que aporta es la prueba de conformidad: artículo natural con el ángulo \"tu framework cumple el estándar desde el día uno, aquí está la auditoría\". El competidor obra/superpowers implementa exactamente este mismo spec, lo que refuerza que es el estándar de facto.",
+        "madurez_senales": "22.086★ · 1.398 forks · Python · Apache-2.0 (código), CC-BY-4.0 (docs) · creado 2025-12-16 · último push 2026-07-01 · 47 issues abiertos · topics: `agent-skills` · homepage `https://agentskills.io` · Discord `MKPE9g8aUy`.",
+        "accion_sugerida": "**explorar** — abrir un PR al Client Showcase de agentskills.io con tu skill system de Hermes como referencia de compliance. Argumento editorial para CSS.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "agentskills/agentskills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "agentskills/agentskills",
+          "rel": "relevant_to",
+          "dst": "hermes-skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "agentskills/agentskills",
+          "rel": "complements",
+          "dst": "langchain-ai/openwiki",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "agentskills/agentskills",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "2-agentskills-agentskills-deep-dive-comp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "3. safishamsi/graphify → Graphify-Labs/graphify (⚠️ COLISIÓN DE NOMBRE)",
+      "url": "https://github.com/safishamsi/graphify",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Tu mismo producto, publicado.** CLI que convierte cualquier carpeta (código, SQL, R, shell, docs, papers, imágenes, videos) en un knowledge graph queryable. Output: `graph.json`, `graph.html`, `obsidian/`, `wiki/`, `GRAPH_REPORT.md`. Usa Claude vision + tree-sitter + Leiden para comunidades. Multi-agente (Claude Code, Codex, OpenCode, Cursor, Gemini CLI).",
+        "por_que_importa": "Publicación de tu misma categoría de producto: un CLI que convierte cualquier carpeta (código, SQL, R, shell, docs, papers, imágenes, vídeos) en un knowledge graph consultable, con salida en `graph.json`, `graph.html`, `obsidian/`, `wiki/` y `GRAPH_REPORT.md`. La promesa cuantificada es 71,5× menos tokens por consulta frente a leer los archivos en crudo, y la estructura del output coincide punto por punto con la tuya vía Graphify local. Diferencia técnica relevante para aprender: ellos usan Claude vision para pasar a grafo contenido multimodal (PDFs, capturas, tweets, fotos de pizarra) y tú no, lo que abre un vector de mejora concreto. En PyPI están publicando como `graphifyy` de forma provisional porque el nombre `graphify` ya está reclamado por otro proyecto — riesgo de colisión de nombre que conviene vigilar. En el grafo ya quedó registrado el 2026-07-03 que graphify implementa agent-skills-spec, de modo que este boletín cierra el círculo: el competidor directo cumple el mismo estándar que tú.",
+        "madurez_senales": "77.254★ · 7.652 forks · Python · MIT · creado 2026-04-03 (~3 meses) · último push 2026-07-04 (hoy) · topics: `antigravity`, `claude-code`, `codex`, `gemini`, `graphrag`, `knowledge-graph`, `leiden`, `openclaw`, `rag`, `skills`, `tree-sitter` · homepage `https://graphifylabs.ai/`.",
+        "accion_sugerida": "**explorar** — clonar el repo, comparar con tu graphify local, evaluar si vale su uso de Claude vision para multimodales. **Antes de instalar**, comprobar si tienes el PyPI name `graphify` reservado",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Graphify-Labs/graphify",
+          "rel": "competes_with",
+          "dst": "graphify",
+          "primera_mencion": null
+        },
+        {
+          "src": "Graphify-Labs/graphify",
+          "rel": "risk",
+          "dst": "graphify-name-collision",
+          "primera_mencion": null
+        },
+        {
+          "src": "Graphify-Labs/graphify",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "Graphify-Labs/graphify",
+          "rel": "complements",
+          "dst": "DeusData/codebase-memory-mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "3-safishamsi-graphify-graphify-labs-grap",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "4. cobusgreyling/loop-engineering",
+      "url": "https://github.com/cobusgreyling/loop-engineering",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema completo de \"loop engineering\" — sustituye *prompting artesanal* por *diseñar el bucle*. 5 paquetes npm: `loop-init` (scaffold + score), `loop-audit` (CI checks), `loop-cost` (presupuesto), `loop-sync` (estado), `loop-context` (memoria).",
+        "por_que_importa": "Ofrece un ángulo cuantitativo que Superpowers no tiene: \"Loop Ready\" score tras scaffolding. Inspirado en Addy Osmani (Google) y Boris Cherny (Anthropic). Compatible con `--tool claude/codex/opencode`. Si vas a escribir sobre diseño de sistemas para coding agents, este es el complemento perfecto al lado de Superpowers.",
+        "madurez_senales": "5.448★ · 708 forks · JavaScript · MIT · creado 2026-06-09 · último push 2026-07-03 (hace 1 día, activo) · topics: `agentic-ai`, `ai-agents`, `ai-coding`, `anthropic`, `automation`, `claude`, `claude-code`, `codex`, `coding-agents`, `devops-automation`, `devtools`, `github-actions`, `grok`, `llm`, `loop-engineering`, `mcp`, `prompt-engineering` · homepage `https://cobusgreyling.github.io/loop-engineering/`.",
+        "accion_sugerida": "**leer** — el README y la homepage tienen la mejor explicación conceptual. Si te convence, instalar `loop-init` en un side-project y comparar Loop Ready score con un proyecto sin scaffold.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cobusgreyling/loop-engineering",
+          "rel": "implements",
+          "dst": "loop-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "cobusgreyling/loop-engineering",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "cobusgreyling/loop-engineering",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "4-cobusgreyling-loop-engineering",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "5. teamchong/pxpipe",
+      "url": "https://github.com/teamchong/pxpipe",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Proxy local que **renderiza el bulky context como imágenes PNG antes de salir al modelo**. Explota que el coste en tokens de una imagen es fijo por píxeles, no por contenido. **59-70% menos input tokens** con Fable 5 (multimodal reader 100/100).",
+        "por_que_importa": "**Es el complemento perfecto a caveman (output compression).** caveman recorta lo que el modelo escribe; pxpipe recorta lo que el modelo lee. Combinados pueden rebajar la factura Claude Code a la mitad. **Limitación crítica**: solo funciona con modelos multimodales (Fable 5 100/100, Opus 4.8 parcial — falla al contar frases en imágenes).",
+        "madurez_senales": "629★ · 32 forks · TypeScript · MIT · creado 2026-05-20 (~6 semanas) · último push 2026-07-04 (hoy, activo) · sin topics definidos aún. Tamaño 1.3 MB.",
+        "accion_sugerida": "**vigilar** — esperar a que tenga release tag semántico + 1k stars antes de probar. Si en 2-3 semanas sigue activo, vale un deep dive. Mientras tanto: tema editorial claro (input vs output compression, dos caras de la misma moneda).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "teamchong/pxpipe",
+          "rel": "implements",
+          "dst": "input-token-compression",
+          "primera_mencion": null
+        },
+        {
+          "src": "teamchong/pxpipe",
+          "rel": "complements",
+          "dst": "JuliusBrussee/caveman",
+          "primera_mencion": null
+        },
+        {
+          "src": "teamchong/pxpipe",
+          "rel": "uses",
+          "dst": "Fable-5",
+          "primera_mencion": null
+        },
+        {
+          "src": "teamchong/pxpipe",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "5-teamchong-pxpipe",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Zackriya-Solutions/meetily",
+      "url": "https://github.com/Zackriya-Solutions/meetily",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Meeting assistant 100% local con Whisper/Parakeet + speaker diarization (sortformer) + Ollama summarization. Win/Mac/Linux. Encaja con tu stack local-first.",
+        "por_que_importa": "",
+        "madurez_senales": "14.232★, push 2026-06-05, Rust, MIT",
+        "accion_sugerida": "vigilar — instalar y probar en una reunión real para validar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zackriya-solutions-meetily",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Leonxlnx/taste-skill",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skill `taste-skill` para que el LLM no genere slop frontend. 55k★ en 4 meses es señal fuerte.",
+        "por_que_importa": "",
+        "madurez_senales": "55.843★, push 2026-06-20, JavaScript, MIT",
+        "accion_sugerida": "leer — instalar y probar contra una demo propia (dashboard de Obsidian o un componente de CSS) para ver si de verdad mejora la estética",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "leonxlnx-taste-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "jamesob/local-llm",
+      "url": "https://github.com/jamesob/local-llm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Everything I know about running LLMs locally\". Recién creado, 10 MB repo (probablemente dotfiles + scripts).",
+        "por_que_importa": "",
+        "madurez_senales": "433★, push 2026-07-03, Shell, NOASSERTION",
+        "accion_sugerida": "vigilar — la licencia NOASSERTION genera fricción para redistribución, pero como recurso personal es válido",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jamesob-local-llm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "HalFrgrd/flyline",
+      "url": "https://github.com/HalFrgrd/flyline",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Reemplazo de readline con syntax highlighting + agent integration + fuzzy history search. GPL-3.0 limita adopción comercial pero como daily-driver personal es válido.",
+        "por_que_importa": "",
+        "madurez_senales": "412★, push 2026-07-03, Rust, GPL-3.0",
+        "accion_sugerida": "ignorar — salvo que te moleste especialmente bash/readline",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "halfrgrd-flyline",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Younesfdj/gitfut",
+      "url": "https://github.com/Younesfdj/gitfut",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Genera \"World Cup style player card\" con tus GitHub stats. Tema visual divertido.",
+        "por_que_importa": "",
+        "madurez_senales": "1.038★, push 2026-07-03, TypeScript, MIT",
+        "accion_sugerida": "ignorar — salvo que CSS quiera hacer un artículo sobre GitHub stats visualizados",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "younesfdj-gitfut",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "symbolica-ai/arcgentica",
+      "url": "https://github.com/symbolica-ai/arcgentica",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Solución ARC-AGI con Agentica de Symbolica. Stars bajos, repo semi-stale.",
+        "por_que_importa": "",
+        "madurez_senales": "238★, push 2026-02-12, Python, MIT",
+        "accion_sugerida": "ignorar — salvo que te interese ARC-AGI",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "symbolica-ai-arcgentica",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Veterano para construir agentes con UI drag-and-drop react-flow. 975 issues abiertos, base inmensa.",
+        "por_que_importa": "",
+        "madurez_senales": "151.082★, push 2026-07-04, Python, MIT, 1.4 GB",
+        "accion_sugerida": "ignorar — salvo que necesites UI visual",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "langflow-ai-langflow",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "TencentCloud/CubeSandbox",
+      "url": "https://github.com/TencentCloud/CubeSandbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Sandbox concurrente para AI agents en Rust.",
+        "por_que_importa": "",
+        "madurez_senales": "7.223★, push 2026-07-03, Rust, NOASSERTION",
+        "accion_sugerida": "vigilar — útil si en algún momento necesitas aislar ejecución de código no confiable desde tu agente",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencentcloud-cubesandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/5 items reescritos; rechazados por longitud sospechosa: [3, 4]; faltantes en respuesta: [3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

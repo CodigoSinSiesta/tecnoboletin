@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-02",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy cierra una semana muy densa con una lectura clara: el ecosistema de coding agents está dejando de girar en torno al modelo y se está replegando hacia la infraestructura que rodea al agente. Los cuatro hallazgos principales cuentan la misma historia desde cuatro ángulos distintos — cómo se le entrega contexto (openwiki), cómo se le da una segunda opinión (codex-plugin-cc), dónde se le deja ejecutar código sin comprometer el host (CubeSandbox) y cómo se le alimenta conocimiento externo en PDF (olmocr). El deep dive de codebase-memory-mcp remata la pieza que faltaba en el rompecabezas: memoria persistente del codebase expuesta como primitiva MCP. El hilo conductor del día no es una herramienta, es la consolidación del agente como sistema: contexto + revisión + aislamiento + ingestión + memoria.",
+  "convergencia_stack_css": "Tres de los cinco hallazgos de hoy aterrizan directamente sobre piezas ya instaladas o en construcción del stack local-first de CSS. codebase-memory-mcp es ortogonal a Graphify (no lo sustituye) y abre la puerta a que un coding agent navegue un repo indexado sin releerlo entero — útil tanto para el workflow de artículos CSS como para iterar sobre proyectos bajo ~/proyectos/. olmocr cubre el eslabón más frágil del flujo css-articulos → graphify, que hoy es la ingestión de PDFs técnicos. CubeSandbox resuelve un riesgo concreto del flujo actual: si delegas a un agent remoto y le pides ejecutar código generado, hoy corre con los permisos del host — un sandbox en Rust enfocado a AI agents es la pieza que falta para subir ese suelo de seguridad. openwiki y codex-plugin-cc apuntan más al flujo de revisión y distribución de skills (matriz ya en evolución desde los boletines previos) que al stack local-first estricto.",
+  "cruzado_grafo": "Ningún hallazgo de hoy trae `primera_mencion` populated — todos los nodos del grafo asociados (agent-targeted-docs, agent-skills-distribution, humanlayer/12-factor-agents, multi-provider-routing, hermes-agent, agent-sandbox, parallel-agents-orchestration, pdf-ingestion-llm, css-articulos, graphify, MCP-based-agent-memory, mcp-registry) aparecen sin fecha de cobertura previa en los datos recibidos. Esto significa que el boletín de hoy no refuerza nodos ya cubiertos, sino que planta superficie nueva: doce nodos/distintos que pasan a existir en el grafo a partir de 2026-07-02. La única relación que sí reaparecen es `graphify` como destino, tocado desde openwiki, olmocr y codebase-memory-mcp — lo cual lo confirma como nodo central del stack sin necesidad de cita previa en este lote.",
+  "tendencias_5_boletines": "Con solo dos días de contexto recibido (2026-07-01 y 2026-06-30) no hay base suficiente para hablar de tendencia a 5 boletines; lo que sí se ve con claridad es una secuencia: el boletín de 06-30 detectó la partición del ecosistema en tres planos (skills, providers, orquestación), el de 07-01 lo aplicó al agente del lector (skills via CLAUDE.md, providers via CC Switch, orquestación via Orca), y el de 07-02 añade la capa de infraestructura que sostiene todo lo anterior — contexto persistente, peer review cross-model, sandboxing, ingestión de PDFs, memoria de codebase vía MCP. La dirección es consistente: cada boletín añade una capa de suelo técnico bajo el agente, no otra capa de modelo. Si esto se mantiene, los próximos boletines probablemente profundizarán en runtime, observabilidad o seguridad de agentes, no en nuevos modelos.",
+  "alertas": [
+    "TencentCloud/CubeSandbox: licencia NOASSERTION en GitHub — antes de redistribuir o incluir el binario hay que leer el LICENSE file real, no es un detalle menor.",
+    "openai/codex-plugin-cc: 259 issues abiertos sugieren fricción real de instalación entre Codex CLI y Claude Code — probar en rama limpia antes de cualquier adopción seria.",
+    "langchain-ai/openwiki con 519★ y 10 días de vida es tracción temprana, no adopción validada; el hype de 'auto-documentación para agents' precede a evidencia de mantenibilidad.",
+    "olmocr es de Ai2/OLMo pero no hay datos de hoy sobre ritmo de releases o issues activos — su madurez real para producción CSS requiere una evaluación aparte.",
+    "codebase-memory-mcp anuncia 5.604 tests y SLSA 3 pero la versión es0.8.1 (pre-1.0); encajar con Graphify exige validar el contrato MCP real, no la doc del README."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "olmocr cubre el eslabón más frágil del flujo css-articulos → graphify (ingestión de PDFs); vale la pena clonarlo bajo ~/proyectos/ y probarlo contra un paper de arXiv real antes de decidir si sustituye a pdfplumber en el pipeline."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "codebase-memory-mcp es ortogonal a Graphify y expone primitivas MCP (search_graph, trace_path, get_architecture) que faltan en el flujo actual; un spike corto en ~/proyectos/ con un repo CSS real aclararía si suma o duplica."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "CubeSandbox resuelve un riesgo real del flujo de delegación de Hermes pero la licencia NOASSERTION obliga a leer el LICENSE antes de cualquier redistribución; conviene revisarlo cuando estabilicen releases."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "El patrón de peer review cross-model (Codex desde Claude Code) es accionable hoy mismo con la configuración actual de Hermes y merece un artículo: encaja directo con cómo ya decides arquitectura entre Sonnet 5 y DeepSeek V4."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "openwiki toca un tema editorial propio de CSS (cómo se mantiene la documentación que un agente realmente consume); aunque tenga 10 días de vida, el patrón 'docs vivas en repo, no wikis separadas' es material de ensayo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

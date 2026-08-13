@@ -1,0 +1,239 @@
+{
+  "version": 2,
+  "date": "2026-07-15",
+  "boletin_origen": "2026-07-15-trending.md",
+  "resumen_ejecutivo": "- Día flojo en tendencias \"mainstream\" pero con **dos hallazgos principales muy angulares para CSS**: la primera suite Office construida para AI agents (iOfficeAI/OfficeCLI) y un modelo 27B con visión que cabe en un iPhone (PrismML-Eng/Bonsai-demo, además top de HN con 552 puntos).\n- Trendshift y GitHub Trending comparten la mayoría del top 10; los nuevos reales del día (no vistos antes en boletines) son 13 repos, de los cuales solo cuatro pasan el filtro editorial.\n- Notas rápidas de contexto fuera de GitHub: HN top también destaca **Cursor 0day** (filtración forzada de vuln por Mindgard), la **CVE TS-2026-009 de Tailscale SSH** (root access) y el cambio de Dependabot que introduce cooldown por defecto. Sinergia clara con el ángulo \"seguridad en herramientas de dev con IA\".\n- Caveat de rigor: **multica-ai/andrej-karpathy-skills** tiene 192k ⭐ pero su último push es 2026-04-20 y no tiene LICENSE (NOASSERTION). El repo es un único `CLAUDE.md`/`CURSOR.md`; loTrending lo infla el eco del post original de Karpathy. Marcar como hype decay.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (página + filtros por lenguaje), Hacker News top stories, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "iOfficeAI/OfficeCLI",
+      "url": "https://github.com/iOfficeAI/OfficeCLI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Suite Office para AI agents",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "iofficeai-officecli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "PrismML-Eng/Bonsai-demo",
+      "url": "https://github.com/PrismML-Eng/Bonsai-demo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "27B visión que cabe en un iPhone",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "prismml-eng-bonsai-demo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "team-reflect/reflect-open",
+      "url": "https://github.com/team-reflect/reflect-open",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Note-taking open source (rewrite de Reflect)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "team-reflect-reflect-open",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "tt-a1i/archify",
+      "url": "https://github.com/tt-a1i/archify",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Agent skill para diagramas de arquitectura",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tt-a1i-archify",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "un único `CLAUDE.md` + `CURSOR.md` que destila 4 principios del post de Karpathy sobre LLM coding pitfalls (Think/Simplicity/Surgical/Goal-driven). Hype decay por staleness y ausencia de LICENSE; pero el contenido es genuinamente bueno y citable",
+        "por_que_importa": "",
+        "madurez_senales": "192 453 ⭐, último push 2026-04-20, NOASSERTION",
+        "accion_sugerida": "leer — el README, ignorar como dependencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-andrej-karpathy-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "chenyme/grok2api",
+      "url": "https://github.com/chenyme/grok2api",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "gateway no oficial para las APIs de Grok (Build OAuth + Web SSO + Console SSO); expone OpenAI/Anthropic style. Útil pero **violación de ToS de xAI** clara",
+        "por_que_importa": "",
+        "madurez_senales": "5 950 ⭐, Go, MIT, último push 2026-07-15",
+        "accion_sugerida": "vigilar — el pulso (muerte silenciosa si xAI cierra OAuth); no adoptarlo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chenyme-grok2api",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "microsoft/markitdown",
+      "url": "https://github.com/microsoft/markitdown",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "conversor oficial Microsoft/AutoGen de Office/PDF/audio/imagen → Markdown. Maduro, conocido, infra clave para RAG",
+        "por_que_importa": "",
+        "madurez_senales": "166 104 ⭐, Python, MIT",
+        "accion_sugerida": "vigilar — releases (lleva 836 issues abiertos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-markitdown",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "penpot/penpot",
+      "url": "https://github.com/penpot/penpot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "plataforma de diseño open source con collaboration. Consolidada desde 2015; reaparece en trending por release reciente",
+        "por_que_importa": "",
+        "madurez_senales": "56 325 ⭐, Clojure, MPL-2.0",
+        "accion_sugerida": "vigilar — si se buscan alternativas OSS a Figma",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "penpot-penpot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "1c7/chinese-independent-developer",
+      "url": "https://github.com/1c7/chinese-independent-developer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "lista curada de devs independientes chinos. Ecosistema, no relevante para CSS en español",
+        "por_que_importa": "",
+        "madurez_senales": "54 990 ⭐, Python, NOASSERTION",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1c7-chinese-independent-developer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 9,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "9/9 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "respuesta no parseable como lista JSON (primeros 200 chars: 'Voy a aplicar los tres criterios internamente y reescribir por_que_importa para cada item. Como por_que_importa viene vacío y no hay datos en que_es/madurez_senales/relacion_grafo que sustenten claims')",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

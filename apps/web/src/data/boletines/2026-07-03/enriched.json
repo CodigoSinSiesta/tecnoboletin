@@ -1,0 +1,418 @@
+{
+  "version": 2,
+  "date": "2026-07-03",
+  "boletin_origen": "2026-07-03-trending.md",
+  "resumen_ejecutivo": "- **agentskills/agentskills** (21.728★, Apache-2.0, Python): **el estándar abierto oficial Agent Skills** (originado por Anthropic, ahora CC-BY-4.0 para docs). Define el formato `SKILL.md` con progressive disclosure (discovery → activation → execution). Es game-changer porque es exactamente el esquema que Hermes ya usa para sus skills — relevante revisar si nuestra skill format ya cumple el spec.\n- **affaan-m/ECC** (225.363★, MIT, JS): \"operating system\" cross-harness para Claude Code / Codex / Cursor / OpenCode / Gemini / Zed / Copilot. Trae **guía específica para Hermes** (`docs/HERMES-SETUP.md`). Si realmente funciona con tu Hermes Agent, podría ahorrarte montar skills a mano. Auditar antes: 214k stars en 5 meses merece comprobación de calidad real.\n- **alibaba/page-agent** (21.764★, MIT, TypeScript): GUI agent in-page de Alibaba que controla elementos del DOM con lenguaje natural. Es el competidor JS-side de `browser-use` (que controla el browser entero) — ortogonales, no rivales.\n- **uzairansaruzi/hermex** (223★, MIT, Swift, iOS): **ojo con la confusión de nombre** — NO es cliente para tu Hermes Agent (Nous Research). Es un cliente SwiftUI nativo para `nesquena/hermes-webui` (otro proyecto). Vale como blueprint si algún día escribes un cliente móvil para tu Hermes.\n- **Gitlawb/zero** (409★, MIT, Go): coding agent minimalista \"tu modelo, tu máquina, tus reglas\" con soporte MCP, Ollama, Anthropic/OpenAI/Gemini. Tesis local-first que encaja con el stack de Ibid.\nFuentes consultadas: Trendshift daily (25 repos parseados vía JSON-LD), GitHub Trending daily (15 repos parseados vía data-hydro-click anchors), GitHub API para verificación de los 11 candidatos nuevos, blogwatcher del 2026-07-03 (66 artículos — descartados para evitar duplicación).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "1. agentskills/agentskills",
+      "url": "https://github.com/agentskills/agentskills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Especificación abierta oficial del formato **Agent Skills** (`SKILL.md`), originada por Anthropic y adoptada por la comunidad. Es el equivalente a \"package.json para skills de coding agent\".",
+        "por_que_importa": "El formato que define (carpeta con `SKILL.md` y opcionales `scripts/`, `references/`, `assets/`; progressive disclosure en 3 fases: metadata → instrucciones bajo demanda → recursos solo cuando el modelo los pide) coincide punto por punto con cómo Hermes ya estructura sus skills (ver `skill_view`). Esto significa que tu sistema de skills ya es, de facto, compatible con el estándar abierto de Anthropic: no tendrías que migrar nada. Es buen momento para auditar formalmente el directorio `~/.hermes/skills/`, ajustar el frontmatter YAML a la spec y publicar una skill de ejemplo que valide la conformidad — argumento editorial fuerte para un artículo tipo \"por qué tu framework ya cumple el estándar sin que lo supieras\". Ninguno de los triples del grafo trae fecha de cobertura previa, así que esta sería la primera mención en el boletín.",
+        "madurez_senales": "21.728★ · 1.379 forks · Python (es solo el spec, no runtime) · Apache-2.0 (código), CC-BY-4.0 (docs) · creado 2025-12-16 · último push 2026-07-01 · 1 issue abierto · topics: `agent-skills` · sitio https://agentskills.io · Discord https://discord.gg/MKPE9g8aUy · Client Showcase con productos ya compatibles.",
+        "accion_sugerida": "**explorar** — clonar el spec, revisar `/specification` y el Client Showcase, validar que tu `SKILL.md` cumple el formato, y considerar publicar un cliente de referencia en la lista.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "agentskills/agentskills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": null
+        },
+        {
+          "src": "agentskills/agentskills",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": null
+        },
+        {
+          "src": "agentskills/agentskills",
+          "rel": "relevant_to",
+          "dst": "hermes-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "agentskills/agentskills",
+          "rel": "complements",
+          "dst": "langchain-ai/openwiki",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1-agentskills-agentskills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "2. affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Operating system\" cross-harness para coding agents: skills, instincts, memory optimization, security scanning y research-first development. Funciona en 8+ harnesses (Claude Code, Codex, Cursor, OpenCode, Gemini, Zed, Copilot, Opencode) e incluye guía específica para Hermes.",
+        "por_que_importa": "Si el setup para Hermes realmente funciona, podrías heredar un sistema de skills maduro (32k forks, 230+ contribuidores, 12+ lenguajes) en lugar de empezar desde cero. Pero los números son inflados para 5 meses de vida: lee la guía de Hermes con espíritu crítico antes de fiarte. Tema editorial obvio: ¿legítimo o hype?",
+        "madurez_senales": "225.363★ · 34.478 forks · JavaScript (shell/TS/Py/Go/Java/Perl en realidad) · MIT · creado 2026-01-18 · último push 2026-07-03 (hace horas) · 88 issues abiertos · 1149 watchers · 38 MB repo · topics: `ai-agents`, `anthropic`, `claude`, `claude-code`, `developer-tools`, `llm`, `mcp`, `productivity` · sitio https://ecc.tools · Discord propio.",
+        "accion_sugerida": "**vigilar** — leer `docs/HERMES-SETUP.md` y `docs/architecture/cross-harness.md` directamente desde el repo, validar 2-3 skills concretas contra tu setup antes de plantear adoptar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "affaan-m/ECC",
+          "rel": "implements",
+          "dst": "cross-harness-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "competes_with",
+          "dst": "obra/superpowers",
+          "primera_mencion": null
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "competes_with",
+          "dst": "mattpocock/skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "risk",
+          "dst": "OpenRouter-cost-fragility",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "2-affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "3. alibaba/page-agent",
+      "url": "https://github.com/alibaba/page-agent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "GUI agent en JavaScript/TypeScript de Alibaba que se inyecta en una página y la controla con lenguaje natural (clicar botones, rellenar formularios, navegar la UI), sin necesidad de un browser automation completo.",
+        "por_que_importa": "Si escribes artículos con demos embebidas o quieres que tu coding agent interactúe con webapps que no exponen API (dashboards internos, ERPs legacy), page-agent cubre el hueco entre \"browser-use controla toda la ventana\" y \"solo tengo acceso al DOM\". Es la pieza que faltaba para flujos agent-in-the-browser más ligeros. Los temas incluyen MCP y browser-automation, así que encaja en tu stack.",
+        "madurez_senales": "21.764★ · 1.862 forks · TypeScript · MIT · creado 2025-09-23 (~10 meses) · último push 2026-07-02 (hace 1 día) · topics: `agent`, `ai`, `ai-agents`, `browser-automation`, `javascript`, `mcp`, `typescript`, `web` · sin license explícito en API pero README declara MIT.",
+        "accion_sugerida": "**leer** — README + ejemplos. Si los ejemplos son sólidos, probar contra una demo propia (sugerencia: dashboard de Obsidian o tu propia web de CSS) para validar la inyección y los costes de tokens en flujos largos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "alibaba/page-agent",
+          "rel": "implements",
+          "dst": "in-page-gui-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "alibaba/page-agent",
+          "rel": "competes_with",
+          "dst": "browser-use/video-use",
+          "primera_mencion": null
+        },
+        {
+          "src": "alibaba/page-agent",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "3-alibaba-page-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "uzairansaruzi/hermex",
+      "url": "https://github.com/uzairansaruzi/hermex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App iOS nativa en SwiftUI que conecta con un backend `hermes-webui` (un proyecto distinto) para chatear con un agente desde el iPhone. Está en el App Store (id 6767006319).",
+        "por_que_importa": "Punto crítico de rigor: **no es un cliente para tu Hermes Agent** (Nous Research, `nousresearch/hermes`). Es un cliente para `nesquena/hermes-webui`, otro proyecto open source sin relación con el tuyo. Si lo buscas por \"hermes\" en GitHub puedes confundirlo fácilmente — de hecho el grafo ya marca `risk: hermes-name-collision` por ese motivo. Aun así, vale la pena tenerlo en el radar porque el patrón de diseño (cliente móvil SwiftUI con chat, skills, sessions, memory, insights y tasks, hablando solo con tu servidor self-hosted vía backend `hermes-webui`) es exactamente el blueprint que necesitarías si algún día montas un cliente móvil para tu propio Hermes. Recomendación: leer el repo como referencia de UX/arquitectura, no como algo integrable hoy. El grafo tampoco aporta fecha de cobertura previa para `hermes-agent` desde este ángulo (móvil), así que esta sería la primera mención en el boletín de un cliente iOS para el ecosistema Hermes en general.",
+        "madurez_senales": "223★ · 26 forks · Swift · MIT · creado 2026-07-02 (¡hace 1 día!) · último push 2026-07-03 (hoy) · iOS 18+ · topics: `hermes`, `hermes-agent`, `hermex`, `ios`, `llm`, `self-hosted`, `swift`, `swiftui` · website https://hermexapp.com.",
+        "accion_sugerida": "**vigilar** — no adoptes (no es para tu Hermes). Pero guarda los screenshots y arquitectura como referencia cuando escribas sobre clientes móviles para coding agents.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "uzairansaruzi/hermex",
+          "rel": "risk",
+          "dst": "hermes-name-collision",
+          "primera_mencion": null
+        },
+        {
+          "src": "uzairansaruzi/hermex",
+          "rel": "complements",
+          "dst": "hermes-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "uzairansaruzi-hermex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "5. Gitlawb/zero",
+      "url": "https://github.com/Gitlawb/zero",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Coding agent minimalista escrito en Go: \"tu modelo, tu máquina, tus reglas\". CLI, MCP y soporte para Anthropic, OpenAI, Gemini y Ollama. Promete ser el \"último coding agent que necesitas\" porque tú controlas todo.",
+        "por_que_importa": "La tesis \"el agente responde a ti\" coincide exactamente con la dirección local-first de tu stack (Ollama + DeepSeek V4, Granite, etc.). Si Zero funciona como promete (CLI simple + multi-provider), es candidato a ser una alternativa más simple a Claude Code para tareas cotidianas que no quieras enviar a la nube. Es muy joven (semanas), así que conviene vigilarlo antes de meterle proyectos reales.",
+        "madurez_senales": "409★ · 45 forks · Go · MIT · creado 2026-05-28 (5 semanas) · último push 2026-07-03 (hoy, activo) · topics: `ai`, `ai-agent`, `anthropic`, `cli`, `code-assistant`, `coding-agent`, `developer-tools`, `gemini`, `llm`, `mcp`, `ollama`, `openai`, `terminal`.",
+        "accion_sugerida": "**vigilar** — esperar a que tenga una release con tag semántico y al menos 1k stars antes de probar. Si en 2-3 semanas sigue activo, vale un deep dive.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Gitlawb/zero",
+          "rel": "competes_with",
+          "dst": "tigicion/dao-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "Gitlawb/zero",
+          "rel": "implements",
+          "dst": "multi-provider-routing",
+          "primera_mencion": null
+        },
+        {
+          "src": "Gitlawb/zero",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "5-gitlawb-zero",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Veterano de 3 años para construir y deployar agentes con UI drag-and-drop en react-flow. No es nuevo (ya estaba en el radar colectivo), pero el empuje de hoy viene del tutorial reciente de Vercel sobre AI Gateway routing.",
+        "por_que_importa": "",
+        "madurez_senales": "150.939★, push 2026-07-03, Python, MIT",
+        "accion_sugerida": "ignorar — salvo que necesites UI visual para tus agentes",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "langflow-ai-langflow",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "HUANGCHIHHUNGLeo/claude-real-video",
+      "url": "https://github.com/HUANGCHIHHUNGLeo/claude-real-video",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Herramienta local que extrae frames por cambio de escena real (no a 1 fps) y transcribe el audio. Mencionada también en el blogwatcher de hoy (HN).",
+        "por_que_importa": "",
+        "madurez_senales": "294★, push 2026-07-02, Python, MIT",
+        "accion_sugerida": "vigilar — útil si CSS hace análisis de video en algún artículo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "huangchihhungleo-claude-real-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "FractalFir/crustc",
+      "url": "https://github.com/FractalFir/crustc",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "`rustc` 1.98.0-nightly entero traducido a C (46M líneas), basado en C2Rust. Destacado en el blogwatcher.",
+        "por_que_importa": "",
+        "madurez_senales": "163★, push 2026-07-02, C, sin licencia detectada en API — verificar LICENSE",
+        "accion_sugerida": "ignorar — salvo que te interese compiladores; más curiosidad que utilidad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fractalfir-crustc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "HughYau/AcademicForge",
+      "url": "https://github.com/HughYau/AcademicForge",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Colección curada de skills para investigación académica. Nicho de investigación.",
+        "por_que_importa": "",
+        "madurez_senales": "2.027★, push 2026-07-02, Python, NOASSERTION",
+        "accion_sugerida": "ignorar — (la licencia NOASSERTION también genera fricción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hughyau-academicforge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "AnmolSaini16/mapcn",
+      "url": "https://github.com/AnmolSaini16/mapcn",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Componentes de mapa (Mapbox/Leaflet) con setup en un comando para React/Next. Útil si CSS publica mapas en artículos.",
+        "por_que_importa": "",
+        "madurez_senales": "10.151★, push 2026-07-02, TypeScript, MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anmolsaini16-mapcn",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "T8RIN/ImageToolbox",
+      "url": "https://github.com/T8RIN/ImageToolbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Editor de imágenes para Android (Jetpack Compose). Solo si te interesan apps Android con IA on-device.",
+        "por_que_importa": "",
+        "madurez_senales": "13.527★, push 2026-07-03, Kotlin, Apache-2.0",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "t8rin-imagetoolbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "harvard-edge/cs249r_book",
+      "url": "https://github.com/harvard-edge/cs249r_book",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Libro abierto \"Machine Learning Systems\" de Harvard. Material didáctico serio.",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado en API",
+        "accion_sugerida": "vigilar — posible referencia para un artículo técnico de CSS sobre ML systems",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "harvard-edge-cs249r-book",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "2/5 items reescritos; rechazados por longitud sospechosa: [1, 2, 4]; faltantes en respuesta: [1, 2, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

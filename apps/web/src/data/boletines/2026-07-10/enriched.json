@@ -1,0 +1,378 @@
+{
+  "version": 2,
+  "date": "2026-07-10",
+  "boletin_origen": "2026-07-10-trending.md",
+  "resumen_ejecutivo": "- **`JustVugg/colibri` (Trendshift #1, debut, Apache-2.0, C)** aterriza como el primer **inferencia de frontier en puro C, zero deps**: corre **GLM-5.2 (744B MoE)** en una máquina de consumo con ~25 GB RAM, streameando los ~21.504 expertos de disco con LRU + OS page cache + per-layer hot-pinning. ~1.300 líneas en `c/glm.c`, sin BLAS, sin Python, sin GPU. El paper-colateral **arXiv \"Latent Memory Palace\"** (cs.LG, 2026-07-09) y el paper **\"DominoTree\"** (speculative decoding en árbol condicional, 2026-07-09) encajan en el mismo eje: cómo correr modelos grandes en hardware modesto. Para CSS: cierra la pieza que faltaba entre `jamesob/local-llm` (visto 2026-07-04) y el stack `Ollama + DeepSeek` que ya corre el usuario.\n- **`can1357/oh-my-pi` (omp.sh, GH Trending daily, MIT, TypeScript+Rust, fork de `badlogic/pi-mono` por mariozechner)** es **el coding agent con el IDE cableado**: 40+ providers, 32 built-in tools, 14 ops LSP, 28 ops DAP, ~55k LOC en Rust core. Se planta como competidor directo de Claude Code y Codex con la diferencia de que la sesión \"trae\" el IDE (no es un agente externo que invoca una tool). Aparece en la versión **v16.3.15** (release 2026-07-09, hace 14 horas). Caso de uso puro CSS para revisar repos y entender el código antes de tocarlo.\n- **`microsoft/SkillOpt` v0.2.0 con `SkillOpt-Sleep` (MIT, Python, Microsoft, PyPI) + `addyosmani/agent-skills` (MIT, Addy Osmani / Google Chrome team, 76k★, 8 slash commands)** forman el **tercer y cuarto aterrizaje** en la categoría \"skills para agentes\" en 7 días. SkillOpt introduce **evolución offline nocturna** (harvest → mine → replay → consolidate con validation gate) — los agentes ahora mejoran solos sus skills sin tocar el modelo. `addyosmani/agent-skills` da los 8 slash commands canónicos (`/spec /plan /build /test /review /ship`) con skills production-grade. Para CSS: la categoría \"skills\" ya tiene **spec (`agentskills.io`), marketplace (`anthropics/skills`), catalog (`ComposioHQ/awesome-claude-skills`), optimizer (`SkillOpt`) y metodología (`obra/superpowers`)** — es un subsistema maduro, no hype.\n- **`TencentCloud/TencentDB-Agent-Memory` (1.0.0, NOASSERTION, TypeScript, Tencent)** aporta **memoria larga para agents** (capa simbólica short-term + memoria jerarquizada long-term) y presume **badges oficiales de Hermes Gateway y de OpenClaw** en el README. Tercera pieza del stack agentic-runtime de Tencent (`TencentCloud/CubeSandbox` visto 2026-07-02 + `TencentCloud/WeKnora`). Para CSS: **el runtime del usuario aparece como target declarado** por una infraestructura enterprise — el grafo de conocimiento de `journal_state` lo confirma con `tokscale` (topics `hermes`) y `NVIDIA/OpenShell` (visto 2026-07-09). Coincide con el paper arXiv **\"Remember When It Matters\"** (memoria proactiva para agentes de horizonte largo, 2026-07-09).\n- **`ruvnet/RuView` (GH Trending Rust, MIT, 79k★, ESP32 + Home Assistant + Matter)** lleva **WiFi DensePose** a producción: convierte señales WiFi (Channel State Information) en presencia, vitals (breathing/HR), tracking, con ESP32 de bajo coste y bridges oficiales a **Home Assistant, Apple Home, Google Home, Amazon Alexa, Matter**. 21 entidades por nodo, 3 HA Blueprints incluidos. Demuestra que el ecosistema agentic está absorbiendo infra embebida — relevante para un post sobre **smart-home + agents** (coincide con la skill `openhue` instalada y con la skill `smart-home` ya presente en este perfil).\n- **`wonderwhy-er/DesktopCommanderMCP` (MIT, TypeScript, GH Trending daily, 6.638★, v0.2.44)** es **el MCP server más descargado del ecosistema**: search/update/manage files + run terminal commands, con App propia (macOS/Windows) y badges AgentAudit + Archestra + Smithery + Glama. Para CSS: es el \"side door\" a Claude Code para editar filesystem y correr procesos — relevante si el flujo del usuario depende de file ops sin pedir confirmación paso a paso.\n- **Fuentes consultadas:** Trendshift daily (25 entradas extraídas vía JSON-LD ItemList), GitHub Trending daily + Python + TypeScript + Rust + Go (82 entradas únicas), GitHub REST API con verificación individual de 38 repos (stars, forks, lang, license, descripción, topics, último push, release). Se contrastó con `2026-07-10-arxiv.md` (9 papers relevantes).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de inferencia en un único archivo `c/glm.c` de ~1.300 líneas que corre **GLM-5.2 (744B parámetros MoE)** en una máquina con ~25 GB de RAM, streameando los 21.504 expertos (75 capas × 256 expertos, ~19 MB cada uno a int4 = ~370 GB en disco) desde SSD con LRU per-layer + OS page cache + hot-pinning opcional. Valida forward token-exact contra un oráculo `transformers` (TF 32/32, greedy 20/20). Implementa: atención MLA con kv-LoRA + RoPE parcial + compressed KV-cache (576 floats/token, 57× más pequeño), router sigmoid DeepSeek-V3-style, int8 speculative decoding con MTP head (39-59% accept, 2.2-2.8 tok/forward medidos), sampling nucleus, kernels integer-dot AVX2, BPE byte-level en C, MLA weight absorption para decode sin reconstrucción, async expert readahead (`WILLNEED`), cuantización int4/int8/int2 con packing bit-identical. Documenta números honestos: ~0.05-0.1 tok/s cold, ~20 GB RSS peak auto-cap, MTP head obligatorio a int8.",
+        "por_que_importa": "cierra la pieza que faltaba en el stack local-first inference del usuario. Ya cubrimos piezas complementarias: `jamesob/local-llm` el 2026-07-04 era un script de setup, y `Ollama + DeepSeek` cubre modelos razonables en el perfil default; lo que no teníamos era un motor C de un solo archivo capaz de correr un MoE frontier en hardware modesto. Para GLM-5.2 con MoE + DSA sparse attention hoy no existe alternativa seria OSS distinta a `llama.cpp` (que sí cubre GGUF pero no este perfil concreto de sparse attention). Si el patrón disk-streamed-inference se estandariza y GLM-5.2 se convierte en flagship, el costo marginal de correr un frontier local baja de \"$0.50-2/h A100\" a \"tu propio SSD\". El README documenta sus tradeoffs con honestidad (RAM cap auto a ~20 GB, MTP head obligatorio en int8, ~0.05-0.1 tok/s en cold start) y se lee como código serio, no como demo. Relevante además porque `NousResearch/hermes-agent` (cubierto el 2026-07-08) ya entra en su grafo de relaciones: puede usar speculative decoding como el que aquí se implementa.",
+        "madurez_senales": "965★ · Apache-2.0 · C puro · creado 2026-07-01 · último push 2026-07-10 (hace horas). Sin release formal todavía. Tópicos Trendshift: `Local LLM`. Pre-converted int4 disponible en HF (`jlnsrk/GLM-5.2-colibri-int4`) con MTP int8 heads en mirror de la comunidad.",
+        "accion_sugerida": "explorar (clonar, leer `c/glm.c` y el `convert_fp8_to_int4.py`, verificar build con `gcc + OpenMP`, simular con el random weight path, comparar RSS/disk con la doc; si el build pasa en una VM, escalar a 2× A100 y validar que el GLM-5.2 real produce salida razonable; documentar el patrón en una nota de Obsidian como alternativa real a `Ollama` para frontier MoE).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "JustVugg/colibri",
+          "rel": "implements",
+          "dst": "disk-streamed-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "JustVugg/colibri",
+          "rel": "complements",
+          "dst": "jamesob/local-llm",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "JustVugg/colibri",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "JustVugg/colibri",
+          "rel": "implements",
+          "dst": "speculative-decoding",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "justvugg-colibri",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "can1357/oh-my-pi",
+      "url": "https://github.com/can1357/oh-my-pi",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "fork de `pi-mono` (de @mariozechner, autor de `pi-mono`) que **integra el IDE dentro del propio agente**: 40+ providers (Claude, GPT-4.5, Gemini 2.5 y todos los principales), 32 tools built-in, 14 operaciones LSP, 28 operaciones DAP, ~55k líneas en Rust core sobre TypeScript. La diferencia respecto a Claude Code o Codex: el LSP/DAP está cableado al runtime del agente, no se invoca como side-effect. Distribución por npm (`@oh-my-pi/pi-coding-agent`) con CI Rust + TypeScript + Bun. Release `v16.3.15` de hace 14 horas (2026-07-09).",
+        "por_que_importa": "compite directamente con Claude Code y Codex con un ángulo distinto: el agente no lee el archivo y propone, lo edita in-flight con LSP awareness (go-to-definition, references, rename a lo largo del repo) y debugger vivo vía DAP. Para el flujo CSS de revisar repos ajenos y entender arquitectura antes de escribir, ese shape es exactamente lo que `mcp_codebase_memory` + `mcp__codebase__trace_path` + LSP pueden replicar juntos, así que vale auditar si el shell `omp.sh` cubre casos donde hoy todavía se recurre a un agente externo con LSP manual. En el grafo conecta con piezas ya cubiertas: `ChromeDevTools/chrome-devtools-mcp` (citado el 2026-07-03), `openai/codex` y `badlogic/pi-mono` (del que es fork directo). Tesis editorial: \"IDE-aware coding agent\" madura como categoría en 2026 y este fork va por delante.",
+        "madurez_senales": "17.082★ · MIT · TypeScript (core Rust + bindings TS) · creado 2025-12-13 · último push 2026-07-10 (hace horas). Distribución por npm + releases firmadas con changelog.",
+        "accion_sugerida": "explorar (instalar vía npm, probar contra el repo `Nosotros/hermes-agent` como target; comparar la calidad de \"trace path\" con la del plugin `codebase-memory-mcp`; si la integración con LSP es genuina, vale escribir un post comparativo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "can1357/oh-my-pi",
+          "rel": "implements",
+          "dst": "ide-aware-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "can1357/oh-my-pi",
+          "rel": "competes_with",
+          "dst": "openai/codex",
+          "primera_mencion": null
+        },
+        {
+          "src": "can1357/oh-my-pi",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "can1357/oh-my-pi",
+          "rel": "uses",
+          "dst": "badlogic/pi-mono",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "can1357-oh-my-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "microsoft/SkillOpt",
+      "url": "https://github.com/microsoft/SkillOpt",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "v0.2.0 — \"SkillOpt-Sleep\" + `addyosmani/agent-skills` de Google Chrome team",
+        "por_que_importa": "la categoría \"skills\" cierra un quinto nivel con `SkillOpt` que faltaba: evolución automática de skills en background. La secuencia histórica según el grafo es (1) spec formal `agentskills.io`, (2) marketplace first-party `anthropics/skills`, (3) catálogo curado `ComposioHQ/awesome-claude-skills`, (4) metodología prescriptiva `obra/superpowers` (cubierto el 2026-07-03), (5) auto-mejora offline de skills validadas con `SkillOpt-Sleep` (paper arXiv 2605.23904). `addyosmani/agent-skills` demuestra que un developer individual con credibilidad (Chrome team) puede convertir 8 slash commands en un producto trending, lo que confirma que la unidad mínima de skill profesional ya es un artefacto distribuible, y además implementa `agent-skills-spec` (cubierto el 2026-07-03). Para CSS: vale mapear qué skills usa el runtime Hermes hoy, cuáles auto-mejorar con SkillOpt (que además referencia `usestrix/strix`, visto el 2026-07-05) y cuáles reusar al estilo `addyosmani`. El backend `OpenClaw` en SkillOpt es señal de que el runtime del usuario ya está en el mapa, igual que `NousResearch/hermes-agent` (cubierto el 2026-07-08).",
+        "madurez_senales": "`SkillOpt`: 12.006★ · MIT · Python · creado 2026-04-29 · último push 2026-07-02 · release **v0.2.0 SkillOpt-Sleep** (2026-07-02) · paper arXiv 2605.23904 · install via PyPI. Topics: `agent`, `ai`, `self-evolving`, `skill-optimization`. · `addyosmani/agent-skills`: 76.204★ · MIT · JavaScript · creado 2026-06-25 · último push 2026-07-10 (hace horas) · sin release formal (skills son markdown).",
+        "accion_sugerida": "leer (instalar `pip install skillopt`, correr `skillopt-sleep` sobre 7 días de sesiones de Hermes para extraer skills auto-derivadas con validation gate; forkear `addyosmani/agent-skills` para auditar si las 8 skills encajan con la metodología real de CSS — en particular `/plan` y `/review`; si encajan, proponer su adopción como skill estándar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/SkillOpt",
+          "rel": "implements",
+          "dst": "nightly-self-evolving-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/SkillOpt",
+          "rel": "uses",
+          "dst": "usestrix/strix",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "addyosmani/agent-skills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "addyosmani/agent-skills",
+          "rel": "complements",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "microsoft/SkillOpt",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-skillopt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "TencentCloud/TencentDB-Agent-Memory",
+      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime de **memoria agentic** con dos capas: (a) **memoria simbólica de corto plazo** (hechos discretos, citables), (b) **memoria long-term jerarquizada** (símbolos → entidades → contextos). Released v1.0.0 el 2026-06-11, TypeScript, npm package, Node >=22.16. **Aspecto crítico: el README presume badges oficiales `[![OpenClaw >=2026.3.13]` y `[![Hermes Gateway 7B61FF]` (link a https://hermes-agent.nousresearch.com/docs/)** — el runtime del usuario está listado como target soportado.",
+        "por_que_importa": "es la primera mención explícita de Hermes como runtime soportado por un producto open-source de Tencent enterprise, mediante badges oficiales que enlazan a la documentación de Hermes Agent. Antes `tokscale` (visto el 2026-07-09) solo lo mencionaba en `topics`, una señal laxa; aquí es una declaración de soporte con link. Completa además el eje de memoria agentic donde ya estaban `tinyhumansai/openhuman` y el paper arXiv \"Remember When It Matters\" (cubierto el 2026-07-09), y se apoya en `TencentCloud/CubeSandbox` (visto el 2026-07-09). Riesgo real a verificar antes de adopción: la licencia NOASSERTION (señalada en el grafo el 2026-07-06 bajo `noassertion-license-risk`) bloquea uso comercial hasta abrir el archivo LICENSE y confirmar términos. La cobertura `relevant_to` con `NousResearch/hermes-agent` (cubierto el 2026-07-08) refuerza por qué este item importa al usuario concreto.",
+        "madurez_senales": "8.038★ · NOASSERTION (Other, vigilar) · TypeScript · creado 2026-03-29 · último push 2026-06-26 (frío 14 días — vigilar) · release v1.0.0 (2026-06-11). Sin topics definidos.",
+        "accion_sugerida": "explorar (clonar, leer el LICENSE para confirmar NOASSERTION y qué significa comercialmente; instalar el npm; auditar si el SDK se conecta al Hermes Gateway vía MCP o solo presume badge; comparar arquitectura con `tinyhumansai/openhuman` y con `Keboo/SemanticKernel.Connectors.Memory` ya en grafo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "implements",
+          "dst": "agent-long-term-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "supports",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "complements",
+          "dst": "TencentCloud/CubeSandbox",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "risk",
+          "dst": "noassertion-license-risk",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "relevant_to",
+          "dst": "tinyhumansai/openhuman",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencentcloud-tencentdb-agent-memory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "ruvnet/RuView",
+      "url": "https://github.com/ruvnet/RuView",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma de **WiFi sensing** (no cámara, no wearable) que convierte Channel State Information (CSI) de ESP32 baratos en spatial intelligence: presencia, conteo de personas, entry/exit, breathing rate, heart rate contactless, elderly inactivity anomaly, fall risk, bed exit, multi-room transition. **21 entidades por nodo** (11 raw + 10 inferidas) y **3 HA Blueprints** de arranque. Bridges oficiales a **Home Assistant, Apple Home, Google Home, Alexa, Matter**. Pre-converted int4 disponible… (perdón, eso era otro). Releases recientes: `v0.8.3-esp32` (2026-06-27 — multistatic + csi_fps + control-packet fixes).",
+        "por_que_importa": "demuestra que el ecosistema agentic está absorbiendo hardware embebido como ciudadano de primera clase. Para el stack de smart-home local ya presente en este Hermes (skill `smarthome: openhue` instalada), `RuView` es el sensor de presencia sin cámara que faltaba: más privacidad, sin línea de visión, funciona en oscuridad y a través de paredes, y entrega eventos como count de personas, respiración, ritmo cardíaco contactless o anomalía de inactividad. En el grafo conecta directamente con `openhue` (cubierto el 2026-07-06) para que las luces reaccionen a presencia con vitales, con `esp32-csi` como capa física subyacente (mismo día) y con el patrón `wifi-densepose` que ya cubrimos el 2026-07-06. También es relevante para `agentic-decision-systems` (cubierto el 2026-07-05): el stream de estados que produce RuView es exactamente el tipo de entrada que policies tipo \"Latent Memory Palace\" podrían consumir.",
+        "madurez_senales": "79.736★ · MIT · Rust · creado 2025-10-26 · último push 2026-07-10 (hace horas). Releases recientes: v0.8.3-esp32 (2026-06-27).",
+        "accion_sugerida": "leer (clonar, leer `docs/integrations/home-assistant.md`, comprar 2× ESP32-DevKitM-1 + flashear firmware, montar bridge MQTT contra el HA existente; documentar el flujo MQTT→HA→OpenHue como nota reproducible; si va bien, escribir post \"smart-home sin cámaras con agents\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ruvnet/RuView",
+          "rel": "implements",
+          "dst": "wifi-densepose",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "ruvnet/RuView",
+          "rel": "complements",
+          "dst": "openhue",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "ruvnet/RuView",
+          "rel": "uses",
+          "dst": "esp32-csi",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "ruvnet/RuView",
+          "rel": "relevant_to",
+          "dst": "agentic-decision-systems",
+          "primera_mencion": "2026-07-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruview",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "wonderwhy-er/DesktopCommanderMCP",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MCP server (MIT, TypeScript, 6.638★, v0.2.44) que da a agentes acceso a **search/update/manage files y run terminal processes**, con App GUI complementaria (macOS/Windows) y badges de **AgentAudit, Archestra trust score, Smithery, Glama**. Distribución npm + binarios. Caso de uso distintivo: \"AI editor sin pagar por tokens API — usa tu propia suscripción al host\".",
+        "por_que_importa": "es el MCP server más universal que queda para operaciones masivas de filesystem + shell en flujos de coding agent. El hueco ya lo vimos cerrado por separado: `chrome-devtools-mcp` para browser (cubierto el 2026-07-03), `codebase-memory-mcp` para code intelligence (cubierto el 2026-07-04); `DesktopCommanderMCP` mete file ops y shell en un solo paquete con binarios npm. Distinto frente a otros: presume \"AI editor sin pagar por tokens API, usa tu propia suscripción al host\", lo que lo hace atractivo como capa neutra para reutilizar suscripciones existentes. Si CSS escribe flujos donde el agente edita código y corre tests, vale auditar si este MCP + `mcp_codebase_memory` cubren el círculo sin necesidad de un IDE-aware agent separado. El triple `relevant_to` con `NousResearch/hermes-agent` (cubierto el 2026-07-08) lo deja en el mapa del runtime del usuario. Badges visibles (AgentAudit, Archestra, Smithery, Glama) ayudan a confiar, aunque no sustituyen auditoría de qué hace realmente cada uno.",
+        "madurez_senales": "6.638★ · 593 forks · MIT · TypeScript · creado 2025-04-04 · último push 2026-07-09 · release v0.2.44 (2026-07-09). Tópicos (no verificado topics específicos vía API en esta corrida, pero badges visibles: AgentAudit verified, Archestra quality trust score, Smithery listed, Glama badge).",
+        "accion_sugerida": "probar (instalar vía npm, levantarlo como MCP server, conectarlo a Hermes; probar flujo \"leer archivo, editar test, correr pytest, ver output\"; comparar con las file tools nativas de `Hermes` y ver dónde gana cobertura; documentar diferencias en una nota corta).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "implements",
+          "dst": "filesystem-mcp-server",
+          "primera_mencion": null
+        },
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "complements",
+          "dst": "DeusData/codebase-memory-mcp",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "wonderwhy-er/DesktopCommanderMCP",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wonderwhy-er-desktopcommandermcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "inky/open-knowledge",
+      "url": "https://github.com/inky/open-knowledge",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "editor markdown \"AI-native\" (TypeScript, 2.331★, GPL-3.0, Inkeep) con integraciones first-party con **Claude, Codex y otros harnesses**, con posición como **llm wiki** (knowledge base + notas + specs + wiki). Mac app + web + CLI de escritorio. Tema visual cuidado, descripción \"Beautiful\". Descripción verificada: \"markdown editor with integrations with Claude, Codex, and other harnesses. For knowledge bases, LLM wikis, specs, and notes. Private, local, and free.\"",
+        "por_que_importa": "alternativa OSS al flujo Obsidian + Claude/Codex con la diferencia de que las integraciones con agentes son first-party, no plugin. GPL-3.0 lo descarta para derivados comerciales pero encaja para uso personal. En el grafo se solapa con `rowboatlabs/rowboat` (cubierto el 2026-07-08, AI coworker con knowledge graph) y con `withmarbleapp/os-taxonomy` (knowledge graphs estructurados de dominios), y arrastra el riesgo genérico `gpl-3-license-risk` para quien quisiera redistribuir. Para el usuario de CSS, que ya mantiene notas en Obsidian, la pregunta práctica es si el editor vale como reemplazo principal o solo como pieza auxiliar para wikis y specs donde la integración nativa con harnesses aporta frente a un plugin comunitario. Caveat honesto: no hay release formal todavía y el sitio openknowledge.ai no se ha auditado en profundidad; queda como proyecto a seguir más que como reemplazo recomendado hoy.",
+        "madurez_senales": "2.331★ · GPL-3.0 · TypeScript · creado 2026-06-03 · último push 2026-07-10 (hace horas). Sin release formal. Sitio propio (openknowledge.ai).",
+        "accion_sugerida": "vigilar (instalar la Mac app si está en Mac; probar el flow \"abrir vault → invocar Claude sobre nota\"; comparar con `Obsidian + skill`, que ya es el stack del usuario; vale la pena considerar adoptarlo si la integración con Claude/Codex es genuina, GPL-3.0 para uso personal no bloquea).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "inkeep/open-knowledge",
+          "rel": "implements",
+          "dst": "ai-native-markdown-editor",
+          "primera_mencion": null
+        },
+        {
+          "src": "inkeep/open-knowledge",
+          "rel": "complements",
+          "dst": "rowboatlabs/rowboat",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "inkeep/open-knowledge",
+          "rel": "complements",
+          "dst": "withmarbleapp/os-taxonomy",
+          "primera_mencion": null
+        },
+        {
+          "src": "inkeep/open-knowledge",
+          "rel": "risk",
+          "dst": "gpl-3-license-risk",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "inky-open-knowledge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 7,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 0,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "7/7 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

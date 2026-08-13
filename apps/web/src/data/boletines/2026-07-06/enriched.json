@@ -1,0 +1,442 @@
+{
+  "version": 2,
+  "date": "2026-07-06",
+  "boletin_origen": "2026-07-06-trending.md",
+  "resumen_ejecutivo": "- **alibaba/zvec 0.5.0** trae FTS + hybrid retrieval + DiskANN a un vector DB in-process en Apache-2.0; primer competidor real a \"montar faiss+pgsqvector\" para proyectos pequeños.\n- **OthmanAdi/planning-with-files 24k★** y **gastownhall/gastown 16k★** consolidan una nueva capa en el stack agentic: planificación persistente en archivos y orquestación multi-agente con estado git-backed (Beats/Beads), respectivamente — los dos son complemento directo al modelo de skills/skills-scoped que ya usa Hermes.\n- Repos de skills y marketing agentic (addyosmani/agent-skills, coreyhaines31/marketingskills, hesreallyhim/awesome-claude-code) inflan el catálogo de Agent Skills por encima de 800 entradas públicas, lo que anticipa el siguiente problema: curaduría y calidad > catálogo.\n- Caso atípico de la semana: **ruvnet/RuView** (76k★, Rust) — convierte un ESP32 de $9 y tu WiFi en sensor de presencia/vitales sin cámara; poca conexión con CSS pero muy publicable como historia técnica de edge AI.\n- **Fuentes consultadas:** Trendshift daily, GitHub Trending daily, GitHub REST API (verificación de los 15 candidatos previos a filtro).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "alibaba/zvec",
+      "url": "https://github.com/alibaba/zvec",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Base de datos vectorial in-process (sin servidor separado), escrita en C++ con SDKs oficiales en Python y Go/Rust, pensada para embeberse en la app. La release v0.5.0 (12 jun 2026) añade full-text search nativo, hybrid retrieval (dense + sparse + scalar + texto en una sola `MultiQuery`) e índice DiskANN on-disk para datasets grandes.",
+        "por_que_importa": "El setup \"pgvector + Postgres\" o \"FAISS local + sidebar admin\" es el patrón más repetido en posts de RAG últimamente. zvec rompe ese setup con latencias bajas, cero servidor y licencia Apache-2.0: muy publicable como alternativa reproducible.",
+        "madurez_senales": "13.088★ · 784 forks · C++ principal, bindings Python/Go/Rust · licencia **Apache-2.0** · creado 2025-12-05 · último push 2026-07-06 · CI/CD activo en main, codecov, PyPI + npm + Go SDK, Discord oficial. Tópicos: `agent-skills`, `db`, `embedded`, `faiss`, `hnsw`, `llm-memory`, `rag`, `vector-database`. Página oficial: https://zvec.org.",
+        "accion_sugerida": "explorar (instalar SDK Python, probar hybrid retrieval contra un corpus pequeño y comparar latencia con pgvector + Ollama).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "alibaba/zvec",
+          "rel": "implements",
+          "dst": "in-process-vector-db",
+          "primera_mencion": null
+        },
+        {
+          "src": "alibaba/zvec",
+          "rel": "complements",
+          "dst": "Graphify-Labs/graphify",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "alibaba/zvec",
+          "rel": "competes_with",
+          "dst": "faiss",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-zvec",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "OthmanAdi/planning-with-files",
+      "url": "https://github.com/OthmanAdi/planning-with-files",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Skill Agent Skills (SKILL.md) que mantiene `task_plan.md`, `findings.md` y `progress.md` en disco, con un completion gate determinista que mantiene al agente enganchado hasta cerrar el plan. Funciona con Claude Code, Codex CLI, Cursor, Kiro, OpenCode y 60+ agentes. La v3.0.0 (reciente) trae modo autonomous + gated para runs largos.",
+        "por_que_importa": "Es el patrón \"estilo Manus\" de planificación persistida aplicado a cualquier coding agent; si Hermes Agent quisiera memoria persistente entre `/clear` y crashes, este es el plan técnico a estudiar.",
+        "madurez_senales": "24.839★ · 2.111 forks · Python · licencia **MIT** · creado 2026-01-03 · último push 2026-07-06 · eval A/B 3/3, benchmark publicado 96.7% pass rate en Sonnet 4.6 (banner, no verificado independientemente), forks notables (`devis` para entrevista-first, `multi-manus-planning` para multi-project, `plan-cascade` para parallel/multi-agent).",
+        "accion_sugerida": "leer (estudiar el protocolo de 3 archivos y el completion gate; sin duda la próxima generación de memory tools pasa por aquí).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "OthmanAdi/planning-with-files",
+          "rel": "implements",
+          "dst": "file-based-agent-planning",
+          "primera_mencion": null
+        },
+        {
+          "src": "OthmanAdi/planning-with-files",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "OthmanAdi/planning-with-files",
+          "rel": "complements",
+          "dst": "Graphify-Labs/graphify",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "othmanadi-planning-with-files",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "gastownhall/gastown",
+      "url": "https://github.com/gastownhall/gastown",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Workspace manager para coordinar múltiples agentes (Claude Code, Copilot, Codex, Gemini) con estado persistente en git hooks. Vocabulario: Mayor (coordinador principal), Beats/Rig/Polecat/Crew. Promete escalar de \"caos a 10 agentes\" a \"operar 20-30 con handoffs\". Plantea que el problema no es el agente sino el contexto perdido al reiniciar.",
+        "por_que_importa": "Combina dos tensiones que ya cubrimos: orquestación multi-agente (obra/superpowers método, Gitlawb/zero runtime) y persistencia de work state vía git worktrees. Si cuadra con cómo Hermes maneja el filesystem kanban, hay contenido claro.",
+        "madurez_senales": "16.471★ · 1.526 forks · Go · licencia **MIT** · creado 2025-12-16 · último push 2026-07-02 · diagrama Mermaid oficial con la arquitectura (Mayor → Town → Rig → Polecat + git worktrees). Topics vacíos (no verificado en API; descripción oficial centrada en multi-agent).",
+        "accion_sugerida": "explorar (clonar, leer el flujo de Mayor→Polecat, mapear a las 3 profiles Kanban que ya tienes; factibilidad de un bridge beads/hooks para Hermes).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "gastownhall/gastown",
+          "rel": "implements",
+          "dst": "agent-orchestrator-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "gastownhall/gastown",
+          "rel": "complements",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "gastownhall/gastown",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gastownhall-gastown",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "hesreallyhim/awesome-claude-code",
+      "url": "https://github.com/hesreallyhim/awesome-claude-code",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Awesome list\" curada de skills, agents, status lines, plugins y herramientas para Claude Code, mantenida por la cuenta `hesreallyhim`. Es la referencia informal del ecosistema agentic en este momento.",
+        "por_que_importa": "Es la \"guía turística\" canónica para posts sobre agent tooling; si publicamos cualquier análisis comparativo sobre skills/harnesses, debería enlazar o ser enlazada por aquí. También es punto de partida rápido para revisar qué huecos hay en el catálogo y qué descubrir.",
+        "madurez_senales": "48.562★ · 4.250 forks · temas `agent-skills`, `agentic-coding`, `ai-workflows`, `anthropic`, `claude`, `claude-code`, `coding-agent`, `awesome-list` (todos verificados vía API). **License NOASSERTION en la API** — ojo: los awesome-list suelen ser datos, no código, pero conviene leer el LICENSE real del repo antes de tomar contenido. Creado 2025-04-19, último push 2026-07-06.",
+        "accion_sugerida": "vigilar (usar como referencia pasiva; no clonar como base porque NOASSERTION).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "hesreallyhim/awesome-claude-code",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "hesreallyhim/awesome-claude-code",
+          "rel": "risk",
+          "dst": "noassertion-license-risk",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hesreallyhim-awesome-claude-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "ruvnet/RuView",
+      "url": "https://github.com/ruvnet/RuView",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plataforma de sensing WiFi (Channel State Information sobre ESP32) que detecta presencia, vitales (respiración, pulso), gestos y caídas, sin cámara, sin wearables y sin app. Stack: ESP32 mesh (~$9 por nodo) + Cognitum Seed (orquestador), modelo DensePose cuantizado a 4 bits (8 KB) sobre ESP32-S3, integración nativa con Home Assistant, Apple Home, Google Home y Alexa vía Matter bridge.",
+        "por_que_importa": "Atípica para la línea editorial pero publicable como historia técnica aislada: edge AI barata + sensores ya en tu casa + modelo open source cuantizado + protocolo Matter. Vale como artículo corto de \"esto ya está pasando fuera del mundo agentic\".",
+        "madurez_senales": "76.844★ · 10.301 forks · Rust · **MIT** · creado 2025-06-07 · último push 2026-07-06 · 1.463 tests passing (badge), Docker multi-arch, modelo en HuggingFace `ruvnet/wifi-densepose-pretrained` v2 encoder (82.3% temporal-triplet accuracy — el claim de \"100% presence\" anterior fue retractado, dato verificado en README). Tópicos: `wifi`, `densepose`, `esp32`, `iot`, `home-assistant`, `matter`, `skills`.",
+        "accion_sugerida": "explorar (no urgente — anotado como candidato a pieza editorial no-agentic; si encaja con tu línea de smart-home, profundizar. Si no, ignorar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ruvnet/RuView",
+          "rel": "implements",
+          "dst": "wifi-csi-sensing",
+          "primera_mencion": null
+        },
+        {
+          "src": "ruvnet/RuView",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruview",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "OthmanAdi/planning-with-files (24.839★)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Repetir en radar si empieza a integrar Hermes como target oficialmente (hoy usa 60+ harnesses vía SKILL.md, no incluye Hermes explícito, comprobable en docs).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "othmanadi-planning-with-files-24-839",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "steipete/CodexBar (16.402★, Swift, MIT, último push 2026-07-06)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Barra de macOS para ver usage stats de Codex y Claude Code sin login.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar (10 min, confirmar si vale para monitorizar gasto de Codex en la home)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "steipete-codexbar-16-402-swift-mit-ltimo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "coreyhaines31/marketingskills (36.636★, JS, MIT)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Paquete de skills de marketing (CRO, SEO, copy) para Claude Code/agents.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (puede que una skill concreta tipo \"growth-engineering\" valga la pena tener en el catálogo local)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coreyhaines31-marketingskills-36-636-js-",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "addyosmani/agent-skills (70.085★, Shell, MIT)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Production-grade engineering skills\" para Claude Code y Cursor.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer (revisar qué patrones de skills introduce; comparar cobertura con las ~40 de Hermes)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "addyosmani-agent-skills-70-085-shell-mit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "xbtlin/ai-berkshire (10.642★, Python, MIT)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Framework multi-agente de value investing \"estilo Buffett/Munger/Duan/Li\" para Claude Code/Codex en A-shares/HK/US.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar (nicho finanzas + complejidad regulatoria; solo relevante si hay ángulo \"AI decision systems → riesgos\" para un post)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xbtlin-ai-berkshire-10-642-python-mit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Trystan-SA/claude-design-system-prompt (1.024★, MIT)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Prompt de sistema + skill library que convierte el LLM en colaborador de diseño \"anti-slop + accesibilidad-aware\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (1k stars es magro, pero nicho diseño anti-AI-slop encaja con `taste-skill` ya visto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trystan-sa-claude-design-system-prompt-1",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "MaximeRivest/riddle (191★, Rust, MIT, creado 2026-07-05)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Diario \"Tom Riddle\" para reMarkable Paper Pro: la página bebe tu tinta y contesta con letra manuscrita.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar (creative coding muy nicho; sin relevancia agentic)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maximerivest-riddle-191-rust-mit-creado-",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "CoplayDev/unity-mcp (11.699★, C#, MIT, visto 2026-07-05)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Puente MCP↔Unity Editor (assets/scenes/scripts/automation).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar (si tienes flujo game-dev; ya conocido del boletín previo, repetir solo si quieres anunciarlo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coplaydev-unity-mcp-11-699-c-mit-visto-2",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "elder-plinius/T3MP3ST (486★, TS, visto 2026-07-05) — meta-harness red teaming para coding agents.",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar (menciona a Hermes como conector local en docs; comprobar si soporta keyless + qué aporta vs `usestrix/strix`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elder-plinius-t3mp3st-486-ts-visto-2026-",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 9,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

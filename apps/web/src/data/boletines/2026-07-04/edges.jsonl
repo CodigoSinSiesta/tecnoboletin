@@ -1,0 +1,45 @@
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-obra-superpowers", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-obra-superpowers", "dst": "tema:1-obra-superpowers-deep-dive-completado", "rel": "trata", "added": "2026-07-04"}
+{"src": "obra/superpowers", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "obra/superpowers", "dst": "cross-harness-agent", "rel": "implements", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "obra/superpowers", "dst": "hermes-skills", "rel": "competes_with", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "obra/superpowers", "dst": "cobusgreyling/loop-engineering", "rel": "competes_with", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-agentskills-agentskills", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-agentskills-agentskills", "dst": "tema:2-agentskills-agentskills-deep-dive-comp", "rel": "trata", "added": "2026-07-04"}
+{"src": "agentskills/agentskills", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "agentskills/agentskills", "dst": "hermes-skills", "rel": "relevant_to", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "agentskills/agentskills", "dst": "langchain-ai/openwiki", "rel": "complements", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "agentskills/agentskills", "dst": "obra/superpowers", "rel": "competes_with", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-safishamsi-graphify", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-safishamsi-graphify", "dst": "tema:3-safishamsi-graphify-graphify-labs-grap", "rel": "trata", "added": "2026-07-04"}
+{"src": "Graphify-Labs/graphify", "dst": "graphify", "rel": "competes_with", "added": "2026-07-04", "primera_mencion": null}
+{"src": "Graphify-Labs/graphify", "dst": "graphify-name-collision", "rel": "risk", "added": "2026-07-04", "primera_mencion": null}
+{"src": "Graphify-Labs/graphify", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "Graphify-Labs/graphify", "dst": "DeusData/codebase-memory-mcp", "rel": "complements", "added": "2026-07-04", "primera_mencion": null}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-cobusgreyling-loop-engineering", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-cobusgreyling-loop-engineering", "dst": "tema:4-cobusgreyling-loop-engineering", "rel": "trata", "added": "2026-07-04"}
+{"src": "cobusgreyling/loop-engineering", "dst": "loop-engineering", "rel": "implements", "added": "2026-07-04", "primera_mencion": null}
+{"src": "cobusgreyling/loop-engineering", "dst": "obra/superpowers", "rel": "competes_with", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "cobusgreyling/loop-engineering", "dst": "hermes-agent", "rel": "relevant_to", "added": "2026-07-04", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-teamchong-pxpipe", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-teamchong-pxpipe", "dst": "tema:5-teamchong-pxpipe", "rel": "trata", "added": "2026-07-04"}
+{"src": "teamchong/pxpipe", "dst": "input-token-compression", "rel": "implements", "added": "2026-07-04", "primera_mencion": null}
+{"src": "teamchong/pxpipe", "dst": "JuliusBrussee/caveman", "rel": "complements", "added": "2026-07-04", "primera_mencion": null}
+{"src": "teamchong/pxpipe", "dst": "Fable-5", "rel": "uses", "added": "2026-07-04", "primera_mencion": null}
+{"src": "teamchong/pxpipe", "dst": "css-articulos", "rel": "relevant_to", "added": "2026-07-04", "primera_mencion": null}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-zackriya-solutions-meetily", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-zackriya-solutions-meetily", "dst": "tema:zackriya-solutions-meetily", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-leonxlnx-taste-skill", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-leonxlnx-taste-skill", "dst": "tema:leonxlnx-taste-skill", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-jamesob-local-llm", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-jamesob-local-llm", "dst": "tema:jamesob-local-llm", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-halfrgrd-flyline", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-halfrgrd-flyline", "dst": "tema:halfrgrd-flyline", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-younesfdj-gitfut", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-younesfdj-gitfut", "dst": "tema:younesfdj-gitfut", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-symbolica-ai-arcgentica", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-symbolica-ai-arcgentica", "dst": "tema:symbolica-ai-arcgentica", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-langflow-ai-langflow", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-langflow-ai-langflow", "dst": "tema:langflow-ai-langflow", "rel": "trata", "added": "2026-07-04"}
+{"src": "boletin:2026-07-04", "dst": "item:https-github-com-tencentcloud-cubesandbox", "rel": "menciona", "added": "2026-07-04"}
+{"src": "item:https-github-com-tencentcloud-cubesandbox", "dst": "tema:tencentcloud-cubesandbox", "rel": "trata", "added": "2026-07-04"}

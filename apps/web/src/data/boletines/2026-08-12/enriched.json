@@ -1,0 +1,509 @@
+{
+  "version": 2,
+  "date": "2026-08-12",
+  "boletin_origen": "2026-08-12-trending.md",
+  "resumen_ejecutivo": "- **`BoundaryML/baml` cruza 9k★ y vuelve al trending de tres lenguajes**: el DSL \"Basically A Made-up Language\" para describir interacciones con LLMs (8.9k★, Apache-2.0, canary branch activo) lleva tres años siendo el único lenguaje específicamente diseñado para \"que el LLM se confunda menos\". Es la pieza \"infraestructura del agent\" más veterana y menos hype del momento.\n- **`NVIDIA-NeMo/Switchyard` entra como proxy oficial de NVIDIA para coding agents**: Rust, Apache-2.0, traducción entre OpenAI Chat / Anthropic Messages / OpenAI Responses, multi-backend routing (random, classifier, signal-driven). Es la respuesta institucional de NVIDIA al hueco que `duolahypercho/codex-router` cubre para el CLI de OpenAI Codex pero de forma agnóstica y oficial.\n- **`cactus-compute/needle` redefine el \"tiny foundation model\"**: 14 MB, 45M parámetros, paper en arXiv (2607.18363), 28 MB de RAM en sesión completa. Tool calling + device use + structured extraction para phones, wearables, smart home y robots. Es el único modelo sub-50M con grammar-constrained decoding nativo y confidence scoring calibrado.\n- **`egoist/waku` se une al club \"desktop app para N coding agents\"**: Rust + GPUI (motor gráfico de Zed), 469★ en 12 días, GPL-3.0. Soporta Amp, Claude Code, Codex CLI, Cursor CLI, Grok Build, OpenCode y Pi. egoist (autor conocido por `tulip`, `dum`, `tsdown`) entra al espacio desktop-agent con un ángulo nativo/local-first que diferencia a `openclaw/openclaw` y a los UIs web de `paperclipai/paperclip`.\n- **`embabel/embabel-agent` cubre el hueco JVM del agent-stack**: Kotlin/Java framework con Spring Boot del creador de Spring (Rod Johnson), 4.2k★, Apache-2.0, multi-agent orchestration sobre Go-style goals. Es la única alternativa seria en la JVM a Semantic Kernel y Spring AI — y el autor tiene el pedigree para empujar a enterprise.\n- **`Tencent-Hunyuan/Hunyuan3D-WorldClaw` llega con paper en arXiv esta semana (2608.05248)**: generación agentic de mundos 3D open-world a escala, código abierto por el equipo oficial de Tencent Hunyuan. Compite con `WorldLabs` (comercial) y `Stability AI` (cerrado) en el espacio \"3D open-world gen\".\n- **Para usuarios de Hermes / setups híbridos**: `rtk-ai/rtk` sigue imparable (de 72.4k a 75.8k★ en tres días, +3.4k). Su valor: corta hasta el 90% de la salida de comandos bash antes de que llegue al contexto del agente. Es la pieza \"ahorra tokens\" con el growth rate más alto de Rust trending.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + TypeScript + Python + Go + Rust (~89 items únicos), GitHub REST API (15 verificaciones). El blogwatcher de hoy 08:00 no publicó (no hay `2026-08-12-blogs.md` en el vault, el cron de blogs paró de correr el 5 de julio).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "BoundaryML/baml",
+      "url": "https://github.com/BoundaryML/baml",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, 8.9k★, fork=original, canary branch activo. DSL con sintaxis tipo TypeScript, sistema de tipos como Rust, compilación más rápida que Go, errores tipados y grammar-constrained decoding para structured outputs. Diseñado por BoundaryML (equipo pequeño liderado por Sam Rhea, ex CTO de Tulip) y mantenido durante 3 años.",
+        "por_que_importa": "BAML no es otro framework ni un runtime: es un lenguaje de dominio (DSL) para declarar las funciones que le pides a un LLM. Tú escribes la firma y el schema de salida, y BAML genera dos cosas: la gramática que restringe al modelo a emitir solo respuestas válidas (grammar-constrained decoding, es decir, el modelo no puede desviarse del formato ni con un token) y el código cliente tipado en Python, TypeScript, Go, Ruby, Java o C#. Eso lo pone en competencia directa con la práctica habitual de pedir JSON por prompt y rezar: aquí la validez la impone el decodificador, no el prompt. Para el lector de CSS que ya tiene un agente en producción y pelea con respuestas malformadas, es la capa concreta que se coloca entre el LLM y el código. Tres años de mantenimiento y 8.9k estrellas indican pieza asentada, no lanzamiento reciente. Nota de honestidad: el propio ítem atribuye su vuelta a tendencia a un paper o blog reciente de BoundaryML sobre patrones multiagente, pero no tenemos el enlace ni el contenido para valorarlo, así que tómalo como señal blanda.",
+        "madurez_senales": "**8,926★** · 472 forks · Rust (canary) · creado 2023-10-06 · último push 2026-08-12 · licencia **Apache-2.0**. Repo original (fork=False, parent=None). Default branch: canary. 309 issues abiertos. 33 watchers. Tamaño repo: 640 MB. Homepage: https://boundaryml.com/explore. Topics: boundaryml, guardrails, llm, programming-language, structured-data.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:BoundaryML/baml",
+          "rel": "implements",
+          "dst": "concept:agent-dsl-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:BoundaryML/baml",
+          "rel": "competes_with",
+          "dst": "concept:tool-schema-via-prompting",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:BoundaryML/baml",
+          "rel": "relevant_to",
+          "dst": "concept:structured-data-extraction",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:BoundaryML/baml",
+          "rel": "relevant_to",
+          "dst": "concept:agent_harness",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "boundaryml-baml",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "NVIDIA-NeMo/Switchyard",
+      "url": "https://github.com/NVIDIA-NeMo/Switchyard",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, Rust, 623★, pre-alpha (advertencia explícita en el README). Proxy y librería para tráfico LLM que traduce entre OpenAI Chat, Anthropic Messages y OpenAI Responses, enruta entre múltiples backends (vLLM, NVIDIA NIM, Ollama, compatibles con OpenAI), registra métricas Prometheus y soporta algoritmos de enrutamiento componibles (random, classifier LLM, signal-driven, custom).",
+        "por_que_importa": "Un proxy de tráfico LLM que hace de traductor entre dialectos de API: recibe peticiones en formato OpenAI Chat, Anthropic Messages u OpenAI Responses y las sirve desde el backend que tú decidas (vLLM, NVIDIA NIM, Ollama o cualquier compatible con OpenAI), con métricas Prometheus y algoritmos de enrutamiento intercambiables. En la práctica: cualquier agente que solo sepa hablar con OpenAI o Anthropic puede seguir hablando igual mientras detrás responde un modelo abierto que corres tú. Ya cubrimos esta categoría el 2026-08-11 con duolahypercho/codex-router, que está atado al CLI de Codex; Switchyard hace lo mismo pero agnóstico del cliente y con NVIDIA detrás, lo que suele traducirse en continuidad de mantenimiento. También toca la línea de inferencia local que abrimos ese mismo 2026-08-11. Caveat que no se puede maquillar: el propio README lo declara pre-alpha y avisa de que API y algoritmos cambiarán de forma significativa. Sirve para probar en local, no para poner delante de producción.",
+        "madurez_senales": "**623★** · 73 forks · Rust · creado 2026-05-19 · último push 2026-08-12 · licencia **Apache-2.0**. Repo original (fork=False, parent=None). README declara explícitamente \"Switchyard is pre-alpha software that is evolving rapidly. The API and algorithms are expected to change significantly before we reach v1.0\" + warning \"Experimental software. Not for production use\". Tres paths de uso: launcher (Claude Code/Codex/OpenClaw a través de Switchyard), server (proxy standalone) y library (embedding en una app Rust propia). Métricas Prometheus integradas.",
+        "accion_sugerida": "**vigilar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA-NeMo/Switchyard",
+          "rel": "implements",
+          "dst": "concept:model_router_for_coding_agent",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:NVIDIA-NeMo/Switchyard",
+          "rel": "competes_with",
+          "dst": "repo:duolahypercho/codex-router",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:NVIDIA-NeMo/Switchyard",
+          "rel": "relevant_to",
+          "dst": "company:nvidia",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA-NeMo/Switchyard",
+          "rel": "complements",
+          "dst": "concept:local-multimodal-inference",
+          "primera_mencion": "2026-08-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-nemo-switchyard",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "cactus-compute/needle",
+      "url": "https://github.com/cactus-compute/needle",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, Python, 3.9k★, paper arXiv 2607.18363. Needle 2: modelo de 45M parámetros, 14 MB de binario único, 28 MB de RAM en sesión completa. Tool calling, device use y structured extraction con grammar-constrained decoding nativo y confidence scoring calibrado. Compite con FunctionGemma 270M y Apple FM a \"5x-70x smaller, 2 bits vs f16\".",
+        "por_que_importa": "45 millones de parámetros, 14 MB de binario y 28 MB de RAM en sesión completa, haciendo tool calling, control de dispositivo y extracción estructurada con gramática restringida nativa (el modelo no puede emitir un formato inválido) y puntuación de confianza calibrada, es decir, te dice cuánto se fía de su propia respuesta. El cambio de escala es el titular: agente local ya no significa cargar un 7B con llama.cpp, sino un modelo que cabe en un wearable o un móvil sin GPU. El repo se compara con FunctionGemma 270M y el modelo de Apple afirmando ser entre 5 y 70 veces más pequeño (2 bits frente a f16); son cifras del propio proyecto y no hemos verificado el benchmark. Ya cubrimos esta línea el 2026-08-11 con antirez/h3.c: los dos atacan la inferencia local-first, uno por el lado multimodal y este por el de tool calling. Si te interesa montar agentes que no llamen a ninguna API externa, es la pieza de referencia hoy; hay paper (arXiv 2607.18363) y licencia MIT, así que se puede auditar y usar.",
+        "madurez_senales": "**3,899★** · 294 forks · Python · creado 2026-02-24 · último push 2026-08-11 · licencia **MIT**. Repo original (fork=False, parent=None). Homepage: https://cactuscompute.com. Topics: cactus, gemini, gemma, llm, on-device-ai. README explica la receta \"Simple Attention Network\", con diagrama de arquitectura y frontier plot de size-vs-quality. Pesos en HuggingFace: `Cactus-Compute/needle2`. `pip install cactus-needle`, declaras herramientas, ejecutas.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cactus-compute/needle",
+          "rel": "implements",
+          "dst": "concept:tiny-foundation-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cactus-compute/needle",
+          "rel": "enables",
+          "dst": "concept:on-device-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cactus-compute/needle",
+          "rel": "complements",
+          "dst": "repo:antirez/h3.c",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:cactus-compute/needle",
+          "rel": "relevant_to",
+          "dst": "framework:tinygrad",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cactus-compute-needle",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "egoist/waku",
+      "url": "https://github.com/egoist/waku",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "GPL-3.0, Rust + GPUI (motor gráfico de Zed Industries), 469★ en 12 días. Aplicación nativa para macOS que centraliza proyectos, sesiones y transcripciones de múltiples coding agents (Amp, Claude Code, Codex CLI, Cursor CLI, Grok Build, OpenCode, Pi). Sin cuenta, sin servicio remoto, todo local.",
+        "por_que_importa": "Una app de escritorio nativa que centraliza proyectos, sesiones y transcripciones de siete coding agents distintos (Amp, Claude Code, Codex CLI, Cursor CLI, Grok Build, OpenCode y Pi) sin cuenta ni servicio remoto: todo se queda en tu máquina. Si usas más de un agente a la vez, el dolor que resuelve es evidente: hoy cada uno guarda su historial en su propio silo y no hay forma de revisar qué hiciste ayer con cuál. Está escrita en Rust sobre GPUI, el motor gráfico de Zed, lo que explica que sea nativa y no un Electron más. Ya cubrimos esta categoría de espacio de trabajo local para agentes el 2026-08-10, y el 2026-08-11 con paperclipai/paperclip, que es web y orientado a organizaciones; la diferencia de Waku es ser nativa, local-first y agnóstica de proveedor. Que su autor, egoist, tenga detrás una lista larga de proyectos OSS conocidos es señal de que la categoría atrae ya a gente con recorrido, aunque el repo solo tenga días de vida. Limitación práctica dura: es solo macOS y GPL-3.0.",
+        "madurez_senales": "**469★** · 40 forks · Rust · creado 2026-07-31 · último push 2026-08-12 · licencia **GPL-3.0**. Repo original (fork=False, parent=None). Homepage: https://waku.sh. Topics: agent, amp, claude-code, codex, coding, cursor, gpui, grok, opencode, pi, rust. 27 issues abiertos. Tamaño repo: 14 MB. README declara requisitos: macOS, Rust 1.96+, Bun. Features clave: rewind Git-backed con checkpoints conversation-aware, queue/steer de mensajes, switch de modelo mid-session.",
+        "accion_sugerida": "**probar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:egoist/waku",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:egoist/waku",
+          "rel": "uses",
+          "dst": "framework:gpui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:egoist/waku",
+          "rel": "competes_with",
+          "dst": "repo:openclaw/openclaw",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:egoist/waku",
+          "rel": "competes_with",
+          "dst": "repo:paperclipai/paperclip",
+          "primera_mencion": "2026-08-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "egoist-waku",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "embabel/embabel-agent",
+      "url": "https://github.com/embabel/embabel-agent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, Kotlin/Java con Spring Boot, 4.2k★, 410 forks. Framework para flujos agentic en JVM que mezcla interacciones LLM-prompted con código y modelos de dominio, con búsqueda inteligente de caminos hacia objetivos. Pronunciación: \"Em-BAY-bel\".",
+        "por_que_importa": "Un framework para construir agentes dentro de la JVM: Kotlin y Java sobre Spring Boot, que mezcla llamadas al LLM con código y modelos de dominio normales y busca caminos hacia un objetivo en lugar de ejecutar una cadena fija de pasos. El hueco que llena es real y poco cubierto: casi todo el ecosistema agentic vive en Python (LangChain, LangGraph, CrewAI) o en .NET con Semantic Kernel, mientras el grueso del software corporativo sigue en Java. Si trabajas en una empresa con backend JVM, esto significa poder meter un agente en el mismo contexto de Spring, con la inyección de dependencias y el ciclo de vida que ya conoces, sin montar un servicio Python aparte. Las señales de que apunta a producción y no a demo son concretas: publicación en Maven Central, imágenes Docker, análisis con SonarQube y profiling con YourKit. Está liderado por Rod Johnson, el creador de Spring, lo que da acceso y credibilidad en ese mundo, aunque el ecosistema JVM adopta despacio y eso conviene descontarlo.",
+        "madurez_senales": "**4,167★** · 410 forks · Kotlin · creado 2025-04-10 · último push 2026-08-12 · licencia **Apache-2.0**. Repo original (fork=False, parent=None). Homepage: https://hub.embabel.com. Topics: agent, agentic-ai, agents, ai, ai-agents, aiagentframework, genai, generative-ai, java, kotlin, llms, multi-agents, multi-agents-orchestration, multi-agents-system, spring. 69 issues abiertos. Discord activo. Maven Central: `com.embabel.agent:embabel-agent-api`. Docs en https://docs.embabel.com.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:embabel/embabel-agent",
+          "rel": "implements",
+          "dst": "concept:agent_harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:embabel/embabel-agent",
+          "rel": "relevant_to",
+          "dst": "framework:spring",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:embabel/embabel-agent",
+          "rel": "competes_with",
+          "dst": "concept:langchain",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:embabel/embabel-agent",
+          "rel": "enables",
+          "dst": "concept:enterprise-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "embabel-embabel-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+      "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Repo oficial de Tencent Hunyuan, 529★, creado hace 7 días. Código del paper arXiv 2608.05248 (publicado esta semana, 2026-08-07): \"WorldClaw: Agentic 3D Open-world Generation at Scale\". Sin descripción en el repo, pero la project page explica el pipeline completo.",
+        "por_que_importa": "Código del paper arXiv 2608.05248 (2026-08-07) publicado por Tencent Hunyuan: un pipeline agentic para generar mundos 3D abiertos, es decir, agentes que construyen escenarios navegables en vez de imágenes o texto. El interés para CSS está en la convergencia: las dos categorías que seguimos por separado —LLMs que planifican y ejecutan por su cuenta, y generación 3D— se están juntando aquí en un mismo pipeline. Que llegue como release abierto de un hyperscaler chino cambia el equilibrio frente a los actores comerciales cerrados del espacio, porque permite leer el pipeline entero en vez de intuirlo desde una demo. Cautelas serias antes de que nadie intente reproducirlo: el repo tiene 7 días, no trae descripción, la API de GitHub no declara licencia (sin licencia explícita no es software libre reutilizable), el lenguaje ni siquiera está identificado y lo publicado parece centrado en el paper y el código de entrenamiento, con la inferencia previsiblemente cara. Hoy es material de lectura, no algo que puedas ejecutar el fin de semana.",
+        "madurez_senales": "**529★** · 27 forks · (lenguaje no especificado en API, inferimos Python) · creado 2026-08-05 · último push 2026-08-10 · sin license declarada en API (no verificado). Repo original (fork=False, parent=None). Homepage: https://tencent-hunyuan.github.io/Hunyuan3D-WorldClaw/. 1 issue abierto. README incluye teaser image del pipeline + diagrama de método + sección de citación. Sin tags aún.",
+        "accion_sugerida": "**vigilar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+          "rel": "implements",
+          "dst": "concept:agentic-3d-generation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+          "rel": "relevant_to",
+          "dst": "company:tencent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+          "rel": "competes_with",
+          "dst": "company:worldlabs",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+          "rel": "enables",
+          "dst": "concept:open-world-gen-from-text",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-hunyuan-hunyuan3d-worldclaw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"The first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill files\". Reentrada con momentum masivo: ya lo cubrimos el 2026-07-29, pero sigue creciendo y suma el badge \"Repo of the Day\".",
+        "por_que_importa": "",
+        "madurez_senales": "47,705★, push 2026-08-03, Python, AGPL-3.0",
+        "accion_sugerida": "vigilar — el AGPL-3.0 limita SaaS pero la tracción de comunidad es la métrica a seguir",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "calesthio-openmontage",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "rtk-ai/rtk",
+      "url": "https://github.com/rtk-ai/rtk",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Proxy de CLI que reduce entre el 60% y el 90% del output de bash antes de que llegue al LLM.",
+        "por_que_importa": "",
+        "madurez_senales": "75,847★, push 2026-08-12, Rust, Apache-2.0",
+        "accion_sugerida": "probar — sigue imparable (de 72.4k a 75.8k★ en tres días, +3.4k); ya cubierto en boletines anteriores pero el growth rate actual merece un hands-on: encaja perfecto con setups de Hermes / Codex / Claude Code donde el coste de tokens por sesión se está volviendo el cuello de botella",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rtk-ai-rtk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "AntigmaLabs/ante",
+      "url": "https://github.com/AntigmaLabs/ante",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Ante is a self-contained agent harness with a highly optimized terminal interface\". Ghost in your shell.",
+        "por_que_importa": "",
+        "madurez_senales": "1,267★, push 2026-08-12, Rust, Apache-2.0",
+        "accion_sugerida": "vigilar — alternativa Rust-native en el espacio agent-harness; pequeño pero activo y bien tematizado (artifical-life, terminal)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "antigmalabs-ante",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "lightningpixel/modly",
+      "url": "https://github.com/lightningpixel/modly",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Aplicación de escritorio para generar modelos 3D a partir de imágenes usando IA local.",
+        "por_que_importa": "",
+        "madurez_senales": "5,029★, push 2026-08-09, TypeScript, **NOASSERTION**",
+        "accion_sugerida": "vigilar (con cautela) — encaja en \"local-first creative AI\" pero el NOASSERTION bloquea producción. Verificar LICENSE real",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lightningpixel-modly",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Tencent/WeKnora",
+      "url": "https://github.com/Tencent/WeKnora",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Open-source LLM knowledge platform: turn raw documents into a queryable RAG\". Multi-tenant, multimodelo (Ollama, OpenAI), con evaluación integrada.",
+        "por_que_importa": "",
+        "madurez_senales": "19,748★, push 2026-08-12, Go, **NOASSERTION**",
+        "accion_sugerida": "vigilar (con cautela) — comparable a RAGFlow, Tencent oficial. Misma advertencia de LICENSE",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-weknora",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "krillinai/KrillinAI",
+      "url": "https://github.com/krillinai/KrillinAI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"AI video translation & dubbing tool for humans and AI Agents, powered by LLMs\".",
+        "por_que_importa": "",
+        "madurez_senales": "10,982★, push 2026-07-24, Go, GPL-3.0",
+        "accion_sugerida": "vigilar — espacio \"video localization agent\" en Go; buena tracción sostenida",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "krillinai-krillinai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "index-tts/index-tts",
+      "url": "https://github.com/index-tts/index-tts",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"An Industrial-Level Controllable and Efficient Zero-Shot Text-To-Speech System\". Clonación de voz, cross-lingual.",
+        "por_que_importa": "",
+        "madurez_senales": "22,697★, push 2026-08-12, Python, **NOASSERTION**",
+        "accion_sugerida": "vigilar (con cautela) — pieza seria de TTS con tracción masiva (22.7k★); LICENSE real a verificar antes de adopción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "index-tts-index-tts",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "spinabot/brigade",
+      "url": "https://github.com/spinabot/brigade",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Brigade — Your personal intelligence, built enterprise-grade\".",
+        "por_que_importa": "",
+        "madurez_senales": "2,547★, push 2026-08-09, TypeScript, MIT",
+        "accion_sugerida": "vigilar — los topics incluyen `hermes-agent`, `openclaw`, `pride-of-agents` y `self-improving-ai`: la señal es que están intentando posicionarse en el espacio \"agent runtime / AI crew\" como `openclaw/openclaw`. Vale un vistazo cuando acumulen más tracción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "spinabot-brigade",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

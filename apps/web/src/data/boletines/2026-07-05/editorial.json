@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-07-05",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy no habla de modelos sino de lo que se le engancha al modelo: cinco de los siete hallazgos son extensiones para coding agents ya existentes. T3MP3ST convierte al agente en arnés de red teaming, drawio-skill le da salida gráfica, claude-video le da entrada audiovisual, claude-skills le apila 337 capacidades y terax-ai le cambia el contenedor por un workspace de terminal de 7 MB. El hilo conductor es la especialización del periférico: cuando el modelo ya es commodity, el valor se desplaza a las capacidades enchufables — y con ellas al problema de qué formato las hace portables. Los dos hallazgos restantes (daily_stock_analysis, ai-goofish-monitor) son la otra cara del mismo día: agentes verticales de propósito muy concreto, con menos discurso de infraestructura y más aplicación directa.",
+  "convergencia_stack_css": "La convergencia más limpia es el formato Agent Skills: drawio-skill lo declara explícitamente y claude-skills es literalmente un catálogo de skills, lo que los hace candidatos directos al skill system que ya usamos aquí. T3MP3ST es el hallazgo más interesante para nuestro caso por dos motivos concretos que vienen en los propios datos: menciona Hermes como host soportado y funciona sin claves API, lo que lo acerca a un uso local-first real y no dependiente de un endpoint de pago. terax-ai apunta en la misma dirección de peso ligero y terminal, aunque de momento sin conexión declarada con nada de nuestro stack.",
+  "cruzado_grafo": "Ningún hallazgo de hoy trae `relacion_grafo` poblada ni `primera_mencion`, así que formalmente todos entran como nodos nuevos. La única conexión previa afirmada en los datos es textual: el resumen ejecutivo señala que drawio-skill compite directamente con `DayuanJiang/next-ai-draw-io`, descrito como \"ya en el grafo\" — esa arista competitiva es lo único que se refuerza hoy, y sin fecha de primera mención que podamos citar. El resto del cruce queda pendiente de que el grafo lo resuelva en próximas pasadas.",
+  "tendencias_5_boletines": "Encaja de forma bastante directa con los dos días previos recibidos: el 02-07 la lectura era que el ecosistema se repliega del modelo hacia la infraestructura que lo rodea, y el 03-07 se abría en dos ejes — portabilidad de skills e interfaces/entornos de ejecución. Hoy los dos ejes vuelven a aparecer casi con reparto: drawio-skill y claude-skills en el de skills portables, terax-ai en el de entornos de ejecución. La novedad respecto a esos días es T3MP3ST, que añade un eje que no estaba: no organizar ni transportar capacidades, sino apuntar el agente contra sistemas reales en modo ofensivo. Con solo dos días de contexto no hay base para hablar de tendencia de cinco boletines.",
+  "alertas": [
+    "T3MP3ST tiene 3 días de vida y ya es #1 en Trendshift: la posición mide atención, no madurez ni mantenimiento.",
+    "El 90,1 % pass@1 sobre XBEN es un claim del propio proyecto; nadie lo ha reproducido de forma independiente que conste en los datos.",
+    "T3MP3ST es AGPL-3.0: aceptable para uso interno, problemático si se integra en cualquier cosa que se distribuya o se ofrezca como servicio.",
+    "Herramienta de red teaming con instalación trivial y sin claves: el uso legítimo requiere autorización sobre el objetivo, algo que el propio framework no impone.",
+    "claude-skills con 337 skills es un número de inventario, no de calidad: probable solapamiento y mantenimiento desigual entre ellas.",
+    "Las estrellas (8,1 k en terax-ai, 5,2 k en drawio-skill) son señal de atención, no de tracción en uso real."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Declara soporte para Hermes y no requiere claves API. Merece una prueba controlada en entorno propio para ver si el arnés funciona de verdad o solo el discurso."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Compatible con el formato Agent Skills y genera diagramas desde codebase, Terraform o SQL DDL: encaja con el skill system y con la necesidad recurrente de diagramar arquitectura."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Un catálogo de 337 skills es material directo para un artículo sobre qué hace portable a una skill y dónde se rompe la reutilización."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "7 MB en Tauri/Rust para un workspace de terminal es una promesa atractiva de peso ligero, pero conviene esperar señales de uso antes de invertir tiempo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Entrada de vídeo real como contexto abre una vía interesante, aunque el coste de transcribir y extraer frames en local está por medir."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

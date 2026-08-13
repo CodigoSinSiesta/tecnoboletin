@@ -1,0 +1,539 @@
+{
+  "version": 2,
+  "date": "2026-07-14",
+  "boletin_origen": "2026-07-14-trending.md",
+  "resumen_ejecutivo": "- Hoy el radar lo dominan **AI skills y coding agents**: `Nutlope/hallmark`, `Sahir619/fable-method`, `Moeru-ai/airi`, `OpenInterpreter (rewrite en Rust)`, `Github/spec-kit` (Spec-Driven oficial de GitHub) y `Graphify-Labs/graphify` (la implementación canónica del grafo de código, NO nuestro Graphify local aunque comparta nombre).\n- El repo que más rápidamente ha subido es **`Dicklesworthstone/destructive_command_guard`** (+1.295★ hoy, +3.939 totales) — un guard de shell en Rust para bloquear comandos destructivos (rm -rf, git reset --hard, etc.) delante de agentes coding. Tiene aplicación directa al perfil de seguridad de cualquier agente que ejecute shell.\n- **El sistema de agente multi-provider sigue consolidándose**: `farion1231/cc-switch` (+475★, ya en el grafo y ahora con Tauri/Hermes/OpenClaw explícito en topics) y `router-for-me/CLIProxyAPI` (+41675★ totales) libran la misma batalla: abstraer el switch de proveedor/CLI para no atarse a OpenAI/Anthropic.\n- **Postgres reescrito en Rust pasa 100% regression tests** (`malisper/pgrust`, AGPL-3.0): ya conocido en el grafo, sigue ganando tracción. Si buscas tema de fondo sobre RDBMS alternativos en Rust, ahora hay tres (pgrust, glue SQL en surrealdb, etc.) con propiedades interesantes para SQL local-first.\n- **Trending topics**: AI agent (11.8k★/aggregated), AI skills (4.7k), AI coding assistant (4k), Self-hosted (2.6k), Curated list (2.5k), AI workflow (2.2k), Local LLM (1.7k), Workflow automation (1.6k), MCP (1.4k), Video editing (1.3k). MCP vuelve al top-10 después de semanas — coherente con el boom de skills / herramientas agent-ready.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily + filtros por lenguaje (Python/TypeScript/Rust), GitHub REST API para metadatos de los hallazgos.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Dicklesworthstone/destructive_command_guard",
+      "url": "https://github.com/Dicklesworthstone/destructive_command_guard",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Hook pre/post-exec que intercepta comandos shell y, según reglas YAML, bloquea los destructivos (`rm -rf /`, `git reset --hard`, `git push --force`, `chmod 777 /`, etc.) y los enmascara en el log. Pensado para agentes coding, pero sirve para cualquier caller de shell.",
+        "por_que_importa": "Encaja con un punto débil típico de cualquier agente local-first (Hermes, Claude Code, Codex): la posibilidad de ejecutar comandos destructivos. El propio SKILL de Hermes ya recoge esto literalmente: 'para acciones destructivas o irreversibles, pide confirmación explícita'. destructive_command_guard cumple esa misma salvaguarda a nivel de hook del shell, sin tocar el código del agente, y la complementa como capa adicional. Nota: ya cubrimos destructive_command_guard el 2026-07-03 en relación al propio Hermes-Agent, así que esta mención es seguimiento; el frente competitivo real ahora es hookify, que persigue el mismo nicho.",
+        "madurez_senales": "",
+        "accion_sugerida": "**explorar**. Vale clonar y probar como hook pre-tool-call en un proyecto piloto. Antes: leer LICENSE por la rider OpenAI/Anthropic y confirmar que aplica a uso personal — la versión corta sí es MIT.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "destructive_command_guard",
+          "rel": "complements",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "destructive_command_guard",
+          "rel": "competes_with",
+          "dst": "hookify",
+          "primera_mencion": null
+        },
+        {
+          "src": "destructive_command_guard",
+          "rel": "relevant_to",
+          "dst": "agent-safety",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dicklesworthstone-destructive-command-gu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Toolkit de GitHub (el repo es de la org `github`, no personal) para implementar **Spec-Driven Development**: plantillas de spec → plan → tasks → implementation, con `specify` CLI en Python. Materializa el flujo que recomienda cuando se trabaja con agentes coding.",
+        "por_que_importa": "El modelo de skills de Hermes ya tiene su 'spec' (SKILL.md con frontmatter name/description), pero el flujo pipeline completo spec → plan → implement, típico de proyectos con agentes coding, no está cubierto de forma canónica. Spec-kit lo materializa con plantillas y el CLI `specify`, y lo presentaremos como patrón de referencia del sector. Para CSS interesa compararlo con obra/superpowers y con hermes-skills (ambos ya aparecieron en el boletín del 2026-07-03) para ver qué conviene importar, qué reinventar y qué dejar fuera.",
+        "madurez_senales": "",
+        "accion_sugerida": "**leer**. No requiere instalación; el repo + docs son lo que más enseña. Comparar el flujo de `specify` CLI con cómo estructuramos los prompts largos del agente `coder`.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "github/spec-kit",
+          "rel": "implements",
+          "dst": "spec-driven-development",
+          "primera_mencion": null
+        },
+        {
+          "src": "github/spec-kit",
+          "rel": "complements",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "github/spec-kit",
+          "rel": "complements",
+          "dst": "hermes-skills",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-spec-kit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Nutlope/hallmark",
+      "url": "https://github.com/Nutlope/hallmark",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Skill markdown/CSS con 20 temas × 57 \"gates\" (checks) para que los agentes coding (Claude Code, Cursor, Codex) generen CSS/UI sin el típico \"AI slop\" (gradientes lavanda, rounded-2xl por todos lados, hover scale-105, etc.). Repo de Nutlope (Together AI).",
+        "por_que_importa": "Aplica directamente al diseño del sitio y a cualquier UI que pidamos a un agente. Ya tenemos dos referencias positivas en el grafo: popular-web-designs (54 design systems reales: Stripe, Linear, Vercel) y claude-design como sistema de patrones. Hallmark aporta la versión 'negativa': 20 temas × 57 checks explícitos sobre lo que NO hacer (gradientes lavanda, rounded-2xl genérico, hover scale-105) y las reglas formales para evitarlo. Combinar las tres vistas — sistemas reales, sistema de patrones y catálogo de vicios — da una cobertura seria para diseñar y para auditar UI con agentes sin caer en el 'AI slop'.",
+        "madurez_senales": "",
+        "accion_sugerida": "**probar**. Instalar como skill en uno de los perfiles coder/planner para auditar la UI del propio sitio CSS; comparar con la skill `simplify-code` que ya tenemos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "hallmark",
+          "rel": "complements",
+          "dst": "popular-web-designs",
+          "primera_mencion": null
+        },
+        {
+          "src": "hallmark",
+          "rel": "relevant_to",
+          "dst": "anti-ai-slop-design",
+          "primera_mencion": null
+        },
+        {
+          "src": "hallmark",
+          "rel": "uses",
+          "dst": "design-tokens",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nutlope-hallmark",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "farion1231/cc-switch",
+      "url": "https://github.com/farion1231/cc-switch",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App Tauri (cross-platform) para switchear entre **Claude Code, Codex, OpenCode, OpenClaw, Gemini CLI y Hermes Agent** como providers únicos. Es decir, un \"router de frontends\" para no atarse a un solo vendor. 475★ hoy, 116.965★ totales (el total es engañoso: el repo tiene un año de existencia y mucha tracción acumulada).",
+        "por_que_importa": "Es la otra cara del switch de proveedor. En el setup local de Ibid ya corre Hermes; cc-switch ofrece una UI única para alternar entre Claude Code, Codex, OpenCode, OpenClaw, Gemini CLI y Hermes Agent sin tocar el `.env` ni mantener seis instalaciones separadas. Detalle relevante: en los topics del repo aparecen explícitamente `hermes, hermes-agent`, lo que indica que el proyecto reconoce a Hermes como provider de primera clase y no es una pieza fringe. Lo cubrimos por primera vez ligado a Hermes-Agent el 2026-07-03; hoy lo retomamos porque crece frente a alternativas tipo CLIProxyAPI en el nicho de provider-rotation.",
+        "madurez_senales": "",
+        "accion_sugerida": "**vigilar**. Ya en el grafo y en tendencia. Antes de instalar: revisar si los 1.947 issues abiertos ocultan bloqueos (1.7% es alto). Material de artículo: \"Cómo rotar providers en coding agents sin romper el setup\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cc-switch",
+          "rel": "complements",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "cc-switch",
+          "rel": "competes_with",
+          "dst": "router-for-me/CLIProxyAPI",
+          "primera_mencion": null
+        },
+        {
+          "src": "cc-switch",
+          "rel": "implements",
+          "dst": "provider-rotation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "farion1231-cc-switch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "OpenCut-app/OpenCut",
+      "url": "https://github.com/OpenCut-app/OpenCut",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Editor de video open-source, alternativa directa a CapCut. Web-first (Next.js) + desktop. 1.229★ hoy, 67.710★ totales. Topics: `editor, oss, videoeditor`.",
+        "por_que_importa": "Aunque CSS no produce vídeo, hay una intersección agente + vídeo open-source que ya asomó en el grafo con heygen-com/hyperframes como 'declarative-html-to-video'. OpenCut encaja ahí como substrate maduro (Next.js + desktop, alternativa directa a CapCut) sobre el que un agente puede orquestar cortes, subtítulos y b-roll. Lo dejo señalado como pattern emergente, útil si más adelante sale un taller de edición de vídeo asistida por IA. Hoy no hay un anchor de 'open-source-video-editing' fuerte en el grafo, así que el nodo queda principalmente como complemento de hyperframes y competidor de capcut.",
+        "madurez_senales": "",
+        "accion_sugerida": "**vigilar**. No urge instalar — el siguiente paso natural sería clonar y auditar cómo maneja formatos / codecs si surge un proyecto de vídeo con agentes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "OpenCut",
+          "rel": "competes_with",
+          "dst": "capcut",
+          "primera_mencion": null
+        },
+        {
+          "src": "OpenCut",
+          "rel": "complements",
+          "dst": "heygen-com/hyperframes",
+          "primera_mencion": null
+        },
+        {
+          "src": "OpenCut",
+          "rel": "relevant_to",
+          "dst": "open-source-video-editing",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opencut-app-opencut",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "moeru-ai/airi",
+      "url": "https://github.com/moeru-ai/airi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Companion AI self-hosted (web/macOS/Windows) con Live2D, voice-chat en tiempo real, Minecraft / Factorio playing. Aspiración declarada: emular el efecto \"Neuro-sama\". 78★ hoy, 42.133★ totales — está maduro en comunidad aunque hoy no esté en pico.",
+        "por_que_importa": "Solo entra en consideración si CSS se mueve a formato AI companion / vtuber para directos o talleres, cosa que hoy no está en hoja de ruta. Lo señalo porque el cluster 'anime / AI companion / waifu agent' es un hueco real en el grafo de CSS y airi es el OSS más maduro del segmento (Live2D, voice-chat en tiempo real, integración con Minecraft y Factorio, aspiración declarada de emular a Neuro-sama). Si en algún boletín futuro toca cubrir ese hueco, airi será el ancla; mientras tanto, queda como referencia vigilada, no como prioridad.",
+        "madurez_senales": "",
+        "accion_sugerida": "**ignorar (vigilar)**. No es prioritario para la línea editorial actual; queda como referencia del cluster.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "airi",
+          "rel": "competes_with",
+          "dst": "neuro-sama",
+          "primera_mencion": null
+        },
+        {
+          "src": "airi",
+          "rel": "relevant_to",
+          "dst": "ai-companion-space",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moeru-ai-airi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "AI coding assistant skill para Claude Code/Codex/OpenCode/Cursor/Gemini CLI. **¡CUIDADO, colisión de nombre!** El repositorio upstream del proyecto Graphify que tenemos instalado localmente (en `~/proyectos/graphify-src/`) es ESTE, no el nuestro. Si alguien busca \"graphify\" espera que sea nuestro grafo de knowledge; este es un \"graphify your codebase\" orientado a grafos para retrieval RAG.",
+        "por_que_importa": "",
+        "madurez_senales": "85.229★ · Python · MIT · 101 días · último push 2026-07-13 22:21",
+        "accion_sugerida": "vigilar — (no instalar — ocuparía el nicho de `agent-knowledge-graph` y `codebase-memory-mcp` ya explorado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "graphify-labs-graphify",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "katanemo/plano",
+      "url": "https://github.com/katanemo/plano",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "AI-native proxy/LLM gateway estilo Envoy, \"data plane for agentic apps\" con orquestación, safety y observability. Compite directamente con `LiteLLM` y `OpenRouter`.",
+        "por_que_importa": "",
+        "madurez_senales": "6.823★ · Rust · Apache-2.0 · 2 años · push 2026-07-10",
+        "accion_sugerida": "vigilar — ; alternativa moderna a LiteLLM si surge proyecto multi-LLM",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "katanemo-plano",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "malisper/pgrust",
+      "url": "https://github.com/malisper/pgrust",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Postgres reescrito en Rust, pasa el 100% de los regression tests. Ya en el grafo.",
+        "por_que_importa": "",
+        "madurez_senales": "2.856★ · Rust · **AGPL-3.0** · 85 días · push 2026-07-10",
+        "accion_sugerida": "vigilar — ; AGPL es deal-breaker para SaaS, OK para uso local",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "malisper-pgrust",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "TauricResearch/TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Multi-agent LLM financial trading framework. Ya tuvimos `HKUDS/Vibe-Trading` y `virattt/ai-hedge-fund` en el radar previo — **mismo nicho**, distintas arquitecturas.",
+        "por_que_importa": "",
+        "madurez_senales": "92.878★ · Python · Apache-2.0 · 563 días · push 2026-07-05",
+        "accion_sugerida": "vigilar — ; mapa comparativo pendiente",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tauricresearch-tradingagents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "openinterpreter/openinterpreter",
+      "url": "https://github.com/openinterpreter/openinterpreter",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "· Apache-2.0 · 3 años · push 2026-07-14) — Coding agent optimizado para open models (GLM, DeepSeek, Kimi, Qwen). Migración Python→Rust del clásico \"interpreter\"; ahora CLI con TUI.",
+        "por_que_importa": "",
+        "madurez_senales": "64.827★ · **Rust** (¡rewrite completo desde Python!",
+        "accion_sugerida": "explorar — si la dirección \"open models con coding agent\" interesa para el setup local-first",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openinterpreter-openinterpreter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "router-for-me/CLIProxyAPI",
+      "url": "https://github.com/router-for-me/CLIProxyAPI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Wrap de Antigravity, ChatGPT Codex, Claude Code, Grok Build como API OpenAI/Gemini/Claude/Codex compatible. Hermano gemelo de `cc-switch` del lado servidor.",
+        "por_que_importa": "",
+        "madurez_senales": "41.675★ · Go · MIT · 377 días · push 2026-07-14",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "router-for-me-cliproxyapi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "YishenTu/claudian",
+      "url": "https://github.com/YishenTu/claudian",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Plugin de Obsidian que embebe Claude Code/Codex como AI collaborator en el vault. **Encaja directo con el vault que ya usas** (`~/obsidian-vault/Research/Boletines/...`).",
+        "por_que_importa": "",
+        "madurez_senales": "14.016★ · TypeScript · MIT · 220 días · push 2026-07-13",
+        "accion_sugerida": "probar — ; instalación en vault secundario primero. (no verificado: no se intentó instalar; métrica solo de API GitHub)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yishentu-claudian",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "Sahir619/fable-method",
+      "url": "https://github.com/Sahir619/fable-method",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Distillation del \"Claude Fable 5 workflow\" en skills any-model. Tags: `agent-skills, claude-code, coding-agent, fable, llm`.",
+        "por_que_importa": "",
+        "madurez_senales": "488★ · JavaScript · MIT · 7 días · push 2026-07-09",
+        "accion_sugerida": "vigilar — ; muy joven (7 días) pero material alineado con la línea editorial (no verificado: contenido README no leído en profundidad)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sahir619-fable-method",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "ADE (Agentic Development Environment) para correr coding agents en paralelo. YC-backed. Ya en el grafo.",
+        "por_que_importa": "",
+        "madurez_senales": "18.610★ · TypeScript · MIT · 119 días · push 2026-07-14",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 15,
+      "titulo": "earendil-works/pi",
+      "url": "https://github.com/earendil-works/pi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Unified LLM API + agent loop + TUI + coding agent CLI. Cross-provider, sin atarse.",
+        "por_que_importa": "",
+        "madurez_senales": "70.738★ · TypeScript · MIT · 338 días · push 2026-07-13",
+        "accion_sugerida": "leer — (no verificado fondo); repositorio grande con documentación posiblemente madura",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earendil-works-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 16,
+      "titulo": "3b1b/manim",
+      "url": "https://github.com/3b1b/manim",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "El motor de animación matemática de 3Blue1Brown. Topic re-entrante por `design-md` / `mermaid-diagrams` / `manim-video` ya en skills.",
+        "por_que_importa": "",
+        "madurez_senales": "88.505★ · Python · MIT · 4.131 días · push 2026-07-02",
+        "accion_sugerida": "vigilar — (existe la skill `manim-video` ya; redundante salvo que queramos aprender del repo mismo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "3b1b-manim",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 17,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 11,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "17/17 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

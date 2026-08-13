@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-07-28",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy es un monográfico técnico de Moonshot AI alrededor de Kimi K3: no es un lanzamiento aislado, es la publicación simultánea del modelo (K3), la infraestructura que lo entrenó (AgentENV) y la pieza de comunicación distribuida que lo hace viable a escala (MoonEP). El hilo conductor es la vertical completa de un modelo abierto frontier — desde el runtime de entrenamiento agentic hasta la biblioteca de Expert Parallelism que evita cuellos de botella cuando los expertos se desbalancean, pasando por el modelo en sí con su arquitectura Kimi Delta Attention. SGLang aparece como la pieza operativa que cierra el círculo: es el runtime canónico 2026 para servir exactamente este tipo de modelos abiertos en local o cluster propio. El quinto hallazgo (Claude Code) rompe el monográfico y recuerda que el lado comercial de los coding agents sigue empujando forks OSS multi-provider; un contrapunto honesto al bloque chino-open.",
+  "convergencia_stack_css": "Tres hallazgos de hoy encajan directamente con el stack local-first de Código Sin Siesta. SGLang (idx 3) es el runtime práctico para servir modelos abiertos frontier como DeepSeek-V4 o el propio Kimi-K3 en local, línea ya cubierta en boletines previos sobre serving y vLLM. AgentENV (idx 1) ocupa un hueco que faltaba en el stack: sandboxes agentic con snapshot/fork rápido sobre Firecracker, listo para experimentar con RL agentic sin vendor lock-in — se alinea con la cobertura previa de infraestructura de entrenamiento y con la tendencia ya mapeada sobre commoditización del runtime agéntico. Kimi K3 (idx 0) se suma a la familia de modelos abiertos frontier (DeepSeek-V3/V4, Qwen3-Max) que CSS viene siguiendo, ahora a una escala 3x mayor. MoonEP y Claude Code, en cambio, tocan piezas más específicas (comunicación EP, coding agents comerciales) que no amplían directamente el stack local-first conocido.",
+  "cruzado_grafo": "Los cinco hallazgos de hoy llegan sin `primera_mencion` previas en el grafo: ningún nodo ni relación aparece referenciado en un boletín anterior según los datos recibidos. Esto significa que la entrada de hoy es genuinamente nueva en el grafo de CSS — Kimi Delta Attention, Expert Parallelism, agentic-rl-training, Moonshot AI como nodo de compañía, y el cluster K3/AgentENV/MoonEP como trío de entrenamiento se incorporan por primera vez. Las únicas relaciones con nodos ya existentes son indirectas: SGLang se marca como `serves` y `competes_with` Kimi-K3, pero Kimi-K3 es nuevo en el grafo, así que la relación es interna al lote de hoy. Claude Code se conecta a `0xwilliamortiz/openclaude-improved` como fork OSS, relación también nueva. Sin `primera_mencion` no hay refuerzo de patrones previos; sí hay primera aparición de un cluster temático entero (vertical abierta china frontier + infraestructura de entrenamiento agentic).",
+  "tendencias_5_boletines": "El contexto de continuidad recibido cubre solo dos días previos (2026-07-21 y 2026-07-22), insuficiente para hablar de cinco boletines con base. Con lo disponible: el 2026-07-21 trató infraestructura de red y memoria debajo de modelos y agentes (agentgateway, opencodex, cognee, fastmcp); el 2026-07-22 fue un episodio de 'piezas de complemento' alrededor del runtime agéntico ya commoditizado. El boletín de hoy (2026-07-28) cambia el plano: en lugar de satélites del runtime, trae la vertical completa de un modelo abierto frontier — modelo + infra de entrenamiento + biblioteca de comunicación MoE + runtime de serving. Es un salto de nivel: pasamos de la commoditización del middleware agentic (julio) a la publicación end-to-end de un modelo 3T-class con toda su pila abierta (finales de julio). La línea editorial CSS sobre modelos abiertos chinos (DeepSeek-V3/V4, Qwen3-Max) se materializa hoy con Moonshot AI como tercer actor, no como cobertura nueva sino como ampliación de la familia ya rastreada.",
+  "alertas": [
+    "Kimi K3: la API de GitHub reporta licencia NOASSERTION mientras el README declara una Kimi K3 License propia con restricciones comerciales no leídas en detalle. No afirmar uso comercial libre sin revisar la licencia directamente.",
+    "Kimi K3 'primer modelo abierto 3T-class': claim del autor del hallazgo, sin verificación independiente del conteo de parámetros totales frente a otros modelos abiertos 3T",
+    "AgentENV exige /dev/kvm y kernel 6.8+: no portable a Mac/Windows, limitando el alcance local-first puro para parte de la audiencia CSS.",
+    "MoonEP: README asume familiarity con EP/MoE internals; no es material para audiencia no técnica.",
+    "Claude Code: repo source-available sin LICENSE formal — el uso comercial o de redistribution no está claramente definido, conviene no recomendar fork directo."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "AgentENV llena un hueco real del stack CSS (sandboxes agentic con snapshot/fork <50ms sobre Firecracker). Vale la pena probarlo en local para validar si el claim de readiness se sostiene fuera del entorno Moonshot."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "Kimi K3 marca un techo en la línea de modelos abiertos que CSS ya cubría (DeepSeek-V4, Qwen3-Max); útil como referencia editorial aunque la licencia requiera revisión antes de recomendar uso."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "SGLang con soporte day-0 a Kimi-K3, DeepSeek-V4 y MiMo-V2-Flash confirma que es el runtime canónico 2026 para serving local de modelos frontier abiertos — conviene seguir su evolución frente a vLLM."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Claude Code reapareciendo en Trendshift tras meses fuera del radar sugiere release mayor; el contrapunto con forks OSS multi-provider (crush, openclaude-improved) merece seguimiento."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "MoonEP como alternativa a DeepEP en escenarios de desbalance de expertos es relevante para entender el stack OSS de training frontier, aunque el contenido asume expertise alta en EP/MoE."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

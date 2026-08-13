@@ -1,0 +1,317 @@
+{
+  "version": 2,
+  "date": "2026-07-09",
+  "boletin_origen": "2026-07-09-trending.md",
+  "resumen_ejecutivo": "- **`microsoft/flint-chart` (MIT, MS, MCP-server) + `google-labs-code/stitch-skills` (Apache-2.0, Google Labs)** confirman el **mismo día** que la categoría \"skills para design/charts/visualization\" se consolida con dos pesos pesados. Flint expone un *visualization language* con `chart specs` legibles por agentes; Stitch-skills (6.4k★) trae la librería canónica para Stitch MCP. Cierra el patrón que `VoltAgent/awesome-design-md` dejó abierto el 2026-07-08: DESIGN.md como artefacto, skills como vehículo, ahora Google+Microsoft con first-party.\n- **`stablyai/orca` (14.469★, MIT, YC S26, TypeScript, +703/día)** aterriza como ADE (Agentic Dev Environment) open-source para orquestar **flotas de coding agents paralelos** (Claude Code / Codex / Cursor / OpenCode / Pi) sobre Git worktrees, con clientes desktop+mobile. Complementa a `rowboatlabs/rowboat` (visto 2026-07-08) — uno es \"AI coworker personal\", el otro es \"orquestador multi-agent para developers\". Mismo problema, dos productos.\n- **`junhoyeo/tokscale` (4.225★, MIT, Rust, +32/día)** es la pieza OSS que faltaba para **token analytics multi-agent**: trackea OpenCode, Claude Code, OpenClaw, Pi, Codex, Gemini, Cursor, AmpCode, Factory Droid, Kimi. Topics incluyen literalmente `hermes`. Sustituye la función parcial de `kenn-io/agentsview` (Go) y `steipete/CodexBar` (Swift, solo Codex) por un cliente CLI universal.\n- **`microsoft/agent-governance-toolkit` (4.706★, MIT, Python, +37/día)** cubre OWASP Agentic Top-10 con policy enforcement, zero-trust identity y execution sandboxing. Es la respuesta **oficial Microsoft** a la pregunta \"cómo pongo governance seria en un agent en producción\" — coincide con la madurez del stack enterprise.\n- **`Robbyant/lingbot-video` (Apache-2.0, debut 2026-07-08, 349★, +56/día, MoE video pretraining para embodied intelligence)** marca el aterrizaje del **video world model de Robbyant** en el radar (junto a `Robbyant/lingbot-world-v2`, 270★, NOASSERTION). Categoría nueva: foundation model para embodied agents, no solo generación visual.\n- **`NVIDIA/OpenShell` (7.490★, Apache-2.0, Rust, +18/día)** aterriza como **runtime privado y seguro para AI agents autónomos**: sandbox determinista sin red por defecto, model-agnostic, optimizado para ONNX + CUDA. Coincide con `TencentCloud/CubeSandbox` (visto 2026-07-02) y con `vercel-labs/agent-browser` (visto 2026-07-08): los sandboxes para agents maduran como categoría.\n- **Fuentes consultadas:** Trendshift daily (30 repos), GitHub Trending daily en all + Python + TypeScript + Rust + Go (86 entradas únicas), GitHub REST API para verificación de 28 candidatos prioritarios.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "microsoft/flint-chart",
+      "url": "https://github.com/microsoft/flint-chart",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "+ `google-labs-code/stitch-skills` — design/charts para agents se consolida con Microsoft + Google first-party",
+        "por_que_importa": "Microsoft y Google moviéndose el mismo día consolidan una categoría que el boletín del 2026-07-08 dejó a medias con `VoltAgent/awesome-design-md`: el patrón de tres capas (DESIGN.md como tokens, Flint como charts, Stitch-skills como orquestador vía MCP) ya tiene first-party de ambos proveedores. Stitch-skills hereda el relevo del 2026-07-08 sobre el concepto DESIGN.md, así que el siguiente paso natural es un post reproducible sobre cómo un agente diseña sin romper el design system, tomando Flint como pieza ejecutable. Stitch-skills con 6.446★ y un último push del 2026-06-29 aporta la distribución; Flint (649★, push del 2026-07-09) aporta el chart reproducible.",
+        "madurez_senales": "`flint-chart`: 649★ · 20 forks · TypeScript · MIT · creado 2026-05-13 · último push 2026-07-09 · topics: `ai-agents`, `charting-library`, `data-visualization`, `mcp-server`. · `stitch-skills`: 6.446★ · 771 forks · TypeScript · Apache-2.0 · creado 2026-01-16 · último push 2026-06-29 (algo frío, 10 días sin commit — vigilar).",
+        "accion_sugerida": "explorar (clonar `flint-chart`, escribir 2-3 chart specs reales, levantar el MCP server y conectarlo a Hermes; forkear una skill de `stitch-skills` para validar conformance con el spec y ver si alguna sirve para el flujo de artículos).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/flint-chart",
+          "rel": "implements",
+          "dst": "chart-specs-for-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "google-labs-code/stitch-skills",
+          "rel": "implements",
+          "dst": "design-md-spec",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "microsoft/flint-chart",
+          "rel": "complements",
+          "dst": "VoltAgent/awesome-design-md",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "google-labs-code/stitch-skills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-flint-chart",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Agentic Dev Environment** (ADE) que corre cualquier coding agent (Claude Code, Codex, Cursor, OpenCode, Pi) en **git worktrees paralelos**, con clientes desktop + mobile. YC-backed (badge `yc-backed` en topics), 703 stars/día, 14.469★. La tesis: \"1 developer × N agents paralelos\" sobre la misma codebase, sin conflictos de branches.",
+        "por_que_importa": "Se planta como competidor directo de `rowboatlabs/rowboat`, cubierto el 2026-07-08: ambos YC-backed, pero resuelven problemas distintos. Rowboat es el AI coworker personal con knowledge graph tipo Obsidian y vive en email/Slack/meetings; orca es el IDE para ejecutar N coding agents (Claude Code, Codex, Cursor, OpenCode, Pi) en paralelo sobre la misma codebase vía git worktrees, con clientes desktop y mobile y terminal Ghostty. Para el lector de Código Sin Siesta que ya encadena varios agentes, la diferencia importa: si el cuello de botella es la coordinación, rowboat; si es ejecutar ramas en paralelo sin pisarse, orca. Los 703 stars/día y el push de hace minutos lo señalan como momentum real, no hype.",
+        "madurez_senales": "14.469★ · 975 forks · TypeScript · MIT · creado 2026-03-17 · último push 2026-07-09 (hace minutos). Topics (verificados): `ade`, `agent-ide`, `ai-agents`, `claude-code`, `cli`, `codex`, `cursor-agent`, `devtools`, `ghostty`, `ide`, `mobile-app`, `opencode`, `orchestration`, `parallel-agents`, `pi`, `terminal`, `worktrees`, `yc-backed`. Suite propia de TypeScript estricto + CI.",
+        "accion_sugerida": "explorar (instalar el cliente desktop via release, levantar 2 worktrees paralelos corriendo Claude Code + Codex, medir latencia entre ambos; comparar UX con `gastownhall/gastown` del 2026-07-06).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "stablyai/orca",
+          "rel": "implements",
+          "dst": "agent-orchestrator-runtime",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "competes_with",
+          "dst": "rowboatlabs/rowboat",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "uses",
+          "dst": "git-worktrees",
+          "primera_mencion": null
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "complements",
+          "dst": "vercel-labs/agent-browser",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "junhoyeo/tokscale",
+      "url": "https://github.com/junhoyeo/tokscale",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI en Rust (4.225★, MIT) para **trackear gasto de tokens** en OpenCode, Claude Code, 🦞OpenClaw, Pi, Codex, Gemini CLI, Cursor, AmpCode, Factory Droid, Kimi y más. Tiene **leaderboard global + contributions graph 2D/3D**. Topics incluyen literalmente `hermes`.",
+        "por_que_importa": "Hasta ahora el stack de token analytics estaba fragmentado y ya lo vimos: el 2026-07-07 cubrimos `kenn-io/agentsview` (limitado a sesiones locales de Claude Code/Codex), y `steipete/CodexBar` solo cubre Codex. Tokscale unifica ambos mundos — OpenCode, Claude Code, Hermes, Pi, Codex, Gemini CLI, Cursor, AmpCode, Factory Droid, Kimi y más — y añade leaderboard global y contributions graph 2D/3D. Aplicación directa en el boletín: auditar coste por agente por día y atribuir picos al tipo de tarea. Que `hermes` aparezca en sus topics confirma que el runtime ya tiene visibilidad en el ecosistema agentic OSS, recogido el 2026-07-08 al cubrir `NousResearch/hermes-agent`.",
+        "madurez_senales": "4.225★ · 284 forks · Rust · MIT · creado 2025-12-01 · último push 2026-07-07. Topics verificados: `ai`, `ai-agents`, `ampcode`, `claude`, `claude-code`, `clawdbot`, `codex`, `cursor`, `cursor-ide`, `droid`, `gemini`, `gemini-cli`, `gpt`, **`hermes`**, `moltbot`, `oh`, `openclaw`, `opencode`, `opentui`, `token-usage`. CLI distribuida vía cargo + homebrew.",
+        "accion_sugerida": "probar (instalar `cargo install tokscale`, correr contra sesiones propias de los últimos 7 días, comparar con `kenn-io/agentsview`; si exporta CSV importable a Obsidian, documentar en la skill `parallel-repo-explore-bulletin`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "junhoyeo/tokscale",
+          "rel": "implements",
+          "dst": "token-usage-analytics",
+          "primera_mencion": null
+        },
+        {
+          "src": "junhoyeo/tokscale",
+          "rel": "complements",
+          "dst": "steipete/CodexBar",
+          "primera_mencion": null
+        },
+        {
+          "src": "junhoyeo/tokscale",
+          "rel": "complements",
+          "dst": "kenn-io/agentsview",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "junhoyeo/tokscale",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "junhoyeo-tokscale",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "microsoft/agent-governance-toolkit",
+      "url": "https://github.com/microsoft/agent-governance-toolkit",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "toolkit Python (4.706★, MIT) con **policy enforcement, zero-trust identity, execution sandboxing, y reliability engineering** para agentes autónomos. Cubre explícitamente **OWASP Agentic Top 10** — el primer proyecto serio con badge Microsoft en este eje.",
+        "por_que_importa": "Toda conversación sobre agents en producción termina en la misma pregunta: cómo auditar, limitar y sandboxear. Este toolkit aterriza con cuatro piezas concretas: policy-as-code, identidad zero-trust para tools y recursos, sandboxing de ejecución, y un framework de reliability con SLOs y circuit breakers aplicados a agentes. Que sea Microsoft publicándolo bajo MIT y que cite explícitamente OWASP Agentic Top 10 lo convierte en el primer candidato serio a estándar de facto de governance agentic. Encaja con la cobertura del 2026-07-05 sobre `agentic-decision-systems`: el siguiente paso lógico es aterrizar la tesis abstracta en piezas reproducibles, y este toolkit es la pieza. Honesto: no podemos afirmar todavía que domine el estándar, solo que parte con la mejor posición para ello.",
+        "madurez_senales": "4.706★ · 688 forks · Python · MIT · creado 2026-03-02 · último push 2026-07-09 (hace minutos). Topics verificados: `agent-framework`, `ai-agents`, `ai-safety`, `compliance`, `governance`, `microsoft`, `owasp`, `policy-engine`, `python`, `security`, `trust`, `zero-trust`. Repositorio oficial microsoft/.",
+        "accion_sugerida": "leer (instalar en un proyecto piloto, mapear las 10 vulnerabilidades OWASP contra las skills propias de Hermes, escribir un \"OWASP Agentic Top-10 checklist para skill authors\" como nota en Obsidian; considerar incluir el toolkit en la skill `agent-skill-authoring`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/agent-governance-toolkit",
+          "rel": "implements",
+          "dst": "agent-governance-owasp",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/agent-governance-toolkit",
+          "rel": "complements",
+          "dst": "TencentCloud/CubeSandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/agent-governance-toolkit",
+          "rel": "relevant_to",
+          "dst": "agentic-decision-systems",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "microsoft/agent-governance-toolkit",
+          "rel": "relevant_to",
+          "dst": "enterprise-agent-readiness",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-agent-governance-toolkit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Robbyant/lingbot-video",
+      "url": "https://github.com/Robbyant/lingbot-video",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "modelo de **video generation + world model** basado en Mixture-of-Experts, entrenado para embodied intelligence (no solo síntesis visual). Apache-2.0, Python, 349★, debutó 2026-07-08 (hace un día). Su gemelo `lingbot-world-v2` (270★, NOASSERTION, mismo autor, mismo día) cubre \"infinite worlds with versatile interactions\".",
+        "por_que_importa": "Cambia la categoría: aquí el agente no opera sobre una página ni sobre email, sino que es la simulación. `lingbot-video` (Apache-2.0, debut 2026-07-08) entrena un modelo MoE para video generation + world model con física y navegación internas, pensado para embodied intelligence. Su gemelo `lingbot-world-v2` (NOASSERTION, mismo día) extiende a infinite worlds con interacciones versátiles, pero el license NOASSERTION es un riesgo real a auditar antes de cualquier uso en producto — recuerda el aviso del 2026-07-06 sobre `noassertion-license-risk`. Es complemento natural de `alibaba/page-agent` (cubierto el 2026-07-03), pero el ángulo es distinto: page-agent actúa sobre la web; lingbot la simula internamente. Para el lector de Código Sin Siesta, la lectura práctica es que el world model abre agentes que prueban en simulación antes de tocar producción.",
+        "madurez_senales": "`lingbot-video`: 349★ · 8 forks · Python · Apache-2.0 · creado 2026-07-08 · último push 2026-07-09. Topics: `image-to-video`, `lingbot-video`, `video-generation`, `world-models`. · `lingbot-world-v2`: 270★ · 8 forks · Python · NOASSERTION · creado 2026-07-08 · último push 2026-07-09. Sin topics.",
+        "accion_sugerida": "vigilar (esperar a que `lingbot-world-v2` clarifique licencia; auditar README de `lingbot-video` para ver si incluye inference reproducible sin GPU high-end; dejar madurar 30 días antes de explorar a fondo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Robbyant/lingbot-video",
+          "rel": "implements",
+          "dst": "embodied-world-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "Robbyant/lingbot-video",
+          "rel": "complements",
+          "dst": "alibaba/page-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "Robbyant/lingbot-world-v2",
+          "rel": "risk",
+          "dst": "noassertion-license-risk",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "Robbyant/lingbot-video",
+          "rel": "relevant_to",
+          "dst": "agentic-decision-systems",
+          "primera_mencion": "2026-07-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "robbyant-lingbot-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime Rust (7.490★, Apache-2.0) que ofrece **sandbox determinista sin red por defecto** para agentes autónomos, con soporte ONNX + CUDA para inferencia local. Diseñado para correr agentes sin filtrar datos al exterior, manteniendo latencia baja.",
+        "por_que_importa": "Cierra la categoría agent sandbox que ya tocamos dos veces: el 2026-07-02 con `TencentCloud/CubeSandbox` y el 2026-07-08 con `vercel-labs/agent-browser`. OpenShell añade lo que esos no garantizan: sandbox determinista sin red por defecto e inferencia local vía ONNX + CUDA, ambas en Rust bajo Apache-2.0. Que NVIDIA lo mantenga oficialmente le da credibilidad de stack de inferencia local — encaja con modelos tipo Nemotron. Para el lector con setup local-first (PGLite + pgvector + DeepSeek), el valor concreto sería una capa de aislamiento real sobre ese stack: el agente ejecuta sin filtrar nada al exterior. Caveat honesto: a fecha del boletín, sin topics definidos en el repo, no hay confirmación pública de integración con Hermes; solo la cercanía temática — y la cobertura previa del 2026-07-08 sobre `NousResearch/hermes-agent` — la hacen plausible.",
+        "madurez_senales": "7.490★ · 941 forks · Rust · Apache-2.0 · creado 2026-02-24 · último push 2026-07-09 (hace minutos). Sin topics definidos. Repositorio oficial NVIDIA/ — badge de marca.",
+        "accion_sugerida": "explorar (clonar, levantar el sandbox con un agente mínimo que intente acceder a la red, validar el bloqueo; auditar el binary size + consumo de RAM; comparar latencia con `TencentCloud/CubeSandbox`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "NVIDIA/OpenShell",
+          "rel": "implements",
+          "dst": "agent-sandbox-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "NVIDIA/OpenShell",
+          "rel": "complements",
+          "dst": "TencentCloud/CubeSandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "NVIDIA/OpenShell",
+          "rel": "relevant_to",
+          "dst": "local-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "NVIDIA/OpenShell",
+          "rel": "relevant_to",
+          "dst": "NousResearch/hermes-agent",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-openshell",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 6,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 0,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "6/6 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-07-07",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy cierra el flanco que faltaba para convertir 'agente que habla' en 'agente que produce y opera cosas reales': OfficeCLI produce y renderiza documentos Office sin tener Office instalado, page-agent opera GUIs web con un solo script y se integra con MCP, y shadcn/improve formaliza el patrón plan-as-product con un modelo caro que audita y uno barato que ejecuta. El hilo conductor es claro: cinco de los siete hallazgos son piezas que cierran loops concretos (renderizar Office, clickear en el navegador, producir un plan publicable, enrutarse entre 237 proveedores, o apilar 355 skills) en lugar de subir un escalón más en benchmarks. Firecrawl aparece como recordatorio incómodo de que la opción más cómoda del mercado (API managed de scraping) trae consigo una AGPL-3.0 que obliga a liberar código a cualquier wrapper SaaS, lo que obliga a comparar de verdad coste, latencia y licencia frente a OSS locales como Scrapling ya cubiertos. El día es menos 'qué modelo ganó' y más 'qué pieza operativa madura hace viable el stack agentic de un equipo pequeño'.",
+  "convergencia_stack_css": "Cuatro hallazgos de hoy encajan directamente con piezas ya conocidas del stack local-first y las líneas editoriales de Código Sin Siesta. OfficeCLI resuelve el dolor de LLMs que rompen .xlsx y .pptx tratado el 2026-07-05 al hablar de sistemas de decisión agentic, y se complementa con dream-num/univer; shadcn/improve aterriza el patrón plan-as-product sobre el agent-skills-spec del 2026-07-03 y se planta al lado de OthmanAdi/planning-with-files que ya cubrimos el 2026-07-06; TencentDB-Agent-Memory se publicita explícitamente compatible con Hermes Gateway y se postula como reemplazo del actual stack PGLite+pgvector con pipeline de 4 tiers sin APIs externas, complementando además a Graphify; y page-agent consolida la línea de 'agentes GUI en página' iniciada el 2026-07-03 junto a chrome-devtools-mcp. La línea común es reforzar el stack agentic reproducible sin ceder a SaaS opacos.",
+  "cruzado_grafo": "Se refuerzan nodos ya existentes: web-scraping-as-service (2026-07-05) con firecrawl/firecrawl como implementación canónica, D4Vinci/Scrapling como competidor OSS local, y un nodo nuevo agpl-web-service-risk que aparece por primera vez hoy ligado a la propia licencia AGPL-3.0 de Firecrawl. También se refuerzan agentic-decision-systems (2026-07-05), hermes-agent (2026-07-03), agent-skills-spec (2026-07-03), Graphify-Labs/graphify (2026-07-04), OthmanAdi/planning-with-files (2026-07-06), multi-provider-routing (2026-07-03), ChromeDevTools/chrome-devtools-mcp (2026-07-03), in-page-gui-agent (2026-07-03) y awesome-list-saturation (2026-07-05). Aparecen por primera vez sin fecha previa en el grafo los nodos office-suite-for-agents (OfficeCLI), plan-as-product (shadcn/improve), agent-gateway (OmniRoute), MCP-based-agent-memory (TencentDB-Agent-Memory) y OpenRouter como competidor referenciado. Sin primera_mencion recibida para esos cinco nodos en los datos de hoy, no les asigno fecha de cobertura previa.",
+  "tendencias_5_boletines": "El contexto de continuidad recibido cubre solo 2026-07-06 y 2026-07-05 (dos días), no cinco, así que la ventana real es de tres días consecutivos si se cuenta hoy. La tendencia que se consolida en ese tríptico es nítida: el 2026-07-05 mostró cómo se estandarizan y distribuyen skills y extensiones para coding agents, el 2026-07-06 bajó a la persistencia y coordinación del trabajo entre esos agentes, y el 2026-07-07 cierra con las piezas operativas (Office legible, GUI en página, plan-as-product, routing multi-proveedor, catálogo masivo de skills) que permiten pasar de prototipo a producto reproducible. La pieza que falta en este arco es el comparativo empírico entre estas opciones y las OSS locales ya cubiertas: todavía no hemos medido de verdad coste, latencia y calidad por scrape (Firecrawl vs Scrapling) ni por token ruteado (OmniRoute vs OpenRouter).",
+  "alertas": [
+    "Firecrawl es AGPL-3.0: cualquier servicio que ofrezca un wrapper SaaS encima queda obligado a liberar su código, riesgo legal real para quien monte producto.",
+    "TencentDB-Agent-Memory: la API de GitHub reportó la licencia como NOASSERTION mientras el README dice MIT; hay que leer el LICENSE real antes de adoptarlo como base.",
+    "TencentDB-Agent-Memory está frío: último push 2026-06-26, sin commits recientes, así que la promesa de pipeline de 4 tiers no está validada con actividad del repo.",
+    "shadcn/improve sin commits en 3 semanas: si queremos adoptarlo como skill local conviene forkearlo antes de que quede estancado.",
+    "OmniRoute promete ~1.6B tokens gratis/mes sumando tiers free y compresión RTK + Caveman del 15-95%: cifra de marketing habitual en este segmento, exige auditoría real de coste por millón de tokens y latencia p95 antes de adoptarlo.",
+    "alirezarezvani/claude-skills entra de lleno en el patrón awesome-list-saturation tratado el 2026-07-05: 355 skills curadas pueden ser más valiosas o más ruido según la curaduría interna, hay que auditar antes de heredar."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Actualizar la skill web-scraping-viability midiendo coste por scrape y latencia de Firecrawl frente a D4Vinci/Scrapling y al stack self-hosted con Playwright, dejando claro el matiz AGPL-3.0."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Leer el LICENSE real de TencentDB-Agent-Memory y clonar el repo para validar el pipeline de 4 tiers frente al stack PGLite+pgvector actual antes de proponerlo como reemplazo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Probar OfficeCLI renderizando un .pptx y un .xlsx generados por LLM para escribir un post corto sobre agentes que producen Office real, en paralelo a dream-num/univer."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Medir coste por millón de tokens y latencia p95 de OmniRoute frente al router actual antes de mover tráfico; si los 1.6B tokens gratis/mes y el 15-95% de compresión se acercan a la realidad, replantear el routing."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "page-agent consolida la categoría 'in-page GUI agent' con 892 stars/día y 24.722★ acumulados; merece mención en un próximo artículo sobre agentes GUI como alternativa OSS a Adept/Agent-E, junto a chrome-devtools-mcp."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

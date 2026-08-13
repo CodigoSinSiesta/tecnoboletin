@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-07-14",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del 2026-07-14 no presenta una sola noticia dominante: presenta la consolidación simultánea de la capa de 'agent safety & tooling' que rodea a un agente coding ya maduro. El hilo conductor es la pregunta práctica que cualquier operador de un agente local-first tiene que hacerse hoy — ¿con qué harness ejecuto al agente? — y se responde desde tres ángulos distintos pero complementarios. Por un lado, el guardado del propio shell (destructive_command_guard, ya conocido desde julio y ahora con seguimiento frente a hookify). Por otro, el switch de proveedores y frontends (cc-switch consolida su posición multi-CLI al incluir Hermes Agent explícitamente en topics). Y por último, la calidad del output que el agente produce: hallmark ataca directamente el 'AI slop' visual con 20 temas × 57 gates explícitos, mientras que github/spec-kit sube al nivel de proceso y propone Spec-Driven Development como metodología canónica para trabajar con agentes. Si el 2026-07-11 mostró el paso de piezas sueltas a sistema operativo de agente, y el 2026-07-12 mostró la maduración del ciclo de vida del skill, hoy muestra que ese sistema operativo ya tiene cinturón de seguridad, palanca de cambios y catálogo de vicios a evitar — empieza a parecer infraestructura seria, no demo.",
+  "convergencia_stack_css": "La convergencia con el stack y las líneas editoriales de CSS es hoy inusualmente densa y triple. Primero, destructive_command_guard materializa literalmente la salvaguarda que el propio SKILL de Hermes documenta ('acciones destructivas o irreversibles requieren confirmación explícita') como hook externo, así que encaja directamente con el setup local de Ibid y el perfil de seguridad de Hermes. Segundo, hallmark cierra el último hueco real del flujo de revisión visual de UI que pide CSS: ya teníamos el lado positivo (popular-web-designs con 54 sistemas reales, claude-design como sistema de patrones) y hallmark aporta la versión negativa explícita — 57 checks de 'lo que NO hacer' para evitar el AI slop; las tres vistas combinadas cubren diseñar y auditar UI con agentes sin caer en los vicios. Tercero, cc-switch consolida la rotación de proveedores/CLIs que ya estaba implícita en el setup local (Hermes, y los demás perfiles del tablero) y lo hace con UI Tauri cross-platform en lugar de un script ad-hoc. Y como cuarto elemento, github/spec-kit entra como patrón de referencia a comparar con obra/superpowers y hermes-skills para el flujo spec → plan → implement que CSS ya viene aplicando de forma artesanal.",
+  "cruzado_grafo": "Cuatro nodos del grafo quedan reforzados con `primera_mencion` real, todos del 2026-07-03: destructive_command_guard (complements → hermes-agent), cc-switch (complements → hermes-agent), github/spec-kit (complements → obra/superpowers y complements → hermes-skills). El resto de relaciones del boletín de hoy son primeras apariciones formales: el cluster agent-safety queda anclado a destructive_command_guard y a su nuevo competidor hookify; hallmark entra como primer nodo dedicado a anti-ai-slop-design y como complemento formal de popular-web-designs; cc-switch documenta por primera vez la competencia con CLIProxyAPI y ancla el nodo provider-rotation; OpenCut abre el nodo open-source-video-editing y formaliza la relación con hyperframes y con capcut; airi documenta por primera vez el cluster ai-companion-space y la competencia con neuro-sama. En resumen: el grafo de hoy no descubre territorio nuevo, pero cierra relaciones que estaban implícitas — sobre todo el triángulo destructive_command_guard / hookify / hermes-agent en seguridad y el triángulo hallmark / popular-web-designs / claude-design en calidad de UI.",
+  "tendencias_5_boletines": "Con solo dos boletines previos en el contexto recibido (2026-07-11 y 2026-07-12), no hay base para hablar de 'tendencias a 5 boletines' y no voy a inventarlas. Lo que sí se observa con honestidad es que la línea editorial de CSS lleva tres días consecutivos hablando del mismo bloque temático — el sistema operativo del agente coding — desde tres planos complementarios: el 07-11 mostró las capas visibles alrededor del runtime (memoria estructural, multi-provider, skills), el 07-12 mostró el ciclo de vida del skill como objeto distribuible y metodología, y el 07-14 muestra la infraestructura de seguridad, switching y calidad de output que hace a ese sistema utilizable en producción. Es pronto para declararlo tendencia, pero la repetición del foco en tres días sugiere que el ecosistema ha pasado de la fase de 'mirar qué hace cada pieza' a la fase de 'mirar cómo se opera un agente sin quemarse' — y CSS está siguiendo esa curva.",
+  "alertas": [
+    "cc-switch: 475★ en un día y 116.965★ totales — el total acumulado en un año es engañoso si se lee como tracción actual; leer con cautela, el crecimiento de hoy puede ser reflejo del ruido alrededor del multi-provider-switching.",
+    "destructive_command_guard: ya cubierto en el boletín del 2026-07-03; lo de hoy es seguimiento frente a hookify, no primicia — no presentarlo como novedad absoluta.",
+    "airi: el repo es OSS maduro en comunidad (42k★ totales) pero hoy no está en pico (78★) y el segmento AI-companion/vtuber no está en hoja de ruta de CSS; vigilar sin priorizar.",
+    "github/spec-kit: es repo oficial de la org `github`, lo que le da peso, pero el flujo Spec-Driven Development todavía tiene que validarse contra obra/superpowers y contra el flujo artesanal que CSS ya aplica — no adoptarlo por el pedigree."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "Combinar hallmark (57 gates anti-AI-slop) con popular-web-designs y claude-design da la triple cobertura diseñar/auditar que CSS necesita para la línea editorial de UI con agentes; el resumen editorial del día ya lo deja hecho."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Comparar github/spec-kit con obra/superpowers y con el flujo artesanal que CSS ya aplica (hermes-skills) para decidir qué importar, qué reinventar y qué dejar fuera — es el ejercicio de referencia del sector ahora mismo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "El frente real hoy no es destructive_command_guard (ya cubierto) sino hookify como competidor directo en el nicho de hook pre/post-exec para agentes; seguir de cerca cuál de los dos se impone."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "cc-switch incluye Hermes Agent explícitamente en sus topics y compite con CLIProxyAPI en el nicho de provider-rotation; si consolida tracción, conviene evaluar si reemplaza o complementa el setup manual actual de Ibid."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "OpenCut como substrate maduro (Next.js + desktop, alternativa a CapCut) sobre el que un agente podría orquestar cortes; anclar formalmente el nodo open-source-video-editing en el grafo junto a hyperframes abre la puerta a un futuro taller de edición asistida."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,449 @@
+{
+  "version": 2,
+  "date": "2026-07-30",
+  "boletin_origen": "2026-07-30-trending.md",
+  "resumen_ejecutivo": "- **drumih/turbo-fieldfare** corre Gemma 4 26B-A4B en ~2 GB de RAM sobre Apple Silicon: el techo de \"local-first LLM\" baja otro escalón y abre Macs de 8 GB a modelos MoE de 26B.\n- **alibaba/open-code-review** abre el código de su code-review interno: arquitectura híbrida (pipelines deterministas + agente LLM), OpenSSF Silver y benchmark declarado (1/9 de tokens frente a Claude Code con más precisión). Densidad de señal industrial muy alta.\n- **block/buzz** plantea un workspace humano+agente sobre un relay Nostr: cada mensaje, PR, run y aprobación es un evento firmado; auditable por construcción.\n- **1jehuang/jcode** se posiciona como \"el harness más eficiente en RAM\" (Rust, MIT) y entra al cuadrante competitivo de `earendil-works/pi`, `stablyai/orca` y los CLIs de Anthropic/OpenAI.\n- **different-ai/openwork** publica la alternativa open source a Claude Cowork con un MCP remoto; tiene `ee/` con licencia Fair Source, así que la parte comunitaria (MIT) y la empresarial están separadas. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "drumih/turbo-fieldfare",
+      "url": "https://github.com/drumih/turbo-fieldfare",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime nativo Swift + Metal para Gemma 4 26B-A4B con presupuesto de ~2 GB de RAM, incluyendo una app macOS, CLI y servidor local compatible OpenAI.",
+        "por_que_importa": "El truco no es solo comprimir el modelo, sino el streaming selectivo de expertos desde SSD mientras el core compartido (1,35 GB) y la KV-cache FP16 se quedan en RAM. Cualquier Mac M-series de 8 GB ejecuta un MoE de 26B. Para Código Sin Siesta es material de un artículo sobre \"local-first a coste cero\": demuestra que el límite de memoria se mueve cuando se reescribe el runtime en lugar de encadenar librerías genéricas. En el grafo ya compite directamente con `llama.cpp` desde el boletín del 2026-07-21, y frente a `MLX` (de Apple, sin fecha de primera mención aún en el grafo) marca una frontera interesante: aquí la eficiencia sale de mover I/O a SSD, no de atajos de cuantización.",
+        "madurez_senales": "1.402 estrellas · 45 forks · Swift · creado 2026-07-17 · último push 2026-07-29 · Apache-2.0 · descripción oficial: \"Gemma 4 26B-A4B inference in ~2 GB of RAM on any M-series MacBook\" · topics: `apple-silicon`, `gemma`, `gemma4-26b-a4b`, `gpgpu`, `local-ai`, `macos`, `metal`, `on-device-llm`, `swift` · 9 issues abiertos · repo de 2 MB (sólo código; los pesos se descargan aparte).",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "turbo-fieldfare",
+          "rel": "competes_with",
+          "dst": "MLX",
+          "primera_mencion": null
+        },
+        {
+          "src": "turbo-fieldfare",
+          "rel": "competes_with",
+          "dst": "llama.cpp",
+          "primera_mencion": "2026-07-21"
+        },
+        {
+          "src": "turbo-fieldfare",
+          "rel": "enables",
+          "dst": "local-first-26b-on-8gb-mac",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "drumih-turbo-fieldfare",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI/Go de code review que lee diffs, monta contexto con tool-use y devuelve comentarios con precisión de línea. Arquitectura híbrida: pipelines determinísticos + agente LLM.",
+        "por_que_importa": "Alibaba abrió tras dos años en producción interna con \"decenas de miles de developers y millones de defectos detectados\". El README declara ~1/9 de tokens vs Claude Code con mayor precisión y F1. OpenSSF Silver y pipeline de release CI con npm `@alibaba-group/open-code-review`. Encaja con la tesis \"code-review como skill programable\" y conecta con `openai/codex-security` por la superficie competida. El grafo ya sitúa `agentic-code-review` desde el 2026-07-24 como categoría con varias implementaciones; Open Review entra como la referencia a batir en escala industrial (más de 16k estrellas en poco más de dos meses), y los nodos `coding-agents` y la pugna con codex-security también quedaron fijados ese mismo día, así que lo nuevo aquí es la cifra de adopción, no el marco.",
+        "madurez_senales": "16.235 estrellas · 1.095 forks · Go · creado 2026-05-18 · último push 2026-07-30 · Apache-2.0 · descripción oficial: \"Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in fine-tuned ruleset (NPE, thread-...)\" · topics: `agent`, `agent-skills`, `code-review`, `code-review-assistant`, `harness`, `repository-level-context` · 65 issues abiertos · 47 MB de repo.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "implements",
+          "dst": "agentic-code-review",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "competes_with",
+          "dst": "openai/codex-security",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "relevant_to",
+          "dst": "coding-agents",
+          "primera_mencion": "2026-07-24"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-open-code-review",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "block/buzz",
+      "url": "https://github.com/block/buzz",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "workspace self-hostable donde humanos y agentes comparten los mismos canales, sobre un relay Nostr. Todo evento (mensaje, reacción, workflow, aprobación, git event) es un evento firmado en un log.",
+        "por_que_importa": "redefine \"audit trail\" para equipos mixtos: la identidad de cada actor es una keypair, humanos y agentes tienen la misma superficie (canales, canvas, workflows, huddles) y el log es a la vez chat, repo y workflow. Apunta al problema que el resto resuelve con dos bases de datos separadas.",
+        "madurez_senales": "17.499 estrellas · 1.675 forks · Rust · creado 2026-03-06 · último push 2026-07-30 · Apache-2.0 · descripción oficial: \"A hive mind communication platform\" · 1.118 issues abiertos · 442 MB de repo · homepage no declarada. La densidad de issues (6,4 % vs estrellas) sugiere adopción real con deuda técnica a la vista.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "block/buzz",
+          "rel": "implements",
+          "dst": "human-agent-workspace",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "block/buzz",
+          "rel": "uses",
+          "dst": "Nostr",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "block/buzz",
+          "rel": "competes_with",
+          "dst": "slack-discord-teams",
+          "primera_mencion": "2026-07-24"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "block-buzz",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "1jehuang/jcode",
+      "url": "https://github.com/1jehuang/jcode",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "harness de coding agent en Rust que se promociona como \"el más eficiente en RAM\" del segmento. CLI multiplataforma (Linux/macOS/Windows) con instalador propio y TUI.",
+        "por_que_importa": "entra al cuadrilátero `pi` (TypeScript, MIT) / `Orca` (TypeScript, YC) / `OpenCode` (Go) / `jcode` (Rust). La promesa explícita de eficiencia en memoria lo convierte en candidato natural para correr agentes en hardware modesto o en paralelo, justo el lado que Hermes no cubre como runtime.",
+        "madurez_senales": "13.655 estrellas · 1.498 forks · Rust · creado 2026-01-05 · último push 2026-07-30 · MIT · descripción oficial: \"The most RAM efficient harness\" · topics: `ai`, `ai-agent`, `ai-coding-agent`, `claude`, `cli`, `coding-agent`, `llm`, `mcp`, `openai`, `rust`, `terminal`, `tui` · 166 issues abiertos · 444 MB de repo · homepage https://jcode.sh.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "1jehuang/jcode",
+          "rel": "competes_with",
+          "dst": "earendil-works/pi",
+          "primera_mencion": "2026-07-20"
+        },
+        {
+          "src": "1jehuang/jcode",
+          "rel": "competes_with",
+          "dst": "stablyai/orca",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "1jehuang/jcode",
+          "rel": "implements",
+          "dst": "ram-efficient-coding-harness",
+          "primera_mencion": "2026-07-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1jehuang-jcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "different-ai/openwork",
+      "url": "https://github.com/different-ai/openwork",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "desktop app open source como alternativa a Claude Cowork/Codex, con un MCP remoto (`api.openworklabs.com/mcp/agent`) que expone `search_capabilities` y `execute_capability` para reutilizar skills/MCPs/conexiones entre agentes.",
+        "por_que_importa": "empaqueta el patrón \"una capability, muchos agentes\" en una SaaS + cliente open source, apuntando al hueco que `oomol-lab/open-connector` cubre para integraciones. Buena base para un artículo de \"tu segundo cerebro de skills, fuera del harness\".",
+        "madurez_senales": "18.177 estrellas · 1.865 forks · TypeScript · creado 2026-01-14 · último push 2026-07-30 · MIT para el contenido fuera de `/ee` (Fair Source en `/ee`) · descripción oficial: \"The open-source alternative to Claude Cowork (powered by opencode)\" · 406 issues abiertos · 278 MB de repo · homepage https://openworklabs.com. **Licencia mixta**: el LICENSE confirma MIT + Fair Source en `/ee`, lo que NO es open source estricto.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "different-ai/openwork",
+          "rel": "complements",
+          "dst": "oomol-lab/open-connector",
+          "primera_mencion": "2026-07-29"
+        },
+        {
+          "src": "different-ai/open-work",
+          "rel": "relevant_to",
+          "dst": "multi-agent-workflows",
+          "primera_mencion": null
+        },
+        {
+          "src": "different-ai/openwork",
+          "rel": "risk",
+          "dst": "fair-source-ee-tier",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "different-ai-openwork",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "zhaoxuya520/reverse-skill",
+      "url": "https://github.com/zhaoxuya520/reverse-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill router en PowerShell para tareas de reversing, pentesting y seguridad: cuando un agente encuentra un APK, binario, JS ofuscado o target CTF, enruta a la metodología, valida herramientas y ejecuta un workflow reproducible en lugar de improvisar comandos.",
+        "por_que_importa": "demuestra que el patrón \"skills como enrutador + herramienta de auto-mejora\" funciona para dominios sensibles y no solo para código. Trae un `README_AI.md` dedicado a agentes (patrón Anthropic Agent Skills oficial), 9 skills y operaciones estructuradas con field-journal.",
+        "madurez_senales": "9.519 estrellas · 1.461 forks · PowerShell · creado 2026-05-13 · último push 2026-07-25 · MIT · descripción oficial: \"Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack\" · topics: `agent`, `agent-skills`, `code-review`, `pentesting` (vía Trendshift keywords) · 6 issues abiertos · 7,6 MB de repo.",
+        "accion_sugerida": "**leer**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "zhaoxuya520/reverse-skill",
+          "rel": "implements",
+          "dst": "skill-router-pattern",
+          "primera_mencion": null
+        },
+        {
+          "src": "zhaoxuya520/reverse-skill",
+          "rel": "relevant_to",
+          "dst": "security-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "zhaoxuya520/reverse-skill",
+          "rel": "complements",
+          "dst": "obra/superpowers",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhaoxuya520-reverse-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "virgiliojr94/book-to-skill",
+      "url": "https://github.com/virgiliojr94/book-to-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "convierte cualquier PDF técnico en un skill de Claude Code listo para estudiar; candidato a instalar como flujo complementario a las skills de Hermes",
+        "por_que_importa": "",
+        "madurez_senales": "13.171 estrellas, último push 2026-07-27, Python, MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "virgiliojr94-book-to-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "SDK + CLI oficial de OpenAI para análisis de seguridad con Codex; ya cubierto el 2026-07-29 pero el push de hoy confirma tracción",
+        "por_que_importa": "",
+        "madurez_senales": "5.394 estrellas, último push 2026-07-30, TypeScript, Apache-2.0",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-codex-security",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "kvcache-ai/AgentENV",
+      "url": "https://github.com/kvcache-ai/AgentENV",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "plataforma distribuida que ejecuta entornos Firecracker a escala; powers el RL de Kimi K3 y enlaza con el stack RL/agentic infra",
+        "por_que_importa": "",
+        "madurez_senales": "2.366 estrellas, último push 2026-07-30, Rust, MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kvcache-ai-agentenv",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "huggingface/speech-to-speech",
+      "url": "https://github.com/huggingface/speech-to-speech",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "toolkit para construir voice agents locales con modelos open source; conecta con VibeVoice de Microsoft por la superficie TTS/ASR",
+        "por_que_importa": "",
+        "madurez_senales": "8.070 estrellas, último push 2026-07-29, Python, Apache-2.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "huggingface-speech-to-speech",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "paperswithbacktest/awesome-systematic-trading",
+      "url": "https://github.com/paperswithbacktest/awesome-systematic-trading",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "lista curada para trading sistemático; estrellas sin push reciente = repo awesome-list puro, no base de código adoptable",
+        "por_que_importa": "",
+        "madurez_senales": "10.556 estrellas, último push 2025-01-22, Python, sin licencia declarada",
+        "accion_sugerida": "ignorar — (no verificado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paperswithbacktest-awesome-systematic-tr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "maderix/ANE",
+      "url": "https://github.com/maderix/ANE",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "entrenar redes neuronales sobre el Apple Neural Engine usando APIs privadas reverse-engineered; interesante pero sin movimiento desde marzo y riesgo legal",
+        "por_que_importa": "",
+        "madurez_senales": "7.187 estrellas, último push 2026-03-10, Objective-C, MIT",
+        "accion_sugerida": "ignorar — (no verificado más allá de la API)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maderix-ane",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "oomol-lab/open-connector",
+      "url": "https://github.com/oomol-lab/open-connector",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "gateway OAuth para 1000+ SaaS vía SDK/CLI/MCP/OpenAPI; ya cubierto en 2026-07-29, pero el push activo lo mantiene en vigilancia",
+        "por_que_importa": "",
+        "madurez_senales": "3.471 estrellas, último push 2026-07-30, TypeScript, Apache-2.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oomol-lab-open-connector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "2/6 items reescritos; rechazados por longitud sospechosa: [2, 3, 4, 5]; faltantes en respuesta: [2, 3, 4, 5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

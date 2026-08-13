@@ -1,0 +1,334 @@
+{
+  "version": 2,
+  "date": "2026-07-29",
+  "boletin_origen": "2026-07-29-trending.md",
+  "resumen_ejecutivo": "- **Open Connector** convierte OAuth y más de 1.000 integraciones SaaS en infraestructura consumible por agentes mediante SDK, CLI, MCP, HTTP y OpenAPI; es la pieza más aplicable del día.\n- **Codex Security** abre una superficie oficial de SDK y CLI para análisis de seguridad con Codex: aún joven, pero con señal fuerte por autoría y actividad.\n- **hubble.md** propone un bloc Markdown compartido entre humano y agentes; conecta directamente con el stack local-first y Obsidian.\n- **GeoLibre** lleva GIS cloud-native a navegador, escritorio, móvil y Jupyter usando DuckDB/MapLibre; **OpenMontage** empaqueta producción audiovisual agentic, aunque su AGPL exige cuidado. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "oomol-lab/open-connector",
+      "url": "https://github.com/oomol-lab/open-connector",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway de autenticación open source que conecta más de 1.000 SaaS con agentes por SDK, CLI, MCP, HTTP y OpenAPI.",
+        "por_que_importa": "resuelve la parte menos vistosa y más frágil de los agentes —OAuth, secretos e integraciones— sin obligar a construir conectores uno a uno.",
+        "madurez_senales": "3.441 estrellas · 275 forks · TypeScript · creado 2026-06-29 · último push 2026-07-29 · Apache-2.0 · descripción oficial: gateway de autenticación para conectar proveedores SaaS con agentes · topics: `oauth`, `mcp`, `openapi`, `self-hosted`, `cloudflare-workers`, `ai-agents`.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "open-connector",
+          "rel": "implements",
+          "dst": "agent-integration-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "open-connector",
+          "rel": "complements",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "open-connector",
+          "rel": "uses",
+          "dst": "MCP",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oomol-lab-open-connector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "SDK y CLI oficiales para Codex Security.",
+        "por_que_importa": "indica que el análisis de seguridad se consolida como producto programable del coding agent, no solo como prompt o revisión manual.",
+        "madurez_senales": "2.855 estrellas · 150 forks · TypeScript · creado 2026-07-13 · último push 2026-07-29 · Apache-2.0 · descripción oficial: SDKs y CLI para Codex Security · topics: ninguno declarado.",
+        "accion_sugerida": "**probar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "openai/codex-security",
+          "rel": "implements",
+          "dst": "agentic-security-analysis",
+          "primera_mencion": null
+        },
+        {
+          "src": "openai/codex-security",
+          "rel": "complements",
+          "dst": "NVIDIA/SkillSpector",
+          "primera_mencion": "2026-07-27"
+        },
+        {
+          "src": "openai/codex-security",
+          "rel": "relevant_to",
+          "dst": "coding-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-codex-security",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "bholmesdev/hubble.md",
+      "url": "https://github.com/bholmesdev/hubble.md",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "bloc Markdown diseñado para que una persona y sus agentes trabajen sobre las mismas notas.",
+        "por_que_importa": "aterriza una interfaz simple para memoria compartida, compatible conceptualmente con Obsidian y flujos local-first, sin introducir otra base de datos opaca.",
+        "madurez_senales": "923 estrellas · 56 forks · TypeScript · creado 2026-02-17 · último push 2026-07-28 · MIT · descripción oficial: bloc de notas para ti y tus agentes · topics: `markdown`, `note-taking`.",
+        "accion_sugerida": "**probar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "hubble.md",
+          "rel": "implements",
+          "dst": "human-agent-shared-notes",
+          "primera_mencion": null
+        },
+        {
+          "src": "hubble.md",
+          "rel": "complements",
+          "dst": "Obsidian",
+          "primera_mencion": null
+        },
+        {
+          "src": "hubble.md",
+          "rel": "complements",
+          "dst": "agent-long-term-memory",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bholmesdev-hubble-md",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "opengeos/GeoLibre",
+      "url": "https://github.com/opengeos/GeoLibre",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma GIS ligera y cloud-native que funciona en navegador, escritorio, móvil y notebooks Jupyter.",
+        "por_que_importa": "combina DuckDB, MapLibre y Tauri en una herramienta geoespacial portable; buen caso práctico de análisis local y UI multiplataforma.",
+        "madurez_senales": "3.588 estrellas · 404 forks · TypeScript · creado 2026-05-27 · último push 2026-07-29 · MIT · descripción oficial: visualización, exploración y análisis geoespacial multiplataforma · topics: `duckdb`, `geospatial`, `maplibre`, `tauri-app`, `data-science`.",
+        "accion_sugerida": "**leer**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "GeoLibre",
+          "rel": "uses",
+          "dst": "DuckDB",
+          "primera_mencion": null
+        },
+        {
+          "src": "GeoLibre",
+          "rel": "uses",
+          "dst": "MapLibre",
+          "primera_mencion": null
+        },
+        {
+          "src": "GeoLibre",
+          "rel": "enables",
+          "dst": "local-first-geospatial-analysis",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opengeos-geolibre",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema agentic de producción de vídeo con 12 pipelines, más de 100 herramientas y cientos de skills/conocimientos de producción.",
+        "por_que_importa": "es un ejemplo extremo de \"skills como producto\": convierte asistentes de código en un estudio multimedia y permite estudiar cómo se empaqueta conocimiento operacional.",
+        "madurez_senales": "43.539 estrellas · 5.241 forks · Python · creado 2026-03-29 · último push 2026-07-24 · AGPL-3.0 · descripción oficial: sistema open source de producción de vídeo agentic · topics: `agentic-ai`, `ffmpeg`, `remotion`, `text-to-video`, `video-production`.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "OpenMontage",
+          "rel": "implements",
+          "dst": "agentic-video-production",
+          "primera_mencion": null
+        },
+        {
+          "src": "OpenMontage",
+          "rel": "uses",
+          "dst": "agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "OpenMontage",
+          "rel": "risk",
+          "dst": "AGPL-service-obligations",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "calesthio-openmontage",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "mshumer/Claude-of-Duty",
+      "url": "https://github.com/mshumer/Claude-of-Duty",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "FPS en Three.js generado desde un único prompt; interesante como artefacto para auditar el límite entre demo viral y software mantenible.",
+        "por_que_importa": "",
+        "madurez_senales": "1.939 estrellas, último push 2026-07-25, JavaScript",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mshumer-claude-of-duty",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "hello245m/free-stockdb",
+      "url": "https://github.com/hello245m/free-stockdb",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "motor local-first para datos diarios/minuto de",
+        "por_que_importa": "",
+        "madurez_senales": "1.511 estrellas, último push 2026-07-26, HTML",
+        "accion_sugerida": "es A y ETF, con caché, backtesting, indicadores y MCP — Acción: **vigilar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hello245m-free-stockdb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "versenilvis/IRIS",
+      "url": "https://github.com/versenilvis/IRIS",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "autocompletado de shell pequeño y con licencia 0BSD; posible componente ligero para terminales agentic.",
+        "por_que_importa": "",
+        "madurez_senales": "339 estrellas, último push 2026-07-28, Go",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "versenilvis-iris",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "diplukdas/LinkMap",
+      "url": "https://github.com/diplukdas/LinkMap",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "directorio curado de recursos web; licencia no declarada en API, por lo que no conviene adoptarlo como dependencia.",
+        "por_que_importa": "",
+        "madurez_senales": "30 estrellas, último push 2026-07-28, TypeScript",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diplukdas-linkmap",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 9,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 4,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "9/9 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

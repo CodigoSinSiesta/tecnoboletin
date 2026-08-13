@@ -1,0 +1,394 @@
+{
+  "version": 2,
+  "date": "2026-07-02",
+  "boletin_origen": "2026-07-02-trending.md",
+  "resumen_ejecutivo": "- **langchain-ai/openwiki** (519★, TS, MIT, 10 días de vida): CLI de LangChain que escribe y mantiene documentación auto-organizada para que tu coding agent la consuma vía CLAUDE.md/AGENTS.md. Reordenará cómo los proyectos distribuyen contexto a agentes.\n- **openai/codex-plugin-cc** (22.175★, JS, Apache-2.0): el \"Codex desde Claude Code\" de OpenAI destapa el patrón *cross-model peer review* — delegas tareas/reviews entre dos coding agents. Compatible con Hermes vía MCP-like setup.\n- **TencentCloud/CubeSandbox** (6.921★, Rust, NOASSERTION, push 2026-07-02): sandbox para correr AI agents de forma aislada, concurrente y ligera. Encaja con cualquier stack de multi-agente que ejecute código no confiable.\n- **allenai/olmocr** (18.413★, Python, Apache-2.0): toolkit de Ai2 para linearizar PDFs para datasets y training LLM. Si CSS quiere ingestar PDFs en el pipeline de conocimiento, esta es la referencia a estudiar.\n- **Deep dive completado: DeusData/codebase-memory-mcp** (v0.8.1, C/C++ MIT): 14 MCP tools, Hybrid LSP para 9 lenguajes, paper arXiv, SLSA 3, RAM-first con mimalloc+LZ4 → SQLite mmap. **No reemplaza Graphify, lo complementa**: Graphify extrae semántica con LLM; codebase-memory-mcp da estructura rápida sin LLM.\nFuentes consultadas: Trendshift daily (30 repos), GitHub Trending daily (15 repos), GitHub API para verificación (14 repos), blogwatcher del 2026-07-02 (descartado para evitar duplicación).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "1. langchain-ai/openwiki",
+      "url": "https://github.com/langchain-ai/openwiki",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI de LangChain que genera, mantiene y refresca documentación de tu codebase pensada específicamente para que coding agents (Claude Code, Codex, Gemini, etc.) la consuman vía `CLAUDE.md`/`AGENTS.md`.",
+        "por_que_importa": "Conecta con el pipeline de artículos y notas. Si una herramienta automática mantiene un `openwiki/` actualizado por repo, los coding agents dejan de alucinar sobre el código y empiezan a citar docs vivas. Es un habilitador de agentes con memoria de proyecto sin RAG pesado.",
+        "madurez_senales": "519★ · 39 forks · TypeScript · MIT · creado 2026-06-22 · último push 2026-07-01 · 13 issues abiertos · topics: ninguno todavía (proyecto recién nacido) · soporta OpenRouter, Fireworks, Baseten, OpenAI, Anthropic; modelos predefinidos GLM 5.2, Kimi K2.6, Sonnet 5.",
+        "accion_sugerida": "**explorar** — buen candidato para clonar, generar docs de `~/proyectos/codigosinsiesta` y validar si la salida engancha bien con las skills de Hermes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "langchain-ai/openwiki",
+          "rel": "implements",
+          "dst": "agent-targeted-docs",
+          "primera_mencion": null
+        },
+        {
+          "src": "langchain-ai/openwiki",
+          "rel": "implements",
+          "dst": "agent-skills-distribution",
+          "primera_mencion": null
+        },
+        {
+          "src": "langchain-ai/openwiki",
+          "rel": "complements",
+          "dst": "humanlayer/12-factor-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1-langchain-ai-openwiki",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "2. openai/codex-plugin-cc",
+      "url": "https://github.com/openai/codex-plugin-cc",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plugin oficial de OpenAI para usar Codex (CLI) desde Claude Code: reviews, delegación de subtareas y peer review entre modelos.",
+        "por_que_importa": "El patrón de segunda opinión cross-model encaja directo con cómo ya trabajas: cuando Claude Sonnet 5 o DeepSeek V4 cierran una decisión de arquitectura, pedir a Codex que revise el mismo PR (o al revés) es exactamente el flujo que este plugin cablea. Y a nivel de Hermes abre una puerta interesante: en lugar de atar la orquestación a un único proveedor, podemos tratar Codex y Claude Code como pares revisables. Nota práctica: los 259 issues abiertos sugieren fricción real de instalación entre ambos CLIs — antes de meterlo en producción conviene probar en una rama limpia.",
+        "madurez_senales": "22.175★ · 1.354 forks · JavaScript · Apache-2.0 · creado 2026-03-30 · último push 2026-06-23 · 259 issues abiertos. (Verificado vía GitHub API; ojo: muchos issues — puede indicar friction de instalación entre ambos CLIs.)",
+        "accion_sugerida": "**vigilar** — todavía joven y con issues de adopción, pero el patrón es correcto. Probar cuando baje el contador de issues abiertos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "openai/codex-plugin-cc",
+          "rel": "enables",
+          "dst": "multi-provider-routing",
+          "primera_mencion": null
+        },
+        {
+          "src": "openai/codex-plugin-cc",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "2-openai-codex-plugin-cc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "3. TencentCloud/CubeSandbox",
+      "url": "https://github.com/TencentCloud/CubeSandbox",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sandbox en Rust \"instant, concurrent, secure, lightweight\" para AI agents que aísla la ejecución de código generado por LLM.",
+        "por_que_importa": "Cubre un hueco concreto del grafo local: hoy, si delegas en un agent remoto y le pides que ejecute un script Python o un parser efímero, ese código corre con tus permisos sobre el host. Un sandbox en Rust con foco en AI agents es la pieza que falta para que Hermes (o cualquier agent que orquestes) pueda ejecutar código generado por LLM sin comprometer la máquina. Caveat editorial: la licencia está marcada como NOASSERTION en GitHub — antes de redistribuir o incluir el binario en otro proyecto hay que leer el LICENSE file real; no es un detalle menor para un toolkit open source.",
+        "madurez_senales": "6.921★ · 575 forks · Rust · licencia NOASSERTION (verificar con LICENSE file si importa para redistribución) · creado 2026-04-10 · último push 2026-07-02 · 96 issues abiertos · topics: agents, container, sandbox · homepage: https://cubesandbox.com.",
+        "accion_sugerida": "**vigilar** — alternativa china al stack de sandboxes occidentales (Firecracker, gVisor). Marcar para comparar cuando alguien pida sandbox en el grafo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "TencentCloud/CubeSandbox",
+          "rel": "implements",
+          "dst": "agent-sandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "TencentCloud/CubeSandbox",
+          "rel": "relevant_to",
+          "dst": "parallel-agents-orchestration",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "3-tencentcloud-cubesandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "4. allenai/olmocr",
+      "url": "https://github.com/allenai/olmocr",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Toolkit del Allen AI Institute para linearizar PDFs a texto optimizado para entrenar o servir LLMs.",
+        "por_que_importa": "Si en algún momento quieres ingestar papers de arXiv, PDFs de libros técnicos o documentación interna dentro del pipeline de knowledge graph (PGLite + pgvector), olmocr es probablemente el extractor más maduro en open source para esa capa: linealiza PDFs a texto optimizado para entrenar o servir LLMs, y sustituye la tubería clásica pdfplumber/PyPDF2 con un modelo que entiende layout y orden de lectura. Encaja especialmente bien con el flujo css-articulos → graphify, donde hoy la ingestión de PDF es el eslabón más frágil. Es de Allen AI Institute (los mismos de OLMo), lo cual da confianza razonable sobre mantenimiento a medio plazo.",
+        "madurez_senales": "18.413★ · 1.515 forks · Python · Apache-2.0 · creado 2024-09-17 · último push 2026-03-25 · 82 issues abiertos · sin topics declarados (irónico).",
+        "accion_sugerida": "**leer** — paper/repo serio. No es trending nuevo, pero su presencia constante en GH Trending + reciente anuncio de OpenAI `GeneBench-Pro` sugiere que la comunidad LLM sigue dándole vueltas a la ingestión de PDF.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "allenai/olmocr",
+          "rel": "implements",
+          "dst": "pdf-ingestion-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "allenai/olmocr",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": null
+        },
+        {
+          "src": "allenai/olmocr",
+          "rel": "complements",
+          "dst": "graphify",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "4-allenai-olmocr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Deep dive",
+      "url": "https://github.com/DeusData/codebase-memory-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MCP server de code intelligence en C/C++ que indexa codebases en un grafo persistente (SQLite con mmap) usando tree-sitter para 158 lenguajes y Hybrid LSP para 9, y expone 14 tools MCP sobre stdio en un único binario estático.",
+        "por_que_importa": "Aporta algo que Graphify no da: indexación rápida de codebases en un grafo persistente (SQLite con mmap) sin pasar por LLM, gracias a tree-sitter para 158 lenguajes y Hybrid LSP para 9. Expone 14 tools MCP sobre stdio desde un único binario estático — entre ellas index_repository, search_graph, query_graph, trace_path, get_code_snippet, get_architecture, search_code, list_projects, manage_adr e ingest_traces, que son justo las primitivas que faltan para que un coding agent navegue un repo sin releerlo entero cada vez. El paper asociado está en arXiv:2603.27277 y el repo lleva SLSA 3 + OpenSSF Scorecard, con 5.604 tests y v0.8.1 ya publicado. Importante entender el encaje: Graphify extrae semántica con LLM y codebase-memory-mcp da estructura rápida sin LLM; son ortogonales, no sustitutivos — combinarlos da grafo + semántica, que es justo el sweet spot para coding agents.",
+        "madurez_senales": "22.713★ · 1.643 forks · C/C++ (proyecto), MIT · v0.8.1 · 5.613 LOC src (sin contar 381k LOC vendored: tree-sitter, sqlite3, mimalloc, yyjson) · último push 2026-07-01.",
+        "accion_sugerida": "**probar** — instalar en un proyecto piloto pequeño (sugerencia: `~/proyectos/codigosinsiesta` o cualquier repo de prueba) para validar indexado real en TS/Rust y comparar latencia con Graphify. Deep dive completo en `~/proyectos/codebase-memory-mcp/SKILL_REPORT.md` (pendiente de generar; notas en `/tmp/cbm_summary.json`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "implements",
+          "dst": "MCP-based-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "complements",
+          "dst": "graphify",
+          "primera_mencion": null
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "implements",
+          "dst": "mcp-registry",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deep-dive",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "JuliusBrussee/caveman",
+      "url": "https://github.com/JuliusBrussee/caveman",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Claude Code skill/plugin que hace que el agente responda \"como cavernícola\": corta ~75% de tokens de salida manteniendo precisión técnica. Meme con carga útil: la compresión es solo de la salida, no del input, así que es complementaria (no rival) a la prefix-cache de dao-code.",
+        "por_que_importa": "",
+        "madurez_senales": "79.203★, push 2026-06-12, JavaScript, MIT",
+        "accion_sugerida": "vigilar — (riesgo: respuestas menos explicativas pueden romper tareas largas)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "juliusbrussee-caveman",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "DayuanJiang/next-ai-draw-io",
+      "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "App Next.js que integra IA con draw.io para crear, modificar y mejorar diagramas con prompts. Útil si CSS publica artículos con arquitectura visual.",
+        "por_que_importa": "",
+        "madurez_senales": "32.634★, push 2026-07-02, TypeScript, Apache-2.0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dayuanjiang-next-ai-draw-io",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "yorukot/superfile",
+      "url": "https://github.com/yorukot/superfile",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "File manager TUI moderno (bubbletea). Alternativa a `ranger`/`nnn` con esteroides.",
+        "por_que_importa": "",
+        "madurez_senales": "17.978★, push 2026-07-01, Go, MIT",
+        "accion_sugerida": "probar — si te molestan los TUI actuales",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yorukot-superfile",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "erincatto/box3d",
+      "url": "https://github.com/erincatto/box3d",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Motor de física 3D para juegos del autor de Box2D. Genérico, no toca CSS pero sólido como referencia técnica.",
+        "por_que_importa": "",
+        "madurez_senales": "1.378★, push 2026-07-02, C, MIT",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "erincatto-box3d",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "rommapp/romm",
+      "url": "https://github.com/rommapp/romm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Manager self-hosted de ROMs retro. Solo si te interesa el nicho.",
+        "por_que_importa": "",
+        "madurez_senales": "9.280★, push 2026-07-02, Python, AGPL-3.0",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rommapp-romm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Mai-with-u/MaiBot",
+      "url": "https://github.com/Mai-with-u/MaiBot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Bot QQ chino basado en LLM.",
+        "por_que_importa": "",
+        "madurez_senales": "5.305★, push 2026-07-02, Python, GPL-3.0",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mai-with-u-maibot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "op7418/guizang-social-card-skill",
+      "url": "https://github.com/op7418/guizang-social-card-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Claude/Codex skill para generar carousels Xiaohongshu/WeChat. Nicho chino, licencias copyleft fuertes.",
+        "por_que_importa": "",
+        "madurez_senales": "4.356★, push 2026-07-01, HTML, AGPL-3.0",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "op7418-guizang-social-card-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/5 items reescritos; rechazados por longitud sospechosa: [0]; faltantes en respuesta: [0]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

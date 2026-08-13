@@ -1,0 +1,48 @@
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-agentgateway-agentgateway", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-agentgateway-agentgateway", "dst": "tema:agentgateway-agentgateway", "rel": "trata", "added": "2026-07-21"}
+{"src": "repo:agentgateway/agentgateway", "dst": "concept:agentic_proxy", "rel": "implements", "added": "2026-07-21", "primera_mencion": "2026-07-16"}
+{"src": "agentgateway", "dst": "Hermes", "rel": "complements", "added": "2026-07-21", "primera_mencion": null}
+{"src": "agentgateway", "dst": "agent-to-agent_protocol", "rel": "enables", "added": "2026-07-21", "primera_mencion": null}
+{"src": "agentgateway", "dst": "cloudflare/kumo", "rel": "competes_with", "added": "2026-07-21", "primera_mencion": "2026-07-04"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-lidge-jun-opencodex", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-lidge-jun-opencodex", "dst": "tema:lidge-jun-opencodex", "rel": "trata", "added": "2026-07-21"}
+{"src": "lidge-jun/opencodex", "dst": "concept:llm_provider_proxy", "rel": "implements", "added": "2026-07-21", "primera_mencion": null}
+{"src": "opencodex", "dst": "diegosouzapw/OmniRoute", "rel": "complements", "added": "2026-07-21", "primera_mencion": "2026-07-09"}
+{"src": "opencodex", "dst": "OpenRouter", "rel": "competes_with", "added": "2026-07-21", "primera_mencion": null}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-prefecthq-fastmcp", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-prefecthq-fastmcp", "dst": "tema:prefecthq-fastmcp", "rel": "trata", "added": "2026-07-21"}
+{"src": "PrefectHQ/fastmcp", "dst": "concept:mcp_protocol", "rel": "implements", "added": "2026-07-21", "primera_mencion": "2026-07-16"}
+{"src": "fastmcp", "dst": "python_mcp_servers", "rel": "enables", "added": "2026-07-21", "primera_mencion": null}
+{"src": "fastmcp", "dst": "repo:mcp-use/mcp-use", "rel": "complements", "added": "2026-07-21", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-topoteretes-cognee", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-topoteretes-cognee", "dst": "tema:topoteretes-cognee", "rel": "trata", "added": "2026-07-21"}
+{"src": "topoteretes/cognee", "dst": "concept:agent_memory_storage", "rel": "solves", "added": "2026-07-21", "primera_mencion": "2026-07-16"}
+{"src": "cognee", "dst": "concept:longitudinal_memory", "rel": "uses", "added": "2026-07-21", "primera_mencion": null}
+{"src": "cognee", "dst": "open_context_layer_pattern", "rel": "implements", "added": "2026-07-21", "primera_mencion": null}
+{"src": "cognee", "dst": "screenpipe/screenpipe", "rel": "competes_with", "added": "2026-07-21", "primera_mencion": null}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-kvcache-ai-ktransformers", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-kvcache-ai-ktransformers", "dst": "tema:kvcache-ai-ktransformers", "rel": "trata", "added": "2026-07-21"}
+{"src": "kvcache-ai/ktransformers", "dst": "concept:local_70B_inference", "rel": "enables", "added": "2026-07-21", "primera_mencion": null}
+{"src": "ktransformers", "dst": "lyogavin/airllm", "rel": "complements", "added": "2026-07-21", "primera_mencion": "2026-07-20"}
+{"src": "ktransformers", "dst": "llama.cpp", "rel": "competes_with", "added": "2026-07-21", "primera_mencion": null}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-baidu-unlimited-ocr", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-baidu-unlimited-ocr", "dst": "tema:baidu-unlimited-ocr", "rel": "trata", "added": "2026-07-21"}
+{"src": "baidu/Unlimited-OCR", "dst": "long_document_parsing", "rel": "solves", "added": "2026-07-21", "primera_mencion": null}
+{"src": "Unlimited-OCR", "dst": "allenai/olmocr", "rel": "competes_with", "added": "2026-07-21", "primera_mencion": null}
+{"src": "Unlimited-OCR", "dst": "concept:agent_memory_storage", "rel": "relevant_to", "added": "2026-07-21", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-microsoft-graphrag", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-microsoft-graphrag", "dst": "tema:microsoft-graphrag", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-koala73-worldmonitor", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-koala73-worldmonitor", "dst": "tema:koala73-worldmonitor", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-robbyant-lingbot-map", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-robbyant-lingbot-map", "dst": "tema:robbyant-lingbot-map", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-microsoft-ontology-playground", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-microsoft-ontology-playground", "dst": "tema:microsoft-ontology-playground", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-msitarzewski-agency-agents", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-msitarzewski-agency-agents", "dst": "tema:msitarzewski-agency-agents", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-handy-computer-transcribe-cpp", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-handy-computer-transcribe-cpp", "dst": "tema:handy-computer-transcribe-cpp", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-chenglou-freerange", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-chenglou-freerange", "dst": "tema:chenglou-freerange", "rel": "trata", "added": "2026-07-21"}
+{"src": "boletin:2026-07-21", "dst": "item:https-github-com-hoainho-img2threejs", "rel": "menciona", "added": "2026-07-21"}
+{"src": "item:https-github-com-hoainho-img2threejs", "dst": "tema:hoainho-img2threejs", "rel": "trata", "added": "2026-07-21"}

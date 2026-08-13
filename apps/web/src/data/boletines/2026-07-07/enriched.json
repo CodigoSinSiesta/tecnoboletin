@@ -1,0 +1,564 @@
+{
+  "version": 2,
+  "date": "2026-07-07",
+  "boletin_origen": "2026-07-07-trending.md",
+  "resumen_ejecutivo": "- **firecrawl/firecrawl** (+867 stars/día, 146k★) vuelve a trending daily con la API de scraping más usada del ecosistema agentic; **ojo a su AGPL-3.0**: viable para uso interno, complicado para cualquier producto SaaS derivado.\n- **iOfficeAI/OfficeCLI** y **alibaba/page-agent** consolidan dos categorías nuevas y maduras del stack agentic: \"Office legible/editables por agentes\" (C# Apache-2.0) e \"in-page GUI agent\" (TypeScript MIT, 24k★) — ambas complementan a MCP-servers como `ChromeDevTools/chrome-devtools-mcp`.\n- **TencentCloud/TencentDB-Agent-Memory** se publicita explícitamente compatible con Hermes Gateway y OpenClaw; ofrece memoria local-first en 4 tiers sin API externa — interesante como reemplazo de PGLite+pgvector en setups agentic.\n- **shadcn/improve** formaliza el patrón \"Plan as product\": un modelo caro audita y escribe specs en markdown, un modelo barato ejecuta. Se planta como complemento natural a `OthmanAdi/planning-with-files` (que ya cubrimos el 2026-07-06).\n- **alirezarezvani/claude-skills** (355 skills, 21k★) y **ComposioHQ/awesome-claude-skills** (67k★) certifican que la fase \"catálogo de skills\" ha tocado techo en 2026: el problema ya no es encontrar skills, sino curarlas — el README del primero lista a Hermes Agent como harness soportado.\n- **diegosouzapw/OmniRoute** y **agentscope-ai/QwenPaw** consolidan \"AI gateway multi-provider\" y \"personal assistant on-premise\" como categorías estables; **kenn-io/agentsview** (Go) aterriza analytics local-first de sesiones de coding agents, compitiendo con `steipete/CodexBar` (que vimos el 2026-07-06).\n- **Fuentes consultadas:** Trendshift daily (23 repos), GitHub Trending daily en all + Python + TypeScript + Rust + Go (82 entradas únicas), GitHub REST API para verificación de los 19 candidatos prioritarios.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "API que convierte sitios web en markdown limpio para LLMs: scrape + crawl + extract estructurado. Es el \"endpoint de scraping por defecto\" que aparece en la mayoría de tutoriales recientes de RAG / agentes.",
+        "por_que_importa": "Hay que actualizar la skill `web-scraping-viability`: Firecrawl es la opción managed contra la que ya comparamos en el boletín del 2026-07-05 a `D4Vinci/Scrapling` (OSS local) y al stack self-hosted con Playwright. Su licencia AGPL-3.0 obliga a liberar el código de cualquier servicio que ofrezca un wrapper SaaS encima — un riesgo legal concreto para quien monte producto, no un detalle menor. Conviene medir coste real por scrape y latencia antes de adoptarlo, porque los OSS locales ya cubrimos que son viables cuando el volumen es bajo.",
+        "madurez_senales": "146.656★ · 8.435 forks · TypeScript · licencia **AGPL-3.0** · creado 2024-04-15 · último push 2026-07-07 · +867 stars/día · CI activo, npm + Docker + PyPI, Discord oficial. Tópicos (verificados): `ai`, `ai-agents`, `ai-crawler`, `ai-scraping`, `ai-search`, `crawler`, `data-extraction`, `html-to-markdown`, `llm`, `markdown`, `scraper`, `scraping`, `web`.",
+        "accion_sugerida": "explorar (instalar Docker local, comparar tiempo de scrape vs `Scrapling` StealthyFetcher; documentar el límite AGPL en la skill `web-scraping-viability`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "firecrawl/firecrawl",
+          "rel": "implements",
+          "dst": "web-scraping-as-service",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "firecrawl/firecrawl",
+          "rel": "competes_with",
+          "dst": "D4Vinci/Scrapling",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "firecrawl/firecrawl",
+          "rel": "risk",
+          "dst": "agpl-web-service-risk",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "firecrawl-firecrawl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "iOfficeAI/OfficeCLI",
+      "url": "https://github.com/iOfficeAI/OfficeCLI",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "binario único en C# que lee, edita y crea `docx`, `xlsx`, `pptx` sin tener Office instalado. Tiene su propio motor de render que convierte a HTML/PNG con alta fidelidad para que el agente \"vea\" el documento (cierra el loop render→look→fix). Los topics listan `claude-code`, `codex`, `openclaw`, `skills`.",
+        "por_que_importa": "Resuelve un dolor del stack agentic que ya tratamos el 2026-07-05 al hablar de sistemas de decisión agentic: los LLMs generan `.xlsx` y `.pptx` rotos porque no renderizan bien. OfficeCLI los produce y los renderiza a HTML/PNG, cerrando el loop ver→corregir, lo que lo hace pieza reproducible para un post sobre \"agentes que producen Office real\". El complemento natural encaja con `dream-num/univer`, así que el conjunto cubre creación y edición sin Office instalado.",
+        "madurez_senales": "9.004★ · 644 forks · C# · licencia **Apache-2.0** · creado 2026-03-15 · último push 2026-07-07. Aparece en Trendshift Y GH Trending TypeScript (cross-source). Multi-idioma (en/zh/ja/ko) → autor asiático con producto global. README list compatibilidad con Claude Code y OpenClaw.",
+        "accion_sugerida": "probar (instalar binario, generar un xlsx desde prompt y validar que abre en Excel/LibreOffice; comparar con `openpyxl` puro Python).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "iOfficeAI/OfficeCLI",
+          "rel": "implements",
+          "dst": "office-suite-for-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "iOfficeAI/OfficeCLI",
+          "rel": "relevant_to",
+          "dst": "agentic-decision-systems",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "iOfficeAI/OfficeCLI",
+          "rel": "complements",
+          "dst": "dream-num/univer",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "iofficeai-officecli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "TencentCloud/TencentDB-Agent-Memory",
+      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "memoria de largo plazo para AI agents con pipeline progresivo de 4 niveles (Tier 0→3: deduplicación → embedding → clustering → symbolización). Cero APIs externas, todo corre local. Se publicita con badges para OpenClaw 2026.3.13 y **Hermes Gateway** en el README.",
+        "por_que_importa": "Primera señal seria de que el ecosistema Tencent se alinea con Hermes, que ya cubrimos el 2026-07-03, y de que podría complementar a Graphify, mencionado el 2026-07-04, para el knowledge graph del proyecto. Si el memory layer aguanta la calidad prometida, sería un reemplazo directo del stack PGLite+pgvector actual. Antes de decidir hay dos caveats: el repositorio está frío (último push 2026-06-26) y la licencia aparece como MIT en el README pero la API reportó NOASSERTION, así que toca leer el LICENSE real antes de adoptarlo como base.",
+        "madurez_senales": "6.932★ · 657 forks · TypeScript · licencia **MIT** (en README, aunque API reportó NOASSERTION — leer LICENSE real antes de tomar como base) · creado 2026-04-07 · último push 2026-06-26 (algo frío, ojo). Topics verificados: `agent`, `ai-agent`, `embedding`, `llm`, `local-first`, `long-term-memory`, `memory`, `openclaw-plugin`, `vector-search`. Tiene plugin OpenClaw oficial en npm.",
+        "accion_sugerida": "explorar (clonar, leer el pipeline de 4 tiers, validar si el badge \"Hermes\" implica integración real o solo marketing; comparar latencia de retrieval vs zvec visto el 2026-07-06).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "implements",
+          "dst": "MCP-based-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "complements",
+          "dst": "Graphify-Labs/graphify",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencentcloud-tencentdb-agent-memory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "shadcn/improve",
+      "url": "https://github.com/shadcn/improve",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill instalable con `npx skills add shadcn/improve`. Corre `/improve` con un modelo caro que audita el codebase y escribe specs markdown (`plans/001-*.md`); un agente barato con otro modelo ejecuta. El plan es el producto, la ejecución es commodity.",
+        "por_que_importa": "Formaliza el patrón \"un modelo caro piensa, uno barato ejecuta\" que ya vimos el 2026-07-06 al hablar de `OthmanAdi/planning-with-files`, ahora vestido de skill instalable con `npx skills add` que encaja con el `agent-skills-spec` cubierto el 2026-07-03. Si lo adoptamos como skill local, el plan en markdown queda como artifact publicable y la ejecución pasa a ser commodity, lo que puede recortar tiempo de publicación y bajar el coste por post. El riesgo es real: sin commits en 3 semanas, conviene forkearlo antes de que quede estancado.",
+        "madurez_senales": "7.214★ · 295 forks · \"no language\" (es solo prompt+specs, no código ejecutable) · licencia **MIT** · creado 2026-06-10 · último push 2026-06-15 (frío, sin commits en 3 semanas — riesgo de stagnation). Funciona con cualquier agente que implemente el spec `agentskills.io`. Subcomandos: `quick / deep / security / branch / next / plan / review-plan / execute`.",
+        "accion_sugerida": "vigilar (instalar como skill local, probar `/improve quick` contra un proyecto propio; si pasan 30 días sin commit nuevo, descartar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "shadcn/improve",
+          "rel": "implements",
+          "dst": "plan-as-product",
+          "primera_mencion": null
+        },
+        {
+          "src": "shadcn/improve",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "shadcn/improve",
+          "rel": "complements",
+          "dst": "OthmanAdi/planning-with-files",
+          "primera_mencion": "2026-07-06"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shadcn-improve",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "alibaba/page-agent",
+      "url": "https://github.com/alibaba/page-agent",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un solo `<script>` que inyecta un agente GUI en cualquier página web. Entiende el DOM, ejecuta clicks y fills en lenguaje natural. Tiene extensión Chrome opcional (`page-agent-ext`) y se integra con MCP. 892 stars/día — crecimiento muy rápido.",
+        "por_que_importa": "Es el competidor OSS directo de Adept/Agent-E para \"agente que opera UI web\", categoría de agente GUI en página que ya cubrimos el 2026-07-03 junto a `ChromeDevTools/chrome-devtools-mcp` con el que se complementa y dentro de los sistemas de decisión agentic tratados ese mismo día. La pieza sirve para construir demos interactivas sin servidor backend: un solo `<script>` con agente embebido y extensión Chrome opcional. La cifra de 892 stars/día y los 24.722★ acumulados sugieren que la tracción es ya estructural, no hype de una semana.",
+        "madurez_senales": "24.722★ · 2.116 forks · TypeScript · **MIT** · creado 2025-09-23 · último push 2026-07-07 · npm + Chrome Web Store + bundle ~15KB + CI + TypeScript estricto. Tópicos: `agent`, `ai`, `ai-agents`, `browser-automation`, `javascript`, `mcp`, `typescript`, `web`. Tasa de crecimiento explosiva: ya pasó 24k★ en <10 meses.",
+        "accion_sugerida": "explorar (crear una página HTML con `page-agent` inyectado que controle un form real; medir latencia y precisión vs `Computer Use` de Anthropic).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "alibaba/page-agent",
+          "rel": "implements",
+          "dst": "in-page-gui-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "alibaba/page-agent",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "alibaba/page-agent",
+          "rel": "relevant_to",
+          "dst": "agentic-decision-systems",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-page-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "diegosouzapw/OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un endpoint unificado que conecta Claude Code, Codex, Cursor, Cline, Copilot y Antigravity a 237 proveedores (90+ gratis). Auto-fallback entre proveedores, compresión de tokens RTK + Caveman (15-95% de ahorro). API compatible con OpenAI.",
+        "por_que_importa": "Compite con OpenRouter, que cubrimos como `OpenRouter-cost-fragility` en el grafo, y aterrizar en la categoría de `multi-provider-routing` que ya tratamos el 2026-07-03. La promesa de ~1.6B tokens gratis/mes sumando tiers free y la compresión RTK + Caveman con 15-95% de ahorro justifican una auditoría real: medir coste por millón de tokens y latencia p95 frente al router actual antes de adoptarlo. Si el ahorro se acerca a lo prometido, reduce directo el coste de inferencia en proyectos propios; si no, queda documentado como benchmark.",
+        "madurez_senales": "12.752★ · 1.854 forks · TypeScript · **MIT** · creado 2026-02-13 · último push 2026-07-07 · README con screenshots de dashboard, badges Trendshift + Trending. Tópicos: `a2a`, `ai-agents`, `ai-gateway`, `anthropic`, `claude`, `claude-code`, `cline`, `codex`, `copilot`, `cursor`, `deepseek`, `free-ai`, `gemini`, `llm-routing`. Dashboard web propio + Discord.",
+        "accion_sugerida": "explorar (montar OmniRoute en local, comparar coste real vs OpenRouter en un script de 1 semana; documentar el `caveman` + `RTK` compression claim que promete 95% ahorro).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "diegosouzapw/OmniRoute",
+          "rel": "implements",
+          "dst": "agent-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "diegosouzapw/OmniRoute",
+          "rel": "relevant_to",
+          "dst": "multi-provider-routing",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "diegosouzapw/OmniRoute",
+          "rel": "competes_with",
+          "dst": "OpenRouter",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diegosouzapw-omniroute",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "alirezarezvani/claude-skills",
+      "url": "https://github.com/alirezarezvani/claude-skills",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "el catálogo OSS más completo de Agent Skills: 355 skills + 30+ agentes + 70+ slash commands + 330+ skills personalizadas + referencias customizables. Categorías: engineering, DevOps, marketing (incluye AEO — Answer Engine Optimization para LLMs), security (PreToolUse hooks), compliance, C-level advisory, productivity, academic research stack, enterprise Research Operations v2.9.0. Compatible con 13 harnesses.",
+        "por_que_importa": "El README lista explícitamente Hermes Agent como harness soportado, que ya cubrimos el 2026-07-03, y se apoya en el `agent-skills-spec` visto ese mismo día. Si la compatibilidad es real, podríamos heredar 355 skills con un fork local, pero también confirma el patrón `awesome-list-saturation` que tratamos el 2026-07-05: el valor está en la curaduría, no en añadir más. El paquete incluye categorías que todavía no hemos mirado en detalle (AEO, PreToolUse hooks de seguridad, Research Operations v2.9.0), así que vale revisar antes de descartar nada por saturación.",
+        "madurez_senales": "21.332★ · 2.854 forks · Python · **MIT** · creado 2025-10-19 · último push 2026-07-07 · CI activo, README multi-idioma. Tópicos (verificados): `agent-plugins`, `agent-skills`, `agentic-ai`, `ai-coding-agent`, `anthropic-claude`, `claude-ai`, `claude-code`, `claude-code-plugins`, `claude-skills`.",
+        "accion_sugerida": "leer (probar 3 skills concretas en local; auditar si la compatibilidad con Hermes es real o solo marketing; comparar cobertura con las ~40 skills que ya tenemos instaladas).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "alirezarezvani/claude-skills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "alirezarezvani/claude-skills",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "alirezarezvani/claude-skills",
+          "rel": "relevant_to",
+          "dst": "awesome-list-saturation",
+          "primera_mencion": "2026-07-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alirezarezvani-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "langchain-ai/openwiki (8.038★, TypeScript, MIT, push 2026-07-06)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "CLI que escribe y mantiene docs de tu codebase, optimizadas para consumo por agentes (no por humanos). Incluye CI workflows de GitHub/GitLab para mantenerlas frescas.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (instalar `npm install -g openwiki`, generar docs de un repo pequeño; validar que un agente las aprovecha mejor que las generadas por humano)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "langchain-ai-openwiki-8-038-typescript-m",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "kenn-io/agentsview (4.035★, Go, MIT, push 2026-07-07)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "session search local-first + analytics + token usage stats para Claude Code, Codex y otros.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (compilar el binario Go, conectarlo a sesiones propias; comparar con `steipete/CodexBar` del boletín 2026-07-06)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kenn-io-agentsview-4-035-go-mit-push-202",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "ComposioHQ/awesome-claude-skills (67.032★, Python, push 2026-05-22)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "catálogo \"awesome\" de 67k★, pero sin commits desde mayo; **licencia NOASSERTION en API** — riesgo antes de tomarlo como base.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (referencia pasiva, no base de fork)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "composiohq-awesome-claude-skills-67-032-",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "TauricResearch/TradingAgents (91.466★, Python, Apache-2.0)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "framework multi-agente para trading con LLM; ya está en el grafo, pero sigue trending.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (riesgo `financial-advice-fragility` ya mapeado; interesante solo como caso de \"agentic-decision-systems\" para un post futuro)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tauricresearch-tradingagents-91-466-pyth",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "agentscope-ai/QwenPaw (21.098★, Python, Apache-2.0, push 2026-07-07)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "asistente AI personal multi-chat-app on-premise, construido sobre AgentScope.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (relevante si publicamos sobre \"personal assistant on-prem\" vs alternativas como `mvanhorn/last30days-skill`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentscope-ai-qwenpaw-21-098-python-apac",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "dream-num/univer (13.502★, TypeScript, Apache-2.0, push 2026-07-07)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "framework full-stack para spreadsheet + word + presentation web+server, con 4 años de desarrollo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (competencia directa de OfficeCLI; ver qué aporta el enfoque \"framework\" vs \"binary CLI\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer-13-502-typescript-apach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "karpathy/nanoGPT (60.865★, Python, MIT, último push 2025-11-12)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "clásico reapareciendo en trending tras algún artículo reciente.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (relevante solo si escribimos sobre \"entrenar GPTs pequeños\" — pista: el push frío indica que la atención viene de posts externos, no de actividad nueva)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "karpathy-nanogpt-60-865-python-mit-ltimo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "Robbyant/lingbot-vision (153★, Python, Apache-2.0, creado 2026-07-06, 1 día)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "self-supervised learning for spatial perception.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (muy reciente para juzgar; dejar madurar 30 días antes de explorar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "robbyant-lingbot-vision-153-python-apach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 15,
+      "titulo": "soycaporal/ternlight (135★, Python, MIT, push 2026-07-07)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "semantic embeddings en bundle WASM de 5-7 MB on-device, sin API.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (verificar el claim \"5–7 MB\" y \"2.5 ms/embed\" en navegador; comparar con transformers.js)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "soycaporal-ternlight-135-python-mit-push",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 16,
+      "titulo": "Infisical/agent-vault (1.829★, Go, NOASSERTION, push 2026-07-05)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "proxy HTTP de credenciales para Claude Code, OpenClaw y **Hermes** (menciona Hermes explícitamente).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (license NOASSERTION bloquea cualquier adopción seria; esperar clarificación de licencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "infisical-agent-vault-1-829-go-noasserti",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 17,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 10,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "17/17 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

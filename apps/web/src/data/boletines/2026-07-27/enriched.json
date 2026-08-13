@@ -1,0 +1,239 @@
+{
+  "version": 2,
+  "date": "2026-07-27",
+  "boletin_origen": "2026-07-27-trending.md",
+  "resumen_ejecutivo": "- **pingdotgg/t3code (TS, MIT, 15.2k★, 3.3k forks, creado 2026-02-08, último push 2026-07-27)** — GUI web minimal unificada para lanzar y coordinar Codex, Claude Code, Cursor CLI y OpenCode desde un solo panel. Es el primer \"umbrella UI\" multi-harness que adopta de fábrica los cuatro providers que ya cubren el cuadrante de CSS; entra directo al clúster `cross-harness-agent` y consolida la tesis \"un agente, varios motores\".\n- **NVIDIA/SkillSpector (Python, Apache-2.0, 13.8k★, 1.1k forks, push 2026-07-27)** — escáner de seguridad para AI agent skills con 68 patrones de vulnerabilidad en 17 categorías (prompt injection, data exfiltration, MCP tool poisoning, supply chain, etc.). NVIDIA moviéndose al espacio skill-security con rigor industrial; para CSS es la referencia inevitable cuando se habla de \"skills trust & safety\".\n- **claude-world/claude-skill-antivirus (JS, MIT, 74★, push 2026-06-23)** — escáner de skills para Claude Code con 9 motores que ya auditó 71.577 skills de SkillsMP y encontró 91 críticas, 626 high y 1.310 medium (~3% con riesgo). Complemento exacto de SkillSpector: cobertura complementaria (Claude Code específico vs multi-harness), encaja en el nuevo clúster `skill-security-audit`.\n- **vercel-labs/scriptc (TS, Apache-2.0, 998★, 12 forks, push 2026-07-27)** — compilador TypeScript a binarios nativos sin Node ni V8 incrustado; mismo `tsc` del compilador real, cobertura estática del 99% en código típico. Es el movimiento Vercel Labs para llevar el código de los agentes al edge como binarios pequeños (~178 KB) con arranque <2 ms.\n- **makecindy/cindy (TS, Apache-2.0, 741★, 90 forks, push 2026-07-27)** — agente open-source cross-harness (Claude Code + Codex, nativo en camino) con memoria persistente, skills, MCP, plugins y modelo de pricing BYO-keys/Claude-Code-plan. Cindy's pitch \"consider it done\" lo posiciona en el clúster `cross-harness-agent` con un enfoque más comercial (cindy.app) del que tienen picoclaw, nanobot u Orca.\n**KKKKhazix/khazix-skills (MIT, 18.3k★, 2k forks, push 2026-07-26)** — colección de 6 AI skills del \"\" (Khazix) en chino, publicado con AgentSkills standard y compatible con 40+ agentes (Claude Code, Codex, Cursor, Kimi, Qoder, iFlow, CodeBuddy). \"leader\" redefine objetivos vagos en metas ejecutables; \"neat-freak\" audita cumplimiento de reglas tras cada tarea. Refuerza el clúster `skill-ecosystem` con la vertiente china del movimiento\n- Día con catálogo plano en GitHub Trending (muchos ya cubiertos) pero con tres señales frescas: (a) el clúster skill-security cristaliza en dos proyectos serios a la vez, (b) el patrón \"umbrella UI multi-harness\" se une a t3code/cindy, (c) scriptc abre la puerta a \"agents como binarios\" sin runtime. Blogwatcher 08:00 no escribió archivo hoy; el anterior al 2026-07-25; este boletín asume blogs \"fríos\". Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub REST API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "pingdotgg/t3code",
+      "url": "https://github.com/pingdotgg/t3code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pingdotgg-t3code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "NVIDIA/SkillSpector",
+      "url": "https://github.com/NVIDIA/SkillSpector",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-skillspector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "claude-world/claude-skill-antivirus",
+      "url": "https://github.com/claude-world/claude-skill-antivirus",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "claude-world-claude-skill-antivirus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "vercel-labs/scriptc",
+      "url": "https://github.com/vercel-labs/scriptc",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-scriptc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "makecindy/cindy",
+      "url": "https://github.com/makecindy/cindy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "makecindy-cindy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "KKKKhazix/khazix-skills",
+      "url": "https://github.com/KKKKhazix/khazix-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kkkkhazix-khazix-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "maderix/ANE",
+      "url": "https://github.com/maderix/ANE",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Investigación POC que demuestra backpropagation en Apple Neural Engine mediante `_ANEClient` y `_ANECompiler` con ingeniería inversa. No es un framework mantenible, pero es la primera prueba pública de \"training on ANE sin CoreML\".",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 6.941, MIT, Objective-C, push 2026-03-10",
+        "accion_sugerida": "vigilar — (esperar a que haya API de Apple oficial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maderix-ane",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "OpenMinis/OpenMinis",
+      "url": "https://github.com/OpenMinis/OpenMinis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Agente de IA móvil multiplataforma (iOS y Android) con shell Linux on-device, browser automation, skills y memoria. Probarlo implica aceptar GPL-3.0; encaja en el clúster cross-harness-agent, pero ya hay 5 competidores.",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 1.997, GPL-3.0, Swift, push 2026-07-25",
+        "accion_sugerida": "vigilar — (competidor directo de Cindy, esperar roadmap)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openminis-openminis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "xianxie6/interesting",
+      "url": "https://github.com/xianxie6/interesting",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skill de Codex para \"image-generation source-faithful minimalist conceptual\". Demasiado nuevo y diminuto; solo útil como ejemplo de \"skill-generation-loop\".",
+        "por_que_importa": "",
+        "madurez_senales": "⭐ 1, sin licencia, push 2026-07-23",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xianxie6-interesting",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 9,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 3,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "9/9 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/6 items reescritos; faltantes en respuesta: [0, 1, 2, 3, 4, 5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

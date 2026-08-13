@@ -1,0 +1,336 @@
+{
+  "version": 2,
+  "date": "2026-07-08",
+  "boletin_origen": "2026-07-08-trending.md",
+  "resumen_ejecutivo": "- **`tiliondev/fortress` (Trendshift #18, debut)** es el primer motor Chromium OSS con parches C++ en el propio engine para esquivar detección: borra el `[native code]` leak y pasa CreepJS, Sannysoft, BrowserScan y Cloudflare Turnstile en vivo. **Actualiza la decisión de la skill `web-scraping-viability`**: deja Apify/Firecrawl/Scrapling-Obscura como opciones managed y añade Fortress como opción self-hosted \"engine-level stealth\". Licencia API dice NOASSERTION (BSD-3 según README) — **riesgo de adopción hasta confirmar LICENSE real**.\n- **`anthropics/skills` (+413★/día, debut)** es el repositorio OFICIAL de Anthropic con la implementación de referencia del spec `agentskills.io`: incluye skills creativas + técnicas + enterprise + las que mueven Claude Docs (`docx`/`pdf`/`pptx`/`xlsx`, source-available, NO open). Convierte al spec de skills en \"el\" estándar con soporte first-party de Anthropic — coincide con que Hermes ya cumple el 100% (ver `explored_items`).\n- **`NousResearch/hermes-agent` (+685★/día, debut en GH Trending Python)** el runtime del usuario aparece en trending con 211k★ y 38k forks. Vale formalizar el \"estado de salud del proyecto\" en el boletín como referencia cruzada: coincide con el grafo donde ya están `hermes-agent` (concept) y la spec de skills.\n- **`rowboatlabs/rowboat` (Trendshift #5, debut)** es un desktop AI coworker (YC S24, Apache-2.0) que indexa email/Slack/reuniones en un **grafo de conocimiento estilo Obsidian** y dispara background agents (Claude Code/Codex) por eventos. Conecta directamente con el nodo `MCP-based-agent-memory` y con `Tencent/WeKnora`.\n- **`VoltAgent/awesome-design-md` (Trendshift #3, debut, 73 DESIGN.md)** aterriza la idea de **DESIGN.md** como gemelo de `AGENTS.md`: el primero define \"cómo se ve\", el segundo \"cómo se construye\". Cierra un patrón que Google Stitch ya introdujo; tiene adopción seria (rank #150 global GH).\n- **`vercel-labs/agent-browser` (Rust, +73★/día, debut)** es un CLI browser automation para AI agents. Apache-2.0, 38k★. Complementa el stack `chrome-devtools-mcp` + `alibaba/page-agent` (vistos el 2026-07-03/07) y compite con `tiliondev/fortress` en otra capa (orquestación vs engine-level stealth).\n- **`mvanhorn/last30days-skill` (+659★/día, MIT, debut)** es un skill de \"investigar los últimos 30 días\" ya integrado con `clawhub` y cobertura de Reddit/X/YouTube/HN/Polymarket. Lo importante: **el skill ya está instalado en este Hermes** (`~/.local/share/hermes/skills/last30days-skill` o similar) — vale auditar si la versión OSS está alineada con la nuestra o upstream va más rápido.\n- **Fuentes consultadas:** Trendshift daily (25 repos), GitHub Trending daily en all + Python + TypeScript + Rust + Go (87 entradas únicas), GitHub REST API para verificación de los 14 candidatos prioritarios.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "tiliondev/fortress",
+      "url": "https://github.com/tiliondev/fortress",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "fork de Chromium con 34 parches C++ `single-surface` que corrigen el fingerprint dentro del propio engine (no por encima con JS). Mantiene `[native code]` como getter real, realm-invariant entre main/iframe/worker, coherencia JA3/JA4 TLS + plataforma + GPU + timezone + voces + teclado. Expone CDP en `:9222` — drop-in para Playwright/Puppeteer/browser-use. MCP server con 29 tools (`tilion-mcp`).",
+        "por_que_importa": "Es la pieza que faltaba en la skill `web-scraping-viability` para cerrar el hueco entre los servicios managed (Firecrawl/Apify) y el stealth OSS local (Scrapling/Obscura). El enfoque es ortogonal a Scrapling StealthyFetcher/Camoufox, que parchea fingerprint desde fuera: Fortress parchea el fingerprint dentro del engine C++ de Chromium (los 34 parches `single-surface`), así que donde Camoufox empieza a fallar contra DataDome o Cloudflare Turnstile, este binary conectado por CDP puede cubrir el hueco sin proxies residenciales. Ya cubrimos la complementariedad con Scrapling el 2026-07-05 y el riesgo de licencia NOASSERTION el 2026-07-06; el 2026-07-07 lo marcamos como relevante para `web-scraping-viability`. Si el README confirma BSD-3 (la API de GitHub todavía marca NOASSERTION, así que de momento es caveat, no hecho), sería nuestra recomendación por defecto para scraping serio sin pagar proxies. Limitación honesta: no hemos podido ejecutar el gauntlet reproducible del propio repo para validar el claim de coherencia JA3/JA4/plataforma/GPU/timezone/voces/teclado en sitios reales.",
+        "madurez_senales": "126★ · 8 forks · Python (el wrapper + MCP server; el engine es C++/Chromium 151.0.7908.0) · **licencia NOASSERTION en API (BSD-3 según README)** · creado 2026-07-02 · último push 2026-07-08 · release v151.0.7908.0 (\"Engine Refresh\"). CI con gauntlet reproducible (`tools/gauntlet.py`) + AGENTS.md + llms.txt. Tópicos verificados: `anti-bot`, `automation`, `bot-detection`, `browser-automation`, `chromium`, `crawler`, `data-scraping`, `fingerprinting`, `headless-browser`, `headless-chrome`, `playwright`, `puppeteer`. Pasa CreepJS 0% headless, Sannysoft all-green, BrowserScan \"Normal\", Cloudflare Turnstile en vivo.",
+        "accion_sugerida": "explorar (clonar, leer `LICENSE` real para confirmar BSD-3, levantar el binario con `docker run -p 9222:9222 tilion/fortress`, probar contra `bot.sannysoft.com` y comparar con Scrapling StealthyFetcher en el mismo target; si pasa, actualizar `web-scraping-viability` con la nueva opción).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "tiliondev/fortress",
+          "rel": "implements",
+          "dst": "engine-level-stealth",
+          "primera_mencion": null
+        },
+        {
+          "src": "tiliondev/fortress",
+          "rel": "complements",
+          "dst": "D4Vinci/Scrapling",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "tiliondev/fortress",
+          "rel": "risk",
+          "dst": "noassertion-license-risk",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "tiliondev/fortress",
+          "rel": "relevant_to",
+          "dst": "web-scraping-viability",
+          "primera_mencion": "2026-07-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tiliondev-fortress",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repo OFICIAL de Anthropic con la implementación de referencia del spec `agentskills.io`. Contiene: (a) `spec/` la spec, (b) `skills/` ~30 skills de Creative + Technical + Enterprise, (c) `skills/docx|pdf|pptx|xlsx` los que mueven Claude Docs (source-available, NO open source), (d) `template/` plantilla canónica. Se instala como plugin en Claude Code con `/plugin marketplace add anthropics/skills`.",
+        "por_que_importa": "cierra la pregunta «¿el spec `agentskills.io` es serio o es vaporware?» — Anthropic lo mantiene, lo versionea, lo distribuye y lo expone como marketplace first-party. Para Hermes significa que el spec ya no es opcional: cualquier harness que aspire a compatibilidad con el ecosistema Claude tendrá que cumplirlo. Nuestra propia skill `agentskills/agentskills` exploration confirma que Hermes ya cumple (ver `explored_items`).",
+        "madurez_senales": "159.290★ · 18.799 forks · Python (los SKILL.md + scripts) · **licencia NOASSERTION en API (mix: Apache-2.0 para skills + source-available para docx/pdf/pptx/xlsx)** · creado 2025-09-22 · último push 2026-07-01 · +413 stars/día. Tópico: `agent-skills`. Instalable vía Claude Code plugin system y Claude.ai.",
+        "accion_sugerida": "explorar (instalar como plugin en Claude Code local; forkear `template/` para crear una skill nueva propia con la estructura canónica; auditar si 3-5 skills concretas (ej. `pdf`, `docx`) son compatibles con Hermes sin Claude Code).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "anthropics/skills",
+          "rel": "implements",
+          "dst": "agent-skills-spec",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "anthropics/skills",
+          "rel": "relevant_to",
+          "dst": "hermes-skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "anthropics/skills",
+          "rel": "relevant_to",
+          "dst": "awesome-list-saturation",
+          "primera_mencion": "2026-07-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "NousResearch/hermes-agent",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "el propio Hermes Agent del usuario. README destaca: learning loop cerrado (crea skills desde experiencia, las mejora durante uso), compatible con `agentskills.io`, gateway único para Telegram/Discord/Slack/WhatsApp/Signal/CLI, 6 backends (local/Docker/SSH/Singularity/Modal/Daytona), FTS5 session search con resumen LLM, integración Honcho para user modeling.",
+        "por_que_importa": "**Referencia cruzada editorial.** El propio Hermes trending-ea con 685★/día, así que merece un «estado de salud» breve: releer el `commit log` reciente para detectar features upstream que aún no hayamos adoptado (los release notes y el CHANGELOG son la fuente), releases nuevos que anotar y decisiones de diseño que confirmar con la documentación oficial. La conexión con el grafo es directa: este repo implementa `agentskills.io` y usa Honcho para user modeling, dos piezas que ya tenemos mapeadas. Ya cubrimos el nodo `hermes-agent` el 2026-07-03; este item es la re-entrada operativa, no un descubrimiento. Caveat honesto: para que el «estado de salud» sea útil hace falta un diff real contra lo que ya documentamos en `hermes-agent` — sin ese diff el item se queda en «hay que mirarlo», que es poco.",
+        "madurez_senales": "211.178★ · 38.777 forks · Python · **MIT** · creado 2025-07-22 · último push 2026-07-08 (hace minutos). Tópicos: `ai`, `ai-agent`, `ai-agents`, `anthropic`, `chatgpt`, `claude`, `claude-code`, `clawdbot`, `codex`, `hermes`, `hermes-agent`, `llm`. Documentación en https://hermes-agent.nousresearch.com/docs/, Discord oficial, multi-idioma (en/zh/ur/es).",
+        "accion_sugerida": "leer (chequear `git log --since='1 week ago'` para detectar features nuevas upstream; auditar si el bullet \"Compatible with agentskills.io\" implica conformance real o marketing; añadir nodo `Honcho` al grafo si queremos documentar la dependencia).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "NousResearch/hermes-agent",
+          "rel": "relevant_to",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "NousResearch/hermes-agent",
+          "rel": "implements",
+          "dst": "agentskills.io",
+          "primera_mencion": null
+        },
+        {
+          "src": "NousResearch/hermes-agent",
+          "rel": "uses",
+          "dst": "Honcho",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nousresearch-hermes-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "rowboatlabs/rowboat",
+      "url": "https://github.com/rowboatlabs/rowboat",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "desktop app (Mac/Win/Linux) que indexa email + Slack + reuniones + assistant convos en un **grafo de conocimiento backlinked estilo Obsidian**. Tiene work surfaces integradas: email client que redacta respuestas con contexto, browser agent, code mode (Claude Code/Codex), meeting note taker, background agents que disparan por eventos o cron. YC S24, Discord activo.",
+        "por_que_importa": "el patrón «personal AI coworker con knowledge graph» aterriza con producto real y serie A. Conecta directamente con `MCP-based-agent-memory` (nodo ya en grafo desde el 2026-07-07) y con el workflow diario del usuario (cron 09:10/22:00, Obsidian vault, multi-canal). Si la integración con Hermes Gateway fuera viable, sería un cliente complementario a Telegram/Discord.",
+        "madurez_senales": "15.431★ · 1.550 forks · TypeScript · **Apache-2.0** · creado 2025-01-13 · último push 2026-07-07. Tópicos: `agents`, `agents-sdk`, `ai`, `ai-agents`, `ai-agents-automation`, `chatgpt`, `claude-code`, `claude-cowork`, `generative-ai`, `llm`, `multiagent`, `opeani` (typo en topic real: openai). Y Combinator S24 badge.",
+        "accion_sugerida": "vigilar (no descargar todavía; esperar a que el grafo Obsidian-style madure; comparar con `tinyhumansai/openhuman` que también es \"personal AI super intelligence local-first\" GPL-3.0).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "rowboatlabs/rowboat",
+          "rel": "implements",
+          "dst": "personal-ai-coworker",
+          "primera_mencion": null
+        },
+        {
+          "src": "rowboatlabs/rowboat",
+          "rel": "uses",
+          "dst": "MCP-based-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "rowboatlabs/rowboat",
+          "rel": "complements",
+          "dst": "TencentCloud/TencentDB-Agent-Memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "rowboatlabs/rowboat",
+          "rel": "relevant_to",
+          "dst": "css-articulos",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rowboatlabs-rowboat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "VoltAgent/awesome-design-md",
+      "url": "https://github.com/VoltAgent/awesome-design-md",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "colección curada de **73 archivos DESIGN.md** analizados de marcas reales (Anthropic, Cohere, ElevenLabs, Mistral, Ollama, OpenCode, Replicate, Runway, VoltAgent…). Google Stitch introdujo el concepto: un markdown plano que los AI agents leen para generar UI consistente con el design language. Su gemelo es `AGENTS.md` (cómo construir) — el patrón ya está mapeado en el grafo como `agent-behavior-guidelines`.",
+        "por_que_importa": "si escribimos un post sobre «DESIGN.md + AGENTS.md + skills», este repo es la pieza reproducible. Trae además un endpoint «Request a DESIGN.md» (`getdesign.md/request`) y una red de sponsors de «vibe coding» — la categoría «vibe design» está madurando como categoría propia.",
+        "madurez_senales": "97.257★ · 11.394 forks · sin lenguaje (es texto + tokens) · **MIT** · creado 2026-03-31 · último push 2026-06-16 (algo frío, 22 días sin commit). Tópicos: `awesome-list`, `design-md`, `design-system`, `design-tokens`, `figma`, `google-stitch`, `landing-page`, `vibe-coding`, `vibe-design`, `vibecoding`. Rank #150 global en GitHub.",
+        "accion_sugerida": "leer (coger 3 DESIGN.md reales, copiarlos a un proyecto de prueba, pedir a un agente (Codex/Claude Code) que genere una landing en el estilo; validar el claim de consistencia).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "VoltAgent/awesome-design-md",
+          "rel": "implements",
+          "dst": "design-md-spec",
+          "primera_mencion": null
+        },
+        {
+          "src": "VoltAgent/awesome-design-md",
+          "rel": "complements",
+          "dst": "agent-behavior-guidelines",
+          "primera_mencion": "2026-07-05"
+        },
+        {
+          "src": "VoltAgent/awesome-design-md",
+          "rel": "relevant_to",
+          "dst": "frontend-taste-skill",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "voltagent-awesome-design-md",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI en Rust para que AI agents operen un browser. Conecta con el stack existente: `ChromeDevTools/chrome-devtools-mcp`, `alibaba/page-agent` (vistos antes), `tiliondev/fortress` (visto arriba). Vercel Labs detrás.",
+        "por_que_importa": "consolida el «browser como herramienta agent» como capa primera (CLI directo, sin servidor MCP intermedio). Complementa al ecosistema MCP en lugar de competir — un agente puede usar `agent-browser` para tareas batch y `chrome-devtools-mcp` para debugging interactivo.",
+        "madurez_senales": "38.057★ · 2.450 forks · Rust · **Apache-2.0** · creado 2026-01-11 · último push 2026-07-06 · +73 stars/día. Sin topics definidos. Actividad reciente, mantenimiento serio.",
+        "accion_sugerida": "explorar (instalar el CLI con `cargo install` o vía release binario, ejecutar un script simple contra `example.com`, comparar latencia con `chrome-devtools-mcp` para la misma tarea).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vercel-labs/agent-browser",
+          "rel": "implements",
+          "dst": "browser-automation-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/agent-browser",
+          "rel": "complements",
+          "dst": "ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "vercel-labs/agent-browser",
+          "rel": "relevant_to",
+          "dst": "agentic-decision-systems",
+          "primera_mencion": "2026-07-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill para que un AI agent investigue cualquier tema cruzando Reddit, X, YouTube, Hacker News, Polymarket y la web, sintetizando después un ground. Se distribuye vía `clawhub`, declaradamente compatible con `claude-code` y `openclaw`. Tags incluyen `deep-research`, `recency`.",
+        "por_que_importa": "**el skill ya está en este Hermes** (instalado por el usuario). Vale auditar si la versión upstream va más rápido que la nuestra, y especialmente si las integraciones (`clawhub`, `openclaw`) aportan algo que perdimos al fork local. Si la versión upstream tiene features que faltan en la nuestra, documentar el gap.",
+        "madurez_senales": "50.418★ · 4.206 forks · Python · **MIT** · creado 2026-01-23 · último push 2026-07-08. Tópicos: `ai-prompts`, `ai-skill`, `bluesky`, `claude`, `claude-code`, `clawhub`, `deep-research`, `hackernews`, `instagram`, `openclaw`, `polymarket`, `recency`.",
+        "accion_sugerida": "probar (comparar `diff` entre nuestra versión instalada y upstream; probar la versión upstream en un post en borrador; si la integración clawhub aporta valor, considerar actualizar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "mvanhorn/last30days-skill",
+          "rel": "implements",
+          "dst": "recency-research-skill",
+          "primera_mencion": null
+        },
+        {
+          "src": "mvanhorn/last30days-skill",
+          "rel": "relevant_to",
+          "dst": "hermes-skills",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "mvanhorn/last30days-skill",
+          "rel": "complements",
+          "dst": "cheahjs/free-llm-api-resources",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvanhorn-last30days-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 7,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 0,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "7/7 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "2/7 items reescritos; rechazados por longitud sospechosa: [1, 3, 4, 5, 6]; faltantes en respuesta: [1, 3, 4, 5, 6]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
