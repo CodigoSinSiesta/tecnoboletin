@@ -34,195 +34,254 @@ try {
 const items: any[] = enriched?.items || [];
 const hallazgos = items.filter((it) => it.seccion === 'hallazgo_principal');
 const radar = items.filter((it) => it.seccion === 'radar_secundario');
-const stats = enriched?.stats || {};
 
-const accionColor = (a: string) => {
-  const t = (a || '').toLowerCase();
-  if (t.startsWith('explorar') || t.startsWith('leer') || t.startsWith('probar')) {
-    return 'bg-[var(--color-accent)] text-black';
-  }
-  if (t.startsWith('ignorar')) return 'bg-[var(--color-bg)] text-muted';
-  return 'bg-yellow-900/40 text-yellow-200';
+// Cruce editorial: los idx que editorial.acciones_concretas marca como "explora"
+// son la senal editorial mas fuerte que ya existe en los datos -- se usan para
+// dar a esos hallazgos un tratamiento visual "pick" por encima del resto.
+const pickIdx = new Set(
+  (editorial?.acciones_concretas || [])
+    .filter((a: any) => a.tipo === 'explora')
+    .map((a: any) => a.item_idx)
+);
+
+// contenido.accion_sugerida es texto libre e inconsistente del enriquecedor
+// ("explorar -- ...", "**explorar**", ": vigilar", "sugerida: vigilar", ...).
+// Se normaliza a un verbo fijo para el badge; el texto completo se conserva
+// como detalle.
+type AccionKind = 'go' | 'radar' | 'accent' | 'ignorar' | null;
+function accionKind(raw: string): AccionKind {
+  const t = (raw || '').toLowerCase().replace(/^[^a-záéíóúñ]+/i, '').trim();
+  if (t.startsWith('explorar') || t.startsWith('explora') || t.startsWith('probar')) return 'go';
+  if (t.startsWith('leer')) return 'radar';
+  if (t.startsWith('vigilar')) return 'accent';
+  if (t.startsWith('ignorar')) return 'ignorar';
+  return null;
+}
+function accionVerb(raw: string): string {
+  const t = (raw || '').replace(/^[^a-záéíóúñA-ZÁÉÍÓÚÑ]+/i, '').trim();
+  const m = t.match(/^[a-záéíóúñ]+/i);
+  return m ? m[0] : 'nota';
+}
+const accionBadgeClass: Record<string, string> = {
+  go: 'badge--solid-go',
+  radar: 'badge--solid-radar',
+  accent: 'badge--solid-accent',
+  ignorar: 'badge--outline',
 };
 ---
 <BaseLayout title={`Tecnoboletin ${date}`}>
-  <header class="mb-10 pb-6 border-b border-[var(--color-border)]">
-    <div class="text-xs text-muted mb-3 flex gap-4 flex-wrap">
-      <time>{date}</time>
-      <span>{hallazgos.length} hallazgos · {radar.length} radar</span>
+  <header class="mb-12 pb-8 border-b border-border">
+    <div class="flex flex-wrap items-end gap-x-8 gap-y-4 mb-5">
+      <div class="font-display leading-none" style="font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 800;">
+        {date}
+      </div>
+      <div class="flex gap-2 pb-1">
+        <span class="badge badge--solid-accent">{hallazgos.length} hallazgos</span>
+        <span class="badge badge--solid-radar">{radar.length} radar</span>
+      </div>
     </div>
-    <h1 class="font-serif text-3xl mb-3">Tecnoboletin {date}</h1>
-    {enriched?.resumen_ejecutivo && <p class="text-muted whitespace-pre-wrap">{enriched.resumen_ejecutivo}</p>}
+    {enriched?.resumen_ejecutivo && (
+      <p class="prose-card text-muted whitespace-pre-wrap">{enriched.resumen_ejecutivo}</p>
+    )}
   </header>
 
   {editorial && (
-    <section class="mb-12 border border-[var(--color-accent)] rounded-lg p-6 bg-[var(--color-surface)]">
-      <header class="mb-5">
-        <h2 class="font-sans text-sm uppercase tracking-wider mb-2">Lectura editorial</h2>
-        <p class="text-xs text-muted">
-          Sintesis del boletin: posicionamiento, convergencia con el stack local-first, cruce con el
+    <section class="mb-14">
+      <div class="section-rule" style="--rule-color: var(--color-violet);">
+        <span class="section-rule__label text-violet">Lectura editorial</span>
+      </div>
+      <div class="zine-card p-6 md:p-8" style="--rail-color: var(--color-violet); background: linear-gradient(160deg, var(--color-surface-2), var(--color-surface));">
+        <p class="text-xs text-muted-dim mb-6 max-w-prose">
+          Síntesis del boletín: posicionamiento, convergencia con el stack local-first, cruce con el
           grafo de conocimiento y tendencias entre boletines.
         </p>
-      </header>
 
-      {editorial.posicionamiento && (
-        <article class="mb-5">
-          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Posicionamiento</h3>
-          <p class="text-sm text-text whitespace-pre-wrap">{editorial.posicionamiento}</p>
-        </article>
-      )}
+        <div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
+          {editorial.posicionamiento && (
+            <article>
+              <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Posicionamiento</h3>
+              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.posicionamiento}</p>
+            </article>
+          )}
 
-      {editorial.convergencia_stack_css && (
-        <article class="mb-5">
-          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Convergencia con tu stack</h3>
-          <p class="text-sm text-text whitespace-pre-wrap">{editorial.convergencia_stack_css}</p>
-        </article>
-      )}
+          {editorial.convergencia_stack_css && (
+            <article>
+              <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Convergencia con tu stack</h3>
+              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.convergencia_stack_css}</p>
+            </article>
+          )}
 
-      {editorial.cruzado_grafo && (
-        <article class="mb-5">
-          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Cruzado con tu grafo</h3>
-          <p class="text-sm text-text whitespace-pre-wrap">{editorial.cruzado_grafo}</p>
-        </article>
-      )}
+          {editorial.cruzado_grafo && (
+            <article>
+              <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Cruzado con tu grafo</h3>
+              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.cruzado_grafo}</p>
+            </article>
+          )}
 
-      {editorial.tendencias_5_boletines && (
-        <article class="mb-5">
-          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Tendencias (5-6 boletines)</h3>
-          <p class="text-sm text-text whitespace-pre-wrap">{editorial.tendencias_5_boletines}</p>
-        </article>
-      )}
+          {editorial.tendencias_5_boletines && (
+            <article>
+              <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Tendencias (5-6 boletines)</h3>
+              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.tendencias_5_boletines}</p>
+            </article>
+          )}
+        </div>
 
-      {editorial.alertas && editorial.alertas.length > 0 && (
-        <article class="mb-5">
-          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-2">Alertas honestas</h3>
-          <ul class="text-sm text-text space-y-2">
-            {editorial.alertas.map((a: string) => (
-              <li class="border-l-2 border-[var(--color-accent)] pl-3">· {a}</li>
-            ))}
-          </ul>
-        </article>
-      )}
+        {editorial.alertas && editorial.alertas.length > 0 && (
+          <article class="mt-8 pt-6 border-t border-border">
+            <h3 class="font-display text-xs uppercase tracking-wider text-alert mb-3 font-semibold">Alertas honestas</h3>
+            <ul class="space-y-2">
+              {editorial.alertas.map((a: string) => (
+                <li class="alert-callout text-sm text-text">{a}</li>
+              ))}
+            </ul>
+          </article>
+        )}
 
-      {editorial.acciones_concretas && editorial.acciones_concretas.length > 0 && (
-        <article>
-          <h3 class="font-sans text-xs uppercase tracking-wider text-muted mb-3">Acciones concretas</h3>
-          <div class="space-y-3">
-            {editorial.acciones_concretas.map((a: any) => (
-              <div class="border border-[var(--color-border)] rounded p-3 bg-[var(--color-bg)]">
-                <div class="flex items-center gap-3 mb-2">
-                  <span class={
-                    a.tipo === 'explora' ? 'px-2 py-0.5 bg-[var(--color-accent)] text-black rounded text-xs font-semibold' :
-                    a.tipo === 'vigilar' ? 'px-2 py-0.5 bg-yellow-900/40 text-yellow-200 rounded text-xs font-semibold' :
-                    'px-2 py-0.5 bg-blue-900/40 text-blue-200 rounded text-xs font-semibold'
-                  }>{a.tipo}</span>
-                  <span class="text-xs text-muted">item #{a.item_idx}</span>
+        {editorial.acciones_concretas && editorial.acciones_concretas.length > 0 && (
+          <article class="mt-8 pt-6 border-t border-border">
+            <h3 class="font-display text-xs uppercase tracking-wider text-muted mb-3 font-semibold">Acciones concretas</h3>
+            <div class="grid sm:grid-cols-2 gap-3">
+              {editorial.acciones_concretas.map((a: any) => (
+                <div class="border border-border rounded-lg p-3 bg-bg">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class={`badge ${
+                      a.tipo === 'explora' ? 'badge--solid-go' :
+                      a.tipo === 'vigilar' ? 'badge--solid-accent' :
+                      'badge--solid-radar'
+                    }`}>{a.tipo}</span>
+                    <span class="text-xs text-muted-dim font-mono">item #{a.item_idx}</span>
+                  </div>
+                  <p class="text-sm text-text">{a.razon}</p>
                 </div>
-                <p class="text-sm text-text">{a.razon}</p>
-              </div>
-            ))}
-          </div>
-        </article>
-      )}
+              ))}
+            </div>
+          </article>
+        )}
+      </div>
     </section>
   )}
 
-  <section class="mb-12">
-    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Hallazgos principales</h2>
-    <div class="space-y-6">
-      {hallazgos.map((it) => (
-        <article class="border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
-          <header class="flex items-center justify-between mb-2 gap-3 flex-wrap">
-            <h3 class="font-serif text-lg">
-              <a href={it.url} target="_blank" rel="noopener">{it.titulo}</a>
-            </h3>
-            <div class="flex items-center gap-2 text-xs shrink-0">
-              <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded text-muted">{it.clasificacion?.tipo}</span>
-              <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded text-muted">{it.clasificacion?.tema_principal}</span>
-              <span class="text-muted">confianza {Number(it.clasificacion?.confianza ?? 0).toFixed(2)}</span>
+  <section class="mb-14">
+    <div class="section-rule" style="--rule-color: var(--color-accent);">
+      <span class="section-rule__label text-accent">Hallazgos principales</span>
+    </div>
+    <div class="space-y-5">
+      {hallazgos.map((it, i) => {
+        const isPick = pickIdx.has(it.idx);
+        const kind = it.contenido?.accion_sugerida ? accionKind(it.contenido.accion_sugerida) : null;
+        return (
+          <article
+            class:list={['zine-card p-5 md:p-6', isPick && 'zine-card--pick']}
+            style="--rail-color: var(--color-accent);"
+          >
+            <div class="flex gap-4 md:gap-5">
+              <div class="zine-num shrink-0 hidden sm:block" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <div class="min-w-0 flex-1">
+                <header class="flex items-start justify-between mb-2 gap-3 flex-wrap">
+                  <h3 class="font-display text-lg font-semibold">
+                    <a href={it.url} target="_blank" rel="noopener" class="text-text hover:text-accent">{it.titulo}</a>
+                    {isPick && <span class="badge badge--solid-accent ml-2 align-middle">pick editorial</span>}
+                  </h3>
+                  <div class="flex items-center gap-2 text-xs shrink-0">
+                    <span class="badge badge--ghost">{it.clasificacion?.tipo}</span>
+                    <span class="badge badge--ghost">{it.clasificacion?.tema_principal}</span>
+                    <span class="text-muted-dim font-mono">{Number(it.clasificacion?.confianza ?? 0).toFixed(2)}</span>
+                  </div>
+                </header>
+
+                {it.contenido?.que_es && (
+                  <p class="prose-card text-sm text-text mb-3">{it.contenido.que_es}</p>
+                )}
+
+                {it.contenido?.por_que_importa && (
+                  <div class="mb-3">
+                    <h4 class="font-display text-xs uppercase tracking-wider text-muted mb-1 font-semibold">Por qué importa</h4>
+                    <p class="prose-card text-sm text-text">{it.contenido.por_que_importa}</p>
+                  </div>
+                )}
+
+                {it.contenido?.madurez_senales && (
+                  <p class="prose-card text-xs text-muted-dim mb-3">{it.contenido.madurez_senales}</p>
+                )}
+
+                {it.relacion_grafo && it.relacion_grafo.length > 0 && (
+                  <div class="mb-3">
+                    <h4 class="font-display text-xs uppercase tracking-wider text-muted mb-1 font-semibold">Relación con el grafo</h4>
+                    <ul class="text-xs font-mono text-muted-dim space-y-1">
+                      {it.relacion_grafo.map((t: any) => (
+                        <li>
+                          {t.src} <span class="text-radar">--[{t.rel}]--&gt;</span> {t.dst}
+                          {t.primera_mencion && <span class="text-muted not-italic font-sans"> (ya cubierto el {t.primera_mencion})</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {it.contenido?.accion_sugerida && (
+                  <div class="flex items-start gap-2 flex-wrap mt-3">
+                    <span class={`badge ${accionBadgeClass[kind ?? 'ignorar']}`}>
+                      {accionVerb(it.contenido.accion_sugerida)}
+                    </span>
+                    <span class="text-xs text-muted-dim">{it.contenido.accion_sugerida}</span>
+                  </div>
+                )}
+              </div>
             </div>
-          </header>
-
-          {it.contenido?.que_es && (
-            <p class="text-sm text-text mb-3">{it.contenido.que_es}</p>
-          )}
-
-          {it.contenido?.por_que_importa && (
-            <div class="mb-3">
-              <h4 class="font-sans text-xs uppercase tracking-wider text-muted mb-1">Por que importa</h4>
-              <p class="text-sm text-text">{it.contenido.por_que_importa}</p>
-            </div>
-          )}
-
-          {it.contenido?.madurez_senales && (
-            <p class="text-xs text-muted mb-3">{it.contenido.madurez_senales}</p>
-          )}
-
-          {it.relacion_grafo && it.relacion_grafo.length > 0 && (
-            <div class="mb-3">
-              <h4 class="font-sans text-xs uppercase tracking-wider text-muted mb-1">Relacion con el grafo</h4>
-              <ul class="text-xs font-mono text-muted space-y-1">
-                {it.relacion_grafo.map((t: any) => (
-                  <li>
-                    {t.src} <span class="text-[var(--color-accent)]">--[{t.rel}]--&gt;</span> {t.dst}
-                    {t.primera_mencion && <span class="text-text not-italic font-sans"> (ya cubierto el {t.primera_mencion})</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {it.contenido?.accion_sugerida && (
-            <span class={`inline-block text-xs px-2 py-0.5 rounded font-semibold ${accionColor(it.contenido.accion_sugerida)}`}>
-              {it.contenido.accion_sugerida}
-            </span>
-          )}
-        </article>
-      ))}
+          </article>
+        );
+      })}
     </div>
   </section>
 
   {radar.length > 0 && (
-    <section class="mb-12">
-      <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Radar secundario</h2>
+    <section class="mb-14">
+      <div class="section-rule" style="--rule-color: var(--color-radar);">
+        <span class="section-rule__label text-radar">Radar secundario</span>
+      </div>
       <div class="space-y-3">
-        {radar.map((it) => (
-          <article class="border border-[var(--color-border)] rounded p-4 bg-[var(--color-surface)] text-sm">
-            <div class="flex items-center justify-between gap-3 mb-1 flex-wrap">
-              <a href={it.url} target="_blank" rel="noopener" class="font-mono">{it.titulo}</a>
-              {it.contenido?.accion_sugerida && (
-                <span class={`text-xs px-2 py-0.5 rounded font-semibold ${accionColor(it.contenido.accion_sugerida)}`}>
-                  {it.contenido.accion_sugerida}
-                </span>
-              )}
-            </div>
-            {it.contenido?.que_es && <p class="text-text">{it.contenido.que_es}</p>}
-            {it.contenido?.madurez_senales && <p class="text-xs text-muted mt-1">{it.contenido.madurez_senales}</p>}
-          </article>
-        ))}
+        {radar.map((it) => {
+          const kind = it.contenido?.accion_sugerida ? accionKind(it.contenido.accion_sugerida) : null;
+          return (
+            <article class="zine-card p-4 text-sm" style="--rail-color: var(--color-radar);">
+              <div class="flex items-center justify-between gap-3 mb-1 flex-wrap">
+                <a href={it.url} target="_blank" rel="noopener" class="font-mono text-text hover:text-radar">{it.titulo}</a>
+                {it.contenido?.accion_sugerida && (
+                  <span class={`badge ${accionBadgeClass[kind ?? 'ignorar']}`}>
+                    {accionVerb(it.contenido.accion_sugerida)}
+                  </span>
+                )}
+              </div>
+              {it.contenido?.que_es && <p class="prose-card text-text">{it.contenido.que_es}</p>}
+              {it.contenido?.madurez_senales && <p class="prose-card text-xs text-muted-dim mt-1">{it.contenido.madurez_senales}</p>}
+            </article>
+          );
+        })}
       </div>
     </section>
   )}
 
   {edges.length > 0 && (
-    <details class="mb-12 border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
-      <summary class="font-sans text-sm uppercase tracking-wider text-muted cursor-pointer">
+    <details class="mb-14 zine-card p-5" style="--rail-color: var(--color-border-strong);">
+      <summary class="font-display text-xs uppercase tracking-wider text-muted cursor-pointer font-semibold">
         Edges del grafo ({edges.length})
       </summary>
       <div class="space-y-1 mt-4">
         {edges.slice(0, 60).map((e) => (
-          <div class="font-mono text-xs text-muted">
-            {e.src} <span class="text-[var(--color-accent)]">--[{e.rel}]--&gt;</span> {e.dst}
+          <div class="font-mono text-xs text-muted-dim">
+            {e.src} <span class="text-radar">--[{e.rel}]--&gt;</span> {e.dst}
             {e.primera_mencion && <span> (ya cubierto el {e.primera_mencion})</span>}
           </div>
         ))}
-        {edges.length > 60 && <p class="text-xs text-muted mt-3">…y {edges.length - 60} edges mas</p>}
+        {edges.length > 60 && <p class="text-xs text-muted-dim mt-3">…y {edges.length - 60} edges más</p>}
       </div>
     </details>
   )}
 
-  <footer class="mt-16 pt-6 border-t border-[var(--color-border)] text-xs text-muted">
-    <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}enriquecido/`}>&larr; Volver al &iacute;ndice</a>
+  <footer class="mt-16 pt-6 border-t border-border text-xs text-muted-dim">
+    <a href={`${base}enriquecido/`} class="hover:text-text">&larr; Volver al índice</a>
     {enriched?.boletin_origen && <span class="ml-3">&middot; Fuente: {enriched.boletin_origen}</span>}
   </footer>
 </BaseLayout>
