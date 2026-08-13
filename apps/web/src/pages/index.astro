@@ -21,43 +21,53 @@ const enrichedDates = dataEntries
   .reverse();
 ---
 <BaseLayout title="Inicio">
-  <section class="mb-12">
-    <h1 class="font-serif text-3xl mb-3">Tecnoboletín</h1>
-    <p class="text-muted max-w-2xl">
-      Cada mañana, los boletines de tendencias y blogs de Código Sin Siesta, ya enriquecidos y listos para leer con calma.
-      Sin trackers, sin nube forzada. Hecho con Astro 5, alojado en GitHub Pages.
+  <section class="mb-16">
+    <p class="font-display text-xs uppercase tracking-[0.14em] text-accent mb-4 font-semibold">
+      Boletín diario · Código Sin Siesta
+    </p>
+    <h1 class="font-display font-extrabold leading-[0.95] mb-5" style="font-size: clamp(2.5rem, 6vw, 4rem);">
+      Tecnoboletín
+    </h1>
+    <p class="prose-card text-muted text-lg">
+      Cada mañana, los boletines de tendencias y blogs de Código Sin Siesta, ya enriquecidos y listos
+      para leer con calma. Sin trackers, sin nube forzada. Hecho con Astro 5, alojado en GitHub Pages.
     </p>
   </section>
 
-  <section class="mb-12">
-    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
-      Boletines enriquecidos
-    </h2>
-    <p class="text-muted text-sm mb-4">
+  <section class="mb-16">
+    <div class="section-rule" style="--rule-color: var(--color-accent);">
+      <span class="section-rule__label text-accent">Boletines enriquecidos</span>
+    </div>
+    <p class="text-muted text-sm mb-6 max-w-2xl">
       {enrichedDates.length} boletines procesados con items clasificados (tipo, tema, confianza) y 3 reviews por perfil.
-      <a href={`${base}enriquecido/`} class="text-muted underline">Ver índice completo &rarr;</a>
+      <a href={`${base}enriquecido/`} class="text-muted underline hover:text-accent">Ver índice completo &rarr;</a>
     </p>
     <div class="grid gap-4 md:grid-cols-2">
-      {enrichedDates.slice(0, 6).map((d) => (
-        <a href={`${base}enriquecido/${d}/`} class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)] hover:border-[var(--color-accent)] transition">
-          <h3 class="font-serif text-lg">Boletin {d}</h3>
+      {enrichedDates.slice(0, 6).map((d, i) => (
+        <a
+          href={`${base}enriquecido/${d}/`}
+          class="zine-card p-5 flex items-center gap-4 hover:border-accent transition-colors"
+          style="--rail-color: var(--color-accent);"
+        >
+          <span class="font-mono text-xs text-muted-dim shrink-0">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="font-display text-lg font-semibold text-text">Boletín {d}</h3>
         </a>
       ))}
     </div>
   </section>
 
   {markdownBoletines.length > 0 && (
-    <section class="mb-12">
-      <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
-        Boletines sin enriquecer ({markdownBoletines.length})
-      </h2>
-      <p class="text-muted text-xs mb-3">
+    <section class="mb-16">
+      <div class="section-rule" style="--rule-color: var(--color-radar);">
+        <span class="section-rule__label text-radar">Sin enriquecer ({markdownBoletines.length})</span>
+      </div>
+      <p class="text-muted-dim text-xs mb-4">
         Boletines sincronizados desde el vault que aún no han pasado por el enriquecedor.
       </p>
       <ul class="text-sm space-y-2">
         {markdownBoletines.map((slug) => (
           <li>
-            <a href={`${base}boletines/${slug}/`} class="text-muted hover:text-text">{slug}</a>
+            <a href={`${base}boletines/${slug}/`} class="text-muted hover:text-text font-mono">{slug}</a>
           </li>
         ))}
       </ul>
@@ -66,15 +76,14 @@ const enrichedDates = dataEntries
 
   <section>
     <div class="grid md:grid-cols-2 gap-4">
-      <a href={`${base}fuentes`} class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
-        <h3 class="font-serif text-lg">Fuentes</h3>
-        <p class="text-muted text-sm">Próximamente: índice de fuentes recurrentes del lote.</p>
+      <a href={`${base}fuentes`} class="zine-card p-5" style="--rail-color: var(--color-border-strong);">
+        <h3 class="font-display text-lg font-semibold">Fuentes</h3>
+        <p class="text-muted-dim text-sm">Próximamente: índice de fuentes recurrentes del lote.</p>
       </a>
-      <a href={`${base}temas`} class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
-        <h3 class="font-serif text-lg">Temas</h3>
-        <p class="text-muted text-sm">Próximamente: nube de temas con peso por mes.</p>
+      <a href={`${base}temas`} class="zine-card p-5" style="--rail-color: var(--color-border-strong);">
+        <h3 class="font-display text-lg font-semibold">Temas</h3>
+        <p class="text-muted-dim text-sm">Próximamente: nube de temas con peso por mes.</p>
       </a>
     </div>
   </section>
 </BaseLayout>
-

@@ -8,23 +8,25 @@ interface Props {
 const { entry } = Astro.props;
 const { title, fecha, tipo, items, resumen, tags } = entry.data;
 const slug = entry.id.replace(/\.md$/, '');
+const rawBase = import.meta.env.BASE_URL ?? '/';
+const base = rawBase.replace(/\/?$/, '/');
 ---
-<article class="border border-[var(--color-border)] rounded-lg p-6 bg-[var(--color-surface)] hover:border-[var(--color-accent)] transition">
-  <div class="flex items-center justify-between text-xs text-muted mb-3">
+<article class="zine-card p-6 hover:border-accent transition-colors" style="--rail-color: var(--color-accent);">
+  <div class="flex items-center justify-between text-xs text-muted-dim mb-3 font-mono">
     <time datetime={fecha.toISOString()}>
       {fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
     </time>
     <span class="uppercase tracking-wider">{tipo}</span>
   </div>
-  <h2 class="font-serif text-xl mb-2">
-    <a href={`/boletines/${slug}`}>{title}</a>
+  <h2 class="font-display text-xl font-semibold mb-2">
+    <a href={`${base}boletines/${slug}`} class="text-text hover:text-accent">{title}</a>
   </h2>
-  {resumen && <p class="text-sm text-muted mb-3">{resumen}</p>}
-  <div class="flex items-center justify-between text-xs text-muted">
+  {resumen && <p class="prose-card text-sm text-muted mb-3">{resumen}</p>}
+  <div class="flex items-center justify-between text-xs text-muted-dim">
     <span>{items ?? '—'} items</span>
     <div class="flex gap-2">
       {tags.slice(0, 4).map((t) => (
-        <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded">#{t}</span>
+        <span class="badge badge--ghost">#{t}</span>
       ))}
     </div>
   </div>

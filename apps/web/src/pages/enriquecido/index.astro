@@ -3,7 +3,6 @@ import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const { date } = Astro.params;
 const rawBase = import.meta.env.BASE_URL ?? '/';
 const base = rawBase.replace(/\/?$/, '/');
 
@@ -17,13 +16,14 @@ const dates = entries
   .reverse();
 
 // Por cada fecha, leemos el enriched para sacar items_count y resumen
-const resumenes: Record<string, { items: number; resumen: string; temas: string[] }> = {};
+const resumenes: Record<string, { items: number; hallazgos: number; resumen: string; temas: string[] }> = {};
 for (const d of dates) {
   try {
     const e = JSON.parse(await readFile(path.join(dataDir, d, 'enriched.json'), 'utf-8'));
     const items = e.items || [];
     resumenes[d] = {
       items: items.length,
+      hallazgos: items.filter((it: any) => it.seccion === 'hallazgo_principal').length,
       resumen: (e.resumen_ejecutivo || '').slice(0, 240),
       temas: [...new Set(items.map((it: any) => it.clasificacion?.tema_principal).filter(Boolean))] as string[],
     };
@@ -31,38 +31,45 @@ for (const d of dates) {
 }
 ---
 <BaseLayout title="Boletines enriquecidos">
-  <header class="mb-10 pb-6 border-b border-[var(--color-border)]">
-    <h1 class="font-serif text-3xl mb-3">Boletines enriquecidos</h1>
-    <p class="text-muted max-w-2xl">
-      Los ultimos {dates.length} boletines, procesados con la skill <code>tecnoboletin-enricher</code>.
-      Cada hallazgo conserva su "por que importa" y su relacion con el grafo de conocimiento tal como
-      se escribieron en el boletin origen, pulidos y cruzados contra el historial acumulado -- tipo,
-      tema y confianza quedan como metadata secundaria. La web publica viene del repo
-      <code>CodigoSinSiesta/tecnoboletin</code> en GitHub Pages.
+  <header class="mb-12 pb-8 border-b border-border">
+    <p class="font-display text-xs uppercase tracking-[0.14em] text-accent mb-3 font-semibold">Índice</p>
+    <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Boletines enriquecidos</h1>
+    <p class="prose-card text-muted">
+      Los últimos {dates.length} boletines, procesados con la skill <code class="font-mono text-sm bg-surface px-1.5 py-0.5 rounded">tecnoboletin-enricher</code>.
+      Cada hallazgo conserva su "por qué importa" y su relación con el grafo de conocimiento tal como
+      se escribieron en el boletín origen, pulidos y cruzados contra el historial acumulado — tipo,
+      tema y confianza quedan como metadata secundaria. La web pública viene del repo
+      <code class="font-mono text-sm bg-surface px-1.5 py-0.5 rounded">CodigoSinSiesta/tecnoboletin</code> en GitHub Pages.
     </p>
   </header>
 
   <div class="space-y-4">
-    {dates.map((d) => (
+    {dates.map((d, i) => (
       <a
         href={`${base}enriquecido/${d}/`}
-        class="block border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)] hover:border-[var(--color-accent)] transition"
+        class="zine-card p-5 md:p-6 flex gap-5 hover:border-accent transition-colors"
+        style="--rail-color: var(--color-accent);"
       >
-        <header class="flex items-center justify-between mb-2">
-          <time class="font-mono">{d}</time>
-          <span class="text-xs text-muted">{resumenes[d]?.items || 0} items</span>
-        </header>
-        <p class="text-sm text-text mb-2">{resumenes[d]?.resumen || '(sin resumen)'}</p>
-        <div class="flex flex-wrap gap-2 text-xs">
-          {(resumenes[d]?.temas || []).slice(0, 8).map((t) => (
-            <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded">#{t}</span>
-          ))}
+        <div class="zine-num zine-num--radar shrink-0 hidden sm:block" aria-hidden="true">
+          {String(i + 1).padStart(2, '0')}
+        </div>
+        <div class="min-w-0 flex-1">
+          <header class="flex items-center justify-between mb-2 gap-3 flex-wrap">
+            <time class="font-display font-semibold text-text">{d}</time>
+            <span class="badge badge--solid-accent">{resumenes[d]?.hallazgos || 0} hallazgos</span>
+          </header>
+          <p class="prose-card text-sm text-muted mb-3">{resumenes[d]?.resumen || '(sin resumen)'}</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            {(resumenes[d]?.temas || []).slice(0, 8).map((t) => (
+              <span class="badge badge--ghost">#{t}</span>
+            ))}
+          </div>
         </div>
       </a>
     ))}
   </div>
 
-  <footer class="mt-16 pt-6 border-t border-[var(--color-border)] text-xs text-muted">
-    <a href={base}>&larr; Inicio</a>
+  <footer class="mt-16 pt-6 border-t border-border text-xs text-muted-dim">
+    <a href={base} class="hover:text-text">&larr; Inicio</a>
   </footer>
 </BaseLayout>

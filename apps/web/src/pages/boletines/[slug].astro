@@ -13,11 +13,13 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, fecha, tipo, items, resumen, fuente, tags } = entry.data;
+const rawBase = import.meta.env.BASE_URL ?? '/';
+const base = rawBase.replace(/\/?$/, '/');
 ---
 <BaseLayout title={title} description={resumen}>
   <article>
-    <header class="mb-10 pb-6 border-b border-[var(--color-border)]">
-      <div class="text-xs text-muted mb-3 flex gap-4">
+    <header class="mb-10 pb-6 border-b border-border">
+      <div class="text-xs text-muted-dim mb-3 flex gap-4 font-mono">
         <time datetime={fecha.toISOString()}>
           {fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
         </time>
@@ -25,23 +27,23 @@ const { title, fecha, tipo, items, resumen, fuente, tags } = entry.data;
         {fuente && <span>· {fuente}</span>}
         {items !== undefined && <span>· {items} items</span>}
       </div>
-      <h1 class="font-serif text-3xl mb-3">{title}</h1>
-      {resumen && <p class="text-muted">{resumen}</p>}
+      <h1 class="font-display font-extrabold mb-3" style="font-size: clamp(2rem, 5vw, 3rem);">{title}</h1>
+      {resumen && <p class="prose-card text-muted">{resumen}</p>}
       {tags.length > 0 && (
         <div class="mt-4 flex flex-wrap gap-2 text-xs">
           {tags.map((t) => (
-            <span class="px-2 py-0.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded">#{t}</span>
+            <span class="badge badge--ghost">#{t}</span>
           ))}
         </div>
       )}
     </header>
 
-    <div class="prose-read">
+    <div class="prose-read prose-read--page">
       <Content />
     </div>
 
-    <footer class="mt-16 pt-6 border-t border-[var(--color-border)] text-xs text-muted">
-      <a href="/">← Volver al índice</a>
+    <footer class="mt-16 pt-6 border-t border-border text-xs text-muted-dim">
+      <a href={base} class="hover:text-text">&larr; Volver al índice</a>
     </footer>
   </article>
 </BaseLayout>

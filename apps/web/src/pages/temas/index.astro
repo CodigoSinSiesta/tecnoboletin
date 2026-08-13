@@ -2,19 +2,22 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Temas">
-  <h1 class="font-serif text-3xl mb-6">Temas</h1>
-  <p class="text-muted">
-    Esta página se activará en la <strong>fase 2</strong>, cuando el enriquecedor clasifique
-    cada item por tema y genere una nube ponderada por frecuencia.
-  </p>
+  <header class="mb-10 pb-6 border-b border-border">
+    <p class="font-display text-xs uppercase tracking-[0.14em] text-radar mb-3 font-semibold">Próximamente</p>
+    <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Temas</h1>
+    <p class="prose-card text-muted">
+      Esta página se activará en la <strong class="text-text">fase 2</strong>, cuando el enriquecedor clasifique
+      cada item por tema y genere una nube ponderada por frecuencia.
+    </p>
+  </header>
 
-  <section class="mt-10 p-6 border border-dashed border-[var(--color-border)] rounded-lg">
-    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-3">Pendiente</h2>
+  <section class="zine-card p-6" style="--rail-color: var(--color-radar); border-style: dashed;">
+    <h2 class="font-display text-xs uppercase tracking-wider text-radar mb-3 font-semibold">Pendiente</h2>
     <ul class="text-sm space-y-2 text-muted">
-      <li>· Nube de tags con peso por mes</li>
-      <li>· Heatmap de temas × semana</li>
-      <li>· Suscripción a temas concretos</li>
-      <li>· Comparativa entre boletines de la misma semana</li>
+      <li class="flex gap-2"><span class="text-radar">·</span> Nube de tags con peso por mes</li>
+      <li class="flex gap-2"><span class="text-radar">·</span> Heatmap de temas × semana</li>
+      <li class="flex gap-2"><span class="text-radar">·</span> Suscripción a temas concretos</li>
+      <li class="flex gap-2"><span class="text-radar">·</span> Comparativa entre boletines de la misma semana</li>
     </ul>
   </section>
 </BaseLayout>
