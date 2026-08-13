@@ -44,13 +44,21 @@ const pickIdx = new Set(
     .map((a: any) => a.item_idx)
 );
 
-// contenido.accion_sugerida es texto libre e inconsistente del enriquecedor
-// ("explorar -- ...", "**explorar**", ": vigilar", "sugerida: vigilar", ...).
-// Se normaliza a un verbo fijo para el badge; el texto completo se conserva
-// como detalle.
+// contenido.accion_sugerida es texto libre e inconsistente del enriquecedor:
+// "explorar -- ...", "**explorar**", ": vigilar", "sugerida: vigilar",
+// "sugerida: probar -- ...", "**leer**." etc. normalizeAccion() quita
+// markdown/puntuacion y el prefijo literal "sugerida:" antes de extraer el
+// verbo, para que el badge use siempre un color semantico correcto.
 type AccionKind = 'go' | 'radar' | 'accent' | 'ignorar' | null;
+function normalizeAccion(raw: string): string {
+  let t = (raw || '').trim();
+  t = t.replace(/^[*_~`\s:.-]+/, '');
+  t = t.replace(/^sugerida\s*:?\s*/i, '');
+  t = t.replace(/^[*_~`\s:.-]+/, '');
+  return t;
+}
 function accionKind(raw: string): AccionKind {
-  const t = (raw || '').toLowerCase().replace(/^[^a-záéíóúñ]+/i, '').trim();
+  const t = normalizeAccion(raw).toLowerCase();
   if (t.startsWith('explorar') || t.startsWith('explora') || t.startsWith('probar')) return 'go';
   if (t.startsWith('leer')) return 'radar';
   if (t.startsWith('vigilar')) return 'accent';
@@ -58,15 +66,26 @@ function accionKind(raw: string): AccionKind {
   return null;
 }
 function accionVerb(raw: string): string {
-  const t = (raw || '').replace(/^[^a-záéíóúñA-ZÁÉÍÓÚÑ]+/i, '').trim();
+  const t = normalizeAccion(raw);
   const m = t.match(/^[a-záéíóúñ]+/i);
-  return m ? m[0] : 'nota';
+  return m ? m[0].toLowerCase() : 'nota';
+}
+// Resto del texto tras el verbo, para no duplicar "EXPLORAR" (badge) seguido
+// de "**explorar** - ..." (detalle) cuando el string original solo era el verbo.
+function accionDetail(raw: string): string {
+  let t = normalizeAccion(raw);
+  const m = t.match(/^[a-záéíóúñ]+/i);
+  if (m) t = t.slice(m[0].length);
+  t = t.replace(/^[*_~`\s:.—-]+/, '');
+  t = t.replace(/[*_~`\s]+$/, '');
+  return t.trim();
 }
 const accionBadgeClass: Record<string, string> = {
   go: 'badge--solid-go',
   radar: 'badge--solid-radar',
   accent: 'badge--solid-accent',
   ignorar: 'badge--outline',
+  ghost: 'badge--ghost',
 };
 ---
 <BaseLayout title={`Tecnoboletin ${date}`}>
@@ -100,28 +119,28 @@ const accionBadgeClass: Record<string, string> = {
           {editorial.posicionamiento && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Posicionamiento</h3>
-              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.posicionamiento}</p>
+              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.posicionamiento}</p>
             </article>
           )}
 
           {editorial.convergencia_stack_css && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Convergencia con tu stack</h3>
-              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.convergencia_stack_css}</p>
+              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.convergencia_stack_css}</p>
             </article>
           )}
 
           {editorial.cruzado_grafo && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Cruzado con tu grafo</h3>
-              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.cruzado_grafo}</p>
+              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.cruzado_grafo}</p>
             </article>
           )}
 
           {editorial.tendencias_5_boletines && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Tendencias (5-6 boletines)</h3>
-              <p class="text-sm text-text whitespace-pre-wrap prose-card">{editorial.tendencias_5_boletines}</p>
+              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.tendencias_5_boletines}</p>
             </article>
           )}
         </div>
@@ -131,7 +150,7 @@ const accionBadgeClass: Record<string, string> = {
             <h3 class="font-display text-xs uppercase tracking-wider text-alert mb-3 font-semibold">Alertas honestas</h3>
             <ul class="space-y-2">
               {editorial.alertas.map((a: string) => (
-                <li class="alert-callout text-sm text-text">{a}</li>
+                <li class="alert-callout text-base text-text">{a}</li>
               ))}
             </ul>
           </article>
@@ -151,7 +170,7 @@ const accionBadgeClass: Record<string, string> = {
                     }`}>{a.tipo}</span>
                     <span class="text-xs text-muted-dim font-mono">item #{a.item_idx}</span>
                   </div>
-                  <p class="text-sm text-text">{a.razon}</p>
+                  <p class="text-base text-text">{a.razon}</p>
                 </div>
               ))}
             </div>
@@ -192,13 +211,13 @@ const accionBadgeClass: Record<string, string> = {
                 </header>
 
                 {it.contenido?.que_es && (
-                  <p class="prose-card text-sm text-text mb-3">{it.contenido.que_es}</p>
+                  <p class="prose-card text-base text-text mb-3">{it.contenido.que_es}</p>
                 )}
 
                 {it.contenido?.por_que_importa && (
                   <div class="mb-3">
                     <h4 class="font-display text-xs uppercase tracking-wider text-muted mb-1 font-semibold">Por qué importa</h4>
-                    <p class="prose-card text-sm text-text">{it.contenido.por_que_importa}</p>
+                    <p class="prose-card text-base text-text">{it.contenido.por_que_importa}</p>
                   </div>
                 )}
 
@@ -222,10 +241,12 @@ const accionBadgeClass: Record<string, string> = {
 
                 {it.contenido?.accion_sugerida && (
                   <div class="flex items-start gap-2 flex-wrap mt-3">
-                    <span class={`badge ${accionBadgeClass[kind ?? 'ignorar']}`}>
+                    <span class={`badge ${accionBadgeClass[kind ?? 'ghost']}`}>
                       {accionVerb(it.contenido.accion_sugerida)}
                     </span>
-                    <span class="text-xs text-muted-dim">{it.contenido.accion_sugerida}</span>
+                    {accionDetail(it.contenido.accion_sugerida) && (
+                      <span class="text-xs text-muted-dim">{accionDetail(it.contenido.accion_sugerida)}</span>
+                    )}
                   </div>
                 )}
               </div>
@@ -245,11 +266,11 @@ const accionBadgeClass: Record<string, string> = {
         {radar.map((it) => {
           const kind = it.contenido?.accion_sugerida ? accionKind(it.contenido.accion_sugerida) : null;
           return (
-            <article class="zine-card p-4 text-sm" style="--rail-color: var(--color-radar);">
+            <article class="zine-card p-4" style="--rail-color: var(--color-radar);">
               <div class="flex items-center justify-between gap-3 mb-1 flex-wrap">
                 <a href={it.url} target="_blank" rel="noopener" class="font-mono text-text hover:text-radar">{it.titulo}</a>
                 {it.contenido?.accion_sugerida && (
-                  <span class={`badge ${accionBadgeClass[kind ?? 'ignorar']}`}>
+                  <span class={`badge ${accionBadgeClass[kind ?? 'ghost']}`}>
                     {accionVerb(it.contenido.accion_sugerida)}
                   </span>
                 )}
