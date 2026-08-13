@@ -12,6 +12,14 @@ const { title, description = 'Lectura cómoda de los boletines de Código Sin Si
 // (sin barra final). Para concatenar rutas seguras, almacenamos la barra final
 // aquí una sola vez.
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+const nav = [
+  { href: base, label: 'Boletines' },
+  { href: `${base}enriquecido/`, label: 'Enriquecidos' },
+  { href: `${base}fuentes/`, label: 'Fuentes' },
+  { href: `${base}temas/`, label: 'Temas' },
+];
+const currentPath = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="es">
@@ -20,29 +28,55 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <title>{title} · Tecnoboletín</title>
   </head>
   <body class="min-h-screen bg-bg text-text">
-    <header class="border-b border-[var(--color-border)]">
-      <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href={base} class="font-serif text-xl">
-          Tecnoboletín
+    <header class="sticky top-0 z-50 border-b border-border bg-bg-raised/85 backdrop-blur">
+      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+        <a href={base} class="group flex items-baseline gap-2 shrink-0">
+          <span class="font-display text-xl font-bold tracking-tight text-text">
+            Tecno<span class="text-accent">boletín</span>
+          </span>
+          <span class="hidden sm:inline text-[0.65rem] uppercase tracking-[0.14em] text-muted-dim font-display font-semibold">
+            · Código Sin Siesta
+          </span>
         </a>
-        <nav class="text-sm flex gap-5">
-          <a href={base} class="text-muted hover:text-text">Boletines</a>
-          <a href={`${base}enriquecido/`} class="text-muted hover:text-text">Enriquecidos</a>
-          <a href={`${base}fuentes/`} class="text-muted hover:text-text">Fuentes</a>
-          <a href={`${base}temas/`} class="text-muted hover:text-text">Temas</a>
+        <nav class="text-sm flex gap-1 -mr-2">
+          {nav.map((item) => {
+            const active = item.href === base ? currentPath === base : currentPath.startsWith(item.href);
+            return (
+              <a
+                href={item.href}
+                class:list={[
+                  'px-3 py-1.5 rounded-full font-display font-medium transition-colors',
+                  active
+                    ? 'bg-accent text-accent-ink'
+                    : 'text-muted hover:text-text hover:bg-surface-2',
+                ]}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </nav>
       </div>
     </header>
-    <main class="max-w-5xl mx-auto px-6 py-10">
+    <main class="max-w-5xl mx-auto px-6 py-10 md:py-14">
       <slot />
     </main>
-    <footer class="border-t border-[var(--color-border)] mt-20">
-      <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-muted flex justify-between">
-        <span>Código Sin Siesta · proyecto personal de Alejandro de la Fuente</span>
-        <span>Astro 5 · listo para Supabase</span>
+    <footer class="border-t border-border mt-24">
+      <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-muted-dim flex flex-col sm:flex-row gap-2 sm:justify-between">
+        <span>
+          Sub-producto de <a href="https://codigosinsiesta.com/" class="text-muted hover:text-accent">Código Sin Siesta</a>
+          · proyecto personal de Alejandro de la Fuente
+        </span>
+        <span class="font-mono text-xs text-muted-dim">Astro 5 · listo para Supabase</span>
       </div>
     </footer>
   </body>

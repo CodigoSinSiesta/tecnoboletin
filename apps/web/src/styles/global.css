@@ -1,16 +1,60 @@
+/* ==========================================================================
+   Tecnoboletín — sistema de diseño "zine con carácter"
+   Ver docs/DESIGN.md (raíz del repo) para el razonamiento completo.
+   Resumen rápido:
+   - Paleta: navy/índigo oscuro (familia del sitio padre codigosinsiesta.com,
+     no idéntica) + 4 acentos con propósito semántico, no decorativo:
+       accent (ámbar)  -> hallazgo principal / pick editorial
+       violet           -> síntesis editorial (el contenido más valioso)
+       radar (azul)     -> radar secundario / enlaces / acción "leer"
+       alert (rosa)     -> alertas honestas
+       go (verde)       -> acción concreta "explorar / probar"
+   - Tipografía: Space Grotesk para titulares/labels/tags (coherente con el
+     sitio padre), Inter para UI/cuerpo corto, IBM Plex Serif SOLO para
+     cuerpo de artículos largos (lectura cómoda), JetBrains Mono para
+     nombres de repos/URLs/edges del grafo.
+   - Todos los tokens de color van bajo el namespace --color-* porque
+     Tailwind v4 solo genera utilidades (bg-/text-/border-) para namespaces
+     reconocidos en @theme; un token fuera de ese prefijo no genera clase.
+   ========================================================================== */
+
 @import "tailwindcss";
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'IBM Plex Serif', 'Iowan Old Style', 'Apple Garamond', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-bg: #0c0e14;
-  --color-surface: #14171f;
-  --color-border: #1f2330;
-  --color-text: #e6e6ee;
-  --color-muted: #9aa0b3;
-  --color-accent: #f5b65a;
+  /* Superficies: navy/índigo oscuro, con más profundidad que el
+     casi-negro plano anterior (#0c0e14). Acercado a la familia del sitio
+     padre (#0f172a / #0c1220) sin ser idéntico. */
+  --color-bg: #0a0e1a;
+  --color-bg-raised: #10162a;
+  --color-surface: #131a2e;
+  --color-surface-2: #1a2340;
+  --color-border: #232c47;
+  --color-border-strong: #34406a;
+
+  --color-text: #eef1fa;
+  --color-muted: #9aa5c4;
+  --color-muted-dim: #7b86a8;
+
+  /* Acentos semánticos — cada uno comunica una estructura del contenido,
+     no es decoración. Todos verificados >= 5:1 de contraste sobre --color-bg
+     y su "ink" correspondiente >= 8:1 sobre el propio acento (texto de badge). */
+  --color-accent: #f5b65a;       /* hallazgo principal / pick editorial */
+  --color-accent-ink: #241704;
+  --color-violet: #b39ddb;       /* síntesis editorial */
+  --color-violet-ink: #1c1330;
+  --color-radar: #6aa6ff;        /* radar secundario / enlaces / accion "leer" */
+  --color-radar-ink: #071a33;
+  --color-alert: #fb7185;        /* alertas honestas */
+  --color-alert-ink: #2a0810;
+  --color-go: #34d399;           /* accion "explorar / probar" */
+  --color-go-ink: #04170d;
+
+  /* compat: alias del link color anterior */
   --color-link: #6aa6ff;
 }
 
@@ -29,17 +73,34 @@ a:hover {
   text-decoration: underline;
 }
 
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+/* --------------------------------------------------------------------
+   Prose — cuerpo de lectura larga (por_que_importa, síntesis editorial,
+   markdown de boletines). max-width en "ch" para un ancho de línea
+   cómodo (65-75ch); NUNCA en los metadatos/tags/badges, que sí pueden
+   usar el ancho completo del contenedor.
+   -------------------------------------------------------------------- */
 .prose-read {
   font-family: var(--font-serif);
   font-size: 1.125rem;
   line-height: 1.7;
   max-width: 70ch;
+}
+/* Variante para prose de página completa (boletines/[slug].astro): centrada
+   dentro del <main>. La variante de tarjeta (dentro de .zine-card) NO se
+   centra: debe alinearse con el título de la tarjeta, no flotar suelta. */
+.prose-read--page {
   margin-inline: auto;
 }
 .prose-read h1,
 .prose-read h2,
 .prose-read h3 {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
+  font-weight: 700;
   color: var(--color-text);
   margin-top: 2.2em;
   margin-bottom: 0.6em;
@@ -71,4 +132,116 @@ a:hover {
   padding-left: 1em;
   color: var(--color-muted);
   font-style: italic;
+}
+/* Cuerpo corto (que_es, por_que_importa) dentro de tarjetas: mismo ancho
+   de lectura cómodo pero sin el aparato tipográfico completo de .prose-read
+   (sin tamaños de h1-h3, porque nunca hay headings ahí). */
+.prose-card {
+  max-width: 68ch;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------
+   Zine numbering — numeración editorial tipo revista para romper la
+   monotonía de tarjetas idénticas. Número fantasma en Space Grotesk.
+   -------------------------------------------------------------------- */
+.zine-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-border-strong);
+  font-size: 2.75rem;
+  letter-spacing: -0.02em;
+}
+.zine-num--radar {
+  -webkit-text-stroke: 1.5px var(--color-border);
+  font-size: 1.5rem;
+}
+
+/* --------------------------------------------------------------------
+   Separadores de sección — con carácter, no solo un border-t gris.
+   Barra de degradado + etiqueta, coloreable por sección.
+   -------------------------------------------------------------------- */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rule-color, var(--color-border-strong)), transparent);
+  border-radius: 2px;
+}
+.section-rule__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------
+   Tarjetas — variantes con "rail" lateral de color semántico en vez de
+   un border uniforme para las 20 tarjetas idénticas.
+   -------------------------------------------------------------------- */
+.zine-card {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--rail-color, var(--color-border-strong));
+  border-radius: 10px;
+  background: var(--color-surface);
+}
+.zine-card--pick {
+  background: linear-gradient(160deg, var(--color-surface-2), var(--color-surface));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+/* --------------------------------------------------------------------
+   Badges / pills semánticos
+   -------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  line-height: 1.6;
+}
+.badge--solid-accent { background: var(--color-accent); color: var(--color-accent-ink); }
+.badge--solid-violet { background: var(--color-violet); color: var(--color-violet-ink); }
+.badge--solid-radar { background: var(--color-radar); color: var(--color-radar-ink); }
+.badge--solid-alert { background: var(--color-alert); color: var(--color-alert-ink); }
+.badge--solid-go { background: var(--color-go); color: var(--color-go-ink); }
+.badge--outline {
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-muted);
+}
+.badge--ghost {
+  background: var(--color-bg-raised);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+/* --------------------------------------------------------------------
+   Alerta editorial — callout con carácter propio, no una <li> más.
+   -------------------------------------------------------------------- */
+.alert-callout {
+  border: 1px solid color-mix(in srgb, var(--color-alert) 40%, var(--color-border));
+  border-left: 3px solid var(--color-alert);
+  background: color-mix(in srgb, var(--color-alert) 8%, var(--color-surface));
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
 }
