@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { mdInline } from '../lib/markdown';
 
 interface Props {
   entry: CollectionEntry<'boletines'>;
@@ -21,7 +22,7 @@ const base = rawBase.replace(/\/?$/, '/');
   <h2 class="font-display text-xl font-semibold mb-2">
     <a href={`${base}boletines/${slug}`} class="text-text hover:text-accent">{title}</a>
   </h2>
-  {resumen && <p class="prose-card text-sm text-muted mb-3">{resumen}</p>}
+  {resumen && <p class="prose-card text-sm text-muted mb-3" set:html={mdInline(resumen)} />}
   <div class="flex items-center justify-between text-xs text-muted-dim">
     <span>{items ?? '—'} items</span>
     <div class="flex gap-2">

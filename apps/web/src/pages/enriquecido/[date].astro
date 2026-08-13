@@ -2,6 +2,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { mdBlock, mdInline } from '../../lib/markdown';
 
 export async function getStaticPaths() {
   const { default: fs } = await import('node:fs/promises');
@@ -100,7 +101,7 @@ const accionBadgeClass: Record<string, string> = {
       </div>
     </div>
     {enriched?.resumen_ejecutivo && (
-      <p class="prose-card text-muted whitespace-pre-wrap">{enriched.resumen_ejecutivo}</p>
+      <div class="prose-card text-muted" set:html={mdBlock(enriched.resumen_ejecutivo)} />
     )}
   </header>
 
@@ -119,28 +120,28 @@ const accionBadgeClass: Record<string, string> = {
           {editorial.posicionamiento && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Posicionamiento</h3>
-              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.posicionamiento}</p>
+              <div class="text-base text-text prose-card" set:html={mdBlock(editorial.posicionamiento)} />
             </article>
           )}
 
           {editorial.convergencia_stack_css && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Convergencia con tu stack</h3>
-              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.convergencia_stack_css}</p>
+              <div class="text-base text-text prose-card" set:html={mdBlock(editorial.convergencia_stack_css)} />
             </article>
           )}
 
           {editorial.cruzado_grafo && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Cruzado con tu grafo</h3>
-              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.cruzado_grafo}</p>
+              <div class="text-base text-text prose-card" set:html={mdBlock(editorial.cruzado_grafo)} />
             </article>
           )}
 
           {editorial.tendencias_5_boletines && (
             <article>
               <h3 class="font-display text-xs uppercase tracking-wider text-violet mb-2 font-semibold">Tendencias (5-6 boletines)</h3>
-              <p class="text-base text-text whitespace-pre-wrap prose-card">{editorial.tendencias_5_boletines}</p>
+              <div class="text-base text-text prose-card" set:html={mdBlock(editorial.tendencias_5_boletines)} />
             </article>
           )}
         </div>
@@ -150,7 +151,7 @@ const accionBadgeClass: Record<string, string> = {
             <h3 class="font-display text-xs uppercase tracking-wider text-alert mb-3 font-semibold">Alertas honestas</h3>
             <ul class="space-y-2">
               {editorial.alertas.map((a: string) => (
-                <li class="alert-callout text-base text-text">{a}</li>
+                <li class="alert-callout prose-card text-base text-text" set:html={mdInline(a)} />
               ))}
             </ul>
           </article>
@@ -170,7 +171,7 @@ const accionBadgeClass: Record<string, string> = {
                     }`}>{a.tipo}</span>
                     <span class="text-xs text-muted-dim font-mono">item #{a.item_idx}</span>
                   </div>
-                  <p class="text-base text-text">{a.razon}</p>
+                  <p class="prose-card text-base text-text" set:html={mdInline(a.razon)} />
                 </div>
               ))}
             </div>
@@ -211,18 +212,18 @@ const accionBadgeClass: Record<string, string> = {
                 </header>
 
                 {it.contenido?.que_es && (
-                  <p class="prose-card text-base text-text mb-3">{it.contenido.que_es}</p>
+                  <p class="prose-card text-base text-text mb-3" set:html={mdInline(it.contenido.que_es)} />
                 )}
 
                 {it.contenido?.por_que_importa && (
                   <div class="mb-3">
                     <h4 class="font-display text-xs uppercase tracking-wider text-muted mb-1 font-semibold">Por qué importa</h4>
-                    <p class="prose-card text-base text-text">{it.contenido.por_que_importa}</p>
+                    <p class="prose-card text-base text-text" set:html={mdInline(it.contenido.por_que_importa)} />
                   </div>
                 )}
 
                 {it.contenido?.madurez_senales && (
-                  <p class="prose-card text-xs text-muted-dim mb-3">{it.contenido.madurez_senales}</p>
+                  <p class="prose-card text-xs text-muted-dim mb-3" set:html={mdInline(it.contenido.madurez_senales)} />
                 )}
 
                 {it.relacion_grafo && it.relacion_grafo.length > 0 && (
@@ -245,7 +246,7 @@ const accionBadgeClass: Record<string, string> = {
                       {accionVerb(it.contenido.accion_sugerida)}
                     </span>
                     {accionDetail(it.contenido.accion_sugerida) && (
-                      <span class="text-xs text-muted-dim">{accionDetail(it.contenido.accion_sugerida)}</span>
+                      <span class="prose-card text-xs text-muted-dim" set:html={mdInline(accionDetail(it.contenido.accion_sugerida))} />
                     )}
                   </div>
                 )}
@@ -275,8 +276,8 @@ const accionBadgeClass: Record<string, string> = {
                   </span>
                 )}
               </div>
-              {it.contenido?.que_es && <p class="prose-card text-text">{it.contenido.que_es}</p>}
-              {it.contenido?.madurez_senales && <p class="prose-card text-xs text-muted-dim mt-1">{it.contenido.madurez_senales}</p>}
+              {it.contenido?.que_es && <p class="prose-card text-text" set:html={mdInline(it.contenido.que_es)} />}
+              {it.contenido?.madurez_senales && <p class="prose-card text-xs text-muted-dim mt-1" set:html={mdInline(it.contenido.madurez_senales)} />}
             </article>
           );
         })}

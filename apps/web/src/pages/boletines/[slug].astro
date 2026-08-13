@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { mdInline } from '../../lib/markdown';
 
 export async function getStaticPaths() {
   const entries = await getCollection('boletines');
@@ -28,7 +29,7 @@ const base = rawBase.replace(/\/?$/, '/');
         {items !== undefined && <span>· {items} items</span>}
       </div>
       <h1 class="font-display font-extrabold mb-3" style="font-size: clamp(2rem, 5vw, 3rem);">{title}</h1>
-      {resumen && <p class="prose-card text-muted">{resumen}</p>}
+      {resumen && <p class="prose-card text-muted" set:html={mdInline(resumen)} />}
       {tags.length > 0 && (
         <div class="mt-4 flex flex-wrap gap-2 text-xs">
           {tags.map((t) => (

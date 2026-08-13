@@ -133,13 +133,35 @@ a:hover {
   color: var(--color-muted);
   font-style: italic;
 }
-/* Cuerpo corto (que_es, por_que_importa) dentro de tarjetas: mismo ancho
-   de lectura cómodo pero sin el aparato tipográfico completo de .prose-read
-   (sin tamaños de h1-h3, porque nunca hay headings ahí). */
+/* Cuerpo corto (que_es, por_que_importa, resumen_ejecutivo, campos de
+   editorial.json) dentro de tarjetas: mismo ancho de lectura cómodo pero sin
+   el aparato tipográfico completo de .prose-read (sin tamaños de h1-h3,
+   porque nunca hay headings ahí). Estos campos se renderizan con marked
+   (ver src/lib/markdown.ts) e inyectan negrita/código/listas via set:html,
+   de ahí los estilos de elementos hijos: */
 .prose-card {
   max-width: 68ch;
   line-height: 1.6;
 }
+.prose-card strong { color: var(--color-text); font-weight: 700; }
+.prose-card em { font-style: italic; }
+.prose-card code {
+  background: var(--color-surface);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+.prose-card a { text-decoration: underline; text-underline-offset: 2px; }
+.prose-card ul,
+.prose-card ol {
+  margin: 0.5em 0;
+  padding-left: 1.25em;
+}
+.prose-card li { margin: 0.3em 0; }
+.prose-card p { margin: 0.6em 0; }
+.prose-card p:first-child { margin-top: 0; }
+.prose-card p:last-child { margin-bottom: 0; }
 
 /* --------------------------------------------------------------------
    Zine numbering — numeración editorial tipo revista para romper la
