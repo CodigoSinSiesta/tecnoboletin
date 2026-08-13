@@ -1,16 +1,569 @@
-{"version":1,"date":"2026-08-11","items":[
-  {"idx":0,"titulo":"antirez/h3.c","url":"https://github.com/antirez/h3.c","clasificacion":{"tipo":"repo","idioma":"en","autor":"Salvatore Sanfilippo (antirez)","medio":null,"tema_principal":"inferencia-local-multimodal-edge","temas_secundarios":["lenguaje-c","apple-silicon","motor-inferencia","minimax-h3"],"resumen_2_lineas":"antirez (autor de Redis) publica motor de inferencia MiniMax-H3 en C para Apple Silicon. Sin Python, sin dependencias pesadas. Pieza editorial por pedigree del autor.","confianza":0.92}},
-  {"idx":1,"titulo":"paperclipai/paperclip","url":"https://github.com/paperclipai/paperclip","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"agent-company-os","temas_secundarios":["orquestacion-agents","governance","coding-agents","nodejs"],"resumen_2_lineas":"Plataforma OSS (Node + React, MIT) que orquesta equipos de AI agents como si fuera una empresa: org charts, presupuestos y governance. 76k★ en 5 meses.","confianza":0.95}},
-  {"idx":2,"titulo":"org2AI/ORG2","url":"https://github.com/org2AI/ORG2","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"agent-company-os","temas_secundarios":["system-of-record","coding-agents","rust-harness","replay-trazable","agpl"],"resumen_2_lineas":"System of record para coding agents en Rust. Cada sesión re-playable, cada línea trazable a la decisión que la generó. AGPL-3.0 — auto-hostable. Alternativa a Paperclip con sesgo técnico.","confianza":0.78}},
-  {"idx":3,"titulo":"QwenLM/Qwen-MM-Plugins","url":"https://github.com/QwenLM/Qwen-MM-Plugins","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Alibaba (Qwen team)","tema_principal":"multimodal-agent-plugins","temas_secundarios":["mcp","video-tools","asr","vision-tools","qwen","model-agnostic"],"resumen_2_lineas":"Suite oficial Qwen (Apache-2.0, 1.5k★) que añade capacidades multimodales (imagen, video, audio, OCR, búsqueda) a cualquier agent harness vía MCP.","confianza":0.93}},
-  {"idx":4,"titulo":"duolahypercho/codex-router","url":"https://github.com/duolahypercho/codex-router","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"model-router-coding-agent","temas_secundarios":["codex-cli","deepseek","credential-isolation","litellm"],"resumen_2_lineas":"Router local que integra múltiples providers (DeepSeek, Anthropic, Kimi, xAI) en el Codex CLI con credenciales aisladas. Setup híbrido sin pegar API keys en chat.","confianza":0.91}},
-  {"idx":5,"titulo":"antvis/Infographic","url":"https://github.com/antvis/Infographic","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Alibaba (AntV)","tema_principal":"ai-infographic-framework","temas_secundarios":["data-visualization","declarative-dsl","antv","llm-integration"],"resumen_2_lineas":"Framework declarativo (MIT, TypeScript, 6.1k★) para generar infografías de alta calidad desde una sintaxis propia. Integra LLM. Maduración alta pero trending sin release nuevo en 2 meses.","confianza":0.82}},
-  {"idx":6,"titulo":"paxlabs-inc/matrix-core","url":"https://github.com/paxlabs-inc/matrix-core","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"autonomous-agent-framework","temas_secundarios":["go","NOASSERTION","agentic-ai","early"],"resumen_2_lineas":"Framework Go (NOASSERTION, 165★) para construir AI agents autónomos más allá de lo conversacional. Reciente sin tracción amplia.","confianza":0.65}},
-  {"idx":7,"titulo":"holaboss-ai/holaOS","url":"https://github.com/holaboss-ai/holaOS","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"ai-workspace","temas_secundarios":["typescript","NOASSERTION","claude-code","codex","ai-agent-workspace"],"resumen_2_lineas":"Workspace open-source TS (NOASSERTION, 5.6k★) all-in-one para correr agents (Claude Code, Codex) sobre tus herramientas. Cautela por LICENSE.","confianza":0.72}},
-  {"idx":8,"titulo":"dyad-sh/dyad","url":"https://github.com/dyad-sh/dyad","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"vibe-coding-local","temas_secundarios":["typescript","NOASSERTION","loable-replit-alternative","local"],"resumen_2_lineas":"AI app builder TS (NOASSERTION, 21.2k★) local-first para power users. Alternativa a Lovable/Replit/Bolt. Cautela por LICENSE.","confianza":0.7}},
-  {"idx":9,"titulo":"joelbqz/writer-computer","url":"https://github.com/joelbqz/writer-computer","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"local-first-text-editor","temas_secundarios":["typescript","GPL-3","markdown-editor","desktop"],"resumen_2_lineas":"Editor de markdown desktop TS (GPL-3.0, 1.3k★) local-first. Encaja con stack 'local-first desktop apps'.","confianza":0.88}},
-  {"idx":10,"titulo":"brightdata/cli","url":"https://github.com/brightdata/cli","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Bright Data","tema_principal":"scraping-cli","temas_secundarios":["typescript","MIT","structured-data","terminal"],"resumen_2_lineas":"CLI TS oficial (MIT, 3.8k★) de Bright Data para scrapear/buscar/extraer datos estructurados desde terminal.","confianza":0.85}},
-  {"idx":11,"titulo":"apify/crawlee","url":"https://github.com/apify/crawlee","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Apify","tema_principal":"web-scraping-library","temas_secundarios":["typescript","apache-2","browser-automation","nodejs"],"resumen_2_lineas":"Librería TS (Apache-2.0, 25.3k★) de web scraping + browser automation para Node.js. Referencia OSS canónica.","confianza":0.95}},
-  {"idx":12,"titulo":"neuml/txtai","url":"https://github.com/neuml/txtai","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"semantic-search-framework","temas_secundarios":["python","apache-2","llm-orchestration","5y-cadence"],"resumen_2_lineas":"All-in-one AI framework Python (Apache-2.0, 12.9k★) para semantic search, LLM orchestration y language model workflows. Veterano 5 años.","confianza":0.93}},
-  {"idx":13,"titulo":"stanfordnlp/dspy","url":"https://github.com/stanfordnlp/dspy","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Stanford NLP","tema_principal":"programming-not-prompting","temas_secundarios":["python","MIT","programmatic-lm","stanford"],"resumen_2_lineas":"Framework Python (MIT, 37k★) Stanford NLP: 'programming—not prompting—language models'. Alternativa al prompt-engineering manual.","confianza":0.95}}
-],"rejected":[],"stats":{"items_total":14,"items_clasificados":14,"items_rejected":0,"clasificador":"agentico-v2","notas_metodologia":"14 items = 6 hallazgos principales + 8 radar secundario."}}
+{
+  "version": 2,
+  "date": "2026-08-11",
+  "boletin_origen": "2026-08-11-trending.md",
+  "resumen_ejecutivo": "- **Redis-creator antirez sale con `h3.c`**: dos días después de su lanzamiento, `antirez/h3.c` ya es trending. Salvatore Sanfilippo (autor de Redis) implementa inferencia nativa de MiniMax-H3 sobre Apple Silicon en C. Es la primera señal editorial de un autor \"veterano\" entrando al espacio multimodal-edge en 2026.\n- **`paperclipai/paperclip` cruza 76k★ en cinco meses** sin aparecer en el radar de Código Sin Siesta todavía. Es la pieza \"system of record para equipos de agents\" más viral del año — Node.js + React UI + org charts + budgets + governance. Tiene 5k+ issues abiertos, release cadence activa y Discord/X/docs. Real, no hype.\n- **El espacio \"agent company / system of record\" tiene ahora tres contendientes OSS serios**: `paperclipai/paperclip` (76k★, MIT, Node), `org2AI/ORG2` (2.4k★, AGPL-3.0, Rust harness + 20+ CLIs) y `holaboss-ai/holaOS` (5.6k★, NOASSERTION, \"AI agent workspace\"). El mercado está pivotando de \"agente individual\" a \"organización de agentes\".\n- **QwenLM/Qwen-MM-Plugins llega como suite oficial de plugins multimodales** para cualquier agent harness. Cobertura: imagen, video, audio, OCR, ASR, búsqueda web, memoria de video largo. Compite con Anthropic skills pero agnóstico al harness.\n- **Para usuarios de DeepSeek / Hermes**: `duolahypercho/codex-router` permite usar Anthropic, Kimi, DeepSeek, xAI, etc. dentro del Codex App/CLI a través de un router local con credenciales aisladas. Credential-prompt oculto, Homebrew tap, integración transparente. Muy relevante para setup híbrido.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + TypeScript + Python (~45 items únicos), GitHub REST API (21 verificaciones). El blogwatcher de hoy 08:00 aún no había publicado al cierre de este boletín.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "antirez/h3.c",
+      "url": "https://github.com/antirez/h3.c",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Implementación nativa en C (MIT, 654★, creada hace 2 días) del motor de inferencia MiniMax-H3 sobre Apple Silicon. Prompt-to-video/audio, first/last-frame conditioning y Ref2VA referencias en una sola sesión interactiva. Sin Python, sin dependencias pesadas.",
+        "por_que_importa": "Salvatore Sanfilippo (antirez) es uno de los pocos autores OSS con pedigree comparable al de un Linus Torvalds en su área. Que publique un motor de inferencia multimodal en C (no en Python) para Apple Silicon marca dirección: hay un hueco editorial enorme para el espacio \"local-first multimodal\" que no dependa de servidores caros. Para CSS: si cubrimos inference local, este es el ejemplo canónico de \"veterano OSS entra al multimodal\" — junto al ángulo técnico de \"qué decisión arquitectónica lleva a elegir C sobre Python para inference\".",
+        "madurez_senales": "**654★** · 32 forks · C · creado 2026-08-09 · último push 2026-08-10 · licencia **MIT**. Repo original (fork=False, parent=None). README detalla build chain (`make -j8`), sesiones interactivas tipo Iris-style con `--width/--height/--steps`, comandos `!status`/`!seed`/`!save`/`!cache`. Targets: Apple Silicon M3 Max y M5 Max. Sin topics definidos todavía.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:antirez/h3.c",
+          "rel": "implements",
+          "dst": "concept:local-multimodal-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:antirez/h3.c",
+          "rel": "uses",
+          "dst": "framework:apple-metal",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:local-multimodal-inference",
+          "rel": "complements",
+          "dst": "concept:agent_runtime",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "Salvatore Sanfilippo (antirez)",
+        "medio": null,
+        "tema_principal": "inferencia-local-multimodal-edge",
+        "temas_secundarios": [
+          "lenguaje-c",
+          "apple-silicon",
+          "motor-inferencia",
+          "minimax-h3"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plataforma Node.js + React UI (MIT, 76.7k★ en 5 meses) que orquesta equipos de AI agents con org charts, presupuestos, governance, goal alignment y tracking de costes desde un único dashboard. \"If OpenClaw is an _employee_, Paperclip is the _company_\".",
+        "por_que_importa": "Es la pieza OSS más viral del patrón \"agent as workforce\". Tiene 5k+ issues abiertos (señal fuerte de comunidad), 380 watchers, Discord activo, docs en paperclip.ing y releases regulares. Para CSS: si vamos a hablar de \"cómo una empresa coordina N coding agents en paralelo\", Paperclip es la referencia. Encaja en la línea editorial \"from single agent to agent organization\" que el boletín de ayer abrió con `stablyai/orca`. La comparación natural: Paperclip (org charts + business), ORG2 (system of record para engineers), holaOS (workspace), LifeOS (harness personal) — todos apuntan a la misma idea con ángulos distintos.",
+        "madurez_senales": "**76,748★** · 14,222 forks · TypeScript · creado 2026-03-02 · último push 2026-08-11 · licencia **MIT**. Repo original (fork=False, parent=None). Default branch: master. 5,093 issues abiertos. 380 watchers. Tamaño repo: 164 MB. Inferencia \"AI-first company OS\" — la categoría que el usuario/Alejandro cubre ya con `danielmiessler/LifeOS` (workspace personal) y `InsForge/InsForge` (backend para agents).",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:paperclipai/paperclip",
+          "rel": "implements",
+          "dst": "concept:agent_company_os",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:paperclipai/paperclip",
+          "rel": "competes_with",
+          "dst": "repo:org2AI/ORG2",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:paperclipai/paperclip",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:paperclipai/paperclip",
+          "rel": "relevant_to",
+          "dst": "concept:agent_control_plane",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-company-os",
+        "temas_secundarios": [
+          "orquestacion-agents",
+          "governance",
+          "coding-agents",
+          "nodejs"
+        ],
+        "confianza": 0.95
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "org2AI/ORG2",
+      "url": "https://github.com/org2AI/ORG2",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AGPL-3.0, TypeScript + Rust harness (2.4k★ en 2 meses). \"The system of record for how agents build software\" — cada sesión es re-playable, cada línea trazable a la decisión detrás. Distribución multiplataforma (macOS/Windows/Linux installers + AppImage + DEB).",
+        "por_que_importa": "Es el contendiente \"más técnico / menos consumer\" de la categoría agent-org. Su diferenciador: el harness está escrito en Rust (no en Node/Python) y expone 20+ CLIs. El modelo de licensing AGPL-3.0 limita adopción SaaS pero es ideal para self-hosted (igual que InsForge). Para CSS: comparativa head-to-head con `paperclipai/paperclip` y `holaboss-ai/holaOS` por la misma posición editorial. Pista para artículo: \"qué significa 'system of record' en el contexto de coding agents — replay, review-as-team, traceability\".",
+        "madurez_senales": "**2,448★** · 136 forks · TypeScript · creado 2026-06-01 · último push 2026-08-11 · licencia **AGPL-3.0**. Topics: ai-coding-assistant, coding-agents, ide, local-first, reliability-engineering, rust, self-hosted, tuari. README multi-idioma (EN/FR/ZH/ZH-TW/ES/RU/PT/DE). Candidato natural para \"comparativa de tres agent-orgs OSS\".",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:org2AI/ORG2",
+          "rel": "implements",
+          "dst": "concept:agent_company_os",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:org2AI/ORG2",
+          "rel": "uses",
+          "dst": "tool:rust-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:org2AI/ORG2",
+          "rel": "competes_with",
+          "dst": "repo:paperclipai/paperclip",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:org2AI/ORG2",
+          "rel": "competes_with",
+          "dst": "repo:holaboss-ai/holaOS",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-company-os",
+        "temas_secundarios": [
+          "system-of-record",
+          "coding-agents",
+          "rust-harness",
+          "replay-trazable",
+          "agpl"
+        ],
+        "confianza": 0.78
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "QwenLM/Qwen-MM-Plugins",
+      "url": "https://github.com/QwenLM/Qwen-MM-Plugins",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Suite Python (Apache-2.0, 1.5k★, 13 días desde creación) que hace \"any agent harness multimodal-native\". Capacidades: imagen/video/OCR, ASR + diarization, video memory jerárquica para long-video QA, búsqueda web+reverse-image, edición de video. Distribuido como skills + MCP servers.",
+        "por_que_importa": "Es la respuesta oficial de Alibaba/Qwen al hueco que `anthropics/skills` cubre para Claude. La diferencia clave: model-agnostic (cualquier harness que hable MCP) frente a Anthropic skills (acoplado a Claude). Cubre multimodal end-to-end con cookbooks trabajados. Para CSS: si cubrimos \"qué pieces of multimodal se pueden enchufar a un coding agent en 2026\", Qwen-MM-Plugins es el catálogo más completo OSS disponible hoy.",
+        "madurez_senales": "**1,554★** · 70 forks · Python · creado 2026-07-29 · último push 2026-08-11 · licencia **Apache-2.0**. Capacidades explícitas: core (local I/O + image tools), api (VL/Omni/ASR/SAM3 vía DashScope), search (Serper), video-memory (hierarchical graph memory), video-edit. Cubre Qwen3.8-Max + cookbooks por capacidad. El \"official from Qwen team\" es la señal editorial fuerte.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:QwenLM/Qwen-MM-Plugins",
+          "rel": "implements",
+          "dst": "concept:multimodal-agent-plugins",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:QwenLM/Qwen-MM-Plugins",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:QwenLM/Qwen-MM-Plugins",
+          "rel": "relevant_to",
+          "dst": "company:alibaba-qwen",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:QwenLM/Qwen-MM-Plugins",
+          "rel": "uses",
+          "dst": "tool:mcp",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Alibaba (Qwen team)",
+        "tema_principal": "multimodal-agent-plugins",
+        "temas_secundarios": [
+          "mcp",
+          "video-tools",
+          "asr",
+          "vision-tools",
+          "qwen",
+          "model-agnostic"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "duolahypercho/codex-router",
+      "url": "https://github.com/duolahypercho/codex-router",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, JavaScript (1.4k★ en 3 semanas). Router local credential-isolating que integra Anthropic, Kimi, DeepSeek, xAI, GitHub Copilot y otros modelos externos en el Codex App y CLI. Habla Responses API y los modelos aparecen en el picker nativo de Codex junto a GPT.",
+        "por_que_importa": "Relevante para cualquier usuario que ya tiene setup DeepSeek (incluido el propio Hermes Agent del usuario) y quiere mantener el CLI de OpenAI Codex como front-end. Credenciales se piden en terminal local oculto — no se pegan en chat. Setup guiado con `--guided`, brew tap, background service, integración con `codex doctor`. Es la pieza OSS que faltaba para setups híbridos Claude+Codex+DeepSeek. Advertencia: el repo declara explícitamente \"not affiliated with or endorsed by OpenAI/GitHub/Anthropic/Moonshot/DeepSeek/OpenRouter\" — es un proyecto comunitario independiente.",
+        "madurez_senales": "**1,445★** · 113 forks · JavaScript · creado 2026-07-19 · último push 2026-08-11 · licencia **MIT**. Topics: codex, deepseek, kimi, litellm, model-router. Actividad diaria desde el lanzamiento (3 semanas). Documentación: AGENTS.md, install recipes (Homebrew tap), credential prompt flow. Tags coinciden con el patrón \"model router\" (similar a LiteLLM, OpenRouter, pero específico para el cliente Codex).",
+        "accion_sugerida": "**probar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:duolahypercho/codex-router",
+          "rel": "implements",
+          "dst": "concept:model_router_for_coding_agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:duolahypercho/codex-router",
+          "rel": "uses",
+          "dst": "repo:openai/codex",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:duolahypercho/codex-router",
+          "rel": "relevant_to",
+          "dst": "company:deepseek",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:duolahypercho/codex-router",
+          "rel": "relevant_to",
+          "dst": "concept:hermes-agent-setup",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "model-router-coding-agent",
+        "temas_secundarios": [
+          "codex-cli",
+          "deepseek",
+          "credential-isolation",
+          "litellm"
+        ],
+        "confianza": 0.91
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "antvis/Infographic",
+      "url": "https://github.com/antvis/Infographic",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, TypeScript (6.1k★, último push 2026-06-01 — proyecto maduro que vuelve a trending). Framework declarativo de la familia AntV (Alibaba) para generar infografías de alta calidad desde una sintaxis diseñada. Integra LLM para \"bring words to life with AI\".",
+        "por_que_importa": "Diferencia editorial: frente al stack \"AI image generator\" (ComfyUI, Midjourney), Infographic resuelve \"AI-generated structured data visualization\". Tiene un DSL propio, publicado en npm como `@antv/infographic`, y la familia AntV incluye G6/G2 (graph/2D viz). Para CSS: si vamos a hablar de \"AI para data storytelling\", este es el framework OSS canónico en chino-inglés. Caveat: el último push es de hace 2 meses, así que la tracción de hoy es por mención / curación más que por release nuevo.",
+        "madurez_senales": "**6,119★** · 480 forks · TypeScript · creado 2025-09-11 · último push **2026-06-01** · licencia **MIT**. Topics: ai, antv, infographic, llm, visualization. Trendshift badge presente. Sin release nuevo desde junio; el trending de hoy parece ser por una mención reciente o curación editorial. Maduración alta (npm publicado, build CI, docs en infographic.antv.vision).",
+        "accion_sugerida": "**vigilar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:antvis/Infographic",
+          "rel": "implements",
+          "dst": "concept:ai_infographic_framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:antvis/Infographic",
+          "rel": "relevant_to",
+          "dst": "company:alibaba-antv",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:antvis/Infographic",
+          "rel": "complements",
+          "dst": "repo:Comfy-Org/ComfyUI",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Alibaba (AntV)",
+        "tema_principal": "ai-infographic-framework",
+        "temas_secundarios": [
+          "data-visualization",
+          "declarative-dsl",
+          "antv",
+          "llm-integration"
+        ],
+        "confianza": 0.82
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "paxlabs-inc/matrix-core",
+      "url": "https://github.com/paxlabs-inc/matrix-core",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"production-grade framework for building autonomous AI agents that go beyond c[onversational]\". Temas: agentic-ai, agents, autonomous-agents, expert-agents",
+        "por_que_importa": "",
+        "madurez_senales": "165★, push 2026-08-10, Go, NOASSERTION",
+        "accion_sugerida": "vigilar — check en 30 días si hay release + cadencia; de momento es Repo recién nacido sin tracción amplia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "autonomous-agent-framework",
+        "temas_secundarios": [
+          "go",
+          "NOASSERTION",
+          "agentic-ai",
+          "early"
+        ],
+        "confianza": 0.65
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "holaboss-ai/holaOS",
+      "url": "https://github.com/holaboss-ai/holaOS",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Open-source All in One AI agent workspace. Run any agent — Claude Code, Codex — across your tools\"",
+        "por_que_importa": "",
+        "madurez_senales": "5,663★, push 2026-08-10, TypeScript, **NOASSERTION**",
+        "accion_sugerida": "vigilar (con cautela) — verificar LICENSE real antes de adopción; encaja en la línea \"local-first-agent-workspace\" pero el NOASSERTION bloquea producción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-workspace",
+        "temas_secundarios": [
+          "typescript",
+          "NOASSERTION",
+          "claude-code",
+          "codex",
+          "ai-agent-workspace"
+        ],
+        "confianza": 0.72
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "dyad-sh/dyad",
+      "url": "https://github.com/dyad-sh/dyad",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Local, open-source AI app builder for power users ✨ v0 / Lovable / Replit / Bolt alternative 🌟\"",
+        "por_que_importa": "",
+        "madurez_senales": "21,198★, push 2026-08-11, TypeScript, **NOASSERTION**",
+        "accion_sugerida": "vigilar (con cautela) — es la pieza \"vibe coding local\" más popular; misma advertencia de LICENSE",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vibe-coding-local",
+        "temas_secundarios": [
+          "typescript",
+          "NOASSERTION",
+          "loable-replit-alternative",
+          "local"
+        ],
+        "confianza": 0.7
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "joelbqz/writer-computer",
+      "url": "https://github.com/joelbqz/writer-computer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Local-first desktop markdown editor\"",
+        "por_que_importa": "",
+        "madurez_senales": "1,279★, push 2026-08-11, TypeScript, GPL-3.0",
+        "accion_sugerida": "leer — encaja con el patrón \"local-first desktop apps\" que hemos cubierto con FluidVoice y pocket-tts; si escribimos sobre \"el stack local-first del writer dev\", merece nota",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "local-first-text-editor",
+        "temas_secundarios": [
+          "typescript",
+          "GPL-3",
+          "markdown-editor",
+          "desktop"
+        ],
+        "confianza": 0.88
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "brightdata/cli",
+      "url": "https://github.com/brightdata/cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Official Bright Data CLI - scrape, search, and extract structured web data directly from your terminal\"",
+        "por_que_importa": "",
+        "madurez_senales": "3,766★, push 2026-07-27, TypeScript, MIT",
+        "accion_sugerida": "vigilar — Bright Data es comercial (proxy network) pero el CLI es OSS; relevante si cubrimos scraping APIs",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Bright Data",
+        "tema_principal": "scraping-cli",
+        "temas_secundarios": [
+          "typescript",
+          "MIT",
+          "structured-data",
+          "terminal"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "apify/crawlee",
+      "url": "https://github.com/apify/crawlee",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers\"",
+        "por_que_importa": "",
+        "madurez_senales": "25,339★, push 2026-08-10, TypeScript, Apache-2.0",
+        "accion_sugerida": "leer — referencia OSS canónica para scraping + browser automation; encaja con la skill `web-scraping-viability` que ya tenemos",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Apify",
+        "tema_principal": "web-scraping-library",
+        "temas_secundarios": [
+          "typescript",
+          "apache-2",
+          "browser-automation",
+          "nodejs"
+        ],
+        "confianza": 0.95
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "neuml/txtai",
+      "url": "https://github.com/neuml/txtai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"All-in-one AI framework for semantic search, LLM orchestration and language model workflows\"",
+        "por_que_importa": "",
+        "madurez_senales": "12,858★, push 2026-08-11, Python, Apache-2.0",
+        "accion_sugerida": "leer — pieza veterana OSS (5 años) con cadencia alta; base de conocimiento semántico alternativa a mem0/cognee/zep",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "semantic-search-framework",
+        "temas_secundarios": [
+          "python",
+          "apache-2",
+          "llm-orchestration",
+          "5y-cadence"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "stanfordnlp/dspy",
+      "url": "https://github.com/stanfordnlp/dspy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"DSPy: The framework for programming—not prompting—language models\"",
+        "por_que_importa": "",
+        "madurez_senales": "37,066★, push 2026-08-10, Python, MIT",
+        "accion_sugerida": "leer — clásico del espacio \"programmatic LM\"; ya citado en varias piezas nuestras como alternativa al prompt-engineering manual",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Stanford NLP",
+        "tema_principal": "programming-not-prompting",
+        "temas_secundarios": [
+          "python",
+          "MIT",
+          "programmatic-lm",
+          "stanford"
+        ],
+        "confianza": 0.95
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "none",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

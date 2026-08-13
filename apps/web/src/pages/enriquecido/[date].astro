@@ -18,14 +18,10 @@ const base = rawBase.replace(/\/?$/, '/');
 const dataBase = path.join(process.cwd(), 'src', 'data', 'boletines', date);
 
 let enriched: any = null;
-let reviews: any = null;
 let edges: any[] = [];
 let editorial: any = null;
 try {
   enriched = JSON.parse(await readFile(path.join(dataBase, 'enriched.json'), 'utf-8'));
-} catch {}
-try {
-  reviews = JSON.parse(await readFile(path.join(dataBase, 'reviews.json'), 'utf-8'));
 } catch {}
 try {
   edges = (await readFile(path.join(dataBase, 'edges.jsonl'), 'utf-8'))
@@ -36,19 +32,27 @@ try {
 } catch {}
 
 const items: any[] = enriched?.items || [];
-const perfiles = reviews?.perfiles || {};
+const hallazgos = items.filter((it) => it.seccion === 'hallazgo_principal');
+const radar = items.filter((it) => it.seccion === 'radar_secundario');
 const stats = enriched?.stats || {};
+
+const accionColor = (a: string) => {
+  const t = (a || '').toLowerCase();
+  if (t.startsWith('explorar') || t.startsWith('leer') || t.startsWith('probar')) {
+    return 'bg-[var(--color-accent)] text-black';
+  }
+  if (t.startsWith('ignorar')) return 'bg-[var(--color-bg)] text-muted';
+  return 'bg-yellow-900/40 text-yellow-200';
+};
 ---
-<BaseLayout title={`Boletin ${date}`}>
+<BaseLayout title={`Tecnoboletin ${date}`}>
   <header class="mb-10 pb-6 border-b border-[var(--color-border)]">
     <div class="text-xs text-muted mb-3 flex gap-4 flex-wrap">
       <time>{date}</time>
-      <span class="uppercase tracking-wider">agentico-v2</span>
-      <span>{items.length} items</span>
-      {stats.items_rejected ? <span>· {stats.items_rejected} rechazados</span> : null}
+      <span>{hallazgos.length} hallazgos · {radar.length} radar</span>
     </div>
-    <h1 class="font-serif text-3xl mb-3">Boletin {date}</h1>
-    {enriched?.resumen_ejecutivo && <p class="text-muted">{enriched.resumen_ejecutivo}</p>}
+    <h1 class="font-serif text-3xl mb-3">Tecnoboletin {date}</h1>
+    {enriched?.resumen_ejecutivo && <p class="text-muted whitespace-pre-wrap">{enriched.resumen_ejecutivo}</p>}
   </header>
 
   {editorial && (
@@ -56,11 +60,8 @@ const stats = enriched?.stats || {};
       <header class="mb-5">
         <h2 class="font-sans text-sm uppercase tracking-wider mb-2">Lectura editorial</h2>
         <p class="text-xs text-muted">
-          Síntesis integrada por los perfiles sintéticos
-          {editorial.perfiles_involucrados && editorial.perfiles_involucrados.length > 0 && (
-            <span> ({editorial.perfiles_involucrados.join(', ')})</span>
-          )}
-          . Conecta este boletín con tu stack local-first, tu grafo de conocimiento y la línea editorial de CSS.
+          Sintesis del boletin: posicionamiento, convergencia con el stack local-first, cruce con el
+          grafo de conocimiento y tendencias entre boletines.
         </p>
       </header>
 
@@ -127,65 +128,98 @@ const stats = enriched?.stats || {};
   )}
 
   <section class="mb-12">
-    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Items clasificados</h2>
+    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Hallazgos principales</h2>
     <div class="space-y-6">
-      {items.map((it) => (
+      {hallazgos.map((it) => (
         <article class="border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
-          <header class="flex items-center justify-between mb-2">
-            <span class="font-mono text-xs text-muted">#{it.idx}</span>
-            <span class="text-xs px-2 py-0.5 bg-[var(--color-bg)] rounded">{it.clasificacion?.tipo}</span>
+          <header class="flex items-center justify-between mb-2 gap-3 flex-wrap">
+            <h3 class="font-serif text-lg">
+              <a href={it.url} target="_blank" rel="noopener">{it.titulo}</a>
+            </h3>
+            <div class="flex items-center gap-2 text-xs shrink-0">
+              <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded text-muted">{it.clasificacion?.tipo}</span>
+              <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded text-muted">{it.clasificacion?.tema_principal}</span>
+              <span class="text-muted">confianza {Number(it.clasificacion?.confianza ?? 0).toFixed(2)}</span>
+            </div>
           </header>
-          <h3 class="font-serif text-lg mb-2">
-            <a href={it.url} target="_blank" rel="noopener">{it.titulo}</a>
-          </h3>
-          <p class="text-sm text-text mb-3">{it.clasificacion?.resumen_2_lineas}</p>
-          <div class="flex flex-wrap gap-2 text-xs items-center">
-            <span class="px-2 py-0.5 bg-[var(--color-accent)] text-black rounded font-semibold">{it.clasificacion?.tema_principal}</span>
-            {(it.clasificacion?.temas_secundarios || []).map((t: string) => (
-              <span class="px-2 py-0.5 bg-[var(--color-bg)] rounded">#{t}</span>
-            ))}
-            <span class="text-muted">confianza: {Number(it.clasificacion?.confianza).toFixed(2)}</span>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
 
-  <section class="mb-12">
-    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Reviews</h2>
-    <p class="text-muted text-xs mb-4">
-      <em>Importante: estas reviews son interpretaciones del propio agente en los roles de Carlos (tecnico), Dani (junior) y Maria (novato con interes). NO son perfiles humanos reales. Serviran como base para iterar el formato cuando incorporemos evaluacion humana.</em>
-    </p>
-    <div class="grid md:grid-cols-3 gap-4">
-      {Object.entries(perfiles).map(([perfil, r]: any) => (
-        <article class="border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
-          <header class="mb-3 flex items-center justify-between">
-            <h3 class="font-sans text-sm uppercase tracking-wider">{perfil}</h3>
-            <span class="text-xs text-muted">honestidad {r.honestidad}/10</span>
-          </header>
-          {(r as any).globales && (
-            <ul class="text-xs text-muted space-y-2">
-              {(r as any).globales.slice(0, 3).map((g: string) => <li>· {g}</li>)}
-            </ul>
+          {it.contenido?.que_es && (
+            <p class="text-sm text-text mb-3">{it.contenido.que_es}</p>
+          )}
+
+          {it.contenido?.por_que_importa && (
+            <div class="mb-3">
+              <h4 class="font-sans text-xs uppercase tracking-wider text-muted mb-1">Por que importa</h4>
+              <p class="text-sm text-text">{it.contenido.por_que_importa}</p>
+            </div>
+          )}
+
+          {it.contenido?.madurez_senales && (
+            <p class="text-xs text-muted mb-3">{it.contenido.madurez_senales}</p>
+          )}
+
+          {it.relacion_grafo && it.relacion_grafo.length > 0 && (
+            <div class="mb-3">
+              <h4 class="font-sans text-xs uppercase tracking-wider text-muted mb-1">Relacion con el grafo</h4>
+              <ul class="text-xs font-mono text-muted space-y-1">
+                {it.relacion_grafo.map((t: any) => (
+                  <li>
+                    {t.src} <span class="text-[var(--color-accent)]">--[{t.rel}]--&gt;</span> {t.dst}
+                    {t.primera_mencion && <span class="text-text not-italic font-sans"> (ya cubierto el {t.primera_mencion})</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {it.contenido?.accion_sugerida && (
+            <span class={`inline-block text-xs px-2 py-0.5 rounded font-semibold ${accionColor(it.contenido.accion_sugerida)}`}>
+              {it.contenido.accion_sugerida}
+            </span>
           )}
         </article>
       ))}
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">
-      Edges propuestos ({edges.length})
-    </h2>
-    <div class="space-y-1">
-      {edges.slice(0, 25).map((e) => (
-        <div class="font-mono text-xs text-muted">
-          {e.src} <span class="text-[var(--color-accent)]">--[{e.rel}]--&gt;</span> {e.dst}
-        </div>
-      ))}
-      {edges.length > 25 && <p class="text-xs text-muted mt-3">…y {edges.length - 25} edges mas</p>}
-    </div>
-  </section>
+  {radar.length > 0 && (
+    <section class="mb-12">
+      <h2 class="font-sans text-sm uppercase tracking-wider text-muted mb-4">Radar secundario</h2>
+      <div class="space-y-3">
+        {radar.map((it) => (
+          <article class="border border-[var(--color-border)] rounded p-4 bg-[var(--color-surface)] text-sm">
+            <div class="flex items-center justify-between gap-3 mb-1 flex-wrap">
+              <a href={it.url} target="_blank" rel="noopener" class="font-mono">{it.titulo}</a>
+              {it.contenido?.accion_sugerida && (
+                <span class={`text-xs px-2 py-0.5 rounded font-semibold ${accionColor(it.contenido.accion_sugerida)}`}>
+                  {it.contenido.accion_sugerida}
+                </span>
+              )}
+            </div>
+            {it.contenido?.que_es && <p class="text-text">{it.contenido.que_es}</p>}
+            {it.contenido?.madurez_senales && <p class="text-xs text-muted mt-1">{it.contenido.madurez_senales}</p>}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {edges.length > 0 && (
+    <details class="mb-12 border border-[var(--color-border)] rounded-lg p-5 bg-[var(--color-surface)]">
+      <summary class="font-sans text-sm uppercase tracking-wider text-muted cursor-pointer">
+        Edges del grafo ({edges.length})
+      </summary>
+      <div class="space-y-1 mt-4">
+        {edges.slice(0, 60).map((e) => (
+          <div class="font-mono text-xs text-muted">
+            {e.src} <span class="text-[var(--color-accent)]">--[{e.rel}]--&gt;</span> {e.dst}
+            {e.primera_mencion && <span> (ya cubierto el {e.primera_mencion})</span>}
+          </div>
+        ))}
+        {edges.length > 60 && <p class="text-xs text-muted mt-3">…y {edges.length - 60} edges mas</p>}
+      </div>
+    </details>
+  )}
 
   <footer class="mt-16 pt-6 border-t border-[var(--color-border)] text-xs text-muted">
     <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}enriquecido/`}>&larr; Volver al &iacute;ndice</a>

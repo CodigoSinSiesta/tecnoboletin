@@ -1,14 +1,576 @@
-{"version":1,"date":"2026-08-04","items":[
-  {"idx":0,"titulo":"cloudflare/computer","url":"https://github.com/cloudflare/computer","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Cloudflare","tema_principal":"durable-object-runtime","temas_secundarios":["filesystem-virtual","three-backends","fuse","vfs"],"resumen_2_lineas":"Filesystem virtual TypeScript (MIT, 600★) en Durable Object con 3 backends: contenedor con FUSE, just-bash, JS dynamic worker. Preview only.","confianza":0.9}},
-  {"idx":1,"titulo":"boldsoftware/meat","url":"https://github.com/boldsoftware/meat","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Bold Software","tema_principal":"abridged-diff-viewer","temas_secundarios":["go","human-review","human-ia-review"],"resumen_2_lineas":"Abridged-diff viewer Go (Apache-2.0, 1.1k★) que reduce diffs enormes de agents a los conceptos que un humano debe revisar. Filosofía honesta.","confianza":0.92}},
-  {"idx":2,"titulo":"genspark-ai/genoffice","url":"https://github.com/genspark-ai/genoffice","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Genspark","tema_principal":"office-suite-ai-native","temas_secundarios":["electron","byte-preserving-round-trip","rust-sidecar","docx-xlsx"],"resumen_2_lineas":"Office suite TS (Apache-2.0, 866★) AI-native. Byte-preserving paragraph patch sobre .docx, sidecar Rust (calamine+IronCalc). v0.4.110 firmado.","confianza":0.9}},
-  {"idx":3,"titulo":"livekit/agents","url":"https://github.com/livekit/agents","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"LiveKit","tema_principal":"realtime-voice-agent","temas_secundarios":["python","webrtc","sip","semantic-turn-detection","mcp-native"],"resumen_2_lineas":"Framework Python (Apache-2.0, 12.1k★) para agentes de voz realtime con detección semántica de turno, MCP nativo, WebRTC y SIP.","confianza":0.93}},
-  {"idx":4,"titulo":"trycompai/crm","url":"https://github.com/trycompai/crm","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"agentic-crm","temas_secundarios":["typescript","bun","postgres","agent-eve","agent-as-primary-surface"],"resumen_2_lineas":"CRM open-source TypeScript (MIT, 3.6k★) agentic-first sobre Bun+Postgres. Tesis: 'el agente guarda notas, el humano no rellena formularios'.","confianza":0.9}},
-  {"idx":5,"titulo":"TencentCloud/TencentDB-Agent-Memory","url":"https://github.com/TencentCloud/TencentDB-Agent-Memory","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Tencent","tema_principal":"layered-memory","temas_secundarios":["l0-l3","chat-memory","skill","code-graph","hermes-gateway"],"resumen_2_lineas":"Hub memoria TypeScript (MIT, 12.5k★) jerárquica L0-L3. Datos publicados: -61% tokens en WideSearch, +59% accuracy en PersonaMem.","confianza":0.93}},
-  {"idx":6,"titulo":"esengine/DeepSeek-Reasonix","url":"https://github.com/esengine/DeepSeek-Reasonix","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"prefix-cache-stability","temas_secundarios":["go","deepseek","dsnix-cli","long-running","migrate-to-go"],"resumen_2_lineas":"Coding agent Go (MIT, 30k★) en migración `main-v2`. Diseñado para mantener prefix-cache estable en sesiones largas: 99.82% cache hit.","confianza":0.9}},
-  {"idx":7,"titulo":"yc-software/qm","url":"https://github.com/yc-software/qm","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"YC","tema_principal":"multiplayer-agent-harness","temas_secundarios":["typescript","multiplayer","real-time","skills-reuse"],"resumen_2_lineas":"Multiplayer agent harness TS (MIT, 10.3k★) para trabajo colaborativo: Kanban donde humanos y agentes colaboran en tiempo real.","confianza":0.85}},
-  {"idx":8,"titulo":"shiyu-coder/Kronos","url":"https://github.com/shiyu-coder/Kronos","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"financial-language-model","temas_secundarios":["python","foundation-model","finance-series","time-series-prediction"],"resumen_2_lineas":"Foundation model Python (MIT, 35.9k★) para 'el lenguaje de los mercados financieros'. Series financieras como lenguaje para predicción.","confianza":0.86}},
-  {"idx":9,"titulo":"antirez/ds4","url":"https://github.com/antirez/ds4","clasificacion":{"tipo":"repo","idioma":"en","autor":"Salvatore Sanfilippo","medio":null,"tema_principal":"local-llm-inference","temas_secundarios":["metal","cuda","rocm","no-gguf","stream-nvme"],"resumen_2_lineas":"Motor de inferencia C (MIT, 20.5k★) nativo para DeepSeek V4 Flash y GLM 5.2. Metal/CUDA/ROCm. Sin GGUF. Por el creador de Redis.","confianza":0.9}},
-  {"idx":10,"titulo":"jamiepine/voicebox","url":"https://github.com/jamiepine/voicebox","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"voice-ai-studio","temas_secundarios":["typescript","voice-studio","reentry"],"resumen_2_lineas":"Open-source AI voice studio TS (MIT, 48.9k★). Re-entry, cadencia estable. Espera estabilización.","confianza":0.85}},
-  {"idx":11,"titulo":"firecrawl/pdf-inspector","url":"https://github.com/firecrawl/pdf-inspector","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Firecrawl","tema_principal":"pdf-inspection","temas_secundarios":["rust","classification","ocr-routing"],"resumen_2_lineas":"Librería Rust (MIT, 8.8k★) para inspección/clasificación de PDFs. Detección inteligente scanned vs textual.","confianza":0.86}}
-],"rejected":[],"stats":{"items_total":12,"items_clasificados":12,"items_rejected":0,"clasificador":"agentico-v2"}}
+{
+  "version": 2,
+  "date": "2026-08-04",
+  "boletin_origen": "2026-08-04-trending.md",
+  "resumen_ejecutivo": "- **Cloudflare entra al ring de la infra para agentes** con `@cloudflare/computer`: un filesystem virtual dentro de un Durable Object con tres backends (container con FUSE, isolate shell sobre `just-bash`, isolate JS con `node:fs/promises`). Es la pieza que faltaba para correr agentes completos sobre Workers, sin servidor clásico. 600 estrellas, preview, MIT.\n- **boldsoftware/meat** (el #1 de Trendshift diario) no es un agente más: es un *abridged-diff viewer* que usa un modelo para reducir diffs enormes a los conceptos que un humano debe revisar. Filosofía honesta: «los modelos son buenos ya, no necesitas revisar nil-checks ni imports, necesitas revisar arquitectura». 1.1k estrellas en Go, instalación vía `go install meat.dev/cmd/meat@latest`.\n- **TencentDB-Agent-Memory** publica números concretos: -61% tokens y +51% pass-rate en WideSearch cuando se enchufa como plugin a OpenClaw, +59% de accuracy en PersonaMem. Es OSS, MIT (verificado contra LICENSE), y se integra también con Hermes Gateway (según badge oficial) - relevante porque ya tenemos Hermes en el grafo local-first.\n- **GenOffice (genspark-ai)** redefine el formato de office suite: cinco apps Electron compartiendo un motor TS con un *byte-preserving round trip* sobre `.docx` (solo regenera los párrafos sucios), sidecar Rust para xlsx (calamine + IronCalc), y un panel de IA compartido a nivel de bloque. 866 estrellas, Apache-2.0, v0.4.110 ya en releases firmados.\n- **livekit/agents** reaparece en trending (no estaba en seen) y trae lo que el resto intenta: framework de voz en tiempo real con detección semántica de turno, MCP nativo, scheduler, WebRTC + SIP. 12.1k estrellas, Apache-2.0, sigue empujándose en agosto 2026.\n- **esengine/DeepSeek-Reasonix** hizo una **migración a Go** (`main-v2`) y dejó el TS en mantenimiento. La tesis: prefix-cache stability para que el costo por sesión larga se mantenga bajo. 30k estrellas, MIT, badges Top 2 en Agents y Top 3 en LLMs por velocidad (oosmetrics).\n- **trycompai/crm** apuesta al revés: «el CRM es donde el agente guarda sus notas, no donde el humano rellena formularios». 3.6k estrellas, MIT, Bun + Postgres + agente `eve`.\n- **Día editorialmente ligero**: la mayoría de las tendencias fuertes son reapareciones con crecimiento normal. Los principales de hoy son los **5 nuevos** (boldsoftware/meat, cloudflare/computer, genspark-ai/genoffice, livekit/agents, trycompai/crm) y los **2 con datos** que vuelven con historia editorial (TencentDB-Agent-Memory + DeepSeek-Reasonix). Sin señales de hype artificial - los repos verificados tienen código real, READMEs honestos y commits recientes.\n- Fuentes consultadas: Trendshift daily (25), GitHub Trending daily (16) + Python (20) + TypeScript (14) + Rust (20) + Go (21); GitHub REST API sin token (rate-limited a 25 verificaciones) para los candidatos prioritarios; READMEs en main + LICENSE files cuando la API reportaba NOASSERTION.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "boldsoftware/meat",
+      "url": "https://github.com/boldsoftware/meat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un *abridged-diff viewer* para diffs de agentes",
+        "por_que_importa": "Encaja con la línea editorial de Código Sin Siesta: revisar código escrito por agentes es el problema nuevo. La filosofía explícita del README («no revises nil-checks, revisa conceptos») es buen material para un artículo sobre workflow de code review humano↔IA. Ademas ocupa el #1 de Trendshift diario con solo 1.1k estrellas - señal de momentum temprano, no de hype.",
+        "madurez_senales": "Estrellas totales: **1,094** · Forks: 34 · Lenguaje: Go · Fecha creación: 2026-07-01 · Último push: 2026-08-03 · Licencia: Apache-2.0 · Topics: - · Fuentes del ranking: trendshift_daily",
+        "accion_sugerida": "**explorar** - instalar `go install meat.dev/cmd/meat@latest`, probar sobre un commit grande reciente (DeepSeek-Reasonix `main-v2` sería un banco de pruebas ideal).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "boldsoftware/meat",
+          "rel": "implements",
+          "dst": "concept:agent_code_review",
+          "primera_mencion": null
+        },
+        {
+          "src": "boldsoftware/meat",
+          "rel": "relevant_to",
+          "dst": "concept:local_first",
+          "primera_mencion": null
+        },
+        {
+          "src": "boldsoftware/meat",
+          "rel": "competes_with",
+          "dst": "tool:aider",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Bold Software",
+        "tema_principal": "abridged-diff-viewer",
+        "temas_secundarios": [
+          "go",
+          "human-review",
+          "human-ia-review"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "cloudflare/computer",
+      "url": "https://github.com/cloudflare/computer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "filesystem virtual para agentes en Durable Objects",
+        "por_que_importa": "Es la pieza que faltaba para correr agentes completos sobre la infra de Cloudflare sin servidor clásico. Tres backends enchufables (container con FUSE mount real, isolate shell con `just-bash`, isolate JS con `node:fs/promises` y `ws:git`/`ws:artifacts`). Preview solo - no producción - pero la arquitectura es la primera referencia sería del año para «agent-as-a-service» en edge.",
+        "madurez_senales": "Estrellas totales: **600** · Forks: 34 · Lenguaje: TypeScript · Fecha creación: 2026-06-05 · Último push: 2026-08-03 · Licencia: MIT · Topics: - · Fuentes del ranking: trendshift_daily",
+        "accion_sugerida": "**vigilar** — seguir la rampa de releases; no producir contra el hasta que salga de preview. Atento al posible MCP server de Cloudflare sobre esta base.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cloudflare/computer",
+          "rel": "implements",
+          "dst": "concept:agent_runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/computer",
+          "rel": "relevant_to",
+          "dst": "tool:cloudflare_workers",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/computer",
+          "rel": "solves",
+          "dst": "problem:stateful_agent_execution",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Cloudflare",
+        "tema_principal": "durable-object-runtime",
+        "temas_secundarios": [
+          "filesystem-virtual",
+          "three-backends",
+          "fuse",
+          "vfs"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "genspark-ai/genoffice",
+      "url": "https://github.com/genspark-ai/genoffice",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "office suite AI-native con byte-preserving round-trip",
+        "por_que_importa": "El angulo interesante no es «otra office suite con IA», sino el **byte-preserving paragraph patch** sobre `.docx`: solo regenera los párrafos sucios, el resto del archivo se conserva byte-a-byte. Eso resuelve el problema clasico de «abro en Word y se rompe el layout». Stack: cinco apps Electron + motor TS compartido + sidecar Rust (calamine + IronCalc) para xlsx + HarfBuzz para texto. Releases firmados v0.4.110 para macOS Apple Silicon y Windows x64.",
+        "madurez_senales": "Estrellas totales: **866** · Forks: 117 · Lenguaje: TypeScript · Fecha creación: 2026-07-31 · Último push: 2026-08-03 · Licencia: Apache-2.0 · Topics: ai, docx, electron, office-suite, pdf, pptx, xlsx · Fuentes del ranking: trendshift_daily",
+        "accion_sugerida": "**leer** - bajar el repo, leer `packages/docx-engine` y `packages/agent-core`. Buen material para un artículo sobre «round-trip preservando bytes» y por que importa para ofimática sería.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "genspark-ai/genoffice",
+          "rel": "implements",
+          "dst": "concept:office_suite_ai_native",
+          "primera_mencion": null
+        },
+        {
+          "src": "genspark-ai/genoffice",
+          "rel": "uses",
+          "dst": "tool:electron",
+          "primera_mencion": null
+        },
+        {
+          "src": "genspark-ai/genoffice",
+          "rel": "solves",
+          "dst": "problem:docx_layout_drift",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Genspark",
+        "tema_principal": "office-suite-ai-native",
+        "temas_secundarios": [
+          "electron",
+          "byte-preserving-round-trip",
+          "rust-sidecar",
+          "docx-xlsx"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "livekit/agents",
+      "url": "https://github.com/livekit/agents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework Python para agentes de voz en tiempo real",
+        "por_que_importa": "No estaba en seen: aparece ahora con 12.1k estrellas y sigue empujándose en agosto 2026. Diferenciadores reales frente a VibeVoice/HF speech-to-speech: **detección semántica de turno** (transformer, no heurística), **MCP nativo con una línea de código**, scheduling de jobs y dispatch, integración con SIP para llamadas. Stack open-source completo (server WebRTC incluido). Apache-2.0. Ecosistema JS hermano en `livekit/agents-js`.",
+        "madurez_senales": "Estrellas totales: **12,142** · Forks: 3461 · Lenguaje: Python · Fecha creación: 2023-10-19 · Último push: 2026-08-04 · Licencia: Apache-2.0 · Topics: agents, ai, openai, real-time, video, voice · Fuentes del ranking: trendshift_daily+ghtrending_daily+ghtrending_python",
+        "accion_sugerida": "**explorar** - clonar y ejecutar el ejemplo mínimo. Comparar contra jamiepine/voicebox (voice studio, en radar) y Panniantong/Agent-Reach (que ya esta en seen).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "livekit/agents",
+          "rel": "implements",
+          "dst": "concept:realtime_voice_agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "livekit/agents",
+          "rel": "uses",
+          "dst": "tool:webrtc",
+          "primera_mencion": null
+        },
+        {
+          "src": "livekit/agents",
+          "rel": "complements",
+          "dst": "repo:jamiepine/voicebox",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "LiveKit",
+        "tema_principal": "realtime-voice-agent",
+        "temas_secundarios": [
+          "python",
+          "webrtc",
+          "sip",
+          "semantic-turn-detection",
+          "mcp-native"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "trycompai/crm",
+      "url": "https://github.com/trycompai/crm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CRM agentic-first, el agente como producto principal",
+        "por_que_importa": "Tesis explícita del README: «el CRM es donde el agente guarda sus notas, no donde el humano rellena formularios». Construido sobre Bun + Postgres + agente `eve`. 3.6k estrellas en un mes, MIT. Buen contrapunto a la moda de «chatbot atado a la derecha del formulario». Material para un post sobre el patrón «agent-as-primary-surface».",
+        "madurez_senales": "Estrellas totales: **3,638** · Forks: 390 · Lenguaje: TypeScript · Fecha creación: 2026-07-31 · Último push: 2026-08-03 · Licencia: MIT · Topics: - · Fuentes del ranking: trendshift_daily",
+        "accion_sugerida": "**leer** - analizar el flujo de trabajo del agente (cola, schedule, qué tareas se auto-asigna) y compararlo con CRM tradicionales.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "trycompai/crm",
+          "rel": "implements",
+          "dst": "concept:agentic_crm",
+          "primera_mencion": null
+        },
+        {
+          "src": "trycompai/crm",
+          "rel": "solves",
+          "dst": "problem:crm_form_fatigue",
+          "primera_mencion": null
+        },
+        {
+          "src": "trycompai/crm",
+          "rel": "relevant_to",
+          "dst": "concept:openclaw_agent_harness",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentic-crm",
+        "temas_secundarios": [
+          "typescript",
+          "bun",
+          "postgres",
+          "agent-eve",
+          "agent-as-primary-surface"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "TencentCloud/TencentDB-Agent-Memory",
+      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "memoria jerarquica para agentes con datos publicados",
+        "por_que_importa": "Reaparece en Trendshift con crecimiento significativo (ver bloque de madurez). Lo más valioso: **datos concretos** sobre WideSearch (33%->50% pass-rate, +51% relativo), SWE-bench (58.4%->64.2%, +9.9%), PersonaMem (48%->76%, +59%) y **-61% tokens** cuando se enchufa como plugin a OpenClaw. La arquitectura L0 Conversation -> L1 Atom -> L2 Scenario -> L3 Persona es la mejor concreción OSS del año del patron «memoria jerarquica». El README incluye badge explícito de **Hermes Gateway** - es OSS-native al stack que ya tenemos.",
+        "madurez_senales": "Estrellas totales: **12,468** · Forks: 1178 · Lenguaje: TypeScript · Fecha creación: 2026-04-07 · Último push: 2026-08-03 · Licencia: MIT · Topics: agent, ai-agent, embedding, llm, local-first, long-term-memory, memory, openclaw-plugin, vector-search · Fuentes del ranking: trendshift_daily+ghtrending_daily+ghtrending_typescript · Crecimiento vs primera mención: **+5536⭐ desde primera mención (+79.9%)**",
+        "accion_sugerida": "**explorar** - el plugin declara compatibilidad con OpenClaw >=2026.3.13. Verificar si funciona con Hermes Agent (deberia, segun la badge). Si si, es material para un post «memoria jerarquica en Hermes».",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "implements",
+          "dst": "concept:layered_memory",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "complements",
+          "dst": "tool:hermes_agent",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "TencentCloud/TencentDB-Agent-Memory",
+          "rel": "solves",
+          "dst": "problem:context_overflow",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Tencent",
+        "tema_principal": "layered-memory",
+        "temas_secundarios": [
+          "l0-l3",
+          "chat-memory",
+          "skill",
+          "code-graph",
+          "hermes-gateway"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "esengine/DeepSeek-Reasonix",
+      "url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "coding agent migrado a Go (main-v2) con prefix-cache stability",
+        "por_que_importa": "Aparece en trending porque **migró de TS a Go** (`main-v2`) y dejó el TS legacy en bug-fixes-only. La tesis central: «prefix-cache stability — engineered so token costs stay low across long sessions, you can leave it running». 30k estrellas, MIT, badges Top 2 en Agents y Top 3 en LLMs por velocidad (oosmetrics). Tiene Discord activo, npm `reasonix`, y un set de benchmarks propio. Buen candidato para discutir el trade-off TS↔Go en coding agents.",
+        "madurez_senales": "Estrellas totales: **30,256** · Forks: 1946 · Lenguaje: Go · Fecha creación: 2026-04-21 · Último push: 2026-08-04 · Licencia: MIT · Topics: agent, agent-framework, ai-agent, ai-coding, cli, coding-agent, deepseek, developer-tools, ink, llm, prompt-caching, r1, terminal, tool-use, tui, typescript · Fuentes del ranking: trendshift_daily+ghtrending_daily+ghtrending_go · Crecimiento vs primera mención: **+1635⭐ desde primera mención (+5.7%)**",
+        "accion_sugerida": "**explorar** - clonar `main-v2`, ejecutar demo, comparar tiempo de arranque y consumo de memoria vs la versión TS. Material para un artículo sobre reescrituras Go en agentes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "implements",
+          "dst": "concept:prefix_cache_stability",
+          "primera_mencion": "2026-08-02"
+        },
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "competes_with",
+          "dst": "tool:claude_code",
+          "primera_mencion": "2026-08-02"
+        },
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "relevant_to",
+          "dst": "concept:local_first",
+          "primera_mencion": "2026-08-02"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "prefix-cache-stability",
+        "temas_secundarios": [
+          "go",
+          "deepseek",
+          "dsnix-cli",
+          "long-running",
+          "migrate-to-go"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "yc-software/qm",
+      "url": "https://github.com/yc-software/qm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*Multiplayer agent harness for work*. MIT. Reaparece en Trendshift",
+        "por_que_importa": "",
+        "madurez_senales": "10.3k estrellas, último push 2026-08-04, TypeScript",
+        "accion_sugerida": "vigilar — explorar si el patrón multiplayer encaja con nuestro flujo de Hermes",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "YC",
+        "tema_principal": "multiplayer-agent-harness",
+        "temas_secundarios": [
+          "typescript",
+          "multiplayer",
+          "real-time",
+          "skills-reuse"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "usekaneo/kaneo",
+      "url": "https://github.com/usekaneo/kaneo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*Open-source project management*. MIT. Reaparece tras visto el 2026-08-01",
+        "por_que_importa": "",
+        "madurez_senales": "7k estrellas, último push 2026-08-04, TypeScript",
+        "accion_sugerida": "vigilar — comparar con HKUDS/nanobot (ya explorado) por el ángulo Kanban",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "usekaneo-kaneo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "shiyu-coder/Kronos",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*Foundation Model for the Language of Financial Markets*. MIT. Reaparece tras visto el 2026-07-24 (crecimiento +4.5%)",
+        "por_que_importa": "",
+        "madurez_senales": "35.9k estrellas, último push 2026-04-13, Python",
+        "accion_sugerida": "leer — la tesis «series financieras como lenguaje» es material para un post técnico",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "financial-language-model",
+        "temas_secundarios": [
+          "python",
+          "foundation-model",
+          "finance-series",
+          "time-series-prediction"
+        ],
+        "confianza": 0.86
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "antirez/ds4",
+      "url": "https://github.com/antirez/ds4",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA y ROCm*. MIT. De Salvatore Sanfilippo (creador de Redis)",
+        "por_que_importa": "",
+        "madurez_senales": "20.5k estrellas, último push 2026-08-03, C",
+        "accion_sugerida": "vigilar — si funciona bien en ROCm/Metal es relevante para local-first",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "Salvatore Sanfilippo",
+        "medio": null,
+        "tema_principal": "local-llm-inference",
+        "temas_secundarios": [
+          "metal",
+          "cuda",
+          "rocm",
+          "no-gguf",
+          "stream-nvme"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*AI agent eyes for the entire internet - Twitter, Reddit, YouTube, GitHub, Bilibili, XHS*. MIT. Reaparece con crecimiento (66k vs 63k históricos)",
+        "por_que_importa": "",
+        "madurez_senales": "66k estrellas, último push 2026-07-25, Python",
+        "accion_sugerida": "explorar — comparar con Scrapling (ya explorado) para el caso de uso agente",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "panniantong-agent-reach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "jamiepine/voicebox",
+      "url": "https://github.com/jamiepine/voicebox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*Open-source AI voice studio*. MIT. Reaparece tras visto el 2026-07-08. Crecimiento +27% (38.6k→48.9k)",
+        "por_que_importa": "",
+        "madurez_senales": "48.9k estrellas, último push 2026-07-28, TypeScript",
+        "accion_sugerida": "vigilar — esperar a que se estabilice antes de explorar a fondo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "voice-ai-studio",
+        "temas_secundarios": [
+          "typescript",
+          "voice-studio",
+          "reentry"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "Alishahryar1/free-claude-code",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*Use Claude Code/Codex/Pi free, OpenClaw-like*. MIT",
+        "por_que_importa": "",
+        "madurez_senales": "44.2k estrellas, último push 2026-08-03, Python",
+        "accion_sugerida": "ignorar — territorio gris de TOS de Anthropic; el propio repo lo aclara. No adoptar ni recomendar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alishahryar1-free-claude-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "firecrawl/pdf-inspector",
+      "url": "https://github.com/firecrawl/pdf-inspector",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*Fast PDF inspection + classification + OCR routing*. MIT. Reaparece tras visto el 2026-08-01",
+        "por_que_importa": "",
+        "madurez_senales": "8.8k estrellas, último push 2026-08-04, Rust",
+        "accion_sugerida": "probar — pieza clave para nuestro pipeline de extracción de PDFs. Encaja con scrapling (explorado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Firecrawl",
+        "tema_principal": "pdf-inspection",
+        "temas_secundarios": [
+          "rust",
+          "classification",
+          "ocr-routing"
+        ],
+        "confianza": 0.86
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "none",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

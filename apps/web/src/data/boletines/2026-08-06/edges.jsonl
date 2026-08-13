@@ -5,7 +5,9 @@
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:repl-ipython", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:subagentes-programables", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:daemon", "rel": "trata", "added": "2026-08-06"}
-{"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "medio:prime-intellect", "rel": "publicado_en", "added": "2026-08-06"}
+{"src": "PrimeIntellect-ai/prime-agent", "dst": "continual_harness", "rel": "implements", "added": "2026-08-06", "primera_mencion": null}
+{"src": "PrimeIntellect-ai/prime-agent", "dst": "earendil-works/pi", "rel": "uses", "added": "2026-08-06", "primera_mencion": "2026-07-30"}
+{"src": "PrimeIntellect-ai/prime-agent", "dst": "NousResearch/hermes-agent", "rel": "competes_with", "added": "2026-08-06", "primera_mencion": "2026-07-08"}
 {"src": "boletin:2026-08-06", "dst": "item:https-github-com-cloudflare-cloudflare-os", "rel": "menciona", "added": "2026-08-06"}
 {"src": "item:https-github-com-cloudflare-cloudflare-os", "dst": "tema:agent-workspace-enterprise", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-cloudflare-cloudflare-os", "dst": "tema:workers", "rel": "trata", "added": "2026-08-06"}
@@ -13,13 +15,18 @@
 {"src": "item:https-github-com-cloudflare-cloudflare-os", "dst": "tema:capability-based-security", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-cloudflare-cloudflare-os", "dst": "tema:gatekeepers", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-cloudflare-cloudflare-os", "dst": "tema:gadgets", "rel": "trata", "added": "2026-08-06"}
-{"src": "item:https-github-com-cloudflare-cloudflare-os", "dst": "medio:cloudflare", "rel": "publicado_en", "added": "2026-08-06"}
+{"src": "cloudflare/cloudflare-os", "dst": "capability_based_agent_security", "rel": "implements", "added": "2026-08-06", "primera_mencion": null}
+{"src": "cloudflare/cloudflare-os", "dst": "Cloudflare", "rel": "uses", "added": "2026-08-06", "primera_mencion": null}
+{"src": "cloudflare/cloudflare-os", "dst": "microsoft/agent-governance-toolkit", "rel": "complements", "added": "2026-08-06", "primera_mencion": "2026-07-09"}
 {"src": "boletin:2026-08-06", "dst": "item:https-github-com-huangruiteng-loopx", "rel": "menciona", "added": "2026-08-06"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:agent-control-plane", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:python", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:kanban-native", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:state-kernel", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:evidence-based", "rel": "trata", "added": "2026-08-06"}
+{"src": "huangruiteng/loopx", "dst": "agent_control_plane", "rel": "implements", "added": "2026-08-06", "primera_mencion": null}
+{"src": "huangruiteng/loopx", "dst": "cobusgreyling/loop-engineering", "rel": "complements", "added": "2026-08-06", "primera_mencion": "2026-07-04"}
+{"src": "huangruiteng/loopx", "dst": "hermes-kanban", "rel": "relevant_to", "added": "2026-08-06", "primera_mencion": null}
 {"src": "boletin:2026-08-06", "dst": "item:https-github-com-zzet-gortex", "rel": "menciona", "added": "2026-08-06"}
 {"src": "item:https-github-com-zzet-gortex", "dst": "tema:code-knowledge-graph", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-zzet-gortex", "dst": "tema:go", "rel": "trata", "added": "2026-08-06"}
@@ -27,20 +34,24 @@
 {"src": "item:https-github-com-zzet-gortex", "dst": "tema:ast-cross-repo", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-zzet-gortex", "dst": "tema:local-first", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-zzet-gortex", "dst": "tema:hermes-support", "rel": "trata", "added": "2026-08-06"}
+{"src": "zzet/gortex", "dst": "code_knowledge_graph", "rel": "implements", "added": "2026-08-06", "primera_mencion": null}
+{"src": "zzet/gortex", "dst": "DeusData/codebase-memory-mcp", "rel": "competes_with", "added": "2026-08-06", "primera_mencion": "2026-07-04"}
+{"src": "zzet/gortex", "dst": "Graphify-Labs/graphify", "rel": "competes_with", "added": "2026-08-06", "primera_mencion": "2026-07-04"}
 {"src": "boletin:2026-08-06", "dst": "item:https-github-com-gastownhall-gascity", "rel": "menciona", "added": "2026-08-06"}
 {"src": "item:https-github-com-gastownhall-gascity", "dst": "tema:agent-orchestrator-runtime", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-gastownhall-gascity", "dst": "tema:go", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-gastownhall-gascity", "dst": "tema:composable-sdk", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-gastownhall-gascity", "dst": "tema:city-toml", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-gastownhall-gascity", "dst": "tema:multi-runtime", "rel": "trata", "added": "2026-08-06"}
-{"src": "item:https-github-com-gastownhall-gascity", "dst": "medio:gas-town-hall", "rel": "publicado_en", "added": "2026-08-06"}
+{"src": "gastownhall/gascity", "dst": "agent_orchestrator_runtime", "rel": "implements", "added": "2026-08-06", "primera_mencion": null}
+{"src": "gastownhall/gascity", "dst": "gastownhall/beads", "rel": "uses", "added": "2026-08-06", "primera_mencion": null}
+{"src": "gastownhall/gascity", "dst": "gastownhall/gastown", "rel": "evolves", "added": "2026-08-06", "primera_mencion": "2026-07-06"}
 {"src": "boletin:2026-08-06", "dst": "item:https-github-com-denoland-celld", "rel": "menciona", "added": "2026-08-06"}
 {"src": "item:https-github-com-denoland-celld", "dst": "tema:distributed-durable-objects", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-denoland-celld", "dst": "tema:rust", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-denoland-celld", "dst": "tema:apache-2", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-denoland-celld", "dst": "tema:self-hostable", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-denoland-celld", "dst": "tema:cell-based", "rel": "trata", "added": "2026-08-06"}
-{"src": "item:https-github-com-denoland-celld", "dst": "medio:deno", "rel": "publicado_en", "added": "2026-08-06"}
 {"src": "boletin:2026-08-06", "dst": "item:https-github-com-binaryify-open-kimi-ppt-skill", "rel": "menciona", "added": "2026-08-06"}
 {"src": "item:https-github-com-binaryify-open-kimi-ppt-skill", "dst": "tema:presentation-skill", "rel": "trata", "added": "2026-08-06"}
 {"src": "item:https-github-com-binaryify-open-kimi-ppt-skill", "dst": "tema:python", "rel": "trata", "added": "2026-08-06"}

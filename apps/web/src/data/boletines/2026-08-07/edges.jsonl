@@ -4,14 +4,18 @@
 {"src": "item:https-github-com-cloudflare-computer", "dst": "tema:three-backends", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-cloudflare-computer", "dst": "tema:capnweb-rpc", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-cloudflare-computer", "dst": "tema:preview-only", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-cloudflare-computer", "dst": "medio:cloudflare", "rel": "publicado_en", "added": "2026-08-07"}
+{"src": "cloudflare/computer", "dst": "repo:cloudflare/cloudflare-os", "rel": "complements", "added": "2026-08-07", "primera_mencion": null}
+{"src": "cloudflare/computer", "dst": "concept:durable-object-runtime", "rel": "implements", "added": "2026-08-07", "primera_mencion": null}
+{"src": "cloudflare/computer", "dst": "concept:agent-native-fs", "rel": "enables", "added": "2026-08-07", "primera_mencion": null}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-kubernetes-sigs-agent-sandbox", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "tema:k8s-sandbox-crd", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "tema:singleton-pods", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "tema:warm-pools", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "tema:gvisor", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "tema:kata-containers", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "medio:cncf-sig-apps", "rel": "publicado_en", "added": "2026-08-07"}
+{"src": "kubernetes-sigs/agent-sandbox", "dst": "concept:k8s-sandbox-crd", "rel": "implements", "added": "2026-08-07", "primera_mencion": null}
+{"src": "kubernetes-sigs/agent-sandbox", "dst": "repo:TencentCloud/CubeSandbox", "rel": "complements", "added": "2026-08-07", "primera_mencion": null}
+{"src": "kubernetes-sigs/agent-sandbox", "dst": "repo:NVIDIA/OpenShell", "rel": "complements", "added": "2026-08-07", "primera_mencion": null}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-openai-codex-security", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-openai-codex-security", "dst": "tema:vendor-native-security-scanner", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-openai-codex-security", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-07"}
@@ -19,7 +23,9 @@
 {"src": "item:https-github-com-openai-codex-security", "dst": "tema:bedrock", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-openai-codex-security", "dst": "tema:openrouter", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-openai-codex-security", "dst": "tema:sast", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-openai-codex-security", "dst": "medio:openai", "rel": "publicado_en", "added": "2026-08-07"}
+{"src": "openai/codex-security", "dst": "concept:vendor-native-security-scanner", "rel": "implements", "added": "2026-08-07", "primera_mencion": "2026-07-29"}
+{"src": "openai/codex-security", "dst": "repo:uber/ADR", "rel": "complements", "added": "2026-08-07", "primera_mencion": "2026-07-29"}
+{"src": "openai/codex-security", "dst": "concept:agent-security", "rel": "relevant_to", "added": "2026-08-07", "primera_mencion": "2026-07-29"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-risingwavelabs-risingwave", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-risingwavelabs-risingwave", "dst": "tema:event-streaming-agentic", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-risingwavelabs-risingwave", "dst": "tema:rust", "rel": "trata", "added": "2026-08-07"}
@@ -27,7 +33,9 @@
 {"src": "item:https-github-com-risingwavelabs-risingwave", "dst": "tema:sql", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-risingwavelabs-risingwave", "dst": "tema:iceberg", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-risingwavelabs-risingwave", "dst": "tema:sub-100ms", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-risingwavelabs-risingwave", "dst": "medio:risingwave-labs", "rel": "publicado_en", "added": "2026-08-07"}
+{"src": "risingwavelabs/risingwave", "dst": "concept:agentic-data-streaming", "rel": "implements", "added": "2026-08-07", "primera_mencion": null}
+{"src": "risingwavelabs/risingwave", "dst": "concept:classic-debezium-kafka-flink", "rel": "competes_with", "added": "2026-08-07", "primera_mencion": null}
+{"src": "risingwavelabs/risingwave", "dst": "repo:NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-08-07", "primera_mencion": "2026-08-03"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-dream-num-univer", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-dream-num-univer", "dst": "tema:office-suite-agents", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-dream-num-univer", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-07"}
@@ -35,41 +43,38 @@
 {"src": "item:https-github-com-dream-num-univer", "dst": "tema:word-processor", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-dream-num-univer", "dst": "tema:presentation", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-dream-num-univer", "dst": "tema:programmatic-api", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-dream-num-univer", "dst": "medio:dream-num", "rel": "publicado_en", "added": "2026-08-07"}
+{"src": "dream-num/univer", "dst": "concept:office-suite-for-agents", "rel": "implements", "added": "2026-08-07", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "repo:iofficeai/officecli", "rel": "competes_with", "added": "2026-08-07", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "concept:agent-document-output", "rel": "enables", "added": "2026-08-07", "primera_mencion": "2026-07-07"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-nousresearch-hermes-agent", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:agent-framework", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:python", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:cron-retention", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:top-100-github", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:multi-runtime", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "medio:nous-research", "rel": "publicado_en", "added": "2026-08-07"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-superplanehq-superplane", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-superplanehq-superplane", "dst": "tema:agent-control-plane", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-superplanehq-superplane", "dst": "tema:go", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-superplanehq-superplane", "dst": "tema:durable-workflows", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-superplanehq-superplane", "dst": "tema:approvals", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-superplanehq-superplane", "dst": "tema:versioned-canvas", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-superplanehq-superplane", "dst": "medio:superplane", "rel": "publicado_en", "added": "2026-08-07"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-firecrawl-pdf-inspector", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "tema:pdf-inspection", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "tema:rust", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "tema:classification", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "tema:ocr-routing", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "tema:scanned-vs-text", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-firecrawl-pdf-inspector", "dst": "medio:firecrawl", "rel": "publicado_en", "added": "2026-08-07"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-addyosmani-agent-skills", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:production-grade-engineering-skills", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:javascript", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:google-engineering", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:reentry", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-addyosmani-agent-skills", "dst": "autor:addy-osmani-google-chrome", "rel": "escrito_por", "added": "2026-08-07"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-katanemo-plano", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-katanemo-plano", "dst": "tema:ai-native-proxy", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-katanemo-plano", "dst": "tema:rust", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-katanemo-plano", "dst": "tema:llm-routing", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-katanemo-plano", "dst": "tema:observability", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-katanemo-plano", "dst": "tema:policies", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-katanemo-plano", "dst": "medio:katanemo", "rel": "publicado_en", "added": "2026-08-07"}
 {"src": "boletin:2026-08-07", "dst": "item:https-github-com-falkordb-falkordb", "rel": "menciona", "added": "2026-08-07"}
 {"src": "item:https-github-com-falkordb-falkordb", "dst": "tema:graph-database", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-falkordb-falkordb", "dst": "tema:rust", "rel": "trata", "added": "2026-08-07"}
@@ -77,4 +82,3 @@
 {"src": "item:https-github-com-falkordb-falkordb", "dst": "tema:graphblas", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-falkordb-falkordb", "dst": "tema:sparse-adjacency", "rel": "trata", "added": "2026-08-07"}
 {"src": "item:https-github-com-falkordb-falkordb", "dst": "tema:license-pending-verification", "rel": "trata", "added": "2026-08-07"}
-{"src": "item:https-github-com-falkordb-falkordb", "dst": "medio:falkordb", "rel": "publicado_en", "added": "2026-08-07"}

@@ -1,21 +1,517 @@
 {
-  "version": 1,
+  "version": 2,
   "date": "2026-08-10",
+  "boletin_origen": "2026-08-10-trending.md",
+  "resumen_ejecutivo": "- **El stack del coding agent se consolida por capas**: hoy aterrizan a la vez tres piezas OSS que faltaban en el grafo — *runtime* (`herdrdev/herdr`, Rust), *memoria* (`vectorize-io/hindsight`, Python, v0.9.0 hace 3 días) y *backend de aplicación* (`InsForge/InsForge`, v2.3.0 hace 3 días). Sumadas al runtime Python del boletín anterior, ya hay al menos 4 contendientes serios en la capa de runtime de agent.\n- **Los proyectos de \"codebase-as-graph\" se han masificado**: 5 contendientes OSS serios en menos de un año (code-review-graph, Understand Anything, semantica, code-graph-rag, Graphify). El último, `vitali87/code-graph-rag`, integra MCP server y memgraph, dos piezas que los demás tenían como gap.\n- **El espacio de \"agent IDE / fleet orchestrator\" se profesionaliza**: `stablyai/orca` (41k★, MIT, YC-backed) entra como contendiente de peso al lado de `browseros-ai/BrowserOS` y `InsForge/InsForge`. La categoría 'orquestador de agents en paralelo' tiene al menos 3 OSS maduros en 2026.\n- **El \"Claude Code setup viral\" como patrón**: `garrytan/gstack` (127k★, MIT, sin releases, 23 tools para CEO/Designer/Eng Manager) entra como ejemplo del patrón \"setup empaquetado como repo\". Es repositorio de autoridad (Garry Tan, CEO YC) más que tecnología nueva, pero el trending es señal editorial.\n- **Señales de hype vs realidad**: `msitarzewski/agency-agents` (141k★, Shell) y `garrytan/gstack` (127k★, TS) son los dos outliers de la semana por relación estrellas/contenido verificable. Ambos verificados como originales (no forks), pero ninguno tiene releases: son paquetes de \"prompts + skills\", no plataformas. Merecen nota editorial sobre cómo distinguir setup-as-content de plataforma-as-tool.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + TypeScript + Python (~46 items únicos), GitHub API (18 verificaciones), blogwatcher 08:00 (no entregado aún a la hora de cierre de este boletín).",
   "items": [
-    {"idx":0,"titulo":"vectorize-io/hindsight","url":"https://github.com/vectorize-io/hindsight","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"agent-memory","temas_secundarios":["vector-store","retain-recall","server-side","lifespan-semantics"],"resumen_2_lineas":"Memoria vectorial canónica para AI agents (Python, MIT, 19k★). Implementa retain/recall con biografía y límites, expuesto vía SDK Python/JS/Go. Service gestionado y self-hosted.","confianza":0.93}},
-    {"idx":1,"titulo":"herdrdev/herdr","url":"https://github.com/herdrdev/herdr","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"coding-agent-runtime","temas_secundarios":["rust","multiplexer","tmux","workspace-manager"],"resumen_2_lineas":"Runtime Rust (Apache-2.0, 26k★) que multiplexa sesiones de Claude Code/Codex/Cursor en workspaces compartidos. Sustituye tmux+scripts para coordinar coding agents.","confianza":0.92}},
-    {"idx":2,"titulo":"InsForge/InsForge","url":"https://github.com/InsForge/InsForge","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"agent-native-backend","temas_secundarios":["nextjs","deno","postgres","pgvector","auth"],"resumen_2_lineas":"Backend TypeScript (Apache-2.0, 12.7k★) que ofrece DB+auth+storage+compute como API pensada para clientes-agente, no humanos. Sucesor funcional de Supabase en el contexto agent.","confianza":0.93}},
-    {"idx":3,"titulo":"vitali87/code-graph-rag","url":"https://github.com/vitali87/code-graph-rag","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"codebase-rag","temas_secundarios":["mcp","memgraph","tree-sitter","monorepo","knowledge-graph"],"resumen_2_lineas":"Pipeline Python (MIT) que parsea monorepos con tree-sitter, construye un knowledge graph en Memgraph y lo expone vía MCP server para que cualquier coding agent consulte.","confianza":0.92}},
-    {"idx":4,"titulo":"stablyai/orca","url":"https://github.com/stablyai/orca","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Y Combinator","tema_principal":"parallel-agent-orchestrator","temas_secundarios":["typescript","ade","agent-ide","mobile","worktrees"],"resumen_2_lineas":"ADE (Agentic Dev Environment) en TypeScript (MIT, 41k★) que orquesta una flota de coding agents paralelos sobre worktrees git. Disponible en desktop, mobile y VPS.","confianza":0.9}},
-    {"idx":5,"titulo":"KunAgent/Kun","url":"https://github.com/KunAgent/Kun","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"local-first-agent-workspace","temas_secundarios":["electron","tui","deepseek","mcp","mult-agent"],"resumen_2_lineas":"Runtime TypeScript (NOASSERTION) que combina GUI Electron + TUI para correr agents (Claude/OpenAI/DeepSeek) en local. Advertencia: license NOASSERTION bloquea adopción.","confianza":0.85}},
-    {"idx":6,"titulo":"garrytan/gstack","url":"https://github.com/garrytan/gstack","clasificacion":{"tipo":"repo","idioma":"en","autor":"Garry Tan (CEO YC)","medio":"Y Combinator","tema_principal":"claude-code-skill-pack","temas_secundarios":["setup-as-content","opinionated-skills","no-platform"],"resumen_2_lineas":"Repositorio TypeScript (MIT, 127k★) que distribuye el setup exacto de Claude Code de Garry Tan: 23 herramientas con roles definidos. Sin releases: contenido, no plataforma.","confianza":0.84}},
-    {"idx":7,"titulo":"msitarzewski/agency-agents","url":"https://github.com/msitarzewski/agency-agents","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"ai-agency-content","temas_secundarios":["shell","prompts-collection","orchestration-skills"],"resumen_2_lineas":"Colección Shell (MIT, 141k★) que orquesta una agencia AI completa mediante prompts. Sin releases: paquete de contenido, no plataforma.","confianza":0.85}},
-    {"idx":8,"titulo":"openobserve/openobserve","url":"https://github.com/openobserve/openobserve","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"observability-stack","temas_secundarios":["agpl-3","datadog-replacement","llm-observability","elk-replacement"],"resumen_2_lineas":"Plataforma OSS (TypeScript, AGPL-3.0, 20k★) de observabilidad unificada: logs, metrics, traces, frontend y LLM traces. Drop-in replacement de Datadog/Splunk.","confianza":0.88}},
-    {"idx":9,"titulo":"nitrojs/nitro","url":"https://github.com/nitrojs/nitro","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Nuxt team","tema_principal":"server-toolkit","temas_secundarios":["NOASSERTION","nodejs","edge","unstorage"],"resumen_2_lineas":"Server toolkit TypeScript (NOASSERTION, 11k★) de la gente de Nuxt. Estable (4 años), trending por mención. Trending ha resucitado por contenido reciente.","confianza":0.82}},
-    {"idx":10,"titulo":"fosrl/pangolin","url":"https://github.com/fosrl/pangolin","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"zero-trust-vpn","temas_secundarios":["NOASSERTION","wireguard","reverse-proxy","oidc"],"resumen_2_lineas":"VPN identity-aware TypeScript (NOASSERTION, 22k★) sobre WireGuard con OIDC y reverse proxy tunneled. Self-hosted zero-trust para infra agent.","confianza":0.83}},
-    {"idx":11,"titulo":"semantica-agi/semantica","url":"https://github.com/semantica-agi/semantica","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"graph-native-ai","temas_secundarios":["knowledge-graph","decision-intelligence","graphrag","provenance","ontology"],"resumen_2_lineas":"Infraestructura Python (MIT, 2.4k★) graph-native para sistemas AI auditables. Knowledge graph + ontology + decision intelligence + provenance. OSS enterprise-class.","confianza":0.92}},
-    {"idx":12,"titulo":"cloudflare/computer","url":"https://github.com/cloudflare/computer","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Cloudflare","tema_principal":"durable-object-runtime","temas_secundarios":["filesystem-virtual","vercel-just-bash","agent-native-fs"],"resumen_2_lineas":"Sistema de archivos virtual en Durable Object (TypeScript, MIT, 5k★) con 3 backends ejecutables intercambiables (contenedor FUSE, just-bash, JS dynamic worker).","confianza":0.93}}
+    {
+      "idx": 0,
+      "titulo": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Memoria vectorial server-side (Python, MIT, 19.4k★) para AI agents: 'retain' ingiere hechos, 'recall' los recupera con biografías y límites, y el sistema aprende qué recordar. Pensado como servicio gestionado en `hindsight.vectorize.io` con SDKs Python/JS/Go.",
+        "por_que_importa": "Es la pieza OSS canónica de \"agent memory\" en 2026. Sustituye al patrón clásico de \"vector store + embeddings\" por una capa con ciclo de vida (retain/recall) y semántica de \"qué vale la pena recordar\". Ya está integrado como backend por `earendil-works/pi` (CLI del propio autor can1357, 86k★) vía `can1357/oh-my-pi` (23k★). Para CSS: si vamos a hablar de memoria persistente para coding agents, este es el ejemplo a explicar — y la comparación con mem0/zep/cognee cae por su peso. Release v0.9.0 del 2026-08-07.",
+        "madurez_senales": "**19,429★** · 1,252 forks · Python · creado 2025-10-30 · último push 2026-08-10 · licencia **MIT**. Topics: agentic-ai, agents, ai-memory, memory. Último release: v0.9.0 (2026-08-07), con cadencia semanal (v0.8.6, v0.8.5, v0.8.4 en julio).",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "used_by",
+          "dst": "repo:earendil-works/pi",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "competes_with",
+          "dst": "concept:mem0",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-memory",
+        "temas_secundarios": [
+          "vector-store",
+          "retain-recall",
+          "server-side",
+          "lifespan-semantics"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "herdrdev/herdr",
+      "url": "https://github.com/herdrdev/herdr",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Runtime escrito en Rust (Apache-2.0, 26.6k★ en 4 meses) que define \"el runtime donde viven tus coding agents\": multiplexa sesiones de Claude Code, Codex, Cursor y otros agents CLI en workspaces compartidos, con TUI propio y soporte tmux. Reemplaza a tmux + scripts bash para coordinar agents.",
+        "por_que_importa": "Resuelve el dolor concreto que ya cubrimos con `ShawnPana/phone-harness` y `cloudflare/computer`: ¿cómo encadenas, observas y compartes contexto entre varios agents? Herdr lo hace en Rust (no en Python como AxisAgentic/Shepherd) y se posiciona como la capa de bajo nivel — un multiplexer para coding agents. Topics notables: claude-code, codex, tmux, terminal-multiplexer, tui. Para CSS: encaja con el patrón 'runtime de agent' que el boletín de ayer abrió — pero esta vez es el contendiente 'no-Python' del espacio.",
+        "madurez_senales": "**26,632★** · 1,870 forks · Rust · creado 2026-03-27 · último push 2026-08-10 · licencia **Apache-2.0**. Topics: agent, agent-orchestration, ai, ai-agents, claude-code, cli, codex, coding-agents, developer-tools, multiplexer, rust, terminal, tui, tmux, workspace-manager. Cadencia de release: v0.8.0 (2026-08-03) + preview builds diarios; v0.7.5 el 2026-07-21.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "implements",
+          "dst": "concept:coding-agent-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "competes_with",
+          "dst": "repo:cloudflare/computer",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "uses",
+          "dst": "tool:tmux",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "complements",
+          "dst": "repo:vectorize-io/hindsight",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coding-agent-runtime",
+        "temas_secundarios": [
+          "rust",
+          "multiplexer",
+          "tmux",
+          "workspace-manager"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "InsForge/InsForge",
+      "url": "https://github.com/InsForge/InsForge",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Backend TypeScript (Apache-2.0, 12.7k★ en 1 año) que ofrece a un coding agent database, auth, storage, compute, hosting y AI gateway como una sola API. Reemplaza el stack Supabase/Firebase cuando el cliente es un agent, no un humano.",
+        "por_que_importa": "Hay un gap editorial claro: los coding agents necesitan backend completo (DB + auth + storage) para entregar apps reales, pero Supabase/Firebase asumen UI humana. InsForge reorienta el contrato API al cliente-agente: el agent llama a InsForge directamente para provisionar y desplegar. Stack: Next.js + Deno + Postgres + pgvector + OAuth2. v2.3.0 publicado hace 3 días. Para CSS: si vamos a hablar de 'el stack mínimo para shippear una app con un coding agent de 0 a producción', InsForge es la pieza OSS de referencia — compite directamente con los setups de Supabase + Replit.",
+        "madurez_senales": "**12,690★** · 1,125 forks · TypeScript · creado 2025-07-29 · último push 2026-08-10 · licencia **Apache-2.0**. Topics: ai, ai-agents, coding, deno, embeddings, insforge, nextjs, oauth2, pgvector, postgresql, realtime, vectors, websockets. Cadencia de release: v2.3.0 (2026-08-07), v2.2.9 (2026-07-28), 4-5 releases/mes.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:InsForge/InsForge",
+          "rel": "implements",
+          "dst": "concept:agent-native-backend",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:InsForge/InsForge",
+          "rel": "competes_with",
+          "dst": "company:supabase",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:InsForge/InsForge",
+          "rel": "uses",
+          "dst": "tool:pgvector",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:InsForge/InsForge",
+          "rel": "enables",
+          "dst": "concept:agent-shipped-app",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-native-backend",
+        "temas_secundarios": [
+          "nextjs",
+          "deno",
+          "postgres",
+          "pgvector",
+          "auth"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "vitali87/code-graph-rag",
+      "url": "https://github.com/vitali87/code-graph-rag",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Pipeline Python (MIT, 3.2k★) que parsea monorepos multi-lenguaje con tree-sitter + AST, construye un knowledge graph en Memgraph y lo expone vía MCP server para que cualquier coding agent (Claude Code, Codex, Cursor) consulte y edite código con búsqueda semántica y contextual.",
+        "por_que_importa": "El espacio \"codebase-as-graph\" tiene ahora cinco contendientes OSS: code-review-graph, Understand Anything, semantica, Graphify, y code-graph-rag. La diferencia de este: integra MCP server + Memgraph out-of-the-box — los otros asumen que tú montas el lado transporte. Cadencia de release brutal (3 versiones en 2 días: 0.0.589, 0.0.586, 0.0.584). Para CSS: comparativa head-to-head con Understand Anything y semantica, pero sobre todo para entender '¿cuál es el contrato mínimo que necesita un graph de codebase para ser útil a un agent?'.",
+        "madurez_senales": "**3,220★** · 531 forks · Python · creado 2025-06-16 · último push 2026-08-10 · licencia **MIT**. Topics (20): ai, ast, claude-code, code-analysis, codebase-search, developer-tools, graph-database, knowledge-graph, llm, mcp, mcp-server, memgraph, monorepo, multi-language, rag, retrieval-augmented-generation, semantic-search, tree-sitter. Cadencia de release: 0.0.589 (2026-08-10), 0.0.586 (2026-08-09), 0.0.584 (2026-08-09). Actividad diaria clara.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vitali87/code-graph-rag",
+          "rel": "implements",
+          "dst": "concept:codebase-rag",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vitali87/code-graph-rag",
+          "rel": "competes_with",
+          "dst": "repo:Egonex-AI/Understand-Anything",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:vitali87/code-graph-rag",
+          "rel": "competes_with",
+          "dst": "repo:semantica-agi/semantica",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:vitali87/code-graph-rag",
+          "rel": "uses",
+          "dst": "tool:tree-sitter",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "codebase-rag",
+        "temas_secundarios": [
+          "mcp",
+          "memgraph",
+          "tree-sitter",
+          "monorepo",
+          "knowledge-graph"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "IDE/agéntico (Agentic Development Environment, ADE) en TypeScript (MIT, 41k★ en 5 meses) que orquesta una flota de coding agents paralelos (Claude Code, Codex, Cursor, OpenCode) sobre worktrees de git. Disponible en desktop, mobile y VPS. YC-backed.",
+        "por_que_importa": "El patrón \"ejecutar N coding agents en paralelo sobre el mismo repo, cada uno en su worktree\" ya tenía BrowserOS, cloudflare/computer, y danielmiessler/LifeOS en el radar. Orca entra como el contendiente con pedigree YC y soporte mobile — la categoría 'ADE' se consolida. Para CSS: si cubrimos 'coding agents en paralelo' (ya mencionado en el radar del 2026-08-09 con oh-my-pi), Orca es la pieza que faltaba con UX mobile. Topics notables: ade, agent-ide, parallel-agents, yc-backed, worktrees.",
+        "madurez_senales": "**41,110★** · 2,876 forks · TypeScript · creado 2026-03-17 · último push 2026-08-10 · licencia **MIT**. Topics: ade, agent-ide, ai-agents, claude-code, cli, codex, cursor-agent, devtools, ghostty, ide, mobile-app, opencode, orchestration, parallel-agents, pi, terminal, worktrees, yc-backed. Cadencia alta (push diario).",
+        "accion_sugerida": "**vigilar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "implements",
+          "dst": "concept:parallel-agent-orchestrator",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "competes_with",
+          "dst": "repo:cloudflare/computer",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "complements",
+          "dst": "repo:earendil-works/pi",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Y Combinator",
+        "tema_principal": "parallel-agent-orchestrator",
+        "temas_secundarios": [
+          "typescript",
+          "ade",
+          "agent-ide",
+          "mobile",
+          "worktrees"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "KunAgent/Kun",
+      "url": "https://github.com/KunAgent/Kun",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Runtime TypeScript (NOASSERTION license, 6k★ en 2 meses) que combina GUI desktop (Electron) y TUI para correr agents (Claude/OpenAI-compatible/DeepSeek) en local. Pensado para coding, writing, design, research y automation desde una sola ventana.",
+        "por_que_importa": "La idea de \"workspace local-first para agents\" ya tiene a `danielmiessler/LifeOS` en el radar y a Hermes Agent (el runtime del propio usuario) como referencia. Kun entra como el primer contendiente OSS con GUI + TUI en el mismo binario. **Advertencia license NOASSERTION**: antes de recomendar adopción como dependencia de producción, abrir el LICENSE real en el repo. Para CSS: encaja con la línea editorial 'local-first AI' (FluidVoice, pocket-tts) que llevamos varios boletines.",
+        "madurez_senales": "**6,060★** · 572 forks · TypeScript · creado 2026-05-21 · último push 2026-08-07 · licencia **NOASSERTION**. Topics: agentic-workflow, ai-agent, ai-assistant, ai-design, automation, coding-agent, deepseek, desktop-app, electron, llm, local-first, mcp, multi-agent, openai-compatible, productivity, react, tui, typescript, writing-assistant. Cadencia de release: 5 versiones en agosto (v0.2.37 → v0.2.33). Activo.",
+        "accion_sugerida": "**vigilar** (con cautela hasta confirmar license)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:KunAgent/Kun",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:KunAgent/Kun",
+          "rel": "competes_with",
+          "dst": "repo:danielmiessler/LifeOS",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:KunAgent/Kun",
+          "rel": "risk",
+          "dst": "license:NOASSERTION",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "local-first-agent-workspace",
+        "temas_secundarios": [
+          "electron",
+          "tui",
+          "deepseek",
+          "mcp",
+          "mult-agent"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "garrytan/gstack",
+      "url": "https://github.com/garrytan/gstack",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Repositorio TypeScript (MIT, 127k★ en 5 meses) que distribuye \"el setup exacto de Claude Code de Garry Tan\": 23 herramientas que desempeñan distintos roles (CEO, Designer, Eng Manager, Release Manager, Doc Engineer, QA). No tiene releases — es contenido, no plataforma.",
+        "por_que_importa": "Es el ejemplo más viral del patrón \"setup-as-content\": convertir una configuración personal de Claude Code en un producto distribuible con marca de autoridad. Compite con Nutlope/hallmark (anti-AI-slop design skill, 5k★) y con addyosmani/agent-skills (production-grade engineering skills). La pregunta editorial: ¿qué se aprende de empaquetar skills así? Para CSS: comparado con `garrytan/gstack`, `addyosmani/agent-skills` (visto en el radar del 2026-08-09) tiene más rigor técnico — pero el de Garry Tan tiene 100k★ más.",
+        "madurez_senales": "**127,250★** · 19,167 forks · TypeScript · creado 2026-03-11 · último push 2026-08-08 · licencia **MIT**. Sin topics, sin releases, descripción minimal: \"Use Garry Tan's exact Claude Code setup: 23 opinionated tools\". Ratio stars/forks 6.6 — más alto que la media (típicamente 3-5), señal de consumo vs contribución.",
+        "accion_sugerida": "**vigilar** (calidad editorial cuestionable pese a las estrellas)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:garrytan/gstack",
+          "rel": "implements",
+          "dst": "concept:claude-code-skill-pack",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:garrytan/gstack",
+          "rel": "competes_with",
+          "dst": "repo:addyosmani/agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:garrytan/gstack",
+          "rel": "relevant_to",
+          "dst": "company:y-combinator",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "Garry Tan (CEO YC)",
+        "medio": "Y Combinator",
+        "tema_principal": "claude-code-skill-pack",
+        "temas_secundarios": [
+          "setup-as-content",
+          "opinionated-skills",
+          "no-platform"
+        ],
+        "confianza": 0.84
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"A complete AI agency at your fingertips\" — 141k★ en 10 meses, lenguaje Shell (sólo orquestación de prompts). Verificado: fork=False, parent=None, no es mirror. Sin releases",
+        "por_que_importa": "",
+        "madurez_senales": "141,135★, push 2026-08-06, Shell, MIT",
+        "accion_sugerida": "vigilar — patrón \"AI agency as content\" (misma familia que gstack/hallmark). El ratio stars/forks 6.1 también sugiere consumo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-agency-content",
+        "temas_secundarios": [
+          "shell",
+          "prompts-collection",
+          "orchestration-skills"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "openobserve/openobserve",
+      "url": "https://github.com/openobserve/openobserve",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Plataforma OSS de observabilidad (logs/metrics/traces/frontend/LLM). Drop-in replacement de Datadog/Splunk con LLM observability integrado. Topics notables: datadog, elasticsearch, grafana, kibana, prometheus, opentelemetry",
+        "por_que_importa": "",
+        "madurez_senales": "20,746★, push 2026-08-10, TypeScript, AGPL-3.0",
+        "accion_sugerida": "vigilar — AGPL-3.0 bloquea adopción SaaS pero es OSS puro para self-hosted; pieza clave para 'observability stack del coding agent'",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "observability-stack",
+        "temas_secundarios": [
+          "agpl-3",
+          "datadog-replacement",
+          "llm-observability",
+          "elk-replacement"
+        ],
+        "confianza": 0.88
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Pingdotgg/t3code",
+      "url": "https://github.com/Pingdotgg/t3code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Re-entry de ayer (radar 2026-08-09). Ya en grafo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (sin release nuevo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pingdotgg-t3code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "nitrojs/nitro",
+      "url": "https://github.com/nitrojs/nitro",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Server toolkit de la gente de Nuxt/unstorage. Estable, 4 años en producción, trending hoy",
+        "por_que_importa": "",
+        "madurez_senales": "11,095★, push 2026-08-10, TypeScript, NOASSERTION",
+        "accion_sugerida": "leer — si hablamos de servidores web para agents, Nitro merece nota",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Nuxt team",
+        "tema_principal": "server-toolkit",
+        "temas_secundarios": [
+          "NOASSERTION",
+          "nodejs",
+          "edge",
+          "unstorage"
+        ],
+        "confianza": 0.82
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "fosrl/pangolin",
+      "url": "https://github.com/fosrl/pangolin",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "VPN identity-aware + reverse proxy tunneled sobre WireGuard® con OIDC. Self-hosted zero-trust",
+        "por_que_importa": "",
+        "madurez_senales": "22,158★, push 2026-08-10, TypeScript, NOASSERTION",
+        "accion_sugerida": "vigilar — si cubrimos infra zero-trust para agents, Pangolin es referencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zero-trust-vpn",
+        "temas_secundarios": [
+          "NOASSERTION",
+          "wireguard",
+          "reverse-proxy",
+          "oidc"
+        ],
+        "confianza": 0.83
+      }
+    }
   ],
-  "rejected":[],
-  "stats":{"items_total":13,"items_clasificados":13,"items_rejected":0,"clasificador":"agentico-v2 (Ibid, manual con convenciones refinadas)"}
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 5,
+    "llm_backend": "none",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
 }

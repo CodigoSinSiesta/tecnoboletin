@@ -1,22 +1,523 @@
 {
-  "version":1,
-  "date":"2026-08-08",
-  "items":[
-    {"idx":0,"titulo":"mattpocock/skills","url":"https://github.com/mattpocock/skills","clasificacion":{"tipo":"repo","idioma":"en","autor":"Matt Pocock (Total TypeScript)","medio":null,"tema_principal":"claude-code-skills","temas_secundarios":["modular-skills","total-typescript","tsc-installed","library-not-framework"],"resumen_2_lineas":"Bundle de skills modulares para coding agents distribuido como Claude Code plugin oficial + npx skills add. Matt Pocock (Total TypeScript), enfoque library, no framework.","confianza":0.93}},
-    {"idx":1,"titulo":"obra/superpowers","url":"https://github.com/obra/superpowers","clasificacion":{"tipo":"repo","idioma":"en","autor":"obra (primeradiant)","medio":null,"tema_principal":"agentic-skills-framework","temas_secundarios":["sdlc","subagent-driven-dev","brainstorming","anthropic-plugin"],"resumen_2_lineas":"Framework agentic skills + metodología SDLC. Toma el control del proceso desde el primer mensaje (TDD, subagent-driven). Plugin oficial Anthropic. 268k★.","confianza":0.94}},
-    {"idx":2,"titulo":"tirth8205/code-review-graph","url":"https://github.com/tirth8205/code-review-graph","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"local-first-code-intelligence","temas_secundarios":["tree-sitter","mcp","graphrag","token-reduction-71x"],"resumen_2_lineas":"Herramienta Python (MIT, 29k★) que construye mapa estructural del codebase con tree-sitter, expuesto vía MCP. Benchmarks publicados: 71x reducción de tokens.","confianza":0.93}},
-    {"idx":3,"titulo":"semantica-agi/semantica","url":"https://github.com/semantica-agi/semantica","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"graph-native-ai","temas_secundarios":["knowledge-graph","provenance","ontology","graphrag","decision-intelligence"],"resumen_2_lineas":"Infraestructura Python (MIT, 2.4k★) graph-native para AI context-aware y auditables. Combina knowledge graph + ontology + GraphRAG + provenance.","confianza":0.92}},
-    {"idx":4,"titulo":"earendil-works/pi","url":"https://github.com/earendil-works/pi","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"llm-api-unification","temas_secundarios":["agent-loop","tui","coding-agent-cli","unified-provider"],"resumen_2_lineas":"Toolkit TypeScript (MIT, 85k★) para construir coding agents: API unificada sobre múltiples LLMs, agent loop, TUI interactivo y CLI.","confianza":0.94}},
-    {"idx":5,"titulo":"agent-substrate/substrate","url":"https://github.com/agent-substrate/substrate","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"agent-core-runtime","temas_secundarios":["go","scheduling","message-passing","persistence"],"resumen_2_lineas":"Core system Go (Apache-2.0, 1.1k★) para construir agents: substrate minimalista con scheduling, message passing y persistence.","confianza":0.85}},
-    {"idx":6,"titulo":"h4ckf0r0day/obscura","url":"https://github.com/h4ckf0r0day/obscura","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"headless-browser-anti-detect","temas_secundarios":["rust","playwright-replacement","cdp","scrapling"],"resumen_2_lineas":"Headless browser Rust (Apache-2.0, 20k★) con antidetect built-in, drop-in replacement de Playwright para AI agents y scraping a escala.","confianza":0.9}},
-    {"idx":7,"titulo":"PrimeIntellect-ai/prime-agent","url":"https://github.com/PrimeIntellect-ai/prime-agent","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Prime Intellect","tema_principal":"self-improving-agent","temas_secundarios":["typescript","reinforcement-learning-meta","long-running-tasks"],"resumen_2_lineas":"Agente TypeScript (MIT, 7k★) RLM (Reinforcement Learning Meta) que se automejora en coding workflows y tareas autónomas de larga duración.","confianza":0.78}},
-    {"idx":8,"titulo":"yvgude/lean-ctx","url":"https://github.com/yvgude/lean-ctx","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"context-intelligence","temas_secundarios":["rust","mcp","token-optimization-90","binary-distribution"],"resumen_2_lineas":"Context intelligence layer Rust (Apache-2.0, 3.5k★) con 76 tools MCP que decide qué lee el agente y reduce tokens 60-90%. Binario local.","confianza":0.9}},
-    {"idx":9,"titulo":"google/skills","url":"https://github.com/google/skills","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Google","tema_principal":"coding-agent-skills","temas_secundarios":["gemini-cli","cloud","official"],"resumen_2_lineas":"Skills oficiales de Google (Apache-2.0, 16k★) para coding agents (Cloud, Gemini CLI). Trending en paralelo al ecosistema de skills.","confianza":0.91}},
-    {"idx":10,"titulo":"tt-a1i/archify","url":"https://github.com/tt-a1i/archify","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"architecture-diagrams","temas_secundarios":["html-self-contained","agent-output","diagrams"],"resumen_2_lineas":"Skill para que el agente produzca diagramas de arquitectura HTML self-contained y verificables. Encaja con creative/architecture-diagram de CSS.","confianza":0.87}},
-    {"idx":11,"titulo":"vercel-labs/agent-browser","url":"https://github.com/vercel-labs/agent-browser","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Vercel Labs","tema_principal":"agent-browser-cli","temas_secundarios":["rust","cli","minimal","browser-automation"],"resumen_2_lineas":"CLI minimalista Rust (Apache-2.0, 40k★) de Vercel Labs para browser automation por agentes. Trending en Rust.","confianza":0.9}},
-    {"idx":12,"titulo":"huangruiteng/loopx","url":"https://github.com/huangruiteng/loopx","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"loop-engineering-state-kernel","temas_secundarios":["python","kanban-native-for-agents","verifiable-handoffs","quota-aware"],"resumen_2_lineas":"Loop engineering state kernel Python (MIT, 3.4k★) para equipos de agents long-running: durable goals, quota-aware, executable todos, verifiable handoffs.","confianza":0.85}},
-    {"idx":13,"titulo":"firecrawl/anydoc","url":"https://github.com/firecrawl/anydoc","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Firecrawl","tema_principal":"document-to-markdown","temas_secundarios":["rust","node-bindings","python-bindings","9-formats"],"resumen_2_lineas":"Parser universal Rust (MIT, 11k★) que convierte Word/PPT/Excel/OpenDocument/RTF/EPUB/CSV/PDF a Markdown limpio con bindings Node y Python.","confianza":0.92}}
+  "version": 2,
+  "date": "2026-08-08",
+  "boletin_origen": "2026-08-08-trending.md",
+  "resumen_ejecutivo": "- **El \"skills layer\" para coding agents se consolida como categoría**: 4 repos de skills trending simultáneamente — `mattpocock/skills` (TS, 209k★), `obra/superpowers` (Shell, 268k★), `google/skills` (Python, 16k★), `addyosmani/agent-skills` (cubierto ayer). Matt Pocock (Total TypeScript) entra con un bundle \"para ingenieros reales\" distribuido como Claude Code plugin oficial + `npx skills add`. El movimiento editorial: la modularización del comportamiento del agente pasó de \"prompts sueltos\" a \"skills versionados con ADR\".\n- **Self-improving agents en producción**: `PrimeIntellect-ai/prime-agent` (Trendshift #1) y `earendil-works/pi` (agent toolkit unificado) suben juntos. El primero apuesta por RLM (reinforcement learning meta) sobre coding workflows; el segundo ofrece un agent loop agnóstico con LLM API unificada. El nicho de \"agent que se mejora a sí mismo\" deja de ser demo de laboratorio.\n- **Code intelligence local-first se vuelve categoría**: `tirth8205/code-review-graph` (Tree-sitter + MCP, reducción 71x de tokens) y `yvgude/lean-ctx` (context intelligence layer, 60-90% menos tokens) atacan el mismo problema desde ángulos complementarios. El primero mapea el código; el segundo decide qué ve el agente. Para CSS: el stack local-first + graphify encaja directo.\n- **Graph-native AI infra se profesionaliza**: `semantica-agi/semantica` (2.4k★, Apache/MIT, 20 topics) entra con propuesta ambiciosa — context graphs + decision intelligence + provenance como primitives. Es el competidor OSS más serio de los grafos vectoriales propietarios (Glean, Hebbia).\n- **El browser para AI agents se bifurca**: dos Rust-based nuevos en radar — `h4ckf0r0day/obscura` (engine-level stealth, 20k★, Apache-2.0) y `vercel-labs/agent-browser` (CLI minimalista, 40k★). Compiten en el mismo nicho: dar a los agentes un browser sin pagar Apify. Marcan la salida del \"Puppeteer crudo\" como solución.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub Trending TypeScript/Python/Rust/Go, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Paquete de \"skills para ingenieros reales\" — behaviors modulares para coding agents (TDD, debugging, code review) extraídos directamente del directorio `.agents/` de Matt Pocock (Total TypeScript, ~60k suscriptores), distribuidos como Claude Code plugin oficial y vía `npx skills add`.",
+        "por_que_importa": "Matt Pocock es una de las voces más respetadas en TypeScript/Angular y rara vez hace hype. Su tesis: \"GSD, BMAD, Spec-Kit toman el control y dificultan debuggear bugs del proceso\". Ofrece skills small + composable + modelo-agnóstico, con un setup de 30s y un comando `/setup-matt-pocock-skills` por repo. Para CSS: el contraste es directo con `obra/superpowers` (que tiende a tomar control total del flujo) — Pocock apuesta por skills pequeños que el agente invoca. Es el enfoque \"library\" vs \"framework\" aplicado a agent behavior.",
+        "madurez_senales": "**209.150★** · 18.068 forks · Shell · creado 2026-02-03 · último push 2026-08-07 · licencia **MIT**. Descripción oficial: \"Skills for Real Engineers. Straight from my .agents directory.\". Topics: _(sin topics configurados — el repo se hizo discoverable solo por momentum)_.",
+        "accion_sugerida": "**leer** (instalar en un repo piloto y comparar con `obra/superpowers`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "mattpocock_skills",
+          "rel": "implements",
+          "dst": "concept_skills_layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "mattpocock_skills",
+          "rel": "competes_with",
+          "dst": "obra_superpowers",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "Matt Pocock (Total TypeScript)",
+        "medio": null,
+        "tema_principal": "claude-code-skills",
+        "temas_secundarios": [
+          "modular-skills",
+          "total-typescript",
+          "tsc-installed",
+          "library-not-framework"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Metodología completa de desarrollo software para coding agents (Claude Code, Codex, Cursor, Gemini CLI, Pi, Kimi, OpenCode...) construida sobre skills composables que se activan automáticamente. El agente, antes de escribir código, te entrevista para sacar la spec y luego opera en subagent-driven-development con TDD estricto.",
+        "por_que_importa": "La tracción es la señal — 268k★, 24k forks, en GitHub Trending daily, plugin oficial Anthropic. La filosofía es opuesta a la de Pocock: en vez de skills pequeñas invocadas bajo demanda, superpowers *own el proceso* desde el primer mensaje (TDD, YAGNI, DRY, subagent-driven development). El autor vende servicios comerciales vía `primeradiant.com`, así que hay un modelo de negocio claro detrás. Para CSS: el contraste \"framework completo\" vs \"library mínima\" es un eje editorial natural para hablar del skill layer.",
+        "madurez_senales": "**268.899★** · 24.010 forks · Shell · creado 2025-10-09 · último push 2026-08-08 (hoy) · licencia **MIT**. Descripción oficial: \"An agentic skills framework & software development methodology that works.\". Topics: `ai`, `brainstorming`, `coding`, `obra`, `sdlc`, `skills`, `subagent-driven-development`, `superpowers`.",
+        "accion_sugerida": "**leer** (revisar `/skills` y la skill `brainstorming`; comparar con Pocock)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "obra_superpowers",
+          "rel": "implements",
+          "dst": "concept_skills_layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "obra_superpowers",
+          "rel": "competes_with",
+          "dst": "mattpocock_skills",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "obra (primeradiant)",
+        "medio": null,
+        "tema_principal": "agentic-skills-framework",
+        "temas_secundarios": [
+          "sdlc",
+          "subagent-driven-dev",
+          "brainstorming",
+          "anthropic-plugin"
+        ],
+        "confianza": 0.94
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "tirth8205/code-review-graph",
+      "url": "https://github.com/tirth8205/code-review-graph",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Herramienta Python que construye un mapa estructural del codebase con Tree-sitter, lo expone vía MCP a cualquier coding agent (Codex, Claude Code, Cursor, Windsurf, Gemini CLI, Antigravity, OpenCode...) y publica resultados que demuestran reducción 71x de tokens en reviews sobre el corpus de Flask.",
+        "por_que_importa": "Es exactamente la pieza que faltaba entre el stack local-first de CSS y el agente que programa. El CLI `code-review-graph install` autodetecta qué agentes tienes instalados y configura el MCP server para todos; `build` parsea incrementalmente con Tree-sitter y mantiene el grafo actualizado. Los benchmarks publicados (143k tokens → 2k tokens en review de Flask) son concretos y reproducibles. Es el primo OSS directo de `graphify` pero más específico (orientado a review, no a graph genérico). Si querés que el coding agent lea solo lo que necesita en lugar de dump del repo entero, esta es la respuesta lista-para-usar.",
+        "madurez_senales": "**29.380★** · 2.698 forks · Python · creado 2026-02-26 · último push 2026-08-02 · licencia **MIT**. Descripción oficial: \"Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.\". Topics: `ai-coding`, `claude`, `claude-code`, `code-review`, `graphrag`, `incremental`, `knowledge-graph`, `llm`, `mcp`, `python`, `static-analysis`, `tree-sitter`.",
+        "accion_sugerida": "**explorar** (instalar con `pipx install code-review-graph` en un proyecto piloto y medir el ahorro real de tokens)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "code_review_graph",
+          "rel": "implements",
+          "dst": "concept_local_first_kg",
+          "primera_mencion": null
+        },
+        {
+          "src": "code_review_graph",
+          "rel": "uses",
+          "dst": "tool_tree_sitter",
+          "primera_mencion": null
+        },
+        {
+          "src": "code_review_graph",
+          "rel": "uses",
+          "dst": "tool_mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "local-first-code-intelligence",
+        "temas_secundarios": [
+          "tree-sitter",
+          "mcp",
+          "graphrag",
+          "token-reduction-71x"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "semantica-agi/semantica",
+      "url": "https://github.com/semantica-agi/semantica",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Infraestructura Python \"graph-native\" para sistemas AI context-aware y auditables — combina knowledge graph, ontology, context graphs, decision intelligence, GraphRAG y provenance tracking en un solo paquete de 50MB de código.",
+        "por_que_importa": "Es el competidor OSS más serio en el espacio de grafos para AI enterprise (donde juegan Glean, Hebbia, Palantir Foundry). La diferencia editorial: `semantica` no intenta ser un vector store más — ofrece un modelo ontológico completo donde cada nodo lleva provenance y la búsqueda es GraphRAG semántica. Para CSS: si en algún momento querés construir un agente que \"explique\" de dónde salió cada respuesta (cosa que PGLite+pgvector puede hacer pero con más boilerplate), semantica lo trae pre-construido. El grafo de conocimiento de CSS puede inspirarse en su modelo.",
+        "madurez_senales": "**2.425★** · 313 forks · Python · creado 2025-06-25 · último push 2026-08-08 (hoy) · licencia **MIT**. Descripción oficial: \"Graph-Native Infrastructure for Context and Accountable AI Systems\". Topics: `agent-memory`, `ai-governance`, `ai-infrastructure`, `context-engineering`, `context-graphs`, `data-engineering`, `decision-intelligence`, `developer-tools`, `explainable-ai`, `generative-ai`, `graph-rag`, `knowledge-graph`, `llm`, `ontology`, `provenance`, `python`, `reasoning`, `semantic-search`.",
+        "accion_sugerida": "**vigilar** (revisar la sección \"Ontology\" y la integración con MCP cuando publique server)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "semantica",
+          "rel": "implements",
+          "dst": "concept_graph_native_ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "semantica",
+          "rel": "complements",
+          "dst": "concept_local_first_kg",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "graph-native-ai",
+        "temas_secundarios": [
+          "knowledge-graph",
+          "provenance",
+          "ontology",
+          "graphrag",
+          "decision-intelligence"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "earendil-works/pi",
+      "url": "https://github.com/earendil-works/pi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Toolkit TypeScript para construir coding agents: API unificada sobre múltiples LLMs, agent loop, TUI interactivo y CLI. La idea es un \"Pi\" — un daemon que sirve de backend común para experimentar con agentes sin atarse a un framework.",
+        "por_que_importa": "85k★ con un solo autor (earendil-works) es señal de calidad + comunidad consolidada. Aterriza en GitHub Trending TypeScript hoy. La propuesta: en lugar de elegir entre LangChain/LlamaIndex/AutoGen, das una API única y montas el agent loop encima. El TUI (terminal UI) que incluye vale la pena verlo — es donde el agent debugging es más transparente. Para CSS: si en algún momento querés mostrar \"cómo se ve un coding agent por dentro\", `pi` es el ejemplo más didáctico.",
+        "madurez_senales": "**85.382★** · 10.594 forks · TypeScript · creado 2025-08-09 · último push 2026-08-07 · licencia **MIT**. Descripción oficial: \"AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\". Topics: _(sin topics configurados)_.",
+        "accion_sugerida": "**vigilar** (probar el TUI en un repo pequeño: `npx pi`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "earendil_pi",
+          "rel": "complements",
+          "dst": "agent_substrate",
+          "primera_mencion": null
+        },
+        {
+          "src": "earendil_pi",
+          "rel": "enables",
+          "dst": "concept_loop_engineering",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "llm-api-unification",
+        "temas_secundarios": [
+          "agent-loop",
+          "tui",
+          "coding-agent-cli",
+          "unified-provider"
+        ],
+        "confianza": 0.94
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "agent-substrate/substrate",
+      "url": "https://github.com/agent-substrate/substrate",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Core system minimalista en Go para construir agentes: provee el \"substrate\" — scheduling, message passing, persistence — sobre el que corren los agentes del tipo de `earendil/pi` o `loopx`.",
+        "por_que_importa": "Reciente (creado 2026-05-13), todavía pequeño (1.1k★) pero el push de hoy y trending en Go indican momentum. El ángulo: si la mayoría de agent frameworks viven en Python/JS, este apuesta por Go por motivos de performance + concurrency. Para CSS: vale la pena ver qué decisiones arquitectónicas tomó — si el substrate usa algo canónico como message passing estilo Erlang o va custom. Es un deep dive potencial para entender el \"metal\" sobre el que corren los agents.",
+        "madurez_senales": "**1.113★** · 216 forks · Go · creado 2026-05-13 · último push 2026-08-08 (hoy) · licencia **Apache-2.0**. Descripción oficial: \"Agent Substrate: the core system\". Topics: _(sin topics configurados)_.",
+        "accion_sugerida": "**explorar** (clonar y leer `cmd/`, revisar decisiones de concurrencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "agent_substrate",
+          "rel": "enables",
+          "dst": "concept_loop_engineering",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-core-runtime",
+        "temas_secundarios": [
+          "go",
+          "scheduling",
+          "message-passing",
+          "persistence"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "h4ckf0r0day/obscura",
+      "url": "https://github.com/h4ckf0r0day/obscura",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Headless browser escrito en Rust con antidetect built-in, drop-in replacement de Playwright/Puppeteer, pensado específicamente para AI agents y scraping a escala.",
+        "por_que_importa": "20k★ en 4 meses (creado 2026-04-13) y trending hoy en Rust es una señal fuerte — el espacio \"browser for AI\" se está moviendo del lado JS hacia el lado Rust por motivos de stealth + concurrencia. Los topics (`antidetect`, `antidetect-browser`, `headless`, `playwright`, `puppeteer`, `rust`) lo posicionan como competidor directo de Fortress, Scrapling StealthyFetcher y Playwright vanilla. Para CSS: si alguna vez necesitamos scraping de sitios con DataDome/Cloudflare Turnstile, obscura es otra opción OSS a evaluar (junto a `tiliondev/fortress` que ya cubrimos).",
+        "madurez_senales": "**20.640★** · 1.486 forks · Rust · creado 2026-04-13 · último push 2026-08-08 (hoy) · licencia **Apache-2.0**. Descripción oficial: \"The headless browser for AI agents and web scraping\". Topics: `antidetect`, `antidetect-browser`, `browser`, `browser-automation`, `cdp`, `headless`, `playwright`, `puppeteer`, `rust`.",
+        "accion_sugerida": "**leer** (revisar docs/API; comparar contra Playwright vanilla + Scrapling StealthyFetcher)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "obscura_browser",
+          "rel": "implements",
+          "dst": "concept_agent_browser",
+          "primera_mencion": null
+        },
+        {
+          "src": "obscura_browser",
+          "rel": "competes_with",
+          "dst": "agent_browser",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "headless-browser-anti-detect",
+        "temas_secundarios": [
+          "rust",
+          "playwright-replacement",
+          "cdp",
+          "scrapling"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "PrimeIntellect-ai/prime-agent",
+      "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Agente TypeScript \"RLM\" (Reinforcement Learning Meta) que se automejora en coding workflows y tareas autónomas de larga duración. La tesis: el agente no solo ejecuta — aprende de sus propias runs y ajusta su comportamiento en el siguiente intento.",
+        "por_que_importa": "Trendshift #1 del día, 7k★ y push hoy. La pregunta editorial es importante: ¿realmente se \"automejora\" o es un wrapper de eval+prompt-tuning? El README es vago sobre el mecanismo. La promesa es la misma que `AutoGPT` (también trending hoy, 11 años de historia) vendía en 2023. Para CSS: merece un análisis honesto — si el self-improvement es real, es la pieza que faltaba para agentes en producción; si es hype, hay que decirlo.",
+        "madurez_senales": "**7.091★** · 583 forks · TypeScript · creado 2026-05-08 · último push 2026-08-08 (hoy) · licencia **MIT**. Descripción oficial: \"A self-improving RLM agent for coding workflows and long-running autonomous tasks.\". Topics: _(sin topics configurados)_.",
+        "accion_sugerida": "**explorar** (clonar, leer `src/`, identificar mecanismo concreto de \"self-improvement\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "prime_agent",
+          "rel": "implements",
+          "dst": "concept_self_improving_agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Prime Intellect",
+        "tema_principal": "self-improving-agent",
+        "temas_secundarios": [
+          "typescript",
+          "reinforcement-learning-meta",
+          "long-running-tasks"
+        ],
+        "confianza": 0.78
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "yvgude/lean-ctx",
+      "url": "https://github.com/yvgude/lean-ctx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Context intelligence layer para AI agents: un binario Rust local con 76 tools MCP que decide qué lee el agente, recuerda qué aprendió y reduce tokens 60-90%. Topics: `context-engineering`, `mcp`, `token-optimization`",
+        "por_que_importa": "",
+        "madurez_senales": "3.546★ · push 2026-08-08 · Rust · Apache-2.0",
+        "accion_sugerida": ": explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "context-intelligence",
+        "temas_secundarios": [
+          "rust",
+          "mcp",
+          "token-optimization-90",
+          "binary-distribution"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "google/skills",
+      "url": "https://github.com/google/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skills oficiales de Google para coding agents (Cloud, Gemini CLI). Trending en paralelo al resto del ecosystem de skills",
+        "por_que_importa": "",
+        "madurez_senales": "16.375★ · push 2026-08-07 · Python · Apache-2.0",
+        "accion_sugerida": ": vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Google",
+        "tema_principal": "coding-agent-skills",
+        "temas_secundarios": [
+          "gemini-cli",
+          "cloud",
+          "official"
+        ],
+        "confianza": 0.91
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "tt-a1i/archify",
+      "url": "https://github.com/tt-a1i/archify",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skill para que el agente produzca diagramas de arquitectura hermosos y verificables como HTML self-contained. Encaja con `creative/architecture-diagram` de CSS",
+        "por_que_importa": "",
+        "madurez_senales": "10.295★ · push 2026-08-06 · HTML · MIT",
+        "accion_sugerida": ": leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "architecture-diagrams",
+        "temas_secundarios": [
+          "html-self-contained",
+          "agent-output",
+          "diagrams"
+        ],
+        "confianza": 0.87
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "CLI minimalista de Vercel Labs para browser automation por agentes. Trending en Rust. Más simple que obscura; apunta a \"uso inmediato vía CLI\" en lugar de \"library integrable\"",
+        "por_que_importa": "",
+        "madurez_senales": "40.177★ · push 2026-08-08 · Rust · Apache-2.0",
+        "accion_sugerida": ": vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Vercel Labs",
+        "tema_principal": "agent-browser-cli",
+        "temas_secundarios": [
+          "rust",
+          "cli",
+          "minimal",
+          "browser-automation"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "huangruiteng/loopx",
+      "url": "https://github.com/huangruiteng/loopx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Loop engineering state kernel para equipos de agentes long-running: durable goals, quota-aware auto-wake, executable todos, verifiable handoffs. Compite con `agent-substrate`",
+        "por_que_importa": "",
+        "madurez_senales": "3.461★ · push 2026-08-08 · Python · MIT",
+        "accion_sugerida": ": vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "loop-engineering-state-kernel",
+        "temas_secundarios": [
+          "python",
+          "kanban-native-for-agents",
+          "verifiable-handoffs",
+          "quota-aware"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "firecrawl/anydoc",
+      "url": "https://github.com/firecrawl/anydoc",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Conversor Word/PPT/Excel/PDF/RTF/EPUB/CSV → Markdown limpio con bindings Node.js y Python. Reentra tras 3 días. El hermano \"document parser\" del ecosistema firecrawl",
+        "por_que_importa": "",
+        "madurez_senales": "11.394★ · push 2026-08-07 · Rust · MIT",
+        "accion_sugerida": ": vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Firecrawl",
+        "tema_principal": "document-to-markdown",
+        "temas_secundarios": [
+          "rust",
+          "node-bindings",
+          "python-bindings",
+          "9-formats"
+        ],
+        "confianza": 0.92
+      }
+    }
   ],
-  "rejected":[],
-  "stats":{"items_total":14,"items_clasificados":14,"items_rejected":0,"clasificador":"agentico-v2"}
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 6,
+    "llm_backend": "none",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
 }

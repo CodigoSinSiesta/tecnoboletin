@@ -4,14 +4,18 @@
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:top-100-github", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:cron-retention", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "tema:multi-runtime", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-nousresearch-hermes-agent", "dst": "medio:nous-research", "rel": "publicado_en", "added": "2026-08-03"}
+{"src": "hermes-agent", "dst": "cron-retention", "rel": "relevant_to", "added": "2026-08-03", "primera_mencion": "2026-07-03"}
+{"src": "hermes-agent", "dst": "openai-codex", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": "2026-07-03"}
+{"src": "hermes-agent", "dst": "claude-code", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": "2026-07-03"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-microsoft-skill-recorder", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:session-to-skill", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:electron", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:copilot-cli", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:screen-recording", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-microsoft-skill-recorder", "dst": "medio:microsoft", "rel": "publicado_en", "added": "2026-08-03"}
+{"src": "microsoft/skill-recorder", "dst": "hermes-agent-skill-authoring", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": null}
+{"src": "microsoft/skill-recorder", "dst": "session-to-skill", "rel": "relevant_to", "added": "2026-08-03", "primera_mencion": null}
+{"src": "microsoft/skill-recorder", "dst": "copilot-cli", "rel": "enables", "added": "2026-08-03", "primera_mencion": null}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-fareedkhan-dev-kimi-k3-in-c", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-fareedkhan-dev-kimi-k3-in-c", "dst": "tema:cpu-inference", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-fareedkhan-dev-kimi-k3-in-c", "dst": "tema:c99", "rel": "trata", "added": "2026-08-03"}
@@ -20,12 +24,9 @@
 {"src": "item:https-github-com-fareedkhan-dev-kimi-k3-in-c", "dst": "tema:moe", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-fareedkhan-dev-kimi-k3-in-c", "dst": "tema:2-78t-params", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-fareedkhan-dev-kimi-k3-in-c", "dst": "tema:claim-pending-verification", "rel": "trata", "added": "2026-08-03"}
-{"src": "boletin:2026-08-03", "dst": "item:https-github-com-sqliteai-waste", "rel": "menciona", "added": "2026-08-03"}
-{"src": "item:https-github-com-sqliteai-waste", "dst": "tema:nvme-streaming", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-sqliteai-waste", "dst": "tema:c", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-sqliteai-waste", "dst": "tema:apache-2", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-sqliteai-waste", "dst": "tema:activated-weights", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-sqliteai-waste", "dst": "tema:cost-reduction", "rel": "trata", "added": "2026-08-03"}
+{"src": "FareedKhan-dev/kimi-k3-in-c", "dst": "sqliteai/waste", "rel": "complements", "added": "2026-08-03", "primera_mencion": null}
+{"src": "FareedKhan-dev/kimi-k3-in-c", "dst": "ollama", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": "2026-07-04"}
+{"src": "FareedKhan-dev/kimi-k3-in-c", "dst": "cpu-inference", "rel": "enables", "added": "2026-08-03", "primera_mencion": null}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-simstudioai-sim", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-simstudioai-sim", "dst": "tema:low-code-agent-platform", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-simstudioai-sim", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-03"}
@@ -33,7 +34,9 @@
 {"src": "item:https-github-com-simstudioai-sim", "dst": "tema:multi-provider", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-simstudioai-sim", "dst": "tema:rag", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-simstudioai-sim", "dst": "tema:multi-agent", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-simstudioai-sim", "dst": "medio:sim-studio", "rel": "publicado_en", "added": "2026-08-03"}
+{"src": "simstudioai/sim", "dst": "multica-ai/multica", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": "2026-08-02"}
+{"src": "simstudioai/sim", "dst": "paperclipai/paperclip", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": null}
+{"src": "simstudioai/sim", "dst": "agent-orchestration", "rel": "relevant_to", "added": "2026-08-03", "primera_mencion": "2026-08-02"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-bytedance-deer-flow", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-bytedance-deer-flow", "dst": "tema:long-horizon-superagent", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-bytedance-deer-flow", "dst": "tema:python", "rel": "trata", "added": "2026-08-03"}
@@ -41,7 +44,9 @@
 {"src": "item:https-github-com-bytedance-deer-flow", "dst": "tema:subagents", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-bytedance-deer-flow", "dst": "tema:memory", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-bytedance-deer-flow", "dst": "tema:skills", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-bytedance-deer-flow", "dst": "medio:bytedance", "rel": "publicado_en", "added": "2026-08-03"}
+{"src": "bytedance/deer-flow", "dst": "langgraph", "rel": "uses", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
+{"src": "bytedance/deer-flow", "dst": "skills-memory-subagents", "rel": "complements", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
+{"src": "bytedance/deer-flow", "dst": "long-horizon-agents", "rel": "relevant_to", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-can1357-oh-my-pi", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:coding-agent-cli", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-03"}
@@ -50,6 +55,9 @@
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:browser", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:subagents", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:hindsight", "rel": "trata", "added": "2026-08-03"}
+{"src": "can1357/oh-my-pi", "dst": "openai-codex", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
+{"src": "can1357/oh-my-pi", "dst": "claude-code", "rel": "competes_with", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
+{"src": "can1357/oh-my-pi", "dst": "hash-anchored-edits", "rel": "implements", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-uber-adr", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:agent-defense-risk", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:python", "rel": "trata", "added": "2026-08-03"}
@@ -57,14 +65,18 @@
 {"src": "item:https-github-com-uber-adr", "dst": "tema:mcp", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:claude-code", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:codex", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-uber-adr", "dst": "medio:uber", "rel": "publicado_en", "added": "2026-08-03"}
+{"src": "uber/ADR", "dst": "adithyan-ak/AgentHound", "rel": "complements", "added": "2026-08-03", "primera_mencion": null}
+{"src": "uber/ADR", "dst": "agent-security", "rel": "relevant_to", "added": "2026-08-03", "primera_mencion": null}
+{"src": "uber/ADR", "dst": "mcp-security", "rel": "enables", "added": "2026-08-03", "primera_mencion": null}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:four-asset-memory", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:chat-memory", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:skill-llm-wiki", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:code-graph", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:openclaw-plugin", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "medio:tencent", "rel": "publicado_en", "added": "2026-08-03"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "four-asset-memory", "rel": "implements", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "memory-for-agents", "rel": "relevant_to", "added": "2026-08-03", "primera_mencion": "2026-07-10"}
+{"src": "TencentCloud/TencentDB-Agent-Memory", "dst": "graphify", "rel": "complements", "added": "2026-08-03", "primera_mencion": "2026-07-04"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-adithyan-ak-agenthound", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-adithyan-ak-agenthound", "dst": "tema:offensive-agent-security", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-adithyan-ak-agenthound", "dst": "tema:go", "rel": "trata", "added": "2026-08-03"}
@@ -78,27 +90,23 @@
 {"src": "item:https-github-com-natebjones-projects-ob1", "dst": "tema:supabase", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-natebjones-projects-ob1", "dst": "tema:mcp", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-natebjones-projects-ob1", "dst": "tema:memory-layer", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-natebjones-projects-ob1", "dst": "medio:nateb-jones", "rel": "publicado_en", "added": "2026-08-03"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-microsoft-flint-chart", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-flint-chart", "dst": "tema:data-visualization-dsl", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-flint-chart", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-flint-chart", "dst": "tema:MIT", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-microsoft-flint-chart", "dst": "tema:agent-chart-output", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-microsoft-flint-chart", "dst": "medio:microsoft", "rel": "publicado_en", "added": "2026-08-03"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-vercel-labs-agent-browser", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:agent-browser-cli", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:rust", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:apache-2", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:browser-automation", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:stable-cadence", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "medio:vercel-labs", "rel": "publicado_en", "added": "2026-08-03"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-yc-software-qm", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-yc-software-qm", "dst": "tema:multiplayer-agent-harness", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-yc-software-qm", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-yc-software-qm", "dst": "tema:multiplayer", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-yc-software-qm", "dst": "tema:real-time", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-yc-software-qm", "dst": "tema:skills-reuse", "rel": "trata", "added": "2026-08-03"}
-{"src": "item:https-github-com-yc-software-qm", "dst": "medio:yc", "rel": "publicado_en", "added": "2026-08-03"}
 {"src": "boletin:2026-08-03", "dst": "item:https-github-com-different-ai-openwork", "rel": "menciona", "added": "2026-08-03"}
 {"src": "item:https-github-com-different-ai-openwork", "dst": "tema:open-cowork-alternative", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-different-ai-openwork", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-03"}
@@ -111,3 +119,5 @@
 {"src": "item:https-github-com-geek-fun-sqlkit", "dst": "tema:apache-2", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-geek-fun-sqlkit", "dst": "tema:dbt-for-agents", "rel": "trata", "added": "2026-08-03"}
 {"src": "item:https-github-com-geek-fun-sqlkit", "dst": "tema:40-databases", "rel": "trata", "added": "2026-08-03"}
+{"src": "boletin:2026-08-03", "dst": "item:https-github-com-abus-aikorea-voice-pro", "rel": "menciona", "added": "2026-08-03"}
+{"src": "item:https-github-com-abus-aikorea-voice-pro", "dst": "tema:abus-aikorea-voice-pro", "rel": "trata", "added": "2026-08-03"}

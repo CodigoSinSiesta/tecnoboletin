@@ -4,14 +4,18 @@
 {"src": "item:https-github-com-tauricresearch-tradingagents", "dst": "tema:arxiv-2412-20138", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-tauricresearch-tradingagents", "dst": "tema:quant-trading", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-tauricresearch-tradingagents", "dst": "tema:backtesting", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-tauricresearch-tradingagents", "dst": "medio:tauric-research", "rel": "publicado_en", "added": "2026-08-09"}
+{"src": "repo:TauricResearch/TradingAgents", "dst": "concept:agentic-decision-systems", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:TauricResearch/TradingAgents", "dst": "concept:multi-agent-trading", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:TauricResearch/TradingAgents", "dst": "repo:HKUDS/Vibe-Trading", "rel": "competes_with", "added": "2026-08-09", "primera_mencion": "2026-07-18"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-xyz-ai-lab-axisagentic", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-xyz-ai-lab-axisagentic", "dst": "tema:long-horizon-runtime", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-xyz-ai-lab-axisagentic", "dst": "tema:trajectory-collection", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-xyz-ai-lab-axisagentic", "dst": "tema:opentelemetry-for-agents", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-xyz-ai-lab-axisagentic", "dst": "tema:tool-orchestration", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-xyz-ai-lab-axisagentic", "dst": "tema:recovery", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-xyz-ai-lab-axisagentic", "dst": "medio:xyz-ai-lab", "rel": "publicado_en", "added": "2026-08-09"}
+{"src": "repo:XYZ-AI-Lab/AxisAgentic", "dst": "concept:long-horizon-runtime", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:XYZ-AI-Lab/AxisAgentic", "dst": "concept:agent-trajectory-collection", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:XYZ-AI-Lab/AxisAgentic", "dst": "repo:agent-substrate/substrate", "rel": "competes_with", "added": "2026-08-09", "primera_mencion": "2026-07-18"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-shepherd-agents-shepherd", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-shepherd-agents-shepherd", "dst": "tema:reversible-agent-trace", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-shepherd-agents-shepherd", "dst": "tema:git-like-trace", "rel": "trata", "added": "2026-08-09"}
@@ -19,6 +23,9 @@
 {"src": "item:https-github-com-shepherd-agents-shepherd", "dst": "tema:meta-agents", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-shepherd-agents-shepherd", "dst": "tema:tree-rl", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-shepherd-agents-shepherd", "dst": "tema:copy-on-write", "rel": "trata", "added": "2026-08-09"}
+{"src": "repo:shepherd-agents/shepherd", "dst": "concept:reversible-agent-trace", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:shepherd-agents/shepherd", "dst": "concept:long-horizon-runtime", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:shepherd-agents/shepherd", "dst": "repo:agent-substrate/substrate", "rel": "complements", "added": "2026-08-09", "primera_mencion": "2026-07-18"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-panniantong-agent-reach", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:agent-internet-access", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:twitter", "rel": "trata", "added": "2026-08-09"}
@@ -26,6 +33,8 @@
 {"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:bilibili", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:xiaohongshu", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:cli", "rel": "trata", "added": "2026-08-09"}
+{"src": "repo:Panniantong/Agent-Reach", "dst": "concept:agent-internet-access", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:Panniantong/Agent-Reach", "dst": "tool:mcp", "rel": "uses", "added": "2026-08-09", "primera_mencion": "2026-08-08"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-shawnpana-phone-harness", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-shawnpana-phone-harness", "dst": "tema:phone-as-agent-tool", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-shawnpana-phone-harness", "dst": "tema:ios", "rel": "trata", "added": "2026-08-09"}
@@ -33,6 +42,9 @@
 {"src": "item:https-github-com-shawnpana-phone-harness", "dst": "tema:vision-ocr", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-shawnpana-phone-harness", "dst": "tema:cgevents", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-shawnpana-phone-harness", "dst": "tema:no-jailbreak", "rel": "trata", "added": "2026-08-09"}
+{"src": "repo:ShawnPana/phone-harness", "dst": "concept:phone-as-agent-tool", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:ShawnPana/phone-harness", "dst": "tool:os-level-mirroring", "rel": "uses", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:ShawnPana/phone-harness", "dst": "concept:computer-use", "rel": "relevant_to", "added": "2026-08-09", "primera_mencion": null}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-ifixai-ai-ifixai", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:ai-audit", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:ai-governance", "rel": "trata", "added": "2026-08-09"}
@@ -40,6 +52,10 @@
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:iso-42001", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:inspection-suite", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:prompt-injection-detection", "rel": "trata", "added": "2026-08-09"}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "concept:ai_governance", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "concept:audit-inspection-suite", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "concept:agent-safety", "rel": "solves", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "repo:microsoft/agent-governance-toolkit", "rel": "complements", "added": "2026-08-09", "primera_mencion": null}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-egonex-ai-understand-anything", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-egonex-ai-understand-anything", "dst": "tema:codebase-to-interactive-graph", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-egonex-ai-understand-anything", "dst": "tema:knowledge-graph", "rel": "trata", "added": "2026-08-09"}
@@ -47,19 +63,20 @@
 {"src": "item:https-github-com-egonex-ai-understand-anything", "dst": "tema:claude-code", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-egonex-ai-understand-anything", "dst": "tema:codex", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-egonex-ai-understand-anything", "dst": "tema:cursor", "rel": "trata", "added": "2026-08-09"}
+{"src": "repo:Egonex-AI/Understand-Anything", "dst": "concept:codebase-to-interactive-graph", "rel": "implements", "added": "2026-08-09", "primera_mencion": null}
+{"src": "repo:Egonex-AI/Understand-Anything", "dst": "repo:tirth8205/code-review-graph", "rel": "competes_with", "added": "2026-08-09", "primera_mencion": "2026-07-18"}
+{"src": "repo:Egonex-AI/Understand-Anything", "dst": "concept:local-first-code-intelligence", "rel": "relevant_to", "added": "2026-08-09", "primera_mencion": "2026-08-08"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-harveyai-harvey-labs", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-harveyai-harvey-labs", "dst": "tema:legal-agent-benchmark", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-harveyai-harvey-labs", "dst": "tema:benchmark-as-content", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-harveyai-harvey-labs", "dst": "tema:ai-evaluation", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-harveyai-harvey-labs", "dst": "tema:practice-areas", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-harveyai-harvey-labs", "dst": "medio:harvey", "rel": "publicado_en", "added": "2026-08-09"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-microsoft-agent-governance-toolkit", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "tema:agent-governance", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "tema:policy-enforcement", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "tema:zero-trust", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "tema:sandboxing", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "tema:openssf-scorecard", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-microsoft-agent-governance-toolkit", "dst": "medio:microsoft", "rel": "publicado_en", "added": "2026-08-09"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-can1357-oh-my-pi", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:coding-agent-cli", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:hash-anchored-edits", "rel": "trata", "added": "2026-08-09"}
@@ -78,18 +95,15 @@
 {"src": "item:https-github-com-microsoft-vibevoice", "dst": "tema:tts", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-vibevoice", "dst": "tema:open-source-frontier", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-microsoft-vibevoice", "dst": "tema:conversational-voice", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-microsoft-vibevoice", "dst": "medio:microsoft", "rel": "publicado_en", "added": "2026-08-09"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-ladybirdbrowser-ladybird", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-ladybirdbrowser-ladybird", "dst": "tema:independent-browser", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ladybirdbrowser-ladybird", "dst": "tema:cpp", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ladybirdbrowser-ladybird", "dst": "tema:bsd-2", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ladybirdbrowser-ladybird", "dst": "tema:no-chromium", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-ladybirdbrowser-ladybird", "dst": "tema:no-webkit", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-ladybirdbrowser-ladybird", "dst": "autor:andreas-kling", "rel": "escrito_por", "added": "2026-08-09"}
 {"src": "boletin:2026-08-09", "dst": "item:https-github-com-kyutai-labs-pocket-tts", "rel": "menciona", "added": "2026-08-09"}
 {"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "tema:edge-tts", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "tema:cpu-only", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "tema:small-model", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "tema:local-first", "rel": "trata", "added": "2026-08-09"}
 {"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "tema:voice", "rel": "trata", "added": "2026-08-09"}
-{"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "medio:kyutai", "rel": "publicado_en", "added": "2026-08-09"}

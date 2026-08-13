@@ -4,13 +4,19 @@
 {"src": "item:https-github-com-antirez-h3-c", "dst": "tema:apple-silicon", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-antirez-h3-c", "dst": "tema:motor-inferencia", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-antirez-h3-c", "dst": "tema:minimax-h3", "rel": "trata", "added": "2026-08-11"}
-{"src": "item:https-github-com-antirez-h3-c", "dst": "autor:salvatore-sanfilippo-antirez", "rel": "escrito_por", "added": "2026-08-11"}
+{"src": "repo:antirez/h3.c", "dst": "concept:local-multimodal-inference", "rel": "implements", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:antirez/h3.c", "dst": "framework:apple-metal", "rel": "uses", "added": "2026-08-11", "primera_mencion": null}
+{"src": "concept:local-multimodal-inference", "dst": "concept:agent_runtime", "rel": "complements", "added": "2026-08-11", "primera_mencion": null}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-paperclipai-paperclip", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:agent-company-os", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:orquestacion-agents", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:governance", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:coding-agents", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:nodejs", "rel": "trata", "added": "2026-08-11"}
+{"src": "repo:paperclipai/paperclip", "dst": "concept:agent_company_os", "rel": "implements", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:paperclipai/paperclip", "dst": "repo:org2AI/ORG2", "rel": "competes_with", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:paperclipai/paperclip", "dst": "repo:stablyai/orca", "rel": "competes_with", "added": "2026-08-11", "primera_mencion": "2026-07-16"}
+{"src": "repo:paperclipai/paperclip", "dst": "concept:agent_control_plane", "rel": "relevant_to", "added": "2026-08-11", "primera_mencion": null}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-org2ai-org2", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-org2ai-org2", "dst": "tema:agent-company-os", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-org2ai-org2", "dst": "tema:system-of-record", "rel": "trata", "added": "2026-08-11"}
@@ -18,6 +24,10 @@
 {"src": "item:https-github-com-org2ai-org2", "dst": "tema:rust-harness", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-org2ai-org2", "dst": "tema:replay-trazable", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-org2ai-org2", "dst": "tema:agpl", "rel": "trata", "added": "2026-08-11"}
+{"src": "repo:org2AI/ORG2", "dst": "concept:agent_company_os", "rel": "implements", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:org2AI/ORG2", "dst": "tool:rust-harness", "rel": "uses", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:org2AI/ORG2", "dst": "repo:paperclipai/paperclip", "rel": "competes_with", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:org2AI/ORG2", "dst": "repo:holaboss-ai/holaOS", "rel": "competes_with", "added": "2026-08-11", "primera_mencion": null}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-qwenlm-qwen-mm-plugins", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-qwenlm-qwen-mm-plugins", "dst": "tema:multimodal-agent-plugins", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-qwenlm-qwen-mm-plugins", "dst": "tema:mcp", "rel": "trata", "added": "2026-08-11"}
@@ -26,20 +36,29 @@
 {"src": "item:https-github-com-qwenlm-qwen-mm-plugins", "dst": "tema:vision-tools", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-qwenlm-qwen-mm-plugins", "dst": "tema:qwen", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-qwenlm-qwen-mm-plugins", "dst": "tema:model-agnostic", "rel": "trata", "added": "2026-08-11"}
-{"src": "item:https-github-com-qwenlm-qwen-mm-plugins", "dst": "medio:alibaba-qwen-team", "rel": "publicado_en", "added": "2026-08-11"}
+{"src": "repo:QwenLM/Qwen-MM-Plugins", "dst": "concept:multimodal-agent-plugins", "rel": "implements", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:QwenLM/Qwen-MM-Plugins", "dst": "repo:anthropics/skills", "rel": "competes_with", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:QwenLM/Qwen-MM-Plugins", "dst": "company:alibaba-qwen", "rel": "relevant_to", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:QwenLM/Qwen-MM-Plugins", "dst": "tool:mcp", "rel": "uses", "added": "2026-08-11", "primera_mencion": "2026-08-08"}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-duolahypercho-codex-router", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-duolahypercho-codex-router", "dst": "tema:model-router-coding-agent", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-duolahypercho-codex-router", "dst": "tema:codex-cli", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-duolahypercho-codex-router", "dst": "tema:deepseek", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-duolahypercho-codex-router", "dst": "tema:credential-isolation", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-duolahypercho-codex-router", "dst": "tema:litellm", "rel": "trata", "added": "2026-08-11"}
+{"src": "repo:duolahypercho/codex-router", "dst": "concept:model_router_for_coding_agent", "rel": "implements", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:duolahypercho/codex-router", "dst": "repo:openai/codex", "rel": "uses", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:duolahypercho/codex-router", "dst": "company:deepseek", "rel": "relevant_to", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:duolahypercho/codex-router", "dst": "concept:hermes-agent-setup", "rel": "relevant_to", "added": "2026-08-11", "primera_mencion": null}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-antvis-infographic", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-antvis-infographic", "dst": "tema:ai-infographic-framework", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-antvis-infographic", "dst": "tema:data-visualization", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-antvis-infographic", "dst": "tema:declarative-dsl", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-antvis-infographic", "dst": "tema:antv", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-antvis-infographic", "dst": "tema:llm-integration", "rel": "trata", "added": "2026-08-11"}
-{"src": "item:https-github-com-antvis-infographic", "dst": "medio:alibaba-antv", "rel": "publicado_en", "added": "2026-08-11"}
+{"src": "repo:antvis/Infographic", "dst": "concept:ai_infographic_framework", "rel": "implements", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:antvis/Infographic", "dst": "company:alibaba-antv", "rel": "relevant_to", "added": "2026-08-11", "primera_mencion": null}
+{"src": "repo:antvis/Infographic", "dst": "repo:Comfy-Org/ComfyUI", "rel": "complements", "added": "2026-08-11", "primera_mencion": null}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-paxlabs-inc-matrix-core", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-paxlabs-inc-matrix-core", "dst": "tema:autonomous-agent-framework", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-paxlabs-inc-matrix-core", "dst": "tema:go", "rel": "trata", "added": "2026-08-11"}
@@ -71,14 +90,12 @@
 {"src": "item:https-github-com-brightdata-cli", "dst": "tema:MIT", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-brightdata-cli", "dst": "tema:structured-data", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-brightdata-cli", "dst": "tema:terminal", "rel": "trata", "added": "2026-08-11"}
-{"src": "item:https-github-com-brightdata-cli", "dst": "medio:bright-data", "rel": "publicado_en", "added": "2026-08-11"}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-apify-crawlee", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-apify-crawlee", "dst": "tema:web-scraping-library", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-apify-crawlee", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-apify-crawlee", "dst": "tema:apache-2", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-apify-crawlee", "dst": "tema:browser-automation", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-apify-crawlee", "dst": "tema:nodejs", "rel": "trata", "added": "2026-08-11"}
-{"src": "item:https-github-com-apify-crawlee", "dst": "medio:apify", "rel": "publicado_en", "added": "2026-08-11"}
 {"src": "boletin:2026-08-11", "dst": "item:https-github-com-neuml-txtai", "rel": "menciona", "added": "2026-08-11"}
 {"src": "item:https-github-com-neuml-txtai", "dst": "tema:semantic-search-framework", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-neuml-txtai", "dst": "tema:python", "rel": "trata", "added": "2026-08-11"}
@@ -91,4 +108,3 @@
 {"src": "item:https-github-com-stanfordnlp-dspy", "dst": "tema:MIT", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-stanfordnlp-dspy", "dst": "tema:programmatic-lm", "rel": "trata", "added": "2026-08-11"}
 {"src": "item:https-github-com-stanfordnlp-dspy", "dst": "tema:stanford", "rel": "trata", "added": "2026-08-11"}
-{"src": "item:https-github-com-stanfordnlp-dspy", "dst": "medio:stanford-nlp", "rel": "publicado_en", "added": "2026-08-11"}

@@ -1,7 +1,6 @@
 {
   "version": 1,
   "date": "2026-08-03",
-  "perfiles_involucrados": ["carlos", "dani", "maria"],
   "posicionamiento": "El boletín del 2026-08-03 es el día 'mi propio sistema entra al radar' — Hermes-agent re-aparece con 224k★, lo que significa que tu Setup local está entre los OSS canónicos. Microsoft publica Skill Recorder (la versión enterprise del patrón 'session → skill'), y aparece un duo de C 'CPU inference' (kimi-k3-in-c + sqliteai/waste) que demuestra que 'GPU = obligatorio' como requisito de LLM está muerto. También: deer-flow (long-horizon SuperAgent de ByteDance) confirma la popularidad del patrón SubAgent orquestado.",
   "convergencia_stack_css": "Cuatro ítems conectan con tu Setup:\n\n- **NousResearch/hermes-agent**: TU AGENTE. Aparece 5 días seguidos en el lote (08-03, 04, 05, 07, 09). Editor CSS: mencionar como self-reference, no como referencia externa. Tu audiencia es la que pregunta 'y por qué no usas tu propio Hermes?'.\n- **microsoft/skill-recorder**: versión enterprise del patrón 'session → skill'. Si tu Setup de skill authoring se cruza con Microsoft, vale comparativa head-to-head entre tu flujo y Skill Recorder.\n- **kimi-k3-in-c + sqliteai/waste**: duo 'input/output CPU inference' que demuestra que 'GPU obligatorio' está muerto. Material editorial: 'inferir en CPU es viable en 2026'. Tu Setup local-first encaja.\n- **bytedance/deer-flow**: SuperAgent harness long-horizon. Su arquitectura (memory + skills + subagents + gateway) es paralelo a tu Setup Hermes. Material comparativo.",
   "cruzado_grafo": "Sobre graphify-out:\n\n- **Refuerza tu propio grafo**: Hermes-agent (TU AGENTE) entra como nodo del grafo. Es referencia externa para tu audiencia. Para tu propio grafo, marca como 'self-tooling'.\n- **Nodos nuevos relevantes**: `concept:hash_anchored_edits` (oh-my-pi), `concept:four_asset_memory` (TencentDB), `concept:long_horizon_superagent` (deer-flow), `concept:open_brain`, `concept:open_cowork_alternative`, `concept:multi_database_agent`. 6 nodos.\n- **Importante**: varios items tienen NOASSERTION o FSL-1.1-MIT. Marca esto en tu grafo como 'license risk' para no recomendar adopción como dependencia sin verificación.",
@@ -14,10 +13,36 @@
     "Idx 14 (different-ai/openwork): 20.5k★ MIT+Fair Source para /ee. Licencia dual compleja. Si mencionas, clarificar segmentación EE."
   ],
   "acciones_concretas": [
-    {"tipo": "explora", "item_idx": 0, "razon": "NousResearch/hermes-agent: tu propio agente. Vale mencionar como 'self-reference' en CSS, NO como referencia externa. Tu audiencia lo reconoce."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 5, "razon": "bytedance/deer-flow: arquitectura memory+skills+subagents+gateway es paralelo a tu Setup Hermes. Comparativa head-to-head vale para Zine."},
-    {"tipo": "explora", "item_idx": 6, "razon": "can1357/oh-my-pi: hash-anchored edits. Patrón portable a wrapper de tu Setup Hermes. Vale auditar para integrar."},
-    {"tipo": "vigilar", "item_idx": 8, "razon": "TencentDB-Agent-Memory: four-asset memory con LICENSE verificado MIT (a diferencia de 08-02). Encaja perfecto con tu PGLite+pgvector — vale auditar para integración."},
-    {"tipo": "vigilar", "item_idx": 1, "razon": "microsoft/skill-recorder: Microsoft entra al patrón session-to-skill. Si comparas flows, vale la comparativa con tu workflow de authoring de skills."}
-  ]
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "NousResearch/hermes-agent: tu propio agente. Vale mencionar como 'self-reference' en CSS, NO como referencia externa. Tu audiencia lo reconoce."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "bytedance/deer-flow: arquitectura memory+skills+subagents+gateway es paralelo a tu Setup Hermes. Comparativa head-to-head vale para Zine."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 6,
+      "razon": "can1357/oh-my-pi: hash-anchored edits. Patrón portable a wrapper de tu Setup Hermes. Vale auditar para integrar."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 8,
+      "razon": "TencentDB-Agent-Memory: four-asset memory con LICENSE verificado MIT (a diferencia de 08-02). Encaja perfecto con tu PGLite+pgvector — vale auditar para integración."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "microsoft/skill-recorder: Microsoft entra al patrón session-to-skill. Si comparas flows, vale la comparativa con tu workflow de authoring de skills."
+    }
+  ],
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

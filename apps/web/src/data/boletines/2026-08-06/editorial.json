@@ -1,7 +1,6 @@
 {
   "version": 1,
   "date": "2026-08-06",
-  "perfiles_involucrados": ["carlos", "dani", "maria"],
   "posicionamiento": "El boletín del 2026-08-06 introduce dos piezas estructurales nuevas (cloudflare-os, prime-agent) y abre el cluster 'long-running-agent-control-plane' con loopx. Es el día más filosófico del lote: las 5 conversaciones candidatas empiezan con 'continual_harness' (prime-agent), 'state-kernel' (loopx), 'control-plane' (loopx), 'capability-based-security' (cloudflare-os) y 'rehearse-the-future' — todas sobre persistencia y gobierno de agents a lo largo del tiempo. El eje del día es: ¿qué necesita un agent para durar semanas?",
   "convergencia_stack_css": "Tres ítems encajan con tu Setup y con tu Zine editorial:\n\n- **cloudflare/cloudflare-os**: workspace para agentes con agentes aislados por usuario y Gatekeepers de aprobación diferida. La idea publicable es 'simular efectos para que el agente continúe y agrupar las acciones reales para revisión posterior'. Eso es **exactamente** el patrón que necesitas para tu propio Setup Hermes con multi-perfil — permitir al agente actuar y revisar después.\n- **prime-agent vs loopx vs gascity**: trío atacando el mismo problema con enfoques distintos. prime-agent = self-improving harness; loopx = state kernel; gascity = orchestration-builder SDK. Encaja con tu Setup multi-perfil perfectamente. Material para comparativa head-to-head.\n- **zzet/gortex**: motor Go de code-intelligence local con soporte explícito para Hermes. Si tienes Graphify-out local, vale comparar los dos enfoques (Go MCP-based vs tu flow PGLite+pgvector).",
   "cruzado_grafo": "Sobre graphify-out:\n\n- **Refuerza nodos previos**: `concept:long_running_agent`, `concept:agent_control_plane` se consolidan con loopx + prime-agent. Tu propio Kanban multi-perfil encaja como referencia del lado 'state-kernel'.\n- **Nodos nuevos relevantes**: `concept:continual_harness`, `concept:capability_based_agent_security`, `concept:agent_control_plane`, `concept:code_knowledge_graph`. 4 nodos.\n- **Importante**: gortex <competes_with> Graphify-Labs/graphify directamente. Si haces comparativa head-to-head en el Zine, vale clonar ambos.",
@@ -13,10 +12,36 @@
     "Idx 1 (cloudflare/cloudflare-os): early-access 2 según el README. NO production-ready todavía."
   ],
   "acciones_concretas": [
-    {"tipo": "explora", "item_idx": 2, "razon": "huangruiteng/loopx: 'Kanban nativo para agents'. Tu Setup Hermes multi-perfil encaja como referencia del lado 'state-kernel'. Vale auditar y comparar."},
-    {"tipo": "explora", "item_idx": 3, "razon": "zzet/gortex: motor Go de code-intelligence con soporte explícito para Hermes. Si tienes Graphify-out local, vale comparar los dos enfoques."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 0, "razon": "PrimeIntellect-ai/prime-agent: continual_harness + subagentes + daemon. Tu Setup multi-perfil (coder/planner/qa) es el caso de uso natural — vale artículo comparativo en el Zine."},
-    {"tipo": "vigilar", "item_idx": 4, "razon": "gastownhall/gascity: SDK extraído de Gas Town con multi-runtime (tmux, subprocess, exec, ACP, K8s, herdr). Vigilar para cuando estabilice el ecosistema de runtime."},
-    {"tipo": "vigilar", "item_idx": 5, "razon": "denoland/celld: implementación distribuida de Durable Objects self-hostable. Si te interesa el espacio agent-runtime sin Cloudflare, este es el primo OSS."}
-  ]
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "huangruiteng/loopx: 'Kanban nativo para agents'. Tu Setup Hermes multi-perfil encaja como referencia del lado 'state-kernel'. Vale auditar y comparar."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "zzet/gortex: motor Go de code-intelligence con soporte explícito para Hermes. Si tienes Graphify-out local, vale comparar los dos enfoques."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "PrimeIntellect-ai/prime-agent: continual_harness + subagentes + daemon. Tu Setup multi-perfil (coder/planner/qa) es el caso de uso natural — vale artículo comparativo en el Zine."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "gastownhall/gascity: SDK extraído de Gas Town con multi-runtime (tmux, subprocess, exec, ACP, K8s, herdr). Vigilar para cuando estabilice el ecosistema de runtime."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "denoland/celld: implementación distribuida de Durable Objects self-hostable. Si te interesa el espacio agent-runtime sin Cloudflare, este es el primo OSS."
+    }
+  ],
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

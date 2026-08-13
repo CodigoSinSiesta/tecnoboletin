@@ -1,7 +1,6 @@
 {
   "version": 1,
   "date": "2026-08-08",
-  "perfiles_involucrados": ["carlos", "dani", "maria"],
   "posicionamiento": "El boletín del 2026-08-08 es el más denso del lote en vertical específico: define el 'skills layer' como categoría consolidada con 4 contendientes OSS simultáneos (mattpocock/skills, obra/superpowers, google/skills, addyosmani/agent-skills). Abre dos ejes nuevos: code-intelligence local-first (code-review-graph + lean-ctx) y browser for AI (obscura + vercel-labs/agent-browser en Rust). Es el día donde el 'patrón prompt + skill + plugin' deja de ser curioso y se vuelve estructural.",
   "convergencia_stack_css": "Tres ítems encajan de manera especialmente directa con tu stack:\n\n- **earendil-works/pi**: el toolkit unificado para construir coding agents. Es 87k★, MIT, single-author. Tu propio stack incluye el blog principal Astro y vas a publicar lecciones CSS. El patrón 'unified LLM API + agent loop + TUI' es exactamente lo que necesitas para tooling interno; vale leer el `tui` para inspirarte en componentes interactivos.\n- **tirth8205/code-review-graph**: pipeline que parsea codebases con tree-sitter, construye grafo, expone vía MCP. Tu graphify-out hace exactamente esto pero code-review-graph es OSS explícito y reporta 71x reducción de tokens. Posible comparación head-to-head en el Zine.\n- **agent-substrate/substrate**: Go core system minimalista para agentes. Es el primo en Go del contraste Python/JS. Si escribes sobre 'qué decisiones arquitectónicas toman los agent frameworks en 2026', vale una comparación runtime-stack (Go vs Python vs Rust).\n\nDetalle editorial importante:\n- **mattpocock/skills vs obra/superpowers**: library vs framework. Encaja con tu línea CSS sobre 'elección de abstracciones correctas'. Tu Setup Hermes multi-perfil está más cerca de 'library composable' (mattpocock) que de 'framework opinionado' (obra).",
   "cruzado_grafo": "Sobre graphify-out:\n\n- **Refuerza nodos previos**: `concept:codebase-rag` (lo tenías como concepto genérico) ahora tiene implementación OSS canónica en code-review-graph. `concept:agent_browser` es nuevo y sale con 2 contendientes Rust el mismo día.\n- **Nodos nuevos relevantes**: `concept:skills_layer`, `concept:local_first_code_intelligence`, `concept:context_compression`, `concept:graph_native_ai`, `concept:agent_browser`, `concept:loop_engineering`, `concept:self_improving_agent`, `concept:doc_ingestion`. 8 nodos nuevos — el día más 'fundacional' del lote.\n- **Relación con Graphify-out**: code-review-graph y lean-ctx son primos OSS directos de lo que tu Graphify hace localmente. Si vas a hacer un 'comparativa de grafos de código', este es el setup canónico.",
@@ -13,10 +12,36 @@
     "Idx 13 (firecrawl/anydoc): 11k★ en 5 días, momentum brutal. La release cadence (v0.2.33 → v0.2.37 en agosto) es buena pero atención: momentum no es calidad. Si lo citas en tutorial, haz benchmarking vs MarkItDown."
   ],
   "acciones_concretas": [
-    {"tipo": "explora", "item_idx": 4, "razon": "earendil-works/pi: toolkit unificado para coding agents. Vale mirar su TUI para inspirarte en componentes interactivos del Zine (Claude Code-like REPL dentro de Astro)."},
-    {"tipo": "explora", "item_idx": 0, "razon": "mattpocock/skills vs obra/superpowers: el contraste library vs framework. Material para artículo CSS 'library vs framework aplicado a agent behavior'. Tu Setup Hermes encaja más con library composable."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 2, "razon": "tirth8205/code-review-graph: pipeline que parsea codebases con tree-sitter + MCP. Tu graphify-out hace esto localmente; comparativa head-to-head de grafos para code intelligence es artículo directo del Zine."},
-    {"tipo": "vigilar", "item_idx": 8, "razon": "yvgude/lean-ctx: 60-90% reducción de tokens con 76 tools MCP. Si cubre independiente de code-graph-rag, encaja con tu obsesión por eficiencia en agents. Vigilar hasta que aparezca release estable."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 5, "razon": "agent-substrate/substrate: Go core minimalista para agentes. Vale para 'decisiones arquitectónicas de runtime de agente en 2026' — si escribes sobre cómo elegir stack para un nuevo agent."}
-  ]
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "earendil-works/pi: toolkit unificado para coding agents. Vale mirar su TUI para inspirarte en componentes interactivos del Zine (Claude Code-like REPL dentro de Astro)."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "mattpocock/skills vs obra/superpowers: el contraste library vs framework. Material para artículo CSS 'library vs framework aplicado a agent behavior'. Tu Setup Hermes encaja más con library composable."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "tirth8205/code-review-graph: pipeline que parsea codebases con tree-sitter + MCP. Tu graphify-out hace esto localmente; comparativa head-to-head de grafos para code intelligence es artículo directo del Zine."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 8,
+      "razon": "yvgude/lean-ctx: 60-90% reducción de tokens con 76 tools MCP. Si cubre independiente de code-graph-rag, encaja con tu obsesión por eficiencia en agents. Vigilar hasta que aparezca release estable."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "agent-substrate/substrate: Go core minimalista para agentes. Vale para 'decisiones arquitectónicas de runtime de agente en 2026' — si escribes sobre cómo elegir stack para un nuevo agent."
+    }
+  ],
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

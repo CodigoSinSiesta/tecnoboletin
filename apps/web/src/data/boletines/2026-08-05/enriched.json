@@ -1,16 +1,495 @@
-{"version":1,"date":"2026-08-05","items":[
-  {"idx":0,"titulo":"firecrawl/anydoc","url":"https://github.com/firecrawl/anydoc","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Firecrawl","tema_principal":"document-to-markdown","temas_secundarios":["rust","9-formats","node-bindings","python-bindings","early-momentum"],"resumen_2_lineas":"Parser Rust (MIT, 2.3k★) que convierte 9 formatos de documento (Word/PPT/Excel/Odt/RTF/EPUB/CSV/PDF) a Markdown limpio. Bindings Node y Python.","confianza":0.85}},
-  {"idx":1,"titulo":"ifixai-ai/iFixAi","url":"https://github.com/ifixai-ai/iFixAi","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"ai-audit","temas_secundarios":["eu-ai-act","iso-42001","nist-ai-rmf","owasp-llm","hallucination-detection"],"resumen_2_lineas":"Suite Python (Apache-2.0, 5.4k★) de auditoría independiente de AI agents con marco normativo (EU AI Act, ISO 42001, NIST AI RMF).","confianza":0.92}},
-  {"idx":2,"titulo":"uber/ADR","url":"https://github.com/uber/ADR","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Uber","tema_principal":"agent-defense-risk","temas_secundarios":["python","threat-detection","observability","benchmark","mcp-aware"],"resumen_2_lineas":"Framework Python (Apache-2.0, 796★) de Uber para asegurar agentes en producción: observabilidad, benchmark, threat detection. MCP-aware.","confianza":0.85}},
-  {"idx":3,"titulo":"EveryInc/compound-engineering-plugin","url":"https://github.com/EveryInc/compound-engineering-plugin","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Every","tema_principal":"compound-engineering","temas_secundarios":["typescript","claude-code","codex","cursor","multi-agent-skills"],"resumen_2_lineas":"Plugin oficial TypeScript (MIT, 24k★) del equipo Every para Claude Code, Codex y Cursor. Materializa la metodología 'Compound Engineering'.","confianza":0.92}},
-  {"idx":4,"titulo":"kirodotdev/KiroCrew","url":"https://github.com/kirodotdev/KiroCrew","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"self-modifying-workspace","temas_secundarios":["python","session-continuity","auto-rewrite","kiro-integration"],"resumen_2_lineas":"Workspace Python (Apache-2.0, 665★) persistente para development que se reescribe a sí mismo entre sesiones. Integra con Kiro.","confianza":0.72}},
-  {"idx":5,"titulo":"TencentCloud/TencentDB-Agent-Memory","url":"https://github.com/TencentCloud/TencentDB-Agent-Memory","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Tencent","tema_principal":"layered-memory","temas_secundarios":["l0-l3","chat-memory","skill-llm-wiki","code-graph","local-first"],"resumen_2_lineas":"Hub de memoria TypeScript (MIT, 14.2k★) jerárquica L0-L3 para agents. 4 assets: Chat Memory, Skill, LLM-Wiki, Code-Graph. Badge Hermes Gateway.","confianza":0.93}},
-  {"idx":6,"titulo":"usekaneo/kaneo","url":"https://github.com/usekaneo/kaneo","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"open-source-pm","temas_secundarios":["typescript","hono","react","jira-replacement"],"resumen_2_lineas":"Project management self-hosted (TypeScript, MIT, 7.4k★) sin features de relleno. Alternativa OSS a Jira/Linear.","confianza":0.85}},
-  {"idx":7,"titulo":"czlonkowski/n8n-mcp","url":"https://github.com/czlonkowski/n8n-mcp","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"mcp-server-n8n","temas_secundarios":["typescript","workflow-builder","natural-language-workflows"],"resumen_2_lineas":"MCP server TypeScript (MIT, 22.6k★) para construir workflows n8n desde lenguaje natural vía Claude Code/Desktop.","confianza":0.9}},
-  {"idx":8,"titulo":"CodebuffAI/freebuff","url":"https://github.com/CodebuffAI/freebuff","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"CodebuffAI","tema_principal":"free-coding-agent","temas_secundarios":["typescript","apache-2","claim-free","uncached-cost"],"resumen_2_lineas":"Coding agent TypeScript (Apache-2.0, 8.3k★) 'gratis'. Verificar si la promesa de 'free' se sostiene en sesiones largas.","confianza":0.78}},
-  {"idx":9,"titulo":"CopilotKit/channels-sdk","url":"https://github.com/CopilotKit/channels-sdk","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"CopilotKit","tema_principal":"agent-channel-sdk","temas_secundarios":["typescript","chat-integrations","slack-teams-discord","native-ui"],"resumen_2_lineas":"SDK TypeScript (MIT, 217★) para llevar cualquier agente a cualquier chat (Slack/Teams/Discord/Telegram) con UI nativa interactiva.","confianza":0.82}},
-  {"idx":10,"titulo":"DietrichGebert/ponytail","url":"https://github.com/DietrichGebert/ponytail","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"yagni-skill","temas_secundarios":["javascript","philosophy","vague-claim"],"resumen_2_lineas":"Skill JavaScript (MIT, 96k★) para AI agents con filosofía YAGNI. Las estrellas parecen infladas vs contenido verificable.","confianza":0.7}},
-  {"idx":11,"titulo":"magicrew/doc7","url":"https://github.com/magicrew/doc7","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"document-visual-markdown","temas_secundarios":["go","vl-model","multimodal","visual-understanding"],"resumen_2_lineas":"Conversor Go (MIT, 434★) de documentos a Markdown AI-ready con visión multimodal. Compite con firecrawl/anydoc.","confianza":0.78}},
-  {"idx":12,"titulo":"guillermolg00/morphicons","url":"https://github.com/guillermolg00/morphicons","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"ai-ui-library","temas_secundarios":["typescript","morphing-icons","ai-products-ui"],"resumen_2_lineas":"UI library TypeScript (MIT, 519★) para morphing de iconos en AI products. No es AI-propper, sino UI.","confianza":0.7}},
-  {"idx":13,"titulo":"Jakubantalik/thinking-orbs","url":"https://github.com/Jakubantalik/thinking-orbs","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"ai-loader-ui","temas_secundarios":["typescript","animated-loaders","thinking-state"],"resumen_2_lineas":"Loaders animados TypeScript (MIT, 1.6k★) para estados de 'thinking' en agent UIs. Categoría UI/UX.","confianza":0.7}}
-],"rejected":[],"stats":{"items_total":14,"items_clasificados":14,"items_rejected":0,"clasificador":"agentico-v2"}}
+{
+  "version": 2,
+  "date": "2026-08-05",
+  "boletin_origen": "2026-08-05-trending.md",
+  "resumen_ejecutivo": "- **firecrawl/anydoc** (#1 Trendshift diario, **2.346 estrella, Rust, MIT**) entra como parser universal de documentos a Markdown: soporta 9 formatos (Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, PDF) con bindings Node y Python. Creado **ayer 2026-08-03**, ya con 2.3k estrella y 97 forks - momentum temprano brutal. Distinto al `firecrawl/pdf-inspector` que vimos el 2026-08-04 (este último solo PDF/inspección, sin bindings). Si tenías pipeline de ingest documental, anydoc reemplaza cuatro librerías.\n- **AI governance se bifurca en dos rutas hoy**: **ifixai-ai/iFixAi** (5.412 estrella, Python, Apache-2.0, **#5 Trendshift**) es OSS independiente con marco normativo (EU AI Act, ISO 42001, NIST AI RMF, OWASP LLM); **uber/ADR** (796 estrella, Python, Apache-2.0, trending GitHub daily) es lo que Uber corre en producción internamente - observabilidad + benchmark + threat detection para agentes. Los dos responden a la misma pregunta con presupuestos distintos: iFixAi desde la auditoría externa, uber/ADR desde el threat model defensivo.\n- **EveryInc/compound-engineering-plugin** (23.941 estrella, TS, MIT) sube a trending diario GitHub. Es el plugin **oficial** del movimiento \"compound engineering\" - compatible con Claude Code, Codex y Cursor a la vez. Refuerza la tesis de que **las skills/metodologías para coding agents se están commodity-izando** y cada vendor publica su plugin oficial (obra/superpowers, addyosmani/agent-skills, LiamGvchi/gc-minimal-zine-poster...).\n- **kirodotdev/KiroCrew** (665 estrella, Python, Apache-2.0) entra como workspace persistente para development work que se auto-mejora más allá de una sesión. Tiene el patrón que ya cubren HKUDS/nanobot y obra/superpowers (estado entre sesiones) pero con claim específico: *se reescribe a sí mismo entre runs*. Tesis editorial: el \"agente que se mejora\" deja de ser demo y empieza a ser producto.\n- **TencentCloud/TencentDB-Agent-Memory** vuelve al trending diario dos días seguidos (ayer #2 en Trendshift, hoy #2 otra vez). Confirmamos la métrica del boletín anterior: ahora la API reporta **14.234 estrella** vs los 10k que estimamos ayer, manteniendo la historia editorial sobre Tencent siendo el OSS-MIT real del clúster agent_memory_storage.\n- El radar secundario está dominado por **UI/UX para AI products** (morphicons, thinking-orbs, channels-sdk) - señal de que el \"look AI-feely\" empieza a importar como categoría, no solo feature.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + TypeScript + Python; GitHub REST API sin token para verificar métricas de los 11 candidatos prioritarios (stars/forks/license/pushed/topics). READMEs inspeccionados en main cuando hacían falta.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "firecrawl/anydoc",
+      "url": "https://github.com/firecrawl/anydoc",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Parser multi-formato (DOCX, PPTX, XLSX, ODT, RTF, EPUB, CSV, PDF → Markdown) escrito en Rust con bindings oficiales Node.js y Python; **el gemelo \"document-side\"** del proyecto Firecrawl (que era web-side).",
+        "por_que_importa": "Reemplaza una stack completa de ingest documental. Para lectores que tenéis agentes que digieren PDFs/DOCXs/PPTs, el tener un único binario nativo con bindings Python es oro - ademas OSS-MIT. Distinto al `firecrawl/pdf-inspector` que cubrimos ayer (solo inspección/clasificación de PDFs), anydoc es **extracción + conversión** completa.",
+        "madurez_senales": "Estrellas totales: **2.346** · Forks: 97 · Lenguaje: Rust · Fecha creación: **2026-08-03** (hace **2 días**) · Último push: 2026-08-04 · Licencia: **MIT** · Topics: [] (sin topics configurados) · Descripción oficial: *\"Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown. Built in Rust, with Node.js and Python bindings.\"*",
+        "accion_sugerida": "**explorar** - clonar y comparar rendimiento contra MarkItDown sobre el mismo DOCX complejo. Si pasa el smoke test, es candidato serio para cualquier pipeline de RAG/agent.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "firecrawl/anydoc",
+          "rel": "implements",
+          "dst": "concept:document_parsing",
+          "primera_mencion": null
+        },
+        {
+          "src": "firecrawl/anydoc",
+          "rel": "relevant_to",
+          "dst": "concept:agent_ingest",
+          "primera_mencion": null
+        },
+        {
+          "src": "firecrawl/anydoc",
+          "rel": "competes_with",
+          "dst": "repo:firecrawl/pdf-inspector",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Firecrawl",
+        "tema_principal": "document-to-markdown",
+        "temas_secundarios": [
+          "rust",
+          "9-formats",
+          "node-bindings",
+          "python-bindings",
+          "early-momentum"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "ifixai-ai/iFixAi",
+      "url": "https://github.com/ifixai-ai/iFixAi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Herramienta open-source de **auditoría de AI agents** que responde en <120s a la pregunta *¿el agente hace lo que se supone que debe hacer?*; soporta ejecución por humanos o por el propio agente.",
+        "por_que_importa": "Es el lado **OSS-académico-normativo** del governance. Sus topics (`eu-ai-act`, `iso-42001`, `nist-ai-rmf`, `owasp-llm`, `prompt-injection`, `hallucination-detection`) lo posicionan para empresas que necesitan justificar compliance, no solo defenderse. Pareja perfecta con uber/ADR (producción defensiva) - los dos juntos cubren el espectro compliance + threat-model.",
+        "madurez_senales": "Estrellas totales: **5.412** · Forks: 678 · Lenguaje: Python · Fecha creación: 2026-04-27 · Último push: 2026-08-04 · Licencia: **Apache-2.0** · Topics: `agent-evaluation`, `ai`, `ai-alignment`, `ai-evaluation`, `ai-governance`, `ai-safety`, `cli`, `diagnostic-tool`, `eu-ai-act`, `hallucination-detection`, `iso-42001`, `llm-evaluation`, `llm-security`, `nist-ai-rmf`, `owasp-llm`, `prompt-injection`, `python`, `responsible-ai`, `risk-assessment`, `risk-management`",
+        "accion_sugerida": "**leer** - el README explica el modelo de auditoría en detalle. Si trabajas con agentes en producción regulada (UE, salud, finanzas), vale una hora de lectura.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ifixai-ai/iFixAi",
+          "rel": "implements",
+          "dst": "concept:ai_governance",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "ifixai-ai/iFixAi",
+          "rel": "competes_with",
+          "dst": "repo:uber/ADR",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "ifixai-ai/iFixAi",
+          "rel": "relevant_to",
+          "dst": "concept:enterprise_ai_readiness",
+          "primera_mencion": "2026-07-24"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-audit",
+        "temas_secundarios": [
+          "eu-ai-act",
+          "iso-42001",
+          "nist-ai-rmf",
+          "owasp-llm",
+          "hallucination-detection"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "uber/ADR",
+      "url": "https://github.com/uber/ADR",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**ADR (Agent Defense & Risk)** - framework interno de Uber para asegurar agentes AI en producción vía observabilidad + benchmark + threat detection. Topics: `agent-security`, `ai-security`, `benchmark`, `prompt-injection`, `threat-detection`, MCP-aware.",
+        "por_que_importa": "Es la **primera vez que una bigtech libera su capa de seguridad para agentes** de forma OSS-Apache-2.0. Tiene 796 estrella (poco maduro como proyecto público) pero **deployed at Uber** (el claims del README importa porque implica carga real). El pairing con iFixAi es la lectura obvia: iFixAi audita desde fuera, uber/ADR protege desde dentro.",
+        "madurez_senales": "Estrellas totales: **796** · Forks: 72 · Lenguaje: Python · Fecha creación: 2026-04-19 · Último push: 2026-08-03 · Licencia: **Apache-2.0** · Topics: `agent-security`, `ai-agents`, `ai-security`, `benchmark`, `claude`, `claude-code`, `codex`, `cursor`, `llm-security`, `mcp`, `model-context-protocol`, `prompt-injection`, `threat-detection`",
+        "accion_sugerida": "**vigilar** - muy nuevo en público pero con pedigree. Esperar a que tenga ≥2k estrella y release 1.0 antes de explorar a fondo; ahora mismo **leer el whitepaper/descripción** ya es buen input para un artículo sobre enterprise agent defense.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "uber/ADR",
+          "rel": "implements",
+          "dst": "concept:ai_governance",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "uber/ADR",
+          "rel": "relevant_to",
+          "dst": "concept:enterprise_ai_readiness",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "uber/ADR",
+          "rel": "uses",
+          "dst": "concept:MCP",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Uber",
+        "tema_principal": "agent-defense-risk",
+        "temas_secundarios": [
+          "python",
+          "threat-detection",
+          "observability",
+          "benchmark",
+          "mcp-aware"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "EveryInc/compound-engineering-plugin",
+      "url": "https://github.com/EveryInc/compound-engineering-plugin",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plugin oficial del equipo **Every** (de los creadores de la metodología *Compound Engineering*) para **Claude Code, Codex, Cursor** a la vez. 23.9k estrella - ya es mainstream.",
+        "por_que_importa": "Confirma la **commoditización de skills para coding agents**. Ya no es \"obra/superpowers vs addyosmani/agent-skills\"; ahora cada vendor edita su plugin. EveryInc (la empresa detrás de la newsletter Compound) subió su propia implementación - la metodología se hace producto. Útil para nuestros lectores porque **un solo plugin cubre Claude + Codex + Cursor**, lo que reduce el coste de cambio entre coding agents.",
+        "madurez_senales": "Estrellas totales: **23.941** · Forks: 1.958 · Lenguaje: TypeScript · Fecha creación: 2025-10-09 · Último push: 2026-08-05 (hoy) · Licencia: **MIT** · Topics: `compound`, `engineering`",
+        "accion_sugerida": "**explorar** - si trabajas con Claude Code y/o Cursor, instalar el plugin y comparar contra superpowers/monty. Lectura rápida del README (en su mayoría sobreescribe skills ya existentes).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "EveryInc/compound-engineering-plugin",
+          "rel": "implements",
+          "dst": "concept:compound_engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "EveryInc/compound-engineering-plugin",
+          "rel": "competes_with",
+          "dst": "repo:obra/superpowers",
+          "primera_mencion": null
+        },
+        {
+          "src": "EveryInc/compound-engineering-plugin",
+          "rel": "relevant_to",
+          "dst": "concept:coding_agent_orchestration",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Every",
+        "tema_principal": "compound-engineering",
+        "temas_secundarios": [
+          "typescript",
+          "claude-code",
+          "codex",
+          "cursor",
+          "multi-agent-skills"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "kirodotdev/KiroCrew",
+      "url": "https://github.com/kirodotdev/KiroCrew",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "*\"A persistent workspace for development work that self-improves and continues beyond one session\"*. Agente Python con claim específico: el workspace **se reescribe a sí mismo** entre sesiones para mejorar. Integra con Kiro (otro producto AWS-style).",
+        "por_que_importa": "Se mete en un cluster que ya tenemos nutrido (HKUDS/nanobot, screenpipe, obra/superpowers, TencentDB-Agent-Memory) - todos juegan en el espacio *memoria/continuidad entre sesiones*. KiroCrew es el primero que hace **auto-modificación del propio workspace como feature**, no solo memoria persistente.",
+        "madurez_senales": "Estrellas totales: **665** · Forks: 52 · Lenguaje: Python · Fecha creación: 2026-07-16 · Último push: **2026-08-05 (hoy)** · Licencia: **Apache-2.0** · Topics: `agent`, `agentic-ai`, `agents`, `ai-agent`, `ai-agents`, `automation`, `devtools`, `kiro`, `llm`",
+        "accion_sugerida": "**vigilar** - nuevo (665 estrella, 3 semanas de vida). Esperar a que tenga ≥2k estrella y release más maduro. Si el claim \"se auto-mejora\" se sostiene, es candidato a deep-dive.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "kirodotdev/KiroCrew",
+          "rel": "implements",
+          "dst": "concept:agent_skill_pack",
+          "primera_mencion": null
+        },
+        {
+          "src": "kirodotdev/KiroCrew",
+          "rel": "competes_with",
+          "dst": "repo:HKUDS/nanobot",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "kirodotdev/KiroCrew",
+          "rel": "relevant_to",
+          "dst": "concept:self_modifying_agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "self-modifying-workspace",
+        "temas_secundarios": [
+          "python",
+          "session-continuity",
+          "auto-rewrite",
+          "kiro-integration"
+        ],
+        "confianza": 0.72
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "TencentCloud/TencentDB-Agent-Memory",
+      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*reentry*. Memoria jerárquica para agents con datos publicados (-61% tokens en WideSearch)",
+        "por_que_importa": "",
+        "madurez_senales": "14.234 estrella, TS, MIT",
+        "accion_sugerida": "leer README para confirmar el módulo Code-Graph que no exploramos ayer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Tencent",
+        "tema_principal": "layered-memory",
+        "temas_secundarios": [
+          "l0-l3",
+          "chat-memory",
+          "skill-llm-wiki",
+          "code-graph",
+          "local-first"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "usekaneo/kaneo",
+      "url": "https://github.com/usekaneo/kaneo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*\"All you need. Nothing you don't\"* project management self-hosted (Hono + React). Alternativa OSS a Jira/Linear sin features de relleno",
+        "por_que_importa": "",
+        "madurez_senales": "7.386 estrella, TS, MIT",
+        "accion_sugerida": "explorar si tienes fatiga de Jira",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "open-source-pm",
+        "temas_secundarios": [
+          "typescript",
+          "hono",
+          "react",
+          "jira-replacement"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "czlonkowski/n8n-mcp",
+      "url": "https://github.com/czlonkowski/n8n-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "MCP server que permite a Claude Code/Desktop construir workflows n8n desde lenguaje natural",
+        "por_que_importa": "",
+        "madurez_senales": "22.602 estrella, TS, MIT",
+        "accion_sugerida": "vigilar — interesante si combinas Hermes + MCP + n8n**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mcp-server-n8n",
+        "temas_secundarios": [
+          "typescript",
+          "workflow-builder",
+          "natural-language-workflows"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "CodebuffAI/freebuff",
+      "url": "https://github.com/CodebuffAI/freebuff",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*\"The free coding agent\"*. Coding agent de código abierto sin coste",
+        "por_que_importa": "",
+        "madurez_senales": "8.333 estrella, TS, Apache-2.0",
+        "accion_sugerida": "explorar — si la promesa de \"free\" se sostiene,**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "CodebuffAI",
+        "tema_principal": "free-coding-agent",
+        "temas_secundarios": [
+          "typescript",
+          "apache-2",
+          "claim-free",
+          "uncached-cost"
+        ],
+        "confianza": 0.78
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "CopilotKit/channels-sdk",
+      "url": "https://github.com/CopilotKit/channels-sdk",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "SDK open-source para llevar cualquier agente a cualquier chat (Slack, Teams, Discord, Telegram) con UI interactiva nativa",
+        "por_que_importa": "",
+        "madurez_senales": "217 estrella, TS, MIT, 16 días de vida",
+        "accion_sugerida": "leer — producto complementario al channels pattern de nanobot**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "CopilotKit",
+        "tema_principal": "agent-channel-sdk",
+        "temas_secundarios": [
+          "typescript",
+          "chat-integrations",
+          "slack-teams-discord",
+          "native-ui"
+        ],
+        "confianza": 0.82
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Skill para AI agents: *\"Make your agent think like the laziest senior dev. The best code is the code you never wrote.\"* Filosofía YAGNI aplicada",
+        "por_que_importa": "",
+        "madurez_senales": "96.170 estrella, JS, MIT",
+        "accion_sugerida": "leer — el claim editorial es bueno aunque las estrella parecen infladas**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yagni-skill",
+        "temas_secundarios": [
+          "javascript",
+          "philosophy",
+          "vague-claim"
+        ],
+        "confianza": 0.7
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "magicrew/doc7",
+      "url": "https://github.com/magicrew/doc7",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "*\"Turn documents into AI-ready Markdown with visual understanding\"*. Compite directamente con firecrawl/anydoc pero en Go y con VLM multimodal",
+        "por_que_importa": "",
+        "madurez_senales": "434 estrella, Go, MIT",
+        "accion_sugerida": "vigilar — comparar rendimiento contra anydoc cuando tenga ≥1k estrella**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "document-visual-markdown",
+        "temas_secundarios": [
+          "go",
+          "vl-model",
+          "multimodal",
+          "visual-understanding"
+        ],
+        "confianza": 0.78
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "guillermolg00/morphicons",
+      "url": "https://github.com/guillermolg00/morphicons",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "+ **Jakubantalik/thinking-orbs** (1.618 estrella, TS, MIT) — UI/UX libraries para AI products: morphing de iconos y loaders \"thinking\" para agent UIs",
+        "por_que_importa": "",
+        "madurez_senales": "519 estrella, TS, MIT",
+        "accion_sugerida": "ignorar (no es nuestro segmento) salvo que construyas UI para AI",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-ui-library",
+        "temas_secundarios": [
+          "typescript",
+          "morphing-icons",
+          "ai-products-ui"
+        ],
+        "confianza": 0.7
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "none",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

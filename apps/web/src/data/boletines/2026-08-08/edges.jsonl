@@ -4,20 +4,25 @@
 {"src": "item:https-github-com-mattpocock-skills", "dst": "tema:total-typescript", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-mattpocock-skills", "dst": "tema:tsc-installed", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-mattpocock-skills", "dst": "tema:library-not-framework", "rel": "trata", "added": "2026-08-08"}
-{"src": "item:https-github-com-mattpocock-skills", "dst": "autor:matt-pocock-total-typescript", "rel": "escrito_por", "added": "2026-08-08"}
+{"src": "mattpocock_skills", "dst": "concept_skills_layer", "rel": "implements", "added": "2026-08-08", "primera_mencion": null}
+{"src": "mattpocock_skills", "dst": "obra_superpowers", "rel": "competes_with", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-obra-superpowers", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-obra-superpowers", "dst": "tema:agentic-skills-framework", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-obra-superpowers", "dst": "tema:sdlc", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-obra-superpowers", "dst": "tema:subagent-driven-dev", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-obra-superpowers", "dst": "tema:brainstorming", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-obra-superpowers", "dst": "tema:anthropic-plugin", "rel": "trata", "added": "2026-08-08"}
-{"src": "item:https-github-com-obra-superpowers", "dst": "autor:obra-primeradiant", "rel": "escrito_por", "added": "2026-08-08"}
+{"src": "obra_superpowers", "dst": "concept_skills_layer", "rel": "implements", "added": "2026-08-08", "primera_mencion": null}
+{"src": "obra_superpowers", "dst": "mattpocock_skills", "rel": "competes_with", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-tirth8205-code-review-graph", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-tirth8205-code-review-graph", "dst": "tema:local-first-code-intelligence", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-tirth8205-code-review-graph", "dst": "tema:tree-sitter", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-tirth8205-code-review-graph", "dst": "tema:mcp", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-tirth8205-code-review-graph", "dst": "tema:graphrag", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-tirth8205-code-review-graph", "dst": "tema:token-reduction-71x", "rel": "trata", "added": "2026-08-08"}
+{"src": "code_review_graph", "dst": "concept_local_first_kg", "rel": "implements", "added": "2026-08-08", "primera_mencion": null}
+{"src": "code_review_graph", "dst": "tool_tree_sitter", "rel": "uses", "added": "2026-08-08", "primera_mencion": null}
+{"src": "code_review_graph", "dst": "tool_mcp", "rel": "uses", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-semantica-agi-semantica", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-semantica-agi-semantica", "dst": "tema:graph-native-ai", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-semantica-agi-semantica", "dst": "tema:knowledge-graph", "rel": "trata", "added": "2026-08-08"}
@@ -25,30 +30,37 @@
 {"src": "item:https-github-com-semantica-agi-semantica", "dst": "tema:ontology", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-semantica-agi-semantica", "dst": "tema:graphrag", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-semantica-agi-semantica", "dst": "tema:decision-intelligence", "rel": "trata", "added": "2026-08-08"}
+{"src": "semantica", "dst": "concept_graph_native_ai", "rel": "implements", "added": "2026-08-08", "primera_mencion": null}
+{"src": "semantica", "dst": "concept_local_first_kg", "rel": "complements", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-earendil-works-pi", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-earendil-works-pi", "dst": "tema:llm-api-unification", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-earendil-works-pi", "dst": "tema:agent-loop", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-earendil-works-pi", "dst": "tema:tui", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-earendil-works-pi", "dst": "tema:coding-agent-cli", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-earendil-works-pi", "dst": "tema:unified-provider", "rel": "trata", "added": "2026-08-08"}
+{"src": "earendil_pi", "dst": "agent_substrate", "rel": "complements", "added": "2026-08-08", "primera_mencion": null}
+{"src": "earendil_pi", "dst": "concept_loop_engineering", "rel": "enables", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-agent-substrate-substrate", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:agent-core-runtime", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:go", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:scheduling", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:message-passing", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:persistence", "rel": "trata", "added": "2026-08-08"}
+{"src": "agent_substrate", "dst": "concept_loop_engineering", "rel": "enables", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-h4ckf0r0day-obscura", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-h4ckf0r0day-obscura", "dst": "tema:headless-browser-anti-detect", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-h4ckf0r0day-obscura", "dst": "tema:rust", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-h4ckf0r0day-obscura", "dst": "tema:playwright-replacement", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-h4ckf0r0day-obscura", "dst": "tema:cdp", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-h4ckf0r0day-obscura", "dst": "tema:scrapling", "rel": "trata", "added": "2026-08-08"}
+{"src": "obscura_browser", "dst": "concept_agent_browser", "rel": "implements", "added": "2026-08-08", "primera_mencion": null}
+{"src": "obscura_browser", "dst": "agent_browser", "rel": "competes_with", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-primeintellect-ai-prime-agent", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:self-improving-agent", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:reinforcement-learning-meta", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:long-running-tasks", "rel": "trata", "added": "2026-08-08"}
-{"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "medio:prime-intellect", "rel": "publicado_en", "added": "2026-08-08"}
+{"src": "prime_agent", "dst": "concept_self_improving_agent", "rel": "implements", "added": "2026-08-08", "primera_mencion": null}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-yvgude-lean-ctx", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-yvgude-lean-ctx", "dst": "tema:context-intelligence", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-yvgude-lean-ctx", "dst": "tema:rust", "rel": "trata", "added": "2026-08-08"}
@@ -60,7 +72,6 @@
 {"src": "item:https-github-com-google-skills", "dst": "tema:gemini-cli", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-google-skills", "dst": "tema:cloud", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-google-skills", "dst": "tema:official", "rel": "trata", "added": "2026-08-08"}
-{"src": "item:https-github-com-google-skills", "dst": "medio:google", "rel": "publicado_en", "added": "2026-08-08"}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-tt-a1i-archify", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-tt-a1i-archify", "dst": "tema:architecture-diagrams", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-tt-a1i-archify", "dst": "tema:html-self-contained", "rel": "trata", "added": "2026-08-08"}
@@ -72,7 +83,6 @@
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:cli", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:minimal", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:browser-automation", "rel": "trata", "added": "2026-08-08"}
-{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "medio:vercel-labs", "rel": "publicado_en", "added": "2026-08-08"}
 {"src": "boletin:2026-08-08", "dst": "item:https-github-com-huangruiteng-loopx", "rel": "menciona", "added": "2026-08-08"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:loop-engineering-state-kernel", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:python", "rel": "trata", "added": "2026-08-08"}
@@ -85,4 +95,3 @@
 {"src": "item:https-github-com-firecrawl-anydoc", "dst": "tema:node-bindings", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-firecrawl-anydoc", "dst": "tema:python-bindings", "rel": "trata", "added": "2026-08-08"}
 {"src": "item:https-github-com-firecrawl-anydoc", "dst": "tema:9-formats", "rel": "trata", "added": "2026-08-08"}
-{"src": "item:https-github-com-firecrawl-anydoc", "dst": "medio:firecrawl", "rel": "publicado_en", "added": "2026-08-08"}

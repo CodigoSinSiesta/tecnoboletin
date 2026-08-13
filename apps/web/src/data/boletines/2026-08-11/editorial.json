@@ -1,22 +1,47 @@
 {
   "version": 1,
   "date": "2026-08-11",
-  "perfiles_involucrados": ["carlos", "dani", "maria"],
   "posicionamiento": "El boletín del 2026-08-11 cierra la triangulación entre tres contendientes del patrón 'agent company / system of record' (paperclipai/paperclip, org2AI/ORG2, holaboss-ai/holaOS) y abre con una pieza editorial estrella: antirez (autor de Redis) portando inferencia multimodal a Apple Silicon. Es el único boletín del lote que toca simultáneamente (a) inferencia local de borde, (b) agentes con org-chart, y (c) integración developer-friendly con Codex CLI. La fecha queda definida por una combinación excepcional de vétérano OSS entrando al multimodal + consolidación de un cluster ya maduro.",
   "convergencia_stack_css": "Tres ítems del boletín encajan directamente con piezas ya operativas en tu stack local-first:\n\n- **antirez/h3.c**: cuando escribiste sobre FluidVoice y pocket-tts en artículos previos, este es el siguiente paso natural — inferencia multimodal en tu propio Macbook, sin Python, sin nube. Esto valida la línea editorial CSS 'local-first AI'.\n- **paperclipai/paperclip vs org2AI/ORG2**: la desalineación MIT vs AGPL-3.0 es exactamente el tipo de comparativa que tu audiencia ya absorbe en el Zine. Especialmente porque tú corres Hermes-Agent localmente (al estilo AGPL-friendly) — el ángulo 'qué modelo de licencia te conviene en tu propio setup' es natural.\n- **duolahypercho/codex-router**: ya tienes DeepSeek en tu stack (según tu memoria). Este router es la pieza OSS que faltaba para setups híbridos sin pegar API keys en chat. Punto directo a tutorial 'cómo tener Claude + Codex + DeepSeek en un shell'.",
   "cruzado_grafo": "Sobre el grafo de conocimiento que ya mantienes (~graphify-out/):\n\n- **Refuerza nodos previos**: `concept:agent-company-os` que ya tenías del 2026-08-04 recibe ahora tres implementaciones OSS simultáneas. El nodo deja de ser especulación y pasa a categoría madura.\n- **Nodos nuevos a destacar**: `concept:local-multimodal-edge` (más específico que `inferencia-local` que ya tenías), `framework:apple-metal` (target explícito de h3.c), `concept:multimodal-agent-plugins` (refuerza Qwen-MM-Plugins del 2026-08-04 con vendor-agnostic en lugar de Anthropic-locked).\n- **Edges interesantes a marcar**: paperclip <competes_with> org2AI; ambos <competes_with> stablyai/orca (cruzado con tus boletines previos); paperclip <relevant_to> tu propio concepto de 'agent_control_plane' que ya tienes en el grafo.",
   "tendencias_5_boletines": "Mirando los 6 boletines 2026-08-06 al 11 consolidado:\n\n- **Consolidado (se refuerza)**: el cluster 'agent-company-os / system-of-record' lleva 3 contendientes OSS serios en 5 días (paperclip, ORG2, holaOS). Diferencia editorial clave para tu Zine: license philosophy (MIT vs AGPL vs NOASSERTION) impacta directamente a tus lectores que montan auto-hospedaje.\n- **Emergente**: el ángulo 'codegen con hashr-anchored edits' (can1357/oh-my-pi, mencionado en el 2026-08-04) + 'byte-preserving round-trip' (genoffice, 08-04) + 'pattern-preserving edits' (no explícito pero implícito en agent control planes) apuntan a un eje nuevo en 2026: **'edición verificable'**. Es donde el AI escribe pero el humano ve diff semánticamente verificable. Este eje no estaba presente en julio, emergió en estos 10 días.\n- **Cambio**: del 2026-08-04 al 2026-08-11 la presencia de items con datos cuantitativos (TencentDB -61% tokens, paperclip 76k★, antirez 654★ en 2 días, Qwen-MM-Plugins 1.5k★ en 13 días) se ha triplicado. El boletín está evolucionando de 'listado de repos' a 'catálogo con métricas verificables'. Eso encaja con tu línea editorial 'quality over hype'.\n- **Hueco dejado**: voice-ai-edge solo aparece en 08-04 (Handy, livekit, VibeVoice) — desde entonces ninguna mención. O bien ya está estabilizado, o bien se está quedando atrás del hype. Worth una pasada en próximos boletines.",
   "alertas": [
     "Idx 4 (duolahypercho/codex-router): útil, pero ojo con tu memoria — mencionaba 'colisión 409 con hermesbot'. codex-router es para Codex CLI, no afecta a tu setup Telegram, pero si quieres que aparezca en un tutorial, separa los dos usos.",
-    "Idx 6 (paxlabs/matrix-core): baja tracción + NOASSERTION. Confianza 0.65. Si lo nombras en contenido CSS, acompan~ar con la advertencia.",
-    "Idx 7 (holaboss-ai/holaOS): 5.6k★ y NOASSERTION + 'verifica LICENSE antes de adoptar'. Si tu art├¡culo sobre 'local-first agent workspace' lo recomienda, pierdes credibilidad t├®cnica.",
+    "Idx 6 (paxlabs/matrix-core): baja tracción + NOASSERTION. Confianza 0.65. Si lo nombras en contenido CSS, acompañar con la advertencia.",
+    "Idx 7 (holaboss-ai/holaOS): 5.6k★ y NOASSERTION + 'verifica LICENSE antes de adoptar'. Si tu artículo sobre 'local-first agent workspace' lo recomienda, pierdes credibilidad técnica.",
     "Idx 8 (dyad-sh/dyad): 21k★ pero NOASSERTION y muy reciente. Patrón 'vibe coding local' es atractivo pero el claim es marketing-driven. Esperar al menos a que aclare licensing antes de mencionarlo."
   ],
   "acciones_concretas": [
-    {"tipo": "explora", "item_idx": 1, "razon": "paperclip (76k★) vs ORG2 (2.4k★): la desalineación MIT vs AGPL marca el tipo de agent-org que conviene a cada audiencia. Material directo para art├¡culo CSS comparativo."},
-    {"tipo": "explora", "item_idx": 0, "razon": "antirez/h3.c: autor de Redis, código en C, dirección clara (miniMax-H3 on Apple Silicon). Si funciona como dice, redefine local-first AI. Art├¡culo: 'qué significa local-first cuando el modelo pesa 100B y tu hardware es M3 Max'."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 5, "razon": "antvis/Infographic: el framework declarativo de Alibaba genera infografías con AI. Conecta con tu skill creative/architecture-diagram que ya tienes. Vale revisarlo para c├│mo encaja."},
-    {"tipo": "vigilar", "item_idx": 4, "razon": "codex-router abre el tutorial 'cómo tener Claude + Codex + DeepSeek en el mismo shell sin pegar API keys'. Mantener en radar hasta que aparezca el primer tutorial OSS que lo integre."},
-    {"tipo": "vigilar", "item_idx": 7, "razon": "holaOS entra al cluster 'local-first agent workspace' que ya cubre KunAgent/Kun. Licencia NOASSERTION es bloqueante para art├¡culo de adopci├│n, pero el patrón en s├¡ es editorialmente interesante."}
-  ]
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "paperclip (76k★) vs ORG2 (2.4k★): la desalineación MIT vs AGPL marca el tipo de agent-org que conviene a cada audiencia. Material directo para artículo CSS comparativo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "antirez/h3.c: autor de Redis, código en C, dirección clara (miniMax-H3 on Apple Silicon). Si funciona como dice, redefine local-first AI. Artículo: 'qué significa local-first cuando el modelo pesa 100B y tu hardware es M3 Max'."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "antvis/Infographic: el framework declarativo de Alibaba genera infografías con AI. Conecta con tu skill creative/architecture-diagram que ya tienes. Vale revisarlo para cómo encaja."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "codex-router abre el tutorial 'cómo tener Claude + Codex + DeepSeek en el mismo shell sin pegar API keys'. Mantener en radar hasta que aparezca el primer tutorial OSS que lo integre."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 7,
+      "razon": "holaOS entra al cluster 'local-first agent workspace' que ya cubre KunAgent/Kun. Licencia NOASSERTION es bloqueante para artículo de adopción, pero el patrón en sí es editorialmente interesante."
+    }
+  ],
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

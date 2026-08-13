@@ -1,7 +1,6 @@
 {
   "version": 1,
   "date": "2026-08-04",
-  "perfiles_involucrados": ["carlos", "dani", "maria"],
   "posicionamiento": "El boletín del 2026-08-04 es el día de 'código local' — meat (abridged-diff viewer), cloudflare/computer (filesystem virtual), genoffice (byte-preserving round-trip sobre docx), livekit/agents (realtime voice) y trycompai/crm (agentic-first CRM). También entra la confirmación con datos de TencentDB-Agent-Memory (-61% tokens, +59% accuracy PersonaMem) y la migración TS→Go de DeepSeek-Reasonix (main-v2). Es el día donde tu Setup local-first recibe más piezas canónicas.",
   "convergencia_stack_css": "Cuatro ítems conectan con tu Setup:\n\n- **boldsoftware/meat**: abridged-diff viewer que reduce diffs enormes a conceptos humanos. Es exactamente el patrón que necesitas para tu Setup multi-perfil: 'no revises nil-checks, revisa conceptos'. Si escribes sobre 'cómo revisar código escrito por IA', este es el ejemplo canónico.\n- **TencentCloud/TencentDB-Agent-Memory**: con datos publicados (no claims vagos). Encaja perfecto con tu PGLite+pgvector + four-asset memory. Material editorial directo.\n- **genspark-ai/genoffice**: byte-preserving round-trip sobre docx (solo regenera párrafos sucios). Si algún día tu agente debe editar documentos Office sin romper layout, esta es la pieza OSS canónica.\n- **esengine/DeepSeek-Reasonix**: migración TS→Go 'main-v2' con claim 'prefix-cache stability para mantener coste bajo en sesiones largas'. Si escribes sobre 'optimización de agents en CPU', el patrón de cache stability es directo.",
   "cruzado_grafo": "Sobre graphify-out:\n\n- **Refuerza nodos previos**: `concept:agent_code_review` (nuevo del 08-04 con meat), `concept:agent_runtime` (consolida con cloudflare/computer), `concept:office_suite_ai_native` (genoffice).\n- **Nodos nuevos relevantes**: `concept:abridged_diff_viewer`, `concept:agent_runtime`, `concept:office_suite_ai_native`, `concept:realtime_voice_agent`, `concept:agentic_crm`, `concept:layered_memory`, `concept:prefix_cache_stability`, `concept:docx_layout_drift`, `concept:crm_form_fatigue`, `concept:context_overflow`. 10 nodos — el día con más nodos nuevos hasta 08-04.\n- **Importante**: TencentDB se cita con badge 'Hermes Gateway'. Significa que TencentDB es OSS-compatible con tu Setup, vale auditar.",
@@ -14,10 +13,36 @@
     "Idx 12 (karpathy/autoresearch): NOASSERTION, 92k★, sin push en 5+ meses. Celebrity-stars-no-maintenance."
   ],
   "acciones_concretas": [
-    {"tipo": "explora", "item_idx": 5, "razon": "TencentCloud/TencentDB-Agent-Memory: con datos publicados, license MIT verificado, badge Hermes Gateway. Material directo para Zine comparativa con tu PGLite+pgvector actual."},
-    {"tipo": "explora", "item_idx": 4, "razon": "trycompai/crm: 'agente rellena notas por ti'. Si cubres 'pattern agentic-first vs human-form-first', es el ejemplo canónico. Buen contrapunto a CRM tradicionales."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 6, "razon": "esengine/DeepSeek-Reasonix: migración TS→Go 'main-v2' para prefix-cache stability. Si escribes sobre 'optimización de agents en CPU', el patrón cache-stability es directo al Setup."},
-    {"tipo": "vigilar", "item_idx": 1, "razon": "boldsoftware/meat: abridged-diff viewer para code reviews humano↔IA. Patrón editorialmente potente. Vale auditar para integrar al flujo de review."},
-    {"tipo": "vigilar", "item_idx": 3, "razon": "livekit/agents: realtime voice agent framework. Si tu dominio de cobertura es voice-AI en local, este es el OSS canónico en Apache-2.0."}
-  ]
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "TencentCloud/TencentDB-Agent-Memory: con datos publicados, license MIT verificado, badge Hermes Gateway. Material directo para Zine comparativa con tu PGLite+pgvector actual."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "trycompai/crm: 'agente rellena notas por ti'. Si cubres 'pattern agentic-first vs human-form-first', es el ejemplo canónico. Buen contrapunto a CRM tradicionales."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 6,
+      "razon": "esengine/DeepSeek-Reasonix: migración TS→Go 'main-v2' para prefix-cache stability. Si escribes sobre 'optimización de agents en CPU', el patrón cache-stability es directo al Setup."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "boldsoftware/meat: abridged-diff viewer para code reviews humano↔IA. Patrón editorialmente potente. Vale auditar para integrar al flujo de review."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "livekit/agents: realtime voice agent framework. Si tu dominio de cobertura es voice-AI en local, este es el OSS canónico en Apache-2.0."
+    }
+  ],
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

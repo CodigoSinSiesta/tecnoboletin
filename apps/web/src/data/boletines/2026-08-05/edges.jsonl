@@ -5,7 +5,9 @@
 {"src": "item:https-github-com-firecrawl-anydoc", "dst": "tema:node-bindings", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-firecrawl-anydoc", "dst": "tema:python-bindings", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-firecrawl-anydoc", "dst": "tema:early-momentum", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-firecrawl-anydoc", "dst": "medio:firecrawl", "rel": "publicado_en", "added": "2026-08-05"}
+{"src": "firecrawl/anydoc", "dst": "concept:document_parsing", "rel": "implements", "added": "2026-08-05", "primera_mencion": null}
+{"src": "firecrawl/anydoc", "dst": "concept:agent_ingest", "rel": "relevant_to", "added": "2026-08-05", "primera_mencion": null}
+{"src": "firecrawl/anydoc", "dst": "repo:firecrawl/pdf-inspector", "rel": "competes_with", "added": "2026-08-05", "primera_mencion": null}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-ifixai-ai-ifixai", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:ai-audit", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:eu-ai-act", "rel": "trata", "added": "2026-08-05"}
@@ -13,6 +15,9 @@
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:nist-ai-rmf", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:owasp-llm", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:hallucination-detection", "rel": "trata", "added": "2026-08-05"}
+{"src": "ifixai-ai/iFixAi", "dst": "concept:ai_governance", "rel": "implements", "added": "2026-08-05", "primera_mencion": "2026-07-24"}
+{"src": "ifixai-ai/iFixAi", "dst": "repo:uber/ADR", "rel": "competes_with", "added": "2026-08-05", "primera_mencion": "2026-07-24"}
+{"src": "ifixai-ai/iFixAi", "dst": "concept:enterprise_ai_readiness", "rel": "relevant_to", "added": "2026-08-05", "primera_mencion": "2026-07-24"}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-uber-adr", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:agent-defense-risk", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:python", "rel": "trata", "added": "2026-08-05"}
@@ -20,7 +25,9 @@
 {"src": "item:https-github-com-uber-adr", "dst": "tema:observability", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:benchmark", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-uber-adr", "dst": "tema:mcp-aware", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-uber-adr", "dst": "medio:uber", "rel": "publicado_en", "added": "2026-08-05"}
+{"src": "uber/ADR", "dst": "concept:ai_governance", "rel": "implements", "added": "2026-08-05", "primera_mencion": "2026-08-03"}
+{"src": "uber/ADR", "dst": "concept:enterprise_ai_readiness", "rel": "relevant_to", "added": "2026-08-05", "primera_mencion": "2026-08-03"}
+{"src": "uber/ADR", "dst": "concept:MCP", "rel": "uses", "added": "2026-08-05", "primera_mencion": "2026-08-03"}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-everyinc-compound-engineering-plugin", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-everyinc-compound-engineering-plugin", "dst": "tema:compound-engineering", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-everyinc-compound-engineering-plugin", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-05"}
@@ -28,13 +35,18 @@
 {"src": "item:https-github-com-everyinc-compound-engineering-plugin", "dst": "tema:codex", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-everyinc-compound-engineering-plugin", "dst": "tema:cursor", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-everyinc-compound-engineering-plugin", "dst": "tema:multi-agent-skills", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-everyinc-compound-engineering-plugin", "dst": "medio:every", "rel": "publicado_en", "added": "2026-08-05"}
+{"src": "EveryInc/compound-engineering-plugin", "dst": "concept:compound_engineering", "rel": "implements", "added": "2026-08-05", "primera_mencion": null}
+{"src": "EveryInc/compound-engineering-plugin", "dst": "repo:obra/superpowers", "rel": "competes_with", "added": "2026-08-05", "primera_mencion": null}
+{"src": "EveryInc/compound-engineering-plugin", "dst": "concept:coding_agent_orchestration", "rel": "relevant_to", "added": "2026-08-05", "primera_mencion": null}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-kirodotdev-kirocrew", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-kirodotdev-kirocrew", "dst": "tema:self-modifying-workspace", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-kirodotdev-kirocrew", "dst": "tema:python", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-kirodotdev-kirocrew", "dst": "tema:session-continuity", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-kirodotdev-kirocrew", "dst": "tema:auto-rewrite", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-kirodotdev-kirocrew", "dst": "tema:kiro-integration", "rel": "trata", "added": "2026-08-05"}
+{"src": "kirodotdev/KiroCrew", "dst": "concept:agent_skill_pack", "rel": "implements", "added": "2026-08-05", "primera_mencion": null}
+{"src": "kirodotdev/KiroCrew", "dst": "repo:HKUDS/nanobot", "rel": "competes_with", "added": "2026-08-05", "primera_mencion": "2026-07-16"}
+{"src": "kirodotdev/KiroCrew", "dst": "concept:self_modifying_agent", "rel": "relevant_to", "added": "2026-08-05", "primera_mencion": null}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:layered-memory", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:l0-l3", "rel": "trata", "added": "2026-08-05"}
@@ -42,7 +54,6 @@
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:skill-llm-wiki", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:code-graph", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "tema:local-first", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-tencentcloud-tencentdb-agent-memory", "dst": "medio:tencent", "rel": "publicado_en", "added": "2026-08-05"}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-usekaneo-kaneo", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-usekaneo-kaneo", "dst": "tema:open-source-pm", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-usekaneo-kaneo", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-05"}
@@ -60,14 +71,12 @@
 {"src": "item:https-github-com-codebuffai-freebuff", "dst": "tema:apache-2", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-codebuffai-freebuff", "dst": "tema:claim-free", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-codebuffai-freebuff", "dst": "tema:uncached-cost", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-codebuffai-freebuff", "dst": "medio:codebuffai", "rel": "publicado_en", "added": "2026-08-05"}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-copilotkit-channels-sdk", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-copilotkit-channels-sdk", "dst": "tema:agent-channel-sdk", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-copilotkit-channels-sdk", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-copilotkit-channels-sdk", "dst": "tema:chat-integrations", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-copilotkit-channels-sdk", "dst": "tema:slack-teams-discord", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-copilotkit-channels-sdk", "dst": "tema:native-ui", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-copilotkit-channels-sdk", "dst": "medio:copilotkit", "rel": "publicado_en", "added": "2026-08-05"}
 {"src": "boletin:2026-08-05", "dst": "item:https-github-com-dietrichgebert-ponytail", "rel": "menciona", "added": "2026-08-05"}
 {"src": "item:https-github-com-dietrichgebert-ponytail", "dst": "tema:yagni-skill", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-dietrichgebert-ponytail", "dst": "tema:javascript", "rel": "trata", "added": "2026-08-05"}
@@ -84,8 +93,3 @@
 {"src": "item:https-github-com-guillermolg00-morphicons", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-guillermolg00-morphicons", "dst": "tema:morphing-icons", "rel": "trata", "added": "2026-08-05"}
 {"src": "item:https-github-com-guillermolg00-morphicons", "dst": "tema:ai-products-ui", "rel": "trata", "added": "2026-08-05"}
-{"src": "boletin:2026-08-05", "dst": "item:https-github-com-jakubantalik-thinking-orbs", "rel": "menciona", "added": "2026-08-05"}
-{"src": "item:https-github-com-jakubantalik-thinking-orbs", "dst": "tema:ai-loader-ui", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-jakubantalik-thinking-orbs", "dst": "tema:typescript", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-jakubantalik-thinking-orbs", "dst": "tema:animated-loaders", "rel": "trata", "added": "2026-08-05"}
-{"src": "item:https-github-com-jakubantalik-thinking-orbs", "dst": "tema:thinking-state", "rel": "trata", "added": "2026-08-05"}

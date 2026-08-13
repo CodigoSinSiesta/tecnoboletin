@@ -1,15 +1,602 @@
-{"version":1,"date":"2026-08-02","items":[
-  {"idx":0,"titulo":"thedotmack/claude-mem","url":"https://github.com/thedotmack/claude-mem","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"session-memory","temas_secundarios":["javascript","ai-compression","sqlite","mcp-search"],"resumen_2_lineas":"Plugin JavaScript (Apache-2.0, 89.3k★) que captura sesiones, las comprime con AI y persiste en SQLite para búsqueda semántica entre sesiones.","confianza":0.93}},
-  {"idx":1,"titulo":"multica-ai/multica","url":"https://github.com/multica-ai/multica","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Multica","tema_principal":"agent-teammates","temas_secundarios":["go","hermes-supported","multi-runtime","kanban-agents","license-part-i"],"resumen_2_lineas":"Plataforma Go (Apache-2.0 + Part I, 43.2k★) managed-agents. Asigna issues, ejecuta, aprende. Soporta 14 harnesses (incluye Hermes). LICENSE Part I sin verificar, riesgo de adopción.","confianza":0.65,"risk_flags":["license_unverified","part_i_clause"]}},
-  {"idx":2,"titulo":"esengine/DeepSeek-Reasonix","url":"https://github.com/esengine/DeepSeek-Reasonix","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"deepseek-native-coding-agent","temas_secundarios":["go","MIT","prefix-cache-stable","main-v2","dsnix"],"resumen_2_lineas":"Coding agent Go (MIT, 28.6k★) DeepSeek-native con cache-stability: 99.82% cache hit en sesión real. Go rewrite activo en main-v2.","confianza":0.9}},
-  {"idx":3,"titulo":"superplanehq/superplane","url":"https://github.com/superplanehq/superplane","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"Superplane","tema_principal":"agentic-control-plane","temas_secundarios":["go","apache-2","durable-workflows","git-versioned"],"resumen_2_lineas":"Motor open-source Go (Apache-2.0, 4.4k★) que orquesta workflows agentic con ejecución durable y console UI versionada en git.","confianza":0.88}},
-  {"idx":4,"titulo":"antirez/ds4","url":"https://github.com/antirez/ds4","clasificacion":{"tipo":"repo","idioma":"en","autor":"Salvatore Sanfilippo","medio":null,"tema_principal":"deepseek-local-inference","temas_secundarios":["metal","cuda","rocm","no-gguf","beta"],"resumen_2_lineas":"Motor C (MIT, 19.8k★) nativo para DeepSeek V4 Flash y GLM 5.2. Metal/CUDA/ROCm, multi-GPU y pipeline parallelism. Por el creador de Redis. Beta.","confianza":0.88}},
-  {"idx":5,"titulo":"jackwener/OpenCLI","url":"https://github.com/jackwener/OpenCLI","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"browser-automation-bridge","temas_secundarios":["javascript","chrome-extension","browser-use","logged-feed"],"resumen_2_lineas":"Runtime JavaScript (Apache-2.0, 27.6k★) que convierte websites en CLI deterministas + bridge para Chrome logueado. Resuelve 'darle ojos al agente sin Apify'.","confianza":0.9}},
-  {"idx":6,"titulo":"cjpais/Handy","url":"https://github.com/cjpais/Handy","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"offline-stt","temas_secundarios":["rust","MIT","whisper-cpp","tauri"],"resumen_2_lineas":"STT desktop offline Rust (MIT, 28.4k★) con Whisper.cpp local. Reemplaza Wispr/Superwhisper. Hotkey global, output al campo activo.","confianza":0.92}},
-  {"idx":7,"titulo":"open-gsd/gsd-core","url":"https://github.com/open-gsd/gsd-core","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"release-automation","temas_secundarios":["javascript","MIT","deterministic-releases","minimal-cli"],"resumen_2_lineas":"CLI JS (MIT, 7.5k★) Git-Ship-Done minimalista para releases deterministas. Opinativo.","confianza":0.8}},
-  {"idx":8,"titulo":"Ed1s0nZ/CyberStrikeAI","url":"https://github.com/Ed1s0nZ/CyberStrikeAI","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"system-of-action-cybersecurity","temas_secundarios":["go","apache-2","intent-to-action","governed-execution"],"resumen_2_lineas":"System-of-action Go (Apache-2.0, 5.5k★) para ciberseguridad AI-native. Intent→execution, evidence→memory. Autor nuevo.","confianza":0.78}},
-  {"idx":9,"titulo":"NomaDamas/k-skill","url":"https://github.com/NomaDamas/k-skill","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":"NomaDamas","tema_principal":"locale-pack-skills","temas_secundarios":["javascript","MIT","korean-locale","pattern-replicable"],"resumen_2_lineas":"Colección JS (MIT, 6.8k★) de skills para que los agentes hablen/comporten como coreanos. Patrón replicable a otras locales.","confianza":0.85}},
-  {"idx":10,"titulo":"rightnow-ai/picolm","url":"https://github.com/rightnow-ai/picolm","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"tiny-llm-edge","temas_secundarios":["c","MIT","stale","256mb-ram"],"resumen_2_lineas":"LLM 1B params en C (MIT, 1.9k★) sobre board $10 + 256MB RAM. Stale: sin push en 5+ meses. Tesis interesante, mantenimiento bajo.","confianza":0.6}},
-  {"idx":11,"titulo":"arcships/aimux","url":"https://github.com/arcships/aimux","clasificacion":{"tipo":"repo","idioma":"en","autor":null,"medio":null,"tema_principal":"multi-provider-gateway","temas_secundarios":["rust","MIT","172-providers","auto-fallback","early-cadence","early-vapor"],"resumen_2_lineas":"Gateway Rust (MIT, 101★) unificado una-API-172-proveedores-AI con auto-fallback. 101 estrellas es muy poco para el claim de 172 proveedores; probablemente early vapor.","confianza":0.55,"risk_flags":["claim_exceeds_maturity"]}},
-  {"idx":12,"titulo":"karpathy/autoresearch","url":"https://github.com/karpathy/autoresearch","clasificacion":{"tipo":"repo","idioma":"en","autor":"Andrej Karpathy","medio":null,"tema_principal":"ai-research-agent","temas_secundarios":["python","NOASSERTION","no-license-no-adoptable"],"resumen_2_lineas":"Agents Python (NOASSERTION, 92.8k★) running research on single-GPU nanochat training. NO adoptable como dependencia. Solo referencia conceptual.","confianza":0.55}}
-],"rejected":[],"stats":{"items_total":13,"items_clasificados":13,"items_rejected":0,"clasificador":"agentico-v2"}}
+{
+  "version": 2,
+  "date": "2026-08-02",
+  "boletin_origen": "2026-08-02-trending.md",
+  "resumen_ejecutivo": "- Hoy manda **memoria persistente para agentes**: `claude-mem` (89k⭐, Apache-2.0) entra al top trending con compresión de sesiones para Claude Code. Es la confirmación práctica de la tesis que ya cubrimos con `syncable-dev/memtrace-public`, `screenpipe` y `alchaincyf/cangjie-skill`. La barra de memory-for-agents sube.\n- **`multica-ai/multica`** (43k⭐, Go) debuta en trending con una tesis fuerte: agentes como compañeros de equipo, asignar issues, ejecutar, aprender. Su README menciona Hermes entre 14 harnesses soportados. Licencia Apache-2.0 con Parte I adicional — antes de adoptarlo como dependencia hay que leer el LICENSE completo (patrón NOASSERTION conocido).\n- **Coding agents DeepSeek-native**: dos entradas nuevas convergen en el mismo nicho. `esengine/DeepSeek-Reasonix` (28k⭐, MIT) presume 99.82% cache hit y $12 vs $61 en una jornada real; `antirez/ds4` (19k⭐, MIT, C) lleva DeepSeek V4 Flash/GLM 5.2 a Metal/CUDA/ROCm sin GGUF, autor Salvatore Sanfilippo (creador de Redis). Estado beta en ambos.\n- **Operación de agentes en producción**: `superplanehq/superplane` (4.3k⭐, Apache-2.0, Go) entra como control plane con workflows durables, console dashboards y RBAC. Beta pero con producto real (preview environments, deploys gated, incident triage).\n- **Satélites**: `jackwener/OpenCLI` (27k⭐, Apache-2.0) convierte websites en CLI + integra Browser Use para agentes; `karpathy/autoresearch` (92k⭐, sin LICENSE → NOASSERTION) sube por inercia de marca, no apta como dependencia.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin/skill que captura todo lo que el agente hace durante una sesión (tool calls, prompts, outputs), lo comprime con AI y lo persiste en SQLite para búsqueda semántica entre sesiones. Es memoria comprimida específica para Claude Code, con MCP search tools.",
+        "por_que_importa": "es la implementación más pulida y popular del patrón agente-con-memoria-entre-sesiones que ya cubrimos con `syncable-dev/memtrace-public` (memoria estructural bi-temporal), `kangarooking/cangjie-skill` (destilación de contenido en skills) y `microsoft/skill-recorder` (grabar sesiones como skills reutilizables). Apache-2.0 limpio, npm v13.4.0, 30+ traducciones del README (incluye español). Madurez: 7.7k forks, +100 stars/día, push 2026-08-02.",
+        "madurez_senales": "89.281 ⭐ · 7.773 forks · JavaScript · Apache-2.0 · descripción oficial: \"Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, …\" · creado en 2026-Q1 · último push 2026-08-02 · npm package con 13.4.0 · 30+ i18n del README · mencionado en awesome-claude-code",
+        "accion_sugerida": "explorar — clonar, evaluar la salida de búsqueda semántica sobre sesiones reales, comparar con tu propio `~/.hermes/memories/`.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "thedotmack/claude-mem",
+          "rel": "competes_with",
+          "dst": "syncable-dev/memtrace-public",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "thedotmack/claude-mem",
+          "rel": "enables",
+          "dst": "claude-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "thedotmack/claude-mem",
+          "rel": "relevant_to",
+          "dst": "memory-for-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "session-memory",
+        "temas_secundarios": [
+          "javascript",
+          "ai-compression",
+          "sqlite",
+          "mcp-search"
+        ],
+        "confianza": 0.93
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "multica-ai/multica",
+      "url": "https://github.com/multica-ai/multica",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "convierte coding agents en compañeros de equipo — los agentes tienen perfil, aparecen en el board, levantan blockers, postan comentarios y crean issues. Squads añaden routing jerárquico. Multi-runtime (daemon local + cloud) y multi-workspace.",
+        "por_que_importa": "el README nombra explícitamente a Hermes entre 14 harnesses soportados: Works with Claude Code, Codex, CodeBuddy, GitHub Copilot CLI, OpenCode, OpenClaw, Hermes, Pi, Cursor Agent, Kimi, Kiro CLI, Antigravity, Qoder CLI, Trae CLI. Tesis editorial fuerte: el ecosistema está estandarizando adapters hacia agentes, no hacia chats. Licencia: README/License reportan Apache-2.0 PERO el archivo LICENSE tiene una Part I con condiciones adicionales (verificar antes de build-dep — patrón conocido desde Fortress, Wigolo, memtrace).",
+        "madurez_senales": "43.194 ⭐ · 5.474 forks · Go · NOASSERTION en GitHub API (license personalizada en el archivo, base Apache-2.0) · creado 2026-Q2 · último push 2026-08-01 · Homebrew tap oficial `multica-ai/tap/multica` · Discord activo · self-hosting documentado · +211 stars/día",
+        "accion_sugerida": "vigilar — leer el LICENSE Part I completo antes de recomendar como dependencia. Mientras tanto, instalar vía brew y probar el flujo de assign-issue-to-agent.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "multica-ai/multica",
+          "rel": "uses",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "multica-ai/multica",
+          "rel": "competes_with",
+          "dst": "stablyai/orca",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "multica-ai/multica",
+          "rel": "relevant_to",
+          "dst": "agent-orchestration",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Multica",
+        "tema_principal": "agent-teammates",
+        "temas_secundarios": [
+          "go",
+          "hermes-supported",
+          "multi-runtime",
+          "kanban-agents",
+          "license-part-i"
+        ],
+        "confianza": 0.65,
+        "risk_flags": [
+          "license_unverified",
+          "part_i_clause"
+        ]
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "esengine/DeepSeek-Reasonix",
+      "url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "coding agent para terminal atado a DeepSeek como único proveedor, diseñado alrededor de la invariante de prefix-cache estable para minimizar coste de tokens en sesiones largas. CLI `reasonix` (alias `dsnix`).",
+        "por_que_importa": "las cifras concretas del README son notables: un usuario real consumió 435M input tokens en un día con **99.82% cache hit** → ~$12 vs ~$61 del mismo workload sin cache en `v4-flash`. Esto encaja con la idea que defendimos antes: la compresión de tokens (caveman, rtk, pxpipe) es input-side; Reasonix hace cache-stability en output/runtime. MIT limpio, Go rewrite activo en `main-v2`, v0.x con canales QQ como remote channel (legacy TypeScript en mantenimiento).",
+        "madurez_senales": "28.621 ⭐ · 1.842 forks · Go · MIT · último push 2026-08-02 · npm `reasonix` y `dsnix` · CI workflow · Discord bilingüe · case study documentado · benchmarks en `/benchmarks/real-world-cache` · +274 stars/día",
+        "accion_sugerida": "leer — el case study de cache-stability es publicable. Instalable vía `npm i -g reasonix` con clave DeepSeek.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "competes_with",
+          "dst": "HKUDS/nanobot",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "competes_with",
+          "dst": "openai/codex",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "enables",
+          "dst": "DeepSeek-V4",
+          "primera_mencion": null
+        },
+        {
+          "src": "esengine/DeepSeek-Reasonix",
+          "rel": "relevant_to",
+          "dst": "token-cost-optimization",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-native-coding-agent",
+        "temas_secundarios": [
+          "go",
+          "MIT",
+          "prefix-cache-stable",
+          "main-v2",
+          "dsnix"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "superplanehq/superplane",
+      "url": "https://github.com/superplanehq/superplane",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de automatización open source que orquesta workflows agentic a través de Git, LLMs, CI/CD, observability e infra, con ejecución durable, aprobaciones y console UI versionada en git (`canvas.yaml` + `console.yaml`). Beta con producto real.",
+        "por_que_importa": "la tesis coincide con `oomol-lab/open-connector` (OAuth unificado) y `superplanehq/skills` para agentes externos. Ofrece un patrón concreto: apps versionadas con workflow graph + UI custom + memoria scoped + agente integrado. Componentes para Claude/Cursor/OpenAI/Perplexity + integraciones para GitHub/GitLab/AWS/Lambda/PagerDuty/incident tools. Caso de uso flagship: progressive delivery con rollback gated. Apache-2.0.",
+        "madurez_senales": "4.386 ⭐ · 422 forks · Go · Apache-2.0 · último push 2026-08-01 · demo container `ghcr.io/superplanehq/superplane-demo:stable` · cloud beta en `app.superplane.com` · Semaphore CI · Discord · docs en docs.superplane.com · +20 stars/día",
+        "accion_sugerida": "probar — levantar el demo container (`docker pull ghcr.io/superplanehq/superplane-demo:stable && docker run -p 3000:3000`) y replicar el ejemplo de PR preview environments.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "superplanehq/superplane",
+          "rel": "competes_with",
+          "dst": "stablyai/orca",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "superplanehq/superplane",
+          "rel": "competes_with",
+          "dst": "superplanehq/skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "superplanehq/superplane",
+          "rel": "relevant_to",
+          "dst": "agent-orchestration",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "Superplane",
+        "tema_principal": "agentic-control-plane",
+        "temas_secundarios": [
+          "go",
+          "apache-2",
+          "durable-workflows",
+          "git-versioned"
+        ],
+        "confianza": 0.88
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "antirez/ds4",
+      "url": "https://github.com/antirez/ds4",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de inferencia C nativo y deliberadamente estrecho para DeepSeek V4 Flash (target principal, incluso en MacBook 96GB con SSD streaming), GLM 5.2 y DeepSeek V4 PRO en workstations grandes. Backends Metal/CUDA/ROCm, multi-GPU y pipeline parallelism. Por el creador de Redis.",
+        "por_que_importa": "encaja en la línea de local-first LLM que ya cubrimos con `airllm`, `llama.cpp` y `JustVugg/colibri`. La diferencia clave: ds4 NO usa GGUF (`ds4.c` no linkea contra GGML pero reconoce la deuda con llama.cpp por los quant layouts adaptados bajo MIT). Construido específicamente para DeepSeek V4 con tolerancia a routed-expert quantization agresiva. Beta, fast-changing. Crítica editorial: el README admite developed-with-strong-assistance-from GPT 5.5, 5.6, Claude Fable — punto a favor de transparencia, no resta valor pero matiza la narrativa de single-author. Multi-GPU L40S Ada test: 120 t/s agregado, 2000 t/s prefill.",
+        "madurez_senales": "19.782 ⭐ · 1.758 forks · C · MIT · último push 2026-08-01 · autor Salvatore Sanfilippo (antirez, creador de Redis) · README + CONTRIBUTING + QA_BEFORE_RELEASES + gguf-tools/ · +150 stars/día",
+        "accion_sugerida": "vigilar — esperar a la primera release estable antes de instalar. Si tienes Mac M-series 96GB, es la opción más optimizada para V4 Flash.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "antirez/ds4",
+          "rel": "competes_with",
+          "dst": "lyogavin/airllm",
+          "primera_mencion": "2026-07-20"
+        },
+        {
+          "src": "antirez/ds4",
+          "rel": "competes_with",
+          "dst": "ggml-org/llama.cpp",
+          "primera_mencion": null
+        },
+        {
+          "src": "antirez/ds4",
+          "rel": "enables",
+          "dst": "DeepSeek-V4-Flash",
+          "primera_mencion": null
+        },
+        {
+          "src": "antirez/ds4",
+          "rel": "relevant_to",
+          "dst": "local-llm",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "Salvatore Sanfilippo",
+        "medio": null,
+        "tema_principal": "deepseek-local-inference",
+        "temas_secundarios": [
+          "metal",
+          "cuda",
+          "rocm",
+          "no-gguf",
+          "beta"
+        ],
+        "confianza": 0.88
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "jackwener/OpenCLI",
+      "url": "https://github.com/jackwener/OpenCLI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime que convierte websites, sesiones de browser, apps Electron y herramientas locales en interfaces deterministas para humanos y agentes. Adapters built-in para Bilibili, Zhihu, Xiaohongshu, Reddit, HN, Twitter/X; skill `opencli-browser` para que el agente navegue/cliquees/llene forms en el Chrome logueado del usuario.",
+        "por_que_importa": "resuelve el problema darle-ojos-al-agente-sin-pagar-Apify que ya tratamos en la idea #29 (Scrapling + Obscura + Agent-Reach). OpenCLI es la pieza que faltaba para el caso necesito-el-feed-logueado-del-usuario, no la versión pública. El bridge funciona vía extensión de Chrome + daemon local → no scrapea, automatiza el browser del usuario. Apache-2.0 limpio. Desktop app OpenCLIApp (macOS/Windows) con system tray.",
+        "madurez_senales": "27.572 ⭐ · 2.708 forks · JavaScript · Apache-2.0 · último push 2026-07-30 · npm `@jackwener/opencli` · Chrome Web Store extension · Desktop app · `opencli doctor` para verificación · docs bilingües · +47 stars/día",
+        "accion_sugerida": "explorar — instalar la extensión Chrome + el CLI y probar `opencli doctor`. Caso de uso inmediato: sustituir el flujo manual de capturar threads de X para el blogwatcher.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "jackwener/OpenCLI",
+          "rel": "competes_with",
+          "dst": "Panniantong/Agent-Reach",
+          "primera_mencion": "2026-07-20"
+        },
+        {
+          "src": "jackwener/OpenCLI",
+          "rel": "complements",
+          "dst": "Scrapling",
+          "primera_mencion": "2026-07-20"
+        },
+        {
+          "src": "jackwener/OpenCLI",
+          "rel": "relevant_to",
+          "dst": "web-scraping-viability",
+          "primera_mencion": "2026-07-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "browser-automation-bridge",
+        "temas_secundarios": [
+          "javascript",
+          "chrome-extension",
+          "browser-use",
+          "logged-feed"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "cjpais/Handy",
+      "url": "https://github.com/cjpais/Handy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio open source de speech-to-text que corre completamente offline, extensible, y reemplaza Wispr/Superwhisper. UI simple, hotkey global, output directo al campo de texto activo.",
+        "por_que_importa": "entra en el cluster voice-AI-en-el-borde que cubrimos con `microsoft/VibeVoice` + `VibeASR.cpp` (BitNet) y `QwenAudio/qwen-audio-agent`. Handy es la capa de aplicación: no un modelo, sino el producto terminado. MIT, Rust, multiplataforma. Si VibeASR.cpp te dio el modelo edge, Handy te da el producto final. Bonus: integra con agentes vía clipboard injection.",
+        "madurez_senales": "28.406 ⭐ · 2.481 forks · Rust · MIT · último push 2026-08-01 · app nativa (Tauri probablemente, a confirmar en code) · modelo Whisper.cpp local · +147 stars/día",
+        "accion_sugerida": "probar — instalar, configurar hotkey, comparar latencia con VibeASR.cpp en tu hardware.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cjpais/Handy",
+          "rel": "competes_with",
+          "dst": "microsoft/VibeVoice",
+          "primera_mencion": null
+        },
+        {
+          "src": "cjpais/Handy",
+          "rel": "enables",
+          "dst": "voice-edge",
+          "primera_mencion": null
+        },
+        {
+          "src": "cjpais/Handy",
+          "rel": "relevant_to",
+          "dst": "voice-ai-edge",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "offline-stt",
+        "temas_secundarios": [
+          "rust",
+          "MIT",
+          "whisper-cpp",
+          "tauri"
+        ],
+        "confianza": 0.92
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "open-gsd/gsd-core",
+      "url": "https://github.com/open-gsd/gsd-core",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "CLI minimalista Git-Ship-Done para releases deterministas",
+        "por_que_importa": "",
+        "madurez_senales": "7.567⭐, último push 2026-08-02, JavaScript, MIT",
+        "accion_sugerida": "vigilar — si quieres reemplazar tu flujo actual de release scripts por algo opinativo, merece un deep-dive",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "release-automation",
+        "temas_secundarios": [
+          "javascript",
+          "MIT",
+          "deterministic-releases",
+          "minimal-cli"
+        ],
+        "confianza": 0.8
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "simonlin1212/Vibe-Research",
+      "url": "https://github.com/simonlin1212/Vibe-Research",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agente de research bursátil personal para A-shares/HK/US, pensado para ejecutarse con tu propio LLM",
+        "por_que_importa": "",
+        "madurez_senales": "1.495⭐, último push 2026-07-31, TypeScript, MIT",
+        "accion_sugerida": "vigilar — útil para validar la tesis agente-personal-memoria si operas mercados",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "simonlin1212-vibe-research",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "arcships/aimux",
+      "url": "https://github.com/arcships/aimux",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "gateway unificado una-API-172-proveedores-AI con auto-fallback. Temprano pero coincide con la tesis de `diegosouzapw/OmniRoute`",
+        "por_que_importa": "",
+        "madurez_senales": "101⭐, último push 2026-08-01, Rust, MIT",
+        "accion_sugerida": "vigilar — comparar arquitectura cuando tenga releases",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multi-provider-gateway",
+        "temas_secundarios": [
+          "rust",
+          "MIT",
+          "172-providers",
+          "auto-fallback",
+          "early-cadence",
+          "early-vapor"
+        ],
+        "confianza": 0.55,
+        "risk_flags": [
+          "claim_exceeds_maturity"
+        ]
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Ed1s0nZ/CyberStrikeAI",
+      "url": "https://github.com/Ed1s0nZ/CyberStrikeAI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "system-of-action-for-AI-native-cybersecurity, donde intent becomes governed execution, evidence becomes operational memory. Tesis fuerte, autor nuevo",
+        "por_que_importa": "",
+        "madurez_senales": "5.460⭐, último push 2026-07-31, Go, Apache-2.0",
+        "accion_sugerida": "explorar — clonar y leer el SPEC de intents/evidence",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "system-of-action-cybersecurity",
+        "temas_secundarios": [
+          "go",
+          "apache-2",
+          "intent-to-action",
+          "governed-execution"
+        ],
+        "confianza": 0.78
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "microsoft/agent-academy",
+      "url": "https://github.com/microsoft/agent-academy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "lecciones curadas para empezar con Copilot Studio",
+        "por_que_importa": "",
+        "madurez_senales": "3.132⭐, último push 2026-08-02, JavaScript, MIT",
+        "accion_sugerida": "ignorar para CSS — (vendor-specific Copilot Studio), pero **vigilar** como referencia de curriculum agent-ready",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-agent-academy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "karpathy/autoresearch",
+      "url": "https://github.com/karpathy/autoresearch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agents running research on single-GPU nanochat training. Famoso pero **no adoptable como dependencia**",
+        "por_que_importa": "",
+        "madurez_senales": "92.763⭐, último push 2026-03-26, Python, **SIN LICENSE** → NOASSERTION",
+        "accion_sugerida": "vigilar — solo como referencia conceptual de AI-research-agent, NO instalar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": "Andrej Karpathy",
+        "medio": null,
+        "tema_principal": "ai-research-agent",
+        "temas_secundarios": [
+          "python",
+          "NOASSERTION",
+          "no-license-no-adoptable"
+        ],
+        "confianza": 0.55
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "NomaDamas/k-skill",
+      "url": "https://github.com/NomaDamas/k-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "colección de skills para hacer que los agentes hablen/se comporten como coreanos (locale pack)",
+        "por_que_importa": "",
+        "madurez_senales": "6.786⭐, último push 2026-08-01, JavaScript, MIT",
+        "accion_sugerida": "vigilar — patrón replicable para localización cultural de skills (español, japonés, etc.)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": "NomaDamas",
+        "tema_principal": "locale-pack-skills",
+        "temas_secundarios": [
+          "javascript",
+          "MIT",
+          "korean-locale",
+          "pattern-replicable"
+        ],
+        "confianza": 0.85
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "rightnow-ai/picolm",
+      "url": "https://github.com/rightnow-ai/picolm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "1B-param LLM en $10 board + 256MB RAM. ⚠️ stale (sin push en 5+ meses)",
+        "por_que_importa": "",
+        "madurez_senales": "1.877⭐, último push 2026-02-22, C, MIT",
+        "accion_sugerida": "vigilar con cautela — la tesis es interesante pero el proyecto no recibe atención",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tiny-llm-edge",
+        "temas_secundarios": [
+          "c",
+          "MIT",
+          "stale",
+          "256mb-ram"
+        ],
+        "confianza": 0.6
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "none",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

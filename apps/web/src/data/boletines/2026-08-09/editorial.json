@@ -1,7 +1,6 @@
 {
   "version": 1,
   "date": "2026-08-09",
-  "perfiles_involucrados": ["carlos", "dani", "maria"],
   "posicionamiento": "El boletín del 2026-08-09 consolida la separación del stack runtime en 4 capas especializadas (substrate, trajectory, governance, code intelligence), confirma el 'analyst council' como patrón multi-agent (TradingAgents + Harvey LAB + MiroFish), detecta el patrón 'phone-as-agent-tool' como nueva categoría (ShawnPana/phone-harness), y abre las gates 'internet-access-layer' (Panniantong/Agent-Reach) y 'agent-governance/audit' (iFixAi, Microsoft toolkit) como clusters serios. Es el boletín donde más nodos nuevos aterrizan en el grafo (24 reportados en el .md original).",
   "convergencia_stack_css": "Cinco ítems encajan directamente con tu stack:\n\n- **TauricResearch/TradingAgents**: patrón 'analyst council' aplicado a trading. Demo académica más sólida de multi-agent con roles especializados. Si vas a escribir sobre multi-agent en el Zine, este es el paper canónico (arXiv 2412.20138).\n- **Panniantong/Agent-Reach (69k★)**: capa de internet para agents. Encaja si tu propio agente necesita acceso a Twitter/Reddit/YouTube para el blogwatcher. Ya tienes una `web-scraping-viability` skill — encajar con este patrón es evolución natural.\n- **Understand Anything vs code-graph-rag vs semantica**: tres contendientes para 'codebase-as-interactive-graph'. Worth una comparativa para saber si alguno supera a Graphify como herramienta.\n- **iFixAi**: 7.5k★ Apache-2.0, marco normativo completo (EU AI Act, ISO 42001). Si cubres governance en el Zine, este es OSS-académico-normativo (vs uber/ADR que es producción-defensiva).\n- **can1357/oh-my-pi**: TypeScript CLI para Hindsight con hash-anchored edits. El patrón es portable a tu propio wrapper de Hermes — y el hecho de que Hermes ya integre Hindsight significa que ya tienes el setup, solo falta el wrapper.",
   "cruzado_grafo": "Sobre graphify-out:\n\n- **Refuerza nodos previos**: `concept:multi-agent-decision-systems` (nodo previo tuyo) ahora tiene TradingAgents como canónica implementación OSS. `concept:graph-native-ai` consolidada con Understand Anything + semantica. `concept:audit-inspection-suite` (nuevo del 2026-08-09 pero muy alineado con tu línea editorial 'quality over hype') merece un nodo propio si escribes sobre governance.\n- **Nodos nuevos relevantes**: `concept:long-horizon-runtime` (AxisAgentic + Shepherd), `concept:reversible-agent-trace` (Shepherd), `concept:phone-as-agent-tool` (phone-harness), `concept:agent-internet-access` (Agent-Reach), `concept:swarm-intelligence-engine` (MiroFish), `concept:legal-agent-benchmark` (Harvey LAB), `concept:audit-inspection-suite` (iFixAi), `concept:codebase-to-interactive-graph` (Understand Anything), `concept:agent-trajectory-collection` (AxisAgentic). 9 nodos nuevos, el día más fructífero del lote.\n- **Edges a explorar para tu grafo**: Shepherd <complements> agent-substrate (del 08-08). axis-axis <competes_with> agent-substrate. iFixAi <complements> microsoft/agent-governance-toolkit (governance defensiva).",
@@ -14,10 +13,36 @@
     "Idx 13 (pocket-tts): Kyutai 100M params, CPU-only. Material directo para local-first voice. Confirma la tesis: voice-AI en local es ya viable. Si cubres voice-AI en Zine, este es el ejemplo."
   ],
   "acciones_concretas": [
-    {"tipo": "explora", "item_idx": 4, "razon": "ShawnPana/phone-harness: iPhone Mirroring + Vision OCR + HID sin jailbreak. Tu propia skill computer-use ya cubre desktop; este es el análogo para smartphone. Worth explorar si tu flujo 'Alejandro móvil-first' lo justifica."},
-    {"tipo": "explora", "item_idx": 5, "razon": "iFixAi + microsoft/agent-governance-toolkit: governance OSS-completo. Si vas a escribir sobre 'el cuello de botella de los coding agents en 2026', estos son los dos OSS canónicos del lado defensa/auditoría."},
-    {"tipo": "vigilar", "item_idx": 0, "razon": "TradingAgents: patrón analyst council con paper arXiv. Patrón transferible a tu cobertura, pero el backend es trading, no general. Vigilar si alguien generaliza el patrón fuera de finanzas."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 9, "razon": "can1357/oh-my-pi: cliente CLI con hash-anchored edits que se integra con Hindsight. Tu flujo local Hermes + Hindsight puede aprovechar este patrón de 'edición verificable'."},
-    {"tipo": "comparte-hallazgo-con-CSS", "item_idx": 6, "razon": "Understand Anything vs code-graph-rag: comparativa head-to-head con tu Graphify actual. Posible artículo CSS 'tres grafos de código, tres modelos operativos'."}
-  ]
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "ShawnPana/phone-harness: iPhone Mirroring + Vision OCR + HID sin jailbreak. Tu propia skill computer-use ya cubre desktop; este es el análogo para smartphone. Worth explorar si tu flujo 'Alejandro móvil-first' lo justifica."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "iFixAi + microsoft/agent-governance-toolkit: governance OSS-completo. Si vas a escribir sobre 'el cuello de botella de los coding agents en 2026', estos son los dos OSS canónicos del lado defensa/auditoría."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "TradingAgents: patrón analyst council con paper arXiv. Patrón transferible a tu cobertura, pero el backend es trading, no general. Vigilar si alguien generaliza el patrón fuera de finanzas."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 9,
+      "razon": "can1357/oh-my-pi: cliente CLI con hash-anchored edits que se integra con Hindsight. Tu flujo local Hermes + Hindsight puede aprovechar este patrón de 'edición verificable'."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 6,
+      "razon": "Understand Anything vs code-graph-rag: comparativa head-to-head con tu Graphify actual. Posible artículo CSS 'tres grafos de código, tres modelos operativos'."
+    }
+  ],
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }
