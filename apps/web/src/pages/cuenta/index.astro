@@ -185,7 +185,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     if (error) {
       setMsg(`No se pudo enviar el enlace: ${error.message}`, true);
     } else {
-      setMsg('Enlace enviado: revisa tu correo y ábrelo desde este dispositivo.');
+      setMsg('Enlace enviado: revisa tu correo. Puedes abrirlo desde cualquier dispositivo.');
     }
   });
 
@@ -194,10 +194,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     renderLogin();
   });
 
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    session ? renderSession(session) : renderLogin();
-  });
+  // --- Callback de login ---
+  // Al volver del proveedor OAuth o del enlace del correo, la URL trae
+  // #access_token=... (exito) o error/error_description (fallo). El cliente
+  // procesa el exito solo (detectSessionInUrl); aqui cubrimos la UX: mensaje
+  // de "completando", errores visibles y limpieza de la URL.
+  const params = new URLSearchParams(window.location.hash.slice(1) || window.location.search.slice(1));
+  const cbError = params.get('error_description') || params.get('error');
+  const cbToken = params.has('access_token') || params.has('code');
+
+  function cleanUrl() {
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  if (cbError) {
+    renderLogin();
+    setMsg(`No se pudo completar el inicio de sesión: ${decodeURIComponent(cbError.replace(/\+/g, ' '))}`, true);
+    cleanUrl();
+  } else if (cbToken) {
+    el('auth-loading').textContent = 'completando inicio de sesión…';
+    // Si en 8s no ha llegado la sesion (enlace caducado/ya usado), no
+    // dejamos al usuario mirando un spinner infinito.
+    setTimeout(() => {
+      if (!el('auth-loading').classList.contains('hidden')) {
+        renderLogin();
+        setMsg('El enlace no es válido o ha caducado. Pide uno nuevo.', true);
+      }
+    }, 8000);
+  } else {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      session ? renderSession(session) : renderLogin();
+    });
+  }
+
   supabase.auth.onAuthStateChange((_event, session) => {
-    session ? renderSession(session) : renderLogin();
+    if (session) {
+      cleanUrl();
+      renderSession(session);
+    } else if (!cbToken && !cbError) {
+      renderLogin();
+    }
   });
 </script>

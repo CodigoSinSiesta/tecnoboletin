@@ -9,7 +9,21 @@ let client: SupabaseClient | null = null;
 
 export function getSupabase(): SupabaseClient {
   if (!client) {
-    client = createClient(SUPABASE_URL, SUPABASE_KEY);
+    client = createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: {
+        // Config explicita del callback de login (no depender de defaults).
+        // Flujo implicit y no PKCE a proposito: el metodo principal es el
+        // magic link por email, y con PKCE el enlace del correo solo
+        // funcionaria en el mismo navegador que lo pidio (el code_verifier
+        // vive en localStorage). Con implicit, el enlace completa la sesion
+        // en cualquier navegador/dispositivo. detectSessionInUrl procesa el
+        // #access_token del callback automaticamente al cargar /cuenta/.
+        flowType: 'implicit',
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    });
   }
   return client;
 }
