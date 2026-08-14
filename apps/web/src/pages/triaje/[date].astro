@@ -7,10 +7,10 @@
  * el inspector de la derecha muestra el detalle sin perder el tablero de
  * vista, y el teclado mueve un item de columna en una pulsación.
  *
- * El triaje del usuario se guarda en localStorage: es una decisión
- * personal y efímera, y no hay todavía tabla para ella en Supabase (sí la
- * hay para favoritos y leídos). Cuando exista, este mismo estado se
- * sincroniza sin tocar el layout.
+ * El triaje se guarda en Supabase (tabla `user_triage`, con RLS de "cada
+ * cual solo ve lo suyo"), asi que acompaña al usuario entre dispositivos.
+ * El estado que hubiera en localStorage de versiones anteriores se migra
+ * la primera vez y se borra.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StateBadge from '../../components/StateBadge.astro';
@@ -348,7 +348,7 @@ const pendientes = {
    * Gate de administrador. Separado del script principal de la consola para
    * que un fallo de red con Supabase no rompa los atajos si el gate ya abrió.
    */
-  import { getSupabase, isAdmin } from '../../lib/supabase';
+  import { fetchRole } from '../../lib/supabase';
 
   async function gate() {
     const gateEl = document.getElementById('triaje-gate');
@@ -357,22 +357,21 @@ const pendientes = {
     const root = document.getElementById('triaje-root');
     if (!gateEl || !root) return;
 
-    let user = null;
+    let role = null;
     try {
-      const { data } = await getSupabase().auth.getSession();
-      user = data.session?.user ?? null;
+      role = await fetchRole();
     } catch {
       // Sin red o Supabase caído: se trata como sin sesión.
     }
 
-    if (isAdmin(user)) {
+    if (role === 'admin') {
       gateEl.remove();
       root.classList.remove('hidden');
       return;
     }
 
     if (msg) {
-      msg.textContent = user
+      msg.textContent = role
         ? 'El triaje está reservado a la cuenta de administración. Tu sesión no tiene ese rol.'
         : 'El triaje está reservado a la cuenta de administración. Inicia sesión para continuar.';
     }
@@ -384,12 +383,15 @@ const pendientes = {
 
 <script>
   /**
-   * Consola de triaje: selección, atajos y persistencia local.
+   * Consola de triaje: selección, atajos y persistencia.
    *
    * El estado de triaje es una decisión del usuario sobre un boletín
-   * concreto, así que vive en localStorage bajo la clave del día. No se
-   * toca el JSON del boletín ni se envía a ningún sitio.
+   * concreto: vive en la tabla `user_triage` (clave user+fecha+item), no
+   * en el JSON del boletín. Se escribe con upsert en cada movimiento, sin
+   * botón de guardar.
    */
+  import { getSupabase } from '../../lib/supabase';
+
   const KEY = (date: string) => `tecnoboletin:triaje:${date}`;
   const ESTADOS = ['explorar', 'probar', 'leer', 'vigilar', 'descartar'] as const;
   type Estado = (typeof ESTADOS)[number];
@@ -413,32 +415,71 @@ const pendientes = {
     );
   }
 
-  function readOverrides(): Record<string, Estado> {
-    try {
-      return JSON.parse(localStorage.getItem(KEY(date)) ?? '{}');
-    } catch {
+  const supabase = getSupabase();
+  let userId: string | null = null;
+
+  function paintSaved(text: string) {
+    if (savedEl) savedEl.textContent = text;
+  }
+
+  /** Estado guardado del dia, de la tabla. {} si no hay sesion. */
+  async function readOverrides(): Promise<Record<string, Estado>> {
+    const { data: { session } } = await supabase.auth.getSession();
+    userId = session?.user.id ?? null;
+    if (!userId) return {};
+    const { data, error } = await supabase
+      .from('user_triage')
+      .select('item_idx, estado')
+      .eq('boletin_date', date);
+    if (error) {
+      paintSaved('no se pudo leer el triaje guardado');
       return {};
     }
+    const out: Record<string, Estado> = {};
+    for (const row of data ?? []) out[String(row.item_idx)] = row.estado as Estado;
+    return out;
   }
 
-  function writeOverride(idx: number, estado: Estado) {
-    const all = readOverrides();
-    all[String(idx)] = estado;
-    localStorage.setItem(KEY(date), JSON.stringify(all));
-    localStorage.setItem(`${KEY(date)}:ts`, String(Date.now()));
-    paintSaved();
-  }
-
-  function paintSaved() {
-    if (!savedEl) return;
-    const ts = Number(localStorage.getItem(`${KEY(date)}:ts`) ?? 0);
-    if (!ts) {
-      savedEl.textContent = 'triaje sin cambios · se guarda en este navegador';
+  async function writeOverride(idx: number, estado: Estado) {
+    if (!userId) {
+      paintSaved('sin sesión: este triaje no se guarda');
       return;
     }
-    const mins = Math.round((Date.now() - ts) / 60000);
-    savedEl.textContent =
-      mins < 1 ? 'triaje guardado ahora mismo' : `triaje guardado hace ${mins} min`;
+    paintSaved('guardando…');
+    const { error } = await supabase
+      .from('user_triage')
+      .upsert(
+        { user_id: userId, boletin_date: date, item_idx: idx, estado, updated_at: new Date().toISOString() },
+        { onConflict: 'user_id,boletin_date,item_idx' }
+      );
+    paintSaved(error ? `no se pudo guardar: ${error.message}` : 'triaje guardado en tu cuenta');
+  }
+
+  /**
+   * Migracion del triaje que quedara en localStorage de la version
+   * anterior: se sube una sola vez y se borra la clave local.
+   */
+  async function migrateLocal() {
+    if (!userId) return;
+    let local: Record<string, Estado> = {};
+    try {
+      local = JSON.parse(localStorage.getItem(KEY(date)) ?? '{}');
+    } catch {
+      return;
+    }
+    const rows = Object.entries(local)
+      .filter(([, e]) => ESTADOS.includes(e))
+      .map(([idx, estado]) => ({
+        user_id: userId!, boletin_date: date, item_idx: Number(idx), estado,
+      }));
+    if (!rows.length) return;
+    const { error } = await supabase
+      .from('user_triage')
+      .upsert(rows, { onConflict: 'user_id,boletin_date,item_idx' });
+    if (!error) {
+      localStorage.removeItem(KEY(date));
+      localStorage.removeItem(`${KEY(date)}:ts`);
+    }
   }
 
   function counts() {
@@ -486,21 +527,36 @@ const pendientes = {
       : document.querySelector<HTMLElement>(`[data-card][data-idx="${selected}"]`);
   }
 
-  // Restaurar el triaje guardado antes de pintar nada más.
-  const overrides = readOverrides();
-  for (const [idx, estado] of Object.entries(overrides)) {
-    const card = document.querySelector<HTMLElement>(`[data-card][data-idx="${idx}"]`);
-    if (card && ESTADOS.includes(estado) && card.dataset.estado !== estado) {
-      const target = columns.get(estado);
-      if (target) {
-        card.dataset.estado = estado;
-        card.classList.toggle('opacity-70', estado === 'descartar');
-        target.appendChild(card);
+  // Restaurar el triaje guardado. Es asincrono (viene de Supabase), asi
+  // que el tablero se pinta con las columnas por defecto y se reordena en
+  // cuanto llega la respuesta.
+  counts();
+  paintSaved('cargando triaje guardado…');
+
+  (async () => {
+    const overrides = await readOverrides();
+    await migrateLocal();
+    const merged = userId ? { ...(await readOverrides()), ...overrides } : overrides;
+    for (const [idx, estado] of Object.entries(merged)) {
+      const card = document.querySelector<HTMLElement>(`[data-card][data-idx="${idx}"]`);
+      if (card && ESTADOS.includes(estado) && card.dataset.estado !== estado) {
+        const target = columns.get(estado);
+        if (target) {
+          card.dataset.estado = estado;
+          card.classList.toggle('opacity-70', estado === 'descartar');
+          target.appendChild(card);
+        }
       }
     }
-  }
-  counts();
-  paintSaved();
+    counts();
+    paintSaved(
+      !userId
+        ? 'sin sesión: este triaje no se guarda'
+        : Object.keys(merged).length
+          ? 'triaje restaurado de tu cuenta'
+          : 'triaje sin cambios · se guarda en tu cuenta'
+    );
+  })();
 
   document.querySelectorAll<HTMLElement>('[data-card]').forEach((card) => {
     card.addEventListener('click', () => select(card));

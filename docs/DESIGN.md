@@ -81,15 +81,41 @@ Dos elementos puramente decorativos, y solo estos dos, en todas las pantallas:
 | Pantalla | Ruta | Notas |
 |---|---|---|
 | Boletín del día | `enriquecido/[date]` | Hero con titular (primera frase de `editorial.posicionamiento`), hallazgos, radar, mapa del día, alertas, "tu turno". J/K navega. |
-| Consola de triaje | `triaje/[date]` | Columnas explorar/probar/leer/vigilar desde `accion_sugerida` normalizada; E/P/L/V/X mueven el item seleccionado. El triaje del usuario vive en localStorage (no hay tabla aún). **Solo administradores**: gate de cliente sobre `app_metadata.role === 'admin'` (se asigna desde el dashboard de Supabase; ver `isAdmin()` en `lib/supabase.ts`). |
+| Consola de triaje | `triaje/[date]` | Columnas explorar/probar/leer/vigilar desde `accion_sugerida` normalizada; E/P/L/V/X mueven el item seleccionado. El triaje se guarda en la tabla `user_triage` (upsert por movimiento, clave user+fecha+item), así que acompaña al usuario entre dispositivos. **Solo administradores**: `fetchRole()` lee `user_profiles.role`; la barrera real es la RLS de esa tabla. |
 | Ficha de repositorio | `repo/[owner]/[name]` | Nueva. Cruza el item enriquecido + señales parseadas + grafo: stat strip, diagrama "cómo funciona", posición en el ecosistema, apariciones. |
 | Explorador de grafo | `grafo/` | Consola de 3 columnas; inspector con "cómo creció este nodo" (barra temporal por boletín). El JSON se sigue descargando en runtime. |
-| Índice del grafo | `grafo/indice/` | Igual que antes + anclas `#id-de-nodo` (destino de los chips). |
+| Índice del grafo | `grafo/indice/` | Igual que antes + anclas `#id-de-nodo` (destino de los chips). Con sesión, botón «Guardar» por nodo (`user_favorites`, kind `nodo`), igual que el inspector 3D y la ficha de repo. |
 | Archivo | `enriquecido/` | Cada fila muestra el reparto de estados del día en puntos de color. Con sesión iniciada, marca «✓ leído» los boletines de `user_reads` (el botón de marcar sigue en el propio boletín). |
+| Usuarios | `cuenta/usuarios/` | Nueva. Lista las cuentas y da/quita el rol de administrador. Solo visible para administradores; el enlace aparece en `cuenta/` con ese rol. |
 
-Pendiente acordado (no construido): panel de administración para gestionar errores de
-usuarios; cuando exista, el gate del triaje y el estado de triaje deberían apoyarse en
-tablas con RLS en vez de localStorage.
+### Cuentas, roles y autorización
+
+El sitio es estático, así que **no hay backend donde esconder una service_role key**: toda
+la autorización tiene que vivir en Postgres. De ahí el diseño:
+
+| Tabla | Para qué | Quién puede |
+|---|---|---|
+| `user_profiles` | Espejo de `auth.users` (que PostgREST no expone) con el campo `role` | Cada cual lee su fila; los administradores leen todas y son los únicos que pueden escribir `role` |
+| `user_favorites` | Boletines y nodos guardados (`kind`: `boletin` \| `nodo`) | Solo el dueño |
+| `user_reads` | Boletines marcados como leídos | Solo el dueño |
+| `user_triage` | Estado de triaje por item (`user_id`, `boletin_date`, `item_idx`) | Solo el dueño |
+
+Tres decisiones que conviene no deshacer:
+
+- **El rol vive en `user_profiles`, no en `app_metadata`.** `app_metadata` solo se escribe
+  con la service_role key, que jamás puede viajar al navegador: con ella los roles solo se
+  gestionarían desde el dashboard de Supabase. Con la tabla, la gestión ocurre en la
+  propia web y la RLS es a la vez la barrera y el dato que lee la interfaz.
+- **`is_admin(uid)` es SECURITY DEFINER.** Si la política de `user_profiles` consultara
+  `user_profiles` directamente, la RLS se llamaría a sí misma (recursión infinita).
+- **Un trigger impide quitar el rol al último administrador.** Sin él, un admin podría
+  degradarse a sí mismo y dejar la gestión de roles inaccesible para siempre, sin backend
+  que la rescatara.
+
+El alta de perfil es automática: un trigger sobre `auth.users` crea la fila al registrarse.
+Los gates de interfaz (ocultar el triaje, ocultar el enlace de usuarios) son comodidad, no
+seguridad: quien los saltara se encontraría con que Postgres no le devuelve ni le acepta
+nada.
 
 ## Datos: texto libre → estructura (lib/boletin.ts)
 

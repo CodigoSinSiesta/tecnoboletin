@@ -70,6 +70,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </button>
       </div>
 
+      <section id="admin-box" class="hidden card px-4 py-3 flex items-center gap-3 flex-wrap">
+        <span class="badge badge--pick">administrador</span>
+        <span class="text-sm text-muted">Puedes gestionar los roles de las cuentas.</span>
+        <a href="usuarios/" class="pill pill--solid ml-auto">Usuarios</a>
+      </section>
+
       <section>
         <h2 class="font-display text-xl font-semibold text-text mb-3">Boletines guardados</h2>
         <ul id="favs-boletines" class="space-y-1.5 text-sm"></ul>
@@ -96,7 +102,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  import { getSupabase, accountUrl } from '../../lib/supabase';
+  import { getSupabase, accountUrl, fetchRole } from '../../lib/supabase';
 
   const supabase = getSupabase();
   const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
@@ -119,6 +125,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     show('auth-session');
     el('session-email').textContent = session.user.email ?? session.user.id;
     el('session-provider').textContent = `vía ${session.user.app_metadata?.provider ?? 'email'}`;
+
+    fetchRole().then((role) => {
+      if (role === 'admin') el('admin-box').classList.remove('hidden');
+    });
 
     const [favs, reads] = await Promise.all([
       supabase.from('user_favorites').select('kind, ref, created_at').order('created_at', { ascending: false }),

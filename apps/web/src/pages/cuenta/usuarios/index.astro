@@ -1,0 +1,156 @@
+---
+/**
+ * Gestión de usuarios y roles.
+ *
+ * Pantalla de administración: lista las cuentas registradas y permite
+ * dar o quitar el rol de administrador, que es lo que abre la consola de
+ * triaje.
+ *
+ * El gate visual de aquí es solo comodidad: la barrera real es la RLS de
+ * `user_profiles` (SELECT ve tu fila o todas si eres admin; UPDATE exige
+ * ser admin). Alguien sin rol que abriera esta página solo vería su
+ * propia fila y cualquier cambio le sería rechazado por Postgres.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Usuarios"
+  description="Gestión de cuentas y roles de Tecnoboletín."
+  activeNav="cuenta"
+  crumbs={['cuenta', 'usuarios']}
+>
+  <div class="max-w-3xl mx-auto">
+    <h1 class="font-display text-3xl font-bold text-text mb-2">Usuarios</h1>
+    <p class="text-muted mb-8">
+      Quién tiene cuenta y quién puede administrar. El rol de administrador da acceso
+      a la consola de triaje.
+    </p>
+
+    <div id="u-loading" class="mono-meta">comprobando permisos…</div>
+
+    <div id="u-denied" class="hidden card p-5">
+      <p class="text-body mb-3" id="u-denied-msg"></p>
+      <a href="../" class="pill pill--solid">Ir a tu cuenta</a>
+    </div>
+
+    <div id="u-panel" class="hidden">
+      <p id="u-msg" class="hidden text-sm mb-4"></p>
+      <ul id="u-list" class="flex flex-col gap-2"></ul>
+      <p class="mono-meta mt-6">
+        Las altas son automáticas al iniciar sesión por primera vez. No se puede quitar
+        el rol al último administrador.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { getSupabase, fetchRole } from '../../../lib/supabase';
+
+  const supabase = getSupabase();
+
+  const el = (id: string) => document.getElementById(id)!;
+  const show = (id: string) => el(id).classList.remove('hidden');
+  const hide = (id: string) => el(id).classList.add('hidden');
+
+  interface Profile {
+    id: string;
+    email: string | null;
+    role: 'user' | 'admin';
+    created_at: string;
+  }
+
+  let myId: string | null = null;
+
+  function setMsg(text: string, isError = false) {
+    const msg = el('u-msg');
+    msg.textContent = text;
+    msg.classList.remove('hidden');
+    msg.classList.toggle('text-alert', isError);
+    msg.classList.toggle('text-go', !isError);
+  }
+
+  function escapeHtml(s: string): string {
+    return s.replace(/[&<>"']/g, (c) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!
+    );
+  }
+
+  function render(rows: Profile[]) {
+    el('u-list').innerHTML = rows
+      .map((p) => {
+        const admin = p.role === 'admin';
+        const yo = p.id === myId;
+        return `
+          <li class="card px-4 py-3 flex items-center gap-3 flex-wrap">
+            <span class="dot w-2 h-2 shrink-0" style="background: var(--color-${admin ? 'go' : 'border-strong'})"></span>
+            <span class="font-mono text-sm text-text truncate">${escapeHtml(p.email ?? p.id)}</span>
+            ${yo ? '<span class="badge badge--ghost">tú</span>' : ''}
+            <span class="badge ${admin ? 'badge--pick' : 'badge--ghost'}">${admin ? 'administrador' : 'usuario'}</span>
+            <span class="mono-meta ml-auto">${escapeHtml(p.created_at.slice(0, 10))}</span>
+            <button
+              type="button"
+              class="pill pill--ghost u-toggle"
+              data-id="${escapeHtml(p.id)}"
+              data-role="${p.role}"
+            >${admin ? 'Quitar admin' : 'Hacer admin'}</button>
+          </li>`;
+      })
+      .join('');
+
+    document.querySelectorAll<HTMLButtonElement>('.u-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => toggle(btn));
+    });
+  }
+
+  async function load() {
+    const { data, error } = await supabase
+      .from('user_profiles')
+      .select('id, email, role, created_at')
+      .order('created_at');
+    if (error) {
+      setMsg(`No se pudo cargar la lista: ${error.message}`, true);
+      return;
+    }
+    render((data ?? []) as Profile[]);
+  }
+
+  async function toggle(btn: HTMLButtonElement) {
+    const id = btn.dataset.id!;
+    const next = btn.dataset.role === 'admin' ? 'user' : 'admin';
+    btn.disabled = true;
+    const { error } = await supabase.from('user_profiles').update({ role: next }).eq('id', id);
+    btn.disabled = false;
+    if (error) {
+      // El guard de Postgres impide quedarse sin administradores; su
+      // mensaje es mas util que un "error 400" generico.
+      setMsg(
+        error.message.includes('ultimo administrador')
+          ? 'No se puede quitar el rol al último administrador.'
+          : `No se pudo cambiar el rol: ${error.message}`,
+        true
+      );
+      return;
+    }
+    setMsg(next === 'admin' ? 'Rol de administrador concedido.' : 'Rol de administrador retirado.');
+    await load();
+  }
+
+  (async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    myId = session?.user.id ?? null;
+    const role = await fetchRole();
+
+    hide('u-loading');
+    if (role !== 'admin') {
+      el('u-denied-msg').textContent = session
+        ? 'Esta pantalla es solo para administradores. Tu cuenta no tiene ese rol.'
+        : 'Esta pantalla es solo para administradores. Inicia sesión para continuar.';
+      show('u-denied');
+      return;
+    }
+    show('u-panel');
+    await load();
+  })();
+</script>
