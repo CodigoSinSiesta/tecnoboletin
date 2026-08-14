@@ -1,0 +1,49 @@
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-xai-org-x-algorithm", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-xai-org-x-algorithm", "dst": "tema:xai-org-x-algorithm", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:xai-org/x-algorithm", "dst": "concept:feed-ranking", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:xai-org/x-algorithm", "dst": "concept:visibility-filtering", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:xai-org/x-algorithm", "dst": "company:xai", "rel": "relevant_to", "added": "2026-08-14", "primera_mencion": null}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-deepseek-ai-deepseek-harness", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-deepseek-ai-deepseek-harness", "dst": "tema:deepseek-ai-deepseek-harness", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "concept:vendor-owned-harness", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "repo:cordiverse/cordis", "rel": "uses", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "repo:cursor/plugins", "rel": "competes_with", "added": "2026-08-14", "primera_mencion": "2026-08-13"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-compozy-compozy", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-compozy-compozy", "dst": "tema:compozy-compozy", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:compozy/compozy", "dst": "concept:agent-os", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:compozy/compozy", "dst": "concept:hermes-agent", "rel": "relevant_to", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:compozy/compozy", "dst": "repo:omnigent-ai/omnigent", "rel": "competes_with", "added": "2026-08-14", "primera_mencion": "2026-08-13"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-alibaba-skill-up", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-alibaba-skill-up", "dst": "tema:alibaba-skill-up", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:alibaba/skill-up", "dst": "concept:agent-skills-evaluation", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:alibaba/skill-up", "dst": "concept:eval-driven-development", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:alibaba/skill-up", "dst": "repo:kepano/obsidian-skills", "rel": "relevant_to", "added": "2026-08-14", "primera_mencion": null}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-devin-axis-ipollowork", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-devin-axis-ipollowork", "dst": "tema:devin-axis-ipollowork", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:Devin-AXIS/iPolloWork", "dst": "concept:ai-workbench", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:Devin-AXIS/iPolloWork", "dst": "repo:deepseek-ai/deepseek-harness", "rel": "relevant_to", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:Devin-AXIS/iPolloWork", "dst": "repo:anthropics/claude-code", "rel": "competes_with", "added": "2026-08-14", "primera_mencion": "2026-07-28"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-keygraphhq-shannon", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-keygraphhq-shannon", "dst": "tema:keygraphhq-shannon", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:KeygraphHQ/shannon", "dst": "concept:ai-pentesting", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:KeygraphHQ/shannon", "dst": "company:keygraph", "rel": "relevant_to", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:KeygraphHQ/shannon", "dst": "concept:human-pentest", "rel": "competes_with", "added": "2026-08-14", "primera_mencion": null}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-apify-apify-mcp-server", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-apify-apify-mcp-server", "dst": "tema:apify-apify-mcp-server", "rel": "trata", "added": "2026-08-14"}
+{"src": "repo:apify/apify-mcp-server", "dst": "concept:mcp-server", "rel": "implements", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:apify/apify-mcp-server", "dst": "concept:agentic-payments", "rel": "relevant_to", "added": "2026-08-14", "primera_mencion": null}
+{"src": "repo:apify/apify-mcp-server", "dst": "concept:browser-use", "rel": "competes_with", "added": "2026-08-14", "primera_mencion": null}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-kepano-obsidian-skills", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-kepano-obsidian-skills", "dst": "tema:kepano-obsidian-skills", "rel": "trata", "added": "2026-08-14"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-superradcompany-microsandbox", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-superradcompany-microsandbox", "dst": "tema:superradcompany-microsandbox", "rel": "trata", "added": "2026-08-14"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-nvidia-nemo-automodel", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-nvidia-nemo-automodel", "dst": "tema:nvidia-nemo-automodel", "rel": "trata", "added": "2026-08-14"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-cordiverse-cordis", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-cordiverse-cordis", "dst": "tema:cordiverse-cordis", "rel": "trata", "added": "2026-08-14"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-whiteguo233-openbiliclaw", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-whiteguo233-openbiliclaw", "dst": "tema:whiteguo233-openbiliclaw", "rel": "trata", "added": "2026-08-14"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-altic-dev-fluidvoice", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-altic-dev-fluidvoice", "dst": "tema:altic-dev-fluidvoice", "rel": "trata", "added": "2026-08-14"}
+{"src": "boletin:2026-08-14", "dst": "item:https-github-com-geekjourneyx-md2wechat-skill", "rel": "menciona", "added": "2026-08-14"}
+{"src": "item:https-github-com-geekjourneyx-md2wechat-skill", "dst": "tema:geekjourneyx-md2wechat-skill", "rel": "trata", "added": "2026-08-14"}

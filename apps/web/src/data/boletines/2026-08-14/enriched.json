@@ -1,0 +1,492 @@
+{
+  "version": 2,
+  "date": "2026-08-14",
+  "boletin_origen": "2026-08-14-trending.md",
+  "resumen_ejecutivo": "- **`xai-org/x-algorithm` publica su release \"august 13th 2026\" con visibility filtering, SimClusters, código de entrenamiento de Phoenix y un transparency tool \"Under the Hood\"**: Apache-2.0, Rust, 28.096★, 4.777 forks en 7 meses. Es la primera vez que el algoritmo del feed \"For You\" de X abre sistemas completos de filtrado + datos sintéticos para entrenar el modelo. El ángulo editorial: el código que decide qué ves en tu timeline ahora es legible, auditable y reproducible — un punto de inflexión para entender el problema de \"filter bubbles\" desde el código, no desde el ensayo.\n- **`deepseek-ai/deepseek-harness` debuta como el primer harness oficial de un frontier model lab \"Everything is a Plugin\"**: MIT, TypeScript, 76.047★ en 24h, repo creado 2026-08-13, default branch `master`. Basado en [cordiverse/cordis](https://github.com/cordiverse/cordis), instalable con `npx @deepseek-ai/dsh web`. README declara \"developer preview — habrá cambios breaking de compatibilidad\". Editorial: la nueva frontera son los vendor-owned harnesses con su propia surface de plugins — DeepSeek planta bandera con la etiqueta `dsh-plugin` (topic oficial) y un Discord propio.\n- **`compozy/compozy` v0.3 beta lanza \"CompozyOS — the system around the agent\" con Hermes como first-class citizen**: MIT, Go, 2.558★, 146 forks. Compatible vía ACP con Claude Code, OpenClaw y **Hermes**. Sessions persistentes que sobreviven al terminal, cron + webhooks + triggers, approvals, memoria y supervisión — todo en un binario Go con SQLite local-first. Compite directamente con Omnigent en el cuadrante \"OS for agents\" pero con ADN Hermes desde el día uno.\n- **`alibaba/skill-up` oficializa el primer framework de evaluación + evolución para Agent Skills**: Apache-2.0, Go, 537★, soporta Qoder CLI, Claude Code y Codex como engines built-in. El loop clave: `skill-upper` lee los fallos, repara/expande la suite de evals y vuelve a ejecutar hasta converger. Compatible con `evals.json` de Anthropic, output en `grading.json`/`benchmark.json`/JUnit XML/HTML. Editorial: el patrón \"eval-driven skill development\" se consolida como disciplina.\n- **`Devin-AXIS/iPolloWork` aterriza como \"open alternative a Codex + Claude Code\" con colaboración DSH como subagent**: source-available (license NOASSERTION — verificar LICENSE real antes de producción), 3.788★, 488 forks, desktop multiplataforma (macOS/Win/Linux). El pitch: ejecutar un goal, mantener los resultados editables (documentos, webs, presentaciones, video, diseño) y delegar bounded work a DeepSeek Harness mientras ambos lados conservan sus Skills.\n- **`KeygraphHQ/shannon` 2.0 oficial: el pentester AI comercial-grade también es OSS**: AGPL-3.0, TypeScript, 46.803★, 5.404 forks, año de desarrollo. Combina análisis estático de código + ejecución real de exploits vía browser automation y solo reporta vulnerabilidades con PoC funcional. Soporta Anthropic, OpenAI, xAI y AWS Bedrock. Editorial: el primer pentester AI serio que auditas tú mismo — y la adopción de AGPL-3.0 es una declaración: no apto para SaaS propietarios sin abrir tu propio código.\n- **`apify/apify-mcp-server` consolida MCP como protocolo de pagos agenticos**: MIT, TypeScript, 3.582★. El release añade soporte para `agentic payments` mediante AGI tokens (recomendado), direct x402 (Pay Per Event Actors) y Skyfire. Conecta cualquier cliente MCP (Claude Code, Claude.ai, Cursor, VS Code) con miles de Actors de Apify Store para extracción web/social/maps/e-commerce. Editorial: MCP deja de ser solo \"tool-use protocol\" y se convierte en \"tool-use + money\" — la combinación que faltaba para agents con autonomía económica.\n- **Cierre**: Fuentes consultadas: Trendshift daily, GitHub Trending daily (main + typescript + python + rust + go slices), GitHub REST API para verificación de los 17 candidatos. Blogwatcher 08:00 no publicó archivo `*-blogs.md` (último disponible: 2026-07-05), así que este boletín no duplica contenido previo.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "xai-org/x-algorithm",
+      "url": "https://github.com/xai-org/x-algorithm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, Rust, 28.096★, 4.777 forks, 7 meses, 37 issues abiertos. Implementación completa del feed \"For You\" de X: dos pipelines (Post Pipeline para retrieve+rank+filter y Blending Pipeline que añade ads/recommendations/prompts) con componentes como `home-mixer/`, `thunder/` (in-network retrieval), `phoenix/` (modelo transformer de scoring + retrieval out-of-network), `simclusters/` (cluster similarity), `visibility-filtering/`, sistemas de labeling (`botmaker/`, `scarecrow/`, `agatha/`, `bdsm/`, `user-cred-v2/`), `media-model-proxy/`, `clip/` y `abuse-enforcement-service/`.",
+        "por_que_importa": "El release del **13 de agosto de 2026** marca un antes y un después: (1) abre los pesos con los que se combinan predicciones en un único score, así puedes auditar por qué un post gana o pierde visibilidad; (2) publica el código de visibilidad (no solo el ranking), es decir, qué decide que un post se muestre o se oculte; (3) sustituye el \"Phoenix demo\" por el código de entrenamiento real más un generador de datos sintéticos para correr un POC local sin depender de datos de producción de X; (4) lanza \"Under the Hood\", una transparency tool que agrega estadísticas de los labels que limitan la visibilidad. Para CSS: la conversación sobre filter bubbles y engagement bait deja de ser ensayo y pasa a ser ingeniería reproducible — ya puedes ejecutar el algoritmo, entrenarlo con tus propios datos y verificar qué peso tiene cada señal.",
+        "madurez_senales": "**28.096★** · 4.777 forks · Rust · creado 2026-01-19 · último push 2026-08-13 17:23 UTC · licencia **Apache-2.0**. Repo original (fork=False, parent=None). Default branch: main. 37 issues abiertos. Sin topics oficiales en la API. Sin homepage. README detalla request path, labeling path, scoring weights y los sistemas excluidos (auth, ads billing, content moderation backoffice). Sustituye \"Phoenix demo\" por código de entrenamiento real + dataset sintético.",
+        "accion_sugerida": "**leer** (entender el request path completo y la separación ranking-vs-filter es material de referencia para cualquier sistema de recomendación serio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:xai-org/x-algorithm",
+          "rel": "implements",
+          "dst": "concept:feed-ranking",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xai-org/x-algorithm",
+          "rel": "implements",
+          "dst": "concept:visibility-filtering",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xai-org/x-algorithm",
+          "rel": "relevant_to",
+          "dst": "company:xai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xai-org-x-algorithm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, TypeScript, **76.047★ en menos de 24h**, 6.550 forks, repo **creado 2026-08-13**. Agent harness oficial de DeepSeek con arquitectura \"todo es un plugin\", powered by [cordiverse/cordis](https://github.com/cordiverse/cordis) y descrito en el paper \"A Programming Paradigm for Spatiotemporal Composability\". Instalación inmediata con `npx @deepseek-ai/dsh web` (puerto 3080).",
+        "por_que_importa": "Es la primera vez que un frontier model lab publica su propio agent harness oficial en GitHub como repo público, y el ritmo de adopción (76k estrellas en menos de 24h, creado 2026-08-13 11:56 UTC) lo confirma como señal de mercado, no como curiosidad. La estrategia \"Everything is a Plugin\" rivaliza directamente con el marketplace de plugins de Cursor — que ya cubrimos el 2026-08-13 como competidor en el grafo — y con el formato plugin de Hermes; DeepSeek reserva `dsh-plugin` como topic oficial y abre Discord propio. Caveat editorial: el README declara \"THERE WILL BE COMPATIBILITY-BREAKING CHANGES\" porque está en developer preview, así que no es integrable todavía. La señal geopolítica importa: el ecosistema de agent harnesses ya tiene vendor oficial chino con surface de plugins propia, lo que cierra una asimetría que antes favorecía solo a vendors occidentales.",
+        "madurez_senales": "**76.047★** · 6.550 forks · TypeScript · **creado 2026-08-13 11:56 UTC** · último push 2026-08-13 13:00 UTC · licencia **MIT**. Repo original. Default branch: **master** (no main). 0 issues abiertos (release muy reciente). Homepage: https://deepseek.com/harness. Topics oficiales: `cordis`, `dsh`, `dsh-plugin`. README incluye docs/user/guide/, docs/development.md, docs/architecture.md, AGENTS.md para integrar agentes externos.",
+        "accion_sugerida": "**vigilar** (developer preview con breaking changes inminentes; instalar solo para evaluar la superficie de plugins, no para producción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "implements",
+          "dst": "concept:vendor-owned-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "uses",
+          "dst": "repo:cordiverse/cordis",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "competes_with",
+          "dst": "repo:cursor/plugins",
+          "primera_mencion": "2026-08-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-ai-deepseek-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "compozy/compozy",
+      "url": "https://github.com/compozy/compozy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, Go, 2.558★, 146 forks, 5 meses. Sistema operativo para AI agents: sessions, agents, loops, cron, webhooks, triggers, approvals, permissions, observability y memoria, todo empaquetado en un binario Go con SQLite local-first. Compatible vía ACP con Claude Code, **OpenClaw** y **Hermes** como engines built-in.",
+        "por_que_importa": "La batalla por el \"OS layer\" de los agents se está jugando entre Omnigent (cross-harness, que ya cubrimos el 2026-08-13 como competidor en el grafo) y Compozy, que se posiciona como system around the agent en vez de cross-harness. Lo relevante para CSS: Compozy tiene ADN Hermes-compatible desde el v0.3 beta vía ACP — si ya tienes Hermes corriendo, puedes delegar trabajo al daemon de Compozy sin migrar de runtime. Tres detalles de diseño que importan al operarlo: (1) Sessions y Loop runs pertenecen al daemon, así que sobreviven al cierre del terminal; (2) Compozy Network (`compozy-network/v0`) descubre peers e intercambia mensajes tipados con receipts; (3) el Gateway empareja devices con superficies públicas/privadas declaradas de forma explícita, lo que evita exponer endpoints por accidente. Caveat de madurez: v0.3 está en beta y v0.2.15 ya está marcado como deprecated y migrado a `legacy/v0.2`, así que cualquier integración debe apuntar a v0.3 desde el inicio.",
+        "madurez_senales": "**2.558★** · 146 forks · Go · creado 2026-03-28 · último push 2026-08-14 03:24 UTC · licencia **MIT**. Repo original. Default branch: main. 22 issues abiertos. Homepage: https://compozy.com. Sin topics oficiales. v0.3 en beta; v0.2.15 deprecated y migrado a `legacy/v0.2`. Installer verificado con Sigstore provenance, fórmula Homebrew reservada para v0.3.0 stable. CI badge verde, go report card badge, Go Reference badge (pkg.go.dev).",
+        "accion_sugerida": "**explorar** (clonar y probar `compozy` con un loop simple + Hermes como engine; documentar la experiencia en un post)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:compozy/compozy",
+          "rel": "implements",
+          "dst": "concept:agent-os",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:compozy/compozy",
+          "rel": "relevant_to",
+          "dst": "concept:hermes-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:compozy/compozy",
+          "rel": "competes_with",
+          "dst": "repo:omnigent-ai/omnigent",
+          "primera_mencion": "2026-08-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "compozy-compozy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "alibaba/skill-up",
+      "url": "https://github.com/alibaba/skill-up",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Apache-2.0, Go, 537★, 39 forks, 3 meses. CLI declarativo en YAML para evaluar Agent Skills contra múltiples engines (Qoder CLI, Claude Code, Codex, Qwen Code o custom engine vía transport local) con jueces `rule_based` / `script` / `agent_judge`. El componente **skill-upper** cierra el loop: lee los fallos, repara/expande los casos de eval y vuelve a iterar.",
+        "por_que_importa": "Cualquier persona que escribe Agent Skills conoce el ciclo roto: \"lo probé a mano, parece que funciona, lo subo, alguien reporta que falla en otro modelo\". skill-up formaliza el loop correcto en CLI: declaras casos en YAML, corres la eval con y sin la Skill, el juez (`rule_based`, `script` o `agent_judge`) califica cada output, agregas resultados y vuelves a iterar. Es exactamente la guía oficial de agentskills.io (skill creation → evaluating skills) pero ejecutable y portable a engines como Qoder CLI, Claude Code, Codex, Qwen Code o uno custom vía transport local. La pieza que cierra el círculo es **skill-upper**: lee los fallos, repara o expande los casos de eval y vuelve a iterar, así no tienes que mantener los casos a mano. Compatible con `evals.json` de Anthropic (import con `skill-up import` o `--auto`); emite `grading.json`, `benchmark.json`, `benchmark.md`, `result.json`, JUnit XML y HTML reports. Para CSS: si vas en serio con Skills, ya no tienes excusa para no tener eval continua.",
+        "madurez_senales": "**537★** · 39 forks · Go · creado 2026-05-09 · último push 2026-08-14 06:10 UTC · licencia **Apache-2.0**. Repo original. Default branch: main. 19 issues abiertos. Homepage: https://alibaba.github.io/skill-up/. Topics: `agent-skills`, `ai`, `ai-agents`, `alibaba`, `skills`. CI verde, coverage badge, Go Report Card verde, Go >=1.25. README disponible en inglés y chino.",
+        "accion_sugerida": "**probar** (tomar una Skill propia, escribir 3 casos YAML, correr `skill-up`, iterar con skill-upper)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alibaba/skill-up",
+          "rel": "implements",
+          "dst": "concept:agent-skills-evaluation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:alibaba/skill-up",
+          "rel": "implements",
+          "dst": "concept:eval-driven-development",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:alibaba/skill-up",
+          "rel": "relevant_to",
+          "dst": "repo:kepano/obsidian-skills",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-skill-up",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Devin-AXIS/iPolloWork",
+      "url": "https://github.com/Devin-AXIS/iPolloWork",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "source-available (license NOASSERTION según API — verificar LICENSE real antes de producción), HTML, 3.788★, 788 forks, ~1 año. Workbench visual AI local-first: de un goal genera editable code, documents, presentations, websites, designs y videos. Desktop multiplataforma con instaladores para macOS (Apple Silicon + Intel), Windows (x64 + ARM64) y Linux (x64 + ARM64).",
+        "por_que_importa": "iPolloWork ataca un hueco que Codex y Claude Code no cubren: cuando el output es un deck, una web, un diseño o un video, no quieres un chat transcript ni un archivo terminado — quieres un workspace que puedas seguir editando. La pieza interesante es la integración con DeepSeek Harness (DSH) como subagent runtime: iPolloWork mantiene el workspace primario y delega bounded work a DSH cuando conviene, conservando cada uno sus propias Skills y plugins. Esto lo posiciona frente a Claude Code, que ya cubrimos el 2026-07-28 en el grafo como competidor; la diferencia práctica es el énfasis en artefactos editables (documents, presentations, websites, designs, videos) en vez de sesiones de chat. **Flag de licencia importante**: la API reporta NOASSERTION — antes de cualquier adopción seria, leer el LICENSE real del repo para verificar términos comerciales, porque source-available no es lo mismo que open source. Caveat de hype: los 7.9k followers en X global y 3.4k en X CN que destaca el README son métricas de comunidad, no de adopción técnica.",
+        "madurez_senales": "**3.788★** · 788 forks · HTML · creado 2025-08-25 · último push 2026-08-14 06:16 UTC · licencia **NOASSERTION** (source-available — verificar LICENSE file). Repo original. Default branch: main. 70 issues abiertos. Homepage: https://www.ipollo.ai. Topics oficiales: `agent-collaboration`, `agent-skills`, `ai-agents`, `ai-work`, `claude-code`, `codex`, `deepseek-harness`, `dsh-plugin`, `enterprise-agent-workspace`, `hermes-agent`. Trendshift badge visible (#22 TypeScript daily, #24 weekly).",
+        "accion_sugerida": "**vigilar** (interesante pero license NOASSERTION bloquea adopción seria; revisar LICENSE file y esperar release que incluya la integración DSH)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Devin-AXIS/iPolloWork",
+          "rel": "implements",
+          "dst": "concept:ai-workbench",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Devin-AXIS/iPolloWork",
+          "rel": "relevant_to",
+          "dst": "repo:deepseek-ai/deepseek-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Devin-AXIS/iPolloWork",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "devin-axis-ipollowork",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "KeygraphHQ/shannon",
+      "url": "https://github.com/KeygraphHQ/shannon",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AGPL-3.0, TypeScript, 46.803★, 5.404 forks, ~11 meses, 31 issues abiertos. Pentester AI autónomo que combina análisis estático de código fuente con browser automation + command-line execution para ejecutar exploits reales contra la aplicación y sus APIs. Solo reporta vulnerabilidades con PoC funcional. **Shannon 2.0 oficial** desde el 2026-08-14.",
+        "por_que_importa": "El pitch de Shannon es demoledor y resume el problema: \"gracias a Claude Code y Cursor, tu equipo shippea código sin parar. Pero tu pentest? Una vez al año\". Shannon automatiza ese gap combinando análisis estático del código fuente con browser automation y command-line execution para correr exploits reales contra la app y sus APIs, y solo reporta vulnerabilidades con PoC funcional — no findings especulativos. Soporta Anthropic, OpenAI, xAI y AWS Bedrock, así que no te ata a un vendor. La release de Shannon 2.0 (2026-08-14) viene acompañada de sample reports públicos que sirven de benchmark: OWASP Juice Shop (20+ vulns), c{api}tal API (15 críticas/altas) y OWASP crAPI (15+). Para CSS: la seguridad automatizada deja de ser \"enterprise tier\" y se vuelve developer-grade — puedes correrlo en CI contra cada build o release en vez de esperar al pentest anual. Caveat operativo: la licencia AGPL-3.0 obliga a abrir derivados en red; si lo embebes en un producto SaaS, evalúa implicaciones legales antes de adoptarlo.",
+        "madurez_senales": "**46.803★** · 5.404 forks · TypeScript · creado 2025-09-27 · último push 2026-08-14 00:15 UTC · licencia **AGPL-3.0**. Repo original. Default branch: main. 31 issues abiertos. Homepage: https://keygraph.io. Topics: `ai-penetration-testing`, `ai-security`, `api-security`, `appsec`, `ci-cd`, `cybersecurity`, `devsecops`, `ethical-hacking`, `offensive-security`, `owasp`. README incluye `llms.txt` y `llms-full.txt` (agent-friendly). **Flag AGPL-3.0**: copyleft fuerte — no recomendable para productos SaaS propietarios que integren Shannon sin abrir su propio código.",
+        "accion_sugerida": "**explorar** (correr Shannon contra una app intencionalmente vulnerable como Juice Shop; documentar el report para un post de seguridad AI)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:KeygraphHQ/shannon",
+          "rel": "implements",
+          "dst": "concept:ai-pentesting",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:KeygraphHQ/shannon",
+          "rel": "relevant_to",
+          "dst": "company:keygraph",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:KeygraphHQ/shannon",
+          "rel": "competes_with",
+          "dst": "concept:human-pentest",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "keygraphhq-shannon",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "apify/apify-mcp-server",
+      "url": "https://github.com/apify/apify-mcp-server",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "MIT, TypeScript, 3.582★, 222 forks, ~19 meses, 127 issues abiertos. MCP server oficial de Apify que expone los miles de Actors (scrapers, crawlers, automation tools) del Apify Store como tools para AI agents compatibles con Model Context Protocol (Claude Code, Claude.ai, Cursor, VS Code). Soporta **agentic payments** vía AGI tokens (recomendado), direct x402 (Pay Per Event Actors) o Skyfire.",
+        "por_que_importa": "MCP nació como \"tool-use protocol\", pero Apify lo está empujando a ser \"tool-use + money\" — la combinación que faltaba para que los agents tengan autonomía económica real. Desde el cliente MCP, los agents pueden comprar tokens AGI (recomendado), ejecutar Actors pagos bajo x402 (el HTTP 402 \"Payment Required\" que faltaba en el stack) o pagar vía Skyfire, todo sin intermediarios humanos. Esto convierte flujos \"agent + scraping\" en verdaderamente end-to-end: el agent descubre un Actor, lo paga, lo ejecuta y consume el resultado en la misma conversación. Detalle operativo relevante: el endpoint legacy SSE (`https://mcp.apify.com/sse`) ya está retirado y migrado a Streamable HTTP en `https://mcp.apify.com`, así que cualquier integración anterior hay que actualizarla. Para CSS: cuando un agent puede comprar su propio compute y data por sí solo, el diseño de productos agentic cambia — \"tool calling\" sino \"economic actor\"",
+        "madurez_senales": "**3.582★** · 222 forks · TypeScript · creado 2025-01-02 · último push 2026-08-13 11:35 UTC · licencia **MIT**. Repo original. Default branch: master. 127 issues abiertos. Homepage: https://mcp.apify.com. Topics: `agents`, `ai`, `mcp`, `mcp-server`. CI verde, npm latest, npm downloads, Smithery badge. README 31KB con sección completa de agentic payments.",
+        "accion_sugerida": "**leer** (la sección de agentic payments es la mejor referencia disponible sobre x402 + AP2 + cómo diseñar pagos agenticos end-to-end)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:apify/apify-mcp-server",
+          "rel": "implements",
+          "dst": "concept:mcp-server",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:apify/apify-mcp-server",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-payments",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:apify/apify-mcp-server",
+          "rel": "competes_with",
+          "dst": "concept:browser-use",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apify-apify-mcp-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "kepano/obsidian-skills",
+      "url": "https://github.com/kepano/obsidian-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Steph Ango (kepano, Obsidian founder) publica skills oficiales para Obsidian compatibles con la spec agentskills.io: `obsidian-markdown`, `obsidian-bases`, `json-canvas`, `obsidian-cli` y `defuddle`. Marketplace install con `/plugin marketplace add kepano/obsidian-skills`.",
+        "por_que_importa": "",
+        "madurez_senales": "46.022★, 3.305 forks, push 2026-06-08, MIT",
+        "accion_sugerida": "leer — son skills de un first-party (el fundador de Obsidian) y marcan el estándar de calidad para skills de vault",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kepano-obsidian-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "superradcompany/microsandbox",
+      "url": "https://github.com/superradcompany/microsandbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "microVM runtime local-first para untrusted workloads: AI agents, user code, plugins, CI jobs y scrapers. Hardware isolation, boot <100ms, OCI-compatible (corre imágenes Docker/GHCR), SDKs para Rust/Python/TypeScript/Go, secrets que nunca entran al VM. Trae Agent Skills + MCP server propios para que los agents se auto-gestionen sandboxes.",
+        "por_que_importa": "",
+        "madurez_senales": "7.459★, 396 forks, push 2026-08-14, Apache-2.0, Rust",
+        "accion_sugerida": "vigilar — pieza clave si Compozy/Omnigent/DSH necesitan sandboxing serio y portable",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superradcompany-microsandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "NVIDIA-NeMo/Automodel",
+      "url": "https://github.com/NVIDIA-NeMo/Automodel",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "PyTorch Distributed native training library para LLMs/VLMs con soporte OOTB para Hugging Face. Topics notables: `agent`, `deepseek-v4`, `kimi-k2`, `gemma4` y `llama`. Homepage: docs.nvidia.com.",
+        "por_que_importa": "",
+        "madurez_senales": "827★, 254 forks, push 2026-08-14, Apache-2.0, Python",
+        "accion_sugerida": "vigilar — si NVIDIA NeMo decide abrazar el fine-tuning de modelos agentic de frontera, este repo se vuelve canónico",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-nemo-automodel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "cordiverse/cordis",
+      "url": "https://github.com/cordiverse/cordis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Meta-Framework de Spatiotemporal Composability, base sobre la que está construido deepseek-ai/deepseek-harness. Creado en 2022, 4 años de desarrollo. El paper técnico está en `cordiverse/paper`.",
+        "por_que_importa": "",
+        "madurez_senales": "2.693★, 133 forks, push 2026-08-13, MIT, TypeScript",
+        "accion_sugerida": "leer — si vas a escribir plugins para DSH, primero entiende el cordis layer que hay debajo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cordiverse-cordis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "whiteguo233/OpenBiliClaw",
+      "url": "https://github.com/whiteguo233/OpenBiliClaw",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Local-first open-source AI content discovery agent cross-platform (Bilibili, Xiaohongshu, Douyin, YouTube, X, Zhihu, Reddit y Weibo). Topics: `ai-agent`, `bilibili`, `chrome-extension`, `content-discovery`, `deepseek-harness` y `dsh-plugin`.",
+        "por_que_importa": "",
+        "madurez_senales": "2.193★, 114 forks, push 2026-08-14, MIT, Python",
+        "accion_sugerida": "vigilar — ejemplo concreto de un DSH-plugin de content discovery bien hecho",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "whiteguo233-openbiliclaw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "altic-dev/FluidVoice",
+      "url": "https://github.com/altic-dev/FluidVoice",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "macOS Dictation app on-device STT con modelo de AI enhancement entrenado custom. Alternativa local a Wispr Flow. Topics: `ai`, `dictation`, `ios`, `llama-cpp`, `macos` y `swift`. **Flag**: GPL-3.0 copyleft fuerte.",
+        "por_que_importa": "",
+        "madurez_senales": "9.976★, 668 forks, push 2026-08-13, GPL-3.0, Swift",
+        "accion_sugerida": "vigilar — relevante solo si trabajas en apps desktop con dictado AI",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "altic-dev-fluidvoice",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "geekjourneyx/md2wechat-skill",
+      "url": "https://github.com/geekjourneyx/md2wechat-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Markdown → WeChat CLI con 40+ estilos, AI image generation, batch publishing y multi-account. **Flag**: license NOASSERTION — antes de adopción, leer el LICENSE file real.",
+        "por_que_importa": "",
+        "madurez_senales": "3.518★, 402 forks, push 2026-08-07, **NOASSERTION**, Go",
+        "accion_sugerida": "ignorar — para producción (license ambigua + ecosistema chino no prioritario), **vigilar** si tienes audiencia WeChat",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "geekjourneyx-md2wechat-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-08-14",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy dibuja un mapa del 'agent stack' en su momento de mayor fragmentación y, a la vez, de mayor consolidación por capas. Cinco movimientos conviven: (a) el feed algorítmico de X deja de ser caja negra y se vuelve código auditable y reproducible; (b) DeepSeek entra como primer frontier-lab con harness oficial público bajo 'Everything is a Plugin', rivalizando el marketplace de Cursor que vimos ayer; (c) Compozy se posiciona como OS layer alrededor del agent con ADN Hermes-compatible vía ACP desde v0.3; (d) skill-up de Alibaba formaliza el loop de eval-driven development que la guía de agentskills.io describe pero nunca ejecuta; (e) Apify MCP eleva el protocolo a 'tool-use + money' integrando pagos agentic sin intermediarios. El hilo conductor es que cada hallazgo empuja la frontera una capa más abajo: del modelo al harness, del harness al OS, del skill al eval loop, del MCP al pago, del pentest al exploit reproducible. La conversación 'agéntica' deja de ser framework-versus-framework y se vuelve stack-versus-stack.",
+  "convergencia_stack_css": "Tres hallazgos de hoy aterrizan directamente sobre el stack local-first de CSS. (1) compozy/compozy declara compatibilidad explícita con Hermes vía ACP como engine built-in y propone un daemon que sobrevive al cierre del terminal con sessions, loop runs y memoria persistente — exactamente la dirección que estamos evaluando para el flujo Kanban entre los perfiles coder/planner/qa. (2) alibaba/skill-up implementa el loop eval-driven que el workflow CSS ya exige (revisión subagente, iteración, criterios verificables) pero como CLI portable y compatible con `evals.json` de Anthropic, lo que permite correr evals sobre las skills que publicamos en Obsidian sin reinventar el framework. (3) apify/apify-mcp-server abre el camino a scraping agentic end-to-end con pagos integrados, útil para la fase de investigación externa del workflow CSS donde ahora dependemos de web_search y web_extract manuales.",
+  "cruzado_grafo": "El grafo se refuerza en tres frentes sin nuevas menciones de hoy. Primero, dos relaciones `competes_with` apuntan al boletín de ayer: `deepseek-harness` rivaliza con `cursor/plugins` (primera mención 2026-08-13) bajo el formato 'Everything is a Plugin', y `compozy/compozy` rivaliza con `omnigent-ai/omnigent` (primera mención 2026-08-13) por la capa OS de los agents. Segundo, `iPolloWork` se conecta con `anthropics/claude-code` (primera mención 2026-07-28) como competidor con énfasis en artefactos editables (decks, webs, videos) frente a sesiones de chat, completando la línea 'AI workbench' que teníamos abierta. Tercero, ningún hallazgo de hoy introduce nodos completamente nuevos al grafo: `feed-ranking`, `visibility-filtering`, `agent-os`, `eval-driven-development`, `mcp-server`, `agentic-payments`, `ai-pentesting` y `agent-skills-evaluation` son conceptos nuevos pero sin primera_mencion previa, lo que indica que es la primera cobertura de CSS para cada uno. Las fechas de referencia previas son 2026-07-28 (claude-code) y 2026-08-13 (cursor/plugins y omnigent).",
+  "tendencias_5_boletines": "Con solo dos boletines previos en el contexto (2026-08-13 sobre fragmentación del agent stack con Omnigent/Centaur arriba y Cursor en el medio, y 2026-08-12 sobre capa intermedia entre LLM y código del usuario con BAML, Switchyard y Needle), el de hoy confirma y profundiza la tendencia de los últimos dos días: la conversación ya no es 'qué agente' sino 'qué capa del agente'. Ayer vimos la fragmentación arriba (cross-harness) y en el medio (Cursor marketplace); hoy vemos cómo debajo se llenan huecos — eval-driven skill authoring (skill-up), OS layer (Compozy), seguridad automatizada developer-grade (Shannon 2.0) y pagos agentic (Apify MCP). La línea 'capa intermedia' del 2026-08-12 se consolida como tendencia sostenida: en tres días seguidos, los hallazgos principales son piezas que se cuelan entre el modelo, el harness y el código del usuario, no agentes completos ni modelos nuevos. Falta contexto de 3 boletines más para hablar de tendencia de 5 días, pero la dirección es clara y la cobertura de CSS sobre 'capas del agent stack' está siendo consistente.",
+  "alertas": [
+    "iPolloWork reporta license NOASSERTION vía API de GraphQL: el dato por_que_importa del hallazgo lo flaggea explícitamente, hay que leer el LICENSE real antes de cualquier adopción en producción o recomendación seria.",
+    "deepseek-harness está en developer preview y el README declara 'THERE WILL BE COMPATIBILITY-BREAKING CHANGES': las 76k estrellas en 24h son señal de adopción ruidosa, no de madurez integrable; cualquier integración hoy se romperá.",
+    "x-algorithm de xAI publica código que decide qué ves en tu timeline, pero el release 'august 13th 2026' es de una sola fecha y no sabemos el cadence de updates: tratarlo como punto de inflexión editorial requiere cautela sobre si X mantiene la apertura o si es un release one-shot.",
+    "Shannon 2.0 es AGPL-3.0: cualquier fork o modificación para uso interno dispara obligaciones de la licencia, no es un drop-in para empresas que vendemos productos derivados",
+    "Apify MCP ya migró de SSE legacy a Streamable HTTP: integraciones escritas contra `https://mcp.apify.com/sse` están rotas en silencio y hay que migrarlas antes de cualquier demo."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Compozy declara compatibilidad explícita con Hermes vía ACP desde v0.3 beta: vale la pena clonar el repo bajo ~/proyectos/, levantar el daemon y probar si el flujo Kanban entre coder/planner/qa puede delegar trabajo a Compozy sin migrar runtime."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "skill-up implementa el loop eval-driven que el workflow CSS ya exige; conviene correrlo contra las skills que publicamos en Obsidian (kepano/obsidian-skills aparece como relevant_to) y ver si los casos de eval en YAML son viables para la fase de revisión subagente."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "deepseek-harness acumula tracción explosiva (76k★ en 24h) pero está en developer preview con breaking changes garantizados: hay que esperar al primer release etiquetado estable antes de recomendar nada, pero merece seguimiento semanal porque redefine la geopolítica del ecosystem de harnesses."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "iPolloWork ataca el hueco de 'artefactos editables' (decks, webs, videos) que el workflow CSS cubre con css-presentaciones y css-website-scaffolding: si la licencia real resulta OSS limpia y la integración con DSH madura, podría sustituir parte del flujo manual de producción de artefactos."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "x-algorithm abre el código que decide qué ves en tu timeline y lo combina con datos sintéticos entrenables: es material directo para un artículo CSS sobre filter bubbles desde la ingeniería reproducible, no desde el ensayo, alineado con el criterio 'conceptos antes que herramientas'."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
