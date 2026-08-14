@@ -108,7 +108,8 @@ const pendientes = {
       <p class="eyebrow justify-center mb-4">Consola de triaje</p>
       <p id="triaje-gate-msg" class="mono-meta">comprobando sesión…</p>
       <div id="triaje-gate-actions" class="hidden mt-5 flex gap-2 justify-center">
-        <a href={`${base}cuenta/`} class="pill pill--solid">Iniciar sesión</a>
+        <button type="button" id="triaje-gate-retry" class="hidden pill pill--solid">Reintentar</button>
+        <a href={`${base}cuenta/`} id="triaje-gate-login" class="pill pill--solid">Iniciar sesión</a>
         <a href={`${base}enriquecido/${date}/`} class="pill pill--ghost">Ir a la lectura</a>
       </div>
     </div>
@@ -354,14 +355,24 @@ const pendientes = {
     const gateEl = document.getElementById('triaje-gate');
     const msg = document.getElementById('triaje-gate-msg');
     const actions = document.getElementById('triaje-gate-actions');
+    const retry = document.getElementById('triaje-gate-retry');
+    const login = document.getElementById('triaje-gate-login');
     const root = document.getElementById('triaje-root');
     if (!gateEl || !root) return;
 
-    let role = null;
+    if (msg) msg.textContent = 'comprobando sesión…';
+    actions?.classList.add('hidden');
+    retry?.classList.add('hidden');
+
+    let role: string | null = null;
+    let checkFailed = false;
     try {
       role = await fetchRole();
     } catch {
-      // Sin red o Supabase caído: se trata como sin sesión.
+      // Fallo de red o de Supabase al comprobar el rol: no es lo mismo
+      // que "no hay sesión", así que no se manda a iniciar sesión de
+      // nuevo — se ofrece reintentar la misma comprobación.
+      checkFailed = true;
     }
 
     if (role === 'admin') {
@@ -371,13 +382,18 @@ const pendientes = {
     }
 
     if (msg) {
-      msg.textContent = role
-        ? 'El triaje está reservado a la cuenta de administración. Tu sesión no tiene ese rol.'
-        : 'El triaje está reservado a la cuenta de administración. Inicia sesión para continuar.';
+      msg.textContent = checkFailed
+        ? 'No se pudo comprobar tu sesión (puede ser un problema de red). Reintenta.'
+        : role
+          ? 'El triaje está reservado a la cuenta de administración. Tu sesión no tiene ese rol.'
+          : 'El triaje está reservado a la cuenta de administración. Inicia sesión para continuar.';
     }
+    login?.classList.toggle('hidden', checkFailed);
+    retry?.classList.toggle('hidden', !checkFailed);
     actions?.classList.remove('hidden');
   }
 
+  document.getElementById('triaje-gate-retry')?.addEventListener('click', gate);
   gate();
 </script>
 

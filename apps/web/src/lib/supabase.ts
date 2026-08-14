@@ -31,7 +31,25 @@ export function getSupabase(): SupabaseClient {
 export type Role = 'user' | 'admin';
 
 /**
- * Rol de la sesion actual, o null si no hay sesion.
+ * getSession() con recuperacion.
+ *
+ * Este es un sitio estatico, no una SPA: cada navegacion crea un cliente
+ * de Supabase nuevo. Si esa inicializacion aun no ha terminado de leer la
+ * sesion persistida, o el token de acceso caduco mientras la pestaña
+ * estaba en segundo plano (el refresco automatico no corre si el
+ * temporizador esta pausado), getSession() puede devolver null una vez
+ * aunque el refresh token siga siendo valido. Antes de darla por
+ * perdida, se fuerza un refresco explicito contra Supabase.
+ */
+async function getSessionResilient(supabase: SupabaseClient) {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (session) return session;
+  const { data } = await supabase.auth.refreshSession();
+  return data.session;
+}
+
+/**
+ * Rol de la sesion actual, o null si de verdad no hay sesion.
  *
  * El rol vive en la tabla `user_profiles`, no en `app_metadata`: en un
  * sitio estatico no hay backend con service_role, y app_metadata solo se
@@ -41,16 +59,22 @@ export type Role = 'user' | 'admin';
  *
  * Un usuario no puede autoascenderse: la politica de UPDATE exige
  * is_admin(auth.uid()), evaluada en Postgres.
+ *
+ * Los errores de red o del propio Supabase al leer el rol se propagan
+ * (no se devuelve null): quien llama debe distinguir "confirmado sin
+ * sesion" de "no se pudo comprobar", porque la primera manda a iniciar
+ * sesion y la segunda solo merece un reintento.
  */
 export async function fetchRole(): Promise<Role | null> {
   const supabase = getSupabase();
-  const { data: { session } } = await supabase.auth.getSession();
+  const session = await getSessionResilient(supabase);
   if (!session) return null;
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('user_profiles')
     .select('role')
     .eq('id', session.user.id)
     .maybeSingle();
+  if (error) throw error;
   return (data?.role as Role) ?? 'user';
 }
 
