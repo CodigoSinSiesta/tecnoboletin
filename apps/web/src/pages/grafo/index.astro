@@ -176,8 +176,18 @@ const legend = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
 
     loading.remove();
 
+    const SECCION_LABEL: Record<string, string> = {
+      hallazgo_principal: 'hallazgo principal',
+      radar_secundario: 'radar secundario',
+    };
+    const base2 = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
     function showPanel(n: any) {
       const rels = (linksByNode.get(n.id) ?? []).slice(0, 40);
+      const apariciones = (n.apariciones ?? []) as any[];
+      const menciones = (n.menciones ?? []) as string[];
+      const isRepo = n.type === 'repo' && /^[\w.-]+\/[\w.-]+$/.test(n.id.replace(/^repo:/, ''));
+      const repoSlug = isRepo ? n.id.replace(/^repo:/, '') : null;
       panel.innerHTML = `
         <div class="flex items-start justify-between gap-2 mb-1">
           <h2 class="font-display font-semibold text-text leading-tight">${escapeHtml(n.name)}</h2>
@@ -185,9 +195,38 @@ const legend = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
         </div>
         <div class="text-xs uppercase tracking-wide text-muted-dim mb-2">
           ${escapeHtml(n.type)}${n.synthetic ? ' · inferido' : ''}
+          ${n.stars != null ? ` · ★ ${n.stars}` : ''}${n.lang ? ` · ${escapeHtml(n.lang)}` : ''}
         </div>
-        ${n.description ? `<p class="text-muted text-sm mb-2">${escapeHtml(n.description)}</p>` : ''}
-        ${n.stars != null ? `<div class="text-xs text-muted-dim mb-2">★ ${n.stars}${n.lang ? ` · ${escapeHtml(n.lang)}` : ''}</div>` : ''}
+        ${repoSlug ? `<a href="https://github.com/${escapeHtml(repoSlug)}" target="_blank" rel="noopener" class="inline-block font-mono text-xs text-radar hover:underline mb-2">github.com/${escapeHtml(repoSlug)} ↗</a>` : ''}
+        ${n.resumen ? `<p class="text-muted text-sm mb-2 border-l-2 border-violet pl-2">${escapeHtml(n.resumen)}…</p>` : ''}
+        ${n.description && n.description !== n.resumen ? `<p class="text-muted-dim text-xs mb-2">${escapeHtml(n.description)}</p>` : ''}
+        ${
+          apariciones.length
+            ? `<div class="text-xs uppercase tracking-wide text-muted-dim mt-3 mb-1">Visto en boletines (${apariciones.length})</div>
+               <ul class="space-y-1 text-xs mb-1">
+                 ${apariciones
+                   .slice(0, 8)
+                   .map(
+                     (a) =>
+                       `<li><a href="${base2}enriquecido/${escapeHtml(a.date)}/" class="text-radar hover:underline">${escapeHtml(a.date)}</a> <span class="text-muted-dim">· ${escapeHtml(SECCION_LABEL[a.seccion] ?? a.seccion)}</span></li>`
+                   )
+                   .join('')}
+                 ${apariciones.length > 8 ? `<li class="text-muted-dim">+${apariciones.length - 8} más</li>` : ''}
+               </ul>`
+            : ''
+        }
+        ${
+          menciones.length
+            ? `<div class="text-xs uppercase tracking-wide text-muted-dim mt-2 mb-1">Mencionado en</div>
+               <div class="flex flex-wrap gap-1 mb-1">
+                 ${menciones
+                   .slice(0, 10)
+                   .map((d) => `<a href="${base2}enriquecido/${escapeHtml(d)}/" class="font-mono text-[0.65rem] px-1.5 py-0.5 rounded bg-surface-2 text-muted hover:text-radar">${escapeHtml(d)}</a>`)
+                   .join('')}
+                 ${menciones.length > 10 ? `<span class="text-muted-dim text-[0.65rem]">+${menciones.length - 10}</span>` : ''}
+               </div>`
+            : ''
+        }
         <div class="text-xs uppercase tracking-wide text-muted-dim mt-3 mb-1">Relaciones (${(linksByNode.get(n.id) ?? []).length})</div>
         <ul class="space-y-1 font-mono text-xs">
           ${rels
