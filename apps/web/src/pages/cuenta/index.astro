@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Tu cuenta"
+  description="Inicia sesión para guardar boletines favoritos y marcar los que ya has leído."
+>
+  <div class="max-w-xl mx-auto">
+    <h1 class="font-display text-3xl font-bold text-text mb-2">Tu cuenta</h1>
+    <p class="text-muted mb-8">
+      Guarda boletines favoritos y marca los que ya has leído. El contenido del sitio
+      sigue siendo público: la cuenta solo guarda tus cosas.
+    </p>
+
+    <!-- Estado: cargando -->
+    <div id="auth-loading" class="text-muted-dim font-mono text-sm">comprobando sesión…</div>
+
+    <!-- Estado: sin sesión -->
+    <div id="auth-login" class="hidden space-y-6">
+      <div class="grid gap-3">
+        <button
+          id="login-google"
+          class="w-full px-4 py-2.5 rounded-lg bg-surface-2 border border-border-strong text-text font-display font-medium hover:border-radar transition-colors"
+        >
+          Continuar con Google
+        </button>
+        <button
+          id="login-github"
+          class="w-full px-4 py-2.5 rounded-lg bg-surface-2 border border-border-strong text-text font-display font-medium hover:border-radar transition-colors"
+        >
+          Continuar con GitHub
+        </button>
+      </div>
+
+      <div class="flex items-center gap-3 text-muted-dim text-xs uppercase tracking-wide">
+        <span class="flex-1 border-t border-border"></span>
+        o con tu email
+        <span class="flex-1 border-t border-border"></span>
+      </div>
+
+      <form id="login-magic" class="flex gap-2">
+        <input
+          id="magic-email"
+          type="email"
+          required
+          placeholder="tu@email.com"
+          autocomplete="email"
+          class="flex-1 px-3 py-2.5 rounded-lg bg-surface border border-border text-text placeholder:text-muted-dim focus:outline-none focus:border-radar"
+        />
+        <button
+          type="submit"
+          class="px-4 py-2.5 rounded-lg bg-accent text-accent-ink font-display font-semibold hover:opacity-90 transition-opacity"
+        >
+          Enviar enlace
+        </button>
+      </form>
+      <p id="auth-msg" class="hidden text-sm"></p>
+    </div>
+
+    <!-- Estado: con sesión -->
+    <div id="auth-session" class="hidden space-y-8">
+      <div class="flex items-center justify-between gap-4 rounded-xl border border-border bg-surface px-4 py-3">
+        <div class="min-w-0">
+          <div class="text-text font-medium truncate" id="session-email"></div>
+          <div class="text-xs text-muted-dim" id="session-provider"></div>
+        </div>
+        <button id="logout" class="shrink-0 text-sm text-muted hover:text-alert transition-colors">
+          Cerrar sesión
+        </button>
+      </div>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">Boletines guardados</h2>
+        <ul id="favs-boletines" class="space-y-1.5 text-sm"></ul>
+        <p id="favs-boletines-empty" class="hidden text-muted-dim text-sm">
+          Aún no has guardado ningún boletín. Verás un botón «Guardar» en cada boletín enriquecido.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">Nodos del grafo guardados</h2>
+        <ul id="favs-nodos" class="space-y-1.5 text-sm font-mono"></ul>
+        <p id="favs-nodos-empty" class="hidden text-muted-dim text-sm">Ningún nodo guardado todavía.</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-xl font-semibold text-text mb-3">Leídos</h2>
+        <div id="reads" class="flex flex-wrap gap-1.5"></div>
+        <p id="reads-empty" class="hidden text-muted-dim text-sm">
+          Ningún boletín marcado como leído todavía.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { getSupabase, accountUrl } from '../../lib/supabase';
+
+  const supabase = getSupabase();
+  const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+  const el = (id: string) => document.getElementById(id)!;
+  const show = (id: string) => el(id).classList.remove('hidden');
+  const hide = (id: string) => el(id).classList.add('hidden');
+
+  function setMsg(text: string, isError = false) {
+    const msg = el('auth-msg');
+    msg.textContent = text;
+    msg.classList.remove('hidden');
+    msg.classList.toggle('text-alert', isError);
+    msg.classList.toggle('text-go', !isError);
+  }
+
+  async function renderSession(session: NonNullable<Awaited<ReturnType<typeof supabase.auth.getSession>>['data']['session']>) {
+    hide('auth-loading');
+    hide('auth-login');
+    show('auth-session');
+    el('session-email').textContent = session.user.email ?? session.user.id;
+    el('session-provider').textContent = `vía ${session.user.app_metadata?.provider ?? 'email'}`;
+
+    const [favs, reads] = await Promise.all([
+      supabase.from('user_favorites').select('kind, ref, created_at').order('created_at', { ascending: false }),
+      supabase.from('user_reads').select('boletin_date').order('boletin_date', { ascending: false }),
+    ]);
+
+    const bols = (favs.data ?? []).filter((f) => f.kind === 'boletin');
+    const nodos = (favs.data ?? []).filter((f) => f.kind === 'nodo');
+
+    const bolList = el('favs-boletines');
+    bolList.innerHTML = bols
+      .map(
+        (f) =>
+          `<li><a class="text-radar hover:underline" href="${base}enriquecido/${f.ref}/">${f.ref}</a></li>`
+      )
+      .join('');
+    bols.length ? hide('favs-boletines-empty') : show('favs-boletines-empty');
+
+    const nodoList = el('favs-nodos');
+    nodoList.innerHTML = nodos
+      .map((f) => `<li><a class="text-radar hover:underline" href="${base}grafo/indice/">${f.ref}</a></li>`)
+      .join('');
+    nodos.length ? hide('favs-nodos-empty') : show('favs-nodos-empty');
+
+    const readsBox = el('reads');
+    readsBox.innerHTML = (reads.data ?? [])
+      .map(
+        (r) =>
+          `<a class="font-mono text-xs px-2 py-1 rounded bg-surface-2 text-muted hover:text-radar" href="${base}enriquecido/${r.boletin_date}/">${r.boletin_date}</a>`
+      )
+      .join('');
+    (reads.data ?? []).length ? hide('reads-empty') : show('reads-empty');
+  }
+
+  function renderLogin() {
+    hide('auth-loading');
+    hide('auth-session');
+    show('auth-login');
+  }
+
+  el('login-google').addEventListener('click', async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: accountUrl() },
+    });
+    if (error) setMsg(`Google no está disponible: ${error.message}`, true);
+  });
+
+  el('login-github').addEventListener('click', async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: { redirectTo: accountUrl() },
+    });
+    if (error) setMsg(`GitHub no está disponible: ${error.message}`, true);
+  });
+
+  el('login-magic').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = (el('magic-email') as HTMLInputElement).value.trim();
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: accountUrl() },
+    });
+    if (error) {
+      setMsg(`No se pudo enviar el enlace: ${error.message}`, true);
+    } else {
+      setMsg('Enlace enviado: revisa tu correo y ábrelo desde este dispositivo.');
+    }
+  });
+
+  el('logout').addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    renderLogin();
+  });
+
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    session ? renderSession(session) : renderLogin();
+  });
+  supabase.auth.onAuthStateChange((_event, session) => {
+    session ? renderSession(session) : renderLogin();
+  });
+</script>

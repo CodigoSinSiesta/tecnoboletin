@@ -100,6 +100,16 @@ const accionBadgeClass: Record<string, string> = {
         <span class="badge badge--solid-radar">{radar.length} radar</span>
       </div>
     </div>
+    <div id="user-actions" class="hidden gap-2 mb-4" data-date={date}>
+      <button
+        id="btn-fav"
+        class="text-xs px-3 py-1.5 rounded-full border border-border-strong text-muted hover:text-accent transition-colors font-display"
+      >☆ Guardar</button>
+      <button
+        id="btn-read"
+        class="text-xs px-3 py-1.5 rounded-full border border-border-strong text-muted hover:text-go transition-colors font-display"
+      >✓ Marcar leído</button>
+    </div>
     {enriched?.resumen_ejecutivo && (
       <div class="prose-card text-muted" set:html={mdBlock(enriched.resumen_ejecutivo)} />
     )}
@@ -307,3 +317,66 @@ const accionBadgeClass: Record<string, string> = {
     {enriched?.boletin_origen && <span class="ml-3">&middot; Fuente: {enriched.boletin_origen}</span>}
   </footer>
 </BaseLayout>
+
+<script>
+  // Acciones de usuario (favorito / leido). Solo se muestran con sesion
+  // iniciada; sin sesion la pagina queda exactamente igual que antes.
+  import { getSupabase } from '../../lib/supabase';
+
+  const supabase = getSupabase();
+  const actions = document.getElementById('user-actions');
+  const btnFav = document.getElementById('btn-fav');
+  const btnRead = document.getElementById('btn-read');
+  const date = actions?.dataset.date ?? '';
+
+  let favId: boolean = false;
+  let isRead = false;
+
+  function paint() {
+    if (!btnFav || !btnRead) return;
+    btnFav.textContent = favId ? '★ Guardado' : '☆ Guardar';
+    btnFav.classList.toggle('text-accent', favId);
+    btnRead.textContent = isRead ? '✓ Leído' : '✓ Marcar leído';
+    btnRead.classList.toggle('text-go', isRead);
+  }
+
+  async function init() {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session || !actions) return;
+    actions.classList.remove('hidden');
+    actions.classList.add('flex');
+
+    const [fav, read] = await Promise.all([
+      supabase.from('user_favorites').select('id').eq('kind', 'boletin').eq('ref', date).maybeSingle(),
+      supabase.from('user_reads').select('boletin_date').eq('boletin_date', date).maybeSingle(),
+    ]);
+    favId = Boolean(fav.data);
+    isRead = Boolean(read.data);
+    paint();
+
+    btnFav?.addEventListener('click', async () => {
+      if (favId) {
+        await supabase.from('user_favorites').delete().eq('kind', 'boletin').eq('ref', date);
+        favId = false;
+      } else {
+        await supabase.from('user_favorites').insert({ kind: 'boletin', ref: date, user_id: session.user.id });
+        favId = true;
+      }
+      paint();
+    });
+
+    btnRead?.addEventListener('click', async () => {
+      if (isRead) {
+        await supabase.from('user_reads').delete().eq('boletin_date', date);
+        isRead = false;
+      } else {
+        await supabase.from('user_reads').insert({ boletin_date: date, user_id: session.user.id });
+        isRead = true;
+      }
+      paint();
+    });
+  }
+
+  init();
+</script>
+
