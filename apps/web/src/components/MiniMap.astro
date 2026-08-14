@@ -1,0 +1,52 @@
+---
+/**
+ * Mini-mapa del grafo: aristas en un <svg> a escala y nodos en HTML por
+ * encima, posicionados en porcentaje para que el conjunto escale con el
+ * contenedor sin recalcular nada en el cliente.
+ *
+ * El layout llega ya calculado desde `lib/graph.ts` (determinista en
+ * build): esto es solo el pintado.
+ */
+import type { MiniMap } from '../lib/graph';
+
+interface Props {
+  map: MiniMap;
+  /** Alto del lienzo en px. El ancho siempre es el del contenedor. */
+  height: number;
+  class?: string;
+  labelClass?: string;
+}
+
+const { map, height, class: klass, labelClass } = Astro.props;
+const pct = (v: number, total: number) => `${((v / total) * 100).toFixed(3)}%`;
+---
+<div class:list={['relative', klass]} style={`height:${height}px`}>
+  <svg
+    viewBox={`0 0 ${map.width} ${map.height}`}
+    preserveAspectRatio="none"
+    class="absolute inset-0 w-full h-full"
+    aria-hidden="true"
+  >
+    {map.edges.map((e) => (
+      <line
+        x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
+        stroke={e.weak ? '#1E293B' : '#334155'}
+        stroke-width="1"
+        stroke-dasharray={e.weak ? '3 3' : undefined}
+      />
+    ))}
+  </svg>
+  {map.nodes.map((n) => (
+    <div class="gnode" style={`left:${pct(n.x, map.width)}; top:${pct(n.y, map.height)}`}>
+      <span
+        class="gnode__ball"
+        style={`width:${n.r * 2}px; height:${n.r * 2}px; background:${n.color};${
+          n.hub ? ` box-shadow: 0 0 0 5px color-mix(in srgb, ${n.color} 16%, transparent);` : ''
+        }`}
+      ></span>
+      <span class:list={['gnode__label', n.hub && 'gnode__label--hub', !n.hub && labelClass]}>
+        {n.label}
+      </span>
+    </div>
+  ))}
+</div>

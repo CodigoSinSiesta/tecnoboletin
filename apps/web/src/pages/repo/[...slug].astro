@@ -1,0 +1,304 @@
+---
+/**
+ * Ficha de repositorio.
+ *
+ * Pantalla nueva: hasta ahora un repo solo existía como tarjeta dentro del
+ * boletín del día y como nodo suelto en el grafo, sin sitio donde ver las
+ * dos cosas juntas. Aquí se cruzan las tres fuentes: el item enriquecido
+ * (qué es, por qué importa, alerta, acción), las señales de madurez
+ * parseadas del texto libre, y el grafo (posición en el ecosistema e
+ * historial de apariciones).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { mdInline } from '../../lib/markdown';
+import {
+  accionDetail, accionEstado, fmtNum, itemTema, listDates, loadBoletin,
+  parseSenales, parseTopics, repoNodeId, repoSlug, type BoletinItem,
+} from '../../lib/boletin';
+import StateBadge from '../../components/StateBadge.astro';
+import GraphChips from '../../components/GraphChips.astro';
+import { getNode, layeredNeighbors, colorForType, REL_LABEL, TYPE_LABEL } from '../../lib/graph';
+
+export async function getStaticPaths() {
+  const dates = await listDates();
+  const porSlug = new Map<string, { date: string; idx: number; seccion: string }[]>();
+
+  for (const date of dates) {
+    const b = await loadBoletin(date);
+    for (const it of b.items) {
+      const slug = repoSlug(it);
+      if (!slug) continue;
+      if (!porSlug.has(slug)) porSlug.set(slug, []);
+      porSlug.get(slug)!.push({ date, idx: it.idx, seccion: it.seccion });
+    }
+  }
+
+  return [...porSlug.entries()].map(([slug, apariciones]) => ({
+    params: { slug },
+    // `dates` viene ordenado de más reciente a más antiguo, así que la
+    // primera aparición del array es la más reciente.
+    props: { apariciones },
+  }));
+}
+
+const { slug } = Astro.params;
+const { apariciones } = Astro.props as {
+  apariciones: { date: string; idx: number; seccion: string }[];
+};
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+const ultima = apariciones[0];
+const boletin = await loadBoletin(ultima.date);
+const item = boletin.items.find((it) => it.idx === ultima.idx) as BoletinItem;
+
+const estado = accionEstado(item.contenido?.accion_sugerida);
+const detalle = accionDetail(item.contenido?.accion_sugerida);
+const sen = parseSenales(item.contenido?.madurez_senales);
+const topics = parseTopics(item.contenido?.madurez_senales);
+const tema = itemTema(item);
+const esPick = boletin.pickIdx.has(item.idx);
+const orden = boletin.hallazgos.indexOf(item);
+
+const nodeId = repoNodeId(slug!);
+const node = getNode(nodeId);
+const capas = layeredNeighbors(nodeId, { max: 3, maxSecond: 1 });
+
+// La acción concreta que el editorial escribió para ESTE item.
+const accionEditorial = (boletin.editorial?.acciones_concretas ?? []).find((a) => a.item_idx === item.idx);
+// Alertas honestas del día que nombran este repo.
+const corto = slug!.split('/').pop()!;
+const alertas = (boletin.editorial?.alertas ?? []).filter(
+  (a) => a.toLowerCase().includes(slug!.toLowerCase()) || (corto.length > 4 && a.toLowerCase().includes(corto.toLowerCase()))
+);
+
+const implementa = capas.filter((c) => c.type === 'concept' && c.rel === 'implements');
+const cruces = capas.filter((c) => !implementa.includes(c));
+
+const stats: { label: string; value: string | null; tone?: 'warn' | 'text' }[] = [
+  { label: 'Estrellas', value: fmtNum(sen.stars) },
+  { label: 'Forks', value: fmtNum(sen.forks) },
+  { label: 'Lenguaje', value: sen.lang },
+  { label: 'Licencia', value: sen.license },
+  { label: 'Issues', value: fmtNum(sen.issues), tone: sen.issues != null && sen.issues > 300 ? 'warn' : 'text' },
+  { label: 'Estado', value: sen.estado, tone: sen.estado && sen.estado !== 'estable' && sen.estado !== 'stable' ? 'warn' : 'text' },
+];
+---
+<BaseLayout
+  title={slug!}
+  description={item.contenido?.que_es?.replace(/[*_`]/g, '').slice(0, 180)}
+  activeNav="archivo"
+  width="wide"
+  crumbs={[ultima.date, corto]}
+>
+  <article class="border border-border-strong rounded-2xl overflow-hidden bg-bg-raised">
+    <div class="brand-rule"></div>
+
+    <div class="h-12 px-6 flex items-center gap-3 border-b border-border">
+      <a href={`${base}enriquecido/${ultima.date}/`} class="mono-meta hover:text-text">← {ultima.date}</a>
+      <span class="ml-auto flex gap-2">
+        {node && (
+          <a href={`${base}grafo/indice/#${encodeURIComponent(nodeId)}`} class="pill pill--ghost">Ver en el grafo</a>
+        )}
+        {item.url && <a href={item.url} target="_blank" rel="noopener" class="pill pill--on">GitHub ↗</a>}
+      </span>
+    </div>
+
+    <!-- ── Identidad ── -->
+    <header class="px-6 md:px-8 pt-7 pb-5 border-b border-border">
+      <div class="flex items-center gap-2.5 mb-3 flex-wrap">
+        <StateBadge estado={estado} />
+        {esPick && <span class="badge badge--pick">pick editorial</span>}
+        {tema && <span class="badge badge--ghost font-mono">#{tema}</span>}
+        <span class="mono-meta">
+          {orden >= 0 ? `hallazgo ${String(orden + 1).padStart(2, '0')}` : 'radar'} · boletín {ultima.date}
+        </span>
+      </div>
+      <h1 class="font-mono text-[clamp(1.5rem,3vw,1.875rem)] font-semibold text-text tracking-[-0.01em] mb-2 break-all">{slug}</h1>
+      {item.contenido?.que_es && (
+        <p class="prose-card text-body text-[0.938rem] max-w-[760px]" set:html={mdInline(item.contenido.que_es)} />
+      )}
+    </header>
+
+    <!-- ── Señales de madurez ── -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border-b border-border">
+      {stats.map((s, i) => (
+        <div class:list={['px-4 py-3', i < stats.length - 1 && 'lg:border-r border-border']}>
+          <div class="flow-label mb-1">{s.label}</div>
+          <div class:list={['font-display text-[1.188rem] font-bold', s.value == null ? 'text-muted-dim' : s.tone === 'warn' ? 'text-warn' : 'text-text']}>
+            {s.value ?? '—'}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="grid lg:grid-cols-[1fr_336px] gap-6 px-6 md:px-8 py-7 items-start">
+      <div class="flex flex-col gap-6 min-w-0">
+        <!-- ── Diagrama: cómo funciona / cómo encaja ── -->
+        <section>
+          <p class="eyebrow mb-3.5">Cómo funciona</p>
+          <div class="card p-5 bg-surface-3">
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_18px_1.2fr_18px_1fr] gap-y-3 items-stretch">
+              <div class="flex flex-col gap-1.5">
+                <span class="flow-label mb-0.5">Implementa</span>
+                {implementa.length > 0 ? implementa.map((c) => (
+                  <span class="flow-box flow-box--dashed">{c.label}</span>
+                )) : (
+                  <span class="flow-box flow-box--dashed opacity-60">sin concepto declarado</span>
+                )}
+              </div>
+
+              <div class="flow-arrow" aria-hidden="true"><span class="md:hidden">↓</span><span class="hidden md:inline">→</span></div>
+
+              <div class="flex flex-col gap-1.5">
+                <span class="flow-label mb-0.5 text-accent-soft">Núcleo</span>
+                <div class="flow-box--core flex-1 flex flex-col gap-2">
+                  <span class="font-mono text-[0.781rem] text-text font-semibold break-all">{slug}</span>
+                  <span class="text-[0.719rem] leading-[1.4] text-muted">
+                    {[sen.lang, sen.license, sen.estado].filter(Boolean).join(' · ') || 'sin señales de build declaradas'}
+                  </span>
+                  {topics.length > 0 && (
+                    <span class="flex flex-wrap gap-1.5 mt-0.5">
+                      {topics.slice(0, 8).map((t) => (
+                        <span class="font-mono text-[0.656rem] text-accent-dim border border-border-strong rounded-full px-2 py-0.5">{t}</span>
+                      ))}
+                      {topics.length > 8 && <span class="mono-meta">+{topics.length - 8}</span>}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div class="flow-arrow" aria-hidden="true"><span class="md:hidden">↓</span><span class="hidden md:inline">→</span></div>
+
+              <div class="flex flex-col gap-1.5">
+                <span class="flow-label mb-0.5">Se cruza con</span>
+                {cruces.length > 0 ? cruces.map((c) => (
+                  <span class:list={['flow-box', c.rel === 'competes_with' ? '' : 'flow-box--go']}>
+                    <span class="block text-[0.594rem] uppercase tracking-[0.12em] text-muted-dim mb-0.5">{REL_LABEL[c.rel] ?? c.rel}</span>
+                    {c.label}
+                  </span>
+                )) : (
+                  <span class="flow-box flow-box--dashed opacity-60">todavía sin cruces en el grafo</span>
+                )}
+              </div>
+            </div>
+            <p class="mt-3 text-xs text-muted-dim leading-[1.5]">
+              Diagrama derivado de <span class="font-mono">madurez_senales</span> (lenguaje, licencia, estado y topics)
+              y de las relaciones que este repo tiene en el grafo de conocimiento. No es una arquitectura del proyecto:
+              es su posición funcional tal como la registran los boletines.
+            </p>
+          </div>
+        </section>
+
+        <!-- ── Posición en el ecosistema ── -->
+        {capas.length > 0 && (
+          <section>
+            <p class="eyebrow mb-3.5">Posición en el ecosistema</p>
+            <div class="card bg-surface-3 p-5 flex flex-col gap-3">
+              {capas.map((c) => (
+                <div class="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1.1fr)] items-center gap-3">
+                  <div class="flex items-center gap-2 min-w-0 justify-end">
+                    <span class="font-mono text-[0.688rem] text-muted-dim truncate">{c.dir === 'out' ? slug : c.label}</span>
+                  </div>
+                  <div class="text-center">
+                    <div class="font-mono text-[0.594rem] text-accent-soft mb-0.5">{REL_LABEL[c.rel] ?? c.rel}</div>
+                    <div class="h-px w-16 md:w-24 bg-border-strong mx-auto"></div>
+                  </div>
+                  <div class="flex items-center gap-2 min-w-0">
+                    <span class="dot" style={`background:${colorForType(c.type)}`}></span>
+                    <span class="font-mono text-[0.75rem] text-text truncate">{c.dir === 'out' ? c.label : slug}</span>
+                    <span class="mono-meta shrink-0">{TYPE_LABEL[c.type] ?? c.type}</span>
+                    {c.second.length > 0 && (
+                      <span class="mono-meta shrink-0 hidden md:inline">· y {c.second.map((s) => s.label).join(', ')}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+              <a href={`${base}grafo/`} class="self-end font-mono text-[0.656rem] text-accent-soft">Expandir en el grafo 3D →</a>
+            </div>
+          </section>
+        )}
+
+        {(item.relacion_grafo ?? []).length > 0 && (
+          <section>
+            <p class="eyebrow mb-3">Relaciones que aportó este boletín</p>
+            <GraphChips rels={item.relacion_grafo ?? []} showLabel={false} max={8} />
+          </section>
+        )}
+      </div>
+
+      <!-- ── Columna derecha ── -->
+      <aside class="flex flex-col gap-3.5">
+        {item.contenido?.por_que_importa && (
+          <div class="callout" style="--rail: var(--color-accent-deep);">
+            <div class="callout__title text-accent-soft">Por qué importa</div>
+            <p class="prose-card text-[0.844rem] leading-[1.6] text-text" set:html={mdInline(item.contenido.por_que_importa)} />
+          </div>
+        )}
+
+        {(detalle || alertas.length > 0) && (
+          <div class="callout" style="--rail: var(--color-warn);">
+            <div class="callout__title">Alerta</div>
+            {detalle && <p class="prose-card text-[0.813rem] leading-[1.55] text-body" set:html={mdInline(detalle)} />}
+            {alertas.map((a) => (
+              <p class="prose-card text-[0.813rem] leading-[1.55] text-body mt-2" set:html={mdInline(a)} />
+            ))}
+          </div>
+        )}
+
+        {accionEditorial && (
+          <div class="callout" style="--rail: var(--color-go);">
+            <div class="callout__title">Acción concreta</div>
+            <p class="prose-card text-[0.813rem] leading-[1.55] text-body" set:html={mdInline(accionEditorial.razon)} />
+          </div>
+        )}
+
+        <div class="card p-4">
+          <div class="font-display text-[0.688rem] uppercase tracking-[0.14em] text-muted font-bold mb-2.5">
+            Apariciones · {apariciones.length}
+          </div>
+          <div class="flex items-center gap-0 mb-3" aria-hidden="true">
+            {apariciones.slice(0, 6).reverse().map((_, i, arr) => (
+              <>
+                {i > 0 && <span class="flex-1 h-px bg-border"></span>}
+                <span class:list={['dot', i === arr.length - 1 ? 'bg-accent w-2.5 h-2.5' : 'bg-border-strong']}></span>
+              </>
+            ))}
+          </div>
+          <ul class="flex flex-col gap-1.5">
+            {apariciones.slice(0, 8).map((a) => (
+              <li class="flex items-baseline gap-2 font-mono text-[0.688rem]">
+                <a href={`${base}enriquecido/${a.date}/`} class="text-body hover:text-accent-soft">{a.date}</a>
+                <span class="text-muted-dim">
+                  {a.seccion === 'hallazgo_principal' ? 'hallazgo principal' : 'radar'}
+                </span>
+              </li>
+            ))}
+            {apariciones.length > 8 && <li class="mono-meta">+{apariciones.length - 8} más</li>}
+            {apariciones.length === 1 && <li class="mono-meta">primera vez en el boletín</li>}
+          </ul>
+        </div>
+
+        {node && (node.menciones?.length ?? 0) > 0 && (
+          <div class="card card--quiet p-4">
+            <div class="font-display text-[0.688rem] uppercase tracking-[0.14em] text-muted font-bold mb-2.5">Mencionado en</div>
+            <div class="flex flex-wrap gap-1.5">
+              {node.menciones!.slice(0, 12).map((d) => (
+                <a href={`${base}enriquecido/${d}/`} class="font-mono text-[0.656rem] px-1.5 py-0.5 rounded bg-bg-raised border border-border text-muted hover:text-accent-soft">{d}</a>
+              ))}
+              {node.menciones!.length > 12 && <span class="mono-meta">+{node.menciones!.length - 12}</span>}
+            </div>
+          </div>
+        )}
+
+        {item.contenido?.madurez_senales && (
+          <details class="card card--quiet p-4">
+            <summary class="font-display text-[0.688rem] uppercase tracking-[0.14em] text-muted font-bold cursor-pointer">
+              Señales de madurez (texto original)
+            </summary>
+            <p class="prose-card text-[0.75rem] leading-[1.5] text-muted mt-3" set:html={mdInline(item.contenido.madurez_senales)} />
+          </details>
+        )}
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

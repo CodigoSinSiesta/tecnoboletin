@@ -28,6 +28,20 @@ export function getSupabase(): SupabaseClient {
   return client;
 }
 
+/**
+ * ¿Es la sesion de un administrador?
+ *
+ * El rol se lee de `app_metadata.role`, que SOLO se puede fijar desde el
+ * dashboard/API admin de Supabase (Authentication → Users → editar usuario →
+ * app_metadata: {"role": "admin"}) — el usuario no puede autoasignárselo,
+ * a diferencia de user_metadata. En un sitio estático esto es un gate de
+ * interfaz: si algún día el triaje escribe en Supabase, la barrera real
+ * serán las políticas RLS de esa tabla comprobando el mismo claim.
+ */
+export function isAdmin(user: { app_metadata?: Record<string, unknown> } | null | undefined): boolean {
+  return user?.app_metadata?.role === 'admin';
+}
+
 /** URL absoluta de vuelta tras un login OAuth/magic-link, respetando el
  *  base path (/tecnoboletin) tanto en produccion como en local. */
 export function accountUrl(): string {

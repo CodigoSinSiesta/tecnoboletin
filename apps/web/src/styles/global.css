@@ -1,18 +1,26 @@
 /* ==========================================================================
-   Tecnoboletín — sistema de diseño "zine con carácter"
+   Tecnoboletín — sistema de diseño "Código Sin Siesta"
    Ver docs/DESIGN.md (raíz del repo) para el razonamiento completo.
-   Resumen rápido:
-   - Paleta: navy/índigo oscuro (familia del sitio padre codigosinsiesta.com,
-     no idéntica) + 4 acentos con propósito semántico, no decorativo:
-       accent (ámbar)  -> hallazgo principal / pick editorial
-       violet           -> síntesis editorial (el contenido más valioso)
-       radar (azul)     -> radar secundario / enlaces / acción "leer"
-       alert (rosa)     -> alertas honestas
-       go (verde)       -> acción concreta "explorar / probar"
-   - Tipografía: Space Grotesk para titulares/labels/tags (coherente con el
-     sitio padre), Inter para UI/cuerpo corto, IBM Plex Serif SOLO para
-     cuerpo de artículos largos (lectura cómoda), JetBrains Mono para
-     nombres de repos/URLs/edges del grafo.
+
+   Resumen rápido (rediseño 2026-08, direcciones 1a "Blueprint diario" +
+   tablero de triaje de 1b):
+
+   - Superficies slate-900: un único gradiente de profundidad
+     (#0B1220 → #0F172A → #152033) en vez de mezclar navy con casi-negro.
+   - UN SOLO acento de marca: azul (#3B82F6 y su familia). Sustituye a los
+     cinco acentos decorativos anteriores (ámbar/violeta/azul/rosa/verde),
+     que era el "ruido de colores" que el usuario reportó.
+   - TRES colores de estado, cada uno con un significado fijo e invariable.
+     El color ya no dice "esto es un hallazgo" (eso lo dice la jerarquía),
+     dice "qué haces con esto":
+       verde  (#34D399) -> ACTÚA    · explorar / probar
+       ámbar  (#FBBF24) -> VIGILA   · vigilar / madurez dudosa
+       rojo   (#F87171) -> ALERTA   · alerta honesta / riesgo / descartado
+     El azul no es un cuarto estado: es la marca y la navegación (y por
+     extensión "leer", que es la acción por defecto de un boletín).
+   - Tipografía: Space Grotesk (titulares/labels), Inter (UI/cuerpo),
+     JetBrains Mono (repos, edges, métricas, chrome de consola),
+     IBM Plex Serif SOLO en el markdown de boletines sin enriquecer.
    - Todos los tokens de color van bajo el namespace --color-* porque
      Tailwind v4 solo genera utilidades (bg-/text-/border-) para namespaces
      reconocidos en @theme; un token fuera de ese prefijo no genera clase.
@@ -26,244 +34,635 @@
   --font-serif: 'IBM Plex Serif', 'Iowan Old Style', 'Apple Garamond', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Superficies: navy/índigo oscuro, con más profundidad que el
-     casi-negro plano anterior (#0c0e14). Acercado a la familia del sitio
-     padre (#0f172a / #0c1220) sin ser idéntico. */
-  --color-bg: #0a0e1a;
-  --color-bg-raised: #10162a;
-  --color-surface: #131a2e;
-  --color-surface-2: #1a2340;
-  --color-border: #232c47;
-  --color-border-strong: #34406a;
+  /* Superficies — de más profunda a más elevada. La regla: el lienzo de la
+     página es lo más oscuro, las tarjetas suben, las columnas laterales de
+     consola BAJAN (--color-rail) para que el contenido central domine. */
+  --color-bg: #0B1220;
+  --color-bg-raised: #0F172A;
+  --color-surface: #152033;
+  --color-surface-2: #111C2E;
+  --color-surface-3: #111A2B;
+  --color-rail: #0D1424;
 
-  --color-text: #eef1fa;
-  --color-muted: #9aa5c4;
-  --color-muted-dim: #7b86a8;
+  --color-border: #1E293B;
+  --color-border-strong: #334155;
+  --color-border-dashed: #475569;
 
-  /* Acentos semánticos — cada uno comunica una estructura del contenido,
-     no es decoración. Todos verificados >= 5:1 de contraste sobre --color-bg
-     y su "ink" correspondiente >= 8:1 sobre el propio acento (texto de badge). */
-  --color-accent: #f5b65a;       /* hallazgo principal / pick editorial */
-  --color-accent-ink: #241704;
-  --color-violet: #b39ddb;       /* síntesis editorial */
-  --color-violet-ink: #1c1330;
-  --color-radar: #6aa6ff;        /* radar secundario / enlaces / accion "leer" */
-  --color-radar-ink: #071a33;
-  --color-alert: #fb7185;        /* alertas honestas */
-  --color-alert-ink: #2a0810;
-  --color-go: #34d399;           /* accion "explorar / probar" */
-  --color-go-ink: #04170d;
+  /* Texto — cuatro niveles. `body` es el cuerpo de lectura (antes todo el
+     cuerpo usaba `muted`, que a 14px se quedaba corto de contraste). */
+  --color-text: #F1F5F9;
+  --color-body: #CBD5E1;
+  --color-muted: #94A3B8;
+  --color-muted-dim: #64748B;
 
-  /* compat: alias del link color anterior */
-  --color-link: #6aa6ff;
-}
+  /* Marca — un solo azul, en cinco pasos. accent = el color de acción,
+     accent-soft = enlaces y "leer", accent-dim = nodos concepto del grafo,
+     deep/deepest = filetes, degradados y bordes de énfasis. */
+  --color-accent: #3B82F6;
+  --color-accent-ink: #0B1220;
+  --color-accent-soft: #60A5FA;
+  --color-accent-dim: #93C5FD;
+  --color-accent-deep: #2563EB;
+  --color-accent-deepest: #1E3A8A;
 
-html {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
+  /* Estados — significado fijo, ver cabecera. */
+  --color-go: #34D399;
+  --color-go-ink: #04170D;
+  --color-warn: #FBBF24;
+  --color-warn-ink: #241704;
+  --color-alert: #F87171;
+  --color-alert-ink: #2A0810;
 
-a {
-  color: var(--color-link);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-::selection {
-  background: var(--color-accent);
-  color: var(--color-accent-ink);
+  /* Compat con el sistema anterior: `radar` (acción leer / enlaces) y
+     `violet` (síntesis editorial) siguen existiendo como tokens para no
+     romper páginas que aún no se han rediseñado, pero ambos apuntan ya
+     dentro de la familia azul — ahí es donde muere el ruido de acentos. */
+  --color-radar: #60A5FA;
+  --color-radar-ink: #071A33;
+  --color-violet: #93C5FD;
+  --color-violet-ink: #0B1220;
+  --color-link: #60A5FA;
 }
 
-/* --------------------------------------------------------------------
-   Prose — cuerpo de lectura larga (por_que_importa, síntesis editorial,
-   markdown de boletines). max-width en "ch" para un ancho de línea
-   cómodo (65-75ch); NUNCA en los metadatos/tags/badges, que sí pueden
-   usar el ancho completo del contenedor.
-   -------------------------------------------------------------------- */
-.prose-read {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  line-height: 1.7;
-  max-width: 70ch;
-}
-/* Variante para prose de página completa (boletines/[slug].astro): centrada
-   dentro del <main>. La variante de tarjeta (dentro de .zine-card) NO se
-   centra: debe alinearse con el título de la tarjeta, no flotar suelta. */
-.prose-read--page {
-  margin-inline: auto;
-}
-.prose-read h1,
-.prose-read h2,
-.prose-read h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--color-text);
-  margin-top: 2.2em;
-  margin-bottom: 0.6em;
-  line-height: 1.25;
-}
-.prose-read h1 { font-size: 1.9rem; }
-.prose-read h2 { font-size: 1.5rem; }
-.prose-read h3 { font-size: 1.2rem; }
-.prose-read p { margin: 1em 0; }
-.prose-read ul,
-.prose-read ol { margin: 1em 0; padding-left: 1.5em; }
-.prose-read li { margin: 0.4em 0; }
-.prose-read code {
-  background: var(--color-surface);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-}
-.prose-read pre {
-  background: var(--color-surface);
-  padding: 1em;
-  border-radius: 8px;
-  overflow-x: auto;
-  border: 1px solid var(--color-border);
-}
-.prose-read blockquote {
-  border-left: 3px solid var(--color-accent);
-  padding-left: 1em;
-  color: var(--color-muted);
-  font-style: italic;
-}
-/* Cuerpo corto (que_es, por_que_importa, resumen_ejecutivo, campos de
-   editorial.json) dentro de tarjetas: mismo ancho de lectura cómodo pero sin
-   el aparato tipográfico completo de .prose-read (sin tamaños de h1-h3,
-   porque nunca hay headings ahí). Estos campos se renderizan con marked
-   (ver src/lib/markdown.ts) e inyectan negrita/código/listas via set:html,
-   de ahí los estilos de elementos hijos: */
-.prose-card {
-  max-width: 68ch;
-  line-height: 1.6;
-}
-.prose-card strong { color: var(--color-text); font-weight: 700; }
-.prose-card em { font-style: italic; }
-.prose-card code {
-  background: var(--color-surface);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.85em;
-}
-.prose-card a { text-decoration: underline; text-underline-offset: 2px; }
-.prose-card ul,
-.prose-card ol {
-  margin: 0.5em 0;
-  padding-left: 1.25em;
-}
-.prose-card li { margin: 0.3em 0; }
-.prose-card p { margin: 0.6em 0; }
-.prose-card p:first-child { margin-top: 0; }
-.prose-card p:last-child { margin-bottom: 0; }
+/* Todo lo propio va en capas explícitas. Sin `@layer`, estas reglas
+   quedarían FUERA de las capas de Tailwind y ganarían siempre a las
+   utilidades: `class="dot w-1.5"` no podría reducir el tamaño del punto,
+   porque `.dot` sin capa vence a cualquier utilidad de la capa `utilities`.
+   Con las capas declaradas, el orden es el esperado: utilidad > componente. */
 
-/* --------------------------------------------------------------------
-   Zine numbering — numeración editorial tipo revista para romper la
-   monotonía de tarjetas idénticas. Número fantasma en Space Grotesk.
-   -------------------------------------------------------------------- */
-.zine-num {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-border-strong);
-  font-size: 2.75rem;
-  letter-spacing: -0.02em;
-}
-.zine-num--radar {
-  -webkit-text-stroke: 1.5px var(--color-border);
-  font-size: 1.5rem;
+@layer base {
+  html {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-accent-dim);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 }
 
-/* --------------------------------------------------------------------
-   Separadores de sección — con carácter, no solo un border-t gris.
-   Barra de degradado + etiqueta, coloreable por sección.
-   -------------------------------------------------------------------- */
-.section-rule {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-.section-rule::after {
-  content: '';
-  flex: 1;
-  height: 2px;
-  background: linear-gradient(90deg, var(--rule-color, var(--color-border-strong)), transparent);
-  border-radius: 2px;
-}
-.section-rule__label {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text);
-  white-space: nowrap;
-}
+@layer components {
+  /* --------------------------------------------------------------------
+     Chrome de producto — el filete superior de tres azules y el punto que
+     late son la firma visual de Código Sin Siesta: aparecen en TODAS las
+     pantallas y son lo único puramente decorativo del sistema.
+     -------------------------------------------------------------------- */
+  .brand-rule {
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-deepest), var(--color-accent), var(--color-accent-soft));
+  }
 
-/* --------------------------------------------------------------------
-   Tarjetas — variantes con "rail" lateral de color semántico en vez de
-   un border uniforme para las 20 tarjetas idénticas.
-   -------------------------------------------------------------------- */
-.zine-card {
-  position: relative;
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--rail-color, var(--color-border-strong));
-  border-radius: 10px;
-  background: var(--color-surface);
-}
-.zine-card--pick {
-  background: linear-gradient(160deg, var(--color-surface-2), var(--color-surface));
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
-}
+  @keyframes csi-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.82); }
+  }
+  .csi-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    animation: csi-pulse 2s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .csi-dot { animation: none; }
+  }
 
-/* --------------------------------------------------------------------
-   Badges / pills semánticos
-   -------------------------------------------------------------------- */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  padding: 0.2em 0.6em;
-  border-radius: 999px;
-  line-height: 1.6;
-}
-.badge--solid-accent { background: var(--color-accent); color: var(--color-accent-ink); }
-.badge--solid-violet { background: var(--color-violet); color: var(--color-violet-ink); }
-.badge--solid-radar { background: var(--color-radar); color: var(--color-radar-ink); }
-.badge--solid-alert { background: var(--color-alert); color: var(--color-alert-ink); }
-.badge--solid-go { background: var(--color-go); color: var(--color-go-ink); }
-.badge--outline {
-  background: transparent;
-  border: 1px solid var(--color-border-strong);
-  color: var(--color-muted);
-}
-.badge--ghost {
-  background: var(--color-bg-raised);
-  color: var(--color-muted);
-  border: 1px solid var(--color-border);
-}
+  /* Breadcrumb monoespaciado del chrome: "tecnoboletín / 2026-08-13 / omnigent" */
+  .crumb {
+    font-family: var(--font-mono);
+    font-size: 0.656rem; /* 10.5px */
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted-dim);
+  }
+  .crumb__sep {
+    color: var(--color-border-strong);
+    padding: 0 6px;
+  }
+  .crumb__here {
+    color: var(--color-muted);
+  }
 
-/* --------------------------------------------------------------------
-   Alerta editorial — callout con carácter propio, no una <li> más.
-   -------------------------------------------------------------------- */
-.alert-callout {
-  border: 1px solid color-mix(in srgb, var(--color-alert) 40%, var(--color-border));
-  border-left: 3px solid var(--color-alert);
-  background: color-mix(in srgb, var(--color-alert) 8%, var(--color-surface));
-  border-radius: 8px;
-  padding: 0.85rem 1rem;
+  /* Etiqueta de sección con guion azul: "— BOLETÍN · JUEVES 13 AGO 2026" */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.688rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent-soft);
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  /* --------------------------------------------------------------------
+     Prose — cuerpo de lectura. `.prose-read` (serif) queda reservado al
+     markdown de boletines sin enriquecer; el resto del producto usa
+     `.prose-card`, que es Inter y hereda el tamaño del contenedor.
+     -------------------------------------------------------------------- */
+  .prose-read {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+  .prose-read--page { margin-inline: auto; }
+  .prose-read h1,
+  .prose-read h2,
+  .prose-read h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-top: 2.2em;
+    margin-bottom: 0.6em;
+    line-height: 1.25;
+  }
+  .prose-read h1 { font-size: 1.9rem; }
+  .prose-read h2 { font-size: 1.5rem; }
+  .prose-read h3 { font-size: 1.2rem; }
+  .prose-read p { margin: 1em 0; }
+  .prose-read ul,
+  .prose-read ol { margin: 1em 0; padding-left: 1.5em; }
+  .prose-read li { margin: 0.4em 0; }
+  .prose-read code {
+    background: var(--color-surface);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+  .prose-read pre {
+    background: var(--color-surface);
+    padding: 1em;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+  }
+  .prose-read blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1em;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  /* Cuerpo corto renderizado con marked() vía set:html (que_es,
+     por_que_importa, alertas, campos de editorial.json). */
+  .prose-card {
+    max-width: 68ch;
+    line-height: 1.55;
+  }
+  .prose-card strong { color: var(--color-text); font-weight: 700; }
+  .prose-card em { font-style: italic; }
+  .prose-card code {
+    background: var(--color-bg-raised);
+    border: 1px solid var(--color-border);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+  }
+  .prose-card a { color: var(--color-accent-soft); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-card ul,
+  .prose-card ol { margin: 0.5em 0; padding-left: 1.25em; }
+  .prose-card li { margin: 0.3em 0; }
+  .prose-card p { margin: 0.6em 0; }
+  .prose-card p:first-child { margin-top: 0; }
+  .prose-card p:last-child { margin-bottom: 0; }
+
+  /* Recorte de líneas: la queja original era "demasiado texto en bloque".
+     Todo cuerpo largo se recorta y se amplía bajo demanda (.expand). */
+  .clamp-2,
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .clamp-2 { -webkit-line-clamp: 2; }
+  .clamp-3 { -webkit-line-clamp: 3; }
+
+  /* --------------------------------------------------------------------
+     Ampliar / plegar sin JavaScript. El párrafo recortado vive dentro del
+     <summary> para seguir visible con el <details> cerrado; al abrirlo se
+     levanta el recorte y la etiqueta cambia sola.
+     -------------------------------------------------------------------- */
+  .expand > summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+  }
+  .expand > summary::-webkit-details-marker { display: none; }
+  .expand[open] > summary .clamp-2,
+  .expand[open] > summary .clamp-3 { -webkit-line-clamp: unset; }
+  .expand__more {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.688rem;
+    color: var(--color-accent-soft);
+  }
+  .expand__more::after { content: 'Ampliar ⌄'; }
+  .expand[open] .expand__more::after { content: 'Plegar ⌃'; }
+  .expand > summary:hover .expand__more { color: var(--color-accent-dim); }
+
+  /* --------------------------------------------------------------------
+     Badges de estado — el corazón del sistema. Un badge SIEMPRE significa
+     "qué haces con esto"; nunca decora ni repite lo que ya dice el título.
+     -------------------------------------------------------------------- */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.656rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  /* Variante suave (fondo translúcido + borde): el estado del propio item. */
+  .badge--go    { background: color-mix(in srgb, var(--color-go) 14%, transparent);    border: 1px solid color-mix(in srgb, var(--color-go) 35%, transparent);    color: var(--color-go); }
+  .badge--warn  { background: color-mix(in srgb, var(--color-warn) 14%, transparent);  border: 1px solid color-mix(in srgb, var(--color-warn) 35%, transparent);  color: var(--color-warn); }
+  .badge--alert { background: color-mix(in srgb, var(--color-alert) 14%, transparent); border: 1px solid color-mix(in srgb, var(--color-alert) 35%, transparent); color: var(--color-alert); }
+  .badge--read  { background: color-mix(in srgb, var(--color-accent-soft) 14%, transparent); border: 1px solid color-mix(in srgb, var(--color-accent-soft) 35%, transparent); color: var(--color-accent-soft); }
+  /* Variante sólida: reservada al "pick editorial", la única señal que debe
+     ganarle en peso visual al estado del item. */
+  .badge--pick  { background: var(--color-accent); color: var(--color-accent-ink); letter-spacing: 0.08em; }
+  .badge--ghost { background: var(--color-bg-raised); border: 1px solid var(--color-border); color: var(--color-muted); letter-spacing: 0; text-transform: none; }
+  .badge--outline { background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-muted-dim); }
+
+  /* Punto de estado — la versión mínima del badge, para listas densas. */
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .dot--go    { background: var(--color-go); }
+  .dot--warn  { background: var(--color-warn); }
+  .dot--alert { background: var(--color-alert); }
+  .dot--read  { background: var(--color-accent-soft); }
+
+  /* --------------------------------------------------------------------
+     Tarjetas y paneles
+     -------------------------------------------------------------------- */
+  .panel {
+    border: 1px solid var(--color-border-strong);
+    border-radius: 14px;
+    background: var(--color-surface-3);
+    overflow: hidden;
+  }
+  .panel__head {
+    padding: 13px 15px 10px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .panel__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.688rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+  .panel__foot {
+    padding: 11px 15px 13px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  /* Tarjeta genérica (índices, archivo, páginas de servicio). */
+  .card {
+    border: 1px solid var(--color-border-strong);
+    border-radius: 12px;
+    background: var(--color-surface);
+    transition: border-color 120ms;
+  }
+  .card--quiet { border-color: var(--color-border); background: var(--color-surface-2); }
+  .card--rail { border-left: 3px solid var(--rail, var(--color-accent)); }
+  .card--dashed { border-style: dashed; background: transparent; }
+  a.card:hover { border-color: var(--color-accent); }
+
+  /* Numeración de índice: mono y tabular, alineada en columna. */
+  .idx-num {
+    font-family: var(--font-mono);
+    font-size: 0.688rem;
+    color: var(--color-muted-dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Callout con rail lateral de color de estado. --rail lo fija quien lo usa. */
+  .callout {
+    border: 1px solid color-mix(in srgb, var(--rail, var(--color-border-strong)) 32%, var(--color-border));
+    border-left: 3px solid var(--rail, var(--color-border-strong));
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--rail, var(--color-surface)) 6%, var(--color-surface));
+    padding: 13px 15px;
+  }
+  .callout__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.688rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rail, var(--color-muted));
+    margin-bottom: 8px;
+  }
+
+  /* Separador de sección: etiqueta + barra que se desvanece. */
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rule-color, var(--color-accent)), transparent);
+    border-radius: 2px;
+  }
+  .section-rule__label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  /* --------------------------------------------------------------------
+     Hallazgo — la unidad de lectura del boletín. Canaleta izquierda de
+     46px con el número y el punto de estado: el ojo baja por la canaleta
+     escaneando estados sin leer una palabra.
+     -------------------------------------------------------------------- */
+  .finding {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 14px;
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+  .finding--pick {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  .finding__gutter {
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0 14px;
+    gap: 10px;
+  }
+  .finding__num {
+    font-family: var(--font-mono);
+    font-size: 0.688rem;
+    color: var(--color-muted-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .finding__spine {
+    flex: 1;
+    width: 1px;
+    background: var(--color-border);
+    min-height: 12px;
+  }
+  .finding__body { padding: 18px 20px 16px; min-width: 0; }
+
+  /* Bloque "por qué importa": filete azul, es el contenido con más valor. */
+  .why {
+    border-left: 2px solid var(--color-accent-deep);
+    padding-left: 14px;
+  }
+  .why__label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted-dim);
+    margin-bottom: 5px;
+  }
+
+  /* Barra de confianza del clasificador — 5 tramos, sin porcentaje mentiroso. */
+  .conf { display: flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 0.625rem; color: var(--color-muted-dim); }
+  .conf__track { display: flex; gap: 2px; }
+  .conf__step { width: 12px; height: 3px; border-radius: 2px; background: #293650; }
+  .conf__step--on { background: var(--color-accent-soft); }
+
+  /* --------------------------------------------------------------------
+     Chips del grafo — "implements → cross-harness-agent · nuevo".
+     Borde discontinuo = relación NUEVA (hoy entra en el grafo).
+     Borde sólido = ya cubierta en un boletín anterior (con su fecha).
+     Esa distinción es lo que conecta boletín y grafo sin salir de la página.
+     -------------------------------------------------------------------- */
+  .gchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.688rem;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-body);
+    max-width: 100%;
+  }
+  .gchip--new { border-style: dashed; border-color: var(--color-border-dashed); }
+  .gchip__node { color: var(--color-accent-dim); }
+  .gchip__flag { color: var(--color-go); }
+  .gchip__date { color: var(--color-muted-dim); }
+  a.gchip:hover { border-color: var(--color-accent); color: var(--color-text); }
+
+  /* --------------------------------------------------------------------
+     Pills de navegación y de chrome
+     -------------------------------------------------------------------- */
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--color-muted);
+    white-space: nowrap;
+    transition: color 120ms, background-color 120ms, border-color 120ms;
+  }
+  .pill:hover { color: var(--color-text); background: var(--color-bg-raised); }
+  .pill--on {
+    background: var(--color-bg-raised);
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-text);
+  }
+  .pill--ghost { border: 1px solid var(--color-border-strong); }
+  .pill--solid { background: var(--color-accent); color: var(--color-accent-ink); font-weight: 600; }
+
+  /* --------------------------------------------------------------------
+     Consola de triaje (dirección 1b) — tablero de columnas por acción.
+     -------------------------------------------------------------------- */
+  .tri-col__head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid var(--tri-color, var(--color-border-strong));
+  }
+  .tri-col__label {
+    font-family: var(--font-mono);
+    font-size: 0.656rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tri-color, var(--color-muted));
+  }
+  .tri-card {
+    display: block;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 10px;
+    background: var(--color-surface);
+    padding: 11px 12px;
+    text-align: left;
+    width: 100%;
+    transition: border-color 120ms, box-shadow 120ms;
+  }
+  .tri-card:hover { border-color: var(--color-accent-soft); }
+  .tri-card--quiet { border-color: var(--color-border); background: var(--color-surface-2); padding: 10px 12px; }
+  .tri-card--on {
+    border-color: var(--color-accent);
+    background: linear-gradient(160deg, #1E293B, var(--color-surface));
+  }
+  .tri-card__name { font-family: var(--font-mono); font-size: 0.781rem; color: var(--color-text); }
+  .tri-card__meta { font-family: var(--font-mono); font-size: 0.625rem; color: var(--color-muted-dim); }
+
+  /* Tecla de atajo en la barra de ayuda del triaje. */
+  .kbd {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: var(--color-muted);
+    background: var(--color-bg-raised);
+  }
+
+  /* --------------------------------------------------------------------
+     Diagramas "cómo funciona" — cajas de flujo generadas desde los datos.
+     -------------------------------------------------------------------- */
+  .flow-box {
+    font-family: var(--font-mono);
+    font-size: 0.719rem;
+    color: var(--color-body);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 7px;
+    padding: 7px 9px;
+  }
+  .flow-box--dashed { background: transparent; border-style: dashed; border-color: var(--color-border-dashed); color: var(--color-muted); }
+  .flow-box--go { color: var(--color-go); background: color-mix(in srgb, var(--color-go) 10%, transparent); border-color: color-mix(in srgb, var(--color-go) 30%, transparent); }
+  .flow-box--core {
+    background: linear-gradient(160deg, #1E293B, var(--color-surface));
+    border: 1px solid var(--color-accent);
+    border-radius: 9px;
+    padding: 12px 11px;
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 8%, transparent);
+  }
+  .flow-label {
+    font-family: var(--font-mono);
+    font-size: 0.594rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted-dim);
+  }
+  .flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--color-border-dashed); font-size: 0.875rem; }
+
+  /* --------------------------------------------------------------------
+     Grafo — nodos pintados en HTML sobre un <svg> de aristas (mapa del día
+     y mapa de ecosistema); el 3D real sigue siendo 3d-force-graph.
+     -------------------------------------------------------------------- */
+  .gnode { position: absolute; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .gnode__ball { border-radius: 999px; display: block; }
+  .gnode__label {
+    font-family: var(--font-mono);
+    font-size: 0.594rem;
+    color: var(--color-body);
+    white-space: nowrap;
+    max-width: 116px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .gnode__label--hub {
+    font-size: 0.625rem;
+    color: var(--color-text);
+    background: var(--color-bg-raised);
+    padding: 2px 6px;
+    border-radius: 5px;
+    border: 1px solid var(--color-border-strong);
+  }
+  .graph-legend-pill[data-active='false'] { opacity: 0.35; }
+
+  /* Barra de crecimiento temporal de un nodo ("cómo creció este nodo"). */
+  .scrub { position: relative; height: 30px; }
+  .scrub__track { position: absolute; left: 0; right: 0; top: 14px; height: 2px; background: var(--color-border); }
+  .scrub__fill { position: absolute; left: 0; top: 14px; height: 2px; background: linear-gradient(90deg, var(--color-accent-deepest), var(--color-accent)); }
+  .scrub__tick { position: absolute; top: 9px; width: 7px; height: 7px; border-radius: 999px; background: var(--color-accent-soft); transform: translateX(-50%); }
+  .scrub__tick--first { top: 8px; width: 9px; height: 9px; background: var(--color-accent); }
+  .scrub__tick--last { top: 6px; width: 13px; height: 13px; background: var(--color-go); box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-go) 18%, transparent); }
+  .scrub__label { position: absolute; top: -4px; transform: translate(-50%, -100%); font-family: var(--font-mono); font-size: 0.625rem; color: var(--color-go); white-space: nowrap; }
+
+  /* --------------------------------------------------------------------
+     Utilidades sueltas
+     -------------------------------------------------------------------- */
+  .mono-meta { font-family: var(--font-mono); font-size: 0.719rem; color: var(--color-muted-dim); }
+  .hairline { height: 1px; background: var(--color-border); }
+  .scroll-y { overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--color-border-strong) transparent; }
+  .scroll-y::-webkit-scrollbar { width: 8px; }
+  .scroll-y::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 999px; }
+  .scroll-y::-webkit-scrollbar-track { background: transparent; }
+
+  /* Halo del boletín: el degradado radial azul de las cabeceras hero. */
+  .hero-glow {
+    background:
+      radial-gradient(120% 140% at 8% 0%, color-mix(in srgb, var(--color-accent-deep) 16%, transparent), transparent 60%),
+      radial-gradient(90% 120% at 92% 10%, color-mix(in srgb, var(--color-accent-soft) 8%, transparent), transparent 65%);
+  }
+  .graph-glow {
+    background:
+      radial-gradient(60% 70% at 45% 45%, color-mix(in srgb, var(--color-accent-deep) 20%, transparent), transparent 70%),
+      radial-gradient(50% 60% at 80% 80%, color-mix(in srgb, var(--color-accent-soft) 10%, transparent), transparent 70%);
+  }
 }

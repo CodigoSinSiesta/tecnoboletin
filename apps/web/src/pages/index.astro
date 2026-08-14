@@ -1,65 +1,100 @@
 ---
+/**
+ * Portada: manda directamente al boletín del día (la visita del 90% de las
+ * mañanas) y deja el resto — archivo, triaje, grafo — como accesos con
+ * contexto, no como una lista plana de fechas repetidas.
+ */
 import { readdir } from 'node:fs/promises';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { mdInline } from '../lib/markdown';
+import { fmtDateLong, listDates, loadBoletin, titularYEntradilla } from '../lib/boletin';
+import { linkCount, nodeCount } from '../lib/graph';
 
-const rawBase = import.meta.env.BASE_URL ?? '/';
-const base = rawBase.replace(/\/?$/, '/');
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+const dates = await listDates();
+const hoy = dates[0] ?? null;
+const boletin = hoy ? await loadBoletin(hoy) : null;
+const { titular } = titularYEntradilla(boletin?.editorial ?? null);
 
 const boloDir = path.join(process.cwd(), 'src', 'content', 'boletines');
 const markdownBoletines = (await readdir(boloDir).catch(() => [] as string[]))
   .filter((f) => f.endsWith('.md'))
   .map((f) => f.replace(/\.md$/, ''))
   .filter((s) => /^\d{4}-\d{2}-\d{2}/.test(s));
-
-const dataDir = path.join(process.cwd(), 'src', 'data', 'boletines');
-const dataEntries = await readdir(dataDir, { withFileTypes: true });
-const enrichedDates = dataEntries
-  .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
-  .map((e) => e.name)
-  .sort()
-  .reverse();
 ---
-<BaseLayout title="Inicio" activeNav="boletines">
-  <section class="mb-16">
-    <p class="font-display text-xs uppercase tracking-[0.14em] text-accent mb-4 font-semibold">
-      Boletín diario · Código Sin Siesta
-    </p>
+<BaseLayout title="Inicio" activeNav="inicio">
+  <section class="mb-14">
+    <p class="eyebrow mb-4">Boletín diario · Código Sin Siesta</p>
     <h1 class="font-display font-extrabold leading-[0.95] mb-5" style="font-size: clamp(2.5rem, 6vw, 4rem);">
       Tecnoboletín
     </h1>
-    <p class="prose-card text-muted text-lg">
-      Cada mañana, los boletines de tendencias y blogs de Código Sin Siesta, ya enriquecidos y listos
-      para leer con calma. Sin trackers, sin nube forzada. Hecho con Astro 5, alojado en GitHub Pages.
+    <p class="prose-card text-body text-lg">
+      Cada mañana, las tendencias de repositorios y sus conexiones con todo lo ya cubierto:
+      boletín enriquecido, consola de triaje y un grafo de conocimiento que crece día a día.
+      Sin trackers, sin nube forzada.
     </p>
   </section>
 
-  <section class="mb-16">
-    <div class="section-rule" style="--rule-color: var(--color-accent);">
-      <span class="section-rule__label text-accent">Boletines enriquecidos</span>
-    </div>
-    <p class="text-muted text-sm mb-6 max-w-2xl">
-      {enrichedDates.length} boletines enriquecidos: cada hallazgo conserva su por qué importa y su relación con el grafo de conocimiento, cruzada contra el historial.
-      <a href={`${base}enriquecido/`} class="text-muted underline hover:text-accent">Ver índice completo &rarr;</a>
-    </p>
-    <div class="grid gap-4 md:grid-cols-2">
-      {enrichedDates.slice(0, 6).map((d, i) => (
-        <a
-          href={`${base}enriquecido/${d}/`}
-          class="zine-card p-5 flex items-center gap-4 hover:border-accent transition-colors"
-          style="--rail-color: var(--color-accent);"
-        >
-          <span class="font-mono text-xs text-muted-dim shrink-0">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="font-display text-lg font-semibold text-text">Boletín {d}</h3>
-        </a>
-      ))}
-    </div>
+  {hoy && boletin && (
+    <section class="mb-12">
+      <a
+        href={`${base}enriquecido/${hoy}/`}
+        class="block border border-border-strong rounded-2xl overflow-hidden bg-bg-raised hover:border-accent transition-colors"
+      >
+        <div class="brand-rule"></div>
+        <div class="hero-glow px-6 md:px-8 py-7">
+          <p class="eyebrow mb-3">Último boletín · {fmtDateLong(hoy)}</p>
+          {titular ? (
+            <h2 class="font-display font-extrabold text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.08] text-text max-w-[780px] mb-4" set:html={mdInline(titular)} />
+          ) : (
+            <h2 class="font-display font-extrabold text-3xl text-text mb-4">Boletín {hoy}</h2>
+          )}
+          <div class="flex flex-wrap gap-x-6 gap-y-2 items-center font-mono text-xs text-muted-dim">
+            <span><span class="text-text text-[15px] font-semibold">{boletin.hallazgos.length}</span> hallazgos</span>
+            <span class="text-border-strong">·</span>
+            <span><span class="text-text text-[15px] font-semibold">{boletin.radar.length}</span> radar</span>
+            {boletin.pickIdx.size > 0 && (
+              <>
+                <span class="text-border-strong">·</span>
+                <span><span class="text-accent text-[15px] font-semibold">{boletin.pickIdx.size}</span> picks editoriales</span>
+              </>
+            )}
+            <span class="ml-auto font-mono text-[0.688rem] text-accent-soft">Leer el boletín →</span>
+          </div>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <section class="mb-14 grid md:grid-cols-3 gap-4">
+    <a href={`${base}enriquecido/`} class="card card--rail p-5" style="--rail: var(--color-accent);">
+      <h3 class="font-display text-lg font-bold text-text mb-1.5">Archivo</h3>
+      <p class="text-muted text-sm leading-[1.5]">
+        {dates.length} boletines enriquecidos, con el reparto de acciones de cada día a la vista.
+      </p>
+    </a>
+    {hoy && (
+      <a href={`${base}triaje/${hoy}/`} class="card card--rail p-5" style="--rail: var(--color-go);">
+        <h3 class="font-display text-lg font-bold text-text mb-1.5">Triaje</h3>
+        <p class="text-muted text-sm leading-[1.5]">
+          El boletín como bandeja de decisiones: explorar, probar, leer o vigilar, con atajos de teclado.
+        </p>
+      </a>
+    )}
+    <a href={`${base}grafo/`} class="card card--rail p-5" style="--rail: var(--color-accent-soft);">
+      <h3 class="font-display text-lg font-bold text-text mb-1.5">Grafo</h3>
+      <p class="text-muted text-sm leading-[1.5]">
+        {nodeCount} nodos y {linkCount} relaciones: cómo se conecta todo lo que han cruzado los boletines.
+      </p>
+    </a>
   </section>
 
   {markdownBoletines.length > 0 && (
-    <section class="mb-16">
-      <div class="section-rule" style="--rule-color: var(--color-radar);">
-        <span class="section-rule__label text-radar">Sin enriquecer ({markdownBoletines.length})</span>
+    <section class="mb-14">
+      <div class="section-rule" style="--rule-color: var(--color-border-strong);">
+        <span class="section-rule__label text-muted">Sin enriquecer ({markdownBoletines.length})</span>
       </div>
       <p class="text-muted-dim text-xs mb-4">
         Boletines sincronizados desde el vault que aún no han pasado por el enriquecedor.
@@ -73,17 +108,4 @@ const enrichedDates = dataEntries
       </ul>
     </section>
   )}
-
-  <section>
-    <div class="grid md:grid-cols-2 gap-4">
-      <a href={`${base}fuentes`} class="zine-card p-5" style="--rail-color: var(--color-border-strong);">
-        <h3 class="font-display text-lg font-semibold">Fuentes</h3>
-        <p class="text-muted-dim text-sm">Próximamente: índice de fuentes recurrentes del lote.</p>
-      </a>
-      <a href={`${base}temas`} class="zine-card p-5" style="--rail-color: var(--color-border-strong);">
-        <h3 class="font-display text-lg font-semibold">Temas</h3>
-        <p class="text-muted-dim text-sm">Próximamente: nube de temas con peso por mes.</p>
-      </a>
-    </div>
-  </section>
 </BaseLayout>

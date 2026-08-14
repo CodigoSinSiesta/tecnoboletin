@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { listDates } from '../lib/boletin';
 
 interface Props {
   title: string;
@@ -8,24 +9,50 @@ interface Props {
    *  Se pasa explícitamente en vez de derivarla de Astro.url.pathname
    *  porque en build estático con `base: '/tecnoboletin'` esa comparación
    *  es fragil (barras finales, base incluida o no según la página). */
-  activeNav?: 'boletines' | 'enriquecido' | 'fuentes' | 'temas' | 'grafo' | 'cuenta';
+  activeNav?: 'hoy' | 'archivo' | 'triaje' | 'grafo' | 'temas' | 'cuenta' | 'inicio';
+  /** Ancho del contenido:
+   *  - `reading` (por defecto): columna de lectura, para páginas de texto.
+   *  - `wide`: 1280px, el lienzo del boletín y de la ficha de repositorio.
+   *  - `full`: sin caja ni padding — pantallas tipo consola (triaje, grafo)
+   *    que gestionan su propio layout a sangre. */
+  width?: 'reading' | 'wide' | 'full';
+  /** Migas monoespaciadas del chrome, tras "tecnoboletín". */
+  crumbs?: string[];
 }
 
-const { title, description = 'Lectura cómoda de los boletines de Código Sin Siesta', activeNav } = Astro.props;
+const {
+  title,
+  description = 'Lectura cómoda de los boletines de Código Sin Siesta',
+  activeNav,
+  width = 'reading',
+  crumbs = [],
+} = Astro.props;
 
 // Base URL: en Astro 5, `import.meta.env.BASE_URL` devuelve `/tecnoboletin`
 // (sin barra final). Para concatenar rutas seguras, almacenamos la barra final
 // aquí una sola vez.
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 
+// "Hoy" y "Triaje" apuntan siempre al último boletín publicado, que es el
+// destino real que quiere el 90% de las visitas — antes había que pasar por
+// el índice para llegar a la lectura del día.
+const dates = await listDates();
+const hoy = dates[0] ?? null;
+
 const nav = [
-  { key: 'boletines', href: base, label: 'Boletines' },
-  { key: 'enriquecido', href: `${base}enriquecido/`, label: 'Enriquecidos' },
-  { key: 'fuentes', href: `${base}fuentes/`, label: 'Fuentes' },
-  { key: 'temas', href: `${base}temas/`, label: 'Temas' },
+  { key: 'hoy', href: hoy ? `${base}enriquecido/${hoy}/` : `${base}enriquecido/`, label: 'Hoy' },
+  { key: 'archivo', href: `${base}enriquecido/`, label: 'Archivo' },
+  { key: 'triaje', href: hoy ? `${base}triaje/${hoy}/` : `${base}enriquecido/`, label: 'Triaje' },
   { key: 'grafo', href: `${base}grafo/`, label: 'Grafo' },
-  { key: 'cuenta', href: `${base}cuenta/`, label: 'Cuenta' },
+  { key: 'temas', href: `${base}temas/`, label: 'Temas' },
 ] as const;
+
+const mainClass =
+  width === 'full'
+    ? 'w-full'
+    : width === 'wide'
+      ? 'max-w-[1280px] mx-auto px-6 py-8 md:py-10'
+      : 'max-w-5xl mx-auto px-6 py-10 md:py-14';
 ---
 <!doctype html>
 <html lang="es">
@@ -42,47 +69,56 @@ const nav = [
     />
     <title>{title} · Tecnoboletín</title>
   </head>
-  <body class="min-h-screen bg-bg text-text">
-    <header class="sticky top-0 z-50 border-b border-border bg-bg-raised/85 backdrop-blur">
-      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
-        <a href={base} class="group flex items-baseline gap-2 shrink-0">
-          <span class="font-display text-xl font-bold tracking-tight text-text">
-            Tecno<span class="text-accent">boletín</span>
-          </span>
-          <span class="hidden sm:inline text-[0.65rem] uppercase tracking-[0.14em] text-muted-dim font-display font-semibold">
-            · Código Sin Siesta
+  <body class="min-h-screen bg-bg text-text flex flex-col">
+    <div class="brand-rule"></div>
+    <header class="sticky top-0 z-50 border-b border-border bg-bg-raised/92 backdrop-blur">
+      <div class="max-w-[1280px] mx-auto px-6 h-[52px] flex items-center justify-between gap-6">
+        <a href={base} class="flex items-center gap-2.5 shrink-0 group" aria-label="Inicio de Tecnoboletín">
+          <span class="csi-dot" aria-hidden="true"></span>
+          <span class="crumb">
+            <span class="hidden sm:inline">código sin siesta<span class="crumb__sep">/</span></span>
+            <span class:list={[crumbs.length ? '' : 'crumb__here', 'group-hover:text-text transition-colors']}>tecnoboletín</span>
+            {crumbs.map((c, i) => (
+              <>
+                <span class="crumb__sep">/</span>
+                <span class:list={[i === crumbs.length - 1 && 'crumb__here']}>{c}</span>
+              </>
+            ))}
           </span>
         </a>
-        <nav class="text-sm flex gap-1 -mr-2">
-          {nav.map((item) => {
-            const active = item.key === activeNav;
-            return (
-              <a
-                href={item.href}
-                class:list={[
-                  'px-3 py-1.5 rounded-full font-display font-medium transition-colors',
-                  active
-                    ? 'bg-accent text-accent-ink'
-                    : 'text-muted hover:text-text hover:bg-surface-2',
-                ]}
-              >
-                {item.label}
-              </a>
-            );
-          })}
+        <nav class="flex gap-1 items-center -mr-2" aria-label="Secciones">
+          {nav.map((item) => (
+            <a href={item.href} class:list={['pill', item.key === activeNav && 'pill--on']}>
+              {item.label}
+            </a>
+          ))}
+          <a
+            href={`${base}cuenta/`}
+            class:list={[
+              'ml-2 w-[26px] h-[26px] rounded-full border flex items-center justify-center font-mono text-[11px] transition-colors',
+              activeNav === 'cuenta'
+                ? 'border-accent text-accent'
+                : 'border-border-strong text-muted-dim hover:text-text hover:border-accent-soft',
+            ]}
+            aria-label="Tu cuenta"
+            title="Tu cuenta"
+          >A</a>
         </nav>
       </div>
     </header>
-    <main class="max-w-5xl mx-auto px-6 py-10 md:py-14">
+
+    <main class:list={[mainClass, 'flex-1']}>
       <slot />
     </main>
-    <footer class="border-t border-border mt-24">
-      <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-muted-dim flex flex-col sm:flex-row gap-2 sm:justify-between">
+
+    <footer class="border-t border-border mt-16">
+      <div class="max-w-[1280px] mx-auto px-6 py-6 flex flex-col sm:flex-row gap-2 sm:justify-between mono-meta">
         <span>
-          Sub-producto de <a href="https://codigosinsiesta.com/" class="text-muted hover:text-accent">Código Sin Siesta</a>
+          Hecho con <span class="text-accent">♥</span> por
+          <a href="https://codigosinsiesta.com/" class="text-muted hover:text-accent-dim">Código Sin Siesta</a>
           · proyecto personal de Alejandro de la Fuente
         </span>
-        <span class="font-mono text-xs text-muted-dim">Astro 5 · listo para Supabase</span>
+        <span>Astro 5 · {dates.length} boletines</span>
       </div>
     </footer>
   </body>
