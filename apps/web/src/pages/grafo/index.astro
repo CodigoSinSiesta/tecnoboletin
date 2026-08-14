@@ -132,6 +132,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
    * se importan constantes.
    */
   import { colorForType, REL_LABEL, TYPE_LABEL } from '../../lib/graph-tokens';
+  import { getSupabase } from '../../lib/supabase';
 
   interface GNode {
     id: string; name: string; type: string; degree?: number;
@@ -149,6 +150,33 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const base = panel.dataset.base ?? '/';
   const desde = panel.dataset.desde ?? '';
   const hasta = panel.dataset.hasta ?? '';
+
+  // Guardado de nodos (user_favorites, kind 'nodo') — el boton del
+  // inspector solo aparece con sesion iniciada; /cuenta/ lista lo guardado.
+  const supabase = getSupabase();
+  let favUserId: string | null = null;
+  const favReady = supabase.auth.getSession().then(({ data: { session } }) => {
+    favUserId = session?.user.id ?? null;
+  });
+
+  async function wireFav(ref: string) {
+    const btn = document.getElementById('graph-panel-fav') as HTMLButtonElement | null;
+    if (!btn) return;
+    await favReady;
+    if (!favUserId) return;
+    const { data } = await supabase
+      .from('user_favorites').select('id').eq('kind', 'nodo').eq('ref', ref).maybeSingle();
+    let saved = !!data;
+    const paint = () => { btn.textContent = saved ? '★ Guardado' : '☆ Guardar'; };
+    paint();
+    btn.classList.remove('hidden');
+    btn.onclick = async () => {
+      if (saved) await supabase.from('user_favorites').delete().eq('kind', 'nodo').eq('ref', ref);
+      else await supabase.from('user_favorites').insert({ kind: 'nodo', ref, user_id: favUserId });
+      saved = !saved;
+      paint();
+    };
+  }
 
   // Tipos y relaciones activos: se inicializan con TODO encendido a partir
   // de las pills que ya renderizó el servidor, así los filtros funcionan
@@ -233,7 +261,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
         </div>
       </div>
       <div class="scroll-y flex-1 px-4 py-4 flex flex-col gap-4">
-        ${slug ? `<a href="${base}repo/${escapeHtml(slug)}/" class="pill pill--solid self-start">Abrir ficha</a>` : ''}
+        <div class="flex gap-2 flex-wrap">${slug ? `<a href="${base}repo/${escapeHtml(slug)}/" class="pill pill--solid">Abrir ficha</a>` : ''}<button type="button" id="graph-panel-fav" class="pill pill--ghost hidden">☆ Guardar</button></div>
         ${n.resumen ? `<p class="prose-card text-[0.813rem] text-body border-l-2 border-accent-deep pl-3">${escapeHtml(n.resumen)}…</p>` : ''}
         ${n.description && n.description !== n.resumen ? `<p class="text-xs text-muted-dim">${escapeHtml(n.description)}</p>` : ''}
         ${apariciones.length ? `
@@ -277,6 +305,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
       const target = byId.get(b.dataset.id!);
       if (target) b.addEventListener('click', () => focusNode(target));
     });
+    wireFav(n.id);
   }
 
   function hidePanel() {

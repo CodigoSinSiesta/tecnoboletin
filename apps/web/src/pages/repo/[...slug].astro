@@ -99,6 +99,7 @@ const stats: { label: string; value: string | null; tone?: 'warn' | 'text' }[] =
         {node && (
           <a href={`${base}grafo/indice/#${encodeURIComponent(nodeId)}`} class="pill pill--ghost">Ver en el grafo</a>
         )}
+        <button type="button" id="repo-fav" data-ref={nodeId} class="pill pill--ghost hidden">☆ Guardar</button>
         {item.url && <a href={item.url} target="_blank" rel="noopener" class="pill pill--on">GitHub ↗</a>}
       </span>
     </div>
@@ -302,3 +303,32 @@ const stats: { label: string; value: string | null; tone?: 'warn' | 'text' }[] =
     </div>
   </article>
 </BaseLayout>
+
+<script>
+  // Guardar el repo como nodo favorito: misma referencia (repo:<slug>)
+  // que usa el inspector del grafo, asi que /cuenta/ lo agrupa igual
+  // se guarde desde donde se guarde.
+  import { getSupabase } from '../../lib/supabase';
+
+  const favBtn = document.getElementById('repo-fav') as HTMLButtonElement | null;
+  if (favBtn) {
+    (async () => {
+      const supabase = getSupabase();
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+      const ref = favBtn.dataset.ref!;
+      const { data } = await supabase
+        .from('user_favorites').select('id').eq('kind', 'nodo').eq('ref', ref).maybeSingle();
+      let on = !!data;
+      const paint = () => { favBtn.textContent = on ? '★ Guardado' : '☆ Guardar'; };
+      paint();
+      favBtn.classList.remove('hidden');
+      favBtn.addEventListener('click', async () => {
+        if (on) await supabase.from('user_favorites').delete().eq('kind', 'nodo').eq('ref', ref);
+        else await supabase.from('user_favorites').insert({ kind: 'nodo', ref, user_id: session.user.id });
+        on = !on;
+        paint();
+      });
+    })();
+  }
+</script>

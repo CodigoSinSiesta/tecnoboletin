@@ -139,7 +139,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     const nodoList = el('favs-nodos');
     nodoList.innerHTML = nodos
-      .map((f) => `<li><a class="text-radar hover:underline" href="${base}grafo/indice/">${f.ref}</a></li>`)
+      .map((f) => `<li><a class="text-radar hover:underline" href="${base}grafo/indice/#${encodeURIComponent(f.ref)}">${f.ref}</a></li>`)
       .join('');
     nodos.length ? hide('favs-nodos-empty') : show('favs-nodos-empty');
 
