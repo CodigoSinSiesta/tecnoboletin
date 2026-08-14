@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import graphData from '../../../../public/data/knowledge-graph.json';
+
+interface GraphNode {
+  id: string;
+  name: string;
+  type: string;
+  degree: number;
+  description?: string;
+  stars?: number;
+  lang?: string;
+  synthetic?: boolean;
+}
+interface GraphLink {
+  source: string;
+  target: string;
+  rel: string;
+  added?: string;
+  note?: string;
+}
+
+const nodes = graphData.nodes as GraphNode[];
+const links = graphData.links as GraphLink[];
+
+const byId = new Map(nodes.map((n) => [n.id, n]));
+const relsByNode = new Map<string, { rel: string; dir: 'out' | 'in'; other: GraphNode; added?: string; note?: string }[]>();
+for (const l of links) {
+  const src = byId.get(l.source);
+  const dst = byId.get(l.target);
+  if (!src || !dst) continue;
+  if (!relsByNode.has(src.id)) relsByNode.set(src.id, []);
+  if (!relsByNode.has(dst.id)) relsByNode.set(dst.id, []);
+  relsByNode.get(src.id)!.push({ rel: l.rel, dir: 'out', other: dst, added: l.added, note: l.note });
+  relsByNode.get(dst.id)!.push({ rel: l.rel, dir: 'in', other: src, added: l.added, note: l.note });
+}
+
+const sortedNodes = [...nodes].sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0) || a.name.localeCompare(b.name));
+
+const TYPE_LABEL: Record<string, string> = {
+  repo: 'Repositorio',
+  concept: 'Concepto',
+  company: 'Empresa',
+  tool: 'Herramienta',
+  framework: 'Framework',
+  protocol: 'Protocolo',
+  risk: 'Riesgo',
+  problem: 'Problema',
+  cluster: 'Cluster',
+  skill: 'Skill',
+  pattern: 'Patrón',
+  license: 'Licencia',
+  arxiv: 'Paper',
+  article_angle: 'Ángulo editorial',
+};
+
+const REL_LABEL: Record<string, string> = {
+  competes_with: 'compite con',
+  implements: 'implementa',
+  complements: 'complementa',
+  uses: 'usa',
+  relevant_to: 'relevante para',
+  enables: 'habilita',
+  solves: 'resuelve',
+  supports: 'da soporte a',
+  developed_by: 'desarrollado por',
+  integrates_with: 'se integra con',
+  inspired_by: 'inspirado en',
+  authored: 'autoría de',
+  sibling_of: 'hermano de',
+  evolves: 'evoluciona a',
+  reveals: 'revela',
+  forked_by: 'forkeado por',
+  used_by: 'usado por',
+};
+---
+
+<BaseLayout
+  title="Índice del grafo de conocimiento"
+  description="Todos los nodos y relaciones del grafo de conocimiento de Tecnoboletín, en formato buscable de texto."
+  activeNav="grafo"
+>
+  <div class="mb-6">
+    <h1 class="font-display text-3xl md:text-4xl font-bold text-text mb-2">Índice del grafo</h1>
+    <p class="text-muted max-w-2xl">
+      {nodes.length} nodos ordenados por número de relaciones.
+      <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}grafo/`} class="text-radar hover:underline">
+        Ver como grafo en 3D →
+      </a>
+    </p>
+  </div>
+
+  <input
+    id="node-search"
+    type="text"
+    placeholder="Buscar por nombre, tipo o repositorio…"
+    autocomplete="off"
+    class="w-full mb-6 px-4 py-2.5 rounded-lg bg-surface border border-border text-text placeholder:text-muted-dim focus:outline-none focus:border-radar"
+  />
+
+  <p id="node-count" class="text-xs text-muted-dim mb-4 font-mono"></p>
+
+  <ul id="node-list" class="space-y-2">
+    {sortedNodes.map((n) => {
+      const rels = relsByNode.get(n.id) ?? [];
+      return (
+        <li
+          class="node-row rounded-xl border border-border bg-surface"
+          data-name={`${n.name} ${n.id}`.toLowerCase()}
+          data-type={n.type.toLowerCase()}
+        >
+          <details>
+            <summary class="cursor-pointer list-none px-4 py-3 flex items-center justify-between gap-3">
+              <span class="flex items-center gap-2 min-w-0">
+                <span class="shrink-0 text-[0.65rem] uppercase tracking-wide font-display font-semibold px-1.5 py-0.5 rounded bg-surface-2 text-muted-dim">
+                  {TYPE_LABEL[n.type] ?? n.type}
+                </span>
+                <span class="font-mono text-sm text-text truncate">{n.name}</span>
+                {n.synthetic && <span class="shrink-0 text-[0.65rem] text-muted-dim">(inferido)</span>}
+              </span>
+              <span class="shrink-0 text-xs text-muted-dim font-mono">{rels.length} rel.</span>
+            </summary>
+            <div class="px-4 pb-4 border-t border-border pt-3">
+              {n.description && <p class="text-sm text-muted mb-2">{n.description}</p>}
+              {n.stars != null && (
+                <p class="text-xs text-muted-dim mb-2 font-mono">★ {n.stars}{n.lang ? ` · ${n.lang}` : ''}</p>
+              )}
+              {rels.length > 0 ? (
+                <ul class="space-y-1 font-mono text-xs">
+                  {rels.map((r) => (
+                    <li class="text-muted">
+                      {REL_LABEL[r.rel] ?? r.rel} {r.dir === 'out' ? '→' : '←'}{' '}
+                      <span class="text-text">{r.other.name}</span>
+                      {r.added && <span class="text-muted-dim"> · {r.added}</span>}
+                      {r.note && <div class="text-muted-dim not-italic pl-4">— {r.note}</div>}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="text-xs text-muted-dim">Sin relaciones registradas.</p>
+              )}
+            </div>
+          </details>
+        </li>
+      );
+    })}
+  </ul>
+</BaseLayout>
+
+<script>
+  const search = document.getElementById('node-search') as HTMLInputElement;
+  const rows = Array.from(document.querySelectorAll<HTMLLIElement>('.node-row'));
+  const countEl = document.getElementById('node-count')!;
+
+  function applyFilter() {
+    const q = search.value.trim().toLowerCase();
+    let visible = 0;
+    for (const row of rows) {
+      const match = !q || row.dataset.name!.includes(q) || row.dataset.type!.includes(q);
+      row.style.display = match ? '' : 'none';
+      if (match) visible++;
+    }
+    countEl.textContent = q ? `${visible} de ${rows.length} nodos` : `${rows.length} nodos`;
+  }
+
+  search.addEventListener('input', applyFilter);
+  applyFilter();
+</script>

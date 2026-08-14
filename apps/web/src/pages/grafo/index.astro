@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import graphMeta from '../../../public/data/knowledge-graph.json';
+
+const { node_count, link_count, generated_at } = graphMeta;
+
+const TYPE_LABEL: Record<string, string> = {
+  repo: 'Repositorio',
+  concept: 'Concepto',
+  company: 'Empresa',
+  tool: 'Herramienta',
+  framework: 'Framework',
+  protocol: 'Protocolo',
+  risk: 'Riesgo',
+  problem: 'Problema',
+  cluster: 'Cluster',
+  skill: 'Skill',
+  pattern: 'Patrón',
+  license: 'Licencia',
+  arxiv: 'Paper',
+  article_angle: 'Ángulo editorial',
+};
+
+const typeCounts = graphMeta.nodes.reduce<Record<string, number>>((acc, n: any) => {
+  acc[n.type] = (acc[n.type] ?? 0) + 1;
+  return acc;
+}, {});
+const legend = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout
+  title="Grafo de conocimiento"
+  description="Cómo se relacionan entre sí los repos, conceptos y herramientas que ha ido cruzando Tecnoboletín, en 3D."
+  activeNav="grafo"
+>
+  <div class="mb-6">
+    <h1 class="font-display text-3xl md:text-4xl font-bold text-text mb-2">Grafo de conocimiento</h1>
+    <p class="text-muted max-w-2xl">
+      {node_count} nodos · {link_count} relaciones, construidas automáticamente cada día a partir de los
+      hallazgos cruzados en los boletines.
+      {generated_at && <span class="text-muted-dim"> · actualizado {generated_at}</span>}
+    </p>
+    <p class="text-sm text-muted-dim mt-1">
+      Arrastra para rotar, rueda para zoom, clic en un nodo para ver el detalle.
+      <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}grafo/indice/`} class="text-radar hover:underline">
+        Prefiero verlo como índice de texto →
+      </a>
+    </p>
+  </div>
+
+  <div class="flex flex-wrap gap-1.5 mb-4" id="graph-legend">
+    {legend.map(([type, count]) => (
+      <button
+        type="button"
+        data-type={type}
+        class="graph-legend-pill px-2.5 py-1 rounded-full text-xs font-display font-medium border border-border-strong text-muted hover:text-text transition-colors flex items-center gap-1.5"
+      >
+        <span class="w-2 h-2 rounded-full node-dot" data-type={type}></span>
+        {TYPE_LABEL[type] ?? type} <span class="text-muted-dim">({count})</span>
+      </button>
+    ))}
+  </div>
+
+  <div
+    class="relative rounded-2xl border border-border overflow-hidden bg-bg"
+    style="height: min(70vh, 640px);"
+    id="graph-shell"
+  >
+    <div class="absolute top-3 left-3 z-10 flex gap-2">
+      <input
+        id="graph-search"
+        type="text"
+        placeholder="Buscar nodo…"
+        autocomplete="off"
+        class="w-48 sm:w-64 px-3 py-1.5 rounded-lg bg-bg-raised/90 backdrop-blur border border-border text-sm text-text placeholder:text-muted-dim focus:outline-none focus:border-radar"
+      />
+    </div>
+    <div
+      id="graph-panel"
+      class="hidden absolute top-3 right-3 z-10 w-72 max-w-[85vw] max-h-[calc(100%-1.5rem)] overflow-y-auto rounded-xl border border-border bg-bg-raised/95 backdrop-blur p-4 text-sm"
+    ></div>
+    <div id="graph-loading" class="absolute inset-0 flex items-center justify-center text-muted-dim text-sm font-mono">
+      cargando grafo…
+    </div>
+    <div id="graph-container" class="w-full h-full"></div>
+  </div>
+
+  <p class="text-xs text-muted-dim mt-3">
+    Los nodos marcados como "inferidos" aparecen solo como extremo de una relación (sin ficha propia todavía en
+    el grafo de conocimiento) — su tipo y nombre se derivan del propio identificador, no son un dato verificado.
+  </p>
+</BaseLayout>
+
+<style>
+  #graph-container :global(canvas) {
+    display: block;
+  }
+  .graph-legend-pill[data-active='false'] {
+    opacity: 0.35;
+  }
+</style>
+
+<script>
+  const TYPE_COLOR: Record<string, string> = {
+    repo: '#6aa6ff',
+    concept: '#b39ddb',
+    company: '#f5b65a',
+    tool: '#34d399',
+    framework: '#34d399',
+    protocol: '#fb7185',
+    risk: '#fb7185',
+    problem: '#fb7185',
+    cluster: '#f5b65a',
+    skill: '#34d399',
+    pattern: '#b39ddb',
+    license: '#9aa5c4',
+    arxiv: '#9aa5c4',
+    article_angle: '#9aa5c4',
+  };
+  const DEFAULT_COLOR = '#9aa5c4';
+
+  function colorFor(type: string) {
+    return TYPE_COLOR[type] ?? DEFAULT_COLOR;
+  }
+
+  // Pinta los puntos de la leyenda con el mismo color que usará el grafo,
+  // sin duplicar la paleta en CSS estático.
+  document.querySelectorAll<HTMLElement>('.node-dot').forEach((dot) => {
+    const type = dot.dataset.type ?? '';
+    dot.style.background = colorFor(type);
+  });
+
+  async function init() {
+    const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+    const res = await fetch(`${base}data/knowledge-graph.json`);
+    const data: { nodes: any[]; links: any[] } = await res.json();
+
+    const { default: ForceGraph3D } = await import('3d-force-graph');
+    // Los tipos publicados de 3d-force-graph declaran el factory como si
+    // necesitara `new`, pero en runtime es una funcion de doble-llamada
+    // (ForceGraph3D()(el)) -- ver docs del paquete. Se castea a any solo
+    // en el punto de instanciacion para no perder el resto del tipado.
+    const makeGraph = ForceGraph3D as unknown as () => any;
+
+    const container = document.getElementById('graph-container')!;
+    const loading = document.getElementById('graph-loading')!;
+    const panel = document.getElementById('graph-panel')!;
+    const search = document.getElementById('graph-search') as HTMLInputElement;
+
+    const byId = new Map(data.nodes.map((n) => [n.id, n]));
+    const linksByNode = new Map<string, any[]>();
+    for (const l of data.links) {
+      const s = typeof l.source === 'object' ? l.source.id : l.source;
+      const t = typeof l.target === 'object' ? l.target.id : l.target;
+      if (!linksByNode.has(s)) linksByNode.set(s, []);
+      if (!linksByNode.has(t)) linksByNode.set(t, []);
+      linksByNode.get(s)!.push({ ...l, dir: 'out', other: t });
+      linksByNode.get(t)!.push({ ...l, dir: 'in', other: s });
+    }
+
+    const activeTypes = new Set(Object.keys(Object.fromEntries(data.nodes.map((n) => [n.type, true]))));
+
+    const Graph = makeGraph()(container)
+      .backgroundColor('#0a0e1a')
+      .graphData(data)
+      .nodeId('id')
+      .nodeLabel((n: any) => `${n.name}${n.synthetic ? ' (inferido)' : ''}`)
+      .nodeColor((n: any) => (activeTypes.has(n.type) ? colorFor(n.type) : 'rgba(154,165,196,0.08)'))
+      .nodeVal((n: any) => 1 + Math.min(n.degree ?? 1, 20) * 0.6)
+      .nodeOpacity(0.92)
+      .linkColor(() => 'rgba(154,165,196,0.25)')
+      .linkWidth(0.4)
+      .linkDirectionalParticles(0)
+      .onNodeClick((n: any) => showPanel(n))
+      .onBackgroundClick(() => panel.classList.add('hidden'));
+
+    loading.remove();
+
+    function showPanel(n: any) {
+      const rels = (linksByNode.get(n.id) ?? []).slice(0, 40);
+      panel.innerHTML = `
+        <div class="flex items-start justify-between gap-2 mb-1">
+          <h2 class="font-display font-semibold text-text leading-tight">${escapeHtml(n.name)}</h2>
+          <button id="graph-panel-close" class="text-muted-dim hover:text-text shrink-0" aria-label="Cerrar">✕</button>
+        </div>
+        <div class="text-xs uppercase tracking-wide text-muted-dim mb-2">
+          ${escapeHtml(n.type)}${n.synthetic ? ' · inferido' : ''}
+        </div>
+        ${n.description ? `<p class="text-muted text-sm mb-2">${escapeHtml(n.description)}</p>` : ''}
+        ${n.stars != null ? `<div class="text-xs text-muted-dim mb-2">★ ${n.stars}${n.lang ? ` · ${escapeHtml(n.lang)}` : ''}</div>` : ''}
+        <div class="text-xs uppercase tracking-wide text-muted-dim mt-3 mb-1">Relaciones (${(linksByNode.get(n.id) ?? []).length})</div>
+        <ul class="space-y-1 font-mono text-xs">
+          ${rels
+            .map((r) => {
+              const otherNode = byId.get(r.other);
+              const label = otherNode?.name ?? r.other;
+              const arrow = r.dir === 'out' ? '→' : '←';
+              return `<li class="text-muted">${escapeHtml(r.rel)} ${arrow} <span class="text-text">${escapeHtml(label)}</span></li>`;
+            })
+            .join('')}
+        </ul>
+      `;
+      panel.classList.remove('hidden');
+      document.getElementById('graph-panel-close')?.addEventListener('click', () => panel.classList.add('hidden'));
+    }
+
+    function escapeHtml(s: string) {
+      return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
+    }
+
+    // Búsqueda: enfoca cámara sobre el primer nodo cuyo nombre matchea.
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      if (!q) return;
+      // Matchea contra nombre e id, y entre los candidatos prefiere el más
+      // conectado (grado alto) -- "claude-code" debe llevar a
+      // anthropics/claude-code, no a un fork con 2 relaciones.
+      const candidates = data.nodes.filter(
+        (n) => n.name.toLowerCase().includes(q) || n.id.toLowerCase().includes(q)
+      );
+      if (!candidates.length) return;
+      const match = candidates.sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0))[0];
+      const distance = 120;
+      const nx = (match as any).x ?? 0;
+      const ny = (match as any).y ?? 0;
+      const nz = (match as any).z ?? 0;
+      const ratio = 1 + distance / Math.hypot(nx, ny, nz, 1);
+      Graph.cameraPosition({ x: nx * ratio, y: ny * ratio, z: nz * ratio }, { x: nx, y: ny, z: nz }, 1000);
+      showPanel(match);
+    });
+
+    // Leyenda: clic para atenuar/resaltar un tipo de nodo.
+    document.querySelectorAll<HTMLElement>('.graph-legend-pill').forEach((pill) => {
+      pill.dataset.active = 'true';
+      pill.addEventListener('click', () => {
+        const type = pill.dataset.type!;
+        if (activeTypes.has(type)) {
+          activeTypes.delete(type);
+          pill.dataset.active = 'false';
+        } else {
+          activeTypes.add(type);
+          pill.dataset.active = 'true';
+        }
+        Graph.refresh();
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      const shell = document.getElementById('graph-shell')!;
+      Graph.width(shell.clientWidth).height(shell.clientHeight);
+    });
+  }
+
+  init();
+</script>

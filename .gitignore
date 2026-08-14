@@ -18,3 +18,7 @@ Thumbs.db
 
 # logs
 *.log
+
+# Secretos locales — nunca se commitean (ver CONTABO-INFO.md del repo server para el patron)
+SECRETS.local.md
+.env.local

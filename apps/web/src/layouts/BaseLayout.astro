@@ -8,7 +8,7 @@ interface Props {
    *  Se pasa explícitamente en vez de derivarla de Astro.url.pathname
    *  porque en build estático con `base: '/tecnoboletin'` esa comparación
    *  es fragil (barras finales, base incluida o no según la página). */
-  activeNav?: 'boletines' | 'enriquecido' | 'fuentes' | 'temas';
+  activeNav?: 'boletines' | 'enriquecido' | 'fuentes' | 'temas' | 'grafo';
 }
 
 const { title, description = 'Lectura cómoda de los boletines de Código Sin Siesta', activeNav } = Astro.props;
@@ -23,6 +23,7 @@ const nav = [
   { key: 'enriquecido', href: `${base}enriquecido/`, label: 'Enriquecidos' },
   { key: 'fuentes', href: `${base}fuentes/`, label: 'Fuentes' },
   { key: 'temas', href: `${base}temas/`, label: 'Temas' },
+  { key: 'grafo', href: `${base}grafo/`, label: 'Grafo' },
 ] as const;
 ---
 <!doctype html>
