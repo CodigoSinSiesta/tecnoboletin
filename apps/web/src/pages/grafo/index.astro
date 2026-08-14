@@ -1,139 +1,318 @@
 ---
+/**
+ * Explorador del grafo de conocimiento.
+ *
+ * Antes era un lienzo 3D a pantalla completa con un panel flotante que
+ * tapaba el propio grafo. Ahora es una consola de tres columnas —
+ * filtros / lienzo / inspector — y el inspector incluye la barra temporal
+ * "cómo creció este nodo", que es lo que convierte el grafo en algo que
+ * se lee junto al boletín y no aparte de él.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import graphMeta from '../../../public/data/knowledge-graph.json';
+import { listDates } from '../../lib/boletin';
+import { generatedAt, linkCount, nodeCount, relCounts, TYPE_COLOR, TYPE_LABEL, typeCounts } from '../../lib/graph';
 
-const { node_count, link_count, generated_at } = graphMeta;
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+const dates = await listDates();
+const desde = dates[dates.length - 1] ?? '';
+const hasta = dates[0] ?? '';
 
-const TYPE_LABEL: Record<string, string> = {
-  repo: 'Repositorio',
-  concept: 'Concepto',
-  company: 'Empresa',
-  tool: 'Herramienta',
-  framework: 'Framework',
-  protocol: 'Protocolo',
-  risk: 'Riesgo',
-  problem: 'Problema',
-  cluster: 'Cluster',
-  skill: 'Skill',
-  pattern: 'Patrón',
-  license: 'Licencia',
-  arxiv: 'Paper',
-  article_angle: 'Ángulo editorial',
-};
-
-const typeCounts = graphMeta.nodes.reduce<Record<string, number>>((acc, n: any) => {
-  acc[n.type] = (acc[n.type] ?? 0) + 1;
-  return acc;
-}, {});
 const legend = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
+const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
 ---
-
 <BaseLayout
   title="Grafo de conocimiento"
   description="Cómo se relacionan entre sí los repos, conceptos y herramientas que ha ido cruzando Tecnoboletín, en 3D."
   activeNav="grafo"
+  width="full"
+  crumbs={['grafo']}
 >
-  <div class="mb-6">
-    <h1 class="font-display text-3xl md:text-4xl font-bold text-text mb-2">Grafo de conocimiento</h1>
-    <p class="text-muted max-w-2xl">
-      {node_count} nodos · {link_count} relaciones, construidas automáticamente cada día a partir de los
-      hallazgos cruzados en los boletines.
-      {generated_at && <span class="text-muted-dim"> · actualizado {generated_at}</span>}
-    </p>
-    <p class="text-sm text-muted-dim mt-1">
-      Arrastra para rotar, rueda para zoom, clic en un nodo para ver el detalle.
-      <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}grafo/indice/`} class="text-radar hover:underline">
-        Prefiero verlo como índice de texto →
-      </a>
-    </p>
-  </div>
+  <div class="border-b border-border">
+    <div class="h-12 px-4 md:px-6 flex items-center gap-3 border-b border-border bg-bg-raised">
+      <h1 class="crumb crumb__here">Grafo de conocimiento</h1>
+      <span class="ml-auto mono-meta hidden sm:inline">
+        {nodeCount} nodos · {linkCount} relaciones{generatedAt && ` · act. ${generatedAt}`}
+      </span>
+      <a href={`${base}grafo/indice/`} class="pill pill--ghost">Índice de texto</a>
+    </div>
 
-  <div class="flex flex-wrap gap-1.5 mb-4" id="graph-legend">
-    {legend.map(([type, count]) => (
-      <button
-        type="button"
-        data-type={type}
-        class="graph-legend-pill px-2.5 py-1 rounded-full text-xs font-display font-medium border border-border-strong text-muted hover:text-text transition-colors flex items-center gap-1.5"
+    <div class="grid grid-cols-1 lg:grid-cols-[210px_1fr_300px] min-h-[560px] lg:h-[calc(100vh-190px)]">
+      <!-- ── Filtros ── -->
+      <div class="border-b lg:border-b-0 lg:border-r border-border bg-rail p-4 flex flex-col gap-4 scroll-y">
+        <div>
+          <div class="flow-label mb-2">Buscar</div>
+          <input
+            id="graph-search"
+            type="search"
+            autocomplete="off"
+            placeholder="claude-code…"
+            class="w-full border border-border-strong rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs text-text placeholder:text-muted-dim focus:outline-none focus:border-accent-soft"
+          />
+        </div>
+
+        <div>
+          <div class="flow-label mb-2">Tipos</div>
+          <div class="flex flex-col gap-1.5" id="graph-legend">
+            {legend.map(([type, count]) => (
+              <button
+                type="button"
+                data-type={type}
+                data-active="true"
+                class="graph-legend-pill flex items-center gap-2 font-mono text-[0.719rem] text-text hover:text-accent-dim transition-colors"
+              >
+                <span class="dot w-2 h-2 node-dot" data-type={type} style={`background:${TYPE_COLOR[type] ?? '#475569'}`}></span>
+                <span class="truncate">{TYPE_LABEL[type] ?? type}</span>
+                <span class="ml-auto text-muted-dim">{count}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div class="flow-label mb-2">Relación</div>
+          <div class="flex flex-wrap gap-1.5" id="graph-rels">
+            {rels.map(([rel, count]) => (
+              <button
+                type="button"
+                data-rel={rel}
+                data-active="true"
+                class="graph-rel-pill font-mono text-[0.656rem] px-2 py-0.5 rounded-full bg-bg-raised border border-border text-body hover:border-accent-soft transition-colors"
+              >
+                {rel} <span class="text-muted-dim">{count}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <p class="mt-auto text-[0.719rem] leading-[1.5] text-muted-dim">
+          Los nodos «inferidos» solo existen como extremo de una relación: su tipo y su nombre se derivan del
+          identificador, no son un dato verificado.
+        </p>
+      </div>
+
+      <!-- ── Lienzo ── -->
+      <div class="relative graph-glow overflow-hidden min-h-[420px]" id="graph-shell">
+        <div id="graph-loading" class="absolute inset-0 flex items-center justify-center mono-meta">cargando grafo…</div>
+        <div id="graph-container" class="w-full h-full"></div>
+        <div class="absolute left-4 bottom-4 flex gap-1.5">
+          <button type="button" id="graph-zoom-out" class="font-mono text-[0.656rem] px-2.5 py-1.5 rounded-lg bg-bg-raised/90 border border-border-strong text-muted hover:text-text">−</button>
+          <button type="button" id="graph-zoom-in" class="font-mono text-[0.656rem] px-2.5 py-1.5 rounded-lg bg-bg-raised/90 border border-border-strong text-muted hover:text-text">+</button>
+          <button type="button" id="graph-recenter" class="font-mono text-[0.656rem] px-2.5 py-1.5 rounded-lg bg-bg-raised/90 border border-border-strong text-muted hover:text-text">reencuadrar</button>
+        </div>
+      </div>
+
+      <!-- ── Inspector ── -->
+      <aside
+        class="border-t lg:border-t-0 lg:border-l border-border bg-rail flex flex-col min-w-0"
+        id="graph-panel"
+        data-base={base}
+        data-desde={desde}
+        data-hasta={hasta}
       >
-        <span class="w-2 h-2 rounded-full node-dot" data-type={type}></span>
-        {TYPE_LABEL[type] ?? type} <span class="text-muted-dim">({count})</span>
-      </button>
-    ))}
-  </div>
-
-  <div
-    class="relative rounded-2xl border border-border overflow-hidden bg-bg"
-    style="height: min(70vh, 640px);"
-    id="graph-shell"
-  >
-    <div class="absolute top-3 left-3 z-10 flex gap-2">
-      <input
-        id="graph-search"
-        type="text"
-        placeholder="Buscar nodo…"
-        autocomplete="off"
-        class="w-48 sm:w-64 px-3 py-1.5 rounded-lg bg-bg-raised/90 backdrop-blur border border-border text-sm text-text placeholder:text-muted-dim focus:outline-none focus:border-radar"
-      />
+        <div id="graph-panel-empty" class="flex-1 flex items-center justify-center p-6 text-center mono-meta">
+          Clic en un nodo para ver su ficha,<br />o busca uno por nombre.
+        </div>
+        <div id="graph-panel-body" class="hidden flex-1 flex-col min-h-0"></div>
+      </aside>
     </div>
-    <div
-      id="graph-panel"
-      class="hidden absolute top-3 right-3 z-10 w-72 max-w-[85vw] max-h-[calc(100%-1.5rem)] overflow-y-auto rounded-xl border border-border bg-bg-raised/95 backdrop-blur p-4 text-sm"
-    ></div>
-    <div id="graph-loading" class="absolute inset-0 flex items-center justify-center text-muted-dim text-sm font-mono">
-      cargando grafo…
-    </div>
-    <div id="graph-container" class="w-full h-full"></div>
   </div>
-
-  <p class="text-xs text-muted-dim mt-3">
-    Los nodos marcados como "inferidos" aparecen solo como extremo de una relación (sin ficha propia todavía en
-    el grafo de conocimiento) — su tipo y nombre se derivan del propio identificador, no son un dato verificado.
-  </p>
 </BaseLayout>
 
 <style>
-  #graph-container :global(canvas) {
-    display: block;
-  }
-  .graph-legend-pill[data-active='false'] {
-    opacity: 0.35;
-  }
+  #graph-container :global(canvas) { display: block; }
 </style>
 
 <script>
-  const TYPE_COLOR: Record<string, string> = {
-    repo: '#6aa6ff',
-    concept: '#b39ddb',
-    company: '#f5b65a',
-    tool: '#34d399',
-    framework: '#34d399',
-    protocol: '#fb7185',
-    risk: '#fb7185',
-    problem: '#fb7185',
-    cluster: '#f5b65a',
-    skill: '#34d399',
-    pattern: '#b39ddb',
-    license: '#9aa5c4',
-    arxiv: '#9aa5c4',
-    article_angle: '#9aa5c4',
-  };
-  const DEFAULT_COLOR = '#9aa5c4';
+  /**
+   * Explorador 3D: filtros, inspector y barra temporal.
+   *
+   * El grafo se descarga en runtime desde /data/knowledge-graph.json (300 KB)
+   * en vez de empaquetarse: la página pinta su chrome al instante y el
+   * lienzo se rellena cuando llegan los datos. Del módulo compartido solo
+   * se importan constantes.
+   */
+  import { colorForType, REL_LABEL, TYPE_LABEL } from '../../lib/graph-tokens';
 
-  function colorFor(type: string) {
-    return TYPE_COLOR[type] ?? DEFAULT_COLOR;
+  interface GNode {
+    id: string; name: string; type: string; degree?: number;
+    resumen?: string; description?: string; stars?: number; lang?: string; synthetic?: boolean;
+    apariciones?: { date: string; seccion?: string }[]; menciones?: string[];
+    x?: number; y?: number; z?: number;
+  }
+  interface GLink { source: string | GNode; target: string | GNode; rel: string }
+  interface Neighbor { rel: string; dir: 'out' | 'in'; other: GNode; otherId: string }
+
+  const panel = document.getElementById('graph-panel')!;
+  const panelBody = document.getElementById('graph-panel-body')!;
+  const panelEmpty = document.getElementById('graph-panel-empty')!;
+  const search = document.getElementById('graph-search') as HTMLInputElement;
+  const base = panel.dataset.base ?? '/';
+  const desde = panel.dataset.desde ?? '';
+  const hasta = panel.dataset.hasta ?? '';
+
+  // Tipos y relaciones activos: se inicializan con TODO encendido a partir
+  // de las pills que ya renderizó el servidor, así los filtros funcionan
+  // (visualmente) antes incluso de que lleguen los datos.
+  const activeTypes = new Set(
+    Array.from(document.querySelectorAll<HTMLElement>('.graph-legend-pill')).map((p) => p.dataset.type!)
+  );
+  const filtrables = new Set(
+    Array.from(document.querySelectorAll<HTMLElement>('.graph-rel-pill')).map((p) => p.dataset.rel!)
+  );
+  const activeRels = new Set(filtrables);
+
+  let Graph: any = null;
+  let byId = new Map<string, GNode>();
+  let allNodes: GNode[] = [];
+  let neighborIndex = new Map<string, Neighbor[]>();
+
+  function escapeHtml(s: unknown) {
+    return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
   }
 
-  // Pinta los puntos de la leyenda con el mismo color que usará el grafo,
-  // sin duplicar la paleta en CSS estático.
-  document.querySelectorAll<HTMLElement>('.node-dot').forEach((dot) => {
-    const type = dot.dataset.type ?? '';
-    dot.style.background = colorFor(type);
-  });
+  function neighbors(id: string): Neighbor[] {
+    return neighborIndex.get(id) ?? [];
+  }
+
+  /** Fechas en las que el nodo apareció o fue mencionado, ordenadas. */
+  function timeline(n: GNode): string[] {
+    const dates = new Set<string>();
+    for (const a of n.apariciones ?? []) if (a.date) dates.add(a.date);
+    for (const d of n.menciones ?? []) if (d) dates.add(d);
+    return [...dates].sort();
+  }
+
+  /** Barra "cómo creció este nodo": una marca por boletín en el que apareció. */
+  function scrubber(n: GNode) {
+    const marks = timeline(n);
+    if (!marks.length || !desde || !hasta) return '';
+    const t0 = Date.parse(desde);
+    const span = Math.max(Date.parse(hasta) - t0, 1);
+    const pct = (d: string) => Math.min(100, Math.max(0, ((Date.parse(d) - t0) / span) * 100));
+    const last = marks[marks.length - 1];
+    const ticks = marks
+      .map((d, i) => {
+        const cls =
+          i === marks.length - 1 ? 'scrub__tick scrub__tick--last'
+          : i === 0 ? 'scrub__tick scrub__tick--first'
+          : 'scrub__tick';
+        return `<span class="${cls}" style="left:${pct(d).toFixed(2)}%" title="${escapeHtml(d)}"></span>`;
+      })
+      .join('');
+    return `
+      <div class="px-4 py-3 border-t border-border">
+        <div class="flex items-center justify-between mb-2">
+          <span class="flow-label">Cómo creció este nodo</span>
+          <span class="font-mono text-[0.656rem] text-muted">${escapeHtml(desde)} → ${escapeHtml(hasta)}</span>
+        </div>
+        <div class="scrub">
+          <div class="scrub__track"></div>
+          <div class="scrub__fill" style="width:${pct(last).toFixed(2)}%"></div>
+          ${ticks}
+          <span class="scrub__label" style="left:${pct(last).toFixed(2)}%">${escapeHtml(last)} · ${marks.length}</span>
+        </div>
+      </div>`;
+  }
+
+  function showPanel(n: GNode) {
+    const rels = neighbors(n.id);
+    const apariciones = n.apariciones ?? [];
+    const menciones = n.menciones ?? [];
+    const slug = n.type === 'repo' && /^[\w.-]+\/[\w.-]+$/.test(n.id.replace(/^repo:/, ''))
+      ? n.id.replace(/^repo:/, '')
+      : null;
+
+    panelBody.innerHTML = `
+      <div class="px-4 pt-4 pb-3 border-b border-border">
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-mono text-[0.938rem] text-text font-semibold break-all">${escapeHtml(n.name)}</span>
+          <button type="button" id="graph-panel-close" class="text-muted-dim hover:text-text shrink-0" aria-label="Cerrar">✕</button>
+        </div>
+        <div class="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted-dim mt-1.5">
+          ${escapeHtml(TYPE_LABEL[n.type] ?? n.type)}${n.synthetic ? ' · inferido' : ''}${n.stars != null ? ` · ★ ${escapeHtml(n.stars)}` : ''}${n.lang ? ` · ${escapeHtml(n.lang)}` : ''}
+        </div>
+      </div>
+      <div class="scroll-y flex-1 px-4 py-4 flex flex-col gap-4">
+        ${slug ? `<a href="${base}repo/${escapeHtml(slug)}/" class="pill pill--solid self-start">Abrir ficha</a>` : ''}
+        ${n.resumen ? `<p class="prose-card text-[0.813rem] text-body border-l-2 border-accent-deep pl-3">${escapeHtml(n.resumen)}…</p>` : ''}
+        ${n.description && n.description !== n.resumen ? `<p class="text-xs text-muted-dim">${escapeHtml(n.description)}</p>` : ''}
+        ${apariciones.length ? `
+          <div>
+            <div class="flow-label mb-1.5">Visto en boletines · ${apariciones.length}</div>
+            <div class="flex flex-wrap gap-1.5">
+              ${apariciones.slice(0, 10).map((a) =>
+                `<a href="${base}enriquecido/${escapeHtml(a.date)}/" class="font-mono text-[0.656rem] px-2 py-0.5 rounded bg-bg-raised border border-border text-accent-soft">${escapeHtml(a.date)}</a>`
+              ).join('')}
+              ${apariciones.length > 10 ? `<span class="mono-meta">+${apariciones.length - 10}</span>` : ''}
+            </div>
+          </div>` : ''}
+        ${menciones.length ? `
+          <div>
+            <div class="flow-label mb-1.5">Mencionado en</div>
+            <div class="flex flex-wrap gap-1.5">
+              ${menciones.slice(0, 10).map((d) =>
+                `<a href="${base}enriquecido/${escapeHtml(d)}/" class="font-mono text-[0.656rem] px-2 py-0.5 rounded bg-bg-raised border border-border text-muted">${escapeHtml(d)}</a>`
+              ).join('')}
+              ${menciones.length > 10 ? `<span class="mono-meta">+${menciones.length - 10}</span>` : ''}
+            </div>
+          </div>` : ''}
+        <div>
+          <div class="flow-label mb-1.5">Relaciones · ${rels.length}</div>
+          <ul class="flex flex-col gap-1.5 font-mono text-[0.688rem]">
+            ${rels.slice(0, 40).map((r) =>
+              `<li class="text-muted">${escapeHtml(REL_LABEL[r.rel] ?? r.rel)} ${r.dir === 'out' ? '→' : '←'} <button type="button" class="text-text hover:text-accent-soft graph-jump" data-id="${escapeHtml(r.otherId)}">${escapeHtml(r.other.name)}</button></li>`
+            ).join('')}
+            ${rels.length > 40 ? `<li class="mono-meta">+${rels.length - 40} más</li>` : ''}
+          </ul>
+        </div>
+      </div>
+      ${scrubber(n)}
+    `;
+    panelBody.classList.remove('hidden');
+    panelBody.classList.add('flex');
+    panelEmpty.classList.add('hidden');
+
+    document.getElementById('graph-panel-close')?.addEventListener('click', hidePanel);
+    panelBody.querySelectorAll<HTMLElement>('.graph-jump').forEach((b) => {
+      const target = byId.get(b.dataset.id!);
+      if (target) b.addEventListener('click', () => focusNode(target));
+    });
+  }
+
+  function hidePanel() {
+    panelBody.classList.add('hidden');
+    panelBody.classList.remove('flex');
+    panelEmpty.classList.remove('hidden');
+  }
+
+  function focusNode(n: GNode) {
+    showPanel(n);
+    if (!Graph) return;
+    const distance = 120;
+    const nx = n.x ?? 0, ny = n.y ?? 0, nz = n.z ?? 0;
+    const ratio = 1 + distance / Math.hypot(nx, ny, nz, 1);
+    Graph.cameraPosition({ x: nx * ratio, y: ny * ratio, z: nz * ratio }, { x: nx, y: ny, z: nz }, 1000);
+  }
 
   async function init() {
-    const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
     const res = await fetch(`${base}data/knowledge-graph.json`);
-    const data: { nodes: any[]; links: any[] } = await res.json();
+    const data = (await res.json()) as { nodes: GNode[]; links: GLink[] };
+
+    allNodes = data.nodes;
+    byId = new Map(allNodes.map((n) => [n.id, n]));
+    neighborIndex = new Map();
+    for (const l of data.links) {
+      const s = typeof l.source === 'object' ? l.source.id : l.source;
+      const t = typeof l.target === 'object' ? l.target.id : l.target;
+      const push = (from: string, to: string, dir: 'out' | 'in') => {
+        const other = byId.get(to);
+        if (!other) return;
+        if (!neighborIndex.has(from)) neighborIndex.set(from, []);
+        neighborIndex.get(from)!.push({ rel: l.rel, dir, other, otherId: to });
+      };
+      push(s, t, 'out');
+      push(t, s, 'in');
+    }
 
     const { default: ForceGraph3D } = await import('3d-force-graph');
     // Los tipos publicados de 3d-force-graph declaran el factory como si
@@ -143,152 +322,74 @@ const legend = Object.entries(typeCounts).sort((a, b) => b[1] - a[1]);
     const makeGraph = ForceGraph3D as unknown as () => any;
 
     const container = document.getElementById('graph-container')!;
-    const loading = document.getElementById('graph-loading')!;
-    const panel = document.getElementById('graph-panel')!;
-    const search = document.getElementById('graph-search') as HTMLInputElement;
+    const shell = document.getElementById('graph-shell')!;
 
-    const byId = new Map(data.nodes.map((n) => [n.id, n]));
-    const linksByNode = new Map<string, any[]>();
-    for (const l of data.links) {
-      const s = typeof l.source === 'object' ? l.source.id : l.source;
-      const t = typeof l.target === 'object' ? l.target.id : l.target;
-      if (!linksByNode.has(s)) linksByNode.set(s, []);
-      if (!linksByNode.has(t)) linksByNode.set(t, []);
-      linksByNode.get(s)!.push({ ...l, dir: 'out', other: t });
-      linksByNode.get(t)!.push({ ...l, dir: 'in', other: s });
-    }
-
-    const activeTypes = new Set(Object.keys(Object.fromEntries(data.nodes.map((n) => [n.type, true]))));
-
-    const Graph = makeGraph()(container)
-      .backgroundColor('#0a0e1a')
+    Graph = makeGraph()(container)
+      .backgroundColor('#0B1220')
       .graphData(data)
       .nodeId('id')
-      .nodeLabel((n: any) => `${n.name}${n.synthetic ? ' (inferido)' : ''}`)
-      .nodeColor((n: any) => (activeTypes.has(n.type) ? colorFor(n.type) : 'rgba(154,165,196,0.08)'))
-      .nodeVal((n: any) => 1 + Math.min(n.degree ?? 1, 20) * 0.6)
+      .nodeLabel((n: GNode) => `${n.name}${n.synthetic ? ' (inferido)' : ''}`)
+      .nodeColor((n: GNode) => (activeTypes.has(n.type) ? colorForType(n.type) : 'rgba(148,163,184,0.08)'))
+      .nodeVal((n: GNode) => 1 + Math.min(n.degree ?? 1, 20) * 0.6)
       .nodeOpacity(0.92)
-      .linkColor(() => 'rgba(154,165,196,0.25)')
+      .linkColor(() => 'rgba(148,163,184,0.28)')
       .linkWidth(0.4)
+      .linkVisibility((l: GLink) => !filtrables.has(l.rel) || activeRels.has(l.rel))
       .linkDirectionalParticles(0)
-      .onNodeClick((n: any) => showPanel(n))
-      .onBackgroundClick(() => panel.classList.add('hidden'));
+      .onNodeClick((n: GNode) => showPanel(n))
+      .onBackgroundClick(hidePanel);
 
-    loading.remove();
+    document.getElementById('graph-loading')?.remove();
 
-    const SECCION_LABEL: Record<string, string> = {
-      hallazgo_principal: 'hallazgo principal',
-      radar_secundario: 'radar secundario',
+    const zoom = (factor: number) => {
+      const p = Graph.cameraPosition();
+      Graph.cameraPosition({ x: p.x * factor, y: p.y * factor, z: p.z * factor }, undefined, 400);
     };
-    const base2 = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+    document.getElementById('graph-zoom-in')?.addEventListener('click', () => zoom(0.75));
+    document.getElementById('graph-zoom-out')?.addEventListener('click', () => zoom(1.35));
+    document.getElementById('graph-recenter')?.addEventListener('click', () => Graph.zoomToFit(600, 40));
 
-    function showPanel(n: any) {
-      const rels = (linksByNode.get(n.id) ?? []).slice(0, 40);
-      const apariciones = (n.apariciones ?? []) as any[];
-      const menciones = (n.menciones ?? []) as string[];
-      const isRepo = n.type === 'repo' && /^[\w.-]+\/[\w.-]+$/.test(n.id.replace(/^repo:/, ''));
-      const repoSlug = isRepo ? n.id.replace(/^repo:/, '') : null;
-      panel.innerHTML = `
-        <div class="flex items-start justify-between gap-2 mb-1">
-          <h2 class="font-display font-semibold text-text leading-tight">${escapeHtml(n.name)}</h2>
-          <button id="graph-panel-close" class="text-muted-dim hover:text-text shrink-0" aria-label="Cerrar">✕</button>
-        </div>
-        <div class="text-xs uppercase tracking-wide text-muted-dim mb-2">
-          ${escapeHtml(n.type)}${n.synthetic ? ' · inferido' : ''}
-          ${n.stars != null ? ` · ★ ${n.stars}` : ''}${n.lang ? ` · ${escapeHtml(n.lang)}` : ''}
-        </div>
-        ${repoSlug ? `<a href="https://github.com/${escapeHtml(repoSlug)}" target="_blank" rel="noopener" class="inline-block font-mono text-xs text-radar hover:underline mb-2">github.com/${escapeHtml(repoSlug)} ↗</a>` : ''}
-        ${n.resumen ? `<p class="text-muted text-sm mb-2 border-l-2 border-violet pl-2">${escapeHtml(n.resumen)}…</p>` : ''}
-        ${n.description && n.description !== n.resumen ? `<p class="text-muted-dim text-xs mb-2">${escapeHtml(n.description)}</p>` : ''}
-        ${
-          apariciones.length
-            ? `<div class="text-xs uppercase tracking-wide text-muted-dim mt-3 mb-1">Visto en boletines (${apariciones.length})</div>
-               <ul class="space-y-1 text-xs mb-1">
-                 ${apariciones
-                   .slice(0, 8)
-                   .map(
-                     (a) =>
-                       `<li><a href="${base2}enriquecido/${escapeHtml(a.date)}/" class="text-radar hover:underline">${escapeHtml(a.date)}</a> <span class="text-muted-dim">· ${escapeHtml(SECCION_LABEL[a.seccion] ?? a.seccion)}</span></li>`
-                   )
-                   .join('')}
-                 ${apariciones.length > 8 ? `<li class="text-muted-dim">+${apariciones.length - 8} más</li>` : ''}
-               </ul>`
-            : ''
-        }
-        ${
-          menciones.length
-            ? `<div class="text-xs uppercase tracking-wide text-muted-dim mt-2 mb-1">Mencionado en</div>
-               <div class="flex flex-wrap gap-1 mb-1">
-                 ${menciones
-                   .slice(0, 10)
-                   .map((d) => `<a href="${base2}enriquecido/${escapeHtml(d)}/" class="font-mono text-[0.65rem] px-1.5 py-0.5 rounded bg-surface-2 text-muted hover:text-radar">${escapeHtml(d)}</a>`)
-                   .join('')}
-                 ${menciones.length > 10 ? `<span class="text-muted-dim text-[0.65rem]">+${menciones.length - 10}</span>` : ''}
-               </div>`
-            : ''
-        }
-        <div class="text-xs uppercase tracking-wide text-muted-dim mt-3 mb-1">Relaciones (${(linksByNode.get(n.id) ?? []).length})</div>
-        <ul class="space-y-1 font-mono text-xs">
-          ${rels
-            .map((r) => {
-              const otherNode = byId.get(r.other);
-              const label = otherNode?.name ?? r.other;
-              const arrow = r.dir === 'out' ? '→' : '←';
-              return `<li class="text-muted">${escapeHtml(r.rel)} ${arrow} <span class="text-text">${escapeHtml(label)}</span></li>`;
-            })
-            .join('')}
-        </ul>
-      `;
-      panel.classList.remove('hidden');
-      document.getElementById('graph-panel-close')?.addEventListener('click', () => panel.classList.add('hidden'));
-    }
+    const resize = () => Graph.width(shell.clientWidth).height(shell.clientHeight);
+    window.addEventListener('resize', resize);
+    resize();
 
-    function escapeHtml(s: string) {
-      return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
-    }
-
-    // Búsqueda: enfoca cámara sobre el primer nodo cuyo nombre matchea.
-    search.addEventListener('input', () => {
-      const q = search.value.trim().toLowerCase();
-      if (!q) return;
-      // Matchea contra nombre e id, y entre los candidatos prefiere el más
-      // conectado (grado alto) -- "claude-code" debe llevar a
-      // anthropics/claude-code, no a un fork con 2 relaciones.
-      const candidates = data.nodes.filter(
-        (n) => n.name.toLowerCase().includes(q) || n.id.toLowerCase().includes(q)
-      );
-      if (!candidates.length) return;
-      const match = candidates.sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0))[0];
-      const distance = 120;
-      const nx = (match as any).x ?? 0;
-      const ny = (match as any).y ?? 0;
-      const nz = (match as any).z ?? 0;
-      const ratio = 1 + distance / Math.hypot(nx, ny, nz, 1);
-      Graph.cameraPosition({ x: nx * ratio, y: ny * ratio, z: nz * ratio }, { x: nx, y: ny, z: nz }, 1000);
-      showPanel(match);
-    });
-
-    // Leyenda: clic para atenuar/resaltar un tipo de nodo.
-    document.querySelectorAll<HTMLElement>('.graph-legend-pill').forEach((pill) => {
-      pill.dataset.active = 'true';
-      pill.addEventListener('click', () => {
-        const type = pill.dataset.type!;
-        if (activeTypes.has(type)) {
-          activeTypes.delete(type);
-          pill.dataset.active = 'false';
-        } else {
-          activeTypes.add(type);
-          pill.dataset.active = 'true';
-        }
-        Graph.refresh();
-      });
-    });
-
-    window.addEventListener('resize', () => {
-      const shell = document.getElementById('graph-shell')!;
-      Graph.width(shell.clientWidth).height(shell.clientHeight);
-    });
+    // Enlace directo desde el boletín o la ficha: /grafo/#repo:owner/name
+    const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+    const target = hash ? byId.get(hash) : undefined;
+    if (target) focusNode(target);
   }
+
+  // Búsqueda: matchea contra nombre e id y, entre los candidatos, prefiere
+  // el más conectado — "claude-code" debe llevar a anthropics/claude-code,
+  // no a un fork con dos relaciones.
+  search.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    if (!q || !allNodes.length) return;
+    const candidates = allNodes.filter((n) => n.name.toLowerCase().includes(q) || n.id.toLowerCase().includes(q));
+    if (!candidates.length) return;
+    focusNode(candidates.sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0))[0]);
+  });
+
+  document.querySelectorAll<HTMLElement>('.graph-legend-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const type = pill.dataset.type!;
+      const on = activeTypes.has(type);
+      if (on) activeTypes.delete(type); else activeTypes.add(type);
+      pill.dataset.active = String(!on);
+      Graph?.refresh();
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('.graph-rel-pill').forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const rel = pill.dataset.rel!;
+      const on = activeRels.has(rel);
+      if (on) activeRels.delete(rel); else activeRels.add(rel);
+      pill.dataset.active = String(!on);
+      pill.classList.toggle('opacity-40', on);
+      Graph?.refresh();
+    });
+  });
 
   init();
 </script>

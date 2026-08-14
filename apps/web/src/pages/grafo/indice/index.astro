@@ -1,39 +1,19 @@
 ---
+/**
+ * Índice de texto del grafo: los mismos nodos que el explorador 3D, en
+ * formato buscable y enlazable (#id-de-nodo). Es también el destino de los
+ * chips de grafo del boletín, que enlazan aquí por ancla.
+ */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import graphData from '../../../../public/data/knowledge-graph.json';
-
-interface Aparicion {
-  date: string;
-  titulo: string;
-  seccion: string;
-}
-interface GraphNode {
-  id: string;
-  name: string;
-  type: string;
-  degree: number;
-  description?: string;
-  resumen?: string;
-  stars?: number;
-  lang?: string;
-  synthetic?: boolean;
-  apariciones?: Aparicion[];
-  menciones?: string[];
-}
-interface GraphLink {
-  source: string;
-  target: string;
-  rel: string;
-  added?: string;
-  note?: string;
-}
-
-const nodes = graphData.nodes as GraphNode[];
-const links = graphData.links as GraphLink[];
+import { fmtNum } from '../../../lib/boletin';
+import {
+  linkCount, links, nodeCount, nodes, REL_LABEL, TYPE_LABEL, colorForType,
+  type GraphLink, type GraphNode,
+} from '../../../lib/graph';
 
 const byId = new Map(nodes.map((n) => [n.id, n]));
 const relsByNode = new Map<string, { rel: string; dir: 'out' | 'in'; other: GraphNode; added?: string; note?: string }[]>();
-for (const l of links) {
+for (const l of links as GraphLink[]) {
   const src = byId.get(l.source);
   const dst = byId.get(l.target);
   if (!src || !dst) continue;
@@ -45,129 +25,92 @@ for (const l of links) {
 
 const sortedNodes = [...nodes].sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0) || a.name.localeCompare(b.name));
 
-const TYPE_LABEL: Record<string, string> = {
-  repo: 'Repositorio',
-  concept: 'Concepto',
-  company: 'Empresa',
-  tool: 'Herramienta',
-  framework: 'Framework',
-  protocol: 'Protocolo',
-  risk: 'Riesgo',
-  problem: 'Problema',
-  cluster: 'Cluster',
-  skill: 'Skill',
-  pattern: 'Patrón',
-  license: 'Licencia',
-  arxiv: 'Paper',
-  article_angle: 'Ángulo editorial',
-};
-
 const SECCION_LABEL: Record<string, string> = {
   hallazgo_principal: 'hallazgo principal',
   radar_secundario: 'radar secundario',
 };
 
 const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
-
-const REL_LABEL: Record<string, string> = {
-  competes_with: 'compite con',
-  implements: 'implementa',
-  complements: 'complementa',
-  uses: 'usa',
-  relevant_to: 'relevante para',
-  enables: 'habilita',
-  solves: 'resuelve',
-  supports: 'da soporte a',
-  developed_by: 'desarrollado por',
-  integrates_with: 'se integra con',
-  inspired_by: 'inspirado en',
-  authored: 'autoría de',
-  sibling_of: 'hermano de',
-  evolves: 'evoluciona a',
-  reveals: 'revela',
-  forked_by: 'forkeado por',
-  used_by: 'usado por',
-};
 ---
-
 <BaseLayout
   title="Índice del grafo de conocimiento"
   description="Todos los nodos y relaciones del grafo de conocimiento de Tecnoboletín, en formato buscable de texto."
   activeNav="grafo"
+  width="wide"
+  crumbs={['grafo', 'índice']}
 >
   <div class="mb-6">
-    <h1 class="font-display text-3xl md:text-4xl font-bold text-text mb-2">Índice del grafo</h1>
+    <p class="eyebrow mb-3">Índice del grafo</p>
+    <h1 class="font-display text-3xl md:text-4xl font-extrabold text-text mb-2">Todos los nodos</h1>
     <p class="text-muted max-w-2xl">
-      {nodes.length} nodos ordenados por número de relaciones.
-      <a href={`${import.meta.env.BASE_URL.replace(/\/?$/, '/')}grafo/`} class="text-radar hover:underline">
-        Ver como grafo en 3D →
-      </a>
+      {nodeCount} nodos y {linkCount} relaciones ordenados por conexiones.
+      <a href={`${baseUrl}grafo/`} class="text-accent-soft hover:underline">Ver como grafo en 3D →</a>
     </p>
   </div>
 
   <input
     id="node-search"
-    type="text"
+    type="search"
     placeholder="Buscar por nombre, tipo o repositorio…"
     autocomplete="off"
-    class="w-full mb-6 px-4 py-2.5 rounded-lg bg-surface border border-border text-text placeholder:text-muted-dim focus:outline-none focus:border-radar"
+    class="w-full mb-4 px-4 py-2.5 rounded-lg bg-surface border border-border-strong font-mono text-sm text-text placeholder:text-muted-dim focus:outline-none focus:border-accent-soft"
   />
 
-  <p id="node-count" class="text-xs text-muted-dim mb-4 font-mono"></p>
+  <p id="node-count" class="mono-meta mb-4"></p>
 
   <ul id="node-list" class="space-y-2">
     {sortedNodes.map((n) => {
       const rels = relsByNode.get(n.id) ?? [];
+      const repoSlug = n.type === 'repo' && /^[\w.-]+\/[\w.-]+$/.test(n.id.replace(/^repo:/, ''))
+        ? n.id.replace(/^repo:/, '')
+        : null;
       return (
         <li
-          class="node-row rounded-xl border border-border bg-surface"
+          class="node-row card"
+          id={n.id}
           data-name={`${n.name} ${n.id}`.toLowerCase()}
           data-type={n.type.toLowerCase()}
         >
           <details>
             <summary class="cursor-pointer list-none px-4 py-3 flex items-center justify-between gap-3">
-              <span class="flex items-center gap-2 min-w-0">
-                <span class="shrink-0 text-[0.65rem] uppercase tracking-wide font-display font-semibold px-1.5 py-0.5 rounded bg-surface-2 text-muted-dim">
+              <span class="flex items-center gap-2.5 min-w-0">
+                <span class="dot w-2 h-2 shrink-0" style={`background:${colorForType(n.type)}`}></span>
+                <span class="shrink-0 text-[0.625rem] uppercase tracking-wide font-mono text-muted-dim">
                   {TYPE_LABEL[n.type] ?? n.type}
                 </span>
                 <span class="font-mono text-sm text-text truncate">{n.name}</span>
-                {n.synthetic && <span class="shrink-0 text-[0.65rem] text-muted-dim">(inferido)</span>}
+                {n.synthetic && <span class="shrink-0 text-[0.625rem] text-muted-dim">(inferido)</span>}
               </span>
-              <span class="shrink-0 text-xs text-muted-dim font-mono">{rels.length} rel.</span>
+              <span class="shrink-0 mono-meta">{rels.length} rel.</span>
             </summary>
             <div class="px-4 pb-4 border-t border-border pt-3">
-              {n.type === 'repo' && /^[\w.-]+\/[\w.-]+$/.test(n.id.replace(/^repo:/, '')) && (
-                <a
-                  href={`https://github.com/${n.id.replace(/^repo:/, '')}`}
-                  target="_blank"
-                  rel="noopener"
-                  class="inline-block font-mono text-xs text-radar hover:underline mb-2"
-                >
-                  github.com/{n.id.replace(/^repo:/, '')} ↗
-                </a>
-              )}
+              <div class="flex gap-2 flex-wrap mb-2">
+                {repoSlug && <a href={`${baseUrl}repo/${repoSlug}/`} class="pill pill--solid">Abrir ficha</a>}
+                {repoSlug && (
+                  <a href={`https://github.com/${repoSlug}`} target="_blank" rel="noopener" class="pill pill--ghost">GitHub ↗</a>
+                )}
+                <a href={`${baseUrl}grafo/#${encodeURIComponent(n.id)}`} class="pill pill--ghost">Ver en 3D</a>
+              </div>
               {n.resumen && (
-                <p class="text-sm text-muted mb-2 border-l-2 border-violet pl-2">{n.resumen}…</p>
+                <p class="text-sm text-body mb-2 border-l-2 border-accent-deep pl-2.5">{n.resumen}…</p>
               )}
               {n.description && n.description !== n.resumen && (
                 <p class="text-xs text-muted-dim mb-2">{n.description}</p>
               )}
               {n.stars != null && (
-                <p class="text-xs text-muted-dim mb-2 font-mono">★ {n.stars}{n.lang ? ` · ${n.lang}` : ''}</p>
+                <p class="mono-meta mb-2">★ {fmtNum(n.stars)}{n.lang ? ` · ${n.lang}` : ''}</p>
               )}
               {(n.apariciones?.length ?? 0) > 0 && (
                 <div class="mb-2">
-                  <div class="text-[0.65rem] uppercase tracking-wide text-muted-dim mb-1">
-                    Visto en boletines ({n.apariciones!.length})
-                  </div>
+                  <div class="flow-label mb-1">Visto en boletines ({n.apariciones!.length})</div>
                   <div class="flex flex-wrap gap-1">
                     {n.apariciones!.map((a) => (
                       <a
                         href={`${baseUrl}enriquecido/${a.date}/`}
-                        class="font-mono text-[0.65rem] px-1.5 py-0.5 rounded bg-surface-2 text-radar hover:underline"
-                        title={SECCION_LABEL[a.seccion] ?? a.seccion}
+                        class="font-mono text-[0.65rem] px-1.5 py-0.5 rounded bg-bg-raised border border-border text-accent-soft hover:underline"
+                        title={SECCION_LABEL[a.seccion ?? ''] ?? a.seccion}
                       >
-                        {a.date} · {SECCION_LABEL[a.seccion] ?? a.seccion}
+                        {a.date} · {SECCION_LABEL[a.seccion ?? ''] ?? a.seccion}
                       </a>
                     ))}
                   </div>
@@ -175,12 +118,12 @@ const REL_LABEL: Record<string, string> = {
               )}
               {(n.menciones?.length ?? 0) > 0 && (
                 <div class="mb-2">
-                  <div class="text-[0.65rem] uppercase tracking-wide text-muted-dim mb-1">Mencionado en</div>
+                  <div class="flow-label mb-1">Mencionado en</div>
                   <div class="flex flex-wrap gap-1">
                     {n.menciones!.map((d) => (
                       <a
                         href={`${baseUrl}enriquecido/${d}/`}
-                        class="font-mono text-[0.65rem] px-1.5 py-0.5 rounded bg-surface-2 text-muted hover:text-radar"
+                        class="font-mono text-[0.65rem] px-1.5 py-0.5 rounded bg-bg-raised border border-border text-muted hover:text-accent-soft"
                       >
                         {d}
                       </a>
@@ -228,4 +171,15 @@ const REL_LABEL: Record<string, string> = {
 
   search.addEventListener('input', applyFilter);
   applyFilter();
+
+  // Llegada por ancla (#repo:owner/name desde los chips del boletín):
+  // se abre el <details> del nodo y se lleva a la vista.
+  const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+  if (hash) {
+    const row = document.getElementById(hash);
+    if (row) {
+      row.querySelector('details')?.setAttribute('open', '');
+      row.scrollIntoView({ block: 'center' });
+    }
+  }
 </script>

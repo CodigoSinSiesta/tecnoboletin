@@ -1,0 +1,59 @@
+---
+/**
+ * Relaciones del grafo de un item, como chips.
+ *
+ * La distinción visual es el dato: borde DISCONTINUO + "nuevo" cuando la
+ * relación entra hoy en el grafo (`primera_mencion` vacía), borde sólido +
+ * la fecha cuando ya se cubrió en un boletín anterior. Esa era la petición
+ * de fondo — que el grafo dejara de estar desconectado del boletín — y se
+ * resuelve sin sacar al lector de la página.
+ */
+import { nodeLabel, nodeType, type RelacionGrafo } from '../lib/boletin';
+import { getNode } from '../lib/graph';
+
+interface Props {
+  rels: RelacionGrafo[];
+  /** Muestra la etiqueta "GRAFO" delante de los chips. */
+  showLabel?: boolean;
+  max?: number;
+}
+
+const { rels, showLabel = true, max = 4 } = Astro.props;
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+// Se descartan los destinos truncados por el enriquecedor ("repo:sindresorhus/...")
+// — no identifican un nodo real y no llevan a ninguna parte.
+const shown = rels.filter((r) => r.dst && !r.dst.endsWith('/...')).slice(0, max);
+const rest = rels.length - shown.length;
+---
+{shown.length > 0 && (
+  <div class="flex gap-[7px] flex-wrap items-center">
+    {showLabel && (
+      <span class="font-mono text-[10px] tracking-[0.14em] uppercase text-muted-dim mr-0.5">Grafo</span>
+    )}
+    {shown.map((r) => {
+      const label = nodeLabel(r.dst);
+      const nuevo = !r.primera_mencion;
+      const exists = Boolean(getNode(r.dst));
+      const Tag = exists ? 'a' : 'span';
+      return (
+        <Tag
+          class:list={['gchip', nuevo && 'gchip--new']}
+          href={exists ? `${base}grafo/indice/#${encodeURIComponent(r.dst)}` : undefined}
+          title={exists ? `Ver ${label} en el índice del grafo` : undefined}
+        >
+          <span class="text-muted">{r.rel}</span>
+          <span aria-hidden="true" class="text-muted-dim">→</span>
+          <span class="gchip__node">{label}</span>
+          {nuevo
+            ? <span class="gchip__flag">nuevo</span>
+            : <span class="gchip__date">· {r.primera_mencion}</span>}
+          <span class="sr-only">
+            ({nodeType(r.dst)}, {nuevo ? 'relación nueva de hoy' : `ya cubierta el ${r.primera_mencion}`})
+          </span>
+        </Tag>
+      );
+    })}
+    {rest > 0 && <span class="mono-meta">+{rest}</span>}
+  </div>
+)}

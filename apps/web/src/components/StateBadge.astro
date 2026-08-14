@@ -1,0 +1,23 @@
+---
+/**
+ * Badge de estado: "qué haces con esto". Es el único elemento del sistema
+ * que puede usar los tres colores semánticos, y siempre significan lo
+ * mismo (verde actúa, ámbar vigila, rojo alerta/descarte; azul = leer).
+ */
+import { ESTADO_TONE, type Estado } from '../lib/boletin';
+
+interface Props {
+  estado: Estado | null;
+  /** Texto alternativo; por defecto, el propio nombre del estado. */
+  label?: string;
+  class?: string;
+}
+
+const { estado, label, class: klass } = Astro.props;
+const tone = estado ? ESTADO_TONE[estado] : null;
+---
+{estado ? (
+  <span class:list={['badge', `badge--${tone}`, klass]}>{label ?? estado}</span>
+) : (
+  <span class:list={['badge badge--outline', klass]}>{label ?? 'sin acción'}</span>
+)}

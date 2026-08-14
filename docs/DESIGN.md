@@ -1,89 +1,100 @@
 # Sistema de diseño — Tecnoboletín
 
-Rediseño visual (agosto 2026). Dirección: **"zine con carácter"** — más personalidad y
-color que el "dark tech minimal" genérico anterior, coherente con la identidad de
-[Código Sin Siesta](https://codigosinsiesta.com) (el blog/newsletter padre), sin copiarla
-1:1. Solo diseño/frontend: no toca contenido, datos ni la pipeline de enriquecimiento.
+Rediseño de agosto 2026 (segunda iteración), a partir de las maquetas del proyecto
+*UI Mockups Tecnoboletin* de Claude Design. Sustituye a la dirección "zine con carácter"
+anterior. Feedback que lo motiva, literal del usuario: demasiado texto en bloque y difícil
+de escanear, el grafo 3D desconectado del boletín, poca personalidad de marca, ruido de
+colores en la paleta, y densidad que pierde la señal.
 
-## Paleta — navy/índigo con acentos semánticos
+Dirección elegida: **1a "Blueprint diario"** (lectura editorial con el mapa del grafo
+siempre a la vista) **+ la consola de triaje de 1b** como vista alternativa del mismo
+boletín. Solo diseño/frontend: no toca contenido, datos ni la pipeline de enriquecimiento.
 
-El sitio anterior usaba un fondo casi negro plano (`#0c0e14`) y un único acento ámbar
-para todo. El nuevo fondo (`#0a0e1a` → `#131a2e` → `#1a2340`, de más profundo a más
-elevado) se acerca a la familia navy/índigo del sitio padre (que usa `#0f172a` /
-`#0c1220` — confirmado inspeccionando su CSS compilado) sin ser idéntico.
+## Paleta — slate-900, un acento, tres estados
 
-Cuatro acentos, cada uno con un propósito fijo — el color comunica estructura, no decora:
+El sistema anterior tenía cinco acentos con propósito semántico (ámbar/violeta/azul/
+rosa/verde). En la práctica cada tarjeta mezclaba tres o cuatro y el color dejó de
+significar nada — ese era el "ruido". El sistema nuevo separa dos preguntas que antes
+compartían canal:
 
-| Token | Hex | Uso |
+- **¿Qué es esto?** → lo dice la *jerarquía* (tamaño, posición, numeración), nunca el color.
+- **¿Qué hago con esto?** → lo dice el *color de estado*, y solo él.
+
+| Rol | Token | Hex | Significado fijo |
+|---|---|---|---|
+| Marca / navegación / "leer" | `--color-accent` (+ `soft/dim/deep/deepest`) | `#3B82F6` y familia | Identidad, enlaces, énfasis. |
+| Estado ACTÚA | `--color-go` | `#34D399` | explorar / probar |
+| Estado VIGILA | `--color-warn` | `#FBBF24` | vigilar / madurez dudosa |
+| Estado ALERTA | `--color-alert` | `#F87171` | alerta honesta / riesgo / descartado |
+
+Superficies en un solo gradiente de profundidad slate: `#0B1220` (lienzo) → `#0F172A`
+(elevado) → `#152033` (tarjeta), con `--color-rail` (`#0D1424`) para columnas laterales
+de consola, que bajan en vez de subir. Texto en cuatro niveles (`text/body/muted/muted-dim`);
+`--color-body` (`#CBD5E1`) es nuevo: el cuerpo de lectura ya no usa `muted`.
+
+Los tokens antiguos `--color-radar` y `--color-violet` se conservan como alias dentro de
+la familia azul para no romper páginas sin rediseñar.
+
+Todos los tokens van bajo `--color-*` porque Tailwind v4 solo genera utilidades para
+namespaces reconocidos en `@theme`. El CSS propio va en `@layer base/components`: sin
+capa explícita ganaría a cualquier utilidad de Tailwind y `class="dot w-1.5"` no podría
+ajustar un componente.
+
+## Firma visual
+
+Dos elementos puramente decorativos, y solo estos dos, en todas las pantallas:
+
+- **`.brand-rule`** — filete superior de 3px con degradado de tres azules.
+- **`.csi-dot`** — punto azul que late (respeta `prefers-reduced-motion`) junto al
+  breadcrumb monoespaciado `código sin siesta / tecnoboletín / …`.
+
+## Tipografía
+
+- **Space Grotesk** — titulares, labels de sección, numeración.
+- **Inter** — UI y cuerpo corto.
+- **JetBrains Mono** — nombres de repo, métricas, edges, chrome de consola, badges.
+  Gana peso respecto al sistema anterior: los identificadores de repo son contenido
+  de primera clase y se componen siempre en mono.
+- **IBM Plex Serif** — solo el markdown de boletines sin enriquecer (`.prose-read`).
+
+## Patrones
+
+- **Badge de estado** (`.badge--go/warn/alert/read`): fondo translúcido + borde. La única
+  variante sólida es `.badge--pick` (azul): el pick editorial es la única señal que puede
+  pesar más que el estado.
+- **Hallazgo** (`.finding`): canaleta izquierda de 46px con número + punto de estado; el
+  ojo baja por la canaleta y escanea el boletín sin leer.
+- **Recorte + ampliar** (`.clamp-2/3` + `.expand`): todo cuerpo largo se recorta a 2-3
+  líneas y se amplía con un `<details>` sin JavaScript. Es la respuesta directa a
+  "demasiado texto en bloque": el texto completo sigue ahí, pero ya no es el default.
+- **Chips de grafo** (`.gchip`): cada hallazgo lista sus relaciones; borde discontinuo +
+  «nuevo» si la relación entra hoy al grafo, borde sólido + fecha si ya se cubrió. Es la
+  conexión boletín↔grafo dentro de la propia página.
+- **Mapa del día** (`MiniMap.astro` + `lib/daymap.ts`): subgrafo de las relaciones del
+  boletín, con layout radial *determinista* calculado en build (idéntico en cada build,
+  sin simulación física), fijo en la columna derecha del boletín.
+- **Consola** (triaje y grafo): tres columnas — raíl/filtros, contenido, inspector — con
+  atajos de teclado documentados en la propia barra inferior.
+
+## Pantallas
+
+| Pantalla | Ruta | Notas |
 |---|---|---|
-| `--color-accent` (ámbar) | `#f5b65a` | Hallazgo principal, "pick" editorial |
-| `--color-violet` | `#b39ddb` | Síntesis editorial (el contenido más valioso del boletín) |
-| `--color-radar` (azul) | `#6aa6ff` | Radar secundario, enlaces, acción "leer" |
-| `--color-alert` (rosa) | `#fb7185` | Alertas honestas |
-| `--color-go` (verde) | `#34d399` | Acción concreta "explorar / probar" |
+| Boletín del día | `enriquecido/[date]` | Hero con titular (primera frase de `editorial.posicionamiento`), hallazgos, radar, mapa del día, alertas, "tu turno". J/K navega. |
+| Consola de triaje | `triaje/[date]` | Columnas explorar/probar/leer/vigilar desde `accion_sugerida` normalizada; E/P/L/V/X mueven el item seleccionado. El triaje del usuario vive en localStorage (no hay tabla aún). **Solo administradores**: gate de cliente sobre `app_metadata.role === 'admin'` (se asigna desde el dashboard de Supabase; ver `isAdmin()` en `lib/supabase.ts`). |
+| Ficha de repositorio | `repo/[owner]/[name]` | Nueva. Cruza el item enriquecido + señales parseadas + grafo: stat strip, diagrama "cómo funciona", posición en el ecosistema, apariciones. |
+| Explorador de grafo | `grafo/` | Consola de 3 columnas; inspector con "cómo creció este nodo" (barra temporal por boletín). El JSON se sigue descargando en runtime. |
+| Índice del grafo | `grafo/indice/` | Igual que antes + anclas `#id-de-nodo` (destino de los chips). |
+| Archivo | `enriquecido/` | Cada fila muestra el reparto de estados del día en puntos de color. Con sesión iniciada, marca «✓ leído» los boletines de `user_reads` (el botón de marcar sigue en el propio boletín). |
 
-Todos los pares texto/fondo (`--color-*` y su `--color-*-ink`) se verificaron a mano
-con la fórmula de contraste relativo de WCAG: el texto principal sobre `--color-bg` da
-17:1, `--color-muted` 7.8:1, `--color-muted-dim` (la variante más oscura, reservada para
-metadatos pequeños) 5.3:1 — por encima del mínimo AA (4.5:1) incluso a 12px. Los "ink"
-de cada badge (texto oscuro sobre acento) dan entre 8.5:1 y 11.7:1, salvo violeta, donde
-blanco falla (2.4:1) y por eso su ink es oscuro (`#1c1330`, 8.8:1).
+Pendiente acordado (no construido): panel de administración para gestionar errores de
+usuarios; cuando exista, el gate del triaje y el estado de triaje deberían apoyarse en
+tablas con RLS en vez de localStorage.
 
-Todos los tokens de color usan el namespace `--color-*` a propósito: en Tailwind v4 solo
-los namespaces reconocidos en `@theme` generan utilidades (`bg-`, `text-`, `border-`);
-un token con otro nombre define una custom property pero no genera ninguna clase, y el
-build pasa igual sin avisar. Se verificó tras el primer build que las clases usadas
-(`bg-bg-raised`, `text-accent-ink`, etc.) tienen cuerpo de regla real en el CSS
-compilado, no solo el nombre de clase en el HTML.
+## Datos: texto libre → estructura (lib/boletin.ts)
 
-## Tipografía — con carácter, coherente con la marca madre
-
-- **Space Grotesk** (`--font-display`) — titulares, labels, tags, numeración zine. Es la
-  misma familia que usa el sitio padre para su hero a 80px; aquí se usa en pesos 500-800.
-- **Inter** (`--font-sans`) — UI, navegación, texto corto. Igual que el sitio padre.
-- **IBM Plex Serif** (`--font-serif`) — *solo* para el cuerpo de artículos largos
-  (`.prose-read`): posicionamiento editorial, "por qué importa", markdown de boletines.
-  El sitio padre no usa serif; aquí se conserva a propósito como diferenciador de
-  "modo lectura" frente a "modo interfaz".
-- **JetBrains Mono** (`--font-mono`) — nombres de repos, URLs, edges del grafo.
-
-Antes del rediseño ninguna de estas fuentes se cargaba realmente (no había `<link>` ni
-`@font-face`): los tokens existían en `global.css` pero el navegador renderizaba con la
-fuente de sistema de fallback. Se añadió `<link>` + `preconnect` a Google Fonts en
-`BaseLayout.astro`, pidiendo solo los pesos que se usan.
-
-## Jerarquía — romper la monotonía de 20 tarjetas idénticas
-
-- **Numeración zine** (`.zine-num`): número fantasma en Space Grotesk con contorno,
-  antepuesto a cada hallazgo principal, como una revista.
-- **Rail lateral de color** (`.zine-card`): borde izquierdo de 3px coloreado por tipo de
-  contenido en vez de un border uniforme gris.
-- **Pick editorial** (`.zine-card--pick`): los hallazgos que `editorial.acciones_concretas`
-  marca con `tipo: "explora"` (cruce por `item_idx`) reciben fondo elevado con degradado
-  sutil y un halo ámbar — es la señal editorial más fuerte que ya existe en los datos,
-  mejor que "los dos primeros son grandes". Si el cruce no encuentra nada (algún boletín
-  futuro sin acciones), la jerarquía hallazgo/radar de dos niveles se mantiene igual.
-- **Radar secundario**: tratamiento deliberadamente más compacto y silencioso (menos
-  padding, rail más fino, sin numeración grande) — es "ruido de fondo" a propósito.
-- **Separadores de sección** (`.section-rule`): barra de degradado + etiqueta en vez de
-  un `border-t` gris plano; el color de la barra varía por sección.
-- **Ancho de línea**: `.prose-read` (70ch) para prose de página completa (centrado) y
-  `.prose-card` (68ch, sin centrar) para cuerpo dentro de tarjetas — alineado con el
-  título de la tarjeta, no flotando suelto en el centro. Metadatos, tags y badges siguen
-  usando el ancho completo del contenedor.
-
-## Acciones concretas — normalización de texto libre
-
-`contenido.accion_sugerida` es texto libre generado por el enriquecedor, con formatos
-inconsistentes (`explorar — …`, `**explorar**`, `: vigilar`, `sugerida: vigilar`, etc.).
-Las páginas ahora extraen solo el verbo (`explorar/probar` → verde, `leer` → azul,
-`vigilar` → ámbar, `ignorar` → gris outline) para el badge, y muestran el texto completo
-como detalle secundario — antes el string crudo (con asteriscos literales) se pintaba
-tal cual dentro de la pill.
-
-## Limitación conocida (no corregida, fuera de alcance)
-
-`resumen_ejecutivo` y los campos de `editorial.json` contienen markdown (`**negrita**`,
-backticks) que se renderiza como texto literal vía `whitespace-pre-wrap` — no se añadió
-un pipeline de markdown porque transformaría contenido, fuera del alcance de este trabajo
-puramente visual.
+`accion_sugerida` y `madurez_senales` son texto libre del enriquecedor con formato
+inconsistente entre boletines. `lib/boletin.ts` extrae de ahí el estado (verbo
+normalizado), estrellas/forks/lenguaje/licencia/issues/estado y los topics, siempre con
+`null` cuando el dato no está — la UI pinta "—", nunca inventa. El markdown de estos
+campos se renderiza con `marked` (`lib/markdown.ts`), como en la iteración anterior.

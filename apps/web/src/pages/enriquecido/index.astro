@@ -1,76 +1,101 @@
 ---
-import { readFile, readdir } from 'node:fs/promises';
-import path from 'node:path';
+/**
+ * Archivo de boletines. Cada fila lleva el reparto de estados del día
+ * (verde/ámbar/azul/rojo) para poder decidir a qué boletín volver sin
+ * abrirlo — antes todos los días se veían exactamente igual.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { mdInline } from '../../lib/markdown';
+import { accionEstado, ESTADO_TONE, fmtDateLong, listDates, loadBoletin, type Estado } from '../../lib/boletin';
 
-const rawBase = import.meta.env.BASE_URL ?? '/';
-const base = rawBase.replace(/\/?$/, '/');
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+const dates = await listDates();
 
-// Directorio de la fuente de datos: apps/web/src/data/boletines/
-const dataDir = path.join(process.cwd(), 'src', 'data', 'boletines');
-const entries = await readdir(dataDir, { withFileTypes: true });
-const dates = entries
-  .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
-  .map((e) => e.name)
-  .sort()
-  .reverse();
+const ORDEN: Estado[] = ['explorar', 'probar', 'leer', 'vigilar', 'descartar'];
 
-// Por cada fecha, leemos el enriched para sacar items_count y resumen
-const resumenes: Record<string, { items: number; hallazgos: number; resumen: string; temas: string[] }> = {};
-for (const d of dates) {
-  try {
-    const e = JSON.parse(await readFile(path.join(dataDir, d, 'enriched.json'), 'utf-8'));
-    const items = e.items || [];
-    resumenes[d] = {
-      items: items.length,
-      hallazgos: items.filter((it: any) => it.seccion === 'hallazgo_principal').length,
-      resumen: (e.resumen_ejecutivo || '').slice(0, 240),
-      temas: [...new Set(items.map((it: any) => it.clasificacion?.tema_principal).filter(Boolean))] as string[],
+const resumenes = await Promise.all(
+  dates.map(async (d) => {
+    const b = await loadBoletin(d);
+    const conteo = new Map<Estado, number>();
+    for (const it of b.items) {
+      const e = accionEstado(it.contenido?.accion_sugerida);
+      if (e) conteo.set(e, (conteo.get(e) ?? 0) + 1);
+    }
+    return {
+      date: d,
+      items: b.items.length,
+      hallazgos: b.hallazgos.length,
+      picks: b.pickIdx.size,
+      alertas: b.editorial?.alertas?.length ?? 0,
+      resumen: (b.enriched?.resumen_ejecutivo ?? '').replace(/^[-*]\s*/, '').slice(0, 220),
+      estados: ORDEN.filter((e) => conteo.has(e)).map((e) => ({ estado: e, n: conteo.get(e)!, tone: ESTADO_TONE[e] })),
     };
-  } catch {}
-}
+  })
+);
 ---
-<BaseLayout title="Boletines enriquecidos" activeNav="enriquecido">
-  <header class="mb-12 pb-8 border-b border-border">
-    <p class="font-display text-xs uppercase tracking-[0.14em] text-accent mb-3 font-semibold">Índice</p>
-    <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Boletines enriquecidos</h1>
-    <p class="prose-card text-muted">
-      Los últimos {dates.length} boletines, procesados con la skill <code class="font-mono text-sm bg-surface px-1.5 py-0.5 rounded">tecnoboletin-enricher</code>.
-      Cada hallazgo conserva su "por qué importa" y su relación con el grafo de conocimiento tal como
-      se escribieron en el boletín origen, pulidos y cruzados contra el historial acumulado — tipo,
-      tema y confianza quedan como metadata secundaria. La web pública viene del repo
-      <code class="font-mono text-sm bg-surface px-1.5 py-0.5 rounded">CodigoSinSiesta/tecnoboletin</code> en GitHub Pages.
+<BaseLayout title="Archivo de boletines" activeNav="archivo" width="wide">
+  <header class="mb-8 pb-6 border-b border-border">
+    <p class="eyebrow mb-3">Archivo · {dates.length} boletines</p>
+    <h1 class="font-display font-extrabold text-[clamp(2rem,4vw,3rem)] leading-[1.05] mb-3">Todo lo publicado</h1>
+    <p class="prose-card text-body">
+      Cada boletín procesado con la skill <code>tecnoboletin-enricher</code>: los hallazgos conservan su
+      «por qué importa» y su relación con el grafo tal como se escribieron, cruzados contra el historial
+      acumulado. Los puntos de color de cada fila son el reparto de acciones del día.
     </p>
   </header>
 
-  <div class="space-y-4">
-    {dates.map((d, i) => (
-      <a
-        href={`${base}enriquecido/${d}/`}
-        class="zine-card p-5 md:p-6 flex gap-5 hover:border-accent transition-colors"
-        style="--rail-color: var(--color-accent);"
-      >
-        <div class="zine-num zine-num--radar shrink-0 hidden sm:block" aria-hidden="true">
-          {String(i + 1).padStart(2, '0')}
-        </div>
+  <div class="flex flex-col gap-2.5">
+    {resumenes.map((r, i) => (
+      <a href={`${base}enriquecido/${r.date}/`} class="card card--rail p-4 md:p-5 flex gap-4" style="--rail: var(--color-accent);">
+        <span class="idx-num shrink-0 hidden sm:block pt-1">{String(i + 1).padStart(2, '0')}</span>
         <div class="min-w-0 flex-1">
-          <header class="flex items-center justify-between mb-2 gap-3 flex-wrap">
-            <time class="font-display font-semibold text-text">{d}</time>
-            <span class="badge badge--solid-accent">{resumenes[d]?.hallazgos || 0} hallazgos</span>
+          <header class="flex items-center justify-between gap-3 flex-wrap mb-1.5">
+            <div class="flex items-baseline gap-3">
+              <time datetime={r.date} class="font-display font-bold text-text">{r.date}</time>
+              <span class="mono-meta hidden md:inline">{fmtDateLong(r.date)}</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              {r.estados.map((e) => (
+                <span class="flex items-center gap-1 font-mono text-[0.656rem] text-muted-dim" title={`${e.n} · ${e.estado}`}>
+                  <span class:list={['dot w-1.5 h-1.5', `dot--${e.tone}`]}></span>{e.n}
+                </span>
+              ))}
+              <span class="badge badge--ghost">{r.hallazgos} hallazgos</span>
+              {/* Se rellena por JS con la sesión iniciada: ✓ leído. */}
+              <span class="badge badge--go hidden" data-read-badge={r.date}>✓ leído</span>
+            </div>
           </header>
-          <p class="prose-card text-sm text-muted mb-3" set:html={resumenes[d]?.resumen ? mdInline(resumenes[d].resumen) : '(sin resumen)'} />
-          <div class="flex flex-wrap gap-2 text-xs">
-            {(resumenes[d]?.temas || []).slice(0, 8).map((t) => (
-              <span class="badge badge--ghost">#{t}</span>
-            ))}
+          <p class="clamp-2 prose-card text-[0.844rem] text-muted" set:html={r.resumen ? mdInline(r.resumen) : '(sin resumen)'} />
+          <div class="flex gap-3 mt-2 mono-meta">
+            <span>{r.items} items</span>
+            {r.picks > 0 && <span class="text-accent">{r.picks} picks</span>}
+            {r.alertas > 0 && <span class="text-alert">{r.alertas} alertas</span>}
           </div>
         </div>
       </a>
     ))}
   </div>
-
-  <footer class="mt-16 pt-6 border-t border-border text-xs text-muted-dim">
-    <a href={base} class="hover:text-text">&larr; Inicio</a>
-  </footer>
 </BaseLayout>
+
+<script>
+  // Con sesión iniciada, el archivo marca qué boletines ya están leídos
+  // (tabla user_reads, la misma que alimenta el botón «Marcar leído» del
+  // propio boletín). Sin sesión, la página queda exactamente igual.
+  import { getSupabase } from '../../lib/supabase';
+
+  async function paintReads() {
+    const supabase = getSupabase();
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) return;
+      const { data } = await supabase.from('user_reads').select('boletin_date');
+      for (const r of data ?? []) {
+        document.querySelector(`[data-read-badge="${r.boletin_date}"]`)?.classList.remove('hidden');
+      }
+    } catch {
+      // Sin red o Supabase caído: el archivo funciona igual sin marcas.
+    }
+  }
+
+  paintReads();
+</script>

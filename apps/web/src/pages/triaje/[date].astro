@@ -1,0 +1,556 @@
+---
+/**
+ * Consola de triaje — el boletín como bandeja de decisiones.
+ *
+ * Misma información que la lectura editorial, otra postura: aquí no se
+ * lee, se decide. Los items se reparten en columnas por acción sugerida,
+ * el inspector de la derecha muestra el detalle sin perder el tablero de
+ * vista, y el teclado mueve un item de columna en una pulsación.
+ *
+ * El triaje del usuario se guarda en localStorage: es una decisión
+ * personal y efímera, y no hay todavía tabla para ella en Supabase (sí la
+ * hay para favoritos y leídos). Cuando exista, este mismo estado se
+ * sincroniza sin tocar el layout.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StateBadge from '../../components/StateBadge.astro';
+import { mdInline } from '../../lib/markdown';
+import {
+  accionDetail, accionEstado, ESTADO_TONE, fmtDateShort, fmtNum, itemTema, listDates,
+  loadBoletin, nodeLabel, parseSenales, repoSlug, senalesLine, titularYEntradilla,
+  type Estado,
+} from '../../lib/boletin';
+
+export async function getStaticPaths() {
+  const dates = await listDates();
+  return dates.map((date) => ({ params: { date } }));
+}
+
+const { date } = Astro.params;
+const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+const boletin = await loadBoletin(date!);
+const { items, hallazgos, radar, editorial, pickIdx } = boletin;
+const { titular } = titularYEntradilla(editorial);
+
+const dates = await listDates();
+
+// Raíl de fechas: los últimos 30 días con su reparto de estados, para
+// saltar de un boletín a otro sin pasar por el archivo.
+const rail = await Promise.all(
+  dates.slice(0, 30).map(async (d) => {
+    const b = d === date ? boletin : await loadBoletin(d);
+    const tones = new Set<string>();
+    for (const it of b.items) {
+      const e = accionEstado(it.contenido?.accion_sugerida);
+      if (e && e !== 'descartar') tones.add(ESTADO_TONE[e]);
+    }
+    return { date: d, tones: ['go', 'warn', 'read'].filter((t) => tones.has(t)) };
+  })
+);
+
+const COLUMNAS: { estado: Estado; label: string }[] = [
+  { estado: 'explorar', label: 'explorar' },
+  { estado: 'probar', label: 'probar' },
+  { estado: 'leer', label: 'leer' },
+  { estado: 'vigilar', label: 'vigilar' },
+];
+
+/** Vista previa de un item, ya normalizada, para no repetir cálculo en la plantilla. */
+const vistas = items.map((it) => {
+  const estado = accionEstado(it.contenido?.accion_sugerida);
+  const sen = parseSenales(it.contenido?.madurez_senales);
+  const slug = repoSlug(it);
+  const rels = (it.relacion_grafo ?? []).filter((r) => r.dst && !r.dst.endsWith('/...'));
+  // Una alerta editorial "pertenece" a un item si lo nombra: así el
+  // inspector muestra el aviso justo donde se toma la decisión.
+  const nombre = slug ?? it.titulo;
+  const corto = nombre.split('/').pop() ?? nombre;
+  const alertas = (editorial?.alertas ?? []).filter(
+    (a) => a.toLowerCase().includes(nombre.toLowerCase()) || (corto.length > 4 && a.toLowerCase().includes(corto.toLowerCase()))
+  );
+  return {
+    item: it,
+    estado,
+    tone: estado ? ESTADO_TONE[estado] : null,
+    sen,
+    slug,
+    rels,
+    alertas,
+    tema: itemTema(it),
+    detalle: accionDetail(it.contenido?.accion_sugerida),
+    pick: pickIdx.has(it.idx),
+    esHallazgo: it.seccion === 'hallazgo_principal',
+    orden: hallazgos.indexOf(it) >= 0 ? hallazgos.indexOf(it) + 1 : null,
+  };
+});
+
+const enColumna = (e: Estado) => vistas.filter((v) => v.estado === e);
+const fuera = vistas.filter((v) => v.estado === null || v.estado === 'descartar');
+const pendientes = {
+  explorar: enColumna('explorar').length + enColumna('probar').length,
+  vigilar: enColumna('vigilar').length,
+};
+---
+<BaseLayout
+  title={`Triaje ${date}`}
+  description={`Consola de triaje del boletín ${date}: decide qué explorar, probar, leer o vigilar.`}
+  activeNav="triaje"
+  width="full"
+  crumbs={[date!, 'triaje']}
+>
+  <!-- Gate de administrador: la consola arranca oculta y solo se muestra
+       cuando el cliente confirma sesión con app_metadata.role === 'admin'.
+       Es un gate de interfaz (el sitio es estático); ver isAdmin() en
+       lib/supabase.ts. -->
+  <div id="triaje-gate" class="min-h-[50vh] flex items-center justify-center px-6">
+    <div class="card p-8 max-w-md text-center">
+      <p class="eyebrow justify-center mb-4">Consola de triaje</p>
+      <p id="triaje-gate-msg" class="mono-meta">comprobando sesión…</p>
+      <div id="triaje-gate-actions" class="hidden mt-5 flex gap-2 justify-center">
+        <a href={`${base}cuenta/`} class="pill pill--solid">Iniciar sesión</a>
+        <a href={`${base}enriquecido/${date}/`} class="pill pill--ghost">Ir a la lectura</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-b border-border bg-bg hidden" id="triaje-root">
+    <!-- ── Barra de herramientas ── -->
+    <div class="h-[46px] px-4 flex items-center gap-3 border-b border-border bg-bg-raised">
+      <label class="flex-1 max-w-[420px] flex items-center gap-2 border border-border-strong rounded-lg bg-surface px-3 py-1.5">
+        <span class="font-mono text-[0.688rem] text-accent" aria-hidden="true">&gt;</span>
+        <input
+          id="tri-search"
+          type="search"
+          autocomplete="off"
+          placeholder="buscar repo, concepto o acción…"
+          class="w-full bg-transparent font-mono text-xs text-text placeholder:text-muted-dim focus:outline-none"
+        />
+      </label>
+      <div class="ml-auto flex gap-1.5 items-center">
+        <span class="pill pill--on">Triaje</span>
+        <a href={`${base}enriquecido/${date}/`} class="pill">Lectura</a>
+        <a href={`${base}grafo/`} class="pill">Grafo</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[172px_1fr_340px] min-h-[620px] lg:h-[calc(100vh-190px)]">
+      <!-- ── Raíl de fechas ── -->
+      <nav class="hidden lg:flex border-r border-border bg-rail py-4 flex-col" aria-label="Otros boletines">
+        <div class="flow-label px-4 pb-2.5">Archivo · {dates.length}</div>
+        <div class="scroll-y flex-1">
+          {rail.map((r) => (
+            <a
+              href={`${base}triaje/${r.date}/`}
+              class:list={[
+                'flex items-center gap-2.5 px-4 py-2 border-l-2 transition-colors',
+                r.date === date ? 'bg-surface border-accent' : 'border-transparent hover:bg-surface-2',
+              ]}
+            >
+              <span class:list={['font-mono text-xs', r.date === date ? 'text-text' : 'text-muted']}>{fmtDateShort(r.date)}</span>
+              <span class="ml-auto flex gap-[3px]">
+                {r.tones.map((t) => <span class:list={['dot w-[5px] h-[5px]', `dot--${t}`]}></span>)}
+              </span>
+            </a>
+          ))}
+        </div>
+        <div class="mt-auto pt-3.5 px-4 border-t border-border">
+          <div class="flow-label mb-2">Pendientes</div>
+          <div class="font-mono text-[0.688rem] text-go">{pendientes.explorar} por explorar</div>
+          <div class="font-mono text-[0.688rem] text-warn mt-1">{pendientes.vigilar} en vigilancia</div>
+        </div>
+      </nav>
+
+      <!-- ── Tablero ── -->
+      <section class="px-4 py-4 flex flex-col gap-3.5 min-w-0 bg-bg" aria-label="Tablero de triaje">
+        <div class="flex items-baseline gap-3 flex-wrap">
+          <h1 class="font-display font-extrabold text-2xl text-text">{date}</h1>
+          {titular && <p class="text-[0.813rem] text-muted truncate max-w-[520px]">{titular}</p>}
+          <span class="ml-auto mono-meta">{items.length} items · {hallazgos.length} hallazgos · {radar.length} radar</span>
+        </div>
+
+        <div class="grid grid-cols-2 xl:grid-cols-4 gap-2.5 flex-1 min-h-0">
+          {COLUMNAS.map((col) => (
+            <div class="flex flex-col gap-2 min-w-0">
+              <div class="tri-col__head" style={`--tri-color: var(--color-${ESTADO_TONE[col.estado] === 'read' ? 'accent-soft' : ESTADO_TONE[col.estado]})`}>
+                <span class="tri-col__label">{col.label}</span>
+                <span class="ml-auto font-mono text-[0.656rem] text-muted-dim" data-count={col.estado}>
+                  {enColumna(col.estado).length}
+                </span>
+              </div>
+              <div class="scroll-y flex flex-col gap-2 flex-1 min-h-[120px]" data-col={col.estado}>
+                {enColumna(col.estado).map((v) => (
+                  <button
+                    type="button"
+                    class:list={['tri-card', !v.esHallazgo && 'tri-card--quiet']}
+                    data-card
+                    data-idx={v.item.idx}
+                    data-estado={v.estado}
+                    data-search={`${v.item.titulo} ${v.tema ?? ''} ${v.estado ?? ''} ${v.sen.lang ?? ''}`.toLowerCase()}
+                  >
+                    <span class="flex items-center gap-1.5 mb-1.5">
+                      <span class="tri-card__name truncate">{v.item.titulo}</span>
+                      {v.pick && <span class="ml-auto dot dot--read w-1.5 h-1.5" title="pick editorial"></span>}
+                    </span>
+                    {v.esHallazgo && v.item.contenido?.que_es && (
+                      <span class="clamp-2 prose-card text-xs leading-[1.45] text-muted mb-2" set:html={mdInline(v.item.contenido.que_es)} />
+                    )}
+                    <span class="flex items-center gap-1.5 tri-card__meta">
+                      {v.sen.stars != null && <span>{fmtNum(v.sen.stars)}★</span>}
+                      {v.sen.lang && <span>· {v.sen.lang}</span>}
+                      {!v.esHallazgo && <span>· radar</span>}
+                      {v.rels.length > 0 && <span class="ml-auto text-accent-dim">{v.rels.length} rel.</span>}
+                      {v.rels.length === 0 && v.sen.estado === 'alpha' && <span class="ml-auto text-warn">alpha</span>}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Descartados y sin acción: presentes pero fuera del flujo de decisión. -->
+        <div class="border-t border-border pt-3" data-col="descartar">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="flow-label">Descartados y sin acción</span>
+            <span class="font-mono text-[0.656rem] text-muted-dim" data-count="descartar">{fuera.length}</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5" data-col-body="descartar">
+            {fuera.map((v) => (
+              <button
+                type="button"
+                class="tri-card tri-card--quiet w-auto px-2.5 py-1.5 opacity-70"
+                data-card
+                data-idx={v.item.idx}
+                data-estado={v.estado ?? ''}
+                data-search={`${v.item.titulo} ${v.tema ?? ''}`.toLowerCase()}
+              >
+                <span class="tri-card__name text-xs">{v.item.titulo}</span>
+              </button>
+            ))}
+            {fuera.length === 0 && <span class="mono-meta">nada descartado</span>}
+          </div>
+        </div>
+
+        <div class="border-t border-border pt-2.5 flex items-center gap-3 flex-wrap mono-meta">
+          <span><span class="kbd">J</span>/<span class="kbd">K</span> mover</span>
+          <span><span class="kbd">E</span> explorar</span>
+          <span><span class="kbd">P</span> probar</span>
+          <span><span class="kbd">L</span> leer</span>
+          <span><span class="kbd">V</span> vigilar</span>
+          <span><span class="kbd">X</span> descartar</span>
+          <span><span class="kbd">G</span> grafo</span>
+          <span><span class="kbd">↵</span> abrir ficha</span>
+          <span class="ml-auto" id="tri-saved" data-date={date}></span>
+        </div>
+      </section>
+
+      <!-- ── Inspector ── -->
+      <aside class="border-t lg:border-t-0 lg:border-l border-border bg-bg-raised flex flex-col min-w-0" aria-label="Inspector">
+        <div id="tri-empty" class="flex-1 flex items-center justify-center p-8 text-center mono-meta">
+          Selecciona un item del tablero<br />o pulsa <span class="kbd">J</span> para empezar.
+        </div>
+
+        {vistas.map((v) => (
+          <div class="hidden flex-1 flex-col min-h-0" data-inspector={v.item.idx}>
+            <div class="px-4 pt-4 pb-3 border-b border-border">
+              <div class="flex items-center gap-2 mb-2 flex-wrap">
+                <StateBadge estado={v.estado} />
+                <span class="font-mono text-[0.625rem] uppercase tracking-[0.1em] text-muted-dim">
+                  {v.orden ? `hallazgo ${String(v.orden).padStart(2, '0')}` : 'radar'}
+                  {v.tema && ` · #${v.tema}`}
+                </span>
+                {v.pick && <span class="badge badge--pick ml-auto">pick</span>}
+              </div>
+              <div class="font-mono text-[1.063rem] text-text font-semibold break-all">{v.item.titulo}</div>
+              {senalesLine(v.sen) && <div class="font-mono text-[0.656rem] text-muted-dim mt-1.5">{senalesLine(v.sen)}</div>}
+            </div>
+
+            <div class="scroll-y flex-1 px-4 py-4 flex flex-col gap-4">
+              {v.item.contenido?.que_es && (
+                <div>
+                  <div class="flow-label mb-1.5">Qué es</div>
+                  <p class="prose-card text-[0.813rem] text-body" set:html={mdInline(v.item.contenido.que_es)} />
+                </div>
+              )}
+
+              {v.rels.length > 0 && (
+                <div>
+                  <div class="flow-label mb-1.5">Cómo encaja</div>
+                  <div class="card card--quiet p-3 flex flex-col gap-2.5">
+                    {v.rels.map((r, ri) => (
+                      <>
+                        {ri > 0 && <div class="hairline"></div>}
+                        <div>
+                          <div class="flex items-center gap-2 flex-wrap">
+                            <span class="font-mono text-[0.688rem] text-accent-ink bg-accent px-2 py-1 rounded-md font-semibold">{v.item.titulo}</span>
+                            <span class:list={['text-[0.688rem]', r.rel === 'competes_with' ? 'text-alert' : 'text-muted-dim']} aria-hidden="true">
+                              {r.rel === 'competes_with' ? '⇄' : '→'}
+                            </span>
+                            <span class="font-mono text-[0.688rem] text-body border border-border-strong px-2 py-1 rounded-full">{nodeLabel(r.dst)}</span>
+                          </div>
+                          <div class="font-mono text-[0.625rem] text-muted-dim mt-1.5">
+                            {r.rel} · {r.primera_mencion ? `ya cubierto el ${r.primera_mencion}` : 'relación nueva de hoy'}
+                          </div>
+                        </div>
+                      </>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {v.item.contenido?.por_que_importa && (
+                <div>
+                  <div class="flow-label mb-1.5">Por qué importa</div>
+                  <details class="expand">
+                    <summary>
+                      <p class="clamp-3 prose-card text-[0.813rem] text-text" set:html={mdInline(v.item.contenido.por_que_importa)} />
+                      <span class="expand__more"></span>
+                    </summary>
+                  </details>
+                </div>
+              )}
+
+              {v.detalle && (
+                <div class="callout" style="--rail: var(--color-warn);">
+                  <p class="prose-card text-[0.781rem] leading-[1.5] text-body" set:html={mdInline(v.detalle)} />
+                </div>
+              )}
+
+              {v.alertas.map((a) => (
+                <div class="callout" style="--rail: var(--color-alert);">
+                  <div class="callout__title">Alerta honesta</div>
+                  <p class="prose-card text-[0.781rem] leading-[1.5] text-body" set:html={mdInline(a)} />
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-auto px-4 py-3 border-t border-border flex gap-2">
+              {v.slug ? (
+                <a href={`${base}repo/${v.slug}/`} class="flex-1 text-center font-mono text-[0.688rem] py-2 rounded-lg bg-accent text-accent-ink font-semibold">Abrir ficha</a>
+              ) : (
+                <a href={v.item.url} target="_blank" rel="noopener" class="flex-1 text-center font-mono text-[0.688rem] py-2 rounded-lg bg-accent text-accent-ink font-semibold">Abrir fuente ↗</a>
+              )}
+              <a href={`${base}grafo/`} class="flex-1 text-center font-mono text-[0.688rem] py-2 rounded-lg border border-border-strong text-muted hover:text-text">Grafo</a>
+              {v.item.url && (
+                <a href={v.item.url} target="_blank" rel="noopener" class="font-mono text-[0.688rem] py-2 px-3 rounded-lg border border-border-strong text-muted hover:text-text" title="Abrir en GitHub">↗</a>
+              )}
+            </div>
+          </div>
+        ))}
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  /**
+   * Gate de administrador. Separado del script principal de la consola para
+   * que un fallo de red con Supabase no rompa los atajos si el gate ya abrió.
+   */
+  import { getSupabase, isAdmin } from '../../lib/supabase';
+
+  async function gate() {
+    const gateEl = document.getElementById('triaje-gate');
+    const msg = document.getElementById('triaje-gate-msg');
+    const actions = document.getElementById('triaje-gate-actions');
+    const root = document.getElementById('triaje-root');
+    if (!gateEl || !root) return;
+
+    let user = null;
+    try {
+      const { data } = await getSupabase().auth.getSession();
+      user = data.session?.user ?? null;
+    } catch {
+      // Sin red o Supabase caído: se trata como sin sesión.
+    }
+
+    if (isAdmin(user)) {
+      gateEl.remove();
+      root.classList.remove('hidden');
+      return;
+    }
+
+    if (msg) {
+      msg.textContent = user
+        ? 'El triaje está reservado a la cuenta de administración. Tu sesión no tiene ese rol.'
+        : 'El triaje está reservado a la cuenta de administración. Inicia sesión para continuar.';
+    }
+    actions?.classList.remove('hidden');
+  }
+
+  gate();
+</script>
+
+<script>
+  /**
+   * Consola de triaje: selección, atajos y persistencia local.
+   *
+   * El estado de triaje es una decisión del usuario sobre un boletín
+   * concreto, así que vive en localStorage bajo la clave del día. No se
+   * toca el JSON del boletín ni se envía a ningún sitio.
+   */
+  const KEY = (date: string) => `tecnoboletin:triaje:${date}`;
+  const ESTADOS = ['explorar', 'probar', 'leer', 'vigilar', 'descartar'] as const;
+  type Estado = (typeof ESTADOS)[number];
+
+  const savedEl = document.getElementById('tri-saved') as HTMLElement | null;
+  const date = savedEl?.dataset.date ?? '';
+  const search = document.getElementById('tri-search') as HTMLInputElement | null;
+  const empty = document.getElementById('tri-empty');
+
+  const columns = new Map<string, HTMLElement>();
+  document.querySelectorAll<HTMLElement>('[data-col]').forEach((el) => {
+    const key = el.dataset.col!;
+    columns.set(key, (el.querySelector<HTMLElement>('[data-col-body]') ?? el));
+  });
+
+  let selected: number | null = null;
+
+  function cards(): HTMLElement[] {
+    return Array.from(document.querySelectorAll<HTMLElement>('[data-card]')).filter(
+      (c) => c.style.display !== 'none'
+    );
+  }
+
+  function readOverrides(): Record<string, Estado> {
+    try {
+      return JSON.parse(localStorage.getItem(KEY(date)) ?? '{}');
+    } catch {
+      return {};
+    }
+  }
+
+  function writeOverride(idx: number, estado: Estado) {
+    const all = readOverrides();
+    all[String(idx)] = estado;
+    localStorage.setItem(KEY(date), JSON.stringify(all));
+    localStorage.setItem(`${KEY(date)}:ts`, String(Date.now()));
+    paintSaved();
+  }
+
+  function paintSaved() {
+    if (!savedEl) return;
+    const ts = Number(localStorage.getItem(`${KEY(date)}:ts`) ?? 0);
+    if (!ts) {
+      savedEl.textContent = 'triaje sin cambios · se guarda en este navegador';
+      return;
+    }
+    const mins = Math.round((Date.now() - ts) / 60000);
+    savedEl.textContent =
+      mins < 1 ? 'triaje guardado ahora mismo' : `triaje guardado hace ${mins} min`;
+  }
+
+  function counts() {
+    for (const [key, body] of columns) {
+      const n = body.querySelectorAll('[data-card]').length;
+      const el = document.querySelector(`[data-count="${key}"]`);
+      if (el) el.textContent = String(n);
+    }
+  }
+
+  function move(card: HTMLElement, estado: Estado) {
+    const target = columns.get(estado);
+    if (!target) return;
+    card.dataset.estado = estado;
+    card.classList.toggle('opacity-70', estado === 'descartar');
+    target.appendChild(card);
+    writeOverride(Number(card.dataset.idx), estado);
+    counts();
+  }
+
+  function select(card: HTMLElement | null) {
+    document.querySelectorAll('[data-card]').forEach((c) => c.classList.remove('tri-card--on'));
+    document.querySelectorAll('[data-inspector]').forEach((p) => {
+      p.classList.add('hidden');
+      p.classList.remove('flex');
+    });
+    if (!card) {
+      selected = null;
+      empty?.classList.remove('hidden');
+      return;
+    }
+    card.classList.add('tri-card--on');
+    selected = Number(card.dataset.idx);
+    const panel = document.querySelector(`[data-inspector="${selected}"]`);
+    if (panel) {
+      panel.classList.remove('hidden');
+      panel.classList.add('flex');
+      empty?.classList.add('hidden');
+    }
+  }
+
+  function currentCard(): HTMLElement | null {
+    return selected == null
+      ? null
+      : document.querySelector<HTMLElement>(`[data-card][data-idx="${selected}"]`);
+  }
+
+  // Restaurar el triaje guardado antes de pintar nada más.
+  const overrides = readOverrides();
+  for (const [idx, estado] of Object.entries(overrides)) {
+    const card = document.querySelector<HTMLElement>(`[data-card][data-idx="${idx}"]`);
+    if (card && ESTADOS.includes(estado) && card.dataset.estado !== estado) {
+      const target = columns.get(estado);
+      if (target) {
+        card.dataset.estado = estado;
+        card.classList.toggle('opacity-70', estado === 'descartar');
+        target.appendChild(card);
+      }
+    }
+  }
+  counts();
+  paintSaved();
+
+  document.querySelectorAll<HTMLElement>('[data-card]').forEach((card) => {
+    card.addEventListener('click', () => select(card));
+  });
+
+  search?.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    document.querySelectorAll<HTMLElement>('[data-card]').forEach((card) => {
+      card.style.display = !q || (card.dataset.search ?? '').includes(q) ? '' : 'none';
+    });
+  });
+
+  document.addEventListener('keydown', (ev) => {
+    const target = ev.target as HTMLElement | null;
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    if (target && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName))) return;
+
+    const list = cards();
+    if (!list.length) return;
+    const card = currentCard();
+    const pos = card ? list.indexOf(card) : -1;
+
+    switch (ev.key.toLowerCase()) {
+      case 'j':
+        ev.preventDefault();
+        select(list[Math.min(list.length - 1, pos + 1)]);
+        currentCard()?.scrollIntoView({ block: 'nearest' });
+        break;
+      case 'k':
+        ev.preventDefault();
+        select(list[Math.max(0, pos - 1)]);
+        currentCard()?.scrollIntoView({ block: 'nearest' });
+        break;
+      case 'e': if (card) { ev.preventDefault(); move(card, 'explorar'); } break;
+      case 'p': if (card) { ev.preventDefault(); move(card, 'probar'); } break;
+      case 'l': if (card) { ev.preventDefault(); move(card, 'leer'); } break;
+      case 'v': if (card) { ev.preventDefault(); move(card, 'vigilar'); } break;
+      case 'x': if (card) { ev.preventDefault(); move(card, 'descartar'); } break;
+      case 'g': {
+        ev.preventDefault();
+        const grafo = document.querySelector<HTMLAnchorElement>('[data-inspector]:not(.hidden) a[href$="grafo/"]');
+        (grafo ?? document.querySelector<HTMLAnchorElement>('nav a[href$="grafo/"]'))?.click();
+        break;
+      }
+      case 'enter': {
+        if (selected == null) break;
+        ev.preventDefault();
+        document.querySelector<HTMLAnchorElement>(`[data-inspector="${selected}"] a`)?.click();
+        break;
+      }
+    }
+  });
+</script>

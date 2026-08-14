@@ -12,7 +12,7 @@ const slug = entry.id.replace(/\.md$/, '');
 const rawBase = import.meta.env.BASE_URL ?? '/';
 const base = rawBase.replace(/\/?$/, '/');
 ---
-<article class="zine-card p-6 hover:border-accent transition-colors" style="--rail-color: var(--color-accent);">
+<article class="card card--rail p-6 hover:border-accent transition-colors" style="--rail: var(--color-accent);">
   <div class="flex items-center justify-between text-xs text-muted-dim mb-3 font-mono">
     <time datetime={fecha.toISOString()}>
       {fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}

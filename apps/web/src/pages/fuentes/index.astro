@@ -1,23 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Fuentes" activeNav="fuentes">
+<BaseLayout title="Fuentes">
   <header class="mb-10 pb-6 border-b border-border">
-    <p class="font-display text-xs uppercase tracking-[0.14em] text-radar mb-3 font-semibold">Próximamente</p>
+    <p class="eyebrow mb-3">Próximamente</p>
     <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Fuentes recurrentes</h1>
-    <p class="prose-card text-muted">
+    <p class="prose-card text-body">
       Esta página se activará en la <strong class="text-text">fase 2</strong>, cuando el enriquecedor analice
       los boletines y agrupe las fuentes más citadas. Mientras tanto, queda como marcador de arquitectura.
     </p>
   </header>
 
-  <section class="zine-card p-6" style="--rail-color: var(--color-radar); border-style: dashed;">
-    <h2 class="font-display text-xs uppercase tracking-wider text-radar mb-3 font-semibold">Pendiente</h2>
+  <section class="card card--dashed p-6">
+    <h2 class="flow-label mb-3">Pendiente</h2>
     <ul class="text-sm space-y-2 text-muted">
-      <li class="flex gap-2"><span class="text-radar">·</span> Ranking de blogs por recurrencia mensual</li>
-      <li class="flex gap-2"><span class="text-radar">·</span> Autores con más apariciones</li>
-      <li class="flex gap-2"><span class="text-radar">·</span> Filtros por tipo de fuente (blog, paper, vídeo, podcast)</li>
-      <li class="flex gap-2"><span class="text-radar">·</span> Suscripción RSS propia por fuente</li>
+      <li class="flex gap-2"><span class="text-accent-soft">·</span> Ranking de blogs por recurrencia mensual</li>
+      <li class="flex gap-2"><span class="text-accent-soft">·</span> Autores con más apariciones</li>
+      <li class="flex gap-2"><span class="text-accent-soft">·</span> Filtros por tipo de fuente (blog, paper, vídeo, podcast)</li>
+      <li class="flex gap-2"><span class="text-accent-soft">·</span> Suscripción RSS propia por fuente</li>
     </ul>
   </section>
 </BaseLayout>
