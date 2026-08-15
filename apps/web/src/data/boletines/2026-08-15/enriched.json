@@ -1,0 +1,359 @@
+{
+  "version": 2,
+  "date": "2026-08-15",
+  "boletin_origen": "2026-08-15-trending.md",
+  "resumen_ejecutivo": "- El sábado tiene una firma clara: **infraestructura de agentes**. Tres hallazgos principales (mlxcel, OpenSandbox, OAK) son runtimes/sandboxes que sustentan el resto del ecosistema — no compiten por la cuota de UI de chat.\n- **Local-first y BYOK** aparecen como segundo eje: exo (cluster multi-dispositivo vía Thunderbolt 5 RDMA), nexu-io/open-design (Claude Design alt con export a HTML/PDF/PPTX/MP4) y citrolabs/ego-lite (browser para agentes con sesiones compartidas).\n- **Privacidad del usuario de coding agents**: `0xSero/ai-data-extraction` destapa cuánto contexto están guardando Cursor / Codex / Claude Code / Windsurf / Trae localmente. No es el típico \"toolkit para entrenar tu propio modelo\" — es un extractor one-shot del histórico completo del usuario, sin licencia declarada.\n- Patrón emergente: **agent-skills como capa estandarizada**. Lo vimos el jueves con `alibaba/skill-up` y hoy se confirma con `dmmulroy/anti-slop` (linting de skills) y la presencia masiva de la skill-store de deepseek-harness.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript/python/rust/go), GitHub REST API (16 verificaciones), READMEs vía default branch. Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` = 2026-07-05; el cron lleva varias semanas parado, pendiente revisar).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "lablup/mlxcel",
+      "url": "https://github.com/lablup/mlxcel",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime MLX en Rust con servidor compatible con OpenAI",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lablup-mlxcel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "opensandbox-group/OpenSandbox",
+      "url": "https://github.com/opensandbox-group/OpenSandbox",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sandbox runtime para AI agents con K8s",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opensandbox-group-opensandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "OpenSparX/MasterAgent (OAK",
+      "url": "https://github.com/OpenSparX/MasterAgent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Open Agent Kernel — agentes on-device en NPU de Qualcomm",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opensparx-masteragent-oak",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "0xSero/ai-data-extraction",
+      "url": "https://github.com/0xSero/ai-data-extraction",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "extractor del histórico completo de coding assistants",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "0xsero-ai-data-extraction",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "nexu-io/open-design",
+      "url": "https://github.com/nexu-io/open-design",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Claude Design open-source con exportación real (HTML/PDF/PPTX/MP4)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nexu-io-open-design",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "exo-explore/exo",
+      "url": "https://github.com/exo-explore/exo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "cluster multi-dispositivo con RDMA sobre Thunderbolt 5",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "exo-explore-exo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "newton-physics/newton",
+      "url": "https://github.com/newton-physics/newton",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "physics engine en GPU para robótica (Linux Foundation)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "newton-physics-newton",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "citrolabs/ego-lite",
+      "url": "https://github.com/citrolabs/ego-lite",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "el \"browser para AI agents\" más rápido: comparte tu sesión logueada con el agente sin molestarte, sin coste, sin config. Compite directamente con el modelo \"browser sandbox para agentes\"",
+        "por_que_importa": "",
+        "madurez_senales": "10.500 ★, último push 2026-08-14, JavaScript",
+        "accion_sugerida": "probar — (verificar licencia MIT y demo antes de instalar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "citrolabs-ego-lite",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "K-Dense-AI/scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "librería #1 de skills para AI Scientist (161 skills, 100+ databases biotech/chem/med/drug). Compatible con Cursor, Claude Code, Codex, Pi y Antigravity",
+        "por_que_importa": "",
+        "madurez_senales": "33.537 ★, último push 2026-08-14, Python, MIT",
+        "accion_sugerida": "leer — (útil aunque no trabajes en ciencia — el catálogo de skills es referencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "k-dense-ai-scientific-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "dmmulroy/anti-slop",
+      "url": "https://github.com/dmmulroy/anti-slop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "reglas Oxlint para rechazar TypeScript/JavaScript \"low-evidence\" generado por LLMs",
+        "por_que_importa": "",
+        "madurez_senales": "863 ★, último push 2026-08-14, TypeScript, MIT",
+        "accion_sugerida": "vigilar — (early pero alineado con `agent-skills-layer`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dmmulroy-anti-slop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "can1357/oh-my-pi",
+      "url": "https://github.com/can1357/oh-my-pi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "coding agent para terminal con hash-anchored edits, LSP, Python, browser y subagents. Mismo autor que Hindsight (cubierto en boletines previos). Reentrada con cadencia diaria: sigue activo",
+        "por_que_importa": "",
+        "madurez_senales": "24.884 ★, último push 2026-08-15, TypeScript, MIT",
+        "accion_sugerida": "vigilar — (ya conocido, prioriza exploración profunda solo si Alejandro lo pide)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "can1357-oh-my-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "harry0703/MoneyPrinterTurbo",
+      "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "generación de shorts en HD a partir de un tema o keyword. Reentrada clásica del top chino",
+        "por_que_importa": "",
+        "madurez_senales": "103.684 ★, último push 2026-08-13, Python, MIT",
+        "accion_sugerida": "ignorar — (calidad cuestionable, ya cubierto en radares anteriores)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "harry0703-moneyprinterturbo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "github/awesome-copilot",
+      "url": "https://github.com/github/awesome-copilot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "repo oficial de GitHub con instrucciones, agents, skills y configs contribuidos por la comunidad para Copilot",
+        "por_que_importa": "",
+        "madurez_senales": "37.857 ★, último push 2026-08-14, Python, MIT",
+        "accion_sugerida": "leer — (referencia estructural del agent-skills estándar de GitHub)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-awesome-copilot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "zeronsh/comet",
+      "url": "https://github.com/zeronsh/comet",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agente en Rust sin tagline visible; requiere leer el README antes de clasificar",
+        "por_que_importa": "",
+        "madurez_senales": "583 ★, último push 2026-08-15, Rust, MIT, sin descripción en API",
+        "accion_sugerida": "vigilar — (verificar antes de incluir en próximos boletines)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zeronsh-comet",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "respuesta no parseable como lista JSON (primeros 200 chars: '[{\"idx\": 0, \"por_que_importa\": \"El item llega con \\'que_es\\' mínimo y sin datos de madurez ni relación con el grafo, así que no puedo precisar más allá de lo que el nombre sugiere: un runtime para MLX e')",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

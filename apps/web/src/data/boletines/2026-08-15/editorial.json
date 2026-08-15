@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-08-15",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del sábado 15 de agosto se aleja del ruido de interfaces de chat y se va a la base: tres de los hallazgos principales (mlxcel, OpenSandbox, OAK) son runtimes o sandboxes que no compiten por la cuota de UI, sino que definen el suelo sobre el que se construye el resto del agent stack. A ese eje se suma un segundo vector más incómodo — la auditoría de lo que los coding assistants ya guardan del usuario en disco — y un tercero, ya conocido, de local-first y BYOK que esta vez aterriza con piezas más serias: exportación real de presentaciones en nexu-io/open-design, cluster RDMA sobre Thunderbolt 5 en exo, y on-device sobre NPU de Qualcomm en OAK. El hilo conductor del día no es una nueva camada de frameworks de orquestación — esa saturación ya se señaló en boletines previos — sino infraestructura discreta y, sobre todo, la pregunta de qué datos sensibles quedan cuando un agente termina una sesión.",
+  "convergencia_stack_css": "Hay convergencia parcial con el stack local-first ya conocido. OAK (agentes on-device sobre NPU de Qualcomm) y exo (cluster multi-dispositivo con RDMA) son la prolongación natural del eje Ollama + DeepSeek + PGLite: ejecutan modelos y orquestan cómputo fuera de la nube, con el matiz interesante de que exo ya no promete 'correr un LLM en el portátil' sino repartirlo por Thunderbolt 5 entre máquinas. nexu-io/open-design encaja en la línea de Claude Design pero con un ángulo más accionable para producción local (export real a HTML/PDF/PPTX/MP4) que la mayoría de alternativas. El resto del día no toca el stack CSS de forma directa; en particular, los hallazgos de privacidad (0xSero) son relevantes por tema pero no por encaje técnico con PGLite/Ollama, y conviene no forzar la lectura.",
+  "cruzado_grafo": "Los hallazgos de hoy llegan sin entradas de `primera_mencion` en los datos recibidos, así que no se puede afirmar que ningún nodo se 'reforce' respecto a boletines anteriores desde la información de este resumen. Lo que sí se observa es un patrón de presencia simultánea — runtimes, sandboxes y kernels conviven en el mismo día — que coincide con la lectura de los días 13 y 14 sobre fragmentación y consolidación por capas del agent stack. Los nodos 'agent runtime', 'sandbox para agentes' y 'local-first / BYOK' aparecen implícitamente, pero sin etiquetas explícitas en los datos de hoy no se puede precisar primera aparición.",
+  "tendencias_5_boletines": "Con solo dos días previos en el contexto de continuidad (13 y 14, ambos centrados en 'agent stack en momento de mayor fragmentación y consolidación por capas'), la tendencia de cinco boletines no se puede reconstruir con honestidad. Lo que sí se ve es que la saturación de frameworks de orquestación — señalada el 13 con Omnigent/Centaur y el 14 con Cursor/DeepSeek marketplace — se invierte hoy: el boletín deja la orquestación y se va a la infraestructura (runtimes, sandboxes, kernels) y a la auditoría del lado del usuario. Es un giro coherente con la tesis de consolidación por capas: cuando arriba hay demasiada oferta, lo noticioso se va abajo.",
+  "alertas": [
+    "0xSero/ai-data-extraction no declara licencia en los datos recibidos; extraer y republicar historiales locales de Cursor/Codex/Claude Code/Windsurf/Trae puede tocar restricciones de uso y, sobre todo, de privacidad del usuario aunque el repo sea 'educativo'.",
+    "exo promete RDMA sobre Thunderbolt 5 — verificar disponibilidad real del hardware antes de presentarlo como alternativa doméstica; hoy es más laboratorio que producto.",
+    "OAK depende de NPU de Qualcomm, lo que cierra el ecosistema a un vendor. Conviene no venderlo como 'agente on-device genérico' sin ese matiz.",
+    "newton (Linux Foundation) aparece como physics engine para robótica; el boletín técnico puede sobredimensionar su encaje con el agent stack si no se marca claramente como capa adyacente.",
+    "mlxcel corre sobre MLX (Apple Silicon); su compatibilidad OpenAI es útil pero no es un sustituto drop-in de vLLM/llama.cpp en hardware no-Apple.",
+    "Hay margen de hype en el resumen ejecutivo al presentar 'agent-skills como capa estandarizada' — solo dos muestras (skill-up del jueves y anti-slop de hoy) no bastan para reclamar estándar."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Es el hallazgo con más carga crítica del día. Vale la pena seguir el repo: adopción, issues sobre licencias, y si aparecen parches upstream en Cursor/Codex/Claude Code que limiten la extracción local."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "OpenSandbox (sandbox runtime sobre K8s) es la pieza más reutilizable del stack de infraestructura; clonar y entender su API puede servir para benchmarks propios y artículos sobre aislamiento de agentes."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "OAK on-device sobre NPU Qualcomm es la apuesta más alineada con el eje local-first del stack CSS; merece una prueba en hardware compatible antes de recomendarlo en contenido."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "exo con RDMA sobre Thunderbolt 5 es la lectura más técnica del día; replicar el setup (si hay dos máquinas con TB5) daría material para un post sobre cluster doméstico para LLMs."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "nexu-io/open-design resuelve una frustración real del flujo Claude Design (export usable) y encaja con la línea de presentaciones y artículos técnicos de CSS — buen candidato a pieza corta o mención en newsletter."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
