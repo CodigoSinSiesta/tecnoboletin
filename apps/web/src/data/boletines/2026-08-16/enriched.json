@@ -1,0 +1,311 @@
+{
+  "version": 2,
+  "date": "2026-08-16",
+  "boletin_origen": "2026-08-16-trending.md",
+  "resumen_ejecutivo": "- **Domingo de \"agent-native tools\"**: cinco de los hallazgos principales son piezas que llevan el paradigma \"todo es un agente\" a capas distintas de la stack — software de escritorio (CLI-Anything), coding agent en Rust (CodeWhale), aula multi-agente (OpenMAIC), serving TTS/omni (sglang-omni) y estilo de chat para Claude Code (attention-span).\n- **CLI-Anything se lleva el día**: 47k★, MIT, arXiv tech report, 2.461 tests, CLI-Hub con `pip install cli-anything-hub` y catálogo de 18 apps + 36+ harnesses comunitarios. Es la materialización concreta de \"agentes hablando con el resto del software\".\n- **CodeWhale** es la evolución de `deepseek-tui` (47k★ a MIT, comunidad internacional). BYOM, sistema de \"roles\" con coste de cada rol explícito, constitution file por repo, y la novedad real: cada agente en un fleet puede tener un modelo distinto (un GLM dirige, un Kimi revisa).\n- **OpenMAIC** (THU-MAIC) llega a v0.3.2 con export pptx/html interactivo, Postgres backing, multi-agent AI teachers/compañeros, OpenClaw integration y soporte para 4 nuevos modelos (MiniMax M3, Claude Opus 4.8, Gemini 3.5 Flash, Claude search provider). El formato \"classroom\" es una de las materializaciones más pulidas de multi-agent UI hasta la fecha.\n- **sglang-omni** (lmsys/sgl-project) v0.1.1 acaba de sacar day-0 support para MiniMax Music 3 (letra + caption → canción estéreo 32 kHz), MOSS-TD (transcribe + diarize), y un runtime multi-stage (talker / vocoder / aggregator) con transport-aware execution. Es el primer serving runtime open-source pensado para omni+TTS de verdad.\n- Bonus narrativo: **attention-span** de alexgreensh (579★ en 10 días) no es \"trucos de prompt\" — son tres `output-styles` (markdown files) para Claude Code con benchmark reproducible: 43% menos output, 75% de respuestas con la conclusión en la primera línea (vs 3% por defecto). AGPL-3.0 pero el impacto en UX de coding agents es medible.\n- **Patrón transversal**: el 2026-08-16 muestra que la FASE \"el agente habla con software\" ya no está en demos — está en production code con licencia abierta, arXiv tech reports y CI/CD serio. Lo que era 2024 \"function calling\" ahora es \"harness + skills + SKILL.md registry\".\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript/python/rust/go), GitHub REST API (14 verificaciones), READMEs vía default branch. Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` = 2026-07-05; el cron lleva varias semanas parado, pendiente revisar).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Making ALL Software Agent-Native\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-cli-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Hmbown/CodeWhale",
+      "url": "https://github.com/Hmbown/CodeWhale",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "coding agent Rust con fleet multi-modelo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hmbown-codewhale",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "THU-MAIC/OpenMAIC",
+      "url": "https://github.com/THU-MAIC/OpenMAIC",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Open Multi-Agent Interactive Classroom (v0.3.2)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thu-maic-openmaic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "sgl-project/sglang-omni",
+      "url": "https://github.com/sgl-project/sglang-omni",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime multi-stage para omni/speech/TTS",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sgl-project-sglang-omni",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "alexgreensh/attention-span",
+      "url": "https://github.com/alexgreensh/attention-span",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "output styles ADHD-friendly para Claude Code",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alexgreensh-attention-span",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "MakazhanAlpamys/Soup",
+      "url": "https://github.com/MakazhanAlpamys/Soup",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Fine-tune an 8B model on a 4 GB laptop GPU\". Layer streaming BETA: el base congelado vive en RAM, sólo la capa activa va a VRAM. Medido en RTX 3050 Laptop 4GB con Llama-3.1-8B-Instruct NF4 → 119.6 tok/s, 3.32 GB peak",
+        "por_que_importa": "",
+        "madurez_senales": "1.797 ★ · 273 forks · Python · Apache-2.0 · push 2026-08-15",
+        "accion_sugerida": "vigilar — (la propuesta técnica es seria; el disclaimer \"BETA, not re-benchmarked post v0.73 correctness fix\" es honesto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "makazhanalpamys-soup",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "mayocream/koharu",
+      "url": "https://github.com/mayocream/koharu",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "manga translator local-first en Rust. Pipeline: object detection (text region + bubbles) → OCR (PaddleOCR VL 1.6) → inpainting → LLM translation (local o remote) → text rendering con CJK vertical + RTL → export PSD editable. Soporta CUDA, ROCm/HIP, Metal, Vulkan. Nicho pero excelente",
+        "por_que_importa": "",
+        "madurez_senales": "5.260 ★ · 342 forks · Rust · Apache-2.0 · push 2026-08-16",
+        "accion_sugerida": "vigilar — (no es AI/dev, pero como ejemplo de \"local-first ML stack hecho bien\" merece)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mayocream-koharu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "NoFxAiOS/nofx",
+      "url": "https://github.com/NoFxAiOS/nofx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "terminal de trading AI con 9 exchanges (Binance, Bybit, OKX, Hyperliquid, Bitget, KuCoin, Gate, Aster, Lighter). La estrategia es un LLM; un runtime en Go clampa cada orden a hard risk limits. El patrón \"modelo decide, runtime clampa\" es interesante. Licencia AGPL-3.0 bloquea adopción comercial",
+        "por_que_importa": "",
+        "madurez_senales": "12.692 ★ · 3.031 forks · Go · AGPL-3.0 · push 2026-08-15",
+        "accion_sugerida": "vigilar — (patrón de diseño replicable, no el producto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nofxaios-nofx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Gaurav-Gosain/tuios",
+      "url": "https://github.com/Gaurav-Gosain/tuios",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "TUI multiplexer construido sobre Charm stack (Bubble Tea v2, Lipgloss v2). Flicker-free kitty graphics protocol, BSP tiling, workspaces, command palette, multi-client, daemon mode, JSON verb protocol",
+        "por_que_importa": "",
+        "madurez_senales": "2.850 ★ · 83 forks · Go · MIT · push 2026-08-16",
+        "accion_sugerida": "probar — (la pieza \"JSON verb protocol\" lo separa del resto de multiplexers — un agente puede controlarlo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gaurav-gosain-tuios",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "kenforthewin/atomic",
+      "url": "https://github.com/kenforthewin/atomic",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "reentry. Knowledge base self-hosted, semantically-connected",
+        "por_que_importa": "",
+        "madurez_senales": "1.892 ★ · 131 forks · Rust · MIT · push 2026-08-09",
+        "accion_sugerida": "leer — (reentry, ya mencionado, sin historia nueva; vigilar si publica release)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kenforthewin-atomic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "altic-dev/FluidVoice",
+      "url": "https://github.com/altic-dev/FluidVoice",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "reentry. macOS dictation app con on-device STT + custom AI enhancement model. Alternativa a Wispr Flow",
+        "por_que_importa": "",
+        "madurez_senales": "10.399 ★ · 702 forks · Swift · último push 2026-08-16",
+        "accion_sugerida": "vigilar — (reentry, ya mencionado, sin historia nueva)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "altic-dev-fluidvoice",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "cactus-compute/needle",
+      "url": "https://github.com/cactus-compute/needle",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "reentry. Foundation model de 14 MB para tiny devices (phones, wearables, smart home, robots)",
+        "por_que_importa": "",
+        "madurez_senales": "6.177 ★ · 411 forks · Python · último push 2026-08-15",
+        "accion_sugerida": "vigilar — (reentry, ya mencionado como reentry reciente con cadencia diaria — esperar release con peso/quantización nueva)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cactus-compute-needle",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

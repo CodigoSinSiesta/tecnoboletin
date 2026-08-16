@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "date": "2026-08-16",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del domingo 16 de agosto consolida una tesis que llevaba días fraguándose: el agent stack ya no se mide por qué modelo hay detrás, sino por cuántas capas del software existente consigue tocar. Hoy no aparece ningún nuevo frontier-lab ni benchmarks récords; aparecen las bisagras — el escritorio (CLI-Anything), el editor (CodeWhale, attention-span), el aula (OpenMAIC), el audio (sglang-omni). El hilo conductor es que cada hallazgo asume 'todo es un agente' como axioma y se pregunta por la siguiente interfaz: terminales que envuelven binarios sin docs, fleets con modelos heterogéneos por rol, pedagogía donde el maestro ya es multi-agente, salida TTS streaming compatible con un chat omni, y estilos de output pensados para cerebros que se pierden a mitad de respuesta. Es el boletín de los wrappers, los prompts-sistema y los constitution files — la prosa operativa del agent stack, no su poesía.",
+  "convergencia_stack_css": "Tres piezas de hoy encajan de manera directa con líneas editoriales ya conhecidas de Código Sin Siesta. Primero, CLI-Anything (MIT, arXiv tech report) es exactamente la materialización del principio 'agentes hablando con el resto del software' que el propio stack local-first presupone pero rara vez demuestra en producción: si el agente tiene que pilotar LibreOffice, GIMP o ffmpeg desde la terminal, la promesa 'local-first' deja de ser una preferencia y se vuelve una necesidad (no hay API hosted a la que llamar). Segundo, CodeWhale formaliza la arquitectura de 'roles con coste explícito y constitution file por repo' que ya se ha discutido varias veces en presentaciones; la novedad hoy es que el rol ya no es solo un prompt, sino que cada agente del fleet puede llevar un modelo distinto, lo que reabre el debate sobre cuándo conviene un modelo local pequeño vs. uno hosted grande para tareas diferentes. Tercero, el hecho de que attention-span sea MIT y esté pensado para Claude Code refuerza una línea ya andada: la accesibilidad cognitiva del tooling de IA importa, y 'output styles' es una categoría que CSS probablemente querrá cubrir con más profundidad.",
+  "cruzado_grafo": "El boletín de hoy no aporta ninguna `primera_mencion` explícita en los datos recibidos, así que cualquier nodo que aparezca en el grafo sería refuerzo de algo ya cubierto y no first-mención. Mirando los hallazgos, CLI-Anything conecta con el nodo 'agent OS / software agent-native' ya presente en boletines previos sobre runs de desktop; CodeWhale extiende el nodo 'coding agents con roles/constitutions' que ya se vio al cubrir deepseek-tui y proyectos similares; OpenMAIC abre probablemente un nodo nuevo de 'multi-agent education', aunque sin `primera_mencion` confirmada; sglang-omni refuerza el cluster 'serving runtime omni/TTS' contiguo a proyectos previos de sglang; y attention-span es nodo nuevo en 'accesibilidad cognitiva de agents'. Como ninguno trae fecha previa en los datos, no se asignan fechas inventadas.",
+  "tendencias_5_boletines": "No se ha recibido contexto de los últimos cinco boletines — solo hay continuidad parcial del 14 y 15 de agosto. Con esa base corta, la tendencia observable es una secuencia clara: el viernes 14 cartografió la fragmentación del agent stack y la aparición de marketplaces; el sábado 15 bajó al suelo con runtimes/sandboxes y auditoría de lo que los coding assistants ya guardan; hoy domingo añade la capa de wrappers y constitution files sobre ese mismo suelo. Es una progresión coherente (del mapa → del suelo → de los marcos de ventana), pero una tendencia de cinco boletines con solo dos días de contexto sería fabricar. Mejor quedarnos con la observación honesta: tres días seguidos apuntan a la misma dirección — el agent stack se está especializando por capa, no por modelo",
+  "alertas": [
+    "CLI-Anything presume 47k★ y un tech report en arXiv: los recuentos de estrellas en repos recién publicados con README muy pulido suelen inflarse por el lanzamiento; vale la pena mirar el ratio stars/commit-history antes de tratar la tracción como señal sólida.",
+    "sglang-omni es runtime multi-stage de omni/TTS: la categoría 'omni' todavía está en movimiento y los claims sobre latencia o calidad de voz rara vez sobreviven al primer mes de uso real; tratarlo como referencia y no como benchmark.",
+    "attention-span es un repo de estilos de output, no de modelo: es útil pero fácil de sobrestimar; el valor real está en que alguien lo escribió, no en que el estilo ADHD-friendly sea objetivamente mejor."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "CLI-Anything es el hallazgo más sólido del día (MIT + arXiv + 2.461 tests + CLI-Hub instalable). Merece una pieza propia en CSS que separe el 'qué' del repo del 'cómo se instala y qué apps del catálogo tienen sentido para un flujo local-first real'."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "CodeWhale formaliza algo que CSS ya ha discutido teóricamente (roles + constitution file); una prueba de concepto corriendo con un modelo local pequeño de Ollama y uno hosted de DeepSeek sería directamente publicable."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "attention-span abre la conversación de accesibilidad cognitiva en tooling de IA que CSS debería tener aunque solo sea para fijar postura editorial — es un tema barato de cubrir y de alto retorno."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "sglang-omni apunta al segmento omni/TTS que todavía no tiene ganador claro; conviene seguirlo tres o cuatro boletines más antes de decidir si merece pieza dedicada o nota al margen."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "OpenMAIC (multi-agent classroom, v0.3.2) entra en terreno educativo donde CSS no suele profundizar; marcar para vigilar y decidir tras el próximo hito si engancha con alguna línea editorial viva."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
