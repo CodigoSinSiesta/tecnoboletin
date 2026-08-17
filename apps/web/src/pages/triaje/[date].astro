@@ -406,7 +406,7 @@ const pendientes = {
    * en el JSON del boletín. Se escribe con upsert en cada movimiento, sin
    * botón de guardar.
    */
-  import { getSupabase } from '../../lib/supabase';
+  import { getSupabase, getSessionResilient } from '../../lib/supabase';
 
   const KEY = (date: string) => `tecnoboletin:triaje:${date}`;
   const ESTADOS = ['explorar', 'probar', 'leer', 'vigilar', 'descartar'] as const;
@@ -440,7 +440,7 @@ const pendientes = {
 
   /** Estado guardado del dia, de la tabla. {} si no hay sesion. */
   async function readOverrides(): Promise<Record<string, Estado>> {
-    const { data: { session } } = await supabase.auth.getSession();
+    const session = await getSessionResilient();
     userId = session?.user.id ?? null;
     if (!userId) return {};
     const { data, error } = await supabase

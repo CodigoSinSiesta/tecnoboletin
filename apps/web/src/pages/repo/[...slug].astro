@@ -12,8 +12,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { mdInline } from '../../lib/markdown';
 import {
-  accionDetail, accionEstado, fmtNum, itemTema, listDates, loadBoletin,
-  parseSenales, parseTopics, repoNodeId, repoSlug, type BoletinItem,
+  accionDetail, accionEstado, fmtNum, fuenteSlug, itemTema, listDates, loadBoletin,
+  normalizeFuente, parseSenales, parseTopics, repoNodeId, repoSlug, type BoletinItem,
 } from '../../lib/boletin';
 import StateBadge from '../../components/StateBadge.astro';
 import GraphChips from '../../components/GraphChips.astro';
@@ -56,6 +56,13 @@ const detalle = accionDetail(item.contenido?.accion_sugerida);
 const sen = parseSenales(item.contenido?.madurez_senales);
 const topics = parseTopics(item.contenido?.madurez_senales);
 const tema = itemTema(item);
+const medio = item.clasificacion?.medio ? normalizeFuente(item.clasificacion.medio) : null;
+const autor = item.clasificacion?.autor ? normalizeFuente(item.clasificacion.autor) : null;
+const fuente = medio
+  ? { kind: 'org', name: medio }
+  : autor
+    ? { kind: 'autor', name: autor }
+    : null;
 const esPick = boletin.pickIdx.has(item.idx);
 const orden = boletin.hallazgos.indexOf(item);
 
@@ -112,6 +119,14 @@ const stats: { label: string; value: string | null; tone?: 'warn' | 'text' }[] =
         {tema && <span class="badge badge--ghost font-mono">#{tema}</span>}
         <span class="mono-meta">
           {orden >= 0 ? `hallazgo ${String(orden + 1).padStart(2, '0')}` : 'radar'} · boletín {ultima.date}
+          {fuente && (
+            <>
+              {' · '}
+              <a href={`${base}fuentes/#${fuente.kind === 'org' ? 'org' : 'autor'}-${fuenteSlug(fuente.name)}`} class="hover:text-accent-soft">
+                {fuente.name}
+              </a>
+            </>
+          )}
         </span>
       </div>
       <h1 class="font-mono text-[clamp(1.5rem,3vw,1.875rem)] font-semibold text-text tracking-[-0.01em] mb-2 break-all">{slug}</h1>
@@ -308,13 +323,13 @@ const stats: { label: string; value: string | null; tone?: 'warn' | 'text' }[] =
   // Guardar el repo como nodo favorito: misma referencia (repo:<slug>)
   // que usa el inspector del grafo, asi que /cuenta/ lo agrupa igual
   // se guarde desde donde se guarde.
-  import { getSupabase } from '../../lib/supabase';
+  import { getSupabase, getSessionResilient } from '../../lib/supabase';
 
   const favBtn = document.getElementById('repo-fav') as HTMLButtonElement | null;
   if (favBtn) {
     (async () => {
       const supabase = getSupabase();
-      const { data: { session } } = await supabase.auth.getSession();
+      const session = await getSessionResilient();
       if (!session) return;
       const ref = favBtn.dataset.ref!;
       const { data } = await supabase

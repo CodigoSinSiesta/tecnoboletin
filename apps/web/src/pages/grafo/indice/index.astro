@@ -155,7 +155,7 @@ const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 </BaseLayout>
 
 <script>
-  import { getSupabase } from '../../../lib/supabase';
+  import { getSupabase, getSessionResilient } from '../../../lib/supabase';
 
   const search = document.getElementById('node-search') as HTMLInputElement;
   const rows = Array.from(document.querySelectorAll<HTMLLIElement>('.node-row'));
@@ -190,7 +190,7 @@ const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
   // Una sola consulta trae todo lo guardado y pinta los 800+ botones.
   (async () => {
     const supabase = getSupabase();
-    const { data: { session } } = await supabase.auth.getSession();
+    const session = await getSessionResilient();
     if (!session) return;
     const { data } = await supabase.from('user_favorites').select('ref').eq('kind', 'nodo');
     const savedSet = new Set((data ?? []).map((r: { ref: string }) => r.ref));

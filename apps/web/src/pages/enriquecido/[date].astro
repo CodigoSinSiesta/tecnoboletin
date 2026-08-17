@@ -382,7 +382,7 @@ const bloquesEditorial = [
 <script>
   // Acciones de usuario (favorito / leido). Solo se muestran con sesion
   // iniciada; sin sesion la pagina queda exactamente igual que antes.
-  import { getSupabase } from '../../lib/supabase';
+  import { getSupabase, getSessionResilient } from '../../lib/supabase';
 
   const supabase = getSupabase();
   const actions = document.getElementById('user-actions');
@@ -402,7 +402,7 @@ const bloquesEditorial = [
   }
 
   async function init() {
-    const { data: { session } } = await supabase.auth.getSession();
+    const session = await getSessionResilient();
     if (!session || !actions) return;
     actions.classList.remove('hidden');
     actions.classList.add('flex');

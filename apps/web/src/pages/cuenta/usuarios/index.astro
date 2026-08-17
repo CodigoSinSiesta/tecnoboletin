@@ -46,7 +46,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  import { getSupabase, fetchRole } from '../../../lib/supabase';
+  import { getSupabase, fetchRole, getSessionResilient } from '../../../lib/supabase';
 
   const supabase = getSupabase();
 
@@ -138,7 +138,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   }
 
   (async () => {
-    const { data: { session } } = await supabase.auth.getSession();
+    const session = await getSessionResilient();
     myId = session?.user.id ?? null;
     const role = await fetchRole();
 

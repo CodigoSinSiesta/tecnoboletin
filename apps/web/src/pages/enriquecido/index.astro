@@ -81,12 +81,12 @@ const resumenes = await Promise.all(
   // Con sesión iniciada, el archivo marca qué boletines ya están leídos
   // (tabla user_reads, la misma que alimenta el botón «Marcar leído» del
   // propio boletín). Sin sesión, la página queda exactamente igual.
-  import { getSupabase } from '../../lib/supabase';
+  import { getSupabase, getSessionResilient } from '../../lib/supabase';
 
   async function paintReads() {
     const supabase = getSupabase();
     try {
-      const { data: { session } } = await supabase.auth.getSession();
+      const session = await getSessionResilient();
       if (!session) return;
       const { data } = await supabase.from('user_reads').select('boletin_date');
       for (const r of data ?? []) {

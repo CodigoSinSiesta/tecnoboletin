@@ -132,7 +132,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
    * se importan constantes.
    */
   import { colorForType, REL_LABEL, TYPE_LABEL } from '../../lib/graph-tokens';
-  import { getSupabase } from '../../lib/supabase';
+  import { getSupabase, getSessionResilient } from '../../lib/supabase';
 
   interface GNode {
     id: string; name: string; type: string; degree?: number;
@@ -155,7 +155,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   // inspector solo aparece con sesion iniciada; /cuenta/ lista lo guardado.
   const supabase = getSupabase();
   let favUserId: string | null = null;
-  const favReady = supabase.auth.getSession().then(({ data: { session } }) => {
+  const favReady = getSessionResilient().then((session) => {
     favUserId = session?.user.id ?? null;
   });
 

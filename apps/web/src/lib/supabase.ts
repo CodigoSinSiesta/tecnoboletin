@@ -1,6 +1,6 @@
 // Cliente Supabase compartido (browser). La publishable key es publica por
 // diseno -- la seguridad real esta en las politicas RLS de cada tabla.
-import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { createClient, type Session, type SupabaseClient } from '@supabase/supabase-js';
 
 const SUPABASE_URL = 'https://rjfrceapcdlhpukdsixo.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_rwEHLqlaHX0hHGLuWDrTWg_p54vU_PV';
@@ -40,8 +40,18 @@ export type Role = 'user' | 'admin';
  * temporizador esta pausado), getSession() puede devolver null una vez
  * aunque el refresh token siga siendo valido. Antes de darla por
  * perdida, se fuerza un refresco explicito contra Supabase.
+ *
+ * Usar SIEMPRE esto en vez de supabase.auth.getSession() para decidir si se
+ * pinta interfaz de sesion iniciada (botones de guardar, gates de rol...):
+ * con el getSession() pelado, un null transitorio deja al usuario viendo la
+ * pantalla de "inicia sesion" o sin los botones de guardado aunque su sesion
+ * siga siendo valida.
+ *
+ * No cuesta una llamada de red extra a quien no ha iniciado sesion: sin
+ * refresh_token guardado, refreshSession() falla en local sin salir a red.
  */
-async function getSessionResilient(supabase: SupabaseClient) {
+export async function getSessionResilient(): Promise<Session | null> {
+  const supabase = getSupabase();
   const { data: { session } } = await supabase.auth.getSession();
   if (session) return session;
   const { data } = await supabase.auth.refreshSession();
@@ -67,7 +77,7 @@ async function getSessionResilient(supabase: SupabaseClient) {
  */
 export async function fetchRole(): Promise<Role | null> {
   const supabase = getSupabase();
-  const session = await getSessionResilient(supabase);
+  const session = await getSessionResilient();
   if (!session) return null;
   const { data, error } = await supabase
     .from('user_profiles')
