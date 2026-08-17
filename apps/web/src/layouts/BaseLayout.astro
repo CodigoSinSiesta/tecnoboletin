@@ -39,10 +39,15 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 const dates = await listDates();
 const hoy = dates[0] ?? null;
 
+// `adminOnly` se pinta oculto en el HTML estático y solo lo revela el script
+// del final si el rol de la sesion es admin. Nunca al reves: si empezara
+// visible, cada visitante veria el enlace parpadear antes de desaparecer.
+// La barrera real no es esta (el enlace es solo un enlace): la pagina de
+// triaje tiene su propio gate por rol y las tablas su RLS.
 const nav: { key: string; href: string; label: string; adminOnly?: boolean }[] = [
   { key: 'hoy', href: hoy ? `${base}enriquecido/${hoy}/` : `${base}enriquecido/`, label: 'Hoy' },
   { key: 'archivo', href: `${base}enriquecido/`, label: 'Archivo' },
-  { key: 'triaje', href: hoy ? `${base}triaje/${hoy}/` : `${base}enriquecido/`, label: 'Triaje' },
+  { key: 'triaje', href: hoy ? `${base}triaje/${hoy}/` : `${base}enriquecido/`, label: 'Triaje', adminOnly: true },
   { key: 'grafo', href: `${base}grafo/`, label: 'Grafo' },
   { key: 'temas', href: `${base}temas/`, label: 'Temas' },
   { key: 'fuentes', href: `${base}fuentes/`, label: 'Fuentes' },
@@ -90,7 +95,11 @@ const mainClass =
         </a>
         <nav class="hidden md:flex gap-1 items-center -mr-2" aria-label="Secciones">
           {nav.map((item) => (
-            <a href={item.href} class:list={['pill', item.key === activeNav && 'pill--on']}>
+            <a
+              href={item.href}
+              class:list={['pill', item.key === activeNav && 'pill--on', item.adminOnly && 'hidden']}
+              data-admin-only={item.adminOnly ? '' : undefined}
+            >
               {item.label}
             </a>
           ))}
@@ -122,7 +131,11 @@ const mainClass =
             aria-label="Secciones (móvil)"
           >
             {nav.map((item) => (
-              <a href={item.href} class:list={['pill text-left', item.key === activeNav && 'pill--on']}>
+              <a
+                href={item.href}
+                class:list={['pill text-left', item.key === activeNav && 'pill--on', item.adminOnly && 'hidden']}
+                data-admin-only={item.adminOnly ? '' : undefined}
+              >
                 {item.label}
               </a>
             ))}
@@ -152,5 +165,56 @@ const mainClass =
       </div>
     </footer>
 
+    <script>
+      /**
+       * Revelado de los enlaces de nav reservados a administracion (hoy solo
+       * Triaje). El HTML estatico los sirve ocultos y este script los muestra
+       * si el rol de la sesion es admin.
+       *
+       * Dos decisiones de rendimiento, porque esto corre en TODAS las paginas:
+       *
+       * 1. El import de supabase es DINAMICO y solo ocurre si hay un token de
+       *    sesion en localStorage. Sin eso, paginas como /temas/ o /fuentes/
+       *    (que hoy no cargan nada de JS) se tragarian supabase-js entero solo
+       *    para acabar decidiendo que no hay sesion.
+       * 2. El rol se cachea en sessionStorage. Esto es un sitio estatico: sin
+       *    cache, cada navegacion pagaria una consulta a user_profiles y el
+       *    enlace apareceria tarde.
+       *
+       * Falsear la cache solo pinta un enlace: el gate por rol de la propia
+       * pagina de triaje y la RLS de las tablas siguen siendo la barrera real.
+       */
+      const adminLinks = document.querySelectorAll<HTMLElement>('[data-admin-only]');
+
+      if (adminLinks.length) {
+        const CACHE_KEY = 'tb:is-admin';
+        const show = () => adminLinks.forEach((el) => el.classList.remove('hidden'));
+        const hide = () => adminLinks.forEach((el) => el.classList.add('hidden'));
+
+        const hasStoredSession = Object.keys(localStorage).some(
+          (k) => k.startsWith('sb-') && k.endsWith('-auth-token')
+        );
+
+        if (hasStoredSession) {
+          // Pintado optimista: evita que el enlace baile en cada navegacion.
+          if (sessionStorage.getItem(CACHE_KEY) === '1') show();
+
+          import('../lib/supabase')
+            .then(({ fetchRole }) => fetchRole())
+            .then((role) => {
+              const isAdmin = role === 'admin';
+              isAdmin ? show() : hide();
+              sessionStorage.setItem(CACHE_KEY, isAdmin ? '1' : '0');
+            })
+            .catch(() => {
+              // Fallo de red al comprobar el rol: se respeta lo que dijera la
+              // cache en vez de esconder el enlace a quien si es admin.
+            });
+        } else {
+          // Sin sesion no hay rol que comprobar: fuera cache y siguen ocultos.
+          sessionStorage.removeItem(CACHE_KEY);
+        }
+      }
+    </script>
   </body>
 </html>

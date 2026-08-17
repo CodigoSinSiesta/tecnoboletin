@@ -220,6 +220,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   el('logout').addEventListener('click', async () => {
     await supabase.auth.signOut();
+    // El nav cachea "soy admin" en sessionStorage para no consultar el rol en
+    // cada navegacion (ver BaseLayout): al cerrar sesion hay que tirar esa
+    // cache y esconder ya los enlaces, sin esperar a la siguiente pagina.
+    sessionStorage.removeItem('tb:is-admin');
+    document.querySelectorAll('[data-admin-only]').forEach((el) => el.classList.add('hidden'));
     renderLogin();
   });
 
