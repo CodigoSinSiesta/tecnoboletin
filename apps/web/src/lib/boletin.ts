@@ -36,6 +36,9 @@ export interface BoletinItem {
   relacion_grafo?: RelacionGrafo[];
   clasificacion?: {
     tipo?: string;
+    idioma?: string;
+    autor?: string | null;
+    medio?: string | null;
     tema_principal?: string;
     temas_secundarios?: string[];
     confianza?: number;
@@ -418,4 +421,25 @@ export function fmtDateLong(date: string): string {
 /** "2026-08-13" -> "08-13", para el raíl de fechas del triaje. */
 export function fmtDateShort(date: string): string {
   return date.slice(5);
+}
+
+/**
+ * "Salvatore Sanfilippo (antirez)" -> "Salvatore Sanfilippo": limpia el
+ * alias entre paréntesis que clasificacion.medio/autor a veces incluye, para
+ * que la misma organización o persona no cuente dos veces en /fuentes.
+ */
+export function normalizeFuente(raw: string): string {
+  return raw.replace(/\s*\([^)]*\)\s*/g, '').trim();
+}
+
+const DIACRITICS_RE = new RegExp('[' + String.fromCharCode(0x0300) + '-' + String.fromCharCode(0x036f) + ']', 'g');
+
+/** Slug apto para ancla de URL: "Y Combinator" -> "y-combinator". */
+export function fuenteSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(DIACRITICS_RE, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 }

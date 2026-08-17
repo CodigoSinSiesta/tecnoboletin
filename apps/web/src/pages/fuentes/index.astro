@@ -1,23 +1,146 @@
 ---
+/**
+ * Fuentes: organizaciones y autores detrás de los repositorios y proyectos
+ * citados en los boletines (clasificacion.medio / clasificacion.autor de
+ * cada item). El pipeline es repo-first, así que "fuente" aquí es quién
+ * publica el proyecto, no un blog RSS — ver README para las tres fases.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fuenteSlug, listDates, loadBoletin, normalizeFuente, repoSlug } from '../../lib/boletin';
+
+const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+interface Apparition {
+  date: string;
+  titulo: string;
+  slug: string | null;
+}
+
+interface Fuente {
+  name: string;
+  apparitions: Apparition[];
+}
+
+const dates = await listDates();
+const boletines = await Promise.all(dates.map((d) => loadBoletin(d)));
+
+const medios = new Map<string, Apparition[]>();
+const autores = new Map<string, Apparition[]>();
+
+for (const b of boletines) {
+  for (const item of b.items) {
+    const c = item.clasificacion;
+    if (!c) continue;
+    const ap: Apparition = { date: b.date, titulo: item.titulo, slug: repoSlug(item) };
+    if (c.medio) {
+      const name = normalizeFuente(c.medio);
+      if (!medios.has(name)) medios.set(name, []);
+      medios.get(name)!.push(ap);
+    }
+    if (c.autor) {
+      const name = normalizeFuente(c.autor);
+      if (!autores.has(name)) autores.set(name, []);
+      autores.get(name)!.push(ap);
+    }
+  }
+}
+
+function toSorted(map: Map<string, Apparition[]>): Fuente[] {
+  return [...map.entries()]
+    .map(([name, apparitions]) => ({ name, apparitions: apparitions.sort((a, b) => b.date.localeCompare(a.date)) }))
+    .sort((a, b) => b.apparitions.length - a.apparitions.length || a.name.localeCompare(b.name));
+}
+
+const orgs = toSorted(medios);
+const people = toSorted(autores);
 ---
-<BaseLayout title="Fuentes">
-  <header class="mb-10 pb-6 border-b border-border">
-    <p class="eyebrow mb-3">Próximamente</p>
-    <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Fuentes recurrentes</h1>
-    <p class="prose-card text-body">
-      Esta página se activará en la <strong class="text-text">fase 2</strong>, cuando el enriquecedor analice
-      los boletines y agrupe las fuentes más citadas. Mientras tanto, queda como marcador de arquitectura.
+<BaseLayout
+  title="Fuentes"
+  description="Organizaciones y autores detrás de los repositorios y proyectos citados en los boletines de Tecnoboletín."
+  activeNav="fuentes"
+  width="wide"
+  crumbs={['fuentes']}
+>
+  <header class="mb-8 pb-6 border-b border-border">
+    <p class="eyebrow mb-3">Índice de fuentes</p>
+    <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Fuentes</h1>
+    <p class="prose-card text-body max-w-2xl">
+      {orgs.length} organizaciones y {people.length} autores identificados por el enriquecedor detrás
+      de los repositorios y proyectos citados, ordenados por cuántas veces aparecen.
     </p>
   </header>
 
-  <section class="card card--dashed p-6">
-    <h2 class="flow-label mb-3">Pendiente</h2>
-    <ul class="text-sm space-y-2 text-muted">
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Ranking de blogs por recurrencia mensual</li>
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Autores con más apariciones</li>
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Filtros por tipo de fuente (blog, paper, vídeo, podcast)</li>
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Suscripción RSS propia por fuente</li>
-    </ul>
-  </section>
+  <div class="grid gap-8 lg:grid-cols-2">
+    <section class="card p-0 overflow-hidden">
+      <h2 class="flow-label px-6 pt-6 pb-4">Organizaciones</h2>
+      <ul class="divide-y divide-border">
+        {orgs.map((f) => (
+          <li class="px-6 py-3" id={`org-${fuenteSlug(f.name)}`}>
+            <details>
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <span class="text-sm text-text">{f.name}</span>
+                <span class="mono-meta shrink-0">{f.apparitions.length}</span>
+              </summary>
+              <ul class="mt-2 space-y-1">
+                {f.apparitions.map((a) => (
+                  <li class="text-xs text-muted">
+                    <a
+                      href={a.slug ? `${baseUrl}repo/${a.slug}/` : `${baseUrl}enriquecido/${a.date}/`}
+                      class="hover:text-accent-soft"
+                    >
+                      {a.titulo}
+                    </a>
+                    <span class="text-muted-dim"> · {a.date}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="card p-0 overflow-hidden">
+      <h2 class="flow-label px-6 pt-6 pb-4">Autores</h2>
+      <ul class="divide-y divide-border">
+        {people.map((f) => (
+          <li class="px-6 py-3" id={`autor-${fuenteSlug(f.name)}`}>
+            <details>
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <span class="text-sm text-text">{f.name}</span>
+                <span class="mono-meta shrink-0">{f.apparitions.length}</span>
+              </summary>
+              <ul class="mt-2 space-y-1">
+                {f.apparitions.map((a) => (
+                  <li class="text-xs text-muted">
+                    <a
+                      href={a.slug ? `${baseUrl}repo/${a.slug}/` : `${baseUrl}enriquecido/${a.date}/`}
+                      class="hover:text-accent-soft"
+                    >
+                      {a.titulo}
+                    </a>
+                    <span class="text-muted-dim"> · {a.date}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
 </BaseLayout>
+
+<script>
+  // Llegada por ancla (#org-microsoft / #autor-... desde la ficha de repo):
+  // se abre el <details> de la fuente y se lleva a la vista, igual que en
+  // grafo/indice para los nodos.
+  const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+  if (hash) {
+    const row = document.getElementById(hash);
+    if (row) {
+      row.querySelector('details')?.setAttribute('open', '');
+      row.scrollIntoView({ block: 'center' });
+    }
+  }
+</script>

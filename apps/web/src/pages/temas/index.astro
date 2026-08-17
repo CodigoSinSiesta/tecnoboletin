@@ -1,23 +1,93 @@
 ---
+/**
+ * Temas: los nodos tipo "concept" del grafo de conocimiento, ponderados por
+ * cuántos boletines los mencionan. Son la fuente de verdad de "tema" en el
+ * resto del sitio (ver itemTema() en lib/boletin.ts) — esta página es su
+ * índice agregado, no un cálculo aparte.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { nodes, type GraphNode } from '../../lib/graph';
+import { fmtDateShort } from '../../lib/boletin';
+
+const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
+
+interface Tema {
+  node: GraphNode;
+  count: number;
+  dates: string[];
+}
+
+const temas: Tema[] = nodes
+  .filter((n): n is GraphNode => n.type === 'concept')
+  .map((node) => {
+    const dates = [...(node.menciones ?? [])].sort();
+    return { node, count: dates.length, dates };
+  })
+  .filter((t) => t.count > 0)
+  .sort((a, b) => b.count - a.count || (b.node.degree ?? 0) - (a.node.degree ?? 0) || a.node.name.localeCompare(b.node.name));
+
+const maxCount = temas[0]?.count ?? 1;
+const cloud = temas.slice(0, 60);
+
+function sizeFor(count: number): string {
+  const t = Math.sqrt(count / maxCount);
+  const rem = 0.8 + t * 1.1;
+  return `${rem.toFixed(2)}rem`;
+}
+
+function opacityFor(count: number): string {
+  const t = Math.sqrt(count / maxCount);
+  return (0.55 + t * 0.45).toFixed(2);
+}
 ---
-<BaseLayout title="Temas" activeNav="temas">
-  <header class="mb-10 pb-6 border-b border-border">
-    <p class="eyebrow mb-3">Próximamente</p>
+<BaseLayout
+  title="Temas"
+  description="Los conceptos más mencionados a través de los boletines de Tecnoboletín, ordenados por recurrencia."
+  activeNav="temas"
+  width="wide"
+  crumbs={['temas']}
+>
+  <header class="mb-8 pb-6 border-b border-border">
+    <p class="eyebrow mb-3">Índice temático</p>
     <h1 class="font-display font-extrabold mb-4" style="font-size: clamp(2rem, 5vw, 3rem);">Temas</h1>
-    <p class="prose-card text-body">
-      Esta página se activará en la <strong class="text-text">fase 2</strong>, cuando el enriquecedor clasifique
-      cada item por tema y genere una nube ponderada por frecuencia.
+    <p class="prose-card text-body max-w-2xl">
+      {temas.length} conceptos extraídos por el enriquecedor a partir de las relaciones de cada hallazgo,
+      ordenados por cuántos boletines distintos los mencionan.
+      <a href={`${baseUrl}grafo/`} class="text-accent-soft hover:underline">Ver el grafo completo →</a>
     </p>
   </header>
 
-  <section class="card card--dashed p-6">
-    <h2 class="flow-label mb-3">Pendiente</h2>
-    <ul class="text-sm space-y-2 text-muted">
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Nube de tags con peso por mes</li>
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Heatmap de temas × semana</li>
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Suscripción a temas concretos</li>
-      <li class="flex gap-2"><span class="text-accent-soft">·</span> Comparativa entre boletines de la misma semana</li>
+  <section class="card p-6 mb-8">
+    <h2 class="flow-label mb-4">Nube de temas</h2>
+    <div class="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+      {cloud.map((t) => (
+        <a
+          href={`${baseUrl}grafo/indice/#${encodeURIComponent(t.node.id)}`}
+          class="font-display font-semibold text-text hover:text-accent-soft transition-colors"
+          style={`font-size:${sizeFor(t.count)};opacity:${opacityFor(t.count)}`}
+          title={`${t.count} ${t.count === 1 ? 'boletín' : 'boletines'}`}
+        >
+          {t.node.name}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="card p-0 overflow-hidden">
+    <h2 class="flow-label px-6 pt-6 pb-4">Ranking completo</h2>
+    <ul class="divide-y divide-border">
+      {temas.map((t, i) => (
+        <li class="px-6 py-3 flex items-center gap-4">
+          <span class="mono-meta w-7 shrink-0 text-right">{i + 1}</span>
+          <a href={`${baseUrl}grafo/indice/#${encodeURIComponent(t.node.id)}`} class="flex-1 min-w-0 truncate text-sm text-text hover:text-accent-soft">
+            {t.node.name}
+          </a>
+          <span class="mono-meta shrink-0">{t.count} {t.count === 1 ? 'boletín' : 'boletines'}</span>
+          <span class="mono-meta shrink-0 hidden sm:inline">
+            {fmtDateShort(t.dates[0])} → {fmtDateShort(t.dates[t.dates.length - 1])}
+          </span>
+        </li>
+      ))}
     </ul>
   </section>
 </BaseLayout>
