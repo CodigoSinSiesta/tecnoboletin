@@ -81,7 +81,7 @@ Dos elementos puramente decorativos, y solo estos dos, en todas las pantallas:
 | Pantalla | Ruta | Notas |
 |---|---|---|
 | Boletín del día | `enriquecido/[date]` | Hero con titular (primera frase de `editorial.posicionamiento`), hallazgos, radar, mapa del día, alertas, "tu turno". J/K navega. |
-| Consola de triaje | `triaje/[date]` | Columnas explorar/probar/leer/vigilar desde `accion_sugerida` normalizada; E/P/L/V/X mueven el item seleccionado. El triaje se guarda en la tabla `user_triage` (upsert por movimiento, clave user+fecha+item), así que acompaña al usuario entre dispositivos. **Solo administradores**: `fetchRole()` lee `user_profiles.role`; la barrera real es la RLS de esa tabla. |
+| Consola de triaje | `triaje/[date]` | Columnas explorar/probar/leer/vigilar desde `accion_sugerida` normalizada; E/P/L/V/X mueven el item seleccionado. El triaje se guarda en la tabla `user_triage` (upsert por movimiento, clave user+fecha+item), así que acompaña al usuario entre dispositivos. **Con sesión iniciada** (sin rol especial: el triaje es personal y la RLS de `user_triage` ya limita a cada cual a lo suyo; sin sesión no habría dónde guardarlo). |
 | Ficha de repositorio | `repo/[owner]/[name]` | Nueva. Cruza el item enriquecido + señales parseadas + grafo: stat strip, diagrama "cómo funciona", posición en el ecosistema, apariciones. |
 | Explorador de grafo | `grafo/` | Consola de 3 columnas; inspector con "cómo creció este nodo" (barra temporal por boletín). El JSON se sigue descargando en runtime. |
 | Índice del grafo | `grafo/indice/` | Igual que antes + anclas `#id-de-nodo` (destino de los chips). Con sesión, botón «Guardar» por nodo (`user_favorites`, kind `nodo`), igual que el inspector 3D y la ficha de repo. |
@@ -113,9 +113,9 @@ Tres decisiones que conviene no deshacer:
   que la rescatara.
 
 El alta de perfil es automática: un trigger sobre `auth.users` crea la fila al registrarse.
-Los gates de interfaz (ocultar el triaje, ocultar el enlace de usuarios) son comodidad, no
-seguridad: quien los saltara se encontraría con que Postgres no le devuelve ni le acepta
-nada.
+Los gates de interfaz (pedir sesión en el triaje, ocultar el enlace de usuarios) son
+comodidad, no seguridad: quien los saltara se encontraría con que Postgres no le devuelve
+ni le acepta nada.
 
 ## Datos: texto libre → estructura (lib/boletin.ts)
 

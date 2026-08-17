@@ -99,10 +99,11 @@ const pendientes = {
   width="full"
   crumbs={[date!, 'triaje']}
 >
-  <!-- Gate de administrador: la consola arranca oculta y solo se muestra
-       cuando el cliente confirma sesión con app_metadata.role === 'admin'.
-       Es un gate de interfaz (el sitio es estático); ver isAdmin() en
-       lib/supabase.ts. -->
+  <!-- Gate de sesión: la consola arranca oculta y se muestra cuando el
+       cliente confirma que hay cuenta iniciada. No exige ningún rol — el
+       triaje es personal (tabla user_triage, RLS "cada cual lo suyo") —
+       pero sin sesión no habría dónde guardarlo. Es un gate de interfaz
+       (el sitio es estático); la barrera real es la RLS. -->
   <div id="triaje-gate" class="min-h-[50vh] flex items-center justify-center px-6">
     <div class="card p-8 max-w-md text-center">
       <p class="eyebrow justify-center mb-4">Consola de triaje</p>
@@ -346,10 +347,13 @@ const pendientes = {
 
 <script>
   /**
-   * Gate de administrador. Separado del script principal de la consola para
+   * Gate de sesión. Separado del script principal de la consola para
    * que un fallo de red con Supabase no rompa los atajos si el gate ya abrió.
+   *
+   * Solo pide sesión, no rol: el triaje es una decisión personal y la
+   * tabla user_triage ya limita por RLS que cada cual escriba lo suyo.
    */
-  import { fetchRole } from '../../lib/supabase';
+  import { fetchSession } from '../../lib/supabase';
 
   async function gate() {
     const gateEl = document.getElementById('triaje-gate');
@@ -364,18 +368,18 @@ const pendientes = {
     actions?.classList.add('hidden');
     retry?.classList.add('hidden');
 
-    let role: string | null = null;
+    let session: Awaited<ReturnType<typeof fetchSession>> = null;
     let checkFailed = false;
     try {
-      role = await fetchRole();
+      session = await fetchSession();
     } catch {
-      // Fallo de red o de Supabase al comprobar el rol: no es lo mismo
-      // que "no hay sesión", así que no se manda a iniciar sesión de
-      // nuevo — se ofrece reintentar la misma comprobación.
+      // Fallo de red o de Supabase al comprobar: no es lo mismo que "no
+      // hay sesión", así que no se manda a iniciar sesión de nuevo — se
+      // ofrece reintentar la misma comprobación.
       checkFailed = true;
     }
 
-    if (role === 'admin') {
+    if (session) {
       gateEl.remove();
       root.classList.remove('hidden');
       return;
@@ -384,9 +388,7 @@ const pendientes = {
     if (msg) {
       msg.textContent = checkFailed
         ? 'No se pudo comprobar tu sesión (puede ser un problema de red). Reintenta.'
-        : role
-          ? 'El triaje está reservado a la cuenta de administración. Tu sesión no tiene ese rol.'
-          : 'El triaje está reservado a la cuenta de administración. Inicia sesión para continuar.';
+        : 'El triaje guarda tus decisiones en tu cuenta. Inicia sesión para continuar.';
     }
     login?.classList.toggle('hidden', checkFailed);
     retry?.classList.toggle('hidden', !checkFailed);

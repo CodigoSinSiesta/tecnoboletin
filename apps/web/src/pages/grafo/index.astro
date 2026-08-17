@@ -361,8 +361,12 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
       .nodeColor((n: GNode) => (activeTypes.has(n.type) ? colorForType(n.type) : 'rgba(148,163,184,0.08)'))
       .nodeVal((n: GNode) => 1 + Math.min(n.degree ?? 1, 20) * 0.6)
       .nodeOpacity(0.92)
-      .linkColor(() => 'rgba(148,163,184,0.28)')
-      .linkWidth(0.4)
+      // Color sólido + linkOpacity explícito: 3d-force-graph aplica su
+      // propia opacidad de material (0.2 por defecto) ADEMÁS del alfa del
+      // color, así que un rgba translúcido acababa casi invisible.
+      .linkColor(() => '#94A3B8')
+      .linkOpacity(0.55)
+      .linkWidth(0.7)
       .linkVisibility((l: GLink) => !filtrables.has(l.rel) || activeRels.has(l.rel))
       .linkDirectionalParticles(0)
       .onNodeClick((n: GNode) => showPanel(n))

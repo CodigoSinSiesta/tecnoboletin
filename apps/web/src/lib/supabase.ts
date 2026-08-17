@@ -83,6 +83,13 @@ export async function isAdmin(): Promise<boolean> {
   return (await fetchRole()) === 'admin';
 }
 
+/** Sesion actual (con la misma recuperacion que fetchRole), o null si de
+ *  verdad no hay sesion. Para gates que solo necesitan saber si hay
+ *  cuenta, sin consultar el rol. */
+export async function fetchSession() {
+  return getSessionResilient(getSupabase());
+}
+
 /** URL absoluta de vuelta tras un login OAuth/magic-link, respetando el
  *  base path (/tecnoboletin) tanto en produccion como en local. */
 export function accountUrl(): string {
