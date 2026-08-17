@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout
   title="Tu cuenta"
   description="Inicia sesión para guardar boletines favoritos y marcar los que ya has leído."
+  activeNav="cuenta"
 >
   <div class="max-w-xl mx-auto">
     <h1 class="font-display text-3xl font-bold text-text mb-2">Tu cuenta</h1>
@@ -86,7 +87,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
       <section>
         <h2 class="font-display text-xl font-semibold text-text mb-3">Nodos del grafo guardados</h2>
-        <ul id="favs-nodos" class="space-y-1.5 text-sm font-mono"></ul>
+        <ul id="favs-nodos" class="space-y-1.5 text-sm"></ul>
         <p id="favs-nodos-empty" class="hidden text-muted-dim text-sm">Ningún nodo guardado todavía.</p>
       </section>
 
@@ -102,7 +103,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  import { getSupabase, accountUrl, fetchRole } from '../../lib/supabase';
+  import { getSupabase, accountUrl, fetchRole, getSessionResilient } from '../../lib/supabase';
+  // graph-tokens.ts es solo constantes (sin el JSON de 300 KB del grafo, que
+  // vive en lib/graph.ts) — es justo lo que necesita este script de cliente
+  // para mostrar un tipo legible sin descargar el grafo entero.
+  import { TYPE_LABEL } from '../../lib/graph-tokens';
 
   const supabase = getSupabase();
   const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
@@ -110,6 +115,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   const el = (id: string) => document.getElementById(id)!;
   const show = (id: string) => el(id).classList.remove('hidden');
   const hide = (id: string) => el(id).classList.add('hidden');
+
+  /** "concept:cross-harness-agent" -> { type: "concept", name: "cross harness agent" } */
+  function describeNode(ref: string): { type: string | null; name: string } {
+    const m = ref.match(/^([a-z_]+):(.+)$/);
+    if (!m) return { type: null, name: ref };
+    const [, type, rest] = m;
+    return { type, name: type === 'repo' ? rest : rest.replace(/-/g, ' ') };
+  }
 
   function setMsg(text: string, isError = false) {
     const msg = el('auth-msg');
@@ -149,7 +162,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
     const nodoList = el('favs-nodos');
     nodoList.innerHTML = nodos
-      .map((f) => `<li><a class="text-radar hover:underline" href="${base}grafo/indice/#${encodeURIComponent(f.ref)}">${f.ref}</a></li>`)
+      .map((f) => {
+        const { type, name } = describeNode(f.ref);
+        const label = type ? (TYPE_LABEL[type] ?? type) : null;
+        return `<li><a class="text-radar hover:underline" href="${base}grafo/indice/#${encodeURIComponent(f.ref)}">${
+          label ? `<span class="text-muted-dim font-mono text-xs">${label} · </span>` : ''
+        }${name}</a></li>`;
+      })
       .join('');
     nodos.length ? hide('favs-nodos-empty') : show('favs-nodos-empty');
 
@@ -232,7 +251,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       }
     }, 8000);
   } else {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    getSessionResilient().then((session) => {
       session ? renderSession(session) : renderLogin();
     });
   }

@@ -9,7 +9,7 @@ interface Props {
    *  Se pasa explícitamente en vez de derivarla de Astro.url.pathname
    *  porque en build estático con `base: '/tecnoboletin'` esa comparación
    *  es fragil (barras finales, base incluida o no según la página). */
-  activeNav?: 'hoy' | 'archivo' | 'triaje' | 'grafo' | 'temas' | 'cuenta' | 'inicio';
+  activeNav?: 'hoy' | 'archivo' | 'triaje' | 'grafo' | 'temas' | 'fuentes' | 'cuenta' | 'inicio';
   /** Ancho del contenido:
    *  - `reading` (por defecto): columna de lectura, para páginas de texto.
    *  - `wide`: 1280px, el lienzo del boletín y de la ficha de repositorio.
@@ -39,13 +39,14 @@ const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 const dates = await listDates();
 const hoy = dates[0] ?? null;
 
-const nav = [
+const nav: { key: string; href: string; label: string; adminOnly?: boolean }[] = [
   { key: 'hoy', href: hoy ? `${base}enriquecido/${hoy}/` : `${base}enriquecido/`, label: 'Hoy' },
   { key: 'archivo', href: `${base}enriquecido/`, label: 'Archivo' },
   { key: 'triaje', href: hoy ? `${base}triaje/${hoy}/` : `${base}enriquecido/`, label: 'Triaje' },
   { key: 'grafo', href: `${base}grafo/`, label: 'Grafo' },
   { key: 'temas', href: `${base}temas/`, label: 'Temas' },
-] as const;
+  { key: 'fuentes', href: `${base}fuentes/`, label: 'Fuentes' },
+];
 
 const mainClass =
   width === 'full'
@@ -61,6 +62,7 @@ const mainClass =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="alternate" type="application/rss+xml" title="Tecnoboletín" href={`${base}rss.xml`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -86,7 +88,7 @@ const mainClass =
             ))}
           </span>
         </a>
-        <nav class="flex gap-1 items-center -mr-2" aria-label="Secciones">
+        <nav class="hidden md:flex gap-1 items-center -mr-2" aria-label="Secciones">
           {nav.map((item) => (
             <a href={item.href} class:list={['pill', item.key === activeNav && 'pill--on']}>
               {item.label}
@@ -104,6 +106,31 @@ const mainClass =
             title="Tu cuenta"
           >A</a>
         </nav>
+
+        <!-- Menú móvil: <details> nativo, sin JS — el mismo patrón que los
+             nodos de grafo/indice. Por debajo de `md` los 6 links + el
+             prefijo "código sin siesta/" del logo no caben en una fila. -->
+        <details class="relative md:hidden -mr-1">
+          <summary
+            class="list-none cursor-pointer w-8 h-8 rounded-full border border-border-strong text-muted-dim flex items-center justify-center transition-colors hover:text-text hover:border-accent-soft"
+            aria-label="Abrir menú de secciones"
+          >
+            <span aria-hidden="true" class="text-base leading-none">☰</span>
+          </summary>
+          <nav
+            class="absolute right-0 top-[calc(100%+10px)] w-52 rounded-xl border border-border-strong bg-bg-raised shadow-lg p-1.5 flex flex-col gap-0.5 z-50"
+            aria-label="Secciones (móvil)"
+          >
+            {nav.map((item) => (
+              <a href={item.href} class:list={['pill text-left', item.key === activeNav && 'pill--on']}>
+                {item.label}
+              </a>
+            ))}
+            <a href={`${base}cuenta/`} class:list={['pill text-left', activeNav === 'cuenta' && 'pill--on']}>
+              Tu cuenta
+            </a>
+          </nav>
+        </details>
       </div>
     </header>
 
@@ -118,8 +145,12 @@ const mainClass =
           <a href="https://codigosinsiesta.com/" class="text-muted hover:text-accent-dim">Código Sin Siesta</a>
           · proyecto personal de Alejandro de la Fuente
         </span>
-        <span>Astro 5 · {dates.length} boletines</span>
+        <span>
+          Astro 5 · {dates.length} boletines ·
+          <a href={`${base}rss.xml`} class="text-muted hover:text-accent-dim">RSS</a>
+        </span>
       </div>
     </footer>
+
   </body>
 </html>
