@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-08-17",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín del lunes 17 de agosto deja claro que la conversación sobre AI-coding ya no se decide en el modelo, sino en el sistema operativo y el enrutado que rodea al modelo. Hay un hilo conductor nítido: la capa de agente se está convirtiendo en infraestructura de sistema — DHH la introduce como ciudadana de primera clase en una distro Linux entera, DeepSeek la trata como un bus de plugins extensible, y vLLM la reparte por intención con un router semántico. En paralelo, el radar secundario (Data Formulator, omlx) recuerda que todo eso necesita buenos datos y buena inferencia local debajo para no degenerar en demo. Es un día de piezas gruesas: tres hallazgos cambian el 'dónde corre el agente' y 'cómo se compone con otros', no el 'qué modelo contesta'.",
+  "convergencia_stack_css": "Tres hallazgos de hoy conectan directamente con líneas editoriales ya conocidas de Código Sin Siesta. Omarchy consolida el vector 'local-first / agent en el escritorio' que el boletín del 15 de agosto ya había detectado con OpenSandbox y OAK como suelo de ejecución — Omarchy sube un escalón y lo convierte en distro completa. deepseek-harness encaja en el seguimiento de runtimes y sandboxes agenticos del fin de semana, ahora con el ángulo de ecosistema tipo plugin-bus (cordiverse/cordis) que recuerda a arquitecturas de skills modulares. semantic-router conecta con la línea de 'routing programable / mixture-of-models' que el propio nombre invoca, y omlx refuerza la apuesta local-first en Mac que ya es stack de referencia en este boletín.",
+  "cruzado_grafo": "Omarchy (basecamp/omarchy) no trae primera_mención en los datos de hoy, así que aparece como nodo nuevo en el grafo: distro Linux opinionada con agentes como ciudadanos de primera clase, patrón sin precedente claro en el ecosistema. deepseek-harness (deepseek-ai/deepseek-harness) tampoco trae primera_mención explícita — su irrupción de ~30k estrellas en un día es lo que crea la primera huella del nodo, no una mención previa. semantic-router (vllm-project/semantic-router) llega sin primera_mención en los datos, y entra como la primera aparición formal del concepto 'mixture-of-models routing' dentro del boletín. Por construcción, ninguno de los hallazgos de hoy refuerza un nodo ya cubierto: todos son entradas nuevas al grafo, lo que hace este boletín un buen día para mapear.",
+  "tendencias_5_boletines": "Recibí contexto de los dos días previos (15 y 16 de agosto) y la lectura es coherente: el boletín del sábado 15 puso el foco en el suelo de ejecución (runtimes y sandboxes: mlxcel, OpenSandbox, OAK) y el boletín del domingo 16 lo subió a las 'bisagras' — escritorio, editor, aula, audio. El boletín de hoy cierra esa progresión llevando la conversación al sistema operativo completo (Omarchy) y al bus de plugins (deepseek-harness). No tengo cinco boletines de contexto, solo dos, así que cualquier proyección a una semana sería inventada; lo que sí se observa con tres muestras es una secuencia clara: infraestructura → bisagra → sistema.",
+  "alertas": [
+    "Omarchy lleva 10 semanas y 25k★ pero es una distro 'opinionada' de DHH/Basecamp: el sesgo de diseño y el riesgo de lock-in hacia el stack de 37signals no se mencionan y merecen matiz.",
+    "deepseek-harness ganando ~30k★ en un día y con un ecosistema de UI/desktop/web ya brotando es exactamente el patrón 'hype desproporcionado a tracción verificada' que hay que vigilar: stars no equivalen a usuarios reales ni a APIs estables.",
+    "semantic-router propone 'Mixture-of-Models' como routing programable, pero el dato de hoy no trae métricas de latencia/coste comparadas con un solo modelo fuerte: el claim de ventaja sin benchmark no está verificado.",
+    "Data Formulator y omlx entran en el radar secundario con menos contexto técnico — los dos merecen vigilancia antes de elevarlos a hallazgos principales."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Omarchy redefine 'qué distro para AI-coding' y merece un deep-dive del SKILL.md symlinked y el panel de usage unificado: ahí está el patrón replicable, no el hype de las 25k★."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "deepseek-harness está en plena fase hype con ecosistema brotando: conviene esperar 1-2 boletines para ver si el bus de plugins cordiverse/cordis se estabiliza o si se fragmenta como pasó con otros 'everything is a plugin'."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "semantic-router es el primero en aterrizar 'mixture-of-models' como routing real en el boletín: vale la pena un repo-investigate para entender si es producción-ready o prototipo vistoso."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "omlx (LM Studio++ para Mac con KV cache tiered y Metal nativo) es el tipo de pieza local-first concreta que el público de CSS puede aplicar esta semana sin esperar a Linux."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Data Formulator entra al radar sin contexto técnico suficiente: 'data threads' es un claim de diseño, no una métrica — conviene pedir evidencia antes de promoverlo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

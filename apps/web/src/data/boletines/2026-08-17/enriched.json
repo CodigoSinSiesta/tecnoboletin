@@ -1,0 +1,287 @@
+{
+  "version": 2,
+  "date": "2026-08-17",
+  "boletin_origen": "2026-08-17-trending.md",
+  "resumen_ejecutivo": "- **Omarchy de DHH es la noticia del día en el ecosistema dev**: 25.624★ en 10 semanas, MIT, distribución Linux \"opinionada\" con **9 coding agents pre-wired** (Claude Code, Codex, OpenCode, Gemini CLI, Copilot CLI, Crush, Grok, Pi, Oh My Pi). El README de `manual/17-ai.md` documenta un patrón que ningún distro había hecho: agentes como ciudadanos de primera clase, panel de usage unificado, crash-diagnosis automático via systemd-coredump, y un SKILL.md symlinked en `~/.claude/skills`, `~/.codex/skills`, `~/.pi/agent/skills`. Esto cambia la conversación sobre \"qué distro usar para AI-coding\".\n- **`deepseek-ai/deepseek-harness` explota**: 140.880★ (ayer tenía ~30k menos), MIT, \"Everything is a Plugin\", powered by `cordiverse/cordis`. Es **el** lanzamiento chino de agosto y está creando un ecosistema: `anywhere-labs/deepseek-harness-desktop` (10k★), `dataelement/dsh-desktop`, `zhu1090093659/dsh-web-ui`, `yjh051108/dsh-routing-suite`, `awesome-dsh-plugin/awesome-dsh-plugin`, `walkinglabs/learn-harness-engineering` (11k★ curso en 15 idiomas). El modelo \"agente = runtime + plugins\" se está consolidando en el mainstream.\n- **`microsoft/data-formulator`** (16.231★, MIT, push 2026-08-15) es la apuesta de Microsoft Research para data viz con AI agents. Diferenciador: \"data threads\" ramificables + conectores con memoria persistente. Se instala via `uvx` o `pip`, demo online disponible. Tiene YouTube demo, PyPI público, CI verde.\n- **`jundot/omlx`** (18.816★, Apache-2.0, push 2026-08-17) es el \"LM Studio++ para Mac\": servidor LLM con continuous batching + tiered KV cache (RAM hot tier, SSD cold tier) que sobrevive a cambios de contexto mid-conversation. Kernels nativos Metal custom para GLM-5.2 / MiniMax M3 / Qwen3.5 (30× más rápido en prefill DSA: 845 vs ~29 tok/s en M3 Ultra con el kernel). Soporte oficial MCP.\n- **`vllm-project/semantic-router`** (5.164★, Apache-2.0, push 2026-08-17) es la capa programable de \"Mixture-of-Models\": routing basado en señales del request + preferencias + políticas para componer el path correcto entre modelos heterogéneos (distintos modelos, GPUs, edge/cloud, restricciones de privacidad). v0.3 \"Themis\" ya publicado (stateful production routing).\n- **Patrón transversal**: 2026-08-17 muestra el \"plugin everything\" en producción real. Omarchy integra 9 agents, deepseek-harness integra N plugins, semantic-router compone modelos, oMLX hace hot-swap de inferencia, walkinglabs/learn-harness-engineering enseña el patrón a escala curso (14 lectures + 8 projects). El \"harness\" deja de ser código propio y se vuelve categoría de producto.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript/python/rust/go), GitHub REST API (16 verificaciones), READMEs vía default branch (incluido `quattro` de Omarchy). Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` = 2026-07-05; el cron lleva varias semanas parado, pendiente revisar).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "basecamp/omarchy",
+      "url": "https://github.com/basecamp/omarchy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Linux de DHH con 9 coding agents first-class",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "basecamp-omarchy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Everything is a Plugin\" + ecosistema en expansión",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-ai-deepseek-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "microsoft/data-formulator",
+      "url": "https://github.com/microsoft/data-formulator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AI agents para data viz con \"data threads\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-data-formulator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "jundot/omlx",
+      "url": "https://github.com/jundot/omlx",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "LM Studio++ para Mac con KV cache tiered y kernels nativos Metal",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jundot-omlx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "vllm-project/semantic-router",
+      "url": "https://github.com/vllm-project/semantic-router",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Mixture-of-Models\" como routing programable",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vllm-project-semantic-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "walkinglabs/learn-harness-engineering",
+      "url": "https://github.com/walkinglabs/learn-harness-engineering",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Curso en 15 idiomas sobre construcción de harnesses para AI agents. 14 lectures + 8 projects. Lecture 14 nueva (agosto 2026): \"From Single Loops to Graph Engineering\" — formaliza los 4 niveles (prompt → context → loop → graph) y las 3 fallas estructurales a escala (Goodhart, blindness upward, conflict). Repos asociados: deepseek-harness, cordis",
+        "por_que_importa": "",
+        "madurez_senales": "11.682 ★ · 800 forks · TypeScript · MIT · push 2026-08-06",
+        "accion_sugerida": "leer — (lecture-14 es la pieza accionable)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "walkinglabs-learn-harness-engineering",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "cordiverse/cordis",
+      "url": "https://github.com/cordiverse/cordis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "La librería sobre la que se construye deepseek-harness. Paper: \"A Programming Paradigm for Spatiotemporal Composability\"",
+        "por_que_importa": "",
+        "madurez_senales": "5.166 ★ · 278 forks · TypeScript · MIT · push 2026-08-13",
+        "accion_sugerida": "leer — (el paper es la lectura interesante, no el código)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cordiverse-cordis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "anywhere-labs/deepseek-harness-desktop",
+      "url": "https://github.com/anywhere-labs/deepseek-harness-desktop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Desktop app no-oficial para DSH (Windows + macOS Apple Silicon). NSIS installer + DMG, trae todo preconfigurado, no requiere Node",
+        "por_que_importa": "",
+        "madurez_senales": "10.382 ★ · 600 forks · TypeScript · MIT · push 2026-08-17",
+        "accion_sugerida": "vigilar — (no oficial, pero si el equipo de DSH la soporta pasa a ser interesante)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anywhere-labs-deepseek-harness-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "mostlygeek/llama-swap",
+      "url": "https://github.com/mostlygeek/llama-swap",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Reentry. Hot-swap de modelos entre servidores OpenAI/Anthropic-compatibles (llama.cpp, vllm, stable-diffusion.cpp, audio.cpp, ComfyUI)",
+        "por_que_importa": "",
+        "madurez_senales": "5.388 ★ · 250 forks · Go · MIT · push 2026-08-17",
+        "accion_sugerida": "vigilar — (subió 240★ desde ayer, sigue creciendo; pieza complementaria a oMLX)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mostlygeek-llama-swap",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "MakazhanAlpamys/Soup",
+      "url": "https://github.com/MakazhanAlpamys/Soup",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Reentry con historia nueva (subió 240★ desde 1.797★ de ayer). Fine-tuning 8B en 4GB laptop GPU con layer streaming",
+        "por_que_importa": "",
+        "madurez_senales": "2.039 ★ · 305 forks · Python · Apache-2.0 · push 2026-08-17",
+        "accion_sugerida": "vigilar — (crecimiento constante, posible release de correctness fix post-BETA)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "makazhanalpamys-soup",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "ZSeven-W/openpencil",
+      "url": "https://github.com/ZSeven-W/openpencil",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Reentry. \"El primer AI-native vector design tool open-source\". README denso (38k), UI en Tauri",
+        "por_que_importa": "",
+        "madurez_senales": "5.165 ★ · 250 forks · Rust · MIT · push 2026-08-17",
+        "accion_sugerida": "vigilar — (Figma+AI open-source es noticia; auditar si tiene dependencias closed-source)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zseven-w-openpencil",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
