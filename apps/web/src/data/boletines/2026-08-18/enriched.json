@@ -12,10 +12,10 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Referencia oficial de Anthropic para AI security",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "por_que_importa": "Primera vez que la organización publica un harness de seguridad como OSS bajo su org oficial. La referencia canónica de Anthropic para detección y remediación autónoma de vulnerabilidades con Claude llega acompañada de un blog post público (using-llms-to-secure-source-code) y de un cookbook de Claude Agent SDK. Importa para toda la conversación sobre \"agentes autónomos en security\": marca la línea de \"AI-security-ready\" como producto vendible, no solo como demo.",
+        "madurez_senales": "7.298★ · push 2026-08-06 · oficial de Anthropic · repo canónico bajo github.com/anthropics",
+        "accion_sugerida": "leer",
+        "descripcion_raw": "Official Anthropic reference harness for AI security: detection and autonomous remediation of vulnerabilities with Claude. Sibling of the public blog post using-llms-to-secure-source-code and the Claude Agent SDK cookbook."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -36,9 +36,9 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "GitHub Agentic Workflows oficiales",
-        "por_que_importa": "No se puede reescribir sin inventar: los cuatro campos del item están vacíos. Para justificar relevancia editorial haría falta saber qué son estos workflows, qué resuelven frente a GitHub Actions o a n8n/Dagger, y qué cambia para un equipo de desarrollo. Limitación: dato insuficiente.",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "por_que_importa": "GitHub Agentic Workflows se convierte en ciudadano de primera clase de GitHub Actions: workflows definidos en Markdown con frontmatter YAML, compilados a Actions estándar, ejecutados en sandboxes con permisos scopeados (safe-outputs). Engines built-in: Copilot, Claude Code, Codex, Gemini y Pi. Es el movimiento de GitHub para llevar el patrón \"AI-CI\" de experimental a infraestructura de plataforma — el equipo que ya opera Actions ahora opera agentes sin aprender un nuevo runtime.",
+        "madurez_senales": "4.948★ · push 2026-08-18 · oficial de GitHub",
+        "accion_sugerida": "explorar",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
@@ -60,9 +60,9 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Memoria persistente cross-harness para coding agents",
-        "por_que_importa": "No se puede reescribir sin inventar: los cuatro campos del item están vacíos. Para explicar el valor técnico necesitaría saber qué harness se conectan, cómo se persiste la memoria y en qué se diferencia de soluciones ya cubiertas en boletines previos. Limitación: dato insuficiente.",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "por_que_importa": "Memoria persistente compartida entre coding agents (Claude Code, Codex, OpenCode, Gemini, Pi, Crush, Kimi, Kiro, Hermes, etc.) vía MCP y lifecycle hooks. La wiki se almacena como markdown plano en un git repo (grep-able, abrible en Obsidian, respaldable con rsync) — sin vector DB, sin servicio externo. Es el competidor open-source más serio a screenpipe (licencia bloqueada) y cubre la pieza de contexto cruzado que cactus-compute/needle aún no ofrece. Para setups multi-harness, el bus de memoria compartido es la pieza que faltaba.",
+        "madurez_senales": "2.311★ · MIT · Rust · push 2026-08-18",
+        "accion_sugerida": "explorar",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
@@ -84,9 +84,9 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "MCP server para AI pen-testing con 150+ herramientas",
-        "por_que_importa": "No se puede reescribir sin inventar: los cuatro campos del item están vacíos. Para evaluar madurez y relevancia haría falta saber qué 150 herramientas concretas incluye, quién lo mantiene, si el repo tiene tracción (estrellas, commits, releases) y qué aporta frente a un pentest manual o a herramientas como Burp Suite asistidas por IA. Limitación: dato insuficiente.",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "por_que_importa": "Consolida el cluster \"AI-powered offensive security\": 150+ herramientas de pen-testing expuestas vía MCP, 12+ agentes autónomos, decisión inteligente de herramientas. Es el homólogo ofensivo del defending-code-reference-harness de Anthropic — donde uno defiende, este ataca. Para equipos que ya evalúan security agentic en su pipeline, hexstrike-ai cubre la pieza de \"lo mismo, pero desde el lado rojo\".",
+        "madurez_senales": "11.161★ · MIT · Python · push 2026-08-03",
+        "accion_sugerida": "vigilar",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
@@ -108,9 +108,9 @@
       "seccion": "hallazgo_principal",
       "contenido": {
         "que_es": "Team chat donde los AI agents son first-class teammates",
-        "por_que_importa": "No se puede reescribir sin inventar: los cuatro campos del item están vacíos. Para anclarlo editorialmente necesitaría saber qué producto es, cómo se compara con Slack/Teams/Discord ya tratados, qué tareas puede ejecutar un agent dentro del chat y qué limitaciones reales tiene hoy. Limitación: dato insuficiente.",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "por_que_importa": "Lleva el patrón \"agentes como ciudadanos de primera clase\" al terreno del team chat: agentes con personalidad, memoria y capacidad de reclamar trabajo, coordinándose vía cursor de mensajes vistos y claims atómicos sobre unidades de trabajo. Compatible con Claude Code, Codex, Gemini CLI. Es el primer \"Slack/Discord para equipos donde humanos y agentes son el mismo roster\": el cambio de producto no es la interfaz, es el roster — humanos y agentes gestionan trabajo en el mismo plano.",
+        "madurez_senales": "1.895★ · MIT · TypeScript · push 2026-08-18",
+        "accion_sugerida": "vigilar",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
