@@ -10,7 +10,10 @@ export default defineConfig({
   base: '/tecnoboletin',
   integrations: [sitemap()],
   vite: {
-    // peer dep mismatch entre vite de Astro y vite de @tailwindcss/vite — wrapper runtime evita el conflicto
-    plugins: [/** @type {any} */ (tailwindcss)],
+    // peer dep mismatch entre vite de Astro y vite de @tailwindcss/vite:
+    // @ts-ignore evita el falso positivo de TS (no usar @ts-expect-error:
+    // @astrojs/check >=0.9.10 lo reporta como "directiva no usada" y rompe
+    // el build aunque la directiva siga siendo necesaria en tiempo de ejecucion).
+    plugins: [/** @type {any} */ (tailwindcss())],
   },
 });
