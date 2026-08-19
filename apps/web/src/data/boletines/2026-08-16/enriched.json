@@ -11,13 +11,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "\"Making ALL Software Agent-Native\"",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "Framework del Hong Kong U Data Science Lab (HKUDS) que genera automáticamente CLIs agent-ready para cualquier software (apps de escritorio, herramientas de línea de comandos, software creativo, GIS, etc.). Cada CLI incluye (a) un wrapper de Python sobre la app, (b) un `SKILL.md` para que los agentes descubran cómo usarla, (c) pruebas E2E y (d) una entrada en CLI-Hub (`pip install cli-anything-hub`) para instalarla con un solo comando.",
+        "por_que_importa": "Convierte software que normalmente no está preparado para agentes en CLIs instalables y descubribles: cada integración combina un wrapper de Python, un SKILL.md, pruebas E2E y una entrada en CLI-Hub. Para quien construye agentes, esto permite que el modelo descubra una herramienta, la instale, ejecute subcomandos, lea sus resultados e itere sin una integración manual específica para cada aplicación. La propuesta está respaldada por 2.461 pruebas superadas, 18 demostraciones reales y una versión 0.2.0 de HARNESS.md orientada a la divulgación progresiva; además, cuenta con un informe técnico en arXiv y un paquete público en PyPI. Es una capa de generación y distribución de CLIs agent-ready, no simplemente otro formato de function calling.",
+        "madurez_senales": "47.490 ★ · 4.398 forks · Python · creado 2026-03-08 · último push 2026-08-13 · Apache-2.0 · topics: AI agent, Workflow automation · 2.461 tests · arXiv tech report 2606.03854 · CLI-Hub PyPI público.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:HKUDS/CLI-Anything",
+          "rel": "implements",
+          "dst": "concept:agent-native-cli-generation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:HKUDS/CLI-Anything",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -35,13 +48,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "coding agent Rust con fleet multi-modelo",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "Agente de programación para terminal, escrito en Rust, con BYOM (DeepSeek, Claude, GPT, Kimi, GLM y más de 30 proveedores; Ollama, vLLM y SGLang sin clave de API). Es el proyecto antes llamado `deepseek-tui` (el archivo `docs/REBRAND.md` documenta la migración). Lo que lo diferencia son los **roles**: cada rol de un fleet puede tener un modelo, proveedor y nivel de razonamiento explícitos. Así, un GLM barato puede dirigir un Kimi caro, o un GPT puede hacer el build mientras un Claude revisa. Persiste como un ledger de solo anexado (`fleet resume`).",
+        "por_que_importa": "CodeWhale aplica una arquitectura de flota multimodelo a la programación en terminal: distintos roles pueden usar proveedores, modelos y niveles de razonamiento diferentes, y coordinarse dentro del mismo trabajo. Eso permite separar, por ejemplo, la dirección, la implementación y la revisión, usando modelos con distintos costes o capacidades; también admite proveedores locales como Ollama, vLLM y SGLang sin clave de API. El ledger de solo anexado y el archivo de constitución por repositorio hacen persistentes tanto el historial de la flota como parte de su configuración, algo relevante para equipos que quieran reproducir o auditar el comportamiento del agente. Ya cubrimos el harness de Rust relacionado el 2026-08-11, y el vínculo con oh-my-pi ya apareció el 2026-08-03; aquí la novedad es la coordinación explícita de varios modelos en roles distintos. El proyecto confirma su migración desde deepseek-tui y ofrece distribución por crates.io, npm, Cargo, Docker, Nix, Scoop y Termux.",
+        "madurez_senales": "40.810 ★ · 3.529 forks · Rust · creado 2026-01-19 · último push 2026-08-16 · MIT · topics: (no devueltos por API) · CI · crates.io + npm + Cargo + Docker + Nix + Scoop + Termux + CNB mirror · docs/REBRAND.md confirma la transición desde `deepseek-tui`.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:Hmbown/CodeWhale",
+          "rel": "implements",
+          "dst": "concept:multi-model-coding-fleet",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Hmbown/CodeWhale",
+          "rel": "relevant_to",
+          "dst": "tool:rust-harness",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:Hmbown/CodeWhale",
+          "rel": "sibling_of",
+          "dst": "repo:can1357/oh-my-pi",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -59,13 +91,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Open Multi-Agent Interactive Classroom (v0.3.2)",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "Plataforma open source de «aula interactiva multiagente» del THU-MAIC Lab (Tsinghua University). El usuario describe un tema o sube materiales; el sistema genera una lección completa (diapositivas, cuestionarios, simulaciones 3D y actividades PBL) con profesores y compañeros de clase de IA que hablan, dibujan en la pizarra y debaten en tiempo real. Backend con Next.js 16, React 19, LangGraph 1.1 y Postgres.",
+        "por_que_importa": "OpenMAIC muestra cómo ensamblar una interfaz educativa multiagente que genera lecciones con diapositivas, cuestionarios, simulaciones 3D y actividades PBL a partir de un tema o materiales aportados por el usuario. Para desarrolladores de aplicaciones de IA, el interés está en la combinación concreta de LangGraph 1.1 como orquestador, persistencia respaldada por servidor, exportación a PPTX, HTML y MP4, e integración con OpenClaw, Feishu, Slack y Telegram. Su edición con IA no reemplaza el contenido por texto sin estructura: aplica cambios validados mediante JSON Patch. La v0.3.2 incorpora cuatro proveedores y cuatro modelos, entre ellos MiniMax M3, y el proyecto pasó de AGPL-3.0 a MIT en la v0.3.0. Ya tratamos el concepto de flujos multiagente el 2026-08-12; este repositorio aporta una implementación visible y reutilizable de esa idea en una aplicación completa.",
+        "madurez_senales": "20.737 ★ · 4.118 forks · TypeScript · creado 2026-03-11 · último push 2026-08-16 · MIT (relicenciado 2026-06-28) · topics: (no devueltos por API) · paper en JCST'26 · 4 nuevos modelos en v0.3.2 (MiniMax M3, Claude Opus 4.8, Gemini 3.5 Flash, Claude search).",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:THU-MAIC/OpenMAIC",
+          "rel": "implements",
+          "dst": "concept:multi-agent-educational-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:THU-MAIC/OpenMAIC",
+          "rel": "integrates_with",
+          "dst": "framework:langgraph",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:THU-MAIC/OpenMAIC",
+          "rel": "relevant_to",
+          "dst": "concept:multi-agent-workflows",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -83,13 +134,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "runtime multi-stage para omni/speech/TTS",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "La nueva capa de la familia `sgl-project` (LMSYS), construida sobre SGLang. Sirve modelos «omni» (entrada de texto, audio y visión, con salida multimodal) y TTS mediante un runtime multiestadio: preprocesamiento, codificadores, motores autorregresivos, talkers, decodificadores, vocoders y agregadores; cada etapa tiene su propio planificador (basado en SGLang para las etapas autorregresivas y ligero para los vocoders). Tiene en cuenta el transporte (memoria compartida, NCCL, NIXL y Mooncake) y ofrece una API compatible con OpenAI.",
+        "por_que_importa": "sglang-omni extiende SGLang desde el servicio de modelos de texto hacia modelos omni, voz y TTS mediante un runtime multiestadio: preprocesamiento, codificación, generación, talkers, decodificación, vocoders y agregación, con planificación específica para cada etapa. El transporte también forma parte del diseño, con memoria compartida, NCCL, NIXL y Mooncake, y expone una API compatible con OpenAI. Para quien despliega inferencia multimodal local, la consecuencia práctica es poder probar una arquitectura unificada en lugar de mantener integraciones separadas para cada componente; aun así, v0.1.1 y la compatibilidad experimental con Intel XPU indican que sigue siendo una capa temprana. Incluye cookbooks para Qwen3-Omni, Ming-Omni, Higgs Audio v3, MOSS-TTS Local y Fish Speech S2-Pr, además de soporte inicial para MiniMax Music 3 y MOSS-TD según los hallazgos. Ya relacionamos este repositorio con SGLang el 2026-07-28 y con la inferencia multimodal local el 2026-08-11.",
+        "madurez_senales": "824 ★ · 341 forks · Python · creado 2026-01-07 · último push 2026-08-16 · Apache-2.0 · topics: (no devueltos por API) · v0.1.1 en PyPI · multi-stage serving · compatibilidad NVIDIA CUDA + Intel XPU experimental · cookbooks para Qwen3-Omni, Ming-Omni, Higgs Audio v3, MOSS-TTS Local, Fish Speech S2-Pro, Qwen3-TTS, Voxtral TTS, Ming-Omni-TTS, dots.tts, ZONOS2.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:sgl-project/sglang-omni",
+          "rel": "complements",
+          "dst": "repo:sgl-project/sglang",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:sgl-project/sglang-omni",
+          "rel": "implements",
+          "dst": "concept:multi-stage-omni-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:sgl-project/sglang-omni",
+          "rel": "relevant_to",
+          "dst": "concept:local-multimodal-inference",
+          "primera_mencion": "2026-08-11"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -107,13 +177,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "output styles ADHD-friendly para Claude Code",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "Tres estilos de salida para Claude Code (archivos Markdown que sustituyen el estilo de respuesta predeterminado): **Attention-kind** (respuesta primero, negritas y marcadores `→`, para personas con TDAH o cansancio, o durante sesiones de concentración), **Spartan** (conciso, directo y sin calidez) y **Rundown** (resúmenes breves). El repositorio NO cambia cómo Claude programa, sino cómo te **habla**.",
+        "por_que_importa": "attention-span modifica la forma en que Claude Code responde, no su capacidad para programar: ofrece tres estilos Markdown —Attention-kind, Spartan y Rundown— para priorizar la conclusión, reducir la extensión o resumir. Su interés editorial está en que la propuesta puede evaluarse con un benchmark reproducible y no solo con una impresión subjetiva: 12 tareas con suites ocultas mantuvieron el código sin modificar y registraron un 97 % de aprobación en ambos casos, junto con un 43 % menos de texto de mediana, conclusiones en la primera línea en el 75 % frente al 3 % predeterminado y entregables limpios en el 88 % frente al 12 %. La licencia AGPL-3.0 limita su uso como dependencia comercial, pero permite estudiar y reproducir el benchmark. Ya cubrimos el concepto de agent_harness el 2026-08-12; este repositorio lo conecta con una intervención concreta sobre la interfaz de salida del agente.",
+        "madurez_senales": "579 ★ · 20 forks · Python · creado 2026-08-04 · último push 2026-08-15 · AGPL-3.0 · topics: (vacío) · benchmark reproducible en `benchmarks/results/2026-08-11-benchmark.md` · README en español incluido.",
+        "accion_sugerida": "**leer** (el benchmark es la parte interesante, no el código).",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:alexgreensh/attention-span",
+          "rel": "implements",
+          "dst": "concept:agent-output-style",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:alexgreensh/attention-span",
+          "rel": "relevant_to",
+          "dst": "concept:agent_harness",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -131,7 +214,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "\"Fine-tune an 8B model on a 4 GB laptop GPU\". Layer streaming BETA: el base congelado vive en RAM, sólo la capa activa va a VRAM. Medido en RTX 3050 Laptop 4GB con Llama-3.1-8B-Instruct NF4 → 119.6 tok/s, 3.32 GB peak",
+        "que_es": "«Ajusta un modelo de 8B en una GPU de portátil de 4 GB». En fase beta, la transmisión de capas mantiene el modelo base congelado en la RAM y solo envía la capa activa a la VRAM. Medido en una RTX 3050 para portátil de 4 GB con Llama-3.1-8B-Instruct NF4: 119,6 tokens/s y 3,32 GB de pico.",
         "por_que_importa": "",
         "madurez_senales": "1.797 ★ · 273 forks · Python · Apache-2.0 · push 2026-08-15",
         "accion_sugerida": "vigilar — (la propuesta técnica es seria; el disclaimer \"BETA, not re-benchmarked post v0.73 correctness fix\" es honesto)",
@@ -155,7 +238,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "manga translator local-first en Rust. Pipeline: object detection (text region + bubbles) → OCR (PaddleOCR VL 1.6) → inpainting → LLM translation (local o remote) → text rendering con CJK vertical + RTL → export PSD editable. Soporta CUDA, ROCm/HIP, Metal, Vulkan. Nicho pero excelente",
+        "que_es": "Traductor de manga local-first escrito en Rust. El pipeline es: detección de objetos (regiones de texto y bocadillos) → OCR (PaddleOCR VL 1.6) → eliminación del texto mediante inpainting → traducción con un LLM (local o remoto) → renderizado del texto con escritura vertical CJK y RTL → exportación a un PSD editable. Es compatible con CUDA, ROCm/HIP, Metal y Vulkan. Es de nicho, pero excelente.",
         "por_que_importa": "",
         "madurez_senales": "5.260 ★ · 342 forks · Rust · Apache-2.0 · push 2026-08-16",
         "accion_sugerida": "vigilar — (no es AI/dev, pero como ejemplo de \"local-first ML stack hecho bien\" merece)",
@@ -179,7 +262,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "terminal de trading AI con 9 exchanges (Binance, Bybit, OKX, Hyperliquid, Bitget, KuCoin, Gate, Aster, Lighter). La estrategia es un LLM; un runtime en Go clampa cada orden a hard risk limits. El patrón \"modelo decide, runtime clampa\" es interesante. Licencia AGPL-3.0 bloquea adopción comercial",
+        "que_es": "Terminal de trading con IA compatible con nueve exchanges (Binance, Bybit, OKX, Hyperliquid, Bitget, KuCoin, Gate, Aster y Lighter). La estrategia la determina un LLM y el runtime escrito en Go limita cada orden mediante restricciones de riesgo estrictas. El patrón «el modelo decide, el runtime limita» es interesante. AGPL-3.0 bloquea la adopción comercial.",
         "por_que_importa": "",
         "madurez_senales": "12.692 ★ · 3.031 forks · Go · AGPL-3.0 · push 2026-08-15",
         "accion_sugerida": "vigilar — (patrón de diseño replicable, no el producto)",
@@ -203,7 +286,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "TUI multiplexer construido sobre Charm stack (Bubble Tea v2, Lipgloss v2). Flicker-free kitty graphics protocol, BSP tiling, workspaces, command palette, multi-client, daemon mode, JSON verb protocol",
+        "que_es": "Multiplexor TUI construido sobre la pila de Charm (Bubble Tea v2 y Lipgloss v2). Incluye el protocolo de gráficos de Kitty sin parpadeos, distribución BSP en mosaico, espacios de trabajo, paleta de comandos, múltiples clientes, modo demonio y un protocolo de verbos JSON.",
         "por_que_importa": "",
         "madurez_senales": "2.850 ★ · 83 forks · Go · MIT · push 2026-08-16",
         "accion_sugerida": "probar — (la pieza \"JSON verb protocol\" lo separa del resto de multiplexers — un agente puede controlarlo)",
@@ -227,7 +310,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "reentry. Knowledge base self-hosted, semantically-connected",
+        "que_es": "Reentry. Base de conocimiento autoalojada y conectada semánticamente.",
         "por_que_importa": "",
         "madurez_senales": "1.892 ★ · 131 forks · Rust · MIT · push 2026-08-09",
         "accion_sugerida": "leer — (reentry, ya mencionado, sin historia nueva; vigilar si publica release)",
@@ -251,7 +334,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "reentry. macOS dictation app con on-device STT + custom AI enhancement model. Alternativa a Wispr Flow",
+        "que_es": "Reentry. Aplicación de dictado para macOS con reconocimiento de voz en el dispositivo y un modelo de mejora de IA personalizado. Alternativa a Wspr Flow.",
         "por_que_importa": "",
         "madurez_senales": "10.399 ★ · 702 forks · Swift · último push 2026-08-16",
         "accion_sugerida": "vigilar — (reentry, ya mencionado, sin historia nueva)",
@@ -275,7 +358,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "reentry. Foundation model de 14 MB para tiny devices (phones, wearables, smart home, robots)",
+        "que_es": "Reentry. Modelo fundacional de 14 MB para dispositivos pequeños (teléfonos, wearables, hogares inteligentes y robots).",
         "por_que_importa": "",
         "madurez_senales": "6.177 ★ · 411 forks · Python · último push 2026-08-15",
         "accion_sugerida": "vigilar — (reentry, ya mencionado como reentry reciente con cadencia diaria — esperar release con peso/quantización nueva)",
@@ -299,9 +382,9 @@
     "items_radar_secundario": 7,
     "llm_backend": "hermes",
     "llm_polish_notes": "12/12 items pulidos",
-    "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

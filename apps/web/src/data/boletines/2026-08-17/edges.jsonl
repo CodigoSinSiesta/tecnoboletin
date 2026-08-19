@@ -1,13 +1,23 @@
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-basecamp-omarchy", "rel": "menciona", "added": "2026-08-17"}
 {"src": "item:https-github-com-basecamp-omarchy", "dst": "tema:basecamp-omarchy", "rel": "trata", "added": "2026-08-17"}
+{"src": "repo:basecamp/omarchy", "dst": "concept:ai-coding-ready-distro", "rel": "implements", "added": "2026-08-17", "primera_mencion": null}
+{"src": "repo:basecamp/omarchy", "dst": "repo:anthropics/claude-code", "rel": "integrates_with", "added": "2026-08-17", "primera_mencion": "2026-07-28"}
+{"src": "repo:basecamp/omarchy", "dst": "concept:agent-skills-layer", "rel": "relevant_to", "added": "2026-08-17", "primera_mencion": "2026-08-08"}
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-deepseek-ai-deepseek-harness", "rel": "menciona", "added": "2026-08-17"}
 {"src": "item:https-github-com-deepseek-ai-deepseek-harness", "dst": "tema:deepseek-ai-deepseek-harness", "rel": "trata", "added": "2026-08-17"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "concept:plugin-everything-harness", "rel": "implements", "added": "2026-08-17", "primera_mencion": "2026-08-14"}
+{"src": "repo:walkinglabs/learn-harness-engineering", "dst": "repo:deepseek-ai/deepseek-harness", "rel": "complements", "added": "2026-08-17", "primera_mencion": "2026-08-14"}
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-microsoft-data-formulator", "rel": "menciona", "added": "2026-08-17"}
 {"src": "item:https-github-com-microsoft-data-formulator", "dst": "tema:microsoft-data-formulator", "rel": "trata", "added": "2026-08-17"}
+{"src": "repo:microsoft/data-formulator", "dst": "concept:ai-data-analyst-agent", "rel": "implements", "added": "2026-08-17", "primera_mencion": null}
+{"src": "company:microsoft", "dst": "repo:microsoft/data-formulator", "rel": "publishes", "added": "2026-08-17", "primera_mencion": null}
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-jundot-omlx", "rel": "menciona", "added": "2026-08-17"}
 {"src": "item:https-github-com-jundot-omlx", "dst": "tema:jundot-omlx", "rel": "trata", "added": "2026-08-17"}
+{"src": "repo:jundot/omlx", "dst": "concept:tiered-kv-cache-inference", "rel": "implements", "added": "2026-08-17", "primera_mencion": null}
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-vllm-project-semantic-router", "rel": "menciona", "added": "2026-08-17"}
 {"src": "item:https-github-com-vllm-project-semantic-router", "dst": "tema:vllm-project-semantic-router", "rel": "trata", "added": "2026-08-17"}
+{"src": "repo:vllm-project/semantic-router", "dst": "concept:programmable-mixture-of-models", "rel": "implements", "added": "2026-08-17", "primera_mencion": null}
+{"src": "company:vllm-project", "dst": "repo:vllm-project/semantic-router", "rel": "publishes", "added": "2026-08-17", "primera_mencion": null}
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-walkinglabs-learn-harness-engineering", "rel": "menciona", "added": "2026-08-17"}
 {"src": "item:https-github-com-walkinglabs-learn-harness-engineering", "dst": "tema:walkinglabs-learn-harness-engineering", "rel": "trata", "added": "2026-08-17"}
 {"src": "boletin:2026-08-17", "dst": "item:https-github-com-cordiverse-cordis", "rel": "menciona", "added": "2026-08-17"}

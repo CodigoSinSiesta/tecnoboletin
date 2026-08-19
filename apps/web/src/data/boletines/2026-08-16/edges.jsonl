@@ -1,13 +1,26 @@
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-hkuds-cli-anything", "rel": "menciona", "added": "2026-08-16"}
 {"src": "item:https-github-com-hkuds-cli-anything", "dst": "tema:hkuds-cli-anything", "rel": "trata", "added": "2026-08-16"}
+{"src": "repo:HKUDS/CLI-Anything", "dst": "concept:agent-native-cli-generation", "rel": "implements", "added": "2026-08-16", "primera_mencion": null}
+{"src": "repo:HKUDS/CLI-Anything", "dst": "concept:agent-skill-registry", "rel": "relevant_to", "added": "2026-08-16", "primera_mencion": null}
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-hmbown-codewhale", "rel": "menciona", "added": "2026-08-16"}
 {"src": "item:https-github-com-hmbown-codewhale", "dst": "tema:hmbown-codewhale", "rel": "trata", "added": "2026-08-16"}
+{"src": "repo:Hmbown/CodeWhale", "dst": "concept:multi-model-coding-fleet", "rel": "implements", "added": "2026-08-16", "primera_mencion": null}
+{"src": "repo:Hmbown/CodeWhale", "dst": "tool:rust-harness", "rel": "relevant_to", "added": "2026-08-16", "primera_mencion": "2026-08-11"}
+{"src": "repo:Hmbown/CodeWhale", "dst": "repo:can1357/oh-my-pi", "rel": "sibling_of", "added": "2026-08-16", "primera_mencion": "2026-08-03"}
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-thu-maic-openmaic", "rel": "menciona", "added": "2026-08-16"}
 {"src": "item:https-github-com-thu-maic-openmaic", "dst": "tema:thu-maic-openmaic", "rel": "trata", "added": "2026-08-16"}
+{"src": "repo:THU-MAIC/OpenMAIC", "dst": "concept:multi-agent-educational-ui", "rel": "implements", "added": "2026-08-16", "primera_mencion": null}
+{"src": "repo:THU-MAIC/OpenMAIC", "dst": "framework:langgraph", "rel": "integrates_with", "added": "2026-08-16", "primera_mencion": null}
+{"src": "repo:THU-MAIC/OpenMAIC", "dst": "concept:multi-agent-workflows", "rel": "relevant_to", "added": "2026-08-16", "primera_mencion": "2026-08-12"}
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-sgl-project-sglang-omni", "rel": "menciona", "added": "2026-08-16"}
 {"src": "item:https-github-com-sgl-project-sglang-omni", "dst": "tema:sgl-project-sglang-omni", "rel": "trata", "added": "2026-08-16"}
+{"src": "repo:sgl-project/sglang-omni", "dst": "repo:sgl-project/sglang", "rel": "complements", "added": "2026-08-16", "primera_mencion": "2026-07-28"}
+{"src": "repo:sgl-project/sglang-omni", "dst": "concept:multi-stage-omni-runtime", "rel": "implements", "added": "2026-08-16", "primera_mencion": null}
+{"src": "repo:sgl-project/sglang-omni", "dst": "concept:local-multimodal-inference", "rel": "relevant_to", "added": "2026-08-16", "primera_mencion": "2026-08-11"}
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-alexgreensh-attention-span", "rel": "menciona", "added": "2026-08-16"}
 {"src": "item:https-github-com-alexgreensh-attention-span", "dst": "tema:alexgreensh-attention-span", "rel": "trata", "added": "2026-08-16"}
+{"src": "repo:alexgreensh/attention-span", "dst": "concept:agent-output-style", "rel": "implements", "added": "2026-08-16", "primera_mencion": null}
+{"src": "repo:alexgreensh/attention-span", "dst": "concept:agent_harness", "rel": "relevant_to", "added": "2026-08-16", "primera_mencion": "2026-08-12"}
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-makazhanalpamys-soup", "rel": "menciona", "added": "2026-08-16"}
 {"src": "item:https-github-com-makazhanalpamys-soup", "dst": "tema:makazhanalpamys-soup", "rel": "trata", "added": "2026-08-16"}
 {"src": "boletin:2026-08-16", "dst": "item:https-github-com-mayocream-koharu", "rel": "menciona", "added": "2026-08-16"}

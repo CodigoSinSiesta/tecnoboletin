@@ -45,5 +45,5 @@
       "razon": "nexu-io/open-design resuelve una frustración real del flujo Claude Design (export usable) y encaja con la línea de presentaciones y artículos técnicos de CSS — buen candidato a pieza corta o mención en newsletter."
     }
   ],
-  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

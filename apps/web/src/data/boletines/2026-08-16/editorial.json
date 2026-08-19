@@ -42,5 +42,5 @@
       "razon": "OpenMAIC (multi-agent classroom, v0.3.2) entra en terreno educativo donde CSS no suele profundizar; marcar para vigilar y decidir tras el próximo hito si engancha con alguna línea editorial viva."
     }
   ],
-  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }
