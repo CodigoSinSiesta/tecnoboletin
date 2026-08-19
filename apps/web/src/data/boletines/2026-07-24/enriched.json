@@ -179,13 +179,32 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Spec-driven development para coding assistants: PRDs + specs + planning como contexto. 62k⭐ en <12 meses — nicho SDD en pleno boom",
-        "por_que_importa": "",
-        "madurez_senales": "⭐ 62368, push 2026-07-23, TypeScript",
+        "que_es": "Framework de spec-driven development (SDD) para coding assistants: orquesta un flujo iterativo de artefactos (proposal → specs → design → tasks) que el agente consulta como contexto de planeación. Pensado para integrarse con Claude Code, Codex, Cursor y otros assistants vía 12 skills instalables (`openspec-propose`, `openspec-apply-change`, `openspec-archive-change`, etc.). La idea no es generar specs en abstracto, sino atarlas a un ciclo de vida `propose → apply → archive` para que brownfield projects escalen sin volver waterfall.",
+        "por_que_importa": "OpenSpec ocupa un hueco que la mayoría de los SDD adolece: la iteración. En vez de un PRD estático, el framework modela el cambio como un work-in-progress con su propio directorio `openspec/changes/<nombre>/` y un `archive/` con el histórico. Para el stack de Alejandro interesa por tres razones: (1) cabe en local-first (artefactos en Markdown + YAML, sin servidor), (2) la licencia MIT permite adoptarlo como librería dentro de tooling propio, (3) las 12 skills publiées funcionan como puente entre Claude Code/Codex y un workflow opinado, no como un agente independiente. Contras: la camada de `zod` + Commander 14 + Inquirer lo deja como CLI Node, no binario standalone; y el ritmo de releases (v1.6 → v1.9 en 40 días) implica cambios frecuente en la API de skills.",
+        "madurez_senales": "65.454 ★ · 4.509 forks · TypeScript · creado 2025-08-05 (1 año y 14 días) · último push 2026-08-17 · MIT · v1.9.0 publicado 2026-08-13 (cadencia ~5-6 días: v1.6.0 → v1.7.0 → v1.8.0 → v1.9.0) · 214 open issues · topics: ai, context-engineering, planning, prd, sdd, sdlc, spec, spec-driven-development · npm `@fission-ai/openspec` · CI verde · docs en `docs/opsx.md` · Discord oficial · filosofía explícita: 'fluid not rigid, iterative not waterfall, easy not complex, built for brownfield not just greenfield'.",
         "accion_sugerida": "explorar",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "Fission-AI/OpenSpec",
+          "rel": "implements",
+          "dst": "concept:spec_driven_development",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "Fission-AI/OpenSpec",
+          "rel": "complements",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "Fission-AI/OpenSpec",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-agent-stack",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",

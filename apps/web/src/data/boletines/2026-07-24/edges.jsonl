@@ -14,6 +14,9 @@
 {"src": "item:https-github-com-microsoft-skillopt", "dst": "tema:microsoft-skillopt", "rel": "trata", "added": "2026-07-24"}
 {"src": "boletin:2026-07-24", "dst": "item:https-github-com-fission-ai-openspec", "rel": "menciona", "added": "2026-07-24"}
 {"src": "item:https-github-com-fission-ai-openspec", "dst": "tema:fission-ai-openspec", "rel": "trata", "added": "2026-07-24"}
+{"src": "Fission-AI/OpenSpec", "dst": "concept:spec_driven_development", "rel": "implements", "added": "2026-07-24", "primera_mencion": "2026-07-24"}
+{"src": "Fission-AI/OpenSpec", "dst": "repo:anthropics/claude-code", "rel": "complements", "added": "2026-07-24", "primera_mencion": null}
+{"src": "Fission-AI/OpenSpec", "dst": "concept:local-first-agent-stack", "rel": "relevant_to", "added": "2026-07-24", "primera_mencion": null}
 {"src": "boletin:2026-07-24", "dst": "item:https-github-com-1jehuang-jcode", "rel": "menciona", "added": "2026-07-24"}
 {"src": "item:https-github-com-1jehuang-jcode", "dst": "tema:1jehuang-jcode", "rel": "trata", "added": "2026-07-24"}
 {"src": "boletin:2026-07-24", "dst": "item:https-github-com-citrolabs-ego-lite", "rel": "menciona", "added": "2026-07-24"}
