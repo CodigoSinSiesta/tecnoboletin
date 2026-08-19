@@ -1,0 +1,437 @@
+{
+  "version": 2,
+  "date": "2026-08-19",
+  "boletin_origen": "2026-08-19-trending.md",
+  "resumen_ejecutivo": "- **`memvid/memvid`** (16.409 ★, Apache-2.0, Rust, push 2026-07-14) trae la promesa más provocadora del día: **reemplazar pipelines RAG por un único archivo `.mp4` codificado con embeddings**. Es la primera capa de memoria para AI agents que cabe en un solo fichero, versionable en git, portable y con retrieval instantáneo. Apache-2.0 con `memvid-core` en crates.io.\n- **`maximhq/bifrost`** (7.414 ★, Apache-2.0, Go, push 2026-08-19) entra a competir con LiteLLM y Portkey con un claim agresivo: **\"50× más rápido que LiteLLM\"**, <100 µs de overhead a 5k RPS, 23+ providers unificados vía API OpenAI-compatible, cluster mode, guardrails y soporte MCP. Default branch `dev` (no `main`) — caveat operacional a tener en cuenta.\n- **`vercel-labs/fx`** (495 ★, Apache-2.0, Zig, push 2026-08-18) es el **coding agent minimalista de Vercel Labs**: binario de 7.8 MiB, CLI \"Unix-like\" (no TUI pesado), model-agnostic, instalable con un `curl | bash`. Posicionado como \"research-grade, embeddable\" — el primer competidor serio a Claude Code/Codex en el eje \"peso/portabilidad\".\n- **`malisper/pgrust`** (4.571 ★, AGPL-3.0, Rust, push 2026-08-13) re-trending después de pasar **el 100% de los 46.066 tests de la regression suite de Postgres 18.3**. Es una reescritura completa de Postgres en Rust con executor vectorizado push-based y JIT, **\"AGPL-3.0\"** — la licencia obliga a abrir derivados; no es drop-in para SaaS propietarios sin disposicion legal.\n- **`multica-ai/multica`** (46.752 ★, NOASSERTION, Go, push 2026-08-19, +282★ hoy) consolida la categoría **\"workspace donde humanos y coding agents son el mismo roster\"**: asigna issues a 20+ agent CLIs (Claude Code, Codex, Cursor...), corre work aislado por agente, deja el diff atado al issue para review humano. Licencia `NOASSERTION` en GitHub API — **verificar LICENSE real antes de build-dependency**.\n- **`volcengine/OpenViking`** (29.659 ★, AGPL-3.0, Python, push 2026-08-19) confirma re-trending con un dato nuevo: **licencia AGPL-3.0**. Es la primera \"Context Database\" de ByteDance (Volcengine) que unifica memory + RAG + skills para AI agents, con self-evolving ingestion y plugins dsh. La licencia pesa — la pieza es técnicamente brillante pero el AGPL-3.0 obliga a abrir derivados o licenciar comercialmente.\n- **Patrón transversal**: 2026-08-19 es **el día de la infraestructura de agente**. memvid (memoria), bifrost (gateway), fx (harness), pgrust (BD), OpenViking (context) y multica (orquestación) forman un set coherente: las capas de stack que faltan para que los coding agents pasen de demo a producto serio — y la conversación se está moviendo del lado \"qué hace el LLM\" al lado \"qué hace falta alrededor del LLM para que el sistema funcione a escala\".\n- Fuentes consultadas: Trendshift daily (25 items, 1 sponsor filtrado), GitHub Trending daily + TypeScript/Python/Rust/Go (61 items únicos), GitHub REST API (12 verificaciones), READMEs vía default branch (fx, memvid, bifrost, multica, pgrust, genlayer). Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` = 2026-07-05; cron lleva semanas parado, pendiente revisar `hermes cron list`).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "memvid/memvid",
+      "url": "https://github.com/memvid/memvid",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**capa de memoria single-file para AI agents**. Codifica embeddings + metadatos en un archivo `.mp4` (un único fichero) que entrega retrieval instantáneo y long-term memory sin necesidad de base de datos. Stack: `memvid-core` (Rust crate en crates.io) + SDKs Python/Node. Casos de uso: chat history persistente, knowledge bases, context para agents, search semántico. El claim técnico fuerte: **un vídeo de 50 MB almacena ~1M vectores con retrieval <50 ms**.",
+        "por_que_importa": "Es la primera pieza OSS de la categoría \"memory as a single portable file\" que es realmente deployable en producción: en lugar de mantener Postgres + pgvector + un proceso de embeddings, la memoria de un agente cabe en un único fichero `.mp2` (sí, formato de vídeo contenedor) que se puede versionar en Git, copiar con rsync o montar como artefacto. Para el stack local-first de Alejandro (Obsidian + Git + memoria Hermes) encaja de forma directa: cada proyecto tendría su propio `.mp2` con embeddings + metadatos, retrieval por similitud en menos de 50 ms sobre ~1M vectores en 50 MB según el claim del repo. La alternativa más cercana en tracción, `screenpipe/screenpipe` (20.373★), tiene licencia NOASSERTION, lo que en la práctica bloquea su adopción como dependencia seria. Memvid es Apache-2.0, comparable en estrellas (16.409) y ya trae SDKs Python y Node para integrarlo sin escribir Rust.",
+        "madurez_senales": "16.409 ★ · 1.413 forks · Rust · creado 2025-05-27 · último push 2026-07-14 · Apache-2.0 · topics: ai, context, embedded, faiss, knowledge-base, knowledge-graph, llm, machine-learning, memory, memvid, mv2, nlp · homepage memvid.com · sandbox en sandbox.memvid.com · docs en docs.memvid.com · Discord oficial.",
+        "accion_sugerida": "**explorar** (clonar, probar el sandbox oficial, comparar tamaño de `.mv2` vs `pgvector` con el mismo corpus, validar latency).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:memvid/memvid",
+          "rel": "implements",
+          "dst": "concept:single-file-agent-memory",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "memvid-memvid",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "maximhq/bifrost",
+      "url": "https://github.com/maximhq/bifrost",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**AI gateway empresarial en Go** que unifica acceso a 23+ providers (OpenAI, Anthropic, AWS Bedrock, Google Vertex, etc.) detrás de una única API OpenAI-compatible. Claim headline: **\"<100 µs de overhead a 5k RPS, 50× más rápido que LiteLLM\"** — afirmación agresiva que, si se sostiene, es el argumento de adopción para equipos con budgets de inferencia serios. Features: adaptive load balancer, cluster mode, guardrails, semantic caching, MCP client, conversiones OpenAI-compatible + Anthropic-compatible + Gemini-compatible.",
+        "por_que_importa": "La categoría \"AI gateway\" lleva 18 meses consolidándose (Portkey, LiteLLM, OpenRouter, Cloudflare AI Gateway), y Bifrost entra con un claim agresivo y concreto: <100 µs de overhead a 5k RPS, 50× más rápido que LiteLLM. Si el benchmark se sostiene en producción, es el argumento de adopción para equipos con presupuestos de inferencia serios donde el coste por request importa. Bifrost además es el primero del segmento que expone arquitectura de cluster mode (load balancing multi-nodo), no solo routing single-instance, lo que lo hace interesante para setups que ya están sufriendo el techo de un único LiteLLM. Vale leer la arquitectura antes de migrar, no adoptarlo a ciegas. Caveat operacional relevante: el default branch del repo es `dev`, no `main`, y los releases salen de `dev`, señal de que el proyecto todavía pivota y no conviene pinearlo como dependencia estable todavía.",
+        "madurez_senales": "7.414 ★ · 1.065 forks · Go · creado 2025-03-19 · último push 2026-08-19 · Apache-2.0 · topics: ai-gateway, gateway-services, generative-ai, guardrails, llm, llm-cost, llm-gateway, llm-observability, llmops, load-balancing, mcp-client · homepage getmaxim.ai/bifrost · Postman collection oficial · Docker image `maximhq/bifrost` · CI verde (badge codecov) · 916 open issues (alto, leer triage).",
+        "accion_sugerida": "**leer** (revisar benchmarks propios, comparar arquitectura de cluster mode con Portkey, validar el claim de 50× en escenarios reales antes de confiar en la cifra).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:maximhq/bifrost",
+          "rel": "implements",
+          "dst": "concept:ai-gateway-go",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:maximhq",
+          "rel": "publishes",
+          "dst": "repo:maximhq/bifrost",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maximhq-bifrost",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "vercel-labs/fx",
+      "url": "https://github.com/vercel-labs/fx",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**coding agent harness y CLI en Zig** publicado por Vercel Labs (la org de Vercel para proyectos experimentales). Diferenciadores explícitos: (1) **binario de 7.8 MiB** (vs cientos de MB de TUI basadas en Electron), (2) **CLI \"Unix-like\"** — el output está diseñado para sentirse como un shell, no como un IDE en terminal, (3) **model-agnostic + Apache-2.0**, (4) **\"embeddable\"** como librería en sistemas más grandes. Status: experimental, \"use at your own risk\" en el README. Requiere `fx login` con Vercel o un AI Gateway API key.",
+        "por_que_importa": "Vercel Labs tiene el historial de sacar herramientas OSS que luego se vuelven mainstream (`next.js`, `turborepo`, `swr`), así que aunque `fx` tenga solo 8 días de vida y ~495★, hay que mirarlo con atención. Es el primer coding agent publicado por un hyperscaler de infra web (Vercel), y el framing \"research-grade, embeddable, Unix-like\" lo aparta del formato \"Claude Code competitor\" y lo acerca a \"bloque de Lego de agent\": un binario de 7.8 MiB que otros harnesses pueden consumir como librería, no una TUI pesada tipo Electron. Para el stack de Alejandro significa que se puede probar en 5 segundos (`curl -fsSL https://fx.sh/setup.sh | bash`), pesa casi nada, y puede tener sitio en sesiones cortas donde Claude Code o Codex se sienten sobredimensionados. Importante: el README lo marca explícitamente como experimental con \"use at your own risk\", y requiere login de Vercel o un API key de AI Gateway, así que no es drop-in todavía.",
+        "madurez_senales": "495 ★ · 37 forks · Zig · creado 2026-08-11 (8 días) · último push 2026-08-18 · Apache-2.0 · homepage fx.sh · 25 open issues · install con `curl -fsSL https://fx.sh/setup.sh | bash` · Vercel login opcional · AI Gateway API key soportado · **experimental** explícito en README · sin LICENSE third-party todavía fuera del Apache-2.0 del repo.",
+        "accion_sugerida": "**probar** (instalar vía `curl | bash`, validar `fx login` con Vercel, probar un task corto, comparar peso y startup vs Claude Code).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/fx",
+          "rel": "implements",
+          "dst": "concept:embeddable-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:vercel",
+          "rel": "publishes",
+          "dst": "repo:vercel-labs/fx",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-fx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "malisper/pgrust",
+      "url": "https://github.com/malisper/pgrust",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**reescritura completa de Postgres en Rust**, wire-compatible y SQL-dialect-compatible con Postgres 18.3. **Pasa los 46.066 tests de la regression suite de Postgres al 100%** (badge oficial en README). Innovaciones arquitectónicas: executor vectorizado push-based con JIT, modelo de concurrencia basado en threads, query scheduler que evita que queries individuales tumben el sistema. Visión explícita: mostrar \"cómo se vería Postgres si se hubiera construido en 2026\". Licencia: **AGPL-3.0** (obligación de abrir derivados en red).",
+        "por_que_importa": "La pieza más ambiciosa del cluster \"AI-assisted database reimplementation\", donde ya están `duckdb/duckdb` consolidado, `risingwavelabs/risingwave` desde el lado streaming y este mismo `malisper/pgrust` desde el lado Postgres. Lo que lo hace especial es el dato verificable del README: pasa el 100% de los 46.066 tests de la regression suite oficial de Postgres 18.3, lo que elimina la duda habitual sobre compatibilidad SQL y de protocolo en reescrituras de este tipo. El ángulo AI está explícito en el blog post \"How AI Changes the Economics of JIT Compilers\": los LLM bajan el coste de mantener una codebase masiva de bajo nivel, y eso es lo que hace viable un proyecto así. Para el boletín, la pregunta editorial es si es experimento de un solo autor o tiene tracción de comunidad: 4.571★ y 169 forks en 4 meses apuntan a tracción real, pero el repo está solo en v0.2. La licencia AGPL-3.0 cierra la puerta a SaaS propietarios sobre este código y abre la puerta a ofertas tipo \"Postgres-as-a-Service\" open source.",
+        "madurez_senales": "4.571 ★ · 169 forks · Rust · creado 2026-04-20 · último push 2026-08-13 · AGPL-3.0 · 46.066/46.066 tests passing · v0.2 · topics: ai-assisted-development, database, postgres, postgresql, rust · homepage pgrust.com · Discord oficial · blog post \"How AI Changes the Economics of JIT Compilers\" · \"pgrust: rebuilding Postgres in Rust with AI\".",
+        "accion_sugerida": "**vigilar** (no adoptar como build-dependency por AGPL-3.0, pero leer el blog post \"How AI Changes the Economics of JIT Compilers\" — el ángulo AI-as-junior-systems-engineer es editorialmente fuerte).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:malisper/pgrust",
+          "rel": "implements",
+          "dst": "concept:rust-postgres-rewrite",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:malisper",
+          "rel": "publishes",
+          "dst": "repo:malisper/pgrust",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "malisper-pgrust",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "multica-ai/multica",
+      "url": "https://github.com/multica-ai/multica",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**workspace open-source donde humanos y coding agents son el mismo roster**. Asignas issues a 20+ agent CLIs (Claude Code, Codex, Cursor, Pi, Hermes, etc.) igual que asignarías a un teammate: el agente recoge el issue, reporta progreso, levanta blockers, devuelve el diff para review humano. Self-hostable, runtime controlado, comentarios encadenados al issue, **\"nada se mergea sin que un humano diga OK\"**. Tagline: \"Your next 10 hires won't be human\". Re-trend después de 17 días con **+282★ hoy** en GitHub Trending Go.",
+        "por_que_importa": "La categoría \"agentes como teammates\" lleva meses consolidándose, y ya cubrimos a `Multica` por primera vez en el boletín del 2026-08-03, cuando apareció en GitHub Trending con su propuesta de asignar issues a 20+ agent CLIs (Claude Code, Codex, Cursor, Pi, Hermes, etc.) igual que a un teammate humano. Lo que justifica volver a mencionarlo ahora es el salto de hoy en Trending Go (+282★ en24 h, ya en 46.752★) y, sobre todo, la madurez del diferenciador clave: la disciplina del review humano atado al issue. Aquí ningún agente mergea sin que un humano diga OK, lo que lo separa de la autonomía ciega y lo coloca en el lado \"autonomía supervisada\" del espectro. Caveat que ya advertimos en su día y aquí: la licencia reportada por la GitHub API es NOASSERTION, así que antes de usarlo como build-dependency hay que abrir el LICENSE real en el repo y verificarlo. Para equipos de 3-5 devs con 5+ agentes corriendo en paralelo, sigue siendo candidato serio a \"orquestador de facto\"",
+        "madurez_senales": "46.752 ★ · 5.970 forks · Go · creado 2026-01-13 · último push 2026-08-19 · **licencia `NOASSERTION`** (API) · homepage multica.ai · Discord oficial · X oficial · visión documentada en VISION.md · self-hosting documentado en SELF_HOSTING.md · cloud quickstart disponible · +282★ hoy en GitHub Trending Go.",
+        "accion_sugerida": "**vigilar** (verificar LICENSE real antes de build-dependency, leer VISION.md, evaluar fricción de self-hosting).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:multica-ai/multica",
+          "rel": "implements",
+          "dst": "concept:agent-issue-assignment-workspace",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "company:multica-ai",
+          "rel": "publishes",
+          "dst": "repo:multica-ai/multica",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-multica",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "volcengine/OpenViking",
+      "url": "https://github.com/volcengine/OpenViking",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"Context Database\" self-evolving de ByteDance/Volcengine** que unifica Agent Memory + Knowledge RAG + Skills en una sola capa para AI agents. Diferenciador: **self-evolving ingestion** — la base aprende y se reorganiza con el uso, no es un RAG estático. Soporte oficial dsh-plugin (DeepSeek Harness). Apache 2.0 self-hostable, sitio oficial openviking.ai. **Dato nuevo desde la primera mención (2026-08-15): licencia AGPL-3.0** — no Apache-2.0 como sugería el README inicial.",
+        "por_que_importa": "ByteDance/Volcengine está consolidando una pila end-to-end de infraestructura de agente (DeepSeek Harness + OpenViking + dsh-plugins), y OpenViking aporta la pieza de memoria y conocimiento: un \"Context Database\" self-evolving que unifica Agent Memory, Knowledge RAG y Skills en una sola capa que aprende y se reorganiza con el uso, en lugar de ser un RAG estático. Es exactamente el patrón que la industria lleva meses buscando. Dato nuevo desde la primera mención del 2026-08-15: la licencia real, verificada en el repo, es AGPL-3.0, no Apache-2.0 como sugería el README inicial. Eso cambia el cálculo para SaaS: cualquier servicio que exponga OpenViking sobre la red debe abrir su código o licenciar comercialmente. Para uso interno u on-prem OSS no hay problema, pero si un equipo piensa construir producto comercial encima, toca hablar con Volcengine primero. El repositorio además arrastra 456 open issues, señal de adopción real pero también de deuda de mantenimiento a vigilar.",
+        "madurez_senales": "29.659 ★ · 2.316 forks · Python · creado 2026-01-05 · último push 2026-08-19 · **AGPL-3.0** (verificado, no Apache-2.0) · topics: agent-memory, agent-plugins, agentic-rag, context-database, dsh-plugin, self-evolving · homepage openviking.ai · 456 open issues · Discord oficial.",
+        "accion_sugerida": "**leer** (arquitectura self-evolving, comparativa con `memvid` y `akitaonrails/ai-memory`, evaluar implicaciones de AGPL-3.0 antes de cualquier adopción seria).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:volcengine/OpenViking",
+          "rel": "implements",
+          "dst": "concept:self-evolving-context-database",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:bytedance",
+          "rel": "publishes",
+          "dst": "repo:volcengine/OpenViking",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:volcengine",
+          "rel": "publishes",
+          "dst": "repo:volcengine/OpenViking",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "volcengine-openviking",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "browser-use/video-use",
+      "url": "https://github.com/browser-use/video-use",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**\"Edit videos with coding agents\"**. Extiende la familia `browser-use` al dominio de video editing.",
+        "por_que_importa": "",
+        "madurez_senales": "21.065 ★ · 2.623 forks · Python · MIT · push 2026-07-01",
+        "accion_sugerida": "vigilar — (categoría nueva; sin release reciente, evaluar antes de proclamar madurez)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "browser-use-video-use",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "modular/modular",
+      "url": "https://github.com/modular/modular",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**plataforma Mojo + MAX** de Modular (la pieza de AI/ML que Chris Lattner capitanea). Licencia NOASSERTION — verificar antes de build-dependency.",
+        "por_que_importa": "",
+        "madurez_senales": "27.160 ★ · 2.945 forks · Mojo · NOASSERTION · push 2026-08-18",
+        "accion_sugerida": "vigilar — (Mojo sigue siendo un candidato a \"Python replacement for ML\"; la tracción es lenta pero constante)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "modular-modular",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "yizhiyanhua-ai/fireworks-tech-graph",
+      "url": "https://github.com/yizhiyanhua-ai/fireworks-tech-graph",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**generador de diagramas técnicos SVG+PNG desde lenguaje natural**, 7 estilos, UML + AI/agent workflow patterns. Claude Code plugin.",
+        "por_que_importa": "",
+        "madurez_senales": "10.389 ★ · 852 forks · Python · MIT · push 2026-08-18",
+        "accion_sugerida": "probar — (categoría \"diagramas-as-code con AI\", encaja con el stack editorial del boletín)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yizhiyanhua-ai-fireworks-tech-graph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "pipeshub-ai/pipeshub-ai",
+      "url": "https://github.com/pipeshub-ai/pipeshub-ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**capa de AI context empresarial** open-source: unifica business data (Drive, Gmail, Notion, etc.) para explainable enterprise search y agentic workflow automation. Homepage pipeshub.com.",
+        "por_que_importa": "",
+        "madurez_senales": "3.434 ★ · 513 forks · Python · Apache-2.0 · push 2026-08-19",
+        "accion_sugerida": "vigilar — (categoría enterprise context, competidor OSS de Glean; Apache-2.0 es una ventaja)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pipeshub-ai-pipeshub-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "docling-project/docling",
+      "url": "https://github.com/docling-project/docling",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**\"Get your documents ready for gen AI\"** de IBM. Doc-parsing multi-formato con layout preservation, table extraction, OCR opcional.",
+        "por_que_importa": "",
+        "madurez_senales": "Python · MIT · push 2026-08-19",
+        "accion_sugerida": "vigilar — (pieza canónica de la categoría; si trabajas con PDFs para RAG, es el baseline OSS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "docling-project-docling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "reentry: AI agent skill que **investiga cualquier tema en Reddit, X, YouTube, HN, Polymarket y web** y devuelve un resumen grounded.",
+        "por_que_importa": "",
+        "madurez_senales": "Python · push 2026-07-31",
+        "accion_sugerida": "vigilar — (útil para research de los propios boletines, pero el autor tiene productos comerciales detrás)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvanhorn-last30days-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "jlcodes99/cockpit-tools",
+      "url": "https://github.com/jlcodes99/cockpit-tools",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**multi-AI-IDE account manager** para Antigravity / Codex / Copilot / Windsurf / Kiro / Cursor / Gemini-cli / CodeBuddy. Multi-cuenta, monitor de cuota, auto-wakeup, multi-instancia. Reentry.",
+        "por_que_importa": "",
+        "madurez_senales": "Rust · push 2026-08-15",
+        "accion_sugerida": "vigilar — (categoría \"AI IDE account fleet management\"; útil si rotas entre providers)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jlcodes99-cockpit-tools",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "genlayerlabs/genlayer-project-boilerplate",
+      "url": "https://github.com/genlayerlabs/genlayer-project-boilerplate",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**boilerplate para GenLayer** (L1 blockchain con \"intelligent contracts\" en Python). El boilerplate no es la pieza interesante — la interesante es GenLayer Studio y la propuesta de contratos con LLM integrados.",
+        "por_que_importa": "",
+        "madurez_senales": "16.058 ★ · 802 forks · TypeScript · MIT · push 2026-07-26",
+        "accion_sugerida": "vigilar — (categoría \"blockchain con LLM en contrato\" sigue siendo nicho, pero los 16k★ indican tracción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "genlayerlabs-genlayer-project-boilerplat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

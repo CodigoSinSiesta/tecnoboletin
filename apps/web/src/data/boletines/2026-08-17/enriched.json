@@ -11,13 +11,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Linux de DHH con 9 coding agents first-class",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "distribución Linux \"Beautiful, Modern & Opinionated\" lanzada por DHH (Basecamp) en 2025-06. MIT, manual exhaustivo (52 secciones), Hyprland compositor, mise-managed stubs, dotfiles-as-git, system snapshots con btrfs. La parte AI viene en `manual/17-ai.md`: integra 9 coding agents como lazy-loaded launchers (`claude`, `codex`, `opencode`, `gemini`, `copilot`, `crush`, `grok`, `pi`, `omp`), un \"agents panel\" en top bar que rastrea usage de subscripciones (Claude/Codex/Fireworks), crash diagnosis automático vía systemd-coredump, y un SKILL.md symlinked a `~/.claude/skills`, `~/.codex/skills`, `~/.pi/agent/skills`, `~/.agents/skills` que permite a cualquier harness customizar Omarchy (cambiar Hyprland config, crear theme, ajustar bar).",
+        "por_que_importa": "Omarchy es la primera distro Linux que trata los coding agents como ciudadanos de primera clase: atajo dedicado (Super+Shift+Ctrl+A), panel unificado que rastrea uso de suscripciones (Claude/Codex/Fireworks) cruzando carpetas sincronizadas, diagnóstico automático de crashes vía systemd-coredump, y un SKILL.md symlinked a `~/.claude/skills`, `~/.codex/skills`, `~/.pi/agent/skills` y `~/.agents/skills` que deja a cualquier harness (Claude, Codex, pi, agents genéricos) reescribir la propia distro (tema, config de Hyprland, ajustar la top bar). Al integrar claude-code (repo anthropics/claude-code, ya cubierto el 2026-07-28) y sentar las bases del patrón agent-skills-layer (concepto introducido el 2026-08-08), convierte \"distro AI-coding ready\" en una categoría replicable. El track record de DHH moviendo ideas al mainstream (Rails, HEY, 37signals) hace probable que otras distros copien el patrón; por eso, una pieza sobre \"qué distro para AI-coding en 2026\" tiene aquí un candidato serio, open-source y con manual de 52 secciones.",
+        "madurez_senales": "25.624 ★ · 1.700 forks · Shell · creado 2025-06-01 · último push 2026-08-16 · MIT · 766 issues abiertas · homepage omarchy.org · default_branch `quattro` (no main, no master) · manual/ tiene 52 secciones · discord activo · 9 agents pre-wired · SKILL.md en 4 directorios estándar.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:basecamp/omarchy",
+          "rel": "implements",
+          "dst": "concept:ai-coding-ready-distro",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:basecamp/omarchy",
+          "rel": "integrates_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:basecamp/omarchy",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skills-layer",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -35,13 +54,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "\"Everything is a Plugin\" + ecosistema en expansión",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "agent harness open-source de DeepSeek AI (`dsh`). Arquitectura \"everything is a plugin\" sobre `cordiverse/cordis` (TypeScript, MIT). Web UI en `http://127.0.0.1:3080`, npx install, CLI completa, AGENTS.md para AI contributors. Developer preview con breaking changes garantizados en próximas versiones.",
+        "por_que_importa": "El boletín del 2026-08-14 ya cubrió deepseek-harness (deepseek-ai) y el curso complementario walkinglabs/learn-harness-engineering; hoy la señal nueva es que el cluster crece: top-25 de Trendshift tiene 6 entradas del propio harness (deepseek-harness, dsh-desktop, dsh-routing-suite, dsh-web-ui, awesome-dsh-plugin). El interés técnico real es la arquitectura \"everything is a plugin\" sobre cordiverse/cordis (TypeScript, MIT), formalizada en el paper \"A Programming Paradigm for Spatiotemporal Composability\" — un diseño para plugins que se componen tanto en espacio como en tiempo, exactamente la propiedad que necesitas cuando un agente encadena tools en secuencias largas. Replicar el triángulo \"harness + plugin registry + curso en 15 idiomas\" indica que el patrón se está convirtiendo en estándar; para el lector, la pregunta concreta es si vale la pena apostar por cordis como substrate frente a alternativas más simples.",
+        "madurez_senales": "140.880 ★ · 6.000+ forks · TypeScript · creado 2026-06-12 · último push 2026-08-13 · MIT · topics: AI agent · developer preview · cordis-backed · AGENTS.md · THIRD_PARTY_NOTICES.md · discord oficial.",
+        "accion_sugerida": "**vigilar** (developer preview, esperar estabilidad antes de invertir tiempo; pero leer el paper de Cordis es accionable).",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "implements",
+          "dst": "concept:plugin-everything-harness",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:walkinglabs/learn-harness-engineering",
+          "rel": "complements",
+          "dst": "repo:deepseek-ai/deepseek-harness",
+          "primera_mencion": "2026-08-14"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -59,13 +91,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "AI agents para data viz con \"data threads\"",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "herramienta de Microsoft Research para exploración de datos con AI agents. Diferenciador: data threads (ramificación de preguntas sin perder contexto) + data connectors con memoria persistente de relaciones entre fuentes + agent-driven viz. Demo online en `data-formulator.ai`, install local vía `uvx data-formulator` o `pip install data_formulator`.",
+        "por_que_importa": "La mayoría de herramientas AI-data-viz (ChartGPT, Hex, Julius) son envoltorios de LLM que traducen prompt a SQL. Data Formulator tiene un modelo mental distinto: modela las relaciones entre data sources (no las tablas sueltas), mantiene memoria entre preguntas y permite ramificar threads de análisis para comparar respuestas sin perder el contexto. Es la puesta en práctica del \"data analyst agent\" que Microsoft Research viene enseñando en papers, y abre una pieza concreta: \"AI data analyst en local\" tiene un candidato serio y open-source (MIT, Python) con demo en data-formulator.ai, install vía `uvx data-formulator` o `pip install data_formulator`, y CI verde. La limitación honesta: aún no hay comparativa publicada frente a Hex u Julius sobre los mismos datasets, así que la afirmación de ventaja hay que leerla como potencial, no como evidencia.",
+        "madurez_senales": "16.231 ★ · 1.700 forks · Python · creado 2024-01-08 · último push 2026-08-15 · MIT · topics: AI agent, Data visualization · demo online · PyPI público · CI verde · YouTube demo · Discord.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/data-formulator",
+          "rel": "implements",
+          "dst": "concept:ai-data-analyst-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:microsoft",
+          "rel": "publishes",
+          "dst": "repo:microsoft/data-formulator",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -83,13 +128,20 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "LM Studio++ para Mac con KV cache tiered y kernels nativos Metal",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "servidor LLM optimizado para Apple Silicon (M1/M2/M3/M4) con continuous batching + tiered KV cache (RAM hot + SSD cold) que sobrevive a cambios de contexto mid-conversation. macOS app con in-app auto-update, Homebrew tap (`brew tap jundot/omlx`), MCP support opcional, admin chat UI en `localhost:8000/admin/chat`. Kernels nativos Metal custom para GLM-5.2, MiniMax M3, Qwen3.5 (medido: 845 vs ~29 tok/s en prefill DSA GLM-5.2 sobre M3 Ultra).",
+        "por_que_importa": "El cuello de botella que LM Studio y Ollama comparten en sesiones largas de coding agents (Claude Code con 200k+ tokens de contexto) es que el KV cache se reinicia cada vez que el contexto cambia. oMLX ataca eso con un KV cache de dos niveles: tier caliente en RAM y tier frío en SSD, persistente entre cambios de contexto mid-conversation, lo que habilita modelos 70B+ en máquinas con 32-64 GB de RAM. La pieza competitiva real son los kernels Metal nativos para GLM-5.2, MiniMax M3 y Qwen3.5: 845 vs ~29 tok/s en prefill DSA sobre M3 Ultra (dato del repo, no replicado por). Si esa cifra se sostiene en M4 Max, el sweet spot para inference local en Apple Silicon se mueve. Limitación a verificar: el benchmark es del propio proyecto, sin independiente aún",
+        "madurez_senales": "18.816 ★ · 1.500 forks · Python · creado 2026-01-12 · último push 2026-08-17 · Apache-2.0 · topics: (no devueltos) · Homebrew tap · DMG oficial con kernels precompilados · MCP integration · admin UI · benchmarks públicos en omlx.ai/benchmarks.",
+        "accion_sugerida": "**probar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:jundot/omlx",
+          "rel": "implements",
+          "dst": "concept:tiered-kv-cache-inference",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -107,13 +159,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "\"Mixture-of-Models\" como routing programable",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "capa de routing programable para sistemas \"Mixture-of-Models\" sobre infraestructura LLM heterogénea. Evalúa señales del request + preferencias del usuario + políticas de la app para componer el path correcto (qué modelo + qué compute + qué ubicación). v0.3 \"Themis\" (2026-06-05) añade stateful production routing. Compatible con vLLM ecosystem. Playground online en `app.vllm-sr.ai/playground` (credenciales públicas en README).",
+        "por_que_importa": "El patrón Mixture-of-Experts a nivel de modelo ya está resuelto (Mixtral, Qwen-MoE); el salto pendiente es MoE a nivel de sistema: enrutar cada request al modelo+compute+ubicación adecuados usando señales reales (latency budget, privacy boundary, cost ceiling, preferencia del usuario). vLLM Semantic Router (v0.3 \"Themis\", 2026-06-05) es la pieza que faltaba entre \"tengo 5 LLMs\" y \"tengo un sistema que elige\", con routing stateful ya en producción. Los posts \"Beyond a Single Model\" (2026-07-21) y \"Micro-Agent: Beat Frontier Models with Collaboration inside Model API\" (2026-06-29) marcan la línea de pensamiento. Para el lector de Código Sin Siesta: si ya corre vLLM, la pregunta concreta es si las políticas de Themis resuelven el caso \"DeepSeek-R1 para reasoning, Claude para code review, Llama-3 para chat barato\" sin tener que cablearlo a mano. Playground público en app.vllm-sr.ai/playground (credenciales en el README) permite probarlo antes de instalar.",
+        "madurez_senales": "5.164 ★ · 400 forks · Go · creado 2025-03-04 · último push 2026-08-17 · Apache-2.0 · topics: (no devueltos) · v0.3 Themis released · blog técnico activo · playground público · install via `curl -fsSL https://vllm-sr.ai/install.sh | bash`.",
+        "accion_sugerida": "**leer** (los 3 posts del blog son la lectura de mayor densidad — más que el código).",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:vllm-project/semantic-router",
+          "rel": "implements",
+          "dst": "concept:programmable-mixture-of-models",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:vllm-project",
+          "rel": "publishes",
+          "dst": "repo:vllm-project/semantic-router",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -131,7 +196,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Curso en 15 idiomas sobre construcción de harnesses para AI agents. 14 lectures + 8 projects. Lecture 14 nueva (agosto 2026): \"From Single Loops to Graph Engineering\" — formaliza los 4 niveles (prompt → context → loop → graph) y las 3 fallas estructurales a escala (Goodhart, blindness upward, conflict). Repos asociados: deepseek-harness, cordis",
+        "que_es": "curso en 15 idiomas sobre construcción de harnesses para AI agents. 14 lectures + 8 projects. Lecture 14 nueva (agosto 2026): \"From Single Loops to Graph Engineering\" — formaliza los 4 niveles (prompt → context → loop → graph) y las 3 fallas estructurales a escala (Goodhart, blindness upward, conflict). Repos asociados: deepseek-harness, cordis",
         "por_que_importa": "",
         "madurez_senales": "11.682 ★ · 800 forks · TypeScript · MIT · push 2026-08-06",
         "accion_sugerida": "leer — (lecture-14 es la pieza accionable)",
@@ -155,7 +220,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "La librería sobre la que se construye deepseek-harness. Paper: \"A Programming Paradigm for Spatiotemporal Composability\"",
+        "que_es": "la librería sobre la que se construye deepseek-harness. Paper: \"_A Programming Paradigm for Spatiotemporal Composability_\"",
         "por_que_importa": "",
         "madurez_senales": "5.166 ★ · 278 forks · TypeScript · MIT · push 2026-08-13",
         "accion_sugerida": "leer — (el paper es la lectura interesante, no el código)",
@@ -179,7 +244,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Desktop app no-oficial para DSH (Windows + macOS Apple Silicon). NSIS installer + DMG, trae todo preconfigurado, no requiere Node",
+        "que_es": "desktop app no-oficial para DSH (Windows + macOS Apple Silicon). NSIS installer + DMG, trae todo preconfigurado, no requiere Node",
         "por_que_importa": "",
         "madurez_senales": "10.382 ★ · 600 forks · TypeScript · MIT · push 2026-08-17",
         "accion_sugerida": "vigilar — (no oficial, pero si el equipo de DSH la soporta pasa a ser interesante)",
@@ -203,7 +268,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Reentry. Hot-swap de modelos entre servidores OpenAI/Anthropic-compatibles (llama.cpp, vllm, stable-diffusion.cpp, audio.cpp, ComfyUI)",
+        "que_es": "reentry. Hot-swap de modelos entre servidores OpenAI/Anthropic-compatibles (llama.cpp, vllm, stable-diffusion.cpp, audio.cpp, ComfyUI)",
         "por_que_importa": "",
         "madurez_senales": "5.388 ★ · 250 forks · Go · MIT · push 2026-08-17",
         "accion_sugerida": "vigilar — (subió 240★ desde ayer, sigue creciendo; pieza complementaria a oMLX)",
@@ -227,7 +292,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Reentry con historia nueva (subió 240★ desde 1.797★ de ayer). Fine-tuning 8B en 4GB laptop GPU con layer streaming",
+        "que_es": "reentry con historia nueva (subió 240★ desde 1.797★ de ayer). Fine-tuning 8B en 4GB laptop GPU con layer streaming",
         "por_que_importa": "",
         "madurez_senales": "2.039 ★ · 305 forks · Python · Apache-2.0 · push 2026-08-17",
         "accion_sugerida": "vigilar — (crecimiento constante, posible release de correctness fix post-BETA)",
@@ -251,7 +316,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Reentry. \"El primer AI-native vector design tool open-source\". README denso (38k), UI en Tauri",
+        "que_es": "reentry. \"El primer AI-native vector design tool open-source\". README denso (38k), UI en Tauri",
         "por_que_importa": "",
         "madurez_senales": "5.165 ★ · 250 forks · Rust · MIT · push 2026-08-17",
         "accion_sugerida": "vigilar — (Figma+AI open-source es noticia; auditar si tiene dependencias closed-source)",
@@ -275,9 +340,9 @@
     "items_radar_secundario": 6,
     "llm_backend": "hermes",
     "llm_polish_notes": "11/11 items pulidos",
-    "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

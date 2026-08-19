@@ -10,7 +10,7 @@ export default defineConfig({
   base: '/tecnoboletin',
   integrations: [sitemap()],
   vite: {
-    // @ts-expect-error — peer dep mismatch entre vite de Astro y vite de @tailwindcss/vite
-    plugins: [tailwindcss()],
+    // peer dep mismatch entre vite de Astro y vite de @tailwindcss/vite — wrapper runtime evita el conflicto
+    plugins: [/** @type {any} */ (tailwindcss)],
   },
 });

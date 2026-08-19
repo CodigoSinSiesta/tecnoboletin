@@ -11,13 +11,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "runtime MLX en Rust con servidor compatible con OpenAI",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "runtime y servidor de inferencia para modelos MLX (Apple Silicon y NVIDIA CUDA), implementado en Rust sobre bindings C++ de MLX. Sirve modelos text + visión directamente desde checkpoints `mlx-community` sin conversión.",
+        "por_que_importa": "v0.5.x añade prompt-cache multi-turn con snapshot en el boundary del historial (turn 2 pasa de 0 a 150 cached tokens de 189 en qwen3.5-0.8b-4bit), warm-up en idle y soporte Gemma 4 con long-common-prefix restore — lo que faltaba para que MLX en local rinda como backend serio de agentes y no solo como demo. Competimos directamente con llama.cpp en el segmento local-first, un tema que cubrimos el 2026-08-11 con la categoría 'local-multimodal-inference' en el boletín; hoy MLXcel es el ejemplo más nítido de por qué ese espacio se está moviendo rápido.",
+        "madurez_senales": "272 ★ · 38 forks · Rust · creado 2026-01-30 · último push 2026-08-15 · Apache-2.0 · topics: (vacío) · default branch main · 56 issues abiertos.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:lablup/mlxcel",
+          "rel": "implements",
+          "dst": "concept:local-multimodal-inference",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:lablup/mlxcel",
+          "rel": "competes_with",
+          "dst": "repo:ggerganov/llama.cpp",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -35,13 +48,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "sandbox runtime para AI agents con K8s",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "plataforma de sandbox de propósito general para AI apps: SDKs multi-lenguaje, CLI `osb`, MCP server, protocolo de sandbox abierto, runtime Docker + Kubernetes, entornos preconstruidos (Command, Filesystem, Code Interpreter, browser Chrome/Playwright, VS Code sobre VNC).",
+        "por_que_importa": "a diferencia de E2B o daytona (que aún no han aparecido en nuestro grafo), OpenSandbox está en el CNCF Landscape, lleva el OpenSSF Best Practices badge, expone MCP de forma nativa y trae Coding Agents (Claude Code) y GUI Agents preconfigurados — es el puente entre tu agente local y una ejecución aislada que escala. Encaja con el patrón agent-runtime que ya cubrimos el 2026-08-11, y completa el lado de kubernetes-sigs/agent-sandbox que documentamos el 2026-08-07 como CRD: aquí está el runtime que lo aprovecha de verdad.",
+        "madurez_senales": "13.103 ★ · 1.124 forks · Python · creado 2025-12-17 · último push 2026-08-15 · Apache-2.0 · topics: ai, ai-agent, ai-infra, kubernetes, sandbox · 158 issues · CNCF Landscape · OpenSSF Best Practices.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:opensandbox-group/OpenSandbox",
+          "rel": "implements",
+          "dst": "concept:agent_runtime",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:opensandbox-group/OpenSandbox",
+          "rel": "complements",
+          "dst": "concept:k8s-sandbox-crd",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:opensandbox-group/OpenSandbox",
+          "rel": "complements",
+          "dst": "repo:kubernetes-sigs/agent-sandbox",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -59,13 +91,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Open Agent Kernel — agentes on-device en NPU de Qualcomm",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "framework C++ para correr agentes AI 100% on-device, latencia sub-100ms en NPU de Qualcomm, sin dependencia cloud. Se comercializa bajo \"OAK — The Linux of AI Agents\".",
+        "por_que_importa": "MasterAgent cubre el flanco que faltaba en el mapa de inferencia local: si Apple Silicon es MLX y NVIDIA es CUDA, Qualcomm NPU (Snapdragon, automoción, IoT) era el hueco. La promesa de latencia sub-100ms en NPU abre un nicho distinto al on-device de laptop tipo llama.cpp — robótica, automoción y embebidos donde cada milisegundo y cada vatio cuentan. Toca tratarlo con cautela: creado el 2026-08-10, 336 ★, 17 forks, 1 issue abierto y la API marca license NOASSERTION (revisar el fichero LICENSE antes de cualquier adopción). Competimos directamente con el flanco Apple Metal que cubrimos el 2026-08-11.",
+        "madurez_senales": "336 ★ · 17 forks · C++ · creado 2026-08-10 · último push 2026-08-14 · license NOASSERTION (revisar LICENSE antes de adopción) · topics: agent-framework, ai-agent, automotive, edge-ai, embedded, iot.",
+        "accion_sugerida": "**vigilar** (madurez baja, revisar LICENSE antes de probar).",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:OpenSparX/MasterAgent",
+          "rel": "implements",
+          "dst": "concept:edge-ai-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:OpenSparX/MasterAgent",
+          "rel": "competes_with",
+          "dst": "framework:apple-metal",
+          "primera_mencion": "2026-08-11"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -83,13 +128,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "extractor del histórico completo de coding assistants",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "toolkit Python que extrae TODO el histórico (chats, agent turns, code context, diffs, tool results) de Cursor, Codex, Claude Code, Windsurf y Trae, en sus formatos nativos (JSONL, SQLite, KV buckets). Lo vende como \"training data extraction\" pero técnicamente es un volcado de tu propia actividad de coding agent.",
+        "por_que_importa": "la pregunta editorial relevante no es 'cómo entrenar tu modelo con tus prompts', sino '¿sabías que todo tu histórico de coding agent está en local y se puede volcar en un script?'. Para quienes usan Cursor, Codex o Claude Code esto es un recordatorio de auditoría: el SQLite de Cursor vive en state.vscdb y cursorDiskKV, Claude Code guarda JSONL por sesión, y cada IDE tiene su esquema propio. La API marca 'no license', lo que bloquea adoptarlo como dependencia pero no impide leerlo para entender qué expone cada agente. Ojo con la señal de abandono: creado 2025-11-16, último push 2026-01-21 — está más como ejemplo reproducible que como producto mantenido.",
+        "madurez_senales": "1.026 ★ · 91 forks · Python · creado 2025-11-16 · último push 2026-01-21 · **(no license)** · topics: (vacío). Actividad de push baja (enero) — el repo está más en modo \"ejemplo\" que \"producto mantenido\".",
+        "accion_sugerida": "**leer** (no adoptar; entender qué datos almacena cada agente).",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:0xSero/ai-data-extraction",
+          "rel": "relevant_to",
+          "dst": "concept:agent-data-sovereignty",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:0xSero/ai-data-extraction",
+          "rel": "risk",
+          "dst": "concept:agent-runtime-data-leak",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -107,13 +165,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "Claude Design open-source con exportación real (HTML/PDF/PPTX/MP4)",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "alternativa open-source a Claude Design. App desktop local-first donde tu coding agent (Claude Code, Codex, Cursor, Gemini, OpenCode, Qwen, +20 CLIs vía BYOK) se convierte en el \"design engine\": genera prototipos, landing pages, dashboards, slides, imágenes y vídeo, exportando a HTML, PDF, PPTX, MP4 reales — no screenshots.",
+        "por_que_importa": "Open Design cruza dos líneas que ya cubrimos: el giro 'agent-as-designer' del 2026-08-07 con el concepto agent-document-output, y la consolidación de BYOK como modelo estándar (mismo patrón que apify-mcp-server y cursor-byok). La diferencia con el hype está en el export: HTML, PDF, PPTX y MP4 son ficheros reales que puedes versionar, revisar en PR y reutilizar — no screenshots. Compite con el concepto agent-shipped-app que documentamos el 2026-08-10, pero resuelve el problema de un modo distinto: aquí el agente diseña, en el otro el agente entrega.",
+        "madurez_senales": "86.527 ★ · 10.091 forks · TypeScript · creado 2026-04-28 · último push 2026-08-15 · Apache-2.0 · topics: agent-skills, ai-agents, ai-design, byok, claude-code-for-design, claude-design · 793 issues · actividad diaria.",
+        "accion_sugerida": "**probar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:nexu-io/open-design",
+          "rel": "implements",
+          "dst": "concept:agent-document-output",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:nexu-io/open-design",
+          "rel": "implements",
+          "dst": "concept:byok-agent-design",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nexu-io/open-design",
+          "rel": "competes_with",
+          "dst": "concept:agent-shipped-app",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -131,13 +208,26 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "cluster multi-dispositivo con RDMA sobre Thunderbolt 5",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "runtime para correr modelos frontier distribuidos sobre todos tus dispositivos (Mac, Linux, etc.). Discovery automático + day-0 support para RDMA sobre Thunderbolt 5 (latencia -99% entre dispositivos). Mantenido por exo labs.",
+        "por_que_importa": "exo ya estaba en el radar del sector como runtime de inferencia distribuida entre dispositivos, pero la novedad de hoy es el soporte day-0 de RDMA sobre Thunderbolt 5 — convierte un setup casero (un par de Mac minis más un PC) en un cluster con latencia casi de bus local, sin ethernet ni InfiniBand. Es el ángulo multi-device para el patrón local-multimodal-inference que cubre mlxcel en single-node: donde mlxcel optimiza un Mac, exo los une. Cautela: creado 2024-06-24, 46.833 ★, pero el último push es del 2026-06-23 — unos dos meses sin actividad nueva, conviene confirmar roadmap antes de recomendar como dependencia estable.",
+        "madurez_senales": "46.833 ★ · 3.429 forks · Python · creado 2024-06-24 · último push 2026-06-23 · Apache-2.0 · topics: (vacío en API). Push reciente: ~2 meses sin actividad nueva — verificar roadmap antes de recomendar.",
+        "accion_sugerida": "**vigilar** (comprobar actividad reciente en commits antes de probar).",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:exo-explore/exo",
+          "rel": "implements",
+          "dst": "concept:multi-device-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:exo-explore/exo",
+          "rel": "complements",
+          "dst": "repo:lablup/mlxcel",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -155,13 +245,32 @@
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "physics engine en GPU para robótica (Linux Foundation)",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
+        "que_es": "motor de simulación física acelerado por GPU, construido sobre NVIDIA Warp (el `warp.sim` deprecado), con MuJoCo Warp como backend primario. Soporta OpenUSD, diferenciabilidad, extensibilidad. Proyecto Linux Foundation iniciado por Disney Research, Google DeepMind y NVIDIA.",
+        "por_que_importa": "Newton hereda y generaliza el camino de Warp + MuJoCo Warp, y lo coloca bajo Linux Foundation (gobierno neutral entre Disney Research, Google DeepMind y NVIDIA). Cuando los agentes pasen de 'LLM en pantalla' a 'agente físico' — manipulación, locomotion, sim-to-real — necesitarán un backend de física serio, y esta es la pieza que faltaba entre el boletín de agents y el de robótica reproducible. Doble ángulo: (a) el ecosistema robotics/embodied-ai se está moviendo a motores GPU-accelerated, así que conviene documentar el cambio; (b) si tu producto entrena políticas, Newton es el módulo que cierra la cadena de herramientas. Construye directamente sobre el framework:nvidia-warp que ya cubre el grafo.",
+        "madurez_senales": "5.377 ★ · 636 forks · Python · creado 2025-04-22 · último push 2026-08-14 · Apache-2.0 (código) + CC-BY-4.0 (docs) · topics: newton-physics, nvidia-warp, physics-simulation, robotics · 372 issues · codecov + CI multi-OS.",
+        "accion_sugerida": "**explorar**.",
         "descripcion_raw": ""
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:newton-physics/newton",
+          "rel": "implements",
+          "dst": "concept:gpu-physics-simulation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:newton-physics/newton",
+          "rel": "relevant_to",
+          "dst": "concept:embodied-agent-training",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:newton-physics/newton",
+          "rel": "extends",
+          "dst": "framework:nvidia-warp",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
         "tipo": "repo",
         "idioma": "en",
@@ -179,7 +288,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "el \"browser para AI agents\" más rápido: comparte tu sesión logueada con el agente sin molestarte, sin coste, sin config. Compite directamente con el modelo \"browser sandbox para agentes\"",
+        "que_es": "el \"browser para AI agents\" más rápido: comparte tu sesión logueada con el agente sin molestarte, sin coste, sin config. Compite directamente con el modelo \"browser sandbox para agentes\".",
         "por_que_importa": "",
         "madurez_senales": "10.500 ★, último push 2026-08-14, JavaScript",
         "accion_sugerida": "probar — (verificar licencia MIT y demo antes de instalar)",
@@ -203,7 +312,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "librería #1 de skills para AI Scientist (161 skills, 100+ databases biotech/chem/med/drug). Compatible con Cursor, Claude Code, Codex, Pi y Antigravity",
+        "que_es": "librería #1 de skills para AI Scientist (161 skills, 100+ databases biotech/chem/med/drug). Compatible con Cursor/Claude Code/Codex/Pi/Antigravity.",
         "por_que_importa": "",
         "madurez_senales": "33.537 ★, último push 2026-08-14, Python, MIT",
         "accion_sugerida": "leer — (útil aunque no trabajes en ciencia — el catálogo de skills es referencia)",
@@ -227,7 +336,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "reglas Oxlint para rechazar TypeScript/JavaScript \"low-evidence\" generado por LLMs",
+        "que_es": "reglas Oxlint para rechazar TypeScript/JavaScript \"low-evidence\" generado por LLMs.",
         "por_que_importa": "",
         "madurez_senales": "863 ★, último push 2026-08-14, TypeScript, MIT",
         "accion_sugerida": "vigilar — (early pero alineado con `agent-skills-layer`)",
@@ -251,7 +360,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "coding agent para terminal con hash-anchored edits, LSP, Python, browser y subagents. Mismo autor que Hindsight (cubierto en boletines previos). Reentrada con cadencia diaria: sigue activo",
+        "que_es": "coding agent para terminal con hash-anchored edits, LSP, Python, browser, subagents. Mismo autor que Hindsight (cubierto en boletines previos). Reentrada con cadencia diaria — sigue activo.",
         "por_que_importa": "",
         "madurez_senales": "24.884 ★, último push 2026-08-15, TypeScript, MIT",
         "accion_sugerida": "vigilar — (ya conocido, prioriza exploración profunda solo si Alejandro lo pide)",
@@ -275,7 +384,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "generación de shorts en HD a partir de un tema o keyword. Reentrada clásica del top chino",
+        "que_es": "generación de shorts HD a partir de un tema/keyword. Reentrada clásica del top chino.",
         "por_que_importa": "",
         "madurez_senales": "103.684 ★, último push 2026-08-13, Python, MIT",
         "accion_sugerida": "ignorar — (calidad cuestionable, ya cubierto en radares anteriores)",
@@ -299,7 +408,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "repo oficial de GitHub con instrucciones, agents, skills y configs contribuidos por la comunidad para Copilot",
+        "que_es": "repo oficial de GitHub con instrucciones, agents, skills y configs contribuidos por la comunidad para Copilot.",
         "por_que_importa": "",
         "madurez_senales": "37.857 ★, último push 2026-08-14, Python, MIT",
         "accion_sugerida": "leer — (referencia estructural del agent-skills estándar de GitHub)",
@@ -323,7 +432,7 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "agente en Rust sin tagline visible; requiere leer el README antes de clasificar",
+        "que_es": "agente Rust sin tagline visible, requiere leer README antes de clasificar.",
         "por_que_importa": "",
         "madurez_senales": "583 ★, último push 2026-08-15, Rust, MIT, sin descripción en API",
         "accion_sugerida": "vigilar — (verificar antes de incluir en próximos boletines)",
@@ -347,9 +456,9 @@
     "items_radar_secundario": 7,
     "llm_backend": "hermes",
     "llm_polish_notes": "14/14 items pulidos",
-    "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "respuesta no parseable como lista JSON (primeros 200 chars: '[{\"idx\": 0, \"por_que_importa\": \"El item llega con \\'que_es\\' mínimo y sin datos de madurez ni relación con el grafo, así que no puedo precisar más allá de lo que el nombre sugiere: un runtime para MLX e')",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

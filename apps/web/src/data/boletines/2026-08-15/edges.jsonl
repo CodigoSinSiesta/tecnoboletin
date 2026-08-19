@@ -1,17 +1,34 @@
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-lablup-mlxcel", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-lablup-mlxcel", "dst": "tema:lablup-mlxcel", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:lablup/mlxcel", "dst": "concept:local-multimodal-inference", "rel": "implements", "added": "2026-08-15", "primera_mencion": "2026-08-11"}
+{"src": "repo:lablup/mlxcel", "dst": "repo:ggerganov/llama.cpp", "rel": "competes_with", "added": "2026-08-15", "primera_mencion": null}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-opensandbox-group-opensandbox", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-opensandbox-group-opensandbox", "dst": "tema:opensandbox-group-opensandbox", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:opensandbox-group/OpenSandbox", "dst": "concept:agent_runtime", "rel": "implements", "added": "2026-08-15", "primera_mencion": "2026-08-11"}
+{"src": "repo:opensandbox-group/OpenSandbox", "dst": "concept:k8s-sandbox-crd", "rel": "complements", "added": "2026-08-15", "primera_mencion": "2026-08-07"}
+{"src": "repo:opensandbox-group/OpenSandbox", "dst": "repo:kubernetes-sigs/agent-sandbox", "rel": "complements", "added": "2026-08-15", "primera_mencion": "2026-08-07"}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-opensparx-masteragent", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-opensparx-masteragent", "dst": "tema:opensparx-masteragent-oak", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:OpenSparX/MasterAgent", "dst": "concept:edge-ai-agent", "rel": "implements", "added": "2026-08-15", "primera_mencion": null}
+{"src": "repo:OpenSparX/MasterAgent", "dst": "framework:apple-metal", "rel": "competes_with", "added": "2026-08-15", "primera_mencion": "2026-08-11"}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-0xsero-ai-data-extraction", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-0xsero-ai-data-extraction", "dst": "tema:0xsero-ai-data-extraction", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:0xSero/ai-data-extraction", "dst": "concept:agent-data-sovereignty", "rel": "relevant_to", "added": "2026-08-15", "primera_mencion": null}
+{"src": "repo:0xSero/ai-data-extraction", "dst": "concept:agent-runtime-data-leak", "rel": "risk", "added": "2026-08-15", "primera_mencion": null}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-nexu-io-open-design", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-nexu-io-open-design", "dst": "tema:nexu-io-open-design", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:nexu-io/open-design", "dst": "concept:agent-document-output", "rel": "implements", "added": "2026-08-15", "primera_mencion": "2026-08-07"}
+{"src": "repo:nexu-io/open-design", "dst": "concept:byok-agent-design", "rel": "implements", "added": "2026-08-15", "primera_mencion": null}
+{"src": "repo:nexu-io/open-design", "dst": "concept:agent-shipped-app", "rel": "competes_with", "added": "2026-08-15", "primera_mencion": "2026-08-10"}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-exo-explore-exo", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-exo-explore-exo", "dst": "tema:exo-explore-exo", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:exo-explore/exo", "dst": "concept:multi-device-inference", "rel": "implements", "added": "2026-08-15", "primera_mencion": null}
+{"src": "repo:exo-explore/exo", "dst": "repo:lablup/mlxcel", "rel": "complements", "added": "2026-08-15", "primera_mencion": null}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-newton-physics-newton", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-newton-physics-newton", "dst": "tema:newton-physics-newton", "rel": "trata", "added": "2026-08-15"}
+{"src": "repo:newton-physics/newton", "dst": "concept:gpu-physics-simulation", "rel": "implements", "added": "2026-08-15", "primera_mencion": null}
+{"src": "repo:newton-physics/newton", "dst": "concept:embodied-agent-training", "rel": "relevant_to", "added": "2026-08-15", "primera_mencion": null}
+{"src": "repo:newton-physics/newton", "dst": "framework:nvidia-warp", "rel": "extends", "added": "2026-08-15", "primera_mencion": null}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-citrolabs-ego-lite", "rel": "menciona", "added": "2026-08-15"}
 {"src": "item:https-github-com-citrolabs-ego-lite", "dst": "tema:citrolabs-ego-lite", "rel": "trata", "added": "2026-08-15"}
 {"src": "boletin:2026-08-15", "dst": "item:https-github-com-k-dense-ai-scientific-agent-skills", "rel": "menciona", "added": "2026-08-15"}
