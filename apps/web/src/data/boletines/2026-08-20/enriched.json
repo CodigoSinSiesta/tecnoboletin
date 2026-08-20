@@ -1,0 +1,377 @@
+{
+  "version": 2,
+  "date": "2026-08-20",
+  "boletin_origen": "2026-08-20-trending.md",
+  "resumen_ejecutivo": "- **`ChromeDevTools/chrome-devtools-mcp`** (49.459 ★, Apache-2.0, TypeScript, push 2026-08-20) es el **MCP server oficial del Chrome team de Google** para que coding agents controlen Chrome real: performance traces, debugging con source maps, automation fiable via puppeteer. **49k★ en 11 meses** — ya es el estándar de facto para \"browser-as-tool\" en coding agents. Caveat: **telemetría activada por defecto** (opt-out con `--no-usage-statistics`).\n- **`CopilotKit/openbot`** (864 ★, MIT, TypeScript, push 2026-08-20, **3 días de vida**) es la apuesta de CopilotKit por **\"AI coworkers que reciben trabajo real\"**: cada bot corre en su propio container (Chromium + logins + filesystem), todas las tool calls pasan por un gateway que **decide** y **registra** antes de actuar, y se monta sobre el protocolo abierto **AG-UI**. Alpha explícito, pero el framing \"governance rides the protocol, not the framework\" lo separa del resto de \"AI agent runner\" OSS.\n- **`apache/maka`** (1.665 ★, Apache-2.0, TypeScript, push 2026-08-20) entra como **Incubating Apache**: local-first agent workspace con **Runtime Event Log append-only** donde model messages, tool calls, permission decisions y termination events son hechos recuperables. La idea editorial: **\"log is the runtime\"** — la sesión, la UI, la memoria y la recuperación son proyecciones sobre ese log, no estados separados.\n- **`vercel-labs/portless`** (10.665 ★, Apache-2.0, TypeScript, push 2026-08-20) es el **complemento natural de `vercel-labs/fx`** (cubierto el 19-08): reemplaza puertos por URLs `*.localhost` estables (HTTPS+HTTP/2) con CA local auto-confiada, inyecta el flag `--port` correcto a Vite/Astro/Expo, y está **explícitamente pensado para humanos y agentes** — un agente puede identificar su servicio por nombre, no por número.\n- **`abhigyanpatwari/GitNexus`** (45.601 ★, **PolyForm Noncommercial 1.0.0**, TypeScript, push 2026-08-19) es **\"the nervous system for agent context\"**: indexa cualquier repo (local o zip) en un knowledge graph **en el navegador** y lo expone vía MCP tools para Cursor, Claude Code, Codex, etc. Tracción enorme (45k★ en 12 meses) **pero licencia PolyForm Noncommercial**: el badge miente si te interesa producción comercial — no es OSS, es source-available.\n- **`DrewThomasson/ebook2audiobook`** (19.960 ★, Apache-2.0, Python, push 2026-08-09) confirma el re-trend con un dato infravalorado: **1158+ idiomas** soportados vía XTTS, voice cloning, Gradio GUI, Docker, Colab y Hugging Face Space. Es la pieza OSS canónica de \"ebook→audiobook\" y la entrada más barata al mundo del TTS multilingüe para proyectos personales o productos editoriales.\n- **Patrón transversal**: 2026-08-20 es **el día de la \"infra de agente madura\"**. Mientras el 19-08 consolidaba las capas \"memory / gateway / harness / BD / orquestador\" como proyectos individuales, hoy **las capas de protocolo y governance empiezan a consolidarse**: `chrome-devtools-mcp` estandariza browser-as-tool, `AG-UI` estandariza agent↔user, `Maka`'s Runtime Event Log estandariza el audit trail, `GitNexus` estandariza el code-knowledge-graph, `portless` estandariza cómo los agentes identifican sus servicios. La conversación pasa de \"¿qué agente uso?\" a **\"¿qué protocolos usa mi agente?\"**.\n- Fuentes consultadas: Trendshift daily (25 items, 1 sponsor filtrado), GitHub Trending daily + TypeScript/Python/Rust (54 items únicos), GitHub REST API (24 verificaciones), READMEs vía default branch (chrome-devtools-mcp, openbot, maka, portless, GitNexus, ebook2audiobook, nodeterm, dbx). Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` = 2026-07-05; cron lleva semanas parado, pendiente revisar `hermes cron list`).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server oficial del Chrome team** que expone Chrome DevTools (performance traces, network inspection, screenshots, console con source maps, automation fiable vía puppeteer) a coding agents como Claude Code, Cursor, Copilot, Antigravity. CLI standalone incluida para uso sin MCP. Soporte oficial solo para Google Chrome y Chrome for Testing.",
+        "por_que_importa": "49k★ en 11 meses lo consolidan como el estándar de facto para que un coding agent controle un navegador de verdad, no un wrapper de scraping. La diferencia frente a alternativas como `browser-use/browser-use` o `playwright-mcp` es que aquí el Chrome team expone DevTools genuinos (performance traces, network inspection, screenshots, console con source maps) en lugar de una capa parcheada encima de Puppeteer — esa profundidad es la que permite extraer métricas reales de CrUX o perf insights en lugar de métricas de superficie. Caveat práctico: la telemetría se envía a Google por defecto (tool invocations, latencia, info del entorno); se desactiva con `--no-usage-statistics`, pero hay que saberlo antes de meterlo en un pipeline de producción. Soporte limitado a Google Chrome y Chrome for Testing: si tu agente trabaja con Firefox o Safari, esta no es tu pieza.",
+        "madurez_senales": "49.459 ★ · 3.450 forks · TypeScript · creado 2025-09-11 · último push 2026-08-20 · Apache-2.0 · topics: browser, chrome, chrome-devtools, debugging, devtools, mcp, mcp-server, puppeteer · homepage npmjs.org/package/chrome-devtools-mcp · 101 open issues · disclaimer oficial: expone contenido del browser al MCP client · soporta `--no-performance-crux` y `--no-usage-statistics`.",
+        "accion_sugerida": "**explorar** (instalar vía `npx -y chrome-devtools-mcp@latest`, configurar `--no-usage-statistics` desde el primer arranque, validar performance traces en un proyecto real, comparar cobertura con `playwright-mcp`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "implements",
+          "dst": "concept:browser-mcp-server",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:google-chrome-team",
+          "rel": "publishes",
+          "dst": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chromedevtools-chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "CopilotKit/openbot",
+      "url": "https://github.com/CopilotKit/openbot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**plataforma de agent runtime con governance explícita**: cada bot corre en su propio container (Chromium + logins + filesystem + workspace); todas las tool calls pasan por un gateway que **decide** contra una policy y **registra** un audit row antes de actuar (o rechaza y nombra la regla). Montado sobre el protocolo abierto **AG-UI** (compatible con LangGraph, Mastra, CrewAI, Pydantic AI, Google ADK o agentes escritos a mano). Tres coworkers de ejemplo: General Assistant, Knowledge, Risk Analyst. Self-hosted con Docker Compose; modelo y credenciales los elige el administrador.",
+        "por_que_importa": "El dilema clásico al dar a un agente acceso a tu infra es elegir entre autonomía ciega (peligrosa) o sandbox aislado (limitada). OpenBot se coloca en el medio: el bot opera sobre tus herramientas reales, pero cada tool call pasa por un gateway que evalúa una policy explícita, escribe un audit row y, si toca algo sensible, rechaza la acción citando la regla concreta. Lo relevante para un lector de Código Sin Siesta es el framing: la governance vive en el protocolo AG-UI, no en el framework, así que da igual que el agente lo escribas con LangGraph, Mastra, CrewAI, Pydantic AI, Google ADK o a mano — el gate es el mismo y el audit log también. Es Alpha con 3 días de vida, así que todavía no hay track record de producción; lo señalamos como dirección editorial interesante, no como recomendación de adopción inmediata.",
+        "madurez_senales": "864 ★ · 83 forks · TypeScript · creado 2026-08-17 · último push 2026-08-20 · MIT · topics: ag-ui, agent-governance, ai-agents, browser-automation, copilotkit, generative-ui, mcp · homepage copilotkit.ai/openbot · 21 open issues · status \"Alpha\" explícito · CI verde (zizmor + GitHub Actions) · Discord oficial · corre con `OPENBOT_DEV_NO_AUTH` para empezar sin sign-in.",
+        "accion_sugerida": "**vigilar** (alpha + 3 días de vida → no build-dependency todavía; pero leer la arquitectura AG-UI y compararla con `Multica` y `Cumora` para entender el patrón \"governance over protocol\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CopilotKit/openbot",
+          "rel": "implements",
+          "dst": "concept:ag-ui-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:copilotkit",
+          "rel": "publishes",
+          "dst": "repo:CopilotKit/openbot",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-openbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "apache/maka",
+      "url": "https://github.com/apache/maka",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Incubating Apache project** (badge oficial Apache 2.0) que ofrece un agent workspace local-first con **Runtime Event Log append-only**: model messages, tool calls, tool results, permission decisions y termination events son hechos recuperables. Surfaces: Desktop (Electron+React), TUI/CLI (`maka`, `maka run`) y Eval (`maka eval run`). Diferenciador explícito: **\"context is not history\"** — pruning de tool results y LLM compaction cambian qué ve la próxima inferencia sin tratar los hechos como contexto descartable.",
+        "por_que_importa": "Maka aterriza la conversación de auditabilidad y reproducibilidad de agentes desde el lado del runtime log canónico: cada model message, tool call, tool result, permission decision y termination event es un hecho recuperable en un Runtime Event Log append-only, separado del contexto que se le pasa a la próxima inferencia. Esa distinción — \"context is not history\" — es la que permite hacer pruning de tool results o LLM compaction sin perder la trazabilidad de qué pasó realmente. Que sea Apache Incubating importa por tres cosas: governance neutro, licencia Apache-2.0 desde el día 1 (evita el patrón de pivote tardío a AGPL-3.0 que han sufrido otros proyectos OSS) y visibilidad de Apache Foundation. Se complementa con `memvid/memvid` que cubrimos el 19-08 desde el lado de single-file memory; juntos dibujan el mismo problema desde dos ángulos. Caveat honesto: el README pesa más en chino simplificado que en inglés, así que la barrera de entrada para la mayoría de lectores está en la documentación, no en el código.",
+        "madurez_senales": "1.665 ★ · 199 forks · TypeScript · creado 2026-05-27 · último push 2026-08-20 · **Apache-2.0 (Incubating)** · topics: agent-runtime, ai, ai-agent, apache, cli, desktop, electron, event-sourcing, llm, local-first, maka, tool-use, typescript · homepage ninguna · 224 open issues · docs `ARCHITECTURE.md` + `README.zh-CN.md` · `maka eval run` para benchmarks reproducibles.",
+        "accion_sugerida": "**leer** (estudiar `ARCHITECTURE.md`, comparar el modelo de \"log is the runtime\" con el de Claude Code sessions y Codex CLI, evaluar el módulo Eval como formato de benchmark portátil).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:apache/maka",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-runtime",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apache-maka",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "vercel-labs/portless",
+      "url": "https://github.com/vercel-labs/portless",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**proxy de desarrollo que reemplaza `localhost:3000` por `https://myapp.localhost`**: genera CA local auto-confiada, asigna puertos en 4000-4999 vía `PORT`, inyecta `--port`/`--host` correcto a Vite/Astro/Expo/VitePlus/React Router/Angular, preserva modos `--lan`/`--tunnel` de Expo y rechaza tocar comandos que no sirven (`vite build`, `astro check`). **Explícitamente diseñado \"for humans and agents\"** — un agente puede decir \"abre myapp\" en lugar de \"abre localhost:3000\".",
+        "por_que_importa": "Portless ataca un pain point muy concreto del desarrollo local con agentes: cuando tienes varios servicios corriendo en paralelo, los puertos 3001/3002/3003 no escalan ni son recordables. La solución es sustituirlos por nombres (`myapp.localhost`) con HTTPS y CA auto-confiada, además de inyectar el `--port`/`--host` correcto a Vite, Astro, Expo, VitePlus, React Router o Angular sin tocar el comando original. Es complemento directo de `vercel-labs/fx`, que cubrimos el 19-08-2026 como coding agent Unix-like de 7.8 MiB: mientras fx resuelve qué agente corre, portless resuelve cómo el agente identifica sus servicios, así un agente puede decir \"abre myapp\" en vez de \"abre localhost:3001\". La fricción operativa es baja (`\"dev\": \"portless run next dev\"` y auto-elevate solo en macOS/Linux). Caveat: está pre-1.0 y el formato del state directory puede cambiar entre releases, así que no es momento de anclarte en migraciones automatizadas.",
+        "madurez_senales": "10.665 ★ · 351 forks · TypeScript · creado 2026-02-15 · último push 2026-08-19 · Apache-2.0 · homepage portless.sh · 119 open issues · pre-1.0 (el state directory format puede cambiar entre releases) · npm `npm install -g portless` o `npm install -D portless` · CLI soporta `portless trust` para CA · comportamiento CI-aware (sale con error descriptivo si `CI=1`).",
+        "accion_sugerida": "**probar** (instalar via `npm i -g portless`, levantar un proyecto Next/Vite, validar HTTPS auto-confiado, comparar con `vite --port` manual y con `caddy` reverse proxy).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/portless",
+          "rel": "implements",
+          "dst": "concept:localhost-named-urls",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:vercel",
+          "rel": "publishes",
+          "dst": "repo:vercel-labs/portless",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-portless",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "abhigyanpatwari/GitNexus",
+      "url": "https://github.com/abhigyanpatwari/GitNexus",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"The nervous system for agent context\"**: indexa un repo (GitHub, GitLab, Azure DevOps, local o ZIP) en un knowledge graph **íntegramente en el navegador**, expone el grafo vía **MCP tools** smart para que Cursor, Claude Code, Codex y similares naveguen dependencias, call chains, clusters y execution flows sin \"miss dependencies, break call chains, ship blind edits\". CLI + MCP + Web UI. Web UI permite chatear con cualquier repo en el navegador. Enterprise: SaaS + self-hosted via Akon Labs.",
+        "por_que_importa": "45.601★ en 12 meses con un solo maintainer es una señal seria de tracción, y GitNexus entra directamente en la categoría code-as-knowledge-graph donde ya cubrimos a `Graphify-Labs/graphify`. La diferencia operativa es importante: GitNexus indexa el repo íntegramente en el navegador (WebAssembly + cliente) y expone el grafo vía MCP para que Cursor, Claude Code o Codex naveguen dependencias, call chains, clusters y execution flows sin mandar el código a un backend — encaja con el stack local-first y elimina el coste de subir código propietario a un SaaS. Caveat editorial crítico que conviene no pasar por alto: la licencia es PolyForm Noncommercial 1.0.0, no OSS para uso comercial. Para experimentar, aprender y para uso personal va perfecto; para meterlo en un producto, en un SaaS que lo ofrezca a clientes, o en un pipeline de producción de una empresa, hay que pasar por el tier enterprise de Akon Labs. Señal adicional de visibilidad: el README incluye un disclaimer explícito contra tokens falsos del proyecto en Pump.fun, algo que solo pasa cuando un repo es ya lo bastante conocido para atraer estafadores.",
+        "madurez_senales": "45.601 ★ · 5.048 forks · TypeScript · creado 2025-08-02 · último push 2026-08-19 · **PolyForm Noncommercial 1.0.0** (verificado en README) · topics: ai-agents, ast, claude-code, code-analysis, codex, cursor, gemini-cli, graphrag, knowledge-graph, mcp · homepage gitnexus.vercel.app · 326 open issues · npm `gitnexus` · Discord oficial · OpenSSF Scorecard · empresa Akon Labs (akonlabs.com).",
+        "accion_sugerida": "**vigilar** (probarlo en un repo personal para entender qué cubre, pero **NO como build-dependency** por la licencia PolyForm Noncommercial — si necesitas una alternativa OSS para producción, mira `Graphify-Labs/graphify` con Apache-2.0).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:abhigyanpatwari/GitNexus",
+          "rel": "implements",
+          "dst": "concept:client-side-code-knowledge-graph",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:akonlabs",
+          "rel": "publishes",
+          "dst": "repo:abhigyanpatwari/GitNexus",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "abhigyanpatwari-gitnexus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "DrewThomasson/ebook2audiobook",
+      "url": "https://github.com/DrewThomasson/ebook2audiobook",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**conversor de ebook a audiobook con chapters y metadata** usando motores TTS avanzados (XTTS como motor principal) + **voice cloning** + soporte para **1158+ idiomas**. Formatos de entrada: epub, mobi, pdf, txt, html. Salida: WAV/MP3/M4B con metadata ID3. Interfaces: Web GUI (Gradio), CLI, Docker, Hugging Face Space, Google Colab, Kaggle notebook. CPU y GPU (CUDA/Apple Silicon).",
+        "por_que_importa": "Ebook2Audiobook es la pieza OSS canónica para convertir ebooks a audiolibros con capítulos y metadata, y la forma más barata de entrar al mundo del TTS multilingüe: XTTS como motor principal, voice cloning y soporte declarado para 1158+ idiomas. Acepta epub, mobi, pdf, txt y html como entrada y entrega WAV/MP3/M4B con metadata ID3, con Gradio Web GUI, CLI, Docker, Hugging Face Space, Google Colab y Kaggle notebook como interfaces, además de aceleración CUDA y Apple Silicon. Para un newsletter bilingüe, un pódcast técnico automatizado o un proyecto editorial pequeño es directamente usable: Apache-2.0, auto-contenible en Docker y sin coste por minuto de audio. El caveat ético/legal está en el propio README y conviene respetarlo: la herramienta está pensada para ebooks sin DRM adquiridos legítimamente, no para saltarse protecciones de audiolibros comerciales; ignorarlo te deja en una zona gris que no compensa frente al coste prácticamente nulo del TTS para contenido propio.",
+        "madurez_senales": "19.960 ★ · 1.710 forks · Python · creado 2024-01-22 · último push 2026-08-09 · Apache-2.0 · topics: audiobook, audiobooks, chinese, colab-notebook, docker, english, epub, gradio, kaggle, linux, mac, multilingual, tts, voice-cloning, windows, xtts · homepage ninguna · 9 open issues · Docker pulls visibles · Hugging Face Space oficial · Discord oficial · Ko-Fi del autor.",
+        "accion_sugerida": "**probar** (Docker pull, instalar, probar con un epub corto en español + un epub corto en otro idioma para validar el voice cloning).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:DrewThomasson/ebook2audiobook",
+          "rel": "implements",
+          "dst": "concept:polyglot-tts-voice-cloning",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "drewthomasson-ebook2audiobook",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "ruvnet/RuView",
+      "url": "https://github.com/ruvnet/RuView",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**Re-trending después de 41 días** con un dato nuevo: 91k★ en 14 meses. \"Convierte señales WiFi en spatial intelligence, monitor de signos vitales y presence detection — sin un solo píxel de vídeo\". ESP32 + densepose + home-assistant.",
+        "por_que_importa": "",
+        "madurez_senales": "91.024 ★ · 12.093 forks · Rust · MIT · push 2026-08-20",
+        "accion_sugerida": "vigilar — (categoría \"WiFi as sensor\" tiene ángulo único; el salto de 78k★ a 91k★ en 6 semanas indica tracción sostenida)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruview",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "eneskirca/nodeterm",
+      "url": "https://github.com/eneskirca/nodeterm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**Terminal manager basado en nodos**: terminales tmux reales como nodos draggables en un canvas infinito pan/zoom; cada proyecto es un Trello-board de sesiones Claude Code vivas. macOS+Linux, Electron, optimizado para ADHD/scattered workflows.",
+        "por_que_importa": "",
+        "madurez_senales": "967 ★ · 109 forks · TypeScript · **BUSL-1.1** · push 2026-08-20",
+        "accion_sugerida": "vigilar — (ángulo único de UX para multi-agent dev, pero **BUSL-1.1 no es OSS para producción comercial** — experimentar está bien)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "eneskirca-nodeterm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "PostHog/posthog",
+      "url": "https://github.com/PostHog/posthog",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**Re-trending con pivote editorial**: la descripción oficial ahora posiciona PostHog como **\"the leading platform for building self-driving products\"** con **AI observability**, session replay, flags, experiments, error tracking, logs, **todo controlable desde Slack, web, desktop o el MCP**. Licencia NOASSERTION — verificar LICENSE real antes de build-dependency.",
+        "por_que_importa": "",
+        "madurez_senales": "37.797 ★ · 3.207 forks · Python · **NOASSERTION** · push 2026-08-20",
+        "accion_sugerida": "vigilar — (PostHog pivota a \"AI observability agentic\"; el ángulo MCP es nuevo y relevante para el stack de agente)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "posthog-posthog",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Tencent/teamai-cli",
+      "url": "https://github.com/Tencent/teamai-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**\"Team harness para AI agents\"** de Tencent OSS. Pequeño pero coherente con el push de Tencent en AI infra (DeepSeek, Hunyuan, etc.).",
+        "por_que_importa": "",
+        "madurez_senales": "328 ★ · 30 forks · TypeScript · NOASSERTION · push 2026-08-20",
+        "accion_sugerida": "vigilar — (categoría \"team harness\" competidor de Multica pero del lado chino; no construir encima hasta verificar LICENSE)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-teamai-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "t8y2/dbx",
+      "url": "https://github.com/t8y2/dbx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**Cliente de base de datos cross-platform de 20 MB** con soporte para **90+ DBs** (MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, Dameng, ClickHouse, OceanBase, Doris…), CLI + GUI (Tauri+Vue) + Docker + **MCP Server** + AI assistant integrado.",
+        "por_que_importa": "",
+        "madurez_senales": "15.976 ★ · 1.575 forks · Rust · Apache-2.0 · push 2026-08-20",
+        "accion_sugerida": "probar — (categoría \"DB client universal con MCP\" es nueva y útil; MCP para queries desde coding agents es un nicho en expansión)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "t8y2-dbx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "zizmorcore/zizmor",
+      "url": "https://github.com/zizmorcore/zizmor",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**Static analysis para GitHub Actions**: detecta security smells, excessive permissions, unpinned actions, script injection, etc. **Adopción real visible**: `CopilotKit/openbot` (hallazgo de hoy) usa zizmor en su CI badge.",
+        "por_que_importa": "",
+        "madurez_senales": "6.352 ★ · 239 forks · Rust · MIT · push 2026-08-18",
+        "accion_sugerida": "probar — (categoría \"security linter para CI YAML\"; la adopción en proyectos OSS serios es señal de madurez)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zizmorcore-zizmor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

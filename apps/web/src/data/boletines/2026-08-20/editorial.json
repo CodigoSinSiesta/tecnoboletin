@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-08-20",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy tiene un hilo conductor claro: la capa de runtime de los coding agents se está partiendo en dos planos complementarios, el del navegador que ejecuta (chrome-devtools-mcp) y el del contenedor que gobierna (openbot), mientras al lado aparecen piezas de 'plomería operativa' que hasta ahora eran fricción invisible (portless para nombres de servicio, maka para trazabilidad canónica, GitNexus para grafo de código en cliente) más un experimento lateral (ebook2audiobook) que conviene anotar pero no inflar. La lectura editorial no es 'qué repo ganó más estrellas hoy', sino 'qué hueco del stack de un agente en producción deja cada uno de estos al descubierto'. El emparejamiento browser ↔ runtime governor es lo que sostiene el día: DevTools expone la realidad del navegador a un agente y openbot decide qué puede hacer ese agente en tu infra; los otros cuatro hallazgos orbitan alrededor como soporte.",
+  "convergencia_stack_css": "Hay convergencia directa con el stack local-first de Código Sin Siesta en dos hallazgos: `apache/maka` aterriza el patrón 'agente con Runtime Event Log append-only y separación context/history' como incubating Apache, lo que se alinea con la línea editorial de trazabilidad canónica (PGLite/Postgres + pgvector) y con el `memvid/memvid` que cubrimos el 19-08 desde el lado de single-file memory; ambos son 'memoria del agente' desde dos ángulos distintos. `abhigyanpatwari/GitNexus` entra en la categoría code-as-knowledge-graph donde ya tenemos `Graphify-Labs/graphify` mapeado, con la diferencia operativa de que GitNexus indexa en cliente vía WebAssembly y sirve el grafo por MCP — encaja con Ollama + DeepSeek local sin obligar a subir código a un SaaS. `vercel-labs/portless` conecta con la línea de 'infra dev-friendly' que ya rodeaba a `vercel-labs/fx` del 19-08: fx decide qué agente corre, portless decide cómo se llaman sus servicios. `chrome-devtools-mcp` y `openbot` tocan el stack tangencialmente (browser-as-tool y governance-on-protocol son líneas editoriales adyacentes, no centrales) y `ebook2audiobook` queda como pieza lateral de productividad.",
+  "cruzado_grafo": "El único hallazgo con `primera_mencion` real en los datos de hoy es `vercel-labs/portless`: la arista `company:vercel --publishes--> repo:vercel-labs/portless` aparece con `primera_mencion 2026-08-19`, lo que confirma continuidad editorial con el `vercel-labs/fx` que ya entró al grafo el 19-08 desde el lado de coding agent Unix-like — hoy sumamos su compañero de infra. Los otros cinco hallazgos no traen `primera_mencion`, así que no les asigno fecha previa: `chrome-devtools-mcp` introduce los nodos `repo:ChromeDevTools/chrome-devtools-mcp` y `concept:browser-mcp-server` por primera vez hoy; `CopilotKit/openbot` introduce `concept:ag-ui-runtime`, una forma nueva de nombrar 'governance on protocol not framework' que no existía en el grafo; `apache/maka` introduce `concept:local-first-agent-runtime`, complementario al lado single-file memory que ya representó memvid; `abhigyanpatwari/GitNexus` introduce `concept:client-side-code-knowledge-graph`, vecino del nodo Graphify ya mapeado; `DrewThomasson/ebook2audiobook` introduce `concept:polyglot-tts-voice-cloning`, primer nodo de TTS editorial en el grafo. La arista nueva más fuerte del día es `concept:ag-ui-runtime --enables--> concept:runtime-governance`, porque cambia el debate 'qué framework de agentes usar' por 'qué política le paso al gateway'.",
+  "tendencias_5_boletines": "El contexto de continuidad recibido cubre solo 2 días previos (19-08 y 18-08), no los 5 que pide el nombre del campo; lo digo explícitamente en lugar de inventar. Sobre esos 2 días, el boletín de hoy cierra una secuencia clara: el 18-08 instaló la pregunta 'qué pieza falta debajo del modelo' (harness de seguridad oficial de Anthropic, Agentic Workflows de GitHub institucionalizándose) y el 19-08 dibujó sin quererlo una pila de agente en producción (memvid memory, bifrost gateway, fx agente, pgrust plano de datos crítico, orquestación multi-agente como pieza final). El 20-08 añade la mitad que esa pila no tenía: el navegador real que el agente opera (`chrome-devtools-mcp`), el gateway que decide qué le está permitido hacer sobre tus herramientas (`CopilotKit/openbot`), la dirección canónica local-first para el runtime log (`apache/maka`), el pegamento para que varios servicios en paralelo sean identificables por humanos y agentes (`portless`), y el grafo de código en navegador (`GitNexus`) que encaja con la línea Graphify/mapas-de-proyecto del stack. El 18-08 hablaba de 'institucionalización dentro de plataformas conocidas'; hoy el matiz es que la institucionalización ya está bajando de los frameworks al protocolo (AG-UI) y al plano del navegador (DevTools MCP).",
+  "alertas": [
+    "chrome-devtools-mcp envía telemetría a Google por defecto (tool invocations, latencia, info del entorno); antes de meterlo en pipeline de producción hay que pasarle `--no-usage-statistics` — fácil pasar el flag por alto.",
+    "abhigyanpatwari/GitNexus usa licencia PolyForm Noncommercial 1.0.0, NO OSS comercial: para experimentar y usar personal va bien, para envolverlo en un SaaS o producto no.",
+    "CopilotKit/openbot tiene 3 días de vida y se etiqueta Alpha explícito; el framing 'governance rides the protocol' es editorialmente interesante, pero el track record de producción no existe todavía — observamos la dirección, no la recomendamos.",
+    "apache/maka es Apache Incubating: la promesa Apache-2.0 está clara, pero el ciclo de incubación aún no garantiza 'Top-Level Project' y puede haber reorganizaciones del repo en los próximos meses.",
+    "DrewThomasson/ebook2audiobook incluye voice cloning y el propio README marca el caveat ético/legal sobre ebooks sin DRM adquiridos legítimamente; la herramienta es potente y conviene leer el README antes de usarla más allá de prueba personal."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "Esperar al menos un ciclo de versiones para confirmar que la política de telemetría por defecto se mantiene o se mueve a opt-in, y revisar si el soporte multi-navegador (no solo Chrome/Chrome for Testing) aparece en roadmap antes de adoptarlo en pipelines de revisión con agentes."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "El framing 'governance rides the protocol, not the framework' merece mención editorial: encaja con la línea local-first y abre un ángulo de pieza-de-stack que en CSS aún no hemos cubierto."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Incubating Apache con Runtime Event Log canónico y separación context/history es el complemento exacto de memvid del 19-08; vale una exploración a fondo del formato del log y del estado del proyecto dentro de la incubator para escribir sobre el patrón 'agent memory durable'."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Es el cierre natural al hilo 'vercel-labs' del 19-08 (fx) y entra directo en la línea de productividad dev. Buen candidato para un bullet práctico en el boletín o para una idea de contenido breve sobre 'dev URL naming para stacks con agentes'."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "45k★ con un solo maintainer y licencia PolyForm son dos señales a no perder de vista: seguir si el maintainer sube y si aparece una edición 'commercial-friendly' o un fork que cierre el hueco para uso comercial."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
