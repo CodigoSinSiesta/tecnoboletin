@@ -390,20 +390,121 @@ export function nodeType(id: string): string {
 /**
  * Titular + entradilla del día.
  *
- * El enriquecedor no emite todavía un campo `titular`, así que se toma la
- * primera frase de `editorial.posicionamiento` (que es exactamente la tesis
- * del boletín) y el resto queda como entradilla. Si algún día la pipeline
- * añade `editorial.titular`, este helper lo usa sin tocar la plantilla.
+ * El enriquecedor no emite todavía un campo `titular`, así que se extrae
+ * la primera frase con valor de `editorial.posicionamiento`. La mecánica:
+ *
+ *  1. Descarta oraciones iniciales que son muletilla ("El boletín de hoy
+ *     X", "Hoy...", "Este boletín...") y escoge la primera con tesis.
+ *  2. Si esa oración útil sigue siendo >140 chars, se acorta a las
+ *     primeras 12 palabras como titular-resumen, y el resto de la
+ *     oración + el resto del posicionamiento quedan como entradilla.
+ *  3. Si la pipeline algún día añade `editorial.titular`, se usa tal cual.
+ *
+ * El objetivo es llegar a titulares que caben en 1 línea de h1 sin
+ * recortar contenido: la frase completa puede seguir leyéndose en la
+ * entradilla expandible.
  */
+
+const SOFT_MAX_CHARS = 140;
+const SOFT_MAX_WORDS = 12;
+
+// Muletillas con las que los posicionamientos arrancan a menudo. Se
+// descartan cuando la primera oración del `posicionamiento` empieza
+// por alguna de ellas (case-insensitive, tras trim).
+const FILLER_PREFIXES = [
+  /^el[ \u00A0]+boletín[ \u00A0]+(?:de[ \u00A0]+hoy|del[ \u00A0]+\d{4}-\d{2}-\d{2}|[a-záéíóúñ0-9 ]+de[ \u00A0]+\d{4})\b/i,
+  /^este[ \u00A0]+boletín\b/i,
+  /^hoy[ \u00A0]+,\s*el[ \u00A0]+boletín\b/i,
+  /^hoy[ \u00A0]+,\s+el\b/i,
+  /^hoy[ \u00A0]+,\s+/i,
+  /^hoy\b/i,
+];
+
+/** Devuelve true si la oración es puro relleno (no tesis). */
+function isFillerSentence(s: string): boolean {
+  const t = s.trim();
+  if (t.length < 8) return true;
+  return FILLER_PREFIXES.some((re) => re.test(t));
+}
+
+/**
+ * Parte un texto en oraciones.
+ *
+ * Solo partimos en `.!?` cuando van seguidos de espacio + mayúscula o
+ * dígito (frontera de oración natural). Esto evita romper acrónimos
+ * tipo "BAML", "DSL", "v1.1", "oss/v1" o números con punto decimal.
+ */
+function splitSentences(text: string): string[] {
+  const out: string[] = [];
+  // Split por delimitadores seguidos de espacio + mayúscula/dígito.
+  const re = /([.!?])(\s+)(?=[A-ZÁÉÍÓÚÑ0-9])/g;
+  const parts = text.split(re);
+  // parts se intercala: [chunk, delim, ws, chunk, delim, ws, ...]
+  let buf = '';
+  for (let i = 0; i < parts.length; i++) {
+    buf += parts[i];
+    if (i + 2 < parts.length && /^[.!?]$/.test(parts[i + 1])) {
+      out.push(buf.trim());
+      buf = '';
+      i += 2; // saltar delim + ws
+    }
+  }
+  if (buf.trim()) out.push(buf.trim());
+  return out.filter((s) => s.length > 0);
+}
+
+/** Quita la primera oración de un texto y devuelve el resto. Si solo había
+ * una oración, devuelve el texto vacío. */
+function dropFirstSentence(text: string, first: string): string {
+  const idx = text.indexOf(first);
+  if (idx < 0) return text;
+  let cut = idx + first.length;
+  while (cut < text.length && /[\s.;:!?]/.test(text[cut])) cut++;
+  return text.slice(cut).trim();
+}
+
+/** Acorta una oración a las primeras N palabras + '…' si fue recortada. */
+function clipWords(s: string, maxWords: number): string {
+  const words = s.trim().split(/\s+/);
+  if (words.length <= maxWords) return s.trim();
+  return words.slice(0, maxWords).join(' ') + '…';
+}
+
 export function titularYEntradilla(editorial: Editorial | null): { titular: string | null; entradilla: string | null } {
   const custom = (editorial as { titular?: string } | null)?.titular;
   const pos = (editorial?.posicionamiento ?? '').trim();
   if (custom) return { titular: custom, entradilla: pos || null };
   if (!pos) return { titular: null, entradilla: null };
 
-  const m = pos.match(/^([\s\S]*?[.!?])\s+([\s\S]+)$/);
-  if (!m) return { titular: pos, entradilla: null };
-  return { titular: m[1].trim(), entradilla: m[2].trim() };
+  const sentences = splitSentences(pos);
+  if (sentences.length === 0) return { titular: null, entradilla: null };
+
+  // Descarta oraciones de relleno iniciales hasta dar con la primera útil.
+  let pickIdx = 0;
+  while (pickIdx < sentences.length && isFillerSentence(sentences[pickIdx])) {
+    pickIdx++;
+  }
+
+  // Si tras descartar relleno no queda nada, vuelve al texto completo.
+  if (pickIdx >= sentences.length) {
+    return { titular: null, entradilla: pos };
+  }
+
+  const fullTesis = sentences[pickIdx];
+  // Soft clip: si la oración útil sigue siendo enorme, córtala a N palabras.
+  const titular = (fullTesis.length > SOFT_MAX_CHARS)
+    ? clipWords(fullTesis, SOFT_MAX_WORDS)
+    : fullTesis;
+
+  // Entradilla: posicionamiento SIN la primera oración original (no la
+  // recortada), para que si el lector quiere leer la frase completa la
+  // encuentre desplegada.
+  const entradilla = dropFirstSentence(pos, sentences[0]).trim();
+
+  // Si la oración recortada dejó texto idéntico al titular, no repitas.
+  const entradillaFinal = entradilla && !entradilla.startsWith(titular) ? entradilla : null;
+
+  return { titular, entradilla: entradillaFinal };
 }
 
 /** Fecha larga en español: "2026-08-13" -> "jueves 13 ago 2026". */

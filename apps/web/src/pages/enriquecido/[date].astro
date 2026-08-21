@@ -70,11 +70,11 @@ const bloquesEditorial = [
 
       {titular ? (
         <h1
-          class="font-display font-extrabold text-[clamp(1.9rem,3.4vw,2.625rem)] leading-[1.05] tracking-[-0.01em] text-text max-w-[820px] mb-3.5"
+          class="font-display font-extrabold text-[clamp(1.5rem,2.4vw,2.1rem)] leading-[1.1] tracking-[-0.01em] text-text max-w-[820px] mb-3.5"
           set:html={mdInline(titular)}
         />
       ) : (
-        <h1 class="font-display font-extrabold text-[clamp(1.9rem,3.4vw,2.625rem)] leading-[1.05] text-text mb-3.5">
+        <h1 class="font-display font-extrabold text-[clamp(1.5rem,2.4vw,2.1rem)] leading-[1.1] text-text mb-3.5">
           Boletín del {fmtDateLong(date!)}
         </h1>
       )}
@@ -152,7 +152,7 @@ const bloquesEditorial = [
                   {pickIdx.has(it.idx) && <span class="badge badge--pick ml-auto">pick editorial</span>}
                 </div>
 
-                <h3 class="font-mono text-[1.188rem] font-semibold text-text mb-1">
+                <h3 class="font-mono text-[1.063rem] font-semibold text-text mb-1">
                   {slug ? (
                     <a href={`${base}repo/${slug}/`} class="text-text hover:text-accent-soft">{it.titulo}</a>
                   ) : (
