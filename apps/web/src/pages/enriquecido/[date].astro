@@ -9,7 +9,6 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GraphChips from '../../components/GraphChips.astro';
-import MiniMap from '../../components/MiniMap.astro';
 import StateBadge from '../../components/StateBadge.astro';
 import { mdBlock, mdInline } from '../../lib/markdown';
 import {
@@ -30,6 +29,9 @@ const boletin = await loadBoletin(date!);
 const { enriched, editorial, edges, items, hallazgos, radar, pickIdx } = boletin;
 
 const { titular, entradilla } = titularYEntradilla(editorial);
+// Se conserva solo por la métrica «conceptos nuevos» de la cabecera: el
+// mapa visual se retiró. Las dimensiones ya no pintan nada, pero
+// buildDayMap las exige en su firma.
 const dayMap = buildDayMap(items, { width: 314, height: 300, max: 6 });
 
 const dates = await listDates();
@@ -111,7 +113,7 @@ const bloquesEditorial = [
       </div>
     </header>
 
-    <!-- ── Cuerpo: hallazgos + mapa del día ── -->
+    <!-- ── Cuerpo: hallazgos + columna de alertas ── -->
     <div class="grid lg:grid-cols-[1fr_316px] gap-6 px-6 md:px-8 py-7 items-start">
       <div class="flex flex-col gap-5 min-w-0" id="findings">
         <div class="section-rule mb-0" style="--rule-color: var(--color-accent);">
@@ -273,32 +275,8 @@ const bloquesEditorial = [
         )}
       </div>
 
-      <!-- ── Columna derecha: el mapa del día, siempre visible ── -->
+      <!-- ── Columna derecha: alertas y acciones ── -->
       <aside class="flex flex-col gap-3.5 lg:sticky lg:top-[68px]">
-        {dayMap && (
-          <div class="panel">
-            <div class="panel__head">
-              <span class="panel__title">Mapa del día</span>
-              <span class="font-mono text-[0.625rem] text-muted-dim">
-                {dayMap.nodeTotal} nodos · {dayMap.relTotal} rel.
-              </span>
-            </div>
-            <MiniMap
-              map={dayMap.map}
-              height={300}
-              class="bg-[radial-gradient(80%_80%_at_50%_45%,color-mix(in_srgb,var(--color-accent-deep)_14%,transparent),transparent_70%)]"
-            />
-            <div class="panel__foot">
-              <div class="flex gap-2.5 font-mono text-[0.594rem] text-muted-dim">
-                <span class="flex items-center gap-1"><span class="dot w-1.5 h-1.5 bg-accent-soft"></span>repo</span>
-                <span class="flex items-center gap-1"><span class="dot w-1.5 h-1.5 bg-accent-dim"></span>concepto</span>
-                <span class="flex items-center gap-1"><span class="dot w-1.5 h-1.5 bg-border-dashed"></span>previo</span>
-              </div>
-              <a href={`${base}grafo/`} class="font-mono text-[0.656rem] text-accent-soft">Abrir grafo →</a>
-            </div>
-          </div>
-        )}
-
         {alertas.length > 0 && (
           <div class="callout" style="--rail: var(--color-alert);">
             <div class="callout__title">Alertas honestas · {alertas.length}</div>

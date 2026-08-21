@@ -139,9 +139,14 @@ En el runtime de Contabo (`ibid`) a fecha 2026-08-13:
 - `enriched.json` -- items enriquecidos v2 (ver
   `references/item-schema.json`). Reemplaza en el sitio al `enriched.json`
   v1 (misma ruta, nuevo shape).
-- `editorial.json` -- sintesis editorial del dia (posicionamiento,
+- `editorial.json` -- sintesis editorial del dia (titular, posicionamiento,
   convergencia con el stack, cruce con el grafo, tendencias, alertas,
-  acciones concretas). Ya funcionaba bien en v1 -- se conserva el
+  acciones concretas). El `titular` (35-85 chars, una sola idea, sin punto
+  final, sin muletilla y sin enumerar) lo escribe el LLM y lo valida
+  `_validate_titular`; la web lo usa tal cual. Antes de que existiera este
+  campo la web lo fabricaba a partir de la primera frase del
+  `posicionamiento`, que es un parrafo, y salian titulares de 300+ chars o
+  cortados a media frase. Ya funcionaba bien en v1 -- se conserva el
   contenido, solo se ajusta el schema (`perfiles_involucrados` ->
   `lentes_aplicadas`).
 - `edges.jsonl` -- edges derivados de `relacion_grafo` de cada item, mas
