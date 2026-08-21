@@ -6,43 +6,11 @@
     "claridad_accesibilidad",
     "relevancia_editorial"
   ],
-  "posicionamiento": "El boletín del 2026-07-10 marca el día en que la conversación del stack local-first deja de ser '¿podemos correr cosas decentes?' y pasa a ser '¿podemos correr un frontier OSS serio en hardware modesto, sin GPU, sin Python?'. El hilo conductor no es una sola tesis: son tres saltos en paralelo sobre la misma base. Primero, inferencia disk-streamed en un único archivo de C (colibri, GLM-5.2 a 25 GB de RAM) cierra la pieza que faltaba para correr MoE frontier en local. Segundo, las herramientas agentic maduran como categoría con cableado nativo al IDE y al host (oh-my-pi con LSP+DAP integrados; DesktopCommanderMCP con file+shell en un solo binario), dejando de necesitar side-effects externos. Tercero, la infraestructura 'menos visible' -- auto-mejora de skills (SkillOpt-Sleep), memoria agentic de dos capas (TencentDB-Agent-Memory), WiFi sensing como ciudadano de primera (RuView) -- completa la columna vertebral que el resto de la semana venía insinuando. Es un día de consolidación técnica, no de novedades vistosas.",
-  "convergencia_stack_css": "La convergencia con el stack local-first del usuario es hoy directa y triple. colibri es la pieza que faltaba entre jamesob/local-llm (visto el 2026-07-04) y Ollama+DeepSeek que ya corre el perfil default: no reemplaza a ninguno, los complementa con un motor de inferencia C de un solo archivo capaz de mover un MoE frontier desde SSD en hardware modesto. oh-my-pi mapea al flujo existente de revisar repos ajenos con LSP+DAP, donde hoy se recurre a chrome-devtools-mcp (visto el 2026-07-03) y codebase-memory-mcp (visto el 2026-07-04); DesktopCommanderMCP propone unificar file ops y shell en un solo MCP. TencentDB-Agent-Memory menciona Hermes explícitamente vía badges oficiales, entrando al eje de memoria agentic donde ya estaban openhuman y el paper 'Remember When It Matters'. RuView cierra el flanco de presencia sin cámara en el stack de smart-home donde ya están la skill openhue y esp32-csi.",
-  "cruzado_grafo": "Tres nodos del grafo se refuerzan con menciones explícitas hoy. jamesob/local-llm (primera mención 2026-07-04) se refuerza como 'setup script parcial' al verse complementado por colibri, que implementa disk-streamed-inference y speculative-decoding por primera vez. openai/codex aparece como competidor directo de oh-my-pi en la categoría ide-aware-coding-agent (nodo nuevo). ChromeDevTools/chrome-devtools-mcp (primera mención 2026-07-03) y DeusData/codebase-memory-mcp (primera mención 2026-07-04) se refuerzan como piezas precedentes frente a DesktopCommanderMCP, que ya implementa filesystem-mcp-server como nodo nuevo. En el eje skills, obra/superpowers (primera mención 2026-07-03) y agent-skills-spec (primera mención 2026-07-03) se refuerzan con SkillOpt que implementa nightly-self-evolving-skills, primer cierre del quinto nivel de la secuencia. usestrix/strix (primera mención 2026-07-05) entra como usado por SkillOpt. En el eje smart-home, openhue (primera mención 2026-07-06) y esp32-csi (primera mención 2026-07-06) se refuerzan con RuView que implementa wifi-densepose. agentic-decision-systems (primera mención 2026-07-05) se refuerza como relevante para el stream de eventos de RuView. TencentCloud/CubeSandbox (primera mención 2026-07-09) se complementa con TencentDB-Agent-Memory, que implementa agent-long-term-memory como nodo nuevo y declara soporte oficial a NousResearch/hermes-agent (primera mención 2026-07-08). rowboatlabs/rowboat (primera mención 2026-07-08) se refuerza ",
-  "tendencias_5_boletines": "Mirando los días previos recibidos (2026-07-09 y 2026-07-07) sin días intermedios en el contexto, la tendencia de los últimos cinco boletines se lee así: el ecosistema está cerrando capas de un stack local-first completo alrededor de agentes. El 2026-07-07 metió los cimientos de 'agente que produce y opera' (OfficeCLI, page-agent, plan-as-product). El 2026-07-09 consolidó con pesos pesados cubriendo design/charts y memoria agentic (Microsoft+Google, plus tokscale, openhuman, CubeSandbox). El 2026-07-10 baja a la infraestructura dura: motor de inferencia C puro para MoE frontier en SSD, IDE cableado al agente, MCP unificado de filesystem, auto-evolución de skills, WiFi sensing ciudadano de primera. La curva no es de novedades aisladas sino de relleno sistemático de huecos del stack: cada día cierra una pieza que el día anterior había dejado apuntada. La síntesis editorial de los próximos boletines probablemente se moverá de 'cerrar huecos' a 'optimizar y comparar piezas ya en sitio'.",
-  "alertas": [
-    "colibri presume GLM-5.2 744B MoE corriendo a 25 GB de RAM desde SSD; el README documenta tradeoffs honestos pero la validación TF 32/32 es greedy en 20 tokens -- insuficiente para claims de 'inferencia frontier seria' sin benchmarks largos. Verificar antes de cualquier migración de stack.",
-    "TencentDB-Agent-Memory usa licencia NOASSERTION, lo que bloquea uso comercial hasta abrir el LICENSE y confirmar términos. Además presume badges OpenClaw y Hermes Gateway con link a la documentación de Hermes Agent; confirmar contra el repo oficial de Hermes que el soporte es real y no un malentendido de los maintainers.",
-    "oh-my-pi presume 40+ providers y 32 tools con integración cableada LSP+DAP, pero es un fork comunitario reciente; auditar la cobertura real de providers y la estabilidad del runtime antes de sustituir a Claude Code o Codex en flujos de revisión de repos.",
-    "inky/open-knowledge arrastra GPL-3.0, lo que descarta derivados comerciales y puede chocar con el flujo de notas en Obsidian si alguna vez se quisiera redistribuir; además no hay release formal todavía.",
-    "SkillOpt-Sleep encadena auto-mejora offline de skills validadas con nightly runs; el riesgo real es que un ciclo de mejora desatendido introduzca drift de comportamiento en skills usadas por flujos productivos -- exigir logs auditables antes de activar en modo automático."
-  ],
-  "acciones_concretas": [
-    {
-      "tipo": "explora",
-      "item_idx": 0,
-      "razon": "colibri es la pieza que faltaba en el stack local-first del usuario. Vale clonar el repo, leer el `c/glm.c` y auditar si los tradeoffs declarados (RAM cap auto, MTP head int8 obligatorio, streaming SSD con LRU) aguantan un benchmark propio antes de sustituir a Ollama+DeepSeek como motor de inferencia de frontera."
-    },
-    {
-      "tipo": "explora",
-      "item_idx": 5,
-      "razon": "DesktopCommanderMCP unifica file ops y shell en un solo binario MIT, complementando chrome-devtools-mcp y codebase-memory-mcp. Auditar si este MCP cubre el círculo de 'editar código + correr tests' sin necesidad de activar oh-my-pi como agente IDE-aware separado."
-    },
-    {
-      "tipo": "vigilar",
-      "item_idx": 3,
-      "razon": "TencentDB-Agent-Memory declara soporte oficial a Hermes vía badges. Antes de cualquier adopción: abrir el LICENSE para confirmar términos bajo NOASSERTION, y verificar contra el repo oficial de Hermes Agent que el badge no sea un malentendido del maintainer."
-    },
-    {
-      "tipo": "comparte-hallazgo-con-CSS",
-      "item_idx": 2,
-      "razon": "SkillOpt-Sleep cierra el quinto nivel de la secuencia histórica de 'skills' (spec, marketplace, catálogo, metodología, auto-mejora). Vale un ensayo o nota técnica que ordene esa secuencia en piezas editoriales de CSS, porque ya hay cinco nodos relevantes cubiertos en cinco boletines."
-    },
-    {
-      "tipo": "vigilar",
-      "item_idx": 4,
-      "razon": "RuView entra como presencia sin cámara para el stack smart-home de CSS, donde ya están openhue y esp32-csi. Seguirlo sin adoptarlo aún: queda pendiente validar latencia de eventos CSI, robustez del bridge oficial y si las anomalías de inactividad que declara son clínicamente útiles o solo marketing."
-    }
-  ],
+  "posicionamiento": "El stack agentic sale del software y absorbe capas físicas, sensoriales y de razonamiento que vivían en silos. Hoy cuatro hallazgos convergen en el mismo eje: ejecutar (colibrí, oh-my-pi), percibir (4D-Boids), razonar (Neta) y desplegar (RAG-as-a-Service). Madura el 'todo-en-uno' para construir agentes de producción, no solo prototipos.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
   "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
 }
