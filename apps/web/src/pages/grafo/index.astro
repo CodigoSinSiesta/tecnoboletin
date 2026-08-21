@@ -100,6 +100,13 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
       <!-- ── Lienzo ── -->
       <div class="relative graph-glow overflow-hidden min-h-[420px]" id="graph-shell">
         <div id="graph-loading" class="absolute inset-0 flex items-center justify-center mono-meta">cargando grafo…</div>
+        <div
+          id="graph-foco-aviso"
+          class="hidden absolute left-1/2 -translate-x-1/2 top-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-bg-raised/92 border border-border-strong backdrop-blur mono-meta"
+        >
+          <span class="csi-dot" aria-hidden="true"></span>
+          <span>situando el nodo…</span>
+        </div>
         <div id="graph-container" class="w-full h-full"></div>
         <div class="absolute left-4 bottom-4 flex gap-1.5">
           <button type="button" id="graph-zoom-out" class="font-mono text-[0.656rem] px-2.5 py-1.5 rounded-lg bg-bg-raised/90 border border-border-strong text-muted hover:text-text">−</button>
@@ -154,6 +161,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const panelBody = document.getElementById('graph-panel-body')!;
   const panelEmpty = document.getElementById('graph-panel-empty')!;
   const search = document.getElementById('graph-search') as HTMLInputElement;
+  const avisoFoco = document.getElementById('graph-foco-aviso');
   const base = panel.dataset.base ?? '/';
   const desde = panel.dataset.desde ?? '';
   const hasta = panel.dataset.hasta ?? '';
@@ -200,6 +208,8 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   // Nodo seleccionado: se pinta con un anillo ámbar para saber en todo
   // momento cuál es el que está abierto en el inspector.
   let selectedId: string | null = null;
+  // Nodo que espera a que la simulación se asiente para ser enfocado.
+  let focoPendiente: GNode | null = null;
   let byId = new Map<string, GNode>();
   let allNodes: GNode[] = [];
   let neighborIndex = new Map<string, Neighbor[]>();
@@ -375,13 +385,30 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
     return activeTypes.has(n.type) ? colorForType(n.type) : 'rgba(148,163,184,0.08)';
   }
 
+  /**
+   * Lleva la vista a un nodo.
+   *
+   * Encuadra el nodo Y SUS RELACIONES DIRECTAS en vez de acercarse a una
+   * distancia fija: con distancia fija el resultado dependía de la escala
+   * del grafo y acababa en primer plano, con los nodos llenando la
+   * pantalla. Llegando desde un artículo lo que se quiere ver es el nodo
+   * en su contexto.
+   */
   function focusNode(n: GNode) {
     showPanel(n);
     if (!Graph) return;
-    const distance = 120;
+
+    const vecindario = new Set<string>([n.id, ...neighbors(n.id).map((r) => r.otherId)]);
+    if (vecindario.size > 1) {
+      Graph.zoomToFit(900, 70, (nd: GNode) => vecindario.has(nd.id));
+      return;
+    }
+
+    // Nodo aislado: no hay caja que encuadrar (zoomToFit sobre un punto
+    // se dispara), así que se coloca la cámara a una distancia fija.
     const nx = n.x ?? 0, ny = n.y ?? 0, nz = n.z ?? 0;
-    const ratio = 1 + distance / Math.hypot(nx, ny, nz, 1);
-    Graph.cameraPosition({ x: nx * ratio, y: ny * ratio, z: nz * ratio }, { x: nx, y: ny, z: nz }, 1000);
+    const ratio = 1 + 260 / Math.hypot(nx, ny, nz, 1);
+    Graph.cameraPosition({ x: nx * ratio, y: ny * ratio, z: nz * ratio }, { x: nx, y: ny, z: nz }, 900);
   }
 
   async function init() {
@@ -429,7 +456,13 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
       .linkVisibility((l: GLink) => !filtrables.has(l.rel) || activeRels.has(l.rel))
       .linkDirectionalParticles(0)
       .onNodeClick((n: GNode) => showPanel(n))
-      .onBackgroundClick(hidePanel);
+      .onBackgroundClick(hidePanel)
+      .onEngineStop(() => {
+        // La simulación ha parado: ahora las posiciones son definitivas y
+        // enfocar tiene sentido. Antes de esto, apuntar a un nodo era
+        // apuntar a donde estaba en el tick 0.
+        if (focoPendiente) resolverFoco();
+      });
 
     document.getElementById('graph-loading')?.remove();
 
@@ -446,9 +479,30 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
     resize();
 
     // Enlace directo desde el boletín o la ficha: /grafo/#repo:owner/name
+    //
+    // No se enfoca aquí: la simulación acaba de arrancar y las posiciones
+    // cambian durante segundos, así que la cámara aterrizaría donde el
+    // nodo estaba, no donde acaba. Se abre el inspector de inmediato (con
+    // su anillo ámbar, para que se vea cuál es) y la cámara espera a
+    // onEngineStop.
     const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
     const target = hash ? byId.get(hash) : undefined;
-    if (target) focusNode(target);
+    if (target) {
+      showPanel(target);
+      focoPendiente = target;
+      avisoFoco?.classList.remove('hidden');
+      // Red de seguridad: si onEngineStop no llegara (grafo enorme, pestaña
+      // en segundo plano), se enfoca igualmente pasados 8 s.
+      setTimeout(() => { if (focoPendiente) resolverFoco(); }, 8000);
+    }
+  }
+
+  /** Enfoca el nodo que estaba esperando y retira el aviso. */
+  function resolverFoco() {
+    const n = focoPendiente;
+    focoPendiente = null;
+    avisoFoco?.classList.add('hidden');
+    if (n) focusNode(n);
   }
 
   // Búsqueda: matchea contra nombre e id y, entre los candidatos, prefiere
