@@ -1,0 +1,462 @@
+{
+  "version": 2,
+  "date": "2026-08-21",
+  "boletin_origen": "2026-08-21-trending.md",
+  "resumen_ejecutivo": "- Hoy manda la **seguridad de agentes**: Tencent publica `AI-Infra-Guard`, una plataforma de red-teaming full-stack pensada específicamente para auditar agentes, skills y servidores MCP. Es el primer repositorio serio que aborda \"seguridad del lado del agente\" en lugar de \"safety del LLM\", y pone a Tencent a la cabeza en tooling abierto para este nicho.\n- **Microsoft entra formalmente** en la carrera de frameworks multi-agente con `microsoft/agent-framework` (13k★, MIT, Python + .NET), intentando recuperar terreno frente a LangGraph, AutoGen (su propio experimento anterior) y CrewAI.\n- Tendencias paralelas muy marcadas: **AI aplicado a búsqueda de empleo** (`santifer/career-ops` 66k★), **AI video generation open source** (`ATH-MaaS/Pixelle-Video` 27k★) y **local AI todo-en-uno** (`Osmantic/ODS` 4.6k★) — el patrón \"AI stack self-hosted\" sigue creciendo.\n- **Infra agentic en Kubernetes**: `kagent-dev/kagent` (CNCF, Go, Apache-2.0) consolida el nicho cloud-native agentic y se postula como alternativa seria a soluciones propietarias tipo AWS Bedrock Agents.\n- Hallazgo técnico curioso: **Google libera `sam`** (Sovereign Agent Mesh), una red P2P zero-config para que agentes se descubran e invoquen herramientas entre sí. Pequeño (356★) pero arquitectónicamente relevante — si cuaja, cambia el modelo de \"agentes aislados en servidores\" a \"agentes como pares en malla\".\n- Descartados por ruido o ya conocidos: `kubernetes/kubernetes`, `tensorflow/tensorflow`, `rust-lang/rust`, `microsoft/vscode`, `vuejs/vue` (Vue 2, outdated), `warpdotdev/warp` (agentic terminal ya cubierto), `golang/go`, `pola-rs/polars` y similares gigantes sin señal editorial nueva.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript/python/rust/go), GitHub REST API sin token para los hallazgos principales y radar. Blogwatcher 08:00 no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Tencent/AI-Infra-Guard",
+      "url": "https://github.com/Tencent/AI-Infra-Guard",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Suite completa de Tencent para hacer red-teaming sobre agentes, servidores MCP, skills y «AI infra» en general.",
+        "por_que_importa": "El foco tradicional de la seguridad de IA estaba en jailbreaks de LLMs; este repo de Tencent lo desplaza al lado del agente: prompt injection en herramientas, skills envenenadas, servidores MCP comprometidos y exfiltración vía Function Calling. Es material directo para un artículo «AI Agent Security 101: qué auditar y cómo empezar». Ya cubrimos el concepto de AI offensive security sobre MCP el 2026-08-18 y el de agent/mcp security el 2026-08-03; este repo los aterriza con una suite operativa (5103★, Apache-2.0, release 2026-08-19).",
+        "madurez_senales": "5103★ · 495 forks · Python · creado 2024-12-25 · último push 2026-08-19 · Apache-2.0 · autor Tencent. Topics: `agent`, `agent-security`, `ai-infra`, `ai-red-teaming`, `ai-security`, `llm`, `llm-evaluation`, `llm-jailbreak`.",
+        "accion_sugerida": "explorar (clonar, leer la lista de scans, evaluar contra un agente propio).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Tencent/AI-Infra-Guard",
+          "rel": "implements",
+          "dst": "concept:ai-offensive-security-mcp",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "Tencent/AI-Infra-Guard",
+          "rel": "competes_with",
+          "dst": "concept:agent-security",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "Tencent/AI-Infra-Guard",
+          "rel": "relevant_to",
+          "dst": "concept:mcp-security",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-ai-infra-guard",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "santifer/career-ops",
+      "url": "https://github.com/santifer/career-ops",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework open-source que escanea portales de empleo, evalúa cada oferta con una rúbrica A-F y devuelve un score 1.0–5.0 más un CV personalizado.",
+        "por_que_importa": "Más de 66k★ lo convierten en el ejemplo más viral del momento de «IA aplicada al trabajo del propio usuario». Aunque el nicho (búsqueda de empleo) parezca ajeno al dev, interesa como caso de estudio de un agente que encadena scraping → evaluación estructurada (rúbrica A-F, score 1.0–5.0) → generación de documentos (CV personalizado), y esa rúbrica es directamente exportable a otros casos de evaluación: PR review, RFPs, propuestas comerciales. Encaja con el patrón agentic-RAG que cubrimos el 2026-08-19 y con el uso de MCP del 2026-08-08; el MIT y el README en español (entre 14 idiomas) lo dejan listo para trastear.",
+        "madurez_senales": "66962★ · 12839 forks · JavaScript · creado 2026-04-04 · último push 2026-08-21 · MIT · README en 14 idiomas (incluye español). Topics: `ai`, `ai-agent`, `anthropic`, `ats`, `automation`, `career`, `careerops`.",
+        "accion_sugerida": "leer (estudiar la rúbrica A-F como patrón de diseño de evaluadores estructurados).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "santifer/career-ops",
+          "rel": "implements",
+          "dst": "concept:agentic-rag",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "santifer/career-ops",
+          "rel": "uses",
+          "dst": "tool:mcp",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "santifer-career-ops",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "microsoft/agent-framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework first-party de Microsoft para construir, orquestar y desplegar agentes y workflows multi-agente, con SDKs paralelos para Python y .NET.",
+        "por_que_importa": "Microsoft ya tenía AutoGen (orientado a research) y Semantic Kernel (orientado a producción); este repo los consolida con SDKs paralelos para Python y .NET, así que cubre tanto el lado data science como el enterprise. Es la respuesta directa de Microsoft a LangGraph (orquestación tipo grafo), CrewAI (roles) y Agno (memoria), por lo que si tu stack es Azure el camino oficial a partir de ahora pasa por aquí. Tema conectado con multi-agent workflows, que cubrimos el 2026-08-12; Microsoft publicó el último push el 2026-08-21 bajo MIT.",
+        "madurez_senales": "13015★ · 2203 forks · Python (también .NET) · creado 2025-04-28 · último push 2026-08-21 · MIT · Microsoft. Topics: `agent-framework`, `agentic-ai`, `agents`, `ai`, `dotnet`, `multi-agent`, `orchestration`, `python`.",
+        "accion_sugerida": "vigilar (reemplaza a AutoGen para nuevos proyectos Microsoft-stack; conviene revisar breaking changes y ejemplos canónicos).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/agent-framework",
+          "rel": "competes_with",
+          "dst": "concept:multi-agent-workflows",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "microsoft/agent-framework",
+          "rel": "implements",
+          "dst": "concept:agentic-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/agent-framework",
+          "rel": "relevant_to",
+          "dst": "company:microsoft",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-agent-framework",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "kagent-dev/kagent",
+      "url": "https://github.com/kagent-dev/kagent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework agentic nativo de Kubernetes con integración CNCF, pensado para correr agentes dentro del ecosistema cloud-native (Helm, Istio, Gateway API).",
+        "por_que_importa": "Los frameworks agentic suelen ignorar dónde corre el agente; kagent asume explícitamente Kubernetes como runtime (proyecto CNCF): los agentes son CRDs, las herramientas se montan vía MCP y el deploy se hace con Helm. Es la pieza que faltaba para hablar en serio de «agentes en producción» ante equipos de plataforma, no solo ante ML engineers. Está bajo Apache-2.0 con 3554★ y un release del 2026-08-20; conecta con la cobertura de MCP del 2026-08-08 y, en la línea de CRDs agénticos, con kubernetes-sigs/agent-sandbox del 2026-08-07.",
+        "madurez_senales": "3554★ · 716 forks · Go · creado 2025-01-21 · último push 2026-08-20 · Apache-2.0 · CNCF. Topics: `agents`, `ai`, `cncf`, `devops`, `mcp`.",
+        "accion_sugerida": "explorar (revisar arquitectura CRD + Helm chart — buen patrón para enseñar agentic + cloud-native).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "kagent-dev/kagent",
+          "rel": "implements",
+          "dst": "concept:agentic-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "kagent-dev/kagent",
+          "rel": "uses",
+          "dst": "tool:mcp",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "kagent-dev/kagent",
+          "rel": "relevant_to",
+          "dst": "repo:kubernetes-sigs/agent-sandbox",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kagent-dev-kagent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "ATH-MaaS/Pixelle-Video",
+      "url": "https://github.com/ATH-MaaS/Pixelle-Video",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor AIGC todo-en-uno para producir vídeos cortos automáticamente: texto → guion → TTS → imagen → vídeo → edición, con TTS, generación de imagen y ComfyUI integrados.",
+        "por_que_importa": "El espacio de generación de vídeo con IA está dominado por SaaS cerrados (HeyGen, Synthesia, Runway); Pixelle-Video es la respuesta open-source con UI completa y stack modular basado en ComfyUI (texto → guion → TTS → imagen → vídeo → edición). Aunque el README está en chino, la arquitectura (texto → assets → composición) es directamente exportable a casos técnicos del boletín: screencasts automatizados, demos de producto y tutoriales. Ya cubrimos el concepto de agentic video production el 2026-08-12; con 27k★ y Apache-2.0 es el referente open-source serio para compararlo con SaaS cerrados.",
+        "madurez_senales": "27121★ · 3937 forks · Python · creado 2025-11-07 · último push 2026-06-14 · Apache-2.0. Topics: `aigc`, `comfyui`, `image-generation`, `tts`, `video-generation`.",
+        "accion_sugerida": "explorar (instalar ComfyUI stack, hacer un clip de prueba con la plantilla).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ATH-MaaS/Pixelle-Video",
+          "rel": "uses",
+          "dst": "tool:comfyui",
+          "primera_mencion": null
+        },
+        {
+          "src": "ATH-MaaS/Pixelle-Video",
+          "rel": "implements",
+          "dst": "concept:agentic-video-production",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "ATH-MaaS/Pixelle-Video",
+          "rel": "competes_with",
+          "dst": "concept:ai-video-saas",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ath-maas-pixelle-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Osmantic/ODS",
+      "url": "https://github.com/Osmantic/ODS",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "«Osmantic Deployment System»: convierte cualquier PC, Mac o Linux en servidor de IA con inferencia LLM, chat UI, voz, agentes, workflows, RAG y generación de imagen.",
+        "por_que_importa": "Competidor directo y moderno de Open WebUI: donde Open WebUI se centra en la UI de chat, ODS empaqueta el stack completo (inferencia LLM, chat UI, voz, agentes, workflows, RAG, generación de imagen) sobre cualquier PC/Mac/Linux. Si escribimos sobre «AI self-hosted» o «home lab AI», ODS es la pieza que hay que comparar con Open WebUI, Ollama y AnythingLLM. Encaja con local-first agent workspace (cubierto el 2026-08-10) y reutiliza ollama y llama.cpp, que cubrimos el 2026-08-17; Apache-2.0, 4602★, release del 2026-08-13.",
+        "madurez_senales": "4602★ · 691 forks · Python · creado 2026-02-09 · último push 2026-08-13 · Apache-2.0. Topics: `ai-agents`, `amd`, `comfyui`, `docker`, `llama-cpp`, `llm`, `local-ai`, `n8n`.",
+        "accion_sugerida": "probar (instalar localmente, comparar con Open WebUI; soporta AMD e integra n8n para workflows).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Osmantic/ODS",
+          "rel": "competes_with",
+          "dst": "repo:ollama/ollama",
+          "primera_mencion": "2026-08-17"
+        },
+        {
+          "src": "Osmantic/ODS",
+          "rel": "uses",
+          "dst": "tool:llama.cpp",
+          "primera_mencion": "2026-08-17"
+        },
+        {
+          "src": "Osmantic/ODS",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "osmantic-ods",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "google/sam",
+      "url": "https://github.com/google/sam",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Red P2P zero-config pensada para que agentes autónomos se descubran, autentiquen e invoquen herramientas entre sí sin servidor central.",
+        "por_que_importa": "Si los agentes dejan de estar en silos y pasan a pares en una malla P2P cambian tres cosas con implicaciones prácticas: (a) baja el coste de despliegue porque no hace falta gateway central; (b) la seguridad pasa a ser un problema de identidad criptográfica entre agentes; (c) emergen patrones de «agente-que-llama-a-agente» sin servidor de coordinación. Es un repo aún pequeño (356★) pero arquitectónicamente relevante, del propio Google y bajo Apache-2.0; conecta con la cobertura de MCP del 2026-08-08 y aterriza el problema de agent discovery.",
+        "madurez_senales": "356★ · 39 forks · Go · creado 2026-04-21 · último push 2026-08-20 · Apache-2.0 · Google. Topics: `agentic-ai`, `mcp`, `network-security`, `networking-ai`, `p2p-network`.",
+        "accion_sugerida": "vigilar (todavía verde — leer el whitepaper/arquitectura antes de que otros agentes P2P lo copien).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "google/sam",
+          "rel": "implements",
+          "dst": "concept:agentic-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "google/sam",
+          "rel": "uses",
+          "dst": "tool:mcp",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "google/sam",
+          "rel": "solves",
+          "dst": "concept:agent-discovery",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-sam",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "HKUDS/LightRAG",
+      "url": "https://github.com/HKUDS/LightRAG",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "RAG rápido y simple, paper EMNLP2025. Sigue activo y empujando releases.",
+        "por_que_importa": "",
+        "madurez_senales": "39041★, último push 2026-08-21, Python, MIT",
+        "accion_sugerida": "vigilar (reentrada con tracción sostenida — comparar con la nueva hornada de RAG \"graph-aware\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-lightrag",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "cline/cline",
+      "url": "https://github.com/cline/cline",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Agentic coding agent como SDK, extensión IDE o CLI.",
+        "por_que_importa": "",
+        "madurez_senales": "66571★, último push 2026-08-21, TypeScript, Apache-2.0",
+        "accion_sugerida": "leer (revisar breaking changes recientes — se mueve rápido)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cline-cline",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "magnitudedev/magnitude",
+      "url": "https://github.com/magnitudedev/magnitude",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Agente open-source con modelos locales por defecto, «fully private and offline».",
+        "por_que_importa": "",
+        "madurez_senales": "1462★, último push 2026-08-21, TypeScript, Apache-2.0",
+        "accion_sugerida": "probar (instalar, comparar con Hermes-agent local-first y con Open WebUI)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "magnitudedev-magnitude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "AprilNEA/OpenLogi",
+      "url": "https://github.com/AprilNEA/OpenLogi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Alternativa local-first a Logitech Options+ escrita en Rust.",
+        "por_que_importa": "",
+        "madurez_senales": "12226★, último push 2026-08-21, Rust, Apache-2.0",
+        "accion_sugerida": "vigilar (no es IA/dev estrictamente, sí local-first hardware control — relevante solo si Alejandro cubre periféricos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aprilnea-openlogi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "wang2122/sprix-sage-router",
+      "url": "https://github.com/wang2122/sprix-sage-router",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Routing SELF/COLLABORATE/HANDOFF state-aware para redes A2A.",
+        "por_que_importa": "",
+        "madurez_senales": "923★, último push 2026-08-18, Python, MIT",
+        "accion_sugerida": "explorar (clonar, evaluar contra una flota de 3 agentes — buen benchmark para multi-agent routing)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wang2122-sprix-sage-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "snflkd/fluent-korean",
+      "url": "https://github.com/snflkd/fluent-korean",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Claude Code output-style plugin para coreano fluido.",
+        "por_que_importa": "",
+        "madurez_senales": "540★, último push 2026-08-21, MIT",
+        "accion_sugerida": "ignorar como hallazgo, leer como patrón (los output-styles de Claude Code son territorio aún poco documentado en español)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snflkd-fluent-korean",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

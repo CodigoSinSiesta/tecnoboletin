@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-08-21",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "posicionamiento": "El boletín de hoy tiene un eje claro: los agentes están dejando de ser demos para convertirse en sistemas de producción, y eso se nota en tres frentes simultáneos —quién los ataca (Tencent AI-Infra-Guard aterriza la auditoría de seguridad del lado del agente), quién los ejecuta a escala empresarial (Microsoft agent-framework reescribe la jugada multi-agente bajo su marca, kagent-dev/kagent los lleva a Kubernetes nativo CNCF) y cómo se conectan entre sí (google/sam propone una malla P2P para descubrimiento e invocación sin gateway central). Alrededor de ese núcleo, dos casos de uso lo ilustran desde ángulos opuestos: career-ops demuestra el patrón 'agente que encadena scraping + rúbrica + documento' como producto viral de masas, mientras Pixelle-Video y Osmantic/ODS consolidan la cara 'AI stack open-source todo-en-uno' que sigue comiéndole terreno a los SaaS cerrados y a Open WebUI. El hilo conductor, por tanto, no es tecnológico (no hay un benchmark ni un paper dominante), sino de ciclo de vida: el campo está madurando de prototipo a infraestructura, y los seis hallazgos principales reflejan cada uno una de las fricciones reales de ese tránsito.",
+  "convergencia_stack_css": "Tres hallazgos de hoy conectan de forma directa con el stack local-first y la cobertura previa de Código Sin Siesta: Osmantic/ODS reusa ollama y llama.cpp (cubiertos el 2026-08-17) y materializa el concepto de local-first agent workspace (2026-08-10), así que es la pieza que faltaba para hablar de 'AI self-hosted' con stack completo, no solo UI de chat; career-ops aterriza el patrón agentic-RAG (2026-08-19) sobre MCP (2026-08-08) con un caso de uso ajeno al dev pero arquitectónicamente portable; y kagent-dev/kagent reutiliza MCP (2026-08-08) dentro del ecosistema CNCF, en la misma línea que kubernetes-sigs/agent-sandbox (2026-08-07). Pixelle-Video, en cambio, se conecta tangencialmente vía ComfyUI (que ya forma parte del toolchain de generación local), aunque su vertical —vídeo corto para marketing—no encaja con la línea editorial técnica principal del boletín.",
+  "cruzado_grafo": "El grafo de hoy muestra tres reforzamientos explícitos sobre nodos ya cubiertos y dos entradas nuevas relevantes. Se refuerzan: concept:ai-offensive-security-mcp (cubierto el 2026-08-18, ahora con suite operativa de Tencent), concept:agent-security y concept:mcp-security (ambos del 2026-08-03), concept:agentic-rag (2026-08-19), tool:mcp (2026-08-08, usado por career-ops, kagent y google/sam), concept:multi-agent-workflows (2026-08-12, con la respuesta directa de Microsoft), concept:agentic-video-production (2026-08-12), y el trío local-first (concept:local-first-agent-workspace 2026-08-10, repo:ollama/ollama y tool:llama.cpp del 2026-08-17). También reaparecen repo:kubernetes-sigs/agent-sandbox (2026-08-07) como vecino directo de kagent. Entradas nuevas de hoy: concept:agent-discovery (nodo nuevo, resuelto por google/sam — sin primera_mencion previa), concept:ai-video-saas (competidor implícito de Pixelle-Video, sin fecha previa), y la aparición formal de company:microsoft y el nodo nuevo como referencia institucional, todos sin primera_mencion porque son altas nuevas en el grafo.",
+  "tendencias_5_boletines": "No dispongo del historial completo de los últimos cinco boletines, solo del contexto de los dos días previos (2026-08-19 y 2026-08-20), así que cualquier lectura de tendencia a cinco días sería especulativa. Con ese matiz, sí se ve una secuencia coherente en esos dos días: el 19 arrancó planteando 'qué pieza falta debajo del modelo para que un agente funcione en producción' (memvid, bifrost, fx, pgrust, etc.) y el 20 partió la capa de runtime en dos —navegador que ejecuta y contenedor que gobierna— más piezas de plomería operativa. El boletín de hoy cierra ese arco: la pregunta ya no es qué falta debajo del modelo, sino quién audita, quién ejecuta a escala empresarial y cómo se descubren los agentes entre sí. Es un paso de 'infraestructura de soporte' a 'infraestructura de despliegue y gobierno', coherente con la línea editorial CSS de calidad sobre velocidad.",
+  "alertas": [
+    "google/sam tiene solo 356★ y aún no hay release público verificable del diseño P2P; tratar la propuesta de Google como arquitectónicamente interesante, no como referencia estable.",
+    "Tencent/AI-Infra-Guard es open source pero es un release de un proveedor con historial de controversias de privacidad y modelo de datos; auditar qué telemetría envía antes de integrarlo en pipelines sensibles.",
+    "microsoft/agent-framework llega con release del mismo día (2026-08-21): cobertura prematura, conviene vigilar2-3 semanas antes de apostar por él como camino 'oficial' en stacks Azure.",
+    "career-ops supera 66k★ pero su métrica de tracción no indica calidad de las ofertas evaluadas; la rúbrica A-F no está validada externamente, así que 'exportable a otros casos' es hipótesis, no hecho.",
+    "Pixelle-Video (27k★) tiene README solo en chino, lo que dificulta reproducir ejemplos sin traducción; antes de compararlo con HeyGen/Synthesia conviene esperar documentación en inglés o comunidad que documente el stack en abierto.",
+    "Osmantic/ODS (4.6k★) compite en un segmento saturado (Open WebUI, AnythingLLM, OpenHands); la métrica de 'release reciente' (2026-08-13) no garantiza mantenimiento sostenido frente a proyectos más maduros."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "AI-Infra-Guard aterriza operativamente la auditoría de seguridad de agentes y MCP que CSS ya cubrió conceptualmente; merece una prueba de concepto sobre un agente propio para validar el alcance real del tooling de Tencent."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "La rúbrica A-F y el pipeline scraping→evaluación→documento de career-ops son un caso de estudio limpio y popular para enseñar agentic-RAG aplicado a un dominio no técnico."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "microsoft/agent-framework es movimiento estratégico de Microsoft (consolida AutoGen + Semantic Kernel) y puede redefinir el terreno multi-agente en stacks Azure; conviene seguir su evolución2-3 semanas antes de emitir juicio editorial."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "kagent-dev/kagent conecta MCP con el ecosistema CNCF y completa la pieza 'agentes en producción' para equipos de plataforma; explorarlo cierra el triángulo runtime / contenedor / discovery que el boletín viene cubriendo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "ODS es la alternativa moderna a Open WebUI que reusa ollama y llama.cpp del stack local-first ya cubierto; encaja directamente como pieza de comparativa en la línea editorial de AI self-hosted."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

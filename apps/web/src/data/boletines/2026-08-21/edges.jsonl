@@ -1,0 +1,46 @@
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-tencent-ai-infra-guard", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-tencent-ai-infra-guard", "dst": "tema:tencent-ai-infra-guard", "rel": "trata", "added": "2026-08-21"}
+{"src": "Tencent/AI-Infra-Guard", "dst": "concept:ai-offensive-security-mcp", "rel": "implements", "added": "2026-08-21", "primera_mencion": "2026-08-18"}
+{"src": "Tencent/AI-Infra-Guard", "dst": "concept:agent-security", "rel": "competes_with", "added": "2026-08-21", "primera_mencion": "2026-08-03"}
+{"src": "Tencent/AI-Infra-Guard", "dst": "concept:mcp-security", "rel": "relevant_to", "added": "2026-08-21", "primera_mencion": "2026-08-03"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-santifer-career-ops", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-santifer-career-ops", "dst": "tema:santifer-career-ops", "rel": "trata", "added": "2026-08-21"}
+{"src": "santifer/career-ops", "dst": "concept:agentic-rag", "rel": "implements", "added": "2026-08-21", "primera_mencion": "2026-08-19"}
+{"src": "santifer/career-ops", "dst": "tool:mcp", "rel": "uses", "added": "2026-08-21", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-microsoft-agent-framework", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-microsoft-agent-framework", "dst": "tema:microsoft-agent-framework", "rel": "trata", "added": "2026-08-21"}
+{"src": "microsoft/agent-framework", "dst": "concept:multi-agent-workflows", "rel": "competes_with", "added": "2026-08-21", "primera_mencion": "2026-08-12"}
+{"src": "microsoft/agent-framework", "dst": "concept:agentic-ai", "rel": "implements", "added": "2026-08-21", "primera_mencion": null}
+{"src": "microsoft/agent-framework", "dst": "company:microsoft", "rel": "relevant_to", "added": "2026-08-21", "primera_mencion": null}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-kagent-dev-kagent", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-kagent-dev-kagent", "dst": "tema:kagent-dev-kagent", "rel": "trata", "added": "2026-08-21"}
+{"src": "kagent-dev/kagent", "dst": "concept:agentic-ai", "rel": "implements", "added": "2026-08-21", "primera_mencion": null}
+{"src": "kagent-dev/kagent", "dst": "tool:mcp", "rel": "uses", "added": "2026-08-21", "primera_mencion": "2026-08-08"}
+{"src": "kagent-dev/kagent", "dst": "repo:kubernetes-sigs/agent-sandbox", "rel": "relevant_to", "added": "2026-08-21", "primera_mencion": "2026-08-07"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-ath-maas-pixelle-video", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-ath-maas-pixelle-video", "dst": "tema:ath-maas-pixelle-video", "rel": "trata", "added": "2026-08-21"}
+{"src": "ATH-MaaS/Pixelle-Video", "dst": "tool:comfyui", "rel": "uses", "added": "2026-08-21", "primera_mencion": null}
+{"src": "ATH-MaaS/Pixelle-Video", "dst": "concept:agentic-video-production", "rel": "implements", "added": "2026-08-21", "primera_mencion": "2026-08-12"}
+{"src": "ATH-MaaS/Pixelle-Video", "dst": "concept:ai-video-saas", "rel": "competes_with", "added": "2026-08-21", "primera_mencion": null}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-osmantic-ods", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-osmantic-ods", "dst": "tema:osmantic-ods", "rel": "trata", "added": "2026-08-21"}
+{"src": "Osmantic/ODS", "dst": "repo:ollama/ollama", "rel": "competes_with", "added": "2026-08-21", "primera_mencion": "2026-08-17"}
+{"src": "Osmantic/ODS", "dst": "tool:llama.cpp", "rel": "uses", "added": "2026-08-21", "primera_mencion": "2026-08-17"}
+{"src": "Osmantic/ODS", "dst": "concept:local-first-agent-workspace", "rel": "implements", "added": "2026-08-21", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-google-sam", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-google-sam", "dst": "tema:google-sam", "rel": "trata", "added": "2026-08-21"}
+{"src": "google/sam", "dst": "concept:agentic-ai", "rel": "implements", "added": "2026-08-21", "primera_mencion": null}
+{"src": "google/sam", "dst": "tool:mcp", "rel": "uses", "added": "2026-08-21", "primera_mencion": "2026-08-08"}
+{"src": "google/sam", "dst": "concept:agent-discovery", "rel": "solves", "added": "2026-08-21", "primera_mencion": null}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-hkuds-lightrag", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-hkuds-lightrag", "dst": "tema:hkuds-lightrag", "rel": "trata", "added": "2026-08-21"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-cline-cline", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-cline-cline", "dst": "tema:cline-cline", "rel": "trata", "added": "2026-08-21"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-magnitudedev-magnitude", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-magnitudedev-magnitude", "dst": "tema:magnitudedev-magnitude", "rel": "trata", "added": "2026-08-21"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-aprilnea-openlogi", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-aprilnea-openlogi", "dst": "tema:aprilnea-openlogi", "rel": "trata", "added": "2026-08-21"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-wang2122-sprix-sage-router", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-wang2122-sprix-sage-router", "dst": "tema:wang2122-sprix-sage-router", "rel": "trata", "added": "2026-08-21"}
+{"src": "boletin:2026-08-21", "dst": "item:https-github-com-snflkd-fluent-korean", "rel": "menciona", "added": "2026-08-21"}
+{"src": "item:https-github-com-snflkd-fluent-korean", "dst": "tema:snflkd-fluent-korean", "rel": "trata", "added": "2026-08-21"}
