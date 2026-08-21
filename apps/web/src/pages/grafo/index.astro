@@ -265,7 +265,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   function showPanel(n: GNode) {
     if (selectedId !== n.id) {
       selectedId = n.id;
-      Graph?.nodeThreeObject(nodeObject).nodeColor(nodeColor);
+      repintarSeleccion();
     }
     const rels = neighbors(n.id);
     const apariciones = n.apariciones ?? [];
@@ -338,7 +338,7 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
     panelEmpty.classList.remove('hidden');
     if (selectedId) {
       selectedId = null;
-      Graph?.nodeThreeObject(nodeObject).nodeColor(nodeColor);
+      repintarSeleccion();
     }
   }
 
@@ -349,30 +349,57 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
    * sprite mira siempre a la cámara, así que el anillo se ve como un
    * círculo desde cualquier ángulo, y cuesta un draw call.
    */
-  let ringTexture: any = null;
-  async function getRingTexture() {
-    if (ringTexture) return ringTexture;
-    const THREE = await import('three');
+  // El dibujo del anillo no necesita three: es un canvas normal. Solo
+  // envolverlo en una textura lo necesita, y eso se hace cuando el módulo
+  // ya está disponible.
+  function ringCanvas(): HTMLCanvasElement {
     const size = 128;
     const c = document.createElement('canvas');
     c.width = c.height = size;
     const ctx = c.getContext('2d')!;
     ctx.strokeStyle = '#FBBF24'; // --color-warn
-    ctx.lineWidth = 9;
+    ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.arc(size / 2, size / 2, size / 2 - 10, 0, Math.PI * 2);
     ctx.stroke();
-    ringTexture = new THREE.CanvasTexture(c);
-    return ringTexture;
+    return c;
   }
 
-  // Se precarga para que el primer clic no espere al import dinámico.
+  let ringTexture: any = null;
   let THREEMod: any = null;
-  import('three').then((m) => { THREEMod = m; getRingTexture(); });
+
+  // `three` es un chunk grande y se descarga aparte. Si el usuario
+  // selecciona un nodo ANTES de que llegue, nodeObject() devolvía null y
+  // el anillo no aparecía nunca, porque nada volvía a redibujarse después.
+  // Ahora, al llegar el módulo, se repinta si ya había algo seleccionado.
+  import('three').then((m) => {
+    THREEMod = m;
+    ringTexture = new m.CanvasTexture(ringCanvas());
+    if (selectedId) repintarSeleccion();
+  });
+
+  /**
+   * Fuerza el repintado de los nodos tras cambiar la selección.
+   *
+   * Se llama explícitamente a refresh() en vez de confiar en que
+   * reasignar los accessors dispare el redibujado: se les pasa siempre la
+   * MISMA referencia de función, así que la librería puede considerar que
+   * nada ha cambiado y saltarse la actualización.
+   */
+  function repintarSeleccion() {
+    if (!Graph) return;
+    Graph.nodeColor(nodeColor).nodeThreeObject(nodeObject);
+    // Defensivo: si una version futura no expusiera refresh(), el color
+    // seguiria aplicandose y solo se perderia el anillo, en vez de
+    // romperse la seleccion entera con un TypeError.
+    if (typeof Graph.refresh === 'function') Graph.refresh();
+  }
 
   function nodeObject(n: GNode) {
     if (n.id !== selectedId || !THREEMod || !ringTexture) return null;
-    const radio = 4 + Math.sqrt(1 + Math.min(n.degree ?? 1, 20) * 0.6) * 4;
+    // Bastante mayor que la esfera del nodo: si el anillo la ciñe, a
+    // poca distancia se confunde con el propio nodo.
+    const radio = 14 + Math.sqrt(1 + Math.min(n.degree ?? 1, 20) * 0.6) * 5;
     const sprite = new THREEMod.Sprite(
       new THREEMod.SpriteMaterial({ map: ringTexture, transparent: true, depthWrite: false })
     );
@@ -398,16 +425,19 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
     showPanel(n);
     if (!Graph) return;
 
-    const vecindario = new Set<string>([n.id, ...neighbors(n.id).map((r) => r.otherId)]);
-    if (vecindario.size > 1) {
-      Graph.zoomToFit(900, 70, (nd: GNode) => vecindario.has(nd.id));
-      return;
-    }
-
-    // Nodo aislado: no hay caja que encuadrar (zoomToFit sobre un punto
-    // se dispara), así que se coloca la cámara a una distancia fija.
     const nx = n.x ?? 0, ny = n.y ?? 0, nz = n.z ?? 0;
-    const ratio = 1 + 260 / Math.hypot(nx, ny, nz, 1);
+
+    // La cámara APUNTA al nodo y retrocede lo justo para que quepan sus
+    // vecinos. Antes se usaba zoomToFit sobre el vecindario, que encuadra
+    // la CAJA que contiene a todos: con los vecinos repartidos, el centro
+    // de esa caja no es el nodo, y el nodo acababa descolocado.
+    let radio = 0;
+    for (const r of neighbors(n.id)) {
+      const v = r.other;
+      radio = Math.max(radio, Math.hypot((v.x ?? 0) - nx, (v.y ?? 0) - ny, (v.z ?? 0) - nz));
+    }
+    const distancia = Math.min(Math.max(radio * 2.1, 140), 900);
+    const ratio = 1 + distancia / Math.hypot(nx, ny, nz, 1);
     Graph.cameraPosition({ x: nx * ratio, y: ny * ratio, z: nz * ratio }, { x: nx, y: ny, z: nz }, 900);
   }
 
