@@ -395,9 +395,9 @@ export function nodeType(id: string): string {
  *
  *  1. Descarta oraciones iniciales que son muletilla ("El boletín de hoy
  *     X", "Hoy...", "Este boletín...") y escoge la primera con tesis.
- *  2. Si esa oración útil sigue siendo >140 chars, se acorta a las
- *     primeras 12 palabras como titular-resumen, y el resto de la
- *     oración + el resto del posicionamiento quedan como entradilla.
+ *  2. Si esa oración útil es muy larga, se corta SOLO por una frontera
+ *     natural (`:`, `—`, `;`). Nunca a media frase: un titular que
+ *     ocupa dos líneas se lee; uno mutilado con '…', no.
  *  3. Si la pipeline algún día añade `editorial.titular`, se usa tal cual.
  *
  * El objetivo es llegar a titulares que caben en 1 línea de h1 sin
@@ -405,19 +405,42 @@ export function nodeType(id: string): string {
  * entradilla expandible.
  */
 
-const SOFT_MAX_CHARS = 140;
-const SOFT_MAX_WORDS = 12;
+// A partir de aquí una oración es demasiado larga para un titular y se
+// busca un corte por frontera natural (`:`, `—`, `;`). Si no la hay, se
+// deja entera y el h1 hace dos líneas: un titular que envuelve se lee
+// bien, uno cortado a media frase no.
+const TITULAR_LARGO = 120;
+// Hasta dónde se busca la frontera. Es mayor que TITULAR_LARGO a
+// propósito: si la coma que cierra la idea cae en el carácter 121, cortar
+// ahí da un titular completo, y no hacerlo deja el párrafo entero.
+const CORTE_MAX = 180;
 
 // Muletillas con las que los posicionamientos arrancan a menudo. Se
 // descartan cuando la primera oración del `posicionamiento` empieza
 // por alguna de ellas (case-insensitive, tras trim).
+//
+// El caso "El boletín del lunes 17 de agosto..." se colaba: la variante
+// con fecha en texto (día de la semana + número + mes) no estaba
+// contemplada, solo la ISO y "de hoy".
+const MESES = 'enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre';
+const DIAS = 'lunes|martes|miércoles|miercoles|jueves|viernes|sábado|sabado|domingo';
 const FILLER_PREFIXES = [
+  // "El boletín de hoy…", "El boletín del 2026-08-17…"
   /^el[ \u00A0]+boletín[ \u00A0]+(?:de[ \u00A0]+hoy|del[ \u00A0]+\d{4}-\d{2}-\d{2}|[a-záéíóúñ0-9 ]+de[ \u00A0]+\d{4})\b/i,
+  // "El boletín del lunes 17 de agosto…", "El boletín del 17 de agosto…"
+  new RegExp(`^el[ \u00A0]+bolet[ií]n[ \u00A0]+del?[ \u00A0]+(?:(?:${DIAS})[ \u00A0]+)?\\d{1,2}[ \u00A0]+de[ \u00A0]+(?:${MESES})\\b`, 'i'),
+  // "El boletín de este lunes…", "El boletín de esta semana…"
+  new RegExp(`^el[ \u00A0]+bolet[ií]n[ \u00A0]+de[ \u00A0]+est[ae][ \u00A0]+(?:${DIAS}|semana|jornada)\\b`, 'i'),
   /^este[ \u00A0]+boletín\b/i,
+  /^el[ \u00A0]+boletín[ \u00A0]+de[ \u00A0]+hoy\b/i,
   /^hoy[ \u00A0]+,\s*el[ \u00A0]+boletín\b/i,
   /^hoy[ \u00A0]+,\s+el\b/i,
   /^hoy[ \u00A0]+,\s+/i,
   /^hoy\b/i,
+  // Meta sobre el propio boletín, no tesis: "Los seis hallazgos
+  // principales dibujan…", "La lectura editorial no es…"
+  /^(?:los|las)[ \u00A0]+\w+[ \u00A0]+hallazgos\b/i,
+  /^la[ \u00A0]+lectura[ \u00A0]+editorial\b/i,
 ];
 
 /** Devuelve true si la oración es puro relleno (no tesis). */
@@ -464,10 +487,33 @@ function dropFirstSentence(text: string, first: string): string {
 }
 
 /** Acorta una oración a las primeras N palabras + '…' si fue recortada. */
-function clipWords(s: string, maxWords: number): string {
-  const words = s.trim().split(/\s+/);
-  if (words.length <= maxWords) return s.trim();
-  return words.slice(0, maxWords).join(' ') + '…';
+/**
+ * Acorta una oración larga SIN cortarla a media frase.
+ *
+ * Antes se recortaba a 12 palabras y se pegaba un '…', que producía
+ * titulares mutilados del tipo "La capa de agentes sale del taller y
+ * entra a producción por…". Ahora solo se corta si hay una frontera
+ * natural (dos puntos, raya o punto y coma) que deje un titular con
+ * sentido completo; si no la hay, se devuelve la oración entera y el
+ * titular ocupa dos líneas, que es preferible a mutilarlo.
+ */
+function acortarPorFrontera(s: string): string {
+  const t = s.trim().replace(/[.,;:\s]+$/, '');
+  if (t.length <= TITULAR_LARGO) return t;
+
+  // Se busca la frontera más tardía que siga dejando un titular legible.
+  // Primero las fuertes (cierran idea), luego la coma como último
+  // recurso: cortar en coma da una oración completa, no un muñón.
+  for (const seps of [[':', '—', ';', ' - '], [', ']]) {
+    let mejor = -1;
+    for (const sep of seps) {
+      const idx = t.lastIndexOf(sep, CORTE_MAX);
+      if (idx > mejor) mejor = idx;
+    }
+    if (mejor >= 40) return t.slice(0, mejor).trim().replace(/[.,;:\s]+$/, '');
+  }
+
+  return t;
 }
 
 export function titularYEntradilla(editorial: Editorial | null): { titular: string | null; entradilla: string | null } {
@@ -491,10 +537,7 @@ export function titularYEntradilla(editorial: Editorial | null): { titular: stri
   }
 
   const fullTesis = sentences[pickIdx];
-  // Soft clip: si la oración útil sigue siendo enorme, córtala a N palabras.
-  const titular = (fullTesis.length > SOFT_MAX_CHARS)
-    ? clipWords(fullTesis, SOFT_MAX_WORDS)
-    : fullTesis;
+  const titular = acortarPorFrontera(fullTesis);
 
   // Entradilla: posicionamiento SIN la primera oración original (no la
   // recortada), para que si el lector quiere leer la frase completa la
