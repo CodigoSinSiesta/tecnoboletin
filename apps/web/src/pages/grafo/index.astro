@@ -41,13 +41,20 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
       <div class="border-b lg:border-b-0 lg:border-r border-border bg-rail p-4 flex flex-col gap-4 scroll-y">
         <div>
           <div class="flow-label mb-2">Buscar</div>
-          <input
-            id="graph-search"
-            type="search"
-            autocomplete="off"
-            placeholder="claude-code…"
-            class="w-full border border-border-strong rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs text-text placeholder:text-muted-dim focus:outline-none focus:border-accent-soft"
-          />
+          <div class="relative">
+            <input
+              id="graph-search"
+              type="search"
+              autocomplete="off"
+              role="combobox"
+              aria-expanded="false"
+              aria-autocomplete="list"
+              aria-controls="graph-suggest"
+              placeholder="claude-code…"
+              class="w-full border border-border-strong rounded-lg bg-surface px-2.5 py-1.5 font-mono text-xs text-text placeholder:text-muted-dim focus:outline-none focus:border-accent-soft"
+            />
+            <ul id="graph-suggest" class="graph-suggest hidden" role="listbox" aria-label="Sugerencias"></ul>
+          </div>
         </div>
 
         <div>
@@ -190,6 +197,9 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const activeRels = new Set(filtrables);
 
   let Graph: any = null;
+  // Nodo seleccionado: se pinta con un anillo ámbar para saber en todo
+  // momento cuál es el que está abierto en el inspector.
+  let selectedId: string | null = null;
   let byId = new Map<string, GNode>();
   let allNodes: GNode[] = [];
   let neighborIndex = new Map<string, Neighbor[]>();
@@ -243,6 +253,10 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   }
 
   function showPanel(n: GNode) {
+    if (selectedId !== n.id) {
+      selectedId = n.id;
+      Graph?.nodeThreeObject(nodeObject).nodeColor(nodeColor);
+    }
     const rels = neighbors(n.id);
     const apariciones = n.apariciones ?? [];
     const menciones = n.menciones ?? [];
@@ -312,6 +326,53 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
     panelBody.classList.add('hidden');
     panelBody.classList.remove('flex');
     panelEmpty.classList.remove('hidden');
+    if (selectedId) {
+      selectedId = null;
+      Graph?.nodeThreeObject(nodeObject).nodeColor(nodeColor);
+    }
+  }
+
+  /**
+   * Anillo ámbar del nodo seleccionado.
+   *
+   * Se usa un sprite con textura de canvas en lugar de geometría 3D: el
+   * sprite mira siempre a la cámara, así que el anillo se ve como un
+   * círculo desde cualquier ángulo, y cuesta un draw call.
+   */
+  let ringTexture: any = null;
+  async function getRingTexture() {
+    if (ringTexture) return ringTexture;
+    const THREE = await import('three');
+    const size = 128;
+    const c = document.createElement('canvas');
+    c.width = c.height = size;
+    const ctx = c.getContext('2d')!;
+    ctx.strokeStyle = '#FBBF24'; // --color-warn
+    ctx.lineWidth = 9;
+    ctx.beginPath();
+    ctx.arc(size / 2, size / 2, size / 2 - 10, 0, Math.PI * 2);
+    ctx.stroke();
+    ringTexture = new THREE.CanvasTexture(c);
+    return ringTexture;
+  }
+
+  // Se precarga para que el primer clic no espere al import dinámico.
+  let THREEMod: any = null;
+  import('three').then((m) => { THREEMod = m; getRingTexture(); });
+
+  function nodeObject(n: GNode) {
+    if (n.id !== selectedId || !THREEMod || !ringTexture) return null;
+    const radio = 4 + Math.sqrt(1 + Math.min(n.degree ?? 1, 20) * 0.6) * 4;
+    const sprite = new THREEMod.Sprite(
+      new THREEMod.SpriteMaterial({ map: ringTexture, transparent: true, depthWrite: false })
+    );
+    sprite.scale.set(radio, radio, 1);
+    return sprite;
+  }
+
+  function nodeColor(n: GNode) {
+    if (n.id === selectedId) return '#FBBF24';
+    return activeTypes.has(n.type) ? colorForType(n.type) : 'rgba(148,163,184,0.08)';
   }
 
   function focusNode(n: GNode) {
@@ -358,7 +419,9 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
       .graphData(data)
       .nodeId('id')
       .nodeLabel((n: GNode) => `${n.name}${n.synthetic ? ' (inferido)' : ''}`)
-      .nodeColor((n: GNode) => (activeTypes.has(n.type) ? colorForType(n.type) : 'rgba(148,163,184,0.08)'))
+      .nodeColor(nodeColor)
+      .nodeThreeObject(nodeObject)
+      .nodeThreeObjectExtend(true)
       .nodeVal((n: GNode) => 1 + Math.min(n.degree ?? 1, 20) * 0.6)
       .nodeOpacity(0.92)
       .linkColor(() => 'rgba(148,163,184,0.28)')
@@ -391,13 +454,138 @@ const rels = Object.entries(relCounts).sort((a, b) => b[1] - a[1]).slice(0, 8);
   // Búsqueda: matchea contra nombre e id y, entre los candidatos, prefiere
   // el más conectado — "claude-code" debe llevar a anthropics/claude-code,
   // no a un fork con dos relaciones.
+  /**
+   * Autocompletado.
+   *
+   * Antes cada tecla saltaba al nodo más conectado que coincidiera: para
+   * usarlo había que saber de antemano qué existe en el grafo. Ahora se
+   * ofrece una lista de candidatos (nombre, tipo y nº de relaciones) y no
+   * se mueve la cámara hasta que se elige uno.
+   */
+  const suggestBox = document.getElementById('graph-suggest')!;
+  let sugerencias: GNode[] = [];
+  let activa = -1;
+
+  function cerrarSugerencias() {
+    suggestBox.classList.add('hidden');
+    search.setAttribute('aria-expanded', 'false');
+    sugerencias = [];
+    activa = -1;
+  }
+
+  function pintarActiva() {
+    suggestBox.querySelectorAll<HTMLElement>('li').forEach((li, i) => {
+      li.dataset.activa = String(i === activa);
+      if (i === activa) li.scrollIntoView({ block: 'nearest' });
+    });
+  }
+
+  /**
+   * Relevancia de un nodo para el texto buscado. Menor es mejor.
+   *
+   * El criterio decisivo es que la coincidencia caiga en el ARRANQUE DE UN
+   * SEGMENTO, no solo al principio de la cadena: buscando "claude", lo que
+   * se espera arriba es anthropics/claude-code (grado 10), y ordenar por
+   * "empieza por" lo dejaba debajo de claude-world/... (grado 3) porque su
+   * nombre empieza por "anthropics/".
+   */
+  function escapeRe(t: string): string {
+    return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  /**
+   * Relevancia de un nodo para el texto buscado. Menor es mejor.
+   *
+   * La clave es que empezar la cadena y empezar un SEGMENTO valen igual.
+   * Con niveles distintos, buscar "claude" ponia claude-world/... (grado 3)
+   * por encima de anthropics/claude-code (grado 10), porque el segundo
+   * empieza por "anthropics/" — y el que uno espera arriba es el segundo.
+   * Igualados, decide el numero de relaciones.
+   */
+  function rango(n: GNode, t: string): number {
+    const nombre = n.name.toLowerCase();
+    const id = n.id.toLowerCase();
+    if (nombre === t || id === t) return 0;
+    // Inicio de cadena o de segmento (tras / - _ . : o espacio). El guion
+    // va el primero dentro de la clase para que sea literal y no un rango.
+    const inicio = new RegExp('(^|[-/_.: ])' + escapeRe(t));
+    if (inicio.test(nombre) || inicio.test(id)) return 1;
+    return 2;
+  }
+
+  function buscar(q: string): GNode[] {
+    const t = q.toLowerCase();
+    return allNodes
+      .filter((n) => n.name.toLowerCase().includes(t) || n.id.toLowerCase().includes(t))
+      .sort((a, b) => rango(a, t) - rango(b, t) || (b.degree ?? 0) - (a.degree ?? 0))
+      .slice(0, 8);
+  }
+
+  function abrirSugerencias(q: string) {
+    sugerencias = buscar(q);
+    if (!sugerencias.length) {
+      suggestBox.innerHTML = '<li class="graph-suggest__vacio">sin coincidencias</li>';
+      suggestBox.classList.remove('hidden');
+      search.setAttribute('aria-expanded', 'true');
+      return;
+    }
+    suggestBox.innerHTML = sugerencias
+      .map(
+        (n, i) => `
+        <li role="option" data-i="${i}" data-activa="false">
+          <span class="dot w-1.5 h-1.5 shrink-0" style="background:${colorForType(n.type)}"></span>
+          <span class="graph-suggest__nombre">${escapeHtml(n.name)}</span>
+          <span class="graph-suggest__meta">${n.degree ?? 0}</span>
+        </li>`
+      )
+      .join('');
+    suggestBox.classList.remove('hidden');
+    search.setAttribute('aria-expanded', 'true');
+    activa = 0;
+    pintarActiva();
+  }
+
+  function elegir(i: number) {
+    const n = sugerencias[i];
+    if (!n) return;
+    search.value = n.name;
+    cerrarSugerencias();
+    focusNode(n);
+  }
+
   search.addEventListener('input', () => {
-    const q = search.value.trim().toLowerCase();
-    if (!q || !allNodes.length) return;
-    const candidates = allNodes.filter((n) => n.name.toLowerCase().includes(q) || n.id.toLowerCase().includes(q));
-    if (!candidates.length) return;
-    focusNode(candidates.sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0))[0]);
+    const q = search.value.trim();
+    if (!q || !allNodes.length) return cerrarSugerencias();
+    abrirSugerencias(q);
   });
+
+  search.addEventListener('keydown', (ev: KeyboardEvent) => {
+    if (!sugerencias.length) return;
+    if (ev.key === 'ArrowDown') {
+      ev.preventDefault();
+      activa = (activa + 1) % sugerencias.length;
+      pintarActiva();
+    } else if (ev.key === 'ArrowUp') {
+      ev.preventDefault();
+      activa = (activa - 1 + sugerencias.length) % sugerencias.length;
+      pintarActiva();
+    } else if (ev.key === 'Enter') {
+      ev.preventDefault();
+      elegir(activa);
+    } else if (ev.key === 'Escape') {
+      cerrarSugerencias();
+    }
+  });
+
+  suggestBox.addEventListener('mousedown', (ev: MouseEvent) => {
+    // mousedown y no click: el blur del input cerraría la lista antes.
+    const li = (ev.target as HTMLElement).closest('li[data-i]');
+    if (!li) return;
+    ev.preventDefault();
+    elegir(Number((li as HTMLElement).dataset.i));
+  });
+
+  search.addEventListener('blur', () => setTimeout(cerrarSugerencias, 120));
 
   document.querySelectorAll<HTMLElement>('.graph-legend-pill').forEach((pill) => {
     pill.addEventListener('click', () => {

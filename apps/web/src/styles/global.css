@@ -635,6 +635,54 @@
   }
   .graph-legend-pill[data-active='false'] { opacity: 0.35; }
 
+  /* --------------------------------------------------------------------
+     Autocompletado de la búsqueda del grafo. Antes cada tecla saltaba al
+     nodo más conectado que coincidiera, lo que exigía saber de antemano
+     qué hay en el grafo; ahora se proponen candidatos.
+     -------------------------------------------------------------------- */
+  .graph-suggest {
+    position: absolute;
+    z-index: 30;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    max-height: 236px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border-strong);
+    border-radius: 8px;
+    background: var(--color-bg-raised);
+    box-shadow: 0 10px 26px rgb(0 0 0 / 0.45);
+    padding: 3px;
+  }
+  .graph-suggest li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.688rem;
+    color: var(--color-body);
+  }
+  .graph-suggest li[data-activa='true'] {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .graph-suggest__nombre {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .graph-suggest__meta { color: var(--color-muted-dim); font-size: 0.625rem; }
+  .graph-suggest__vacio {
+    color: var(--color-muted-dim);
+    cursor: default;
+    font-style: italic;
+  }
+
   /* Barra de crecimiento temporal de un nodo ("cómo creció este nodo"). */
   .scrub { position: relative; height: 30px; }
   .scrub__track { position: absolute; left: 0; right: 0; top: 14px; height: 2px; background: var(--color-border); }
