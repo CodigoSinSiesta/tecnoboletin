@@ -1,0 +1,71 @@
+{
+  "$id": "https://tecnoboletin.local/item-schema.json",
+  "title": "Item enriquecido (v2)",
+  "description": "Estructura por item tras la fase de enriquecimiento. Reemplaza el v1 (resumen_2_lineas) por los campos ricos que ya trae el boletin origen: que_es, por_que_importa, madurez_senales, relacion_grafo, accion_sugerida. El enriquecimiento CONSERVA y pule ligeramente este contenido -- no lo sustituye por un resumen generico.",
+  "type": "object",
+  "required": ["idx", "titulo", "url", "seccion", "clasificacion"],
+  "properties": {
+    "idx": { "type": "integer", "minimum": 0 },
+    "titulo": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "pattern": "^https?://" },
+    "url_inferida": {
+      "type": "boolean",
+      "description": "true si la URL no viene explicita en el .md y se sintetizo desde un slug owner/repo (habitual en radar secundario)"
+    },
+    "seccion": {
+      "type": "string",
+      "enum": ["hallazgo_principal", "radar_secundario"],
+      "description": "de que seccion del .md viene el item -- determina si se esperan campos ricos completos o solo un subconjunto"
+    },
+    "contenido": {
+      "type": "object",
+      "description": "campos ricos extraidos (deterministamente) del boletin origen. Vacios (\"\") cuando el boletin no los trae -- no se inventan.",
+      "properties": {
+        "que_es": { "type": "string", "description": "'que es en una frase', tal como viene del boletin (pulido ligero permitido)" },
+        "por_que_importa": { "type": "string", "description": "'por que importa para Codigo Sin Siesta / Alejandro', conservado del boletin origen" },
+        "madurez_senales": { "type": "string", "description": "senales de madurez verificadas (stars, forks, licencia, actividad...)" },
+        "accion_sugerida": { "type": "string", "description": "leer | explorar | probar | vigilar | vigilar (con cautela) | ..." },
+        "descripcion_raw": { "type": "string", "description": "fallback: texto crudo cuando el boletin no trae los campos estructurados (radar secundario corto)" }
+      }
+    },
+    "relacion_grafo": {
+      "type": "array",
+      "description": "triples 'nodo --rel--> nodo' tal como aparecen en el boletin, mas el cruce contra el grafo acumulado (state.json de codigosinsiesta-trends)",
+      "items": {
+        "type": "object",
+        "required": ["src", "rel", "dst"],
+        "properties": {
+          "src": { "type": "string" },
+          "rel": { "type": "string" },
+          "dst": { "type": "string" },
+          "primera_mencion": {
+            "type": ["string", "null"],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "fecha (YYYY-MM-DD) del boletin mas antiguo en el grafo acumulado que ya mencionaba dst, si existe alguno anterior a la fecha de este boletin. null si es la primera vez que aparece."
+          }
+        }
+      }
+    },
+    "clasificacion": {
+      "type": "object",
+      "description": "metadata secundaria y discreta -- ya no protagoniza el item, pero se conserva para tags/filtros",
+      "required": ["tipo", "idioma", "tema_principal", "confianza"],
+      "properties": {
+        "tipo": {
+          "type": "string",
+          "enum": ["blog", "paper", "repo", "video", "podcast", "noticia", "docs", "otro"]
+        },
+        "idioma": { "type": "string", "description": "ISO 639-1, ej: es, en, fr, de" },
+        "autor": { "type": ["string", "null"] },
+        "medio": { "type": ["string", "null"] },
+        "tema_principal": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "temas_secundarios": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "maxItems": 8
+        },
+        "confianza": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}
