@@ -1,0 +1,505 @@
+{
+  "version": 2,
+  "date": "2026-08-22",
+  "boletin_origen": "2026-08-22-trending.md",
+  "resumen_ejecutivo": "- Hoy manda la **infra agentic serie B**: tres proyectos nuevos (ArcBox, Tracely, Trueforge) cubren respectivamente el sandbox de ejecución, el CI/CD basado en traces y el runtime-layer para LLM agents — la sensación es que el stack \"agente en producción\" se está separando en capas discretas, cada una con un vendor open-source claro.\n- **NVIDIA Dynamo vuelve a ganar tracción en trending Rust**: la capa de orquestación multi-nodo para inferencia distribuida ya era conocida (vLLM/SGLang/TensorRT-LLM), pero su empuje en GitHub Trending indica adopción creciente en clusters multi-GPU. Para Código Sin Siesta es un buen \"cuándo usar Dynamo vs vLLM\" para próximos artículos.\n- **El control plane para agentes se diversifica**: `Nasiko-Labs/nasiko` (Rust, Apache-2.0) entra fuerte con enfoque A2A-nativo y marca una ruta distinta a `google/sam` (P2P mesh) — el patrón \"A2A como red\" empieza a tener varios competidores serios, no sólo Google.\n- **Video generation inference madura**: `hao-ai-lab/FastVideo` (4k★, Apache-2.0) sube con propuesta \"inference + post-training unificado\" para video diffusion — buen complemento a la conversación `ATH-MaaS/Pixelle-Video` de ayer si Alejandro cubre el vertical vídeo.\n- **Reentradas en radar, sin historia nueva clara**: `maximhq/bifrost`, `Apache/maka`, `volcengine/OpenViking`, `Tencent/AI-Infra-Guard` y `mattpocock/skills` repiten trending — sólo Tracely y arcbox rompen el patrón anterior con señales \"first-time seen\".\n- **LLM observability sigue consolidándose**: `langfuse/langfuse` repunta en trending TS (33k★) pero la mayor parte del valor ya está documentado en nuestro grafo vía `concept:llmops` y `concept:llm-observability` — su presencia aquí es más \"momentum sostenido\" que \"novedad\".\n- Descartados: TryGhost/Ghost (CMS sin ángulo nuevo), plane/n8n (workflow tools ya conocidos), `microsoft/onnxruntime` (clásico), `jax-ml/jax` (sin release reciente), `elder-plinius/OBLITERATUS` (desc genérica + AGPL), `FlashML-org/FreeToken` (sin descripción). De Trendshift, descartamos la andanada de repos SEO sintéticos (\"IPTV Lab\", \"Ps4 Jailbreak Zen\", \"Tiktok Downloader Works\", etc.) que ocupan el top 1-9 sin sustancia.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript/python/rust/go), GitHub REST API sin token para hallazgos principales y radar. Blogwatcher 08:00 no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "arcboxlabs/arcbox",
+      "url": "https://github.com/arcboxlabs/arcbox",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime de contenedores + microVMs escrito desde cero en Rust, con un tier \"Sandboxes\" pensado específicamente para agentes AI: VMs desechables con su propio kernel, filesystem y red, arranque <100 ms vía Firecracker.",
+        "por_que_importa": "ArcBox se presenta como alternativa open-source a OrbStack (Docker Desktop para macOS con baja sobrecarga, pero código cerrado) y, además, ofrece la misma API tanto en local como en producción bajo el nombre ArcBox Platform. Para quien despliega agentes, eso significa que el sandbox donde los pruebas en tu Mac es exactamente el mismo tipo de aislamiento que usas en la nube: una microVM con kernel propio, arranque por debajo de 100 ms vía Firecracker, sin el salto de modelo entre \"Docker local\" y \"aislamiento real en prod\". Si ya te quemaste montando dos stacks distintos para dev y para producción, este es el argumento central del repo.",
+        "madurez_senales": "836★ · 15 forks · Rust · creado 2026-01-04 · último push 2026-08-21 · MIT/Apache-2.0 dual · default_branch `master` · repo original (no fork). Topics: `ai-agents`, `computer-use`, `containers`, `docker`, `firecracker`, `microvm`, `rust`, `sandbox`, `virtual-machine`, `virtualization`.",
+        "accion_sugerida": "explorar (instalar con `brew install --cask arcboxlabs/tap/arcbox`, probar `abctl sandbox` contra un agente propio, comparar con `kubernetes-sigs/agent-sandbox` ya cubierto).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:arcboxlabs/arcbox",
+          "rel": "implements",
+          "dst": "concept:ai-agent-sandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:arcboxlabs/arcbox",
+          "rel": "uses",
+          "dst": "tool:firecracker",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:arcboxlabs/arcbox",
+          "rel": "competes_with",
+          "dst": "concept:docker-desktop-replacement",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "arcboxlabs-arcbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Jwuthri/Tracely",
+      "url": "https://github.com/Jwuthri/Tracely",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma \"trace-native CI/CD\" para AI agents: convierte automáticamente fallos de producción en regression tests que bloquean el PR correspondiente, con ClickHouse como store, OpenTelemetry como ingestion y un evaluador LLM-as-judge integrado.",
+        "por_que_importa": "Tracely cierra el ciclo \"fallo en producción → test de regresión en el PR\" de forma nativa, sin que tengas que escribir un harness a medida. La pieza que aporta es un evaluador LLM-as-judge integrado sobre trazas OpenTelemetry, con ClickHouse como almacén, de modo que cada incidente real genera automáticamente el caso de prueba que lo habría cazado. Encaja como pieza final del trío que ya cubrimos en el grafo: tracing (langfuse/langfuse) + evals + CI. Buen material para un artículo tipo \"regression testing de agentes de extremo a extremo: tracing, eval y CI sin scripts custom\".",
+        "madurez_senales": "924★ · 35 forks · Python · creado 2026-06-03 · último push 2026-08-22 · MIT · default_branch `master` · repo original. Topics: `agent-observability`, `ci-cd`, `clickhouse`, `evals`, `llm-as-judge`, `llm-observability`, `llm-ops`, `mcp`, `opentelemetry`, `self-hosted`.",
+        "accion_sugerida": "explorar (clonar, leer el módulo de CI integration; comparar su LLM-as-judge con `agentic-evals` y con la skill `vercel-labs/fx`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Jwuthri/Tracely",
+          "rel": "implements",
+          "dst": "concept:agentic-regression-tests",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Jwuthri/Tracely",
+          "rel": "uses",
+          "dst": "tool:clickhouse",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Jwuthri/Tracely",
+          "rel": "complements",
+          "dst": "repo:langfuse/langfuse",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jwuthri-tracely",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "truefoundry/trueforge",
+      "url": "https://github.com/truefoundry/trueforge",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime open-source que \"convierte un LLM en un agente funcional\": capa de orquestación ligera en TypeScript encima del modelo, equivalente a Claude Code / Codex CLI / Claude Agent SDK pero como producto independiente.",
+        "por_que_importa": "TrueForge se vende como un runtime que \"convierte un LLM en un agente funcional\": una capa de orquestación ligera en TypeScript sobre el modelo, equivalente en propósito a Claude Code, Codex CLI o Claude Agent SDK pero como producto independiente. Entra en el nicho que ya cubrimos: el grafo trae la skill deepseek-ai/deepseek-harness (mencionada por primera vez el 2026-08-14) y el repo walkinglabs/learn-harness-engineering (citado por primera vez el 2026-08-17). TrueForge se posiciona como tercer vendor open-source serio en ese espacio, así que un artículo comparando los tres (qué instala cada uno, cuánto SDK propietario te ahorra, dónde está la trampa) sería directamente útil para quien quiere montar su propio harness sin atarse a un SDK propietario.",
+        "madurez_senales": "3147★ · 221 forks · TypeScript · creado 2026-07-23 · último push 2026-08-21 · MIT · default_branch `main` · repo original. Topics: `agent`, `agentic-ai`, `agents`, `harness`, `harness-engineering`.",
+        "accion_sugerida": "leer (auditar arquitectura, ver qué patrones del harness reutiliza del SDK de Anthropic; útil como referencia para escribir nuestro propio harness en Hermes).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:truefoundry/trueforge",
+          "rel": "implements",
+          "dst": "concept:agent-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:truefoundry/trueforge",
+          "rel": "competes_with",
+          "dst": "repo:deepseek-ai/deepseek-harness",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:truefoundry/trueforge",
+          "rel": "competes_with",
+          "dst": "repo:walkinglabs/learn-harness-engineering",
+          "primera_mencion": "2026-08-17"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "truefoundry-trueforge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "ai-dynamo/dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework de NVIDIA para servir LLMs, modelos de razonamiento, multimodales y de generación de vídeo a escala datacenter: no reemplaza a vLLM/SGLang/TensorRT-LLM sino que los orquesta como sistema multi-nodo con disaggregated serving, routing KV-aware, KV caching multi-tier y auto-scaling.",
+        "por_que_importa": "NVIDIA Dynamo no pretende sustituir a vLLM, SGLang o TensorRT-LLM, sino orquestarlos como un sistema multi-nodo: serving disagregado (prefill y decode escalan por separado), routing KV-aware y caché KV multi-tier. La pregunta operativa para la audiencia de Código Sin Siesta es \"¿cuándo me basta con vLLM y cuándo necesito Dynamo?\", y la respuesta del propio repo es clara: sólo si trabajas multi-GPU o multi-nodo, necesitas separar prefill de decode o tienes SLA de latencia estricto. Es artículo natural \"inferencia en producción: vLLM vs SGLang vs TensorRT-LLM vs Dynamo — cuándo cada uno\", sobre todo porque vllm-project/vllm ya lo cubrimos el 2026-07-16 y la propia NVIDIA la mencionamos el 2026-08-12; ahora vemos cómo la propia NVIDIA orquesta esos motores.",
+        "madurez_senales": "7824★ · 1473 forks · Rust (extensible en Python) · creado 2025-03-03 · último push 2026-08-22 · LICENSE: NOASSERTION en la API pero LICENSE real dice Apache-2.0 (verificado leyendo LICENSE). Default branch `main`, repo original.",
+        "accion_sugerida": "leer (revisar la decisión matrix del repo — \"single GPU/single model → probablemente vLLM; multi-node + SLA → Dynamo\"; muy útil para planning de capacity).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "implements",
+          "dst": "concept:disaggregated-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "competes_with",
+          "dst": "repo:vllm-project/vllm",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "relevant_to",
+          "dst": "company:nvidia",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-dynamo-dynamo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Nasiko-Labs/nasiko",
+      "url": "https://github.com/Nasiko-Labs/nasiko",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma Rust open-source para \"deploy, route, secure y observe\" agentes que hablan el protocolo A2A: un comando despliega un agente con seguridad y gateway incluidos, sin pegamento custom.",
+        "por_que_importa": "Nasiko es una plataforma Rust open-source para desplegar, enrutar, securizar y observar agentes que hablan el protocolo A2A, con la promesa de \"un comando y tienes agente, seguridad y gateway\". Entra en un debate que ya está abierto en el grafo: por un lado el concepto a2a-spec (el protocolo) y por otro google/sam (cubierto por primera vez el 2026-08-21), que propone una red A2A punto a punto tipo mesh. Nasiko toma el camino contrario: una red A2A basada en gateway y control plane, no P2P. La comparación sam vs nasiko es la forma más clara de explicar a un lector los dos modelos de \"agentes que se llaman entre sí\": quién enruta, quién autentica y quién observa la llamada.",
+        "madurez_senales": "5340★ · 1244 forks · Rust · creado 2026-02-12 · último push 2026-08-21 · NOASSERTION en API pero LICENSE real = Apache-2.0 (verificado). Default branch `main`, repo original. Topics: `agent-security`, `cli`, `mcp-gateway`, `multi-agent`, `tokenomics`, `tokenops`.",
+        "accion_sugerida": "vigilar (revisar el README y la doc — apunta a un \"command to deploy a secure agent\" que todavía no hemos visto claro en el código; veremos cómo evoluciona su seguridad/tokenomics antes de invertir tiempo en clonar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Nasiko-Labs/nasiko",
+          "rel": "implements",
+          "dst": "concept:a2a-control-plane",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Nasiko-Labs/nasiko",
+          "rel": "competes_with",
+          "dst": "repo:google/sam",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "repo:Nasiko-Labs/nasiko",
+          "rel": "uses",
+          "dst": "concept:a2a-spec",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nasiko-labs-nasiko",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "hao-ai-lab/FastVideo",
+      "url": "https://github.com/hao-ai-lab/FastVideo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework Python unificado para \"inferencia acelerada + post-entrenamiento\" de modelos de generación de vídeo: un solo stack cubre serving de difusión y distillation/finetune posterior, incluyendo modelos de vídeo diffusion populares.",
+        "por_que_importa": "FastVideo unifica en un solo stack Python las dos fases que normalmente se montan por separado: servir modelos de difusión de vídeo y, sobre esos mismos modelos, hacer distillation o fine-tune posterior. Para un laboratorio pequeño que quiere ejecutar LoRA o distillation sobre vídeo sin mantener dos toolkits distintos, eso baja mucho el coste de entrada. Encaja como complemento directo de ATH-MaaS/Pixelle-Video, que cubrimos por primera vez el 2026-08-21 (un motor AIGC de vídeo con UI): ahí tienes la capa de producto con interfaz, aquí tienes la capa de entrenamiento y serving que podría alimentar ese tipo de producto. Se apoya en huggingface-diffusers, así que si ya trabajas con diffusers la curva de entrada es mínima.",
+        "madurez_senales": "4024★ · 412 forks · Python · creado 2024-10-24 · último push 2026-08-22 · Apache-2.0 · default_branch `main` · repo original. Topics: `diffusers`, `diffusion-models`, `distillation`, `inference`, `post-training`, `video-generation`.",
+        "accion_sugerida": "leer (revisar lista de modelos soportados y benchmarks de inference; orientar a lectores que sólo quieran hospedar Wan2.x o Hunyuan-Video).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:hao-ai-lab/FastVideo",
+          "rel": "implements",
+          "dst": "concept:video-diffusion-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hao-ai-lab/FastVideo",
+          "rel": "complements",
+          "dst": "repo:ATH-MaaS/Pixelle-Video",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "repo:hao-ai-lab/FastVideo",
+          "rel": "uses",
+          "dst": "framework:huggingface-diffusers",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hao-ai-lab-fastvideo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "google/adk-samples",
+      "url": "https://github.com/google/adk-samples",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "colección oficial de Google de agentes de referencia construidos con el Agent Development Kit (ADK): desde un agente conversacional básico hasta flujos multi-agente complejos con MCP.",
+        "por_que_importa": "Este repo es la colección oficial de Google de agentes de referencia construidos con su Agent Development Kit (ADK): desde un agente conversacional básico hasta flujos multi-agente con MCP. Su valor real es que condensa el patrón canónico que Google recomienda: estructura de proyecto, uso de MCP, agentes anidados, observability. Es competidor directo de microsoft/agent-framework, que cubrimos por primera vez el 2026-08-21, así que ahora tienes los dos SDKs mayoritarios lado a lado y puedes enseñar al lector \"tu primer agente serio\" con ejemplos oficiales en ambos. Para un artículo tipo \"tu primer agente serio en Google ADK\" es material directo, no hace falta destilar patrones de posts de blog.",
+        "madurez_senales": "10206★ · 2822 forks · Python · creado 2025-04-01 · último push 2026-08-22 · Apache-2.0 · default_branch `main` · repo original (Google). Topics: `adk`, `agent-samples`, `agents`.",
+        "accion_sugerida": "leer (recorrer 2-3 samples pequeños para entender el patrón, luego pasar a uno multi-agente — útil incluso si no adoptas ADK como referencia: verás el \"google way\" de hacer agentes).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google/adk-samples",
+          "rel": "implements",
+          "dst": "concept:google-agent-development-kit",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google/adk-samples",
+          "rel": "competes_with",
+          "dst": "repo:microsoft/agent-framework",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "repo:google/adk-samples",
+          "rel": "relevant_to",
+          "dst": "company:google-deepmind",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-adk-samples",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "langfuse/langfuse",
+      "url": "https://github.com/langfuse/langfuse",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma open-source AI engineering: LLM evals, tracing, métricas, prompt management y playgrounds. Soporta OpenAI, Anthropic, LangChain, LlamaIndex, Autogen — un SDK unifica todos.",
+        "por_que_importa": "Langfuse reaparece en trending con sus 33.540★ y la lectura útil no es \"qué es\" (ya lo tenemos en el grafo bajo llmops y llm-observability) sino el patrón de uso: devs están adoptando evals + tracing + prompt management como trío inseparable, no como piezas opcionales. El SDK unifica OpenAI, Anthropic, LangChain, LlamaIndex y Autogen, así que el argumento operativo es \"si tu agente es de producción, necesitas las tres capas, y este es el stack que las entrega sin obligarte a elegir proveedor\". Sirve además de contraste natural con Tracely, que cubrimos en este mismo boletín: Langfuse observa y evalúa, Tracely cierra el bucle con regression tests en CI — piezas complementarias, no duplicadas.",
+        "madurez_senales": "33540★ · 3617 forks · TypeScript · creado 2023-05-18 · último push 2026-08-22 · LICENSE NOASSERTION — el LICENSE real del repo declara MIT en la cabecera de su código (verificable). Default branch `main`, repo original (Y Combinator). Topics: `evaluation`, `langchain`, `llm-evaluation`, `llm-observability`, `llmops`, `monitoring`, `open-source`, `prompt-management`, `self-hosted`, `ycombinator`.",
+        "accion_sugerida": "ignorar como hallazgo principal repetido — ya conocido; vigilar (revisar releases para nuevas features en eval/prompt versioning).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:langfuse/langfuse",
+          "rel": "implements",
+          "dst": "concept:llmops",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:langfuse/langfuse",
+          "rel": "complements",
+          "dst": "repo:Jwuthri/Tracely",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "langfuse-langfuse",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "framework adaptativo de web scraping con 4 fetchers (incl. StealthyFetcher basado en Camoufox)",
+        "por_que_importa": "",
+        "madurez_senales": "75746★, último push 2026-08-21, Python, BSD-3-Clause",
+        "accion_sugerida": "leer — ya documentado en `web-scraping-viability`; trending recordatorio editorial para audiencia de scraping local-first",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "d4vinci-scrapling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "astroturf-ai/synthetic-eval",
+      "url": "https://github.com/astroturf-ai/synthetic-eval",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "",
+        "por_que_importa": "",
+        "madurez_senales": "sin verificar — salió de slice Python pero no fue verificado vía API por cuota",
+        "accion_sugerida": "no incluir sin verificar — , descartar de momento",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "astroturf-ai-synthetic-eval",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Tencent/AI-Infra-Guard",
+      "url": "https://github.com/Tencent/AI-Infra-Guard",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "sigue activo, segunda entrada en tres días con métricas de tr",
+        "por_que_importa": "",
+        "madurez_senales": "re-entry 2026-08-22, 5103★, último push 2026-08-22, Python, Apache-2.0",
+        "accion_sugerida": "creciente — Acción: vigilar (lo cubrimos ayer a fondo; en radar por impulso sostenido, no por novedad)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-ai-infra-guard",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "maximhq/bifrost",
+      "url": "https://github.com/maximhq/bifrost",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "AI gateway open-source multi-provider",
+        "por_que_importa": "",
+        "madurez_senales": "re-entry 2026-08-22, Go, Apache-2.0",
+        "accion_sugerida": "vigilar (cubierto 2026-08-19; ver si su release de hoy trae nuevas integraciones / LM router)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maximhq-bifrost",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "modular/modular",
+      "url": "https://github.com/modular/modular",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "plataforma Mojo para AI infra",
+        "por_que_importa": "",
+        "madurez_senales": "re-entry 2026-08-22, Mojo",
+        "accion_sugerida": "vigilar (cubierto hace 3 días, sin release mayor visible)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "modular-modular",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "volcengine/OpenViking",
+      "url": "https://github.com/volcengine/OpenViking",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agent memory platform open-source de ByteDance",
+        "por_que_importa": "",
+        "madurez_senales": "re-entry 2026-08-22, Python",
+        "accion_sugerida": "vigilar (cubierto 2026-08-19; revisar si publicó release nuevo esta semana)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "volcengine-openviking",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

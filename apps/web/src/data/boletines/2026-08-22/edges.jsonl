@@ -1,0 +1,51 @@
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-arcboxlabs-arcbox", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-arcboxlabs-arcbox", "dst": "tema:arcboxlabs-arcbox", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:arcboxlabs/arcbox", "dst": "concept:ai-agent-sandbox", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:arcboxlabs/arcbox", "dst": "tool:firecracker", "rel": "uses", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:arcboxlabs/arcbox", "dst": "concept:docker-desktop-replacement", "rel": "competes_with", "added": "2026-08-22", "primera_mencion": null}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-jwuthri-tracely", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-jwuthri-tracely", "dst": "tema:jwuthri-tracely", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:Jwuthri/Tracely", "dst": "concept:agentic-regression-tests", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:Jwuthri/Tracely", "dst": "tool:clickhouse", "rel": "uses", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:Jwuthri/Tracely", "dst": "repo:langfuse/langfuse", "rel": "complements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-truefoundry-trueforge", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-truefoundry-trueforge", "dst": "tema:truefoundry-trueforge", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:truefoundry/trueforge", "dst": "concept:agent-harness", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:truefoundry/trueforge", "dst": "repo:deepseek-ai/deepseek-harness", "rel": "competes_with", "added": "2026-08-22", "primera_mencion": "2026-08-14"}
+{"src": "repo:truefoundry/trueforge", "dst": "repo:walkinglabs/learn-harness-engineering", "rel": "competes_with", "added": "2026-08-22", "primera_mencion": "2026-08-17"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-ai-dynamo-dynamo", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-ai-dynamo-dynamo", "dst": "tema:ai-dynamo-dynamo", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:ai-dynamo/dynamo", "dst": "concept:disaggregated-inference", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:ai-dynamo/dynamo", "dst": "repo:vllm-project/vllm", "rel": "competes_with", "added": "2026-08-22", "primera_mencion": "2026-07-16"}
+{"src": "repo:ai-dynamo/dynamo", "dst": "company:nvidia", "rel": "relevant_to", "added": "2026-08-22", "primera_mencion": "2026-08-12"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-nasiko-labs-nasiko", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-nasiko-labs-nasiko", "dst": "tema:nasiko-labs-nasiko", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:Nasiko-Labs/nasiko", "dst": "concept:a2a-control-plane", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:Nasiko-Labs/nasiko", "dst": "repo:google/sam", "rel": "competes_with", "added": "2026-08-22", "primera_mencion": "2026-08-21"}
+{"src": "repo:Nasiko-Labs/nasiko", "dst": "concept:a2a-spec", "rel": "uses", "added": "2026-08-22", "primera_mencion": null}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-hao-ai-lab-fastvideo", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-hao-ai-lab-fastvideo", "dst": "tema:hao-ai-lab-fastvideo", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:hao-ai-lab/FastVideo", "dst": "concept:video-diffusion-inference", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:hao-ai-lab/FastVideo", "dst": "repo:ATH-MaaS/Pixelle-Video", "rel": "complements", "added": "2026-08-22", "primera_mencion": "2026-08-21"}
+{"src": "repo:hao-ai-lab/FastVideo", "dst": "framework:huggingface-diffusers", "rel": "uses", "added": "2026-08-22", "primera_mencion": null}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-google-adk-samples", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-google-adk-samples", "dst": "tema:google-adk-samples", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:google/adk-samples", "dst": "concept:google-agent-development-kit", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:google/adk-samples", "dst": "repo:microsoft/agent-framework", "rel": "competes_with", "added": "2026-08-22", "primera_mencion": "2026-08-21"}
+{"src": "repo:google/adk-samples", "dst": "company:google-deepmind", "rel": "relevant_to", "added": "2026-08-22", "primera_mencion": null}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-langfuse-langfuse", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-langfuse-langfuse", "dst": "tema:langfuse-langfuse", "rel": "trata", "added": "2026-08-22"}
+{"src": "repo:langfuse/langfuse", "dst": "concept:llmops", "rel": "implements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "repo:langfuse/langfuse", "dst": "repo:Jwuthri/Tracely", "rel": "complements", "added": "2026-08-22", "primera_mencion": null}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-d4vinci-scrapling", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-08-22"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-astroturf-ai-synthetic-eval", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-astroturf-ai-synthetic-eval", "dst": "tema:astroturf-ai-synthetic-eval", "rel": "trata", "added": "2026-08-22"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-tencent-ai-infra-guard", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-tencent-ai-infra-guard", "dst": "tema:tencent-ai-infra-guard", "rel": "trata", "added": "2026-08-22"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-maximhq-bifrost", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-maximhq-bifrost", "dst": "tema:maximhq-bifrost", "rel": "trata", "added": "2026-08-22"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-modular-modular", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-modular-modular", "dst": "tema:modular-modular", "rel": "trata", "added": "2026-08-22"}
+{"src": "boletin:2026-08-22", "dst": "item:https-github-com-volcengine-openviking", "rel": "menciona", "added": "2026-08-22"}
+{"src": "item:https-github-com-volcengine-openviking", "dst": "tema:volcengine-openviking", "rel": "trata", "added": "2026-08-22"}

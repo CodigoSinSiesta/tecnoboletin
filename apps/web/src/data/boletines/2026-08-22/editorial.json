@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-08-22",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El stack agentic se separa en capas discretas y cada una ya tiene vendor open-source",
+  "posicionamiento": "ArcBox, Tracely y Trueforge aterrizan el mismo día y dibujan el mismo mapa por separado: sandbox de ejecución, CI/CD guiado por trazas, runtime ligero sobre el LLM. A eso se suma Dynamo rearmando la inferencia multi-nodo como capa propia, Nasiko abriendo una ruta A2A con gateway frente al mesh de Sam, FastVideo unificando serving y distillation de vídeo, y Google ADK como contraste del SDK de Microsoft. La lectura editorial es clara: la pila agente ya no es un monolito, son capas con vendors específicos y ya hay material para empezar a compararlas.",
+  "convergencia_stack_css": "Cuatro hallazgos encajan directamente con líneas editoriales de Código Sin Siesta: Trueforge se suma a deepseek-harness y learn-harness-engineering como tercer harness open-source; Dynamo convierte a vLLM en pieza orquestable, no sustituible; FastVideo completa con serving y distillation lo que Pixelle-Video ofrece como producto; ADK de Google y agent-framework de Microsoft ya forman el par SDK mayoritario para enseñar un primer agente serio.",
+  "cruzado_grafo": "Se refuerzan nodos ya conocidos: vllm-project/vllm (primera mención 2026-07-16) ahora aparece orquestado por Dynamo, deepseek-harness (2026-08-14) y walkinglabs/learn-harness-engineering (2026-08-17) ganan un tercer competidor con Trueforge, y microsoft/agent-framework (2026-08-21) tiene rival directo en google/adk-samples. Aparecen también por primera vez arcboxlabs/arcbox, Jwuthri/Tracely, truefoundry/trueforge, Nasiko-Labs/nasiko y hao-ai-lab/FastVideo, todos sin primera_mencion previa.",
+  "tendencias_5_boletines": "Tres días consecutivos con la misma tendencia: el boletín del 20 separó la runtime agentic en navegador y contenedor, el del 21 metió seguridad, frameworks first-party y runtime cloud-native en producción, y el de hoy consolida capas discretas con vendor open-source por capa. La línea es coherente: la pila agente sale del monolito experimental y se estratifica, y cada boletín añade una capa nueva al mapa sin contradecir la anterior.",
+  "alertas": [
+    "Truefoundry/trueforge y Jwuthri/Tracely son proyectos nuevos: tracción social baja, conviene medir antes de apostar el artículo.",
+    "ArcBox se compara con OrbStack pero aún no hay adopción amplia; el argumento 'mismo sandbox en local y prod' es de los autores, falta contraste externo.",
+    "FastVideo y Nasiko son coverage inicial; 흥분ación de 'un comando y tienes gateway' debe validarse con despliegue real."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Comparar Trueforge con deepseek-harness y learn-harness-engineering: tres vendors de harness open-source lado a lado es material directo de artículo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Nasiko vs google/sam materializa el debate gateway vs P2P para A2A, perfecto para explicar a un lector los dos modelos de agentes que se llaman entre sí."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Dynamo justifica el artículo 'vLLM vs SGLang vs TensorRT-LLM vs Dynamo — cuándo cada uno' que ya teníamos en el radar."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 6,
+      "razon": "google/adk-samples permite un artículo 'tu primer agente serio' con ejemplos oficiales junto al SDK de Microsoft."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 7,
+      "razon": "Langfuse repunta en trending y consolida evals + tracing + prompts como trío inseparable; conviene seguir su tracción antes de tratarlo como pieza fija del stack."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
