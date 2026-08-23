@@ -1,0 +1,468 @@
+{
+  "version": 2,
+  "date": "2026-08-23",
+  "boletin_origen": "2026-08-23-trending.md",
+  "resumen_ejecutivo": "- **El agente-harness se consolida como categoría**: hoy dos nuevos \"wrappers\" para LLMs y navegadores aparecen en tendencias casi a la vez — `google-research/envharness` (paper + código, 2026-08-21, Apache-2.0) que mete *Setup / Rule / Link* en entornos congelados para entrenar agentes, y `browser-use/browser-harness` (17k★, MIT) que conecta un LLM a tu Chrome real vía CDP y deja al agente escribir helpers nuevos. Ambos beben de la idea de \"frozen core, plug-in skills\" que ya vimos en `mattpocock/skills` y `vercel-labs/skills`.\n- **El edge inference para MoE se vuelve mainstream**: `FlashML-org/FreeToken` (2.5k★, Apache-2.0, push de hoy) promete correr DeepSeek-V4-Flash, Qwen3.6-35B-A3B y GLM-5.2 en GPUs de consumo con caché semántica de anchors, doble buffering prefill y un servidor compatible OpenAI/Anthropic. Sin verificación independiente de las cifras de rendimiento, pero la arquitectura (semantic anchor checkpoints + VRAM elástica) es la primera implementación OSS de la idea de \"context-edit aware KV cache\" que el paper pre-print describe.\n- **Asciimoo vuelve a abrirse paso**: `asciimoo/hister` (2.2k★, AGPL-3.0) es un motor de búsqueda local para páginas y archivos con indexado full-text, MCP server y cliente TUI. Coincide con `Leonxlnx/unlazy` (1.1k★, MIT) que llega como un \"skill\" para Claude/Codex que añade acceptance-ledger + gates runneables antes de reportar como completada una tarea sustancial.\n- **Movimientos en infraestructura de gateways**: `envoyproxy/ai-gateway` (1.95k★, Apache-2.0) aterriza en Go trending como capa Tier 1 / Tier 2 sobre Envoy Gateway para OpenAI, Azure, Bedrock, Vertex y Anthropic. `dembrandt/dembrandt` (3k★, MIT) sigue subiendo como extractor CLI de design tokens W3C desde cualquier web.\n- **El ecosistema \"skills\" para coding agents sigue fragmentándose**: a `mattpocock/skills`, `vercel-labs/skills` y `google/skills` se suma ahora `forcedotcom/sf-skills` (902★, Apache-2.0) desde Salesforce con skills para Agentforce, Apex, LWC y Flow — primera vez que un hyperscaler SaaS publica skills para Claude Code / Codex en este formato. `CopilotKit/CopilotKit` (37k★, MIT) continúa creciendo como framework de \"agent-native\" UI multi-canal.\nFuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "google-research/envharness",
+      "url": "https://github.com/google-research/envharness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paper + librería Python de Google Research que aplica la idea de \"agent-harness\" al lado del entorno. En lugar de modificar el código de un benchmark, envuelve la interfaz `reset`/`step` con tres componentes plug-in (Setup, Rule, Link) que reconfiguran el estado inicial, las acciones permitidas y la composición entre entornos. Un \"designer agent\" analiza trayectorias y compone los componentes para atacar las debilidades específicas del agente bajo entrenamiento.",
+        "por_que_importa": "Encaja con la línea 'agentes que aprenden sobre agentes' que cubrimos el 2026-07-28 al hablar de agentic-RL training: allí vimos el lado del entrenamiento del agente; aquí Google Research hace lo equivalente en el lado del entorno, así que juntos dan la foto completa de la curricula. El paralelismo con `vercel-labs/skills` y `mattpocock/skills` es directo — mismo patrón 'núcleo fijo del LLM + componentes plug-in', pero aplicado a la interfaz reset/step del benchmark en vez de a los prompts. Para un episodio sobre agentic-RL o curricula dinámicas, es el paper de referencia de la semana; además complementa a `browser-use/browser-harness` cubriendo el hueco teórico que ese repo deja en cómo decidir qué reconfigurar.",
+        "madurez_senales": "243★ · 15 forks · Python · Apache-2.0 · creado 2026-08-21 · último push 2026-08-21 · topics: ninguno declarado · descripción oficial: \"Awakening Static Worlds for Agent Learning\".",
+        "accion_sugerida": "leer.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "google-research/envharness",
+          "rel": "implements",
+          "dst": "concept:agent-harness-environment",
+          "primera_mencion": null
+        },
+        {
+          "src": "google-research/envharness",
+          "rel": "extends",
+          "dst": "concept:agentic-rl-training",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "google-research/envharness",
+          "rel": "complements",
+          "dst": "repo:browser-use/browser-harness",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-research-envharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "FlashML-org/FreeToken",
+      "url": "https://github.com/FlashML-org/FreeToken",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de serving edge-native para modelos MoE open-weight (DeepSeek-V4-Flash, Qwen3.6-35B-A3B, GLM-5.2). La propuesta técnica combina expert caching global con política de co-ejecución CPU/GPU bandwidth-adaptive (q*), doble buffering de prefill full-layer, formato de pesos \"FTW\" y \"semantic anchor checkpoints\" para evitar recomputar contexto cuando un agente edita tool calls / thinking blocks. Expone APIs compatibles OpenAI/Anthropic y promete 290B+ MoE en una gaming PC.",
+        "por_que_importa": "Conecta con dos conversaciones activas del boletín: local-first inference (que ya cubrimos el 2026-07-16 al comparar motores de serving con vLLM, hoy `competes_with`) y agentic context reuse. La idea de 'semantic anchor checkpoints' es directamente atacable en un episodio sobre KV cache + agentes: si funciona como dice, una sesión larga de Claude Code o Codex podría mantener su motor de inferencia en local sin pagar recompute cuando el agente edita tool calls o thinking blocks. La promesa de correr 290B+ MoE en una gaming PC habría que cogerla con pinzas — los benchmarks públicos de serving MoE en hardware consumer todavía no son maduros, así que el dato viene del repo, no de un paper revisado.",
+        "madurez_senales": "2.498★ · 233 forks · Python · Apache-2.0 · creado (fecha no detallada en respuesta) · último push 2026-08-23 · topics: vacío · descripción oficial: \"Edge-native MoE serving engine. Run 290B+ frontier open-weight models locally.\".",
+        "accion_sugerida": "explorar (vigilar primer release con binary + benchmark reproducible).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "FlashML-org/FreeToken",
+          "rel": "implements",
+          "dst": "concept:moe-edge-serving",
+          "primera_mencion": null
+        },
+        {
+          "src": "FlashML-org/FreeToken",
+          "rel": "competes_with",
+          "dst": "repo:vllm-project/vllm",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "FlashML-org/FreeToken",
+          "rel": "enables",
+          "dst": "concept:agentic-kv-cache-reuse",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "flashml-org-freetoken",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "browser-use/browser-harness",
+      "url": "https://github.com/browser-use/browser-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "bridge entre un LLM y un navegador real (no headless) vía un websocket CDP editable. La pieza diferencial: cuando el agente necesita una acción que el harness no expone, lo escribe como helper en `agent_helpers.py` y se queda. Cada tarea mejora el harness. Pensado para integrarse con Claude Code y Codex mediante un setup prompt pegable.",
+        "por_que_importa": "El enfoque 'self-expanding tool surface' es la respuesta práctica al problema de los harnesses limitados que ya vimos en `browser-use/browser-use` (2026-08-20) y en el concepto `lightweight-agent-harness` (2026-08-19): cuando el agente se topa con una acción que el harness no expone, la escribe él mismo como helper en `agent_helpers.py` y se queda, así cada tarea deja el entorno un poco más capaz. Mientras `vercel-labs/skills` y `mattpocock/skills` externalizan las skills al agente, aquí el harness las va escribiendo por sí mismo — el ángulo inverso. Buen tema para un episodio sobre 'long-lived tool environments' o sobre quién decide qué es una skill nueva.",
+        "madurez_senales": "17.033★ · 1.630 forks · Python · MIT · último push 2026-08-22 · topics: `ai-agent, browser-agent, browser-automation`.",
+        "accion_sugerida": "probar (instalable vía `uv` con Python 3.12; setup prompt listo para pegar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "browser-use/browser-harness",
+          "rel": "extends",
+          "dst": "repo:browser-use/browser-use",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "browser-use/browser-harness",
+          "rel": "implements",
+          "dst": "concept:browser-cdp-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "browser-use/browser-harness",
+          "rel": "complements",
+          "dst": "concept:lightweight-agent-harness",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "browser-use-browser-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "asciimoo/hister",
+      "url": "https://github.com/asciimoo/hister",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de búsqueda self-hosted para las páginas que visitas y los archivos que guardas. Indexa contenido completo (no solo títulos), con extensión para Firefox/Chrome que captura las páginas que abres. Tiene web UI, TUI, CLI y servidor MCP, así que cualquier coding agent puede consultarlo. Soporta búsqueda semántica opcional vía endpoint de embeddings.",
+        "por_que_importa": "Encaja con la idea de 'personal search' local-first y con el creciente patrón MCP-first (cubierto el 2026-08-08 con la primera aparición de un servidor MCP en el boletín) que están adoptando los coding agents para enchufarse a datos del usuario. Aquí `hister` cierra el ciclo: indexa páginas visitadas + archivos locales, expone servidor MCP para que cualquier coding agent consulte, y opcionalmente añade búsqueda semántica vía endpoint de embeddings externo. Para un episodio sobre RAG personal sin nube, es el ejemplo más completo que ha salido en OSS; el autor (asciimoo) ya pasó por el boletín el 2026-07-31 con su propuesta de motor de búsqueda liderado por agente, y esta es su encarnación concreta. Licencia AGPL-3.0: si lo vas a exponer públicamente, ojo.",
+        "madurez_senales": "2.215★ · 98 forks · Go · AGPL-3.0 · último push 2026-08-23 · topics: `browser-history, go, golang` · descripción: \"Hister is a private search engine for the pages you visit and the files you keep\".",
+        "accion_sugerida": "probar (binario único, sin configuración obligatoria).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "asciimoo/hister",
+          "rel": "implements",
+          "dst": "concept:local-first-search",
+          "primera_mencion": null
+        },
+        {
+          "src": "asciimoo/hister",
+          "rel": "exposes",
+          "dst": "tool:mcp",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "asciimoo/hister",
+          "rel": "competes_with",
+          "dst": "concept:agent-led-search-engine",
+          "primera_mencion": "2026-07-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "asciimoo-hister",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Leonxlnx/unlazy",
+      "url": "https://github.com/Leonxlnx/unlazy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill instalable (`npx skills add Leonxlnx/unlazy`) para Claude Code y Codex CLI que obliga al agente a escribir primero un \"acceptance ledger\" (qué tiene que ser verdad para considerar terminado el trabajo) y a ejecutar gates runneables antes de reportar como completada una tarea. La idea nuclear: \"report only what the evidence supports\". El core es `SKILL.md` + un checker en Node sin dependencias de terceros.",
+        "por_que_importa": "Es el primer 'skill para coding agents' dedicado específicamente a disciplinar la finalización, dentro de la conversación sobre `mattpocock/skills` que arrancó el 2026-08-08. La tendencia hasta ahora ha sido 'haz más cosas' (más skills, más herramientas); este va al revés: antes de reportar una tarea como completada, el agente tiene que escribir un 'acceptance ledger' con qué tiene que ser verdad y ejecutar gates runneables que lo demuestren — 'report only what the evidence supports'. Ágil para un episodio sobre quality-of-life de los coding agents o sobre cómo dejar de confiar a ciegas en 'Listo ✓'.",
+        "madurez_senales": "1.128★ · 76 forks · JavaScript · MIT · último push 2026-08-23 · topics: `ai-agents, claude, claude-code` · versión actual 2.1.0 (no hay tag GitHub todavía).",
+        "accion_sugerida": "probar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Leonxlnx/unlazy",
+          "rel": "implements",
+          "dst": "concept:agent-completion-discipline",
+          "primera_mencion": null
+        },
+        {
+          "src": "Leonxlnx/unlazy",
+          "rel": "uses",
+          "dst": "tool:skills-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "Leonxlnx/unlazy",
+          "rel": "complements",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "leonxlnx-unlazy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "envoyproxy/ai-gateway",
+      "url": "https://github.com/envoyproxy/ai-gateway",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "proyecto oficial de la comunidad Envoy que añade a Envoy Gateway una capa específica para tráfico de LLM (OpenAI, Azure OpenAI, Google Gemini, Vertex, AWS Bedrock, Anthropic). Modelo de dos tiers: Tier One para auth + routing + rate limit global; Tier Two para control fino sobre clusters self-hosted con endpoint picker.",
+        "por_que_importa": "Para quien self-hostea vLLM, llama a varios proveedores y necesita failover o A/B routing, hasta ahora las opciones eran un proxy custom o piezas como kgateway/litellm. Aquí aparece la primera capa seria de la comunidad Envoy para tráfico LLM (OpenAI, Azure OpenAI, Google Gemini, Vertex, AWS Bedrock, Anthropic), con release cadence de un proyecto oficial: Tier One para auth + routing + rate limit global, Tier Two para control fino sobre clusters self-hosted con endpoint picker. Encaja con la línea 'infra seria para agentes' que ya cubrimos el 2026-08-19 con el concepto `ai-gateway-go` y el 2026-08-17 con `vllm-project/semantic-router` y la capa de routing LLM: este boletín completa la foto de qué hay disponible hoy.",
+        "madurez_senales": "1.950★ · 338 forks · Go · Apache-2.0 · último push 2026-08-22 · topics: `ai, ai-gateway, api-gateway`.",
+        "accion_sugerida": "vigilar (v1 todavía en maduración; buen candidato para deep-dive cuando haya release con provider Anthropic estable).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "envoyproxy/ai-gateway",
+          "rel": "implements",
+          "dst": "concept:ai-gateway-go",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "envoyproxy/ai-gateway",
+          "rel": "complements",
+          "dst": "repo:vllm-project/semantic-router",
+          "primera_mencion": "2026-08-17"
+        },
+        {
+          "src": "envoyproxy/ai-gateway",
+          "rel": "uses",
+          "dst": "concept:llm-routing-layer",
+          "primera_mencion": "2026-08-17"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "envoyproxy-ai-gateway",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "dembrandt/dembrandt",
+      "url": "https://github.com/dembrandt/dembrandt",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI (`npm install -g dembrandt`) que abre un sitio con Playwright/Chromium, extrae logo + colores + tipografía + spacing + bordes + sombras + motion + componentes, y los emite como design tokens W3C. Pensado para ejecutarse en CI y mantener consistencia entre el site de referencia y el sistema de diseño propio.",
+        "por_que_importa": "cierra un hueco entre \"auditoría visual\" y \"design system enforcement\". Para un episodio sobre tooling de front-end o para CSS, es un ejemplo limpio de cómo automatizar lo que normalmente es una semana de Figma.",
+        "madurez_senales": "3.035★ · 284 forks · TypeScript · MIT · último push 2026-08-22 · topics: `brand-audits, css, design-engineering` · disponible vía npm.",
+        "accion_sugerida": "explorar (probar contra el sitio de un cliente para entender el output real).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "dembrandt/dembrandt",
+          "rel": "implements",
+          "dst": "concept:design-tokens-extraction",
+          "primera_mencion": null
+        },
+        {
+          "src": "dembrandt/dembrandt",
+          "rel": "uses",
+          "dst": "tool:playwright-core",
+          "primera_mencion": null
+        },
+        {
+          "src": "dembrandt/dembrandt",
+          "rel": "relevant_to",
+          "dst": "concept:design-engineering",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dembrandt-dembrandt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "forcedotcom/sf-skills",
+      "url": "https://github.com/forcedotcom/sf-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "primera librería de skills Salesforce (Agentforce, Apex, LWC, Flow) instalable vía `npx skills add`. Aviso explícito del repo: cambios frecuentes, no usar como API estable.",
+        "por_que_importa": "",
+        "madurez_senales": "902★, último push 2026-08-21, Python, Apache-2.0",
+        "accion_sugerida": "vigilar (buen termómetro de cómo hyperscalers SaaS se montan al tren skills)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "forcedotcom-sf-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "CopilotKit/CopilotKit",
+      "url": "https://github.com/CopilotKit/CopilotKit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "framework \"agent-native UI\" para React/Angular/Vue/Slack/Teams con AG-UI. Subida sostenida; ya comentado en boletines anteriores, pero la versión actual añade WhatsApp/Telegram/iMessage.",
+        "por_que_importa": "",
+        "madurez_senales": "36.968★, último push 2026-08-22, TypeScript, MIT",
+        "accion_sugerida": "leer (release notes de la última versión)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-copilotkit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "contexto gestionado para Claude Code (no verificado el detalle del LICENSE; abrir `LICENSE` antes de build-dependency).",
+        "por_que_importa": "",
+        "madurez_senales": "20.096★, último push 2026-08-23, TypeScript, NOASSERTION",
+        "accion_sugerida": "vigilar (volumen de estrellas sugiere tracción real, pero el NOASSERTION obliga a revisar términos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "henrygd/beszel",
+      "url": "https://github.com/henrygd/beszel",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "monitoring de servidores homelab, simple y ligero. Sigue su trayectoria ascendente sin ruido.",
+        "por_que_importa": "",
+        "madurez_senales": "24.558★, último push 2026-08-23, Go, MIT",
+        "accion_sugerida": "ignorar (ya en radar, sin cambios editoriales)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "henrygd-beszel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "glanceapp/glance",
+      "url": "https://github.com/glanceapp/glance",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "dashboard aggregator self-hosted; sigue creciendo lento y constante.",
+        "por_que_importa": "",
+        "madurez_senales": "36.536★, último push 2026-08-21, Go, AGPL-3.0",
+        "accion_sugerida": "ignorar (consolidado, sin noticias)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "glanceapp-glance",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "hoangperry/herminal",
+      "url": "https://github.com/hoangperry/herminal",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "terminal nativo macOS con IME vietnamita y orquestación de coding agents.",
+        "por_que_importa": "",
+        "madurez_senales": "222★, último push 2026-08-21, Swift, MIT",
+        "accion_sugerida": "vigilar (premature, sólo 222★, pero la idea de terminal nativo para coding-agent es interesante para piezas locales)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hoangperry-herminal",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/7 items reescritos; rechazados por longitud sospechosa: [6]; faltantes en respuesta: [6]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

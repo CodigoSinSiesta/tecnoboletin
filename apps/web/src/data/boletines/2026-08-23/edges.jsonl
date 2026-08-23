@@ -1,0 +1,47 @@
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-google-research-envharness", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-google-research-envharness", "dst": "tema:google-research-envharness", "rel": "trata", "added": "2026-08-23"}
+{"src": "google-research/envharness", "dst": "concept:agent-harness-environment", "rel": "implements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "google-research/envharness", "dst": "concept:agentic-rl-training", "rel": "extends", "added": "2026-08-23", "primera_mencion": "2026-07-28"}
+{"src": "google-research/envharness", "dst": "repo:browser-use/browser-harness", "rel": "complements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-flashml-org-freetoken", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-flashml-org-freetoken", "dst": "tema:flashml-org-freetoken", "rel": "trata", "added": "2026-08-23"}
+{"src": "FlashML-org/FreeToken", "dst": "concept:moe-edge-serving", "rel": "implements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "FlashML-org/FreeToken", "dst": "repo:vllm-project/vllm", "rel": "competes_with", "added": "2026-08-23", "primera_mencion": "2026-07-16"}
+{"src": "FlashML-org/FreeToken", "dst": "concept:agentic-kv-cache-reuse", "rel": "enables", "added": "2026-08-23", "primera_mencion": null}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-browser-use-browser-harness", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-browser-use-browser-harness", "dst": "tema:browser-use-browser-harness", "rel": "trata", "added": "2026-08-23"}
+{"src": "browser-use/browser-harness", "dst": "repo:browser-use/browser-use", "rel": "extends", "added": "2026-08-23", "primera_mencion": "2026-08-20"}
+{"src": "browser-use/browser-harness", "dst": "concept:browser-cdp-harness", "rel": "implements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "browser-use/browser-harness", "dst": "concept:lightweight-agent-harness", "rel": "complements", "added": "2026-08-23", "primera_mencion": "2026-08-19"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-asciimoo-hister", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-asciimoo-hister", "dst": "tema:asciimoo-hister", "rel": "trata", "added": "2026-08-23"}
+{"src": "asciimoo/hister", "dst": "concept:local-first-search", "rel": "implements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "asciimoo/hister", "dst": "tool:mcp", "rel": "exposes", "added": "2026-08-23", "primera_mencion": "2026-08-08"}
+{"src": "asciimoo/hister", "dst": "concept:agent-led-search-engine", "rel": "competes_with", "added": "2026-08-23", "primera_mencion": "2026-07-31"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-leonxlnx-unlazy", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-leonxlnx-unlazy", "dst": "tema:leonxlnx-unlazy", "rel": "trata", "added": "2026-08-23"}
+{"src": "Leonxlnx/unlazy", "dst": "concept:agent-completion-discipline", "rel": "implements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "Leonxlnx/unlazy", "dst": "tool:skills-cli", "rel": "uses", "added": "2026-08-23", "primera_mencion": null}
+{"src": "Leonxlnx/unlazy", "dst": "repo:mattpocock/skills", "rel": "complements", "added": "2026-08-23", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-envoyproxy-ai-gateway", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-envoyproxy-ai-gateway", "dst": "tema:envoyproxy-ai-gateway", "rel": "trata", "added": "2026-08-23"}
+{"src": "envoyproxy/ai-gateway", "dst": "concept:ai-gateway-go", "rel": "implements", "added": "2026-08-23", "primera_mencion": "2026-08-19"}
+{"src": "envoyproxy/ai-gateway", "dst": "repo:vllm-project/semantic-router", "rel": "complements", "added": "2026-08-23", "primera_mencion": "2026-08-17"}
+{"src": "envoyproxy/ai-gateway", "dst": "concept:llm-routing-layer", "rel": "uses", "added": "2026-08-23", "primera_mencion": "2026-08-17"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-dembrandt-dembrandt", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-dembrandt-dembrandt", "dst": "tema:dembrandt-dembrandt", "rel": "trata", "added": "2026-08-23"}
+{"src": "dembrandt/dembrandt", "dst": "concept:design-tokens-extraction", "rel": "implements", "added": "2026-08-23", "primera_mencion": null}
+{"src": "dembrandt/dembrandt", "dst": "tool:playwright-core", "rel": "uses", "added": "2026-08-23", "primera_mencion": null}
+{"src": "dembrandt/dembrandt", "dst": "concept:design-engineering", "rel": "relevant_to", "added": "2026-08-23", "primera_mencion": null}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-forcedotcom-sf-skills", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-forcedotcom-sf-skills", "dst": "tema:forcedotcom-sf-skills", "rel": "trata", "added": "2026-08-23"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-copilotkit-copilotkit", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-copilotkit-copilotkit", "dst": "tema:copilotkit-copilotkit", "rel": "trata", "added": "2026-08-23"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-mksglu-context-mode", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-mksglu-context-mode", "dst": "tema:mksglu-context-mode", "rel": "trata", "added": "2026-08-23"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-henrygd-beszel", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-henrygd-beszel", "dst": "tema:henrygd-beszel", "rel": "trata", "added": "2026-08-23"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-glanceapp-glance", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-glanceapp-glance", "dst": "tema:glanceapp-glance", "rel": "trata", "added": "2026-08-23"}
+{"src": "boletin:2026-08-23", "dst": "item:https-github-com-hoangperry-herminal", "rel": "menciona", "added": "2026-08-23"}
+{"src": "item:https-github-com-hoangperry-herminal", "dst": "tema:hoangperry-herminal", "rel": "trata", "added": "2026-08-23"}
