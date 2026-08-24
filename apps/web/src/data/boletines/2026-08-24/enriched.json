@@ -1,0 +1,388 @@
+{
+  "version": 2,
+  "date": "2026-08-24",
+  "boletin_origen": "2026-08-24-trending.md",
+  "resumen_ejecutivo": "- **El ecosistema \"skills\" tiene ya su librería canónica OSS**: `VoltAgent/awesome-agent-skills` (31.472★, MIT, 1.497+ skills) entra en trending daily + Trendshift a la vez y se posiciona como el índice central para Claude Code, Codex, Gemini CLI y Cursor — comparable al rol que `awesome-mcp-servers` tuvo en la oleada anterior. Curiosamente, el propio repositorio es propiedad de la empresa detrás de VoltAgent, pero la curaduría es abierta y el formato sigue siendo \"Awesome list\".\n- **Dos ADE nuevos para \"100 coding agents en paralelo\" se codean la pole**: `superset-sh/superset` (13.271★, **Elastic License 2.0 — NO open source**, sólo macOS) y `proliferate-ai/proliferate` (330★, AGPL-3.0). Ambos hacen lo mismo: arrancar Claude Code / Codex / OpenCode cada uno en su propio worktree, aislados, y dejar al humano elegir el ganador. Es la confirmación de que el patrón \"fan-out worktrees + LLM-as-judge para merge\" se ha convertido en el flujo por defecto para equipos con muchas suscripciones.\n- **x64dbg se vuelve agente-friendly**: `duty1g/x64dbg-mcp-server` (1.021★ en 1 día, MIT, Zig, **71 tools + 22 event callbacks**) expone el debugger completo sobre MCP con un binario nativo cero-dependencias. Es el primer adaptador serio que convierte el reversing en una tarea dirigida por Claude Code / Codex sin Python ni .NET de por medio.\n- **Aparece la primera \"AgentOS con razonamiento ontológico\"**: `ZJU-REAL/HugAgentOS` (681★, Apache-2.0 + términos adicionales, 681★) del grupo REAL de Zhejiang University. Promueve agentes enterprise self-hosted sobre una capa de ontología que actúa como \"memoria estructurada\" — distinto del clásico RAG sobre vectores.\n- **Radar**: la CLI oficial de Google `gemini-cli` rompe el umbral de 100k★ (106.646★, Apache-2.0) y se confirma como el tercer agente-CLI oficial (tras Claude Code y Codex). `ibelick/ui-skills` (7.525★, MIT) y `inkboard/system-atlas` (131★, MIT) son dos skills notables orientadas a diseño y arquitectura. `davepoon/buildwithclaude` (3.326★, MIT) — marketplace paralelo de skills, agents, hooks y plugins.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (página general + TypeScript, Python, Rust, Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (2026-08-24).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "VoltAgent/awesome-agent-skills",
+      "url": "https://github.com/VoltAgent/awesome-agent-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "lista curada de **1.497+ skills** para coding agents (Claude Code, Codex, Gemini CLI, Cursor, OpenCode). Mantenida por la comunidad de VoltAgent con el lema explícito \"Hand-picked, not AI-slop generated\". Estructura por categoría y compatibilidad declarada.",
+        "por_que_importa": "encaja en la línea editorial \"infra para coding agents\". Es el directorio canónico que uno abre cuando piensa \"¿qué skills me faltan para mi Claude Code?\" — comparable al rol que `awesome-mcp-servers` jugó durante la oleada MCP. Bien anclado al grafo: cubre desde skills oficiales de Anthropic y Google hasta skills comunitarios nicho (baselining, code review, design system). Buen sustrato para un episodio \"skills ecosystem overview\" o para un bot de recomendación.",
+        "madurez_senales": "**31.472★** · 3.369 forks · MIT · creado 2025-10-28 · último push 2026-08-24 · topics: `agent-skills, ai-agents, awesome, awesome-list, claude-code, claude-code-skills, claude-skills, codex-skills, cursor-skills, gemini-skills, opencode-skills, skills`.",
+        "accion_sugerida": "leer (consultar antes de escribir cualquier episodio sobre skills).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:VoltAgent/awesome-agent-skills",
+          "rel": "extends",
+          "dst": "concept:agent-skills-layer",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:VoltAgent/awesome-agent-skills",
+          "rel": "complements",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:VoltAgent/awesome-agent-skills",
+          "rel": "article_angle",
+          "dst": "article_idea:skills-overview",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "voltagent-awesome-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "superset-sh/superset",
+      "url": "https://github.com/superset-sh/superset",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"agentic IDE\" estilo escritorio para macOS que arranca **100+ coding agents CLI** (Claude Code, Codex, OpenCode, Cursor agent…), cada uno en un git worktree aislado con su propio terminal y su propio diff viewer. YC-backed (sello `yc-backed` en topics), release cadence serio, Discord activo. Ofrece también remote hosts, CLI, SDK y MCP server para alcanzar workspaces desde otros entornos.",
+        "por_que_importa": "confirma que el patrón \"fan-out worktrees + agente paralelo + reviewer humano\" se ha vuelto mainstream. Es el producto estrella del nuevo \"agentic IDE\" (ADE) y competidor directo de Compozy (Go) y Proliferate (TypeScript). Tiene una capa de revenue plausible (SaaS / local-first con sync) y por eso su licencia es **Elastic License 2.0**: no se puede ofrecer como servicio gestionado por terceros. Es source-available, no open source. Esto importa al grafo: el nodo debe etiquetar la licencia con claridad para no confundirlo con una alternativa OSS.",
+        "madurez_senales": "**13.271★** · 1.216 forks · **Elastic License 2.0 (source-available, NO open source)** · creado 2025-10-21 · último push 2026-08-24 · topics: `ade, agent, agent-orchestration, ai-agents, ai-coding, claude-code, cli, codex, coding-agents, cursor-agent, developer-tools, devtools, ide, macos, opencode, orchestration, parallel-agents, terminal, worktrees, yc-backed`.",
+        "accion_sugerida": "vigilar (no usar para producir derivados comerciales; usar como referencia de UX).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:superset-sh/superset",
+          "rel": "implements",
+          "dst": "concept:ade-orchestrator",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:superset-sh/superset",
+          "rel": "competes_with",
+          "dst": "repo:compozy/compozy",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:superset-sh/superset",
+          "rel": "risk",
+          "dst": "concept:license-non-oss",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superset-sh-superset",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "proliferate-ai/proliferate",
+      "url": "https://github.com/proliferate-ai/proliferate",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "IDE open-source para correr Claude Code, Codex, OpenCode y Grok en paralelo, cada uno en su worktree aislado con su terminal, conversación y estado de revisión propios. Físicamente un fork/respuesta a Superset: misma propuesta, **AGPL-3.0** en lugar de Elastic 2.0, sólo macOS por ahora. Su valor está en que cualquier empresa o particular puede auto-hospedarlo y adaptarlo sin la restricción de \"no managed service\" de Elastic.",
+        "por_que_importa": "es la opción OSS real para el patrón ADE. Aunque el repo tiene sólo 330★, su llegada simultánea a trending con Superset señala que la categoría \"agentic IDE con worktrees paralelos\" está consolidándose. Para un episodio sobre \"alternativas OSS a Superset / Cursor background agents\", es lectura obligatoria.",
+        "madurez_senales": "**330★** · 61 forks · **AGPL-3.0** · creado 2026-04-30 · último push 2026-08-23 · topics: (vacío) · 94 issues abiertos (señal de proyecto joven pero en uso).",
+        "accion_sugerida": "explorar (instalable vía DMG en macOS; revisar si el modelo AGPL encaja con tu caso antes de hacer fork comercial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:proliferate-ai/proliferate",
+          "rel": "implements",
+          "dst": "concept:ade-orchestrator",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:proliferate-ai/proliferate",
+          "rel": "competes_with",
+          "dst": "repo:superset-sh/superset",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:proliferate-ai/proliferate",
+          "rel": "uses",
+          "dst": "concept:worktree-isolation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "proliferate-ai-proliferate",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "ZJU-REAL/HugAgentOS",
+      "url": "https://github.com/ZJU-REAL/HugAgentOS",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"AgentOS\" open-source y self-hosted del grupo REAL (Zhejiang University): propone una capa de **razonamiento grounded en ontología** para que los agentes enterprise operen con memoria estructurada en lugar de RAG plano. Distinguen entre \"Community Edition\" y ediciones comerciales; el repo abierto incluye `document/en/`, `hugagentos` core y SDK. Reciente aparición de HugAgentOS en el repo original (2026-07-19) tras la ola de `agent-os` genéricos.",
+        "por_que_importa": "frente al RAG-vector habitual, la promesa \"ontology-grounded trustworthy reasoning\" es una tesis con peso académico. Para un episodio sobre \"más allá del RAG: knowledge graphs y ontologías como memoria de agente\", es el ejemplo chino-académico-europeo que faltaba (los anglosajones suelen ir a vector stores planos). Su licencia es Apache-2.0 con términos adicionales (la API reporta NOASSERTION; LICENSE real verificado: Apache-2.0 + supplementary terms, verificado 2026-08-24).",
+        "madurez_senales": "**681★** · 24 forks · **Apache-2.0 con supplementary terms** (verificado en LICENSE) · creado 2026-07-19 · último push 2026-08-23 · topics: `agent, agent-framework, desktop-app, harness, harness-engineering` · descripción oficial: \"HugAgentOS: The Self-Evolving AgentOS for Ontology-Grounded Trustworthy Reasoning\".",
+        "accion_sugerida": "explorar (revisar `document/en/editions/overview.md` para entender la separación Community vs Enterprise; clonar y probar el quick-install si tienes una VM de prueba).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ZJU-REAL/HugAgentOS",
+          "rel": "implements",
+          "dst": "concept:agent-os",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:ZJU-REAL/HugAgentOS",
+          "rel": "enables",
+          "dst": "concept:ontology-grounded-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ZJU-REAL/HugAgentOS",
+          "rel": "complements",
+          "dst": "repo:google-research/envharness",
+          "primera_mencion": "2026-08-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zju-real-hugagentos",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "duty1g/x64dbg-mcp-server",
+      "url": "https://github.com/duty1g/x64dbg-mcp-server",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin MCP nativo (Zig, single-binary, cero dependencias runtime) para el debugger **x64dbg**. Expone **71 tools MCP** (disassembly, stepping, breakpoints, memory allocation, registers, modules, threads, call stack, pattern scanning, string extraction, xrefs, symbols, bookmarks, PE analysis, OEP detection, module dumping, PEB/SEH inspection, tracing, etc.) y **22 event callbacks** sobre HTTP + SSE conforme a MCP 2024-11-05. Soporta x32 y x64 desde cualquier host; se compila a un único `.dll` que se suelta en la carpeta `plugins/` de x64dbg.",
+        "por_que_importa": "abre el reversing a Claude Code / Codex / Cursor agent como un entorno programable de primera clase. Para un episodio sobre \"MCP como capa universal de instrumentación\", es uno de los ejemplos más impresionantes: hasta ahora los debuggers eran los últimos grandes \"no tocables\" por agentes por la barrera de los runtimes (.NET / Python). Aquí un binario Zig demuestra que se puede hacer nativo y cross-platform. Caso de uso inmediato: agentes que escriben sus propios scripts de reversing, agentes que automatizan CTFs, equipos de seguridad que hacen triage de malware bajo control LLM.",
+        "madurez_senales": "**1.021★** en **1 día desde su creación** (2026-08-22) · 100 forks · MIT · Zig · 0 issues abiertos · último push 2026-08-23 · topics: `ai-agents, ai-debugging, binary-analysis, claude, claude-code, malware-analysis, malware-research, malware-scanner, mcp, mcp-server, mcp-servers, x64dbg, x64dbg-mcp, x64dbg-plugin, x64dbg-tools, xdbg, zig, zig-lang, ziglang`.",
+        "accion_sugerida": "probar (compilación `zig build` desde cualquier host; bajar release pre-compilado de GitHub; conectar con Claude Code vía MCP y ejecutar `set_breakpoint` + `step` para validar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:duty1g/x64dbg-mcp-server",
+          "rel": "implements",
+          "dst": "concept:mcp-debugger-adapter",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:duty1g/x64dbg-mcp-server",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:duty1g/x64dbg-mcp-server",
+          "rel": "enables",
+          "dst": "concept:agent-driven-reverse-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:duty1g/x64dbg-mcp-server",
+          "rel": "risk",
+          "dst": "concept:binary-analysis-llm-misuse",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "duty1g-x64dbg-mcp-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "la CLI oficial de Google rompe los 100k★ y se confirma como tercer agente-CLI oficial tras Claude Code y Codex. 60 req/min y 1k/día gratis con cuenta personal, Gemini 3 con ventana 1M tokens, MCP nativo. Re-entry menor (última mención 2026-08-09): la noticia es el umbral de 100k★.",
+        "por_que_importa": "",
+        "madurez_senales": "106.646★, último push 2026-08-24, TypeScript, Apache-2.0",
+        "accion_sugerida": ": vigilar (marcarla como referencia para \"elección de CLI\" en próximos episodios)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-gemini-gemini-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "ibelick/ui-skills",
+      "url": "https://github.com/ibelick/ui-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "registry de skills orientado a design engineers. CLI (`npx ui-skills start`), MCP server (`https://www.ui-skills.com/mcp`), playbook y skills instalables vía `npx ui-skills get <name>`.",
+        "por_que_importa": "",
+        "madurez_senales": "7.525★, último push 2026-08-23, TypeScript, MIT",
+        "accion_sugerida": ": probar (diferencia frente a VoltAgent/awesome-agent-skills: foco diseño, no generalista)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ibelick-ui-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "inkboard/system-atlas",
+      "url": "https://github.com/inkboard/system-atlas",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "skill (`npx skills add inkboard/system-atlas`) que convierte una discusión de arquitectura en un atlas isométrico interactivo + `SYSTEM.md` generado, ambos desde el mismo archivo de datos. Único punto de verdad para evitar que los diagramas \"mientan\" una semana después.",
+        "por_que_importa": "",
+        "madurez_senales": "131★, último push 2026-08-20, HTML, MIT",
+        "accion_sugerida": ": probar (instalar la skill y pasarle la descripción de un sistema propio; revisar el output)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "inkboard-system-atlas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Forsy-AI/biosecurity-agent",
+      "url": "https://github.com/Forsy-AI/biosecurity-agent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agente que \"construye un mundo bioseguridad vivo\" alrededor de un objetivo. Procesa discovery → retrieval → claim extraction → synthesis con cada lane inspeccionable. Nicho bioseguridad, pero la arquitectura \"target-based persistent world\" es generalizable.",
+        "por_que_importa": "",
+        "madurez_senales": "511★, último push 2026-08-23, TypeScript, Apache-2.0",
+        "accion_sugerida": ": leer (patrón interesante aunque el dominio sea nicho)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "forsy-ai-biosecurity-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "elder-plinius/OBLITERATUS",
+      "url": "https://github.com/elder-plinius/OBLITERATUS",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "toolkit para remover refusal behavior de LLMs open-weight vía abliteration (sin reentrenamiento). HuggingFace Space + Colab listos.",
+        "por_que_importa": "",
+        "madurez_senales": "7.996★, último push 2026-08-24, Python, AGPL-3.0",
+        "accion_sugerida": ": vigilar (éticamente sensible; el autor tiene historial de jailbreaks publicados — manejar con cuidado editorial; no recomendable como dependencia productiva)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elder-plinius-obliteratus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "davepoon/buildwithclaude",
+      "url": "https://github.com/davepoon/buildwithclaude",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "marketplace paralelo de skills, agents, commands, hooks y plugins para Claude Code / Desktop / Agent SDK. Instalable vía `/plugin marketplace add davepoon/buildwithclaude`.",
+        "por_que_importa": "",
+        "madurez_senales": "3.326★, último push 2026-08-23, Python, MIT",
+        "accion_sugerida": ": leer (útil como índice secundario junto a `VoltAgent/awesome-agent-skills`; el repositorio lleva más de un año activo y se nota la curación)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "davepoon-buildwithclaude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "respuesta no parseable como lista JSON (primeros 200 chars: '[{\"idx\": 0, \"por_que_importa\": \"encaja en la línea editorial \\\\\"infra para coding agents\\\\\" y ya cubrimos el concepto de capa de skills agent-skills-layer el 2026-08-08, cuando también apareció en el gr')",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

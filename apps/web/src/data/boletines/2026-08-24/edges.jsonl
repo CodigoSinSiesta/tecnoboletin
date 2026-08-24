@@ -1,0 +1,38 @@
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-voltagent-awesome-agent-skills", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-voltagent-awesome-agent-skills", "dst": "tema:voltagent-awesome-agent-skills", "rel": "trata", "added": "2026-08-24"}
+{"src": "repo:VoltAgent/awesome-agent-skills", "dst": "concept:agent-skills-layer", "rel": "extends", "added": "2026-08-24", "primera_mencion": "2026-08-08"}
+{"src": "repo:VoltAgent/awesome-agent-skills", "dst": "repo:mattpocock/skills", "rel": "complements", "added": "2026-08-24", "primera_mencion": "2026-08-08"}
+{"src": "repo:VoltAgent/awesome-agent-skills", "dst": "article_idea:skills-overview", "rel": "article_angle", "added": "2026-08-24", "primera_mencion": null}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-superset-sh-superset", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-superset-sh-superset", "dst": "tema:superset-sh-superset", "rel": "trata", "added": "2026-08-24"}
+{"src": "repo:superset-sh/superset", "dst": "concept:ade-orchestrator", "rel": "implements", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:superset-sh/superset", "dst": "repo:compozy/compozy", "rel": "competes_with", "added": "2026-08-24", "primera_mencion": "2026-08-14"}
+{"src": "repo:superset-sh/superset", "dst": "concept:license-non-oss", "rel": "risk", "added": "2026-08-24", "primera_mencion": null}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-proliferate-ai-proliferate", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-proliferate-ai-proliferate", "dst": "tema:proliferate-ai-proliferate", "rel": "trata", "added": "2026-08-24"}
+{"src": "repo:proliferate-ai/proliferate", "dst": "concept:ade-orchestrator", "rel": "implements", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:proliferate-ai/proliferate", "dst": "repo:superset-sh/superset", "rel": "competes_with", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:proliferate-ai/proliferate", "dst": "concept:worktree-isolation", "rel": "uses", "added": "2026-08-24", "primera_mencion": null}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-zju-real-hugagentos", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-zju-real-hugagentos", "dst": "tema:zju-real-hugagentos", "rel": "trata", "added": "2026-08-24"}
+{"src": "repo:ZJU-REAL/HugAgentOS", "dst": "concept:agent-os", "rel": "implements", "added": "2026-08-24", "primera_mencion": "2026-08-14"}
+{"src": "repo:ZJU-REAL/HugAgentOS", "dst": "concept:ontology-grounded-agent-memory", "rel": "enables", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:ZJU-REAL/HugAgentOS", "dst": "repo:google-research/envharness", "rel": "complements", "added": "2026-08-24", "primera_mencion": "2026-08-23"}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-duty1g-x64dbg-mcp-server", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-duty1g-x64dbg-mcp-server", "dst": "tema:duty1g-x64dbg-mcp-server", "rel": "trata", "added": "2026-08-24"}
+{"src": "repo:duty1g/x64dbg-mcp-server", "dst": "concept:mcp-debugger-adapter", "rel": "implements", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:duty1g/x64dbg-mcp-server", "dst": "concept:mcp-server", "rel": "uses", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:duty1g/x64dbg-mcp-server", "dst": "concept:agent-driven-reverse-engineering", "rel": "enables", "added": "2026-08-24", "primera_mencion": null}
+{"src": "repo:duty1g/x64dbg-mcp-server", "dst": "concept:binary-analysis-llm-misuse", "rel": "risk", "added": "2026-08-24", "primera_mencion": null}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-google-gemini-gemini-cli", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-google-gemini-gemini-cli", "dst": "tema:google-gemini-gemini-cli", "rel": "trata", "added": "2026-08-24"}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-ibelick-ui-skills", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-ibelick-ui-skills", "dst": "tema:ibelick-ui-skills", "rel": "trata", "added": "2026-08-24"}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-inkboard-system-atlas", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-inkboard-system-atlas", "dst": "tema:inkboard-system-atlas", "rel": "trata", "added": "2026-08-24"}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-forsy-ai-biosecurity-agent", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-forsy-ai-biosecurity-agent", "dst": "tema:forsy-ai-biosecurity-agent", "rel": "trata", "added": "2026-08-24"}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-elder-plinius-obliteratus", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-elder-plinius-obliteratus", "dst": "tema:elder-plinius-obliteratus", "rel": "trata", "added": "2026-08-24"}
+{"src": "boletin:2026-08-24", "dst": "item:https-github-com-davepoon-buildwithclaude", "rel": "menciona", "added": "2026-08-24"}
+{"src": "item:https-github-com-davepoon-buildwithclaude", "dst": "tema:davepoon-buildwithclaude", "rel": "trata", "added": "2026-08-24"}
