@@ -33,9 +33,10 @@ const {
 // aquí una sola vez.
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 
-// "Hoy" y "Triaje" apuntan siempre al último boletín publicado, que es el
-// destino real que quiere el 90% de las visitas — antes había que pasar por
-// el índice para llegar a la lectura del día.
+// "Hoy" ya no depende de la fecha: `/hoy/` sirve el último boletín en una
+// URL estable, así que el enlace de nav no caduca. `listDates()` sigue
+// haciendo falta para "Triaje" —que sí es una ruta por fecha— y para el
+// recuento de boletines del pie.
 const dates = await listDates();
 const hoy = dates[0] ?? null;
 
@@ -45,7 +46,7 @@ const hoy = dates[0] ?? null;
 // La barrera real no es esta (el enlace es solo un enlace): la pagina de
 // triaje tiene su propio gate por rol y las tablas su RLS.
 const nav: { key: string; href: string; label: string; adminOnly?: boolean }[] = [
-  { key: 'hoy', href: hoy ? `${base}enriquecido/${hoy}/` : `${base}enriquecido/`, label: 'Hoy' },
+  { key: 'hoy', href: `${base}hoy/`, label: 'Hoy' },
   { key: 'archivo', href: `${base}enriquecido/`, label: 'Archivo' },
   { key: 'triaje', href: hoy ? `${base}triaje/${hoy}/` : `${base}enriquecido/`, label: 'Triaje', adminOnly: true },
   { key: 'grafo', href: `${base}grafo/`, label: 'Grafo' },

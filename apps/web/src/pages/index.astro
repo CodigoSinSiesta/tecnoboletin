@@ -40,7 +40,7 @@ const markdownBoletines = (await readdir(boloDir).catch(() => [] as string[]))
   {hoy && boletin && (
     <section class="mb-12">
       <a
-        href={`${base}enriquecido/${hoy}/`}
+        href={`${base}hoy/`}
         class="block border border-border-strong rounded-2xl overflow-hidden bg-bg-raised hover:border-accent transition-colors"
       >
         <div class="brand-rule"></div>

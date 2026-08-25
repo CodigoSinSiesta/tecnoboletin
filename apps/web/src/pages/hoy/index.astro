@@ -1,0 +1,21 @@
+---
+/**
+ * URL estable del último boletín.
+ *
+ * Sirve el contenido directamente en vez de redirigir a
+ * `/enriquecido/<fecha>/`: el sentido de la ruta es que se pueda guardar y
+ * compartir un enlace que no caduque, y cualquier redirección (meta refresh,
+ * JS o cabecera) haría que el navegador acabase en la URL con fecha, que es
+ * justo la que cambia cada día.
+ *
+ * El coste es una página duplicada por build; a cambio, cero saltos.
+ */
+import BoletinEnriquecido from '../../components/BoletinEnriquecido.astro';
+import { latestDate } from '../../lib/boletin';
+
+const date = await latestDate();
+// Sin boletines no hay nada que servir aquí. Se falla el build en vez de
+// publicar un /hoy/ roto: el sitio entero carece de sentido en ese estado.
+if (!date) throw new Error('No hay boletines: no se puede construir /hoy/');
+---
+<BoletinEnriquecido date={date} activeNav="hoy" crumbs={['hoy']} />
