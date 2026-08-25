@@ -56,6 +56,14 @@ const siguiente = i > 0 ? dates[i - 1] : null;
 const alertas = editorial?.alertas ?? [];
 const acciones = editorial?.acciones_concretas ?? [];
 
+// La columna derecha solo contiene alertas y «Tu turno». Cuando el día no
+// trae ninguna de las dos, reservarle 316 px dejaba una franja muerta de
+// casi un tercio del ancho. En esos días el boletín pasa a una sola
+// columna y el texto sube su tope de 68 a 85 caracteres (.boletin-ancho
+// en global.css): sin eso, el hueco no desaparecía, solo se mudaba
+// dentro de las fichas, porque .prose-card ya venía topado a 68.
+const sinLateral = alertas.length === 0 && acciones.length === 0;
+
 // Bloques de la lectura editorial que NO caben en el hero (el hero ya usa
 // `posicionamiento`). Se conservan íntegros, recortados a 3 líneas.
 const bloquesEditorial = [
@@ -128,7 +136,12 @@ const bloquesEditorial = [
     </header>
 
     <!-- ── Cuerpo: hallazgos + columna de alertas ── -->
-    <div class="grid lg:grid-cols-[1fr_316px] gap-6 px-6 md:px-8 py-7 items-start">
+    <div
+      class:list={[
+        'grid gap-6 px-6 md:px-8 py-7 items-start',
+        sinLateral ? 'boletin-ancho' : 'lg:grid-cols-[1fr_316px]',
+      ]}
+    >
       <div class="flex flex-col gap-5 min-w-0" id="findings">
         <div class="section-rule mb-0" style="--rule-color: var(--color-accent);">
           <span class="section-rule__label">Hallazgos principales</span>
@@ -290,6 +303,7 @@ const bloquesEditorial = [
       </div>
 
       <!-- ── Columna derecha: alertas y acciones ── -->
+      {!sinLateral && (
       <aside class="flex flex-col gap-3.5 lg:sticky lg:top-[68px]">
         {alertas.length > 0 && (
           <div class="callout" style="--rail: var(--color-alert);">
@@ -331,6 +345,7 @@ const bloquesEditorial = [
           </div>
         )}
       </aside>
+      )}
     </div>
 
     <div class="px-6 md:px-8 py-3 border-t border-border flex items-center justify-between gap-4 mono-meta">

@@ -254,6 +254,14 @@
   .prose-card p:first-child { margin-top: 0; }
   .prose-card p:last-child { margin-bottom: 0; }
 
+  /* Boletin sin barra lateral (los dias sin alertas ni acciones): al
+     desaparecer la columna derecha, el contenido ocupa todo el ancho, y
+     mantener el texto en 68 caracteres dejaba el hueco DENTRO de las
+     fichas en vez de en el margen. Solo en ese caso el tope sube a 85;
+     fuera de aqui se conserva la medida de lectura del sistema. */
+  .boletin-ancho .prose-card { max-width: 85ch; }
+  .boletin-ancho .prose-read { max-width: 85ch; }
+
   /* Recorte de líneas: la queja original era "demasiado texto en bloque".
      Todo cuerpo largo se recorta y se amplía bajo demanda (.expand). */
   .clamp-2,
