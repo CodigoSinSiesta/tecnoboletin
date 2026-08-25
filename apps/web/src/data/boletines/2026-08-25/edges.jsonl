@@ -1,0 +1,48 @@
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-langchain-ai-deepagents", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-langchain-ai-deepagents", "dst": "tema:langchain-ai-deepagents", "rel": "trata", "added": "2026-08-25"}
+{"src": "repo:langchain-ai/deepagents", "dst": "concept:agent-harness", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:langchain-ai/deepagents", "dst": "repo:anthropics/claude-code", "rel": "competes_with", "added": "2026-08-25", "primera_mencion": "2026-07-28"}
+{"src": "repo:langchain-ai/deepagents", "dst": "concept:langgraph-runtime", "rel": "uses", "added": "2026-08-25", "primera_mencion": null}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-laude-institute-headlong", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-laude-institute-headlong", "dst": "tema:laude-institute-headlong", "rel": "trata", "added": "2026-08-25"}
+{"src": "repo:laude-institute/headlong", "dst": "concept:persistent-agent", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:laude-institute/headlong", "dst": "concept:rlm-core", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:laude-institute/headlong", "dst": "concept:bash-only-runtime", "rel": "uses", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:laude-institute/headlong", "dst": "repo:HKUDS/nanobot", "rel": "competes_with", "added": "2026-08-25", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-tracer-cloud-opensre", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-tracer-cloud-opensre", "dst": "tema:tracer-cloud-opensre", "rel": "trata", "added": "2026-08-25"}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "concept:ai-sre-agent", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "concept:incident-investigation-workflow", "rel": "uses", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "repo:Tracer-Cloud/tracer", "rel": "complements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "concept:closed-source-sre-ai", "rel": "competes_with", "added": "2026-08-25", "primera_mencion": null}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-lfnovo-open-notebook", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-lfnovo-open-notebook", "dst": "tema:lfnovo-open-notebook", "rel": "trata", "added": "2026-08-25"}
+{"src": "repo:lfnovo/open-notebook", "dst": "concept:second-brain-app", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:lfnovo/open-notebook", "dst": "concept:notebooklm-clone", "rel": "competes_with", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:lfnovo/open-notebook", "dst": "concept:multi-model-routing", "rel": "uses", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:lfnovo/open-notebook", "dst": "repo:google-gemini/gemini-cli", "rel": "complements", "added": "2026-08-25", "primera_mencion": "2026-08-17"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-apodexai-frontieragent", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-apodexai-frontieragent", "dst": "tema:apodexai-frontieragent", "rel": "trata", "added": "2026-08-25"}
+{"src": "repo:ApodexAI/FrontierAgent", "dst": "concept:agent-harness", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:ApodexAI/FrontierAgent", "dst": "concept:multi-agent-coordinator", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:ApodexAI/FrontierAgent", "dst": "concept:benchmark-runner", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:ApodexAI/FrontierAgent", "dst": "repo:langchain-ai/deepagents", "rel": "competes_with", "added": "2026-08-25", "primera_mencion": null}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-davebcn87-pi-autoresearch", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-davebcn87-pi-autoresearch", "dst": "tema:davebcn87-pi-autoresearch", "rel": "trata", "added": "2026-08-25"}
+{"src": "repo:davebcn87/pi-autoresearch", "dst": "concept:auto-optimization-loop", "rel": "implements", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:davebcn87/pi-autoresearch", "dst": "repo:badlogic/pi", "rel": "extends", "added": "2026-08-25", "primera_mencion": null}
+{"src": "repo:davebcn87/pi-autoresearch", "dst": "repo:karpathy/autoresearch", "rel": "inspired_by", "added": "2026-08-25", "primera_mencion": null}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-composiohq-composio", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-composiohq-composio", "dst": "tema:composiohq-composio", "rel": "trata", "added": "2026-08-25"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-nxcoreai-everroom", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-nxcoreai-everroom", "dst": "tema:nxcoreai-everroom", "rel": "trata", "added": "2026-08-25"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-plannotator-effective-html", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-plannotator-effective-html", "dst": "tema:plannotator-effective-html", "rel": "trata", "added": "2026-08-25"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-tinyhumansai-openhuman", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-tinyhumansai-openhuman", "dst": "tema:tinyhumansai-openhuman", "rel": "trata", "added": "2026-08-25"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-multica-ai-andrej-karpathy-skills", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-multica-ai-andrej-karpathy-skills", "dst": "tema:multica-ai-andrej-karpathy-skills", "rel": "trata", "added": "2026-08-25"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-tobi-walgit", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-tobi-walgit", "dst": "tema:tobi-walgit", "rel": "trata", "added": "2026-08-25"}
+{"src": "boletin:2026-08-25", "dst": "item:https-github-com-feigecode-navop", "rel": "menciona", "added": "2026-08-25"}
+{"src": "item:https-github-com-feigecode-navop", "dst": "tema:feigecode-navop", "rel": "trata", "added": "2026-08-25"}

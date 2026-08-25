@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-08-25",
+  "boletin_origen": "2026-08-25-trending.md",
+  "resumen_ejecutivo": "- **LangChain planta cara a Claude Code con `Deep Agents Code`**: `langchain-ai/deepagents` (28.405★, MIT, Python) entra en GitHub Trending Python con un harness \"batteries-included\" sobre LangGraph y un wrapper CLI (`curl -LsSf https://langch.in/dcode | bash`) que arranca un agente de coding multi-provider con sub-agentes, filesystem, contexto offload, skills, herramientas y HITL. Es la confirmación de que la categoría \"coding agent OSS alternativo a Claude Code\" se ha consolidado y ya tiene un referente con marca.\n- **Aparece el primer agente \"always-on\" hecho casi enteramente en bash**: `laude-institute/headlong` (328★, Apache-2.0, Shell) propone un *microharness* de <10K líneas de Bash con un núcleo `shellm` que implementa un *Recursive Language Model* (RLM). El agente mantiene un *thread* continuo de pensamiento entre sesiones, decide cuándo responder y cobra ~$1-2/hora de tokens incluso cuando nadie habla con él. Es la versión \"agente personal persistente\" que faltaba en el grafo.\n- **OpenSRE oficializa el patrón \"AI SRE agent\" como categoría open-source**: `Tracer-Cloud/opensre` (10.900★, Apache-2.0, Python) del equipo Tracer Cloud publica un framework + benchmark + suite de evaluación para agentes SRE que conectan 60+ herramientas de observabilidad (Datadog, Grafana, PagerDuty), investigan incidentes en tu propia infra y proponen remediación. Patrocinado por Greptile. Es la pieza OSS que faltaba en la conversación \"AI para producción\".\n- **`open-notebook` se confirma como la alternativa OSS canónica a NotebookLM**: `lfnovo/open-notebook` (37.570★, MIT, TypeScript) entra en trending diario TypeScript con un modelo multi-provider, 100% local, con soporte para podcasts, chat multi-modelo sobre tus fuentes, citations, surfacing de notas pre-existentes y una UI cuidada. Su README cita Trendshift (14536) — la propia plataforma lo está empujando.\n- **El ecosistema \"skills\" sigue engordando**: `ApodexAI/FrontierAgent` (348★, Apache-2.0, Python) entra con un runtime open-source + TUI + benchmark para agentes long-horizon con dos modos nativos (ReAct single-agent y Agent Team multi-agente). Es la respuesta \"framework + product\" al dilema \"qué hago con `Deep Agents Code` en producción\".\nFuentes consultadas: Trendshift daily, GitHub Trending daily (página general + TypeScript, Python, Rust, Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (2026-08-25).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "langchain-ai/deepagents",
+      "url": "https://github.com/langchain-ai/deepagents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "harness open-source para construir agentes long-horizon sobre LangGraph, con sub-agentes (context windows aislados), filesystem pluggable (local / sandbox / remoto), context management (summarization + offload de tool outputs a disco), shell access, memoria persistente, HITL, **skills** (behaviors reutilizables cargados bajo demanda) y herramientas arbitrarias o cualquier MCP server. Model-agnóstico (cualquier LLM con tool calling). Acompaña un producto terminal: **Deep Agents Code**, instalable con `curl -LsSf https://langch.in/dcode | bash`, equivalente funcional a Claude Code / Codex pero sobre cualquier modelo.",
+        "por_que_importa": "es la opción canónica para escribir un Claude-Code-clone sobre tu propio modelo (Anthropic, OpenAI, Gemini, open-weight, local). El paquete `deepagents` está en PyPI y la CLI preconstruida es la primera propuesta \"OSS terminal-first\" con marca reconocible. Si estás pensando \"qué uso en lugar de Claude Code para no atarme\", `dcode` es ahora la respuesta más obvia. En el boletín del 2026-07-28 ya cubrimos el terreno de los Claude Code clones OSS al hablar de Anthropic; ahora deepagents se posiciona directamente como competidor de claude-code (el propio grafo lo marca así), dando una pieza concreta OSS a ese debate.",
+        "madurez_senales": "**28.405★** · 3.976 forks · MIT · Python · creado 2025-07-27 · último push 2026-08-25 · topics: `ai, deepagents, langchain, langgraph, python, typescript`. Existe también versión JS en `langchain-ai/deepagentsjs`.",
+        "accion_sugerida": "explorar (instalar `dcode` desde una VM limpia y validar un par de tareas reales; revisar el grafo de skills que trae).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:langchain-ai/deepagents",
+          "rel": "implements",
+          "dst": "concept:agent-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:langchain-ai/deepagents",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:langchain-ai/deepagents",
+          "rel": "uses",
+          "dst": "concept:langgraph-runtime",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "langchain-ai-deepagents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "laude-institute/headlong",
+      "url": "https://github.com/laude-institute/headlong",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "microharness open-source para un agente personal con **persistent agency** implementado en <10K líneas de Bash. El núcleo es `shellm`, una implementación en Bash de un *Recursive Language Model* (RLM): el agente piensa escribiendo comandos shell, ejecutándolos y leyendo el output. Mantiene un *thought stream* continuo entre sesiones: un mensaje humano no \"abre\" una sesión, aterriza en el stream como una observación más, y el agente decide si y cuándo responder. Se le da nombre y personalidad; establece sus propios intereses y prioridades, inicia proyectos y te pings cuando tiene algo que decir. Coste declarado: ~$1-2/hora de tokens (Anthropic/OpenAI/Gemini/OpenRouter).",
+        "por_que_importa": "es la versión \"agente personal persistente\" que faltaba en el grafo. La mayoría de coding agents (Claude Code, Codex, Gemini CLI) son *stateless-by-session*: cada conversación arranca de cero. Headlong propone lo opuesto: el agente *está ahí* pensando, con un loop interno entre interacciones humanas. Para un episodio sobre \"agentes personales que viven contigo\" o \"RLM como nuevo sustrato de razonamiento\" es lectura obligatoria. El Laude Institute (filantil de Schusterman / ISEF) le da peso institucional. Ya cubrimos el competidor más cercano (HKUDS/nanobot) en el boletín del 2026-07-16; headlong entra al grafo como otra implementación OSS de persistent-agent, pero con la particularidad técnica de que el runtime es Bash puro (<10K líneas) y el RLM vive en `shellm`.",
+        "madurez_senales": "**328★** · 27 forks · Apache-2.0 · Shell · creado 2026-04-07 · último push 2026-08-24 · topics: (vacío — repo joven, sin SEO). Status alpha con instalador de una línea (`curl -fsSL https://headlong.ai/install.sh | bash`) y sandbox por defecto vía Docker.",
+        "accion_sugerida": "probar (instalar en una VM limpia con Docker; darle un nombre y personalidad; dejar que pase una noche para ver cómo el thought stream se llena solo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:laude-institute/headlong",
+          "rel": "implements",
+          "dst": "concept:persistent-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:laude-institute/headlong",
+          "rel": "implements",
+          "dst": "concept:rlm-core",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:laude-institute/headlong",
+          "rel": "uses",
+          "dst": "concept:bash-only-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:laude-institute/headlong",
+          "rel": "competes_with",
+          "dst": "repo:HKUDS/nanobot",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "laude-institute-headlong",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Tracer-Cloud/opensre",
+      "url": "https://github.com/Tracer-Cloud/opensre",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework open-source + benchmark + suite de evaluación para agentes SRE. Conecta 60+ herramientas de observabilidad (Datadog, Grafana, PagerDuty, Sentry, Honeycomb, Datadog Logs, CloudWatch, BigQuery, etc.) y permite definir workflows propios para investigar incidentes, ejecutar RCA y proponer remediación sobre tu infraestructura real. Licencia Apache-2.0, public alpha (las APIs pueden cambiar). Patrocinado por Greptile.",
+        "por_que_importa": "hasta ahora, los \"AI SRE\" eran productos cerrados (PagerDuty Agent, Resolve AI, Fireflies SRE bot). `opensre` trae el patrón \"framework + benchmark + evaluación\" (estilo OpenAI Evals / Anthropic Petri) al dominio SRE, y lo hace OSS. Es especialmente relevante para un episodio sobre \"AI en producción\" o \"el stack OSS para on-call\": puedes definir workflows reproducibles, evaluarlos contra benchmarks reproducibles y mejorarlos con datos.",
+        "madurez_senales": "**10.900★** · 1.584 forks · Apache-2.0 · Python · creado 2026-01-13 · último push 2026-08-25 · topics: `ai-sre, alerting, datadog, grafana, incident-management, observability, remediation, root-cause-analysis`. Status badge explícito: \"public alpha\".",
+        "accion_sugerida": "leer (revisar docs/quickstart y docs/benchmark; entender qué integraciones ya cubren tu stack; evaluar si tu equipo puede adoptarlo o si necesitas fork).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "implements",
+          "dst": "concept:ai-sre-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "uses",
+          "dst": "concept:incident-investigation-workflow",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "complements",
+          "dst": "repo:Tracer-Cloud/tracer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "competes_with",
+          "dst": "concept:closed-source-sre-ai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tracer-cloud-opensre",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "lfnovo/open-notebook",
+      "url": "https://github.com/lfnovo/open-notebook",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "implementación open-source, multi-modelo, 100% local y privada de Google NotebookLM, escrita en TypeScript. Soporta ingest de PDFs, videos de YouTube, audios, sitios web y texto plano; genera **podcasts** estilo Audio Overview, **chat** multi-modelo (OpenAI, Anthropic, Google, Ollama local) sobre tus fuentes con citations verificables, y surfacing de notas pre-existentes. Dispone de UI cuidada, Discord y documentación multi-idioma (incluye español).",
+        "por_que_importa": "NotebookLM es uno de los productos de IA más celebrados de Google, pero todo queda en sus servidores. `open-notebook` es la opción self-hosted con el mismo modelo conceptual (fuentes + chat + podcasts + synthesis), pero sin lock-in de proveedor. Para un episodio \"tu segundo cerebro privado\" o \"cómo construir un NotebookLM local\", es el ejemplo a usar. El README cita Trendshift badge (repo 14536): la propia plataforma lo está empujando, lo que indica momentum. Ya cubrimos gemini-cli en el boletín del 2026-08-17 y open-notebook aparece en el grafo como complement de ese repo, así que cierra un mini-ecosistema \"Google-flavored tools con alternativa OSS\" que ya teníamos abierto.",
+        "madurez_senales": "**37.570★** · 4.334 forks · MIT · TypeScript · creado 2024-10-21 · último push 2026-08-16 · topics: `assistant, learning, note-taking, notebook, notes-app, self-learning`. Actividad semanal sostenida.",
+        "accion_sugerida": "probar (instalar vía Docker Compose; conectar a tu vault de Obsidian; probar el flujo \"subo 3 PDFs → chat con citations → genero podcast\"). Buen candidato para episodio demo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:lfnovo/open-notebook",
+          "rel": "implements",
+          "dst": "concept:second-brain-app",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lfnovo/open-notebook",
+          "rel": "competes_with",
+          "dst": "concept:notebooklm-clone",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lfnovo/open-notebook",
+          "rel": "uses",
+          "dst": "concept:multi-model-routing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lfnovo/open-notebook",
+          "rel": "complements",
+          "dst": "repo:google-gemini/gemini-cli",
+          "primera_mencion": "2026-08-17"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lfnovo-open-notebook",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "ApodexAI/FrontierAgent",
+      "url": "https://github.com/ApodexAI/FrontierAgent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime + producto terminal + suite de evaluación open-source (Apache-2.0) para trabajo de investigación long-horizon y file-based. El TUI `frontier-agent` incluye dos workflows nativos: **ReAct** (un agente stateful investiga, lee archivos, escribe deliverables, corre comandos en un sandbox por tarea) y **Agent Team** (un coordinador mantiene un task board, delega trabajo a sub-agentes paralelos, recoge sus reports y sintetiza el resultado). El mismo motor sirve como benchmark runner que evalúa los modelos de Apodex (su propio SaaS de frontier models).",
+        "por_que_importa": "es el primer framework open-source que ofrece los dos patrones canónicos (single-agent ReAct + multi-agent coordinator) en un único binario con TUI cuidada, **y** publica la suite de evaluación que usa su empresa comercial. Esta es exactamente la forma en que el OSS puede adelantar al SaaS cerrado: el código del benchmark está en el repo. Para un episodio sobre \"qué pasa cuando un vendor de modelos publica su benchmark runner\", es lectura obligatoria. Aparece en el grafo como competidor directo de deepagents (idx 0 de este mismo boletín), así que funciona como contrapunto OSS al otro agent-harness reciente y permite comparar ReAct-vs-multi-agent sin cambiar de proveedor.",
+        "madurez_senales": "**348★** · 27 forks · Apache-2.0 · Python · creado 2026-08-22 (3 días) · último push 2026-08-25 · topics: `agent-orchestration, agentic-ai, agentic-framework, ai-agents, harness, multi-agent, terminal-agent, tui`. Lanzado junto con Apodex 1.1 + tech report (`/pdf/20260824`).",
+        "accion_sugerida": "explorar (instalar via `pip install frontier-agent`; correr el benchmark con un modelo pequeño para ver el output; comparar el patrón de task board con el de `compozy/compozy`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ApodexAI/FrontierAgent",
+          "rel": "implements",
+          "dst": "concept:agent-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ApodexAI/FrontierAgent",
+          "rel": "implements",
+          "dst": "concept:multi-agent-coordinator",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ApodexAI/FrontierAgent",
+          "rel": "implements",
+          "dst": "concept:benchmark-runner",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ApodexAI/FrontierAgent",
+          "rel": "competes_with",
+          "dst": "repo:langchain-ai/deepagents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apodexai-frontieragent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "davebcn87/pi-autoresearch",
+      "url": "https://github.com/davebcn87/pi-autoresearch",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "extensión + skill + dashboard para el coding agent **pi** (alternativa OSS multi-provider) que implementa un loop autónomo de experimentación: probar una idea, medirla, conservar lo que mejora, revertir lo que empeora, repetir. Inspirado explícitamente en `karpathy/autoresearch`. Funciona para cualquier target de optimización (velocidad de tests, bundle size, latencia de un LLM, build times, Lighthouse scores).",
+        "por_que_importa": "formaliza el patrón \"agente que optimiza código sin supervisión\" como un producto con nombre. Si te interesa `karpathy/autoresearch` (programático, línea de comandos) y al mismo tiempo quieres una UI + sesión persistente + dashboard, `pi-autoresearch` lo entrega. Buena lectura para entender qué añade un harness de \"autoresearch\" frente al script original de Karpathy.",
+        "madurez_senales": "**7.840★** · 447 forks · MIT · TypeScript · creado 2026-03-11 · último push 2026-07-15 (un mes de quietud antes de la entrada en trending). Topics: (vacío). README con demo animada.",
+        "accion_sugerida": "leer (instalar la skill dentro de `pi`; ver un par de runs sobre una métrica real; comparar mentalmente con un workflow manual de `karpathy/autoresearch`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:davebcn87/pi-autoresearch",
+          "rel": "implements",
+          "dst": "concept:auto-optimization-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:davebcn87/pi-autoresearch",
+          "rel": "extends",
+          "dst": "repo:badlogic/pi",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:davebcn87/pi-autoresearch",
+          "rel": "inspired_by",
+          "dst": "repo:karpathy/autoresearch",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "davebcn87-pi-autoresearch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "ComposioHQ/composio",
+      "url": "https://github.com/ComposioHQ/composio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "el SDK canónico de tool-use para agentes llega a trending con rebranding + nuevo monorepo (`@composio/core` para TS, `composio` para Python) y adaptador oficial para OpenAI Agents, Claude Agent SDK, Vercel AI SDK y LangChain. 1.000+ toolkits pre-autenticados con per-user sessions, sandbox y CLI para ejecutar tools desde shell. Default branch `next` (no `main` ni `master`): ojo si clonas.",
+        "por_que_importa": "",
+        "madurez_senales": "29.866★, último push 2026-08-25, TypeScript, MIT, default branch `next`",
+        "accion_sugerida": ": leer (revisar la nueva estructura monorepo y los adapters; entender qué resuelve vs la versión anterior)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "composiohq-composio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "NxcoreAI/EverRoom",
+      "url": "https://github.com/NxcoreAI/EverRoom",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "workspace local-first para dar contexto a agentes entre tus documentos, repos, conversaciones y apps conectadas. Tesis explícita: \"el context debería ensamblarse desde evidencia, scoped al lugar de trabajo y visible para que una persona lo gobierne\". macOS only, status early-development.",
+        "por_que_importa": "",
+        "madurez_senales": "425★, último push 2026-08-25, TypeScript/Electron, NOASSERTION en API, creado hace 11 días",
+        "accion_sugerida": ": vigilar (muy verde pero tesis editorial alineada con la conversación \"memoria estructurada para agentes\" — seguir de cerca; revisar `LICENSE` real antes de adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nxcoreai-everroom",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "plannotator/effective-html",
+      "url": "https://github.com/plannotator/effective-html",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "agent skill que produce artefactos HTML útiles (wireframes, prototipos interactivos, planes, diagramas) con buena calidad por defecto. Se suma a `tt-a1i/archify` y `inkboard/system-atlas` como skills de \"artefactos visuales para agentes\".",
+        "por_que_importa": "",
+        "madurez_senales": "2.214★, último push 2026-08-03, HTML, MIT",
+        "accion_sugerida": ": probar (instalar la skill y pasarle un prompt de arquitectura propio; comparar con `archify`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "plannotator-effective-html",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "re-entry. \"Personal AI super intelligence\" con memoria local-first y orquestación de agent fleets; ya mencionado en boletines recientes, pero vale la pena destacar el salto: GPL-3.0 (no MIT) implica que cualquier fork con modificaciones debe abrirse bajo GPL.",
+        "por_que_importa": "",
+        "madurez_senales": "37.426★, último push 2026-08-25, Rust, GPL-3.0",
+        "accion_sugerida": ": vigilar (revisar la diferencia de licencia respecto a competidores MIT; seguir su roadmap de \"agent fleet orchestration\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tinyhumansai-openhuman",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "re-entry masiva: el clásico single-`CLAUDE.md` derivado de las observaciones de Karpathy sobre pitfalls de LLMs en coding. La cifra de estrellas (206k) merece scrutiny: `fork: false` y autor con trabajo previo validado, no es fork mirror.",
+        "por_que_importa": "",
+        "madurez_senales": "206.754★, último push 2026-04-20, sin topics",
+        "accion_sugerida": ": leer (revisar el archivo único de skills; comparar con la versión \"oficial\" de Anthropic)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-andrej-karpathy-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "tobi/walgit",
+      "url": "https://github.com/tobi/walgit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "repo de 2 días sin descripción visible en la API. Probable herramienta WAL-git (write-ahead log + git) para trans",
+        "por_que_importa": "",
+        "madurez_senales": "1.229★, último push 2026-08-25, Rust, MIT, creado 2026-08-23",
+        "accion_sugerida": "es reversibles; pendiente verificar README — **Acción**: vigilar (esperar a que la descripción oficial aparezca; revisar el repo mañana)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tobi-walgit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "feigeCode/navop",
+      "url": "https://github.com/feigeCode/navop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "workspace all-in-one nativo (Rust/Tauri) para bases de datos (ClickHouse, DuckDB, IoTDB, Kingbase, Dameng), SSH, SFTP, terminales, remote desktop, monitoring y AI. Default branch `dev` (no `main`/`master`). Licencia no-SPDX: verificar el LICENSE real antes de adopción.",
+        "por_que_importa": "",
+        "madurez_senales": "665★, último push 2026-08-25, Rust, NOASSERTION en API",
+        "accion_sugerida": ": vigilar (revisar LICENSE; el target multi-DB chino (Dameng, IoTDB) lo hace nicho pero interesante)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "feigecode-navop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
