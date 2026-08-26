@@ -233,26 +233,54 @@
     },
     {
       "idx": 6,
-      "titulo": "steipete/CodexBar (16.402★, Swift, MIT, último push 2026-07-06)",
-      "url": "",
+      "titulo": "steipete/CodexBar",
+      "url": "https://github.com/steipete/CodexBar",
       "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Barra de macOS para ver usage stats de Codex y Claude Code sin login.",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "probar (10 min, confirmar si vale para monitorizar gasto de Codex en la home)",
-        "descripcion_raw": ""
+        "que_es": "**Barra de menu de macOS para OpenAI Codex y Claude Code**: muestra usage stats en tiempo real sin necesidad de login. Pensada para monitorizar gasto de Codex y Claude Code desde la home bar. Escrita en Swift, autor Peter Steinberger (PSPDFKit).",
+        "por_que_importa": "**categoriza el espacio 'token analytics local-first'** que el 2026-07-07 complemento con `kenn-io/agentsview` (Go, sesiones locales) y el 2026-07-09 unifico `junhoyeo/tokscale` (Rust, multi-agent CLI universal). CodexBar es **el primero de los tres** y **el unico Swift/macOS-native**, lo que lo hace relevante solo para usuarios de Mac que quieren un widget del sistema. Limitacion conocido: solo cubre Codex (y Claude Code desde actualizacion), no sesiones de Cursor/AmpCode/Factory. Peter Steinberger como autor le da peso (PSPDFKit veteran, mantiene varias OSS dev tools).",
+        "madurez_senales": "20.587★ (debut 2026-07-06 con 16.402★, +4.185★ en ~50 dias) · Swift · MIT · push 2026-08-26 (hoy, muy activo). Descripcion oficial alineada con el caso de uso.",
+        "accion_sugerida": "probar (10 min, descargar el .dmg, confirmar si vale para monitorizar gasto de Codex/Claude Code en la home bar; si no se usa Mac o se prefiere CLI universal, saltar a `junhoyeo/tokscale` que aparecera el 2026-07-09).",
+        "descripcion_raw": "barra de macOS para ver usage stats de Codex y Claude Code sin login"
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:steipete/CodexBar",
+          "rel": "complements",
+          "dst": "repo:kenn-io/agentsview",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "repo:steipete/CodexBar",
+          "rel": "complements",
+          "dst": "repo:junhoyeo/tokscale",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "repo:steipete/CodexBar",
+          "rel": "implements",
+          "dst": "concept:token-analytics-local",
+          "primera_mencion": "2026-07-06"
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repositorio",
         "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "steipete-codexbar-16-402-swift-mit-ltimo",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "autor": "steipete",
+        "medio": "github",
+        "tema_principal": "token_analytics_macos",
+        "temas_secundarios": [
+          "agent-monitor",
+          "macos-widget",
+          "codex-usage"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "mejora_in_place": true,
+        "fecha_mejora": "2026-08-26",
+        "motivo": "Auditoria 2026-08-26: el item ya existia en enriched.json pero con url vacia y por_que_importa/madurez_senales vacios (problema de extraccion: el parser metio el item en radar_secundario sin enriquecer). Rellenado con datos verificados via API de GitHub y contexto del .md origen y boletines posteriores."
       }
     },
     {
@@ -437,6 +465,7 @@
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "items_with_content": 6
   }
 }

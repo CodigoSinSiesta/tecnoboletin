@@ -49,3 +49,6 @@
 {"src": "larksuite/cli", "dst": "mcp__feishu_drive", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
 {"src": "larksuite/cli", "dst": "google-labs-code/stitch-skills", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": "2026-07-09"}
 {"src": "larksuite/cli", "dst": "larksuite-cli-vs-mcp", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}
+{"src": "repo:pbakaus/impeccable", "rel": "complements", "dst": "repo:Nutlope/hallmark", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-11", "item_idx": 9, "item_titulo": "pbakaus/impeccable"}
+{"src": "repo:pbakaus/impeccable", "rel": "implements", "dst": "concept:design-quality-skill", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-11", "item_idx": 9, "item_titulo": "pbakaus/impeccable"}
+{"src": "repo:pbakaus/impeccable", "rel": "complements", "dst": "repo:addyosmani/agent-skills", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-11", "item_idx": 9, "item_titulo": "pbakaus/impeccable"}

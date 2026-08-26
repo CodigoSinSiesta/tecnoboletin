@@ -39,3 +39,6 @@
 {"src": "item:idx-12", "dst": "tema:coplaydev-unity-mcp-11-699-c-mit-visto-2", "rel": "trata", "added": "2026-07-06"}
 {"src": "boletin:2026-07-06", "dst": "item:idx-13", "rel": "menciona", "added": "2026-07-06"}
 {"src": "item:idx-13", "dst": "tema:elder-plinius-t3mp3st-486-ts-visto-2026-", "rel": "trata", "added": "2026-07-06"}
+{"src": "repo:steipete/CodexBar", "rel": "complements", "dst": "repo:kenn-io/agentsview", "primera_mencion": "2026-07-07", "origen_boletin": "2026-07-06", "item_idx": 6, "item_titulo": "steipete/CodexBar"}
+{"src": "repo:steipete/CodexBar", "rel": "complements", "dst": "repo:junhoyeo/tokscale", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-06", "item_idx": 6, "item_titulo": "steipete/CodexBar"}
+{"src": "repo:steipete/CodexBar", "rel": "implements", "dst": "concept:token-analytics-local", "primera_mencion": "2026-07-06", "origen_boletin": "2026-07-06", "item_idx": 6, "item_titulo": "steipete/CodexBar"}

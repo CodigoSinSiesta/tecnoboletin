@@ -413,12 +413,63 @@
         "temas_secundarios": [],
         "confianza": 0.4
       }
+    },
+    {
+      "idx": 9,
+      "titulo": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Design language / skill para coding agents** que **mejora la calidad visual del output del agente**. Complemento directo de `Nutlope/hallmark`: si hallmark es el auditor anti-slop (Together AI), impeccable es el manual de estilo para que el agente acierte a la primera (Vercel/Paul Bakaus). Cuatro grandes areas: principios de diseño (jerarquía, espaciado, color, tipografía), motion/choreography, microcopy y patrones de UI. Pensado para cargarse como skill en Claude Code, Codex, Cursor.",
+        "por_que_importa": "**junto con `Nutlope/hallmark` (visto en este boletín) y `addyosmani/agent-skills`, define la categoría emergente 'skills para design quality'**. Tres vendors (Together AI, Vercel-via-pbakaus, Chrome team) convergen independientemente con enfoques complementarios: hallmark = audit + redesign (Together), impeccable = design language + motion (Vercel ecosystem), agent-skills = workflow + commands (Chrome team). Para CSS el ángulo editorial es: 'la categoria design-quality para coding agents eclosiona en julio 2026 con tres vendors apuntando al mismo hueco'. pbakaus (Paul Bakaus, ex-Google, autor de Aframe) le da peso técnico y editorial al proyecto.",
+        "madurez_senales": "62.704★ · 3.831 forks · Apache-2.0 · JavaScript · creado 2025-11-16 · ultimo push 2026-08-26 (activo, hoy). Debut GH Trending 2026-07-11 con 45k★; +17k★ en ~45 dias = senal de adopcion sostenida, no hype.",
+        "accion_sugerida": "leer (clonar, instalar la skill en Claude Code/Codex, comparar con hallmark en una UI real: hallmark audita y rediseña, impecable dicta como debe verse. Si encajan, escribir post conjunto 'design quality skills 2026: hallmark vs impeccable vs agent-skills')."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "pbakaus",
+        "medio": "github",
+        "tema_principal": "design_quality_skill",
+        "temas_secundarios": [
+          "agent-skill",
+          "ai-ux",
+          "design-language"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "complements",
+          "dst": "repo:Nutlope/hallmark",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "implements",
+          "dst": "concept:design-quality-skill",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "complements",
+          "dst": "repo:addyosmani/agent-skills",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Boletin 2026-07-11 lo anuncio como item de radar secundario (linea 131: 'debut GH Trending, 45k★, Apache-2.0, accion: leer') pero el parser extract_items.py no lo proceso porque estaba en formato radar y no como bloque #### N. titular. Verificado por auditoria del 2026-08-26: aparece 10 veces en boletines posteriores como referencia cruzada, lo que confirma que es item real no ruido.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 8,
+    "items_total": 9,
     "items_hallazgo_principal": 8,
-    "items_radar_secundario": 0,
+    "items_radar_secundario": 1,
     "llm_backend": "hermes",
     "llm_polish_notes": "8/8 items pulidos",
     "metadata_carried_forward": false,
@@ -428,6 +479,7 @@
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "backfills": 1
   }
 }

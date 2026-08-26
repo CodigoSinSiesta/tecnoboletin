@@ -62,3 +62,5 @@
 {"src": "item:https-github-com-tinyhumansai-openhuman", "dst": "tema:tinyhumansai-openhuman", "rel": "trata", "added": "2026-06-30"}
 {"src": "boletin:2026-06-30", "dst": "item:https-github-com-shuvonsec-claude-bug-bounty", "rel": "menciona", "added": "2026-06-30"}
 {"src": "item:https-github-com-shuvonsec-claude-bug-bounty", "dst": "tema:shuvonsec-claude-bug-bounty", "rel": "trata", "added": "2026-06-30"}
+{"src": "repo:usestrix/strix", "rel": "competes_with", "dst": "repo:vxcontrol/pentagi", "primera_mencion": "2026-07-09", "origen_boletin": "2026-06-30", "item_idx": 20, "item_titulo": "usestrix/strix"}
+{"src": "repo:usestrix/strix", "rel": "implements", "dst": "concept:ai-pentesting", "primera_mencion": "2026-06-30", "origen_boletin": "2026-06-30", "item_idx": 20, "item_titulo": "usestrix/strix"}

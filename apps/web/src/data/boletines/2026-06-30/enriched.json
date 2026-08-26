@@ -491,21 +491,43 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Open-source AI pentesting. Interesante pero de nicho; ojo si escribimos sobre IA en seguridad.",
-        "por_que_importa": "",
-        "madurez_senales": "28,011★, push=2026-06-30, Python",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "**Open-source AI penetration testing tool** (Python) del equipo usestrix. Encuentra y corrige vulnerabilidades de la app con agentes AI. Pitch: 'Open-source AI penetration testing tool to find and fix your app's vulnerabilities'.",
+        "por_que_importa": "**nicho de IA aplicada a pentesting**, complementario a `vxcontrol/pentagi` (visto 2026-07-09) y a `chrome-devtools-mcp`. La diferencia: strix es CLI Python puro y open-source maduro; pentagi es sistema multi-agente Go. Para CSS el angulo es: 'AI penetration testing' como categoria que aterriza con dos contendientes OSS serios en menos de un mes. No encaja directamente con el stack del usuario (que no audita pentests), pero la categoria 'AI security ops' tiene entrada propia.",
+        "madurez_senales": "58.322★ (debut 2026-06-30 con 28.011★, +30.311★ en 57 dias = crecimiento explosivo) · Python · MIT · push 2026-08-25 (hace 1 dia).",
+        "accion_sugerida": "vigilar (la categoria 'AI pentesting' no encaja con stack CSS directo pero vale para escribir un articulo futuro 'AI security ops 2026' que cubra strix + pentagi + el cluster cybersecurity-skills que llego en agosto).",
+        "descripcion_raw": "Open-source AI pentesting. Interesante pero de nicho; ojo si escribimos sobre IA en seguridad."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:usestrix/strix",
+          "rel": "competes_with",
+          "dst": "repo:vxcontrol/pentagi",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "repo:usestrix/strix",
+          "rel": "implements",
+          "dst": "concept:ai-pentesting",
+          "primera_mencion": "2026-06-30"
+        }
+      ],
       "clasificacion": {
-        "tipo": "repo",
+        "tipo": "repositorio",
         "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "usestrix-strix",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "autor": "usestrix",
+        "medio": "github",
+        "tema_principal": "ai_pentesting",
+        "temas_secundarios": [
+          "security",
+          "agent",
+          "python"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "mejora_in_place": true,
+        "fecha_mejora": "2026-08-26",
+        "motivo": "Auditoria 2026-08-26: el item ya existia en enriched.json como radar_secundario con url valida pero por_que_importa vacio y accion_sugerida vacio. Rellenado con datos verificados via API."
       }
     },
     {

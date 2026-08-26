@@ -297,12 +297,63 @@
         "temas_secundarios": [],
         "confianza": 0.4
       }
+    },
+    {
+      "idx": 100,
+      "titulo": "charmbracelet/crush",
+      "url": "https://github.com/charmbracelet/crush",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Agentic coding CLI del equipo Bubble Tea / Glamour (charmbracelet)** en Go. Pitch: 'Glamourous agentic coding for all'. Topics: `agentic-ai`, `ai`, `llms`, `ravishing`.",
+        "por_que_importa": "**es el tercer fork OSS de Claude Code del radar**, sumandose a `macro-inc/macro` (visto 2026-07-11) y `0xwilliamortiz/openclaude-improved` (visto 2026-07-28). Lo diferencial: viene del equipo charmbracelet (Bubble Tea, Glamour, mods), que tiene UX de terminal cuidada — Crush hereda estetica y composicion TUI del ecosistema. **Riesgo de license NOASSERTION** (verificado en API el 2026-08-26): bloquea adopcion como dependencia de produccion, pero como referencia de UX para terminales agentic OSS vale. Compite con `junhoyeo/tokscale` y `openai/codex` en el cluster 'coding agent CLI local'.",
+        "madurez_senales": "27.692★ (debut 2026-07-09 con 26.270★, +1.422★ en 48 dias) · Go · NOASSERTION (license no declarada en repo, validar antes de usar como dep) · push 2026-08-26 (hoy, muy activo).",
+        "accion_sugerida": "vigilar (license NOASSERTION bloquea adopcion como base; interesante como referencia UX para terminales agentic). El autor es charmbracelet/Charm — aporta credibilidad visual y experiencia TUI."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "charmbracelet",
+        "medio": "github",
+        "tema_principal": "agentic_coding_cli",
+        "temas_secundarios": [
+          "tui",
+          "bubble-tea",
+          "oss-fork"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:charmbracelet/crush",
+          "rel": "competes_with",
+          "dst": "repo:macro-inc/macro",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:charmbracelet/crush",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "repo:charmbracelet/crush",
+          "rel": "risk",
+          "dst": "license:noassertion",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Boletin 2026-07-09 lo presento como item completo (linea: '26.270★, Go, NOASSERTION, push 2026-07-08, agentic coding CLI, accion: vigilar'). El parser no lo proceso.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 6,
+    "items_total": 7,
     "items_hallazgo_principal": 6,
-    "items_radar_secundario": 0,
+    "items_radar_secundario": 1,
     "llm_backend": "hermes",
     "llm_polish_notes": "6/6 items pulidos",
     "metadata_carried_forward": false,
@@ -312,6 +363,7 @@
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "backfills": 1
   }
 }

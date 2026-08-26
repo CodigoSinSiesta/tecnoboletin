@@ -24,3 +24,5 @@
 {"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-08-18"}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-unslothai-unsloth", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-unslothai-unsloth", "dst": "tema:unslothai-unsloth", "rel": "trata", "added": "2026-08-18"}
+{"src": "repo:mukul975/Anthropic-Cybersecurity-Skills", "rel": "complements", "dst": "repo:anthropics/defending-code-reference-harness", "primera_mencion": "2026-08-18", "origen_boletin": "2026-08-18", "item_idx": 100, "item_titulo": "mukul975/Anthropic-Cybersecurity-Skills"}
+{"src": "repo:mukul975/Anthropic-Cybersecurity-Skills", "rel": "implements", "dst": "concept:security-skill-library", "primera_mencion": "2026-08-18", "origen_boletin": "2026-08-18", "item_idx": 100, "item_titulo": "mukul975/Anthropic-Cybersecurity-Skills"}

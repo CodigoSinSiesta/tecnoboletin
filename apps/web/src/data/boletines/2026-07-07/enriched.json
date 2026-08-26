@@ -331,26 +331,54 @@
     },
     {
       "idx": 8,
-      "titulo": "kenn-io/agentsview (4.035★, Go, MIT, push 2026-07-07)",
-      "url": "",
+      "titulo": "kenn-io/agentsview",
+      "url": "https://github.com/kenn-io/agentsview",
       "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "session search local-first + analytics + token usage stats para Claude Code, Codex y otros.",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "explorar — (compilar el binario Go, conectarlo a sesiones propias; comparar con `steipete/CodexBar` del boletín 2026-07-06)",
-        "descripcion_raw": ""
+        "que_es": "**Local-first session search, analytics, insights y token-use statistics para coding agents** (Claude Code, Codex y otros). Escrito en Go. La pieza OSS local-first para auditar consumo de tokens y sesiones.",
+        "por_que_importa": "**el segundo de la triada 'token analytics local-first'**: le precede `steipete/CodexBar` (Swift/macOS, debut 2026-07-06, idx 6 del 2026-07-06) y le sigue `junhoyeo/tokscale` (Rust/multi-agent CLI, debut 2026-07-09). AgentsView es **el unico que da busqueda sobre sesiones**, no solo counters: diferencias con CodexBar (solo Codex) y con tokscale (CLI universal, no GUI). El target: usuario local-first que quiere auditar que hizo su agente ayer, no solo cuanto consumio. Encaja con el stack del usuario (Obsidian + cron snapshot).",
+        "madurez_senales": "5.265★ (debut 2026-07-07 con 4.035★, +1.230★ en 50 dias) · Go · MIT · push 2026-08-26 (hoy, muy activo).",
+        "accion_sugerida": "explorar (compilar el binario Go, conectarlo a sesiones propias de Claude Code/Codex; comparar con CodexBar del 2026-07-06 — agentsview gana en cobertura multi-agent y busqueda; tokscale del 2026-07-09 gana en CLI universal y ranking social).",
+        "descripcion_raw": "session search local-first + analytics + token usage stats para Claude Code, Codex y otros."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:kenn-io/agentsview",
+          "rel": "complements",
+          "dst": "repo:steipete/CodexBar",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "repo:kenn-io/agentsview",
+          "rel": "complements",
+          "dst": "repo:junhoyeo/tokscale",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "repo:kenn-io/agentsview",
+          "rel": "implements",
+          "dst": "concept:token-analytics-local",
+          "primera_mencion": "2026-07-07"
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repositorio",
         "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "kenn-io-agentsview-4-035-go-mit-push-202",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "autor": "kenn-io",
+        "medio": "github",
+        "tema_principal": "token_analytics_go",
+        "temas_secundarios": [
+          "session-search",
+          "local-first",
+          "agent-monitor"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "mejora_in_place": true,
+        "fecha_mejora": "2026-08-26",
+        "motivo": "Auditoria 2026-08-26: el item ya existia en enriched.json como radar_secundario pero con url vacia y por_que_importa/madurez_senales vacios. Rellenado con datos verificados via API y contexto de boletines posteriores."
       }
     },
     {

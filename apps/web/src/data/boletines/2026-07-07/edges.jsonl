@@ -53,3 +53,6 @@
 {"src": "item:idx-15", "dst": "tema:soycaporal-ternlight-135-python-mit-push", "rel": "trata", "added": "2026-07-07"}
 {"src": "boletin:2026-07-07", "dst": "item:idx-16", "rel": "menciona", "added": "2026-07-07"}
 {"src": "item:idx-16", "dst": "tema:infisical-agent-vault-1-829-go-noasserti", "rel": "trata", "added": "2026-07-07"}
+{"src": "repo:kenn-io/agentsview", "rel": "complements", "dst": "repo:steipete/CodexBar", "primera_mencion": "2026-07-07", "origen_boletin": "2026-07-07", "item_idx": 8, "item_titulo": "kenn-io/agentsview"}
+{"src": "repo:kenn-io/agentsview", "rel": "complements", "dst": "repo:junhoyeo/tokscale", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-07", "item_idx": 8, "item_titulo": "kenn-io/agentsview"}
+{"src": "repo:kenn-io/agentsview", "rel": "implements", "dst": "concept:token-analytics-local", "primera_mencion": "2026-07-07", "origen_boletin": "2026-07-07", "item_idx": 8, "item_titulo": "kenn-io/agentsview"}

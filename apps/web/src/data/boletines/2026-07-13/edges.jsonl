@@ -49,3 +49,8 @@
 {"src": "microsoft/TRELLIS.2", "dst": "desktop-3d-gpu-needed", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
 {"src": "boletin:2026-07-13", "dst": "item:https-github-com-nats-io-nats-server", "rel": "menciona", "added": "2026-07-13"}
 {"src": "item:https-github-com-nats-io-nats-server", "dst": "tema:nats-io-nats-server", "rel": "trata", "added": "2026-07-13"}
+{"src": "repo:MervinPraison/PraisonAI", "rel": "implements", "dst": "concept:multi-agent-framework", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 12, "item_titulo": "MervinPraison/PraisonAI"}
+{"src": "repo:MervinPraison/PraisonAI", "rel": "complements", "dst": "repo:HKUDS/Vibe-Trading", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 12, "item_titulo": "MervinPraison/PraisonAI"}
+{"src": "repo:MervinPraison/PraisonAI", "rel": "competes_with", "dst": "repo:FoundationAgents/OpenManus", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 12, "item_titulo": "MervinPraison/PraisonAI"}
+{"src": "repo:Crosstalk-Solutions/project-nomad", "rel": "implements", "dst": "concept:offline-first-knowledge", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 100, "item_titulo": "Crosstalk-Solutions/project-nomad"}
+{"src": "repo:FoundationAgents/OpenManus", "rel": "competes_with", "dst": "repo:MervinPraison/PraisonAI", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 100, "item_titulo": "FoundationAgents/OpenManus"}

@@ -315,12 +315,64 @@
         "temas_secundarios": [],
         "confianza": 0.4
       }
+    },
+    {
+      "idx": 100,
+      "titulo": "mukul975/Anthropic-Cybersecurity-Skills",
+      "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Biblioteca de 817 skills de ciberseguridad para AI agents**, mapeadas a 6 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, MITRE D3FEND, NIST AI RMF, MITRE F3. Python, Apache-2.0.",
+        "por_que_importa": "**junto con `anthropics/defending-code-reference-harness` (mismo boletín 2026-08-18) materializa el cluster 'AI-security-ready' como producto**: skills estandarizadas + pipeline reproducible (recon → find → verify → report → patch). Es la primera biblioteca seria que aterriza la promesa de 'AI agents for security' en algo que se puede instalar y usar, no solo una demo. Para CSS: el cluster 'AI-security' merece un articulo que cruce esta biblioteca con el pipeline de Anthropic y con la cobertura de frameworks regulatorios (MITRE/NIST) — el angulo es 'cumplimiento + AI agent' que toca a empresas SaaS y consultoras.",
+        "madurez_senales": "31.163★ (debut 2026-08-18 con 28.642★, +2.521★ en 8 dias = senal fuerte de adopcion) · Python · Apache-2.0 · push 2026-08-24 (hace 2 dias).",
+        "accion_sugerida": "explorar (instalar la skill, ejecutar sobre un repo de prueba, mapear contra los 6 frameworks que declara; si el output es accionable, escribir un articulo 'compliance + AI agent: la nueva frontera de skills reguladas')."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "mukul975",
+        "medio": "github",
+        "tema_principal": "security_skills_library",
+        "temas_secundarios": [
+          "mitre",
+          "nist",
+          "agent-skill",
+          "compliance"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mukul975/Anthropic-Cybersecurity-Skills",
+          "rel": "complements",
+          "dst": "repo:anthropics/defending-code-reference-harness",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "repo:mukul975/Anthropic-Cybersecurity-Skills",
+          "rel": "implements",
+          "dst": "concept:security-skill-library",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "repo:mukul975/Anthropic-Cybersecurity-Skills",
+          "rel": "relevant_to",
+          "dst": "concept:mitre-framework",
+          "primera_mencion": "2026-08-18"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Boletin 2026-08-18 lo presento como item principal del cluster AI-security (linea 8: '28.642 ★, Apache-2.0, Python, push 2026-08-08, biblioteca de 817 skills mapeados a 6 frameworks'). El parser no lo proceso.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 13,
+    "items_total": 14,
     "items_hallazgo_principal": 5,
-    "items_radar_secundario": 8,
+    "items_radar_secundario": 1,
     "llm_backend": "hermes",
     "llm_polish_notes": "13/13 items pulidos",
     "metadata_carried_forward": false,
@@ -330,6 +382,7 @@
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "backfills": 1
   }
 }

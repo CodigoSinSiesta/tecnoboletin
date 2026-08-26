@@ -34,3 +34,6 @@
 {"src": "NVIDIA/OpenShell", "dst": "TencentCloud/CubeSandbox", "rel": "complements", "added": "2026-07-09", "primera_mencion": null}
 {"src": "NVIDIA/OpenShell", "dst": "local-llm", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": null}
 {"src": "NVIDIA/OpenShell", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "repo:charmbracelet/crush", "rel": "competes_with", "dst": "repo:macro-inc/macro", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
+{"src": "repo:charmbracelet/crush", "rel": "competes_with", "dst": "repo:anthropics/claude-code", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
+{"src": "repo:charmbracelet/crush", "rel": "risk", "dst": "license:noassertion", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
