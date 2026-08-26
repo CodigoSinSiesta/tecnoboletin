@@ -316,12 +316,246 @@
         "temas_secundarios": [],
         "confianza": 0.4
       }
+    },
+    {
+      "idx": 100,
+      "titulo": "karakeep-app/karakeep",
+      "url": "https://github.com/karakeep-app/karakeep",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Bookmark-everything self-hostable con AI tagging + full-text search**. TypeScript, AGPL-3.0.",
+        "por_que_importa": "**categoriza 'bookmark manager AI self-hosted'** que compite con `hoarderapp/hoarder` (visto 2026-07-07) y con la categoria general 'segundo cerebro' que el stack del usuario ya cubre con Obsidian. AGPL-3.0 bloquea adopcion como SaaS pero permite self-host. Encaja bajo con stack CSS directo pero documenta el espacio.",
+        "madurez_senales": "27.176★ · TypeScript · AGPL-3.0 · push 2026-07-06.",
+        "accion_sugerida": "vigilar (categoria competidora de bookmarks AI; no reemplaza Obsidian pero documenta el espacio)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "karakeep-app",
+        "medio": "github",
+        "tema_principal": "ai_bookmarks",
+        "temas_secundarios": [
+          "self-host",
+          "full-text-search"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:karakeep-app/karakeep",
+          "rel": "competes_with",
+          "dst": "repo:hoarderapp/hoarder",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item en boletin 2026-07-08 con formato completo y accion vigilar. Parser omitio.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 101,
+      "titulo": "kunchenguid/gnhf",
+      "url": "https://github.com/kunchenguid/gnhf",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Curiosidad creativa**: 'antes de dormir, les digo a mis agentes: buenas noches, pasenlo bien'. TypeScript, MIT.",
+        "por_que_importa": "**proyecto artistic del autor `kunchenguid`** que ha publicado varios proyectos similares (sleep-converter para coding agents). Mismo autor que `kunchenguid/claude-code-switcher` y otros. Encaje bajo con stack CSS, anotado por la firma del autor.",
+        "madurez_senales": "3.063★ · TypeScript · MIT · push 2026-06-10.",
+        "accion_sugerida": "vigilar (curiosidad creativa; mismo autor que varios proyectos de la linea 'agent sleep cycle')."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "kunchenguid",
+        "medio": "github",
+        "tema_principal": "agent_art",
+        "temas_secundarios": [
+          "experimental"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:kunchenguid/gnhf",
+          "rel": "relevant_to",
+          "dst": "concept:agent-artistic-experiments",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-08.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 102,
+      "titulo": "logto-io/logto",
+      "url": "https://github.com/logto-io/logto",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Auth infrastructure (OIDC + OAuth 2.1 + multi-tenancy + SSO)** posicionada explicitamente para SaaS + AI apps. TypeScript, MPL-2.0.",
+        "por_que_importa": "**la alternativa OSS moderna a Auth0 / Clerk**, relevante si el usuario o algun suscriptor de CSS monta SaaS con AI agents. MPL-2.0 (Mozilla Public License) es permisivo para uso SaaS. Encaja con la linea editorial 'infra para AI apps'.",
+        "madurez_senales": "13.952★ · TypeScript · MPL-2.0 · push 2026-07-08.",
+        "accion_sugerida": "vigilar (relevante para SaaS con AI; si CSS o el usuario montan SaaS, evaluar como alternativa OSS a Auth0)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "logto-io",
+        "medio": "github",
+        "tema_principal": "auth_infrastructure",
+        "temas_secundarios": [
+          "oidc",
+          "saas",
+          "ai-auth"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:logto-io/logto",
+          "rel": "competes_with",
+          "dst": "concept:auth0-saas",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-08.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 103,
+      "titulo": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Directorio oficial Anthropic-managed de plugins Claude Code de alta calidad**. Python, Apache-2.0.",
+        "por_que_importa": "**canal curado por Anthropic** para plugins oficiales. Relevante para usuarios de Claude Code (incluido el del usuario). Complementa `agentskills/agentskills` y `awesome-claude-skills`. Es el repositorio al que apunta `claude plugin install` cuando agregas marketplaces oficiales.",
+        "madurez_senales": "31.772★ · Python · Apache-2.0 · push 2026-07-08.",
+        "accion_sugerida": "vigilar (relevante para usuarios de Claude Code; complementa agentskills/agentskills)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "anthropics",
+        "medio": "github",
+        "tema_principal": "official_plugins_directory",
+        "temas_secundarios": [
+          "claude-code",
+          "plugins"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/claude-plugins-official",
+          "rel": "complements",
+          "dst": "repo:agentskills/agentskills",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-08.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 104,
+      "titulo": "code-yeongyu/oh-my-openagent",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**'omo/lazycodex': harness para tokenmaxxers**, single agent para codebases complejos, compatible con Codex/Claude. TypeScript, NOASSERTION (verificar).",
+        "por_que_importa": "**el cuarto fork OSS del cluster agentic coding CLI**, sumandose a crush (visto 2026-07-09), macro (2026-07-11) y claude-code mismo. La sigla 'omo/lazycodex' sugiere fork de lazycodex (otro fork de claude-code). Riesgo de license NOASSERTION bloquea adopcion.",
+        "madurez_senales": "65.224★ · TypeScript · NOASSERTION · push 2026-07-08.",
+        "accion_sugerida": "vigilar (cluster agentic coding CLI; license NOASSERTION bloquea adopcion pero interesante como referencia de forks)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "code-yeongyu",
+        "medio": "github",
+        "tema_principal": "agentic_coding_cli",
+        "temas_secundarios": [
+          "oss-fork",
+          "claude-code-fork"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:code-yeongyu/oh-my-openagent",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "repo:code-yeongyu/oh-my-openagent",
+          "rel": "risk",
+          "dst": "license:noassertion",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-08.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 105,
+      "titulo": "Wei-Shaw/sub2api",
+      "url": "https://github.com/Wei-Shaw/sub2api",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Servicio de 'subscripcion compartida' para Claude/OpenAI/Gemini/Grok en China**, multi-tenant. Go, LGPL-3.0.",
+        "por_que_importa": "**SaaS de reventa de subscripciones AI** con mercado principal en China. LGPL-3.0 es permisivo pero copyleft. Accion del boletin original era 'ignorar' porque es un SaaS de reventa. Documentado para historial.",
+        "madurez_senales": "30.757★ · Go · LGPL-3.0 · push 2026-07-08.",
+        "accion_sugerida": "ignorar segun boletin original (SaaS de reventa de subscripciones; fuera de scope CSS)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "Wei-Shaw",
+        "medio": "github",
+        "tema_principal": "ai_subscription_reseller",
+        "temas_secundarios": [
+          "saas",
+          "china-market"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Wei-Shaw/sub2api",
+          "rel": "risk",
+          "dst": "concept:saas-reseller",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-08 con accion ignorar.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 7,
+    "items_total": 13,
     "items_hallazgo_principal": 7,
-    "items_radar_secundario": 0,
+    "items_radar_secundario": 6,
     "llm_backend": "hermes",
     "llm_polish_notes": "7/7 items pulidos",
     "metadata_carried_forward": false,
@@ -331,6 +565,7 @@
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "backfills": 6
   }
 }

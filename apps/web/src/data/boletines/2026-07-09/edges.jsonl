@@ -37,3 +37,8 @@
 {"src": "repo:charmbracelet/crush", "rel": "competes_with", "dst": "repo:macro-inc/macro", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
 {"src": "repo:charmbracelet/crush", "rel": "competes_with", "dst": "repo:anthropics/claude-code", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
 {"src": "repo:charmbracelet/crush", "rel": "risk", "dst": "license:noassertion", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
+{"src": "repo:JCodesMore/ai-website-cloner-template", "rel": "relevant_to", "dst": "concept:ai-web-cloning", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "JCodesMore/ai-website-cloner-template"}
+{"src": "repo:chuspeeism/dashiAI-ppt-skill", "rel": "relevant_to", "dst": "concept:agent-as-designer", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "chuspeeism/dashiAI-ppt-skill"}
+{"src": "repo:chuspeeism/dashiAI-ppt-skill", "rel": "risk", "dst": "license:agpl-3.0", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "chuspeeism/dashiAI-ppt-skill"}
+{"src": "repo:vxcontrol/pentagi", "rel": "competes_with", "dst": "repo:usestrix/strix", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "vxcontrol/pentagi"}
+{"src": "repo:vxcontrol/pentagi", "rel": "complements", "dst": "repo:mukul975/Anthropic-Cybersecurity-Skills", "primera_mencion": "2026-08-18", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "vxcontrol/pentagi"}

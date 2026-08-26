@@ -358,12 +358,290 @@
         "temas_secundarios": [],
         "confianza": 0.4
       }
+    },
+    {
+      "idx": 100,
+      "titulo": "unclecode/crawl4ai",
+      "url": "https://github.com/unclecode/crawl4ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Open-source LLM-friendly web crawler**. Trending alto y creador activo. Python, MIT.",
+        "por_que_importa": "**complemento de Scrapling/Fortress** del stack del usuario (citado explicitamente en el boletin). Para el stack del usuario el angulo es directo: 'crawl4ai + scrapling' como dupla de web crawling para AI agents. Creador activo = mantenimiento asegurado.",
+        "madurez_senales": "72.010★ · Python · MIT · push 2026-07-09.",
+        "accion_sugerida": "vigilar (complemento de Scrapling/Fortress del stack del usuario; trending alto y creador activo)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "unclecode",
+        "medio": "github",
+        "tema_principal": "llm_web_crawler",
+        "temas_secundarios": [
+          "open-source",
+          "agent-input"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:unclecode/crawl4ai",
+          "rel": "complements",
+          "dst": "concept:scrapling-stack",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "repo:unclecode/crawl4ai",
+          "rel": "implements",
+          "dst": "concept:llm-friendly-crawler",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 101,
+      "titulo": "LMCache/LMCache",
+      "url": "https://github.com/LMCache/LMCache",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**KV cache layer para LLM serving, integrable con vLLM**. Python, Apache-2.0. Nightly builds con CUDA 12.9.",
+        "por_que_importa": "**capa de optimizacion KV cache para inference**: cuando se sirven muchos LLMs, reducir latencia y coste de re-tokenizacion es critico. LMCache aterriza ese slot como OSS con integracion vLLM. Para CSS el angulo: si el usuario o suscriptores montan inference server, LMCache es el slot 'caching layer' del stack.",
+        "madurez_senales": "10.347★ · Python · Apache-2.0 · push 2026-07-10, nightly-cu129.",
+        "accion_sugerida": "vigilar (relevante si el usuario quiere montar inference server; capa de caching OSS para vLLM)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "LMCache",
+        "medio": "github",
+        "tema_principal": "kv_cache_llm",
+        "temas_secundarios": [
+          "vllm",
+          "inference-optimization"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:LMCache/LMCache",
+          "rel": "integrates_with",
+          "dst": "concept:vllm",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "repo:LMCache/LMCache",
+          "rel": "implements",
+          "dst": "concept:kv-cache-layer",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 102,
+      "titulo": "shengshu-ai/Vidu-S1",
+      "url": "https://github.com/shengshu-ai/Vidu-S1",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Vidu S1: Real-Time Interactive Video Generation Model**. Debut 2026-07-09. Sin licencia declarada (bloqueante).",
+        "por_que_importa": "**categoria emergent real-time video generation** que aterriza con Vidu S1. Sin licencia declarada, bloquea adopcion pero documenta la linea 'video generation in real time'. Encaje bajo con stack CSS directo pero anotado para el cluster 'video gen models'.",
+        "madurez_senales": "97★ (debut) · sin licencia · debut 2026-07-09.",
+        "accion_sugerida": "vigilar (categoria emergent real-time video; sin licencia bloquea adopcion)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "shengshu-ai",
+        "medio": "github",
+        "tema_principal": "realtime_video_generation",
+        "temas_secundarios": [
+          "video-model",
+          "experimental"
+        ],
+        "confianza": "media"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:shengshu-ai/Vidu-S1",
+          "rel": "implements",
+          "dst": "concept:realtime-video-gen",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10 (debut).",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 103,
+      "titulo": "traycerai/traycer",
+      "url": "https://github.com/traycerai/traycer",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**'Nerve Center for Agentic Coding'**: orquestacion multi-agent con shared memory entre providers y modos Regular/Plan. TypeScript, Apache-2.0.",
+        "por_que_importa": "**el tercer contender del cluster 'agentic coding orchestration'** junto con `claude-code-taskmanager` y `code-yeongyu/oh-my-openagent`. Traycer aporta shared memory entre providers (no single-agent) lo que lo hace relevante para workflows multi-step. host v1.1.5 release reciente (2026-07-09) = cadencia activa.",
+        "madurez_senales": "437★ · TypeScript · Apache-2.0 · host v1.1.5 release 2026-07-09.",
+        "accion_sugerida": "vigilar (cluster agentic coding orchestration; shared memory entre providers es diferenciador)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "traycerai",
+        "medio": "github",
+        "tema_principal": "agentic_coding_orchestration",
+        "temas_secundarios": [
+          "shared-memory",
+          "multi-provider"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:traycerai/traycer",
+          "rel": "implements",
+          "dst": "concept:agentic-coding-orchestration",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 104,
+      "titulo": "withmarbleapp/os-taxonomy",
+      "url": "https://github.com/withmarbleapp/os-taxonomy",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Taxonomy abierto de 1.590 micro-topics + 3.221 prerequisite edges + 8 subjects** de curriculum primaria con visualizacion. JavaScript, ODbL-1.0 (Open Data Commons).",
+        "por_que_importa": "**graph estructurado de curriculum** publicado como ODbL (open data). Encaje con stack CSS: si el usuario escribe sobre knowledge graphs, este es un ejemplo real de taxonomia open. ODbL-1.0 es copyleft para data.",
+        "madurez_senales": "1.666★ · JavaScript · ODbL-1.0 · push 2026-07-08.",
+        "accion_sugerida": "vigilar (knowledge graph open de curriculum; ejemplo para articulos sobre knowledge graphs)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "withmarbleapp",
+        "medio": "github",
+        "tema_principal": "open_knowledge_graph",
+        "temas_secundarios": [
+          "curriculum",
+          "open-data"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:withmarbleapp/os-taxonomy",
+          "rel": "implements",
+          "dst": "concept:open-knowledge-graph",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 105,
+      "titulo": "huxingyi/autoremesher",
+      "url": "https://github.com/huxingyi/autoremesher",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Automatic quad remeshing tool**. C++, MIT. Release 1.0.0 oficial en 2026-07-09.",
+        "por_que_importa": "**util para game dev / 3D printing**: genera quad meshes optimizados para rendering. Encaje bajo con stack CSS directo (no es agent/devtool) pero anotado como herramienta 3D release 1.0.",
+        "madurez_senales": "2.434★ · C++ · MIT · push 2026-07-09, release 1.0.0.",
+        "accion_sugerida": "vigilar (release 1.0.0 oficial, util para game dev/3D printing; no conecta con CSS)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "huxingyi",
+        "medio": "github",
+        "tema_principal": "3d_remeshing",
+        "temas_secundarios": [
+          "game-dev",
+          "3d-printing"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:huxingyi/autoremesher",
+          "rel": "relevant_to",
+          "dst": "concept:3d-pipeline",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 106,
+      "titulo": "imthenachoman/How-To-Secure-A-Linux-Server",
+      "url": "https://github.com/imthenachoman/How-To-Secure-A-Linux-Server",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Guia open para hardening de Linux**. CC-BY-SA-4.0 (creative commons share-alike).",
+        "por_que_importa": "**referencia clasica que reaparece** con 29k★. CC-BY-SA-4.0 obliga share-alike si se remezcla. Relevante si el usuario o suscriptores escriben guias de hardening o documentacion de servidores.",
+        "madurez_senales": "29.231★ · CC-BY-SA-4.0 · push 2026-07-02.",
+        "accion_sugerida": "vigilar (referencia clasica; CC-BY-SA-4.0 share-alike si se remezcla)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "imthenachoman",
+        "medio": "github",
+        "tema_principal": "linux_hardening_guide",
+        "temas_secundarios": [
+          "documentation",
+          "cc-by-sa"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:imthenachoman/How-To-Secure-A-Linux-Server",
+          "rel": "implements",
+          "dst": "concept:linux-hardening",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-10.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 7,
+    "items_total": 14,
     "items_hallazgo_principal": 7,
-    "items_radar_secundario": 0,
+    "items_radar_secundario": 7,
     "llm_backend": "hermes",
     "llm_polish_notes": "7/7 items pulidos",
     "metadata_carried_forward": false,
@@ -373,6 +651,7 @@
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "backfills": 7
   }
 }

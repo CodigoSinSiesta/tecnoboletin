@@ -35,3 +35,10 @@
 {"src": "mvanhorn/last30days-skill", "dst": "recency-research-skill", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
 {"src": "mvanhorn/last30days-skill", "dst": "hermes-skills", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
 {"src": "mvanhorn/last30days-skill", "dst": "cheahjs/free-llm-api-resources", "rel": "complements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "repo:karakeep-app/karakeep", "rel": "competes_with", "dst": "repo:hoarderapp/hoarder", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "karakeep-app/karakeep"}
+{"src": "repo:kunchenguid/gnhf", "rel": "relevant_to", "dst": "concept:agent-artistic-experiments", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "kunchenguid/gnhf"}
+{"src": "repo:logto-io/logto", "rel": "competes_with", "dst": "concept:auth0-saas", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "logto-io/logto"}
+{"src": "repo:anthropics/claude-plugins-official", "rel": "complements", "dst": "repo:agentskills/agentskills", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "anthropics/claude-plugins-official"}
+{"src": "repo:code-yeongyu/oh-my-openagent", "rel": "competes_with", "dst": "repo:anthropics/claude-code", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "code-yeongyu/oh-my-openagent"}
+{"src": "repo:code-yeongyu/oh-my-openagent", "rel": "risk", "dst": "license:noassertion", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "code-yeongyu/oh-my-openagent"}
+{"src": "repo:Wei-Shaw/sub2api", "rel": "risk", "dst": "concept:saas-reseller", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "Wei-Shaw/sub2api"}

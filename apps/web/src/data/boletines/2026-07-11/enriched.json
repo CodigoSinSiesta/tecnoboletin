@@ -464,12 +464,208 @@
         "motivo_backfill": "Boletin 2026-07-11 lo anuncio como item de radar secundario (linea 131: 'debut GH Trending, 45k★, Apache-2.0, accion: leer') pero el parser extract_items.py no lo proceso porque estaba en formato radar y no como bloque #### N. titular. Verificado por auditoria del 2026-08-26: aparece 10 veces en boletines posteriores como referencia cruzada, lo que confirma que es item real no ruido.",
         "auditado_el": "2026-08-26"
       }
+    },
+    {
+      "idx": 100,
+      "titulo": "par274/sharpemu",
+      "url": "https://github.com/par274/sharpemu",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Emulador experimental de PS5**. C#, GPL-2.0. Debut Trendshift #3 (subida por novedad).",
+        "por_que_importa": "**dominio gaming/hardware**, no core CSS. Accion del boletin original: 'ignorar' por estar fuera del scope. Documentado para historial.",
+        "madurez_senales": "573★ · C# · GPL-2.0 · debut Trendshift #3.",
+        "accion_sugerida": "ignorar segun boletin original (dominio gaming/hardware, no core CSS)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "par274",
+        "medio": "github",
+        "tema_principal": "ps5_emulator",
+        "temas_secundarios": [
+          "gaming",
+          "hardware"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:par274/sharpemu",
+          "rel": "relevant_to",
+          "dst": "concept:ps5-emulation",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 101,
+      "titulo": "xerrors/Yuxi",
+      "url": "https://github.com/xerrors/Yuxi",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Multi-tenant agent harness que integra RAG + Milvus + KG + LangGraph + Vue + FastAPI**. Python, MIT. Debut Trendshift.",
+        "por_que_importa": "**stack directamente comparable con el del usuario** (PGLite/Postgres+pgvector para knowledge graph + Ollama+DeepSeek para LLM). Yuxi aterriza el equivalente en Python puro: Milvus + LangGraph + FastAPI. Encaje alto con la linea editorial 'stack local-first agéntica'.",
+        "madurez_senales": "6.071★ · Python · MIT · debut Trendshift.",
+        "accion_sugerida": "vigilar (stack comparable al del usuario; documenta alternativa Python pura a la stack PGLite/Ollama)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "xerrors",
+        "medio": "github",
+        "tema_principal": "multi_tenant_agent_harness",
+        "temas_secundarios": [
+          "rag",
+          "langgraph",
+          "fastapi"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:xerrors/Yuxi",
+          "rel": "implements",
+          "dst": "concept:multi-tenant-agent-harness",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:xerrors/Yuxi",
+          "rel": "complements",
+          "dst": "concept:user-stack",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 102,
+      "titulo": "wealthfolio/wealthfolio",
+      "url": "https://github.com/wealthfolio/wealthfolio",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Tracker financiero local-first** (Tauri, Mac). Rust, AGPL-3.0. Debut GH Trending Rust daily.",
+        "por_que_importa": "**caso de uso privacy-first para finanzas personales**: tracker Tauri Mac, AGPL-3.0 bloquea SaaS pero permite self-host. Encaja bajo con stack CSS directo (no toca el core) pero documenta el espacio 'finance privacy-first'.",
+        "madurez_senales": "8.161★ · Rust · AGPL-3.0 · debut GH Trending Rust daily.",
+        "accion_sugerida": "vigilar (tracker financiero local-first; caso de uso privacy-first pero no toca el core CSS)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "wealthfolio",
+        "medio": "github",
+        "tema_principal": "privacy_finance_tracker",
+        "temas_secundarios": [
+          "tauri",
+          "local-first"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:wealthfolio/wealthfolio",
+          "rel": "implements",
+          "dst": "concept:privacy-finance",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 103,
+      "titulo": "librepods-org/librepods",
+      "url": "https://github.com/librepods-org/librepods",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**'AirPods liberated from Apple's ecosystem'**. Proyecto para usar AirPods en Android/Linux con funcionalidad completa. Kotlin, GPL-3.0.",
+        "por_que_importa": "**proyecto curioso pero dominio consumer-electronics**. Accion del boletin original: 'ignorar' por estar fuera de scope. GPL-3.0 copyleft. Documentado para historial.",
+        "madurez_senales": "28.790★ · Kotlin · GPL-3.0 · debut.",
+        "accion_sugerida": "ignorar segun boletin original (fuera de scope CSS, consumer-electronics)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "librepods-org",
+        "medio": "github",
+        "tema_principal": "airpods_liberation",
+        "temas_secundarios": [
+          "consumer-electronica"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:librepods-org/librepods",
+          "rel": "relevant_to",
+          "dst": "concept:airpods-liberation",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 104,
+      "titulo": "GargantuaX/gemini-watermark-remover",
+      "url": "https://github.com/GargantuaX/gemini-watermark-remover",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Herramienta 100% client-side para remover marcas de agua Gemini** (imagen+video). JavaScript, MIT. Debut.",
+        "por_que_importa": "**utilidad nicho**: remover marcas de agua Gemini. Encaje marginal con CSS. Accion del boletin original fue 'ignorar'.",
+        "madurez_senales": "4.860★ · JavaScript · MIT · debut.",
+        "accion_sugerida": "ignorar segun boletin original (encaje marginal con CSS, utilidad nicho)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "GargantuaX",
+        "medio": "github",
+        "tema_principal": "watermark_remover",
+        "temas_secundarios": [
+          "client-side",
+          "gemini"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:GargantuaX/gemini-watermark-remover",
+          "rel": "relevant_to",
+          "dst": "concept:watermark-removal",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 9,
+    "items_total": 14,
     "items_hallazgo_principal": 8,
-    "items_radar_secundario": 1,
+    "items_radar_secundario": 6,
     "llm_backend": "hermes",
     "llm_polish_notes": "8/8 items pulidos",
     "metadata_carried_forward": false,
@@ -480,6 +676,6 @@
       "claridad_accesibilidad",
       "relevancia_editorial"
     ],
-    "backfills": 1
+    "backfills": 6
   }
 }

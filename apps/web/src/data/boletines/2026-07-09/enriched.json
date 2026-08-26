@@ -348,12 +348,138 @@
         "motivo_backfill": "Boletin 2026-07-09 lo presento como item completo (linea: '26.270★, Go, NOASSERTION, push 2026-07-08, agentic coding CLI, accion: vigilar'). El parser no lo proceso.",
         "auditado_el": "2026-08-26"
       }
+    },
+    {
+      "idx": 101,
+      "titulo": "JCodesMore/ai-website-cloner-template",
+      "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Boilerplate Next.js + Tailwind + shadcn-ui que clona webs con Claude Code en 1 comando**. TypeScript, MIT.",
+        "por_que_importa": "**democratiza 'clonar web con AI'** para usuarios no tecnicos: cualquiera puede forkear y clonar un sitio en 1 comando. Encaje bajo con stack CSS directo (Next.js no es el stack del usuario), pero documenta el espacio 'clonador web AI'.",
+        "madurez_senales": "26.986★ · TypeScript · MIT · push 2026-07-04.",
+        "accion_sugerida": "vigilar (categoria clonador web AI; no encaja con stack del usuario pero documenta el espacio)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "JCodesMore",
+        "medio": "github",
+        "tema_principal": "ai_website_cloner",
+        "temas_secundarios": [
+          "boilerplate",
+          "nextjs"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:JCodesMore/ai-website-cloner-template",
+          "rel": "relevant_to",
+          "dst": "concept:ai-web-cloning",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-09.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 102,
+      "titulo": "chuspeeism/dashiAI-ppt-skill",
+      "url": "https://github.com/chuspeeism/dashiAI-ppt-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Agent Skill que genera presentaciones HTML/PDF/PPTX editables en navegador desde prompts**, con multiples temas visuales. JavaScript, AGPL-3.0.",
+        "por_que_importa": "**la quinta entrada del cluster 'agent-as-design' / 'AI-to-deck'**, sumandose a `hugohe3/ppt-master` (2026-06-30), `cathrynlavery/diagram-design` (2026-08-15), `nexu-io/open-design` (2026-08-15) y `hugohe3/ppt-master` de nuevo. La diferenciacion: output HTML/PDF/PPTX editable en navegador (no PowerPoint nativo). AGPL-3.0 bloquea adopcion comercial.",
+        "madurez_senales": "1.603★ · JavaScript · AGPL-3.0 · push 2026-07-09.",
+        "accion_sugerida": "vigilar (cluster AI-to-deck; AGPL bloquea adopcion como dep pero interesante como referencia)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "chuspeeism",
+        "medio": "github",
+        "tema_principal": "ai_deck_generation",
+        "temas_secundarios": [
+          "agent-skill",
+          "html-pdf-pptx"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:chuspeeism/dashiAI-ppt-skill",
+          "rel": "relevant_to",
+          "dst": "concept:agent-as-designer",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "repo:chuspeeism/dashiAI-ppt-skill",
+          "rel": "risk",
+          "dst": "license:agpl-3.0",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-09.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 103,
+      "titulo": "vxcontrol/pentagi",
+      "url": "https://github.com/vxcontrol/pentagi",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Sistema de agentes autonomos para penetration testing**, multi-agent con React + GraphQL UI self-hosted. Go, MIT.",
+        "por_que_importa": "**junto con `usestrix/strix` (visto 2026-06-30) y `mukul975/Anthropic-Cybersecurity-Skills` (visto 2026-08-18) define el cluster 'AI security ops'**. Pentagi se diferencia por ser multi-agent con UI React+GraphQL self-hosted (vs strix CLI Python). Encaja con la linea editorial 'AI for security'.",
+        "madurez_senales": "18.966★ · Go · MIT · push 2026-07-03.",
+        "accion_sugerida": "vigilar (cluster AI security ops; junto con strix y Anthropic-Cybersecurity-Skills, el triangulo esta formado)."
+      },
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "vxcontrol",
+        "medio": "github",
+        "tema_principal": "ai_pentesting",
+        "temas_secundarios": [
+          "multi-agent",
+          "self-hosted"
+        ],
+        "confianza": "alta"
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vxcontrol/pentagi",
+          "rel": "competes_with",
+          "dst": "repo:usestrix/strix",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "repo:vxcontrol/pentagi",
+          "rel": "complements",
+          "dst": "repo:mukul975/Anthropic-Cybersecurity-Skills",
+          "primera_mencion": "2026-08-18"
+        }
+      ],
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-09.",
+        "auditado_el": "2026-08-26"
+      }
     }
   ],
   "stats": {
-    "items_total": 7,
+    "items_total": 10,
     "items_hallazgo_principal": 6,
-    "items_radar_secundario": 1,
+    "items_radar_secundario": 4,
     "llm_backend": "hermes",
     "llm_polish_notes": "6/6 items pulidos",
     "metadata_carried_forward": false,
@@ -364,6 +490,6 @@
       "claridad_accesibilidad",
       "relevancia_editorial"
     ],
-    "backfills": 1
+    "backfills": 4
   }
 }
