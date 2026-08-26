@@ -391,6 +391,187 @@
     },
     {
       "idx": 7,
+      "titulo": "usestrix/strix",
+      "url": "https://github.com/usestrix/strix",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "open-source AI penetration testing. Visto el 2026-07-04 pero hoy +2.8k/día es un spike bestial. Reapareció en el radar diario.",
+        "por_que_importa": "",
+        "madurez_senales": "+2.803⭐/hoy, Python, Apache-2.0, 40.960★",
+        "accion_sugerida": "vigilar — (el spike puede deberse a publicación de release; auditar changelog para confirmar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "usestrix-strix",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "rome2200/agentic-hedge-fund",
+      "url": "https://github.com/rome2200/agentic-hedge-fund",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "variante \"vibe-coded\" de ai-hedge-fund trending en X. Posible sombra de `virattt/ai-hedge-fund`.",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado en API",
+        "accion_sugerida": "vigilar — (si sube a trending daily, auditar relación con `virattt` y con `HKUDS/Vibe-Trading`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rome2200-agentic-hedge-fund",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "FoundationAgents/OpenManus",
+      "url": "https://github.com/FoundationAgents/OpenManus",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Agente open-source 'no fortress, purely open ground'** del equipo FoundationAgents. Python, MIT. La alternativa 'pura' a Manus AI (que es comercial y closed).",
+        "por_que_importa": "**estable pero con cadencia de release baja**: creado 2025-03-06, ultimo push febrero 2026 — 5 meses sin actividad nueva. Esto lo senala como 'release dudosa' en el boletin original. Hoy (2026-08-26) push 2026-08-22: hay movimiento reciente, la tesis 'release cadence dudosa' ya no se sostiene del todo. El triángulo trading-agent del 2026-07-13 lo posiciona como competidor de `MervinPraison/PraisonAI` (que sí está activo). Para CSS: la comparativa OpenManus vs PraisonAI es relevante porque ambos ocupan el slot 'agente open-source horizontal con UI web', pero PraisonAI tiene cadencia mucho mayor.",
+        "madurez_senales": "58.076★ (debut 2026-07-13 con 57.304★, +772★ en 44 dias) · Python · MIT · creado 2025-03-06 · push 2026-08-22 (hace 4 dias, reactivado).",
+        "accion_sugerida": "vigilar (release cadence en recuperacion tras 5 meses parado; comparar con `MervinPraison/PraisonAI` que tiene cadencia sostenida; si PraisonAI le come el espacio, OpenManus pierde relevancia editorial)."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:FoundationAgents/OpenManus",
+          "rel": "competes_with",
+          "dst": "repo:MervinPraison/PraisonAI",
+          "primera_mencion": "2026-07-13"
+        },
+        {
+          "src": "repo:FoundationAgents/OpenManus",
+          "rel": "relevant_to",
+          "dst": "concept:manus-alternative",
+          "primera_mencion": "2026-07-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "FoundationAgents",
+        "medio": "github",
+        "tema_principal": "open_source_agent",
+        "temas_secundarios": [
+          "manus-alternative",
+          "horizontal-agent"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Boletin 2026-07-13 lo presento como item completo (linea 119: '57.304★, Python, MIT, creado 2025-03-06, push 2026-02-11, agente open-source \"no fortress, purely open ground\", accion: vigilar'). El parser no lo proceso.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "MervinPraison/PraisonAI",
+      "url": "https://github.com/MervinPraison/PraisonAI",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Multi-agent framework en Python** que expone **100+ LLMs como workforce orquestable** (no es un agente vertical, es el motor). Pitch: 'Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping real products'. Pensado para casos multi-agente donde cada agente tiene rol distinto y se comunican — encaja directo con el patrón que el paper arXiv 2607.09600 'Agora' aterriza el mismo día: asignación por subasta entre modelos.",
+        "por_que_importa": "**junto con `virattt/ai-hedge-fund` (referencia simple, visto el 2026-04-29) e `HKUDS/Vibe-Trading` (debut de hoy), forma el triángulo 'personal trading agent' del 2026-07-13**. De los tres, PraisonAI es **el framework horizontal** (motor multi-agente agnóstico de dominio) y Vibe-Trading es **el vertical aplicado** (trading agent sobre MCP + multi-LLM). Para CSS el ángulo editorial es: 'el framework multi-agente de propósito general (PraisonAI) está siendo adoptado como base por implementaciones verticales (Vibe-Trading), mientras que la referencia minimalista (ai-hedge-fund) sigue marcando el suelo de la categoría'. Release cadence muy activo (push de ayer) vs `FoundationAgents/OpenManus` (sin push desde febrero), lo que sugiere que PraisonAI le está comiendo el espacio.",
+        "madurez_senales": "8.959★ (debut 2026-07-13 con 8.431★, +528★ en 44 dias) · Python · MIT · push 2026-08-25 (hace 1 dia, alta cadencia). Desc oficial alineada con el boom post-debut.",
+        "accion_sugerida": "leer (auditar release notes desde 2026-07-13, comparar stack con `HKUDS/Vibe-Trading` que es vertical aplicado: si PraisonAI provee el motor y Vibe-Trading lo usa, ver si la tesis 'framework horizontal + vertical aplicado' encaja para escribir un post 'arquitectura del trading agent 2026')."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:MervinPraison/PraisonAI",
+          "rel": "implements",
+          "dst": "concept:multi-agent-framework",
+          "primera_mencion": "2026-07-13"
+        },
+        {
+          "src": "repo:MervinPraison/PraisonAI",
+          "rel": "complements",
+          "dst": "repo:HKUDS/Vibe-Trading",
+          "primera_mencion": "2026-07-13"
+        },
+        {
+          "src": "repo:MervinPraison/PraisonAI",
+          "rel": "competes_with",
+          "dst": "repo:FoundationAgents/OpenManus",
+          "primera_mencion": "2026-07-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "MervinPraison",
+        "medio": "github",
+        "tema_principal": "multi_agent_framework",
+        "temas_secundarios": [
+          "agent-orchestration",
+          "trading-agent",
+          "llm-workforce"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Boletin 2026-07-13 lo presento como item completo en radar secundario (linea 120: formato '8.431★, Python, MIT, push 2026-07-13 hace 5h, multi-agent framework 100+ LLMs, accion: leer'). El parser extract_items.py no proceso este formato. Verificado por auditoria del 2026-08-26.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Crosstalk-Solutions/project-nomad",
+      "url": "https://github.com/Crosstalk-Solutions/project-nomad",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**'Project NOMAD is an offline-first knowledge and education server'**: Wikipedia, foros, mapas y materiales educativos embebidos localmente. Survival computer offline. TypeScript, Apache-2.0.",
+        "por_que_importa": "**no encaja con el stack CSS segun la valoracion del boletin**, pero se anota para el radar por si el espacio 'offline-first knowledge' se cruza con la linea editorial de Hermes (vault de Obsidian, knowledge graph local). El angulo interesante: cuando el grafo de conocimiento local del usuario crece, herramientas tipo NOMAD dan una alternativa 'todo en uno offline' vs. el stack modular del usuario (Obsidian + PGLite + Graphify). Accion sugerida en el boletin original era 'ignorar', pero como backfill se conserva para historial.",
+        "madurez_senales": "36.312★ (debut 2026-07-13 con 33.927★, +2.385★ en 44 dias) · TypeScript · Apache-2.0 · push 2026-08-25 (hace 2 dias).",
+        "accion_sugerida": "ignorar segun el boletin original (no encaja con stack CSS); mantener en radar por si el espacio 'offline-first knowledge' se cruza con el stack del usuario."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Crosstalk-Solutions/project-nomad",
+          "rel": "implements",
+          "dst": "concept:offline-first-knowledge",
+          "primera_mencion": "2026-07-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "Crosstalk-Solutions",
+        "medio": "github",
+        "tema_principal": "offline_knowledge_server",
+        "temas_secundarios": [
+          "education",
+          "consumer"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Boletin 2026-07-13 lo presento como item completo (linea 121: '33.927★, TypeScript, Apache-2.0, offline survival computer, accion: ignorar'). El parser no lo proceso.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 12,
       "titulo": "nats-io/nats-server",
       "url": "https://github.com/nats-io/nats-server",
       "url_inferida": true,
@@ -414,153 +595,67 @@
       }
     },
     {
-      "idx": 12,
-      "titulo": "MervinPraison/PraisonAI",
-      "url": "https://github.com/MervinPraison/PraisonAI",
+      "idx": 13,
+      "titulo": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
       "url_inferida": true,
-      "seccion": "radar_secundario_recuperado",
+      "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "**Multi-agent framework en Python** que expone **100+ LLMs como workforce orquestable** (no es un agente vertical, es el motor). Pitch: 'Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping real products'. Pensado para casos multi-agente donde cada agente tiene rol distinto y se comunican — encaja directo con el patrón que el paper arXiv 2607.09600 'Agora' aterriza el mismo día: asignación por subasta entre modelos.",
-        "por_que_importa": "**junto con `virattt/ai-hedge-fund` (referencia simple, visto el 2026-04-29) e `HKUDS/Vibe-Trading` (debut de hoy), forma el triángulo 'personal trading agent' del 2026-07-13**. De los tres, PraisonAI es **el framework horizontal** (motor multi-agente agnóstico de dominio) y Vibe-Trading es **el vertical aplicado** (trading agent sobre MCP + multi-LLM). Para CSS el ángulo editorial es: 'el framework multi-agente de propósito general (PraisonAI) está siendo adoptado como base por implementaciones verticales (Vibe-Trading), mientras que la referencia minimalista (ai-hedge-fund) sigue marcando el suelo de la categoría'. Release cadence muy activo (push de ayer) vs `FoundationAgents/OpenManus` (sin push desde febrero), lo que sugiere que PraisonAI le está comiendo el espacio.",
-        "madurez_senales": "8.959★ (debut 2026-07-13 con 8.431★, +528★ en 44 dias) · Python · MIT · push 2026-08-25 (hace 1 dia, alta cadencia). Desc oficial alineada con el boom post-debut.",
-        "accion_sugerida": "leer (auditar release notes desde 2026-07-13, comparar stack con `HKUDS/Vibe-Trading` que es vertical aplicado: si PraisonAI provee el motor y Vibe-Trading lo usa, ver si la tesis 'framework horizontal + vertical aplicado' encaja para escribir un post 'arquitectura del trading agent 2026')."
+        "que_es": "visto 2026-07-11 con +271 hoy, sigue trending.",
+        "por_que_importa": "",
+        "madurez_senales": "46.086★, Apache-2.0, JS, push 2026-07-10",
+        "accion_sugerida": "leer — (auditar si la mejora sobre el debut se mantiene en línea con `Nutlope/hallmark`)",
+        "descripcion_raw": ""
       },
+      "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "repositorio",
+        "tipo": "repo",
         "idioma": "en",
-        "autor": "MervinPraison",
-        "medio": "github",
-        "tema_principal": "multi_agent_framework",
-        "temas_secundarios": [
-          "agent-orchestration",
-          "trading-agent",
-          "llm-workforce"
-        ],
-        "confianza": "alta"
-      },
-      "relacion_grafo": [
-        {
-          "src": "repo:MervinPraison/PraisonAI",
-          "rel": "implements",
-          "dst": "concept:multi-agent-framework",
-          "primera_mencion": "2026-07-13"
-        },
-        {
-          "src": "repo:MervinPraison/PraisonAI",
-          "rel": "complements",
-          "dst": "repo:HKUDS/Vibe-Trading",
-          "primera_mencion": "2026-07-13"
-        },
-        {
-          "src": "repo:MervinPraison/PraisonAI",
-          "rel": "competes_with",
-          "dst": "repo:FoundationAgents/OpenManus",
-          "primera_mencion": "2026-07-13"
-        }
-      ],
-      "stats": {
-        "origen": "backfill_radar_secundario",
-        "motivo_backfill": "Boletin 2026-07-13 lo presento como item completo en radar secundario (linea 120: formato '8.431★, Python, MIT, push 2026-07-13 hace 5h, multi-agent framework 100+ LLMs, accion: leer'). El parser extract_items.py no proceso este formato. Verificado por auditoria del 2026-08-26.",
-        "auditado_el": "2026-08-26"
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pbakaus-impeccable",
+        "temas_secundarios": [],
+        "confianza": 0.4
       }
     },
     {
-      "idx": 100,
-      "titulo": "Crosstalk-Solutions/project-nomad",
-      "url": "https://github.com/Crosstalk-Solutions/project-nomad",
+      "idx": 14,
+      "titulo": "facebook/astryx",
+      "url": "https://github.com/facebook/astryx",
       "url_inferida": true,
-      "seccion": "radar_secundario_recuperado",
+      "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "**'Project NOMAD is an offline-first knowledge and education server'**: Wikipedia, foros, mapas y materiales educativos embebidos localmente. Survival computer offline. TypeScript, Apache-2.0.",
-        "por_que_importa": "**no encaja con el stack CSS segun la valoracion del boletin**, pero se anota para el radar por si el espacio 'offline-first knowledge' se cruza con la linea editorial de Hermes (vault de Obsidian, knowledge graph local). El angulo interesante: cuando el grafo de conocimiento local del usuario crece, herramientas tipo NOMAD dan una alternativa 'todo en uno offline' vs. el stack modular del usuario (Obsidian + PGLite + Graphify). Accion sugerida en el boletin original era 'ignorar', pero como backfill se conserva para historial.",
-        "madurez_senales": "36.312★ (debut 2026-07-13 con 33.927★, +2.385★ en 44 dias) · TypeScript · Apache-2.0 · push 2026-08-25 (hace 2 dias).",
-        "accion_sugerida": "ignorar segun el boletin original (no encaja con stack CSS); mantener en radar por si el espacio 'offline-first knowledge' se cruza con el stack del usuario."
+        "que_es": "design system agent-ready de Meta.",
+        "por_que_importa": "",
+        "madurez_senales": "8.326★, MIT, TS, push 2026-07-13 hace minutos",
+        "accion_sugerida": "vigilar — (Meta sigue invirtiendo; ver si compite con `Nutlope/hallmark` o complementan)",
+        "descripcion_raw": ""
       },
+      "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "repositorio",
+        "tipo": "repo",
         "idioma": "en",
-        "autor": "Crosstalk-Solutions",
-        "medio": "github",
-        "tema_principal": "offline_knowledge_server",
-        "temas_secundarios": [
-          "education",
-          "consumer"
-        ],
-        "confianza": "alta"
-      },
-      "relacion_grafo": [
-        {
-          "src": "repo:Crosstalk-Solutions/project-nomad",
-          "rel": "implements",
-          "dst": "concept:offline-first-knowledge",
-          "primera_mencion": "2026-07-13"
-        }
-      ],
-      "stats": {
-        "origen": "backfill_radar_secundario",
-        "motivo_backfill": "Boletin 2026-07-13 lo presento como item completo (linea 121: '33.927★, TypeScript, Apache-2.0, offline survival computer, accion: ignorar'). El parser no lo proceso.",
-        "auditado_el": "2026-08-26"
-      }
-    },
-    {
-      "idx": 101,
-      "titulo": "FoundationAgents/OpenManus",
-      "url": "https://github.com/FoundationAgents/OpenManus",
-      "url_inferida": true,
-      "seccion": "radar_secundario_recuperado",
-      "contenido": {
-        "que_es": "**Agente open-source 'no fortress, purely open ground'** del equipo FoundationAgents. Python, MIT. La alternativa 'pura' a Manus AI (que es comercial y closed).",
-        "por_que_importa": "**estable pero con cadencia de release baja**: creado 2025-03-06, ultimo push febrero 2026 — 5 meses sin actividad nueva. Esto lo senala como 'release dudosa' en el boletin original. Hoy (2026-08-26) push 2026-08-22: hay movimiento reciente, la tesis 'release cadence dudosa' ya no se sostiene del todo. El triángulo trading-agent del 2026-07-13 lo posiciona como competidor de `MervinPraison/PraisonAI` (que sí está activo). Para CSS: la comparativa OpenManus vs PraisonAI es relevante porque ambos ocupan el slot 'agente open-source horizontal con UI web', pero PraisonAI tiene cadencia mucho mayor.",
-        "madurez_senales": "58.076★ (debut 2026-07-13 con 57.304★, +772★ en 44 dias) · Python · MIT · creado 2025-03-06 · push 2026-08-22 (hace 4 dias, reactivado).",
-        "accion_sugerida": "vigilar (release cadence en recuperacion tras 5 meses parado; comparar con `MervinPraison/PraisonAI` que tiene cadencia sostenida; si PraisonAI le come el espacio, OpenManus pierde relevancia editorial)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "FoundationAgents",
-        "medio": "github",
-        "tema_principal": "open_source_agent",
-        "temas_secundarios": [
-          "manus-alternative",
-          "horizontal-agent"
-        ],
-        "confianza": "alta"
-      },
-      "relacion_grafo": [
-        {
-          "src": "repo:FoundationAgents/OpenManus",
-          "rel": "competes_with",
-          "dst": "repo:MervinPraison/PraisonAI",
-          "primera_mencion": "2026-07-13"
-        },
-        {
-          "src": "repo:FoundationAgents/OpenManus",
-          "rel": "relevant_to",
-          "dst": "concept:manus-alternative",
-          "primera_mencion": "2026-07-13"
-        }
-      ],
-      "stats": {
-        "origen": "backfill_radar_secundario",
-        "motivo_backfill": "Boletin 2026-07-13 lo presento como item completo (linea 119: '57.304★, Python, MIT, creado 2025-03-06, push 2026-02-11, agente open-source \"no fortress, purely open ground\", accion: vigilar'). El parser no lo proceso.",
-        "auditado_el": "2026-08-26"
+        "autor": null,
+        "medio": null,
+        "tema_principal": "facebook-astryx",
+        "temas_secundarios": [],
+        "confianza": 0.4
       }
     }
   ],
   "stats": {
-    "items_total": 11,
+    "items_total": 15,
     "items_hallazgo_principal": 7,
-    "items_radar_secundario": 3,
+    "items_radar_secundario": 8,
     "llm_backend": "hermes",
-    "llm_polish_notes": "8/8 items pulidos",
-    "metadata_carried_forward": false,
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": true,
     "critica_lentes_aplicada": true,
     "critica_notes": "7/7 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ],
-    "backfills": 3
+    ]
   }
 }

@@ -34,6 +34,31 @@
 {"src": "NVIDIA/OpenShell", "dst": "TencentCloud/CubeSandbox", "rel": "complements", "added": "2026-07-09", "primera_mencion": null}
 {"src": "NVIDIA/OpenShell", "dst": "local-llm", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": null}
 {"src": "NVIDIA/OpenShell", "dst": "NousResearch/hermes-agent", "rel": "relevant_to", "added": "2026-07-09", "primera_mencion": "2026-07-08"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-charmbracelet-crush", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-charmbracelet-crush", "dst": "tema:agentic_coding_cli", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-charmbracelet-crush", "dst": "tema:tui", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-charmbracelet-crush", "dst": "tema:bubble-tea", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-charmbracelet-crush", "dst": "tema:oss-fork", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-alishahryar1-free-claude-code", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-alishahryar1-free-claude-code", "dst": "tema:alishahryar1-free-claude-code", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-modernrelay-omnigraph", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-modernrelay-omnigraph", "dst": "tema:modernrelay-omnigraph", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-jcodesmore-ai-website-cloner-template", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-jcodesmore-ai-website-cloner-template", "dst": "tema:ai_website_cloner", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-jcodesmore-ai-website-cloner-template", "dst": "tema:boilerplate", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-jcodesmore-ai-website-cloner-template", "dst": "tema:nextjs", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-davila7-claude-code-templates", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-davila7-claude-code-templates", "dst": "tema:davila7-claude-code-templates", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-kdsz001-openwiki", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-kdsz001-openwiki", "dst": "tema:kdsz001-openwiki", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-chuspeeism-dashiai-ppt-skill", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-chuspeeism-dashiai-ppt-skill", "dst": "tema:ai_deck_generation", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-chuspeeism-dashiai-ppt-skill", "dst": "tema:agent-skill", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-chuspeeism-dashiai-ppt-skill", "dst": "tema:html-pdf-pptx", "rel": "trata", "added": "2026-07-09"}
+{"src": "boletin:2026-07-09", "dst": "item:https-github-com-vxcontrol-pentagi", "rel": "menciona", "added": "2026-07-09"}
+{"src": "item:https-github-com-vxcontrol-pentagi", "dst": "tema:ai_pentesting", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-vxcontrol-pentagi", "dst": "tema:multi-agent", "rel": "trata", "added": "2026-07-09"}
+{"src": "item:https-github-com-vxcontrol-pentagi", "dst": "tema:self-hosted", "rel": "trata", "added": "2026-07-09"}
 {"src": "repo:charmbracelet/crush", "rel": "competes_with", "dst": "repo:macro-inc/macro", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
 {"src": "repo:charmbracelet/crush", "rel": "competes_with", "dst": "repo:anthropics/claude-code", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}
 {"src": "repo:charmbracelet/crush", "rel": "risk", "dst": "license:noassertion", "primera_mencion": "2026-07-09", "origen_boletin": "2026-07-09", "item_idx": 100, "item_titulo": "charmbracelet/crush"}

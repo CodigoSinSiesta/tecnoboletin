@@ -46,5 +46,5 @@
       "razon": "microsoft/pg_durable encaja con el stack PGLite/Postgres/pgvector; conviene probar en local el patrón de workflows durables como SQL graphs y verificar la licencia PostgreSQL directamente en el archivo LICENSE del repo."
     }
   ],
-  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
 }

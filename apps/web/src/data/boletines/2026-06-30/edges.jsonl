@@ -39,7 +39,10 @@
 {"src": "boletin:2026-06-30", "dst": "item:https-github-com-ed1s0nz-cyberstrikeai", "rel": "menciona", "added": "2026-06-30"}
 {"src": "item:https-github-com-ed1s0nz-cyberstrikeai", "dst": "tema:ed1s0nz-cyberstrikeai", "rel": "trata", "added": "2026-06-30"}
 {"src": "boletin:2026-06-30", "dst": "item:https-github-com-usestrix-strix", "rel": "menciona", "added": "2026-06-30"}
-{"src": "item:https-github-com-usestrix-strix", "dst": "tema:usestrix-strix", "rel": "trata", "added": "2026-06-30"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:ai_pentesting", "rel": "trata", "added": "2026-06-30"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:security", "rel": "trata", "added": "2026-06-30"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:agent", "rel": "trata", "added": "2026-06-30"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:python", "rel": "trata", "added": "2026-06-30"}
 {"src": "boletin:2026-06-30", "dst": "item:https-github-com-browser-use-video-use", "rel": "menciona", "added": "2026-06-30"}
 {"src": "item:https-github-com-browser-use-video-use", "dst": "tema:browser-use-video-use", "rel": "trata", "added": "2026-06-30"}
 {"src": "boletin:2026-06-30", "dst": "item:https-github-com-benedictking-ccx", "rel": "menciona", "added": "2026-06-30"}
@@ -62,5 +65,6 @@
 {"src": "item:https-github-com-tinyhumansai-openhuman", "dst": "tema:tinyhumansai-openhuman", "rel": "trata", "added": "2026-06-30"}
 {"src": "boletin:2026-06-30", "dst": "item:https-github-com-shuvonsec-claude-bug-bounty", "rel": "menciona", "added": "2026-06-30"}
 {"src": "item:https-github-com-shuvonsec-claude-bug-bounty", "dst": "tema:shuvonsec-claude-bug-bounty", "rel": "trata", "added": "2026-06-30"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:usestrix-strix", "rel": "trata", "added": "2026-06-30"}
 {"src": "repo:usestrix/strix", "rel": "competes_with", "dst": "repo:vxcontrol/pentagi", "primera_mencion": "2026-07-09", "origen_boletin": "2026-06-30", "item_idx": 20, "item_titulo": "usestrix/strix"}
 {"src": "repo:usestrix/strix", "rel": "implements", "dst": "concept:ai-pentesting", "primera_mencion": "2026-06-30", "origen_boletin": "2026-06-30", "item_idx": 20, "item_titulo": "usestrix/strix"}

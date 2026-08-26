@@ -415,7 +415,114 @@
       }
     },
     {
+      "idx": 8,
+      "titulo": "par274/sharpemu",
+      "url": "https://github.com/par274/sharpemu",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Emulador experimental de PS5**. C#, GPL-2.0. Debut Trendshift #3 (subida por novedad).",
+        "por_que_importa": "**dominio gaming/hardware**, no core CSS. Accion del boletin original: 'ignorar' por estar fuera del scope. Documentado para historial.",
+        "madurez_senales": "573★ · C# · GPL-2.0 · debut Trendshift #3.",
+        "accion_sugerida": "ignorar segun boletin original (dominio gaming/hardware, no core CSS)."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:par274/sharpemu",
+          "rel": "relevant_to",
+          "dst": "concept:ps5-emulation",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "par274",
+        "medio": "github",
+        "tema_principal": "ps5_emulator",
+        "temas_secundarios": [
+          "gaming",
+          "hardware"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
       "idx": 9,
+      "titulo": "xerrors/Yuxi",
+      "url": "https://github.com/xerrors/Yuxi",
+      "url_inferida": true,
+      "seccion": "radar_secundario_recuperado",
+      "contenido": {
+        "que_es": "**Multi-tenant agent harness que integra RAG + Milvus + KG + LangGraph + Vue + FastAPI**. Python, MIT. Debut Trendshift.",
+        "por_que_importa": "**stack directamente comparable con el del usuario** (PGLite/Postgres+pgvector para knowledge graph + Ollama+DeepSeek para LLM). Yuxi aterriza el equivalente en Python puro: Milvus + LangGraph + FastAPI. Encaje alto con la linea editorial 'stack local-first agéntica'.",
+        "madurez_senales": "6.071★ · Python · MIT · debut Trendshift.",
+        "accion_sugerida": "vigilar (stack comparable al del usuario; documenta alternativa Python pura a la stack PGLite/Ollama)."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:xerrors/Yuxi",
+          "rel": "implements",
+          "dst": "concept:multi-tenant-agent-harness",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:xerrors/Yuxi",
+          "rel": "complements",
+          "dst": "concept:user-stack",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "xerrors",
+        "medio": "github",
+        "tema_principal": "multi_tenant_agent_harness",
+        "temas_secundarios": [
+          "rag",
+          "langgraph",
+          "fastapi"
+        ],
+        "confianza": "alta"
+      },
+      "stats": {
+        "origen": "backfill_radar_secundario",
+        "motivo_backfill": "Item boletin 2026-07-11.",
+        "auditado_el": "2026-08-26"
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "malisper/pgrust",
+      "url": "https://github.com/malisper/pgrust",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Postgres reescrito en Rust, pasa el 100% de los regression tests de Postgres. Conecta con `microsoft/pg_durable`",
+        "por_que_importa": "",
+        "madurez_senales": "1.633★, AGPL-3.0, Rust, debut",
+        "accion_sugerida": "vigilar — (si la AGPL-3.0 bloquea adopción cerrada, evaluar fork permisivo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "malisper-pgrust",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
       "titulo": "pbakaus/impeccable",
       "url": "https://github.com/pbakaus/impeccable",
       "url_inferida": true,
@@ -425,19 +532,6 @@
         "por_que_importa": "**junto con `Nutlope/hallmark` (visto en este boletín) y `addyosmani/agent-skills`, define la categoría emergente 'skills para design quality'**. Tres vendors (Together AI, Vercel-via-pbakaus, Chrome team) convergen independientemente con enfoques complementarios: hallmark = audit + redesign (Together), impeccable = design language + motion (Vercel ecosystem), agent-skills = workflow + commands (Chrome team). Para CSS el ángulo editorial es: 'la categoria design-quality para coding agents eclosiona en julio 2026 con tres vendors apuntando al mismo hueco'. pbakaus (Paul Bakaus, ex-Google, autor de Aframe) le da peso técnico y editorial al proyecto.",
         "madurez_senales": "62.704★ · 3.831 forks · Apache-2.0 · JavaScript · creado 2025-11-16 · ultimo push 2026-08-26 (activo, hoy). Debut GH Trending 2026-07-11 con 45k★; +17k★ en ~45 dias = senal de adopcion sostenida, no hype.",
         "accion_sugerida": "leer (clonar, instalar la skill en Claude Code/Codex, comparar con hallmark en una UI real: hallmark audita y rediseña, impecable dicta como debe verse. Si encajan, escribir post conjunto 'design quality skills 2026: hallmark vs impeccable vs agent-skills')."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "pbakaus",
-        "medio": "github",
-        "tema_principal": "design_quality_skill",
-        "temas_secundarios": [
-          "agent-skill",
-          "ai-ux",
-          "design-language"
-        ],
-        "confianza": "alta"
       },
       "relacion_grafo": [
         {
@@ -459,6 +553,19 @@
           "primera_mencion": "2026-07-11"
         }
       ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "pbakaus",
+        "medio": "github",
+        "tema_principal": "design_quality_skill",
+        "temas_secundarios": [
+          "agent-skill",
+          "ai-ux",
+          "design-language"
+        ],
+        "confianza": "alta"
+      },
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Boletin 2026-07-11 lo anuncio como item de radar secundario (linea 131: 'debut GH Trending, 45k★, Apache-2.0, accion: leer') pero el parser extract_items.py no lo proceso porque estaba en formato radar y no como bloque #### N. titular. Verificado por auditoria del 2026-08-26: aparece 10 veces en boletines posteriores como referencia cruzada, lo que confirma que es item real no ruido.",
@@ -466,90 +573,7 @@
       }
     },
     {
-      "idx": 100,
-      "titulo": "par274/sharpemu",
-      "url": "https://github.com/par274/sharpemu",
-      "url_inferida": true,
-      "seccion": "radar_secundario_recuperado",
-      "contenido": {
-        "que_es": "**Emulador experimental de PS5**. C#, GPL-2.0. Debut Trendshift #3 (subida por novedad).",
-        "por_que_importa": "**dominio gaming/hardware**, no core CSS. Accion del boletin original: 'ignorar' por estar fuera del scope. Documentado para historial.",
-        "madurez_senales": "573★ · C# · GPL-2.0 · debut Trendshift #3.",
-        "accion_sugerida": "ignorar segun boletin original (dominio gaming/hardware, no core CSS)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "par274",
-        "medio": "github",
-        "tema_principal": "ps5_emulator",
-        "temas_secundarios": [
-          "gaming",
-          "hardware"
-        ],
-        "confianza": "alta"
-      },
-      "relacion_grafo": [
-        {
-          "src": "repo:par274/sharpemu",
-          "rel": "relevant_to",
-          "dst": "concept:ps5-emulation",
-          "primera_mencion": "2026-07-11"
-        }
-      ],
-      "stats": {
-        "origen": "backfill_radar_secundario",
-        "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
-        "auditado_el": "2026-08-26"
-      }
-    },
-    {
-      "idx": 101,
-      "titulo": "xerrors/Yuxi",
-      "url": "https://github.com/xerrors/Yuxi",
-      "url_inferida": true,
-      "seccion": "radar_secundario_recuperado",
-      "contenido": {
-        "que_es": "**Multi-tenant agent harness que integra RAG + Milvus + KG + LangGraph + Vue + FastAPI**. Python, MIT. Debut Trendshift.",
-        "por_que_importa": "**stack directamente comparable con el del usuario** (PGLite/Postgres+pgvector para knowledge graph + Ollama+DeepSeek para LLM). Yuxi aterriza el equivalente en Python puro: Milvus + LangGraph + FastAPI. Encaje alto con la linea editorial 'stack local-first agéntica'.",
-        "madurez_senales": "6.071★ · Python · MIT · debut Trendshift.",
-        "accion_sugerida": "vigilar (stack comparable al del usuario; documenta alternativa Python pura a la stack PGLite/Ollama)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "xerrors",
-        "medio": "github",
-        "tema_principal": "multi_tenant_agent_harness",
-        "temas_secundarios": [
-          "rag",
-          "langgraph",
-          "fastapi"
-        ],
-        "confianza": "alta"
-      },
-      "relacion_grafo": [
-        {
-          "src": "repo:xerrors/Yuxi",
-          "rel": "implements",
-          "dst": "concept:multi-tenant-agent-harness",
-          "primera_mencion": "2026-07-11"
-        },
-        {
-          "src": "repo:xerrors/Yuxi",
-          "rel": "complements",
-          "dst": "concept:user-stack",
-          "primera_mencion": "2026-07-11"
-        }
-      ],
-      "stats": {
-        "origen": "backfill_radar_secundario",
-        "motivo_backfill": "Item boletin 2026-07-11.",
-        "auditado_el": "2026-08-26"
-      }
-    },
-    {
-      "idx": 102,
+      "idx": 12,
       "titulo": "wealthfolio/wealthfolio",
       "url": "https://github.com/wealthfolio/wealthfolio",
       "url_inferida": true,
@@ -560,6 +584,14 @@
         "madurez_senales": "8.161★ · Rust · AGPL-3.0 · debut GH Trending Rust daily.",
         "accion_sugerida": "vigilar (tracker financiero local-first; caso de uso privacy-first pero no toca el core CSS)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:wealthfolio/wealthfolio",
+          "rel": "implements",
+          "dst": "concept:privacy-finance",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -572,14 +604,6 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:wealthfolio/wealthfolio",
-          "rel": "implements",
-          "dst": "concept:privacy-finance",
-          "primera_mencion": "2026-07-11"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-11.",
@@ -587,7 +611,7 @@
       }
     },
     {
-      "idx": 103,
+      "idx": 13,
       "titulo": "librepods-org/librepods",
       "url": "https://github.com/librepods-org/librepods",
       "url_inferida": true,
@@ -598,6 +622,14 @@
         "madurez_senales": "28.790★ · Kotlin · GPL-3.0 · debut.",
         "accion_sugerida": "ignorar segun boletin original (fuera de scope CSS, consumer-electronics)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:librepods-org/librepods",
+          "rel": "relevant_to",
+          "dst": "concept:airpods-liberation",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -609,14 +641,6 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:librepods-org/librepods",
-          "rel": "relevant_to",
-          "dst": "concept:airpods-liberation",
-          "primera_mencion": "2026-07-11"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
@@ -624,7 +648,7 @@
       }
     },
     {
-      "idx": 104,
+      "idx": 14,
       "titulo": "GargantuaX/gemini-watermark-remover",
       "url": "https://github.com/GargantuaX/gemini-watermark-remover",
       "url_inferida": true,
@@ -635,6 +659,14 @@
         "madurez_senales": "4.860★ · JavaScript · MIT · debut.",
         "accion_sugerida": "ignorar segun boletin original (encaje marginal con CSS, utilidad nicho)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:GargantuaX/gemini-watermark-remover",
+          "rel": "relevant_to",
+          "dst": "concept:watermark-removal",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -647,35 +679,50 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:GargantuaX/gemini-watermark-remover",
-          "rel": "relevant_to",
-          "dst": "concept:watermark-removal",
-          "primera_mencion": "2026-07-11"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-11 con accion ignorar.",
         "auditado_el": "2026-08-26"
       }
+    },
+    {
+      "idx": 15,
+      "titulo": "kdsz001/OpenWiki",
+      "url": "https://github.com/kdsz001/OpenWiki",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Mac desktop AI knowledge management tool, captura clipboard → wiki personal. Encaje bajo con el stack del usuario (que ya tiene Obsidian)",
+        "por_que_importa": "",
+        "madurez_senales": "627★, MIT, Rust, debut",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kdsz001-openwiki",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
     }
   ],
   "stats": {
-    "items_total": 14,
+    "items_total": 16,
     "items_hallazgo_principal": 8,
-    "items_radar_secundario": 6,
+    "items_radar_secundario": 8,
     "llm_backend": "hermes",
-    "llm_polish_notes": "8/8 items pulidos",
-    "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "respuesta no parseable como lista JSON (primeros 200 chars: '[{\"idx\": 0, \"por_que_importa\": \"cierra la pieza que faltaba en el stack local-first code-intelligence. Hoy `mcp_codebase_memory_*` da 14 MCP tools (index_repository, search_graph, query_graph, trace_p')",
+    "llm_polish_notes": "16/16 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ],
-    "backfills": 6
+    ]
   }
 }

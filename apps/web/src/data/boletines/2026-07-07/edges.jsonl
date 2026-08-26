@@ -33,6 +33,29 @@
 {"src": "alirezarezvani/claude-skills", "dst": "agent-skills-spec", "rel": "implements", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
 {"src": "alirezarezvani/claude-skills", "dst": "hermes-agent", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-03"}
 {"src": "alirezarezvani/claude-skills", "dst": "awesome-list-saturation", "rel": "relevant_to", "added": "2026-07-07", "primera_mencion": "2026-07-05"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-langchain-ai-openwiki", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-langchain-ai-openwiki", "dst": "tema:langchain-ai-openwiki", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-kenn-io-agentsview", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-kenn-io-agentsview", "dst": "tema:token_analytics_go", "rel": "trata", "added": "2026-07-07"}
+{"src": "item:https-github-com-kenn-io-agentsview", "dst": "tema:session-search", "rel": "trata", "added": "2026-07-07"}
+{"src": "item:https-github-com-kenn-io-agentsview", "dst": "tema:local-first", "rel": "trata", "added": "2026-07-07"}
+{"src": "item:https-github-com-kenn-io-agentsview", "dst": "tema:agent-monitor", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-composiohq-awesome-claude-skills", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-composiohq-awesome-claude-skills", "dst": "tema:composiohq-awesome-claude-skills", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-tauricresearch-tradingagents", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-tauricresearch-tradingagents", "dst": "tema:tauricresearch-tradingagents", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-agentscope-ai-qwenpaw", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-agentscope-ai-qwenpaw", "dst": "tema:agentscope-ai-qwenpaw", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-dream-num-univer", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-dream-num-univer", "dst": "tema:dream-num-univer", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-karpathy-nanogpt", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-karpathy-nanogpt", "dst": "tema:karpathy-nanogpt", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-robbyant-lingbot-vision", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-robbyant-lingbot-vision", "dst": "tema:robbyant-lingbot-vision", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-soycaporal-ternlight", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-soycaporal-ternlight", "dst": "tema:soycaporal-ternlight", "rel": "trata", "added": "2026-07-07"}
+{"src": "boletin:2026-07-07", "dst": "item:https-github-com-infisical-agent-vault", "rel": "menciona", "added": "2026-07-07"}
+{"src": "item:https-github-com-infisical-agent-vault", "dst": "tema:infisical-agent-vault", "rel": "trata", "added": "2026-07-07"}
 {"src": "boletin:2026-07-07", "dst": "item:idx-7", "rel": "menciona", "added": "2026-07-07"}
 {"src": "item:idx-7", "dst": "tema:langchain-ai-openwiki-8-038-typescript-m", "rel": "trata", "added": "2026-07-07"}
 {"src": "boletin:2026-07-07", "dst": "item:idx-8", "rel": "menciona", "added": "2026-07-07"}

@@ -291,7 +291,7 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
 
 
 RADAR_LINE_RE = re.compile(
-    r"^-\s*\*\*\s*(?:\`(?P<slug1>[^\`]+)\`|\[(?P<slug2>[^\]]+)\])\s*(?:\((?P<paren>[^)]*)\))?\s*\*\*\s*[-—–:]?\s*(?P<rest>.*)$"
+    r"^-\s*\*\*\s*(?:\`(?P<slug1>[^\`]+)\`|\[(?P<slug2>[^\]]+)\]|(?P<slug3>[\w][\w./-]+?))\s*(?:\((?P<paren>[^)]*)\))?\s*\*\*\s*[-—–:]?\s*(?P<rest>.*)$"
 )
 ACCION_INLINE_RE = re.compile(
     r"(?:\*\*)?Acci[oó]n\s*:?\s*(?:\*\*)?\s*(?P<accion>[^*.—–]+)(?:\*\*)?\s*[—–-]?\s*(?P<razon>.*)$",
@@ -303,7 +303,7 @@ def parse_radar_line(line: str, idx: int) -> dict | None:
     m = RADAR_LINE_RE.match(line.strip())
     if not m:
         return None
-    slug = (m.group("slug1") or m.group("slug2") or "").strip().strip("`")
+    slug = (m.group("slug1") or m.group("slug2") or m.group("slug3") or "").strip().strip("`")
     paren = (m.group("paren") or "").strip()
     rest = (m.group("rest") or "").strip()
 

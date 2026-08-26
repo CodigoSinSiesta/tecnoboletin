@@ -47,8 +47,29 @@
 {"src": "microsoft/TRELLIS.2", "dst": "amap-cvlab/ABot-World", "rel": "complements", "added": "2026-07-13", "primera_mencion": "2026-07-11"}
 {"src": "microsoft/TRELLIS.2", "dst": "arxiv-2607.09657-visual-pretraining", "rel": "relevant_to", "added": "2026-07-13", "primera_mencion": null}
 {"src": "microsoft/TRELLIS.2", "dst": "desktop-3d-gpu-needed", "rel": "risk", "added": "2026-07-13", "primera_mencion": null}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-usestrix-strix", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:usestrix-strix", "rel": "trata", "added": "2026-07-13"}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-rome2200-agentic-hedge-fund", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-rome2200-agentic-hedge-fund", "dst": "tema:rome2200-agentic-hedge-fund", "rel": "trata", "added": "2026-07-13"}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-foundationagents-openmanus", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-foundationagents-openmanus", "dst": "tema:open_source_agent", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-foundationagents-openmanus", "dst": "tema:manus-alternative", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-foundationagents-openmanus", "dst": "tema:horizontal-agent", "rel": "trata", "added": "2026-07-13"}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-mervinpraison-praisonai", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-mervinpraison-praisonai", "dst": "tema:multi_agent_framework", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-mervinpraison-praisonai", "dst": "tema:agent-orchestration", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-mervinpraison-praisonai", "dst": "tema:trading-agent", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-mervinpraison-praisonai", "dst": "tema:llm-workforce", "rel": "trata", "added": "2026-07-13"}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-crosstalk-solutions-project-nomad", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-crosstalk-solutions-project-nomad", "dst": "tema:offline_knowledge_server", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-crosstalk-solutions-project-nomad", "dst": "tema:education", "rel": "trata", "added": "2026-07-13"}
+{"src": "item:https-github-com-crosstalk-solutions-project-nomad", "dst": "tema:consumer", "rel": "trata", "added": "2026-07-13"}
 {"src": "boletin:2026-07-13", "dst": "item:https-github-com-nats-io-nats-server", "rel": "menciona", "added": "2026-07-13"}
 {"src": "item:https-github-com-nats-io-nats-server", "dst": "tema:nats-io-nats-server", "rel": "trata", "added": "2026-07-13"}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-pbakaus-impeccable", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:pbakaus-impeccable", "rel": "trata", "added": "2026-07-13"}
+{"src": "boletin:2026-07-13", "dst": "item:https-github-com-facebook-astryx", "rel": "menciona", "added": "2026-07-13"}
+{"src": "item:https-github-com-facebook-astryx", "dst": "tema:facebook-astryx", "rel": "trata", "added": "2026-07-13"}
 {"src": "repo:MervinPraison/PraisonAI", "rel": "implements", "dst": "concept:multi-agent-framework", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 12, "item_titulo": "MervinPraison/PraisonAI"}
 {"src": "repo:MervinPraison/PraisonAI", "rel": "complements", "dst": "repo:HKUDS/Vibe-Trading", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 12, "item_titulo": "MervinPraison/PraisonAI"}
 {"src": "repo:MervinPraison/PraisonAI", "rel": "competes_with", "dst": "repo:FoundationAgents/OpenManus", "primera_mencion": "2026-07-13", "origen_boletin": "2026-07-13", "item_idx": 12, "item_titulo": "MervinPraison/PraisonAI"}

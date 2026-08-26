@@ -360,7 +360,7 @@
       }
     },
     {
-      "idx": 100,
+      "idx": 7,
       "titulo": "unclecode/crawl4ai",
       "url": "https://github.com/unclecode/crawl4ai",
       "url_inferida": true,
@@ -370,18 +370,6 @@
         "por_que_importa": "**complemento de Scrapling/Fortress** del stack del usuario (citado explicitamente en el boletin). Para el stack del usuario el angulo es directo: 'crawl4ai + scrapling' como dupla de web crawling para AI agents. Creador activo = mantenimiento asegurado.",
         "madurez_senales": "72.010★ · Python · MIT · push 2026-07-09.",
         "accion_sugerida": "vigilar (complemento de Scrapling/Fortress del stack del usuario; trending alto y creador activo)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "unclecode",
-        "medio": "github",
-        "tema_principal": "llm_web_crawler",
-        "temas_secundarios": [
-          "open-source",
-          "agent-input"
-        ],
-        "confianza": "alta"
       },
       "relacion_grafo": [
         {
@@ -397,6 +385,18 @@
           "primera_mencion": "2026-07-10"
         }
       ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "unclecode",
+        "medio": "github",
+        "tema_principal": "llm_web_crawler",
+        "temas_secundarios": [
+          "open-source",
+          "agent-input"
+        ],
+        "confianza": "alta"
+      },
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10.",
@@ -404,7 +404,55 @@
       }
     },
     {
-      "idx": 101,
+      "idx": 8,
+      "titulo": "composehq/awesome-claude-skills",
+      "url": "https://github.com/composehq/awesome-claude-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Catálogo curado de skills para Claude Code",
+        "por_que_importa": "",
+        "madurez_senales": "67.345★, sin licencia explícita, push 2026-05-22",
+        "accion_sugerida": "vigilar — (lista curada con descarga semanal; revisar para mantener el inventario de Hermes alineado; ojo: \"sin licencia explícita\" bloquea redistribución)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "composehq-awesome-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "kyutai-labs/pocket-tts",
+      "url": "https://github.com/kyutai-labs/pocket-tts",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "TTS ~100M params que corre en CPU con ~6× real-time en MacBook Air M4 y latencia ~200ms first chunk",
+        "por_que_importa": "",
+        "madurez_senales": "7.100★, MIT, Python, push 2026-06-23, release v2.1.0",
+        "accion_sugerida": "vigilar — (categoría on-device TTS para multimodal agents — relevante para el skill `tts` y para clips de audio en el blog)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kyutai-labs-pocket-tts",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
       "titulo": "LMCache/LMCache",
       "url": "https://github.com/LMCache/LMCache",
       "url_inferida": true,
@@ -414,18 +462,6 @@
         "por_que_importa": "**capa de optimizacion KV cache para inference**: cuando se sirven muchos LLMs, reducir latencia y coste de re-tokenizacion es critico. LMCache aterriza ese slot como OSS con integracion vLLM. Para CSS el angulo: si el usuario o suscriptores montan inference server, LMCache es el slot 'caching layer' del stack.",
         "madurez_senales": "10.347★ · Python · Apache-2.0 · push 2026-07-10, nightly-cu129.",
         "accion_sugerida": "vigilar (relevante si el usuario quiere montar inference server; capa de caching OSS para vLLM)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "LMCache",
-        "medio": "github",
-        "tema_principal": "kv_cache_llm",
-        "temas_secundarios": [
-          "vllm",
-          "inference-optimization"
-        ],
-        "confianza": "alta"
       },
       "relacion_grafo": [
         {
@@ -441,6 +477,18 @@
           "primera_mencion": "2026-07-10"
         }
       ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "LMCache",
+        "medio": "github",
+        "tema_principal": "kv_cache_llm",
+        "temas_secundarios": [
+          "vllm",
+          "inference-optimization"
+        ],
+        "confianza": "alta"
+      },
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10.",
@@ -448,7 +496,7 @@
       }
     },
     {
-      "idx": 102,
+      "idx": 11,
       "titulo": "shengshu-ai/Vidu-S1",
       "url": "https://github.com/shengshu-ai/Vidu-S1",
       "url_inferida": true,
@@ -459,6 +507,14 @@
         "madurez_senales": "97★ (debut) · sin licencia · debut 2026-07-09.",
         "accion_sugerida": "vigilar (categoria emergent real-time video; sin licencia bloquea adopcion)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:shengshu-ai/Vidu-S1",
+          "rel": "implements",
+          "dst": "concept:realtime-video-gen",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -471,14 +527,6 @@
         ],
         "confianza": "media"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:shengshu-ai/Vidu-S1",
-          "rel": "implements",
-          "dst": "concept:realtime-video-gen",
-          "primera_mencion": "2026-07-10"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10 (debut).",
@@ -486,7 +534,7 @@
       }
     },
     {
-      "idx": 103,
+      "idx": 12,
       "titulo": "traycerai/traycer",
       "url": "https://github.com/traycerai/traycer",
       "url_inferida": true,
@@ -497,6 +545,14 @@
         "madurez_senales": "437★ · TypeScript · Apache-2.0 · host v1.1.5 release 2026-07-09.",
         "accion_sugerida": "vigilar (cluster agentic coding orchestration; shared memory entre providers es diferenciador)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:traycerai/traycer",
+          "rel": "implements",
+          "dst": "concept:agentic-coding-orchestration",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -509,14 +565,6 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:traycerai/traycer",
-          "rel": "implements",
-          "dst": "concept:agentic-coding-orchestration",
-          "primera_mencion": "2026-07-10"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10.",
@@ -524,7 +572,31 @@
       }
     },
     {
-      "idx": 104,
+      "idx": 13,
+      "titulo": "asgeirtj/system_prompts_leaks",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Documentación curada de system prompts filtrados de Claude (Sonnet 5, Fable 5, Design 4.8), GPT-5.5 Codex, Copilot macOS. Mencionado por The Washington Post",
+        "por_que_importa": "",
+        "madurez_senales": "55.383★, CC0-1.0, JavaScript, push 2026-07-09",
+        "accion_sugerida": "leer — (no es código — es documentación de cómo promptan los vendors; relevante para escribir skills que imiten buenas prácticas y para auditar nuestros prompts; CC0-1.0 totalmente reusable)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "asgeirtj-system-prompts-leaks",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
       "titulo": "withmarbleapp/os-taxonomy",
       "url": "https://github.com/withmarbleapp/os-taxonomy",
       "url_inferida": true,
@@ -535,6 +607,14 @@
         "madurez_senales": "1.666★ · JavaScript · ODbL-1.0 · push 2026-07-08.",
         "accion_sugerida": "vigilar (knowledge graph open de curriculum; ejemplo para articulos sobre knowledge graphs)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:withmarbleapp/os-taxonomy",
+          "rel": "implements",
+          "dst": "concept:open-knowledge-graph",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -547,14 +627,6 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:withmarbleapp/os-taxonomy",
-          "rel": "implements",
-          "dst": "concept:open-knowledge-graph",
-          "primera_mencion": "2026-07-10"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10.",
@@ -562,7 +634,7 @@
       }
     },
     {
-      "idx": 105,
+      "idx": 15,
       "titulo": "huxingyi/autoremesher",
       "url": "https://github.com/huxingyi/autoremesher",
       "url_inferida": true,
@@ -573,6 +645,14 @@
         "madurez_senales": "2.434★ · C++ · MIT · push 2026-07-09, release 1.0.0.",
         "accion_sugerida": "vigilar (release 1.0.0 oficial, util para game dev/3D printing; no conecta con CSS)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:huxingyi/autoremesher",
+          "rel": "relevant_to",
+          "dst": "concept:3d-pipeline",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -585,14 +665,6 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:huxingyi/autoremesher",
-          "rel": "relevant_to",
-          "dst": "concept:3d-pipeline",
-          "primera_mencion": "2026-07-10"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10.",
@@ -600,7 +672,7 @@
       }
     },
     {
-      "idx": 106,
+      "idx": 16,
       "titulo": "imthenachoman/How-To-Secure-A-Linux-Server",
       "url": "https://github.com/imthenachoman/How-To-Secure-A-Linux-Server",
       "url_inferida": true,
@@ -611,6 +683,14 @@
         "madurez_senales": "29.231★ · CC-BY-SA-4.0 · push 2026-07-02.",
         "accion_sugerida": "vigilar (referencia clasica; CC-BY-SA-4.0 share-alike si se remezcla)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:imthenachoman/How-To-Secure-A-Linux-Server",
+          "rel": "implements",
+          "dst": "concept:linux-hardening",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -623,35 +703,98 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:imthenachoman/How-To-Secure-A-Linux-Server",
-          "rel": "implements",
-          "dst": "concept:linux-hardening",
-          "primera_mencion": "2026-07-10"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-10.",
         "auditado_el": "2026-08-26"
       }
+    },
+    {
+      "idx": 17,
+      "titulo": "ink/tinyhumansai/openhuman",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "\"Personal AI super intelligence. A brain that builds a local-first memory of you.\"",
+        "por_que_importa": "",
+        "madurez_senales": "34.585★, GPL-3.0, Rust, push 2026-07-10, release v0.58.7",
+        "accion_sugerida": "vigilar — (categoría local-first memory agent; GPL-3.0 bloquea derivados comerciales; el release v0.58.7 indica cadencia sana; alternativo a TencentDB-Agent-Memory)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ink-tinyhumansai-openhuman",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 18,
+      "titulo": "SmartlyDressedGames/U3-SDK",
+      "url": "https://github.com/SmartlyDressedGames/U3-SDK",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Source code del juego Unturned (zombie survival sandbox)",
+        "por_que_importa": "",
+        "madurez_senales": "2.177★, NOASSERTION, C#, push 2026-07-07",
+        "accion_sugerida": "ignorar — (NOASSERTION bloquea cualquier uso serio; trending porque se reabrió el source tras años)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "smartlydressedgames-u3-sdk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 19,
+      "titulo": "TinyPizzaV3/CodexPlusPlus",
+      "url": "https://github.com/TinyPizzaV3/CodexPlusPlus",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Enhanced tool for CodexApp, sin licencia explícita",
+        "por_que_importa": "",
+        "madurez_senales": "24.306★, sin licencia, Rust, push 2026-07-10",
+        "accion_sugerida": "ignorar — (sin licencia = copyright holder tiene todos los derechos; trending porque el repo personal del autor de Codex está re-energizado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tinypizzav3-codexplusplus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
     }
   ],
   "stats": {
-    "items_total": 14,
+    "items_total": 20,
     "items_hallazgo_principal": 7,
-    "items_radar_secundario": 7,
+    "items_radar_secundario": 13,
     "llm_backend": "hermes",
-    "llm_polish_notes": "7/7 items pulidos",
-    "metadata_carried_forward": false,
+    "llm_polish_notes": "20/20 items pulidos",
+    "metadata_carried_forward": true,
     "critica_lentes_aplicada": true,
     "critica_notes": "7/7 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ],
-    "backfills": 7
+    ]
   }
 }

@@ -35,6 +35,34 @@
 {"src": "mvanhorn/last30days-skill", "dst": "recency-research-skill", "rel": "implements", "added": "2026-07-08", "primera_mencion": null}
 {"src": "mvanhorn/last30days-skill", "dst": "hermes-skills", "rel": "relevant_to", "added": "2026-07-08", "primera_mencion": "2026-07-03"}
 {"src": "mvanhorn/last30days-skill", "dst": "cheahjs/free-llm-api-resources", "rel": "complements", "added": "2026-07-08", "primera_mencion": null}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-karakeep-app-karakeep", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-karakeep-app-karakeep", "dst": "tema:ai_bookmarks", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-karakeep-app-karakeep", "dst": "tema:self-host", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-karakeep-app-karakeep", "dst": "tema:full-text-search", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-kunchenguid-gnhf", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-kunchenguid-gnhf", "dst": "tema:agent_art", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-kunchenguid-gnhf", "dst": "tema:experimental", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-jamiepine-voicebox", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-jamiepine-voicebox", "dst": "tema:jamiepine-voicebox", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-logto-io-logto", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-logto-io-logto", "dst": "tema:auth_infrastructure", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-logto-io-logto", "dst": "tema:oidc", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-logto-io-logto", "dst": "tema:saas", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-logto-io-logto", "dst": "tema:ai-auth", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-tinyhumansai-openhuman", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-tinyhumansai-openhuman", "dst": "tema:tinyhumansai-openhuman", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-anthropics-claude-plugins-official", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-anthropics-claude-plugins-official", "dst": "tema:official_plugins_directory", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-anthropics-claude-plugins-official", "dst": "tema:claude-code", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-anthropics-claude-plugins-official", "dst": "tema:plugins", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-code-yeongyu-oh-my-openagent", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-code-yeongyu-oh-my-openagent", "dst": "tema:agentic_coding_cli", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-code-yeongyu-oh-my-openagent", "dst": "tema:oss-fork", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-code-yeongyu-oh-my-openagent", "dst": "tema:claude-code-fork", "rel": "trata", "added": "2026-07-08"}
+{"src": "boletin:2026-07-08", "dst": "item:https-github-com-wei-shaw-sub2api", "rel": "menciona", "added": "2026-07-08"}
+{"src": "item:https-github-com-wei-shaw-sub2api", "dst": "tema:ai_subscription_reseller", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-wei-shaw-sub2api", "dst": "tema:saas", "rel": "trata", "added": "2026-07-08"}
+{"src": "item:https-github-com-wei-shaw-sub2api", "dst": "tema:china-market", "rel": "trata", "added": "2026-07-08"}
 {"src": "repo:karakeep-app/karakeep", "rel": "competes_with", "dst": "repo:hoarderapp/hoarder", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "karakeep-app/karakeep"}
 {"src": "repo:kunchenguid/gnhf", "rel": "relevant_to", "dst": "concept:agent-artistic-experiments", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "kunchenguid/gnhf"}
 {"src": "repo:logto-io/logto", "rel": "competes_with", "dst": "concept:auth0-saas", "primera_mencion": "2026-07-08", "origen_boletin": "2026-07-08", "item_idx": 100, "item_titulo": "logto-io/logto"}

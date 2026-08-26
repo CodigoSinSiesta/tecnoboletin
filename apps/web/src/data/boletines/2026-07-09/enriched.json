@@ -299,7 +299,7 @@
       }
     },
     {
-      "idx": 100,
+      "idx": 6,
       "titulo": "charmbracelet/crush",
       "url": "https://github.com/charmbracelet/crush",
       "url_inferida": true,
@@ -309,19 +309,6 @@
         "por_que_importa": "**es el tercer fork OSS de Claude Code del radar**, sumandose a `macro-inc/macro` (visto 2026-07-11) y `0xwilliamortiz/openclaude-improved` (visto 2026-07-28). Lo diferencial: viene del equipo charmbracelet (Bubble Tea, Glamour, mods), que tiene UX de terminal cuidada — Crush hereda estetica y composicion TUI del ecosistema. **Riesgo de license NOASSERTION** (verificado en API el 2026-08-26): bloquea adopcion como dependencia de produccion, pero como referencia de UX para terminales agentic OSS vale. Compite con `junhoyeo/tokscale` y `openai/codex` en el cluster 'coding agent CLI local'.",
         "madurez_senales": "27.692★ (debut 2026-07-09 con 26.270★, +1.422★ en 48 dias) · Go · NOASSERTION (license no declarada en repo, validar antes de usar como dep) · push 2026-08-26 (hoy, muy activo).",
         "accion_sugerida": "vigilar (license NOASSERTION bloquea adopcion como base; interesante como referencia UX para terminales agentic). El autor es charmbracelet/Charm — aporta credibilidad visual y experiencia TUI."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "charmbracelet",
-        "medio": "github",
-        "tema_principal": "agentic_coding_cli",
-        "temas_secundarios": [
-          "tui",
-          "bubble-tea",
-          "oss-fork"
-        ],
-        "confianza": "alta"
       },
       "relacion_grafo": [
         {
@@ -343,6 +330,19 @@
           "primera_mencion": "2026-07-09"
         }
       ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "charmbracelet",
+        "medio": "github",
+        "tema_principal": "agentic_coding_cli",
+        "temas_secundarios": [
+          "tui",
+          "bubble-tea",
+          "oss-fork"
+        ],
+        "confianza": "alta"
+      },
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Boletin 2026-07-09 lo presento como item completo (linea: '26.270★, Go, NOASSERTION, push 2026-07-08, agentic coding CLI, accion: vigilar'). El parser no lo proceso.",
@@ -350,7 +350,55 @@
       }
     },
     {
-      "idx": 101,
+      "idx": 7,
+      "titulo": "Alishahryar1/free-claude-code",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "wrapper que da acceso \"gratis\" a Claude Code + Codex multi-provider, con Discord bot y soporte de voz",
+        "por_que_importa": "",
+        "madurez_senales": "39.233★, Python, MIT, push 2026-07-09",
+        "accion_sugerida": "vigilar — (complemento de `diegosouzapw/OmniRoute` visto 2026-07-07; ojo a la sostenibilidad — los tiers \"free\" suelen degradar calidad o cerrar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alishahryar1-free-claude-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "ModernRelay/omnigraph",
+      "url": "https://github.com/ModernRelay/omnigraph",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "graph engine estilo lakehouse sobre Apache Arrow + DataFusion + Lance + S3, con servidor MCP nativo",
+        "por_que_importa": "",
+        "madurez_senales": "814★, Rust, MIT, push 2026-07-08",
+        "accion_sugerida": "vigilar — (relevante para el grafo de conocimiento del usuario; el binding MCP lo hace integrable directamente con agentes)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "modernrelay-omnigraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
       "titulo": "JCodesMore/ai-website-cloner-template",
       "url": "https://github.com/JCodesMore/ai-website-cloner-template",
       "url_inferida": true,
@@ -361,6 +409,14 @@
         "madurez_senales": "26.986★ · TypeScript · MIT · push 2026-07-04.",
         "accion_sugerida": "vigilar (categoria clonador web AI; no encaja con stack del usuario pero documenta el espacio)."
       },
+      "relacion_grafo": [
+        {
+          "src": "repo:JCodesMore/ai-website-cloner-template",
+          "rel": "relevant_to",
+          "dst": "concept:ai-web-cloning",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
       "clasificacion": {
         "tipo": "repositorio",
         "idioma": "en",
@@ -373,14 +429,6 @@
         ],
         "confianza": "alta"
       },
-      "relacion_grafo": [
-        {
-          "src": "repo:JCodesMore/ai-website-cloner-template",
-          "rel": "relevant_to",
-          "dst": "concept:ai-web-cloning",
-          "primera_mencion": "2026-07-09"
-        }
-      ],
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-09.",
@@ -388,7 +436,55 @@
       }
     },
     {
-      "idx": 102,
+      "idx": 10,
+      "titulo": "davila7/claude-code-templates",
+      "url": "https://github.com/davila7/claude-code-templates",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "CLI para configurar y monitorizar Claude Code a nivel de settings, hooks, agents y permissions",
+        "por_que_importa": "",
+        "madurez_senales": "28.531★, Python, MIT, push 2026-07-09",
+        "accion_sugerida": "vigilar — (relevante si se quiere mantener una config Claude Code versionada y reproducible; alternativa local a `OpenCode`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "davila7-claude-code-templates",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "kdsz001/OpenWiki",
+      "url": "https://github.com/kdsz001/OpenWiki",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Mac desktop knowledge management con captura de clipboard + wiki personal + AI insights",
+        "por_que_importa": "",
+        "madurez_senales": "524★, Rust Tauri, MIT, push 2026-07-06",
+        "accion_sugerida": "vigilar — (coincide con `rowboatlabs/rowboat` y `kdsz001` es uno de los pocos OSS locales; muy joven pero)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kdsz001-openwiki",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
       "titulo": "chuspeeism/dashiAI-ppt-skill",
       "url": "https://github.com/chuspeeism/dashiAI-ppt-skill",
       "url_inferida": true,
@@ -398,18 +494,6 @@
         "por_que_importa": "**la quinta entrada del cluster 'agent-as-design' / 'AI-to-deck'**, sumandose a `hugohe3/ppt-master` (2026-06-30), `cathrynlavery/diagram-design` (2026-08-15), `nexu-io/open-design` (2026-08-15) y `hugohe3/ppt-master` de nuevo. La diferenciacion: output HTML/PDF/PPTX editable en navegador (no PowerPoint nativo). AGPL-3.0 bloquea adopcion comercial.",
         "madurez_senales": "1.603★ · JavaScript · AGPL-3.0 · push 2026-07-09.",
         "accion_sugerida": "vigilar (cluster AI-to-deck; AGPL bloquea adopcion como dep pero interesante como referencia)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "chuspeeism",
-        "medio": "github",
-        "tema_principal": "ai_deck_generation",
-        "temas_secundarios": [
-          "agent-skill",
-          "html-pdf-pptx"
-        ],
-        "confianza": "alta"
       },
       "relacion_grafo": [
         {
@@ -425,6 +509,18 @@
           "primera_mencion": "2026-07-09"
         }
       ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "chuspeeism",
+        "medio": "github",
+        "tema_principal": "ai_deck_generation",
+        "temas_secundarios": [
+          "agent-skill",
+          "html-pdf-pptx"
+        ],
+        "confianza": "alta"
+      },
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-09.",
@@ -432,7 +528,7 @@
       }
     },
     {
-      "idx": 103,
+      "idx": 13,
       "titulo": "vxcontrol/pentagi",
       "url": "https://github.com/vxcontrol/pentagi",
       "url_inferida": true,
@@ -442,18 +538,6 @@
         "por_que_importa": "**junto con `usestrix/strix` (visto 2026-06-30) y `mukul975/Anthropic-Cybersecurity-Skills` (visto 2026-08-18) define el cluster 'AI security ops'**. Pentagi se diferencia por ser multi-agent con UI React+GraphQL self-hosted (vs strix CLI Python). Encaja con la linea editorial 'AI for security'.",
         "madurez_senales": "18.966★ · Go · MIT · push 2026-07-03.",
         "accion_sugerida": "vigilar (cluster AI security ops; junto con strix y Anthropic-Cybersecurity-Skills, el triangulo esta formado)."
-      },
-      "clasificacion": {
-        "tipo": "repositorio",
-        "idioma": "en",
-        "autor": "vxcontrol",
-        "medio": "github",
-        "tema_principal": "ai_pentesting",
-        "temas_secundarios": [
-          "multi-agent",
-          "self-hosted"
-        ],
-        "confianza": "alta"
       },
       "relacion_grafo": [
         {
@@ -469,6 +553,18 @@
           "primera_mencion": "2026-08-18"
         }
       ],
+      "clasificacion": {
+        "tipo": "repositorio",
+        "idioma": "en",
+        "autor": "vxcontrol",
+        "medio": "github",
+        "tema_principal": "ai_pentesting",
+        "temas_secundarios": [
+          "multi-agent",
+          "self-hosted"
+        ],
+        "confianza": "alta"
+      },
       "stats": {
         "origen": "backfill_radar_secundario",
         "motivo_backfill": "Item boletin 2026-07-09.",
@@ -477,19 +573,18 @@
     }
   ],
   "stats": {
-    "items_total": 10,
+    "items_total": 14,
     "items_hallazgo_principal": 6,
-    "items_radar_secundario": 4,
+    "items_radar_secundario": 8,
     "llm_backend": "hermes",
-    "llm_polish_notes": "6/6 items pulidos",
-    "metadata_carried_forward": false,
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": true,
     "critica_lentes_aplicada": true,
     "critica_notes": "6/6 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ],
-    "backfills": 4
+    ]
   }
 }

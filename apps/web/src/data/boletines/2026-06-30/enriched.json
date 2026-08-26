@@ -801,9 +801,9 @@
     "items_radar_secundario": 23,
     "llm_backend": "hermes",
     "llm_polish_notes": "32/32 items pulidos",
-    "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "0/9 items reescritos; faltantes en respuesta: [0, 1, 2, 3, 4, 5, 6, 7, 8]",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "9/9 items reescritos",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

@@ -42,6 +42,46 @@
 {"src": "inkeep/open-knowledge", "dst": "rowboatlabs/rowboat", "rel": "complements", "added": "2026-07-10", "primera_mencion": "2026-07-08"}
 {"src": "inkeep/open-knowledge", "dst": "withmarbleapp/os-taxonomy", "rel": "complements", "added": "2026-07-10", "primera_mencion": null}
 {"src": "inkeep/open-knowledge", "dst": "gpl-3-license-risk", "rel": "risk", "added": "2026-07-10", "primera_mencion": null}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-unclecode-crawl4ai", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-unclecode-crawl4ai", "dst": "tema:llm_web_crawler", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-unclecode-crawl4ai", "dst": "tema:open-source", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-unclecode-crawl4ai", "dst": "tema:agent-input", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-composehq-awesome-claude-skills", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-composehq-awesome-claude-skills", "dst": "tema:composehq-awesome-claude-skills", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-kyutai-labs-pocket-tts", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-kyutai-labs-pocket-tts", "dst": "tema:kyutai-labs-pocket-tts", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-lmcache-lmcache", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-lmcache-lmcache", "dst": "tema:kv_cache_llm", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-lmcache-lmcache", "dst": "tema:vllm", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-lmcache-lmcache", "dst": "tema:inference-optimization", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-shengshu-ai-vidu-s1", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-shengshu-ai-vidu-s1", "dst": "tema:realtime_video_generation", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-shengshu-ai-vidu-s1", "dst": "tema:video-model", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-shengshu-ai-vidu-s1", "dst": "tema:experimental", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-traycerai-traycer", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-traycerai-traycer", "dst": "tema:agentic_coding_orchestration", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-traycerai-traycer", "dst": "tema:shared-memory", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-traycerai-traycer", "dst": "tema:multi-provider", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-asgeirtj-system-prompts-leaks", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-asgeirtj-system-prompts-leaks", "dst": "tema:asgeirtj-system-prompts-leaks", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-withmarbleapp-os-taxonomy", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-withmarbleapp-os-taxonomy", "dst": "tema:open_knowledge_graph", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-withmarbleapp-os-taxonomy", "dst": "tema:curriculum", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-withmarbleapp-os-taxonomy", "dst": "tema:open-data", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-huxingyi-autoremesher", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-huxingyi-autoremesher", "dst": "tema:3d_remeshing", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-huxingyi-autoremesher", "dst": "tema:game-dev", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-huxingyi-autoremesher", "dst": "tema:3d-printing", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-imthenachoman-how-to-secure-a-linux-server", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-imthenachoman-how-to-secure-a-linux-server", "dst": "tema:linux_hardening_guide", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-imthenachoman-how-to-secure-a-linux-server", "dst": "tema:documentation", "rel": "trata", "added": "2026-07-10"}
+{"src": "item:https-github-com-imthenachoman-how-to-secure-a-linux-server", "dst": "tema:cc-by-sa", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:idx-17", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:idx-17", "dst": "tema:ink-tinyhumansai-openhuman", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-smartlydressedgames-u3-sdk", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-smartlydressedgames-u3-sdk", "dst": "tema:smartlydressedgames-u3-sdk", "rel": "trata", "added": "2026-07-10"}
+{"src": "boletin:2026-07-10", "dst": "item:https-github-com-tinypizzav3-codexplusplus", "rel": "menciona", "added": "2026-07-10"}
+{"src": "item:https-github-com-tinypizzav3-codexplusplus", "dst": "tema:tinypizzav3-codexplusplus", "rel": "trata", "added": "2026-07-10"}
 {"src": "repo:unclecode/crawl4ai", "rel": "complements", "dst": "concept:scrapling-stack", "primera_mencion": "2026-07-10", "origen_boletin": "2026-07-10", "item_idx": 100, "item_titulo": "unclecode/crawl4ai"}
 {"src": "repo:unclecode/crawl4ai", "rel": "implements", "dst": "concept:llm-friendly-crawler", "primera_mencion": "2026-07-10", "origen_boletin": "2026-07-10", "item_idx": 100, "item_titulo": "unclecode/crawl4ai"}
 {"src": "repo:LMCache/LMCache", "rel": "integrates_with", "dst": "concept:vllm", "primera_mencion": "2026-07-10", "origen_boletin": "2026-07-10", "item_idx": 100, "item_titulo": "LMCache/LMCache"}

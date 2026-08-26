@@ -49,6 +49,35 @@
 {"src": "larksuite/cli", "dst": "mcp__feishu_drive", "rel": "complements", "added": "2026-07-11", "primera_mencion": null}
 {"src": "larksuite/cli", "dst": "google-labs-code/stitch-skills", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": "2026-07-09"}
 {"src": "larksuite/cli", "dst": "larksuite-cli-vs-mcp", "rel": "relevant_to", "added": "2026-07-11", "primera_mencion": null}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-par274-sharpemu", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-par274-sharpemu", "dst": "tema:ps5_emulator", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-par274-sharpemu", "dst": "tema:gaming", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-par274-sharpemu", "dst": "tema:hardware", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-xerrors-yuxi", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-xerrors-yuxi", "dst": "tema:multi_tenant_agent_harness", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-xerrors-yuxi", "dst": "tema:rag", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-xerrors-yuxi", "dst": "tema:langgraph", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-xerrors-yuxi", "dst": "tema:fastapi", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-malisper-pgrust", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-malisper-pgrust", "dst": "tema:malisper-pgrust", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-pbakaus-impeccable", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:design_quality_skill", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:agent-skill", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:ai-ux", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:design-language", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-wealthfolio-wealthfolio", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-wealthfolio-wealthfolio", "dst": "tema:privacy_finance_tracker", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-wealthfolio-wealthfolio", "dst": "tema:tauri", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-wealthfolio-wealthfolio", "dst": "tema:local-first", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-librepods-org-librepods", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-librepods-org-librepods", "dst": "tema:airpods_liberation", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-librepods-org-librepods", "dst": "tema:consumer-electronica", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-gargantuax-gemini-watermark-remover", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-gargantuax-gemini-watermark-remover", "dst": "tema:watermark_remover", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-gargantuax-gemini-watermark-remover", "dst": "tema:client-side", "rel": "trata", "added": "2026-07-11"}
+{"src": "item:https-github-com-gargantuax-gemini-watermark-remover", "dst": "tema:gemini", "rel": "trata", "added": "2026-07-11"}
+{"src": "boletin:2026-07-11", "dst": "item:https-github-com-kdsz001-openwiki", "rel": "menciona", "added": "2026-07-11"}
+{"src": "item:https-github-com-kdsz001-openwiki", "dst": "tema:kdsz001-openwiki", "rel": "trata", "added": "2026-07-11"}
 {"src": "repo:pbakaus/impeccable", "rel": "complements", "dst": "repo:Nutlope/hallmark", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-11", "item_idx": 9, "item_titulo": "pbakaus/impeccable"}
 {"src": "repo:pbakaus/impeccable", "rel": "implements", "dst": "concept:design-quality-skill", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-11", "item_idx": 9, "item_titulo": "pbakaus/impeccable"}
 {"src": "repo:pbakaus/impeccable", "rel": "complements", "dst": "repo:addyosmani/agent-skills", "primera_mencion": "2026-07-11", "origen_boletin": "2026-07-11", "item_idx": 9, "item_titulo": "pbakaus/impeccable"}

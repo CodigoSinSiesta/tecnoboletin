@@ -1,13 +1,21 @@
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-anthropics-defending-code-reference-harness", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-anthropics-defending-code-reference-harness", "dst": "tema:anthropics-defending-code-reference-harn", "rel": "trata", "added": "2026-08-18"}
+{"src": "repo:anthropics/defending-code-reference-harness", "dst": "concept:ai-vuln-remediation-harness", "rel": "implements", "added": "2026-08-18", "primera_mencion": null}
+{"src": "company:anthropic", "dst": "repo:anthropics/defending-code-reference-harness", "rel": "publishes", "added": "2026-08-18", "primera_mencion": null}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-github-gh-aw", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-github-gh-aw", "dst": "tema:github-gh-aw", "rel": "trata", "added": "2026-08-18"}
+{"src": "repo:github/gh-aw", "dst": "concept:agentic-github-actions", "rel": "implements", "added": "2026-08-18", "primera_mencion": null}
+{"src": "company:github", "dst": "repo:github/gh-aw", "rel": "publishes", "added": "2026-08-18", "primera_mencion": null}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-akitaonrails-ai-memory", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-akitaonrails-ai-memory", "dst": "tema:akitaonrails-ai-memory", "rel": "trata", "added": "2026-08-18"}
+{"src": "repo:akitaonrails/ai-memory", "dst": "concept:cross-harness-agent-memory", "rel": "implements", "added": "2026-08-18", "primera_mencion": null}
+{"src": "company:akitaonrails", "dst": "repo:akitaonrails/ai-memory", "rel": "publishes", "added": "2026-08-18", "primera_mencion": null}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-0x4m4-hexstrike-ai", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-0x4m4-hexstrike-ai", "dst": "tema:0x4m4-hexstrike-ai", "rel": "trata", "added": "2026-08-18"}
+{"src": "repo:0x4m4/hexstrike-ai", "dst": "concept:ai-offensive-security-mcp", "rel": "implements", "added": "2026-08-18", "primera_mencion": null}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-yetone-cumora", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-yetone-cumora", "dst": "tema:yetone-cumora", "rel": "trata", "added": "2026-08-18"}
+{"src": "repo:yetone/cumora", "dst": "concept:ai-agent-team-chat", "rel": "implements", "added": "2026-08-18", "primera_mencion": null}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-blaizzy-mlx-audio", "rel": "menciona", "added": "2026-08-18"}
 {"src": "item:https-github-com-blaizzy-mlx-audio", "dst": "tema:blaizzy-mlx-audio", "rel": "trata", "added": "2026-08-18"}
 {"src": "boletin:2026-08-18", "dst": "item:https-github-com-cactus-compute-needle", "rel": "menciona", "added": "2026-08-18"}

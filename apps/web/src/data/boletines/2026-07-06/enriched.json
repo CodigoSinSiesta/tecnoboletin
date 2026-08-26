@@ -209,33 +209,9 @@
     },
     {
       "idx": 5,
-      "titulo": "OthmanAdi/planning-with-files (24.839★)",
-      "url": "",
-      "url_inferida": false,
-      "seccion": "radar_secundario",
-      "contenido": {
-        "que_es": "Repetir en radar si empieza a integrar Hermes como target oficialmente (hoy usa 60+ harnesses vía SKILL.md, no incluye Hermes explícito, comprobable en docs).",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
-      },
-      "relacion_grafo": [],
-      "clasificacion": {
-        "tipo": "otro",
-        "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "othmanadi-planning-with-files-24-839",
-        "temas_secundarios": [],
-        "confianza": 0.4
-      }
-    },
-    {
-      "idx": 6,
       "titulo": "steipete/CodexBar",
       "url": "https://github.com/steipete/CodexBar",
-      "url_inferida": false,
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "**Barra de menu de macOS para OpenAI Codex y Claude Code**: muestra usage stats en tiempo real sin necesidad de login. Pensada para monitorizar gasto de Codex y Claude Code desde la home bar. Escrita en Swift, autor Peter Steinberger (PSPDFKit).",
@@ -284,188 +260,163 @@
       }
     },
     {
-      "idx": 7,
-      "titulo": "coreyhaines31/marketingskills (36.636★, JS, MIT)",
-      "url": "",
-      "url_inferida": false,
+      "idx": 6,
+      "titulo": "coreyhaines31/marketingskills",
+      "url": "https://github.com/coreyhaines31/marketingskills",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Paquete de skills de marketing (CRO, SEO, copy) para Claude Code/agents.",
+        "que_es": "paquete de skills de marketing (CRO, SEO, copy) para Claude Code/agents",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "36.636★, JS, MIT",
         "accion_sugerida": "vigilar (puede que una skill concreta tipo \"growth-engineering\" valga la pena tener en el catálogo local)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "coreyhaines31-marketingskills-36-636-js-",
+        "tema_principal": "coreyhaines31-marketingskills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "production-grade engineering skills para Claude Code y Cursor",
+        "por_que_importa": "",
+        "madurez_senales": "70.085★, Shell, MIT",
+        "accion_sugerida": "leer (revisar qué patrones de skills introduce; comparar cobertura con las ~40 de Hermes)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "addyosmani-agent-skills",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 8,
-      "titulo": "addyosmani/agent-skills (70.085★, Shell, MIT)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "xbtlin/ai-berkshire",
+      "url": "https://github.com/xbtlin/ai-berkshire",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "\"Production-grade engineering skills\" para Claude Code y Cursor.",
+        "que_es": "framework multi-agente de value investing \"estilo Buffett/Munger/Duan/Li\" para Claude Code/Codex en A-shares/HK/US",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "leer (revisar qué patrones de skills introduce; comparar cobertura con las ~40 de Hermes)",
+        "madurez_senales": "10.642★, Python, MIT",
+        "accion_sugerida": "ignorar (nicho finanzas + complejidad regulatoria; solo relevante si hay ángulo \"AI decision systems → riesgos\" para un post)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "addyosmani-agent-skills-70-085-shell-mit",
+        "tema_principal": "xbtlin-ai-berkshire",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 9,
-      "titulo": "xbtlin/ai-berkshire (10.642★, Python, MIT)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "Trystan-SA/claude-design-system-prompt",
+      "url": "https://github.com/Trystan-SA/claude-design-system-prompt",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Framework multi-agente de value investing \"estilo Buffett/Munger/Duan/Li\" para Claude Code/Codex en A-shares/HK/US.",
+        "que_es": "prompt de sistema + skill library que convierte el LLM en colaborador de diseño \"anti-slop + accesibilidad-aware\"",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "ignorar (nicho finanzas + complejidad regulatoria; solo relevante si hay ángulo \"AI decision systems → riesgos\" para un post)",
+        "madurez_senales": "1.024★, MIT",
+        "accion_sugerida": "vigilar (1k stars es magro, pero nicho diseño anti-AI-slop encaja con `taste-skill` ya visto)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "xbtlin-ai-berkshire-10-642-python-mit",
+        "tema_principal": "trystan-sa-claude-design-system-prompt",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 10,
-      "titulo": "Trystan-SA/claude-design-system-prompt (1.024★, MIT)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "MaximeRivest/riddle",
+      "url": "https://github.com/MaximeRivest/riddle",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Prompt de sistema + skill library que convierte el LLM en colaborador de diseño \"anti-slop + accesibilidad-aware\".",
+        "que_es": "diario \"Tom Riddle\" para reMarkable Paper Pro: la página bebe tu tinta y contesta con letra manuscrita",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar (1k stars es magro, pero nicho diseño anti-AI-slop encaja con `taste-skill` ya visto)",
+        "madurez_senales": "191★, Rust, MIT, creado 2026-07-05",
+        "accion_sugerida": "ignorar (creative coding muy nicho; sin relevancia agentic)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "trystan-sa-claude-design-system-prompt-1",
+        "tema_principal": "maximerivest-riddle",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 11,
-      "titulo": "MaximeRivest/riddle (191★, Rust, MIT, creado 2026-07-05)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "CoplayDev/unity-mcp",
+      "url": "https://github.com/CoplayDev/unity-mcp",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "Diario \"Tom Riddle\" para reMarkable Paper Pro: la página bebe tu tinta y contesta con letra manuscrita.",
+        "que_es": "puente MCP↔Unity Editor (assets/scenes/scripts/automation)",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "ignorar (creative coding muy nicho; sin relevancia agentic)",
-        "descripcion_raw": ""
-      },
-      "relacion_grafo": [],
-      "clasificacion": {
-        "tipo": "otro",
-        "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "maximerivest-riddle-191-rust-mit-creado-",
-        "temas_secundarios": [],
-        "confianza": 0.4
-      }
-    },
-    {
-      "idx": 12,
-      "titulo": "CoplayDev/unity-mcp (11.699★, C#, MIT, visto 2026-07-05)",
-      "url": "",
-      "url_inferida": false,
-      "seccion": "radar_secundario",
-      "contenido": {
-        "que_es": "Puente MCP↔Unity Editor (assets/scenes/scripts/automation).",
-        "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "11.699★, C#, MIT, visto 2026-07-05",
         "accion_sugerida": "probar (si tienes flujo game-dev; ya conocido del boletín previo, repetir solo si quieres anunciarlo)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "coplaydev-unity-mcp-11-699-c-mit-visto-2",
-        "temas_secundarios": [],
-        "confianza": 0.4
-      }
-    },
-    {
-      "idx": 13,
-      "titulo": "elder-plinius/T3MP3ST (486★, TS, visto 2026-07-05) — meta-harness red teaming para coding agents.",
-      "url": "",
-      "url_inferida": false,
-      "seccion": "radar_secundario",
-      "contenido": {
-        "que_es": "",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "explorar (menciona a Hermes como conector local en docs; comprobar si soporta keyless + qué aporta vs `usestrix/strix`)",
-        "descripcion_raw": ""
-      },
-      "relacion_grafo": [],
-      "clasificacion": {
-        "tipo": "otro",
-        "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "elder-plinius-t3mp3st-486-ts-visto-2026-",
+        "tema_principal": "coplaydev-unity-mcp",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     }
   ],
   "stats": {
-    "items_total": 14,
+    "items_total": 12,
     "items_hallazgo_principal": 5,
-    "items_radar_secundario": 9,
+    "items_radar_secundario": 7,
     "llm_backend": "hermes",
-    "llm_polish_notes": "14/14 items pulidos",
-    "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "0/5 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4]; faltantes en respuesta: [0, 1, 2, 3, 4]",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/5 items reescritos; rechazados por longitud sospechosa: [1, 4]; faltantes en respuesta: [1, 4]",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ],
-    "items_with_content": 6
+    ]
   }
 }

@@ -307,24 +307,24 @@
     },
     {
       "idx": 7,
-      "titulo": "langchain-ai/openwiki (8.038★, TypeScript, MIT, push 2026-07-06)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "langchain-ai/openwiki",
+      "url": "https://github.com/langchain-ai/openwiki",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "CLI que escribe y mantiene docs de tu codebase, optimizadas para consumo por agentes (no por humanos). Incluye CI workflows de GitHub/GitLab para mantenerlas frescas.",
+        "que_es": "CLI que escribe y mantiene docs de tu codebase, optimizadas para consumo por agentes (no por humanos). Incluye CI workflows de GitHub y GitLab para mantenerlas frescas.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "8.038★, TypeScript, MIT, push 2026-07-06",
         "accion_sugerida": "probar — (instalar `npm install -g openwiki`, generar docs de un repo pequeño; validar que un agente las aprovecha mejor que las generadas por humano)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "langchain-ai-openwiki-8-038-typescript-m",
+        "tema_principal": "langchain-ai-openwiki",
         "temas_secundarios": [],
         "confianza": 0.4
       }
@@ -333,7 +333,7 @@
       "idx": 8,
       "titulo": "kenn-io/agentsview",
       "url": "https://github.com/kenn-io/agentsview",
-      "url_inferida": false,
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "**Local-first session search, analytics, insights y token-use statistics para coding agents** (Claude Code, Codex y otros). Escrito en Go. La pieza OSS local-first para auditar consumo de tokens y sesiones.",
@@ -383,192 +383,192 @@
     },
     {
       "idx": 9,
-      "titulo": "ComposioHQ/awesome-claude-skills (67.032★, Python, push 2026-05-22)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "ComposioHQ/awesome-claude-skills",
+      "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "catálogo \"awesome\" de 67k★, pero sin commits desde mayo; **licencia NOASSERTION en API** — riesgo antes de tomarlo como base.",
+        "que_es": "catálogo \"awesome\" de 67k★ pero sin commits desde mayo; **license NOASSERTION en API**, un riesgo antes de tomar como base.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "67.032★, Python, push 2026-05-22",
         "accion_sugerida": "vigilar — (referencia pasiva, no base de fork)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "composiohq-awesome-claude-skills-67-032-",
+        "tema_principal": "composiohq-awesome-claude-skills",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 10,
-      "titulo": "TauricResearch/TradingAgents (91.466★, Python, Apache-2.0)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "TauricResearch/TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "framework multi-agente para trading con LLM; ya está en el grafo, pero sigue trending.",
+        "que_es": "framework multi-agente para trading con LLM; ya está en el grafo pero sigue trending.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "91.466★, Python, Apache-2.0",
         "accion_sugerida": "vigilar — (riesgo `financial-advice-fragility` ya mapeado; interesante solo como caso de \"agentic-decision-systems\" para un post futuro)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "tauricresearch-tradingagents-91-466-pyth",
+        "tema_principal": "tauricresearch-tradingagents",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 11,
-      "titulo": "agentscope-ai/QwenPaw (21.098★, Python, Apache-2.0, push 2026-07-07)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "agentscope-ai/QwenPaw",
+      "url": "https://github.com/agentscope-ai/QwenPaw",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "asistente AI personal multi-chat-app on-premise, construido sobre AgentScope.",
+        "que_es": "personal AI assistant multi-chat-app on-premise, construido sobre AgentScope.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "21.098★, Python, Apache-2.0, push 2026-07-07",
         "accion_sugerida": "vigilar — (relevante si publicamos sobre \"personal assistant on-prem\" vs alternativas como `mvanhorn/last30days-skill`)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "agentscope-ai-qwenpaw-21-098-python-apac",
+        "tema_principal": "agentscope-ai-qwenpaw",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 12,
-      "titulo": "dream-num/univer (13.502★, TypeScript, Apache-2.0, push 2026-07-07)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "framework full-stack para spreadsheet + word + presentation web+server, con 4 años de desarrollo.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "13.502★, TypeScript, Apache-2.0, push 2026-07-07",
         "accion_sugerida": "vigilar — (competencia directa de OfficeCLI; ver qué aporta el enfoque \"framework\" vs \"binary CLI\")",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "dream-num-univer-13-502-typescript-apach",
+        "tema_principal": "dream-num-univer",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 13,
-      "titulo": "karpathy/nanoGPT (60.865★, Python, MIT, último push 2025-11-12)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "karpathy/nanoGPT",
+      "url": "https://github.com/karpathy/nanoGPT",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "clásico reapareciendo en trending tras algún artículo reciente.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "60.865★, Python, MIT, último push 2025-11-12",
         "accion_sugerida": "vigilar — (relevante solo si escribimos sobre \"entrenar GPTs pequeños\" — pista: el push frío indica que la atención viene de posts externos, no de actividad nueva)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "karpathy-nanogpt-60-865-python-mit-ltimo",
+        "tema_principal": "karpathy-nanogpt",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 14,
-      "titulo": "Robbyant/lingbot-vision (153★, Python, Apache-2.0, creado 2026-07-06, 1 día)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "Robbyant/lingbot-vision",
+      "url": "https://github.com/Robbyant/lingbot-vision",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "self-supervised learning for spatial perception.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "153★, Python, Apache-2.0, creado 2026-07-06, 1 día",
         "accion_sugerida": "vigilar — (muy reciente para juzgar; dejar madurar 30 días antes de explorar)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "robbyant-lingbot-vision-153-python-apach",
+        "tema_principal": "robbyant-lingbot-vision",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 15,
-      "titulo": "soycaporal/ternlight (135★, Python, MIT, push 2026-07-07)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "soycaporal/ternlight",
+      "url": "https://github.com/soycaporal/ternlight",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "semantic embeddings en bundle WASM de 5-7 MB on-device, sin API.",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "135★, Python, MIT, push 2026-07-07",
         "accion_sugerida": "explorar — (verificar el claim \"5–7 MB\" y \"2.5 ms/embed\" en navegador; comparar con transformers.js)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "soycaporal-ternlight-135-python-mit-push",
+        "tema_principal": "soycaporal-ternlight",
         "temas_secundarios": [],
         "confianza": 0.4
       }
     },
     {
       "idx": 16,
-      "titulo": "Infisical/agent-vault (1.829★, Go, NOASSERTION, push 2026-07-05)",
-      "url": "",
-      "url_inferida": false,
+      "titulo": "Infisical/agent-vault",
+      "url": "https://github.com/Infisical/agent-vault",
+      "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
         "que_es": "proxy HTTP de credenciales para Claude Code, OpenClaw y **Hermes** (menciona Hermes explícitamente).",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "1.829★, Go, NOASSERTION, push 2026-07-05",
         "accion_sugerida": "vigilar — (license NOASSERTION bloquea cualquier adopción seria; esperar clarificación de licencia)",
         "descripcion_raw": ""
       },
       "relacion_grafo": [],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "infisical-agent-vault-1-829-go-noasserti",
+        "tema_principal": "infisical-agent-vault",
         "temas_secundarios": [],
         "confianza": 0.4
       }
@@ -580,9 +580,9 @@
     "items_radar_secundario": 10,
     "llm_backend": "hermes",
     "llm_polish_notes": "17/17 items pulidos",
-    "metadata_carried_forward": false,
+    "metadata_carried_forward": true,
     "critica_lentes_aplicada": true,
-    "critica_notes": "7/7 items reescritos",
+    "critica_notes": "3/7 items reescritos; rechazados por longitud sospechosa: [2, 3, 4, 6]; faltantes en respuesta: [2, 3, 4, 6]",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

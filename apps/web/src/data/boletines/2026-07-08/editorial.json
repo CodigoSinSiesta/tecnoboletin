@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-07-08",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El stack agentico se cierra por arriba y por abajo: motor stealth y skills oficiales Anthropic",
+  "posicionamiento": "El boletín ata dos cierres que llevaban días formándose. Por arriba, Anthropic publica su implementación de referencia del spec agentskills.io y lo convierte en estándar de mercado con marketplace first-party; por abajo, tiliondev/fortress demuestra que esquivar detección ya no es cosa de parchar el navegador con JavaScript sino de tocar el propio Chromium en C++. Entre medias, rowboat aterriza el patrón personal-AI-coworker con knowledge graph y Vercel consolida el browser-como-herramienta-agente como CLI Rust.",
+  "convergencia_stack_css": "Tres hallazgos de hoy tocan directamente el setup del usuario: NousResearch/hermes-agent confirma que el propio Hermes trending-ea con push reciente (commit log por revisar), mvanhorn/last30days-skill ya está instalado y pide auditoría contra upstream, y tiliondev/fortress entra como opción self-hosted para la skill web-scraping-viability. rowboat encaja como cliente complementario al gateway multi-canal ya en uso (Telegram/Discord/CLI).",
+  "cruzado_grafo": "Tres nodos reciben refuerzo explícito hoy: agentskills.io (cubierto el 2026-07-03 y ahora implementado first-party por Anthropic), web-scraping-viability (relevante desde 2026-07-07 con Fortress como nuevo complemento) y noassertion-license-risk (patrón que se repite en Fortress y en anthropics/skills). Aparecen por primera vez engine-level-stealth, personal-ai-coworker, MCP-based-agent-memory y browser-automation-cli como nodos nuevos sin primera_mencion previa.",
+  "tendencias_5_boletines": "Tres días llevan construyendo la misma tesis: el 2026-07-06 cerró el tríptico persistencia-coordinación-skills, el 2026-07-07 separó pieza cara de pieza barata, y hoy la pieza que faltaba se materializa con nombre y licencia (aunque la licencia sea el matiz). La línea estable del mes es que cada capa del stack agentic — motor, spec, memoria, interfaz — está encontrando su implementación de referencia canónica; la duda pendiente es cuál de las licencias aguanta.",
+  "alertas": [
+    "tiliondev/fortress y anthropics/skills reportan licencia NOASSERTION en GitHub API — verificar LICENSE real antes de adopción/redistribución.",
+    "anthropics/skills mezcla Apache-2.0 con source-available en conectores docx/pdf/pptx/xlsx; útil saberlo para fork o redistribución.",
+    "NousResearch/hermes-agent trending-ea con push reciente: revisar commit log para features que el fork local de Ibid aún no haya adoptado."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Auditar commit log reciente de NousResearch/hermes-agent para detectar features upstream que el fork local de Ibid aún no integre; mapearlas contra el grafo de proyectos."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 6,
+      "razon": "Comparar mvanhorn/last30days-skill upstream contra la versión instalada en este Hermes, identificando gaps en integraciones clawhub/openclaw."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "Confirmar la LICENSE real de tiliondev/fortress (BSD-3 según README vs NOASSERTION en API) antes de añadirlo como opción recomendada en la skill web-scraping-viability."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "anthropics/skills convierte agentskills.io en estándar first-party; pieza clave para cualquier artículo sobre skills/harnesses del stack agentic."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "VoltAgent/awesome-design-md ofrece 73 DESIGN.md reales reproducibles, material directo para el ensayo pendiente sobre DESIGN.md + AGENTS.md + skills."
+    }
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
+}
