@@ -28,6 +28,7 @@ const sortedNodes = [...nodes].sort((a, b) => (b.degree ?? 0) - (a.degree ?? 0) 
 const SECCION_LABEL: Record<string, string> = {
   hallazgo_principal: 'hallazgo principal',
   radar_secundario: 'radar secundario',
+  radar_secundario_recuperado: 'radar secundario (recuperado)',
 };
 
 const baseUrl = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');

@@ -138,7 +138,7 @@ async function readBoletin(date: string): Promise<Boletin> {
     edges,
     items,
     hallazgos: items.filter((it) => it.seccion === 'hallazgo_principal'),
-    radar: items.filter((it) => it.seccion === 'radar_secundario'),
+    radar: items.filter((it) => it.seccion === 'radar_secundario' || it.seccion === 'radar_secundario_recuperado'),
     pickIdx: new Set(
       (editorial?.acciones_concretas ?? [])
         .filter((a) => a.tipo === 'explora')

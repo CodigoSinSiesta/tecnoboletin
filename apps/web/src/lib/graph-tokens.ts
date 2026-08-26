@@ -78,4 +78,5 @@ export const REL_LABEL: Record<string, string> = {
 export const SECCION_LABEL: Record<string, string> = {
   hallazgo_principal: 'hallazgo principal',
   radar_secundario: 'radar secundario',
+  radar_secundario_recuperado: 'radar secundario (recuperado)',
 };
