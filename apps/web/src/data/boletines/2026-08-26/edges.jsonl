@@ -1,0 +1,49 @@
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-mempalace-mempalace", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-mempalace-mempalace", "dst": "tema:mempalace-mempalace", "rel": "trata", "added": "2026-08-26"}
+{"src": "repo:MemPalace/mempalace", "dst": "concept:memory-layer-for-agents", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:MemPalace/mempalace", "dst": "concept:ontology-grounded-memory", "rel": "competes_with", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:MemPalace/mempalace", "dst": "concept:chromadb-backend", "rel": "uses", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:MemPalace/mempalace", "dst": "concept:longmemeval-benchmark", "rel": "relevant_to", "added": "2026-08-26", "primera_mencion": null}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-mastra-ai-mastra", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-mastra-ai-mastra", "dst": "tema:mastra-ai-mastra", "rel": "trata", "added": "2026-08-26"}
+{"src": "repo:mastra-ai/mastra", "dst": "concept:agent-harness", "rel": "implements", "added": "2026-08-26", "primera_mencion": "2026-08-25"}
+{"src": "repo:mastra-ai/mastra", "dst": "concept:workflow-graph-engine", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:mastra-ai/mastra", "dst": "concept:hitl-suspend-resume", "rel": "uses", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:mastra-ai/mastra", "dst": "repo:langchain-ai/deepagents", "rel": "competes_with", "added": "2026-08-26", "primera_mencion": "2026-08-25"}
+{"src": "repo:mastra-ai/mastra", "dst": "repo:vercel-labs/ai-sdk", "rel": "complements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-pipecat-ai-pipecat", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-pipecat-ai-pipecat", "dst": "tema:pipecat-ai-pipecat", "rel": "trata", "added": "2026-08-26"}
+{"src": "repo:pipecat-ai/pipecat", "dst": "concept:voice-agent-framework", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:pipecat-ai/pipecat", "dst": "concept:multimodal-agent-runtime", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:pipecat-ai/pipecat", "dst": "concept:webrtc-transport", "rel": "uses", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:pipecat-ai/pipecat", "dst": "concept:closed-voice-agent-api", "rel": "competes_with", "added": "2026-08-26", "primera_mencion": null}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-stripe-link-cli", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-stripe-link-cli", "dst": "tema:stripe-link-cli", "rel": "trata", "added": "2026-08-26"}
+{"src": "repo:stripe/link-cli", "dst": "concept:agent-payment-protocol", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:stripe/link-cli", "dst": "concept:shared-payment-token", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:stripe/link-cli", "dst": "concept:machine-payment-protocol", "rel": "uses", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:stripe/link-cli", "dst": "concept:computer-use-checkout", "rel": "competes_with", "added": "2026-08-26", "primera_mencion": null}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-xingkongliang-skills-manager", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-xingkongliang-skills-manager", "dst": "tema:xingkongliang-skills-manager", "rel": "trata", "added": "2026-08-26"}
+{"src": "repo:xingkongliang/skills-manager", "dst": "concept:skills-manager-ui", "rel": "implements", "added": "2026-08-26", "primera_mencion": "2026-07-16"}
+{"src": "repo:xingkongliang/skills-manager", "dst": "concept:multi-agent-skills-sync", "rel": "implements", "added": "2026-08-26", "primera_mencion": "2026-07-16"}
+{"src": "repo:xingkongliang/skills-manager", "dst": "concept:skills-marketplace", "rel": "uses", "added": "2026-08-26", "primera_mencion": "2026-07-16"}
+{"src": "repo:xingkongliang/skills-manager", "dst": "repo:mattpocock/skills", "rel": "complements", "added": "2026-08-26", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-jetbrains-go-modern-guidelines", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-jetbrains-go-modern-guidelines", "dst": "tema:jetbrains-go-modern-guidelines", "rel": "trata", "added": "2026-08-26"}
+{"src": "repo:JetBrains/go-modern-guidelines", "dst": "concept:language-guidelines-for-ai", "rel": "implements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:JetBrains/go-modern-guidelines", "dst": "concept:skills-marketplace", "rel": "uses", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:JetBrains/go-modern-guidelines", "dst": "concept:modernize-analyzer", "rel": "complements", "added": "2026-08-26", "primera_mencion": null}
+{"src": "repo:JetBrains/go-modern-guidelines", "dst": "repo:mattpocock/skills", "rel": "competes_with", "added": "2026-08-26", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-jeffhajewski-latticedb", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-jeffhajewski-latticedb", "dst": "tema:jeffhajewski-latticedb", "rel": "trata", "added": "2026-08-26"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-shy3130-tick-stock-panel", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-shy3130-tick-stock-panel", "dst": "tema:shy3130-tick-stock-panel", "rel": "trata", "added": "2026-08-26"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-evolution-foundation-evolution-api", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-evolution-foundation-evolution-api", "dst": "tema:evolution-foundation-evolution-api", "rel": "trata", "added": "2026-08-26"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-maplibre-martin", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-maplibre-martin", "dst": "tema:maplibre-martin", "rel": "trata", "added": "2026-08-26"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-graphdeco-inria-gaussian-splatting", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-graphdeco-inria-gaussian-splatting", "dst": "tema:graphdeco-inria-gaussian-splatting", "rel": "trata", "added": "2026-08-26"}
+{"src": "boletin:2026-08-26", "dst": "item:https-github-com-midday-ai-midday", "rel": "menciona", "added": "2026-08-26"}
+{"src": "item:https-github-com-midday-ai-midday", "dst": "tema:midday-ai-midday", "rel": "trata", "added": "2026-08-26"}

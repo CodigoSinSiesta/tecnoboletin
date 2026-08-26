@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-08-26",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Stripe publica infraestructura nativa de pagos para agentes",
+  "posicionamiento": "Stripe abandona la fase de demos de agentic commerce y publica una CLI con credenciales de pago de un solo uso y soporte del Machine Payment Protocol. La jornada reune además la primera capa de memoria OSS con métrica reproducible (MemPalace) y un framework voice-agent open-source que ya soporta multi-agente distribuido. La frontera operativa del agente sale del taller: memoria con benchmark, voz con runtime real y dinero con credenciales descartables.",
+  "convergencia_stack_css": "Tres hallazgos de hoy encajan con piezas ya cubiertas: skills-manager absorbe la categoria skills-manager-ui (2026-07-16), JetBrains oficializa el patron language guidelines for AI que ya tratamos con mattpocock/skills (2026-08-08), y Mastra completa el triangulo agent-harness junto a deepagents (2026-08-25). Memoria, voz y pagos OSS refuerzan el eje local-first que CSS viene trazando.",
+  "cruzado_grafo": "Tres nodos aparecen con primera_mencion previa hoy: agent-harness y deepagents (2026-08-25) reaparecen via Mastra como complemento OSS en TypeScript; skills-manager-ui, multi-agent-skills-sync, skills-marketplace y mattpocock/skills (2026-07-16) reaparecen consolidados en skills-manager. Los nodos memory-layer-for-agents, machine-payment-protocol y voice-agent-framework no tenian primera_mencion, lo que confirma su entrada fresca al grafo.",
+  "tendencias_5_boletines": "Solo se proporcionaron dos dias previos (2026-08-25 y 2026-08-24), insuficiente para una tendencia de cinco boletines. Sobre esa ventana corta, la lectura es: tras dos dias de pugna por el harness agentic OSS, hoy el patron se diversifica hacia capas adyacentes (memoria reproducible, voz distribuida, pagos, skills-manager UI). El agente pasa de framework a infraestructura completa.",
+  "alertas": [
+    "MemPalace declara 96.6% R@5 raw en LongMemEval en su README sin enlace a reproduccion independiente; tomar como claim de autor hasta ver benchmark externo.",
+    "Mastra aparece con NOASSERTION en la API de GitHub y sin archivo LICENSE: uso comercial cerrado por confirmar antes de adoptar.",
+    "stripe/link-cli solo disponible para Link accounts en US; restriccion geografica no documentada de forma prominente en el repo.",
+    "El README de MemPalace advierte de sitios impostores que distribuyen malware (.tech, .net, otras variantes .com): solo clonar desde el repo canonico en github.com/MemPalace/mempalace.",
+    "MemPalace aparece listado con 58.649 estrellas, cifra que conviene verificar en el repo antes de cualquier cita publica."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el primer candidato OSS de memory layer con benchmark declarado en README; merece un episodio dedicado y verificacion externa de la metrica."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Stripe entrando a agentic commerce es tesis de episodio propia: cubre el patron MPP, los partners (Cloudflare, Visa, Coinbase) y la limitacion geografica US."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Skills-manager cierra el triangulo skills-manager-ui / marketplace / mattpocock/skills que CSS ya traia mapeado desde julio; aporta la pieza de UX que faltaba."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Mastra entra como complemento TypeScript a deepagents (Python) en agent-harness, pero la licencia NOASSERTION exige aclarar el termino comercial antes de recomendarlo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Pipecat es la unica alternativa OSS seria a OpenAI Realtime/ElevenLabs/Vapi con multi-agent distribuido y soporte ESP32; episodio natural de self-hosted voice stack."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

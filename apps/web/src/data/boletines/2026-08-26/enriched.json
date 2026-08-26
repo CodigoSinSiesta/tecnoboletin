@@ -1,0 +1,467 @@
+{
+  "version": 2,
+  "date": "2026-08-26",
+  "boletin_origen": "2026-08-26-trending.md",
+  "resumen_ejecutivo": "- **Stripe entra oficialmente en \"agentic commerce\" con `link-cli`**: `stripe/link-cli` (714★, MIT, TypeScript) publica una CLI que entrega a los agentes credenciales de pago de un solo uso (PAN virtual o Shared Payment Token del Machine Payment Protocol) sin exponer tu tarjeta real. MCP server, `--format toon|json|yaml` optimizado para LLMs y skill instalable con `npx skills add stripe/link-cli`. Es la primera vez que una red de pagos canónica (Stripe) publica infraestructura nativa para agentes — el \"agent commerce\" deja de ser research y entra en producción.\n- **`MemPalace` aterriza el \"memory layer\" como categoría OSS reproducible**: `MemPalace/mempalace` (58.649★, MIT, Python) entra en GitHub Trending Python con un sistema de memoria verbatim, backend pluggable (ChromaDB por defecto), estructura jerárquica *palace/wings/rooms/drawers*, retrieval con scope, MCP server y **96.6% R@5 raw en LongMemEval** declarado en README. La conversación \"memory layer para agentes\" deja de ser un meme y tiene un ganador OSS con benchmark público y aviso de sitios impostores en el propio README.\n- **`Mastra` se posiciona como el framework TypeScript \"serio\" para agentes**: `mastra-ai/mastra` (27.479★, NOASSERTION en API — sin LICENSE file en repo, marcar como revisión obligatoria antes de adopción, TypeScript, YC W25) llega a trending con routing a 40+ providers, workflows graph-based, suspend/resume HITL, MCP servers, evals y \"Observational Memory\". Es el competidor TypeScript del stack LangChain con el patrón \"framework + product\" del YC W25.\n- **`Pipecat` confirma que la voz en tiempo real es OSS y ya tiene cliente en cualquier plataforma**: `pipecat-ai/pipecat` (14.740★, BSD-2-Clause, Python) sigue acumulando trending con un framework para voice + multimodal + multi-agent (handoff, fan-out, sidecar workers, distributed deploys) y SDKs oficiales en JS, React, React Native, Swift, Kotlin, C++ y ESP32. Mantenido por Daily y la comunidad. Es el referente canónico para \"voice agents\" fuera de los productos cerrados de OpenAI Realtime / ElevenLabs.\n- **Aparece el \"1Password para skills de agentes\"**: `xingkongliang/skills-manager` (4.074★, MIT, Rust) entra como desktop app para gestionar, sincronizar y versionar skills entre 50+ coding tools (Claude Code, Codex, Cursor, Copilot, Gemini CLI, Junie y otros). Presets, marketplace de `skills.sh`, backup multi-device vía GitHub y sync per-agent. Es la pieza que faltaba para que el ecosistema \"skills\" no acabe siendo un cajón desastre.\n- **JetBrains oficializa el patrón \"guidelines del vendor para agentes\"**: `JetBrains/go-modern-guidelines` (1.396★, Apache-2.0, Go) publica un plugin + skill + CLI que fuerza a los coding agents (Junie, Claude Code, Codex, Cursor) a escribir Go moderno (1.25/1.26/1.27), incluyendo features post-training-cutoff como `errors.AsType[T]` o `new(42)`. Es la prueba de que los vendors de lenguajes empiezan a publicar *guías oficiales para IA* del mismo modo que publican style guides.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (página general + TypeScript, Python, Rust slices), GitHub REST API para verificación. Blogwatcher no publicado hoy (2026-08-26).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "MemPalace/mempalace",
+      "url": "https://github.com/MemPalace/mempalace",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema de memoria para agentes AI que almacena conversaciones como texto verbatim (sin resumir, extraer ni parafrasear) y recupera con búsqueda semántica. La estructura es jerárquica — *people/projects → wings*, *topics → rooms*, *content → drawers* — para que las búsquedas tengan scope en lugar de correr contra un corpus plano. Backend pluggable (ChromaDB por defecto, interfaz en `mempalace/backends/base.py`); nada sale de tu máquina salvo opt-in. Incluye MCP server.",
+        "por_que_importa": "El grafo venía acumulando candidatos de \"memory layer\" (HugAgentOS, Hindsight, OpenMemory) pero ninguno tenía un benchmark público reproducible. MemPalace declara **96.6% R@5 raw en LongMemEval** directamente en el README, lo que lo convierte en el primer candidato OSS con métrica comparable — un punto de referencia concreto frente al resto de la categoría. El aviso en el propio README sobre sitios impostores que distribuyen malware (incluido `.tech`, `.net`, otras variantes `.com`) es señal de momentum real y de que el repo ya atrae suficiente atención como para ser suplantado. Para un episodio sobre memory layer para agentes, es lectura obligada; para el resto, basta con saber que existe un OSS que por fin pone un número encima de la mesa.",
+        "madurez_senales": "**58.649★** · 7.520 forks · MIT · Python · creado 2026-04-05 · último push 2026-08-26 · default branch `develop` · topics: `ai, chromadb, llm, mcp, memory, python`. Instalación recomendada vía `uv tool install mempalace` o `pipx`; no soporta Termux nativo (ChromaDB / ONNX sin wheels ARM64).",
+        "accion_sugerida": "explorar (instalar vía `uv tool install mempalace`; configurar Claude Code retention hooks según `docs/HISTORY.md`; medir R@5 sobre un corpus propio para validar el 96.6% declarado).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:MemPalace/mempalace",
+          "rel": "implements",
+          "dst": "concept:memory-layer-for-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MemPalace/mempalace",
+          "rel": "competes_with",
+          "dst": "concept:ontology-grounded-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MemPalace/mempalace",
+          "rel": "uses",
+          "dst": "concept:chromadb-backend",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MemPalace/mempalace",
+          "rel": "relevant_to",
+          "dst": "concept:longmemeval-benchmark",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mempalace-mempalace",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "mastra-ai/mastra",
+      "url": "https://github.com/mastra-ai/mastra",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework open-source para construir aplicaciones y agentes AI sobre TypeScript con stack moderno (React, Next.js, Node). Incluye routing a **40+ providers** (OpenAI, Anthropic, Gemini y más) por una interfaz común, agentes con razonamiento + tools + iteración hasta stopping condition, **workflows graph-based** con `.then()/.branch()/.parallel()`, HITL con suspend/resume persistido en storage, integración con Vercel AI SDK UI y CopilotKit para UIs, **MCP servers** (los agents exponen tools vía MCP a otros sistemas), evals y observability built-in. Modelo \"Observational Memory\" para memoria tipo humana.",
+        "por_que_importa": "Ya cubrimos el 2026-08-25 la referencia OSS canónica de harness agentic en Python (`langchain-ai/deepagents`); **Mastra** es el equivalente TypeScript con el mismo patrón \"framework + product\", pero además publicado por una empresa **Y Combinator W25** (badge oficial en el README). Para un episodio tipo \"el Vercel AI SDK para agentes en serio\" es la referencia a usar, y como complemento natural al `vercel-labs/ai-sdk` que ya teníamos en el grafo. La licencia es **NOASSERTION en la API de GitHub y el repo no contiene LICENSE file** (verificado vía `/contents/LICENSE` → 404): uso comercial por confirmar antes de adopción en productos cerrados.",
+        "madurez_senales": "**27.479★** · 2.694 forks · **licencia NOASSERTION (sin LICENSE file en repo — verificar uso comercial)** · TypeScript · creado 2024-08-06 · último push 2026-08-26 · topics: `agents, ai, chatbots, evals, javascript, llm, mcp, nextjs, nodejs, reactjs, tts, typescript, workflows`. Actividad diaria sostenida (commits en main).",
+        "accion_sugerida": "explorar (instalar vía `npm create mastra@latest`; levantar un agente con un provider local y validar el suspend/resume HITL; revisar si la ausencia de LICENSE bloquea adopción comercial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mastra-ai/mastra",
+          "rel": "implements",
+          "dst": "concept:agent-harness",
+          "primera_mencion": "2026-08-25"
+        },
+        {
+          "src": "repo:mastra-ai/mastra",
+          "rel": "implements",
+          "dst": "concept:workflow-graph-engine",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mastra-ai/mastra",
+          "rel": "uses",
+          "dst": "concept:hitl-suspend-resume",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mastra-ai/mastra",
+          "rel": "competes_with",
+          "dst": "repo:langchain-ai/deepagents",
+          "primera_mencion": "2026-08-25"
+        },
+        {
+          "src": "repo:mastra-ai/mastra",
+          "rel": "complements",
+          "dst": "repo:vercel-labs/ai-sdk",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mastra-ai-mastra",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "pipecat-ai/pipecat",
+      "url": "https://github.com/pipecat-ai/pipecat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework Python open-source (BSD-2) para construir voice agents, multimodal conversational agents y multi-agent systems en tiempo real. Cada pipeline es un agente; se componen con **handoff, fan-out paralelo, sidecar workers y distributed deploys** sobre un bus compartido (local o entre procesos/máquinas). Orquesta audio, video, servicios AI, transports (WebSockets, WebRTC) y pipelines de conversación. Mantenido por **Daily** (la empresa detrás de `daily.dev` y `daily.co`) y la comunidad. SDKs cliente oficiales en JavaScript, React, React Native, Swift, Kotlin, C++ y ESP32.",
+        "por_que_importa": "Hasta ahora \"voice agents\" se cubría con productos cerrados (OpenAI Realtime API, ElevenLabs, Vapi). Pipecat es la alternativa **OSS con cliente en cualquier plataforma** — incluyendo ESP32, lo que abre hardware embebido. Para un episodio \"cómo construir un voice agent self-hosted sin atarse a OpenAI\", es el ejemplo a usar. El patrón multi-agent (handoff/fan-out/sidecar/distributed) lo pone por delante de la mayoría de frameworks de voz cerrados, que suelen ser single-agent. Mantenido por Daily (la empresa detrás de `daily.co`), lo que da respaldo empresarial real frente a alternativas más experimentales.",
+        "madurez_senales": "**14.740★** · 2.551 forks · **BSD-2-Clause** · Python · creado 2023-12-27 · último push 2026-08-26 · topics: `ai, chatbot-framework, chatbots, real-time, voice, voice-assistant`. `pipecat-ai[cli]` incluye `pipecat init` para scaffolding rápido con Claude Code / Codex.",
+        "accion_sugerida": "probar (instalar vía `uv tool install \"pipecat-ai[cli]\"`; correr `pipecat init quickstart`; conectar a un provider STT/LLM/TTS de tu elección; leer `examples/flows` para ver conversaciones estructuradas con state management).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pipecat-ai/pipecat",
+          "rel": "implements",
+          "dst": "concept:voice-agent-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pipecat-ai/pipecat",
+          "rel": "implements",
+          "dst": "concept:multimodal-agent-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pipecat-ai/pipecat",
+          "rel": "uses",
+          "dst": "concept:webrtc-transport",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pipecat-ai/pipecat",
+          "rel": "competes_with",
+          "dst": "concept:closed-voice-agent-api",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pipecat-ai-pipecat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "stripe/link-cli",
+      "url": "https://github.com/stripe/link-cli",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI oficial de Stripe que entrega a los agentes credenciales de pago de un solo uso desde una Link wallet, sin exponer la tarjeta real. Soporta dos tipos de credencial: (a) **virtual card (PAN)** para cualquier checkout web estándar, (b) **Shared Payment Token (SPT)** cuando el vendedor acepta pagos programáticos vía **Machine Payment Protocol (MPP)**. Instalable vía `npm i -g @stripe/link-cli` o `npx`. Incluye **MCP server local** (`--mcp`) y HTTP MCP server (`serve` con `--host`/`--port`). Por defecto en modo no-TTY emite `toon` (formato compacto LLM-friendly) — también soporta `json|yaml|md|jsonl`. Distribuye también como **skill instalable con `npx skills add stripe/link-cli`**.",
+        "por_que_importa": "El \"agentic commerce\" llevaba meses siendo research (papers de Stripe Research, demos de Anthropic Computer Use comprando cosas). **Stripe publica infraestructura nativa de producción** con una red de pagos detrás. El patrón MPP (Machine Payment Protocol) ya tiene web propia y partners (Cloudflare, Visa, Mastercard, Coinbase, Shopify, JPMorgan según el sitio MPP). Para un episodio \"cómo compran cosas los agentes en 2026\" es lectura obligatoria. Limitación real a tener en cuenta: solo disponible para Link accounts en US — restricción geográfica que conviene mencionar al lector antes de que lo pruebe.",
+        "madurez_senales": "**714★** · 103 forks · MIT · TypeScript · creado 2026-04-23 · último push 2026-08-26 · topics: (vacíos — repo joven). Quickstart con `link-cli onboard` (flujo guiado + demo).",
+        "accion_sugerida": "leer (instalar `npx @stripe/link-cli`; revisar la CLI con `--llms-full`; entender el flujo SPT vs PAN; mapear las integraciones MPP disponibles).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:stripe/link-cli",
+          "rel": "implements",
+          "dst": "concept:agent-payment-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:stripe/link-cli",
+          "rel": "implements",
+          "dst": "concept:shared-payment-token",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:stripe/link-cli",
+          "rel": "uses",
+          "dst": "concept:machine-payment-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:stripe/link-cli",
+          "rel": "competes_with",
+          "dst": "concept:computer-use-checkout",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stripe-link-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "xingkongliang/skills-manager",
+      "url": "https://github.com/xingkongliang/skills-manager",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Desktop app (Rust) para gestionar, sincronizar y versionar **skills** entre 50+ coding tools AI: Claude Code, Codex, Cursor, Copilot, Gemini CLI, Junie y otros. Funciones centrales: **biblioteca unificada** (instala desde Git, local, `.zip`/`.skill` o marketplace `skills.sh`), **presets** (grupos de skills que activas/desactivas por agente), **Global Workspace** (vista por agente con todo lo que ve), **Project Workspaces** (skills project-local con sync bidireccional), **multi-tool sync** vía symlink o copy, **batch operations**, **backup + multi-device sync** vía GitHub (con merge skill-aware), **activity log** exportable. Auto-update in-app para macOS/Windows.",
+        "por_que_importa": "Ya cubrimos el 2026-07-16 los mvp del patrón \"skills para agentes\" (`mattpocock/skills`, marketplace `skills.sh`, concepto de skills-manager-ui): faltaba la pieza de UX que las unificara, porque cada herramienta tiene su propia carpeta de skills (`~/.claude/skills`, `~/.codex/skills`, etc.) sin forma nativa de gestionarlas todas. **Skills Manager es esa pieza**: un 1Password que sabe qué skills tiene cada agente y los sincroniza vía symlink o copy. La función \"presets\" (activar/desactivar un grupo de skills con un click) es el patrón \"workspaces\" aplicado a skills, exactamente lo que la categoría necesitaba.",
+        "madurez_senales": "**4.074★** · 349 forks · MIT · Rust · creado 2026-03-02 · último push 2026-08-23 · topics: (vacíos). Documentación bilingüe (inglés + chino).",
+        "accion_sugerida": "probar (descargar la app desktop; conectar Claude Code + Cursor; crear un preset \"data engineering\" con 3-4 skills y ver el sync per-agent; probar el backup multi-device).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:xingkongliang/skills-manager",
+          "rel": "implements",
+          "dst": "concept:skills-manager-ui",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:xingkongliang/skills-manager",
+          "rel": "implements",
+          "dst": "concept:multi-agent-skills-sync",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:xingkongliang/skills-manager",
+          "rel": "uses",
+          "dst": "concept:skills-marketplace",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:xingkongliang/skills-manager",
+          "rel": "complements",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xingkongliang-skills-manager",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "JetBrains/go-modern-guidelines",
+      "url": "https://github.com/JetBrains/go-modern-guidelines",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Repositorio oficial de JetBrains (badge `jb.gg/badges/official.svg`) que contiene guidelines + plugin + skill + CLI para forzar a los coding agents a escribir Go moderno (1.25 / 1.26 / 1.27). El agente con estas guidelines usa `max(a, b)` en lugar de if-else, `slices.Contains` en lugar de loop manual, `cmp.Or(a, b, c)`, `new(42)` para punteros, `errors.AsType[T](err)` para type-safe error matching (Go 1.26). Detecta la versión del proyecto desde `go.mod` y solo aplica features disponibles hasta esa versión. Se alinea con el `modernize` analyzer del Go team.",
+        "por_que_importa": "Los coding agents generan Go obsoleto por dos razones — *training data lag* (no conocen features post-cutoff) y *frequency bias* (en training hay más loops viejos que modernos). Ya cubrimos el 2026-08-08 el caso genérico con `mattpocock/skills`; **esto lo arregla JetBrains oficialmente** para Go (badge oficial JetBrains en el repo), y abre el patrón a Claude Code/Codex/Cursor vía guidelines + plugin + skill + CLI. Para un episodio \"los vendors de lenguajes publican guías oficiales para IA\", es el ejemplo a usar — la categoría \"language guidelines for AI\" se oficializa con un vendor de primer nivel detrás, no con un contribuidor anónimo.",
+        "madurez_senales": "**1.396★** · 43 forks · Apache-2.0 · Go · creado 2025-11-24 · último push 2026-08-19 · topics: `ai-agents, coding-agent, developer-tools, go, golang, guidelines`. CLI Go instalado en `~/.cache/go-modern-guidelines`, no modifica el proyecto.",
+        "accion_sugerida": "leer (instalar el marketplace integration en Claude Code o Cursor; revisar `plugin/skills/use-modern-go/SKILL.md`; comparar la lista de Go 1.26/1.27 features con el propio output de tu coding agent sobre un proyecto Go real).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:JetBrains/go-modern-guidelines",
+          "rel": "implements",
+          "dst": "concept:language-guidelines-for-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:JetBrains/go-modern-guidelines",
+          "rel": "uses",
+          "dst": "concept:skills-marketplace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:JetBrains/go-modern-guidelines",
+          "rel": "complements",
+          "dst": "concept:modernize-analyzer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:JetBrains/go-modern-guidelines",
+          "rel": "competes_with",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jetbrains-go-modern-guidelines",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "jeffhajewski/latticedb",
+      "url": "https://github.com/jeffhajewski/latticedb",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Base de datos embebida single-file con **knowledge graph + vector search + full-text search** orientada a AI/RAG apps. Nicho (Zig, todavía sin ecosystem), pero la combinación KG+FTS+vector en un solo archivo es la dirección que necesitan las apps RAG self-hosted.",
+        "por_que_importa": "",
+        "madurez_senales": "314★, último push 2026-08-26, Zig, MIT, topics vacíos",
+        "accion_sugerida": ": vigilar (revisar el benchmark y los bindings Python/Rust cuando aparezcan; ideal para un episodio \"RAG stack OSS mínimo\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jeffhajewski-latticedb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "shy3130/tick-stock-panel",
+      "url": "https://github.com/shy3130/tick-stock-panel",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Workbench self-hosted para **A-shots (mercado chino)**: screener, monitor, backtest, todo con agentes LLM encima de DuckDB + Polars + FastAPI. Nicho geográfico pero patrón \"agent + quant + self-hosted\" replicable a otros mercados.",
+        "por_que_importa": "",
+        "madurez_senales": "3.786★, último push 2026-08-26, Python, MIT, topics `a-stock, ai-agent, backtesting, duckdb, fastapi, llm, polars, quant, screener, self-hosted, tickflow, tsp`",
+        "accion_sugerida": ": vigilar (estudiar el patrón agent-on-FastAPI sobre DuckDB; revisar cómo adaptarlo a IBKR / datos EU)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shy3130-tick-stock-panel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "evolution-foundation/evolution-api",
+      "url": "https://github.com/evolution-foundation/evolution-api",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "La API open-source canónica de integración con **WhatsApp Cloud API**, con conectores oficiales para Chatwoot, n8n, Typebot, Dify. Mantenida por la comunidad brasileña. License NOASSERTION — adopción comercial por confirmar.",
+        "por_que_importa": "",
+        "madurez_senales": "9.418★, último push 2026-07-14, TypeScript, NOASSERTION, topics `whatsapp, chatbot, chatwoot, n8n, typebot, dify, evolution-api`",
+        "accion_sugerida": ": vigilar (revisar la integración con agentes via webhooks; comparar con WPPConnect y Baileys)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "evolution-foundation-evolution-api",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "maplibre/martin",
+      "url": "https://github.com/maplibre/martin",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Tile server **Rust** \"blazing fast\" para PostGIS, MBtiles y PMtiles, con tile generation + mbtiles tooling. Si trabajas con mapas OSS (MapLibre, Mapbox-GL-JS open fork), Martin es el servidor canónico en Rust.",
+        "por_que_importa": "",
+        "madurez_senales": "3.866★, último push 2026-08-26, Rust, Apache-2.0, topics `maplibre, mbtiles, pmtiles, postgis, rust, vector-tiles, webserver`",
+        "accion_sugerida": ": leer (revisar el quickstart con PMtiles; comparar rendimiento con tileserver-gl)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maplibre-martin",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "graphdeco-inria/gaussian-splatting",
+      "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "**Implementación de referencia original** del paper \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\" (Kerbl et al., INRIA, SIGGRAPH 2023). Mature, no se ha movido en 11 meses (research reference estabilizada). Sigue siendo trending porque el ecosistema 3DGS lo cita. License NOASSERTION — investigación académica, redistribución por confirmar.",
+        "por_que_importa": "",
+        "madurez_senales": "23.157★, último push 2025-10-17, Python, NOASSERTION, topics `computer-graphics, computer-vision, radiance-field`",
+        "accion_sugerida": ": leer (si haces computer vision o grafos 3D, esta es la referencia; revisar si hay forks activos como `nerfstudio-project/gsplat`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "graphdeco-inria-gaussian-splatting",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "midday-ai/midday",
+      "url": "https://github.com/midday-ai/midday",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Plataforma OSS para freelancers con invoicing, time tracking, file reconciliation, storage, financial overview y assistant AI. **AGPL-3.0**: cualquier fork con modificaciones y expuesto en red debe abrirse bajo AGPL — restricción fuerte para SaaS comercial.",
+        "por_que_importa": "",
+        "madurez_senales": "14.914★, último push 2026-06-13, TypeScript, AGPL-3.0, topics `finance, nextjs, supabase, tailwind, typescript`",
+        "accion_sugerida": ": vigilar (revisar la arquitectura Next — js + Supabase; evaluar el assistant AI; tener en cuenta la licencia AGPL si se quiere monetizar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "midday-ai-midday",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
