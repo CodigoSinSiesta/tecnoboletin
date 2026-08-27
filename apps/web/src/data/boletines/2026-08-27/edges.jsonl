@@ -1,0 +1,70 @@
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-apache-maka", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-apache-maka", "dst": "tema:apache-maka", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:apache/maka", "dst": "concept:local-first-agent-workspace", "rel": "implements", "added": "2026-08-27", "primera_mencion": "2026-08-10"}
+{"src": "repo:apache/maka", "dst": "repo:can1357/oh-my-pi", "rel": "complements", "added": "2026-08-27", "primera_mencion": "2026-08-03"}
+{"src": "repo:apache/maka", "dst": "concept:append-only-run-record", "rel": "implements", "added": "2026-08-27", "primera_mencion": "2026-08-20"}
+{"src": "repo:apache/maka", "dst": "concept:asf-governance-for-ai-tools", "rel": "relevant_to", "added": "2026-08-27", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-rocketride-org-rocketride-server", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-rocketride-org-rocketride-server", "dst": "tema:rocketride-org-rocketride-server", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:rocketride-org/rocketride-server", "dst": "concept:aide-pipeline-runtime", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:rocketride-org/rocketride-server", "dst": "concept:portable-pipeline-json", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:rocketride-org/rocketride-server", "dst": "concept:mcp-server", "rel": "uses", "added": "2026-08-27", "primera_mencion": "2026-08-24"}
+{"src": "repo:rocketride-org/rocketride-server", "dst": "repo:langflow-ai/langflow", "rel": "competes_with", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:rocketride-org/rocketride-server", "dst": "repo:vllm-project/vllm", "rel": "complements", "added": "2026-08-27", "primera_mencion": "2026-07-16"}
+{"src": "repo:rocketride-org/rocketride-server", "dst": "concept:on-prem-ai-stack", "rel": "relevant_to", "added": "2026-08-27", "primera_mencion": null}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-hydra-db-hydradb", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-hydra-db-hydradb", "dst": "tema:hydra-db-hydradb", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:hydra-db/hydradb", "dst": "concept:object-store-graph-db", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:hydra-db/hydradb", "dst": "concept:opencypher-tck-compliant", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:hydra-db/hydradb", "dst": "repo:neo4j/neo4j", "rel": "competes_with", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:hydra-db/hydradb", "dst": "repo:lancedb/lancedb", "rel": "complements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:hydra-db/hydradb", "dst": "concept:slatedb-storage", "rel": "uses", "added": "2026-08-27", "primera_mencion": null}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-workweave-router", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-workweave-router", "dst": "tema:workweave-router", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:workweave/router", "dst": "concept:semantic-model-router", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:workweave/router", "dst": "concept:drop-in-llm-proxy", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:workweave/router", "dst": "repo:BerriAI/litellm", "rel": "competes_with", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:workweave/router", "dst": "concept:on-box-embedder", "rel": "uses", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:workweave/router", "dst": "concept:elv2-non-open-source-license", "rel": "risk", "added": "2026-08-27", "primera_mencion": null}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-lilmgenius-paperthin", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-lilmgenius-paperthin", "dst": "tema:lilmgenius-paperthin", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:LilMGenius/paperthin", "dst": "concept:agentic-design-pattern-library", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:LilMGenius/paperthin", "dst": "concept:skill-metadata-schema", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:LilMGenius/paperthin", "dst": "repo:mattpocock/skills", "rel": "complements", "added": "2026-08-27", "primera_mencion": "2026-08-08"}
+{"src": "repo:LilMGenius/paperthin", "dst": "concept:anti-slop-agent-patterns", "rel": "relevant_to", "added": "2026-08-27", "primera_mencion": null}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-max-sixty-worktrunk", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-max-sixty-worktrunk", "dst": "tema:max-sixty-worktrunk", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:max-sixty/worktrunk", "dst": "concept:parallel-agent-worktree-cli", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:max-sixty/worktrunk", "dst": "repo:RizRiyz/luvus", "rel": "complements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:max-sixty/worktrunk", "dst": "concept:git-worktree-primitive", "rel": "uses", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:max-sixty/worktrunk", "dst": "concept:noassertion-license", "rel": "risk", "added": "2026-08-27", "primera_mencion": null}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-rizriyz-luvus", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-rizriyz-luvus", "dst": "tema:rizriyz-luvus", "rel": "trata", "added": "2026-08-27"}
+{"src": "repo:RizRiyz/luvus", "dst": "concept:agent-mission-control-ui", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:RizRiyz/luvus", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:RizRiyz/luvus", "dst": "repo:max-sixty/worktrunk", "rel": "complements", "added": "2026-08-27", "primera_mencion": null}
+{"src": "repo:RizRiyz/luvus", "dst": "repo:openclaw/openclaw", "rel": "competes_with", "added": "2026-08-27", "primera_mencion": "2026-08-12"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-can1357-oh-my-pi", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-can1357-oh-my-pi", "dst": "tema:can1357-oh-my-pi", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-agentgateway-agentgateway", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-agentgateway-agentgateway", "dst": "tema:agentgateway-agentgateway", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-ongridio-ongrid", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-ongridio-ongrid", "dst": "tema:ongridio-ongrid", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-kubernetes-sigs-agent-sandbox", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-kubernetes-sigs-agent-sandbox", "dst": "tema:kubernetes-sigs-agent-sandbox", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-rohitg00-agentmemory", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-rohitg00-agentmemory", "dst": "tema:rohitg00-agentmemory", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-k-dense-ai-scientific-agent-skills", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-k-dense-ai-scientific-agent-skills", "dst": "tema:k-dense-ai-scientific-agent-skills", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-addyosmani-agent-skills", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:addyosmani-agent-skills", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-layr-labs-d-inference", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-layr-labs-d-inference", "dst": "tema:layr-labs-d-inference", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-tencent-wemm-embedding", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-tencent-wemm-embedding", "dst": "tema:tencent-wemm-embedding", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-grafana-mcp-grafana", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-grafana-mcp-grafana", "dst": "tema:grafana-mcp-grafana", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-microsoft-power-platform-skills", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-microsoft-power-platform-skills", "dst": "tema:microsoft-power-platform-skills", "rel": "trata", "added": "2026-08-27"}
+{"src": "boletin:2026-08-27", "dst": "item:https-github-com-tailscale-tailcat", "rel": "menciona", "added": "2026-08-27"}
+{"src": "item:https-github-com-tailscale-tailcat", "dst": "tema:tailscale-tailcat", "rel": "trata", "added": "2026-08-27"}

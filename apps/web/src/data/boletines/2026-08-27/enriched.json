@@ -1,0 +1,678 @@
+{
+  "version": 2,
+  "date": "2026-08-27",
+  "boletin_origen": "2026-08-27-trending.md",
+  "resumen_ejecutivo": "- **`apache/maka` aterriza el primer \"agent workspace\" bajo paraguas ASF**: el repositorio entra en GitHub Trending TypeScript como incubating en Apache Software Foundation con 3.650★ (Apache-2.0), describiéndose como *\"A local-first Agent workspace built for real work\"*. Es el primer workspace agentic con governance formal de la ASF — la fundación señala que la categoría \"agentes locales\" merece el mismo tratamiento que Tomcat o Kafka. Sesiones, settings y run records son locales por defecto; el usuario trae su modelo (API cloud o local) y el daemon escribe cada tool call a disco para auditoría.\n- **RocketRide se posiciona como \"AIDE\" (AI Development Environment) con motor C++ de producción**: `rocketride-org/rocketride-server` (7.319★, MIT, Python, default branch `develop`) entra en Trendshift #9 con un pipeline builder visual para VS Code, runtime C++ multihilo, **100+ nodos** (15+ LLM providers, 9 vector DBs, OCR/NER), MCP server propio y SDKs Python/TypeScript. Define JSON portable para pipelines y los ejecuta en infraestructura propia — el competidor OSS de n8n + Langflow pero con un motor C++ que aguanta carga de producción real, no de demo.\n- **`hydra-db/hydradb` formaliza el patrón \"graph DB on object storage\"**: 1.573★ (AGPL-3.0, Rust), distribución nativa sobre SlateDB con S3 como source of truth, OpenCypher + Bolt 5 + GraphBLAS + HTTPS. Storage y compute desacoplados, nodes e indexers reemplazables, writer leases por CAS — la dirección que toman las bases de grafos cuando el storage es commodity. OpenCypher TCK compliance. License AGPL-3.0 a tener en cuenta para SaaS.\n- **`LilMGenius/paperthin` cambia el framing \"skills\"**: el repo (Shell) aterriza como **biblioteca de patrones agentic de bajo nivel** (\"Low-level agentic design patterns. Turning old engineering wisdom into reflexes your agent\"), con skills como `re0` (rewrite drifted artifact into a clean v0, not another patch), cada una con `Scope`/`Invoker`/`Read-only` declarados. Es la primera biblioteca de skills que documenta explícitamente \"qué hace, quién la invoca, si es read-only\" — la calidad de metadatos que la categoría necesitaba para dejar de ser un cajón desastre.\n- **`max-sixty/worktrunk` resuelve el problema de fondo del \"trabajar con N coding agents en paralelo\"**: 6.675★ (NOASSERTION, Rust, default `main`) entra en Rust trending como CLI de git worktrees **diseñado explícitamente para Claude Code / Codex / OpenCode en paralelo** — `wt switch`, `wt list`, merge worktrees remotos, hooks. Es la herramienta que faltaba para que el patrón \"5-10+ agentes en paralelo sobre el mismo repo\" sea viable sin git worktree hand-management.\n- **`workweave/router` es el primer \"model router\" con routing semántico OSS para coding agents**: 1.280★ (ELv2 — NOASSERTION en API, marcado por el propio badge como Elastic License v2, **no open source**), Go. Drop-in proxy para Anthropic/OpenAI/Gemini que enruta cada prompt al modelo correcto usando un embedder on-box (no vibes-based). Latencia declarada <50ms. Built by **Weave** (Robinhood/PostHog/Reducto como clientes de la plataforma commercial). Es la competencia OSS seria de LiteLLM pero con routing inteligente.\n- **`can1357/oh-my-pi` confirma la tesis del editor IDE-integrado**: 27.753★ (MIT, TypeScript) sigue acumulando trending TS como coding agent con el IDE cableado físicamente dentro del binario (`pi-shell` con 38.000 LoC, bash embebido, minimizer). Es el repo del mismo autor (`can1357`) detrás de Hindsight, y la integración con el cliente de Hindsight es el patrón \"editor + memoria persistente\" ya mapeado en el grafo.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (general + TypeScript + Python + Rust + Go + JavaScript), GitHub REST API para verificación de los 24 candidatos principales. Blogwatcher no publicado hoy (2026-08-27).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "apache/maka",
+      "url": "https://github.com/apache/maka",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "workspace local-first para agentes AI, actualmente **incubating en la Apache Software Foundation** (badge oficial en el README). Funciones centrales: sesiones persistentes con estado en local, run records (model messages, tool calls, tool results, how-a-turn-ended) escritos a disco, daemon de fondo que mantiene el contexto entre turnos y \"trae tu propio modelo\" (API cloud, modelo local o gateway compatible). Cliente desktop para macOS Apple Silicon (Windows en preview, Linux en el roadmap).",
+        "por_que_importa": "El grafo venía acumulando herramientas agentic locales (`janhq/jan`, `openclaw/openclaw`, `Alishahryar1/free-claude-code`), pero ninguna con governance formal de la ASF: Apache es la primera fundación vendor-neutral que avala la categoría \"agente local-first\", el mismo tratamiento que recibieron Kafka, Tomcat o Spark. El detalle técnico \"the UI and the next model call are views of that record, not the only copy\" formaliza el patrón \"append-only event log\" que ya comparten los runtimes agentic serios (LangChain, DeepAgents, Pi, Oh-My-Pi), y que ya cubrimos como concepto el 2026-08-20 con el nodo `concept:append-only-run-record`. El concepto de workspace local-first agentico aparece en el grafo desde el 2026-08-10 (nodo `concept:local-first-agent-workspace`), y la conexión con `can1357/oh-my-pi` la mapeamos el 2026-08-03. Hoy el nodo nuevo es la governance ASF para AI tools (ya marcada en el grafo como `concept:asf-governance-for-ai-tools` desde el 2026-08-20).",
+        "madurez_senales": "**3.650★** · 220 forks · **Apache-2.0** · TypeScript · creado 2026-07-09 · último push 2026-08-27 · default branch `main` · topics: `agent-runtime, ai, ai-agent, apache, cli`. Repositorio Apache oficial (incubating status). CI verde, releases en GitHub. Documentación bilingüe (inglés + chino simplificado, README.zh-CN.md enlazado).",
+        "accion_sugerida": "explorar (instalar vía el cliente desktop macOS o compilar desde fuente; revisar la propuesta de incubación en `governance/`; comparar el modelo de run record con el de `can1357/oh-my-pi`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:apache/maka",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:apache/maka",
+          "rel": "complements",
+          "dst": "repo:can1357/oh-my-pi",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:apache/maka",
+          "rel": "implements",
+          "dst": "concept:append-only-run-record",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:apache/maka",
+          "rel": "relevant_to",
+          "dst": "concept:asf-governance-for-ai-tools",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apache-maka",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "rocketride-org/rocketride-server",
+      "url": "https://github.com/rocketride-org/rocketride-server",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pipeline builder + runtime OSS para workloads AI/ML, definido por el equipo como \"**AIDE (AI Development Environment)**\". Editor visual dentro de VS Code para componer pipelines como JSON portable; runtime en **C++ multihilo** con SDKs de Python y TypeScript; **más de 100 nodos** preconstruidos (15+ proveedores de LLM, 9 bases de datos vectoriales, OCR, NER, servidor MCP propio). Modos: self-hosted on-prem o \"managed\". Cero vendor lock-in: el JSON del pipeline es portable y los modelos y frameworks son intercambiables.",
+        "por_que_importa": "La categoría \"AI pipeline builder\" tiene tres capas: UI visual (n8n, Langflow), orquestación (LangChain, LlamaIndex) y runtime (vLLM, Ollama). RocketRide cubre las tres con un único binario y un motor C++ multihilo, lo que lo convierte en el ejemplo a usar para un episodio \"stack AI on-prem 2026\". La presencia de un servidor MCP propio (`rocketride-mcp`) — concepto `concept:mcp-server` que ya cubrimos el 2026-08-24 — y la decisión de `default_branch = develop` (verificado vía API, relevante para fetches `raw.githubusercontent.com`) lo ponen por delante de competidores OSS que todavía no exponen tools a otros agentes. El JSON del pipeline es portable y los modelos/frameworks intercambiables (sin vendor lock-in), así que encaja en el nodo `concept:portable-pipeline-json` y en el `concept:on-prem-ai-stack` del grafo. Como alternativa OSS a `langflow-ai/langflow` (UI visual) y complemento a `vllm-project/vllm` (runtime, que cubrimos el 2026-07-16), es la pieza que faltaba para cerrar el círculo \"compón + ejecuta + sirve\" en local.",
+        "madurez_senales": "*7.319★** · 814 forks · **MIT** · Python + C++ · creado 2026-06-26 · último push 2026-08-27 · default branch **`develop`** (importante para raw.githubusercontent.com fetches) · topics: `ai, cpp, data-pipeline, data-processing, machine-learning`. Releases versionados con formato `server-v*`. CI workflow propio, badges oficiales, Discord activo.",
+        "accion_sugerida": "explorar (instalar el CLI desde PyPI; abrir VS Code y arrastrar 5 nodos; revisar el formato del JSON pipeline; ejecutar un workload RAG end-to-end y comparar latencia con LangChain Python).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:rocketride-org/rocketride-server",
+          "rel": "implements",
+          "dst": "concept:aide-pipeline-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rocketride-org/rocketride-server",
+          "rel": "implements",
+          "dst": "concept:portable-pipeline-json",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rocketride-org/rocketride-server",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:rocketride-org/rocketride-server",
+          "rel": "competes_with",
+          "dst": "repo:langflow-ai/langflow",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rocketride-org/rocketride-server",
+          "rel": "complements",
+          "dst": "repo:vllm-project/vllm",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:rocketride-org/rocketride-server",
+          "rel": "relevant_to",
+          "dst": "concept:on-prem-ai-stack",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rocketride-org-rocketride-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "hydra-db/hydradb",
+      "url": "https://github.com/hydra-db/hydradb",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**base de datos de grafos distribuida, escrita en Rust, con S3 como source of truth**. Combina storage durable sobre SlateDB con queries OpenCypher snapshot-consistent, traversal GraphBLAS (SuiteSparse), conectividad Bolt 5 (compatible con drivers de Neo4j) y API HTTPS. Compute y storage desacoplados, con dos roles: `graph-node` (sirve queries y mutaciones canónicas) y `graph-indexer` (construye índices de traversal inmutables en background). Ambos guardan solo estado descartable en RAM/SSD y lo reconstruyen desde S3.",
+        "por_que_importa": "El grafo ya acumulaba `jeffhajewski/latticedb` (KG embebida en Zig, en el radar del boletín 2026-08-26) y `lancedb/lancedb` (vector DB nativa). HydraDB es la versión \"graph nativa sobre object storage\": el patrón que toman las bases de grafos cuando el storage deja de ser el cuello de botella (el mismo movimiento que MinIO para object storage, JuiceFS para filesystem o DuckDB para analytics). El cumplimiento del OpenCypher TCK garantiza portabilidad con clientes Neo4j existentes — lo que lo pone como competidor OSS directo de `neo4j/neo4j`. La arquitectura separa `graph-node` (queries y mutaciones canónicas) de `graph-indexer` (índices de traversal en background), ambos reconstruibles desde S3 sobre SlateDB: compute y storage desacoplados, igual que en data warehouses modernos. **Limitación a tener en cuenta:** la licencia AGPL-3.0 bloquea la adopción en SaaS propietarios sin abrir el código u obtener licencia comercial — relevante para episodios \"OSS-friendly stack\" pero limita casos enterprise.",
+        "madurez_senales": "**1.573★** · 109 forks · **AGPL-3.0** (SaaS-hosting opens source el código o licencia comercial) · Rust 1.91+ · creado 2026-06-30 · último push 2026-08-19 · default branch `main` · topics vacíos. Benchmarks live en `hydra-db.github.io/benchmark/`. OpenCypher TCK workflow activo. Sin LICENSE file inspeccionado aún (NOASSERTION confirmado por API).",
+        "accion_sugerida": "leer (revisar `docs/architecture.md`; comparar el modelo de writer leases con FoundationDB; correr los benchmarks TCK y los live en `hydra-db.github.io/benchmark/`; evaluar el impacto de AGPL-3.0 antes de cualquier integración).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:hydra-db/hydradb",
+          "rel": "implements",
+          "dst": "concept:object-store-graph-db",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hydra-db/hydradb",
+          "rel": "implements",
+          "dst": "concept:opencypher-tck-compliant",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hydra-db/hydradb",
+          "rel": "competes_with",
+          "dst": "repo:neo4j/neo4j",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hydra-db/hydradb",
+          "rel": "complements",
+          "dst": "repo:lancedb/lancedb",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hydra-db/hydradb",
+          "rel": "uses",
+          "dst": "concept:slatedb-storage",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hydra-db-hydradb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "workweave/router",
+      "url": "https://github.com/workweave/router",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**proxy drop-in** para Anthropic, OpenAI y Gemini que enruta cada prompt al modelo correcto usando un embedder on-box (no vibes-based). Latencia declarada por debajo de 50 ms. Pensado para Claude Code, Codex, Cursor o cualquier cliente que apunte a `localhost:8080`. Mantenido por **Weave** (la plataforma de \"engineering intelligence\" con clientes como Robinhood, PostHog y Reducto según el propio README). Binario único en Go, con managed deployment disponible.",
+        "por_que_importa": "El grafo venía acumulando `diegosouzapw/OmniRoute` (MIT, 350 providers) como referente de model gateway. WorkWeave Router es la competencia con routing inteligente — usando un embedder on-box (no vibes-based) para clasificar cada prompt —, la pieza que faltaba entre \"gateway estilo LiteLLM\" (`BerriAI/litellm`) y \"routing manual por prompt\". Para un episode \"cómo recortar costes en coding agents\" es la pieza OSS a contrastar con OmniRoute: sustituye al gateway tonto por uno que mira el contenido y decide a qué modelo enviar cada request, con latencia declarada por debajo de 50 ms. **Advertencia importante:** el README dice `License: ELv2`, pero la API de GitHub devuelve NOASSERTION; hay que verificar el fichero LICENSE real antes de una adopción comercial. ELv2 **no es open source** (prohíbe hosting SaaS como competidor de Elastic), por lo que la nota de grafo `risk → concept:elv2-non-open-source-license` aplica aquí.",
+        "madurez_senales": "**1.280★** · 99 forks · **ELv2 (NOASSERTION en API — no es open source, leer LICENSE)** · Go 1.25+ · creado 2026-07-09 · último push 2026-08-27 · default branch `main` · topics: `agentic-coding, ai-gateway, anthropic, claude-code, codex`. Tests workflow verde. Managed deployment con versioning visible (`/v1/version` endpoint público).",
+        "accion_sugerida": "probar (instalar el binario, apuntar `ANTHROPIC_BASE_URL=http://localhost:8080` desde Claude Code; comparar coste/latencia antes y después; **leer el LICENSE file antes de desplegar como servicio** porque ELv2 ≠ OSS).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:workweave/router",
+          "rel": "implements",
+          "dst": "concept:semantic-model-router",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:workweave/router",
+          "rel": "implements",
+          "dst": "concept:drop-in-llm-proxy",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:workweave/router",
+          "rel": "competes_with",
+          "dst": "repo:BerriAI/litellm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:workweave/router",
+          "rel": "uses",
+          "dst": "concept:on-box-embedder",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:workweave/router",
+          "rel": "risk",
+          "dst": "concept:elv2-non-open-source-license",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "workweave-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "LilMGenius/paperthin",
+      "url": "https://github.com/LilMGenius/paperthin",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "biblioteca de **patrones agentic de bajo nivel** distribuidos como skills instalables en Claude Code, Codex y otros agentes. Subtítulo literal: *\"Low-level agentic design patterns. Turning old engineering wisdom into reflexes your agent\"*. Las skills siguen un template uniforme con columnas `Scope` (qué artefacto toca), `Invoker` (quién la dispara) y `Read-only` (si es de solo lectura). La primera skill del índice es **`re0`** — \"Rewrite a drifted artifact into a clean v0, not another patch\" —, el patrón opuesto al \"add another patch\" que aplican por defecto los coding agents.",
+        "por_que_importa": "El grafo venía acumulando unos 10 repos de \"skills\" (`mattpocock/skills` — que ya cubrimos como complemento el 2026-08-08 —, `ApodexAI/FrontierAgent`, `WorldFlowAI/everything-claude-code`, `addyosmani/agent-skills`, `microsoft/power-platform-skills`, `K-Dense-AI/scientific-agent-skills`, `ConardLi/garden-skills`, `Leonxlnx/taste-skill`, `JuliusBrussee/caveman`, `ibelick/ui-skills`). Paperthin es el primero que documenta explícitamente \"qué hace, quién la invoca, si es de solo lectura\" en un formato tabular con columnas `Scope` / `Invoker` / `Read-only`: la calidad de metadatos que la categoría necesitaba para dejar de ser un cajón desastre. La primera skill, `re0`, encarna el patrón \"rewrite drifted artifact into v0, not patch\" — el antídoto craft contra el reflejo por defecto de los coding agents de \"add another patch\". Como librería de patrones agentic de bajo nivel (`concept:agentic-design-pattern-library`), y ejemplo de schema de metadatos reusable (`concept:skill-metadata-schema`), marca el estándar que el resto de repos de skills tendrán que imitar.",
+        "madurez_senales": "**712★** · 40 forks · **MIT** · Shell (skills + scripts) · creado 2026-07-31 · último push 2026-08-18 · default branch `main` · topics: `anti-slop, clean-code, design-patterns, docs, evals`. Edad joven (1 mes) pero con foco claro. Documentación visible en README con índice tabular.",
+        "accion_sugerida": "leer (instalar 2-3 skills; revisar el SKILL.md de `re0`; comparar con tu propio loop de patches repetidos sobre el mismo archivo; adoptar el patrón tabular de metadatos para cualquier skill que publiques tú).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:LilMGenius/paperthin",
+          "rel": "implements",
+          "dst": "concept:agentic-design-pattern-library",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:LilMGenius/paperthin",
+          "rel": "implements",
+          "dst": "concept:skill-metadata-schema",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:LilMGenius/paperthin",
+          "rel": "complements",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:LilMGenius/paperthin",
+          "rel": "relevant_to",
+          "dst": "concept:anti-slop-agent-patterns",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lilmgenius-paperthin",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "max-sixty/worktrunk",
+      "url": "https://github.com/max-sixty/worktrunk",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**CLI en Rust para gestionar git worktrees**, diseñada específicamente para workflows con coding agents (Claude Code, Codex, OpenCode) en paralelo. Premisa: \"AI agents like Claude Code and Codex can handle longer tasks without supervision, such that it's possible to manage 5-10+ in parallel. Git's native worktrees are the right primitive, but the ergonomics are missing.\" Comandos principales: `wt switch`, `wt list`, `wt merge`, además de hooks de pre/post-merge y sincronización con worktrees remotos. El README dedica una sección a \"context: git worktrees\" para audiencias que nunca los han usado.",
+        "por_que_importa": "El patrón \"5-10+ Claude Code en paralelo sobre el mismo repo\" es el que `RizRiyz/luvus` (siguiente hallazgo) llama \"mission control\" y que `plannotator` intenta coordinar mediante planes visuales. **Worktrunk resuelve la fricción git subyacente**: sin él, \"N agentes en paralelo\" significa gestionar los worktrees a mano y mergear cada uno por separado. Para un episodio \"operar N coding agents\" es la pieza fundacional — antes incluso de la UI/UX de orquestación — porque ataca la primitiva `concept:git-worktree-primitive` con ergonomías (`wt switch`, `wt list`, `wt merge`, hooks pre/post-merge, sync con worktrees remotos). El autor es `max-sixty` (Max Booth, conocido por contribuciones a Rust y por `cargo-insta` y `sqlx-cli`), lo que da peso al proyecto. **Limitación a tener en cuenta:** la API de GitHub devuelve NOASSERTION para la licencia, así que hay que revisar el fichero LICENSE antes de uso comercial (nota de grafo `risk → concept:noassertion-license`).",
+        "madurez_senales": "**6.675★** · 280 forks · **NOASSERTION en API (revisar LICENSE antes de uso comercial)** · Rust · creado 2026-04-24 · último push 2026-08-27 · default branch `main` · topics: `agents, claude-code, codex, developer-tools, git`. Edad joven (4 meses) pero momentum explosivo (entradas recurrentes en trending). Documentación dedicada (`worktrunk.dev`), contexto para audiencias nuevas en worktrees.",
+        "accion_sugerida": "probar (`cargo install worktrunk`; abrir 3 worktrees; correr 3 Claude Code en paralelo, uno por worktree; medir el tiempo ahorrado frente a gestión manual; revisar el LICENSE file para uso comercial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:max-sixty/worktrunk",
+          "rel": "implements",
+          "dst": "concept:parallel-agent-worktree-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:max-sixty/worktrunk",
+          "rel": "complements",
+          "dst": "repo:RizRiyz/luvus",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:max-sixty/worktrunk",
+          "rel": "uses",
+          "dst": "concept:git-worktree-primitive",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:max-sixty/worktrunk",
+          "rel": "risk",
+          "dst": "concept:noassertion-license",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "max-sixty-worktrunk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "RizRiyz/luvus",
+      "url": "https://github.com/RizRiyz/luvus",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "terminal UI (TUI) + CLI escrito en Rust que actúa como **\"mission control para AI coding agents\"** — Claude, Grok, Codex, Pi y otros. Funciones centrales: workspaces persistentes con tabs, panes, layouts y estado del terminal; **agent awareness** (detecta automáticamente los agentes soportados y muestra blocked/working/done/idle con tokens, coste, uso de contexto y alertas sonoras); **agent workflows** (start/name/message/inspect/wait/resume, fork de sesiones con el contexto intacto); **dashboards de files y Git integrados** (status, branches, commits, PRs, issues); **worktrees y orquestación** (crear worktrees, coordinar tareas dependientes, reservar paths, asignar agentes, ejecutar quality gates y mergear); SSH y multi-client.",
+        "por_que_importa": "El grafo ya tenía `RizRiyz/luvus` como pendiente de radar (entradas previas en trending Rust), pero la entrada de hoy confirma que se está consolidando como el referente canónico de \"UI de mission control\" para coding agents: el equivalente GUI/TUI de lo que `max-sixty/worktrunk` es a nivel git. Es la pieza que faltaba para que el patrón \"operar N agentes\" tenga visualización — agent awareness con estados blocked/working/done/idle, métricas de tokens/coste/uso de contexto, alertas sonoras, dashboards de Git y files integrados, y orquestación con worktrees, quality gates y merge. Compite en el espacio de orquestación multi-agente (`concept:multi-agent-orchestration`) con `openclaw/openclaw` (que cubrimos el 2026-08-12 como competidor). **Limitación a tener en cuenta:** la licencia AGPL-3.0 restringe el uso en SaaS propietarios sin abrir el código u obtener licencia comercial, igual que con HydraDB.",
+        "madurez_senales": "**468★** · 21 forks · **AGPL-3.0** (SaaS-hosting opens source el código) · Rust · creado 2026-06-04 · último push 2026-08-27 · default branch `main` · topics: `agent, agent-orchestration, ai, claude, claude-code`. Documentación en `luvus.dev/docs/`. Actividad diaria (push de hoy). Plataformas: macOS · Linux · Windows. Badges CI + docs + releases.",
+        "accion_sugerida": "explorar (instalar vía `cargo install luvus`; conectar un agente Claude Code; abrir 2 worktrees; probar el fork de sesión con contexto; evaluar el impacto de AGPL-3.0 antes de cualquier wrapping comercial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:RizRiyz/luvus",
+          "rel": "implements",
+          "dst": "concept:agent-mission-control-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:RizRiyz/luvus",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:RizRiyz/luvus",
+          "rel": "complements",
+          "dst": "repo:max-sixty/worktrunk",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:RizRiyz/luvus",
+          "rel": "competes_with",
+          "dst": "repo:openclaw/openclaw",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rizriyz-luvus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "can1357/oh-my-pi",
+      "url": "https://github.com/can1357/oh-my-pi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(27.753★, último push 2026-08-27, TypeScript, MIT, topics `ai-agent, ai-coding-agent, anthropic, bun, claude`) — coding agent con el IDE cableado físicamente (pi-shell embebido, 38.000 LoC). Del mismo autor de Hindsight (`can1357`); el binario contiene el editor y el bash",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": explorar (instalar y revisar la integración con Hindsight; comparar ergonomía con Claude Code puro; documentar el patrón \"editor wired in\" como alternativa al plugin-based)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "can1357-oh-my-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "agentgateway/agentgateway",
+      "url": "https://github.com/agentgateway/agentgateway",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.570★, último push 2026-08-26, Rust, Apache-2.0, topics `agents, ai, ai-gateway, api-gateway, gateway-api`) — \"Next Generation Agentic Proxy for AI Agents and MCP servers\" sobre la Gateway API de Kubernetes. Es la versión \"infra-grade\" de un AI gateway (frente a los gateways single-process como LiteLLM)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el diseño cuando aparezca documentación de operators + CRDs; comparar con Envoy AI Gateway)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentgateway-agentgateway",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "ongridio/ongrid",
+      "url": "https://github.com/ongridio/ongrid",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(903★, último push 2026-08-27, Go, AGPL-3.0, topics `ai-agents, aiops, alerting, chatops, devops`) — \"An ops AI Agent that understands your infrastructure, finds the root cause, and fixes it — with the judgement of a senior SRE\". AGPL-3.0, agentes SRE autónomos",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el catálogo de integraciones; comparar con `RobustaAI/robusta` y `last9/last9-actions`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ongridio-ongrid",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "kubernetes-sigs/agent-sandbox",
+      "url": "https://github.com/kubernetes-sigs/agent-sandbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.646★, último push 2026-08-27, Go, Apache-2.0, topics `agent, ai, kubernetes, rl, sandbox`) — `agent-sandbox` oficial de un SIG de Kubernetes: gestión de sandboxes aislados y con estado para agentes sobre Kubernetes. Es el \"shim\" que faltaba entre los coding agents y la infra K8s",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": leer (revisar el CRD y los ejemplos; evaluar si sustituye a `e2b-dev/e2b` para casos enterprise)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kubernetes-sigs-agent-sandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "rohitg00/agentmemory",
+      "url": "https://github.com/rohitg00/agentmemory",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(27.555★, último push 2026-08-24, TypeScript, Apache-2.0, topics `agentmemory, agents, ai, claude, claudecode`) — \"Persistent memory for AI coding agents based on real-world benchmarks\". El `#1` con benchmark declarado (mismo posicionamiento que `MemPalace/mempalace`, ayer)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (comparar el benchmark con el de MemPalace; revisar la arquitectura del store)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rohitg00-agentmemory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "K-Dense-AI/scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(34.888★, último push 2026-08-24, Python, MIT, topics `agent-skills, ai-scientist, bioinformatics, chemoinformatics, claude`) — \"Turn any AI agent into an AI Scientist. The #1 Agent Skills\" en GitHub Trending Python. Foco científico (bioinformatics, chemoinformatics)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar las skills de bioinformatics; evaluar el patrón \"agent + scientific tools\" para casos reales)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "k-dense-ai-scientific-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(90.113★, último push 2026-08-21, JavaScript, MIT, topics `agent-skills, antigravity, claude-code, codex, cursor`) — \"Production-grade engineering skills for AI coding agents\". De Addy Osmani (Engineering Lead conocido por su trabajo en Chrome y Web Performance)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": leer (instalar las skills de performance; revisar las guías para Claude Code/Codex/Cursor)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "addyosmani-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "Layr-Labs/d-inference",
+      "url": "https://github.com/Layr-Labs/d-inference",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(429★, último push 2026-08-27, Go, NOASSERTION — verificar LICENSE) — \"Private Inference Network on Idle Macs\". Red peer-to-peer para inferencia privada sobre Macs ociosos (mismo movimiento que `haystack-network/haystack-network` y `exolabs/exo`)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar la arquitectura y el incentive model; comparar con `exolabs/exo`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "layr-labs-d-inference",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 15,
+      "titulo": "Tencent/WeMM-Embedding",
+      "url": "https://github.com/Tencent/WeMM-Embedding",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(316★, último push 2026-08-26, Python, NOASSERTION — verificar LICENSE) — \"family of universal multimodal embedding models by the WeChat Vision Team\". Embeddings multimodales de Tencent/WeChat, interesante por el peso institucional y la cobertura multimodal",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el paper y los benchmarks de MMEB/VL2; comparar con `OpenGVLab/InternVL`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-wemm-embedding",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 16,
+      "titulo": "grafana/mcp-grafana",
+      "url": "https://github.com/grafana/mcp-grafana",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.397★, último push 2026-08-26, Go, Apache-2.0) — servidor MCP oficial de Grafana para exponer dashboards, alerts y datasources como tools a los coding agents",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": probar (instalar vía `mcp-remote` o similar; conectar desde Claude Code; ver qué tools quedan disponibles)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "grafana-mcp-grafana",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 17,
+      "titulo": "microsoft/power-platform-skills",
+      "url": "https://github.com/microsoft/power-platform-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(773★, último push 2026-08-27, JavaScript, MIT, topics `claude-code-plugin, claude-code-skills, code-apps, github-copilot-plugin, power-apps`) — marketplace de plugins de Microsoft para Power Platform (Power Apps, Power Automate, Copilot Studio) en Claude Code y GitHub Copilot",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el plugin para Power Apps; comparar con `K-Dense-AI/scientific-agent-skills` como marketplace vertical)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-power-platform-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 18,
+      "titulo": "tailscale/tailcat",
+      "url": "https://github.com/tailscale/tailcat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(945★, último push 2026-08-27, Go, BSD-3-Clause) — \"like netcat, but over Tailscale's data plane, without Tailscale's control plane\". netcat pero usando la red WireGuard de Tailscale sin pasar por el control plane",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": leer (revisar los casos de uso para debugging de servicios en Tailscale; comparar con `warp-plus/warp-plus`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tailscale-tailcat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 19,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 12,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "19/19 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-08-27",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Apache entra al taller de los agentes locales con Maka",
+  "posicionamiento": "Apache toma partido en la categoría de agentes locales: Maka entra como incubating y se convierte en la primera pieza agentic con governance formal de la ASF. Le escoltan un runtime C++ 'todo-en-uno' (RocketRide), una graph DB sobre S3 (HydraDB), un router semántico con warning de licencia (WorkWeave), una librería de patrones agentic tabulares (Paperthin) y el tándem Rust para paralelizar coding agents (Worktrunk + Luvus). El hilo: el agente serio exige primitivas formales — governance, primitivas de storage, licencias verificables.",
+  "convergencia_stack_css": "Maka aterriza donde ya teníamos `openclaw/openclaw` y `janhq/jan` (2026-08-10) como 'agentes locales OSS'; la novedad es el paraguas ASF, que coincide con la línea editorial local-first del boletín. HydraDB encaja en la capa de grafo (PGLite + pgvector): misma tesis de compute/storage desacoplados pero en object storage, útil como referencia para el episodio stack on-prem 2026.",
+  "cruzado_grafo": "Cuatro nodos se refuerzan con datos reales: `concept:local-first-agent-workspace` (primera mención 2026-08-10), `concept:append-only-run-record` (2026-08-20), `concept:asf-governance-for-ai-tools` (2026-08-20) y `concept:mcp-server` (2026-08-24 vía RocketRide). Aparecen por primera vez hoy: `concept:aide-pipeline-runtime`, `concept:portable-pipeline-json`, `concept:on-prem-ai-stack`, `concept:semantic-model-router`, `concept:object-store-graph-db`, `concept:agentic-design-pattern-library` y `concept:agent-mission-control-ui`.",
+  "tendencias_5_boletines": "Sin datos de los días21-24 no puedo trazar cinco sesiones; con los días25, 26 y hoy, el arco es claro: el agente local pasa de demo (2026-08-25, Claude Code competidores) a tener memoria OSS reproducible (MemPalace, 2026-08-26) y, hoy, governance ASF y primitivas de orquestación paralelizable. Coherente con el giro2026-08-26 'la frontera operativa del agente sale del taller'.",
+  "alertas": [
+    "WorkWeave Router: README dice ELv2 pero la API de GitHub devuelve NOASSERTION — verificar LICENSE real antes de adopción comercial; ELv2 no es open source.",
+    "Worktrunk: API de GitHub reporta NOASSERTION en la licencia; mismo caveat que WorkWeave, no citar como OSS sin verificar.",
+    "RocketRide compite en un espacio ya poblado (Langflow, n8n, LangChain); el runtime C++ es diferencial pero la tracción OSS real frente a esos referentes aún no está medida.",
+    "Luvus es AGPL-3.0: copyleft fuerte, no apto para integrarse en productos propietarios sin implicaciones legales.",
+    "HydraDB cubre el TCK de OpenCypher pero la madurez de producción (drivers, ops, observabilidad) frente a Neo4j está por ver."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "Maka es el primer agente local con governance ASF: mover a columna 'agentes locales OSS' como referente institucional, no solo técnico."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "RocketRide unifica UI + orquestación + runtime C++: candidato natural para episodio 'stack AI on-prem 2026' por contraste con vLLM+Ollama+LangChain."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "WorkWeave Router tiene el patrón OSS 'semantic model routing' que faltaba frente a LiteLLM; pero ELv2 + NOASSERTION obliga a confirmar licencia antes de recomendar."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "Worktrunk ataca la primitiva git/worktree que 'N coding agents en paralelo' necesita; pieza fundacional antes de la capa UI tipo Luvus."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "HydraDB es graph-on-object-storage; cabe en el episodio sobre almacenamiento desacoplado al lado de MinIO, JuiceFS y DuckDB."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
