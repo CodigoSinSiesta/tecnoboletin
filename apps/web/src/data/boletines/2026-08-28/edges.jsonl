@@ -1,0 +1,64 @@
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-github-github-mcp-server", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-github-github-mcp-server", "dst": "tema:github-github-mcp-server", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:github/github-mcp-server", "dst": "concept:official-vendor-mcp-server", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:github/github-mcp-server", "dst": "repo:higress-group/higress", "rel": "complements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:github/github-mcp-server", "dst": "concept:mcp-as-gateway-protocol", "rel": "enables", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:github/github-mcp-server", "dst": "concept:coding-agent-power-user", "rel": "relevant_to", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-higress-group-higress", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-higress-group-higress", "dst": "tema:higress-group-higress", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:higress-group/higress", "dst": "concept:ai-native-api-gateway", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:higress-group/higress", "dst": "concept:wasm-plugin-extension", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:higress-group/higress", "dst": "concept:cncf-sandbox", "rel": "uses", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:higress-group/higress", "dst": "repo:workweave/router", "rel": "competes_with", "added": "2026-08-28", "primera_mencion": "2026-08-27"}
+{"src": "repo:higress-group/higress", "dst": "concept:openapi-to-mcpserver", "rel": "uses", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-tencent-browserskill", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-tencent-browserskill", "dst": "tema:tencent-browserskill", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:Tencent/BrowserSkill", "dst": "concept:human-in-loop-browser-agent", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:Tencent/BrowserSkill", "dst": "concept:extension-backed-browser-automation", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:Tencent/BrowserSkill", "dst": "repo:browser-use/browser-use", "rel": "complements", "added": "2026-08-28", "primera_mencion": "2026-08-20"}
+{"src": "repo:Tencent/BrowserSkill", "dst": "company:tencent", "rel": "relevant_to", "added": "2026-08-28", "primera_mencion": "2026-08-12"}
+{"src": "repo:Tencent/BrowserSkill", "dst": "concept:vendor-readme-tencent-claims", "rel": "risk", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-docker-docker-agent", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-docker-docker-agent", "dst": "tema:docker-docker-agent", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:docker/docker-agent", "dst": "concept:declarative-agent-yaml", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:docker/docker-agent", "dst": "concept:oci-packaged-agent", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:docker/docker-agent", "dst": "repo:pydantic/pydantic-ai", "rel": "competes_with", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:docker/docker-agent", "dst": "concept:mcp-server", "rel": "uses", "added": "2026-08-28", "primera_mencion": "2026-08-24"}
+{"src": "repo:docker/docker-agent", "dst": "company:docker", "rel": "relevant_to", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-cloudwego-eino", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-cloudwego-eino", "dst": "tema:cloudwego-eino", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:cloudwego/eino", "dst": "concept:go-llm-framework", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:cloudwego/eino", "dst": "concept:graph-composition-llm", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:cloudwego/eino", "dst": "repo:tmc/langchaingo", "rel": "competes_with", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:cloudwego/eino", "dst": "concept:interrupt-resume-agent", "rel": "uses", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:cloudwego/eino", "dst": "company:cloudwego-bytedance", "rel": "relevant_to", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-cometixspace-ccursor", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-cometixspace-ccursor", "dst": "tema:cometixspace-ccursor", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:CometixSpace/CCursor", "dst": "concept:byok-cursor-extension", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:CometixSpace/CCursor", "dst": "repo:leookun/cursor-byok", "rel": "complements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:CometixSpace/CCursor", "dst": "concept:connectrpc-intercept", "rel": "uses", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:CometixSpace/CCursor", "dst": "concept:agpl-3.0-restriction", "rel": "risk", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-sapientinc-praxist", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-sapientinc-praxist", "dst": "tema:sapientinc-praxist", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:sapientinc/PRAXIST", "dst": "concept:persistent-research-process", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:sapientinc/PRAXIST", "dst": "concept:parallel-research-peers", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:sapientinc/PRAXIST", "dst": "concept:deepresearch-stack", "rel": "complements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:sapientinc/PRAXIST", "dst": "concept:noassertion-license", "rel": "risk", "added": "2026-08-28", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-calmrocks-ai-engineer-notebooks", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-calmrocks-ai-engineer-notebooks", "dst": "tema:calmrocks-ai-engineer-notebooks", "rel": "trata", "added": "2026-08-28"}
+{"src": "repo:calmrocks/ai-engineer-notebooks", "dst": "concept:framework-free-llm-curriculum", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:calmrocks/ai-engineer-notebooks", "dst": "concept:colab-runnable-handbook", "rel": "implements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:calmrocks/ai-engineer-notebooks", "dst": "concept:forward-deployed-engineer-role", "rel": "relevant_to", "added": "2026-08-28", "primera_mencion": null}
+{"src": "repo:calmrocks/ai-engineer-notebooks", "dst": "concept:openai-compatible-api", "rel": "complements", "added": "2026-08-28", "primera_mencion": null}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-gastownhall-beads", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-gastownhall-beads", "dst": "tema:gastownhall-beads", "rel": "trata", "added": "2026-08-28"}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-htdt-godogen", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-htdt-godogen", "dst": "tema:htdt-godogen", "rel": "trata", "added": "2026-08-28"}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-1weiho-open-slide", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-1weiho-open-slide", "dst": "tema:1weiho-open-slide", "rel": "trata", "added": "2026-08-28"}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-neolabhq-context-engineering-kit", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-neolabhq-context-engineering-kit", "dst": "tema:neolabhq-context-engineering-kit", "rel": "trata", "added": "2026-08-28"}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-experientiallabs-experiential", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-experientiallabs-experiential", "dst": "tema:experientiallabs-experiential", "rel": "trata", "added": "2026-08-28"}
+{"src": "boletin:2026-08-28", "dst": "item:https-github-com-opencost-opencost", "rel": "menciona", "added": "2026-08-28"}
+{"src": "item:https-github-com-opencost-opencost", "dst": "tema:opencost-opencost", "rel": "trata", "added": "2026-08-28"}

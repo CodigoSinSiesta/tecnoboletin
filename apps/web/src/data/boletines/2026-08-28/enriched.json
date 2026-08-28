@@ -1,0 +1,583 @@
+{
+  "version": 2,
+  "date": "2026-08-28",
+  "boletin_origen": "2026-08-28-trending.md",
+  "resumen_ejecutivo": "- **`github/github-mcp-server` se consolida como el MCP server \"oficial de referencia\" para GitHub**: 32.571★ en GitHub Trending diario y Go trending, licence MIT, mantenido por GitHub (Push 2026-08-27). Es el hub que todo coding agent con acceso a GitHub termina cargando: browse de código, gestión de issues/PRs, CI/CD, code analysis (Dependabot, secret scanning, code patterns). El logo \"from [your editor/agent] → GitHub\" ya es commodity.\n- **`higress-group/higress` formaliza el \"AI Gateway sobre Envoy/Istio\" como categoría enterprise**: 9.221★ (Apache-2.0, CNCF Sandbox) con AI Gateway y hosting nativo de MCP servers remotos vía Wasm plugins. Entra como pieza seria frente al reciente `workweave/router` (Go, ELv2) y al veterano LiteLLM. La dirección \"API Gateway → AI Gateway\" con hosting de MCP servers incluidos es la jugada de 2026.\n- **`Tencent/BrowserSkill` resuelve \"el agente pide usar TU browser logged-in\"** con daemon local `bsk` + extensión Chrome/Edge: el agente opera sobre pestañas reales (con tu sesión) en una ventana separada. Soporta Cursor, Claude Code, Codex, OpenClaw, Pi, Hermes Agent, DeepSeek Harness — listado multi-harness notable. 1.427★ (MIT) — base para browser-use \"auditable por humanos\".\n- **`docker/docker-agent` baja el listón a \"un YAML y a correr\" para agentes AI**: 3.296★ (Apache-2.0), es un `docker agent` CLI plugin oficial de Docker Engineering. YAML declarativo, multi-agente, MCP tools, RAG pluggable (BM25/embeddings/híbrido + rerank), push de agentes a cualquier OCI registry. Movimientos como el de Hugging Face con su Inference Endpoints, pero para agentes.\n- **`cloudwego/eino` se posiciona como \"LangChain para Go, con composición en grafo\"**: 12.856★ (Apache-2.0, bytecode-verify Apache), followeado por 1.070 forks. Componentes reutilizables (ChatModel, Tool, Retriever), Agent Development Kit con interrupt/resume, composition en grafos. Es el framework AI en Go que faltaba (CloudWeGo es el equipo detrás de Kitex y Hertz).\n- **`CometixSpace/CCursor` aterriza \"Cursor con BYOK\"** con un proxy local embebido en el extension host de Cursor: 815★ (AGPL-3.0) intercepta ConnectRPC/REST y los redirige a Anthropic / OpenAI / Gemini o cualquier OpenAI-compatible. Toggle \"BYOK ↔ official\" en sidebar; 22 agent tools funcionales; hot-reload de `routes.json`. La opción si quieres Cursor pero sin la suscripción.\n- **`sapientinc/PRAXIST` aterriza \"research como proceso persistente\"**: 906★ (NOASSERTION — verificar LICENSE) por Sapient Inc. (LangChain veterano), trending en Python + Trendshift. Spawn paralelos de peers, evaluadores propiedad de cada task, evidencia durable, síntesis generation-to-generation. Diferencia vs DeepResearch: cada proyecto es un state machine largo, no un solo prompt.\n- **`calmrocks/ai-engineer-notebooks` rompe con \"framework-first\" en la educación AI Engineer**: 311★ (MIT) — notebooks Colab framework-free sobre la API de Groq (gratis), desde prompting hasta serving y fine-tuning con LoRA. Tres case studies (soporte en producción, cost battle pipeline-vs-agent, red-team benchmark). El complemento práctico del reciente `K-Dense-AI/scientific-agent-skills`.\nFuentes consultadas: Trendshift daily + GitHub Trending daily (general + TS + Python + Rust + Go + JavaScript), GitHub REST API para los 14 candidatos seleccionados. Blogwatcher no publicado hoy (2026-08-28).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "github/github-mcp-server",
+      "url": "https://github.com/github/github-mcp-server",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server oficial de GitHub**, mantenido por el propio GitHub. Permite a coding agents leer repositorios, navegar archivos, gestionar issues y PRs, inspeccionar workflows/actions, revisar Dependabot alerts, secret scanning y code patterns. Tiene una versión \"remote-hosted\" (`api.githubcopilot.com/mcp/`) y otra self-hosted (binario Go). Se distribuye bajo el SDK Go oficial con handlers OpenAPI generados.",
+        "por_que_importa": "El grafo ya tenía `mcp-server` como concepto transversal (Higress, workweave, docker-agent). El MCP oficial de GitHub es la pieza que faltaba para que el patrón \"coding agent con todas las capabilities GitHub vía natural language\" sea fiable y vendor-neutral, porque hasta ahora había que montar wrappers artesanales sobre la API REST de GitHub. Para un episodio \"Tu coding agent en modo power user\", `github/github-mcp-server` es prerequisite: con 32.571★ y mantenimiento directo de la organización GitHub, es el camino soportado y no un fork comunitario.",
+        "madurez_senales": "**32.571★** · 4.863 forks · **MIT** · Go · creado 2025-03-04 · último push 2026-08-27 · default branch `main` · topics: `github, mcp, mcp-server`. Mantenido por el propio GitHub (organización oficial). Compatible remote y local. Documentación con VS Code / VS Code Insiders / Visual Studio installers one-click.",
+        "accion_sugerida": "probar (instalar el remote-hosted en VS Code vía badge one-click o el binario self-hosted; conectar desde Claude Code/Codex; probar `list_repos`/`create_issue`/`get_actions_workflow_run`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:github/github-mcp-server",
+          "rel": "implements",
+          "dst": "concept:official-vendor-mcp-server",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:github/github-mcp-server",
+          "rel": "complements",
+          "dst": "repo:higress-group/higress",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:github/github-mcp-server",
+          "rel": "enables",
+          "dst": "concept:mcp-as-gateway-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:github/github-mcp-server",
+          "rel": "relevant_to",
+          "dst": "concept:coding-agent-power-user",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-github-mcp-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "higress-group/higress",
+      "url": "https://github.com/higress-group/higress",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Cloud-native API gateway basado en Istio + Envoy**, extendido con plugins Wasm (Go/Rust/JS). La capa AI ofrece un proxy unificado para todos los LLM providers mainstream (Alibaba/DashScope, OpenAI, Bedrock, Azure, etc.), hosting nativo de **MCP servers remotos** vía plugin Wasm, y una herramienta `openapi-to-mcpserver` que convierte OpenAPI specs en remote MCP servers. Es un **CNCF Sandbox project** (sin vendor lock-in). Hay una demo pública en `mcp.higress.ai/`.",
+        "por_que_importa": "Ya cubrimos workweave/router en el boletín del 2026-08-27 como model router semántico en Go bajo ELv2. Higress es la alternativa production-grade enterprise para ese mismo rol: viene de Alibaba (operator-grade a escala de su cloud), es CNCF Sandbox (vendor-neutral), corre sobre Istio/Envoy (battle-tested) y además soporta hosting de MCP servers — el \"AI Native API Gateway\" que un equipo de platform engineering despliega para centralizar tráfico LLM y MCP en un solo plano. El eje de decisión Higress (Apache-2.0, CNCF) vs workweave (ELv2) vs LiteLLM (Apache-2.0 pero sin hosting MCP) es exactamente \"qué eliges según tu escala\": Higress cuando ya tienes Istio/Envoy en producción y quieres convergencia gateway + AI + MCP.",
+        "madurez_senales": "**9.221★** · 1.257 forks · **Apache-2.0** · Go (con Envoy/Istio de fondo) · creado 2022-10-27 · último push 2026-08-27 · default branch `main` · topics: `ai-gateway, ai-native, api-gateway, cloud-native, envoy`. CNCF Sandbox, OpenSSF Best Practices badge, Discord oficial. Plugins Wasm prebuilt para dozens de casos. Listado de adoptantes en `ADOPTERS.md`.",
+        "accion_sugerida": "explorar (instalar via Docker con el comando de README; revisar el listado de plugins AI prebuilt; evaluar el tool `openapi-to-mcpserver` para exponer una API interna como MCP server).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:higress-group/higress",
+          "rel": "implements",
+          "dst": "concept:ai-native-api-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:higress-group/higress",
+          "rel": "implements",
+          "dst": "concept:wasm-plugin-extension",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:higress-group/higress",
+          "rel": "uses",
+          "dst": "concept:cncf-sandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:higress-group/higress",
+          "rel": "competes_with",
+          "dst": "repo:workweave/router",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:higress-group/higress",
+          "rel": "uses",
+          "dst": "concept:openapi-to-mcpserver",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "higress-group-higress",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Tencent/BrowserSkill",
+      "url": "https://github.com/Tencent/BrowserSkill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**CLI daemon + extensión Chrome/Edge** que da a AI agents acceso al browser logged-in del usuario sin interrumpir su trabajo. El agente invoca `bsk` con una skill exportada; la operación se abre en una \"Agent Window\" separada mientras tú sigues usando tu browser normal. Soporta Cursor, Claude Code, Codex, OpenClaw, CodeBuddy, WorkBuddy, Pi, **Hermes Agent** y DeepSeek Harness. El CLI se distribuye vía `curl | sh` (macOS/Linux/Windows).",
+        "por_que_importa": "Ya cubrimos browser-use/browser-use en el boletín del 2026-08-20 como la librería Python de referencia para browser automation de agentes. BrowserSkill no compite con ella: ocupa el hueco \"reuse real auth state via your browser extension\", exactamente la pieza que faltaba para casos en los que \"el agente tiene que tocar una pestaña donde ya estás logueado\" sin pedirte credenciales ni levantar un browser headless separado. El patrón human-in-loop (pausa cuando aparece captcha/login/dialog) es lo que productiviza el browser-use \"wild\" y lo baja a algo operable en horas de oficina. Tencent ya entró en nuestro radar el 2026-08-12 con otros repos; que BrowserSkill liste explícitamente a Hermes Agent entre los harnesses soportados confirma que la pieza encaja con lo que ya usamos. Asterisco de honestidad: la nota del grafo `vendor-readme-tencent-claims` aplica — los claims del README (soporte, madurez, roadmap Firefox) hay que validarlos antes de adoptarlo en producción.",
+        "madurez_senales": "**1.427★** · 112 forks · **MIT** · TypeScript (extensión + daemon) + Go/native bins · creado 2026-06-22 · último push 2026-08-28 · default branch `main` · topics: `agent, browser-use, dsh-plugin`. Lanzado oficialmente por Tencent (organización `@tencent`). Soporte Chrome y Edge; Firefox planeado. Instalación one-line para agentes shell-capable.",
+        "accion_sugerida": "explorar (instalar el CLI via `curl | sh`; cargar la extensión en Chrome; conectar desde Claude Code vía `bsk install-skill`; probar un flujo \"extrae este PDF abierto en tu browser\" para ver el patrón human-in-loop).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent/BrowserSkill",
+          "rel": "implements",
+          "dst": "concept:human-in-loop-browser-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent/BrowserSkill",
+          "rel": "implements",
+          "dst": "concept:extension-backed-browser-automation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent/BrowserSkill",
+          "rel": "complements",
+          "dst": "repo:browser-use/browser-use",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:Tencent/BrowserSkill",
+          "rel": "relevant_to",
+          "dst": "company:tencent",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:Tencent/BrowserSkill",
+          "rel": "risk",
+          "dst": "concept:vendor-readme-tencent-claims",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-browserskill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "docker/docker-agent",
+      "url": "https://github.com/docker/docker-agent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**CLI plugin `docker agent`** oficial de Docker Engineering para construir y correr agentes AI sin código. Tiene configuración YAML declarativa, multi-agent con delegación automática, ecosistema MCP (local, remoto o Docker-based) y provider-agnostic (OpenAI, Anthropic, Gemini, Bedrock, Mistral, xAI, Docker Model Runner). Incluye tools built-in: think, todo y memory; RAG pluggable (BM25/embeddings/hybrid + rerank); y push de agentes a cualquier OCI registry.",
+        "por_que_importa": "El grafo ya cubrió el concepto `mcp-server` en el boletín del 2026-08-24 con docker-agent justo como ejemplo de \"agentes en YAML declarativo con packaging OCI\". Lo que ese item no agotó es por qué este patrón importa en una empresa que ya usa Docker: docker-agent es la versión \"un solo comando\" que operations teams puede versionar, pasar por code review y desplegar como cualquier contenedor, porque el agente entero se pushea a un OCI registry y se corre como plugin del Docker CLI. Frente a alternativas Python tipo pydantic/pydantic-ai, docker-agent es la opción real \"infra-grade\" para una empresa que ya tiene Docker como plataforma: trae RAG pluggable (BM25/embeddings/hybrid + rerank), multi-agent con delegación automática y tools built-in (think, todo, memory) sin que tengas que montarlos tú.",
+        "madurez_senales": "**3.296★** · 444 forks · **Apache-2.0** · Go · creado 2025-09-01 · último push 2026-08-27 · default branch `main` · topics: `agents, ai`. Distribuido como Docker CLI plugin (pre-instalado en Docker Desktop 4.63+), Homebrew tap, binarios standalone. Documentación con onboarding paso a paso, sección \"set up a model\" con API key o local Docker Model Runner.",
+        "accion_sugerida": "probar (instalar el plugin vía `brew install docker-agent` o descargar release binary; definir un agente mínimo `agent.yaml` con OpenAI/Anthropic; correr `docker agent run`; publicar el agente a un OCI registry de pruebas).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "implements",
+          "dst": "concept:declarative-agent-yaml",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "implements",
+          "dst": "concept:oci-packaged-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "competes_with",
+          "dst": "repo:pydantic/pydantic-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "relevant_to",
+          "dst": "company:docker",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "docker-docker-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "cloudwego/eino",
+      "url": "https://github.com/cloudwego/eino",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Framework LLM en Go** de CloudWeGo (el equipo open-source de ByteDance detrás de Kitex, Hertz y Volcengine RPC). Ofrece componentes reutilizables (`ChatModel`, `Tool`, `Retriever`, `ChatTemplate`), un Agent Development Kit (ADK) con interrupt/resume para human-in-the-loop y composición en grafos (estilo **LangGraph**). Trae implementaciones oficiales para OpenAI y Ollama (y más en `eino-ext`). Está diseñado siguiendo convenciones Go (idiomático, no \"port of Python\").",
+        "por_que_importa": "El stack AI está dominado por frameworks Python (LangChain, LlamaIndex, Haystack, smolagents) y por ports forzados a Go tipo `tmc/langchaingo` que no aprovechan el lenguaje. Eino es la opción seria para empresas con stack Go (backend infra, K8s controllers, edge workers) que no quieren meter Python en producción, porque viene de CloudWeGo, el mismo equipo open-source de ByteDance detrás de Kitex y Hertz — saben escribir Go idiomático, no ports de Python. La composición en grafos estilo LangGraph y el patrón interrupt/resume llevan el estado agentic al lenguaje de Kubernetes. Para un episodio \"AI stack en Go\" es la pieza central: 12.856★, Apache-2.0 y release v* versionado.",
+        "madurez_senales": "*12.856★** · 1.070 forks · **Apache-2.0** · Go · creado 2024-12-04 · último push 2026-08-28 · default branch `main` · topics: `ai, ai-application, ai-framework, langchain, langchain-for-go, langchaingo, llm-application`. Cobertura del repositorio (badge), Go Report Card, release v* versionado. Repo hermano `eino-ext` con integraciones oficiales y `eino-examples` con recetas de uso.",
+        "accion_sugerida": "explorar (revisar `eino-examples` para ChatModelAgent con OpenAI/Ollama; armar un workflow graph-component para un caso RAG mínimo; comparar ergonomía con `tmc/langchaingo`; evaluar portabilidad a K8s controllers).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cloudwego/eino",
+          "rel": "implements",
+          "dst": "concept:go-llm-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudwego/eino",
+          "rel": "implements",
+          "dst": "concept:graph-composition-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudwego/eino",
+          "rel": "competes_with",
+          "dst": "repo:tmc/langchaingo",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudwego/eino",
+          "rel": "uses",
+          "dst": "concept:interrupt-resume-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudwego/eino",
+          "rel": "relevant_to",
+          "dst": "company:cloudwego-bytedance",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudwego-eino",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "CometixSpace/CCursor",
+      "url": "https://github.com/CometixSpace/CCursor",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Proxy BYOK embebido para Cursor IDE** mediante un `npx @cometix/ccursor install` que patchea el extension host. Intercepta el tráfico ConnectRPC/REST de Cursor y lo redirige a Anthropic, OpenAI, Gemini o cualquier endpoint OpenAI-compatible con tus API keys. Incluye una sidebar UI para toggle BYOK ↔ official, gestión visual de providers/modelos, 22 agent tools funcionales, hot-reload de `routes.json`, LogOutputChannel por ventana y persistence de conversaciones en SQLite.",
+        "por_que_importa": "El grafo ya tenía `leookun/cursor-byok` como la primera implementación BYOK para Cursor; CCursor es la versión \"proxy + sidebar UI + multi-provider\" que sube el listón de la categoría. Mientras leookun/cursor-byok resolvía \"redirige el tráfico a tus claves\", CCursor le añade toggle visual BYOK ↔ official, gestión de providers/modelos desde la sidebar, 22 agent tools funcionales, hot-reload de `routes.json` y persistencia de conversaciones en SQLite — el bundle completo que un equipo Cursor ya con claves propias quiere para no depender del plan Pro. La multiplicación de opciones BYOK (CCursor, leookun/cursor-byok, mksglu/context-mode) confirma que \"trae tu propio provider\" ya es categoría mainstream. Aviso de honestidad: la licencia es AGPL-3.0, lo que significa restricciones si quieres ofrecer un servicio hosted basado en él — antes de adopción comercial hay que leer el LICENSE.",
+        "madurez_senales": "**815★** · 139 forks · **AGPL-3.0** (SaaS-hosting abre código) · TypeScript + Node · creado 2026-04-10 · último push 2026-08-27 · default branch `main` · topics: `cursor`. Web propia `ccursor.cometix.dev`. Patches crean backups, reversibles con `uninstall`. Soporta macOS/Linux/Windows + Node 18+. Hub Integration vía LinuxDO Connect.",
+        "accion_sugerida": "explorar (instalar con `npx @cometix/ccursor install`; configurar tu provider Anthropic/OpenAI en sidebar; probar el flujo \"thinking enabled\" con Claude Sonnet 4; revisar la tabla de troubleshooting antes de uso en producción — el parche modifica archivos del extension host).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CometixSpace/CCursor",
+          "rel": "implements",
+          "dst": "concept:byok-cursor-extension",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CometixSpace/CCursor",
+          "rel": "complements",
+          "dst": "repo:leookun/cursor-byok",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CometixSpace/CCursor",
+          "rel": "uses",
+          "dst": "concept:connectrpc-intercept",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CometixSpace/CCursor",
+          "rel": "risk",
+          "dst": "concept:agpl-3.0-restriction",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cometixspace-ccursor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "sapientinc/PRAXIST",
+      "url": "https://github.com/sapientinc/PRAXIST",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Sistema autónomo de research \"medible y computer-executable\"**. Coordina \"research peers\" paralelos, evaluadores propiedad de cada task, evidencia durable entre generaciones y síntesis generación-a-generación. Trata la research como **proceso persistente**, no como una secuencia de prompts disconnected. La unidad de trabajo es un \"research project already running with measurable objective but unknown best path\". Instalación one-shot con `pip install \"praxist[agents,codex]\" && praxist setup --interactive --install-skills codex`. Tiene integración nativa con Codex (Codex-native mode sin API key) y Claude Code (runbook específico por host).",
+        "por_que_importa": "Ya cubrimos el riesgo `concept:noassertion-license` en el boletín del 2026-08-27 con workweave/router bajo ELv2. Praxist vuelve a levantar la misma bandera: LICENSE = NOASSERTION, hay que leer el LICENSE file antes de adopción comercial — el item no puede afirmar que sea open-source estándar sin esa verificación. Salvado ese asterisco, Praxist cierra un hueco real: el ecosistema tiene OpenDeepResearch y compañía para \"una pregunta puntual, devuelve un reporte\", pero le faltaba la versión research projects de larga duración con evidencia formal entre runs. Para un episodio \"research agent stacks en 2026\" es el tercer polo del triángulo: OpenDeepResearch (prompt único, reporte), Praxist (proceso persistente con evidencia entre generaciones) y Human-Scientist (HITL estructurado). Dato institucional relevante: Sapient Inc. es el ex-employer de Harrison Chase (fundador de LangChain), lo que da confianza sobre la dirección técnica pero no sustituye al LICENSE review.",
+        "madurez_senales": "**906★** · 113 forks · **NOASSERTION en API** (revisar LICENSE file) · Python · creado 2026-08-27 · último push 2026-08-28 · default branch `main` · topics vacíos. Edad de 1 día pero momentum fuerte en Trendshift #4 + Python trending. Wizards de setup separados \"fair source license + user agreement + privacy + runtime profile\". Documentación multiharness (Codex / Claude Code).",
+        "accion_sugerida": "explorar (instalar `praxist[agents,codex]`; completar setup wizard; abrir un proyecto research \"ya en ejecución\" y disparar `$praxist-takeover`; revisar el \"example takeover brief\" para entender el contrato project/evidence; **leer LICENSE file antes de uso comercial**).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:sapientinc/PRAXIST",
+          "rel": "implements",
+          "dst": "concept:persistent-research-process",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:sapientinc/PRAXIST",
+          "rel": "implements",
+          "dst": "concept:parallel-research-peers",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:sapientinc/PRAXIST",
+          "rel": "complements",
+          "dst": "concept:deepresearch-stack",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:sapientinc/PRAXIST",
+          "rel": "risk",
+          "dst": "concept:noassertion-license",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sapientinc-praxist",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "calmrocks/ai-engineer-notebooks",
+      "url": "https://github.com/calmrocks/ai-engineer-notebooks",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Notebooks Colab ejecutables** para el skill set AI Engineer / Forward Deployed Engineer. Filosofía \"framework-free, on purpose\": primero raw API calls, después frameworks (cuando entiendes qué abstraen). Tiene 12 secciones (prompting → serving → fine-tuning con LoRA → red-team benchmark), todo corre sobre la **API gratuita de Groq** (sin tarjeta), con dos apéndices opcionales en Colab-GPU verificados en T4. Incluye tres case studies end-to-end (support assistant en producción, cost showdown pipeline-vs-agent, red-team benchmark).",
+        "por_que_importa": "El grafo venía acumulando guías tipo \"intro LLM en 6 semanas\" al estilo fast.ai que se quedan en prompting y nunca llegan a evals. calmrocks es el primer repositorio-formación con la regla \"measure before you tune\" instalada desde el capítulo de evals y vuelta en cada sección posterior (fine-tuning, red-team) — exactamente la disciplina que separa \"ingeniero que shipa\" de \"demo builder\". Para una guía del episodio \"AI Engineer en 6 meses\" es el complemento práctico del plan FDE de calm.rocks: 12 notebooks Colab ejecutables, framework-free a propósito (primero raw API calls, después frameworks cuando ya entiendes qué abstraen), todo corre sobre la API gratuita de Groq sin tarjeta y termina con tres case studies end-to-end en producción. El detalle \"OpenAI-compatible\" lo hace portable a Anthropic con cambios menores, así que el lector no queda atado a un vendor.",
+        "madurez_senales": "**311★** · 19 forks · **MIT** · Jupyter Notebook · creado 2026-08-11 · último push 2026-08-28 · default branch `main` · topics: `agents, ai-engineer, ai-engineering, colab, evals, fine-tuning, forward-deployed-engineer, generative-ai`. Edad de 17 días. `Open In Colab` badges en cada notebook. README con explainer \"what makes this different\".",
+        "accion_sugerida": "leer (abrir 00-setup en Colab con una API key de Groq; correr las primeras 4 secciones; leer la sección de evals completa antes de empezar a tunear; revisar el case study \"support assistant debugged in production\" como material de un episodio sobre MLOps aplicada).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:calmrocks/ai-engineer-notebooks",
+          "rel": "implements",
+          "dst": "concept:framework-free-llm-curriculum",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:calmrocks/ai-engineer-notebooks",
+          "rel": "implements",
+          "dst": "concept:colab-runnable-handbook",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:calmrocks/ai-engineer-notebooks",
+          "rel": "relevant_to",
+          "dst": "concept:forward-deployed-engineer-role",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:calmrocks/ai-engineer-notebooks",
+          "rel": "complements",
+          "dst": "concept:openai-compatible-api",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "calmrocks-ai-engineer-notebooks",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "gastownhall/beads",
+      "url": "https://github.com/gastownhall/beads",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(26.664★, último push 2026-08-28, Go, MIT, topics `agents, claude-code, coding`) — \"Beads - A memory upgrade for your coding agent\". 26k★ en Go, misma categoría que `rohitg00/agentmemory` (en radar de ayer, 27k★).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el modelo de store de \"beads\" y compararlo con `agentmemory` y `thedotmack/claude-mem`; confirmar si es complementario o competencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gastownhall-beads",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "htdt/godogen",
+      "url": "https://github.com/htdt/godogen",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.451★, último push 2026-07-26, Python, MIT, topics `claude, claude-code, game-development, godot`) — \"Autonomous game development for Godot, Bevy, and Babylon.js with Claude Code and Codex\". Movimiento \"AI genera juegos completos\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar `godot/` y `bevy/` para entender el nivel de autonomía; comparar con `Roblox/roblox-mcp` style workflows)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "htdt-godogen",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "1weiho/open-slide",
+      "url": "https://github.com/1weiho/open-slide",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.211★, último push 2026-08-27, TypeScript, MIT, topics `agent, react, slides`) — \"A slide framework built for agents\". TS trending +15. Slide framework declarativo para agentes.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el formato de \"slide-as-data\" — ¿es un modelo de datos para que un agente genere presentaciones?, ¿cómo se compara con `tencent-pipeshub-ai/pipeshub-ai`?)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1weiho-open-slide",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "NeoLabHQ/context-engineering-kit",
+      "url": "https://github.com/NeoLabHQ/context-engineering-kit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.435★, último push 2026-08-26, TypeScript, **GPL-3.0**, topics `agent, claude, cursor, marketplace`) — \"Hand-crafted Claude Code Skills focused on improving agent results quality. Compatible with OpenCode, Cursor, Antigravity, Gemini CLI\". Marketplace vertical de skills de context-engineering.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar las skills top; evaluar el patrón \"context engineering\" vs \"prompt engineering\"; — notar GPL-3.0** para restricciones comerciales)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "neolabhq-context-engineering-kit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "experientiallabs/experiential",
+      "url": "https://github.com/experientiallabs/experiential",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(590★, último push 2026-08-28, Python, **Apache-2.0**) — \"An open source model gateway that provides one control plane across closed, open-source, local, and custom models\". Distinto de la descripción de Trendshift (\"world-model-as-a-harness\"); verificar la descripción en profundidad.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (leer README y `experientiallabs — ai` para diferenciar de LiteLLM/Higress/workweave)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "experientiallabs-experiential",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "opencost/opencost",
+      "url": "https://github.com/opencost/opencost",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.711★, último push 2026-08-26, Go, **Apache-2.0**, topics `aws, azure, cncf, cost, finops, k8s`) — \"Cost monitoring for Kubernetes workloads and cloud costs\", **CNCF Sandbox**, default branch `develop`.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": explorar (instalar `kubectl cost` o el Prometheus exporter; cruzar con `Last9-Actions/last9-actions` para cost-observability de coding agents)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opencost-opencost",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

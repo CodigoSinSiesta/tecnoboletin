@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-08-28",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "MCP se convierte en el plano de control de los coding agents",
+  "posicionamiento": "Tres hallazgos de hoy (github-mcp-server, higress, docker-agent) convierten MCP de \"protocolo experimental\" a plano de control serio: el vendor oficial cubre GitHub, el gateway enterprise lo hospeda en producción, y Docker lo trata como packaging OCI. BrowserSkill y eino bajan los dos huecos operativos que faltaban — browser logged-in reutilizable y framework LLM idiomático en Go.",
+  "convergencia_stack_css": "Tres piezas encajan con el stack local-first que defendemos: docker-agent resuelve \"agente como contenedor versionado\" sin meter Python en producción, eino lleva la composición agentic a Go para quien ya corre K8s controllers, y calmrocks/ai-engineer-notebooks da el currículo framework-free con evals antes de tuning. Higress cubre el hueco gateway AI/MCP que workweave (ELv2) no termina de cerrar.",
+  "cruzado_grafo": "El concepto `concept:mcp-server` se consolida hoy con su vendor oficial (github-mcp-server), su plano de hosting (higress) y su consumidor empaquetado (docker-agent, ya con primera mención 2026-08-24). Higress entra como competidor directo de workweave/router (primera mención 2026-08-27); BrowserSkill complementa a browser-use/browser-use (primera mención 2026-08-20); CCursor sube el listón BYOK sobre leookun/cursor-byok; Praxist vuelve a levantar la bandera `concept:noassertion-license` vista el 2026-08-27.",
+  "tendencias_5_boletines": "Los dos días previos venían marcando la frontera operativa del agente (memoria con benchmark, voz multi-agente, agentic commerce con credenciales). Hoy la frontera se desplaza al plano de control: MCP deja de ser pieza aislada para convertirse en infraestructura de vendor, y los frameworks agentic empiezan a tener versiones Go y YAML-declarativo con packaging OCI. Tendencia clara: lo que en agosto era prototipo, en septiembre ya tiene governance.",
+  "alertas": [
+    "CCursor (idx 5) y Praxist (idx 6) arrastran riesgos de licencia: AGPL-3.0 el primero, NOASSERTION el segundo — adopción comercial exige leer el LICENSE file antes de cerrar el caso.",
+    "BrowserSkill (idx 2) presume \"soporte para Hermes Agent\" en su README de Tencent; conviene verificar empíricamente que el daemon bsk funciona con nuestro setup antes de presentarlo como integrado.",
+    "github-mcp-server (idx 0) y docker-agent (idx 3) son piezas oficiales con traction real; no hay hype desproporcionado, pero el listón de \"oficial\" sube el coste de forks comunitarios que ya existían."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "higress vs workweave es el eje de decisión AI gateway de la semana: comparar hosting MCP nativo, licencia y curva Istio antes de cerrar un episodio sobre API gateway → AI gateway."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "github-mcp-server es prerequisite de cualquier episodio \"tu coding agent en modo power user\"; verificar qué subset de la API cubre frente a wrappers artesanales."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "BrowserSkill rellena el hueco \"browser logged-in\" que browser-use no cubre; probar el daemon bsk con Hermes Agent real para validar el claim del README de Tencent."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "eino es la pieza central de un futuro episodio \"AI stack en Go\" para empresas con backend infra en Go que rehúyen meter Python en producción."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 6,
+      "razon": "Praxist reabre la bandera noassertion-license que ya teníamos de workweave (2026-08-27); si la categoría \"research agent persistente\" despega, conviene una nota editorial sobre cómo auditar estas licencias."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
