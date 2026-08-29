@@ -1,0 +1,527 @@
+{
+  "version": 2,
+  "date": "2026-08-29",
+  "boletin_origen": "2026-08-29-trending.md",
+  "resumen_ejecutivo": "- **`diffusionstudio/editor` aterriza el \"video editor IDE para agentes\"**: 1.119★ en TypeScript (MPL-2.0), YC F24, módulos SolidJS como document source y CLI que deja al agente ver y oír el footage y cortar en timeline. Es el primer editor de video open-core donde el \"document model\" del editor es consumible por código, no solo por clics. Complementa la categoría \"agentes que editan multimedia\" donde antes había poco más que wrappers de FFmpeg.\n- **`microsoft/hve-core` formaliza \"Hypervelocity Engineering\" como metodología Microsoft oficial para GitHub Copilot**: 1.387★ (MIT) — agents + prompts + instructions + skills en un workflow RPI (research → plan → implement) opinionated. Es la respuesta Microsoft al problema \"el prompt-engineering es folklore\" y se presenta con un CAUTION claro: \"trátalo como fuente de patrones, no como platform estable\". El CAUTION en sí es la señal editorial.\n- **`miuuyy/codex-chatgpt-web` rompe el muro \"Codex Pro cuesta $200/mes o ChatGPT Pro se queda fuera del harness\"**: 1.865★ (MIT, 216 forks, creado 2026-07-26). Bridge local que mete ChatGPT Web —incluido Pro— como modelo nativo en el picker de Codex, conservando el task lifecycle, context, images y tool harness de Codex. Un clon rival `XiaoDuoYa/codex-with-chatgpt` (528★, 1 día de edad) intenta lo mismo — la idea ya tiene masa crítica.\n- **`Agenta-AI/agenta` se posiciona como el \"workspace de equipos para construir agentes\"**: 4.632★ (MIT + `ee/` Enterprise Edition), 649 forks, TS, mantenido desde 2023 con push hoy. Topics oficiales incluyen `agent-builder, agent-observability, agent-orchestration, agent-workspace`. Es la alternativa \"team-oriented\" frente a la explosión de single-developer agent frameworks.\n- **`Nanako0129/sepia` ataca \"el AI writing se delata por la arquitectura narrativa, no por las palabras\"**: 505★ (MIT), Agent Skill portable para Claude Code / Codex / Grok Build / Antigravity. Tres pasadas (narrativa → discurso → estilo) basadas en el paper StoryScope (Russell et al., 2026, arXiv:2604.03136, 61.608 stories) que midió que las features de estructura narrativa detectan AI fiction con 93.2% F1, casi inmune al surface-rewrite. Único en el espacio por basarse en literatura empírica.\n- **`hezo-ai/hezo` aterriza \"tu organización de agentes AI, self-hosted, con budget caps\"**: 363★ (GPL-3.0), TypeScript. Diferencia respecto a LangChain/AutoGen: el control plane trata a los agentes como empleados con sandbox + límites de gasto + secrets rotation. Una pieza para equipos que ya no confían en dejar agentes correr sin guardrails.\nFuentes consultadas: Trendshift daily + GitHub Trending daily (general + TS + Python + Go + Rust), GitHub REST API para los 17 candidatos del día. Blogwatcher no publicado hoy (2026-08-29).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "diffusionstudio/editor",
+      "url": "https://github.com/diffusionstudio/editor",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**editor de video open-core donde el \"document\" del editor es un árbol de módulos SolidJS**, no una timeline binaria. La promesa: editas en el canvas y el cambio aterriza en el código; editas el código y el canvas se redibuja. La CLI permite a agentes hacer `watch`/`listen` sobre el footage y cortar en timeline. Licencia MPL-2.0 para el editor y los módulos en GitHub; app de escritorio distribuida vía DMG.",
+        "por_que_importa": "el grafo ya acumulaba `concept:agentic-video-production` desde el boletín del 2026-08-12, pero las implementaciones que llegaron eran wrappers de FFmpeg o nubes SaaS. **Diffusion Studio es la primera implementación open-source donde el \"document\" del editor es consumible por código**: el agente puede importar el mismo módulo que ve el humano, mutar y dejar que el canvas reaccione. Para un episodio \"agentes que editan multimedia\" cambia la foto: ya no estamos pegando comandos ffmpeg, estamos programando contra un AST (árbol sintáctico abstracto) de edición. YC F24 + release macOS arm64 + Discord público son señales de un equipo detrás, no un side-project.",
+        "madurez_senales": "**1.119★** · 76 forks · **MPL-2.0** · TypeScript (SolidJS) · creado 2026-06-18 · último push 2026-08-28 · default branch `main` · topics vacíos pero `npx skills add diffusionstudio/skills` en README (skills marketplace). YC F24 badge. Discord + X oficiales. App de escritorio para macOS Apple Silicon; binarios firmados.",
+        "accion_sugerida": "explorar (instalar el DMG arm64; abrir `app.diffusion.studio`; revisar `diffusionstudio/skills` para el API concreto del CLI; probar `npx skills add` y un flujo de import + transcoding).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:diffusionstudio/editor",
+          "rel": "implements",
+          "dst": "concept:agent-video-editor",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:diffusionstudio/editor",
+          "rel": "implements",
+          "dst": "concept:document-as-code-editor",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:diffusionstudio/editor",
+          "rel": "uses",
+          "dst": "tool:solidjs",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:diffusionstudio/editor",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-video-production",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:diffusionstudio/editor",
+          "rel": "risk",
+          "dst": "concept:vendor-readme-traffic-claim",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diffusionstudio-editor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "microsoft/hve-core",
+      "url": "https://github.com/microsoft/hve-core",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**colección de Hypervelocity Engineering (HVE) Core components**: agents + prompts + coding instructions + skills, diseñados para que el trabajo AI-assisted sea \"repeatable, standards-aligned, and scalable across individuals and teams\". Metodología RPI (research → plan → implement) como columna vertebral. El repositorio declara agentes especializados (research, planning, implementation, review) y un sistema de prompts reutilizables como entry points. Microsoft como owner institucional.",
+        "por_que_importa": "el grafo acumulaba docenas de \"awesome prompts for Claude/Copilot\" y skills sueltas, y `concept:agent-skill-registry` ya apareció en el boletín del 2026-08-16 con K-Dense-AI/scientific-agent-skills; el ángulo Microsoft también entró el 2026-08-21. **HVE Core es la primera respuesta Microsoft-oficial a \"el prompt-engineering es folklore\"** con agents, prompts, instructions y skills tratados como una sola unidad bajo metodología RPI (Research → Plan → Implement, tres fases que separan explorar, decidir y construir). El detalle editorial más interesante: el README abre con un CAUTION explícito — \"highly opinionated, rapidly evolving... best treated as a source of patterns and learning rather than a stable platform\". Eso es señal de madurez (saben que no es un package, es una metodología) y señal editorial (merece un episodio \"qué patrones copias, cuáles ignoras\"). Para CSS, la conexión es: si recomiendas HVE patterns, el CAUTION te blinda del típico \"y si cambia todo en 3 meses\".",
+        "madurez_senales": "**1.387★** · 276 forks · **MIT** · Python · creado 2026-07-07 · último push 2026-08-29 · default branch `main` · topics vacíos. Microsoft org como owner. OpenSSF Scorecard + Best Practices badge. Docs oficiales en `microsoft.github.io/hve-core`. CI + CodeQL workflows. Release pipeline oficial (release-stable.yml).",
+        "accion_sugerida": "explorar (clonar el repo; leer `docs/` y `agents/` para entender el contrato research/plan/implement; instalar al menos el `research` agent en VS Code Copilot; tratar el CAUTION como feature, no como bug — extraer 5 patterns y olvidarse del resto).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/hve-core",
+          "rel": "implements",
+          "dst": "concept:hypervelocity-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/hve-core",
+          "rel": "implements",
+          "dst": "concept:rpi-methodology",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/hve-core",
+          "rel": "uses",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": "2026-08-16"
+        },
+        {
+          "src": "repo:microsoft/hve-core",
+          "rel": "relevant_to",
+          "dst": "company:microsoft",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "repo:microsoft/hve-core",
+          "rel": "risk",
+          "dst": "concept:opinionated-rapidly-evolving",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/hve-core",
+          "rel": "complements",
+          "dst": "repo:K-Dense-AI/scientific-agent-skills",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-hve-core",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "miuuyy/codex-chatgpt-web",
+      "url": "https://github.com/miuuyy/codex-chatgpt-web",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**bridge local tipo Responses** que mete ChatGPT Web (cuentas Free, Go, Plus, **Pro**) como modelo nativo del picker de Codex. Free y Go exponen el tier \"Luna\"; las cuentas con selector de razonamiento conservan Instant / Medium / High / Extra High / Pro según la suscripción. El bridge envía el contexto del task Codex compilado a un ChatGPT Temporary Chat task-bound, adjunta imágenes, y streamea reasoning visible + tool activity + Markdown de vuelta al mismo task Codex. El modo MCP (full) reconecta las tools del mismo Codex task al ChatGPT Temporary Chat hasta el próximo compaction boundary. Binarios multiplataforma: macOS arm64/x64, Windows x64 y Linux x64. OpenSSF-style badges, CI, **sin API keys, sin fees** — usa la suscripción a ChatGPT.",
+        "por_que_importa": "el patrón \"BYOK\" (Bring Your Own Key, trae tu propia clave de API) entró al grafo el 2026-08-28 con `concept:byok-cursor-extension` y resolvía \"tengo API keys pero no quiero Cursor Pro\". **codex-chatgpt-web resuelve el problema opuesto**: tengo ChatGPT Pro (que ya pagué), ¿cómo lo uso como motor en otros harnesses sin piratear el cliente? La pieza clave: **no es scraping**, es un embedded browser (un navegador embebido dentro del propio binario, que controla la sesión sin intermediarios) que mantiene el context lifecycle de Codex intacto — el agente sigue siendo Codex, solo cambia el modelo. El modo MCP reconecta las tools del mismo Codex task al ChatGPT Temporary Chat hasta el próximo compaction (la compactación es el punto donde el modelo resume y descarta historial antiguo para liberar ventana de contexto). Caveat editorial: usar una suscripción web como backend de un harness choca con los términos de servicio de OpenAI; si OpenAI decide cerrar la puerta, este tipo de puente se rompe solo. Para CSS, el ángulo es: la categoría \"BYOK-inverso\" se formaliza con dos implementaciones paralelas en la misma semana — clara señal de tracción.",
+        "madurez_senales": "**1.865★** · 216 forks · **MIT** · TypeScript + Go (binarios) · creado 2026-07-26 (`miuuyy`) · último push 2026-08-29 · default branch `main` · topics: `chatgpt, chatgpt-pro, codex, free-ai, macos, mcp`. Pipeline CI + binarios firmados para las 3 plataformas. `XiaoDuoYa/codex-with-chatgpt` (528★, 1 día de edad) implementa la misma idea con énfasis en \"ChatGPT plans + Codex harness\" — clon rival legítimo (parent=None en API, pero cronología sugiere re-implementación).",
+        "accion_sugerida": "explorar (instalar binario macOS arm64; abrir Codex; verificar que aparece \"ChatGPT Web\" en el model picker; probar un task de codificación pequeño; revisar `XiaoDuoYa/codex-with-chatgpt` para comparar ergonomía antes de recomendar uno).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:miuuyy/codex-chatgpt-web",
+          "rel": "implements",
+          "dst": "concept:codex-harness-bridge",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:miuuyy/codex-chatgpt-web",
+          "rel": "implements",
+          "dst": "concept:subscription-model-bridge",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:miuuyy/codex-chatgpt-web",
+          "rel": "complements",
+          "dst": "concept:byok-cursor-extension",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:miuuyy/codex-chatgpt-web",
+          "rel": "risk",
+          "dst": "concept:embedded-browser-tos-fragility",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:XiaoDuoYa/codex-with-chatgpt",
+          "rel": "competes_with",
+          "dst": "repo:miuuyy/codex-chatgpt-web",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "miuuyy-codex-chatgpt-web",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Agenta-AI/agenta",
+      "url": "https://github.com/Agenta-AI/agenta",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**workspace colaborativo donde equipos construyen agentes y automatizaciones**. Mantenido desde 2023-04-26 (más de 3 años de historia) con push hoy. Topics oficiales: `agent-builder, agent-observability, agent-orchestration, agent-workspace, agentic-ai, ai-agent`. La propuesta se centra en cuatro primitivas: build (editor visual + SDK), observe (tracing + evals), orchestrate (chains + workflows) y deploy (managed o self-hosted). Web comercial `agenta.ai` para SaaS; el repo es el OSS core.",
+        "por_que_importa": "el grafo ya tenía `concept:human-agent-workspace` y `concept:local-first-agent-workspace`, y la orquestación multi-agente entró el 2026-08-27 vía `concept:multi-agent-orchestration`. **Agenta-AI/agenta es la versión \"team-oriented\"**: pensada para que un equipo (no un dev solo) construya, evalúe y comparta agentes. Las cuatro primitivas que ofrece — build, observe, orchestrate y deploy — atacan cada una un dolor distinto del ciclo de vida (construir, medir, coordinar y poner en producción), no solo el de escribir prompts. Para CSS, el ángulo es: en un mercado saturado de \"framework agent\", Agenta-AI es uno de los pocos que lleva más de 3 años, tiene 4.6k★ y se mantiene en tendencias (entró hoy en GH Trending). El asterisco editorial: el LICENSE es dual — MIT para todo lo que no esté en `ee/` (Enterprise Edition), que tiene su propia licencia. Es razonablemente open source, pero hay que leer `LICENSE` y `ee/LICENSE` antes de uso comercial.",
+        "madurez_senales": "**4.632★** · 649 forks · **MIT + ee/** (no NOASSERTION — el LICENSE es claro y dual) · TypeScript (frontend + SDK) + Python (backend) · creado 2023-04-26 · último push 2026-08-29 · default branch `main` · topics: `agent-builder, agent-observability, agent-orchestration, agent-workspace, agentic-ai, ai-agent`. Web comercial propia (agenta.ai). Discord/Slack oficiales. 3+ años de releases continuos.",
+        "accion_sugerida": "explorar (clonar y arrancar con `docker-compose` desde docs; crear un agente simple en el editor visual; revisar la sección de observability/tracing; comparar con `pydantic/pydantic-ai` para evaluar si vale el peso del workspace frente a librería pura; **leer LICENSE y `ee/LICENSE` antes de cualquier uso comercial**).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Agenta-AI/agenta",
+          "rel": "implements",
+          "dst": "concept:team-agent-workspace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Agenta-AI/agenta",
+          "rel": "implements",
+          "dst": "concept:agent-observability",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Agenta-AI/agenta",
+          "rel": "complements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:Agenta-AI/agenta",
+          "rel": "relevant_to",
+          "dst": "concept:human-agent-workspace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Agenta-AI/agenta",
+          "rel": "risk",
+          "dst": "concept:dual-license-ee",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agenta-ai-agenta",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Nanako0129/sepia",
+      "url": "https://github.com/Nanako0129/sepia",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Agent Skill portable para Claude Code / Codex / Grok Build / Antigravity** que repara escritura \"AI-sounding\" en la capa que de verdad la delata. Filosofía contra-corriente: no toca palabras ni sintaxis — ataca la **arquitectura narrativa**. Tres pasadas: (1) arquitectura narrativa (ficción), (2) discourse flow, (3) surface style. Para professional prose (release notes, PR replies, postmortems, tickets, technical articles) cada venue tiene su propio rule file sobre un checklist compartido. Base científica: StoryScope (Russell et al., 2026, 61.608 stories) mostró que un clasificador con solo features de estructura narrativa detecta AI fiction con 93.2% macro-F1, y editar la superficie apenas lo mueve (95.5% → 93.9%). Cita 11 estudios relacionados en `research/`. Regla operativa: **calibrate to the human distribution, don't invert the AI one** — humans en valores moderados; aplicar todas las reglas crea un nuevo fingerprint.",
+        "por_que_importa": "`concept:agent-skill-registry` ya entró al grafo el 2026-08-16 con la explosión de \"skills\" vistas en los últimos boletines (mattpocock/skills, paperthin, scientific-agent-skills, etc.). **Sepia es la primera skill de su categoría que se vende con paper empírico en arXiv como base**: StoryScope (Russell et al., 2026, 61.608 stories) midió que un clasificador con solo features de estructura narrativa detecta AI fiction con 93.2% de macro-F1 (media armónica de precisión y recall entre clases), y editar la superficie apenas lo mueve (95.5% → 93.9%). La conclusión operativa — \"calibrate to the human distribution, don't invert the AI one\" — es contraintuitiva: aplicar todas las reglas genera un nuevo fingerprint detectable, así que hay que quedarse en 3-5 moves por historia y dejar margen. Único en el espacio por ser framework-agnostic (un solo `SKILL.md` que funciona en Claude Code, Codex, Grok Build y Antigravity, sin forks por plataforma), por su base académica (11 estudios en `research/`) y por la regla operativa counterintuitive. Para un episodio \"skills con peer-review\" es caso de estudio. Caveat: solo 505★ y 24 forks — está naciendo.",
+        "madurez_senales": "**505★** · 24 forks · **MIT** · Shell (Claude/Codex skill) · creado 2026-08-23 · último push 2026-08-29 · default branch `main` · topics: `agent-skills, ai-writing, antigravity, claude-code, codex, developer-tools`. Paper base StoryScope (arXiv:2604.03136). README bilingüe (EN + zh-TW). Cita 11 papers relacionados en `research/`. 30-feature diagnosis rubric + per-model fingerprint corrections (Claude, GPT, Gemini, DeepSeek, Kimi). Cuatro ops: write / review / refactor / recreate.",
+        "accion_sugerida": "leer (instalar la skill en Claude Code; correr la op `review` sobre un texto propio; leer `research/` para entender qué papers sustentan las reglas; comparar la regla \"3-5 moves y deja slack\" con tu propio detector humano — útil para entender por qué tus propias ediciones AI-writing siguen sonando a AI).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Nanako0129/sepia",
+          "rel": "implements",
+          "dst": "concept:de-ai-writing-skill",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Nanako0129/sepia",
+          "rel": "implements",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": "2026-08-16"
+        },
+        {
+          "src": "repo:Nanako0129/sepia",
+          "rel": "uses",
+          "dst": "paper:storyscope-2026",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Nanako0129/sepia",
+          "rel": "complements",
+          "dst": "repo:K-Dense-AI/scientific-agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Nanako0129/sepia",
+          "rel": "relevant_to",
+          "dst": "concept:framework-agnostic-skill-spec",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nanako0129-sepia",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "hezo-ai/hezo",
+      "url": "https://github.com/hezo-ai/hezo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**plataforma self-hosted para correr equipos de agentes AI** tratados como empleados: sandbox, budget caps, secrets rotation, multi-modelo con tus propias API keys. Stack TS, UI en 12 idiomas (incluido español). Distribuida vía install script one-shot. Claim clave: los agentes no tienen acceso directo a tus secrets — el runtime los inyecta cuando los necesita y los rota. Modelo agents-as-employees: cada agente tiene rol, presupuesto y permisos.",
+        "por_que_importa": "`concept:multi-agent-orchestration` ya entró al grafo el 2026-08-27 con frameworks tipo AutoGen, crewAI y LangGraph, y la restricción GPL-3.0 como riesgo editorial se vio el 2026-08-28. **Hezo aterriza la pieza operativa que esos frameworks no resuelven**: \"cómo un equipo opera agentes sin que se les vaya de manos\". Concretamente: sandbox (aislar al agente en un entorno restringido para que no toque tu sistema), budget caps (tope de gasto por agente) y secrets rotation (rotar claves automáticamente para que el agente nunca vea la clave en texto plano). La promesa \"agents nunca tienen tus secrets\" es el ángulo concreto para empresas donde el dev quiere delegar tareas reales a un agente, pero el security team no va a aprobar \"el agente tiene la API key de Stripe\". Caveat de licencia: GPL-3.0 cubre el self-hosted interno sin restricción, pero ofrecer Hezo como servicio a terceros obliga a abrir el código de tu servicio — decisión que hay que tomar antes de adoptarlo.",
+        "madurez_senales": "**363★** · 92 forks · **GPL-3.0-or-later** · TypeScript · creado 2026-04-29 · último push 2026-08-29 · default branch `main` · topics: `ai`. Web propia `hezo.ai`. UI en 12 idiomas. Coveralls + CI. Install script firmado. Discord + X oficiales. Creado en abril 2026, traction en TS trending hoy.",
+        "accion_sugerida": "explorar (correr el install script en una VM de pruebas; crear 2-3 \"agentes-empleado\" con roles distintos; probar el budget cap asignando un límite diario a uno; evaluar si el modelo \"agent-as-employee\" encaja en tu setup o si prefieres el patrón \"agent-as-tool\" de LangGraph).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:hezo-ai/hezo",
+          "rel": "implements",
+          "dst": "concept:self-hosted-agent-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hezo-ai/hezo",
+          "rel": "implements",
+          "dst": "concept:agent-budget-caps",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hezo-ai/hezo",
+          "rel": "implements",
+          "dst": "concept:agent-secrets-rotation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:hezo-ai/hezo",
+          "rel": "complements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:hezo-ai/hezo",
+          "rel": "risk",
+          "dst": "concept:gpl-3.0-restriction",
+          "primera_mencion": "2026-08-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hezo-ai-hezo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "openJiuwen-ai/jiuwenswarm",
+      "url": "https://github.com/openJiuwen-ai/jiuwenswarm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.844★, último push 2026-08-29, Python, Apache-2.0, default branch `develop`) — \"JiuwenSwarm is an intelligent AI Agent built on openJiuwen, extends LLM capabilities to your fingertips through various communication apps you use daily\". Plataforma multi-canal de agentes del equipo openJiuwen.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el README y los canales soportados; comparar con `ComposioHQ/composio` y `LangChainHub/langchain-mcp` para entender qué primitiva resuelve)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openjiuwen-ai-jiuwenswarm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Lakr233/vphone-cli",
+      "url": "https://github.com/Lakr233/vphone-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(8.858★, último push 2026-08-29, Swift, MIT) — \"Boot a virtual iPhone via Apple's Virtualization.framework using PCC research VM infrastructure\". Investigación de jailbreak en Apple Silicon, SIP/AMFI relaxation, build con Xcode + iOS SDK cross-compile.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (fuera del scope principal de CSS pero interesante para seguridad móvil; revisar `Lakr233` profile y su historial de tools jailbreak)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lakr233-vphone-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "jprx/darwin-vm",
+      "url": "https://github.com/jprx/darwin-vm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(357★, último push 2026-08-27, Python, MIT) — \"Run iOS/macOS in Qemu, supports emulating iPhone 17-12 and M5-M1 Macs, debug kernel + edit root filesystem + root shell + custom programs\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar `run — sh` y la lista de A14-A19 chips soportados; comparar con vphone-cli para entender la diferencia PCC-VM vs Qemu)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jprx-darwin-vm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "chrisgreg/boop",
+      "url": "https://github.com/chrisgreg/boop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(226★, último push 2026-08-28, Go, MIT) — \"A tiny, self-hosted notification inbox for developers. Something happened in one of your apps; Boop tells you on your phone\". Patrón \"inbox de notificaciones self-hosted\" para devs.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": leer (instalar vía docker; conectar un par de webhooks; revisar el formato del payload; comparar con `nocodb/nocodb` y `ntfy`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chrisgreg-boop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "martin-olivier/airgorah",
+      "url": "https://github.com/martin-olivier/airgorah",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.569★, último push 2026-08-28, Rust, MIT, topics `aircrack-ng, gui, kali, security`) — \"A WiFi security auditing software mainly based on aircrack-ng tools suite\". GUI GTK4 sobre aircrack-ng para auditoría WiFi legal (solo redes propias).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (instalar vía `cargo` o AUR; revisar qué ataques implementa vs aircrack-ng CLI puro)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "martin-olivier-airgorah",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "stemdeckapp/stemdeck",
+      "url": "https://github.com/stemdeckapp/stemdeck",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.681★, último push 2026-08-29, JavaScript, Apache-2.0) — \"StemDeck is a modern stem extraction platform for musicians, isolate vocals/drums/bass/piano/guitar for practice, transcription, remixing\". Web app + Discord + Reddit + Instagram oficiales.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": probar (visitar `stemdeck — app`; subir una canción; probar vocal isolation; revisar si la calidad rivaliza con `uvr5` o `demucs`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stemdeckapp-stemdeck",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "abi/screenshot-to-code",
+      "url": "https://github.com/abi/screenshot-to-code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(75.687★, último push 2026-08-14, Python, MIT) — \"Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)\". Veterano (2023-11), 75k★, sigue activo. Sin ángulo editorial para principal, pero el ecosistema \"screenshot-to-code\" está madurando con LLMs multimodales.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (revisar el changelog reciente para entender qué tanto mejoró con visión LLM 2026; comparar con `Anthropic`'s Artifacts y `vercel-labs/agent-browser` para entender qué hueco queda)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "abi-screenshot-to-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

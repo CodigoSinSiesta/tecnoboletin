@@ -1,0 +1,57 @@
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-diffusionstudio-editor", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-diffusionstudio-editor", "dst": "tema:diffusionstudio-editor", "rel": "trata", "added": "2026-08-29"}
+{"src": "repo:diffusionstudio/editor", "dst": "concept:agent-video-editor", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:diffusionstudio/editor", "dst": "concept:document-as-code-editor", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:diffusionstudio/editor", "dst": "tool:solidjs", "rel": "uses", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:diffusionstudio/editor", "dst": "concept:agentic-video-production", "rel": "relevant_to", "added": "2026-08-29", "primera_mencion": "2026-08-12"}
+{"src": "repo:diffusionstudio/editor", "dst": "concept:vendor-readme-traffic-claim", "rel": "risk", "added": "2026-08-29", "primera_mencion": null}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-microsoft-hve-core", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-microsoft-hve-core", "dst": "tema:microsoft-hve-core", "rel": "trata", "added": "2026-08-29"}
+{"src": "repo:microsoft/hve-core", "dst": "concept:hypervelocity-engineering", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:microsoft/hve-core", "dst": "concept:rpi-methodology", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:microsoft/hve-core", "dst": "concept:agent-skill-registry", "rel": "uses", "added": "2026-08-29", "primera_mencion": "2026-08-16"}
+{"src": "repo:microsoft/hve-core", "dst": "company:microsoft", "rel": "relevant_to", "added": "2026-08-29", "primera_mencion": "2026-08-21"}
+{"src": "repo:microsoft/hve-core", "dst": "concept:opinionated-rapidly-evolving", "rel": "risk", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:microsoft/hve-core", "dst": "repo:K-Dense-AI/scientific-agent-skills", "rel": "complements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-miuuyy-codex-chatgpt-web", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-miuuyy-codex-chatgpt-web", "dst": "tema:miuuyy-codex-chatgpt-web", "rel": "trata", "added": "2026-08-29"}
+{"src": "repo:miuuyy/codex-chatgpt-web", "dst": "concept:codex-harness-bridge", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:miuuyy/codex-chatgpt-web", "dst": "concept:subscription-model-bridge", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:miuuyy/codex-chatgpt-web", "dst": "concept:byok-cursor-extension", "rel": "complements", "added": "2026-08-29", "primera_mencion": "2026-08-28"}
+{"src": "repo:miuuyy/codex-chatgpt-web", "dst": "concept:embedded-browser-tos-fragility", "rel": "risk", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:XiaoDuoYa/codex-with-chatgpt", "dst": "repo:miuuyy/codex-chatgpt-web", "rel": "competes_with", "added": "2026-08-29", "primera_mencion": null}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-agenta-ai-agenta", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-agenta-ai-agenta", "dst": "tema:agenta-ai-agenta", "rel": "trata", "added": "2026-08-29"}
+{"src": "repo:Agenta-AI/agenta", "dst": "concept:team-agent-workspace", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:Agenta-AI/agenta", "dst": "concept:agent-observability", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:Agenta-AI/agenta", "dst": "concept:multi-agent-orchestration", "rel": "complements", "added": "2026-08-29", "primera_mencion": "2026-08-27"}
+{"src": "repo:Agenta-AI/agenta", "dst": "concept:human-agent-workspace", "rel": "relevant_to", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:Agenta-AI/agenta", "dst": "concept:dual-license-ee", "rel": "risk", "added": "2026-08-29", "primera_mencion": null}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-nanako0129-sepia", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-nanako0129-sepia", "dst": "tema:nanako0129-sepia", "rel": "trata", "added": "2026-08-29"}
+{"src": "repo:Nanako0129/sepia", "dst": "concept:de-ai-writing-skill", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:Nanako0129/sepia", "dst": "concept:agent-skill-registry", "rel": "implements", "added": "2026-08-29", "primera_mencion": "2026-08-16"}
+{"src": "repo:Nanako0129/sepia", "dst": "paper:storyscope-2026", "rel": "uses", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:Nanako0129/sepia", "dst": "repo:K-Dense-AI/scientific-agent-skills", "rel": "complements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:Nanako0129/sepia", "dst": "concept:framework-agnostic-skill-spec", "rel": "relevant_to", "added": "2026-08-29", "primera_mencion": null}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-hezo-ai-hezo", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-hezo-ai-hezo", "dst": "tema:hezo-ai-hezo", "rel": "trata", "added": "2026-08-29"}
+{"src": "repo:hezo-ai/hezo", "dst": "concept:self-hosted-agent-runtime", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:hezo-ai/hezo", "dst": "concept:agent-budget-caps", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:hezo-ai/hezo", "dst": "concept:agent-secrets-rotation", "rel": "implements", "added": "2026-08-29", "primera_mencion": null}
+{"src": "repo:hezo-ai/hezo", "dst": "concept:multi-agent-orchestration", "rel": "complements", "added": "2026-08-29", "primera_mencion": "2026-08-27"}
+{"src": "repo:hezo-ai/hezo", "dst": "concept:gpl-3.0-restriction", "rel": "risk", "added": "2026-08-29", "primera_mencion": "2026-08-28"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-openjiuwen-ai-jiuwenswarm", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-openjiuwen-ai-jiuwenswarm", "dst": "tema:openjiuwen-ai-jiuwenswarm", "rel": "trata", "added": "2026-08-29"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-lakr233-vphone-cli", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-lakr233-vphone-cli", "dst": "tema:lakr233-vphone-cli", "rel": "trata", "added": "2026-08-29"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-jprx-darwin-vm", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-jprx-darwin-vm", "dst": "tema:jprx-darwin-vm", "rel": "trata", "added": "2026-08-29"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-chrisgreg-boop", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-chrisgreg-boop", "dst": "tema:chrisgreg-boop", "rel": "trata", "added": "2026-08-29"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-martin-olivier-airgorah", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-martin-olivier-airgorah", "dst": "tema:martin-olivier-airgorah", "rel": "trata", "added": "2026-08-29"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-stemdeckapp-stemdeck", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-stemdeckapp-stemdeck", "dst": "tema:stemdeckapp-stemdeck", "rel": "trata", "added": "2026-08-29"}
+{"src": "boletin:2026-08-29", "dst": "item:https-github-com-abi-screenshot-to-code", "rel": "menciona", "added": "2026-08-29"}
+{"src": "item:https-github-com-abi-screenshot-to-code", "dst": "tema:abi-screenshot-to-code", "rel": "trata", "added": "2026-08-29"}

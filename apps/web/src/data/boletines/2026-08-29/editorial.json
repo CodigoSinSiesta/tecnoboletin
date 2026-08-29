@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-08-29",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El agente sale del chat y entra a la pipeline: video, secrets y methodology",
+  "posicionamiento": "Los seis hallazgos de hoy comparten un mismo desplazamiento: el agente deja de ser un chat con tools y pasa a operar sobre assets reales (footage, secrets, metodologías de ingeniería, repositorios empresariales). diffusionstudio/editor trata el timeline como un AST programable; hezo aisla al agente de las claves; microsoft/hve-core formaliza cómo un equipo entero debe trabajar con Copilot; Agenta-AI/agenta añade el observability que faltaba al ciclo. La pregunta común ya no es 'qué modelo uso' sino 'qué política de operación le pongo encima'.",
+  "convergencia_stack_css": "Tres piezas calzan con líneas editoriales conocidas de CSS: hezo-ai/hezo aterriza la pieza operativa (sandbox + secrets + budget) que el stack local-first necesita para no quedarse en 'demo de localhost'; Agenta-AI/agenta cubre el observability que el knowledge graph PGLite local nunca resolvió; y microsoft/hve-core formaliza la metodología que un editor con agent-skills viene pidiendo desde la skill registry del 2026-08-16.",
+  "cruzado_grafo": "Hoy se refuerzan cuatro nodos ya presentes en el grafo: `concept:agentic-video-production` (primera mención 2026-08-12) recibe su primera implementación open-source de verdad vía diffusionstudio/editor; `concept:agent-skill-registry` (2026-08-16) crece con Nanako0129/sepia y microsoft/hve-core como complemento a K-Dense-AI; `concept:multi-agent-orchestration` (2026-08-27) se complementa con Agenta-AI/agenta y hezo-ai/hezo. Los riesgos `concept:gpl-3.0-restriction` (2026-08-28) y `concept:dual-license-ee` reaparecen con hezo y Agenta-AI.",
+  "tendencias_5_boletines": "Mirando2026-08-27 y 2026-08-28 la línea es clara: el boletín del 27 puso la capa de frameworks agentic (Maka, RocketRide, HydraDB), el del 28 sumó el plano de control MCP (github-mcp-server, higress) y los huecos operativos (browser logged-in, BYOK). Hoy cierra el triángulo con la capa de policies: video programable, secrets aislados, metodología opinionated, observability de equipo y self-hosted runtime. La secuencia cuenta una historia completa de cómo una pila agentic pasa de prototipo a operación seria.",
+  "alertas": [
+    "hezo-ai/hezo y Agenta-AI/agenta arrastran riesgos de licencia reales: GPL-3.0 en hezo cierra la puerta a uso comercial cerrado, y el dual license con tier EE en Agenta-AI obliga a auditar qué partes son MIT y cuáles no.",
+    "miuuyy/codex-chatgpt-web depende de un embedded browser contra la sesión web de OpenAI; el riesgo `concept:embedded-browser-tos-fragility` no es teórico, basta un cambio de UI upstream para que el bridge deje de funcionar.",
+    "microsoft/hve-core se declara 'highly opinionated, rapidly evolving' en su propio README; tratarlo como plataforma estable es leer mal la señal editorial del vendor.",
+    "Los claims de tráfico en diffusionstudio/editor (tráfico de 'miles de creadores') no se han verificado contra fuente externa; el vendor-readme traffic claim queda marcado como riesgo pendiente."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Diffusion Studio cambia la foto del nodo `concept:agentic-video-production`: vale dedicarle una pieza propia cuando el AST del editor esté más maduro, ahora mismo es prospecto a vigilar."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "HVE Core es metodología Microsoft oficial; si la capa de skills se estandariza, conviene chequear en 2-3 boletines si Microsoft la separa en packages o se la queda como monolito."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "codex-chatgpt-web completa el patrón BYOK visto el 2026-08-28 por el lado opuesto; merece una nota técnica comparativa de los dos modelos (trae-tu-clave vs trae-tu-suscripción)."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Sepia es la primera skill pública con paper arXiv detrás (StoryScope 2026) y contraintuitiva: editar la superficie no basta. Tiene entidad propia para una nota editorial sobre 'por qué humanizar texto AI no es lo que crees'"
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Hezo aterriza la pieza operativa (sandbox + budget + secrets) que el stack local-first venía necesitando; la GPL-3.0 obliga a esperar a un fork permisivo antes de recomendarlo en serio."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
