@@ -1,0 +1,42 @@
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-unclebob-swarm-forge", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-unclebob-swarm-forge", "dst": "tema:unclebob-swarm-forge", "rel": "trata", "added": "2026-08-30"}
+{"src": "repo:unclebob/swarm-forge", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-08-30", "primera_mencion": "2026-08-27"}
+{"src": "repo:unclebob/swarm-forge", "dst": "concept:role-based-agent-pipeline", "rel": "implements", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:unclebob/swarm-forge", "dst": "company:unclebob", "rel": "relevant_to", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:unclebob/swarm-forge", "dst": "concept:token-scam-clone", "rel": "risk", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:unclebob/swarm-forge", "dst": "concept:worktree-isolated-agents", "rel": "complements", "added": "2026-08-30", "primera_mencion": null}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-backnotprop-plannotator", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-backnotprop-plannotator", "dst": "tema:backnotprop-plannotator", "rel": "trata", "added": "2026-08-30"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:agent-review-ui", "rel": "implements", "added": "2026-08-30", "primera_mencion": "2026-08-27"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:plan-annotation-tool", "rel": "implements", "added": "2026-08-30", "primera_mencion": "2026-08-27"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:html-artifact-review", "rel": "implements", "added": "2026-08-30", "primera_mencion": "2026-08-27"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:agent-skill-registry", "rel": "complements", "added": "2026-08-30", "primera_mencion": "2026-08-16"}
+{"src": "repo:backnotprop/plannotator", "dst": "tool:claude-code", "rel": "relevant_to", "added": "2026-08-30", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-cbrock84-headcount", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-cbrock84-headcount", "dst": "tema:cbrock84-headcount", "rel": "trata", "added": "2026-08-30"}
+{"src": "repo:cbrock84/headcount", "dst": "concept:agent-skills-by-domain", "rel": "implements", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:cbrock84/headcount", "dst": "concept:plugin-marketplace-pattern", "rel": "implements", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:cbrock84/headcount", "dst": "repo:hezo-ai/hezo", "rel": "complements", "added": "2026-08-30", "primera_mencion": "2026-08-29"}
+{"src": "repo:cbrock84/headcount", "dst": "repo:Agenta-AI/agenta", "rel": "complements", "added": "2026-08-30", "primera_mencion": "2026-08-29"}
+{"src": "repo:cbrock84/headcount", "dst": "repo:Nanako0129/sepia", "rel": "complements", "added": "2026-08-30", "primera_mencion": "2026-08-29"}
+{"src": "repo:cbrock84/headcount", "dst": "concept:young-project-velocity", "rel": "risk", "added": "2026-08-30", "primera_mencion": null}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-warpdotdev-common-skills", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-warpdotdev-common-skills", "dst": "tema:warpdotdev-common-skills", "rel": "trata", "added": "2026-08-30"}
+{"src": "repo:warpdotdev/common-skills", "dst": "concept:agent-skill-registry", "rel": "implements", "added": "2026-08-30", "primera_mencion": "2026-08-16"}
+{"src": "repo:warpdotdev/common-skills", "dst": "concept:cross-repo-skills-spec", "rel": "implements", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:warpdotdev/common-skills", "dst": "concept:skill-yaml-frontmatter", "rel": "implements", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:warpdotdev/common-skills", "dst": "company:warpdotdev", "rel": "relevant_to", "added": "2026-08-30", "primera_mencion": null}
+{"src": "repo:warpdotdev/common-skills", "dst": "repo:mattpocock/skills", "rel": "complements", "added": "2026-08-30", "primera_mencion": "2026-08-08"}
+{"src": "repo:warpdotdev/common-skills", "dst": "repo:Nanako0129/sepia", "rel": "complements", "added": "2026-08-30", "primera_mencion": "2026-08-29"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-kacperkapusciak-goldie", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-kacperkapusciak-goldie", "dst": "tema:kacperkapusciak-goldie", "rel": "trata", "added": "2026-08-30"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-xevrion-breakscale", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-xevrion-breakscale", "dst": "tema:xevrion-breakscale", "rel": "trata", "added": "2026-08-30"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-zackb-tether", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-zackb-tether", "dst": "tema:zackb-tether", "rel": "trata", "added": "2026-08-30"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-hieunc229-mailflare", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-hieunc229-mailflare", "dst": "tema:hieunc229-mailflare", "rel": "trata", "added": "2026-08-30"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-daimon3332-address", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-daimon3332-address", "dst": "tema:daimon3332-address", "rel": "trata", "added": "2026-08-30"}
+{"src": "boletin:2026-08-30", "dst": "item:https-github-com-apirrone-open-duck-mini", "rel": "menciona", "added": "2026-08-30"}
+{"src": "item:https-github-com-apirrone-open-duck-mini", "dst": "tema:apirrone-open-duck-mini", "rel": "trata", "added": "2026-08-30"}

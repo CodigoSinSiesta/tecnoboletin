@@ -1,0 +1,399 @@
+{
+  "version": 2,
+  "date": "2026-08-30",
+  "boletin_origen": "2026-08-30-trending.md",
+  "resumen_ejecutivo": "- **`unclebob/swarm-forge` es tío Bob (Robert C. Martin) entrando a multi-agent coordination**: 3.243★, Clojure, 4 meses de vida, push hoy. README tiene scam warning prominente (`Do not spend any money on a bankrbot SWARM token`) — el repo real es la orquestación, los tokens son un clon scam. Tesis editorial: la vieja guardia del SWE formalista (Clean Code, TDD, Gherkin) aterriza en agent swarms con `specifier → coder → refactorer → architect` como Kanban cards.\n- **`backnotprop/plannotator` consolida \"review UI cross-agent\" como categoría propia**: 8.235★, 2.104 forks, Apache-2.0, soporta 9 coding agents (Claude Code, Codex, Copilot CLI, Gemini CLI, OpenCode, Kiro, Droid, Amp, Pi). Plan annotation + diff review + HTML artifacts visual review — el hueco que faltaba entre \"el agente emite output\" y \"el humano decide\".\n- **`cbrock84/headcount` lleva \"agent-as-company\" al siguiente nivel con 16 departments y 143 skills para Claude Code**: 389★ (naciendo, 2 días), MIT, plugin marketplace installable. Skills direccionables como `security:threat-modeling`, `finance:unit-economics`. Encaja con el hilo Sepia (skills con paper) y Agenta-AI (workspace de equipo) del boletín anterior: la tercera pieza del rompecabezas \"agentes profesionales\".\n- **`warpdotdev/common-skills` posiciona a Warp como registry de skills cross-repo**: 366★, MIT, push hoy. Convención `.agents/skills/<name>/SKILL.md` con YAML frontmatter y carpetas `scripts/`, `references/`, `assets/`. Es el primer movimiento serio de un vendor de terminal hacia \"skills como primitive compartida\" — y propone la primera convención portable real.\nFuentes consultadas: Trendshift daily + GitHub Trending daily (general + TypeScript + Python + Rust), GitHub REST API para los 20 candidatos del día. Blogwatcher no publicado hoy (sigue roto desde 2026-07-05 — flag de operación para investigar).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "unclebob/swarm-forge",
+      "url": "https://github.com/unclebob/swarm-forge",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Plataforma de orquestación de agentes AI basada en tmux + git worktrees + constitution files.** Coordina agentes en worktrees separados con prompts por rol y message passing, evitando pisarse entre sí. Diseñada como un sistema disciplinado que convierte swarms de agentes en \"software engineers profesionales\". El repo es Clojure (lenguaje funcional de tío Bob desde hace años).",
+        "por_que_importa": "tío Bob (Robert C. Martin, autor de Clean Code y coautor del Agile Manifesto) haciendo agent orchestration no es curiosidad, es señal editorial. El espacio de multi-agent está lleno de frameworks nuevos (LangGraph, AutoGen, CrewAI), pero swarm-forge aterriza la vieja escuela: Gherkin specs, TDD, acceptance tests, roles de refactorer y architect, todo en Clojure. Los `pack` branches (`two-pack`, `four-pack`, `six-pack`) son templates de workflow: `two-pack` es coder+cleaner para tareas rápidas, `four-pack` añade specifier y architect para proyectos con specs. Caveat importante: el README abre con un scam warning (`Do not spend any money on a bankrbot SWARM token`); alguien clonó el repo y emitió un token scam. El repo real NO tiene nada que ver con crypto: es orchestration open source. En el grafo ya cubrimos el concepto hermano `concept:multi-agent-orchestration` el 2026-08-27; swarm-forge lo aterriza con la disciplina de tío Bob en lugar de frameworks nuevos.",
+        "madurez_senales": "**3.243★** · 326 forks · **NOASSERTION** (verificar LICENSE file antes de adopción) · Clojure · creado 2026-04-17 · último push 2026-08-29 · default branch `main` · sin topics. Owner `unclebob` = Robert C. Martin (type User). README 26KB con secciones Intent, Branches (pack templates), Roles por pack, Card moves, Constitution articles. Scam warning prominente. Scripts `get-swarm-forge` para instalar packs.",
+        "accion_sugerida": "vigilar (clonar el repo `main` branch; leer el script `get-swarm-forge` para entender el install flow; revisar `swarmforge/swarmforge.conf` y constitution articles; comparar el patrón \"two-pack coder+cleaner\" con CrewAI/LangGraph; ignorar cualquier mención a SWARM tokens — son scam).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:unclebob/swarm-forge",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:unclebob/swarm-forge",
+          "rel": "implements",
+          "dst": "concept:role-based-agent-pipeline",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:unclebob/swarm-forge",
+          "rel": "relevant_to",
+          "dst": "company:unclebob",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:unclebob/swarm-forge",
+          "rel": "risk",
+          "dst": "concept:token-scam-clone",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:unclebob/swarm-forge",
+          "rel": "complements",
+          "dst": "concept:worktree-isolated-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "unclebob-swarm-forge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Superficie de revisión local browser-based para coding agents**: Claude Code, Codex, Copilot CLI, Gemini CLI, OpenCode, Kiro, Droid, Amp, Pi. Tres primitivas: Markdown Review (planes, specs), Code Review (diffs, PRs) y HTML Artifacts (visual review de HTML generado). El agente emite el output, plannotator lo abre en el browser local, el humano anota visualmente y devuelve feedback estructurado al agente.",
+        "por_que_importa": "el hueco que cubría `Tencent/BrowserSkill` (cubierto en el boletín 2026-08-28, agent-driven browser) era la dirección agent→browser. Plannotator cubre la dirección inversa: agent→human, con review UI que soporta 9 harnesses (Claude Code, Codex, Copilot CLI, Gemini CLI, OpenCode, Kiro, Droid, Amp, Pi). Es el primer proyecto OSS que se posiciona como \"review surface agnóstica\" — no atado a Claude Code ni a Codex, sino al concepto mismo de \"el agente necesita que un humano revise su output antes de implementar\". Tres primitivas cubren los outputs típicos: Markdown Review para planes y specs, Code Review para diffs y PRs, HTML Artifacts para revisar HTML generado visualmente. El README menciona \"Effective HTML\" como sister repo (`plannotator/effective-html`), lo que refuerza la tesis de que visual review es un primitive. En el grafo ya cubrimos `concept:agent-review-ui`, `concept:plan-annotation-tool` y `concept:html-artifact-review` el 2026-08-27; plannotator es la implementación unificada de los tres. Para CSS, el ángulo: cuando tienes 3-4 coding agents en uso, el problema cambia de \"cuál es el mejor agente\" a \"cómo reviso su output de forma consistente\".",
+        "madurez_senales": "**8.235★** · 2.104 forks · **Apache-2.0** · TypeScript · creado 2025-12-28 (~9 meses) · último push 2026-08-30 · default branch `main` · README 26KB con badges para 9 agentes. Web oficial plannotator.ai. Docs en docs.plannotator.ai. Open source + plan gratuito en su servicio. Demo YouTube público. Sister repo `plannotator/effective-html` (Visual HTML Skills).",
+        "accion_sugerida": "explorar (instalar plannotator; abrir un plan de Claude Code o Codex; probar la anotación visual; revisar el flujo de feedback back-to-agent; comparar con `Tencent/BrowserSkill` para entender qué primitiva resuelve cada uno).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "implements",
+          "dst": "concept:agent-review-ui",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "implements",
+          "dst": "concept:plan-annotation-tool",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "implements",
+          "dst": "concept:html-artifact-review",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "complements",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": "2026-08-16"
+        },
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "relevant_to",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "backnotprop-plannotator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "cbrock84/headcount",
+      "url": "https://github.com/cbrock84/headcount",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Organización de agentes para Claude Code estructurada como una empresa**: chief executive + 16 departments + 143 skills instalables independientemente. Direccionamiento namespaced (`security:threat-modeling`, `finance:unit-economics`) para evitar colisiones. Cada department es un plugin instalable vía `/plugin marketplace add cbrock84/headcount` + `/plugin install <dept>@headcount`. Org chart interactivo en GitHub Pages.",
+        "por_que_importa": "completa el rompecabezas del hilo \"agents as employees\" que empezó con `hezo-ai/hezo` (runtime con budget caps, boletín 2026-08-29), siguió con `Agenta-AI/agenta` (workspace de equipo, mismo boletín) y `microsoft/hve-core` (metodología opinionated). Headcount, también del 2026-08-29, es la cuarta pieza: la librería de skills empresarial, con 16 departments (security, finance, marketing, ops…) y 143 skills instalables independientemente. La diferencia respecto a `mattpocock/skills` (200k★) o `warpdotdev/common-skills` (366★) es que headcount organiza por dominio funcional en lugar de por técnica, y el direccionamiento namespaced (`security:threat-modeling`, `finance:unit-economics`) evita colisiones entre departments. Para CSS, el ángulo: el meme \"Claude Code as startup with departments\" está dejando de ser meme: es un repo concreto con org chart, 16 departments y una instalación trivial vía marketplace. Caveat honesto: 389★ y 2 días de vida; todo puede cambiar rápido, pero el patrón \"skills by department\" merece watch precisamente porque en el grafo ya vimos cómo `hezo-ai/hezo`, `Agenta-AI/agenta` y `Nanako0129/sepia` convergen desde el 2026-08-29 hacia la misma tesis.",
+        "madurez_senales": "**389★** · 55 forks · **MIT** · Markdown (skills-as-markdown) · creado 2026-08-28 (2 días) · último push 2026-08-30 · default branch `main` · org chart interactivo en GitHub Pages · README 32KB · 16 departments / 143 skills (badges actualizados desde el JSON-LD de Trendshift que decía 15/125). Plugin install vía marketplace commands. PRs welcome badge. Buscador en la org chart.",
+        "accion_sugerida": "explorar (`/plugin marketplace add cbrock84/headcount` en Claude Code; instalar 2-3 departments que apliquen a tu dominio; comparar el org chart con tu propia estructura mental de skills; revisar `CONTRIBUTING.md` para entender el modelo de contribución antes de proponer nuevos departments).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cbrock84/headcount",
+          "rel": "implements",
+          "dst": "concept:agent-skills-by-domain",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cbrock84/headcount",
+          "rel": "implements",
+          "dst": "concept:plugin-marketplace-pattern",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cbrock84/headcount",
+          "rel": "complements",
+          "dst": "repo:hezo-ai/hezo",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:cbrock84/headcount",
+          "rel": "complements",
+          "dst": "repo:Agenta-AI/agenta",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:cbrock84/headcount",
+          "rel": "complements",
+          "dst": "repo:Nanako0129/sepia",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:cbrock84/headcount",
+          "rel": "risk",
+          "dst": "concept:young-project-velocity",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cbrock84-headcount",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "warpdotdev/common-skills",
+      "url": "https://github.com/warpdotdev/common-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Repositorio de skills de agente compartidas entre repositorios**, mantenido por Warp (terminal vendor). Convención: `.agents/skills/<skill-name>/SKILL.md` con YAML frontmatter (`name` + `description` mínimos) + carpetas opcionales `scripts/`, `references/`, `assets/`. Un skill pertenece aquí cuando captura un workflow reutilizable en múltiples repos; los específicos se quedan en su repo de origen.",
+        "por_que_importa": "el grafo acumuló `concept:agent-skill-registry` con varias implementaciones (mattpocock/skills desde el 2026-08-08, Nanako0129/sepia desde el 2026-08-29, K-Dense-AI/scientific-agent-skills), pero todas eran librerías, no convenciones. warpdotdev/common-skills es la primera vez que un vendor propone una convención portable con layout concreto: `.agents/skills/<skill-name>/SKILL.md` con YAML frontmatter mínimo (`name` + `description`) y carpetas opcionales `scripts/`, `references/`, `assets/`. Un skill pertenece aquí cuando captura un workflow reutilizable en múltiples repos; los específicos se quedan en su repo de origen. Es el equivalente agent-skills del \"Conventional Commits\" para commits o del `.editorconfig` para formatting: el type system que faltaba. Warp tiene un incentivo obvio (más skills portables = más razones para usar Warp como terminal), pero la convención en sí es agnóstica del vendor. Caveat honesto: 366★ y push de hoy, así que la adopción real aún está por verse; lo que importa ya está en el grafo, ya que cubre `concept:agent-skill-registry` (primera mención del concepto, 2026-08-16) y complementa las implementaciones que aparecieron después.",
+        "madurez_senales": "**366★** · 14 forks · **MIT** · Python (skills en markdown + scripts varios) · creado 2026-04-30 · último push 2026-08-30 · default branch `main` · README 4.5KB con layout ASCII art. Convención SKILL.md documentada con YAML frontmatter mínimo (name + description). Vendor Warp (terminal product). Carpeta `.agents/skills/` como path estándar.",
+        "accion_sugerida": "leer (clonar el repo; revisar 2-3 skills actuales para entender el shape concreto; evaluar si la convención `.agents/skills/<name>/SKILL.md` se puede adoptar en tus propios proyectos; comparar con los formatos usados por Claude Code skills marketplace para detectar divergencias; si trabajas con Warp como terminal, evaluar si la convención encaja con su modelo de agent execution).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:warpdotdev/common-skills",
+          "rel": "implements",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": "2026-08-16"
+        },
+        {
+          "src": "repo:warpdotdev/common-skills",
+          "rel": "implements",
+          "dst": "concept:cross-repo-skills-spec",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:warpdotdev/common-skills",
+          "rel": "implements",
+          "dst": "concept:skill-yaml-frontmatter",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:warpdotdev/common-skills",
+          "rel": "relevant_to",
+          "dst": "company:warpdotdev",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:warpdotdev/common-skills",
+          "rel": "complements",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:warpdotdev/common-skills",
+          "rel": "complements",
+          "dst": "repo:Nanako0129/sepia",
+          "primera_mencion": "2026-08-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "warpdotdev-common-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "kacperkapusciak/goldie",
+      "url": "https://github.com/kacperkapusciak/goldie",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(478★, último push 2026-08-28, TypeScript, MIT) — generador agentic de App Store screenshots y preview videos para iOS apps; integra con `software-mansion/argent` para replay flows en simulator y añade bezels, headlines y validación contra reglas de upload de Apple.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (instalar vía `npm i -g goldie`; probar con un app propio; comparar con alternativas manuales como `fastlane` + screenshot orchestration)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kacperkapusciak-goldie",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "xevrion/breakscale",
+      "url": "https://github.com/xevrion/breakscale",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(384★, último push 2026-08-29, TypeScript, MIT) — system design simulator con discrete-event simulation real (no animada); arrastras componentes en canvas, subes carga y observas p99 latencies, retry storms y circuit breakers colapsando. Stack Bun.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (clonar y `bun dev`; cargar el ejemplo \"Retry Storm\"; comparar con system design courses estáticos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xevrion-breakscale",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "zackb/tether",
+      "url": "https://github.com/zackb/tether",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(647★, último push 2026-08-30, C++, MIT) — \"Linux + iPhone Continuity / iMessage / SMS\". Lleva Continuity de Apple a Linux con sync de clipboard, files, notifications y SMS relay.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (instalar y probar SMS relay desde Linux; comparar con `KDEConnect`/`GSConnect` que es la alternativa GNOME/KDE; Caveat: ToS de Apple puede romperse)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zackb-tether",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "hieunc229/mailflare",
+      "url": "https://github.com/hieunc229/mailflare",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.552★, último push 2026-08-30, TypeScript, NOASSERTION) — email client self-hosted con dominio custom basado en Cloudflare. Reemplazo ligero de Fastmail/Proton con tu propio dominio.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (instalar vía Cloudflare Workers; evaluar capacidad de inbox + custom domain; Caveat: NOASSERTION, leer LICENSE antes de adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hieunc229-mailflare",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "daimon3332/address",
+      "url": "https://github.com/daimon3332/address",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.872★, último push 2026-08-27, TypeScript, MIT) — generador self-hosted de direcciones y test profiles sintéticos para 27 países.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": explorar (útil para tests E2E que necesitan datos realistas pero no quieren leak de PII; comparar con `faker-js` que es librería vs servicio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "daimon3332-address",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "apirrone/Open_Duck_Mini",
+      "url": "https://github.com/apirrone/Open_Duck_Mini",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.643★, último push 2026-01-31, Python, Apache-2.0) — versión mini del robot BDX droid (de Disney). Open hardware + software para construir tu propio pato bípedo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": ": vigilar (más hardware que software para CSS; revisar si hay simulación o solo build físico; fuera del scope principal pero interesante para robotics + AI)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apirrone-open-duck-mini",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/4 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

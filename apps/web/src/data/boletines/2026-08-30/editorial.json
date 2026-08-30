@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-08-30",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La vieja guardia del SWE formaliza el trabajo con agentes: orquestacion, revision y skills por dominio",
+  "posicionamiento": "El hilo del dia no son agentes mas listos, sino la disciplina vieja del SWE aterrizando sobre agent swarms: swarm-forge trae a tio Bob al multi-agent con worktrees y constitution files; plannotator convierte la revision humana en una UI portable para 9 harnesses; headcount organiza143 skills como departments; y warpdotdev/common-skills propone la primera convencion portable de skills cross-repo.",
+  "convergencia_stack_css": "Tres hallazgos chocan con el stack local-first y la linea editorial de CSS: swarm-forge es la orquestacion multi-agente formalista que llevaba meses faltando; plannotator es la review UI agnostica que completa el lado humano del bucle agent-browser cubierto por Tencent/BrowserSkill el 2026-08-28; common-skills concreta el layout portable de skills que el propio CSS ya practica via skill_manage.",
+  "cruzado_grafo": "El grafo trae de dias previos `concept:agent-review-ui` y `concept:plan-annotation-tool` (2026-08-27, ya cubiertos por plannotator) y `concept:multi-agent-orchestration` (2026-08-27, reforzado hoy por swarm-forge). `concept:agent-skill-registry` se consolida con la primera convencion portable de Warp, complementando mattpocock/skills (2026-08-08) y Nanako0129/sepia (2026-08-29). `worktree-isolated-agents`, `role-based-agent-pipeline` y `skill-yaml-frontmatter` aparecen por primera vez hoy.",
+  "tendencias_5_boletines": "El contexto de dos dias confirma una sola linea: 2026-08-28 convertia MCP en plano de control serio; 2026-08-29 desplazaba al agente de chat con tools a operar assets reales con disciplina de ingenieria. Hoy el desplazamiento madura hacia la gobernanza del trabajo agencial: orquestacion disciplinada, revision humana agnostica, skills por dominio de negocio y convenciones portables.",
+  "alertas": [
+    "swarm-forge arrastra un clon scam con token crypto: el repo real es orchestration OSS, ignorar cualquier wallet o airdrop asociado.",
+    "headcount tiene solo 2 dias de vida y 389 estrellas: estructura empresarial vistosa pero traccion aun fragil.",
+    "plannotator soporta 9 harnesses pero su adoption real depende de cuantos mantienen el adapter al dia."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "swarm-forge aporta la pieza de orquestacion formalista que el hilo editorial viene siguiendo desde 2026-08-27, vale entender constitution files y pack templates."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "common-skills propone la primera convencion portable de skills cross-repo; CSS ya usa skill_manage y conviene auditar si el layout coincide."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "plannotator cubre el lado humano del bucle agent-browser que ya analizamos con BrowserSkill; comparar direcciones agent-browser vs human-review."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "headcount es el cuarto proyecto del meme 'agents as employees' en dos dias; ver si el plugin marketplace aguanta el ritmo o se diluye."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
