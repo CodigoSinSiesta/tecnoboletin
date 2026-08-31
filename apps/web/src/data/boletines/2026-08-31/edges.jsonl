@@ -1,0 +1,54 @@
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:stablyai/orca", "dst": "repo:OpenHands/OpenHands", "rel": "competes_with", "added": "2026-08-31", "primera_mencion": "2026-07-16"}
+{"src": "repo:stablyai/orca", "dst": "concept:parallel-agent-orchestration", "rel": "relevant_to", "added": "2026-08-31", "primera_mencion": "2026-07-16"}
+{"src": "repo:stablyai/orca", "dst": "tool:worktrees", "rel": "uses", "added": "2026-08-31", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-d4vinci-scrapling", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:D4Vinci/Scrapling", "dst": "concept:web-scraping", "rel": "implements", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:D4Vinci/Scrapling", "dst": "tool:apify", "rel": "competes_with", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:D4Vinci/Scrapling", "dst": "concept:agent-browser-automation", "rel": "enables", "added": "2026-08-31", "primera_mencion": null}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "dst": "tema:chromedevtools-chrome-devtools-mcp", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "concept:mcp-server", "rel": "implements", "added": "2026-08-31", "primera_mencion": "2026-08-20"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "repo:microsoft/playwright-mcp", "rel": "competes_with", "added": "2026-08-31", "primera_mencion": "2026-08-20"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "concept:browser-agent", "rel": "relevant_to", "added": "2026-08-31", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-k-dense-ai-scientific-agent-skills", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-k-dense-ai-scientific-agent-skills", "dst": "tema:k-dense-ai-scientific-agent-skills", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "dst": "concept:agent-skills-spec", "rel": "relevant_to", "added": "2026-08-31", "primera_mencion": "2026-07-31"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "dst": "concept:vertical-ai-scientist", "rel": "enables", "added": "2026-08-31", "primera_mencion": "2026-08-29"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "dst": "repo:K-Dense-AI/claude-scientific-skills", "rel": "complements", "added": "2026-08-31", "primera_mencion": "2026-08-29"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-vercel-labs-vgpu", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-vercel-labs-vgpu", "dst": "tema:vercel-labs-vgpu", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:vercel-labs/vgpu", "dst": "concept:webgpu", "rel": "implements", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:vercel-labs/vgpu", "dst": "concept:agent-ready-infra", "rel": "enables", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:vercel-labs/vgpu", "dst": "concept:llm-discovery-files", "rel": "relevant_to", "added": "2026-08-31", "primera_mencion": null}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-p-e-w-heretic", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-p-e-w-heretic", "dst": "tema:p-e-w-heretic", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:p-e-w/heretic", "dst": "concept:abliteration", "rel": "implements", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:p-e-w/heretic", "dst": "concept:open-weight-models", "rel": "relevant_to", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:p-e-w/heretic", "dst": "problem:license-agpl-restriction", "rel": "risk", "added": "2026-08-31", "primera_mencion": null}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-unslothai-unsloth", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-unslothai-unsloth", "dst": "tema:unslothai-unsloth", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:unslothai/unsloth", "dst": "concept:local-fine-tuning", "rel": "enables", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:unslothai/unsloth", "dst": "concept:gguf-mlx", "rel": "complements", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:unslothai/unsloth", "dst": "concept:open-weight-models", "rel": "relevant_to", "added": "2026-08-31", "primera_mencion": null}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-livekit-agents", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-livekit-agents", "dst": "tema:livekit-agents", "rel": "trata", "added": "2026-08-31"}
+{"src": "repo:livekit/agents", "dst": "concept:realtime-voice-agent", "rel": "enables", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:livekit/agents", "dst": "company:openai-realtime-api", "rel": "competes_with", "added": "2026-08-31", "primera_mencion": null}
+{"src": "repo:livekit/agents", "dst": "company:livekit", "rel": "uses", "added": "2026-08-31", "primera_mencion": null}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-punkpeye-awesome-mcp-servers", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-punkpeye-awesome-mcp-servers", "dst": "tema:punkpeye-awesome-mcp-servers", "rel": "trata", "added": "2026-08-31"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-mobile-next-mobile-mcp", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-mobile-next-mobile-mcp", "dst": "tema:mobile-next-mobile-mcp", "rel": "trata", "added": "2026-08-31"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-corsairdev-corsair", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-corsairdev-corsair", "dst": "tema:corsairdev-corsair", "rel": "trata", "added": "2026-08-31"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-cursor-plugins", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-cursor-plugins", "dst": "tema:cursor-plugins", "rel": "trata", "added": "2026-08-31"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-bytepioneer-ai-codex-host", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-bytepioneer-ai-codex-host", "dst": "tema:bytepioneer-ai-codex-host", "rel": "trata", "added": "2026-08-31"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-abhigyanpatwari-gitnexus", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-abhigyanpatwari-gitnexus", "dst": "tema:abhigyanpatwari-gitnexus", "rel": "trata", "added": "2026-08-31"}
+{"src": "boletin:2026-08-31", "dst": "item:https-github-com-gentleman-programming-gentle-ai", "rel": "menciona", "added": "2026-08-31"}
+{"src": "item:https-github-com-gentleman-programming-gentle-ai", "dst": "tema:gentleman-programming-gentle-ai", "rel": "trata", "added": "2026-08-31"}

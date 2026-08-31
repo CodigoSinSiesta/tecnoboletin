@@ -1,0 +1,535 @@
+{
+  "version": 2,
+  "date": "2026-08-31",
+  "boletin_origen": "2026-08-31-trending.md",
+  "resumen_ejecutivo": "- La jornada la lidera **stablyai/orca**, el ADE (Agentic Development Environment) YC-backed para correr coding agents en paralelo, que sigue escalando y consolida la narrativa \"fleet of agents\" del último mes.\n- **D4Vinci/Scrapling** confirma la tesis de la skill `web-scraping-viability`: ya está en 77k★ con BSD-3-Clause, agent-skill oficial y versiones del README en árabe, español, portugués, francés, alemán, chino, japonés y ruso — el framework OSS de scraping \"post-Apify\" para el desarrollador.\n- Chrome DevTools como MCP server pasa de 38k★ (registro del 2026-06-30) a **50k★** — es el MCP server oficial de Google y se posiciona como la capa de debugging estándar para coding agents.\n- El bloque \"Agent Skills\" sigue saturando Trending (addyosmani, K-Dense-AI, OpenMAIC, mvanhorn/last30days, gentleman-ai): el estándar abierto de Anthropic ya es mainstream, y los repos de skills son el nuevo \"awesome-list\".\n- Tema emergente: **WebGPU + agentes** — `vercel-labs/vgpu` cruza ambos mundos con un API cross-runtime (browser / headless Node con Dawn / mock CI) y publica `agents.md` + `llms.txt`. Es la primera vez que un repo GPU publica LLM-discovery files de fábrica.\n- **p-e-w/heretic** (AGPL-3.0, nuevo hoy): librería automática de \"abliteration\" — eliminación de censura en LLMs. Tema espinoso pero con tracción real.\n- Radar: la reaparición de `livekit/agents` y `unslothai/unsloth` indica consolidación, no novedad; `punkpeye/awesome-mcp-servers` ya es el \"awesome-list\" de referencia de MCP con 93k★.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (all + Python + TypeScript + Rust + Go + JavaScript), GitHub REST API cuando verifica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Orca es el Agentic Development Environment (ADE) \"for working with a fleet of parallel agents\": un IDE para correr cualquier coding agent (Claude Code, Codex, Cursor, opencode, Pi) bajo tu propia suscripción, usando worktrees por agente y un orquestador.",
+        "por_que_importa": "cristaliza la narrativa \"multi-agente en paralelo\" que ya cubrimos con mattpocock/skills y obra/superpowers. Si Alejandro escribe sobre orquestación de coding agents, Orca es la referencia del momento.",
+        "madurez_senales": "57.734★ · 3.932 forks · 780 issues · TypeScript · MIT · creado 2026-03-17 · último push 2026-08-31 · topics: ade, agent-ide, ai-agents, claude-code, cli, codex, cursor-agent, devtools, ghostty, ide, mobile-app, opencode, orchestration, parallel-agents, pi, terminal, worktrees, yc-backed. Open issues ratio ~13.5% — alto pero esperable en producto tan joven.",
+        "accion_sugerida": "explorar (re-entry con momentum real).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "competes_with",
+          "dst": "repo:OpenHands/OpenHands",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "relevant_to",
+          "dst": "concept:parallel-agent-orchestration",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "uses",
+          "dst": "tool:worktrees",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework adaptativo de web scraping en Python (\"everything from a single request to a full-scale crawl\"). Licencia BSD-3-Clause. Incluye 4 fetchers (Fetcher, AsyncFetcher, StealthyFetcher sobre Camoufox y DynamicFetcher sobre Playwright), CLI, MCP server y agent-skill propio.",
+        "por_que_importa": "Scrapling es la alternativa OSS a Apify que ya citamos en la skill web-scraping-viability: un único framework en Python con 4 fetchers (síncrono, asíncrono, stealth sobre Camoufox y dinámico sobre Playwright), CLI, MCP server y un Agent Skill oficial publicado por el propio repo. Alcanza 77k★ con solo 5 issues abiertos (ratio excelente), el README está traducido a 9 idiomas —incluye docs/README_ES.md— y soportar MCP server de fábrica lo convierte en la opción de facto cuando un coding agent necesita raspar la web. Donde antes recomendábamos Apify para prototipos rápidos, ahora Scrapling cubre desde una petición puntual hasta un crawl completo sin pagar SaaS.",
+        "madurez_senales": "77.424★ · 7.761 forks · 5 issues · Python · BSD-3-Clause · creado 2024-10-13 · último push 2026-08-25 · topics: ai, ai-scraping, automation, crawler, crawling, data-extraction, mcp, python, scraping, stealth, web-scraping. Open issues 5 sobre 77k★ — señal excelente.",
+        "accion_sugerida": "probar (instalable vía pip, agent-skill oficial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:D4Vinci/Scrapling",
+          "rel": "implements",
+          "dst": "concept:web-scraping",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:D4Vinci/Scrapling",
+          "rel": "competes_with",
+          "dst": "tool:apify",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:D4Vinci/Scrapling",
+          "rel": "enables",
+          "dst": "concept:agent-browser-automation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "d4vinci-scrapling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Chrome DevTools expuesto a coding agents vía Model Context Protocol. Es un puente entre el modelo y el navegador real (Chrome) usando Puppeteer bajo el capó. Incluye debugging, performance, network y control de DOM.",
+        "por_que_importa": "Chrome DevTools MCP es el primer MCP server de primer nivel publicado por Google con su marca insignia (50k★, Apache-2.0): expone debugging, performance, network y control de DOM del navegador real usando Puppeteer por debajo. Lo vimos asomar el 2026-06-30 (~38k★) y volvió a aparecer en el boletín del 2026-08-20; el salto a ~50k★ confirma que Anthropic ya normalizó MCP y Google lo está adoptando para su propia superficie dev-tools. Para Código Sin Siesta cierra el debate de \"agentes en el navegador\": ya no hace falta un parche externo tipo Playwright MCP, hay canal oficial directo contra Chrome.",
+        "madurez_senales": "50.238★ · 3.533 forks · 95 issues · TypeScript · Apache-2.0 · creado 2025-09-11 · último push 2026-08-30 · topics: browser, chrome, chrome-devtools, debugging, devtools, mcp, mcp-server, puppeteer. (Ya visto el 2026-06-30 con ~38k★; nuevo milestone ~50k★.)",
+        "accion_sugerida": "vigilar (es la nueva referencia; lo cubriremos en profundidad cuando salga una release mayor).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "implements",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "competes_with",
+          "dst": "repo:microsoft/playwright-mcp",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "relevant_to",
+          "dst": "concept:browser-agent",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chromedevtools-chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "K-Dense-AI/scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"The #1 Agent Skills library for science\": convierte cualquier coding agent en un AI Scientist con skills de bioinformática, chemoinformática, genómica, proteómica, metabolómica, materials science, clinical research y scientific visualization. Lo usan más de 190k científicos.",
+        "por_que_importa": "Scientific Agent Skills de K-Dense es la prueba de que el patrón agent-skills verticaliza por dominio: convierte cualquier coding agent en un AI Scientist con skills de bioinformática, chemoinformática, genómica, proteómica, metabolómica, materials science, clinical research y visualización científica, y lo usan más de 190k científicos. Si Alejandro escribe sobre cómo construir skills verticales en lugar de modelos verticales, este repo (39k★, MIT) es el caso de estudio: ya cubrimos el spec agent-skills el 2026-07-31 y aquí reaparece el 2026-08-29 como habilitador concreto del concepto vertical-ai-scientist, cerca del número uno en su nicho.",
+        "madurez_senales": "39.874★ · 3.709 forks · 22 issues · Python · MIT · creado 2025-10-19 · último push 2026-08-29 · topics: agent-skills, ai-scientist, bioinformatics, chemoinformatics, claude, claude-skills, claudecode, clinical-research, computational-biology, data-analysis, drug-discovery, genomics, materials-science, metabolomics, proteomics, scientific-computing, scientific-visualization. (Visto 2026-08-15.)",
+        "accion_sugerida": "leer (vale la pena estudiar la estructura del repositorio como referencia de skills verticales).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skills-spec",
+          "primera_mencion": "2026-07-31"
+        },
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "enables",
+          "dst": "concept:vertical-ai-scientist",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "complements",
+          "dst": "repo:K-Dense-AI/claude-scientific-skills",
+          "primera_mencion": "2026-08-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "k-dense-ai-scientific-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "vercel-labs/vgpu",
+      "url": "https://github.com/vercel-labs/vgpu",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Librería TypeScript para WebGPU con imports tipados de WGSL, un único contexto Gpu, mismo código en navegador, Node headless (con Dawn por debajo) y un mock determinista para CI. Publica agents.md y llms.txt en vgpu.sh para consumo por LLMs.",
+        "por_que_importa": "vgpu de Vercel Labs es, hasta donde sabemos, el primer framework WebGPU moderno publicado pensando en coding agents desde el día uno: imports tipados de WGSL, un único contexto Gpu compartido entre navegador, Node headless (Dawn por debajo) y un mock determinista para CI, más CLI con npx vgpu docs/examples/check y archivos agents.md / llms.txt en vgpu.sh para discovery por LLMs. Es joven (1.137★, creado 2026-05-05) y WebGPU todavía tiene soporte irregular en navegadores, así que la promesa “agent-ready infra” conviene leerla como dirección de 2026-2027, no como estándar consolidado.",
+        "madurez_senales": "1.137★ · 49 forks · 46 issues · TypeScript · MIT · creado 2026-05-05 · último push 2026-08-31 · CI pasa (badge visible en README). Pocos issues ratio bajo, pero el repo es muy joven y depende de WebGPU (soporte navegador todavía irregular).",
+        "accion_sugerida": "probar (vale el esfuerzo: pnpm add vgpu y un demo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/vgpu",
+          "rel": "implements",
+          "dst": "concept:webgpu",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vercel-labs/vgpu",
+          "rel": "enables",
+          "dst": "concept:agent-ready-infra",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vercel-labs/vgpu",
+          "rel": "relevant_to",
+          "dst": "concept:llm-discovery-files",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-vgpu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "p-e-w/heretic",
+      "url": "https://github.com/p-e-w/heretic",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Fully automatic censorship removal for language models\". Pipeline de abliteration que identifica las direcciones del modelo asociadas a refusal y las proyecta fuera, sin fine-tuning. Licencia AGPL-3.0.",
+        "por_que_importa": "Heretic es la implementación de referencia de la técnica de abliteration que se ha viralizado este año: identifica las direcciones del espacio de pesos asociadas al refusal y las proyecta fuera, sin fine-tuning. Philipp Weinmann es conocido por proyectos de open-weight tinkering y el repo (29k★, AGPL-3.0) materializa el concepto. El ángulo técnico —remoción geométrica de la dirección de refusal— es relevante para cualquier dev que trabaje con open-weight models, aunque la licencia AGPL-3.0 obliga a abrir derivados en uso comercial: si quieres experimentar en local está bien, si buscas integrarlo en un producto propietario necesitas otra ruta.",
+        "madurez_senales": "29.324★ · 3.216 forks · 81 issues · Python · AGPL-3.0 · creado 2025-09-21 · último push 2026-08-17 · topics: abliteration, llm, transformer.",
+        "accion_sugerida": "leer (la técnica; no desplegar en producto cerrado por la licencia).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:p-e-w/heretic",
+          "rel": "implements",
+          "dst": "concept:abliteration",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:p-e-w/heretic",
+          "rel": "relevant_to",
+          "dst": "concept:open-weight-models",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:p-e-w/heretic",
+          "rel": "risk",
+          "dst": "problem:license-agpl-restriction",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "p-e-w-heretic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "unslothai/unsloth",
+      "url": "https://github.com/unslothai/unsloth",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"Local UI to run and train LLMs and diffusion models. Supports GGUF, MLX, Qwen3.8, Kimi K3, MiniMax-H3, Gemma 4, FLUX...\". Cubre el stack completo de post-training eficiente y self-hosting.",
+        "por_que_importa": "Unsloth sigue siendo la referencia de Código Sin Siesta cuando hablamos de fine-tuning eficiente en hardware modesto: cubre el stack completo de post-training y self-hosting, con soporte para GGUF, MLX, Qwen, Kimi, Gemma, FLUX, difusión y TTS. El momentum se mantiene (75k★, push del 2026-08-31, Apache-2.0), así que reaparece como benchmark del sector: cualquier repo que prometa entrenar LLMs o modelos de difusión en una sola GPU tiene que medirse con Unsloth. Donde antes era una curiosidad, ahora es el patrón a copiar para local-fine-tuning y para envolver cuantizaciones GGUF/MLX.",
+        "madurez_senales": "75.304★ · 6.830 forks · 1.418 issues · Python · Apache-2.0 · creado 2023-11-29 · último push 2026-08-31 · topics: agent, ai, chatgpt, deepseek, fine-tuning, gemma, image-generation, llama, llm, openai, python, qwen, reinforcement-learning, self-hosted, stable-diffusion, text-to-speech, tts, ui, unsloth. (Visto 2026-08-14.)",
+        "accion_sugerida": "vigilar (referencia sectorial; revisitar cuando haya release con soporte MiniMax-M3 o Gemma 4).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:unslothai/unsloth",
+          "rel": "enables",
+          "dst": "concept:local-fine-tuning",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:unslothai/unsloth",
+          "rel": "complements",
+          "dst": "concept:gguf-mlx",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:unslothai/unsloth",
+          "rel": "relevant_to",
+          "dst": "concept:open-weight-models",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "unslothai-unsloth",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "livekit/agents",
+      "url": "https://github.com/livekit/agents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework Python para construir agentes de voz AI en tiempo real (con vídeo). Incluye OpenAI Realtime, VAD, turn-taking y pipeline multimodal.",
+        "por_que_importa": "LiveKit Agents es la opción OSS de referencia en la categoría voice agents cuando no quieres atarte a Twilio ni al stack propietario de OpenAI Realtime: framework Python para construir agentes de voz AI en tiempo real con vídeo, incluyendo OpenAI Realtime, VAD, turn-taking y pipeline multimodal. Ya lo vimos el 2026-08-04 y reentra con push del 2026-08-31 (13.856★, Apache-2.0), señal de que sigue muy activo. Para Código Sin Siesta materializa el concepto realtime-voice-agent sin lock-in de proveedor.",
+        "madurez_senales": "13.856★ · 3.661 forks · 780 issues · Python · Apache-2.0 · creado 2023-10-19 · último push 2026-08-31 · topics: agents, ai, openai, real-time, video, voice. (Visto 2026-08-04.)",
+        "accion_sugerida": "vigilar (cubrir cuando Alejandro escriba sobre voice agents).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:livekit/agents",
+          "rel": "enables",
+          "dst": "concept:realtime-voice-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:livekit/agents",
+          "rel": "competes_with",
+          "dst": "company:openai-realtime-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:livekit/agents",
+          "rel": "uses",
+          "dst": "company:livekit",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "livekit-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "punkpeye/awesome-mcp-servers",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(93.481 estrellas, push 2026-08-29, MIT): la \"awesome-list\" canónica de MCP servers.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (referencia cuando Alejandro catalogue MCP servers por categoría)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "punkpeye-awesome-mcp-servers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "mobile-next/mobile-mcp",
+      "url": "https://github.com/mobile-next/mobile-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.254 estrellas, push 2026-08-30, TypeScript, Apache-2.0): MCP server para automatizar iOS/Android (emuladores, simuladores y dispositivos reales).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (complementa Chrome DevTools MCP para testing cross-platform)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mobile-next-mobile-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "corsairdev/corsair",
+      "url": "https://github.com/corsairdev/corsair",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.056 estrellas, push 2026-08-31, TypeScript, NOASSERTION): \"Connect your users to their apps\". Descripción corta y licencia NOASSERTION, así que no es adoptable sin leer el LICENSE real.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no usar como dependencia hasta verificar licencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "corsairdev-corsair",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.303 estrellas, push 2026-08-30, TypeScript, sin licencia pública): repositorio oficial de la spec de plugins de Cursor y los plugins first-party.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (si Alejandro quiere hablar de Cursor como plataforma, aquí está la superficie oficial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cursor-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "BytePioneer-AI/codex-host",
+      "url": "https://github.com/BytePioneer-AI/codex-host",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.190 estrellas, push 2026-08-31, TypeScript, MIT): corre Pi y Claude Code dentro de Codex Desktop. Topic: codex, codex-desktop, pi-agent.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (experimento interesante de \"todos los coding agents en un mismo host\"; hay riesgo de obsolescencia si OpenAI cambia Codex Desktop)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bytepioneer-ai-codex-host",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "abhigyanpatwari/GitNexus",
+      "url": "https://github.com/abhigyanpatwari/GitNexus",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(46.659 estrellas, push 2026-08-30, TypeScript, NOASSERTION): knowledge graph client-side sobre repos git. Cero servidor, corre en el navegador.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (alternativa local-first a DeepWiki; NOASSERTION → leer LICENSE antes de adoptarlo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "abhigyanpatwari-gitnexus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "gentleman-programming/gentle-ai",
+      "url": "https://github.com/gentleman-programming/gentle-ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.092 estrellas, push 2026-08-31, Go, MIT): TUI y orquestador de coding agents. Ratio de open issues altísimo (aprox. 15%, 935 sobre 6k estrellas): comunidad activa pero con fricción.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (mencionado por Gentleman-Programming; relevante para audiencia LATAM)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gentleman-programming-gentle-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/8 items reescritos; rechazados por longitud sospechosa: [0]; faltantes en respuesta: [0]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
