@@ -1,0 +1,468 @@
+{
+  "version": 2,
+  "date": "2026-09-01",
+  "boletin_origen": "2026-09-01-trending.md",
+  "resumen_ejecutivo": "- **deeplethe/utopia** (#1 Trendshift) es el hallazgo del día: un \"world model\" open-source empresarial escrito en Rust + Postgres + pgvector que combina **grafo de conocimiento bitemporal**, **ontology cold-start con packs** (schema.org, PROV-O, FOAF), **agente con herramientas de búsqueda ontológica**, y método **Ontology2SQL** state-of-the-art en BIRD. Es exactamente el sustrato que conecta con la pila del usuario (PGLite, pgvector, graphify).\n- **jingyaogong/minimind** entra con fuerza: 56.487★, Apache-2.0, README de 1.986 líneas, enseña a entrenar un LLM de 64M parámetros desde cero en 2 horas. Es el repositorio educativo chino que mejor aterrizó en Trending; relevante para contenido introductorio en español.\n- **alphaXiv/openresearch-cli** consolida la narrativa \"fleet of research agents\": un workspace local-first en Rust que convierte Claude Code / Codex / OpenCode en agentes de investigación paralelos con worktrees aislados, árbol de experimentos git-native y autoresearch loop. Complementa a Orca (cubierto ayer) en el lado \"investigación\" del espectro.\n- **mukul975/cve-mcp-server** (1.343★, Apache-2.0) es el primer MCP server serio de seguridad: 28 herramientas, 24 APIs (NVD/EPSS/CISA KEV/Shodan/VirusTotal/GreyNoise/MITRE ATT&CK) y un orquestador `triage_cve` que combina scoring con override de CISA KEV. Conecta con la conversación \"MCP como plano de control\".\n- **Waishnav/devspace** (4.373★, MIT) ofrece un MCP server self-hosted para ChatGPT que \"lo convierte en Codex\" — el ángulo \"el agente ChatGPT contra tus archivos locales\" está poco cubierto y el repo es maduro (creado 2026-06-14, 58 issues).\n- **pollen-robotics/microduck_rl** (1.279★, Apache-2.0, branch `develop`) lleva el micro-robot Microduck al training de RL usando NVIDIA mjlab. Es un caso curioso de \"robótica física + simulación + RL\" accesible.\n- **siyuan-note/siyuan** (46.088★, AGPL-3.0) confirma que los knowledge workspaces self-hosted con MCP ya son mainstream: Siyuan lleva años en China y acaba de saltar al radar global con su integración de agentes.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily (all + Python + TypeScript + Rust + Go + JavaScript; 84 repos únicos), GitHub REST API para verificación de los hallazgos principales y radar, READMEs vía `default_branch` de la API. Blogwatcher no publicó hoy (último boletín de blogs: 2026-07-05); no hay duplicación que evitar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "deeplethe/utopia",
+      "url": "https://github.com/deeplethe/utopia",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación completa (Rust binary + Postgres + pgvector) que implementa un \"world model\" empresarial: extrae conocimiento desde PDF/DOCX/PPTX/Excel/CSV/Markdown/HTML/GitHub/Jira, lo modela en un **grafo de conocimiento bitemporal** (cada hecho lleva intervalo de validez y evidencia), razona con **Datalog temporal** y propone mappings a bases de datos Postgres existentes vía **Ontology2SQL** (state-of-the-art en BIRD Mini-Dev para SQLite y PostgreSQL). Incluye un agente con herramientas de búsqueda, entity lookup, history y consulta SQL.",
+        "por_que_importa": "Encaja casi exactamente con el stack declarado por el usuario (PGLite + pgvector + Graphify + Obsidian): grafo de conocimiento bitemporal (cada hecho lleva intervalo de validez y evidencia), razonamiento con Datalog temporal y mapeo a Postgres existente vía Ontology2SQL, un problema que él ya toca al diseñar sistemas que registran cómo cambia el conocimiento, no solo el estado actual. Como pgvector ya lo cubrimos en el boletín del 2026-08-10, este repo es la primera referencia OSS que cierra el círculo pgvector → knowledge graph bitemporal en una sola pieza (binary Rust + Postgres). Bonus honesto: su README avisa explícitamente que es v0.1 y que el schema cambia, un patrón editorial raro y valioso que merece la pena citar.",
+        "madurez_senales": "1.280★ · 104 forks · 2 issues · Rust + TypeScript (frontend) · **Apache-2.0** · creado 2026-08-07 (¡25 días!) · último push 2026-09-01 · topics: agent-memory, bitemporal, graphrag, knowledge-base, knowledge-graph, llm, ontology, pgvector, postgresql, rag, rust, self-hosted, semantic-search, temporal-knowledge-graph, world-model. Watchers 58 sobre 1.280★ (~4.5%) — señal fuerte de \"investigadores lo miran con detenimiento\". Solo 2 issues abiertos → repo fresco. Branch por defecto: `dev` (no `main`/`master`; verificar antes de clonar).",
+        "accion_sugerida": "**explorar** (clonar, hacer `docker compose --profile app up -d`, cargar 100 PDFs propios, navegar el grafo bitemporal y comparar el resultado con el setup actual del usuario).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deeplethe/utopia",
+          "rel": "implements",
+          "dst": "concept:temporal-knowledge-graph",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deeplethe/utopia",
+          "rel": "implements",
+          "dst": "concept:ontology2sql",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deeplethe/utopia",
+          "rel": "relevant_to",
+          "dst": "tool:pgvector",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deeplethe-utopia",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "jingyaogong/minimind",
+      "url": "https://github.com/jingyaogong/minimind",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Curso completo (no solo código) para entrenar un transformer decoder-only de 64M parámetros desde cero: tokenizer, pretraining, SFT, DPO, LoRA, distillation, evaluación, agents, todo en unas 2 horas en una sola GPU. README bilingüe (chino + inglés), unas 1.986 líneas, incluye tablas, fórmulas y explicaciones paso a paso. Cubre DeepSeek-V3 / Qwen3 / MiniMax-M3.",
+        "por_que_importa": "El ángulo educativo es perfecto para `Código Sin Siesta` en español. Minimind es la mejor puerta de entrada para entender qué pasa \"por dentro\" cuando se entrena un LLM, sin requerir infraestructura exótica. Su README menciona \"Quick Start from scratch\" y un notebook de Google Colab.",
+        "madurez_senales": "56.487★ · 7.364 forks · 59 issues · Python · Apache-2.0 · creado 2024-07-27 · último push 2026-08-31 · topics: artificial-intelligence, large-language-model. Estrellas/forks ratio 7.66 (sano).",
+        "accion_sugerida": "**leer** (lección de 90 min para entender qué es el \"minimal viable LLM\"); una serie de artículos sobre el flujo \"tokenizer → pretrain → SFT → DPO\" derivaría naturalmente del repo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:jingyaogong/minimind",
+          "rel": "relevant_to",
+          "dst": "concept:llm-training-from-scratch",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:jingyaogong/minimind",
+          "rel": "complements",
+          "dst": "repo:unslothai/unsloth",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "repo:jingyaogong/minimind",
+          "rel": "enables",
+          "dst": "concept:educational-llm-content",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jingyaogong-minimind",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "alphaXiv/openresearch-cli",
+      "url": "https://github.com/alphaXiv/openresearch-cli",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI y aplicación de escritorio (Rust + SQLite local) que convierte Claude Code, Codex u OpenCode en agentes de investigación paralelos con worktrees git aislados, árbol de experimentos git-native, archive inmutable por run y un **autoresearch loop** que propone idea, modifica código, lanza experimento, inspecciona evidencia y decide el siguiente paso. Corre local, sobre SSH, o escala a Slurm/Kubernetes/Ray/HF Jobs/Modal/Tinker/managed compute.",
+        "por_que_importa": "Encaja en la narrativa \"coding agents en paralelo\" que ya cubrimos: el 2026-07-16 hablamos de Orca como lado \"implementación\" (escribir código) y antes tratamos Superpowers como de skills. OpenResearch es el lado \"investigación\" del mismo problema: leer literatura, diseñar experimentos, ejecutar, archivar evidencia y decidir el siguiente paso, todo dentro de un autoresearch loop con worktrees git aislados. La pareja Orca + OpenResearch es ideal para un artículo sobre cómo separar \"research agent\" de \"implementation agent\" sin mezclarlos en el mismo flujo. Para el día a día, el comando `orx install-skills` instala skills oficiales en Claude Code, Codex y OpenCode, lo que lo hace inmediatamente útil sin montar el stack completo",
+        "madurez_senales": "604★ · 46 forks · 8 issues · Rust · **MIT** · creado 2026-06-07 (3 meses) · último push 2026-09-01 · home: https://openresearch.sh/ · docs en openresearch.sh/docs. Pocos issues (8) sobre 46 forks y actividad diaria — señal de equipo activo y producto en pañales pero con runway.",
+        "accion_sugerida": "**explorar** (instalar `orx`, probar `orx projects` con un repo propio, comparar el worktree-management con `stablyai/orca`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alphaXiv/openresearch-cli",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:alphaXiv/openresearch-cli",
+          "rel": "enables",
+          "dst": "concept:autoresearch-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:alphaXiv/openresearch-cli",
+          "rel": "uses",
+          "dst": "concept:git-worktrees",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alphaxiv-openresearch-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "mukul975/cve-mcp-server",
+      "url": "https://github.com/mukul975/cve-mcp-server",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Servidor MCP de grado producción (Python 3.10+, FastMCP, httpx async, aiosqlite, Pydantic v2) que expone a Claude 28 herramientas de inteligencia de seguridad distribuidas en 24 APIs: NVD (CVSS), EPSS (explotación), CISA KEV (explotación activa), Shodan, VirusTotal, GreyNoise, MITRE ATT&CK, OSV y GitHub Advisory. La estrella: un orquestador `triage_cve` que calcula un score compuesto con override duro de CISA KEV. Permite responder \"¿parcheamos CVE-2024-3400?\" con evidencia correlacionada.",
+        "por_que_importa": "El patrón \"MCP como plano de control sobre APIs externas\" se materializa aquí con calidad: en vez de saltar entre NVD, EPSS, CISA KEV, Shodan, VirusTotal, GreyNoise, MITRE ATT&CK, OSV y GitHub Advisory, un orquestador `triage_cve` cruza todas las fuentes y devuelve una respuesta con evidencia correlacionada, con override duro si CISA KEV marca la CVE como explotada activamente. Para un equipo LATAM pequeño sin AppSec dedicado, esto baja la barra de \"¿parcheamos CVE-2024-3400?\" a una pregunta en lenguaje natural desde Claude. Como ya cubrimos el concepto de servidor MCP el 2026-08-24 y la pieza competidora chrome-devtools-mcp el 2026-08-20, este repo se sitúa en la misma familia y aporta el caso de uso devsecops.",
+        "madurez_senales": "1.343★ · 235 forks · 11 issues · Python · Apache-2.0 · creado 2026-04-14 · último push 2026-08-05 (pushed_at es de hace 4 semanas; **ojo**: el proyecto podría haber entrado en meseta, aunque su stars/seguidores siguen subiendo). Topics: cisa-kev, claude-ai, cve, cybersecurity, devsecops, epss, fastmcp, mcp, mitre-attack, model-context-protocol, nvd, osv, python, security, shodan, threat-intelligence, virustotal, vulnerability-management.",
+        "accion_sugerida": "**probar** (`pip install` + configurar 2-3 API keys gratuitas: NVD, OSV, CISA KEV; pedirle a Claude que evalúe una CVE del backlog propio).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mukul975/cve-mcp-server",
+          "rel": "implements",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:mukul975/cve-mcp-server",
+          "rel": "relevant_to",
+          "dst": "concept:devsecops-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mukul975/cve-mcp-server",
+          "rel": "competes_with",
+          "dst": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mukul975-cve-mcp-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Waishnav/devspace",
+      "url": "https://github.com/Waishnav/devspace",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Servidor MCP auto-hospedado (TypeScript, MIT, npm `@waishnav/devspace`) que permite a ChatGPT leer, editar, buscar y ejecutar código en proyectos locales, sin subir nada a un tercero. Funciona exponiendo el servicio por un túnel controlado y autorizando con contraseña. Incluye un sponsor (rebates.ai) mostrado como footer opcional en el coding agent.",
+        "por_que_importa": "El ángulo \"ChatGPT como coding agent real, conectado a mi máquina\" es complementario al de Codex/Claude Code. DevSpace cubre a usuarios que ya pagan ChatGPT Pro/Team pero no quieren (o no pueden) cambiar de tool. Buena pieza para contenido comparativo.",
+        "madurez_senales": "4.373★ · 464 forks · 58 issues · TypeScript · MIT · creado 2026-06-14 (2.5 meses) · último push 2026-08-31 · topics: agent-orchestration, chatgpt, claude, claude-code, codex, dyanmic-workflow, pi-coding-agent. Watchers 7 (bajo) y 58 issues (alto ratio 1.3%) — comunidad activa con fricción. Requiere Node ≥22.19.",
+        "accion_sugerida": "**vigilar** (la promesa es fuerte, pero su dependencia del modo \"developer\" de ChatGPT lo hace frágil — observar 30 días antes de comprometerse).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Waishnav/devspace",
+          "rel": "competes_with",
+          "dst": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:Waishnav/devspace",
+          "rel": "enables",
+          "dst": "concept:chatgpt-as-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Waishnav/devspace",
+          "rel": "risk",
+          "dst": "problem:openai-policy-fluidity",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "waishnav-devspace",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "pollen-robotics/microduck_rl",
+      "url": "https://github.com/pollen-robotics/microduck_rl",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Stack de entrenamiento por refuerzo (Python, Apache-2.0) para el robot bípedo Microduck de Pollen Robotics, construido sobre **NVIDIA mjlab** (framework RL basado en MuJoCo). Es el \"lado software\" del hardware Microduck; el repo hermano `pollen-robotics/microduck` es la plataforma física.",
+        "por_que_importa": "Sirve como ejemplo concreto y reproducible de \"robótica física + simulación + RL\" con todo el bucle abierto: diseño del robot (repo hermano microduck), simulación con el framework RL de NVIDIA basado en MuJoCo, y entrenamiento del bípedo Microduck en un solo stack reproducible. Aunque no es el foco editorial principal, ayuda a sustentar artículos sobre el ecosistema NVIDIA mjlab e Isaac Lab y sobre el creciente stack de RL para robots pequeños, porque muestra cómo se encadenan los tres eslabones (hardware → sim → entrenamiento) en un mismo proveedor. Detalle operativo a no olvidar si el lector decide clonar: el branch por defecto es `develop`, hay que verificarlo antes de clonar.",
+        "madurez_senales": "1.279★ · 216 forks · 15 issues · Python · Apache-2.0 · creado 2025-12-06 · último push 2026-08-31 · branch por defecto: `develop` (verificar antes de clonar). Sin topics en GitHub (señal de repo joven).",
+        "accion_sugerida": "**leer** (curiosidad más que acción concreta; útil para una pieza \"el stack completo de RL robótico cabe en un repo\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pollen-robotics/microduck_rl",
+          "rel": "enables",
+          "dst": "concept:robotics-rl",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pollen-robotics/microduck_rl",
+          "rel": "uses",
+          "dst": "tool:nvidia-mjlab",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pollen-robotics/microduck_rl",
+          "rel": "complements",
+          "dst": "repo:pollen-robotics/microduck",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pollen-robotics-microduck-rl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "siyuan-note/siyuan",
+      "url": "https://github.com/siyuan-note/siyuan",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación de notas / PKM / cuaderno digital open-source, self-hosted y local-first (TypeScript + Electron). Soporta markdown, conocimiento en grafo, block-level referencing, S3/WebDAV sync y, desde hace poco, **integración nativa con agentes AI vía MCP**. Es la versión china/asiática de Obsidian-meets-Logseq, con la diferencia de ser 100% offline-first y self-hosted.",
+        "por_que_importa": "Confirma la tesis \"todo knowledge app que sobreviva 2026 va a tener MCP\": Siyuan, PKM open-source local-first y self-hosted con markdown, grafo de conocimiento y block-level referencing, acaba de sumar integración nativa con agentes AI vía MCP, justo la línea que cubrimos el 2026-08-24 cuando explicamos el patrón. Frente a Obsidian, es la alternativa 100% offline-first con sync opcional a S3 o WebDAV, relevante para lectores sensibles al dato en la nube. Ojo con el licenciamiento: como ya avisamos el 2026-08-31 al hablar de restricciones AGPL-3.0, Siyuan es perfecto para self-hosting personal pero delicado para cualquier empaquetado SaaS, algo que cualquier pieza comparativa tiene que mencionar antes de recomendarlo.",
+        "madurez_senales": "46.088★ · 2.975 forks · 60 issues · TypeScript · **AGPL-3.0** · creado 2020-08-30 (6 años, muy maduro) · último push 2026-08-31 · topics: agentic-ai, ai-agent, digital-garden, electron, knowledge-base, knowledge-graph, local-first, markdown, mcp, note-taking, notebook, notes-app, pdf, pkm, s3, self-hosted, siyuan, webdav, wiki.",
+        "accion_sugerida": "**vigilar** (probar instalación local y medir si el rendimiento con 5k notas está al nivel de Obsidian; revisar el grafo de bloques antes de recomendar migración).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:siyuan-note/siyuan",
+          "rel": "competes_with",
+          "dst": "concept:obsidian",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:siyuan-note/siyuan",
+          "rel": "implements",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:siyuan-note/siyuan",
+          "rel": "risk",
+          "dst": "problem:license-agpl-restriction",
+          "primera_mencion": "2026-08-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "siyuan-note-siyuan",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "PurpleDoubleD/locally-uncensored",
+      "url": "https://github.com/PurpleDoubleD/locally-uncensored",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.329★, push 2026-08-31, TypeScript, AGPL-3.0). AI studio desktop (Tauri) con LLMs abliterated, ComfyUI y agente de código. Topics: gemma4, ollama, comfyui, tauri.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (AGPL-3.0 bloquea SaaS; pero el ángulo \"AI studio local con abliterated + coding agent\" es interesante como referencia de stack)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "purpledoubled-locally-uncensored",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "kaifcodec/user-scanner",
+      "url": "https://github.com/kaifcodec/user-scanner",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.424★, push 2026-09-01, Python, MIT). OSINT suite que analiza 465 sitios desde email/username; los topics incluyen redteam/pentesting.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (ético si se usa para defender; **no** para acosar; útil para equipos de seguridad que quieran mostrar superficie de exposición)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kaifcodec-user-scanner",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "securo-finance/securo",
+      "url": "https://github.com/securo-finance/securo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.880★, push 2026-08-31, Python, AGPL-3.0). Gestor financiero personal self-hosted.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (fuera del foco AI/dev; AGPL-3.0 y 201 issues sobre 2.880★ indican fricción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "securo-finance-securo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "majd/ipatool",
+      "url": "https://github.com/majd/ipatool",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(descarga paquetes IPA de iOS), **pollen-robotics/microduck** (hardware)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (nichos fuera del scope)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "majd-ipatool",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "microsoft/qlib",
+      "url": "https://github.com/microsoft/qlib",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(AI quant platform Microsoft)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (marca Microsoft y momentum sostenido; útil si Alejandro cubre \"AI aplicada a fintech\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-qlib",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "zeroclaw-labs/zeroclaw",
+      "url": "https://github.com/zeroclaw-labs/zeroclaw",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11★ hoy, 11 issues, Rust). Infraestructura de asistente personal \"any OS, any platform\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (proyecto verde; descripción inflada para tracción tan baja)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zeroclaw-labs-zeroclaw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/7 items reescritos; rechazados por longitud sospechosa: [1, 4]; faltantes en respuesta: [1, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

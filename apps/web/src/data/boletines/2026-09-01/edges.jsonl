@@ -1,0 +1,47 @@
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-deeplethe-utopia", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-deeplethe-utopia", "dst": "tema:deeplethe-utopia", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:deeplethe/utopia", "dst": "concept:temporal-knowledge-graph", "rel": "implements", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:deeplethe/utopia", "dst": "concept:ontology2sql", "rel": "implements", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:deeplethe/utopia", "dst": "tool:pgvector", "rel": "relevant_to", "added": "2026-09-01", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-jingyaogong-minimind", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-jingyaogong-minimind", "dst": "tema:jingyaogong-minimind", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:jingyaogong/minimind", "dst": "concept:llm-training-from-scratch", "rel": "relevant_to", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:jingyaogong/minimind", "dst": "repo:unslothai/unsloth", "rel": "complements", "added": "2026-09-01", "primera_mencion": "2026-08-31"}
+{"src": "repo:jingyaogong/minimind", "dst": "concept:educational-llm-content", "rel": "enables", "added": "2026-09-01", "primera_mencion": null}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-alphaxiv-openresearch-cli", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-alphaxiv-openresearch-cli", "dst": "tema:alphaxiv-openresearch-cli", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:alphaXiv/openresearch-cli", "dst": "repo:stablyai/orca", "rel": "competes_with", "added": "2026-09-01", "primera_mencion": "2026-07-16"}
+{"src": "repo:alphaXiv/openresearch-cli", "dst": "concept:autoresearch-loop", "rel": "enables", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:alphaXiv/openresearch-cli", "dst": "concept:git-worktrees", "rel": "uses", "added": "2026-09-01", "primera_mencion": null}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-mukul975-cve-mcp-server", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-mukul975-cve-mcp-server", "dst": "tema:mukul975-cve-mcp-server", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:mukul975/cve-mcp-server", "dst": "concept:mcp-server", "rel": "implements", "added": "2026-09-01", "primera_mencion": "2026-08-24"}
+{"src": "repo:mukul975/cve-mcp-server", "dst": "concept:devsecops-agents", "rel": "relevant_to", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:mukul975/cve-mcp-server", "dst": "repo:ChromeDevTools/chrome-devtools-mcp", "rel": "competes_with", "added": "2026-09-01", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-waishnav-devspace", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-waishnav-devspace", "dst": "tema:waishnav-devspace", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:Waishnav/devspace", "dst": "repo:ChromeDevTools/chrome-devtools-mcp", "rel": "competes_with", "added": "2026-09-01", "primera_mencion": "2026-08-20"}
+{"src": "repo:Waishnav/devspace", "dst": "concept:chatgpt-as-coding-agent", "rel": "enables", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:Waishnav/devspace", "dst": "problem:openai-policy-fluidity", "rel": "risk", "added": "2026-09-01", "primera_mencion": null}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-pollen-robotics-microduck-rl", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-pollen-robotics-microduck-rl", "dst": "tema:pollen-robotics-microduck-rl", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:pollen-robotics/microduck_rl", "dst": "concept:robotics-rl", "rel": "enables", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:pollen-robotics/microduck_rl", "dst": "tool:nvidia-mjlab", "rel": "uses", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:pollen-robotics/microduck_rl", "dst": "repo:pollen-robotics/microduck", "rel": "complements", "added": "2026-09-01", "primera_mencion": null}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-siyuan-note-siyuan", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-siyuan-note-siyuan", "dst": "tema:siyuan-note-siyuan", "rel": "trata", "added": "2026-09-01"}
+{"src": "repo:siyuan-note/siyuan", "dst": "concept:obsidian", "rel": "competes_with", "added": "2026-09-01", "primera_mencion": null}
+{"src": "repo:siyuan-note/siyuan", "dst": "concept:mcp-server", "rel": "implements", "added": "2026-09-01", "primera_mencion": "2026-08-24"}
+{"src": "repo:siyuan-note/siyuan", "dst": "problem:license-agpl-restriction", "rel": "risk", "added": "2026-09-01", "primera_mencion": "2026-08-31"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-purpledoubled-locally-uncensored", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-purpledoubled-locally-uncensored", "dst": "tema:purpledoubled-locally-uncensored", "rel": "trata", "added": "2026-09-01"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-kaifcodec-user-scanner", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-kaifcodec-user-scanner", "dst": "tema:kaifcodec-user-scanner", "rel": "trata", "added": "2026-09-01"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-securo-finance-securo", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-securo-finance-securo", "dst": "tema:securo-finance-securo", "rel": "trata", "added": "2026-09-01"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-majd-ipatool", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-majd-ipatool", "dst": "tema:majd-ipatool", "rel": "trata", "added": "2026-09-01"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-microsoft-qlib", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-microsoft-qlib", "dst": "tema:microsoft-qlib", "rel": "trata", "added": "2026-09-01"}
+{"src": "boletin:2026-09-01", "dst": "item:https-github-com-zeroclaw-labs-zeroclaw", "rel": "menciona", "added": "2026-09-01"}
+{"src": "item:https-github-com-zeroclaw-labs-zeroclaw", "dst": "tema:zeroclaw-labs-zeroclaw", "rel": "trata", "added": "2026-09-01"}

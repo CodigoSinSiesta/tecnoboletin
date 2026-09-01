@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-09-01",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "utopia lleva el grafo de conocimiento bitemporal a Rust y Postgres",
+  "posicionamiento": "El conocimiento deja de ser un blob vectorial y se vuelve estructura con historia: utopia modela hechos con intervalo de validez y evidencia, cve-mcp-server correlaciona 24 fuentes en una respuesta, siyuan abre su grafo a agentes. La capa de datos es hoy la pieza que importa, no el modelo.",
+  "convergencia_stack_css": "utopia es la primera pieza OSS que cierra el círculo pgvector → grafo bitemporal en un solo binario Rust + Postgres, exactamente el sustrato local-first que ya venimos montando. siyuan añade el flanco de notas self-hosted con MCP nativo, alternativa real a Obsidian sin nube.",
+  "cruzado_grafo": "pgvector (primera mención 2026-08-10) gana por fin una implementación de grafo encima. El nodo mcp-server (2026-08-24) se refuerza dos veces hoy, con cve-mcp-server y siyuan, y sigue siendo el concepto más reutilizado del grafo. Nuevos: temporal-knowledge-graph, ontology2sql, autoresearch-loop.",
+  "tendencias_5_boletines": "Los días previos giraron sobre disciplina de ingeniería aplicada a agentes (swarm-forge, plannotator) y agentes operando assets reales. Hoy el eje baja un nivel: dónde y cómo se guarda lo que el agente aprende. openresearch-cli hereda directamente los worktrees aislados del 2026-08-30.",
+  "alertas": [
+    "utopia es v0.1 por confesión propia y su schema va a cambiar: no construir nada encima sin asumir migraciones",
+    "siyuan es AGPL-3.0: correcto para self-hosting personal, delicado para cualquier empaquetado SaaS",
+    "devspace incluye sponsor (rebates.ai) en el footer del coding agent y depende de la política de OpenAI sobre conexiones locales, que puede cambiar",
+    "el claim state-of-the-art de Ontology2SQL en BIRD viene del propio repo y no está verificado por terceros",
+    "los 56.487★ de minimind miden alcance educativo, no calidad de código de producción"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Clonar y leer el schema bitemporal y el mapping Ontology2SQL contra un Postgres propio. Es el candidato más directo a sustituir el diseño casero del grafo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Puerta de entrada ideal para una serie en español sobre qué pasa por dentro al entrenar un LLM, sin infraestructura exótica."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Probar `orx install-skills` sin montar el stack completo, y contrastar el rol de research agent frente al de implementación."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 6,
+      "razon": "Su MCP nativo lo pone como alternativa real a Obsidian; conviene ver si la integración madura antes de recomendarlo en una comparativa."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "El orquestador triage_cve es el mejor ejemplo hasta ahora de MCP como plano de control; seguir si mantiene las 24 APIs vivas."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
