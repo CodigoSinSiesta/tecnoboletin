@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-09-02",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "PageIndex y el RAG sin vectores maduran mientras la frontera se mueve a Rust y a gateways",
+  "posicionamiento": "Cinco hallazgos que orbitan la misma idea: la pila de agente ya no se discute en frameworks, se discute en infraestructura. PageIndex demuestra que el chunking es una muleta, Rig lleva la pelea de LangChain al territorio tipado de Rust, gpt-load profesionaliza el gateway auto-hospedado y OpenResearch + codeburn muestran la capa desktop nativa como nueva superficie. El denominador comun es tooling, no modelos: quien controla la infra controla el coste.",
+  "convergencia_stack_css": "PageIndex encaja directo en el stack local-first: indexacion en Python, sin vectores, self-hostable, ideal como capa de recuperacion sobre notas y papers propios. gpt-load resuelve un dolor real de quien rota claves entre OpenAI, Claude y Gemini, y OpenResearch + codeburn dan dos piezas nativas (desktop Rust y menubar macOS) que se sienten del mismo lado del mostrador que Ollama + PGLite.",
+  "cruzado_grafo": "El nodo concept:vectorless-retrieval, visto por primera vez el 2026-08-13, recibe hoy su implementacion mas visible con PageIndex a 35k estrellas. concept:langchain (2026-08-12) recoge a Rig como competidor Rust, y concept:ai-gateway-go (2026-08-19) se extiende con gpt-load, que ya compite con envoyproxy/ai-gateway (2026-08-23). OpenResearch enlaza con openresearch-cli (2026-09-01) como companero de escritorio; codeburn conecta con claude-code (2026-07-28) y cursor/plugins (2026-08-13).",
+  "tendencias_5_boletines": "Sin contexto inmediato de 2026-09-01 aparte del parrafo de ayer sobre conocimiento estructurado y de 2026-08-30 sobre disciplina SWE en agent swarms, la lectura minima es: PageIndex prolonga la tesis de ayer (la capa de datos pesa mas que el modelo), mientras Rig, gpt-load y codeburn llevan el debate al terreno del tooling de produccion. La tendencia de cinco boletines no es sintetizable con solo dos dias previos en mano, asi que conviene esperar al menos un ciclo mas para confirmar el giro.",
+  "alertas": [
+    "PageIndex a 35k estrellas es metricas de repo marketing-friendly: la adopcion real en pipelines de produccion aun no esta documentada con casos publicos.",
+    "codeburn con menubar de macOS deja fuera a Linux y Windows, su mercado real es pequeno y nicho.",
+    "gpt-load resuelve key-rotation pero no audita coste por modelo: para visibilidad de gasto, codeburn o LiteLLM siguen siendo complementarios, no sustitutos."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "PageIndex es el ejemplo mas limpio de vectorless-retrieval del grafo; vale la pena probarlo sobre un set de papers propios para medir si supera al embedding + chunking que ya tenemos montado."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Rig consolida el lado Rust de la pelea con LangChain; seguir su ritmo de releases y tamano de la comunidad en Discord marcara si se queda en alternativa seria o en proyecto de nicho."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "gpt-load encaja como pieza a discutir en una futura entrada sobre gateways auto-hospedados: completa el cuadrante que ya cubren LiteLLM y envoy/ai-gateway."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "codeburn ataca un dolor real de quien paga Cursor o Claude Code a diario; seguir su roadmap multiplataforma dira si se queda en macOS o salta a Linux."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

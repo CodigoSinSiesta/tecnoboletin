@@ -1,0 +1,35 @@
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-vectifyai-pageindex", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-vectifyai-pageindex", "dst": "tema:pageindex-rag-sin-vectores", "rel": "trata", "added": "2026-09-02"}
+{"src": "repo:VectifyAI/PageIndex", "dst": "concept:vectorless-retrieval", "rel": "implements", "added": "2026-09-02", "primera_mencion": "2026-08-13"}
+{"src": "concept:vectorless-retrieval", "dst": "concept:agentic-rag", "rel": "competes_with", "added": "2026-09-02", "primera_mencion": "2026-08-13"}
+{"src": "repo:VectifyAI/PageIndex", "dst": "concept:context-engineering", "rel": "relevant_to", "added": "2026-09-02", "primera_mencion": null}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-0xplaygrounds-rig", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-0xplaygrounds-rig", "dst": "tema:rig", "rel": "trata", "added": "2026-09-02"}
+{"src": "repo:0xPlaygrounds/rig", "dst": "concept:langchain", "rel": "competes_with", "added": "2026-09-02", "primera_mencion": "2026-08-12"}
+{"src": "repo:0xPlaygrounds/rig", "dst": "language:rust", "rel": "uses", "added": "2026-09-02", "primera_mencion": null}
+{"src": "repo:0xPlaygrounds/rig", "dst": "concept:llm-framework-rust", "rel": "relevant_to", "added": "2026-09-02", "primera_mencion": null}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-tbphp-gpt-load", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-tbphp-gpt-load", "dst": "tema:gpt-load", "rel": "trata", "added": "2026-09-02"}
+{"src": "repo:tbphp/gpt-load", "dst": "concept:ai-gateway-go", "rel": "extends", "added": "2026-09-02", "primera_mencion": "2026-08-19"}
+{"src": "repo:tbphp/gpt-load", "dst": "repo:envoyproxy/ai-gateway", "rel": "competes_with", "added": "2026-09-02", "primera_mencion": "2026-08-23"}
+{"src": "repo:tbphp/gpt-load", "dst": "problem:llm-key-rotation", "rel": "solves", "added": "2026-09-02", "primera_mencion": null}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-alphaxiv-openresearch", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-alphaxiv-openresearch", "dst": "tema:openresearch-alphaxiv", "rel": "trata", "added": "2026-09-02"}
+{"src": "repo:alphaXiv/OpenResearch", "dst": "repo:alphaXiv/openresearch-cli", "rel": "companion", "added": "2026-09-02", "primera_mencion": "2026-09-01"}
+{"src": "repo:alphaXiv/OpenResearch", "dst": "concept:claude-code", "rel": "uses", "added": "2026-09-02", "primera_mencion": null}
+{"src": "repo:alphaXiv/OpenResearch", "dst": "concept:local-research-os", "rel": "competes_with", "added": "2026-09-02", "primera_mencion": null}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-getagentseal-codeburn", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-getagentseal-codeburn", "dst": "tema:codeburn", "rel": "trata", "added": "2026-09-02"}
+{"src": "repo:getagentseal/codeburn", "dst": "problem:agent-token-cost-visibility", "rel": "solves", "added": "2026-09-02", "primera_mencion": null}
+{"src": "repo:getagentseal/codeburn", "dst": "repo:anthropics/claude-code", "rel": "integrates_with", "added": "2026-09-02", "primera_mencion": "2026-07-28"}
+{"src": "repo:getagentseal/codeburn", "dst": "repo:cursor/plugins", "rel": "integrates_with", "added": "2026-09-02", "primera_mencion": "2026-08-13"}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-dongdongbh-mindwtr", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-dongdongbh-mindwtr", "dst": "tema:dongdongbh-mindwtr", "rel": "trata", "added": "2026-09-02"}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-rmyndharis-openwa", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-rmyndharis-openwa", "dst": "tema:rmyndharis-openwa", "rel": "trata", "added": "2026-09-02"}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-techarohq-anubis", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-techarohq-anubis", "dst": "tema:techarohq-anubis", "rel": "trata", "added": "2026-09-02"}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-majd-ipatool", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-majd-ipatool", "dst": "tema:majd-ipatool", "rel": "trata", "added": "2026-09-02"}
+{"src": "boletin:2026-09-02", "dst": "item:https-github-com-raine-workmux", "rel": "menciona", "added": "2026-09-02"}
+{"src": "item:https-github-com-raine-workmux", "dst": "tema:raine-workmux", "rel": "trata", "added": "2026-09-02"}

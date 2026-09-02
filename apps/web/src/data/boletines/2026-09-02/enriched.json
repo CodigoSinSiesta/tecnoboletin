@@ -1,0 +1,358 @@
+{
+  "version": 2,
+  "date": "2026-09-02",
+  "boletin_origen": "2026-09-02-trending.md",
+  "resumen_ejecutivo": "- **PageIndex sube a 35k★ y planta bandera contra el RAG por embeddings**: la lectura \"tree-of-contents + LLM reasoning\" sigue ganando tracción mientras el modelo vector-plus-chunking se come su propia complejidad. Para el boletín importa porque es la mejor alternativa \"menos infra\" al RAG clásico y se puede self-host.\n- **`rig` (0xPlaygrounds/rig) entra en Rust trending**: 8.5k★ y leader en LLMOps escrito en Rust. Refuerza la tesis de que la frontera de frameworks de agente ha pasado de \"qué tool usar\" a \"qué lenguaje embedir bien la tool\".\n- **`alphaXiv/OpenResearch` aparece hoy en Rust trending**, no confundir con el `openresearch-cli` de ayer (mismo org): ambos son investigación-agente, pero `OpenResearch` (655★) es la versión de escritorio/local-first y trae `orx up` con dashboard local.\n- **`gpt-load` consolida la categoría \"AI gateway open-source\"**: 6.4k★ en Go, multi-provider, multi-credential, menubar y access keys. Es el equivalente self-hosted de OpenRouter, ideal para vender BYOK a tus propias apps.\n- **`getagentseal/codeburn` aterriza el cost-tracking para Claude Code/Codex**: 10k★, dashboard + menubar, MCP-ready. El nicho \"tokens sin control\" tiene producto, no solo tweets.\n- Radiografía del día: 6 re-entradas frente a 36 candidatos nuevos — el nuevo aporta valor, los repetidos ayer ya quedaron cubiertos.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (all + python + typescript + rust + go), GitHub REST API sin token (23/26 verificados). Blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "PageIndex (RAG sin vectores)",
+      "url": "https://github.com/VectifyAI/PageIndex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor RAG que indexa documentos por una jerarquía tipo \"table of contents\" y deja que el LLM razone qué partes leer, sin embeddings ni chunking.",
+        "por_que_importa": "Es la materialización más clara de la tesis vectorless-retrieval que el grafo viene rastreando desde el boletín del 2026-08-13. La idea es que, en documentos grandes (legales, manuales, papers), un índice tipo tabla de contenidos + razonamiento del LLM supera al embedding + chunking clásico. Si escribes sobre RAG, PageIndex es el ejemplo perfecto de \"el chunking es una muleta\": el pipeline entero está en Python, escala razonadamente y demuestra que el coste de indexar se paga una vez y luego se navega sin vectores.",
+        "madurez_senales": "35.484★ · 3.123 forks · Python · MIT · creado 2025-04-01 · último push 2026-09-01 · topics: agentic-ai, agents, ai, ai-agents, context-engineering, information-retrieval, llm, rag, reasoning, retrieval, retrieval-augmented-generation, vector-database.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:VectifyAI/PageIndex",
+          "rel": "implements",
+          "dst": "concept:vectorless-retrieval",
+          "primera_mencion": "2026-08-13"
+        },
+        {
+          "src": "concept:vectorless-retrieval",
+          "rel": "competes_with",
+          "dst": "concept:agentic-rag",
+          "primera_mencion": "2026-08-13"
+        },
+        {
+          "src": "repo:VectifyAI/PageIndex",
+          "rel": "relevant_to",
+          "dst": "concept:context-engineering",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pageindex-rag-sin-vectores",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Rig",
+      "url": "https://github.com/0xPlaygrounds/rig",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework LLMOps en Rust con abstracciones para proveedores, agentes, RAG y providers vectoriales; alternativa nativa a LangChain/LlamaIndex pero tipada y compilada.",
+        "por_que_importa": "Rig responde a una pregunta concreta: ¿qué framework LLM usas cuando el boundary de I/O se vuelve cuello de botella en producción? Es la alternativa nativa en Rust a LangChain/LlamaIndex, con la misma cobertura funcional (proveedores, agentes, RAG, vector stores) pero tipada y compilada. Ya cubrimos la rivalidad con LangChain en el boletín del 2026-08-12; Rig es el exponente más serio del lado Rust de esa pelea, con docs.rs pulidos y una comunidad activa (Discord con más de 1k miembros) que lo sostienen como opción real para deployments serios.",
+        "madurez_senales": "8.496★ · 949 forks · Rust · MIT · creado 2024-06-05 · último push 2026-09-02 · topics: agent, ai, artificial-intelligence, automation, generative-ai, large-language-model, llm, llmops, rust, scalable-ai · Discord activo (más de 1k miembros).",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:0xPlaygrounds/rig",
+          "rel": "competes_with",
+          "dst": "concept:langchain",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:0xPlaygrounds/rig",
+          "rel": "uses",
+          "dst": "language:rust",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:0xPlaygrounds/rig",
+          "rel": "relevant_to",
+          "dst": "concept:llm-framework-rust",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rig",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "gpt-load",
+      "url": "https://github.com/tbphp/gpt-load",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway en Go, self-hosted, con balanceo de claves y suscripciones, expuesto vía un único base URL + AccessKey. Piensa en OpenRouter pero auto-hospedado.",
+        "por_que_importa": "gpt-load resuelve un dolor muy concreto: cuando monetizas o vendes un producto con BYOK-LLM, acabas rotando entre decenas de API keys de OpenAI, Claude y Gemini. Es el siguiente paso natural después de LiteLLM: un gateway en Go, self-hosted, expuesto con un único base URL y una AccessKey que abstrae el balanceo. El boletín del 2026-08-19 ya introdujo el concepto de AI gateway en Go, y el del 2026-08-23 lo puso a competir con envoyproxy/ai-gateway; gpt-load se sitúa en esa misma franja pero con la orientación clara a key-rotation y suscripciones.",
+        "madurez_senales": "6.402★ · 682 forks · Go · MIT · creado 2025-06-06 · último push 2026-09-01 · default_branch `v2` · topics: ai-gateway, anthropic, api-gateway, claude, claude-code, codex, gemini, gin, go, golang, llm, llm-gateway, load-balancer, openai, self-hosted.",
+        "accion_sugerida": "**probar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tbphp/gpt-load",
+          "rel": "extends",
+          "dst": "concept:ai-gateway-go",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:tbphp/gpt-load",
+          "rel": "competes_with",
+          "dst": "repo:envoyproxy/ai-gateway",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "repo:tbphp/gpt-load",
+          "rel": "solves",
+          "dst": "problem:llm-key-rotation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gpt-load",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "OpenResearch (alphaXiv)",
+      "url": "https://github.com/alphaXiv/OpenResearch",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "workspace local-first que convierte Claude Code, Codex y OpenCode en research agents con literatura, hipótesis, experimentos y artefactos.",
+        "por_que_importa": "Encaja con la tendencia desktop-app-para-IA-local: convierte Claude Code, Codex y OpenCode en research agents con literatura, hipótesis, experimentos y artefactos, y se instala con un curl | sh que arranca un dashboard en localhost:4791. Ya cubrimos al mismo autor el 2026-09-01 con su openresearch-cli en Python; OpenResearch es la versión desktop en Rust de esa misma idea (mismo autor, distinto producto: CLI frente a app nativa), lo que lo convierte en un caso de estudio de cómo un proyecto crece de script a producto sin cambiar de filosofía.",
+        "madurez_senales": "655★ · 48 forks · Rust · MIT · creado 2026-06-07 · último push 2026-09-02 · descarga desktop en openresearch.sh/download. Temprano pero con momentum fuerte (4.2x stars en 3 meses).",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alphaXiv/OpenResearch",
+          "rel": "companion",
+          "dst": "repo:alphaXiv/openresearch-cli",
+          "primera_mencion": "2026-09-01"
+        },
+        {
+          "src": "repo:alphaXiv/OpenResearch",
+          "rel": "uses",
+          "dst": "concept:claude-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:alphaXiv/OpenResearch",
+          "rel": "competes_with",
+          "dst": "concept:local-research-os",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openresearch-alphaxiv",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "codeburn",
+      "url": "https://github.com/getagentseal/codeburn",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "panel de control (menubar de macOS + dashboard web) que correlaciona los tokens consumidos por Claude Code, Codex y Cursor con su coste real y detecta dónde se va el dinero.",
+        "por_que_importa": "El 'tokens sin control' se ha vuelto dolor de primera línea para quien usa coding-agents a diario: Claude Code, Codex y Cursor consumen créditos y nadie sabe dónde se va el dinero. Codeburn es la primera respuesta open-source con UX nativa (menubar de macOS + dashboard web), no un script de Python pegado, y ya cubrimos dos de sus integraciones en boletines previos: Claude Code el 2026-07-28 y el ecosistema Cursor el 2026-08-13. Es un buen caso de producto for AI-first developers: nicho pequeño pero con fidelidad alta, porque ataca un problema que todo el que paga la factura de Cursor nota en el primer mes.",
+        "madurez_senales": "10.530★ · 799 forks · TypeScript · MIT · creado 2026-04-13 · último push 2026-09-01 · topics: ai-coding, claude-code, cli, codex, cost-tracking, cursor-ide, developer-tools, menubar, observability, terminal-ui, token-usage, web-dashboard.",
+        "accion_sugerida": "**probar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:getagentseal/codeburn",
+          "rel": "solves",
+          "dst": "problem:agent-token-cost-visibility",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getagentseal/codeburn",
+          "rel": "integrates_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:getagentseal/codeburn",
+          "rel": "integrates_with",
+          "dst": "repo:cursor/plugins",
+          "primera_mencion": "2026-08-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "codeburn",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "dongdongbh/Mindwtr",
+      "url": "https://github.com/dongdongbh/Mindwtr",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.902★, push 2026-09-02, TypeScript, AGPL-3.0) — Gestor de tareas ADHD-friendly multiplataforma; segunda entrada en dos semanas.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dongdongbh-mindwtr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "rmyndharis/OpenWA",
+      "url": "https://github.com/rmyndharis/OpenWA",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.604★, push 2026-09-02, TypeScript, MIT) — Gateway self-hosted para WhatsApp Web con API unificada; picos típicos cada vez que Meta presiona la WA Cloud API.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rmyndharis-openwa",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "TecharoHQ/anubis",
+      "url": "https://github.com/TecharoHQ/anubis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(22.063★, push 2026-08-31, Go, MIT) — Defensa PoW de TecharoHQ contra scrapers y LLM-crawlers (fork del Anubis original); tendencia caliente por la conversación \"AI bots vs origen server-rendered\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "techarohq-anubis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "majd/ipatool",
+      "url": "https://github.com/majd/ipatool",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.742★, push 2026-08-31, Go, MIT) — CLI para descargar y analizar `.ipa` de iOS (in-app purchases, Info.plist, assets).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — si necesitas hacer research de iOS",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "majd-ipatool",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "raine/workmux",
+      "url": "https://github.com/raine/workmux",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.355★, push 2026-09-01, Rust, MIT) — Multiplexer de git worktrees pensado para sesiones largas con AI-coding; el problema que ataca (gestionar 30 worktrees en paralelo) es real.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "raine-workmux",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
