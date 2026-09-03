@@ -1,0 +1,559 @@
+{
+  "version": 2,
+  "date": "2026-09-03",
+  "boletin_origen": "2026-09-03-trending.md",
+  "resumen_ejecutivo": "- **Anthropic publica `commerce-agents` como blueprint oficial de verticales**: shopping agent + merchant agent sobre Claude, con cuatro verticales (retail, travel, telecom, entertainment) y un plugin de Claude Code (`/scaffold-commerce-agent`) para que cualquier empresa construya el suyo sobre el patrón. Es el primer movimiento serio de Anthropic hacia \"vertical agents reference\" fuera de Claude Code puro. Verificado vía GitHub API: 804★, 126 forks, Python, Apache-2.0, creado 2026-09-01 (2 días).\n- **Shannon de Keygraph llega a 47.6k★ con exploits reales sobre código**: el AI pentester de KeygraphHQ ejecuta vulnerabilidades contra tu propia app para demostrar el riesgo antes de producción. RE-entrada desde 2026-08-14 con cadencia semanal; el signal \"AI pentesting con RCE real\" sigue creciendo. Licencia AGPL-3.0: úsalo pero no lo fuerces dentro de tu SaaS.\n- **Chrome DevTools MCP oficial se acerca a 51k★**: el `chrome-devtools-mcp` de Google ChromeDevTools consolida el patrón \"MCP canónico para automatizar Chrome desde coding agents\". RE-entrada confirmada y ahora con cadencia de 4-5 días en trending. Reemplaza (en el segmento MCP) al combo puppeteer + scripts a medida.\n- **`zvec-ai/zvec-grep` aterriza \"local-first search para agentes\"** con 1.1k★ pero una tesis limpia: BM25 + búsqueda semántica + ripgrep + MCP en un solo binario, índice local del workspace que sirve a humanos y agentes por igual. Entra al radar como el nuevo \"agente necesita grep con cerebro\" frente a las opciones cloud-only.\n- **`vercel-labs/portless` y `vercel-labs/agent-browser` reaparecen juntos**: ambos superan los 11k★ / 40k★ respectivamente. La tesis es la misma: Vercel Labs está cubriendo el \"dev environment agent-ready\" con URLs nombradas estables (portless) y un CLI de browser automation (agent-browser). Cobertura completa del loop \"URL humana + browser agente\" para multi-agent dev.\n- **Radiografía del día**: 16 repos verificados vía GitHub API sin token (todos los `hallazgos principales` y radar), 0 re-entradas contadas como hallazgo principal sin historia nueva (todas tienen ángulo específico). El spam SEO de Trendshift sigue ocupando 16 de las 25 posiciones — útil solo para recordar que Trendshift sin filtrar da más ruido que GitHub Trending.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript + python + rust + go), GitHub REST API sin token (16/16 verificados). Blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "commerce-agents",
+      "url": "https://github.com/anthropics/commerce-agents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "reference implementation de Anthropic para agentes verticales de comercio (shopping para clientes + merchant para back-office) sobre Claude, con cuatro verticales (retail, travel, telecom, entertainment) y un plugin Claude Code para scaffoldear uno propio.",
+        "por_que_importa": "es el primer patrón \"fork-and-custom\" oficial de Anthropic fuera de Claude Code puro, así que sirve como referencia canónica para escribir sobre cómo se construye un agente vertical hoy: trae los contratos (`StorefrontBackend`, `MerchantBackend`), cinco skills por agente, gates de aprobación humana para writes sensibles y los runtimes (Messages API, Agent SDK, Managed Agents). La extensión sobre Claude Code ya la cubrimos el 2026-07-28; aquí Anthropic aplica esa misma base a un dominio de negocio concreto (retail, travel, telecom, entertainment) y suma un plugin para scaffoldear el tuyo, lo que lo convierte en material de referencia para cualquier newsletter sobre agentes verticales.",
+        "madurez_senales": "804★ · 126 forks · Python · Apache-2.0 · creado 2026-09-01 · último push 2026-09-01 · default_branch `main` · topics: ai-agent, e-commerce, programming-examples. README 14 KB, scaffold via `claude plugin marketplace add anthropics/commerce-agents && claude plugin install commerce-builder@claude-commerce-agents` y luego `/scaffold-commerce-agent`.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/commerce-agents",
+          "rel": "implements",
+          "dst": "concept:vertical-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:anthropics/commerce-agents",
+          "rel": "extends",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:anthropics/commerce-agents",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skills-pattern",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "commerce-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Shannon (Keygraph)",
+      "url": "https://github.com/KeygraphHQ/shannon",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente que audita tu código fuente, identifica vectores de ataque y ejecuta exploits reales contra tu propia app o APIs para probar la vulnerabilidad antes de producción.",
+        "por_que_importa": "la categoría \"AI security agent\" deja de ser vaporware: Shannon ejecuta el exploit contra tu propia app en lugar de describir la vulnerabilidad. Para un lector de DevSecOps o AI-Sec es el ejemplo de referencia: integra con CI/CD y genera PoC reproducibles, rompiendo el ciclo \"el scanner dijo crítico pero no tengo tiempo de verificar\". Ya cubrimos este mismo enfoque el 2026-08-14 (cuando Shannon aún no ejecutaba exploits reales y competía solo con el espacio DAST tradicional); la re-entrada confirma que la categoría \"agente que ejecuta, no solo reporta\" está madurando dentro de CI/CD security. Atención a la licencia: AGPL-3.0 impide embeberlo en servicios SaaS propietarios sin abrir tu código fuente.",
+        "madurez_senales": "47.6k★ · 5.5k forks · TypeScript · **AGPL-3.0** · creado 2025-09-27 · último push 2026-09-02 · topics: ai-penetration-testing, ai-security, api-security, appsec, ci-cd, cybersecurity, devsecops, pentesting. **Aviso: AGPL-3.0** impide embeberlo en servicios SaaS propietarios sin abrir tu código fuente.",
+        "accion_sugerida": "**leer**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:KeygraphHQ/shannon",
+          "rel": "implements",
+          "dst": "concept:ai-pentest-agent",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:KeygraphHQ/shannon",
+          "rel": "competes_with",
+          "dst": "concept:traditional-dast",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:KeygraphHQ/shannon",
+          "rel": "integrates_with",
+          "dst": "concept:ci-cd-security",
+          "primera_mencion": "2026-08-14"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shannon-keygraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor MCP oficial del equipo Chrome DevTools que expone el DevTools Protocol completo (DOM, network, console, performance, tracing) a cualquier coding agent compatible con MCP.",
+        "por_que_importa": "consolida la historia \"agent-on-Chrome\" con un contrato estándar: hasta ahora los agentes recurrían a Puppeteer o Playwright con scripts pegados; este servidor MCP expone el DevTools Protocol completo (DOM, network, console, performance, tracing) para que cualquier harness compatible con MCP automatice Chrome con observabilidad real. Ya cubrimos la base MCP server el 2026-08-20; la re-entrada con cadencia de 4-5 días (vista desde 2026-06-30) confirma que cada vez que un agente top lo lista, sube, y deja claro que el stack browser-agent se está estandarizando alrededor de MCP en lugar de APIs propietarias.",
+        "madurez_senales": "50.7k★ · 3.6k forks · TypeScript · Apache-2.0 · creado 2025-09-11 · último push 2026-09-03 · topics: browser, chrome, chrome-devtools, debugging, devtools, mcp, mcp-server, puppeteer. Oficial Google.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "implements",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "extends",
+          "dst": "concept:devtools-protocol",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "relevant_to",
+          "dst": "concept:browser-automation-agents",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "zvec-ai/zvec-grep",
+      "url": "https://github.com/zvec-ai/zvec-grep",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "índice local del workspace que combina BM25, búsqueda semántica y ripgrep, expuesto por CLI y servidor MCP para que los coding agents busquen sin mandar código a la nube.",
+        "por_que_importa": "cierra el hueco \"agente que necesita grep con cerebro\": los coding agents hoy usan ripgrep puro (sin ranking semántico) o embeddings cloud (que mandan tu código fuera). Zvec-grep combina BM25, embeddings y ripgrep en un índice local expuesto por CLI y servidor MCP, ya cubierto el 2026-08-23 cuando entró como caso local-first-search. Compite en el mismo espacio conceptual que `VectifyAI/PageIndex` (documentos, no código) y `D4Vinci/Scrapling` (web, no workspace): el ángulo natural para el boletín es contraponer tres tipos de retrieval para tres casos (workspace local, documentos, web scrape) y mostrar cuándo cada uno gana.",
+        "madurez_senales": "1.1k★ · 60 forks · TypeScript · Apache-2.0 · creado 2026-07-10 · último push 2026-09-03 · topics: ai-agents, bm25, cli, code-search, full-text-search, local-first, mcp, ripgrep, semantic. Temprano pero con combinación única de features.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:zvec-ai/zvec-grep",
+          "rel": "implements",
+          "dst": "concept:local-first-search",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "repo:zvec-ai/zvec-grep",
+          "rel": "uses",
+          "dst": "concept:bm25",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zvec-ai/zvec-grep",
+          "rel": "competes_with",
+          "dst": "concept:cloud-code-search",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zvec-ai-zvec-grep",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "binario en Rust de Vercel Labs que da a los coding agents una CLI directa para automatizar navegadores, con primitivas pensadas para bucles de agente y no para RPA humano.",
+        "por_que_importa": "ofrece una alternativa tipada y binaria en Rust a las opciones JS (Puppeteer, Playwright) y es complementaria al `ChromeDevTools/chrome-devtools-mcp` (que actúa sobre un Chrome abierto; agent-browser lanza el suyo propio). Ya cubrimos esta trenza de relaciones el 2026-08-08 cuando entró como competidor de puppeteer y complemento del MCP de Chrome; la re-entrada con cadencia larga (visto desde 2026-07-08) y los 41.8k★ en Rust confirman tracción seria en el segmento agent-RPA nativo, no adaptado. Para el lector de CSS: si tu agente necesita bucles largos de navegador sin el overhead de Chromium embebido, este binario cambia el coste operativo.",
+        "madurez_senales": "41.8k★ · 2.8k forks · Rust · Apache-2.0 · creado 2026-01-11 · último push 2026-09-02 · topics: ai, agent, browser-automation, rust.",
+        "accion_sugerida": "**probar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/agent-browser",
+          "rel": "competes_with",
+          "dst": "concept:puppeteer",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:vercel-labs/agent-browser",
+          "rel": "complements",
+          "dst": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:vercel-labs/agent-browser",
+          "rel": "uses",
+          "dst": "language:rust",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "vercel-labs/portless",
+      "url": "https://github.com/vercel-labs/portless",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sustituye los números de puerto (`:3000`, `:5173`, `:8081`) por URLs nombradas estables (`myapp.localhost`, `docs.localhost`) que sobreviven a reinicios del servidor y que los coding agents pueden resolver de forma determinista.",
+        "por_que_importa": "ataca el dolor cotidiano del \"tengo 8 puertos en paralelo y mi agente abre el equivocado\": Portless sustituye los puertos efímeros (`:3000`, `:5173`, `:8081`) por URLs nombradas estables (`myapp.localhost`) que sobreviven a reinicios y que un coding agent puede resolver de forma determinista. Ya cubrimos el caso de port-fragmentation el 2026-08-20 y vimos el despegue a 11.9k★; encaja con la narrativa \"dev experience para multi-agent dev\" y abre la puerta a que los agentes identifiquen servicios por nombre en lugar de adivinar puertos, lo que reduce errores en flujos multi-servicio.",
+        "madurez_senales": "11.9k★ · 388 forks · TypeScript · Apache-2.0 · creado 2026-02-15 · último push 2026-08-29 · topics: developer-tools, dev-environment, localhost, ports, vercel.",
+        "accion_sugerida": "**probar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/portless",
+          "rel": "solves",
+          "dst": "problem:port-fragmentation",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:vercel-labs/portless",
+          "rel": "enables",
+          "dst": "concept:agent-friendly-locals",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:vercel-labs/portless",
+          "rel": "uses",
+          "dst": "concept:wildcard-dns",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-portless",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "pacifio/atlas",
+      "url": "https://github.com/pacifio/atlas",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "capa de control de versiones pensada para que múltiples coding agents trabajen en paralelo sin pisarse: registra qué agente cambió qué archivo, mantiene worktrees separados y expone queries para auditar el resultado.",
+        "por_que_importa": "cuando un equipo ejecuta 5-10 coding agents en paralelo, `git status` deja de ser suficiente: Atlas registra qué agente cambió qué archivo, mantiene worktrees separados y expone queries para auditar el resultado, una capa de control de versiones pensada específicamente para ese caso. Ya cubrimos el 2026-09-02 el competidor `raine/workmux`; la re-entrada de Atlas (visto 2026-08-15) confirma que la categoría \"multi-agent source control\" está caliente, con alternativas como `stablyai/orca` y `superset-sh/superset` disputando el mismo espacio. Para el lector de CSS: si orquestas varios agentes sobre el mismo repo, este es el tipo de pieza que necesitas para evitar pisadas y poder hacer rollback por agente.",
+        "madurez_senales": "3.0k★ · 195 forks · Rust · MIT · creado 2026-05-14 · último push 2026-09-03 · topics: ai, ai-coding-assistant, claude-code, codex, coding-agents, git, gitops, kilo-code, mcp. Joven pero ya con MCP server propio.",
+        "accion_sugerida": "**explorar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pacifio/atlas",
+          "rel": "competes_with",
+          "dst": "repo:raine/workmux",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pacifio/atlas",
+          "rel": "implements",
+          "dst": "concept:multi-agent-source-control",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pacifio/atlas",
+          "rel": "uses",
+          "dst": "concept:git-worktrees",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pacifio-atlas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Player-YN/PawWork_ZhuaZhua",
+      "url": "https://github.com/Player-YN/PawWork_ZhuaZhua",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "extensión Chrome MV3 (BYOK, sin servidor) que convierte \"selecciona elementos en la página actual → describe el outcome → devuelve archivo editable\" en una acción nativa: PPTX, sheets, docs, posters, sitios.",
+        "por_que_importa": "rompe el patrón UX dominante en agentes browser (Operator, Atlas, Comet) con un enfoque \"select-first\": tú marcas los elementos en la página actual, describes el outcome y recibes un archivo editable (PPTX, sheets, docs, posters, sitios) en lugar de una sesión de chat. Es una extensión Chrome MV3 BYOK, sin servidor, lo que lo alinea con la línea local-first-ai del boletín. Sus 661★ en seis días son modestos, pero el ángulo \"tú delimitas el alcance, el agente opera, devuelve artefacto editable\" no estaba cubierto por los free-roam browser agents: el tema natural para newsletter es contraponer ambos modelos y dejar claro cuándo uno reduce más el riesgo de acciones fuera de scope.",
+        "madurez_senales": "661★ · 5 forks · JavaScript · MIT · creado 2026-08-28 · último push 2026-09-01 · topics: ai-agent, browser-agent, byok, chrome-extension, llm, pptx, tldraw, univer. CI verde, LICENSE explícita.",
+        "accion_sugerida": "**vigilar**.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Player-YN/PawWork_ZhuaZhua",
+          "rel": "implements",
+          "dst": "concept:select-first-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Player-YN/PawWork_ZhuaZhua",
+          "rel": "competes_with",
+          "dst": "concept:free-roam-browser-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Player-YN/PawWork_ZhuaZhua",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-ai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "player-yn-pawwork-zhuazhua",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "superlinked/sie",
+      "url": "https://github.com/superlinked/sie",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.1k★, push 2026-08-27, Python, Apache-2.0) — inference server + cluster de producción multi-modelo (BGE, ColBERT, embeddings) para agentes",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si ya operas embeddings a escala",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superlinked-sie",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Gitlawb/openclaude",
+      "url": "https://github.com/Gitlawb/openclaude",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(32.1k★, push 2026-09-02, TypeScript, LICENSE derivada de Claude Code) — fork de Claude Code con promesa \"runs anywhere. uses anything\"; ojo, su LICENSE combina \"Claude Code es propietario (Anthropic) + modificaciones MIT\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — y auditar antes de adoptarlo como base",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gitlawb-openclaude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "superset-sh/superset",
+      "url": "https://github.com/superset-sh/superset",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.7k★, push 2026-09-03, TypeScript, **Elastic License 2.0**) — agentic IDE para 100+ coding agents en paralelo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — por tracción pero NO open source: ELv2 prohíbe SaaS competitivo directo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superset-sh-superset",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "a2ui-project/a2ui",
+      "url": "https://github.com/a2ui-project/a2ui",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.3k★, push 2026-09-03, TypeScript, Apache-2.0) — sin descripción visible en la API; 16k★ exige lectura de README antes de categorizar",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — y re-clasificar en próximos boletines",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "a2ui-project-a2ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "TencentCloud/CubeSandbox",
+      "url": "https://github.com/TencentCloud/CubeSandbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.7k★, push 2026-09-03, Go, Apache-2.0) — sandbox ligero y concurrente para AI Agents",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si trabajas con agentes que tocan código no-confiable",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencentcloud-cubesandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "mlc-ai/web-llm",
+      "url": "https://github.com/mlc-ai/web-llm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(18.9k★, push 2026-09-03, TypeScript, Apache-2.0) — LLM inference engine en navegador vía WebGPU",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — si tu audiencia consume demos web (maduro desde 2023 pero el trending lo reactiva)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mlc-ai-web-llm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "Imbad0202/academic-research-skills",
+      "url": "https://github.com/Imbad0202/academic-research-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(45.7k★, push 2026-09-01, Python, **CC BY-NC 4.0**) — pipeline research → write → review → revise para Claude Code",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — , pero ojo: la licencia es no-comercial; no sirve para integrarlo en un producto SaaS",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "imbad0202-academic-research-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 15,
+      "titulo": "zubair-trabzada/geo-seo-claude",
+      "url": "https://github.com/zubair-trabzada/geo-seo-claude",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.2k★, push 2026-09-03, Python, MIT) — skill de GEO/SEO para Claude Code (citability scoring, schema markup)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si cubres marketing dev; el espacio GEO/SEO-AI está plagado de tácticas cuestionables",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zubair-trabzada-geo-seo-claude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 16,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "16/16 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "8/8 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
