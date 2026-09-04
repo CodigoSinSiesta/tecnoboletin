@@ -1,0 +1,40 @@
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-awslabs-aidlc-workflows", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-awslabs-aidlc-workflows", "dst": "tema:awslabs-aidlc-workflows", "rel": "trata", "added": "2026-09-04"}
+{"src": "repo:awslabs/aidlc-workflows", "dst": "concept:ai-dlc-methodology", "rel": "implements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:awslabs/aidlc-workflows", "dst": "concept:multi-harness-orchestration", "rel": "extends", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:awslabs/aidlc-workflows", "dst": "concept:approval-gate-pattern", "rel": "relevant_to", "added": "2026-09-04", "primera_mencion": null}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-humanlayer-skills", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-humanlayer-skills", "dst": "tema:humanlayer-skills", "rel": "trata", "added": "2026-09-04"}
+{"src": "repo:humanlayer/skills", "dst": "concept:claude-code-skills-format", "rel": "implements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:humanlayer/skills", "dst": "concept:agent-skill-registry", "rel": "extends", "added": "2026-09-04", "primera_mencion": "2026-08-16"}
+{"src": "repo:humanlayer/skills", "dst": "concept:humanlayer-handoff-product", "rel": "relevant_to", "added": "2026-09-04", "primera_mencion": null}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-blader-humanizer", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-blader-humanizer", "dst": "tema:blader-humanizer", "rel": "trata", "added": "2026-09-04"}
+{"src": "repo:blader/humanizer", "dst": "concept:ai-text-humanization", "rel": "implements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:blader/humanizer", "dst": "concept:wikipedia-signs-of-ai-patterns", "rel": "uses", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:blader/humanizer", "dst": "concept:content-pipeline", "rel": "relevant_to", "added": "2026-09-04", "primera_mencion": null}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-lnkiai-m3e-canvas", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-lnkiai-m3e-canvas", "dst": "tema:lnkiai-m3e-canvas", "rel": "trata", "added": "2026-09-04"}
+{"src": "repo:lnkiai/m3e-canvas", "dst": "concept:wireframe-to-prompt-bridge", "rel": "implements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:lnkiai/m3e-canvas", "dst": "concept:material-3-expressive-spec", "rel": "uses", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:lnkiai/m3e-canvas", "dst": "concept:local-first-design-tool", "rel": "relevant_to", "added": "2026-09-04", "primera_mencion": null}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-qufei1993-skills-hub", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-qufei1993-skills-hub", "dst": "tema:qufei1993-skills-hub", "rel": "trata", "added": "2026-09-04"}
+{"src": "repo:qufei1993/skills-hub", "dst": "concept:multi-agent-skills-sync", "rel": "implements", "added": "2026-09-04", "primera_mencion": "2026-08-26"}
+{"src": "repo:qufei1993/skills-hub", "dst": "repo:humanlayer/skills", "rel": "complements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:qufei1993/skills-hub", "dst": "concept:local-first-skill-registry", "rel": "relevant_to", "added": "2026-09-04", "primera_mencion": null}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-datacurve-ai-deep-swe", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-datacurve-ai-deep-swe", "dst": "tema:datacurve-ai-deep-swe", "rel": "trata", "added": "2026-09-04"}
+{"src": "repo:datacurve-ai/deep-swe", "dst": "concept:coding-agent-benchmark", "rel": "implements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:datacurve-ai/deep-swe", "dst": "concept:swe-bench-family", "rel": "complements", "added": "2026-09-04", "primera_mencion": null}
+{"src": "repo:datacurve-ai/deep-swe", "dst": "concept:harbor-task-format", "rel": "uses", "added": "2026-09-04", "primera_mencion": null}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-capsoftware-cap", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-capsoftware-cap", "dst": "tema:capsoftware-cap", "rel": "trata", "added": "2026-09-04"}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-espanso-espanso", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-espanso-espanso", "dst": "tema:espanso-espanso", "rel": "trata", "added": "2026-09-04"}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-debpalash-voicestudio", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-debpalash-voicestudio", "dst": "tema:debpalash-voicestudio", "rel": "trata", "added": "2026-09-04"}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-vercel-labs-agent-browser", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:vercel-labs-agent-browser", "rel": "trata", "added": "2026-09-04"}
+{"src": "boletin:2026-09-04", "dst": "item:https-github-com-kopia-kopia", "rel": "menciona", "added": "2026-09-04"}
+{"src": "item:https-github-com-kopia-kopia", "dst": "tema:kopia-kopia", "rel": "trata", "added": "2026-09-04"}

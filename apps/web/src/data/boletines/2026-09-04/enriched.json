@@ -1,0 +1,401 @@
+{
+  "version": 2,
+  "date": "2026-09-04",
+  "boletin_origen": "2026-09-04-trending.md",
+  "resumen_ejecutivo": "- **AWS publica AI-DLC 2.0 GA multi-harness como metodología canónica**: `awslabs/aidlc-workflows` (4.3k★, MIT-0) ofrece 5 fases, 33 stages, 14 agentes y un core renderizado nativamente en Claude Code, Kiro, Codex, Cursor, opencode y GitHub Copilot. Es el primer SDLC oficial de hyperscaler con gates humanos en cada stage — comparable al `/bmad` open-source pero con whitepaper y spec adjuntos.\n- **Skills para Claude Code se consolidan como formato canónico**: hoy coinciden tres lanzamientos en el mismo vector — `humanlayer/skills` (catálogo curado por HumanLayer con `improve-claude-md`), `qufei1993/skills-hub` (desktop manager que centraliza + sincroniza por symlink a 5 IDEs) y `blader/humanizer` (41.8k★, humaniza prosa IA con 35 patrones de Wikipedia). El espacio \"skills\" dejó de ser 1-pager: ya tiene registry, manager y library especializada.\n- **`lnkiai/m3e-canvas` aterriza \"wireframe M3 → prompt vibe-coding\"** en 722★ pero con dos días de vida: canvas browser-only (Next.js 16 + React 19, sin backend, localStorage), tematización M3 completa y export como prompt natural-language listo para Claude Code / Codex / Gemini CLI. Hueco que ningún Figma plugin cubría.\n- **`datacurve-ai/deep-swe` aparece como benchmark serio de coding agents**: 113 tareas reales multi-lenguaje con verifier por comportamiento, formato Harbor, ya evaluando Claude Opus 4.8 y GPT-5.5. Complementa a SWE-Bench desde el lado \"tareas originales, no issues seleccionadas\".\n- **Radiografía del día**: 21 repos verificados vía GitHub API sin token (6 hallazgos principales + 5 radar), 11 re-entradas detectadas (la mayoría ya cubiertas), 33 candidatos nuevos filtrados a 6 con ángulo editorial claro. Blogwatcher 08:00 no publicó hoy (sin archivo `2026-09-04-blogs.md`); el espacio \"tendencias generales\" queda dominado por la familia agent-skills. Sigue la racha Trendshift con bajo valor editorial puro (16/25 trending son repos de skills para Cursor/Claude Code).\nFuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript + python + rust + go), GitHub REST API sin token (21/21 verificados). Blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "awslabs/aidlc-workflows",
+      "url": "https://github.com/awslabs/aidlc-workflows",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "metodología completa de AWS (AI-Driven Development Life Cycle) con 5 fases, 33 stages, 14 agentes (11 expertos + 2 reviewers + composer adaptativo) y gates humanos en cada stage, renderizada nativamente sobre Claude Code, Kiro IDE, Kiro CLI, Codex CLI, Cursor, opencode y GitHub Copilot.",
+        "por_que_importa": "AWS publica su metodología canónica de AI-driven software development (whitepaper, spec PDF y blog post adjuntos): es el primer SDLC oficial de hyperscaler que no se ata a un único runtime — comparable al `/bmad` open-source pero con scope, depth y test-strategy ajustables mid-workflow. Para CSS el ángulo concreto es 'cómo se estructura un SDLC entero alrededor de gates de aprobación humana cuando los agentes ya escriben el código': aquí la respuesta son 5 fases, 33 stages y 14 agentes (11 expertos + 2 reviewers + composer adaptativo) con un humano validando en cada stage, y todo reproducible sobre Claude Code, Kiro IDE, Kiro CLI, Codex CLI, Cursor, opencode y GitHub Copilot.",
+        "madurez_senales": "4.3k★ · 773 forks · TypeScript · MIT-0 · creado 2025-11-13 · último push 2026-09-04 · default_branch `main` · topics: ai-agents, ai-dlc, claude-code, codex, cursor, development-methodology, multi-agent, software-development. README 32 KB con sección por harness.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:awslabs/aidlc-workflows",
+          "rel": "implements",
+          "dst": "concept:ai-dlc-methodology",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:awslabs/aidlc-workflows",
+          "rel": "extends",
+          "dst": "concept:multi-harness-orchestration",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:awslabs/aidlc-workflows",
+          "rel": "relevant_to",
+          "dst": "concept:approval-gate-pattern",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "awslabs-aidlc-workflows",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "humanlayer/skills",
+      "url": "https://github.com/humanlayer/skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paquete de skills de HumanLayer (la empresa detrás de handoffs y code review agents), distribuibles vía `npx skills add humanlayer/skills --skill <name>`. Skills clave: `improve-claude-md` (reescribe CLAUDE.md con bloques `<important if>` para mejorar adherencia), `narrow-react-prop-types`, `build-iterated-agentic-loop`, `design-control-loop`.",
+        "por_que_importa": "la propuesta 'skill ejecutable con npx skills add ...' empieza a consolidarse como formato canónico. La diferencia con VoltAgent/awesome-agent-skills y addyosmani/agent-skills — concepto `concept:agent-skill-registry` que ya cubrimos el 2026-08-16 — es que estos vienen de un vendor con producto en producción: cada skill ataca un punto de fricción real visto por HumanLayer. `improve-claude-md` solo ya justifica el repo: el problema universal 'mi agente no me hace caso en el CLAUDE.md' tiene por fin una solución razonable que no es 'escríbelo más corto', sino reescribir el archivo con bloques `<important if>` para mejorar la adherencia. Skills clave que complementan: `narrow-react-prop-types`, `build-iterated-agentic-loop` y `design-control-loop`.",
+        "madurez_senales": "1.8k★ · 53 forks · TypeScript · MIT · creado 2026-03-18 · último push 2026-08-13 · default_branch `main`. README breve pero catálogo preciso; cada skill es standalone.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:humanlayer/skills",
+          "rel": "implements",
+          "dst": "concept:claude-code-skills-format",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:humanlayer/skills",
+          "rel": "extends",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": "2026-08-16"
+        },
+        {
+          "src": "repo:humanlayer/skills",
+          "rel": "relevant_to",
+          "dst": "concept:humanlayer-handoff-product",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "humanlayer-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "blader/humanizer",
+      "url": "https://github.com/blader/humanizer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill portable que reescribe texto \"con sabor a IA\" para que lea como si lo hubiera escrito una persona, sin alterar los hechos. Aplica 35 patrones de la lista \"Signs of AI writing\" de WikiProject AI Cleanup. Acepta texto pegado, archivo (`Humanize the prose in docs/launch-post.md`) o sample de tu voz propia.",
+        "por_que_importa": "aterriza el debate 'AI slop vs human prose' en formato ejecutable portable. 41.8k★ en 7 meses desde una cuenta personal es señal de que el formato 'skill + 1 archivo Markdown' resonó fuera del nicho técnico. Para CSS el uso concreto es 'humanizar sin mentir' como filtro final en pipelines de generación de docs, READMEs y posts: aplicas 35 patrones de la lista 'Signs of AI writing' de WikiProject AI Cleanup sin alterar los hechos — ni invierte hechos ni convierte prosa técnica en narrativa forzada, según declara el propio README. Acepta texto pegado, archivo concreto (`Humanize the prose in docs/launch-post.md`) o una muestra de tu propia voz para calibrar.",
+        "madurez_senales": "41.8k★ · 3.6k forks · Python · MIT · creado 2026-01-18 · último push 2026-08-19 · default_branch `main` · topics: agent-skills, ai-writing, claude-code, codex, cursor, prompt-engineering, writing-tools. README 14 KB.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:blader/humanizer",
+          "rel": "implements",
+          "dst": "concept:ai-text-humanization",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:blader/humanizer",
+          "rel": "uses",
+          "dst": "concept:wikipedia-signs-of-ai-patterns",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:blader/humanizer",
+          "rel": "relevant_to",
+          "dst": "concept:content-pipeline",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "blader-humanizer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "lnkiai/m3e-canvas",
+      "url": "https://github.com/lnkiai/m3e-canvas",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "canvas browser-only (Next.js 16 + React 19, sin backend, localStorage) para esbozar pantallas Material 3 Expressive, conectarlas con líneas magnéticas, navegar entre pantallas, tematizarlas (color con seed → esquema M3, shape, typography, motion) y exportar el resultado como prompt en lenguaje natural listo para Claude Code / Codex / Gemini CLI / Cursor. Soporta JP/EN/ZH.",
+        "por_que_importa": "cubre el hueco 'wireframe → código' sin tirar de Figma ni Android Studio. En vez de un tutorial de Material 3 Expressive, esbozas pantallas en el browser, las conectas con líneas magnéticas, navegas entre ellas, les das un seed de color y te llevas el esquema M3 (color, shape, typography, motion) exportado como prompt en lenguaje natural listo para Claude Code, Codex, Gemini CLI o Cursor. La gracia de 'sin backend, todo en localStorage' lo deja en el mismo patrón local-first que ya cubre tu grafo (`concept:local-first-design-tool`), igual que zvec-grep o el cloudflare workers setup. Soporta JP, EN y ZH. Lleva solo 2 días en GitHub y aún no tiene base de usuarios amplia, así que cualquier recomendación llega con ese asterisco.",
+        "madurez_senales": "722★ · 45 forks · TypeScript · MIT · creado 2026-09-02 (2 días) · último push 2026-09-04 · default_branch `main` · topics: design-tool, material-3-expressive, material-design, material3, nextjs, prompt, react, vibe-coding. Demo: lnkiai.github.io/m3e-canvas.",
+        "accion_sugerida": "**probar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:lnkiai/m3e-canvas",
+          "rel": "implements",
+          "dst": "concept:wireframe-to-prompt-bridge",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lnkiai/m3e-canvas",
+          "rel": "uses",
+          "dst": "concept:material-3-expressive-spec",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lnkiai/m3e-canvas",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-design-tool",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lnkiai-m3e-canvas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "qufei1993/skills-hub",
+      "url": "https://github.com/qufei1993/skills-hub",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "app desktop cross-platform (Tauri + React) que centraliza los Agent Skills en una librería y los sincroniza a las skills dirs de Claude Code, Codex, Cursor, OpenCode y Antigravity. Prefiere symlink/junction y cae a copy si hace falta. Catálogo curado, búsqueda online, scope global/proyecto, bulk operations, tags y schedules de update.",
+        "por_que_importa": "es exactamente el 'brew install skills' mental model que el ecosistema pedía. La fragmentación de skills dirs — cada IDE con su convención, cada vendor con la suya — ya estaba en tu radar como `concept:multi-agent-skills-sync` y la cubrimos el 2026-08-26. Skills Hub aterriza esa idea: una sola librería central en una app desktop cross-platform (Tauri + React), sincronizada por symlink o junction a las skills dirs de Claude Code, Codex, Cursor, OpenCode y Antigravity, con catálogo curado, búsqueda online, scope global o por proyecto, bulk operations, tags y schedules de update. Es el complemento natural de `humanlayer/skills` (cubierto también en este boletín): si aquel te da skills listas para `npx skills add`, este te da el lugar donde verlas todas, decidir cuáles quieres y mantenerlas actualizadas.",
+        "madurez_senales": "1.6k★ · 175 forks · Rust (backend Tauri) + React (frontend) · MIT · creado 2026-01-25 · último push 2026-09-04 · default_branch `main` · topics: agent-skills, ai-agent, claude-code, codex, cursor, desktop-app, react, rust, skill-management, skills-manager, tauri. README 12 KB.",
+        "accion_sugerida": "**probar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:qufei1993/skills-hub",
+          "rel": "implements",
+          "dst": "concept:multi-agent-skills-sync",
+          "primera_mencion": "2026-08-26"
+        },
+        {
+          "src": "repo:qufei1993/skills-hub",
+          "rel": "complements",
+          "dst": "repo:humanlayer/skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:qufei1993/skills-hub",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-skill-registry",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "qufei1993-skills-hub",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "datacurve-ai/deep-swe",
+      "url": "https://github.com/datacurve-ai/deep-swe",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "benchmark con 113 tareas originales extraídas de repos OSS activos, en TypeScript/Go/Python/JavaScript/Rust, formato Harbor, verifier program-based que mira comportamiento observable y no coincidencia de parches. Lo corre `pier` (su framework air-gapped con allowlist de red per-agente) sobre `mini-swe-agent`, `claude-code`, `codex`, `gemini-cli` u `opencode`. Ya evalúa Claude Opus 4.8 y GPT-5.5 en Modal sandboxes.",
+        "por_que_importa": "complemento natural a SWE-Bench y SWE-Lancer, pero con tres diferencias técnicas que importan: las 113 tareas son originales, extraídas de repos OSS activos (no issues seleccionados de GitHub); el verifier mira comportamiento observable del código, no coincidencia de parches; y el framework `pier` corre en air-gapped con allowlist de red per-agente, así que puedes comparar `mini-swe-agent`, `claude-code`, `codex`, `gemini-cli` u `opencode` en paralelo sin que se contaminen entre sí. Ya evalúa Claude Opus 4.8 y GPT-5.5 en Modal sandboxes. Para CSS el ángulo concreto es 'cómo medir de verdad a tu coding agent': el veredicto deja de ser 'pasó el test del repo original' y pasa a ser 'resolvió el problema tal como lo verificaría un humano que revisa el código'.",
+        "madurez_senales": "1.6k★ · 106 forks · Python · Apache-2.0 · creado 2026-05-15 · último push 2026-08-26 · default_branch `main` · topics: agent-eval, coding-agents, long-horizon, software-engineering-benchmark.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:datacurve-ai/deep-swe",
+          "rel": "implements",
+          "dst": "concept:coding-agent-benchmark",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:datacurve-ai/deep-swe",
+          "rel": "complements",
+          "dst": "concept:swe-bench-family",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:datacurve-ai/deep-swe",
+          "rel": "uses",
+          "dst": "concept:harbor-task-format",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "datacurve-ai-deep-swe",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "CapSoftware/Cap",
+      "url": "https://github.com/CapSoftware/Cap",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(21.6k★ · último push 2026-09-03 · Rust/Next.js · NOASSERTION) — alternativa open-source a Loom: screen recording bonita y compartible, Tauri + SolidJS frontend + Next.js",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "capsoftware-cap",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "espanso/espanso",
+      "url": "https://github.com/espanso/espanso",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(14.4k★ · último push 2026-09-02 · Rust · GPL-3.0) — text expander privacy-first cross-platform (macOS/Linux/Win). Clásico del repo Rust que vuelve a trending: confirma que sigue vivo y empujado",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "espanso-espanso",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.7k★ · último push 2026-09-03 · Python · AGPL-3.0) — alternativa open-source a ElevenLabs 100% local: voice cloning, TTS, STT y traducción. Tauri + MLX/HuggingFace",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "debpalash-voicestudio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(>40k★ · último push 2026-09-03 · Rust · MIT) — CLI de browser automation para coding agents. Re-entrada con cadencia 4-5 días en trending (ya cubierto en 2026-09-03)",
+        "por_que_importa": "",
+        "madurez_senales": "reentry",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "kopia/kopia",
+      "url": "https://github.com/kopia/kopia",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(14k★ · último push 2026-09-03 · Go · Apache-2.0) — backup cross-platform con dedupe + cifrado + cloud. Veteranísimo del trending: confirma tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "continua — Acción: vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kopia-kopia",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
