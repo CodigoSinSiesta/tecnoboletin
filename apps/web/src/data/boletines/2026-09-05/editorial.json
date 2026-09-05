@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-09-05",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La capa de memoria y skills de los coding agents se consolida con su propio security stack",
+  "posicionamiento": "Por primera vez la categoría de memoria persistente para coding agents aparece completa en un solo día: cuatro repos (Beads, Engram, LoopX, Atlas) cubren grafo+Dolt, SQLite+FTS5 minimalista, control plane long-horizon y VCS-aware, y encima aterrizan dos piezas nuevas del rompecabezas (SkillSpector para escanear skills maliciosas, Autoharness para destilarlas desde sesiones reales). El hilo conductor es que la pelea ya no está en el modelo, está en la infraestructura que lo rodea: memoria, control plane, audit, seguridad y self-learning.",
+  "convergencia_stack_css": "Encaja directo con el stack local-first de CSS: tres de los cuatro repos de memoria corren binarios Go o Rust con SQLite/Dolt/SQLite+FTS5 como backing store (sin), el self-learning de Autoharness es zero-deps Python, y SkillSpector aterriza lo que ya quedó implícito en el artículo sobre skill hygiene que el lector de CSS viene pidiendo. La pieza que conecta con PGLite/Graphify es el `@-reference` local de Atlas: un agente que resuelve sus propias referencias a `CLAUDE.md`, `AGENTS.md` y knowledge local sin salir de la máquina",
+  "cruzado_grafo": "El grafo se refuerza en bloque: `concept:coding-agent-memory` ya tenía Beads (2026-08-28) y hoy gana Engram como segundo vértice del triángulo file/Dolt/FTS5; `concept:long-horizon-agent-control-plane` y `concept:multi-harness-orchestration` (ambos del 2026-08-08) se aterrizan con LoopX; `concept:agent-source-control` y `concept:coding-agent-observability` (ambos del 2026-09-03) reciben Atlas como referente canónico. Por primera vez aparecen `concept:agent-skill-security-scanner`, `concept:self-learning-skill-layer` y `concept:big-model-vs-big-harness` sin `primera_mencion` previa, marcando categoría nueva.",
+  "tendencias_5_boletines": "Con los dos boletines previos en mano, la línea se ve clara: el 2026-09-01 dijo que la capa de datos es la pieza que importa, el 2026-09-02 confirmó que la pila de agente se discute en infraestructura, y hoy el boletín pone nombre y referente a esa infraestructura con seis proyectos que la aterrizan de golpe. Quien lee los tres en secuencia ve el arco completo: de blob vectorial a estructura con historia, de framework a tooling, de memoria como concepto a memoria como producto con audit y seguridad.",
+  "alertas": [
+    "SkillSpector cita26.1% / 5.2% de skills vulnerables/maliciosas pero el dataset no es público y la metodología del estudio no se detalla en el README: tratar la cifra como orientación, no como verdad dura.",
+    "Autoharness reporta uplift 42%→78% en CORE-Bench HAL con mismo modelo y distinto harness: número sugerente pero single-source, hay que esperar réplica antes de tratarlo como regla general.",
+    "Beads, Engram, LoopX, Atlas y Autoharness suman ~42k estrellas combinadas y ninguno tiene 1.0: la categoría está caliente pero todavía en movimiento.",
+    "SkillSpector integra con el catálogo NVIDIA Verified Skills: la baraja tiene un jugador con conflictos de interés obvios (es NVIDIA la que verifica).",
+    "Atlas registra prompts, tool calls y reasoning en local: utilísimo para audit, pero también un single point of failure si se sincroniza a cloud sin cifrar."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Engram cierra el triángulo de memoria persistente (file / Dolt / FTS5) que ya teníamos implícito; benchmarcarlo contra Beads en un proyecto pequeño antes de recomendar uno u otro."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "SkillSpector es accionable hoy: correrlo contra el `skills-hub` de `qufei1993` y contra `humanlayer/skills` para tener cifras reales de seguridad del propio stack de CSS."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "Beads es el primer producto que aterriza la tesis de Steve Yegge sobre memoria compartida agente-humano; encaja como caso de estudio en el artículo pendiente sobre memory tiers."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "LoopX viene de la open community china y aterriza el vector AWS AI-DLC de gates humanos por el lado local-first; observar si gana tracción fuera de Claude Code."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Autoharness convierte \"el harness importa\" en cifra medible (42%→78% en CORE-Bench HAL); si la uplift se replica, cambia cómo se evalúan los coding agents en CSS."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

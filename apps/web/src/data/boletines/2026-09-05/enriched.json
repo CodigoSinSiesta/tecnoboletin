@@ -1,0 +1,437 @@
+{
+  "version": 2,
+  "date": "2026-09-05",
+  "boletin_origen": "2026-09-05-trending.md",
+  "resumen_ejecutivo": "- **El \"memory upgrade\" para coding agents se consolida como categoría**: hoy coinciden cuatro repos en el mismo vector — `gastownhall/beads` (Steve Yegge, 26.9k★, issue-tracker distribuido con Dolt), `Gentleman-Programming/engram` (6.3k★, binario Go único con SQLite+FTS5+MCP), `huangruiteng/loopx` (5.6k★, control plane long-horizon provider-neutral) y `pacifio/atlas` (3.2k★, source control para agents con checkpoints linkeando cada commit a la sesión). Es la primera vez que la categoría aparece tan completa: memoria persistente + grafo de dependencias + control plane + VCS-aware.\n- **Llega el primer security scanner serio de \"agent skills\"**: `NVIDIA/SkillSpector` (16.2k★, Apache-2.0) escanea 71 patrones en 17 familias (prompt injection, data exfiltration, MCP tool poisoning, supply chain) y se integra con la catálogo NVIDIA Verified Skills. El dato duro: cita un estudio que reporta 26.1% de skills con vulnerabilidades y 5.2% con intención maliciosa probable — el ángulo editorial es \"tu `npx skills add` ya no es inocuo\".\n- **Self-learning skill layer aterriza el patrón \"el harness aprende solo\"**: `tigerless-labs/autoharness` (1.7k★, MIT) destila skills desde tus sesiones reales de Claude Code, las agrupa en lugar de apilarlas y las poda cuando dejan de usarse. Cita benchmark interno: 42% → 78% en CORE-Bench. Es el primer plugin de Claude Code que se mantiene a sí mismo sin evaluación externa.\n- **`anthropics/fermats-last-theorem` publica una prueba formal completa en Lean 4**: 60.475 módulos verificados por el kernel de Lean + un segundo kernel (nanoda, en Rust). El README es honesto: \"research artifact, not maintained\". Es más una pieza de marketing técnico que un repositorio para producción — pero el ángulo \"Anthropic enseña a sus modelos a formalizar matemáticas\" merece línea en el radar.\n- **Radiografía del día**: 15 candidatos nuevos pasaron filtro de deduplicación case-insensitive contra 1022 repos vistos, 6 seleccionados como hallazgos principales y 7 como radar secundario (incluyendo el trío Farama-Foundation sobre RL clásico que vuelve a trending con cadencia semanal). Blogwatcher 08:00 no publicó hoy (sin archivo `2026-09-05-blogs.md`); el espacio \"tendencias generales\" lo domina hoy la convergencia memory+control+audit para coding agents. 15/15 candidatos verificados vía GitHub API sin token.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily (all + typescript + python + rust + go, 79 repos únicos), GitHub REST API sin token (15/15 verificados). Blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "gastownhall/beads",
+      "url": "https://github.com/gastownhall/beads",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI `bd` que da a los coding agents una memoria persistente estructurada (grafo de issues con dependencias, ciclo claim/close) respaldada por Dolt (SQL con versionado tipo git), con sync entre máquinas y agentes y bootstrap automático de `AGENTS.md` y skills para Claude Code, Codex, Cursor, Factory y Mux.",
+        "por_que_importa": "Steve Yegge lleva meses defendiendo que la principal limitación de los coding agents actuales es que olvidan todo entre sesiones. Beads aterriza esa tesis como producto: en lugar de planes en Markdown que se desactualizan, un grafo de tareas con dependencias que sobrevive a sesiones, máquinas y agentes. Para el lector de CSS el ángulo concreto es que el issue tracker deja de ser cosa del humano y se convierte en la memoria compartida del agent: el grafo que ya tenías bajo `concept:coding-agent-memory` y `concept:shared-context-across-agents` gana un referente canónico. Lo cubrimos en el boletín del 2026-08-28 como anticipo del ecosistema gastown-hall (con `tool:dolt-versioned-sql` como backing store y `repo:humanlayer/skills` como complemento); lo que añade Beads hoy es el referente Go con cadencia diaria en trending y un bootstrap que escribe `AGENTS.md` y skills para Claude Code, Codex, Cursor, Factory y Mux sin que tengas que configurarlo a mano.",
+        "madurez_senales": "26.910★ · 1.818 forks · Go · MIT · creado 2024-09-23 · último push 2026-09-05 · default_branch `main` · topics: agents, claude-code, coding. README 11 KB con mermaid del flujo create→ready→claim→close y sección \"Agent and IDE setup\". Instalación con `curl -fsSL … | bash` y bootstrap en tu proyecto con `bd init` + `bd setup codex|claude|factory`.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:gastownhall/beads",
+          "rel": "implements",
+          "dst": "concept:coding-agent-memory",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:gastownhall/beads",
+          "rel": "uses",
+          "dst": "tool:dolt-versioned-sql",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:gastownhall/beads",
+          "rel": "complements",
+          "dst": "repo:humanlayer/skills",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:gastownhall/beads",
+          "rel": "relevant_to",
+          "dst": "concept:gastown-hall-ecosystem",
+          "primera_mencion": "2026-08-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gastownhall-beads",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Gentleman-Programming/engram",
+      "url": "https://github.com/Gentleman-Programming/engram",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Binario Go único (zero deps, SQLite + FTS5) que expone memoria persistente a cualquier agente compatible con MCP (Claude Code, OpenCode, Gemini CLI, Codex, VS Code Copilot, Antigravity, Cursor, Windsurf) vía CLI, HTTP API, MCP y TUI interactivo. Modelo \"one brain, local or cloud\".",
+        "por_que_importa": "Frente al stack `memvid/memvid` (que ya tienes en el grafo y guarda memoria en frames de vídeo) o a `Beads`, que usa grafo + Dolt, Engram propone el camino minimalista: una única SQLite con FTS5 expuesta por MCP, con sync opcional a Engram Cloud. Es la apuesta de \"memoria = un archivo\" sin opiniones de formato, lo que la hace atractivo si quieres algo que funcione mañana sin migraciones. Para CSS encaja en el artículo pendiente sobre memory tiers (file-based vs Dolt-based vs FTS5) que ya quedó implícito en `tecnoboletin-enricher` cuando cubriste `0xPlaygrounds/rig`. Beads ya lo cubrimos el 2026-08-28 como el extremo opuesto (grafo + Dolt); Engram cierra el triángulo mostrando el tercer vértice y refuerza el concepto de `concept:agent-agnostic-memory` con un binario Go zero-deps que se conecta a Claude Code, Codex, Gemini CLI, VS Code Copilot, Cursor, Windsurf y compañía sin que tengas que mantener un plugin por cada uno.",
+        "madurez_senales": "6.332★ · 670 forks · Go · MIT · creado 2025-12-19 · último push 2026-09-05 · default_branch `main`. README 12 KB con diagrama del flujo Agent → MCP stdio → Engram binary → SQLite + opcional cloud sync. Sitio propio `engram.gentlemanprogramming.com`, wiki, gentle-ai como producto hermano.",
+        "accion_sugerida": "**probar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Gentleman-Programming/engram",
+          "rel": "implements",
+          "dst": "concept:coding-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Gentleman-Programming/engram",
+          "rel": "uses",
+          "dst": "tool:sqlite-fts5",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Gentleman-Programming/engram",
+          "rel": "complements",
+          "dst": "repo:gastownhall/beads",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:Gentleman-Programming/engram",
+          "rel": "relevant_to",
+          "dst": "concept:agent-agnostic-memory",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gentleman-programming-engram",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "huangruiteng/loopx",
+      "url": "https://github.com/huangruiteng/loopx",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Kernel de estado ligero y control plane local-first para loop engineering: corre sobre Codex App, Claude Code, Cursor, dsh o tu propio harness y provee estado durable, decisiones semánticas sobre el siguiente paso, governance, recovery y colaboración human-agent. Goals, gates, todos, evidence, quota y handoffs persisten mientras el harness ejecuta turnos acotados.",
+        "por_que_importa": "LoopX no reemplaza al harness, lo envuelve: corre sobre Codex App, Claude Code, Cursor, dsh o tu propio harness y aporta el eslabón que la comunidad viene pidiendo, qué falta entre Claude Code y `claude --worktree` durante una sesión larga. Un kernel de estado que sobrevive al modelo y a la sesión, con preview protegido, recibos de cambios y workspaces que reanudan donde quedaron. Para CSS el ángulo concreto es que el eslogan \"Keep the loop moving. Keep the judgment human.\" aterriza el vector AWS AI-DLC de gates humanos en cada stage desde el lado de la open community china, en lugar del lado enterprise. Ya cubrimos el sustrato conceptual el 2026-08-08: `concept:long-horizon-agent-control-plane`, `concept:multi-harness-orchestration` y `concept:approval-gate-pattern`; lo que LoopX añade hoy es la implementación con cadencia diaria en trending, documentación bilingüe EN/chino (developer book + manual en Feishu) y un README de 40 KB con tour de workspace, es decir, los tres nodos que ya teníamos pasan de conceptos a producto utilizable.",
+        "madurez_senales": "5.613★ · 502 forks · Python · Apache-2.0 · creado 2026-05-06 · último push 2026-09-05 · default_branch `main` · topics: agent-control-plane, agent-harness, agent-ops, ai-agents, codex, dsh-plugin, long-horizon, long-horizon-agents. README 40 KB con workspace tour en GIF y developer book oficial. Discord propio, blog con release-readiness por versión.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:huangruiteng/loopx",
+          "rel": "implements",
+          "dst": "concept:long-horizon-agent-control-plane",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:huangruiteng/loopx",
+          "rel": "extends",
+          "dst": "concept:multi-harness-orchestration",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:huangruiteng/loopx",
+          "rel": "relevant_to",
+          "dst": "concept:approval-gate-pattern",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "huangruiteng-loopx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "pacifio/atlas",
+      "url": "https://github.com/pacifio/atlas",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App desktop (backend en Rust + frontend) que registra cada commit linkeado a la sesión del agent que lo produjo (prompts, tool calls, reasoning), permite correr múltiples agents (Claude Code, Codex, registro ACP) en paralelo contra el mismo codebase con shared memory, e indexa tu knowledge (`CLAUDE.md`, `AGENTS.md`, `.atlas/knowledge/`, papers, sesiones pasadas) para resolver `@-references` localmente.",
+        "por_que_importa": "El problema que Atlas ataca es uno muy concreto: los agents escriben mucho código y guardan cero del razonamiento que llevó hasta él. La app registra cada commit linkeado a la sesión del agent que lo produjo (prompts, tool calls, reasoning), permite correr Claude Code, Codex y otros compatibles con ACP en paralelo contra el mismo repositorio con memoria compartida, y resuelve localmente las `@-references` a `CLAUDE.md`, `AGENTS.md`, `.atlas/knowledge/`, papers y sesiones pasadas. Para CSS abre un espacio que ya teníamos mapeado pero sin tooling dedicado: el audit VCS-aware de agents, ligado a `concept:coding-agent-observability`. Cubrimos el sustrato el 2026-09-03 con `concept:agent-source-control` y `concept:coding-agent-observability`, y el 2026-08-28 sentamos la base complementaria con `repo:gastownhall/beads`; lo que Atlas añade hoy es el patrón swarm con presupuesto multi-agent y un side-by-side con shared memory ejecutable, además de un backend en Rust y un README de 15 KB que aterriza los casos \"every commit, explained\" y \"switching agents loses the thread\".",
+        "madurez_senales": "3.221★ · 204 forks · Rust · MIT · creado 2025-11-11 · último push 2026-09-05 · default_branch `main` · topics: ai, ai-coding-assistant, claude-code, codex, coding-agents, git, gitops, kilo-code. README 15 KB con casos \"every commit, explained\", \"switching agents loses the thread\", \"nothing is locked in\". Landing + docs propios, Discord oficial, Discord badge doble en Trendshift.",
+        "accion_sugerida": "**explorar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pacifio/atlas",
+          "rel": "implements",
+          "dst": "concept:agent-source-control",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:pacifio/atlas",
+          "rel": "complements",
+          "dst": "repo:gastownhall/beads",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:pacifio/atlas",
+          "rel": "relevant_to",
+          "dst": "concept:coding-agent-observability",
+          "primera_mencion": "2026-09-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pacifio-atlas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "NVIDIA/SkillSpector",
+      "url": "https://github.com/NVIDIA/SkillSpector",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Scanner (Python 3.12+, Apache-2.0) que analiza repos, URLs, zips y directorios buscando 71 patrones en 17 categorías de vulnerabilidades para agent skills: prompt injection, data exfiltration, privilege escalation, supply chain, excessive agency, system prompt leakage, memory poisoning, MCP tool poisoning, MCP least privilege, rogue agent, anti-refusal, dangerous code (AST), taint tracking y YARA. Score de 0 a 100 con etiquetas, integración con SC4/OSV.dev y salida en JSON, Markdown o SARIF.",
+        "por_que_importa": "Aterriza el vector de ataque \"skill malicioso\" en formato ejecutable y verificable: un escáner que analiza repos, URLs, zips y directorios contra 71 patrones en 17 categorías (prompt injection, data exfiltration, privilege escalation, supply chain, excessive agency, system prompt leakage, memory poisoning, MCP tool poisoning, MCP least privilege, rogue agent, anti-refusal, dangerous code vía AST, taint tracking y reglas YARA) y devuelve un score de 0 a 100 con etiquetas, integrable con SC4/OSV.dev y con salida en JSON, Markdown o SARIF. La cifra del README (26.1% de skills con vulnerabilidades, 5.2% con intención maliciosa probable) convierte el consejo genérico \"instala skills con cuidado\" en una acción concreta y reproducible: si tu flujo es `npx skills add <x>`, esto te dice qué puede hacerte `x` antes de ejecutarlo. Para CSS complementa `blader/humanizer` cerrando el lado seguridad del catálogo de skills: uno te limpia el texto, el otro te dice si el propio skill es un riesgo. No tenemos todavía un boletín previo que ancle `concept:agent-skill-security-scanner`, `concept:prompt-injection-patterns` ni `concept:nvidia-verified-skills-pipeline`, así que este ít los introduce como conceptos nuevos del grafo.",
+        "madurez_senales": "16.193★ · 1.372 forks · Python · Apache-2.0 · creado 2025-12-19 · último push 2026-09-01 · default_branch `main` · topics: agent-security, agent-skills, agentic-ai, ai-security, claude-code, mcp, prompt-injection, security-scanner. README 40 KB con Quick Start (`uv tool install git+https://github.com/NVIDIA/skillspector.git`), Pi extension para escanear desde dentro del agent, OpenSSF Scorecard integrado. Parte de la pipeline NVIDIA Verified Skills → NVIDIA skills catalog.",
+        "accion_sugerida": "**probar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/SkillSpector",
+          "rel": "implements",
+          "dst": "concept:agent-skill-security-scanner",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA/SkillSpector",
+          "rel": "uses",
+          "dst": "concept:prompt-injection-patterns",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA/SkillSpector",
+          "rel": "relevant_to",
+          "dst": "concept:nvidia-verified-skills-pipeline",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-skillspector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "tigerless-labs/autoharness",
+      "url": "https://github.com/tigerless-labs/autoharness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plugin de Claude Code (Python, sin third-party deps) que destila skills desde tus sesiones reales, las agrupa en lugar de apilarlas (cuando detecta escenarios iguales hace fold en vez de crear duplicados), las actualiza mientras se usan y las poda cuando dejan de tener adherencia. Cita un uplift medido en CORE-Bench (HAL): 42% → 78% con mismo modelo y distinto harness.",
+        "por_que_importa": "Aterriza la observación de swyx \"Big Model vs Big Harness\" sobre un slice muy concreto, la capa de skills, con un patrón self-maintaining: la librería de skills se destila de tus sesiones reales, se agrupa en lugar de apilarse (cuando detecta escenarios iguales hace fold en lugar de crear duplicados), se actualiza mientras se usa y se poda cuando pierde adherencia. La cifra del README (uplift medido en CORE-Bench HAL: 42% → 78% con mismo modelo y distinto harness) convierte \"el harness importa\" en algo medible, no en opinión. Para CSS el ángulo concreto es \"tu agente aprende solo, pero solo de sí mismo\": toca únicamente lo que él escribió y deja intacto lo que tú o el vendor escribiste, lo que lo hace buen complemento a `qufei1993/skills-hub` desde el lado de generación, no de curación. No tenemos todavía un boletín previo que ancle `concept:self-learning-skill-layer`, `concept:claude-code-skills-format` ni `concept:big-model-vs-big-harness`, así que este ít los presenta como conceptos nuevos del grafo y deja la puerta abierta a cubrirlos por separado cuando salgan piezas más canónicas.",
+        "madurez_senales": "1.682★ · 99 forks · Python · MIT · creado 2025-10-21 · último push 2026-09-04 · default_branch `main` · topics: agent-skills, claude-code, claude-code-plugin, llm-agents, python. README 19 KB con tabla de seis propiedades (learns from real work, groups doesn't pile up, keeps own library in view, validated in use, only its own skills, evidence kept for later) y sección de benchmark HAL.",
+        "accion_sugerida": "**leer**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "implements",
+          "dst": "concept:self-learning-skill-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "extends",
+          "dst": "concept:claude-code-skills-format",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "relevant_to",
+          "dst": "concept:big-model-vs-big-harness",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-autoharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "tigerless-labs/cost-xray",
+      "url": "https://github.com/tigerless-labs/cost-xray",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(766★ · último push 2026-09-01 · Python · MIT · default_branch `master`) — Captura tráfico local de Claude Code y Codex con mitmproxy y atribuye tokens y dólares a system prompts, tool schemas, MCP blocks, cache hits y thinking blocks. Tema central: no leas los logs, mira lo que realmente viaja.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (complemento directo a cualquier skill con hooks de telemetría)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-cost-xray",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "basecamp/hey-cli",
+      "url": "https://github.com/basecamp/hey-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(334★ · último push 2026-09-04 · Go · MIT) — CLI + TUI oficial de HEY (Basecamp) + Agent Skills. Tu email y calendario en terminal y disponibles para coding agents vía MCP. Tema central: un vendor de email conocido mete su capa agent-first con un solo binario.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "basecamp-hey-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "anthropics/fermats-last-theorem",
+      "url": "https://github.com/anthropics/fermats-last-theorem",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(465★ · último push 2026-09-04 · Lean · Apache-2.0) — Prueba completa del Teorema de Fermat en Lean 4 sobre Mathlib v4.33.0, verificada por el kernel oficial y por `nanoda` (segundo kernel en Rust). README honesto: \"research artifact, not maintained\". Tema central: Anthropic enseña a sus modelos a formalizar matemáticas y publica el artefacto.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (curiosidad editorial, no es para usar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-fermats-last-theorem",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "radixark/miles",
+      "url": "https://github.com/radixark/miles",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.593★ · último push 2026-09-05 · Python · Apache-2.0) — Framework RL enterprise para LLM/VLM post-training, sobre SGLang + Megatron-LM con soporte Blackwell-Native de 8/4-bit, day-0 para Kimi K3, Inkling, DeepSeek-V4 Flash y Nemotron 3 Ultra. Tema central: el stack open-source de RLHF/RL post-training se completa con el lado enterprise.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (es el equivalente RL de vLLM/SGLang, ya en el grafo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "radixark-miles",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "EvoMap/AutoResearch",
+      "url": "https://github.com/EvoMap/AutoResearch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(674★ · último push 2026-09-01 · Python · Apache-2.0) — Agentes de investigación AI/ML de idea a paper-ready evidence, parte del ecosistema EvoMap. Tema central: el espacio deep-research automation sigue atrayendo papers de arxiv (2608.17906) y repos OSS.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (intersección con tu skill `deep-research-task`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "evomap-autoresearch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "JerBouma/FinanceDatabase",
+      "url": "https://github.com/JerBouma/FinanceDatabase",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(8.519★ · último push 2026-09-01 · Python · MIT) — Base de datos de más de 300.000 símbolos (equities, ETFs, fondos, criptos, divisas) con API Python simple. Tema central: dataset financiero OSS que vuelve a trending con updates recurrentes.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (utilidad de datos, sin ángulo AI editorial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jerbouma-financedatabase",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

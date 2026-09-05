@@ -1,0 +1,44 @@
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-gastownhall-beads", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-gastownhall-beads", "dst": "tema:gastownhall-beads", "rel": "trata", "added": "2026-09-05"}
+{"src": "repo:gastownhall/beads", "dst": "concept:coding-agent-memory", "rel": "implements", "added": "2026-09-05", "primera_mencion": "2026-08-28"}
+{"src": "repo:gastownhall/beads", "dst": "tool:dolt-versioned-sql", "rel": "uses", "added": "2026-09-05", "primera_mencion": "2026-08-28"}
+{"src": "repo:gastownhall/beads", "dst": "repo:humanlayer/skills", "rel": "complements", "added": "2026-09-05", "primera_mencion": "2026-08-28"}
+{"src": "repo:gastownhall/beads", "dst": "concept:gastown-hall-ecosystem", "rel": "relevant_to", "added": "2026-09-05", "primera_mencion": "2026-08-28"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-gentleman-programming-engram", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-gentleman-programming-engram", "dst": "tema:gentleman-programming-engram", "rel": "trata", "added": "2026-09-05"}
+{"src": "repo:Gentleman-Programming/engram", "dst": "concept:coding-agent-memory", "rel": "implements", "added": "2026-09-05", "primera_mencion": null}
+{"src": "repo:Gentleman-Programming/engram", "dst": "tool:sqlite-fts5", "rel": "uses", "added": "2026-09-05", "primera_mencion": null}
+{"src": "repo:Gentleman-Programming/engram", "dst": "repo:gastownhall/beads", "rel": "complements", "added": "2026-09-05", "primera_mencion": "2026-08-28"}
+{"src": "repo:Gentleman-Programming/engram", "dst": "concept:agent-agnostic-memory", "rel": "relevant_to", "added": "2026-09-05", "primera_mencion": null}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-huangruiteng-loopx", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-huangruiteng-loopx", "dst": "tema:huangruiteng-loopx", "rel": "trata", "added": "2026-09-05"}
+{"src": "repo:huangruiteng/loopx", "dst": "concept:long-horizon-agent-control-plane", "rel": "implements", "added": "2026-09-05", "primera_mencion": "2026-08-08"}
+{"src": "repo:huangruiteng/loopx", "dst": "concept:multi-harness-orchestration", "rel": "extends", "added": "2026-09-05", "primera_mencion": "2026-08-08"}
+{"src": "repo:huangruiteng/loopx", "dst": "concept:approval-gate-pattern", "rel": "relevant_to", "added": "2026-09-05", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-pacifio-atlas", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-pacifio-atlas", "dst": "tema:pacifio-atlas", "rel": "trata", "added": "2026-09-05"}
+{"src": "repo:pacifio/atlas", "dst": "concept:agent-source-control", "rel": "implements", "added": "2026-09-05", "primera_mencion": "2026-09-03"}
+{"src": "repo:pacifio/atlas", "dst": "repo:gastownhall/beads", "rel": "complements", "added": "2026-09-05", "primera_mencion": "2026-08-28"}
+{"src": "repo:pacifio/atlas", "dst": "concept:coding-agent-observability", "rel": "relevant_to", "added": "2026-09-05", "primera_mencion": "2026-09-03"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-nvidia-skillspector", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-nvidia-skillspector", "dst": "tema:nvidia-skillspector", "rel": "trata", "added": "2026-09-05"}
+{"src": "repo:NVIDIA/SkillSpector", "dst": "concept:agent-skill-security-scanner", "rel": "implements", "added": "2026-09-05", "primera_mencion": null}
+{"src": "repo:NVIDIA/SkillSpector", "dst": "concept:prompt-injection-patterns", "rel": "uses", "added": "2026-09-05", "primera_mencion": null}
+{"src": "repo:NVIDIA/SkillSpector", "dst": "concept:nvidia-verified-skills-pipeline", "rel": "relevant_to", "added": "2026-09-05", "primera_mencion": null}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-tigerless-labs-autoharness", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-tigerless-labs-autoharness", "dst": "tema:tigerless-labs-autoharness", "rel": "trata", "added": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:self-learning-skill-layer", "rel": "implements", "added": "2026-09-05", "primera_mencion": null}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:claude-code-skills-format", "rel": "extends", "added": "2026-09-05", "primera_mencion": null}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:big-model-vs-big-harness", "rel": "relevant_to", "added": "2026-09-05", "primera_mencion": null}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-tigerless-labs-cost-xray", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-tigerless-labs-cost-xray", "dst": "tema:tigerless-labs-cost-xray", "rel": "trata", "added": "2026-09-05"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-basecamp-hey-cli", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-basecamp-hey-cli", "dst": "tema:basecamp-hey-cli", "rel": "trata", "added": "2026-09-05"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-anthropics-fermats-last-theorem", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-anthropics-fermats-last-theorem", "dst": "tema:anthropics-fermats-last-theorem", "rel": "trata", "added": "2026-09-05"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-radixark-miles", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-radixark-miles", "dst": "tema:radixark-miles", "rel": "trata", "added": "2026-09-05"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-evomap-autoresearch", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-evomap-autoresearch", "dst": "tema:evomap-autoresearch", "rel": "trata", "added": "2026-09-05"}
+{"src": "boletin:2026-09-05", "dst": "item:https-github-com-jerbouma-financedatabase", "rel": "menciona", "added": "2026-09-05"}
+{"src": "item:https-github-com-jerbouma-financedatabase", "dst": "tema:jerbouma-financedatabase", "rel": "trata", "added": "2026-09-05"}
