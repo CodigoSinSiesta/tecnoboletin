@@ -1,0 +1,469 @@
+{
+  "version": 2,
+  "date": "2026-09-06",
+  "boletin_origen": "2026-09-06-trending.md",
+  "resumen_ejecutivo": "- **Cluster agente-ecosistema sigue dominando el trending**: tres de los hallazgos principales de hoy (`okf-memory/okf-agent-memory`, `code-yeongyu/lazycodex`, `777genius/agent-teams-ai`) atacan el mismo problema desde ángulos distintos — memoria persistente, harness con plan-verified-completion y orquestación multi-agente con kanban. Es la señal más clara de que la semana pasada (skills marketplaces, scanning de skills, agent teams) está madurando hacia \"infraestructura de agentes\".\n- **`h4ckf0r0day/obscura` vuelve a Trendshift con native rendering y casi triplica su base de estrellas** (≈5k → 26k) en menos de un mes. Es Rust + CDP + drop-in Playwright + antidetect, y enlaza directamente con la skill de viabilidad de scraping del usuario.\n- **Voz y gráficos extremos**: `k2-fsa/OmniVoice` (TTS zero-shot 600+ idiomas, Apache-2.0) y `sebbbi/NoGraphicsAPI` (implementación de referencia del blog \"No Graphics API\" sobre Vulkan 1.4) son los dos hallazgos más \"técnicos\" del día, sin ángulo comercial claro pero con valor didáctico real.\n- **Hoy también aparece un system-cleaner open source serio**: `AdventDevInc/kudu` (2723★, MIT) es el primer CCleaner-alternative que veo en trending con descargas, releases activos y CLI documentada.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API cuando aplica. Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` es del 2026-07-05; flag pendiente de investigación operativa).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "h4ckf0r0day/obscura",
+      "url": "https://github.com/h4ckf0r0day/obscura",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de navegador headless escrito en Rust, con render nativo (sin Chromium), soporte V8 real, protocolo Chrome DevTools y compatibilidad drop-in con Puppeteer/Playwright. Apunta explícitamente a AI agents y web scraping.",
+        "por_que_importa": "Enlaza directamente con la skill `web-scraping-viability` que ya cubrimos en boletines previos y completa el hueco entre Scrapling (Python) y Obscura (este proyecto): un motor de navegador headless escrito en Rust con render nativo —sin Chromium— y compatibilidad con Puppeteer/Playwright, algo que rara vez coincide en el mismo repo. Su README cita 'Native rendering is here. No Chromium required' como milestone reciente, dato útil para talking points sobre el stack local-first. Ya cubrimos este concepto (headless-browser-engine) y la complementariedad con web-scraping-viability el 2026-08-08.",
+        "madurez_senales": "**25.966★ · 1.5k forks · Rust · Apache-2.0 · creado 2024-11, último push 2026-09-05 · default_branch=main · topics: antidetect, browser-automation, cdp, headless, playwright, puppeteer, rust**. Verificado vía GitHub API.",
+        "accion_sugerida": "**vigilar** (ya estaba en seen desde 2026-08-08, pero el salto de tracción merece nota). Pendiente: comparar rendimiento contra Scrapling StealthyFetcher cuando se relance la skill.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:h4ckf0r0day/obscura",
+          "rel": "competes_with",
+          "dst": "concept:headless-browser-engine",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:h4ckf0r0day/obscura",
+          "rel": "complements",
+          "dst": "concept:web-scraping-viability",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "h4ckf0r0day-obscura",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "777genius/agent-teams-ai",
+      "url": "https://github.com/777genius/agent-teams-ai",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App de escritorio (Electron + TS) para coordinar equipos de agentes IA (Codex, Claude Code, OpenCode, Cursor, SuperGrok, GitHub Copilot, Kiro, MiniMax y otros 75+ providers). Cada agente se ve como un \"trabajador\" en un kanban, los agentes se pasan mensajes y se revisan el trabajo entre sí.",
+        "por_que_importa": "Producto estrella del cluster 'agent orchestration' del trending de hoy: aterriza el concepto de multi-agente en una UI real —kanban donde cada agente es un 'trabajador' y los agentes se pasan mensajes y se revisan el trabajo entre sí— en lugar de quedarse en slides. Soporta Codex, Claude Code, OpenCode, Cursor, SuperGrok, GitHub Copilot, Kiro, MiniMax y otros 75+ providers desde una sola app de escritorio Electron+TS. La licencia AGPL-3.0 frena el uso comercial pero invita a contribuciones upstream. Ya cubrimos el concepto de multi-agent-orchestration el 2026-08-27, y compite con opencode (anomalyco).",
+        "madurez_senales": "**2.071★ · ~200 forks · TypeScript · AGPL-3.0 · creado 2026-04, último push 2026-09-06 · default_branch=main · topics: agent-orchestration, agent-teams, ai-agents, claude, claude-code, codex, cursor, mcp-server, multi-agent, multi-agent-systems, openai, opencode**. Verificado vía GitHub API.",
+        "accion_sugerida": "**explorar** — la promesa de \"75+ LLM providers, free models no auth\" es demasiado buena para no auditarla con calma.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:777genius/agent-teams-ai",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:777genius/agent-teams-ai",
+          "rel": "competes_with",
+          "dst": "repo:anomalyco/opencode",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "777genius-agent-teams-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "code-yeongyu/lazycodex",
+      "url": "https://github.com/code-yeongyu/lazycodex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plugin/harness para OpenAI Codex que añade memoria de proyecto, planificación, ejecución y **verificación de completado** dentro del flujo de Codex. Mismo autor que `oh-my-openagent` (60k★, ya mencionado en boletines previos).",
+        "por_que_importa": "Conecta con la conversación 'Big Model vs Big Harness' que sigue abierta (HAL, swyx): un plugin/harness para OpenAI Codex que añade memoria de proyecto, planificación, ejecución y verificación de completado dentro del propio flujo de Codex, del mismo autor que `oh-my-openagent` (60k★). Posiciona al Codex CLI al nivel de Claude Code en memoria persistente y al nivel de omO/Antigravity en orquestación. Ya cubrimos el concepto de agent-harness-environment el 2026-08-23.",
+        "madurez_senales": "**3.396★ · forks no verificados · TypeScript · MIT · creado 2026-04, último push 2026-08-09 · default_branch=main · topics: ai, ai-agents, codex, lazycodex, oh-my-openagent, omo**. Verificado vía GitHub API.",
+        "accion_sugerida": "**leer** — no es un hallazgo nuevo el autor, pero la nota \"60k stars\" en el README indica tracción seria.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:code-yeongyu/lazycodex",
+          "rel": "complements",
+          "dst": "concept:agent-harness-environment",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "repo:code-yeongyu/lazycodex",
+          "rel": "author_of",
+          "dst": "repo:code-yeongyu/oh-my-openagent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "code-yeongyu-lazycodex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "okf-memory/okf-agent-memory",
+      "url": "https://github.com/okf-memory/okf-agent-memory",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Capa de memoria persistente para AI coding agents siguiendo la especificación **Open Knowledge Format v0.2** (publicada por Google Cloud Platform en `knowledge-catalog/okf/SPEC.md`). Implementa la memoria como Markdown+YAML en `knowledge/`, expone un MCP server y un CLI en Go con búsqueda BM25 sub-300µs.",
+        "por_que_importa": "La pieza que faltaba entre \"CLAUDE.md improvisado\" y \"vector DB propietario\". Si Google Cloud Platform mantiene OKF como estándar, este repo se vuelve el punto de entrada portable. Cero dependencias externas (solo Go stdlib), MIT, 142★.",
+        "madurez_senales": "**142★ · ~20 forks · Go · MIT · creado 2026-08, último push 2026-09-05 · default_branch=main · topics no configurados**. Verificado vía GitHub API. README describe \"80% token reduction\" — métrica a verificar antes de recomendar.",
+        "accion_sugerida": "**explorar** — todavía joven pero arquitectónicamente es la apuesta más portable del cluster.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:okf-memory/okf-agent-memory",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:okf-memory/okf-agent-memory",
+          "rel": "implements",
+          "dst": "spec:okf-v0.2",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:okf-memory/okf-agent-memory",
+          "rel": "competes_with",
+          "dst": "repo:Gentleman-Programming/engram",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "okf-memory-okf-agent-memory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "AdventDevInc/kudu",
+      "url": "https://github.com/AdventDevInc/kudu",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Cleaner, scanner y endurecedor de sistema open source para Windows, macOS y Linux. Tiene CLI documentada, releases con binarios descargables, web propia (usekudu.com) y matriz de cleaners explícita.",
+        "por_que_importa": "Rara vez un utility de sistema mainstream al estilo CCleaner o BleachBit aparece en el trending de GitHub, y menos aún con CLI documentada, binarios descargables, web propia (usekudu.com) y matriz de cleaners explícita. Es señal de demanda latente de alternativas abiertas a cleaners privativos; el ángulo periodístico natural sería 'el primer cleaner open source con release pipeline serio que veo en 2026'. Cabe esperar que atraiga a la audiencia de Código Sin Siesta interesada en hygiene de sistema sin telemetría.",
+        "madurez_senales": "**2.723★ · forks no verificados · TypeScript · MIT · creado 2025-06, último push 2026-09-05 · default_branch=main · topics: ccleaner-alternative, cleaner, linux-cleaner, mac-cleaner, malware-detection, system-cleaner, windows-cleaner**. Verificado vía GitHub API.",
+        "accion_sugerida": "**probar** la CLI localmente si te interesa el ángulo \"stack de productividad local-first\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:AdventDevInc/kudu",
+          "rel": "implements",
+          "dst": "concept:system-maintenance-tool",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:AdventDevInc/kudu",
+          "rel": "competes_with",
+          "dst": "concept:ccleaner",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "adventdevinc-kudu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "k2-fsa/OmniVoice",
+      "url": "https://github.com/k2-fsa/OmniVoice",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Modelo TTS masivamente multilingüe zero-shot (más de 600 idiomas), con voice cloning, voice design por atributos (género, edad, pitch, dialecto) y arquitectura estilo diffusion language model. RTF 0,025 (40× más rápido que real-time). Companion del repositorio Sherpa-ONNX del mismo grupo (k2-fsa).",
+        "por_que_importa": "Alternativa open source seria a ElevenLabs para cobertura lingüística: un modelo TTS masivamente multilingüe zero-shot con más de 600 idiomas, voice cloning, voice design por atributos (género, edad, pitch, dialecto) y RTF 0,025 — unas 40× más rápido que real-time. Útil de inmediato para podcasts local-first, audiolibros de proyectos OSS y vídeos educativos de Código Sin Siesta en español y otros idiomas sin pagar API. MIT/Apache-2.0 y pesos en HuggingFace. Ya cubrimos el concepto de polyglot-tts-voice-cloning el 2026-08-20, y compite con el concepto xtts-engine que también cubrimos ese mismo2026-08-20.",
+        "madurez_senales": "**9.959★ · ~900 forks · Python · Apache-2.0 · creado 2026-03, último push 2026-08-31 · default_branch=master · topics: tts, voice-cloning, multilingual**. Verificado vía GitHub API.",
+        "accion_sugerida": "**vigilar** — todavía no tiene \"release\" etiquetado como v1.0 en este momento, esperar al próximo push antes de probar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:k2-fsa/OmniVoice",
+          "rel": "implements",
+          "dst": "concept:polyglot-tts-voice-cloning",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:k2-fsa/OmniVoice",
+          "rel": "competes_with",
+          "dst": "concept:xtts-engine",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "k2-fsa-omnivoice",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "sebbbi/NoGraphicsAPI",
+      "url": "https://github.com/sebbbi/NoGraphicsAPI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Implementación experimental sobre Vulkan 1.4 de las ideas del blog \"No Graphics API\" de Sebastian Aaltonen (ex-Ubisoft, autor de conocida serie de blogs sobre rendering moderno). Reemplaza buffer objects por punteros GPU de 64 bits, descriptores por heaps de aplicación y barriers por declaración de hazards.",
+        "por_que_importa": "Código de referencia directo del autor original del blog, en C++/Slang, con tres ejemplos funcionando y propuesta de port a Metal 4 documentada. Si haces contenido de gráficos, te ahorra el paper trail.",
+        "madurez_senales": "**535★ · ~40 forks · C++ · MIT · creado 2026-08, último push 2026-09-06 · default_branch=main**. Verificado vía GitHub API. README es 16kB bien estructurados, sin métricas de benchmark todavía.",
+        "accion_sugerida": "**leer** el SUMMARY.md y archivar como referencia para un futuro episodio sobre rendering moderno.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:sebbbi/NoGraphicsAPI",
+          "rel": "implements",
+          "dst": "concept:gpu-pointer-graphics",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:sebbbi/NoGraphicsAPI",
+          "rel": "inspired_by",
+          "dst": "blog:sebastian-aaltonen-no-graphics-api",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sebbbi-nographicsapi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "thewh1teagle/vibe",
+      "url": "https://github.com/thewh1teagle/vibe",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App de escritorio (Windows/macOS/Linux) para transcribir audio y vídeo directamente en local, sin enviar nada a la nube. Frontend TS, backend Rust; integra Whisper. El README cita privacidad total y descarga binarios desde `thewh1teagle.github.io/vibe/`.",
+        "por_que_importa": "Caso de uso inmediato para podcasters, periodistas y creadores en español que no quieren subir audio a servicios externos: una app de escritorio (Windows/macOS/Linux) con frontend TS y backend Rust que transcribe audio y vídeo directamente en local integrando el stack Whisper, con descarga de binarios desde `thewh1teagle.github.io/vibe/` y curva de uso trivial. Mismo espacio que Buzz (otra app de transcripción local) pero con frontend más pulido. Para la audiencia de Código Sin Siesta resuelve una fricción concreta: privacidad total sin renunciar a transcripción de calidad.",
+        "madurez_senales": "**7.336★ · ~500 forks · TypeScript · MIT · creado 2025-12, último push 2026-09-05 · default_branch=main · topics: ai, cross-platform, desktop, openai, rust, transcribe, whisper**. Verificado vía GitHub API.",
+        "accion_sugerida": "**probar** — la fricción de instalación parece baja y el caso de uso encaja con workflows de contenido.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:thewh1teagle/vibe",
+          "rel": "implements",
+          "dst": "concept:on-device-speech-to-text",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:thewh1teagle/vibe",
+          "rel": "competes_with",
+          "dst": "repo:chidiwilliams/buzz",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thewh1teagle-vibe",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "LivXue/dsh-plugin-shop",
+      "url": "https://github.com/LivXue/dsh-plugin-shop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(255★, último push 2026-09-06, TS, Apache-2.0) — marketplace curado de plugins para DeepSeek Harness (la plataforma de agentes de DeepSeek). El catálogo se refresca diariamente y el CI filtra automáticamente.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si DeepSeek gana tracción en LATAM, este es el plugin store de referencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "livxue-dsh-plugin-shop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "BraveOPotato/FckSignups",
+      "url": "https://github.com/BraveOPotato/FckSignups",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2993★, último push 2026-08-22, TS, GPL-3.0) — directorio curado de herramientas open source que funcionan en navegador sin signup, email ni tracking. Útil como catálogo inverso para recomendar a audiencia no técnica.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — y guardar como recurso para newsletters",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "braveopotato-fcksignups",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "majidmanzarpour/threejs-game-skills",
+      "url": "https://github.com/majidmanzarpour/threejs-game-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1619★, último push 2026-09-05, Python, MIT) — pack de 9 skills para Codex/Claude Code que cubre el ciclo completo de un juego Three.js (gameplay, UI, generación de assets 3D/audio, debug, release). Incluye Playwright templates para auto-verificación.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — buena fuente para un episodio sobre \"skills como metodología de producción\"",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "majidmanzarpour-threejs-game-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "longbridge/gpui-kit",
+      "url": "https://github.com/longbridge/gpui-kit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(14029★, último push 2026-09-06, Rust, NOASSERTION) — UI framework sobre GPUI (el motor que usa Zed). Mismo espacio que Tauri/Electron pero con Rust-first.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar con cautela — la licencia NOASSERTION merece abrir el LICENSE antes de cualquier adopción como dependencia de producción (pitfall #11 documentado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "longbridge-gpui-kit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "coulsontl/ai-toolbox",
+      "url": "https://github.com/coulsontl/ai-toolbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1384★, último push 2026-09-06, Rust, MIT) — desktop app (Tauri) para gestionar configuraciones de AI coding assistants (Claude Code, Codex, etc.) en un solo sitio.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — solapa conceptualmente con `kudu` y `agent-teams-ai` desde otro ángulo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coulsontl-ai-toolbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "Novals83/5min-btc-polymarket",
+      "url": "https://github.com/Novals83/5min-btc-polymarket",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(921★, último push 2026-04-11, Python, sin licencia) — skill para OpenClaw que opera momentum en Polymarket (mercado BTC 5min). Riesgo: trading algorítmico en mercados de predicción.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — salvo que tengas audiencia específica de trading",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "novals83-5min-btc-polymarket",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 8,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/8 items reescritos; rechazados por longitud sospechosa: [3, 6]; faltantes en respuesta: [3, 6]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

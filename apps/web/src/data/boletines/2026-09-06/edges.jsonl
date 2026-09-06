@@ -1,0 +1,45 @@
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-h4ckf0r0day-obscura", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-h4ckf0r0day-obscura", "dst": "tema:h4ckf0r0day-obscura", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:h4ckf0r0day/obscura", "dst": "concept:headless-browser-engine", "rel": "competes_with", "added": "2026-09-06", "primera_mencion": "2026-08-08"}
+{"src": "repo:h4ckf0r0day/obscura", "dst": "concept:web-scraping-viability", "rel": "complements", "added": "2026-09-06", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-777genius-agent-teams-ai", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-777genius-agent-teams-ai", "dst": "tema:777genius-agent-teams-ai", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:777genius/agent-teams-ai", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-09-06", "primera_mencion": "2026-08-27"}
+{"src": "repo:777genius/agent-teams-ai", "dst": "repo:anomalyco/opencode", "rel": "competes_with", "added": "2026-09-06", "primera_mencion": null}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-code-yeongyu-lazycodex", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-code-yeongyu-lazycodex", "dst": "tema:code-yeongyu-lazycodex", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:code-yeongyu/lazycodex", "dst": "concept:agent-harness-environment", "rel": "complements", "added": "2026-09-06", "primera_mencion": "2026-08-23"}
+{"src": "repo:code-yeongyu/lazycodex", "dst": "repo:code-yeongyu/oh-my-openagent", "rel": "author_of", "added": "2026-09-06", "primera_mencion": null}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-okf-memory-okf-agent-memory", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-okf-memory-okf-agent-memory", "dst": "tema:okf-memory-okf-agent-memory", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:okf-memory/okf-agent-memory", "dst": "concept:agent-memory", "rel": "implements", "added": "2026-09-06", "primera_mencion": "2026-08-10"}
+{"src": "repo:okf-memory/okf-agent-memory", "dst": "spec:okf-v0.2", "rel": "implements", "added": "2026-09-06", "primera_mencion": null}
+{"src": "repo:okf-memory/okf-agent-memory", "dst": "repo:Gentleman-Programming/engram", "rel": "competes_with", "added": "2026-09-06", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-adventdevinc-kudu", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-adventdevinc-kudu", "dst": "tema:adventdevinc-kudu", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:AdventDevInc/kudu", "dst": "concept:system-maintenance-tool", "rel": "implements", "added": "2026-09-06", "primera_mencion": null}
+{"src": "repo:AdventDevInc/kudu", "dst": "concept:ccleaner", "rel": "competes_with", "added": "2026-09-06", "primera_mencion": null}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-k2-fsa-omnivoice", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-k2-fsa-omnivoice", "dst": "tema:k2-fsa-omnivoice", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:k2-fsa/OmniVoice", "dst": "concept:polyglot-tts-voice-cloning", "rel": "implements", "added": "2026-09-06", "primera_mencion": "2026-08-20"}
+{"src": "repo:k2-fsa/OmniVoice", "dst": "concept:xtts-engine", "rel": "competes_with", "added": "2026-09-06", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-sebbbi-nographicsapi", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-sebbbi-nographicsapi", "dst": "tema:sebbbi-nographicsapi", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:sebbbi/NoGraphicsAPI", "dst": "concept:gpu-pointer-graphics", "rel": "implements", "added": "2026-09-06", "primera_mencion": null}
+{"src": "repo:sebbbi/NoGraphicsAPI", "dst": "blog:sebastian-aaltonen-no-graphics-api", "rel": "inspired_by", "added": "2026-09-06", "primera_mencion": null}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-thewh1teagle-vibe", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-thewh1teagle-vibe", "dst": "tema:thewh1teagle-vibe", "rel": "trata", "added": "2026-09-06"}
+{"src": "repo:thewh1teagle/vibe", "dst": "concept:on-device-speech-to-text", "rel": "implements", "added": "2026-09-06", "primera_mencion": null}
+{"src": "repo:thewh1teagle/vibe", "dst": "repo:chidiwilliams/buzz", "rel": "competes_with", "added": "2026-09-06", "primera_mencion": null}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-livxue-dsh-plugin-shop", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-livxue-dsh-plugin-shop", "dst": "tema:livxue-dsh-plugin-shop", "rel": "trata", "added": "2026-09-06"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-braveopotato-fcksignups", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-braveopotato-fcksignups", "dst": "tema:braveopotato-fcksignups", "rel": "trata", "added": "2026-09-06"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-majidmanzarpour-threejs-game-skills", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-majidmanzarpour-threejs-game-skills", "dst": "tema:majidmanzarpour-threejs-game-skills", "rel": "trata", "added": "2026-09-06"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-longbridge-gpui-kit", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-longbridge-gpui-kit", "dst": "tema:longbridge-gpui-kit", "rel": "trata", "added": "2026-09-06"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-coulsontl-ai-toolbox", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-coulsontl-ai-toolbox", "dst": "tema:coulsontl-ai-toolbox", "rel": "trata", "added": "2026-09-06"}
+{"src": "boletin:2026-09-06", "dst": "item:https-github-com-novals83-5min-btc-polymarket", "rel": "menciona", "added": "2026-09-06"}
+{"src": "item:https-github-com-novals83-5min-btc-polymarket", "dst": "tema:novals83-5min-btc-polymarket", "rel": "trata", "added": "2026-09-06"}
