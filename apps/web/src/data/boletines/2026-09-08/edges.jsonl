@@ -1,0 +1,42 @@
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-microsoft-tgrep", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-microsoft-tgrep", "dst": "tema:microsoft-tgrep", "rel": "trata", "added": "2026-09-08"}
+{"src": "repo:microsoft/tgrep", "dst": "tool:ripgrep", "rel": "competes_with", "added": "2026-09-08", "primera_mencion": null}
+{"src": "repo:microsoft/tgrep", "dst": "tool:github-copilot-cli", "rel": "integrated_in", "added": "2026-09-08", "primera_mencion": null}
+{"src": "concept:code-search", "dst": "repo:microsoft/tgrep", "rel": "enables", "added": "2026-09-08", "primera_mencion": null}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-vllm-project-agentic-api", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-vllm-project-agentic-api", "dst": "tema:vllm-project-agentic-api", "rel": "trata", "added": "2026-09-08"}
+{"src": "repo:vllm-project/agentic-api", "dst": "tool:vllm", "rel": "extends", "added": "2026-09-08", "primera_mencion": null}
+{"src": "repo:vllm-project/agentic-api", "dst": "spec:openai-responses-api", "rel": "implements", "added": "2026-09-08", "primera_mencion": null}
+{"src": "repo:vllm-project/agentic-api", "dst": "concept:self-hosted-agent", "rel": "enables", "added": "2026-09-08", "primera_mencion": null}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-huggingface-funes", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-huggingface-funes", "dst": "tema:huggingface-funes", "rel": "trata", "added": "2026-09-08"}
+{"src": "repo:huggingface/funes", "dst": "repo:NousResearch/hermes-agent", "rel": "integrates_with", "added": "2026-09-08", "primera_mencion": "2026-08-03"}
+{"src": "repo:huggingface/funes", "dst": "tool:lance", "rel": "uses", "added": "2026-09-08", "primera_mencion": null}
+{"src": "concept:agent-memory", "dst": "repo:huggingface/funes", "rel": "implemented_by", "added": "2026-09-08", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-coldteadotai-pr-lens", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-coldteadotai-pr-lens", "dst": "tema:coldteadotai-pr-lens", "rel": "trata", "added": "2026-09-08"}
+{"src": "repo:coldteadotai/pr-lens", "dst": "repo:tt-a1i/archify", "rel": "competes_with", "added": "2026-09-08", "primera_mencion": "2026-08-08"}
+{"src": "repo:coldteadotai/pr-lens", "dst": "platform:github-apps", "rel": "integrates_with", "added": "2026-09-08", "primera_mencion": null}
+{"src": "concept:pr-review", "dst": "repo:coldteadotai/pr-lens", "rel": "automated_by", "added": "2026-09-08", "primera_mencion": null}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-jo-inc-camofox-browser", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-jo-inc-camofox-browser", "dst": "tema:jo-inc-camofox-browser", "rel": "trata", "added": "2026-09-08"}
+{"src": "repo:jo-inc/camofox-browser", "dst": "tool:camoufox", "rel": "uses", "added": "2026-09-08", "primera_mencion": null}
+{"src": "repo:jo-inc/camofox-browser", "dst": "repo:lightpanda-io/browser", "rel": "competes_with", "added": "2026-09-08", "primera_mencion": null}
+{"src": "concept:anti-bot-bypass", "dst": "repo:jo-inc/camofox-browser", "rel": "implemented_by", "added": "2026-09-08", "primera_mencion": null}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-tencent-teamai-cli", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-tencent-teamai-cli", "dst": "tema:tencent-teamai-cli", "rel": "trata", "added": "2026-09-08"}
+{"src": "repo:Tencent/teamai-cli", "dst": "concept:shared-agent-config", "rel": "competes_with", "added": "2026-09-08", "primera_mencion": null}
+{"src": "repo:Tencent/teamai-cli", "dst": "company:tencent", "rel": "sponsored_by", "added": "2026-09-08", "primera_mencion": "2026-08-12"}
+{"src": "concept:team-agent-onboarding", "dst": "repo:Tencent/teamai-cli", "rel": "implemented_by", "added": "2026-09-08", "primera_mencion": null}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-mksglu-context-mode", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-mksglu-context-mode", "dst": "tema:mksglu-context-mode", "rel": "trata", "added": "2026-09-08"}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-headroomlabs-ai-headroom", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-headroomlabs-ai-headroom", "dst": "tema:headroomlabs-ai-headroom", "rel": "trata", "added": "2026-09-08"}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-bytedance-deer-flow", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-bytedance-deer-flow", "dst": "tema:bytedance-deer-flow", "rel": "trata", "added": "2026-09-08"}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-mukul975-cve-mcp-server", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-mukul975-cve-mcp-server", "dst": "tema:mukul975-cve-mcp-server", "rel": "trata", "added": "2026-09-08"}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-affaan-m-ecc", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-affaan-m-ecc", "dst": "tema:affaan-m-ecc", "rel": "trata", "added": "2026-09-08"}
+{"src": "boletin:2026-09-08", "dst": "item:https-github-com-coreyhaines31-marketingskills", "rel": "menciona", "added": "2026-09-08"}
+{"src": "item:https-github-com-coreyhaines31-marketingskills", "dst": "tema:coreyhaines31-marketingskills", "rel": "trata", "added": "2026-09-08"}

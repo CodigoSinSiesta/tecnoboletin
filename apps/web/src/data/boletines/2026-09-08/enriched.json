@@ -1,0 +1,425 @@
+{
+  "version": 2,
+  "date": "2026-09-08",
+  "boletin_origen": "2026-09-08-trending.md",
+  "resumen_ejecutivo": "- **Microsoft tgrep** aterriza en GitHub Trending: índice de trigramas client/server integrado ya en GitHub Copilot CLI, hasta 52× más rápido que ripgrep en monorepos grandes. La navaja suiza de búsqueda para codebases >100k archivos.\n- **vllm-project/agentic-api** mueve a servidor la conversación con estado de los agentes: gateway Rust sobre vLLM que implementa la Responses API de OpenAI con `previous_response_id`, tools server-side y Codex-ready. Local-first, sin cuenta de OpenAI.\n- **huggingface/funes** convierte la memoria de tus sesiones de coding agents en un dataset publicable: indexa Claude Code/Codex/pi/Hermes, recall automático mid-task, instalable con un `curl | sh`. Dato interesante: cita expresamente a Hermes en su target list.\n- **Cold Tea PR Lens** publica cada PR como diagramas de arquitectura y data-flow animados dentro del comentario del propio PR — ángulo interesante para newsletters que cubren código generado por agentes.\n- **jo-inc/camofox-browser** re-emerge: server headless con anti-detección C++ (Camoufox) + REST API para agentes, snapshot de accesibilidad ~90% más pequeño que HTML. Útil si tu agente necesita raspar sitios con Cloudflare.\n- **Tencent/teamai-cli** centraliza skills/rules/MCP/knowledge de un equipo a través de Claude Code, Codex, Cursor, OpenCode y otros, con un repo compartido. Patrón \"team AI native\" desde Shenzhen.\n- **Convergencia editorial del día**: tres hallazgos (vllm-project/agentic-api, mksglu/context-mode, headroomlabs-ai/headroom) atacan el mismo problema — *dónde vive el estado y la compresión de los agentes*: cliente, servidor o capa intermedia MCP. Es la conversación del trimestre.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all/typescript/python/rust/go), GitHub API. Blogwatcher no publicado hoy (aún no se ha generado `2026-09-08-blogs.md`).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "microsoft/tgrep",
+      "url": "https://github.com/microsoft/tgrep",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "cliente/servidor de `grep` con índice de trigramas precomputado. Hasta **52× más rápido** que ripgrep en gecko-dev (388k archivos), **15× en chromium** (504k archivos), **21× en linux** (96k archivos). Servidor local con `tgrep serve .`, cliente ligero, auto-conexión. **Ya integrado en GitHub Copilot CLI**.",
+        "por_que_importa": "Cuando un coding agent lanza `grep` o `rg` sobre un monorepo real, el cuello de botella no es la regex, sino I/O + recorrido lineal de archivos: tgrep lo convierte en lookup O(matches) gracias a un índice de trigramas precomputado, lo que según sus benchmarks llega a 52× frente a ripgrep en gecko-dev, 15× en chromium y 21× en linux. Es el tipo de infra sin la cual los agentes siguen siendo inviables en proyectos grandes — y el hecho de que GitHub Copilot CLI ya lo integre da señal de que va camino de estandarizarse. Merece artículo propio: instalación + benchmark reproducible sobre un repo de tamaño real, para que el lector pueda verificar las cifras en lugar de tragarlas.",
+        "madurez_senales": "1.428 ★ · 53 forks · Rust · creado 2026-07-20 · último push 2026-09-08 · MIT · descripción: \"Trigram-indexed grep with a client/server architecture for fast regex search in large codebases\" · topics: ninguno declarado en API.",
+        "accion_sugerida": "probar (instalar, levantar el servidor en `~/proyectos/codigosinsiesta` y medir tiempos contra ripgrep).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/tgrep",
+          "rel": "competes_with",
+          "dst": "tool:ripgrep",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/tgrep",
+          "rel": "integrated_in",
+          "dst": "tool:github-copilot-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:code-search",
+          "rel": "enables",
+          "dst": "repo:microsoft/tgrep",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-tgrep",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "vllm-project/agentic-api",
+      "url": "https://github.com/vllm-project/agentic-api",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway Rust sobre vLLM que implementa la Responses API de OpenAI con estado server-side. `previous_response_id`, tools server-side (web search vía You.com hoy, más por venir), persistencia SQLite, transporte HTTP/SSE/WebSocket. Acepta tráfico shaped de **OpenAI Codex** directamente sobre modelos open vía vLLM. Validado contra la suite Open Responses.",
+        "por_que_importa": "Si ya corres vLLM o estás a punto de hacerlo, este gateway te ahorra reimplementar el loop agentic en cada cliente: implementa la Responses API de OpenAI con estado server-side (previous_response_id, tools como web search vía You.com, persistencia en SQLite, transporte HTTP/SSE/WebSocket) y está validado contra la suite Open Responses, lo que significa que puedes enviarle tráfico shaped de OpenAI Codex directamente sobre modelos open. Para un lector de Código Sin Siesta con GPU, es el puente concreto entre «tengo vLLM servido» y «tengo un agente production-grade open source». La tracción — 222★ en apenas un mes — confirma que no es un prototipo de fin de semana; conviene seguirlo de cerca en próximas iteraciones.",
+        "madurez_senales": "222 ★ · 60 forks · Rust · creado 2026-08-04 · último push 2026-09-08 · Apache-2.0 · descripción: \"Stateful API logic for agentic applications using vLLM\" · topics: ninguno declarado en API (repo joven). A vigilar: 222★ en un mes es tracción muy fuerte para un repo infra.",
+        "accion_sugerida": "explorar (clonar, levantar el gateway, conectar Codex y comparar contra OpenAI directo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vllm-project/agentic-api",
+          "rel": "extends",
+          "dst": "tool:vllm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vllm-project/agentic-api",
+          "rel": "implements",
+          "dst": "spec:openai-responses-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vllm-project/agentic-api",
+          "rel": "enables",
+          "dst": "concept:self-hosted-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vllm-project-agentic-api",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "huggingface/funes",
+      "url": "https://github.com/huggingface/funes",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "indexa sesiones pasadas de Claude Code, Codex, pi y **Hermes**, y deja que cualquier agente las recuerde mid-task. Tu memoria es un dataset publicable en el Hugging Face Hub; cualquier teammate, máquina o tercero puede hacer recall con un flag. Instalación de un comando (`curl | sh`), hooks que mantienen el índice al día, recall espontáneo (el agente lo invoca sin instrucción explícita).",
+        "por_que_importa": "funes ataca un dolor que cualquier usuario de Hermes o Claude Code reconoce: el agente olvida todo entre sesiones. Indexa sesiones pasadas y permite recall mid-task, con la memoria publicable en el Hugging Face Hub como dataset versionable — eso significa que un equipo puede compartir contexto sin reinventar el ritual de «pásame tu vault». El grafo ya tenía `repo:NousResearch/hermes-agent` desde el boletín del 2026-08-03 y `concept:agent-memory` desde el 2026-08-10, así que funes no aparece de la nada: encaja como pieza complementaria que cualquier setup Hermes podría enchufar para mantener memoria entre sesiones. Además tiene un ángulo editorial muy concreto para nosotros: publicar la propia memoria del proceso de la newsletter como dataset, para que el lector pueda revisar cómo se cocinó un número anterior.",
+        "madurez_senales": "286 ★ · 22 forks · Rust · creado 2026-08-27 · último push 2026-09-08 · Apache-2.0 · descripción: \"Durable, searchable memory of your past agent sessions\" · topics: `agent-memory`, `ai-agents`, `claude-code`, `codex`, `hermes`, `lance`, `llm-agents`, `mcp`. Dato editorial: lista explícitamente a **Hermes** entre sus targets — buena señal de comunidad.",
+        "accion_sugerida": "probar (instalar, indexar las últimas 5 sesiones de Ibid, validar recall).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:huggingface/funes",
+          "rel": "integrates_with",
+          "dst": "repo:NousResearch/hermes-agent",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:huggingface/funes",
+          "rel": "uses",
+          "dst": "tool:lance",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:agent-memory",
+          "rel": "implemented_by",
+          "dst": "repo:huggingface/funes",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "huggingface-funes",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "coldteadotai/pr-lens",
+      "url": "https://github.com/coldteadotai/pr-lens",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "GitHub App que, en cada PR, publica un comentario con diagramas animados de arquitectura y data-flow del cambio (verde=nuevo, ámbar=cambiado, rojo=eliminado). Disponible vía GitHub App gratuita para OSS, CLI en npm (`@coldtea/pr-lens-cli`) y skill para coding agents (`npx skills add coldteadotai/pr-lens`).",
+        "por_que_importa": "Cuando un coding agent abre un PR, el reviewer humano necesita contexto visual rápido y no quiere leerse 400 archivos cambiados para entender qué se movió. PR Lens resuelve eso: en cada PR publica un comentario con diagramas animados de arquitectura y data-flow donde verde=nuevo, ámbar=cambiado, rojo=eliminado, dando una vista inmediata del blast radius. Se distribuye como GitHub App gratuita para OSS, CLI en npm y skill instalable con `npx skills add coldteadotai/pr-lens`, lo que facilita probarlo sin ceremonias. El grafo ya cubrió a `tt-a1i/archify` el 2026-08-08 con un ángulo parecido — «arquitectura legible para humanos» — así que PR Lens llega como competidor directo, no como sustituto: el lector puede ahora comparar dos apuestas distintas sobre el mismo problema y quedarse con la que mejor encaje en su flujo.",
+        "madurez_senales": "676 ★ · 28 forks · TypeScript · creado 2026-07-29 · último push 2026-09-08 · MIT · descripción: \"Review code 100X faster. Lens draws every PR as animated architecture and data-flow diagrams\" · topics: `agent-skills`, `architecture-as-code`, `architecture-diagrams`, `claude-skills`, `code-visualisation`, `codex`, `coding-agents`, `data-flow-diagram`.",
+        "accion_sugerida": "probar (instalar en un repo personal y validar el render del último PR).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:coldteadotai/pr-lens",
+          "rel": "competes_with",
+          "dst": "repo:tt-a1i/archify",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:coldteadotai/pr-lens",
+          "rel": "integrates_with",
+          "dst": "platform:github-apps",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:pr-review",
+          "rel": "automated_by",
+          "dst": "repo:coldteadotai/pr-lens",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coldteadotai-pr-lens",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "jo-inc/camofox-browser",
+      "url": "https://github.com/jo-inc/camofox-browser",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor headless anti-detección powered by Camoufox (Firefox fork con parches fingerprint a nivel C++). REST API pensada para agentes: snapshots de accesibilidad (refs estables `e1`, `e2`, `e3`), ~40MB en idle, aislamiento de sesiones, import de cookies Netscape, upload de archivos sin diálogo nativo, proxy con GeoIP. Construido por el equipo de jo (`askjo.ai`).",
+        "por_que_importa": "Este servidor headless anti-detección construido sobre Camoufox (Firefox fork con parches fingerprint a nivel C++) está pensado para agentes, no para uso interactivo: expone snapshots de accesibilidad con refs estables (e1, e2, e3…), corre ~40MB en idle, aísla sesiones, importa cookies Netscape, sube archivos sin diálogo nativo y enruta por proxy con GeoIP. Su promesa concreta —y esto es verificable, no humo— es que Camoufox ya está validado contra Google/Cloudflare, así que el wrapper HTTP resuelve el caso real «mi agente tiene que entrar a un sitio con bot detection sin que lo echen a los 3 requests». Para Ibid o cualquier agente local es hoy el camino open source de menor fricción, y encaja con la skill `web-scraping-viability` en la capa de stealth a nivel engine junto a Scrapling y Obscura. La semana pasada ya cubrimos a `lightpanda-io/browser`; este cubre el otro extremo del espectro —velocidad vs. invisibilidad— y conviene tener los dos en el radar.",
+        "madurez_senales": "9.995 ★ · 1.032 forks · JavaScript · creado 2026-04-12 · último push 2026-09-06 · MIT · descripción: \"Stealth headless browser for AI agents — bypass Cloudflare, bot detection\" · topics: `ai-agent`, `anti-bot`, `antidetect-browser`, `automation`, `bot-detection`, `browser-automation`, `cloudflare-bypass`, `headless-browser`. Branch por defecto: `master` (no `main` — verificado).",
+        "accion_sugerida": "explorar (levantar el server local, probar contra un sitio protegido y comparar con curl directo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:jo-inc/camofox-browser",
+          "rel": "uses",
+          "dst": "tool:camoufox",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:jo-inc/camofox-browser",
+          "rel": "competes_with",
+          "dst": "repo:lightpanda-io/browser",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:anti-bot-bypass",
+          "rel": "implemented_by",
+          "dst": "repo:jo-inc/camofox-browser",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jo-inc-camofox-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Tencent/teamai-cli",
+      "url": "https://github.com/Tencent/teamai-cli",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI que centraliza skills, rules, MCP y knowledge de un equipo en un único repo compartido (GitHub/GitLab/CN/etc.) y los distribuye a Claude Code, Codex, CodeBuddy, WorkBuddy, OpenCode, Cursor y otros. `teamai init https://...` clona, versiona y mantiene el bundle sincronizado. Plantillas pre-cargadas disponibles vía la org `teamai-hub`.",
+        "por_que_importa": "el patrón «cada dev tiene su propia config de agente» se rompe cuando un equipo quiere consistencia. teamai-cli es la propuesta más limpia que hemos visto para resolverlo desde la trinchera de un hyperscaler chino (Tencent). Útil si Alejandro llega a coordinar varios contribuidores o si escribe sobre flujos «team AI native».",
+        "madurez_senales": "1.920 ★ · 133 forks · TypeScript · creado 2026-08-12 · último push 2026-09-08 · **NOASSERTION** (leer LICENSE antes de build-deps si se va a integrar) · descripción: \"Make Every Team AI Native\" · topics: ninguno declarado. Branch por defecto: `main`.",
+        "accion_sugerida": "leer (entender el modelo de sync antes de proponerlo como base de un workflow interno).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent/teamai-cli",
+          "rel": "competes_with",
+          "dst": "concept:shared-agent-config",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent/teamai-cli",
+          "rel": "sponsored_by",
+          "dst": "company:tencent",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "concept:team-agent-onboarding",
+          "rel": "implemented_by",
+          "dst": "repo:Tencent/teamai-cli",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-teamai-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(21.056 ★, último push 2026-09-07, TypeScript, ELv2) — servidor MCP que sandboxea tool outputs: 315KB → 5.4KB (98% reducción). Número uno en Hacker News con 570+ puntos",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (mismo eje \"compresión de contexto\" que headroom/agentic-api; la triada forma el ángulo editorial más fuerte del día)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "headroomlabs-ai/headroom",
+      "url": "https://github.com/headroomlabs-ai/headroom",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(70.349 ★, último push 2026-09-07, Python, Apache-2.0) — capa de compresión pre-LLM: tool outputs, logs, RAG chunks. Kompress-v2 en Hugging Face",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer (comparar con mksglu/context-mode y vllm-project/agentic-api para un artículo \"tres formas de comprimir contexto\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "headroomlabs-ai-headroom",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "bytedance/deer-flow",
+      "url": "https://github.com/bytedance/deer-flow",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(81.972 ★, último push 2026-09-08, Python, MIT) — super-agent harness de ByteDance v2.0 (rewrite total de v1). Orquesta sub-agents + memoria + sandboxes",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (reentry, pero cada vez más asentado como referencia de \"harness completo\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bytedance-deer-flow",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "mukul975/cve-mcp-server",
+      "url": "https://github.com/mukul975/cve-mcp-server",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.481 ★, último push 2026-08-05, Python, MIT) — 28 herramientas de security intelligence (NVD, EPSS, CISA KEV, Shodan, VirusTotal) detrás de un único `triage_cve` para Claude",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar (validar contra un CVE real y comprobar la orquestación paralela)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mukul975-cve-mcp-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(253.251 ★, último push 2026-09-07, JavaScript, MIT) — agent harness performance optimization system (skills, instincts, memory, etc.)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar como hallazgo principal (cubierto previamente) pero vigilar si empieza a tener competencia abierta",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "coreyhaines31/marketingskills",
+      "url": "https://github.com/coreyhaines31/marketingskills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(48.344 ★, último push 2026-09-05, JavaScript, MIT) — skills de marketing (CRO, copywriting, SEO, analytics) para Claude Code/agents",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (reentry; interesante para newsletters técnicas que además son proyectos de negocio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coreyhaines31-marketingskills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/6 items reescritos; rechazados por longitud sospechosa: [5]; faltantes en respuesta: [5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

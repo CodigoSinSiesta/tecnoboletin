@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-09-08",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La infraestructura de los coding agents entra en modo servidor",
+  "posicionamiento": "Tres hallazgos empujan hoy la infraestructura de los coding agents fuera del cliente y hacia el servidor: tgrep resuelve el I/O del monorepo con un índice de trigramas, agentic-api de vLLM convierte la Responses API de OpenAI en gateway production-ready, y funes lleva la memoria de sesión a un dataset compartible. La velocidad real del agente deja de depender del shell local y empieza a sostenerse en piezas reutilizables que otros pueden operar.",
+  "convergencia_stack_css": "funes cita expresamente a Hermes como uno de los agentes objetivo y permite publicar el vault como dataset en Hugging Face Hub, lo que encaja con el ángulo editorial «memoria del proceso como artefacto público» que CSS ya ha explorado. agentic-api y tgrep apuntan al lector con GPU y monorepo que CSS lleva meses cubriendo: el puente entre vLLM servido y agente production-grade, y el cuello de botella de I/O que hoy vuelve inviables los grep sobre100k archivos.",
+  "cruzado_grafo": "El grafo recibe hoy sus primeras menciones explícitas de funes ligado a `repo:NousResearch/hermes-agent` (ya cubierto el 2026-08-03) y al concepto `agent-memory` (ya cubierto el 2026-08-10): funes entra como pieza complementaria, no como reinicio. PR Lens llega como competidor directo de `tt-a1i/archify` (cubierto el 2026-08-08) sobre el mismo problema de «arquitectura legible para humanos». El vínculo Tencent → teamai-cli refuerza `company:tencent` que ya entró el 2026-08-12 con otra pieza de agent infra.",
+  "tendencias_5_boletines": "El contexto inmediato llega solo del 06-09 y 05-09, no hay cinco días previos encadenados: el primero cerró con la consolidación de los tres pilares del agente productivo (memoria, harness, orquestación), el segundo con la categoría de memoria persistente completa por primera vez. Hoy el hilo se desplaza del cliente al servidor: memoria dataset, Responses API gateway, índice de trigramas, browser anti-detección. Falta más superficie temporal para hablar de tendencia sostenida.",
+  "alertas": [
+    "agentic-api presume pasar la suite Open Responses, pero la tracción de 222★ en un mes es aún insuficiente para declarar estabilidad production: medir antes de fiar.",
+    "funes se instala con `curl | sh`, patrón cómodo pero con superficie de ataque real sobre una herramienta que indexa tu memoria entera: leer qué hace el script antes de ejecutarlo.",
+    "tgrep publica los 52× sobre gecko-dev sin detallar tamaño del índice en disco ni coste de mantenerlo:388k archivos indexados pesan, y el benchmark puede no trasladarse a repos con trabajo binario o generado."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Instalar tgrep en un repo real y reproducir el benchmark: el52× sobre gecko-dev necesita verificación independiente antes de venderse como infra estándar."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Probar agentic-api como gateway Codex sobre un vLLM local para validar previous_response_id y tools server-side: si aguanta la suite Open Responses, es artículo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "funes cita a Hermes y permite publicar la memoria como dataset: ángulo editorial directo para un artículo sobre «la memoria del newsletter como artefacto público»."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "camofox-browser entra al radar como camino open source de menor fricción para anti-bot; seguir su evolución junto a Scrapling y Ob para el próximo artículo de stealth"
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Comparar PR Lens con archify sobre el mismo PR real: dos apuestas distintas sobre arquitectura legible para humanos justifican una pieza de comparación."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
