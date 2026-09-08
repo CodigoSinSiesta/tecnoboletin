@@ -1,0 +1,413 @@
+{
+  "version": 2,
+  "date": "2026-09-07",
+  "boletin_origen": "2026-09-07-trending.md",
+  "resumen_ejecutivo": "- **El cluster MCP sigue mutando hacia dominios no triviales**: `mixelpixx/Konnect` lleva MCP al diseño de PCBs con KiCAD (217 tools, Rust single-binary, sustituye un stack TS/Python/SWIG/C++); `ahujasid/blender-mcp` (27.389★, +7k en 6 meses) consolida el modelado 3D como segundo vertical oficial tras los coding agents. La señal: ya no se trata de \"exponer tu API al LLM\", sino de \"exponer un dominio entero\".\n- **`vectorize-io/hindsight` vuelve a trending con crecimiento real y estado de producción**: 23.009★ (era ~6k hace un mes), paper arXiv:2512.12818, validación independiente por Virginia Tech Sanghani Center + The Washington Post, uso en producción en Fortune 500. Es el primer sistema de memoria agéntica con benchmark reproducible públicamente. Ya estaba en `candidates_for_exploration` desde 2026-09-03.\n- **Finanzas sigue atrayendo arquitecturas multi-agente serias**: `The-Swarm-Corporation/AutoHedge` (4.883★, MIT, swarm intelligence + Director/Quant/Risk/Execution agents sobre Solana) entra al radar como ejemplo de \"agentes como producto\" en producción, no demo. Compite conceptualmente con el cluster del 2026-08-19 (memvid, maximbhq-bifrost, multica).\n- **Operacionalización del stack Codex**: `Soju06/codex-lb` (3k★, MIT, FastAPI + dashboard + OAuth) cubre un hueco real: balanceo de múltiples cuentas ChatGPT/Codex con tracking de uso, TOTP y endpoints OpenAI-compatible. El usuario ya tiene `tbphp/gpt-load` (2026-09-02 hallazgo); codex-lb es su primo específico para Codex.\n- **`openai/skills` aparece marcado como deprecated** — redirige a `openai/plugins` y a la guía \"Build plugins\". Lectura: OpenAI está consolidando el estándar alrededor de `agentskills.io` (citado en el README), no escindiendo skills y plugins. Es la pista más clara de hacia dónde va el ecosistema de skills oficiales.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para los 17 candidatos seleccionados. Blogwatcher 08:00 no publicado hoy (último `*-blogs.md` es del 2026-07-05; flag pendiente de investigación operativa).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema de memoria agéntica que aprende en el tiempo, no solo recuerda historial. API `retain / recall / reflect`, banks por scope, mental models + knowledge pages, paper arXiv:2512.12818 y benchmark público en benchmarks.hindsight.vectorize.io.",
+        "por_que_importa": "Es el primer sistema de memoria agéntica con benchmark reproducible públicamente: LongMemEval SoTA, validado por terceros (Virginia Tech Sanghani Center y The Washington Post). Otros proyectos de memoria agéntica como engram u okf-agent-memory son apuestas de autor sin validación externa; Hindsight es la única con métrica pública. La API retain/recall/reflect más los banks por scope lo acercan a un producto, no a un experimento. Ya cubrimos este concepto el 2026-08-10 cuando apareció por primera vez, y desde entonces ha pasado de ~6k a 23k estrellas y sigue en candidates_for_exploration a la espera de un deep dive.",
+        "madurez_senales": "*23.009★ · 1.709 forks · Python · MIT · creado 2025-10-30, último push 2026-09-07 · default_branch=main · topics: agentic-ai, agents, ai-memory, memory**. Slack propio + npm + PyPI clients. Verificado vía GitHub API. Re-entrada justificada: de ~6k★ el 2026-08-10 a 23k★ hoy; nueva release server-v* reciente.",
+        "accion_sugerida": "**explorar** — instalar el server (`pip install hindsight-api`) y comparar el recall de un agente propio contra `okf-agent-memory` (2026-09-06 hallazgo) y `engram` (2026-09-05 hallazgo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "competes_with",
+          "dst": "repo:Gentleman-Programming/engram",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "implements",
+          "dst": "benchmark:longmemeval",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vectorize-io-hindsight",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "mixelpixx/Konnect",
+      "url": "https://github.com/mixelpixx/Konnect",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin nativo de KiCAD 10 implementado como single binary Rust que expone 217 herramientas MCP (schematic capture, PCB layout/routing, ERC/DRC, design-review audits, JLCPCB part search, manufacturing export pipeline), más 20 on-demand toolsets y skills que enseñan a Claude las convenciones de KiCAD out of the box.",
+        "por_que_importa": "Es el segundo vertical no-coding-agent del ecosistema MCP (tras Blender y ComfyUI): 217 herramientas MCP en un solo binario Rust para schematic capture, PCB layout/routing, ERC/DRC, audits y exportación a JLCPCB. Sustituye al KiCAD-MCP-Server del mismo autor, que se rompió en producción por sus cuatro capas de serialización; este rewrite en Rust elimina ese problema. Caso de uso claro para un lector de CSS: diseñar una PCB con Claude Code sin salir del chat. Limitación honesta: el repo está en beta declarado y aún no hemos cubierto este autor ni Konnect en boletines previos (sin primera_mencion en el grafo).",
+        "madurez_senales": "**479★ · 74 forks · Rust · AGPL-3.0 · creado 2026-07-05, último push 2026-09-07 · default_branch=main · topics: agent-skills, claude, kicad-pcb, kicad-schematics, llm, mcp-server, mcp-tools**. Verificado vía GitHub API. Status: beta declarado.",
+        "accion_sugerida": "**vigilar** — beta joven, pero el ángulo (MCP → dominio hardware) es la dirección más editorialmente interesante de la semana. Si tienes un proyecto KiCAD en mente, probar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mixelpixx/Konnect",
+          "rel": "implements",
+          "dst": "concept:ai-assisted-pcb-design",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mixelpixx/Konnect",
+          "rel": "uses",
+          "dst": "concept:model-context-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mixelpixx/Konnect",
+          "rel": "complements",
+          "dst": "concept:hardware-engineering-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mixelpixx-konnect",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "maziyarpanahi/openmed",
+      "url": "https://github.com/maziyarpanahi/openmed",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "SDK Apache-2.0 para clinical NER + HIPAA PII de-identification que corre 100% on-device. Catálogo de 2.200+ modelos médicos en HuggingFace, 33 idiomas para PII, backends MLX (Apple Silicon), ONNX Runtime Mobile (Android), Transformers.js (browser), PyPI package `openmed`. Paper arXiv:2508.01630.",
+        "por_que_importa": "Para un lector de CSS que trabaje en salud, esto baja la barrera de entrada a NLP clínico: SDK Apache-2.0 con 2.200+ modelos médicos en HuggingFace, NER clínico + PII de-identification HIPAA, ejecutándose 100% en el hardware del usuario (Apple Silicon vía MLX, Android vía ONNX Runtime Mobile, navegador vía Transformers.js). Cumplir HIPAA ya no requiere enviar datos a una API: el modelo corre local, lo que abre puerta a notas clínicas, historiales y datasets de investigación sin salir del dispositivo. README traducido a 14 idiomas señala intención global. Limitación: no tenemos primera_mencion previa en el grafo, así que este es el primer contacto del boletín con openmed.",
+        "madurez_senales": "**5.251★ · 660 forks · Python · Apache-2.0 · creado 2025-10-04, último push 2026-09-06 · default_branch=master · topics: android, clinical-nlp, healthcare, hipaa, ios, javascript, llm, local-llm, mlx, ner, nlp, on-device, on-premise, pii, pii-detection**. Verificado vía GitHub API. Banner reclama \"340M+ downloads, 10M+ installs\" — métrica del paquete, no del repo; tomar como marketing claim.",
+        "accion_sugerida": "**explorar** — el README tiene docs/mlx-backend.md, docs/export-onnx-android.md y docs/export-transformersjs.md explícitos. Caso de uso real para newsletter en español sobre privacidad + IA aplicada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:maziyarpanahi/openmed",
+          "rel": "implements",
+          "dst": "concept:local-first-healthcare-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:maziyarpanahi/openmed",
+          "rel": "implements",
+          "dst": "concept:hipaa-pii-deidentification",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:maziyarpanahi/openmed",
+          "rel": "complements",
+          "dst": "concept:on-device-llm",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maziyarpanahi-openmed",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "ahujasid/blender-mcp",
+      "url": "https://github.com/ahujasid/blender-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin de la comunidad (no oficial de Blender) para controlar Blender 3D con cualquier LLM vía MCP. Prompt-assisted modeling, scene creation y manipulación 3D. Disclaimer explícito: \"This is a third-party integration and not made by Blender\".",
+        "por_que_importa": "Blender se confirma como el segundo dominio no-coding-agent del trending MCP (junto a KiCAD y ComfyUI): cualquier herramienta con CLI o Python API más un LLM y MCP se convierte en vertical nuevo, y este plugin lo demuestra. La tracción (de ~20k a 27.389 estrellas en seis meses) indica que hay base instalada real de LLM-as-Blender-driver, no solo curiosidad. El aviso de third-party integration del repo importa: no es un plugin oficial de Blender, algo a tener en cuenta antes de ponerlo en un pipeline de producción. Limitación: no aparece primera_mencion en el grafo, así que no podemos enlazarlo con boletines previos sobre Blender-MCP.",
+        "madurez_senales": "**27.389★ · 2.553 forks · Python · MIT · creado 2025-03-07, último push 2026-09-05 · default_branch=main · topics: 3d-modeling, ai, blender, blender-addon, claude, generative-ai, llm, mcp, model-context-protocol, python**. Verificado vía GitHub API. PyPI `blender-mcp`. Discord y website propios (mcp-for-blender.com). Sponsor activo (siddharth-ahuja en GitHub Sponsors).",
+        "accion_sugerida": "**probar** — instalar `uv` + addon + conectar Claude Code y validar el workflow real. Es el caso de uso más accesible para mostrar MCP en un episodio.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ahujasid/blender-mcp",
+          "rel": "implements",
+          "dst": "concept:mcp-3d-modeling",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ahujasid/blender-mcp",
+          "rel": "competes_with",
+          "dst": "repo:EverettFish/holo-card-studio",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ahujasid-blender-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "The-Swarm-Corporation/AutoHedge",
+      "url": "https://github.com/The-Swarm-Corporation/AutoHedge",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "hedge fund autónomo enterprise-grade que combina swarm intelligence + AI agents especializados (Director, Quant, Risk, Execution). Opera sobre Solana ahora; Coinbase y CEX adicionales en roadmap. Structured outputs JSON, comprehensive logging, risk-first architecture.",
+        "por_que_importa": "Es la versión production-grade del cluster multi-agente que llevamos semanas viendo en el boletín (multica, memvid, maximbhq-bifrost, agent-teams-ai): agentes Director, Quant, Risk y Execution operando un hedge fund sobre Solana con structured outputs JSON y logging detallado. Para el lector de CSS importa como referencia arquitectónica: cómo separar tesis, validación estadística, dimensionamiento de posición y ejecución en agentes especializados, en lugar de un único agente que hace todo. La arquitectura risk-first es la pieza a copiar si alguien quiere llevar un multi-agente a producción. Limitación honesta: el último push es del 2026-05-11 y no tenemos primera_mencion previa, así que no sabemos si el repo sigue activo o está en pausa.",
+        "madurez_senales": "**4.883★ · 784 forks · Python · MIT · creado 2024-12-10, último push 2026-05-11 · default_branch=main · topics: ai, blackrock, finance, goldmansachs, hedgefund, jpmorgan, ml, quant, quantitative-finance, quantitative-trading, trading**. Verificado vía GitHub API. Discord, YouTube y LinkedIn del autor activos. Caveat: el último push es de mayo, **4 meses sin actividad de código** — la tracción puede ser marketing-led. Watch.",
+        "accion_sugerida": "**vigilar con cautela** — el ángulo editorial es real, pero 4 meses sin push y claims de \"enterprise-grade\" merecen scrutiny antes de recomendar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:The-Swarm-Corporation/AutoHedge",
+          "rel": "implements",
+          "dst": "concept:multi-agent-trading-system",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:The-Swarm-Corporation/AutoHedge",
+          "rel": "author_of",
+          "dst": "repo:The-Swarm-Corporation/Swarms",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "the-swarm-corporation-autohedge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Soju06/codex-lb",
+      "url": "https://github.com/Soju06/codex-lb",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "load balancer FastAPI para múltiples cuentas ChatGPT/Codex con OAuth, pooling, usage tracking, dashboard con TOTP, rate limits por API key (token, cost, window, model), endpoints OpenAI-compatibles (Codex CLI, OpenCode, cualquier cliente), auto-sync de modelos desde upstream.",
+        "por_que_importa": "primo específico de `tbphp/gpt-load` (hallazgo 2026-09-02) orientado al stack Codex. Resuelve el dolor real de developers que roten cuentas Codex para evadir rate limits individuales sin perder visibilidad de consumo. FastAPI + SQLAlchemy + OAuth + dashboard = stack familiar para audiencia backend.",
+        "madurez_senales": "**2.992★ · 448 forks · Python · MIT · creado 2026-01-07, último push 2026-09-07 · default_branch=main · topics: api-proxy, chatgpt, codex, dashboard, fastapi, load-balancer, multiple-accounts, oauth, openai, opencode, python, rate-limit**. Verificado vía GitHub API. Docs en `soju06.github.io/codex-lb/`. README bilingüe inglés/chino simplificado.",
+        "accion_sugerida": "**explorar** si usas Codex CLI con varias cuentas; comparar con `tbphp/gpt-load` para ver cuál encaja con tu setup (codex-lb tiene OAuth + TOTP out of the box, gpt-load es más agnóstico).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Soju06/codex-lb",
+          "rel": "complements",
+          "dst": "repo:tbphp/gpt-load",
+          "primera_mencion": "2026-09-02"
+        },
+        {
+          "src": "repo:Soju06/codex-lb",
+          "rel": "implements",
+          "dst": "concept:llm-account-load-balancer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Soju06/codex-lb",
+          "rel": "complements",
+          "dst": "concept:codex-cli",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "soju06-codex-lb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "openai/skills",
+      "url": "https://github.com/openai/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25.719★, último push 2026-07-14, Python, **sin licencia** declarada) — repositorio oficial OpenAI para skills de Codex, **explícitamente marcado como deprecated** en su README. Redirige a `openai/plugins` y a `developers.openai.com/codex/plugins/build`. Cita el estándar abierto `agentskills.io`.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — para confirmar hacia dónde consolida OpenAI el estándar de skills/plugins",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "webadderallorg/Recordly",
+      "url": "https://github.com/webadderallorg/Recordly",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(24.077★, último push 2026-09-05, TypeScript, AGPL-3.0 — LICENSE.md lo confirma, la API devolvió NOASSERTION por error del auto-detector) — grabador de pantalla open-source con motion editor (zooms, cursor polish, styled background) integrado. Alternativa a Screen Studio.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — útil para demos y tutoriales sin pagar Screen Studio ($29); AGPL frena uso comercial embedded",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "webadderallorg-recordly",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "OpenWhispr/openwhispr",
+      "url": "https://github.com/OpenWhispr/openwhispr",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.601★, último push 2026-09-05, JavaScript, MIT) — app de escritorio de dictado voz-a-texto con Whisper/Parakeet local (privacidad) o modelos cloud BYOK. Hotkey global, meeting transcription con speaker diarization, voice assistant. Complementa al `thewh1teagle/vibe` (hallazgo 2026-09-06) que cubre transcripción; openwhispr cubre dictado continuo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — si dictas más de lo que transcribes",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openwhispr-openwhispr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "EverettFish/holo-card-studio",
+      "url": "https://github.com/EverettFish/holo-card-studio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(359★, último push 2026-09-07, Python, NOASSERTION) — Codex Skill que convierte una frase en una \"holographic trading card\" 3D (Blender project + Three.js page interactiva con parallax + laser rainbow + voronoi starlight). README está **en chino** — traducir el SUMMARY antes de profundizar.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el patrón \"skill de Codex → output multimedia terminado\" es editorialmente fresco; verificar la licencia NOASSERTION antes de cualquier adopción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "everettfish-holo-card-studio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "CyberTimon/RapidRAW",
+      "url": "https://github.com/CyberTimon/RapidRAW",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.895★, último push 2026-09-06, TypeScript+Rust via Tauri+wgpu, AGPL-3.0) — editor RAW no-destructivo GPU-accelerated, <20MB binario, multiplataforma incluyendo Android. Reclamo: alternativa moderna a Adobe Lightroom.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — sólido técnicamente (Rust+React+wgpu), AGPL-3.0 bloquea forks comerciales; audiencia nicho photographers",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cybertimon-rapidraw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "tulir/whatsmeow",
+      "url": "https://github.com/tulir/whatsmeow",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.251★, último push 2026-09-04, Go, MPL-2.0) — librería Go de referencia para WhatsApp Web multidevice API. Sin release nuevo desde hace tiempo, pero sigue siendo la base que `evolution-foundation/evolution-go` y docenas de bots no-oficiales usan.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — solo relevante si construyes sobre WhatsApp; referencia técnica del espacio",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tulir-whatsmeow",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/6 items reescritos; rechazados por longitud sospechosa: [5]; faltantes en respuesta: [5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

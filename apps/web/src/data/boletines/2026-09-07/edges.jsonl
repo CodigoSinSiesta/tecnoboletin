@@ -1,0 +1,40 @@
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-vectorize-io-hindsight", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-vectorize-io-hindsight", "dst": "tema:vectorize-io-hindsight", "rel": "trata", "added": "2026-09-07"}
+{"src": "repo:vectorize-io/hindsight", "dst": "concept:agent-memory", "rel": "implements", "added": "2026-09-07", "primera_mencion": "2026-08-10"}
+{"src": "repo:vectorize-io/hindsight", "dst": "repo:Gentleman-Programming/engram", "rel": "competes_with", "added": "2026-09-07", "primera_mencion": "2026-08-10"}
+{"src": "repo:vectorize-io/hindsight", "dst": "benchmark:longmemeval", "rel": "implements", "added": "2026-09-07", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-mixelpixx-konnect", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-mixelpixx-konnect", "dst": "tema:mixelpixx-konnect", "rel": "trata", "added": "2026-09-07"}
+{"src": "repo:mixelpixx/Konnect", "dst": "concept:ai-assisted-pcb-design", "rel": "implements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:mixelpixx/Konnect", "dst": "concept:model-context-protocol", "rel": "uses", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:mixelpixx/Konnect", "dst": "concept:hardware-engineering-agents", "rel": "complements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-maziyarpanahi-openmed", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-maziyarpanahi-openmed", "dst": "tema:maziyarpanahi-openmed", "rel": "trata", "added": "2026-09-07"}
+{"src": "repo:maziyarpanahi/openmed", "dst": "concept:local-first-healthcare-ai", "rel": "implements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:maziyarpanahi/openmed", "dst": "concept:hipaa-pii-deidentification", "rel": "implements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:maziyarpanahi/openmed", "dst": "concept:on-device-llm", "rel": "complements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-ahujasid-blender-mcp", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-ahujasid-blender-mcp", "dst": "tema:ahujasid-blender-mcp", "rel": "trata", "added": "2026-09-07"}
+{"src": "repo:ahujasid/blender-mcp", "dst": "concept:mcp-3d-modeling", "rel": "implements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:ahujasid/blender-mcp", "dst": "repo:EverettFish/holo-card-studio", "rel": "competes_with", "added": "2026-09-07", "primera_mencion": null}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-the-swarm-corporation-autohedge", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-the-swarm-corporation-autohedge", "dst": "tema:the-swarm-corporation-autohedge", "rel": "trata", "added": "2026-09-07"}
+{"src": "repo:The-Swarm-Corporation/AutoHedge", "dst": "concept:multi-agent-trading-system", "rel": "implements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:The-Swarm-Corporation/AutoHedge", "dst": "repo:The-Swarm-Corporation/Swarms", "rel": "author_of", "added": "2026-09-07", "primera_mencion": null}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-soju06-codex-lb", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-soju06-codex-lb", "dst": "tema:soju06-codex-lb", "rel": "trata", "added": "2026-09-07"}
+{"src": "repo:Soju06/codex-lb", "dst": "repo:tbphp/gpt-load", "rel": "complements", "added": "2026-09-07", "primera_mencion": "2026-09-02"}
+{"src": "repo:Soju06/codex-lb", "dst": "concept:llm-account-load-balancer", "rel": "implements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "repo:Soju06/codex-lb", "dst": "concept:codex-cli", "rel": "complements", "added": "2026-09-07", "primera_mencion": null}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-openai-skills", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-openai-skills", "dst": "tema:openai-skills", "rel": "trata", "added": "2026-09-07"}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-webadderallorg-recordly", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-webadderallorg-recordly", "dst": "tema:webadderallorg-recordly", "rel": "trata", "added": "2026-09-07"}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-openwhispr-openwhispr", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-openwhispr-openwhispr", "dst": "tema:openwhispr-openwhispr", "rel": "trata", "added": "2026-09-07"}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-everettfish-holo-card-studio", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-everettfish-holo-card-studio", "dst": "tema:everettfish-holo-card-studio", "rel": "trata", "added": "2026-09-07"}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-cybertimon-rapidraw", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-cybertimon-rapidraw", "dst": "tema:cybertimon-rapidraw", "rel": "trata", "added": "2026-09-07"}
+{"src": "boletin:2026-09-07", "dst": "item:https-github-com-tulir-whatsmeow", "rel": "menciona", "added": "2026-09-07"}
+{"src": "item:https-github-com-tulir-whatsmeow", "dst": "tema:tulir-whatsmeow", "rel": "trata", "added": "2026-09-07"}

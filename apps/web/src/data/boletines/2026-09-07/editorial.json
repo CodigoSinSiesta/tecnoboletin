@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-09-07",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "MCP sale de los coding agents y se come tres oficios a la vez",
+  "posicionamiento": "MCP cruza la frontera que llevaba semanas insinuando: ya no es solo un envoltorio para exponer APIs a un LLM, sino la columna vertebral de dominios enteros (KiCAD con 217 tools en un binario Rust, Blender como segundo vertical 3D, finanzas con arquitecturas multi-agente sobre Solana). El hilo del dia es la industrializacion: single-binary en Rust, validacion por terceros, licencias abiertas y la primera memoria agentica con benchmark reproducible que se separa del ruido autorreferencial.",
+  "convergencia_stack_css": "Hindsight refuerza el eje memoria agéntica que el stack local-first de CSS lleva semanas cubriendo (okf-agent-memory, engram, LongMemEval) y openmed se alinea perfecto con la filosofia on-device: NLP clinico HIPAA ejecutandose 100% en hardware del usuario, exactamente el patron local-first que defendemos. codex-lb y gpt-load cierran la pieza operativa del stack Codex que ya documentamos el 2026-09-02, mientras blender-mcp y Konnect abren verticales que CSS no habia tocado.",
+  "cruzado_grafo": "Hindsight aparece con tres aristas que ya existian desde el 2026-08-10 (implements agent-memory, competes_with engram, implements longmemeval), confirmando que el nudo conceptual de memoria agéntica con benchmark se fortalece por segunda mencion consecutiva. codex-lb ancla por primera vez la relacion complements con gpt-load del 2026-09-02, cosiendo dos piezas del mismo problema. Konnect, openmed, blender-mcp y AutoHedge llegan sin primera_mencion previa en el grafo: son nodos nuevos que amplian cobertura, no refuerzos.",
+  "tendencias_5_boletines": "Con solo dos dias previos de contexto real (2026-09-06 y 2026-09-05) la tendencia de cinco boletines no es defendible; lo que si se ve es que el bloque memoria-agentes-infraestructura que arranco el 2026-09-05 y consolido el 2026-09-06 hoy incorpora su primera pieza con benchmark publico, y que la expansion de MCP a dominios no-coding es la novedad estructural de esta semana.",
+  "alertas": [
+    "hindsight presume LongMemEval SoTA y validacion de Virginia Tech: comprobar que la metodologia del benchmark es reproducible antes de citarlo como referencia en un articulo CSS",
+    "blender-mcp se declara explicitamente third-party integration, no plugin oficial de Blender: no meter en pipeline de produccion sin auditar el plugin",
+    "AutoHedge sin push desde 2026-05-11: el repo puede estar en pausa pese a las 4.883 estrellas, no presentarlo como caso vivo",
+    "openmed ejecuta 2.200+ modelos medicos en local: confirmar que la presicion clinica de los modelos del catalogo esta validada antes de cualquier uso sanitario real",
+    "Konnect esta en beta declarado y su autor rompio el KiCAD-MCP-Server previo en produccion: el rewrite en Rust resuelve el sintoma pero no garantiza estabilidad"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Hindsight es el primer sistema de memoria agéntica con benchmark reproducible público y validacion externa (Virginia Tech + Washington Post): urge un deep dive para CSS sobre su API retain/recall/reflect y como implementarla en un agente local-first."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Konnect abre un vertical MCP no-coding (KiCAD con 217 tools en Rust) que CSS no habia cubierto: caso de uso tangible para un diseno de PCB conversacional, ideal para articulo paso a paso."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "openmed encaja 100% con la linea local-first de CSS y resolveria dudas recurrentes sobre HIPAA on-device: seguir de cerca el catalogo de modelos y la precision clinica reportada."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "AutoHedge aporta una arquitectura risk-first multi-agente (Director/Quant/Risk/Execution) que responde a la pregunta recurrente en CSS sobre como llevar un enjambre a produccion sin que un agente haga de todo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "codex-lb cierra la pieza operativa del stack Codex junto a gpt-load: vigilar maduracion del dashboard TOTP y soporte de auto-sync de modelos para usarlo como referencia en futuros tutoriales."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

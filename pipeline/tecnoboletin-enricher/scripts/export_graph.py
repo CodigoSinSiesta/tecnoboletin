@@ -171,6 +171,16 @@ def main() -> int:
 
     node_ids = set(degree.keys()) | set(raw_nodes.keys())
 
+    def coerce_name(value, fallback):
+        """Los datos de state.json pueden llegar con name como lista (p.ej. tags
+        agrupados por el LLM en una tupla). localeCompare/JSON-publico exige
+        string. Junta como 'tag1, tag2' y cae al fallback si queda vacio."""
+        if isinstance(value, str):
+            return value or fallback
+        if isinstance(value, (list, tuple)):
+            return ", ".join(str(x) for x in value if x) or fallback
+        return fallback
+
     nodes = []
     synthetic_count = 0
     for node_id in sorted(node_ids):
@@ -179,7 +189,7 @@ def main() -> int:
             fallback_name = node_id.split(":", 1)[1] if ":" in node_id else node_id
             node = {
                 "id": node_id,
-                "name": base.get("name") or fallback_name,
+                "name": coerce_name(base.get("name"), fallback_name),
                 "type": base.get("type", "concept"),
                 "degree": degree.get(node_id, 0),
             }
