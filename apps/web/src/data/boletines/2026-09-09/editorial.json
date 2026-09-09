@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-09-09",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El agente deja de ser prompt y se vuelve pieza de diseno, aislamiento y policy",
+  "posicionamiento": "El dia consolida la tesis de que el coding agent ya no es solo prompt: i-have-adhd lo reduce a reglas UX, diagram-design lo convierte en pieza editorial, hyperframes lo lleva a render determinista de video, arcbox a sandbox local con el mismo primitive que escala a cloud, y experiential a gateway con policy y router por uso. Lo que comparten es que ninguno mejora el modelo: mejoran la capa alrededor.",
+  "convergencia_stack_css": "Tres hallazgos encajan con el stack local-first de Codigo Sin Siesta: arcbox (sandbox sobre VMM en Rust, mismo primitive local/cloud) reemplaza el docker-local + Firecracker-remoto; diagram-design completa el eje de diagramas editoriales junto a pr-lens y archify con HTML+SVG self-contained; experiential aterriza el patron gateway + cost-routing como capa operativa encima de hosted, BYOK o local.",
+  "cruzado_grafo": "ArcBox, diagram-design y experiential refuerzan nodos ya sembrados (agent-sandbox, agent-skill-diagram, llm-gateway, llm-cost-routing) con primera mencion entre 2026-08-15 y 2026-08-28. Feynman se ancla a research-agent, competidor directo de EvoMap/AutoResearch del 2026-09-05. i-have-adhd, hyperframes y sus conceptos asociados (agent-output-noise, agent-video-pipeline) entran por primera vez al grafo hoy.",
+  "tendencias_5_boletines": "El contexto recibido cubre solo 2 dias previos (07 y 08 de septiembre), insuficiente para hablar de 5 boletines. La linea que se afianza es la del 2026-09-08: la velocidad real del agente deja de depender del shell local; hoy el movimiento se corre hacia la capa alrededor del modelo (UX del prompt, sandbox, gateway, render, diagramas).",
+  "alertas": [
+    "i-have-adhd basa sus10 reglas en un libro clinico (Adult ADHD Tool Kit); su adopcion masiva (31,6k en 4 meses) mide el cansancio con la prosa del agente, no la validez de la base.",
+    "diagram-design detecta brand desde tu web publica: antes de adoptarlo, revisar que la URL de ejemplo no filtre estilos o datos no intended.",
+    "hyperframes esta patrocinado por HeyGen; el crecimiento de +2.627 estrellas/dia refleja distribucion comercial, no validacion organica independiente."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Vale la pena forkear i-have-adhd como punto de partida y endurecer las 10 reglas a tu propio estilo editorial antes de propagarlo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Probar arcbox en beta publica sobre Mac con un agente real: el dato a mirar es si el sandbox local y el de cloud comparten el mismo primitive o son stacks distintos."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "diagram-design encaja directamente con el eje de diagramas editoriales de CSS y complementa pr-lens y archify con una capa mas pura de diseno."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Hyperframes esta sostenido por HeyGen: vigilar si la pieza open source sigue siendo el nucleo o si la empresa migra el valor a su producto hosted."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Experiential apunta a un router/modelo entrenado con trafico real de usuarios; seguir de cerca la politica de datos antes de cualquier integracion production."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

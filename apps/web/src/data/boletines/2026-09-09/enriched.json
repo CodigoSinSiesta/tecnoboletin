@@ -1,0 +1,485 @@
+{
+  "version": 2,
+  "date": "2026-09-09",
+  "boletin_origen": "2026-09-09-trending.md",
+  "resumen_ejecutivo": "- **ayghri/i-have-adhd** aterriza como el skill más concreto del día: 10 reglas explícitas (action-first, sin \"Hope this helps!\") para coding agents, basado en *The Adult ADHD Tool Kit* (Ramsay/Rostain). 31,6k ★ en 4 meses, MIT. Es el anti-hype skill: solo cambia el prompt.\n- **arcboxlabs/arcbox** se posiciona como sustituto open source de OrbStack/Docker Desktop en macOS — VMM propio en Rust, microVMs para AI agents (`abctl claude`). El sandbox que corres local es el mismo primitive que escala a flota.\n- **cathrynlavery/diagram-design** lleva los diagramas editoriales a skills: 39 tipos (arquitectura, Sankey, Wardley, fishbone, swimlane, etc.), HTML+SVG self-contained, redibuja draw.io/Mermaid, matchea tu brand leyendo tu web. Complementa el eje `coldteadotai/pr-lens` + `tt-a1i/archify` con una pieza puramente editorial.\n- **heygen-com/hyperframes** es el framework open source de HeyGen para que los agentes rendericen vídeo determinista: HTML/CSS + media → MP4, 20 skills modulares (`/product-launch-video`, `/pr-to-video`, `/slideshow`, etc.). Patrón editorial: cada \"hazme un vídeo\" tiene un workflow asociado.\n- **experientiallabs/experiential** formaliza lo que muchos construyen a mano: gateway OpenAI/Anthropic-compatible con BYOK, control de identidad/spend por agente, y un router que se entrena con tu tráfico. Es la pieza que faltaba entre \"tienes 5 proveedores LLM\" y \"tienes un gateway production-grade\".\n- **Convergencia editorial del día**: tres hallazgos (i-have-adhd, diagram-design, hyperframes) convierten el prompt del agente en algo *editorial* — estructura, intención, layout. Un eje que vimos insinuarse con `pr-lens` y `archify`, pero que esta semana toma peso propio.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all/typescript/python/rust/go), GitHub API para los hallazgos principales y radar. `browser-use/browser-use`, `k2-fsa/OmniVoice`, `Nutlope/logocreator`, `shareAI-lab/learn-claude-code`, `mixelpixx/Konnect` y `openai/plugins` no se pudieron verificar (rate limit GitHub API) y se marcan como `(no verificado)` en el radar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "ayghri/i-have-adhd",
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill (10 reglas + `SKILL.md`) que cambia cómo responde tu coding agent. Acciones primero, pasos numerados, sin preámbulo, sin \"Hope this helps!\". Fork-friendly.",
+        "por_que_importa": "El problema más común de los coding agents en sesiones largas es la prosa que entierra la respuesta bajo párrafos de cortesía. Este repo lo trata como problema de diseño (acciones primero, pasos numerados, sin preámbulo) y lo empaqueta como skill reproducible para Claude Code, Codex y otros. La base teórica está documentada en *The Adult ADHD Tool Kit* (Ramsay/Rostain). Si te interesa la UX de prompts o el diseño de instrucciones para agentes, esta es una referencia compacta y fork-friendly para tener a mano.",
+        "madurez_senales": "31.685 ★ · fork=False · Python · creado 2026-05-13 · último push 2026-09-08 · MIT · descripción: \"A skill to stop your coding agent from burying the answer. ADHD-friendly outputs\" · topics (6): agent-skills, claude-code, codex, coding-agents, prompting.",
+        "accion_sugerida": "probar (instalar via `claude plugin marketplace add ayghri/i-have-adhd`, fork-ear el `SKILL.md`, ajustar regla 6/8 a tu gusto y comparar la salida antes/después en 5 prompts reales).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ayghri/i-have-adhd",
+          "rel": "solves",
+          "dst": "concept:agent-output-noise",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ayghri/i-have-adhd",
+          "rel": "implements",
+          "dst": "concept:agent-skill-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ayghri/i-have-adhd",
+          "rel": "inspired_by",
+          "dst": "book:adult-adhd-toolkit",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ayghri-i-have-adhd",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "arcboxlabs/arcbox",
+      "url": "https://github.com/arcboxlabs/arcbox",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime de contenedores + VMs para macOS, escrito desde cero en Rust (VMM propio, VirtIO, filesystem sharing, network datapath). Cuatro tiers sobre la misma base: contenedores (drop-in Docker + Kubernetes nativo), sandboxes (microVMs para AI agents), Linux machines y macOS guests.",
+        "por_que_importa": "Cubrimos el competidor directo de este runtime el 2026-08-22 (OrbStack, además de Docker Desktop como referencia del problema). ArcBox es la respuesta open source, escrita desde cero en Rust sobre su propio VMM con VirtIO, y cubre cuatro tiers con la misma base: contenedores (drop-in Docker + Kubernetes nativo), sandboxes para AI agents, Linux machines y macOS guests. El acierto para agentes es que el sandbox local (`abctl claude`) es el mismo primitive que escala a ArcBox Platform en cloud, lo que elimina el patrón habitual de 'docker local + Firecracker remoto' y lo sustituye por un único binario. Beta pública, si trabajas sobre Mac con agentes que necesitan aislamiento",
+        "madurez_senales": "4.178 ★ · fork=False · Rust (1.96+) · creado 2026-01-04 · último push 2026-09-07 · MIT/Apache-2.0 (dual) · descripción: \"A fast, open-source container and VM runtime for macOS\" · topics (10). Branch por defecto: `master`. Estado: public beta.",
+        "accion_sugerida": "explorar (instalar via `brew install --cask arcboxlabs/tap/arcbox` en un Mac, correr `abctl daemon start && abctl claude`, validar que el sandbox aísla la sesión del agente).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:arcboxlabs/arcbox",
+          "rel": "competes_with",
+          "dst": "tool:orbstack",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "repo:arcboxlabs/arcbox",
+          "rel": "competes_with",
+          "dst": "tool:docker-desktop",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "concept:agent-sandbox",
+          "rel": "implemented_by",
+          "dst": "repo:arcboxlabs/arcbox",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "repo:arcboxlabs/arcbox",
+          "rel": "uses",
+          "dst": "tool:rust-vmm",
+          "primera_mencion": "2026-08-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "arcboxlabs-arcbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill con 39 tipos de diagramas editoriales para Claude Code, Codex, Factory Droid, Pi y hosts Agent-Skills-compatible. HTML+SVG self-contained (sin JS, sin imágenes externas), 3 variantes (minimal light/dark, full-editorial), matchea tu brand leyendo tu web. Redibuja draw.io/Mermaid a formato/tamaño/detalle elegido.",
+        "por_que_importa": "El2026-08-15 ya cubrimos el problema: cuando un agente dibuja arquitectura, el resultado suele ser Mermaid-slop o cajas redondeadas genéricas (también hablamos de draw.io como referencia del estándar a superar). Esta skill ataca eso tratando el dibujo como problema editorial con 39 tipos de diagrama y HTML+SVG self-contained (sin JS, sin imágenes externas), tres variantes (minimal light/dark y full-editorial), e incluso lee tu web para extraer tu accent color y densidad visual. Su principio rector, 'the highest-quality move is usually deletion; target density 4/10', es la capa de diseño más pura que hemos visto frente a alternativas como coldteadotai/pr-lens o tt-a1i/archify.",
+        "madurez_senales": "35.524 ★ · fork=False · HTML · creado 2026-04-16 · último push 2026-09-08 · MIT · descripción: \"Editorial diagrams your designer won't hate. 39 types for Claude Code, Codex, Factory Droid, Pi\" · topics (8).",
+        "accion_sugerida": "leer (entender el catálogo de tipos y los principios editoriales; reutilizar 2-3 como base para un newsletter técnico).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cathrynlavery/diagram-design",
+          "rel": "competes_with",
+          "dst": "tool:mermaid",
+          "primera_mencion": "2026-08-15"
+        },
+        {
+          "src": "repo:cathrynlavery/diagram-design",
+          "rel": "competes_with",
+          "dst": "tool:drawio",
+          "primera_mencion": "2026-08-15"
+        },
+        {
+          "src": "concept:agent-skill-diagram",
+          "rel": "implemented_by",
+          "dst": "repo:cathrynlavery/diagram-design",
+          "primera_mencion": "2026-08-15"
+        },
+        {
+          "src": "concept:pr-review",
+          "rel": "enhanced_by",
+          "dst": "repo:cathrynlavery/diagram-design",
+          "primera_mencion": "2026-08-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cathrynlavery-diagram-design",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "heygen-com/hyperframes",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework open source para convertir HTML, CSS, media y animaciones seekable en MP4 determinista. CLI (`npx hyperframes init/preview/render`) + 20 skills para coding agents (`/product-launch-video`, `/faceless-explainer`, `/pr-to-video`, `/slideshow`, `/music-to-video`, `/motion-graphics`, etc.). Render local o cloud (HeyGen hosted / AWS Lambda).",
+        "por_que_importa": "Si cubres agentes que generan contenido visual, este es el toolkit que faltaba en el radar: convierte HTML/CSS/media/animaciones seekable en MP4 determinista con CLI (`npx hyperframes init/preview/render`) y 20 skills para coding agents (`/product-launch-video`, `/faceless-explainer`, `/pr-to-video`, `/slideshow`, `/music-to-video`, `/motion-graphics`). Cada workflow mapea un intent de vídeo antes de escribir HTML, así el agente decide qué tipo de pieza va a producir antes de tocar el código. El sponsor no es hype: es HeyGen (la empresa de avatares), lo que explica el crecimiento sostenido desde el 2026-08-25 y el salto de +2.627★/día.",
+        "madurez_senales": "48.039 ★ · fork=False · TypeScript (Node 22+) · creado 2026-03-10 · último push 2026-09-09 · Apache-2.0 · descripción: \"Write HTML. Render video. Built for agents\" · topics (11).",
+        "accion_sugerida": "explorar (instalar skills con `npx skills add heygen-com/hyperframes`, probar `/motion-graphics` con un brief corto y validar la salida MP4).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "sponsored_by",
+          "dst": "company:heygen",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "competes_with",
+          "dst": "tool:remotion",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:agent-video-pipeline",
+          "rel": "implemented_by",
+          "dst": "repo:heygen-com/hyperframes",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heygen-com-hyperframes",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "experientiallabs/experiential",
+      "url": "https://github.com/experientiallabs/experiential",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway open source y router de workflows agenticos. Una sola API OpenAI/Anthropic-compatible para hosted, BYOK y modelos locales. Control por identidad: qué usuario/agente puede usar qué modelo, para qué caso de uso, con cuánto presupuesto. El tráfico de producción alimenta un router/modelo custom optimizado para calidad/velocidad/coste. Versión local (`pip install experiential && exp`) o hosted (`platform.experientiallabs.ai`).",
+        "por_que_importa": "si tienes varios agentes tocando varios proveedores LLM con varios presupuestos, el patrón de gateway + router entrenado por uso es el siguiente paso natural después de vLLM/agentic-api. Sustituye el \"tenemos 8 API keys en un .env\" por una capa con policy.",
+        "madurez_senales": "3.306 ★ · fork=False · Python · creado 2026-06-24 · último push 2026-09-09 · Apache-2.0 · descripción: \"Experiential is the open source, zero markup gateway for BYOK, self-hosted and 1-line setup\".",
+        "accion_sugerida": "leer (instalar la versión local, conectar un agente al gateway y validar el routing por identidad/spend).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:experientiallabs/experiential",
+          "rel": "extends",
+          "dst": "spec:openai-chat-completions",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:experientiallabs/experiential",
+          "rel": "extends",
+          "dst": "spec:anthropic-messages-api",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "concept:llm-gateway",
+          "rel": "implemented_by",
+          "dst": "repo:experientiallabs/experiential",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "concept:llm-cost-routing",
+          "rel": "implemented_by",
+          "dst": "repo:experientiallabs/experiential",
+          "primera_mencion": "2026-08-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "experientiallabs-experiential",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "advaitpaliwal/feynman",
+      "url": "https://github.com/advaitpaliwal/feynman",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "research agent open source que ejecuta el ciclo completo de investigación: búsqueda, lectura, síntesis, redacción. Orientado a producir un documento final de calidad publicable, no un resumen.",
+        "por_que_importa": "El 2026-09-05 cubrimos a EvoMap/AutoResearch en el mismo eje: el stack del agente se está especializando por vertical, y este repo es un eslabón más: un research agent open source que ejecuta el ciclo completo (búsqueda, lectura, síntesis, redacción) y apunta a un documento final con calidad publicable, no a un resumen. Si te interesa comparar verticales dedicados, encaja frente a otras piezas del radar reciente como microsoft/tgrep (cubierto el 2026-09-08), pprp/llm-mcp o HKUDS/nanobot.",
+        "madurez_senales": "9.260 ★ · fork=False · TypeScript · creado 2026-03-19 · último push 2026-09-06 · MIT · descripción: \"The open source AI research agent\".",
+        "accion_sugerida": "vigilar (probar cuando aparezca un caso real de investigación longue durée; comparar contra nanobot).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "concept:research-agent",
+          "rel": "implemented_by",
+          "dst": "repo:advaitpaliwal/feynman",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:research-agent",
+          "rel": "competes_with",
+          "dst": "repo:EvoMap/AutoResearch",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "advaitpaliwal-feynman",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "deeplethe/utopia",
+      "url": "https://github.com/deeplethe/utopia",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.163 ★, último push 2026-09-09, Rust, Apache-2.0, branch `dev`) — \"World's first open-source enterprise world model\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (modelo de mundo para simular entornos, encaja con research-agents)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deeplethe-utopia",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "XiaoDuoYa/codex-with-chatgpt",
+      "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.595 ★, último push 2026-09-04, TypeScript, MIT) — ChatGPT como planner, Codex como worker",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (reentry, patrón de pairing útil para newsletters)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xiaoduoya-codex-with-chatgpt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "EvoMap/AutoResearch",
+      "url": "https://github.com/EvoMap/AutoResearch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.336 ★, último push 2026-09-01, Python, Apache-2.0) — agents que llevan de idea a paper-ready evidence",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (mismo eje que feynman; comparar arquitectura)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "evomap-autoresearch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "tigerless-labs/autoharness",
+      "url": "https://github.com/tigerless-labs/autoharness",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.020 ★, último push 2026-09-04, Python, MIT) — \"Autoharness: a self-learning skill layer for Claude Code — distills skills from your sessions\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (reentry, ángulo complementario a funes/headroom)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-autoharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "THU-MAIC/OpenMAIC",
+      "url": "https://github.com/THU-MAIC/OpenMAIC",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(33.873 ★, último push 2026-09-08, TypeScript, MIT) — \"Open Multi-Agent Interactive Classroom\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer (Tsinghua, multi-agent para educación, pedagogías interesantes para newsletters de IA aplicada)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thu-maic-openmaic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "microsoft/markitdown",
+      "url": "https://github.com/microsoft/markitdown",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(181.943 ★, último push 2026-09-07, Python, MIT) — \"Python tool for converting files and office documents to Markdown\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar como hallazgo principal (veterano sin historia nueva), vigilar si aparece una v2 mayor",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-markitdown",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(211.649 ★, último push 2026-04-20, sin `language` declarado, sin topics) — \"A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy\". Reentry",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (el número alto es tracción acumulada, no momentum reciente)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-andrej-karpathy-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "hpcaitech/Open-Sora",
+      "url": "https://github.com/hpcaitech/Open-Sora",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(29.729 ★, último push 2026-04-09, Python, Apache-2.0) — \"Open-Sora: Democratizing Efficient Video Production for All\". Push de hace 5 meses — re-trending raro",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar (sin actividad reciente)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hpcaitech-open-sora",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/6 items reescritos; rechazados por longitud sospechosa: [4]; faltantes en respuesta: [4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

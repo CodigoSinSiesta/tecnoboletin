@@ -1,0 +1,48 @@
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-ayghri-i-have-adhd", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-ayghri-i-have-adhd", "dst": "tema:ayghri-i-have-adhd", "rel": "trata", "added": "2026-09-09"}
+{"src": "repo:ayghri/i-have-adhd", "dst": "concept:agent-output-noise", "rel": "solves", "added": "2026-09-09", "primera_mencion": null}
+{"src": "repo:ayghri/i-have-adhd", "dst": "concept:agent-skill-protocol", "rel": "implements", "added": "2026-09-09", "primera_mencion": null}
+{"src": "repo:ayghri/i-have-adhd", "dst": "book:adult-adhd-toolkit", "rel": "inspired_by", "added": "2026-09-09", "primera_mencion": null}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-arcboxlabs-arcbox", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-arcboxlabs-arcbox", "dst": "tema:arcboxlabs-arcbox", "rel": "trata", "added": "2026-09-09"}
+{"src": "repo:arcboxlabs/arcbox", "dst": "tool:orbstack", "rel": "competes_with", "added": "2026-09-09", "primera_mencion": "2026-08-22"}
+{"src": "repo:arcboxlabs/arcbox", "dst": "tool:docker-desktop", "rel": "competes_with", "added": "2026-09-09", "primera_mencion": "2026-08-22"}
+{"src": "concept:agent-sandbox", "dst": "repo:arcboxlabs/arcbox", "rel": "implemented_by", "added": "2026-09-09", "primera_mencion": "2026-08-22"}
+{"src": "repo:arcboxlabs/arcbox", "dst": "tool:rust-vmm", "rel": "uses", "added": "2026-09-09", "primera_mencion": "2026-08-22"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-cathrynlavery-diagram-design", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-cathrynlavery-diagram-design", "dst": "tema:cathrynlavery-diagram-design", "rel": "trata", "added": "2026-09-09"}
+{"src": "repo:cathrynlavery/diagram-design", "dst": "tool:mermaid", "rel": "competes_with", "added": "2026-09-09", "primera_mencion": "2026-08-15"}
+{"src": "repo:cathrynlavery/diagram-design", "dst": "tool:drawio", "rel": "competes_with", "added": "2026-09-09", "primera_mencion": "2026-08-15"}
+{"src": "concept:agent-skill-diagram", "dst": "repo:cathrynlavery/diagram-design", "rel": "implemented_by", "added": "2026-09-09", "primera_mencion": "2026-08-15"}
+{"src": "concept:pr-review", "dst": "repo:cathrynlavery/diagram-design", "rel": "enhanced_by", "added": "2026-09-09", "primera_mencion": "2026-08-15"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-heygen-com-hyperframes", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-heygen-com-hyperframes", "dst": "tema:heygen-com-hyperframes", "rel": "trata", "added": "2026-09-09"}
+{"src": "repo:heygen-com/hyperframes", "dst": "company:heygen", "rel": "sponsored_by", "added": "2026-09-09", "primera_mencion": null}
+{"src": "repo:heygen-com/hyperframes", "dst": "tool:remotion", "rel": "competes_with", "added": "2026-09-09", "primera_mencion": null}
+{"src": "concept:agent-video-pipeline", "dst": "repo:heygen-com/hyperframes", "rel": "implemented_by", "added": "2026-09-09", "primera_mencion": null}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-experientiallabs-experiential", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-experientiallabs-experiential", "dst": "tema:experientiallabs-experiential", "rel": "trata", "added": "2026-09-09"}
+{"src": "repo:experientiallabs/experiential", "dst": "spec:openai-chat-completions", "rel": "extends", "added": "2026-09-09", "primera_mencion": "2026-08-28"}
+{"src": "repo:experientiallabs/experiential", "dst": "spec:anthropic-messages-api", "rel": "extends", "added": "2026-09-09", "primera_mencion": "2026-08-28"}
+{"src": "concept:llm-gateway", "dst": "repo:experientiallabs/experiential", "rel": "implemented_by", "added": "2026-09-09", "primera_mencion": "2026-08-28"}
+{"src": "concept:llm-cost-routing", "dst": "repo:experientiallabs/experiential", "rel": "implemented_by", "added": "2026-09-09", "primera_mencion": "2026-08-28"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-advaitpaliwal-feynman", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-advaitpaliwal-feynman", "dst": "tema:advaitpaliwal-feynman", "rel": "trata", "added": "2026-09-09"}
+{"src": "concept:research-agent", "dst": "repo:advaitpaliwal/feynman", "rel": "implemented_by", "added": "2026-09-09", "primera_mencion": null}
+{"src": "concept:research-agent", "dst": "repo:EvoMap/AutoResearch", "rel": "competes_with", "added": "2026-09-09", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-deeplethe-utopia", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-deeplethe-utopia", "dst": "tema:deeplethe-utopia", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-xiaoduoya-codex-with-chatgpt", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-xiaoduoya-codex-with-chatgpt", "dst": "tema:xiaoduoya-codex-with-chatgpt", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-evomap-autoresearch", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-evomap-autoresearch", "dst": "tema:evomap-autoresearch", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-tigerless-labs-autoharness", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-tigerless-labs-autoharness", "dst": "tema:tigerless-labs-autoharness", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-thu-maic-openmaic", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-thu-maic-openmaic", "dst": "tema:thu-maic-openmaic", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-microsoft-markitdown", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-microsoft-markitdown", "dst": "tema:microsoft-markitdown", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-multica-ai-andrej-karpathy-skills", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-multica-ai-andrej-karpathy-skills", "dst": "tema:multica-ai-andrej-karpathy-skills", "rel": "trata", "added": "2026-09-09"}
+{"src": "boletin:2026-09-09", "dst": "item:https-github-com-hpcaitech-open-sora", "rel": "menciona", "added": "2026-09-09"}
+{"src": "item:https-github-com-hpcaitech-open-sora", "dst": "tema:hpcaitech-open-sora", "rel": "trata", "added": "2026-09-09"}
