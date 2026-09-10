@@ -1,0 +1,51 @@
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-edge0-ai-edge0", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-edge0-ai-edge0", "dst": "tema:edge0-ai-edge0", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:Edge0-AI/edge0", "dst": "technique:moe-expert-offload", "rel": "implements", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:Edge0-AI/edge0", "dst": "problem:vram-bound-inference", "rel": "solves", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:Edge0-AI/edge0", "dst": "tool:llama.cpp", "rel": "competes_with", "added": "2026-09-10", "primera_mencion": "2026-08-17"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-google-artemis", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-google-artemis", "dst": "tema:google-artemis", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:google/artemis", "dst": "spec:model-context-protocol", "rel": "implements", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:google/artemis", "dst": "repo:browser-use/browser-use", "rel": "complements", "added": "2026-09-10", "primera_mencion": "2026-08-20"}
+{"src": "company:google", "dst": "repo:google/artemis", "rel": "publishes", "added": "2026-09-10", "primera_mencion": null}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-yyjeqhc-webcodex", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-yyjeqhc-webcodex", "dst": "tema:yyjeqhc-webcodex", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:yyjeqhc/webcodex", "dst": "problem:agent-needs-real-toolchain", "rel": "solves", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:yyjeqhc/webcodex", "dst": "tool:github-codespaces", "rel": "competes_with", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:yyjeqhc/webcodex", "dst": "problem:local-machine-exposure", "rel": "risk", "added": "2026-09-10", "primera_mencion": null}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-googleapis-mcp-toolbox", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-googleapis-mcp-toolbox", "dst": "tema:googleapis-mcp-toolbox", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:googleapis/mcp-toolbox", "dst": "spec:model-context-protocol", "rel": "implements", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:googleapis/mcp-toolbox", "dst": "concept:agent-database-access", "rel": "enables", "added": "2026-09-10", "primera_mencion": null}
+{"src": "company:google", "dst": "repo:googleapis/mcp-toolbox", "rel": "publishes", "added": "2026-09-10", "primera_mencion": null}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-chenhg5-cc-connect", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-chenhg5-cc-connect", "dst": "tema:chenhg5-cc-connect", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:chenhg5/cc-connect", "dst": "problem:remote-agent-control", "rel": "solves", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:chenhg5/cc-connect", "dst": "tool:hermes-agent", "rel": "complements", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:chenhg5/cc-connect", "dst": "problem:undeclared-license", "rel": "risk", "added": "2026-09-10", "primera_mencion": null}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-jordan-gibbs-hyperresearch", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-jordan-gibbs-hyperresearch", "dst": "tema:jordan-gibbs-hyperresearch", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:jordan-gibbs/hyperresearch", "dst": "concept:codigosinsiesta-knowledge-graph", "rel": "competes_with", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:jordan-gibbs/hyperresearch", "dst": "concept:research-agent", "rel": "implements", "added": "2026-09-10", "primera_mencion": "2026-09-09"}
+{"src": "repo:jordan-gibbs/hyperresearch", "dst": "problem:maintenance-gap", "rel": "risk", "added": "2026-09-10", "primera_mencion": null}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-vastsa-pi-desktop", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-vastsa-pi-desktop", "dst": "tema:vastsa-pi-desktop", "rel": "trata", "added": "2026-09-10"}
+{"src": "repo:vastsa/PI-Desktop", "dst": "repo:yyjeqhc/webcodex", "rel": "competes_with", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:vastsa/PI-Desktop", "dst": "tool:pi-agent-harness", "rel": "uses", "added": "2026-09-10", "primera_mencion": null}
+{"src": "repo:vastsa/PI-Desktop", "dst": "concept:local-first-agent", "rel": "implements", "added": "2026-09-10", "primera_mencion": null}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-supermemoryai-supermemory", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-supermemoryai-supermemory", "dst": "tema:supermemoryai-supermemory", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-openfga-openfga", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-openfga-openfga", "dst": "tema:openfga-openfga", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-getopenscreen-openscreen", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-getopenscreen-openscreen", "dst": "tema:getopenscreen-openscreen", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-chaitin-safeline", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-chaitin-safeline", "dst": "tema:chaitin-safeline", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-amagine-ai-amagine3d", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-amagine-ai-amagine3d", "dst": "tema:amagine-ai-amagine3d", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-realchendahuang-feedsieve", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-realchendahuang-feedsieve", "dst": "tema:realchendahuang-feedsieve", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-anbeime-skill", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-anbeime-skill", "dst": "tema:anbeime-skill", "rel": "trata", "added": "2026-09-10"}
+{"src": "boletin:2026-09-10", "dst": "item:https-github-com-teng-lin-weread-omni", "rel": "menciona", "added": "2026-09-10"}
+{"src": "item:https-github-com-teng-lin-weread-omni", "dst": "tema:teng-lin-weread-omni", "rel": "trata", "added": "2026-09-10"}

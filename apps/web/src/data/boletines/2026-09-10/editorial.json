@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-09-10",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Google cablea MCP al sistema operativo y Google publica dos piezas agenticas el mismo dia",
+  "posicionamiento": "El hilo del dia no es el modelo, es el cableado: Edge0 mueve el cuello de botella de la VRAM al routing de expertos, artemis lleva MCP al sistema operativo Android, mcp-toolbox lleva MCP a las bases de datos, y webcodex contra PI-Desktop plantan el debate relay vs local-first en el escritorio del desarrollador. La convergencia es evidente: la batalla ya no es quien tiene mejor agente, sino quien tiene mejor superficie donde enchufarlo.",
+  "convergencia_stack_css": "El stack local-first del boletin queda tensionado en sus dos extremos. Edge0-AI/Edge0 (idx 0) encaja con el track de inferencia fuera del datacenter ya cubierto al hablar de llama.cpp el 2026-08-17. cc-connect (idx 4) es el patron Hermes + cron + Telegram empaquetado, asi que merece una comparativa de transporte. hyperresearch (idx 5) compite directamente con el knowledge graph propio y obliga a decidir si se adopta, se vigila o se ignora.",
+  "cruzado_grafo": "Tres nodos del grafo quedan reforzados con fecha: `llama.cpp` como competidor de Edge0 (primera_mencion 2026-08-17), `browser-use` como complemento de artemis (primera_mencion 2026-08-20) y `research-agent` como categoria que hyperresearch implementa (primera_mencion 2026-09-09, solo un dia de antiguedad). El resto de relaciones del dia son nuevas en el grafo, sin primera_mencion asignada.",
+  "tendencias_5_boletines": "Sumado a 2026-09-08 (infraestructura de coding agent saliendo del cliente: tgrep, agentic-api, funes) y 2026-09-09 (coding agent mas alla del prompt: UX rules, render determinista, sandbox local, gateway con policy), hoy el patron se completa con la superficie: el agente ya tiene donde leer datos (mcp-toolbox), donde ejecutar (artemis en Android, webcodex o PI-Desktop en escritorio), donde persistir (hyperresearch) y donde correr el modelo (Edge0). Tres dias seguidos contando la misma historia desde angulos distintos.",
+  "alertas": [
+    "cc-connect (idx 4) no declara licencia en la API de GitHub: revisar LICENSE antes de cualquier adopcion como dependencia.",
+    "hyperresearch (idx 5) lleva mas de un mes sin commits pese a aparecer en Trendshift; el grafo ya lo etiqueta como maintenance-gap, tratarlo como referencia conceptual, no como producto vivo.",
+    "webcodex (idx 2) abre tuneles HTTPS hacia la maquina local: cada uso es superficie real expuesta a un proceso remoto con permisos sobre tu codigo.",
+    "artemis (idx 1) reporta 99%+ en AndroidWorld pero viene del propio Google, asi que el benchmark hay que leerlo como senal de referencia, no como comparativa neutral."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Edge0 redefine la inferencia local-first; comparar su prerouter con el offload de llama.cpp puede dar un articulo solido sobre el fin de la VRAM como cuello de botella."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "artemis cierra el bucle observe-and-act fuera del navegador; probarlo contra un agente propio sobre Android real sirve como QA end-to-end en lenguaje natural."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 6,
+      "razon": "PI-Desktop y webcodex son la misma tension relay-vs-local-first en un solo dia; merecen entrada editorial dedicada por lo que dicen del modelo de control del agente."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "cc-connect resuelve un problema que ya esta montado a mano con Hermes; esperar a que declare licencia y comparar diseno de transporte antes de cualquier adopcion."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "hyperresearch compite con el knowledge graph propio; dado el maintenance-gap, seguir su ritmo de commits antes de decidir si se mira o se descarta."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

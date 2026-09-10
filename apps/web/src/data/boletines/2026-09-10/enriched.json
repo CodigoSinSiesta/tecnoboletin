@@ -1,0 +1,516 @@
+{
+  "version": 2,
+  "date": "2026-09-10",
+  "boletin_origen": "2026-09-10-trending.md",
+  "resumen_ejecutivo": "- **Edge0-AI/Edge0** es el hallazgo técnico del día: framework de inferencia MoE en streaming con *SSD expert offload* + Recover-LoRA + prerouter. Traduce: correr un 35B-A3B en un Mac Apple Silicon sin meterlo entero en RAM. Dos días de vida, 283 ★, Apache-2.0.\n- **Google publica dos piezas de infraestructura agentica en el mismo día**: `google/artemis` (automatización real de Android desde lenguaje natural, MCP nativo, 99%+ en AndroidWorld) y `googleapis/mcp-toolbox` (servidor MCP para bases de datos, 16,3k ★). El patrón es claro: Google está cableando MCP a sus superficies, no compitiendo en agentes.\n- **Dos formas opuestas de dar entorno real a un agente**: `yyjeqhc/webcodex` expone tu máquina de desarrollo a ChatGPT/Claude vía túnel seguro, y `vastsa/PI-Desktop` hace lo contrario — trae el agente a un escritorio local-first sin cuenta ni relay. Mismo problema, dos filosofías.\n- **`chenhg5/cc-connect`** (15,4k ★, Go) es el puente entre agentes de código locales y mensajería (Telegram, Slack, Discord, Feishu). Es exactamente el patrón que ya corre aquí con Hermes + cron, empaquetado y sin exponer puertos.\n- Día con material sólido y poco ruido: de 93 candidatos, 32 eran nuevos y 17 pasaron verificación por API. El blogwatcher de las 08:00 **no publicó hoy** (`2026-09-10-blogs.md` no existe; es el patrón recurrente desde julio, conviene revisar `hermes cron list`). Fuentes consultadas: Trendshift daily, GitHub Trending daily (all/typescript/python/rust/go), GitHub API para todos los hallazgos y radar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Edge0-AI/Edge0",
+      "url": "https://github.com/Edge0-AI/edge0",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework open source de inferencia MoE en streaming que generaliza una receta ya probada en producción: descarga de expertos a SSD, Recover-LoRA para compensar la pérdida de calidad, y un *prerouter* que predice qué expertos hará falta cargar antes de necesitarlos.",
+        "por_que_importa": "Es el eje local-first llevado al límite. Publican dos tiers listos (`edge0-35b` sobre Qwen3.5-MoE 35B-A3B y `edge0-8b` sobre Ling 3.0), cada uno con checkpoint + adaptadores LoRA + cabezas de prerouter entrenadas, cargando automáticamente con `edge0 serve <tier>`. La arquitectura invierte el problema: en lugar de cargar el modelo entero en VRAM, el prerouter predice qué expertos se necesitarán y los descarga de SSD justo a tiempo, compensando la pérdida de calidad con Recover-LoRA. Backend MLX (Apple Silicon) hoy, CUDA en el roadmap. Si escribes sobre correr modelos grandes fuera del datacenter, esta es la arquitectura a explicar: el cuello de botella deja de ser la VRAM y pasa a ser la predicción de routing. En el grafo competimos con `llama.cpp` desde el boletín del 2026-08-17, y edge0 es una referencia útil para entender qué huecos deja cubierto (o no) ese enfoque.",
+        "madurez_senales": "283 ★ · 10 forks · Python · creado 2026-09-08 · último push 2026-09-10 · Apache-2.0 · sin descripción en el campo oficial de GitHub · sin topics. Dos días de vida: tratar como preview, no como producción.",
+        "accion_sugerida": "explorar (leer la sección de arquitectura del prerouter; es el aporte no obvio frente a un offload clásico).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Edge0-AI/edge0",
+          "rel": "implements",
+          "dst": "technique:moe-expert-offload",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/edge0",
+          "rel": "solves",
+          "dst": "problem:vram-bound-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/edge0",
+          "rel": "competes_with",
+          "dst": "tool:llama.cpp",
+          "primera_mencion": "2026-08-17"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "edge0-ai-edge0",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "google/artemis",
+      "url": "https://github.com/google/artemis",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente que convierte instrucciones en lenguaje natural en automatización fiable sobre teléfonos Android reales. Bucle reactivo observe-and-act con resúmenes de historial asíncronos (3–5 s por paso), targeting multimodal (índices de elemento, con fallback a coordenadas y localización visual) y servidor MCP nativo para que Antigravity, Claude Code o Windsurf piloten el dispositivo y recojan Logcat y capturas.",
+        "por_que_importa": "Es el eslabón que faltaba entre los agentes que usan el navegador y los agentes que usan el sistema operativo. Si ya cubrimos `browser-use` el 2026-08-20 como pieza de automatización web, artemis es su análogo para dispositivos Android reales: bucle observe-and-act con resúmenes asíncronos del historial, targeting multimodal y un servidor MCP nativo que permite a Antigravity, Claude Code o Windsurf pilotar el teléfono y recoger Logcat y capturas. Que venga de Google y reporte 99%+ en AndroidWorld le da peso de referencia, no de demo. Además, abre una vía de QA directa: permite escribir suites end-to-end en lenguaje natural sobre el dispositivo físico, sin ROM custom ni emulador.",
+        "madurez_senales": "1.047 ★ · 99 forks · Python 3.12+ · creado 2026-08-13 · último push 2026-09-10 · Apache-2.0 · descripción: \"ARTEMIS turns natural-language instructions into reliable Android automation\" · topics: ai-agents, android, google, test-automation, testing.",
+        "accion_sugerida": "explorar (montar el MCP contra un emulador Android y un brief de test real; es probable sin hardware físico).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google/artemis",
+          "rel": "implements",
+          "dst": "spec:model-context-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google/artemis",
+          "rel": "complements",
+          "dst": "repo:browser-use/browser-use",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "company:google",
+          "rel": "publishes",
+          "dst": "repo:google/artemis",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-artemis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "yyjeqhc/webcodex",
+      "url": "https://github.com/yyjeqhc/webcodex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor + runner que dan a ChatGPT, Claude y otros agentes acceso directo al código y a las herramientas de tu propia máquina. El repositorio se queda donde ya vive; el agente inspecciona, edita con cambios guardados, corre tests, usa Git y ejecuta trabajos largos observables. Modo de prueba de un minuto con `npx --yes @yyjeqhc/webcodex share`.",
+        "por_que_importa": "Es la inversión del modelo Codespaces. En lugar de subir tu proyecto a un workspace hosted para que el agente lo toque, abres un túnel (HTTPS público, Cloudflare Tunnel o el Secure MCP Tunnel oficial de OpenAI) desde tu propia máquina hacia el agente cloud. El repositorio no se mueve: el agente inspecciona, edita con cambios guardados, corre tests, usa Git y ejecuta trabajos largos observables desde tu filesystem local. El ángulo editorial evidente es el de seguridad: el propio grafo marca `local-machine-exposure` como riesgo asociado, porque cada túnel que abres es superficie real expuesta a un proceso remoto con permisos sobre tu código. Tiene un modo de prueba de un minuto con `npx --yes @yyjeqhc/webcodex share`, útil para evaluarlo sin compromiso. En el grafo compite directamente con `github-codespaces`.",
+        "madurez_senales": "610 ★ · 74 forks · Rust · creado 2026-05-28 · último push 2026-09-10 · Apache-2.0 · descripción: \"Give cloud AI agents a real development environment on your own machines\" · topics: agent, chatgpt, claude, claude-code, codex, developer-tools, gemini, mcp.",
+        "accion_sugerida": "probar (el modo `share` es efímero y de un solo proyecto: coste de evaluación casi cero, y basta para ver el modelo de permisos).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:yyjeqhc/webcodex",
+          "rel": "solves",
+          "dst": "problem:agent-needs-real-toolchain",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:yyjeqhc/webcodex",
+          "rel": "competes_with",
+          "dst": "tool:github-codespaces",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:yyjeqhc/webcodex",
+          "rel": "risk",
+          "dst": "problem:local-machine-exposure",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yyjeqhc-webcodex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "googleapis/mcp-toolbox",
+      "url": "https://github.com/googleapis/mcp-toolbox",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor MCP open source que expone bases de datos a agentes. Cobertura amplia según el repo: BigQuery, ClickHouse, CockroachDB, Elasticsearch, Firestore y más.",
+        "por_que_importa": "La pregunta '¿cómo doy acceso a datos a un agente sin darle credenciales crudas?' ya no requiere escribir un adaptador: el MCP Toolbox expone BigQuery, ClickHouse, CockroachDB, Elasticsearch, Firestore y más como herramientas MCP listas para consumir. Que viva bajo la org `googleapis` — la misma de los SDK oficiales — importa: implica un compromiso de mantenimiento y una cadencia de releases distinta a la de un proyecto personal. 16k+ estrellas y pushes esta misma semana lo alejan del terreno experimental. Es la pieza que encaja debajo del grafo de conocimiento propio si en algún momento se migra a Postgres + pgvector y se quiere evitar reimplementar un servidor MCP a medida.",
+        "madurez_senales": "16.355 ★ · 1.711 forks · Go · creado 2024-06-07 · último push 2026-09-10 · Apache-2.0 · descripción: \"MCP Toolbox for Databases is an open source MCP server for databases\" · topics: agent, ai, bigquery, clickhouse, cockroachdb, database, elasticsearch, firestore, genai.",
+        "accion_sugerida": "probar (levantarlo contra un Postgres local y comprobar el modelo de permisos por herramienta).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:googleapis/mcp-toolbox",
+          "rel": "implements",
+          "dst": "spec:model-context-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:googleapis/mcp-toolbox",
+          "rel": "enables",
+          "dst": "concept:agent-database-access",
+          "primera_mencion": null
+        },
+        {
+          "src": "company:google",
+          "rel": "publishes",
+          "dst": "repo:googleapis/mcp-toolbox",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googleapis-mcp-toolbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "chenhg5/cc-connect",
+      "url": "https://github.com/chenhg5/cc-connect",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "bridge que conecta agentes de código locales (Claude Code, Cursor, Gemini CLI, Codex) con plataformas de mensajería (Feishu/Lark, DingTalk, Slack, Telegram, Discord, LINE, WeChat Work). Chateas con tu asistente de desarrollo desde cualquier sitio, sin exponer un endpoint público.",
+        "por_que_importa": "Es justo el patrón que aquí ya está montado a mano (Hermes + cron + Telegram), empaquetado y generalizado para múltiples plataformas: Feishu/Lark, DingTalk, Slack, Telegram, Discord, LINE y WeChat Work, conectando con Claude Code, Cursor, Gemini CLI y Codex. Chateas con tu asistente de desarrollo desde cualquier sitio sin exponer un endpoint público. El ángulo interesante no es el 'chatea con tu agente', sino el diseño de transporte: cómo evita abrir puertos y cómo maneja la sesión larga — material comparativo directo para un artículo sobre arquitecturas de control remoto de agentes. El grafo lo marca como complemento a `hermes-agent`. Importante: la licencia no aparece declarada en la API de GitHub (`license: null`); hay que revisar el archivo LICENSE antes de adoptarlo como dependencia, especialmente en proyectos comerciales.",
+        "madurez_senales": "15.439 ★ · 1.533 forks · Go · creado 2026-02-28 · último push 2026-09-10 · **licencia no declarada en la API de GitHub** (`license: null` — verificar el archivo LICENSE antes de adoptarlo como dependencia) · sin topics.",
+        "accion_sugerida": "leer (el diseño del transporte; la licencia ausente desaconseja adopción directa hasta comprobarla).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:chenhg5/cc-connect",
+          "rel": "solves",
+          "dst": "problem:remote-agent-control",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:chenhg5/cc-connect",
+          "rel": "complements",
+          "dst": "tool:hermes-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:chenhg5/cc-connect",
+          "rel": "risk",
+          "dst": "problem:undeclared-license",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chenhg5-cc-connect",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "jordan-gibbs/hyperresearch",
+      "url": "https://github.com/jordan-gibbs/hyperresearch",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "base de conocimiento dirigida por agentes. Los agentes recogen, buscan y sintetizan investigación web en una wiki persistente y consultable, en vez de devolver un informe de usar y tirar.",
+        "por_que_importa": "Es exactamente el problema que este boletín resuelve a mano con `state.json` y grafo acumulado: agentes que recogen, buscan y sintetizan investigación web en una wiki persistente y consultable en vez de devolver un informe de usar y tirar. Merece una comparación honesta — qué hace `hyperresearch` mejor (persistencia estructurada, búsqueda sobre histórico) y qué hace peor (criterio editorial, dedup entre días) frente a nuestro flujo actual. Ya cubrimos el concepto de agente de investigación el 2026-09-09, así que este repo entra como competidor directo de nuestro knowledge graph. Ojo con la señal de madurez: el último push es del 2026-08-04, más de un mes sin commits pese a aparecer en Trendshift hoy; el grafo ya lo etiqueta como `maintenance-gap`, lo que obliga a tratarlo como referencia conceptual más que como dependencia adoptable ahora.",
+        "madurez_senales": "2.015 ★ · 227 forks · Python · creado 2026-04-09 · **último push 2026-08-04 (37 días sin actividad)** · MIT · descripción: \"Agent-driven research knowledge base. Agents collect, search, and synthesize web research into a persistent, searchable wiki\" · topics: agents, agentskills, claude-code, deep-research, deep-research-agent.",
+        "accion_sugerida": "leer (el esquema de persistencia, no el código; la falta de commits recientes desaconseja depender de él).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:jordan-gibbs/hyperresearch",
+          "rel": "competes_with",
+          "dst": "concept:codigosinsiesta-knowledge-graph",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:jordan-gibbs/hyperresearch",
+          "rel": "implements",
+          "dst": "concept:research-agent",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:jordan-gibbs/hyperresearch",
+          "rel": "risk",
+          "dst": "problem:maintenance-gap",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jordan-gibbs-hyperresearch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "vastsa/PI-Desktop",
+      "url": "https://github.com/vastsa/PI-Desktop",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "workspace de escritorio (Electron + core en Rust + pi Agent Harness + plugins instalables por el usuario) para agentes de código. Trae tu propio modelo, abre cualquier proyecto local, sin cuenta, sin relay obligatorio y sin atarte a un editor.",
+        "por_que_importa": "es la contraparte exacta de `webcodex` (hallazgo 3). Donde uno abre tu máquina al agente cloud, este trae el agente a tu máquina. Los dos aparecen el mismo día en Trendshift, y esa tensión — relay vs local-first — es un artículo en sí misma.",
+        "madurez_senales": "1.879 ★ · 166 forks · TypeScript · **creado 2023-03-22 (repositorio reutilizado/renombrado: la fecha no corresponde al producto actual, tratar la antigüedad con cautela)** · último push 2026-09-10 · LGPL-3.0 · descripción: \"Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins\" · topics: ai-agent, coding-agent, desktop-app, electron, local-first, mcp, pi.",
+        "accion_sugerida": "vigilar (LGPL-3.0 y fecha de creación incoherente con el producto; esperar a ver cadencia de releases antes de invertir tiempo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vastsa/PI-Desktop",
+          "rel": "competes_with",
+          "dst": "repo:yyjeqhc/webcodex",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vastsa/PI-Desktop",
+          "rel": "uses",
+          "dst": "tool:pi-agent-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vastsa/PI-Desktop",
+          "rel": "implements",
+          "dst": "concept:local-first-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vastsa-pi-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "supermemoryai/supermemory",
+      "url": "https://github.com/supermemoryai/supermemory",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(29.581 ★, push 2026-09-10, TypeScript, MIT) — motor de memoria y contexto que puede correr totalmente local; \"The Memory API for the AI era\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar (encaja directamente con el eje memoria de agentes junto a `memvid` y `huggingface/funes`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "supermemoryai-supermemory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "openfga/openfga",
+      "url": "https://github.com/openfga/openfga",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.749 ★, push 2026-09-09, Go, Apache-2.0) — motor de autorización fine-grained inspirado en Google Zanzibar",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer (la pregunta \"qué puede tocar cada agente\" va a necesitar un modelo de permisos serio, y este es el estándar de facto OSS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openfga-openfga",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "getopenscreen/openscreen",
+      "url": "https://github.com/getopenscreen/openscreen",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.676 ★, push 2026-09-09, TypeScript, MIT) — grabador de pantalla con aceleración GPU, sin marcas de agua ni suscripción, multiplataforma",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar (herramienta directa para producir demos del propio newsletter)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "getopenscreen-openscreen",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "chaitin/SafeLine",
+      "url": "https://github.com/chaitin/SafeLine",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(22.550 ★, push 2026-09-03, Go, GPL-3.0) — WAF self-hosted y reverse proxy",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (relevante si alguna vez se expone algo del stack a internet; GPL-3 — 0 limita empotrarlo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chaitin-safeline",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "amagine-ai/Amagine3D",
+      "url": "https://github.com/amagine-ai/Amagine3D",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.227 ★, push 2026-09-10, Python, Apache-2.0) — de requisitos de hardware a diseños 3D editables",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (crecimiento fuerte en 3 semanas; ver si el output es realmente editable o solo mallas)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "amagine-ai-amagine3d",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "realchendahuang/feedsieve",
+      "url": "https://github.com/realchendahuang/feedsieve",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(529 ★, push 2026-09-10, TypeScript, MIT) — extensión Chrome open source que marca y bloquea cuentas spam en X con alta confianza, sincronizada entre dispositivos",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar (utilidad inmediata si se usa X como fuente; README parcialmente en chino)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "realchendahuang-feedsieve",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "anbeime/skill",
+      "url": "https://github.com/anbeime/skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.481 ★, push 2026-09-10, Python, **licencia no declarada**) — tienda/agregador de skills para agentes: paquetes curados más scraping automático de miles de proyectos de skills en GitHub, ordenados por categoría, fecha y estrellas",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar (útil como fuente de descubrimiento para este mismo boletín; sin licencia, no adoptar como dependencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anbeime-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "teng-lin/weread-omni",
+      "url": "https://github.com/teng-lin/weread-omni",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(371 ★, 645 forks, push 2026-09-05, TypeScript, MIT) — skill de agente con 40 operaciones sobre WeRead (lector de libros de WeChat), incluyendo escritura en subrayados y estantería",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar (nicho chino, y los forks superan a las estrellas: patrón de plantilla clonada, no de adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "teng-lin-weread-omni",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/7 items reescritos; rechazados por longitud sospechosa: [6]; faltantes en respuesta: [6]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
