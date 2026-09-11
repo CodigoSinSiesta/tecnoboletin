@@ -1,0 +1,400 @@
+{
+  "version": 2,
+  "date": "2026-09-11",
+  "boletin_origen": "2026-09-11-trending.md",
+  "resumen_ejecutivo": "- **El día lo protagoniza la nueva capa \"agente con identidad\"**: `letta-ai/letta-code` debuta en trending TS con un modelo mental de agente que reescribe memoria, prompts, skills y hasta el propio harness en el tiempo. Es la nueva cara del antiguo MemGPT, ahora como harness CLI+desktop, con MemFS versionado en git y máquinas remotas. Apache-2.0, 3.270 ★, empujado esta misma madrugada.\n- **El scraping OSS recibe un contendiente serio y copyleft**: `Anakin-Inc/anakin` (anakin scraper) es una API REST autoalojable (`make up`) con fallback HTTP → browser → API externa, anti-detect Camoufox y selección de proxies por Thompson sampling. AGPL-3.0, 3.243 ★, maestro de comparativa contra `D4Vinci/Scrapling` y `tiliondev/Fortress`. El argumento \"OSS local-first vs SaaS\" se enriquece con un caso real de empresa que ha puesto el software en abierto.\n- **YuE2 reabre el debate música-generativa**: el repo `multimodal-art-projection/YuE` actualizó a **YuE2**, ya no es solo \"generar canción completa\" sino \"componer con plan simbólico editable, covers zero-shot, edición agentic por conversación\". Pasa de cobertura a hallazgo principal; tiene benchmark interno (WildSongBench), hoja ABC editable, demo pública con 9 pasos y 14 versiones de una misma canción. Apache-2.0, 6.762 ★.\n- **El stack GPU OSS sigue su consolidación silenciosa**: `gpustack/gpustack` reentra con cadencia de commits diaria, soporte para Ascend/ROCm/CUDA/Apple Silicon y orquestación para vLLM+SGLang. Es la pieza operativa que faltaba en el grafo para no tener que hilar manualmente con `serve` y port-forwarding. 5.667 ★, Apache-2.0.\n- **El resto es ruido reciclado**: GitHub Trending TS y Python sigue dominado por repos ya cubiertos en boletines anteriores (`omni-route`, `teamai-cli`, `OpenMAIC`, `diagram-design`, `i-have-adhd`, `PI-Desktop`), y Trendshift está inundado de \"Monero-Miner\", \"IDM_Pro_Tool\" y clones de cracks con underscores falsos — el patrón spam de la semana pasada, ahora más visible. La densidad editorial real de hoy es baja: frente al ritmo del jueves-jueves pasado, este es un día para consolidar.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript + python), GitHub API con verificación de 15 repos (todos los hallazgos + radar); READMEs leídos in full donde hubo pista editorial. Blogwatcher 08:00 no publicó hoy (`2026-09-11-blogs.md` no existe; van ya varios días sin logs, conviene revisar `hermes cron list`).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "letta-ai/letta-code",
+      "url": "https://github.com/letta-ai/letta-code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "harness open-source para agentes \"stateful como personas\": memoria persistente, identidad, sentido de experiencia en el tiempo y capacidad de modificar su propio contexto, sus skills y su prompt en tiempo de ejecución. Se distribuye como CLI de npm, app de escritorio multiplataforma, chat web/móvil y canales de Telegram/Slack/Discord.",
+        "por_que_importa": "Es la versión moderna y empaquetada de MemGPT (la línea de investigación de Charles Packer en Berkeley, ahora Letta Cloud) que un developer puede instalar con `npm i -g @letta-ai/letta-code`. Lo interesante para un lector de Código Sin Siesta no es el agente en sí, sino tres decisiones de diseño que cambian cómo se construyen agentes persistentes: (a) **MemFS**: todo el contexto (incluidos los memory blocks) se trackea vía git, así puedes sincronizar el estado del agente a un repo privado y versionar su memoria como código; (b) **dreaming auditado** con `/sleeptime` y revisión con `/doctor`, que te da una ventana para inspeccionar y depurar qué consolidó el agente mientras estaba offline; (c) **subagentes recursivos**: el agente puede llamarse a sí mismo como subagente, con su propio contexto aislado. Se distribuye como CLI de npm, app de escritorio multiplataforma, chat web/móvil y canales de Telegram/Slack/Discord, con licencia Apache-2.0 y almacén de estado portable. Ya cubrimos el concepto de memoria de agentes el 2026-08-10, lo conectamos con supermemoryai/supermemory el 2026-09-10 y con huggingface/funes el 2026-09-08; letta-code es el eslabón que faltaba para tener ese mismo patrón con identidad y experiencia en el tiempo, y de código abierto.",
+        "madurez_senales": "3.270 ★ · 396 forks · TypeScript · creado 2025-10-25 · último push 2026-09-11 · Apache-2.0 · descripción: \"Stateful agents that are like people, with memory, identity, and the ability to learn and adapt\" · topics: `agent-memory`, `ai`, `claude`, `codex`, `continual-learning`, `letta`, `memgpt`, `stateful-agents`.",
+        "accion_sugerida": "explorar (instalar el CLI, dejar al agente crear un memory block y auditarlo con `/doctor`; comparar el modelo de mod/skills contra el de `obra/superpowers` que ya cubrimos).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:letta-ai/letta-code",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:letta-ai/letta-code",
+          "rel": "complements",
+          "dst": "repo:supermemoryai/supermemory",
+          "primera_mencion": "2026-09-10"
+        },
+        {
+          "src": "repo:letta-ai/letta-code",
+          "rel": "complements",
+          "dst": "repo:huggingface/funes",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:letta-ai/letta-code",
+          "rel": "inspired_by",
+          "dst": "concept:memgpt-vm",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "letta-ai-letta-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Anakin-Inc/anakin (Anakin Scraper)",
+      "url": "https://github.com/Anakin-Inc/anakin",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "API self-hosted de web scraping para IA. Una cadena de handlers (HTTP local → browser anti-detect → API de pago opcional) con auto-fallback, navegador Camoufox anti-detect y selección de proxy vía Thompson sampling. Salida lista para LLM: markdown limpio o JSON estructurado vía Gemini (BYOK). Modo \"zero-config\": solo Go, sin base de datos; `make up` lo levanta con Docker, con web UI incluida.",
+        "por_que_importa": "Anakin es el caso de \"empresa consolidada que libera su stack de scraping\": Anakin cobra y el repo es la versión OSS. La licencia AGPL-3.0 lo inutiliza como dependencia de proyectos cerrados, pero es una pieza muy útil para pipelines OSS/RAG. Ya cubrimos el espacio OSS de scraping el 2026-08-31 con D4Vinci/Scrapling (BSD-3, Python, 4 fetchers), y ahí mismo aparecieron Fortress (engine-level stealth) y Obscura (Rust antidetect); Anakin destaca frente a todos ellos en tres decisiones técnicas concretas: (a) **cadena de handlers con fallback automático**: el grueso de páginas se resuelve en HTTP local gratis y solo el resto escala al browser anti-detect o a la API de pago; (b) **detección de fallos por patrones**: defines regex de éxito/fallo por dominio y reintenta con el siguiente handler; (c) **Thompson sampling para proxies**: aprende en línea qué proxy funciona para qué dominio. El modo zero-config (`make up` con Docker, web UI incluida, sin base de datos) lo hace el más production-grade de los OSS analizados hasta ahora; su principal competidor en servicios gestionados sigue siendo Firecrawl. Señal a vigilar: 39 días sin push en la rama principal (puede ser actividad solo vía PRs, conviene comprobarlo antes de adoptarlo).",
+        "madurez_senales": "3.243 ★ · 201 forks · Go (binario de 30 MB) + Python 3.11 + React 19 · creado 2026-03-17 · último push 2026-08-18 (39 días sin commit — punto a investigar; la rama principal podría tener actividad reciente vía PRs no reflejada en push) · AGPL-3.0.",
+        "accion_sugerida": "leer (la arquitectura de handler-chain con fallback y la lógica de failure-detection por dominio son exportables como patrón; no es viable adoptarlo como librería en código propietario por AGPL-3.0, pero la idea es portable).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Anakin-Inc/anakin",
+          "rel": "implements",
+          "dst": "concept:web-scraping-oss",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Anakin-Inc/anakin",
+          "rel": "complements",
+          "dst": "repo:D4Vinci/Scrapling",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "repo:Anakin-Inc/anakin",
+          "rel": "risk",
+          "dst": "problem:agpl-copyleft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Anakin-Inc/anakin",
+          "rel": "competes_with",
+          "dst": "service:firecrawl",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anakin-inc-anakin-anakin-scraper",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "multimodal-art-projection/YuE",
+      "url": "https://github.com/multimodal-art-projection/YuE",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "modelo de generación de música open-source (HKUST + M-A-P + NYU + Stanford + MBZUAI + ACE Studio). La versión YuE1 (cubierta en cobertura previa, enero de 2025) generaba canciones full-song con lyrics+style. **YuE2** añade planificación simbólica, covers zero-shot y, lo más interesante, **edición agentic por conversación**: le dices al agente \"ponle un saxo en el bridge\" y el modelo regenera con plan simbólico actualizado.",
+        "por_que_importa": "El salto de \"generar audio\" a \"componer y editar con plan simbólico editable\" es el mismo salto que dio la generación de código cuando pasó de autocompletar a planificación simbólica editable, y es lo que convierte a YuE2 en algo más que un MusicGen con más estrellas. Tres elementos exportables del diseño: (a) **backbone AR–NAR mixture-of-transformers**: el plan y los tokens semánticos se generan de forma autorregresiva, mientras los latentes acústicos van por flow matching (el mismo patrón que Stable Audio 3 / MusicGen, pero con planificación por delante); (b) **API por etapas** `plan() → generate_semantic() → synthesize() → decode()`: el plan se puede reutilizar entre runs y editar entre llamadas, igual que harías con un AST entre generaciones de código; (c) **agent skill oficial** ya publicado en el repo (sección `🤖 Agent skill` del README), pensado para que un agente externo manipule el plan. La demo pública \"The Last Train\" pasa de pop mandarín a jazz inglés con saxo en 9 pasos y 14 versiones, mostrando que la frontera del modelo generativo ya no es \"producir output\", sino \"exponer control intermedio que un agente pueda manipular\". Limitación honesta: requiere BF16 con 24 GB de VRAM mínimo y salida a 48 kHz estéreo sin cuantizar, así que no es algo que vayas a correr en un portátil normal.",
+        "madurez_senales": "6.762 ★ · 781 forks · Python 3.12 (BF16, 24 GB VRAM mínimo, 48 kHz estéreo sin cuantizar) · creado 2025-01-23 · último push 2026-09-10 · Apache-2.0 · descripción: \"YuE2: frontier music generation with symbolic planning, zero-shot covers, and agentic music editing\" · topics: `ai`, `audio-generation`, `deep-learning`, `foundation-models`, `gpt`, `huggingface`, `llama`, `llms`, `music-generation`, `style-transfers`, `voice-cloning` · release `yue2-v0.1.6` activa · benchmark interno `WildSongBench` con 192 prompts (YuE2 Bo8 = 6.9632 Avg, \"el más alto observado\").",
+        "accion_sugerida": "explorar (descargar el checkpoint 3B y la skill del agente; auditar el prompt de planning y los slash-commands de la skill; la edición agentic es lo más interesante — comparar contra el modelo `Slash`/skills de Cursor).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "implements",
+          "dst": "technique:symbolic-planning",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "enables",
+          "dst": "concept:agentic-creative-editing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "complements",
+          "dst": "concept:music-foundation-models",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multimodal-art-projection-yue",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "gpustack/gpustack",
+      "url": "https://github.com/gpustack/gpustack",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gestor de cluster GPU open-source para servir modelos LLM (vLLM, SGLang) y exponer instancias GPU bajo demanda con acceso SSH. Soporta hardware heterogéneo (NVIDIA CUDA, AMD ROCm, Huawei Ascend + MindIE, Apple Silicon). Incluye balanceo de modelos (llama, qwen, deepseek), inferencia distribuida, soporte MaaS y pool de workers.",
+        "por_que_importa": "gpustack llena el hueco que aparece el día que dejas de correr el modelo en local y pasas a una \"pequeña nube\" heterogénea (varios Mac Mini, una workstation CUDA, un servidor AMD ROCm e incluso Huawei Ascend + MindIE). El pain point ya no es servir el modelo — eso lo hace vLLM o SGLang — sino **orquestar los workers, decidir qué modelo va en qué nodo, apagar cuando no se usa y exponer SSH para iterar a mano**, y gpustack es exactamente esa pieza: balanceo entre llama, qwen y deepseek, inferencia distribuida, soporte MaaS y pool de workers sobre hardware heterogéneo (NVIDIA CUDA, AMD ROCm, Huawei Ascend + MindIE, Apple Silicon). Ya cubrimos la capa de SDK para agentes sobre esta misma idea el 2026-09-02 con 0xPlaygrounds/rig; gpustack es la infraestructura que va debajo y que convierte ese SDK en algo desplegable. Madurez: cadencia diaria (push de ayer, commits continuos), 5.667 ★, Apache-2.0, ya en producción en setups de tamaño medio. Su valor real para un lector de Código Sin Siesta es que convierte \"tengo hardware\" en \"tengo una API SSH para mi agente\" sin tener que escribir un cluster manager a mano.",
+        "madurez_senales": "5.667 ★ · 641 forks · Python · creado 2024-05-11 · último push 2026-09-10 · Apache-2.0 · descripción: \"A GPU cluster manager for high-performance AI model serving (vLLM, SGLang) and on-demand SSH-accessible GPU instances\" · topics: `ascend`, `cuda`, `deepseek`, `distributed-inference`, `genai`, `high-performance-inference`, `inference`, `llama`, `llm`, `llm-inference`, `llm-serving`, `maas`, `mindie`, `openai`, `qwen`, `rocm`, `sglang`, `vllm`.",
+        "accion_sugerida": "explorar (auditar la API, ver qué tan trivial es declarar un pool Ascend + CUDA y servir Qwen3.5 235B-A22B en moe-expert-mode).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:gpustack/gpustack",
+          "rel": "implements",
+          "dst": "concept:gpu-cluster-orchestration",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:gpustack/gpustack",
+          "rel": "complements",
+          "dst": "repo:0xPlaygrounds/rig",
+          "primera_mencion": "2026-09-02"
+        },
+        {
+          "src": "repo:gpustack/gpustack",
+          "rel": "enables",
+          "dst": "pattern:on-prem-inference-stack",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:gpustack/gpustack",
+          "rel": "solves",
+          "dst": "problem:cross-hardware-llm-serving",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gpustack-gpustack",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "NVIDIA/Megatron-LM",
+      "url": "https://github.com/NVIDIA/Megatron-LM",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework de NVIDIA para entrenar modelos transformer a escala (MT-NLG, Megatron-Turing NLG, las verticales de Llama Nemotron y demás investigación de pre-training de la casa). Push hoy a las 09:11 UTC.",
+        "por_que_importa": "Megatron-LM es el framework OSS de NVIDIA para entrenar transformers a escala (detrás de MT-NLG, Megatron-Turing NLG y las verticales Llama Nemotron, entre otra investigación de pre-training de la casa), y el push de hoy confirma que sigue con cadencia alta: cada semana aparece en el trending de GitHub, lo que es señal de que sigue siendo referencia research-grade aunque los grandes labs ya entrenen con stacks privados (Llama 4, DeepSeek-V4, Qwen3.5-Next usan pipelines propios en la primera mitad de 2026). Para un lector de Código Sin Siesta, el interés real no es adoptarlo como dependencia — su licencia NOASSERTION detecta un SPDX no estándar en GitHub y el archivo LICENSE real es el NVIDIA Software Open Source License, que **no es MIT ni Apache**, hay que leerlo antes de usarlo — sino saber que sigue siendo la pieza OSS donde mirar cuándo aparecen técnicas nuevas de pre-training distribuido. Vale la pena mencionarlo hoy, pero el ángulo fuerte llegaría si NVIDIA libera alguna vertical nueva el mes que viene (Nemotron 4 o equivalente); por ahora lo dejamos como referencia a tener en el radar, no como recomendación de adopción.",
+        "madurez_senales": "17.848 ★ · 4.490 forks · Python · creado 2019-03-21 · último push 2026-09-11 · licencia **NOASSERTION** (la repo GitHub detecta un SPDX no estándar; el archivo `LICENSE` real es el software NVIDIA Open Source License — **no es MIT ni Apache, hay que leer el archivo antes de adoptarlo como dependencia**) · descripción: \"Ongoing research training transformer models at scale\" · topics: `large-language-models`, `model-para`, `transformers`.",
+        "accion_sugerida": "vigilar (sólo relevante si hay release con vertical nueva; la licencia no-OSS confirma que no se va a integrar como dependencia aquí).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/Megatron-LM",
+          "rel": "implements",
+          "dst": "concept:distributed-training-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA/Megatron-LM",
+          "rel": "risk",
+          "dst": "problem:proprietary-license",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA/Megatron-LM",
+          "rel": "enables",
+          "dst": "company:nvidia-research-pipeline",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-megatron-lm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "AlexsJones/llmfit",
+      "url": "https://github.com/AlexsJones/llmfit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(35.887 ★ · 2.271 forks · Rust · MIT · push 2026-09-11) — cientos de modelos y proveedores, un comando para detectar qué corre en tu hardware (GGUF / MLX / Unsloth). Trending continuo desde agosto.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (release tracker; ya en cobertura de 2026-08-20, verificar nuevas integraciones con providers asiáticos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alexsjones-llmfit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "google-deepmind/alphagenome",
+      "url": "https://github.com/google-deepmind/alphagenome",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.086 ★ · 291 forks · Python · Apache-2.0 · push 2026-09-08) — API pública para acceder al modelo AlphaGenome (secuencias genómicas regulatorias).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no hay release reciente del modelo; la API está accesible vía `pip install alphagenome`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-deepmind-alphagenome",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "diegosouzapw/OmniRoute",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(64.464 ★ · 9.016 forks · TypeScript · MIT · push 2026-09-10) — gateway LLM OSS con auto-fallback quota-aware, 352 proveedores y 1.200+ modelos.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (release branch `release/v3.8.51` con cadencia diaria; ver compatibilidad con claude-code-skill si se acopla a Hermes)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diegosouzapw-omniroute",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "nashsu/llm_wiki",
+      "url": "https://github.com/nashsu/llm_wiki",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(18.306 ★ · 2.110 forks · TypeScript · **NOASSERTION** · push 2026-08-25) — wiki auto-construida por un LLM a partir de tus documentos.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (compete con `jordan-gibbs/hyperresearch`, cubierto en 2026-09-10; revisar licencia antes de adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nashsu-llm-wiki",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "tencent/teamai-cli",
+      "url": "https://github.com/tencent/teamai-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.995 ★ · 254 forks · TypeScript · **NOASSERTION** · push 2026-09-11) — CLI para \"Make Every Team AI Native\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (trending recurrente; verificar las primitivas que ofrece — la página de descripción está vacía, único claim es el tagline)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-teamai-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "CathrynLavery/diagram-design",
+      "url": "https://github.com/CathrynLavery/diagram-design",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(38.059 ★ · 2.408 forks · HTML · MIT · push 2026-09-10) — 38 plantillas SVG de diagramas editoriales autocontenidos, sin Mermaid soup.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (herramienta directa para producir las figuras del newsletter; ya vista en 2026-09-10)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cathrynlavery-diagram-design",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

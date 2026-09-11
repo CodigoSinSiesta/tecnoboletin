@@ -1,0 +1,40 @@
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-letta-ai-letta-code", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-letta-ai-letta-code", "dst": "tema:letta-ai-letta-code", "rel": "trata", "added": "2026-09-11"}
+{"src": "repo:letta-ai/letta-code", "dst": "concept:agent-memory", "rel": "implements", "added": "2026-09-11", "primera_mencion": "2026-08-10"}
+{"src": "repo:letta-ai/letta-code", "dst": "repo:supermemoryai/supermemory", "rel": "complements", "added": "2026-09-11", "primera_mencion": "2026-09-10"}
+{"src": "repo:letta-ai/letta-code", "dst": "repo:huggingface/funes", "rel": "complements", "added": "2026-09-11", "primera_mencion": "2026-09-08"}
+{"src": "repo:letta-ai/letta-code", "dst": "concept:memgpt-vm", "rel": "inspired_by", "added": "2026-09-11", "primera_mencion": null}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-anakin-inc-anakin", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-anakin-inc-anakin", "dst": "tema:anakin-inc-anakin-anakin-scraper", "rel": "trata", "added": "2026-09-11"}
+{"src": "repo:Anakin-Inc/anakin", "dst": "concept:web-scraping-oss", "rel": "implements", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:Anakin-Inc/anakin", "dst": "repo:D4Vinci/Scrapling", "rel": "complements", "added": "2026-09-11", "primera_mencion": "2026-08-31"}
+{"src": "repo:Anakin-Inc/anakin", "dst": "problem:agpl-copyleft", "rel": "risk", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:Anakin-Inc/anakin", "dst": "service:firecrawl", "rel": "competes_with", "added": "2026-09-11", "primera_mencion": null}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-multimodal-art-projection-yue", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-multimodal-art-projection-yue", "dst": "tema:multimodal-art-projection-yue", "rel": "trata", "added": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "technique:symbolic-planning", "rel": "implements", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "concept:agentic-creative-editing", "rel": "enables", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "concept:music-foundation-models", "rel": "complements", "added": "2026-09-11", "primera_mencion": null}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-gpustack-gpustack", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-gpustack-gpustack", "dst": "tema:gpustack-gpustack", "rel": "trata", "added": "2026-09-11"}
+{"src": "repo:gpustack/gpustack", "dst": "concept:gpu-cluster-orchestration", "rel": "implements", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:gpustack/gpustack", "dst": "repo:0xPlaygrounds/rig", "rel": "complements", "added": "2026-09-11", "primera_mencion": "2026-09-02"}
+{"src": "repo:gpustack/gpustack", "dst": "pattern:on-prem-inference-stack", "rel": "enables", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:gpustack/gpustack", "dst": "problem:cross-hardware-llm-serving", "rel": "solves", "added": "2026-09-11", "primera_mencion": null}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-nvidia-megatron-lm", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-nvidia-megatron-lm", "dst": "tema:nvidia-megatron-lm", "rel": "trata", "added": "2026-09-11"}
+{"src": "repo:NVIDIA/Megatron-LM", "dst": "concept:distributed-training-framework", "rel": "implements", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:NVIDIA/Megatron-LM", "dst": "problem:proprietary-license", "rel": "risk", "added": "2026-09-11", "primera_mencion": null}
+{"src": "repo:NVIDIA/Megatron-LM", "dst": "company:nvidia-research-pipeline", "rel": "enables", "added": "2026-09-11", "primera_mencion": null}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-alexsjones-llmfit", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-alexsjones-llmfit", "dst": "tema:alexsjones-llmfit", "rel": "trata", "added": "2026-09-11"}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-google-deepmind-alphagenome", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-google-deepmind-alphagenome", "dst": "tema:google-deepmind-alphagenome", "rel": "trata", "added": "2026-09-11"}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-diegosouzapw-omniroute", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-diegosouzapw-omniroute", "dst": "tema:diegosouzapw-omniroute", "rel": "trata", "added": "2026-09-11"}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-nashsu-llm-wiki", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-nashsu-llm-wiki", "dst": "tema:nashsu-llm-wiki", "rel": "trata", "added": "2026-09-11"}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-tencent-teamai-cli", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-tencent-teamai-cli", "dst": "tema:tencent-teamai-cli", "rel": "trata", "added": "2026-09-11"}
+{"src": "boletin:2026-09-11", "dst": "item:https-github-com-cathrynlavery-diagram-design", "rel": "menciona", "added": "2026-09-11"}
+{"src": "item:https-github-com-cathrynlavery-diagram-design", "dst": "tema:cathrynlavery-diagram-design", "rel": "trata", "added": "2026-09-11"}

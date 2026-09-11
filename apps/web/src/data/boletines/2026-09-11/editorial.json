@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-09-11",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Letta code reabre el debate del agente con memoria versionada en git",
+  "posicionamiento": "El hilo de hoy no es un modelo nuevo, es una cadena de piezas de infraestructura OSS que se están consolidando: Letta Code trae el harness de agente stateful con memoria y prompt versionados como código, Anakin suma un scraper empresarial copyleft, gpustack resuelve la orquestación heterogénea y YuE2 aplica planificación simbólica editable a la música. Lo que las une no es el dominio, es la dirección: cada pieza baja del SaaS y se vuelve locally inspeccionable.",
+  "convergencia_stack_css": "Cuatro hallazgos de hoy empujan el stack local-first que CSS lleva semanas cubriendo: Letta Code formaliza la memoria persistente con git y subagentes recursivos como ya se anticipó con supermemory y funes; Anakin se suma al ecosistema OSS de scraping junto a Scrapling; gpustack cubre la capa de orquestación de GPU heterogénea que faltaba bajo rigs. YuE2 queda fuera del núcleo pero confirma el patrón agente-editable.",
+  "cruzado_grafo": "Tres nodos ya conocidos aparecen reforzados hoy: agent-memory (primera mención 2026-08-10) reaparece con Letta Code como su primer harness maduro; web-scraping-oss (vía Scrapling, 2026-08-31) gana un contendiente copyleft; gpu-cluster-orchestration (vía 0xPlaygrounds/rig, 2026-09-02) cierra el ciclo con la capa de cluster. MemGPT y music-foundation-models entran por primera vez como nodos relacionados.",
+  "tendencias_5_boletines": "Tres boletines consecutivos dibujan una misma trayectoria: el 09-09 consolidó la idea de que el coding agent no mejora el modelo sino la capa alrededor; el 09-10 llevó esa capa al cableado (MCP, routing, relay vs local-first); hoy la lleva a la infraestructura más profunda (memoria versionada, scraping OSS, GPU heterogénea, música simbólica). El arco de la semana es del wrapper al substrate.",
+  "alertas": [
+    "Anakin es AGPL-3.0: inutilizable como dependencia en proyectos cerrados y agresivo como SaaS competidor de Firecrawl, hay que leer la licencia antes de adoptarlo.",
+    "Megatron-LM devuelve NOASSERTION en la API y su LICENSE real es el NVIDIA Software Open Source License, no MIT ni Apache; cualquier evaluación debe abrir el archivo antes de citarlo como open source estándar.",
+    "YuE2 es interesante pero la edición agentic por conversación aún no tiene independiente fuera del repo: tratar las demos como promesa, no como capacidad verificada"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "MemFS versionado en git + dreaming auditado + subagentes recursivos es exactamente la pieza que CSS venía anticipando desde el 08-10; merece un artículo sobre cómo construir un agente stateful reproducible con `npm i -g @letta-ai/letta-code`."
+    },
+    {
+      "tipo": "compara-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Anakin, Scrapling, Fortress y Obscura ya cubren el espacio scraping OSS; urge un comparativa concreta con licencia, lenguaje y estrategia anti-detect como ejes para que el lector decida sin humo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "gpustack resuelve el hueco entre el SDK de agentes (rig) y el hardware heterogéneo real; conviene seguir su madurez antes de proponer un tutorial de on-prem inference."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "YuE2 todavía no tiene independiente de su edición agentic; vigilar durante 2-3 boletines antes de elevarlo a hallazgo principal de pleno derecho"
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Megatron-LM aparece cada semana pero su licencia NVIDIA no es estándar; recordatorio periódico para no presentarlo como drop-in open source en futuros boletines."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
