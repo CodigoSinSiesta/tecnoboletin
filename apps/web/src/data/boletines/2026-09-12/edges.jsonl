@@ -1,0 +1,31 @@
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-nvlabs-sol-pi", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-nvlabs-sol-pi", "dst": "tema:nvlabs-sol-pi", "rel": "trata", "added": "2026-09-12"}
+{"src": "repo:NVlabs/SoL-Pi", "dst": "concept:agent-cost-efficiency", "rel": "implements", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:NVlabs/SoL-Pi", "dst": "repo:earendil-works/pi-coding-agent", "rel": "extends", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:NVlabs/SoL-Pi", "dst": "technique:auto-research-loop", "rel": "enables", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:NVlabs/SoL-Pi", "dst": "repo:AlexsJones/llmfit", "rel": "complements", "added": "2026-09-12", "primera_mencion": null}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-nvlabs-cuda-oxide", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-nvlabs-cuda-oxide", "dst": "tema:nvlabs-cuda-oxide", "rel": "trata", "added": "2026-09-12"}
+{"src": "repo:NVlabs/cuda-oxide", "dst": "concept:rust-to-gpu-compilation", "rel": "implements", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:NVlabs/cuda-oxide", "dst": "repo:vaivaswatha/pliron", "rel": "uses", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:NVlabs/cuda-oxide", "dst": "technique:single-source-gpu-kernel", "rel": "enables", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:NVlabs/cuda-oxide", "dst": "problem:alpha-quality", "rel": "risk", "added": "2026-09-12", "primera_mencion": null}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-datahub-project-datahub", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-datahub-project-datahub", "dst": "tema:datahub-project-datahub", "rel": "trata", "added": "2026-09-12"}
+{"src": "repo:datahub-project/datahub", "dst": "concept:agent-context-governance", "rel": "implements", "added": "2026-09-12", "primera_mencion": null}
+{"src": "repo:datahub-project/datahub", "dst": "repo:letta-ai/letta-code", "rel": "complements", "added": "2026-09-12", "primera_mencion": "2026-09-11"}
+{"src": "repo:datahub-project/datahub", "dst": "pattern:ai-stack-discovery", "rel": "enables", "added": "2026-09-12", "primera_mencion": null}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-alsk1992-cloddsbot", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-alsk1992-cloddsbot", "dst": "tema:alsk1992-cloddsbot", "rel": "trata", "added": "2026-09-12"}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-wafer-ai-gpu-perf-engineering-resources", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-wafer-ai-gpu-perf-engineering-resources", "dst": "tema:wafer-ai-gpu-perf-engineering-resources", "rel": "trata", "added": "2026-09-12"}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-akitaonrails-ai-usagebar", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-akitaonrails-ai-usagebar", "dst": "tema:akitaonrails-ai-usagebar", "rel": "trata", "added": "2026-09-12"}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-mesh-llm-mesh-llm", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-mesh-llm-mesh-llm", "dst": "tema:mesh-llm-mesh-llm", "rel": "trata", "added": "2026-09-12"}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-jihe520-mathmodelagent", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-jihe520-mathmodelagent", "dst": "tema:jihe520-mathmodelagent", "rel": "trata", "added": "2026-09-12"}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-openaiotlab-cuhk-x", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-openaiotlab-cuhk-x", "dst": "tema:openaiotlab-cuhk-x", "rel": "trata", "added": "2026-09-12"}
+{"src": "boletin:2026-09-12", "dst": "item:https-github-com-melgarafael-deskcommcrm", "rel": "menciona", "added": "2026-09-12"}
+{"src": "item:https-github-com-melgarafael-deskcommcrm", "dst": "tema:melgarafael-deskcommcrm", "rel": "trata", "added": "2026-09-12"}

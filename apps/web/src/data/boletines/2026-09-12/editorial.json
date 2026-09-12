@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-09-12",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "NVlabs abre dos piezas el mismo dia y DataHub se reescribe como capa de contexto para agentes",
+  "posicionamiento": "El dia no es un modelo, es el cableado que se consolida: NVIDIA Labs firma MIT dos veces en la misma ventana (SoL-Pi reduce tokens del harness sin recortar trabajo; cuda-oxide compila kernels CUDA desde Rust sin DSL ni FFI), mientras DataHub se reposiciona como \"Context Platform\" con tags de agente explicitos. El hilo es la migracion del agente desde el LLM hacia la pila que lo rodea -- economia de tokens, kernels escribibles y gobierno del contexto de datos.",
+  "convergencia_stack_css": "SoL-Pi encaja directo en la linea agent-cost-efficiency que el boletin viene siguiendo con gpustack y llmfit, esta vez del lado del harness. DataHub completa el cuadro iniciado ayer con letta-code: donde letta cubre la memoria entre turnos del agente, DataHub cubre la gobernanza del contexto de datos (tablas, linaje, pipelines). cuda-oxide es lateral pero legitima el discurso de \"stack escribible\" sin atarse a C++ ni a DSLs propietarios.",
+  "cruzado_grafo": "El nodo nuevo relevante es concept:agent-context-governance, que aterriza con DataHub el mismo dia en que letta-code lo dejaba como pieza de memoria de agente (primera_mencion 2026-09-11). La arista complements entre DataHub y letta-code es la primera vez que el grafo ancla dos repos cubriendo caras distintas del mismo concepto. SoL-Pi y cuda-oxide son nodos nuevos sin primera_mencion: ningun boletin previo los cubrio, y el grafo no tenia aun las aristas rust-to-gpu-compilation ni auto-research-loop.",
+  "tendencias_5_boletines": "Con dos dias previos en mano (2026-09-11 sobre infraestructura OSS de agentes y 2026-09-10 sobre cableado y routing de expertos), la lectura de los tres ultimos boletines es consistente: el agente se esta separando del modelo y creciendo como pila. Hoy suma economia de tokens (SoL-Pi), compilacion GPU escribible (cuda-oxide) y gobierno de contexto de datos (DataHub). Tres angulos distintos, una misma direccion.",
+  "alertas": [
+    "cuda-oxide es alpha explicito: NVlabs lo marca con riesgo ligado a alpha-quality y los examples compilan, pero no es production-ready.",
+    "El framing 'auto-research loops' de SoL-Pi describe el proceso que genero las optimizaciones, no garantiza que todas generalicen fuera del harness Pi.",
+    "DataHub lleva 10 anos en desarrollo; el push de hoy puede ser repo-positioning sin commits sustanciales nuevos -- conviene mirar el diff antes de leerlo como giro estrategico real."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Vale la pena desensamblar los cuatro mecanismos de SoL-Pi uno por uno y medir si alguno es portable a otros harnesses stateful, no solo a Pi."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "El pipeline Rust-MIR-Pliron-IR-PTX es la pieza a entender: si Pliron aguanta como IR intermedio, cambia el coste de escribir kernels GPU desde Rust."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "El complemento DataHub + letta-code es articulable como articulo: dos repos cubriendo caras distintas de la misma problematica de contexto del agente."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Conviene seguir el ritmo de releases de cuda-oxide: alpha hoy, pero dos piezas de NVlabs trending el mismo dia sugieren que la siguiente movida puede tocar compilacion o driver."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

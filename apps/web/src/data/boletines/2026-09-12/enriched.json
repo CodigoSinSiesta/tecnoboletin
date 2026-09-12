@@ -1,0 +1,332 @@
+{
+  "version": 2,
+  "date": "2026-09-12",
+  "boletin_origen": "2026-09-12-trending.md",
+  "resumen_ejecutivo": "- **El hallazgo del día es una extensión OSS de Pi Agent para reducir coste de tokens sin recortar trabajo del agente**: `NVlabs/SoL-Pi` debuta con 1.231 ★ en 10 días desde `nvlabs.github.io/SoL-Pi`. Cuatro mecanismos opt-in (Action Fusion, ObservationPack, Evidence-Preserving Reducer, Online Context Compact) descubiertos vía auto-research loops a escala, instalados sobre Pi (`earendil-works/pi-coding-agent`) sin parches upstream. MIT, TS, push de hoy. NVIDIA Labs firmando algo permisivo es la sorpresa.\n- **`NVlabs/cuda-oxide` consolida la línea \"Rust-to-GPU\"**: un rustc backend que compila `#[kernel]` a PTX con un pipeline Rust→MIR→Pliron IR→LLVM IR→PTX, runtime propio, abstracciones device-side (TMA, cluster, atomics scoped). Apache-2.0, 3.280 ★, alpha activo, 3.280 forks en 4 meses. Es la pieza que faltaba para escribir kernels CUDA desde Rust sin DSL ni FFI.\n- **`datahub-project/datahub` reentra como \"Context Platform for AI Stack\"**: 12.694 ★, 3.691 forks, Apache-2.0, push de hoy. Lo que era un catálogo de metadatos data-gov se reposiciona con tags `agent-platform` y `context-management` — encaja en el eje \"agente necesita contexto gobernado\" que ya abrió `letta-code` ayer.\n- **`alsk1992/CloddsBot` empuja el patrón \"agente económico con x402\"**: 2.249 ★, MIT, TypeScript, 21 canales de chat, 118+ estrategias de trading, 10 prediction markets + 7 futures exchanges + Solana/EVM. Hecho en 12 días para Colosseum Agent Hackathon. Lectura editorial: el \"agente que comercia y paga por APIs\" ya no es demo, es producto.\n- **El resto es ruido conocido o spoof**: Trendshift vuelve a llenarse de typosquats (`Acrobat-Reader-Pro`, `FPS-Booster-for-Wiindows`, `KMS-Pico-for-Win`, `Monero-Miner`, `Cinema-4D` — patrón de la semana). GitHub Trending TS y Python sigue recirculando lo ya cubierto (`obra/superpowers`, `diegosouzapw/OmniRoute`, `Tencent/teamai-cli`, `letta-ai/letta-code`, `vercel-labs/skills`, `Volcengine/OpenViking`). Densidad editorial real: moderada — 3 hallazgos + 1 reentrada relevante, menos que ayer pero con Substance.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + typescript + python + rust), GitHub API con verificación de 12 repos (3 hallazgos + 9 radar/old_seen). Blogwatcher 08:00 no publicó hoy (`2026-09-12-blogs.md` no existe; van múltiples días sin logs, **conviene revisar `hermes cron list`**).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "NVlabs/SoL-Pi",
+      "url": "https://github.com/NVlabs/SoL-Pi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "extensión OSS para el agente **Pi** (`earendil-works/pi-coding-agent`, sustituto OpenAI-style local-first de Claude Code) que reduce el coste de tokens sin recortar el trabajo. Empaqueta **cuatro mecanismos opt-in** descubiertos vía auto-research loops a escala: **Action Fusion** (edit + validación en un tool call), **ObservationPack** (resultados grandes se vuelven handles con paginación exacta), **Evidence-Preserving Reducer** (logs largos → resúmenes compactos solo si cada cita coincide con el original archivado) y **Online Context Compact** (los pasos completados son candidatos a compactación, sujeto a presión de ventana).",
+        "por_que_importa": "Tres lecturas encadenadas. (1) Conecta con la línea `concept:agent-cost-efficiency` que el boletín viene siguiendo: ya cubrimos `gpustack` (coste de inferencia) y `AlexsJones/llmfit` (matching modelo/hardware); SoL-Pi añade el ángulo \"ahorrar tokens en el harness sin perder trabajo\", y lo hace con cuatro mecanismos concretos y combinables (Action Fusion, ObservationPack, Evidence-Preserving Reducer, Online Context Compact), no con un único truco. (2) Es MIT firmando NVIDIA Labs, no la `NOASSERTION` propietaria típica: se puede leer el código, adoptarlo y copiar patrones a tu propio agente. (3) El framing \"auto-research loops\" es meta: el repo salió de un proceso automatizado de búsqueda de optimizaciones de harness, no de diseño humano top-down. La pregunta abierta para un artículo es si es la primera vez que un lab grande publica como OSS una optimización descubierta por su propio agente de investigación.",
+        "madurez_senales": "1.231 ★ · 91 forks · TypeScript (Node 22.19+, `@earendil-works/pi-coding-agent` 0.84.2) · creado 2026-09-02 (10 días) · último push 2026-09-12 (hoy) · MIT · descripción: \"SoL-Pi: Scaling Auto-Research Loops for Efficient Agent Harnesses\" · sin topics (repo demasiado nuevo).",
+        "accion_sugerida": "explorar (instalar `pi install git:github.com/NVlabs/SoL-Pi`, dejar al agente correr una sesión larga, comparar el log de tokens contra una sesión sin SoL-Pi. Los 4 mecanismos son opt-in y desactivados por defecto — el path conservador activa solo `actionFusion` + `observationPack`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVlabs/SoL-Pi",
+          "rel": "implements",
+          "dst": "concept:agent-cost-efficiency",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/SoL-Pi",
+          "rel": "extends",
+          "dst": "repo:earendil-works/pi-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/SoL-Pi",
+          "rel": "enables",
+          "dst": "technique:auto-research-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/SoL-Pi",
+          "rel": "complements",
+          "dst": "repo:AlexsJones/llmfit",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvlabs-sol-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "NVlabs/cuda-oxide",
+      "url": "https://github.com/NVlabs/cuda-oxide",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "rustc custom backend para escribir kernels CUDA directamente en Rust. Compila funciones `#[kernel]` a PTX vía un pipeline `Rust → Rust MIR → Pliron IR → LLVM IR → PTX` (Pliron es un framework MLIR-like en Rust). Incluye abstracciones device-side (indexado type-safe, shared memory, atomics scoped, barriers, TMA, warp/cluster ops), runtime host (`cuda-core`/`cuda-async`) y políticas de compilación para especializaciones tuned sin parámetros runtime.",
+        "por_que_importa": "El stack GPU de la casa (CUDA) ha sido durante 15 años un jardín amurallado con C++/DSL — la `cuda` crate de Rust requiere FFI contra el driver. cuda-oxide demuestra que se puede hacer Rust→PTX sin DSL ni FFI: escribes Rust idiomático, el compilador genera el kernel. Es alpha (NVlabs lo dice explícitamente) y el repo lo marca como `risk` ligado a `problem:alpha-quality`, pero el pipeline `Rust → Rust MIR → Pliron IR → LLVM IR → PTX` es real y los examples compilan. Tres ángulos editoriales: (a) es la segunda pieza de NVlabs OSS en trending el mismo día (junto a SoL-Pi), lo que sugiere una estrategia de \"NVIDIA Labs abriendo más\" en esta ventana; (b) el uso de Pliron como IR intermedio es la decisión técnica interesante — un MLIR-like hecho en Rust puro evita atarse al calendario de LLVM upstream; (c) los kernels con closures genéricas (`F: Fn(T) -> T + Copy`) demuestran monomorfización de rustc en terreno GPU, un patrón exportable a otros \"target accelerators\".",
+        "madurez_senales": "3.280 ★ · 262 forks · Rust · creado 2026-04-22 (4 meses) · último push 2026-09-11 (ayer) · Apache-2.0 · descripción: \"cuda-oxide is a Rust-to-CUDA compiler that lets you write (SIMT) GPU kernels in safe(ish), idiomatic Rust. It compiles standard Rust code directly to PTX — no DSLs, no foreign language bindings, just Rust.\" · topics: `async`, `compiler-backend`, `cuda`, `gpu`, `heterogeneous-computing`, `high-performance-computing`, `nvidia`, `programming-languages`, `rust` · Discord 1515530041767759993.",
+        "accion_sugerida": "leer (la arquitectura Pliron→LLVM→PTX y el manejo de closures genéricas sobre kernels son los dos patterns exportables; alpha = no para producción, pero el código es legible y los examples enseñan).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVlabs/cuda-oxide",
+          "rel": "implements",
+          "dst": "concept:rust-to-gpu-compilation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/cuda-oxide",
+          "rel": "uses",
+          "dst": "repo:vaivaswatha/pliron",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/cuda-oxide",
+          "rel": "enables",
+          "dst": "technique:single-source-gpu-kernel",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/cuda-oxide",
+          "rel": "risk",
+          "dst": "problem:alpha-quality",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvlabs-cuda-oxide",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "datahub-project/datahub",
+      "url": "https://github.com/datahub-project/datahub",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma open-source de metadatos que se reposicionó como \"the #1 Open Source AI Data Catalog\" → \"Context Platform for your Data and AI Stack\". Catálogo + linaje + gobernanza + observabilidad + discovery, ahora con tags `agent-platform` y `context-management` explícitos en topics. 10 años de desarrollo (creado 2015-11), push de hoy.",
+        "por_que_importa": "Encaja en el eje `concept:agent-context-governance` que consolidamos ayer (2026-09-11) con `letta-ai/letta-code` en el boletín previo. La diferencia clave: DataHub opera a nivel de datos (tablas, columnas, pipelines, dashboards, datasets) y `letta-code` opera a nivel de memoria del agente. Para un sistema que combine ambos, DataHub es la pieza que responde \"qué tabla consultar y por qué esa tabla es confiable\", mientras que letta cubre \"qué recuerda el agente entre turnos\". Su README lo dice explícitamente: \"Enabling discovery, governance, and observability across your entire data ecosystem\". Lleva 10 años de desarrollo (creado 2015-11) y el push de hoy, sumado a los topics `agent-platform` y `context-management`, muestra que la capa de \"AI Stack\" no es marketing vacío: hay commits que la sustentan. Trending ahora precisamente por esa integración.",
+        "madurez_senales": "12.694 ★ · 3.691 forks · Python + TypeScript + Java (DataHub es un SaaS con frontend React) · creado 2015-11-18 · último push 2026-09-12 (hoy) · Apache-2.0 · descripción: \"The Context Platform for your Data and AI Stack\" · topics: `agent-platform`, `context-management`, `data-catalog`, `data-discovery`, `data-governance`, `data-observability`, `datahub`, `metadata` · **default_branch: master** (no `main`, hay que recordarlo al leer archivos vía `raw.githubusercontent.com`).",
+        "accion_sugerida": "vigilar (el pivot a \"Context Platform for AI Stack\" tiene Substance pero hay que validar la versión real de los features agent. Comprobar si el módulo `datahub-actions` ya soporta inyección de contexto a agentes Pi/claude-code, o si el tag es aspiracional).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:datahub-project/datahub",
+          "rel": "implements",
+          "dst": "concept:agent-context-governance",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:datahub-project/datahub",
+          "rel": "complements",
+          "dst": "repo:letta-ai/letta-code",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:datahub-project/datahub",
+          "rel": "enables",
+          "dst": "pattern:ai-stack-discovery",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "datahub-project-datahub",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "alsk1992/CloddsBot",
+      "url": "https://github.com/alsk1992/CloddsBot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.249 ★ · 290 forks · TypeScript · MIT · push 2026-09-12, hoy) — agente Claude de trading que opera 10 prediction markets (Polymarket, Kalshi) + 7 futures exchanges (Binance, Hyperliquid) + Solana DEXs (Jupiter, Pump.fun, Raydium) + 5 EVM chains + Bittensor mining, 21 canales de chat, 118+ estrategias. Hecho en 12 días para Colosseum Agent Hackathon sobre Solana. Topics relevantes: `trading`, `x402`, `agent-commerce`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (la integración x402 + agent commerce es la pieza editorial — pero el repo es joven, auditar arquitectura antes de citarlo como referencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alsk1992-cloddsbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "wafer-ai/gpu-perf-engineering-resources",
+      "url": "https://github.com/wafer-ai/gpu-perf-engineering-resources",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.611 ★ · 279 forks · Python · **sin licencia declarada** · push 2026-08-23) — lista curada de recursos para AI performance engineering, desde fundamentos GPU hasta inferencia en producción. El README es en sí mismo el deliverable",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (útil como punto de partida si Alejandro entra a GP perf en serio; la falta de licencia declarada obliga a tratar el repo como referencia, no como dependencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wafer-ai-gpu-perf-engineering-resources",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "akitaonrails/ai-usagebar",
+      "url": "https://github.com/akitaonrails/ai-usagebar",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(475 ★ · 97 forks · Rust · MIT · push 2026-09-11) — widget Waybar en Rust para monitorizar planes/créditos de Claude, GPT, GLM y OpenRouter en la barra de un compositor Linux (Hyprland/Sway). Inspirado en `claudebar`/`codexbar`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (problema específico pero tiny + standalone; útil si Alejandro usa waybar; el patrón de \"monitor multi-provider\" es aplicable a otros providers)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "akitaonrails-ai-usagebar",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Mesh-LLM/mesh-llm",
+      "url": "https://github.com/Mesh-LLM/mesh-llm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.387 ★ · 409 forks · Rust · Apache-2.0 · push 2026-09-12, hoy) — \"Distributed AI/LLM for the people. Share compute privately or publicly to power your agents and chat\". Tópico: compute distribuido peer-to-peer para correr LLMs",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (sigue el patrón Petals/Avalanche de compute sharing; la pregunta es si tiene tracción real de red o si es aspiracional — verificar métricas de red en el README)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mesh-llm-mesh-llm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "jihe520/MathModelAgent",
+      "url": "https://github.com/jihe520/MathModelAgent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.941 ★ · 394 forks · Python · **sin licencia declarada** · push 2026-09-10) — agente con skills para resolver problemas de modelado matemático (math competitions tipo MCM/ICM) y generar paper completo listo para entrega. README bilingüe zh/en",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (cifra de estrellas notable, pero sin licencia declarada + matemática de nicho — no es el agente de producción; la decisión editorial es \"¿cuál es el siguiente paso del agente-hacia-paper?\" tras `multimodal-art-projection/YuE2`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jihe520-mathmodelagent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "openaiotlab/CUHK-X",
+      "url": "https://github.com/openaiotlab/CUHK-X",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(301 ★ · 7 forks · Python · **NOASSERTION** · push 2026-09-10) — dataset y benchmark multimodal para Human Action Recognition (paper MobiSys 2026)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (research artefact, no production code; revisar paper antes de citar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openaiotlab-cuhk-x",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "melgarafael/DeskcommCRM",
+      "url": "https://github.com/melgarafael/DeskcommCRM",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.467 ★ · 511 forks · TypeScript · MIT · push 2026-09-12, hoy) — CRM open-source con agentes AI nativos + WhatsApp (vía WAHA), multi-tenant, MCP-ready, LGPD-compliant. Alternativa OSS a Kommo/Octadesk/Intercom para LATAM",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (caso de uso regional interesante; verificar compatibilidad WAHA + MCP antes de mencionarlo en radar operativo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "melgarafael-deskcommcrm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 3,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/3 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
