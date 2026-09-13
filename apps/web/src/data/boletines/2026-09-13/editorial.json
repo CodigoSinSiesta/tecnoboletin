@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-09-13",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Skills como formato: tres vendors publican el mismo patron en el mismo dia",
+  "posicionamiento": "Tres vendors distintos —Anthropic, Google y Pi/earendil— publican SKILL.md oficial o curado el mismo dia, mientras xiaolai/vmark y BuilderIO/agent-native consolidan el lado editor y framework agentic. El SKILL.md deja de ser un experimento de Anthropic y se convierte en formato con adopters cruzados.",
+  "convergencia_stack_css": "El bloque skills encaja con la linea editorial de local-first y agéntico de Código Sin Siesta: vmark es editor local-first con MCP one-click hacia Claude Desktop, Claude Code, Codex, Antigravity y opencode, y BuilderIO define un action layer compartido entre agente y UI —ambas piezas piensan en el mismo archivo entre humano y agente.",
+  "cruzado_grafo": "Todos los hallazgos llegan sin primera_mencion, lo que confirma que son nodos nuevos en el grafo: pattern:agent-skills aparece implementado por tres vendors el mismo dia, y pattern:shared-actions se estrena con BuilderIO. tool:earendil-works-pi entra como nodo nuevo con pi-review como extension.",
+  "tendencias_5_boletines": "Solo se recibe contexto de 2026-09-12 y 2026-09-11, ambos centrados en infraestructura OSS que rodea al agente (harness, orquestacion, planificacion simbolica). Hoy el patron dominante cambia: la consolidacion se desplaza del harness al formato skills y al action layer compartido, complementando los cables de los dias previos.",
+  "alertas": [
+    "La licencia de BuilderIO/agent-native no se pudo verificar por rate-limit; revisar LICENSE antes de adoptarlo.",
+    "SnailSploit/Claude-Red (78 skills ofensivos) y BehiSecc/HuntProxy son herramientas de red team; verificar alcance legal y etico antes de ejecutar.",
+    "gemini-skills reporta 87–96% de acierto en sus propias benchmarks de Google; falta validacion externa."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "vmark es editor local-first con MCP nativo hacia seis agentes; cabe en el flujo de notas y drafts de CSS sin cloud lock-in."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "agent-native define un action layer compartido agente/UI; util si CSS prototipa una herramienta donde humano y agente llaman a la misma capability."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "pyrefly recien salido de alpha; conviene medir latencia real contra mypy/pyright antes de meterlo en CI."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "gemini-skills publica cifras concretas de adherencia al SDK; ejemplo util para argumentar skills vs prompt largo en futuros articulos."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

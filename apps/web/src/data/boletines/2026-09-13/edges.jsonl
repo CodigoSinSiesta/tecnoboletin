@@ -1,0 +1,51 @@
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-snailsploit-claude-red", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-snailsploit-claude-red", "dst": "tema:snailsploit-claude-red", "rel": "trata", "added": "2026-09-13"}
+{"src": "SnailSploit/Claude-Red", "dst": "pattern:agent-skills", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "SnailSploit/Claude-Red", "dst": "problem:red-team-automation", "rel": "solves", "added": "2026-09-13", "primera_mencion": null}
+{"src": "SnailSploit/Claude-Red", "dst": "concept:claude-skills-system", "rel": "relevant_to", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-xiaolai-vmark", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-xiaolai-vmark", "dst": "tema:xiaolai-vmark", "rel": "trata", "added": "2026-09-13"}
+{"src": "xiaolai/vmark", "dst": "concept:ai-native-editor", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "xiaolai/vmark", "dst": "protocol:mcp", "rel": "uses", "added": "2026-09-13", "primera_mencion": null}
+{"src": "xiaolai/vmark", "dst": "company:anthropic-claude-desktop", "rel": "complements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "xiaolai/vmark", "dst": "concept:local-first", "rel": "relevant_to", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-builderio-agent-native", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-builderio-agent-native", "dst": "tema:builderio-agent-native", "rel": "trata", "added": "2026-09-13"}
+{"src": "BuilderIO/agent-native", "dst": "pattern:shared-actions", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "BuilderIO/agent-native", "dst": "framework:langgraph", "rel": "competes_with", "added": "2026-09-13", "primera_mencion": null}
+{"src": "BuilderIO/agent-native", "dst": "concept:agentic-ui", "rel": "relevant_to", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-google-gemini-gemini-skills", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-google-gemini-gemini-skills", "dst": "tema:google-gemini-gemini-skills", "rel": "trata", "added": "2026-09-13"}
+{"src": "google-gemini/gemini-skills", "dst": "pattern:agent-skills", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "google-gemini/gemini-skills", "dst": "sdk:gemini-api", "rel": "uses", "added": "2026-09-13", "primera_mencion": null}
+{"src": "google-gemini/gemini-skills", "dst": "repo:google-gemini-cookbook", "rel": "complements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-facebook-pyrefly", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-facebook-pyrefly", "dst": "tema:facebook-pyrefly", "rel": "trata", "added": "2026-09-13"}
+{"src": "facebook/pyrefly", "dst": "concept:python-type-checker", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "facebook/pyrefly", "dst": "tool:mypy", "rel": "competes_with", "added": "2026-09-13", "primera_mencion": null}
+{"src": "facebook/pyrefly", "dst": "tool:pyright", "rel": "competes_with", "added": "2026-09-13", "primera_mencion": null}
+{"src": "facebook/pyrefly", "dst": "company:meta", "rel": "relevant_to", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-behisecc-huntproxy", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-behisecc-huntproxy", "dst": "tema:behisecc-huntproxy", "rel": "trata", "added": "2026-09-13"}
+{"src": "BehiSecc/HuntProxy", "dst": "concept:ai-agent-tooling", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "BehiSecc/HuntProxy", "dst": "problem:web-pentest-automation", "rel": "solves", "added": "2026-09-13", "primera_mencion": null}
+{"src": "BehiSecc/HuntProxy", "dst": "repo:SnailSploit/Claude-Red", "rel": "complements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-earendil-works-pi-review", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-earendil-works-pi-review", "dst": "tema:earendil-works-pi-review", "rel": "trata", "added": "2026-09-13"}
+{"src": "earendil-works/pi-review", "dst": "pattern:agent-skills", "rel": "implements", "added": "2026-09-13", "primera_mencion": null}
+{"src": "earendil-works/pi-review", "dst": "tool:earendil-works-pi", "rel": "extends", "added": "2026-09-13", "primera_mencion": null}
+{"src": "earendil-works/pi-review", "dst": "problem:code-review-automation", "rel": "solves", "added": "2026-09-13", "primera_mencion": null}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-dagucloud-dagu", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-dagucloud-dagu", "dst": "tema:dagucloud-dagu", "rel": "trata", "added": "2026-09-13"}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-kuddev-pebrel", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-kuddev-pebrel", "dst": "tema:kuddev-pebrel", "rel": "trata", "added": "2026-09-13"}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-obot-platform-obot", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-obot-platform-obot", "dst": "tema:obot-platform-obot", "rel": "trata", "added": "2026-09-13"}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-scalarlinkaxe-optimizer-toolkit", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-scalarlinkaxe-optimizer-toolkit", "dst": "tema:scalarlinkaxe-optimizer-toolkit", "rel": "trata", "added": "2026-09-13"}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-najmuzzaman-mohammad-gawkbot", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-najmuzzaman-mohammad-gawkbot", "dst": "tema:najmuzzaman-mohammad-gawkbot", "rel": "trata", "added": "2026-09-13"}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-imputnet-cobalt", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-imputnet-cobalt", "dst": "tema:imputnet-cobalt", "rel": "trata", "added": "2026-09-13"}
+{"src": "boletin:2026-09-13", "dst": "item:https-github-com-google-gemini-gemini-cli", "rel": "menciona", "added": "2026-09-13"}
+{"src": "item:https-github-com-google-gemini-gemini-cli", "dst": "tema:google-gemini-gemini-cli", "rel": "trata", "added": "2026-09-13"}

@@ -1,0 +1,504 @@
+{
+  "version": 2,
+  "date": "2026-09-13",
+  "boletin_origen": "2026-09-13-trending.md",
+  "resumen_ejecutivo": "- **Claude Skills se consolidan como formato de facto**: hoy coinciden tres repos con estrategia skills-first — `SnailSploit/Claude-Red` (78 skills ofensivos), `google-gemini/gemini-skills` (skills oficiales Gemini API con métricas 87–96% acierto) y `earendil-works/pi-review` (skill/review extension para Pi). El estándar `SKILL.md` ya tiene adopters en tres vendors.\n- **Editor IA-nativo con MCP de verdad**: `xiaolai/vmark` (TS, ISC) entra a Trendshift pos 12 con un editor markdown que habla MCP nativo con Claude Desktop, Claude Code, Codex CLI, Antigravity CLI y opencode. Hecho por xiaolai (autor del \"Programmer's Oath\"), open source, local-first.\n- **Agentic frameworks maduran hacia \"shared actions/data/state\"**: `BuilderIO/agent-native` (TS, 4.7k★) define un único action layer compartido entre agente y UI; `obot-platform/obot` (Go) lleva la idea a enterprise con MCP gateway, sandbox y audit logs.\n- **Tooling Python en Rust de Meta**: `facebook/pyrefly` (Rust, 6.9k★, MIT) sigue escalando como type checker Python de calidad industrial — sustituto real de mypy/pyright.\n- **Seguridad web + AI agents**: `BehiSecc/HuntProxy` (Rust, Apache-2.0) propone un workbench de pentesting pensado para que AI agents ejecuten reconnaissance y análisis.\nFuentes consultadas: Trendshift daily, GitHub Trending daily + TypeScript/Python/Rust/Go slices, GitHub API cuando aplica. Blogwatcher no publicado hoy (último `*-blogs.md` 2026-07-05).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "SnailSploit/Claude-Red",
+      "url": "https://github.com/SnailSploit/Claude-Red",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Librería curada de skills (`SKILL.md`) de seguridad ofensiva para el sistema Claude Skills: desde SQLi y shellcode hasta EDR evasion, ADCS, supply chain y prompt injection.",
+        "por_que_importa": "Materializa el patrón \"skill como metodología\" con 78 entradas repartidas en 23 categorías (Web App, Auth, Active Directory, Cloud, Mobile, IoT, Red Team, Exploit Dev, Fuzzing, Recon, API Security, Container/K8s, CI/CD, Crypto, PrivEsc, Post-Ex, Forensics/C2, Supply Chain, Social Engineering, Network, AI Security). Se instala con `git clone ~/.claude/skills/claude-red` y Claude las auto-carga según el contexto. Es un ejemplo concreto de cómo tercerizar conocimiento experto al LLM sin tener que meter 78 manuales en el system prompt. El repo no tiene tripletas con `primera_mencion`, así que no enlaza con boletines previos del grafo.",
+        "madurez_senales": "3.738 ★ · Python · MIT · creado 2026-04 · último push 2026-09 · 23 categorías · 78 skills · topics: no verificado (API rate-limited al verificar).",
+        "accion_sugerida": "**explorar** (auditar el SKILL.md de AI Security para extraer ideas para un post sobre Claude Skills vs MCP servers).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "SnailSploit/Claude-Red",
+          "rel": "implements",
+          "dst": "pattern:agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "SnailSploit/Claude-Red",
+          "rel": "solves",
+          "dst": "problem:red-team-automation",
+          "primera_mencion": null
+        },
+        {
+          "src": "SnailSploit/Claude-Red",
+          "rel": "relevant_to",
+          "dst": "concept:claude-skills-system",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snailsploit-claude-red",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "xiaolai/vmark",
+      "url": "https://github.com/xiaolai/vmark",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Editor de plain-text local-first donde humanos y AI colaboran sobre el mismo archivo (Markdown, YAML, JSON, TOML, Mermaid, SVG, HTML). Integración MCP one-click con Claude Desktop, Claude Code, Codex CLI, Antigravity CLI, Grok CLI y opencode.",
+        "por_que_importa": "El autor es xiaolai, conocido por el \"Programmer's Oath\" (\"leave the world a little better than you found it\"), lo que da contexto sobre la motivación del proyecto: editor local-first pensado para que humano y AI colaboren sobre el mismo archivo (Markdown, YAML, JSON, TOML, Mermaid, SVG, HTML). Ofrece tres modos markdown (WYSIWYG, Source Peek y Source Mode), render sensible al esquema —un `Cargo.toml` o un `pyproject.toml` se ven como árbol en lugar de texto plano—, soporte CJK bien resuelto y 6 temas. La integración MCP one-click con Claude Desktop, Claude Code, Codex CLI, Antigravity CLI, Grok CLI y opencode lo coloca en el centro del flujo agentic actual; instalable en macOS con Homebrew. No hay tripletas con `primera_mencion`, así que no conecta con boletines anteriores.",
+        "madurez_senales": "654 ★ · 108 forks · TypeScript · ISC · creado 2026-01-03 · último push 2026-09-12 · 7 issues abiertos · homepage https://vmark.app · topics: no verificado.",
+        "accion_sugerida": "**probar** (instalar via `brew install xiaolai/tap/vmark` y validar la integración con Claude Code).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "xiaolai/vmark",
+          "rel": "implements",
+          "dst": "concept:ai-native-editor",
+          "primera_mencion": null
+        },
+        {
+          "src": "xiaolai/vmark",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "xiaolai/vmark",
+          "rel": "complements",
+          "dst": "company:anthropic-claude-desktop",
+          "primera_mencion": null
+        },
+        {
+          "src": "xiaolai/vmark",
+          "rel": "relevant_to",
+          "dst": "concept:local-first",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xiaolai-vmark",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "BuilderIO/agent-native",
+      "url": "https://github.com/BuilderIO/agent-native",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework TypeScript open-source para construir aplicaciones agentic donde cada capability se define una vez como action; el agente la usa como tool y la UI la llama desde código.",
+        "por_que_importa": "La tesis central —\"coding agents work with more than a text box\"— junto al patrón shared actions / shared data / shared application state resuelve el dilema clásico de \"¿quién llama, el agente o la UI?\" en apps agentic: defines una capability una sola vez y la reutilizas como tool para el LLM y como función desde la UI. Scaffold rápido con `npx @agent-native/core@latest create my-agent --standalone --template chat` y docs en agent-native.com. El respaldo de BuilderIO (visual CMS con años de recorrido) le quita el halo de vaporware. Ojo: la licencia no se pudo verificar por rate-limit, conviene revisar el LICENSE en el repo antes de usarlo como dependencia. Las tripletas no traen `primera_mencion`, así que no remite a boletines previos.",
+        "madurez_senales": "4.746 ★ · TypeScript · licencia no detectada (sin LICENSE declarado en API) · último push no verificado (rate limit). Verificar LICENSE en el repo antes de build-dependency.",
+        "accion_sugerida": "**leer** (la doc de \"Why build agents with UIs\" es la mejor síntesis corta del problema que todo framework agentic tiene que resolver).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "BuilderIO/agent-native",
+          "rel": "implements",
+          "dst": "pattern:shared-actions",
+          "primera_mencion": null
+        },
+        {
+          "src": "BuilderIO/agent-native",
+          "rel": "competes_with",
+          "dst": "framework:langgraph",
+          "primera_mencion": null
+        },
+        {
+          "src": "BuilderIO/agent-native",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-ui",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "builderio-agent-native",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "google-gemini/gemini-skills",
+      "url": "https://github.com/google-gemini/gemini-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Librería de skills para la Gemini API, SDK e interacciones con modelos. Cubre text generation, multi-turn chat, streaming, function calling, structured output, image generation, Deep Research agents, Gemini Live API (WebSocket audio/video/text) y Gemini Omni 1.1 Flash (video editing).",
+        "por_que_importa": "Google publica cifras concretas: 87 % de acierto con Gemini 3 Flash y 96 % con Gemini 3.1 Pro al generar llamadas correctas a la Gemini API siguiendo buenas prácticas cuando la skill está añadida, frente a generarlas sin ella. Es la confirmación de que el patrón \"skills como context injection\" funciona a escala industrial, no solo en proyectos pequeños. Cubre text generation, chat multi-turno, streaming, function calling, structured output, generación de imagen, agentes Deep Research, Gemini Live API (audio/vídeo/texto por WebSocket) y Omni1.1 Flash para edición de vídeo. Instalable vía `npx skills add google-gemini/gemini-skills --list`. Las tripletas del grafo no llevan `primera_mencion`, por lo que no se enlaza con boletines anteriores del grafo.",
+        "madurez_senales": "4.105 ★ · Python · Apache-2.0 · último push no verificado (rate limit). README confirma instalación vía Vercel skills CLI y Context7 skills CLI.",
+        "accion_sugerida": "**vigilar** (el benchmark de skill-vs-no-skill es la pieza editorial más fuerte del mes; replicar el patrón con Claude Skills propias).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "google-gemini/gemini-skills",
+          "rel": "implements",
+          "dst": "pattern:agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "google-gemini/gemini-skills",
+          "rel": "uses",
+          "dst": "sdk:gemini-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "google-gemini/gemini-skills",
+          "rel": "complements",
+          "dst": "repo:google-gemini-cookbook",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-gemini-gemini-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "facebook/pyrefly",
+      "url": "https://github.com/facebook/pyrefly",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Type checker rápido y language server para Python con potentes features IDE, escrito en Rust. Salió de alpha y ya está en uso interno en Meta.",
+        "por_que_importa": "Alternativa industrial a mypy y pyright escrita en Rust, lo que se traduce en type checking mucho más rápido en codebases grandes. Ya está en uso interno en Meta, así que no es un experimento: es un sustituto real para quien tenga CI frenado por el type checker de Python. Trae incremental checking, integración IDE y strictness configurable. No tiene tripletas con `primera_mencion`, de modo que no remite a boletines previos del grafo.",
+        "madurez_senales": "6.960 ★ · Rust · MIT · topics: no verificado · creado 2024 (proyecto relativamente nuevo). Verificado en runs anteriores.",
+        "accion_sugerida": "**probar** (reemplazar mypy en un proyecto Python real y comparar velocidad CI; reportar resultados al grafo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "facebook/pyrefly",
+          "rel": "implements",
+          "dst": "concept:python-type-checker",
+          "primera_mencion": null
+        },
+        {
+          "src": "facebook/pyrefly",
+          "rel": "competes_with",
+          "dst": "tool:mypy",
+          "primera_mencion": null
+        },
+        {
+          "src": "facebook/pyrefly",
+          "rel": "competes_with",
+          "dst": "tool:pyright",
+          "primera_mencion": null
+        },
+        {
+          "src": "facebook/pyrefly",
+          "rel": "relevant_to",
+          "dst": "company:meta",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "facebook-pyrefly",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "BehiSecc/HuntProxy",
+      "url": "https://github.com/BehiSecc/HuntProxy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Herramienta de seguridad web pensada para que AI agents ejecuten reconnaissance, análisis y reporting en auditorías web. Escrita en Rust, Apache-2.0.",
+        "por_que_importa": "Confirma la tendencia \"AI agents + security\": HuntProxy expone su API como tool callable por agentes y encaja directamente con stacks tipo `SnailSploit/Claude-Red` (cubierto en este mismo boletín como idx 0) o skills de seguridad en Cursor/Codex, donde el agente orquesta el reconocimiento web en lugar de encadenar curl a mano. Escrito en Rust con Apache-2.0, repo pequeño (170★) pero stack serio. El grafo no aporta `primera_mencion` para este nodo, así que no enlaza con boletines anteriores.",
+        "madurez_senales": "170 ★ · Rust · Apache-2.0 · creado 2026-07-27 · último push 2026-08-17 · default_branch=master · topics: no verificado.",
+        "accion_sugerida": "**vigilar** (proyecto joven; revisar si gana tracción cuando integre MCP server oficial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "BehiSecc/HuntProxy",
+          "rel": "implements",
+          "dst": "concept:ai-agent-tooling",
+          "primera_mencion": null
+        },
+        {
+          "src": "BehiSecc/HuntProxy",
+          "rel": "solves",
+          "dst": "problem:web-pentest-automation",
+          "primera_mencion": null
+        },
+        {
+          "src": "BehiSecc/HuntProxy",
+          "rel": "complements",
+          "dst": "repo:SnailSploit/Claude-Red",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "behisecc-huntproxy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "earendil-works/pi-review",
+      "url": "https://github.com/earendil-works/pi-review",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Extensión para el coding agent Pi (`earendil-works/pi`) que añade un workflow de code review con comandos `/review` y `/end-review`. Revisa uncommitted changes, contra base branch, commit específico, PR de GitHub, o carpetas como snapshot.",
+        "por_que_importa": "Los autores de Pi (earendil-works, paquete npm `@earendil-works/pi-coding-agent`) publican su propio workflow de review como skill instalable con `pi install git:github.com/earendil-works/pi-review`. Aporta comandos `/review` y `/end-review` que cubren los casos habituales: cambios sin commit, contra base branch, commit concreto, PR de GitHub o snapshot de una carpeta, con findings priorizados, veredicto y siguientes pasos accionables. Sirve como referencia para quien esté construyendo skills de review en otros agentes (Claude Code, Codex, etc.), no solo para usuarios de Pi. Las tripletas no llevan `primera_mencion`, por lo que no conecta con boletines previos del grafo.",
+        "madurez_senales": "486 ★ · TypeScript · MIT · creado 2026-08 (verificado runs anteriores) · README de 1.1 KB (lean).",
+        "accion_sugerida": "**probar** (instalar via `pi install`; replicar el patrón en un Claude Skill propio).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "earendil-works/pi-review",
+          "rel": "implements",
+          "dst": "pattern:agent-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "earendil-works/pi-review",
+          "rel": "extends",
+          "dst": "tool:earendil-works-pi",
+          "primera_mencion": null
+        },
+        {
+          "src": "earendil-works/pi-review",
+          "rel": "solves",
+          "dst": "problem:code-review-automation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earendil-works-pi-review",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "dagucloud/dagu",
+      "url": "https://github.com/dagucloud/dagu",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.964 ★, Go, GPL-3.0, último push 2026-09-13) — workflow orchestrator self-hostable, declarativo YAML sobre scripts/SSH/containers, alternativa a Airflow/Cron. Topics: `agentic-workflows`, `ai-agents`, `mcp`, `mcp-gateway`, `mcp-server`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (encaja con el trend de \"agentic infrastructure\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dagucloud-dagu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Kuddev/pebrel",
+      "url": "https://github.com/Kuddev/pebrel",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.051 ★, Rust, GPL-3.0, último push 2026-09-12) — terminal emulator AI-native para Windows con GPU acceleration, SSH, persistent sessions, split panes, integrado con claude-code/codex",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (Windows-first AI terminal; si sale Linux/macOS, probar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kuddev-pebrel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "obot-platform/obot",
+      "url": "https://github.com/obot-platform/obot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(stars no verificado, Go, último push reciente) — plataforma open-source de gobernanza AI empresarial: MCP gateway, LLM gateway, sandbox execution, skills registry, audit logs. Compatible con Claude Code, Codex, Cursor, VS Code",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (mejor referencia para \"AI governance platform\" del mes; pieza editorial fuerte si Alejandro cubre enterprise AI)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "obot-platform-obot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "ScalarLinkAxe/Optimizer-Toolkit",
+      "url": "https://github.com/ScalarLinkAxe/Optimizer-Toolkit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.283 ★, PowerShell, último push 2026-09-11, pos 1 Trendshift) — Windows performance tuning utility, NO relacionado con IA/dev",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (ruido en Trendshift; relevante solo si el lector es Windows power user)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "scalarlinkaxe-optimizer-toolkit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "najmuzzaman-mohammad/gawkbot",
+      "url": "https://github.com/najmuzzaman-mohammad/gawkbot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(Go, no verificado) — grok bot open source para automatizar tareas vía AI",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (preguntarse si encaja con la migración de Grok a open weights; revisar si merece post)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "najmuzzaman-mohammad-gawkbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "imputnet/cobalt",
+      "url": "https://github.com/imputnet/cobalt",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(43.918 ★, Svelte, AGPL-3.0, último push 2026-09) — media downloader popular (YouTube, TikTok, etc.). No es dev/IA",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (trending inflado por consumer tools; lo menciono porque su presencia confirma que el dedup funciona — vimos en el pasado que se cuela entre repos IA cuando trendea)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "imputnet-cobalt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(no verificado; reentry con `google-gemini/gemini-skills` ambos trending) — si confirma nuevo push, **vigilar**.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-gemini-gemini-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
