@@ -1,0 +1,510 @@
+{
+  "version": 2,
+  "date": "2026-09-14",
+  "boletin_origen": "2026-09-14-trending.md",
+  "resumen_ejecutivo": "- **Worktrees + AI agents = nuevo primitive de infraestructura**: `max-sixty/worktrunk` (Rust, 7.566 ★) entra a Trending como el CLI canónico para coordinar **múltiples agentes IA en worktrees paralelos** con merge rápido. Patrón ya asumido por Codex, Claude Code y Cursor; ahora tiene un solo binario dedicado. Cambio de tooling: ya no es un plugin, es un primitive de sistema.\n- **Background agents open-source**: `ColeMurray/background-agents` (TS, 3.036 ★) — re-implementación open-source de [Inspect de Ramp](https://builders.ramp.com/post/why-we-built-our-background-agent). Acepta tareas vía Slack, Linear, webhooks; corre sandboxes paralelas; modelos intercambiables (Claude, GPT, Grok, OpenCode). El modelo \"agente persistente desatendido\" se democratiza.\n- **\"Git blame for AI\": `git-ai-project/git-ai`** (Rust, 2.699 ★, Apache-2.0) — extensión git que trackea qué código generó cada agente/modelo/prompt. `git ai blame` muestra porcentaje humano vs IA por commit. La auditoría de código IA entra al version control de forma nativa, sin cambiar el workflow.\n- **Charm sigue ampliando el horizonte terminal**: `charmbracelet/crush` (Go, 28.069 ★) sale del status \"preview\" a \"glamourous agentic coding for all 💘\". Multi-LLM, LSP-enhanced, MCP, sesiones persistentes. Confirmación de que Charm es la casa de referencia del agentic tooling en Go.\n- **El read-only IDE vuelve como categoría**: `px0-ai/px0` (JS, 737 ★, MIT) — IDE **solo lectura** que arranca en <1 ms con 16 MB de RAM. Tesis: si el código lo escribe el agente, el humano necesita navegar/revisar rápido. El editor pierde el monopoly de \"IDE completo\".\n- **Microsoft se apunta a \"AI engineering coach\"**: `microsoft/AI-Engineering-Coach` (TS, 4.053 ★, MIT) lee los logs locales de tu agente de coding y aplica 45 reglas anti-pattern (calidad de prompt, hygiene de sesión, gestión de contexto). Dashboard 100 % local — la promesa \"no data leaves your machine\" es editorialmente potente vs alternativas SaaS.\n- **Deep Agents in Action**: `datawhalechina/deepagents-in-action` (Astro, 2.282 ★) — libro open-source del autor chino conocido como **\"Cang Hai Jiu Su\"** (LangChain Official Ambassador) sobre construir deep agents en producción con LangGraph. Curso oficial no-angloparlante más serio del año; CC BY-NC-SA.\nFuentes consultadas: Trendshift daily, GitHub Trending daily + TypeScript/Python/Rust/Go slices, GitHub API cuando aplica. Blogwatcher no publicado hoy (último `*-blogs.md` 2026-07-05 — bloqueado en investigación previa, ver notas finales).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "max-sixty/worktrunk",
+      "url": "https://github.com/max-sixty/worktrunk",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI en Rust para gestionar git worktrees, pensado específicamente para correr **múltiples agentes de coding en paralelo** sin pisarse unos a otros.",
+        "por_que_importa": "Ya cubrimos el patrón de parallel-agent orchestration el 2026-08-27 al hablar de claude-code y codex-cli; entonces vimos que ambos ya asumían que cada tarea corre en su worktree aislada, pero la gestión del worktree mismo seguía siendo manual. worktrunk saca ese primitive del propio agente y lo convierte en un binario dedicado en Rust, con `wt switch` y `wt list` para moverse entre ramas y comandos `wt` específicos para merge y resolución de conflictos entre worktrees. La integración nativa con `claude`, `codex` y agentes en general es lo que cierra el círculo: ahora puedes correr varios agentes en paralelo sin pisarte el filesystem sin escribir scripts a medida.",
+        "madurez_senales": "7.566 ★ · 271 forks · Rust · NOASSERTION (verificar LICENSE en repo antes de build-dep) · creado 2025-10-17 · último push 2026-09-14 · topics: `agents`, `claude-code`, `codex`, `developer-tools`, `git`, `worktrees` · LICENSE dual MIT/Apache-2.0 según el README.",
+        "accion_sugerida": "**probar** (instalar vía cargo, configurar `wt switch` en un repo con varios agentes en paralelo y reportar fricciones reales).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "max-sixty/worktrunk",
+          "rel": "implements",
+          "dst": "concept:parallel-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "max-sixty/worktrunk",
+          "rel": "complements",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "max-sixty/worktrunk",
+          "rel": "complements",
+          "dst": "tool:codex-cli",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "max-sixty/worktrunk",
+          "rel": "relevant_to",
+          "dst": "pattern:worktree-isolation",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "max-sixty-worktrunk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "ColeMurray/background-agents",
+      "url": "https://github.com/ColeMurray/background-agents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema open-source de **background agents para coding** inspirado en [Inspect de Ramp](https://builders.ramp.com/post/why-we-built-our-background-agent). Acepta tareas vía web UI, Slack, GitHub PRs, Linear o webhooks; las ejecuta en sandboxes paralelas y crea PRs con atribución correcta al usuario que pidió la tarea.",
+        "por_que_importa": "El patrón de \"agente desatendido persistente\" deja de ser exclusivo de hyperscalers como Ramp, GitHub o Google Jules y baja a un proyecto open-source: acepta tareas desde web UI, Slack, GitHub PRs, Linear o webhooks, las ejecuta en sandboxes paralelas y crea PRs con la atribución correcta al usuario que pidió la tarea. Lo diferencial frente a otros multi-agent runners son las multiplayer sessions (varias personas dentro de la misma sesión en tiempo real), el multi-modelo intercambiable (Claude por API o por suscripción del harness Claude Agent, Codex, Grok SuperGrok u OpenCode Zen) y el spawn de sub-tasks paralelas en sandboxes separadas. Caveat importante que conviene leer antes de adoptarlo: el README marca el proyecto como \"single-tenant only\", o sea que no es apto para multi-tenancy ni para dar acceso a varios clientes con datos aislados en la misma instancia.",
+        "madurez_senales": "3.036 ★ · 438 forks · TypeScript · license NOASSERTION vía API (verificar LICENSE en repo) · creado 2026-01-25 · último push 2026-09-14 · topics: `background-agents`, `cloud-agents`, `software-factory`.",
+        "accion_sugerida": "**explorar** (auditar arquitectura del repo: GitHub App installation, sandbox lifecycle, attribution model). Buena pieza editorial sobre \"el patrón Ramp Inspect democratizado\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "implements",
+          "dst": "pattern:background-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "inspired_by",
+          "dst": "company:ramp",
+          "primera_mencion": null
+        },
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "complements",
+          "dst": "tool:claude-agent-sdk",
+          "primera_mencion": null
+        },
+        {
+          "src": "ColeMurray/background-agents",
+          "rel": "relevant_to",
+          "dst": "concept:devin-pattern",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "colemurray-background-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "git-ai-project/git-ai",
+      "url": "https://github.com/git-ai-project/git-ai",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Extensión git open-source que registra qué líneas fueron escritas por cada agente/modelo/prompt. Tras instalarla, `git commit` y `git ai blame` muestran el desglose humano vs IA con porcentaje.",
+        "por_que_importa": "Resuelve un problema que ya está pegando en equipos profesionales: saber qué líneas de un repo las escribió IA, cuándo y bajo qué prompt. La auditoría de código generado por IA es un requisito cada vez más presente (el EU AI Act ya pide disclosure de contenido generado, y muchos departamentos de compliance corporativo están pidiendo trazabilidad) y hasta ahora no existía un primitive nativo de git que lo resolviera. La instalación es un hook: tras añadirlo, `git commit` y `git ai blame` muestran el desglose humano vs IA con porcentaje (el README lo ilustra con un commit que sale como `you ██░░░░░░░ ai 6% / 94%`), sin obligar al dev a cambiar su workflow.",
+        "madurez_senales": "2.699 ★ · 291 forks · Apache-2.0 · creado 2025-07-02 · último push 2026-09-09 · topics: `ai`, `ai-blame`, `coding-agents` · autor Aidan Cunniffe (verificable en `git ai blame`).",
+        "accion_sugerida": "**probar** (instalar y comparar `git blame` con `git ai blame` en un repo real con trabajo mixto humano/IA). Pieza editorial fuerte sobre AI governance en repos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "git-ai-project/git-ai",
+          "rel": "implements",
+          "dst": "concept:ai-code-attribution",
+          "primera_mencion": null
+        },
+        {
+          "src": "git-ai-project/git-ai",
+          "rel": "solves",
+          "dst": "problem:ai-code-auditability",
+          "primera_mencion": null
+        },
+        {
+          "src": "git-ai-project/git-ai",
+          "rel": "complements",
+          "dst": "tool:git",
+          "primera_mencion": null
+        },
+        {
+          "src": "git-ai-project/git-ai",
+          "rel": "relevant_to",
+          "dst": "regulation:eu-ai-act",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "git-ai-project-git-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "charmbracelet/crush",
+      "url": "https://github.com/charmbracelet/crush",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Coding agent \"glamourous\" para terminal desde Charm (la casa de `bubbletea`, `glamour`, `lipgloss`, `wish`). Multi-LLM, LSP-enhanced, MCP, sesiones persistentes.",
+        "por_que_importa": "Charm es la referencia de calidad en tooling Go (16k followers en GitHub y releases consistentes desde 2019 con proyectos como bubbletea, glamour, lipgloss y wish), y Crush es su apuesta para agentic coding en terminal. Lo diferencial frente a otros coding agents de CLI es el switch de LLM mid-session sin perder contexto, la inyección de contexto vía LSP (usando el mismo canal que un humano) y un MCP multi-transport que acepta `http`, `stdio` y `sse`. El tono del README (\"Glamourous agentic coding for all 💘\") apunta al sweet spot: tooling serio con UX cuidada. Ya cubrimos a Charm y su bubbletea-tui, junto con el protocolo MCP, el 2026-07-09; en esa entrada vimos el stack base de TUI y la capa de transporte MCP, y Crush es la primera concreción seria de Charm en la categoría de terminal coding agent que combina ambas. Caveat: la API de GitHub reporta license `NOASSERTION` para el repo, así que toca verificar la LICENSE en el repositorio antes de meterlo como build-dependency (mismo patrón que hemos visto en otras trending tools).",
+        "madurez_senales": "28.069 ★ · 2.241 forks · Go · NOASSERTION vía API · creado 2025-05-21 · último push 2026-09-14 · topics: `agentic-ai`, `ai`, `llms`, `ravishing` · home: stuff.charm.sh/crush.",
+        "accion_sugerida": "**vigilar** (proyecto joven pero con pedigree Charm — esperar versión estable antes de probar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "charmbracelet/crush",
+          "rel": "implements",
+          "dst": "concept:terminal-coding-agent",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "charmbracelet/crush",
+          "rel": "complements",
+          "dst": "tool:bubbletea-tui",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "charmbracelet/crush",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "charmbracelet/crush",
+          "rel": "relevant_to",
+          "dst": "company:charm",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "charmbracelet-crush",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "px0-ai/px0",
+      "url": "https://github.com/px0-ai/px0",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "IDE **solo lectura** que arranca en <1 ms y ocupa 16 MB de RAM. Navegación instantánea de código, búsqueda profunda, syntax highlighting, jump-to-symbol, sin edición. Corre en el browser.",
+        "por_que_importa": "La tesis editorial es fuerte y contraintuitiva: si el código lo escribe el agente, el humano necesita verificar, no editar. px0 es un IDE read-only que arranca en menos de 1 ms y ocupa 16 MB de RAM, pensado para cubrir la mitad del workflow que los IDEs tradicionales ignoran: revisión, navegación y auditoría de código generado por agentes. Soporta LSP y parsing con tree-sitter en WASM, corre en el browser y se instala con un `curl install.sh`. Va a contracorriente del \"todo-en-uno\" tipo VS Code justo cuando la generación de código se externaliza al terminal: si ya no escribes, no necesitas un editor de 500 MB; necesitas un visor instantáneo que no te entretenga.",
+        "madurez_senales": "737 ★ · 72 forks · JavaScript · MIT · creado 2026-06-24 · último push 2026-09-14 · topics: `code-viewer`, `developer-tools`, `go`, `ide`, `lsp`.",
+        "accion_sugerida": "**explorar** (instalar y revisar un repo grande en <1s de boot — buena pieza editorial sobre \"el IDE para el humano del workflow agent-first\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "px0-ai/px0",
+          "rel": "implements",
+          "dst": "concept:read-only-ide",
+          "primera_mencion": null
+        },
+        {
+          "src": "px0-ai/px0",
+          "rel": "solves",
+          "dst": "problem:code-review-friction",
+          "primera_mencion": null
+        },
+        {
+          "src": "px0-ai/px0",
+          "rel": "competes_with",
+          "dst": "tool:vscode",
+          "primera_mencion": null
+        },
+        {
+          "src": "px0-ai/px0",
+          "rel": "relevant_to",
+          "dst": "pattern:agent-generated-code",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "px0-ai-px0",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "microsoft/AI-Engineering-Coach",
+      "url": "https://github.com/microsoft/AI-Engineering-Coach",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Dashboard que lee los **logs locales** de tu agente de coding (Claude Code, Codex CLI, etc.) y produce métricas accionables: practice scores, weekly trends, daily activity y detección de 45 anti-patterns (prompt quality, session hygiene, code review, tool mastery, context management).",
+        "por_que_importa": "Aparece una categoría nueva: el \"AI engineering coach\" como pieza OSS. En lugar de tragarte logs manualmente, este dashboard lee los logs locales de tu agente de coding (Claude Code, Codex CLI, etc.) y te devuelve métricas accionables: practice scores, weekly trends, daily activity y detección de 45 anti-patterns repartidos entre prompt quality, session hygiene, code review, tool mastery y context management. La promesa de privacidad (\"no data leaves your machine\") encaja con el ruido de telemetry SaaS que hay en 2026, y el hecho de que Microsoft lo publique como OSS en vez de como producto cerrado dice mucho del momento: la categoría \"mejorar cómo usas la IA\" se está commodity-izando. Microsoft ya apareció en el grafo el 2026-08-21, así que tiene sentido verle diversificar hacia tooling de coaching de uso de IA en vez de quedarse solo en el lado del modelo.",
+        "madurez_senales": "4.053 ★ · 554 forks · TypeScript · MIT · creado 2026-05-06 · último push 2026-09-13 · topics: no verificado (verificar en repo) · home: VS Code extension 1.115+.",
+        "accion_sugerida": "**probar** (instalar la extensión VS Code, correr sobre logs reales de Claude Code de un día y revisar qué anti-patterns detecta).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/AI-Engineering-Coach",
+          "rel": "implements",
+          "dst": "concept:ai-coach",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/AI-Engineering-Coach",
+          "rel": "solves",
+          "dst": "problem:ai-usage-improvement",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/AI-Engineering-Coach",
+          "rel": "relevant_to",
+          "dst": "company:microsoft",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "microsoft/AI-Engineering-Coach",
+          "rel": "complements",
+          "dst": "tool:claude-code",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-ai-engineering-coach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "datawhalechina/deepagents-in-action",
+      "url": "https://github.com/datawhalechina/deepagents-in-action",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Libro open-source (CC BY-NC-SA 4.0) escrito por el autor chino apodado **\"Cang Hai Jiu Su\"** (LangChain Official Ambassador; canal homónimo en Bilibili) sobre cómo construir **deep agents en producción** con LangGraph. Cubre las versiones Deep Agents 0.5 → 0.7. Astro site + Bilibili videos + Xiaohongshu posts.",
+        "por_que_importa": "Es el recurso no angloparlante más serio que ha aparecido sobre deep agents en producción con LangGraph: un libro open-source (CC BY-NC-SA 4.0) escrito por el autor conocido como \"Cang Hai Jiu Su\" (LangChain Official Ambassador, con canal homónimo en Bilibili) que cubre las versiones Deep Agents 0.5 → 0.7 y se apoya en un site en Astro más videos en Bilibili y posts en Xiaohongshu. Los 2.282 ★ confirman tracción real en la comunidad china, y el hueco que llena es claro: la documentación oficial de LangChain sobre deep agents está dispersa y este libro la unifica, cubriendo context engineering, agente supervisor, sub-agentes y state management. Para quien escribe sobre IA/dev en español es referencia obligada: si vas a sacar algo sobre deep agents, conviene leerlo primero para no quedarte en la capa superficial.",
+        "madurez_senales": "2.282 ★ · 226 forks · Astro · license CC BY-NC-SA 4.0 (no código — solo el libro) · creado 2026-05-05 · último push 2026-09-12 · topics: `agentic-ai`, `ai-agents`, `astro`, `chinese`, `context-engineering`, `course`, `deepagents`, `langchain` · home: https://datawhalechina.github.io/deepagents-in-action/.",
+        "accion_sugerida": "**leer** (los primeros 3 capítulos son la mejor intro a deep agents disponible; útil como referencia para posts propios).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "datawhalechina/deepagents-in-action",
+          "rel": "implements",
+          "dst": "concept:deep-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "datawhalechina/deepagents-in-action",
+          "rel": "uses",
+          "dst": "framework:langgraph",
+          "primera_mencion": null
+        },
+        {
+          "src": "datawhalechina/deepagents-in-action",
+          "rel": "relevant_to",
+          "dst": "community:langchain",
+          "primera_mencion": null
+        },
+        {
+          "src": "datawhalechina/deepagents-in-action",
+          "rel": "complements",
+          "dst": "repo:langchain-ai-deepagents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "datawhalechina-deepagents-in-action",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "tech-leads-club/agent-skills",
+      "url": "https://github.com/tech-leads-club/agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.806 ★, TS, NOASSERTION vía API — verificar LICENSE, último push 2026-09-12) — registry NPM `@tech-leads-club/agent-skills` para extender Antigravity, Claude Code, Copilot y Cursor con skills compartidas. Convergencia con `SnailSploit/Claude-Red` y `google-gemini/gemini-skills` del boletín anterior.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si la licencia es limpia, es el primer registry multi-harness serio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tech-leads-club-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "esengine/DeepSeek-Reasonix",
+      "url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(35.532 ★, Go, MIT, creado 2026-04, último push 2026-09-14, `default_branch=main-v2`) — coding agent terminal-first con ACP (Agent Communication Protocol), prefix-caching para DeepSeek, multi-LLM. **Caveat editorial**: 35k ★ en 4 meses desde una sola cuenta de user (`esengine`, 114 repos, 799 followers) sugiere atención muy rápida; tratar con cautela hasta validar issue/PR churn.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (verificar si los releases semanales mantienen calidad o son hype-inflated)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "esengine-deepseek-reasonix",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "tencent/weknora",
+      "url": "https://github.com/tencent/weknora",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(22.995 ★, Go, NOASSERTION vía API — verificar LICENSE, último push 2026-09-13) — Tencent LLM knowledge platform: raw documents → RAG queryable, agentes. **Caveat**: stars muy altos en <14 meses desde una org Tencent conocida — probable tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "real pero requiere verificación de LICENSE — Acción: **vigilar** (no verificado en profundidad; revisar la pieza editorial oficial de Tencent antes de recomendar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-weknora",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "tbphp/gpt-load",
+      "url": "https://github.com/tbphp/gpt-load",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.733 ★, Go, MIT, último push 2026-09-14) — self-hosted AI gateway multi-credential para Anthropic/Claude/Codex/Gemini. **El caso pragmático del día**: si quieres centralizar claves de 4-5 vendors con un solo endpoint HTTP, este es el binario.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (instalar via Docker, validar el routing por canal/credencial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tbphp-gpt-load",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "asgeirtj/system_prompts_leaks",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(JS, último push reciente, en Trendshift pos 15) — repositorio curado de system prompts leakeds de Claude Fable 5.1, Opus 5, Claude Design, etc. **Solo con fines de investigación.**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (si cubres prompt engineering, vale la pena revisar qué patrones usan los vendors top-tier)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "asgeirtj-system-prompts-leaks",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "ever-co/ever-gauzy",
+      "url": "https://github.com/ever-co/ever-gauzy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.428 ★, TS, AGPL-3.0, 2019-06-02, último push 2026-09-14) — plataforma open-source de gestión empresarial (ERP/CRM/HRM/ATS/PM). Trending por release reciente. **No es AI/dev**; se incluye como señal de que el open-source B2B SaaS sigue activo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (no editorial para CsS; relevante solo si cubres open-source ERP)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ever-co-ever-gauzy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

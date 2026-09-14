@@ -1,0 +1,54 @@
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-max-sixty-worktrunk", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-max-sixty-worktrunk", "dst": "tema:max-sixty-worktrunk", "rel": "trata", "added": "2026-09-14"}
+{"src": "max-sixty/worktrunk", "dst": "concept:parallel-agent-orchestration", "rel": "implements", "added": "2026-09-14", "primera_mencion": "2026-08-27"}
+{"src": "max-sixty/worktrunk", "dst": "tool:claude-code", "rel": "complements", "added": "2026-09-14", "primera_mencion": "2026-08-27"}
+{"src": "max-sixty/worktrunk", "dst": "tool:codex-cli", "rel": "complements", "added": "2026-09-14", "primera_mencion": "2026-08-27"}
+{"src": "max-sixty/worktrunk", "dst": "pattern:worktree-isolation", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-colemurray-background-agents", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-colemurray-background-agents", "dst": "tema:colemurray-background-agents", "rel": "trata", "added": "2026-09-14"}
+{"src": "ColeMurray/background-agents", "dst": "pattern:background-agent", "rel": "implements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "ColeMurray/background-agents", "dst": "company:ramp", "rel": "inspired_by", "added": "2026-09-14", "primera_mencion": null}
+{"src": "ColeMurray/background-agents", "dst": "tool:claude-agent-sdk", "rel": "complements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "ColeMurray/background-agents", "dst": "concept:devin-pattern", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": null}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-git-ai-project-git-ai", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-git-ai-project-git-ai", "dst": "tema:git-ai-project-git-ai", "rel": "trata", "added": "2026-09-14"}
+{"src": "git-ai-project/git-ai", "dst": "concept:ai-code-attribution", "rel": "implements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "git-ai-project/git-ai", "dst": "problem:ai-code-auditability", "rel": "solves", "added": "2026-09-14", "primera_mencion": null}
+{"src": "git-ai-project/git-ai", "dst": "tool:git", "rel": "complements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "git-ai-project/git-ai", "dst": "regulation:eu-ai-act", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": null}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-charmbracelet-crush", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-charmbracelet-crush", "dst": "tema:charmbracelet-crush", "rel": "trata", "added": "2026-09-14"}
+{"src": "charmbracelet/crush", "dst": "concept:terminal-coding-agent", "rel": "implements", "added": "2026-09-14", "primera_mencion": "2026-07-09"}
+{"src": "charmbracelet/crush", "dst": "tool:bubbletea-tui", "rel": "complements", "added": "2026-09-14", "primera_mencion": "2026-07-09"}
+{"src": "charmbracelet/crush", "dst": "protocol:mcp", "rel": "uses", "added": "2026-09-14", "primera_mencion": "2026-07-09"}
+{"src": "charmbracelet/crush", "dst": "company:charm", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": "2026-07-09"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-px0-ai-px0", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-px0-ai-px0", "dst": "tema:px0-ai-px0", "rel": "trata", "added": "2026-09-14"}
+{"src": "px0-ai/px0", "dst": "concept:read-only-ide", "rel": "implements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "px0-ai/px0", "dst": "problem:code-review-friction", "rel": "solves", "added": "2026-09-14", "primera_mencion": null}
+{"src": "px0-ai/px0", "dst": "tool:vscode", "rel": "competes_with", "added": "2026-09-14", "primera_mencion": null}
+{"src": "px0-ai/px0", "dst": "pattern:agent-generated-code", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": null}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-microsoft-ai-engineering-coach", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-microsoft-ai-engineering-coach", "dst": "tema:microsoft-ai-engineering-coach", "rel": "trata", "added": "2026-09-14"}
+{"src": "microsoft/AI-Engineering-Coach", "dst": "concept:ai-coach", "rel": "implements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "microsoft/AI-Engineering-Coach", "dst": "problem:ai-usage-improvement", "rel": "solves", "added": "2026-09-14", "primera_mencion": null}
+{"src": "microsoft/AI-Engineering-Coach", "dst": "company:microsoft", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": "2026-08-21"}
+{"src": "microsoft/AI-Engineering-Coach", "dst": "tool:claude-code", "rel": "complements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-datawhalechina-deepagents-in-action", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-datawhalechina-deepagents-in-action", "dst": "tema:datawhalechina-deepagents-in-action", "rel": "trata", "added": "2026-09-14"}
+{"src": "datawhalechina/deepagents-in-action", "dst": "concept:deep-agent", "rel": "implements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "datawhalechina/deepagents-in-action", "dst": "framework:langgraph", "rel": "uses", "added": "2026-09-14", "primera_mencion": null}
+{"src": "datawhalechina/deepagents-in-action", "dst": "community:langchain", "rel": "relevant_to", "added": "2026-09-14", "primera_mencion": null}
+{"src": "datawhalechina/deepagents-in-action", "dst": "repo:langchain-ai-deepagents", "rel": "complements", "added": "2026-09-14", "primera_mencion": null}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-tech-leads-club-agent-skills", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-tech-leads-club-agent-skills", "dst": "tema:tech-leads-club-agent-skills", "rel": "trata", "added": "2026-09-14"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-esengine-deepseek-reasonix", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-esengine-deepseek-reasonix", "dst": "tema:esengine-deepseek-reasonix", "rel": "trata", "added": "2026-09-14"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-tencent-weknora", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-tencent-weknora", "dst": "tema:tencent-weknora", "rel": "trata", "added": "2026-09-14"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-tbphp-gpt-load", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-tbphp-gpt-load", "dst": "tema:tbphp-gpt-load", "rel": "trata", "added": "2026-09-14"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-asgeirtj-system-prompts-leaks", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-asgeirtj-system-prompts-leaks", "dst": "tema:asgeirtj-system-prompts-leaks", "rel": "trata", "added": "2026-09-14"}
+{"src": "boletin:2026-09-14", "dst": "item:https-github-com-ever-co-ever-gauzy", "rel": "menciona", "added": "2026-09-14"}
+{"src": "item:https-github-com-ever-co-ever-gauzy", "dst": "tema:ever-co-ever-gauzy", "rel": "trata", "added": "2026-09-14"}
