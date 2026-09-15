@@ -1,0 +1,52 @@
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-rlaope-oh-my-hermes", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-rlaope-oh-my-hermes", "dst": "tema:rlaope-oh-my-hermes", "rel": "trata", "added": "2026-09-15"}
+{"src": "rlaope/oh-my-hermes", "dst": "tool:hermes-agent", "rel": "complements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "rlaope/oh-my-hermes", "dst": "pattern:evidence-boundaries", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "rlaope/oh-my-hermes", "dst": "concept:agent-memory-layer", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "rlaope/oh-my-hermes", "dst": "stack:local-first-agent", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": null}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-shadcn-ui-lint", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-shadcn-ui-lint", "dst": "tema:shadcn-ui-lint", "rel": "trata", "added": "2026-09-15"}
+{"src": "shadcn-ui/lint", "dst": "concept:agent-friendly-linting", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "shadcn-ui/lint", "dst": "problem:agent-design-system-drift", "rel": "solves", "added": "2026-09-15", "primera_mencion": null}
+{"src": "shadcn-ui/lint", "dst": "framework:tailwind-v4", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": null}
+{"src": "shadcn-ui/lint", "dst": "company:shadcn", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": null}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:cloudflare-security-audit-skill", "rel": "trata", "added": "2026-09-15"}
+{"src": "cloudflare/security-audit-skill", "dst": "pattern:coverage-led-hunting", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "cloudflare/security-audit-skill", "dst": "problem:vulnerability-discovery-at-scale", "rel": "solves", "added": "2026-09-15", "primera_mencion": null}
+{"src": "cloudflare/security-audit-skill", "dst": "company:cloudflare", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": null}
+{"src": "cloudflare/security-audit-skill", "dst": "concept:coding-agent-skill", "rel": "complements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-alibaba-open-code-review", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-alibaba-open-code-review", "dst": "tema:alibaba-open-code-review", "rel": "trata", "added": "2026-09-15"}
+{"src": "alibaba/open-code-review", "dst": "concept:ai-code-review", "rel": "implements", "added": "2026-09-15", "primera_mencion": "2026-07-24"}
+{"src": "alibaba/open-code-review", "dst": "company:alibaba", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": "2026-07-24"}
+{"src": "alibaba/open-code-review", "dst": "tool:claude-code", "rel": "complements", "added": "2026-09-15", "primera_mencion": "2026-07-24"}
+{"src": "alibaba/open-code-review", "dst": "pattern:ci-integration", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": "2026-07-24"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-reconurge-flowsint", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-reconurge-flowsint", "dst": "tema:reconurge-flowsint", "rel": "trata", "added": "2026-09-15"}
+{"src": "reconurge/flowsint", "dst": "concept:osint-graph", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "reconurge/flowsint", "dst": "tool:maltego-ce", "rel": "competes_with", "added": "2026-09-15", "primera_mencion": null}
+{"src": "reconurge/flowsint", "dst": "tool:spiderfoot", "rel": "competes_with", "added": "2026-09-15", "primera_mencion": null}
+{"src": "reconurge/flowsint", "dst": "domain:threat-intel", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": null}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-tencentcloud-octop", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-tencentcloud-octop", "dst": "tema:tencentcloud-octop", "rel": "trata", "added": "2026-09-15"}
+{"src": "TencentCloud/Octop", "dst": "concept:multi-agent-self-hosted", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "TencentCloud/Octop", "dst": "tool:open-webui", "rel": "complements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "TencentCloud/Octop", "dst": "protocol:acp", "rel": "implements", "added": "2026-09-15", "primera_mencion": null}
+{"src": "TencentCloud/Octop", "dst": "company:tencent-cloud", "rel": "relevant_to", "added": "2026-09-15", "primera_mencion": null}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-multimodal-art-projection-yue", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-multimodal-art-projection-yue", "dst": "tema:multimodal-art-projection-yue", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-panniantong-agent-reach", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:panniantong-agent-reach", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-openbmb-voxcpm", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-openbmb-voxcpm", "dst": "tema:openbmb-voxcpm", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-debpalash-voicestudio", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-debpalash-voicestudio", "dst": "tema:debpalash-voicestudio", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-justvugg-colibri", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-justvugg-colibri", "dst": "tema:justvugg-colibri", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-pacifio-atlas", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-pacifio-atlas", "dst": "tema:pacifio-atlas", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-tauricresearch-tradingagents", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-tauricresearch-tradingagents", "dst": "tema:tauricresearch-tradingagents", "rel": "trata", "added": "2026-09-15"}
+{"src": "boletin:2026-09-15", "dst": "item:https-github-com-operacle-checkcle", "rel": "menciona", "added": "2026-09-15"}
+{"src": "item:https-github-com-operacle-checkcle", "dst": "tema:operacle-checkcle", "rel": "trata", "added": "2026-09-15"}

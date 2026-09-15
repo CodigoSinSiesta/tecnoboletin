@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-09-15",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Tres vendors publican skills para coding agents el mismo dia y el formato se consolida",
+  "posicionamiento": "Tres skills aterrizan el mismo lunes con el mismo patrón — un plugin operativo que monta sobre el coding agent en lugar de competir con él. rlaope/oh-my-hermes añade planning, memoria y evidence boundaries a Hermes; @shadcn/lint redefine reglas de design system para que un agente las entienda; cloudflare/security-audit-skill ejecuta auditorías en seis fases con coverage-led hunting. El hilo es el mismo: el agente ya no es el producto, es la base sobre la que otros construyen.",
+  "convergencia_stack_css": "Tres hallazgos aterrizan directamente sobre el stack local-first de Código Sin Siesta. oh-my-hermes monta sobre Hermes Agent oficial de Nous Research con evidence boundaries y SQLite portable — encaja con Ollama/DeepSeek + Obsidian sin lock-in. Octop suma multi-tenancy self-hosted con MCP y un canal ACP bidireccional que delega a agentes IDE, replicando lo que ya se hace con OpenCode y Crush pero como hub. @shadcn/lint resuelve el drift de design system cuando un coding agent entra al proyecto, problema habitual en nuestros frontends con Tailwind v4.",
+  "cruzado_grafo": "Hoy entran al grafo nodos nuevos sin primera_mencion previa: pattern:evidence-boundaries, concept:agent-friendly-linting, pattern:coverage-led-hunting, concept:osint-graph, protocol:acp y concept:multi-agent-self-hosted. La única pieza con trayectoria editorial es alibaba/open-code-review, ya cubierto el 2026-07-24 como nodo de concept:ai-code-review bajo Alibaba y CI — su reaparición confirma que la categoría madura, no que se reinvente. El resto son entradas frescas que amplían el grafo sin chocar con nada anterior.",
+  "tendencias_5_boletines": "El contexto recibido cubre solo 12 y 13 de septiembre, insuficiente para hablar de cinco boletines con base. Lo que sí encaja: el 12 ya marcó el giro del LLM hacia la pila que lo rodea, y el 13 vio SKILL.md convertirse en formato con adopters cruzados. Hoy ese cableado se concreta con tres skills productivas — uno de seguridad, uno de lint, uno de operación — y el formato skill deja de ser adopción para ser infraestructura.",
+  "alertas": [
+    "rlaope/oh-my-hermes: el README declara 1.283★ pero el dato no se pudo verificar de forma independiente; tratarlo como immature hasta ver adopción real",
+    "TencentCloud/Octop: ecosistema de connectors sesgado hacia Tencent Cloud; la promesa self-hosted se debilila si dependes de COS o MCP propietarios",
+    "@shadcn/lint: la promesa editorial es fuerte pero el proyecto es muy joven — validar antes de meterlo como build-dep en CI",
+    "alibaba/open-code-review: los caveats de julio (release reciente, npm packages sin trayectoria larga) siguen vigentes; release nuevo no los resuelve"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el plugin directo sobre Hermes Agent — instalar y validar evidence boundaries y model pool mid-flow contra el setup Ollama/DeepSeek + Obsidian actual."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "El coverage-led hunting y las ocho attack classes son una metodología reproducible, no un script; vale la pena correrlo contra el propio stack antes de hablar de seguridad de agentes."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Si la promesa de linter agent-first madura, cambia cómo se enseña design system a coding agents — observar tracción y errores que cubre antes de adoptarlo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "Octop formaliza el patrón background-agents con self-hosted y multi-tenancy; buen candidato a pieza editorial sobre cómo se delega de IDE a hub local."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Ya cubierto en julio; la reaparición en trending confirma tracción pero no resuelve los caveats — esperar a que el release estabilice antes de revisit."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

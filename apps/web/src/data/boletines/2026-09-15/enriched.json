@@ -1,0 +1,509 @@
+{
+  "version": 2,
+  "date": "2026-09-15",
+  "boletin_origen": "2026-09-15-trending.md",
+  "resumen_ejecutivo": "- **El plugin del día para nuestro propio stack: `rlaope/oh-my-hermes` (Python, 77★ hoy)** — capa operativa para [Hermes Agent](https://github.com/NousResearch/hermes-agent) que añade planning, research, creation, coding handoffs, operations y memoria de proyecto con \"evidence boundaries\" explícitas. Si trabajas con Hermes, es la primera parada de este lunes.\n- **El linter \"agent-first\" de `shadcn-ui` llega a trending**: `@shadcn/lint` (TS, 1.215★, MIT) redefine las reglas de design system de modo que un agente pueda verificarlas y entenderlas — los errores de lint ya no son \"esto no compila\" sino \"esto no encaja con tu Button\". Funciona con Tailwind v4 sin requerir shadcn/ui y se integra con ESLint y Oxlint.\n- **Cloudflare publica como skill open-source el \"vulnerability harness\" de su blog**: `cloudflare/security-audit-skill` (JS, 4.284★, MIT) ejecuta auditorías de seguridad en seis fases (reconocimiento, hunting con coverage-ledger, validación independiente, reporting target-neutral). Es la versión empaquetable del sistema multi-stage que usan internamente; instala como skill para coding agents.\n- **Alibaba abre el code review interno como OSS**: `alibaba/open-code-review` (Go, 26.504★, Apache-2.0, OpenSSF Gold) vuelve a trending con release reciente. Lee Git diffs, los pasa a un LLM configurable con tool-use y emite comentarios estructurados línea-a-línea tras servir a \"tens of thousands\" de devs internos durante dos años. Ya hay paquetes npm, soporta Claude Code/Codex/Cursor y trae DeepWiki.\n- **OSINT graph-based open-source con disclaimers de ética**: `reconurge/flowsint` (TS, 8.466★, Apache-2.0) aterriza en trending como plataforma de investigación visual extensible; el repo incluye `ETHICS.md` obligatorio y pide Docker + Make para arrancar. Caveat: \"early development\" — la promesa es potente pero la superficie aún está verde.\n- **Self-hosted AI assistant estilo Open WebUI pero con multi-tenancy y multi-agent**: `TencentCloud/Octop` (Python, 2.303★, MIT) es la apuesta de Tencent para \"digital life form\" autoalojada con MBTI personas, pluggable backends (Postgres/S3/Docker), RAG, OAuth + MCP gateway, y ACP bidireccional para delegar a IDE/terminal agents. Diferenciador claro vs Open WebUI: **multi-user con JWT isolation + ACP para IDE workflows**.\nFuentes consultadas: Trendshift daily, GitHub Trending daily + TypeScript/Python/Rust/Go slices, GitHub API cuando aplica. Blogwatcher no publicado hoy (último `*-blogs.md` 2026-07-05 — bloqueado en investigación previa, ver notas finales).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "rlaope/oh-my-hermes",
+      "url": "https://github.com/rlaope/oh-my-hermes",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin open-source para [Hermes Agent de Nous Research](https://github.com/NousResearch/hermes-agent) que añade una capa operativa sobre el agente: planning, research, creation, coding handoffs, operations y memoria de proyecto con \"evidence boundaries\" explícitas. Se instala con `curl … | sh` o pegando un prompt al propio agente (el repo incluye `INSTALL_FOR_AGENTS.md`).",
+        "por_que_importa": "Si tu setup de Hermes Agent ya rueda sobre Ollama/DeepSeek + Obsidian, este plugin es el primer candidato a probar esta semana, porque monta sobre la base oficial de Nous Research (el repo lo declara explícitamente) y añade cinco capas operativas que el Hermes base no trae de serie: (a) **evidence boundaries** — cada output lleva un rastro verificable de qué contexto lo sustentó, de modo que puedas distinguir lo que el agente infirió de lo que realmente vio; (b) **long-term memory** con SQLite portable; (c) **model pool** intercambiable mid-flow; (d) **specialists** agrupados por dominio; (e) **infrastructure primitives** para delegar a otros agentes, con OpenCode y Crush ya soportados. CAVEATS honestos antes de meterlo como build-dep: el conteo total de estrellas (1.283) no lo pude verificar exacto — sólo las 77 de hoy están confirmadas, así que trátalo como orden de magnitud; la licencia figura como NOASSERTION vía API, lo que obliga a revisar el LICENSE real del repo antes de usarlo en algo serio; y la firma del repo declara dos colaboradores IA con handle propio (`frirenai/Friren` y `sionic-khope/Killua`), un guiño a la conversación de governance sobre autoría IA vs humana que, más allá del postureo, deja una trazabilidad inusual en este tipo de proyectos.",
+        "madurez_senales": "1.283★ (no verificado el conteo exacto — sólo estrellas de hoy confirmadas: 77) · 93 forks · Python · license NOASSERTION vía API (verificar LICENSE en repo antes de build-dep) · creado 2026-08 · último push 2026-09-15 · topics: `hermes-agent`, `plugin`, `coding-agents`.",
+        "accion_sugerida": "**probar** (instalar con el curl one-liner, validar que el plugin carga en Hermes sin pisar skills existentes y reportar fricciones).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "rlaope/oh-my-hermes",
+          "rel": "complements",
+          "dst": "tool:hermes-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "rlaope/oh-my-hermes",
+          "rel": "implements",
+          "dst": "pattern:evidence-boundaries",
+          "primera_mencion": null
+        },
+        {
+          "src": "rlaope/oh-my-hermes",
+          "rel": "implements",
+          "dst": "concept:agent-memory-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "rlaope/oh-my-hermes",
+          "rel": "relevant_to",
+          "dst": "stack:local-first-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rlaope-oh-my-hermes",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "shadcn-ui/lint",
+      "url": "https://github.com/shadcn-ui/lint",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "`@shadcn/lint`, linter open-source (MIT, dual ESLint/Oxlint) pensado específicamente para que un coding agent **entienda y verifique** reglas de design system en proyectos Tailwind v4. Funciona con o sin shadcn/ui.",
+        "por_que_importa": "Resuelve un problema concreto que se vuelve agudo en cuanto metes un coding agent en un proyecto con design system: el linter clásico te dice \"esto no compila\", pero no \"esto rompe tu Button\". `@shadcn/lint` emite diagnósticos accionables — por ejemplo, `\"p-4\" is not allowed on <Button>: <Button> owns its spacing. Use a size (sm, lg), or margin here or gap on the parent for space around it. Add a size in components/ui/button.tsx only if the design explicitly calls for one.` — es decir, guía al agente al fix correcto, no al \"esto está mal\". Funciona con doble motor (ESLint u Oxlint), está pensado para Tailwind v4, sirve con o sin shadcn/ui, e incluye un prompt copy-paste para coding agents en el propio README. Para un lector de Código Sin Siesta, la promesa editorial es directa: si tienes design system + coding agents, este linter baja la fricción de \"el agente rompió la Button otra vez\".",
+        "madurez_senales": "1.215★ · 13 forks · TypeScript · MIT · creado 2026-08 · último push 2026-09-14 · topics: `agent`, `design-system`, `eslint`, `lint`, `oxlint`, `tailwind`.",
+        "accion_sugerida": "**explorar** (instalar en un proyecto Tailwind v4 real, definir 2-3 reglas custom para tu design system y verificar que el agente las respeta en un PR simulado).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "shadcn-ui/lint",
+          "rel": "implements",
+          "dst": "concept:agent-friendly-linting",
+          "primera_mencion": null
+        },
+        {
+          "src": "shadcn-ui/lint",
+          "rel": "solves",
+          "dst": "problem:agent-design-system-drift",
+          "primera_mencion": null
+        },
+        {
+          "src": "shadcn-ui/lint",
+          "rel": "relevant_to",
+          "dst": "framework:tailwind-v4",
+          "primera_mencion": null
+        },
+        {
+          "src": "shadcn-ui/lint",
+          "rel": "relevant_to",
+          "dst": "company:shadcn",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shadcn-ui-lint",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill open-source (MIT) para coding agents que ejecuta auditorías de seguridad en seis fases: reconocimiento (mapear arquitectura, trust boundaries, surfaces), coverage-led hunting con hunters aislados, validación independiente de cada candidato, output estructurado (`findings.json` con verdicts `confirmed` / `needs_validation` / `rejected`), verificación independiente de records y reporting target-neutral. Es el \"single-repo starting point\" del sistema multi-stage fleet-wide que Cloudflare describe en [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness).",
+        "por_que_importa": "Tres razones para mirarlo en serio. Primera, el repo es **opinionated sobre cobertura**: cada `ledger unit` tiene que cubrirse, cada candidato de vulnerabilidad tiene que poder ser invalidado y los reports se derivan de records verificados, no de prosa — eso lo acerca más a una metodología de pentest reproducible que a un script de SAST. Segunda, trae un `ATTACK-CLASSES.md` que enumera ocho familias de patrones — prompt-injection, agent/tool abuse, output-handling, memory-safety, supply-chain, cloud-and-deployment, RPC-and-messaging y resource-exhaustion — útil como checklist cuando auditas tu propio stack de agentes. Tercera, es el \"single-repo starting point\" del sistema multi-stage fleet-wide que Cloudflare describe en [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness), donde el harness original descubrió vulnerabilidades reales citadas en el blog; este skill baja la barrera para reproducir esa metodología en cualquier repo. CAVEAT honesto: el propio repo se describe como un entry point, no como una suite completa, así que para auditorías serias probablemente necesites adaptarlo a tu dominio. No verifiqué los topics en el repo — el JSON de entrada los marca como no visibles.",
+        "madurez_senales": "4.284★ · 279 forks · JavaScript · MIT · creado 2026 · último push 2026-09-14 · sin topics visibles (verificar en repo).",
+        "accion_sugerida": "**leer** (estudiar la metodología de seis fases y replicarla manualmente en un proyecto propio antes de invertir tiempo en adaptar el skill — el valor real está en el marco mental, no en el script).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "implements",
+          "dst": "pattern:coverage-led-hunting",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "solves",
+          "dst": "problem:vulnerability-discovery-at-scale",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "relevant_to",
+          "dst": "company:cloudflare",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "complements",
+          "dst": "concept:coding-agent-skill",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AI code review CLI originado como el asistente oficial interno de Alibaba Group (\"tens of thousands of developers, millions of defects\" según el README). Lee Git diffs, los pasa a un LLM configurable con agent tool-use (puede leer archivos completos, buscar en el codebase, inspeccionar otros cambios para contexto) y emite comentarios estructurados con precisión línea-a-línea. Multi-idioma (en/zh/ja/ko/ru), badges OpenSSF Gold y DeepWiki badge.",
+        "por_que_importa": "Ya cubrimos a alibaba/open-code-review el 2026-07-24 como ejemplo de AI code review y como pieza relevante para CI, así que aquí lo que toca es leer qué ha cambiado desde entonces y si las caveats de entonces siguen vigentes. La señal de madurez sigue siendo de peso: dos años de validación interna en Alibaba con \"tens of thousands of developers, millions of defects\" según el README, badge OpenSSF Gold, DeepWiki badge, 26.504★ y 1.905 forks, y release reciente empujándolo al trending. La adopción técnica sigue siendo la misma de entonces: `npm install` con los paquetes `@alibaba-group/open-code-review`, configurar el endpoint del modelo y correr, con soporte declarado para Claude Code, Codex y Cursor. Los caveats que ya marcamos en julio siguen aplicando: (a) sigue siendo \"bastante nuevo fuera de Alibaba\" y la comunidad open-source fuera de China es aún pequeña; (b) el README sigue sin detallar benchmarks de calidad de review frente a alternativas como Codereviewer, Graphite Reviewer o Coderabbit OSS; (c) la tracción en stars/forks sugiere que el grueso del uso sigue siendo intra-org. Aún así, el pedigree Alibaba + OpenSSF Gold lo mantienen como merecedor de probarlo en CI para un equipo mediano antes de pagar por SaaS.",
+        "madurez_senales": "26.504★ · 1.905 forks · Go · Apache-2.0 · OpenSSF Gold · creado 2026-04-12 · último push 2026-09-15 · soporta Windows/macOS/Linux.",
+        "accion_sugerida": "**probar** (instalar vía npm en un repo de tamaño medio, correr contra PRs reales durante una semana y comparar con reviewers humanos en métricas de false-positive y catch-rate).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "implements",
+          "dst": "concept:ai-code-review",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "relevant_to",
+          "dst": "company:alibaba",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "complements",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-07-24"
+        },
+        {
+          "src": "alibaba/open-code-review",
+          "rel": "relevant_to",
+          "dst": "pattern:ci-integration",
+          "primera_mencion": "2026-07-24"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-open-code-review",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "reconurge/flowsint",
+      "url": "https://github.com/reconurge/flowsint",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma open-source (Apache-2.0) para investigación OSINT con grafos visualizables, extensible via custom transforms. Docker + Make, soporta Linux/macOS/Windows. El repo incluye `ETHICS.md` y pide leerlo antes de usar.",
+        "por_que_importa": "Ocupa el hueco que Maltego Community Edition fue vaciando a base de recortes: una plataforma open-source (Apache-2.0) para investigación OSINT con grafos visualizables y transforms extensibles. Para una audiencia de devs, los casos de uso concretos son pivoting entre identidades, correlación de leaks, mapeo de superficies de ataque e investigación de phishing — todos ellos se benefician del grafo visual más que de un dump tabular. El detalle operativo: Docker + Make, soporta Linux/macOS/Windows, y el repo incluye un `ETHICS.md` que pide leer antes de usar, señal de que el proyecto se toma en serio el componente legal/ético de OSINT. El competidor más directo a comparar sigue siendo Maltego CE y Spiderfoot, así que la pieza editorial interesante es un head-to-head en un repo propio antes de comprometerte. CAVEAT honesto del propio README: \"still in early development and definitely needs the help of the community\" — la promesa supera a la superficie actual, así que trátalo como beta con dirección clara, no como sustituto maduro de Maltego.",
+        "madurez_senales": "8.466★ · 1.032 forks · TypeScript · Apache-2.0 · creado 2025 · último push 2026-09-06.",
+        "accion_sugerida": "**vigilar** (no apto para producción todavía; leer el código y la metodología como referencia de cómo se estructura un OSINT framework moderno).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "reconurge/flowsint",
+          "rel": "implements",
+          "dst": "concept:osint-graph",
+          "primera_mencion": null
+        },
+        {
+          "src": "reconurge/flowsint",
+          "rel": "competes_with",
+          "dst": "tool:maltego-ce",
+          "primera_mencion": null
+        },
+        {
+          "src": "reconurge/flowsint",
+          "rel": "competes_with",
+          "dst": "tool:spiderfoot",
+          "primera_mencion": null
+        },
+        {
+          "src": "reconurge/flowsint",
+          "rel": "relevant_to",
+          "dst": "domain:threat-intel",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "reconurge-flowsint",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "TencentCloud/Octop",
+      "url": "https://github.com/TencentCloud/Octop",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "asistente AI open-source, self-hosted (MIT, Python 3.12+, pypi `octop`). Aterriza como \"digital life form\" operativa en paralelo para equipos, familias e individuos — con **multi-tenancy real** (JWT isolation), MBTI personas (16 plantillas), pluggable backends (local disk, Docker, Postgres, COS/S3), RAG sobre knowledge base privado, OAuth + MCP connector gateway y `octop acp` para delegar a IDE/terminal agents (OpenCode, Crush, etc.) vía ACP bidireccional.",
+        "por_que_importa": "Open WebUI democratizó el \"chat con tus modelos self-hosted\"; Octop sube un escalón al añadir **multi-user real con JWT isolation**, MBTI personas (16 plantillas), backends enchufables (local disk, Docker, Postgres, COS/S3), RAG sobre knowledge base privado, OAuth + un MCP connector gateway, y sobre todo `octop acp`, un canal ACP bidireccional para delegar a agentes de IDE/terminal (OpenCode, Crush, etc.). El detalle que más importa para devs: el ACP bidireccional convierte a Octop en un hub desde el que tu agente de IDE (Codex/Claude Code/Crush) puede pedir trabajo a un agente Octop especializado, replicando el patrón de background-agents popularizado por Ramp y ColeMurray pero con foco en self-hosted y multi-tenancy. CAVEATS honestos: el ecosistema de connectors viene sesgado hacia Tencent (Docs, Weibo trends, News, Feishu, DingTalk, QQ, WeCom), de modo que la adopción fuera de Asia requerirá escribir tus propios connectors — útil saberlo antes de imaginar un setup 100% plug-and-play. La versión 1.0.0 y la fecha de creación (2026-07-22) indican un proyecto joven pero ya con release mayor, así que vale la pena probarlo en local antes de llevarlo a un equipo.",
+        "madurez_senales": "2.303★ · 233 forks · Python · MIT · creado 2026-07-22 · último push 2026-09-14 · version 1.0.0 · soporta Feishu/DingTalk/QQ/Discord/WeCom.",
+        "accion_sugerida": "**explorar** (instalar el pypi `octop`, montar Postgres como backend, conectar un MCP server propio y validar el flujo `octop acp` con un IDE agent — buena pieza editorial sobre \"el hub multi-agent que faltaba\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "TencentCloud/Octop",
+          "rel": "implements",
+          "dst": "concept:multi-agent-self-hosted",
+          "primera_mencion": null
+        },
+        {
+          "src": "TencentCloud/Octop",
+          "rel": "complements",
+          "dst": "tool:open-webui",
+          "primera_mencion": null
+        },
+        {
+          "src": "TencentCloud/Octop",
+          "rel": "implements",
+          "dst": "protocol:acp",
+          "primera_mencion": null
+        },
+        {
+          "src": "TencentCloud/Octop",
+          "rel": "relevant_to",
+          "dst": "company:tencent-cloud",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencentcloud-octop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "multimodal-art-projection/YuE",
+      "url": "https://github.com/multimodal-art-projection/YuE",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(8.647★, último push 2026-09-14, Python, Apache-2.0) — YuE2, generación de música \"frontier\" con symbolic planning, zero-shot covers y agentic mixing. Re-entry del 2026-09-14.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (área creative AI; no urgente salvo que cubras music gen)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multimodal-art-projection-yue",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(81.627★, último push 2026-09-01, Python, MIT) — \"ojos para tu AI agent\": lee/search Twitter, Reddit, GitHub, etc. Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (si tu agente necesita acceso a redes sociales, es el canónico open-source)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "panniantong-agent-reach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "OpenBMB/VoxCPM",
+      "url": "https://github.com/OpenBMB/VoxCPM",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(37.490★, último push 2026-09-02, Python, Apache-2.0) — VoxCPM2, TTS tokenizer-free multilingual. Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (TTS local fuerte; interesante para productos de voz)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbmb-voxcpm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(29.823★, último push 2026-09-15, Python, AGPL-3.0) — alternativa open-source a ElevenLabs, voice cloning local. Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (ojo: AGPL-3.0 evita adopción SaaS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "debpalash-voicestudio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(32.600★, último push 2026-09-14, C, Apache-2.0) — corre GLM-5.2 (744B MoE) en hardware de 25 GB RAM, pure C zero deps. Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (la promesa de \"MoE en casa\" es fuerte, pero los benchmarks de calidad no son públicos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "justvugg-colibri",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "pacifio/atlas",
+      "url": "https://github.com/pacifio/atlas",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.440★, último push 2026-09-15, Rust, MIT) — source control para coding agents, multi-agent tracking. Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (categoría \"git for agents\" compite con git-ai-project/git-ai)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pacifio-atlas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "TauricResearch/TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(106.368★, último push 2026-09-15, Python, Apache-2.0) — multi-agent LLM financial trading framework. Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (popular pero el dominio fintech tiene caveats regulatorios)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tauricresearch-tradingagents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "operacle/checkcle",
+      "url": "https://github.com/operacle/checkcle",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.216★, último push 2026-07-17, Go, MIT) — self-hosted monitoring full-stack. **Branch `develop`** (verificado vía default_branch API). Re-entry.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (push de 2026-07 sugiere mantenimiento irregular; alternativas más activas como Uptime Kuma cubren el hueco)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "operacle-checkcle",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
