@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-09-16",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El runtime de E2B baja al repo público y la infraestructura de agentes se vuelve on-prem",
+  "posicionamiento": "Tres hallazgos de hoy atacan la misma costura desde ángulos distintos: la capa de ejecución del agente. E2B publica el runtime Firecracker entero (snapshot/fork/pause on-demand con userfaultfd y root FS copy-on-write) y permite correr agent clouds on-prem. ASC rompe el dogma de preprocesar APKs: trata el APK como base de datos y descompila on-demand con latencias de 177 ms. OpenUI propone un estándar vendor-neutral para Generative UI con 67% menos tokens que JSON.",
+  "convergencia_stack_css": "E2B aterriza el concepto `agent-sandbox` que cubrimos el 2026-09-09 y da al stack local-first una pieza que antes era SDK-only: ahora el propio orquestador puede correr on-prem, alineado con la línea de 'agentes que no dependen de cloud del vendor'. El patrón control-plane/data-plane disciplinado que separa E2B (compute) y octo-server (workplace IM) coincide con la arquitectura local-first que defendemos.",
+  "cruzado_grafo": "E2B refuerza el nodo `concept:agent-sandbox` que ya teníamos fichado desde el 2026-09-09 y entra por primera vez `concept:firecracker-microvm`. octo-server complementa `repo:tencentcloud/octop` del 2026-09-15 y abre el nodo `concept:agent-workplace-backend`. OpenUI estrena `concept:generative-ui-standard` y ASC estrena `concept:agent-decompiler`. addyosmani/agent-skills confirma el cluster `concept:author-branded-skills` y su cruce con `company:google`, ambos ya en el grafo desde el 2026-07-10.",
+  "tendencias_5_boletines": "Sumando los días previos, el hilo se afianza: el 2026-09-13 el SKILL.md se consolida como formato cross-vendor, el 2026-09-15 tres skills aterrizan el patrón plugin-sobre-coding-agent, y hoy la infraestructura del agente (runtime, decompilador, IM workplace) baja al repo público pieza a pieza. Tres boletines seguidos con la misma lógica: lo que era SaaS cerrado se abre en formato que se puede auto-hospedar.",
+  "alertas": [
+    "El claim '67% menos tokens que JSON' de OpenUI viene del propio repo y conviene contrastarlo con el workload real antes de firmarlo en un RFP.",
+    "octo-server viene de un org (Mininglamp-OSS) con 4 meses y 33 repos: tracción real pero falta validar madurez de auth, secrets y RBAC antes de adopción seria.",
+    "ASC solo está validado en Android, no en iOS: la métrica de 177 ms no es portable al otro ecosistema móvil.",
+    "El repo `e2b-dev/runtime` tiene 1.534★ y el runtime completo baja ahora: la promesa de embed on-prem exige revisar releases, CVEs y política de soporte antes de depender de él en producción."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "E2B abre el runtime Firecracker entero; vale clonar `embed/` y validar si el patrón snapshot/fork/pause con userfaultfd es viable on-prem en hardware modesto."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "El cluster `author-branded-skills` ya tiene tres piezas firmadas (Osmani, Pocock, tech-leads-club) y encaja como pieza editorial propia: merece un ensayo sobre marca personal transferida a skills."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "octo-server completa el cuadrante abierto por Tencent Octop el 2026-09-15; seguir su cadencia de releases y madurez de seguridad antes de proponer adopción en un proyecto real."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "La tesis 'APK como base de datos' de ASC rompe un dogma de la ingeniería de decompiladores; merece un spike reproduciendo las métricas (177 ms, 141 MB RAM) sobre un APK propio."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "OpenUI propone estándar vendor-neutral para GenUI; hay que esperar al menos a un adopter de peso fuera de Thesys antes de tratarlo como formato, no como apuesta de un solo vendor."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

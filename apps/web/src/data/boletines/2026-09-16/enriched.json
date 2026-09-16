@@ -1,0 +1,442 @@
+{
+  "version": 2,
+  "date": "2026-09-16",
+  "boletin_origen": "2026-09-16-trending.md",
+  "resumen_ejecutivo": "- **E2B abre el runtime completo detrás de su cloud de AI agents**: `e2b-dev/runtime` (Go, 1.534★, Apache-2.0) es el orquestador de Firecracker microVMs que da vida a E2B Cloud — pausa, fork, resume, snapshot y un API real dentro de cada sandbox. Es la primera vez que el runtime entero baja open-source en lugar de solo el SDK: cualquier equipo puede correr su propio \"agent cloud\" on-prem.\n- **`MG1937/ASC` reta el modelo clásico de decompilación Android**: librería Python (1.305★, Apache-2.0) presentada en Black Hat Europe Arsenal. Lee el APK como base de datos directa y descompila on-demand sin preprocesado: cross-refs en 1,79 s, métodos en 177 ms con 141 MB de RAM. Hecha específicamente para integrarse con flujos agentic (CLI `droidasc` con `findrefs`, `getclass`, `getmanifest`).\n- **OpenUI propone un estándar abierto para Generative UI**: `thesysdev/openui` (TS, 9.416★, MIT) define un lenguaje compacto streaming-first que gasta hasta 67 % menos tokens que JSON y un registry de componentes para que el LLM sepa qué puede renderizar. Es la apuesta formal por un formato vendor-neutral frente a v0, Galileo y Copilot.\n- **`Mininglamp-OSS/octo-server` completa el cuadrante \"workplace con agentes\"** con un backend Go (1.058★, Apache-2.0) que orquesta \"Lobsters\" digitales sobre WuKongIM. Coincide con `TencentCloud/Octop` del boletín de ayer — confirma que el patrón \"open IM + digital doubles\" se está consolidando fuera de las suites SaaS cerradas.\n- **`addyosmani/agent-skills` entra a Trending como el skills-pack de Addy Osmani** (ex-director de Google/Gemini): 95k★, MIT, 67 skills production-grade para Claude Code, Codex, Cursor y Antigravity. Refuerza el cluster \"skills de autor conocido\" que ya forman `mattpocock/skills` y `tech-leads-club/agent-skills`.\nFuentes consultadas: Trendshift daily, GitHub Trending daily + TypeScript/Python/Rust/Go slices, GitHub API para 25 candidatos (budget restante ≈ 35/60h). Blogwatcher no publicado hoy (último `*-blogs.md` 2026-07-05 — sigue caído, **6ª corrida** consecutiva; recomiendo revisar `hermes cron list` y el perfil `hermesbot`).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "e2b-dev/runtime",
+      "url": "https://github.com/e2b-dev/runtime",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "el backend completo (Go, Apache-2.0) que da vida a E2B Cloud: control-plane API, orquestador por nodo que maneja Firecracker microVMs, agent in-VM (`envd`), edge router para sandbox traffic y template builder. Antes solo el SDK Python/JS era open; ahora el runtime entero baja al repo público y se ofrece como `embed/` para correr on-prem en hardware propio.",
+        "por_que_importa": "Tres razones concretas para un lector que monta infraestructura de agentes. **(a)** El runtime implementa snapshot-resume, fork y pause sin coste de boot apoyándose en dos primitivas del kernel Linux: `userfaultfd` para servir páginas de memoria bajo demanda y un root FS copy-on-write sobre la plantilla read-only. Eso convierte cada sandbox en un estado reanudable, no en una VM que rearranca; es exactamente el patrón que necesitan agentes de larga vida (como los `background-agents` que ya cubrimos el 2026-09-09 al hablar del concepto de `agent-sandbox`) para correr 100 sesiones en paralelo sin pagar 100 boots. **(b)** La separación entre control-plane y data-plane está impuesta en el código: el API decide *dónde* corre el sandbox; el nodo decide *cómo* corre. Esa disciplina arquitectónica es rara en repos OSS y por eso el `docs/ARCHITECTURE.md` vale como pieza de estudio. **(c)** Detalle de seguridad que vale la pena subrayar: las secrets nunca cruzan el API, solo metadatos; el workload identity emite tokens cortos sin que el API llegue a mintear credencial. Es el patrón correcto para 'agentes con acceso a data sensible' y un contraste nítido con stacks donde las keys se filtran a logs. Caveat honesto: el repo sigue siendo Apache-2.0 pero ahora exige montar Consul/Nomad/Terraform para producción, así que la promesa 'on-prem' tiene coste de adopción real, no es drop-in.",
+        "madurez_senales": "1.534★ · 425 forks · Go · Apache-2.0 · creado 2023-08-10 · último push 2026-09-16 · topics: `ai-agents`, `code-interpreter`, `consul`, `devtools`, `firecracker`, `gcp`, `go`, `golang`, `gpt`, `infra`, `kvm`, `llm`, `microvm`, `nomad`, `sandbox`, `terraform`, `vm`, `vmm`. `default_branch=main`.",
+        "accion_sugerida": "**explorar** (leer `docs/ARCHITECTURE.md`, instalar el paquete `embed/` en una máquina de pruebas y validar que un agente local puede arrancar/parar/forkear sandboxes sin tocar E2B Cloud — buena pieza editorial sobre \"cómo correr tu propio AI agent cloud\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "e2b-dev/runtime",
+          "rel": "implements",
+          "dst": "concept:agent-sandbox",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "e2b-dev/runtime",
+          "rel": "implements",
+          "dst": "concept:firecracker-microvm",
+          "primera_mencion": null
+        },
+        {
+          "src": "e2b-dev/runtime",
+          "rel": "enables",
+          "dst": "pattern:agent-code-execution",
+          "primera_mencion": null
+        },
+        {
+          "src": "e2b-dev/runtime",
+          "rel": "complements",
+          "dst": "tool:code-interpreter",
+          "primera_mencion": null
+        },
+        {
+          "src": "e2b-dev/runtime",
+          "rel": "relevant_to",
+          "dst": "company:e2b",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "e2b-dev-runtime",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "MG1937/ASC",
+      "url": "https://github.com/MG1937/ASC",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "front-end de decompilación Android (Python, Apache-2.0, PyPI `droidasc`) presentado en Black Hat Europe Arsenal. Aplica una tesis contraria a la ingeniería clásica de decompiladores: **no preprocesar**. Trata el APK como una base de datos directa y extrae relaciones de código on-demand (cross-refs cross-DEX en 1,79 s, target classes en 177 ms con 141 MB de RAM sobre un APK comercial de 352 MB). El CLI expone `getclass`, `getmanifest`, `findrefs` con fuzzy matching, pensado para integrarse con agentes.",
+        "por_que_importa": "Dos ángulos que importan a quien hace auditoría móvil o monta agentes de RE. **(a)** La tesis técnica rompe con JADX, Ghidra y Apktool: donde la ingeniería clásica de decompiladores asume 'construye un mapping global para acelerar queries', DroidsASC trata el APK como una base de datos y consulta el bitstream directamente, sin mapping previo. Sobre el APK comercial de 352 MB citado en el repo, las cross-refs cross-DEX salen en 1,79 s y target classes en 177 ms usando 141 MB de RAM; si esos números se replican en tu pipeline, redefinen la baseline de mobile RE. La limitación es que solo está validado en Android, no en iOS. **(b)** La CLI está diseñada pensando en un agente, no en un humano: verbos como `getclass`, `getmanifest` y `findrefs string token` (con `--fuzzy-class` y `--threads 16`) son justo las primitivas que un agente de auditoría móvil necesita para responder 'qué llamadas hace esta app a este endpoint'. Eso lo convierte en pieza editorial con demo en vivo: 'tu agente de reverse engineering para Android en 5 minutos'. Caveat: el repo tiene 3 meses de vida y, aunque pasó por Black Hat Europe Arsenal (#54834), la comunidad todavía está validando los benchmarks en APKs reales.",
+        "madurez_senales": "1.305★ · 205 forks · Python · Apache-2.0 · creado 2026-06-09 · último push 2026-09-15 · topics: `agent`, `agentic-ai`, `android`, `decompilation`, `decompile`, `decompiler`, `mobile`, `reverse`, `reverse-engineering`. Black Hat Europe Arsenal schedule index #54834.",
+        "accion_sugerida": "**probar** (instalar `pip install droidasc`, bajar una APK pública pequeña y validar los timings del README en tu hardware — si se cumplen, es candidato a deep dive para pieza editorial sobre \"AI agents × RE móvil\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "MG1937/ASC",
+          "rel": "implements",
+          "dst": "concept:agent-decompiler",
+          "primera_mencion": null
+        },
+        {
+          "src": "MG1937/ASC",
+          "rel": "implements",
+          "dst": "technique:deflate-bitstream-probing",
+          "primera_mencion": null
+        },
+        {
+          "src": "MG1937/ASC",
+          "rel": "relevant_to",
+          "dst": "domain:mobile-reverse-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "MG1937/ASC",
+          "rel": "enables",
+          "dst": "pattern:agent-driven-re",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mg1937-asc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "thesysdev/openui",
+      "url": "https://github.com/thesysdev/openui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework full-stack (TS, MIT) para Generative UI que define **OpenUI Lang**, un lenguaje compacto streaming-first (67 % menos tokens que JSON), con un registry de componentes, prompt builder derivado del registry y renderer React streaming. Soporte oficial de React + componentes charts/forms/tables/layouts; integraciones community para otros frameworks.",
+        "por_que_importa": "El GenUI vive fragmentado entre formatos propietarios (v0 de Vercel, Galileo, Copilot) y OpenUI apuesta por la neutralidad vendor: el LLM emite OpenUI Lang y tu renderer lo pinta en cualquier framework. Tres detalles que importan al lector técnico. **(a)** '67 % fewer tokens than JSON' es la métrica que necesitas para defender el coste por sesión frente a JSON crudo en un RFP; el dato viene del repo y conviene contrastarlo con tu propio workload antes de firmar savings. **(b)** El prompt se deriva del registry de componentes: tú defines qué puede renderizar el agente y el prompt se genera solo, lo que cierra la puerta a 'el agente inventó un componente' que es el fallo más común en GenUI en producción. **(c)** Streaming real: el UI se actualiza token a token mientras el modelo emite, no espera a la respuesta completa. Caveat honesto: el soporte oficial es React + charts/forms/tables/layouts; si tu stack es Svelte, Vue o Solid dependes del community, y eso se nota en cobertura de componentes. Pieza editorial fuerte: comparativa OpenUI Lang vs JSON crudo vs XML-vs-Tool-Use para GenUI.",
+        "madurez_senales": "9.416★ · 654 forks · TypeScript · MIT · creado 2024-12-02 · último push 2026-09-15 · topics: `agent`, `agents`, `ai`, `generative-ui`, `javascript`, `llm`. Discord 100+ online · sitio oficial https://www.openui.com · playground público · scaffolding CLI `npx @openuidev/cli@latest create --name genui-chat-app`.",
+        "accion_sugerida": "**explorar** (clonar, correr el playground, comparar el consumo de tokens entre OpenUI Lang y JSON puro en 3 prompts típicos de tu dominio, y validar que el registry realmente cierra el \"el agente inventó un componente\" en producción).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "thesysdev/openui",
+          "rel": "implements",
+          "dst": "concept:generative-ui-standard",
+          "primera_mencion": null
+        },
+        {
+          "src": "thesysdev/openui",
+          "rel": "competes_with",
+          "dst": "tool:v0-vercel",
+          "primera_mencion": null
+        },
+        {
+          "src": "thesysdev/openui",
+          "rel": "relevant_to",
+          "dst": "framework:react",
+          "primera_mencion": null
+        },
+        {
+          "src": "thesysdev/openui",
+          "rel": "solves",
+          "dst": "problem:genui-vendor-lock-in",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thesysdev-openui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Mininglamp-OSS/octo-server",
+      "url": "https://github.com/Mininglamp-OSS/octo-server",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "backend Go (Apache-2.0, 1.058★) que es el corazón de la plataforma OCTO: REST + WebSocket APIs, orquestación de los \"Lobsters\" (digital doubles OpenClaw-powered), control plane sobre WuKongIM para mensajería real-time, adapters storage (MySQL + MinIO). Arquitectura: `cmd/`, `internal/api/`, `internal/service/`, `internal/agent/` (routing + session + tool-call execution), `internal/im/`, `internal/adapter/`.",
+        "por_que_importa": "Completa el cuadrante que abrió el 2026-09-15 con `TencentCloud/Octop` añadiendo la capa de workplace (IM + adapters). El detalle interesante es que el IM core (WuKongIM) es swappable: el server expone una capa fina de control-plane sobre el IM, así puedes cambiar la pieza de mensajería sin tocar orquestación. Comparte con `e2b-dev/runtime` (que cubrimos el 2026-09-09 sobre el concepto de `agent-sandbox`) la disciplina de separar control-plane de data-plane y de no cruzar secrets por el API, pero aquí aplicada a comunicación en lugar de cómputo. Caveats honestos: el org `Mininglamp-OSS` tiene 4 meses y 33 repos, así que la tracción es real pero conviene validar madurez de seguridad (auth, secrets, RBAC) y cadencia de releases antes de adopción seria; el quickstart listado en madurez_senales está truncado y no se puede verificar el comando exacto desde aquí. Pieza editorial: 'OCTO vs Octop vs Mattermost vs Slack: el cuadrante workplace-con-agentes se consolida'.",
+        "madurez_senales": "1.058★ · 165 forks · Go · Apache-2.0 · creado 2026-05-11 · último push 2026-09-13 · topics: `ai-agents`, `apache2`, `chat`, `collaboration`, `digital-workplace`, `go`, `golang`, `im`, `instant-messaging`, `lobster`, `openclaw`, `rest-api`, `self-hosted`, `websocket`, `wukongim`. Quickstart con `go build -o octo-server .` y configs template `tsdd.yaml`. Docker Compose OOTB vía repo hermano `Mininglamp-OSS/octo-deployment`.",
+        "accion_sugerida": "**vigilar** (no apto para producción todavía — el org tiene 4 meses; leer la arquitectura y validar madurez de auth/RBAC antes de cualquier adopción seria; el repositorio sí es una buena referencia de \"cómo se monta workplace con agentes\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Mininglamp-OSS/octo-server",
+          "rel": "implements",
+          "dst": "concept:agent-workplace-backend",
+          "primera_mencion": null
+        },
+        {
+          "src": "Mininglamp-OSS/octo-server",
+          "rel": "uses",
+          "dst": "im:wukongim",
+          "primera_mencion": null
+        },
+        {
+          "src": "Mininglamp-OSS/octo-server",
+          "rel": "complements",
+          "dst": "repo:tencentcloud/octop",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "Mininglamp-OSS/octo-server",
+          "rel": "relevant_to",
+          "dst": "concept:digital-doubles",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mininglamp-oss-octo-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paquete de skills (JavaScript, MIT, 95k★) del ex-director de Google engineering (Chrome, Gemini, Google Cloud) para extender Claude Code, Codex, Cursor y Antigravity. Skills production-grade alineadas con prácticas que el propio Osmani documenta en su newsletter de engineering.",
+        "por_que_importa": "Suma el tercer 'paquete de skills firmado por autor de altísimo perfil' al cluster que ya forman `mattpocock/skills` (209k★, Total TypeScript) y `tech-leads-club/agent-skills`, un patrón editorial que seguimos cubriendo desde el 2026-07-10 bajo el concepto `author-branded-skills` y su cruce con `tool:claude-code` y `concept:coding-agent-skill`. Tres implicaciones. **(a)** El cluster confirma que 'skills firmados por un autor conocido' se está volviendo un patrón editorial tan potente como 'libro firmado por un autor conocido': la marca personal transfiere credibilidad al pack. **(b)** El perfil de Osmani (53k followers, ex-director de Google engineering en Chrome, Gemini y Google Cloud, otra arista del nodo `company:google` que cubrimos el 2026-07-10) hace muy improbable que los ~95k★ sean hype inflado; los 10.075 forks frente a fork=false y parent=null en el patrón de verificación refuerzan la lectura de tracción orgánica. **(c)** Caveat honesto: el repo es JavaScript (no Python como otros skills packs), y la release cadence hay que observarla para confirmar que las skills no son una foto fija; los 747 issues totales del ecosistema no son todos de este repo, pero marcan presión de soporte. Pieza editorial: comparativa de los 4 packs de skills de autor conocido (`mattpocock`, `addyosmani`, `tech-leads-club`, `jeffallan`).",
+        "madurez_senales": "94.994★ · 10.075 forks · JavaScript · MIT · creado 2026-02-15 · último push 2026-09-12 · topics: `agent-skills`, `antigravity`, `claude-code`, `codex`, `cursor`, `skills`. 497 subscribers, 747 open issues totales del ecosistema (no solo este repo).",
+        "accion_sugerida": "**leer** (curiosear 2-3 skills del pack para entender el formato y comparar la calidad con `mattpocock/skills`; instalar 1-2 skills selectivas en tu setup y reportar fricciones).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "addyosmani/agent-skills",
+          "rel": "implements",
+          "dst": "concept:author-branded-skills",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "addyosmani/agent-skills",
+          "rel": "relevant_to",
+          "dst": "company:google",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "addyosmani/agent-skills",
+          "rel": "complements",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "addyosmani/agent-skills",
+          "rel": "relevant_to",
+          "dst": "concept:coding-agent-skill",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "addyosmani-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "RightNow-AI/openfang",
+      "url": "https://github.com/RightNow-AI/openfang",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(18.238★, último push **2026-07-02**, Rust, Apache-2.0) — \"Open-source Agent Operating System\", MCP, 2.291 forks, 129 subscribers. Trending pero **2 meses sin push**: la promesa (MCP + openclaw + agent OS) sigue ahí pero requiere revisión de branches recientes antes de recomendar.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si confirma actividad reciente en otra rama, sube a hallazgo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rightnow-ai-openfang",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Jeffallan/claude-skills",
+      "url": "https://github.com/Jeffallan/claude-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.543★, último push 2026-08-07, Python, MIT) — 67 specialized skills para Claude Code full-stack devs. Se suma a la nube de skills-packs; descripción ambiciosa (\"expert pair programmer\"), conviene validar 1-2 skills antes de instalar masivamente.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jeffallan-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "danny-avila/LibreChat",
+      "url": "https://github.com/danny-avila/LibreChat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(43.985★, último push 2026-09-16, TypeScript, MIT) — el clon canónico de ChatGPT: Anthropic + DeepSeek + AWS + OpenAI Responses + Azure + MCP + Skills + Agents + Vision. Trending con momentum nuevo (push de hoy).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (incumbent bien establecido — el interés editorial está en la pieza \"el estado del clon ChatGPT en 2026\", no en sí mismo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "danny-avila-librechat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "SnailSploit/Claude-Red",
+      "url": "https://github.com/SnailSploit/Claude-Red",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.469★, último push 2026-08-30, Python, MIT) — re-entry 4 días después: 70 skills ofensivos para Claude. El cluster \"Claude skills para red team\" se mantiene.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si cubres security, pieza editorial sobre la colección completa)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snailsploit-claude-red",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Tencent/WeKnora",
+      "url": "https://github.com/Tencent/WeKnora",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(24.611★, último push 2026-09-16, Go, **NOASSERTION** vía API: verificar LICENSE en repo) — re-entry. Plataforma RAG + agente + wiki auto-mantenida, multi-tenant.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (la licencia merece verificación antes de build-dep)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-weknora",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "microsoft/AI-Engineering-Coach",
+      "url": "https://github.com/microsoft/AI-Engineering-Coach",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.285★, último push 2026-09-16, TypeScript) — re-entry: 45 reglas anti-pattern aplicadas a logs locales del agente, dashboard 100 % local.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si tu agente genera muchos logs, probar el dashboard para ver qué reglas dispara)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-ai-engineering-coach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Yuan1z0825/nature-skills",
+      "url": "https://github.com/Yuan1z0825/nature-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(42.230★, último push 2026-09-16, Python, Apache-2.0) — descripción en chino, \"Skills para expresión académica y plotting científico de papers Nature\". **Patrón de stars sospechoso**: autor con 728 followers y solo 10 repos públicos → probable tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "inflada (no fork mirror; hype/celebrity push) — Acción: **ignorar** salvo validación externa",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yuan1z0825-nature-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

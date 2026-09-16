@@ -1,0 +1,45 @@
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-e2b-dev-runtime", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-e2b-dev-runtime", "dst": "tema:e2b-dev-runtime", "rel": "trata", "added": "2026-09-16"}
+{"src": "e2b-dev/runtime", "dst": "concept:agent-sandbox", "rel": "implements", "added": "2026-09-16", "primera_mencion": "2026-09-09"}
+{"src": "e2b-dev/runtime", "dst": "concept:firecracker-microvm", "rel": "implements", "added": "2026-09-16", "primera_mencion": null}
+{"src": "e2b-dev/runtime", "dst": "pattern:agent-code-execution", "rel": "enables", "added": "2026-09-16", "primera_mencion": null}
+{"src": "e2b-dev/runtime", "dst": "tool:code-interpreter", "rel": "complements", "added": "2026-09-16", "primera_mencion": null}
+{"src": "e2b-dev/runtime", "dst": "company:e2b", "rel": "relevant_to", "added": "2026-09-16", "primera_mencion": null}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-mg1937-asc", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-mg1937-asc", "dst": "tema:mg1937-asc", "rel": "trata", "added": "2026-09-16"}
+{"src": "MG1937/ASC", "dst": "concept:agent-decompiler", "rel": "implements", "added": "2026-09-16", "primera_mencion": null}
+{"src": "MG1937/ASC", "dst": "technique:deflate-bitstream-probing", "rel": "implements", "added": "2026-09-16", "primera_mencion": null}
+{"src": "MG1937/ASC", "dst": "domain:mobile-reverse-engineering", "rel": "relevant_to", "added": "2026-09-16", "primera_mencion": null}
+{"src": "MG1937/ASC", "dst": "pattern:agent-driven-re", "rel": "enables", "added": "2026-09-16", "primera_mencion": null}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-thesysdev-openui", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-thesysdev-openui", "dst": "tema:thesysdev-openui", "rel": "trata", "added": "2026-09-16"}
+{"src": "thesysdev/openui", "dst": "concept:generative-ui-standard", "rel": "implements", "added": "2026-09-16", "primera_mencion": null}
+{"src": "thesysdev/openui", "dst": "tool:v0-vercel", "rel": "competes_with", "added": "2026-09-16", "primera_mencion": null}
+{"src": "thesysdev/openui", "dst": "framework:react", "rel": "relevant_to", "added": "2026-09-16", "primera_mencion": null}
+{"src": "thesysdev/openui", "dst": "problem:genui-vendor-lock-in", "rel": "solves", "added": "2026-09-16", "primera_mencion": null}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-mininglamp-oss-octo-server", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-mininglamp-oss-octo-server", "dst": "tema:mininglamp-oss-octo-server", "rel": "trata", "added": "2026-09-16"}
+{"src": "Mininglamp-OSS/octo-server", "dst": "concept:agent-workplace-backend", "rel": "implements", "added": "2026-09-16", "primera_mencion": null}
+{"src": "Mininglamp-OSS/octo-server", "dst": "im:wukongim", "rel": "uses", "added": "2026-09-16", "primera_mencion": null}
+{"src": "Mininglamp-OSS/octo-server", "dst": "repo:tencentcloud/octop", "rel": "complements", "added": "2026-09-16", "primera_mencion": "2026-09-15"}
+{"src": "Mininglamp-OSS/octo-server", "dst": "concept:digital-doubles", "rel": "relevant_to", "added": "2026-09-16", "primera_mencion": null}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-addyosmani-agent-skills", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:addyosmani-agent-skills", "rel": "trata", "added": "2026-09-16"}
+{"src": "addyosmani/agent-skills", "dst": "concept:author-branded-skills", "rel": "implements", "added": "2026-09-16", "primera_mencion": "2026-07-10"}
+{"src": "addyosmani/agent-skills", "dst": "company:google", "rel": "relevant_to", "added": "2026-09-16", "primera_mencion": "2026-07-10"}
+{"src": "addyosmani/agent-skills", "dst": "tool:claude-code", "rel": "complements", "added": "2026-09-16", "primera_mencion": "2026-07-10"}
+{"src": "addyosmani/agent-skills", "dst": "concept:coding-agent-skill", "rel": "relevant_to", "added": "2026-09-16", "primera_mencion": "2026-07-10"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-rightnow-ai-openfang", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-rightnow-ai-openfang", "dst": "tema:rightnow-ai-openfang", "rel": "trata", "added": "2026-09-16"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-jeffallan-claude-skills", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-jeffallan-claude-skills", "dst": "tema:jeffallan-claude-skills", "rel": "trata", "added": "2026-09-16"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-danny-avila-librechat", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-danny-avila-librechat", "dst": "tema:danny-avila-librechat", "rel": "trata", "added": "2026-09-16"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-snailsploit-claude-red", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-snailsploit-claude-red", "dst": "tema:snailsploit-claude-red", "rel": "trata", "added": "2026-09-16"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-tencent-weknora", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-tencent-weknora", "dst": "tema:tencent-weknora", "rel": "trata", "added": "2026-09-16"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-microsoft-ai-engineering-coach", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-microsoft-ai-engineering-coach", "dst": "tema:microsoft-ai-engineering-coach", "rel": "trata", "added": "2026-09-16"}
+{"src": "boletin:2026-09-16", "dst": "item:https-github-com-yuan1z0825-nature-skills", "rel": "menciona", "added": "2026-09-16"}
+{"src": "item:https-github-com-yuan1z0825-nature-skills", "dst": "tema:yuan1z0825-nature-skills", "rel": "trata", "added": "2026-09-16"}
