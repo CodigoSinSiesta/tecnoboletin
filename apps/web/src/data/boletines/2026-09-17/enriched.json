@@ -1,0 +1,448 @@
+{
+  "version": 2,
+  "date": "2026-09-17",
+  "boletin_origen": "2026-09-17-trending.md",
+  "resumen_ejecutivo": "- **`vercel/eve` reta a `Claude Code` y `Codex` como framework portable de agentes**: 5.3k★, TS, Apache-2.0. Estructura de proyecto por convención (`agent/instructions.md` + `tools/` + `skills/` + `channels/` + `schedules/`) descubierta automáticamente por el runtime; el `npx eve init` arranca un TUI interactivo con un agente usable en 30 segundos. El matiz editorial: Vercel está canibalizando su propia marca frente a Claude Code, apostando por \"el contenedor portable\" en lugar de otro CLI.\n- **`MemTensor/MemOS 2.0 Stardust` consolida el sistema operativo de memoria para agentes**: 11.5k★, TS, Apache-2.0, ArXiv `2507.03724`. Memoria persistente + retrieval híbrido + cross-task sharing, con paper académico detrás. Es el contendiente \"orientado a investigación\" frente a `memvid/memvid` del radar — el soporte oficial y la adopción en `OpenViking` lo diferencian claramente.\n- **`monid-ai/monid` propone \"OpenRouter para herramientas de agentes\"**: 176★ (proyecto nuevo), Deno + TS, MIT. Capa de conectores declarativa — un PR añade un proveedor al catálogo; el agente llama `discover` para rankear por precio/health/p50/p95 sin hardcodear el vendor. Complementa la tendencia \"OpenRouter × herramientas\" con un giro de billing por endpoint.\n- **`Q00/ouroboros` introduce el \"agent OS\" con mejora evolutiva**: 5.9k★, Python, MIT. El agente corre, falla y se vuelve más listo generación tras generación; el prompt no es la fuente de verdad, lo es el grading command + expected result en un \"success contract\" fuera del input. Es la apuesta más explícita del día por **\"el self-improving agent\"** sin reescribir prompts.\n- **`coder/coder` se reposiciona: de \"Cloud Dev Env\" a \"AI agents en tu infra\"**: 14.6k★, Go, AGPL-3.0, push 2026-09-17. El nativo `Coder Agents` corre el loop del coding agent en el control plane con tus keys BYO (Anthropic/OpenAI/Google/Bedrock) — sin filtrar credenciales a los workspaces. Es la cara B de Codex/Claude Code: \"el agente vive en tu cluster\".\n- **Radar**: `latent-spaces/brag` (skill de Claude Code → video de lanzamiento), `jmiao24/Paper2Agent` (paper → MCP server automático), `meituan-longcat/LongCat-Video` (video gen 13.6B, modelo abierto), `timhartmann7/omnyssh` (TUI SSH en Rust), `dora-rs/dora` (dataflow para embodied AI).\nFuentes consultadas: Trendshift daily, GitHub Trending daily + TypeScript/Python/Rust/Go slices, GitHub API REST para 17 candidatos nuevos (budget restante ~43/h). Blogwatcher no publicado hoy — el 09:10 trends corre antes del disparo del 08:00; comprobar después si `<DATE>-blogs.md` quedó escrito y ajustar el próximo bulletin si aporta contexto duplicado.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "vercel/eve",
+      "url": "https://github.com/vercel/eve",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework TS + runtime (Apache-2.0, 5.316★) para construir agentes portables. La estructura de proyecto (`agent/instructions.md` + `tools/` + `skills/` + `channels/` + `schedules/`) es la convención que el runtime descubre solo; `npx eve@latest init my-agent` arranca un TUI funcional con un agente usable. La documentación se empaqueta con el npm (`node_modules/eve/docs`) para que coding agents la lean offline.",
+        "por_que_importa": "Vercel mete la cabeza en el escritorio del developer agent con una tesis editorial distinta a la de Anthropic/OpenAI: el contenedor es portable, el modelo se elige después. `agent.ts` con `defineAgent({ model: 'openai/gpt-5.6-luna-fast' })` externaliza el binding al AI Gateway, así que un agente escrito para eve puede rotar entre proveedores con un cambio de una línea. Caveat: la adopción depende del AI Gateway de Vercel (no es Anthropic-compatible estándar, es su gateway). En el grafo ya cubrimos a sus competidores más cercanos: `claude-code` el 2026-09-15 y `openai/codex` el 2026-08-11 — eve se suma como tercer contendiente en la misma semana, pero con la apuesta diferencial de tratar la definición del agente como artefacto portable. Buena pieza editorial: comparativa de \"definición portable del agente\" frente a Claude Code Skills, Codex TOML, OpenAI Agents SDK, Mastra y E2B + SDK propio.",
+        "madurez_senales": "5.316★ · 490 forks · TypeScript · Apache-2.0 · creado 2026-08-21 · último push 2026-09-17 · topics: `agent`, `framework`, `harness`, `javascript`, `markdown`. Sitio https://eve.dev/, npm `eve@latest`, docs empaquetados en `node_modules/eve/docs` (`.md` planos — legibles por cualquier coding agent).",
+        "accion_sugerida": "**explorar** (clonar, correr `npx eve@latest init my-agent`, validar que un tool `@vercel/ai-sdk` puede correr end-to-end y comparar la portabilidad con `Claude Code Skills`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vercel/eve",
+          "rel": "implements",
+          "dst": "concept:agent-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel/eve",
+          "rel": "competes_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "vercel/eve",
+          "rel": "competes_with",
+          "dst": "repo:openai/codex",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "vercel/eve",
+          "rel": "uses",
+          "dst": "concept:ai-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel/eve",
+          "rel": "relevant_to",
+          "dst": "company:vercel",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-eve",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "MemTensor/MemOS",
+      "url": "https://github.com/MemTensor/MemOS",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema operativo de memoria para LLM/AI agents (TS, Apache-2.0, 11.490★). Combina memoria ultra-persistente, retrieval híbrido y cross-task sharing. La versión `2.0 Stardust` añade scheduling de memoria y la capacidad de tratar \"memory kernels\" como una capa de sistema. Documentación en https://memos-docs.openmem.net, paper en `arXiv:2507.03724`.",
+        "por_que_importa": "El cuadrante de \"memoria persistente para agentes\" está madurando rápido y MemOS trae la pieza académica que faltaba: a diferencia de `memvid/memvid` (encode en MP4, storage minimal) o `letta/letta` (stateful server), MemOS introduce \"memory como capa de OS\" — modular, planificable, versionable. Su adopción en `volcengine/OpenViking` lo coloca como el estándar de facto del ecosistema ByteDance/Tencent para memoria de agentes, con paper en arXiv y quickstart en `pip install MemoryOS` o `npm install @memtensor/memos`. Limitación honesta: el item no incluye comparativa concreta de features contra Letta/memvid (qué scheduling exacto trae, qué versión de memory kernel soporta Stardust), así que la afirmación \"el estándar de facto\" se apoya solo en la adopción de OpenViking, no en una tabla de capabilities. Buena pieza editorial: \"MemOS × Letta × memvid × Hindsight — los 4 modelos de memoria persistente y cuál elegir por caso de uso\".",
+        "madurez_senales": "11.490★ · 1.130 forks · TypeScript · Apache-2.0 · creado 2025-03-28 · último push 2026-09-17 · topics: `agent`, `agentic-ai`, `ai`, `ai-agents`, `chatgpt`. Discord activo, paper en ArXiv, sitio oficial con playground. Quickstart `pip install MemoryOS` o `npm install @memtensor/memos`.",
+        "accion_sugerida": "**leer** (no requiere instalación — leer el paper ArXiv 2507.03724 + 5 mensajes de changelog v2.0, después decidir si vale compararla con `letta` para pieza técnica).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "MemTensor/MemOS",
+          "rel": "implements",
+          "dst": "concept:memory-os",
+          "primera_mencion": null
+        },
+        {
+          "src": "MemTensor/MemOS",
+          "rel": "competes_with",
+          "dst": "repo:letta/letta",
+          "primera_mencion": null
+        },
+        {
+          "src": "MemTensor/MemOS",
+          "rel": "complements",
+          "dst": "concept:agent-persistent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "MemTensor/MemOS",
+          "rel": "relevant_to",
+          "dst": "concept:long-running-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "memtensor-memos",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "monid-ai/monid",
+      "url": "https://github.com/monid-ai/monid",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "capa de conectores declarativa para agentes (Deno 2 + TS, MIT, 176★). Cada proveedor se describe con `defineProvider` (auth, billing model, categorías) y cada endpoint con `defineEndpoint` (schema zod, timeouts, request). Añadir un proveedor es un PR; al mergear, los endpoints aparecen automáticamente en `discover` — que rankea por precio, health en vivo, p50/p95 observados y nombre alternativo. El verbo principal es `discover`: llama con una tarea y devuelve varios candidatos ranked.",
+        "por_que_importa": "Completa el patrón \"OpenRouter × tools\": `OpenRouter` resolvió el switching de modelos; `Monid` lo lleva a servicios externos (Tinyfish search, Exa search, scraping APIs, enrichment, etc.). El matiz más fino está en la liquidación de billing: cada conector declara su modelo de cobro (flat por call, por result, por unidad) y el engine lo liquida sobre el response envelope real — un vendor error o un resultado vacío se cobra a 0, lo que elimina el clásico problema de \"el agente me cobró 100 búsquedas y me devolvió 0\". Caveat: 176★ es muy temprano y el catálogo arranca con ~10 proveedores, así que la promesa de discover+settlement está validada por 188 replay tests sin red, pero todavía sin tracción de mercado real. Limitación honesta: no tenemos fecha concreta en el grafo para compararlo con sus alternativas (Composio, ToolRouter), así que esta pieza se lee como foto fija, no como continuación de una conversación previa. Pieza editorial: comparativa con Composio (15k★, monetiza vía subscriptions), ToolRouter y OpenAI Tools/Function Calling como estrategias de \"economía del tool call\".",
+        "madurez_senales": "176★ · 16 forks · TypeScript · MIT · creado 2026-08-13 · último push 2026-09-17 · topics: `ai-agents`, `developer-tools`. Deno 2.x requerido; `deno task check && deno task test` corre 188 replay tests **sin red**. Sitio https://monid.ai con catálogo compilado y `SKILL.md` para que coding agents aprendan la API en local.",
+        "accion_sugerida": "**explorar** (instalar Deno 2, clonar el repo, correr `deno task catalog providers`, escribir un conector de juguete propio y validar que `discover` lo rankea correctamente contra un proveedor existente — buen candidato a pieza editorial porque el billing real es tema ausente en el resto del mercado).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "monid-ai/monid",
+          "rel": "implements",
+          "dst": "concept:agent-tool-router",
+          "primera_mencion": null
+        },
+        {
+          "src": "monid-ai/monid",
+          "rel": "competes_with",
+          "dst": "repo:composiohq/composio",
+          "primera_mencion": null
+        },
+        {
+          "src": "monid-ai/monid",
+          "rel": "enables",
+          "dst": "pattern:declarative-connector",
+          "primera_mencion": null
+        },
+        {
+          "src": "monid-ai/monid",
+          "rel": "relevant_to",
+          "dst": "concept:per-call-metered-billing",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "monid-ai-monid",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Q00/ouroboros",
+      "url": "https://github.com/Q00/ouroboros",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework Python (MIT, 5.967★, push 2026-09-15) con la tesis editorial: **\"el prompt no es la fuente de verdad\"**. El usuario define un **success contract** externo (grading command + expected result) y ouroboros corre el agente; cada generación falla, mide y refina. El prompt nunca es el límite del agente — el grading lo es. El setup es una entrevista CLI (`ooo setup`) que pregunta ambigüedades antes de empezar (ordering, scope, prioridad).",
+        "por_que_importa": "Es la apuesta más explícita del día por \"self-improving agent sin tocar el prompt\": el usuario define un success contract externo (grading command + expected result) y ouroboros corre el agente; cada generación falla, mide y refina. El prompt nunca es el límite del agente — el grading lo es, lo que lo hace testeable y reproducible. En el grafo ya cubrimos `concept:agent-os` el 2026-08-14, así que ouroboros se lee como la segunda iteración semanal sobre la misma idea de \"el agente como sistema operativo\", pero esta vez con el giro del contract-driven grading. Caveat importante: el modelo de seguridad abre un vector de prompt-injection si el \"expected result\" sale de una fuente no confiable — el repo dice \"we just hold the line\", lo que sugiere que el operador decide cuánto punishment/fitting time dar, sin guardrails automatizados de fábrica. Buena pieza editorial: \"Ouroboros × EvoPrompt × Promptwright — el cuadrilátero 'agente que se mejora solo' y los tradeoffs de seguridad de cada uno\".",
+        "madurez_senales": "5.967★ · 533 forks · Python · MIT · creado 2026-07-17 · último push 2026-09-15 · topics: `agent-os`, `agentic-ai`, `ai-agent`, `ai-coding-agent`, `claude-code`. Instalador one-liner (`curl ... | OUROBOROS_INSTALL_REF=readme-hero bash`), soporta macOS/Linux/WSL2 con script PowerShell para Windows. Run `ooo init start` desde el CLI dentro de tu coding agent.",
+        "accion_sugerida": "**leer** (no instalarlo todavía — leer la sección \"From Wonder to Ontology\" del README + el white-paper enlazado desde docs/ouroboros.page/learn/en; es la mejor introducción conceptual al modelo \"el grading es la verdad, el prompt es historia\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Q00/ouroboros",
+          "rel": "implements",
+          "dst": "concept:agent-os",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "Q00/ouroboros",
+          "rel": "implements",
+          "dst": "technique:evolutionary-agent-improvement",
+          "primera_mencion": null
+        },
+        {
+          "src": "Q00/ouroboros",
+          "rel": "competes_with",
+          "dst": "concept:prompt-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "Q00/ouroboros",
+          "rel": "relevant_to",
+          "dst": "concept:replayable-coding-workflows",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "q00-ouroboros",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "coder/coder",
+      "url": "https://github.com/coder/coder",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma self-hosted (Go, AGPL-3.0, 14.634★) para cloud development environments **+ AI agents**. Diferencia editorial vs Codex/Claude Code: el loop del coding agent corre en el control plane (tu infra), BYO-model (Anthropic/OpenAI/Google/Bedrock/auto-hosted) y las credenciales nunca se filtran a los workspaces — solo metadatos + identity tokens cortos. Workspaces definibles vía Terraform (EC2/K8s/Docker), auto-shutdown de recursos idle, túnel Wireguard.",
+        "por_que_importa": "Coder lleva el debate \"agentes en local vs agente en cloud\" a una nueva capa: el agente vive en tu cluster. El loop del coding agent corre en el control plane (tu infra), BYO-model (Anthropic/OpenAI/Google/Bedrock/auto-hosted) y las credenciales nunca se filtran a los workspaces — solo metadatos + identity tokens cortos. Para una empresa europea con dudas regulatorias (RGPD, data residency) esto resuelve \"el loop del agente ocurre fuera de mi perímetro\", que es exactamente el `problem:data-residency-agents` que el grafo ya tenía mapeado. Caveat fuerte: la licencia AGPL-3.0 significa que cualquier servicio derivado debe abrir su código, lo que veta forks internos sin abrir y lo distingue del resto del ecosistema (suele ser Apache/MIT). Limitación honesta: el item no incluye comparativa concreta contra E2B/Cody/Anthropic Console en features específicas (latencia del túnel Wireguard, throughput del control plane, cobertura de providers BYO), así que la pieza editorial propuesta se sostendría mejor con un cuadro de capabilities. Buena pieza editorial: \"Coder Agents vs E2B Cloud vs Cody vs Anthropic Console — los 4 sitios donde puede vivir el loop del agente\".",
+        "madurez_senales": "14.634★ · 1.470 forks · Go · AGPL-3.0 (cabe destacar frente al resto del ecosistema que suele ser Apache/MIT) · creado 2017-08-15 · último push 2026-09-17 · topics: `agents`, `dev-tools`, `development-environment`, `go`, `golang`. Quickstart `curl -L https://coder.com/install.sh | sh`, server arranca en `localhost:3000`. Validated architectures publicadas para sizing enterprise.",
+        "accion_sugerida": "**vigilar** (no instalarlo en producción todavía si tu equipo jurídico evalúa AGPL-3.0 — leer los repos `coder` schema de Terraform, validar la separación control-plane/data-plane, y si te interesa la tesis BYO-model, compararla con `E2B + runtime embed/` que ya apareció en el bulletin del 2026-09-16).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "coder/coder",
+          "rel": "implements",
+          "dst": "concept:self-hosted-cde",
+          "primera_mencion": null
+        },
+        {
+          "src": "coder/coder",
+          "rel": "implements",
+          "dst": "concept:on-prem-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "coder/coder",
+          "rel": "competes_with",
+          "dst": "company:anthropic-claude-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "coder/coder",
+          "rel": "relevant_to",
+          "dst": "problem:data-residency-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "coder/coder",
+          "rel": "enables",
+          "dst": "pattern:byo-model-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "coder-coder",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "latent-spaces/brag",
+      "url": "https://github.com/latent-spaces/brag",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.526★, push 2026-08-17, Python, MIT) — skill de Claude Code que convierte un proyecto en un video corto de lanzamiento (música, motion, share copy) usando Hyperframes. Comando único `/brag`. Compatible con opencode, Codex CLI, Cursor, Copilot vía `npx skills add`.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (instalar el plugin marketplace, correr `/brag` sobre un repo propio y validar el video corto; el ángulo editorial es \"skill de autor para humano-no-disenhador que quiere enseñar lo que hizo en 60 s\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "latent-spaces-brag",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "jmiao24/Paper2Agent",
+      "url": "https://github.com/jmiao24/Paper2Agent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.677★, push 2026-09-16, Python, MIT) — sistema multi-agente que transforma papers de investigación en AI agents usables (genera MCP servers + skills). Trabaja con papers que tienen repo companion (ejemplos: AlphaGenome, Scanpy, TISSUE).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (instalar la skill `paper2agent` en Claude Code, correrla contra un paper corto con repo público y evaluar el MCP output — buena pieza editorial porque convierte un paper en una pieza que se puede `pip install`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jmiao24-paper2agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "meituan-longcat/LongCat-Video",
+      "url": "https://github.com/meituan-longcat/LongCat-Video",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(8.233★, push 2026-05-27, Python, MIT) — modelo fundacional de generación de video 13.6B de Meituan. Une text-to-video + image-to-video + video-continuation en una sola arquitectura; especialmente bueno en videos largos (sin color drift). paper ArXiv `2510.22200`, modelos en HuggingFace.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no aplicable directo a un dev de newsletter, pero merece la pena tener en el radar si Alejandro escribe sobre multimodal — el repo es la referencia china 2026 para video gen, comparable con LTX-2 de Lightricks)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "meituan-longcat-longcat-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "timhartmann7/omnyssh",
+      "url": "https://github.com/timhartmann7/omnyssh",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(819★, push 2026-08-22, Rust, Apache-2.0) — TUI para gestionar conexiones SSH en Rust: dashboard + terminal + SFTP + snippets. Una sola ventana, instalador one-liner.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (alternativa moderna a Termius/LazySSH; el ángulo editorial es \"infra con teclado en menos de 1 MB\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "timhartmann7-omnyssh",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "dora-rs/dora",
+      "url": "https://github.com/dora-rs/dora",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.063★, push 2026-09-17, Rust, Apache-2.0) — middleware dataflow-oriented para embodied AI (Python + Rust API, low-latency, robotics). Reemplaza arquitecturas ROS para casos mixtos CPU/GPU.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no para newsletter de IA/dev estándar, pero es el mejor OSS \"dataflow v2\" para robotic — relevant si sale un artículo sobre robotics + LLM)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dora-rs-dora",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "theoephraim/awesome-cloudflare-selfhosted",
+      "url": "https://github.com/theoephraim/awesome-cloudflare-selfhosted",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(393★, push 2026-09-16, JavaScript, MIT) — lista curada de apps open-source deployables en tu cuenta de Cloudflare (Workers + D1 + R2 + wrangler). Reemplaza Calendly/Canny/SaaS varios con un deploy. Cada entrada auditada leyendo su `LICENSE` y `wrangler.toml`.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (buena pieza editorial: \"SaaS-roubaix — los SaaS que puedes reemplazar gratis con Workers hoy y los que no\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "theoephraim-awesome-cloudflare-selfhoste",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "vercel/ai",
+      "url": "https://github.com/vercel/ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(no verificado en este bulletin — repo continuo, no candidato del día)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (referencia estable del ecosistema AI SDK; no aporta al bulletin diario)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

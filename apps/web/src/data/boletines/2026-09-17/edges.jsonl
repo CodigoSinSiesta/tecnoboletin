@@ -1,0 +1,46 @@
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-vercel-eve", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-vercel-eve", "dst": "tema:vercel-eve", "rel": "trata", "added": "2026-09-17"}
+{"src": "vercel/eve", "dst": "concept:agent-framework", "rel": "implements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "vercel/eve", "dst": "tool:claude-code", "rel": "competes_with", "added": "2026-09-17", "primera_mencion": "2026-09-15"}
+{"src": "vercel/eve", "dst": "repo:openai/codex", "rel": "competes_with", "added": "2026-09-17", "primera_mencion": "2026-08-11"}
+{"src": "vercel/eve", "dst": "concept:ai-gateway", "rel": "uses", "added": "2026-09-17", "primera_mencion": null}
+{"src": "vercel/eve", "dst": "company:vercel", "rel": "relevant_to", "added": "2026-09-17", "primera_mencion": "2026-08-19"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-memtensor-memos", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-memtensor-memos", "dst": "tema:memtensor-memos", "rel": "trata", "added": "2026-09-17"}
+{"src": "MemTensor/MemOS", "dst": "concept:memory-os", "rel": "implements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "MemTensor/MemOS", "dst": "repo:letta/letta", "rel": "competes_with", "added": "2026-09-17", "primera_mencion": null}
+{"src": "MemTensor/MemOS", "dst": "concept:agent-persistent-memory", "rel": "complements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "MemTensor/MemOS", "dst": "concept:long-running-agent", "rel": "relevant_to", "added": "2026-09-17", "primera_mencion": null}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-monid-ai-monid", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-monid-ai-monid", "dst": "tema:monid-ai-monid", "rel": "trata", "added": "2026-09-17"}
+{"src": "monid-ai/monid", "dst": "concept:agent-tool-router", "rel": "implements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "monid-ai/monid", "dst": "repo:composiohq/composio", "rel": "competes_with", "added": "2026-09-17", "primera_mencion": null}
+{"src": "monid-ai/monid", "dst": "pattern:declarative-connector", "rel": "enables", "added": "2026-09-17", "primera_mencion": null}
+{"src": "monid-ai/monid", "dst": "concept:per-call-metered-billing", "rel": "relevant_to", "added": "2026-09-17", "primera_mencion": null}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-q00-ouroboros", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-q00-ouroboros", "dst": "tema:q00-ouroboros", "rel": "trata", "added": "2026-09-17"}
+{"src": "Q00/ouroboros", "dst": "concept:agent-os", "rel": "implements", "added": "2026-09-17", "primera_mencion": "2026-08-14"}
+{"src": "Q00/ouroboros", "dst": "technique:evolutionary-agent-improvement", "rel": "implements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "Q00/ouroboros", "dst": "concept:prompt-engineering", "rel": "competes_with", "added": "2026-09-17", "primera_mencion": null}
+{"src": "Q00/ouroboros", "dst": "concept:replayable-coding-workflows", "rel": "relevant_to", "added": "2026-09-17", "primera_mencion": null}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-coder-coder", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-coder-coder", "dst": "tema:coder-coder", "rel": "trata", "added": "2026-09-17"}
+{"src": "coder/coder", "dst": "concept:self-hosted-cde", "rel": "implements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "coder/coder", "dst": "concept:on-prem-coding-agent", "rel": "implements", "added": "2026-09-17", "primera_mencion": null}
+{"src": "coder/coder", "dst": "company:anthropic-claude-code", "rel": "competes_with", "added": "2026-09-17", "primera_mencion": null}
+{"src": "coder/coder", "dst": "problem:data-residency-agents", "rel": "relevant_to", "added": "2026-09-17", "primera_mencion": null}
+{"src": "coder/coder", "dst": "pattern:byo-model-agents", "rel": "enables", "added": "2026-09-17", "primera_mencion": null}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-latent-spaces-brag", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-latent-spaces-brag", "dst": "tema:latent-spaces-brag", "rel": "trata", "added": "2026-09-17"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-jmiao24-paper2agent", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-jmiao24-paper2agent", "dst": "tema:jmiao24-paper2agent", "rel": "trata", "added": "2026-09-17"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-meituan-longcat-longcat-video", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-meituan-longcat-longcat-video", "dst": "tema:meituan-longcat-longcat-video", "rel": "trata", "added": "2026-09-17"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-timhartmann7-omnyssh", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-timhartmann7-omnyssh", "dst": "tema:timhartmann7-omnyssh", "rel": "trata", "added": "2026-09-17"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-dora-rs-dora", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-dora-rs-dora", "dst": "tema:dora-rs-dora", "rel": "trata", "added": "2026-09-17"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-theoephraim-awesome-cloudflare-selfhosted", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-theoephraim-awesome-cloudflare-selfhosted", "dst": "tema:theoephraim-awesome-cloudflare-selfhoste", "rel": "trata", "added": "2026-09-17"}
+{"src": "boletin:2026-09-17", "dst": "item:https-github-com-vercel-ai", "rel": "menciona", "added": "2026-09-17"}
+{"src": "item:https-github-com-vercel-ai", "dst": "tema:vercel-ai", "rel": "trata", "added": "2026-09-17"}
