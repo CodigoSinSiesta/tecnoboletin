@@ -1,0 +1,49 @@
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-bendlang-bend", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-bendlang-bend", "dst": "tema:bendlang-bend", "rel": "trata", "added": "2026-09-18"}
+{"src": "bendlang/bend", "dst": "concept:proof-backed-agent-code", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "bendlang/bend", "dst": "concept:prompt-engineering", "rel": "competes_with", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "bendlang/bend", "dst": "repo:Q00/ouroboros", "rel": "complements", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "bendlang/bend", "dst": "concept:self-improving-agent", "rel": "relevant_to", "added": "2026-09-18", "primera_mencion": "2026-08-08"}
+{"src": "bendlang/bend", "dst": "company:anthropic-claude-code", "rel": "relevant_to", "added": "2026-09-18", "primera_mencion": null}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-bmad-code-org-bmad-method", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-bmad-code-org-bmad-method", "dst": "tema:bmad-code-org-bmad-method", "rel": "trata", "added": "2026-09-18"}
+{"src": "bmad-code-org/BMAD-METHOD", "dst": "concept:agile-agent-process", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "bmad-code-org/BMAD-METHOD", "dst": "repo:vercel/eve", "rel": "competes_with", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "bmad-code-org/BMAD-METHOD", "dst": "repo:Q00/ouroboros", "rel": "complements", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "bmad-code-org/BMAD-METHOD", "dst": "concept:context-engineering", "rel": "uses", "added": "2026-09-18", "primera_mencion": "2026-09-02"}
+{"src": "bmad-code-org/BMAD-METHOD", "dst": "company:anthropic-claude-code", "rel": "relevant_to", "added": "2026-09-18", "primera_mencion": null}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-strands-agents-harness-sdk", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-strands-agents-harness-sdk", "dst": "tema:strands-agents-harness-sdk", "rel": "trata", "added": "2026-09-18"}
+{"src": "strands-agents/harness-sdk", "dst": "concept:model-driven-agent-loop", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "strands-agents/harness-sdk", "dst": "repo:vercel/eve", "rel": "competes_with", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "strands-agents/harness-sdk", "dst": "repo:microsoft/agent-framework", "rel": "competes_with", "added": "2026-09-18", "primera_mencion": "2026-08-21"}
+{"src": "strands-agents/harness-sdk", "dst": "company:aws-bedrock", "rel": "relevant_to", "added": "2026-09-18", "primera_mencion": null}
+{"src": "strands-agents/harness-sdk", "dst": "concept:mcp", "rel": "uses", "added": "2026-09-18", "primera_mencion": null}
+{"src": "strands-agents/harness-sdk", "dst": "repo:monid-ai/monid", "rel": "complements", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-human-agent-society-reef", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-human-agent-society-reef", "dst": "tema:human-agent-society-reef", "rel": "trata", "added": "2026-09-18"}
+{"src": "Human-Agent-Society/reef", "dst": "concept:continual-learning-loop", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "Human-Agent-Society/reef", "dst": "concept:production-self-improving-agent", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "Human-Agent-Society/reef", "dst": "repo:Q00/ouroboros", "rel": "competes_with", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "Human-Agent-Society/reef", "dst": "repo:memvid/memvid", "rel": "complements", "added": "2026-09-18", "primera_mencion": "2026-08-19"}
+{"src": "Human-Agent-Society/reef", "dst": "tool:slime", "rel": "uses", "added": "2026-09-18", "primera_mencion": null}
+{"src": "Human-Agent-Society/reef", "dst": "tool:sglang", "rel": "uses", "added": "2026-09-18", "primera_mencion": null}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-anthropics-knowledge-work-plugins", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-anthropics-knowledge-work-plugins", "dst": "tema:anthropics-knowledge-work-plugins", "rel": "trata", "added": "2026-09-18"}
+{"src": "anthropics/knowledge-work-plugins", "dst": "concept:vertical-plugin-marketplace", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "anthropics/knowledge-work-plugins", "dst": "concept:claude-cowork", "rel": "implements", "added": "2026-09-18", "primera_mencion": null}
+{"src": "anthropics/knowledge-work-plugins", "dst": "repo:monid-ai/monid", "rel": "competes_with", "added": "2026-09-18", "primera_mencion": "2026-09-17"}
+{"src": "anthropics/knowledge-work-plugins", "dst": "company:anthropic", "rel": "relevant_to", "added": "2026-09-18", "primera_mencion": "2026-08-18"}
+{"src": "anthropics/knowledge-work-plugins", "dst": "repo:anthropics/claude-code", "rel": "complements", "added": "2026-09-18", "primera_mencion": "2026-07-28"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-llmquant-quant-mind", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-llmquant-quant-mind", "dst": "tema:llmquant-quant-mind", "rel": "trata", "added": "2026-09-18"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-gcwing-openbitfun", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-gcwing-openbitfun", "dst": "tema:gcwing-openbitfun", "rel": "trata", "added": "2026-09-18"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-trailofbits-skills", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-trailofbits-skills", "dst": "tema:trailofbits-skills", "rel": "trata", "added": "2026-09-18"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-cube-js-cube", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-cube-js-cube", "dst": "tema:cube-js-cube", "rel": "trata", "added": "2026-09-18"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-web-infra-dev-rspack", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-web-infra-dev-rspack", "dst": "tema:web-infra-dev-rspack", "rel": "trata", "added": "2026-09-18"}
+{"src": "boletin:2026-09-18", "dst": "item:https-github-com-onyx-dot-app-onyx", "rel": "menciona", "added": "2026-09-18"}
+{"src": "item:https-github-com-onyx-dot-app-onyx", "dst": "tema:onyx-dot-app-onyx", "rel": "trata", "added": "2026-09-18"}

@@ -1,0 +1,454 @@
+{
+  "version": 2,
+  "date": "2026-09-18",
+  "boletin_origen": "2026-09-18-trending.md",
+  "resumen_ejecutivo": "- **`bendlang/bend` propone el primer lenguaje con pruebas matemáticas para código generado por agentes**: 20.7k★, TypeScript toolchain (compiler en Haskell + core en Lean), Apache-2.0. El corazón editorial es `LAWS.bend` — declaras reglas tipo \"el jugador nunca puede ganar\" y el compilador exige una **prueba matemática** antes de aceptar cualquier cambio del agente. Es, literalmente, \"AGENTS.md backed by proof\". El lenguaje compila a CPU/GPU unificado (HVM2 runtime) y apunta a ser tan rápido como C en CPU y CUDA en GPU. Pieza editorial: \"qué cambia en tu flujo cuando el compilador rechaza el código de la IA por romper una invariante\". Aplicable directo si escribes sobre agentes verificables.\n- **`bmad-code-org/BMAD-METHOD` se consolida como el \"Scrum + agente\"**: 53.1k★, Python/JS, NOASSERTION (revisar LICENSE en repo), con un ecosistema modular completo (`bmad-builder`, `bmad-loop`, `bmad-game-dev-studio`, `bmad-test-architect`, `bmad-creative-intelligence-suite`). El delivery loop oficial (Clarify → Plan → Build → Verify → Learn) y la promesa de \"decisions stay explicit, context carries forward\" lo posicionan como la alternativa metodológica a `vercel/eve` (estructura libre) y `Q00/ouroboros` (grading command). Diferencia clave: se instala como **plugin marketplace** para Claude Code, Codex y otros. Buena pieza editorial: \"BMAD × Ouroboros × Eve — los tres modelos de proceso para coding agents y cuál aguanta un equipo de 5\".\n- **`strands-agents/harness-sdk` es la apuesta de AWS por un SDK de agentes modelo-driven**: 7.3k★, Python+TypeScript, Apache-2.0. La tesis editorial: \"en lugar de orquestar tú el loop del agente, el modelo conduce\". Strands propone un modelo donde el agente decide qué tool llamar, cuándo, con qué presupuesto — el harness solo controla lifecycle, hooks y tracing. Multi-provider (Bedrock nativo, Anthropic/OpenAI/Gemini/Ollama custom), con samples oficiales, MCP server propio y tooling maduro. Compite directo con `vercel/eve`, `microsoft/agent-framework`, `claude-code` (como capa portable) y `monid-ai/monid` (que vimos ayer).\n- **`Human-Agent-Society/reef` abre la infraestructura de aprendizaje continuo para agentes**: 3.5k★, Python, Apache-2.0. Loop 4-step (Serve → Observe → Grow → Commit) que conecta inference + feedback + learning + versionado. Lo interesante: **puede entrenar pesos con Slime + SGLang**, pero también mejorar harness/prompts/skills sin GPUs locales. Es la pieza \"infraestructural\" que faltaba en el eje \"self-improving agent\" donde ayer vimos `Q00/ouroboros` y `memvid/memvid`. Caveat: poca adopción aún, chino-inglés mixto en docs, pero la promesa de \"el agente aprende de cómo lo usas\" es la próxima frontera.\n- **`anthropics/knowledge-work-plugins` es el movimiento de Anthropic para anclar el trabajo de conocimiento en Claude**: 24.6k★, Python, Apache-2.0. Once plugins oficiales (productivity, sales, customer-support, product-management, marketing, legal, finance, data, enterprise-search, bio-research, cowork-plugin-management) listos para instalar como plugin marketplace en **Claude Cowork** (la nueva GUI para \"knowledge workers\") y compatible con Claude Code. Es la cara B de la tesis \"el agente es el producto\": Anthropic te da los plugins, tú los customizas para tu empresa. Caveat: las conectores dependen de SaaS específicos (Slack, Salesforce, HubSpot, Snowflake, etc.) — si no los usas, el plugin pierde valor.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + slices TypeScript/Python/Rust (65 items únicos), GitHub REST API para 17 candidatos nuevos (budget restante ~43/h). Blogwatcher no publicado hoy — la dependencia upstream sigue caída desde 2026-07-05; comprobar si `<DATE>-blogs.md` quedó escrito y si aporta duplicados, ajustar el bulletin de mañana.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "bendlang/bend",
+      "url": "https://github.com/bendlang/bend",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "lenguaje de programación (TypeScript toolchain, 20.797★, Apache-2.0) **diseñado específicamente para código escrito por agentes**. El eslogan del README lo dice: *\"In the post-AGI economy, humans will eventually stop writing and reading code, but we still need an ambiguity-free language to communicate our intents to the AIs building the world around us. Bend is that language.\"* El compilador genera ejecutables nativos (CPU multinúcleo y GPU unificada vía HVM2) y promete rendimiento cercano a C en CPU y a CUDA en GPU. Pero la killer feature es `LAWS.bend`: declaras invariantes del dominio (\"el jugador nunca puede ganar\", \"el saldo total siempre es cero\", \"este array nunca se lee fuera de rango\"), y el compilador **exige prueba matemática antes de aceptar cualquier cambio**. La analogía explícita del README: `LAWS.bend` es un `AGENTS.md` respaldado por **prueba**. Documentación: https://bend-lang.com, Discord, papers `BendTT` (affine dependent type theory) y `BendRT` (parallel runtime).",
+        "por_que_importa": "Bend encarna la próxima capa después del prompting: contratos formales verificables para código de IA, donde `LAWS.bend` actúa como un AGENTS.md respaldado por prueba matemática en vez de por convención. Encaja con cobertura previa del boletín: ya vimos el eje de agentes auto-mejorables el 2026-08-08 y, el 2026-09-17, tanto `Q00/ouroboros` (cuya tesis era \"el grading command es la verdad\") como la idea de que prompting es el suelo competitivo de hoy. Bend lleva esa lógica un paso más allá: la invariante matemática es la verdad, y el compilador la enforza aunque el agente quiera romperla. Caveat honesto: la barrera de entrada es real — hay que escribir dependent types en un sistema affine (BendTT, no el dependent typing estándar al estilo ML), no hay type inference, la base library es pequeña y los strings son listas enlazadas (lentas), así que sólo compensa cuando la invariante que quieres blindar es crítica. Pieza candidata: \"Bend × Ouroboros × Eve — la pila para que el agente respete tus invariantes, y cuándo cada una aplica\".",
+        "madurez_senales": "20.797★ · 544 forks · TypeScript (compiler en Haskell, core formalizado en Lean) · Apache-2.0 · creado 2026-04-28 · último push 2026-09-18 · topics: `bend`, `cuda`, `dependent-types`, `gpu`, `metal`. Instalador one-liner (`curl -fsSL https://bend-lang.com/install.sh | sh`), demo en vivo en https://bend-lang.com/#lab, formalización canónica del core en Lean (`bend2/bend.lean`), dos papers académicos adjuntos.",
+        "accion_sugerida": "**leer** (no instalarlo todavía — leer la sección \"Bend BLOCKS mistakes - with proof\" del README y el paper `BendTT.pdf` del repo; después decidir si vale compararla con `Q00/ouroboros` para una pieza sobre \"verificación formal para código de IA\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "bendlang/bend",
+          "rel": "implements",
+          "dst": "concept:proof-backed-agent-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "bendlang/bend",
+          "rel": "competes_with",
+          "dst": "concept:prompt-engineering",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "bendlang/bend",
+          "rel": "complements",
+          "dst": "repo:Q00/ouroboros",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "bendlang/bend",
+          "rel": "relevant_to",
+          "dst": "concept:self-improving-agent",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "bendlang/bend",
+          "rel": "relevant_to",
+          "dst": "company:anthropic-claude-code",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bendlang-bend",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "bmad-code-org/BMAD-METHOD",
+      "url": "https://github.com/bmad-code-org/BMAD-METHOD",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework metodológico (Python/Node, 53.168★, license NOASSERTION — leer LICENSE en repo antes de adopción) para entregar software con coding agents sin perder el rigor del proceso. El delivery loop oficial es **Clarify → Plan → Build → Verify → Learn → (loop back to Plan)**: adapta el tamaño del proceso al trabajo — los cambios chicos van directo a Build, los cambios grandes pasan por planificación profunda. **El ecosistema modular es lo que más destaca**: `BMad Builder` (skill/workflow/agent builder), `BMad Creative Intelligence Suite` (creative thinking), `BMad Test Architect` (enterprise testing), `BMad Loop` (autonomous epic), `BMad Game Dev Studio` (Unity/Unreal/Godot/Phaser). Se instala vía **plugin marketplace** en Claude Code (`/plugin marketplace add bmad-code-org/bmad-plugins`) y en Codex (`codex plugin marketplace add ...`), o como skills (`npx skills add bmad-code-org/BMAD-METHOD`). Documentación en https://docs.bmad-method.org.",
+        "por_que_importa": "BMAD rellena el hueco que dejaron ayer `vercel/eve` y `Q00/ouroboros`: el \"proceso\" del coding agent, no sólo el runtime, formalizando el loop Clarify → Plan → Build → Verify → Learn y dejando que el tamaño del workflow se adapte al tamaño del trabajo. Encaja con cobertura previa del boletín: el 2026-09-17 ya cubrimos Eve y Ouroboros como los dos modelos competidores, y el 2026-09-02 cubrimos `concept:context-engineering` como disciplina — BMAD se apoya justo en ese mismo eje de ingeniería de contexto. Caveat de adopción: la licencia NOASSERTION obliga a leer el LICENSE antes de meterlo en enterprise, y hay fragmentación real entre `bmad-plugins` (Claude/Codex) y `BMAD-METHOD` (genérico via `npx skills add`). Pieza candidata: \"BMAD × Ouroboros × Eve — los tres modelos de proceso y cuál aguanta un equipo de 5 personas\".",
+        "madurez_senales": "53.168★ · 6.004 forks · Python/Node · NOASSERTION (verificar LICENSE en repo) · creado 2025-07-15 · último push 2026-09-18 · topics: `agile`, `ai`, `context-engineering`, `sdlc`, `spec-driven-development`. Discord activo, YouTube channel, web bundles para Gemini Gems / ChatGPT Custom GPTs, comando `bmad doctor` para reparar runtime tras updates.",
+        "accion_sugerida": "**explorar** (instalar `/plugin marketplace add bmad-code-org/bmad-plugins` dentro de Claude Code, correr `bmad setup` en un proyecto pequeño, evaluar si el delivery loop encaja con un proyecto de newsletter real; la lectura de `LICENSE` es prerrequisito para cualquier adopción seria).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "bmad-code-org/BMAD-METHOD",
+          "rel": "implements",
+          "dst": "concept:agile-agent-process",
+          "primera_mencion": null
+        },
+        {
+          "src": "bmad-code-org/BMAD-METHOD",
+          "rel": "competes_with",
+          "dst": "repo:vercel/eve",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "bmad-code-org/BMAD-METHOD",
+          "rel": "complements",
+          "dst": "repo:Q00/ouroboros",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "bmad-code-org/BMAD-METHOD",
+          "rel": "uses",
+          "dst": "concept:context-engineering",
+          "primera_mencion": "2026-09-02"
+        },
+        {
+          "src": "bmad-code-org/BMAD-METHOD",
+          "rel": "relevant_to",
+          "dst": "company:anthropic-claude-code",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bmad-code-org-bmad-method",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "strands-agents/harness-sdk",
+      "url": "https://github.com/strands-agents/harness-sdk",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "SDK open-source (Python + TypeScript, 7.343★, Apache-2.0) para construir agentes production-ready. La tesis editorial, en sus propias palabras: *\"Build an agent harness. Control it end-to-end.\"* La diferencia frente a otros frameworks: **model-driven approach** — el modelo conduce la invocación de tools y la planificación, y el harness solo controla lifecycle (turn limits, token budgets, cancellation, stop reasons), hooks, tracing, MCP integration, multi-agent patterns, structured output y memory/sessions. Multi-provider nativo (Amazon Bedrock, Anthropic, OpenAI, Gemini, Ollama, custom), con samples oficiales en el repo hermano `strands-agents/samples` y herramientas en `strands-agents/tools`. Documentación: https://strandsagents.com.",
+        "por_que_importa": "AWS entra al cuadrante de \"framework portable de agente\" con una tesis editorial concreta: el modelo conduce (invoca tools y planifica), y el harness sólo controla lifecycle, hooks, tracing, MCP y multi-agent patterns — una separación de responsabilidades más limpia que la de los competidores. Encaja con cobertura previa del boletín: el 2026-09-17 cubrimos `vercel/eve` (su competidor directo en estructura libre) y a `monid-ai/monid` (complemento en el lado de conectores), y el 2026-08-21 cubrimos `microsoft/agent-framework` como el otro hyperscaler rival. Lo que aporta AWS aquí es gravedad política: integración natural con Bedrock y observability vía CloudWatch, lo que presiona a Anthropic y OpenAI a mantener paridad en sus SDKs. Caveat honesto: el quickstart por defecto asume Bedrock (necesitas AWS credentials y acceso a Claude Sonnet configurado), así que la fricción de onboarding es real para devs Anthropic/OpenAI-first. Pieza candidata: \"Strands × Eve × Agent Framework — los tres SDK de agente de hyperscaler (AWS, Vercel, Microsoft) y por qué importan distinto\".",
+        "madurez_senales": "7.343★ · 1.153 forks · Python+TypeScript · Apache-2.0 · creado 2024-12-01 · último push 2026-09-18 · topics: `agent-framework`, `agentic`, `agentic-ai`, `agents`, `ai`. SDK dual Python (`pip install strands-agents strands-agents-tools`) + TypeScript (`@strands-agents/sdk`), Discord oficial, MCP server oficial (`strands-mcp`), samples y tools en repos hermanos, governance y ADRs en `team/` del monorepo.",
+        "accion_sugerida": "**vigilar** (no instalarlo todavía — leer la doc de https://strandsagents.com/docs/user-guide/concepts/agents/agent-loop/ y validar que el modelo-driven approach no sufra del mismo problema que las librerías de planificación clásica: que el modelo se atasque en planes sin salida. Si tienes infra AWS, vale un smoke-test con Bedrock).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "strands-agents/harness-sdk",
+          "rel": "implements",
+          "dst": "concept:model-driven-agent-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "strands-agents/harness-sdk",
+          "rel": "competes_with",
+          "dst": "repo:vercel/eve",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "strands-agents/harness-sdk",
+          "rel": "competes_with",
+          "dst": "repo:microsoft/agent-framework",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "strands-agents/harness-sdk",
+          "rel": "relevant_to",
+          "dst": "company:aws-bedrock",
+          "primera_mencion": null
+        },
+        {
+          "src": "strands-agents/harness-sdk",
+          "rel": "uses",
+          "dst": "concept:mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "strands-agents/harness-sdk",
+          "rel": "complements",
+          "dst": "repo:monid-ai/monid",
+          "primera_mencion": "2026-09-17"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "strands-agents-harness-sdk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Human-Agent-Society/reef",
+      "url": "https://github.com/Human-Agent-Society/reef",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework Python (3.494★, Apache-2.0) que implementa el primer **loop de aprendizaje continuo para agentes en producción**. Cuatro pasos: **Serve** (sirve requests reales del agente y registra interacciones), **Observe** (hace match del feedback con las interacciones registradas), **Grow** (produce un update desde records elegibles) y **Commit** (aplica la policy de selección y publica updates aceptados con version history). Lo distintivo: sirve tanto para **mejorar pesos del modelo** (con Slime + SGLang como stack RL por defecto) como para **mejorar el harness** (prompts, rules, skills) sin GPUs locales. PyPI package `reef-infra`. Discord + WeChat group. Sitio https://reefinfra.ai.",
+        "por_que_importa": "Reef es la pieza de infraestructura que faltaba en el eje \"self-improving agent\": un loop Serve → Observe → Grow → Commit que corre el agente en producción, registra feedback, aprende y publica nuevas versiones con version history, en vez de quedarse en un experimento local. Encaja con cobertura previa del boletín: el 2026-09-17 cubrimos `Q00/ouroboros` (su competidor más directo, donde el grading command hace evolucionar el prompt) y el 2026-08-19 cubrimos `memvid/memvid` (que complementa como capa de memoria), pero Reef lleva el concepto a producción con selección de updates por policy y tracing de cada release. Caveat fuerte: adopción aún baja (3.494★ frente a las ~5,9k★ que el propio ítem cita de Ouroboros — dato del propio item, no verificado de forma independiente), la docs mezcla chino e inglés (sesgo a mercado chino), y el camino de \"test-time training\" con Slime + SGLang exige GPUs dedicadas — sin GPUs propias, sólo queda la mitad del loop (mejorar harness, no pesos). Pieza candidata: \"Reef × Ouroboros × AlphaEvolve — los tres caminos para que el agente se mejore solo, y cuándo cada uno aplica\".",
+        "madurez_senales": "3.494★ · 278 forks · Python 3.12+ · Apache-2.0 · creado 2026-08-14 · último push 2026-09-18 · topics: `agent-infrastructure`, `ai-agents`, `continual-learning`, `inference`, `llm`. CI con GitHub Actions, integración oficial con Slime/SGLang/vLLM/AReaL/veRL, discord activo, WeChat group (China-leaning).",
+        "accion_sugerida": "**leer** (no instalarlo todavía — leer el README y la sección \"When to use Reef\" del https://reefinfra.ai/docs/getting-started/quickstart/; entender bien la diferencia entre \"harness optimization\" (sin GPUs) y \"weight training\" (con GPUs Slime/SGLang) antes de comprometerse).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "implements",
+          "dst": "concept:continual-learning-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "implements",
+          "dst": "concept:production-self-improving-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "competes_with",
+          "dst": "repo:Q00/ouroboros",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "complements",
+          "dst": "repo:memvid/memvid",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "uses",
+          "dst": "tool:slime",
+          "primera_mencion": null
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "uses",
+          "dst": "tool:sglang",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "human-agent-society-reef",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "anthropics/knowledge-work-plugins",
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repositorio oficial de Anthropic (24.654★, Python, Apache-2.0) que empaqueta **11 plugins** diseñados para Claude Cowork (la nueva GUI para knowledge workers) y compatible con Claude Code. Categorías: **productivity** (Slack, Notion, Asana, Linear, Jira, Monday, ClickUp, Microsoft 365), **sales** (Slack, HubSpot, Close, Clay, ZoomInfo, Notion, Jira, Fireflies, Microsoft 365), **customer-support** (Slack, Intercom, HubSpot, Guru, Jira, Notion), **product-management** (Slack, Linear, Asana, Figma, Amplitude, Pendo), **marketing** (Slack, Canva, Figma, Ahrefs, SimilarWeb, Klaviyo), **legal** (Slack, Box, Egnyte, Jira, Microsoft 365), **finance** (Snowflake, Databricks, BigQuery, Slack, Microsoft 365), **data** (Snowflake, Databricks, BigQuery, Hex, Amplitude, Definite), **enterprise-search** (Slack, Notion, Guru, Jira, Asana), **bio-research** (PubMed, BioRender, bioRxiv, ClinicalTrials.gov, ChEMBL, Synapse, Wiley, Owkin, Open Targets, Benchling) y **cowork-plugin-management** (para crear/customizar plugins propios). Cada plugin = skills + connectors + sub-agents + slash commands. Instalación: `claude plugin marketplace add anthropics/knowledge-work-plugins` + `claude plugin install <name>`.",
+        "por_que_importa": "Anthropic pasa de vender el modelo a posicionar Claude como sistema operativo del trabajo de conocimiento: 11 plugins verticales listos para producción (Slack, Notion, HubSpot, Snowflake, Databricks, etc.) que empaquetan skills + connectors + sub-agents + slash commands, y que reducen el trabajo de construir conectores desde cero. Encaja con cobertura previa del boletín: el 2026-09-17 cubrimos `monid-ai/monid` (el competidor en el lado del modelo/conector), el 2026-08-18 cubrimos a `company:anthropic` y el 2026-07-28 cubrimos `anthropics/claude-code` como complemento directo de este marketplace. Caveat honesto: los conectores están atados a un set concreto de SaaS (si tu stack usa otras herramientas, el plugin pierde valor), y el formato de plugin es Anthropic-locked — no portable de forma nativa al marketplace de `trailofbits/skills`. Pieza candidata: \"Anthropic vs Microsoft vs OpenAI — los tres plugins marketplace oficiales de coding agents y cuál aguanta tu stack\".",
+        "madurez_senales": "24.654★ · 2.955 forks · Python · Apache-2.0 · creado 2026-09-08 · último push 2026-09-17 · topics: vacío. Compatible con Claude Cowork (producto nuevo) + Claude Code, instalación vía marketplace command, web bundles via Google Gemini Gems / ChatGPT Custom GPTs.",
+        "accion_sugerida": "**leer** (no instalar todos — leer el README y el manifest de **2 o 3 plugins** que se acerquen a tu stack (data + enterprise-search son los más universales), después evaluar si vale customizarlos para tu propia empresa/equipo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "anthropics/knowledge-work-plugins",
+          "rel": "implements",
+          "dst": "concept:vertical-plugin-marketplace",
+          "primera_mencion": null
+        },
+        {
+          "src": "anthropics/knowledge-work-plugins",
+          "rel": "implements",
+          "dst": "concept:claude-cowork",
+          "primera_mencion": null
+        },
+        {
+          "src": "anthropics/knowledge-work-plugins",
+          "rel": "competes_with",
+          "dst": "repo:monid-ai/monid",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "anthropics/knowledge-work-plugins",
+          "rel": "relevant_to",
+          "dst": "company:anthropic",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "anthropics/knowledge-work-plugins",
+          "rel": "complements",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-knowledge-work-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "LLMQuant/quant-mind",
+      "url": "https://github.com/LLMQuant/quant-mind",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "2.986★, push 2026-08-15, Python, MIT — quant finance \"agent-native\" de knowledge engineering, con paper en NeurIPS 2025 GenAI in Finance Workshop (arXiv:2509.21507). La tesis editorial: \"the repository itself is the product surface — harness engineering: a weak model in a good harness beats a strong model running bare\". `AGENTS.md` + `CLAUDE.md` + `contexts/` + skills + hooks compartidos entre Claude y Codex.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (paper + repo, no es para una pieza de newsletter general pero merece la pena tenerlo en radar si escribes sobre context engineering o harness design)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "llmquant-quant-mind",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "GCWing/OpenBitFun",
+      "url": "https://github.com/GCWing/OpenBitFun",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "2.276★, push 2026-09-18, Rust, MIT — agent workspace \"que sigue funcionando\" con 4 modos (Minimal, Standard, Ultimate, Creative), control cross-device (desktop, mobile, watch, glasses) y Mini App marketplace. Core runtime en Rust + agent harness completo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no es para newsletter estándar, pero si escribes sobre \"el agente que sigue tu ritmo en múltiples dispositivos\" es la referencia china 2026; comparable con `openhands/openhands` y `waypoint-ai/claude-code-workspace`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gcwing-openbitfun",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "trailofbits/skills",
+      "url": "https://github.com/trailofbits/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "7.142★, push 2026-09-16, Python, CC-BY-SA-4.0 — plugin marketplace de Trail of Bits para security skills: `building-secure-contracts` (smart contracts), `entry-point-analyzer` y code auditing para múltiples lenguajes. Se instala vía `/plugin marketplace add trailofbits/skills` en Claude Code y `codex plugin marketplace add trailofbits/skills` en Codex.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (especialmente si escribes sobre security-as-skill o quieres comparar con el marketplace oficial de Anthropic)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trailofbits-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "cube-js/cube",
+      "url": "https://github.com/cube-js/cube",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "20.861★, push 2026-09-18, Rust, NOASSERTION — \"open-source semantic layer for AI, BI and embedded analytics\". Tema: \"agentic-analytics\" como topic oficial.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry; la pieza editorial 2026 es \"el semantic layer como contrato agent-friendly para datos\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cube-js-cube",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "web-infra-dev/rspack",
+      "url": "https://github.com/web-infra-dev/rspack",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "12.908★, push 2026-09-18, Rust, MIT — bundler basado en Rust compatible con la API de webpack.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry; el ángulo editorial es \"Rust bundler maduro\" pero no es candidato para newsletter IA/dev)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "web-infra-dev-rspack",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "onyx-dot-app/onyx",
+      "url": "https://github.com/onyx-dot-app/onyx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "32.151★, push 2026-09-18, Python, NOASSERTION — \"Open Source AI Platform — AI Chat with advanced features that works with every LLM\", enterprise search + chat.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry; pieza editorial posible sobre \"el OSS enterprise AI chat que se come a Notion AI\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "onyx-dot-app-onyx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
