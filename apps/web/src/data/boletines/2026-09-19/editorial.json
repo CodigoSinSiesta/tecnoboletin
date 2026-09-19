@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-09-19",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "ECC corona el meta-harness mientras Agent Lightning cierra el círculo del self-improving agent",
+  "posicionamiento": "Cinco hallazgos orbitan el mismo eje: el coding agent sale del benchmark cuando el harness lo sostiene. ECC se instala como sistema operativo del meta-harness (262k★ en 8 meses, slash commands + instincts + memoria + security), Agent Lightning entrena cualquier agente con RL sin tocar el harness, json-render pone un catálogo Zod para que la UI generativa no rompa, Orca consolida el ADE como categoría y OpenHarness ata multi-engine con open-hardware. El hilo del día: la carrera ahora es por la capa operativa, no por el modelo.",
+  "convergencia_stack_css": "Tres hallazgos de hoy aterrizan directamente sobre líneas ya conocidas de CSS. ECC compite con anthropics/knowledge-work-plugins (cubierto el 2026-09-18) y BMAD-METHOD, y complementa vercel/eve; json-render hace explícito el guardrail de generative UI con Zod, conectando con el stack local-first; Agent Lightning cierra el trío self-improving agent junto a ouroboros (2026-09-17) y reef (2026-09-18). La pieza original del día, OpenHarness, empuja hardware abierto como moat físico, línea aún sin cobertura editorial previa.",
+  "cruzado_grafo": "El grafo refuerza hoy cinco nodos que ya tenía marcados: meta-agent-harness, agentic-rl-framework, agent-orchestration-ide, parallel-agent-worktree (todos con primera mención 2026-07-09) y generative-ui-guardrailed (primera mención 2026-09-18). Aparecen por primera vez como nodos propios open-hardware-agent-harness, domain-specific-agent y harness-agnostic-training, sin primera_mencion registrada. Las relaciones competes_with entre ECC/BMAD-METHOD/knowledge-work-plugins y entre Orca/OpenHarness/coder consolidan una malla de competidores que ya venía densa.",
+  "tendencias_5_boletines": "La secuencia de los últimos cinco boletines dibuja una convergencia clara sobre la costura del coding agent: el 2026-09-16 atacó la capa de ejecución (E2B Firecracker, ASC, OpenUI), el 2026-09-17 introdujo ouroboros como evolution de prompts sin GPU, el 2026-09-18 cubrió reef, knowledge-work-plugins y el harness de AWS con metodología Clarify-Plan-Build-Verify-Learn. Hoy ECC, Agent Lightning, Orca y OpenHarness añaden la capa de harness, RL training, ADE y multi-machine — el arco es de ejecución → metodología → operación.",
+  "alertas": [
+    "ECC: 262k★ en 8 meses con un único mantenedor (Affaan Mustafa) invitan al filtro de bus-factor; OSS meta-harness sostenido por sponsors comerciales no es equivalente a un proyecto institucional.",
+    "Agent Lightning: el salto SWE-bench del 41.8% al 56.4% proviene de la documentación de Microsoft Research; sin benchmark independiente es un claim delvendor.",
+    "OpenHarness: 361★ con reclamo de software+hardware+WebRTC E2EE y ESP32 firmware es señal de proyecto en fase temprana con superficie ambiciosa — adopción real aún por demostrar.",
+    "json-render: la calidad de la UI queda atada al catálogo Zod que el desarrollador escriba; un catálogo pobre produce UI pobre, y el README lo explicita como caveat principal."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "ECC es el meta-harness OSS de mayor tracción del año y compite con anthropics/knowledge-work-plugins; vale una pieza editorial sobre qué hay dentro de un harness de 262k estrellas y por qué Anthropic debería responder."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Agent Lightning cierra el trío self-improving agent (ouroboros/reef/agent-lightning) y el salto SWE-bench +14.6 puntos merece verificación del benchmark y del trainer verl+vLLM."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "OpenHarness fusiona multi-engine, WebRTC P2P y ESP32 firmware; es la pieza más original del boletín y no tiene primera_mencion en el grafo — candidata a deep-dive."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "json-render define generative-ui-guardrailed con Zod y 36 componentes shadcn/ui listos; vigilar si Anthropic u OpenAI adoptan esquemas equivalentes en Artifacts/Apps SDK."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Orca consolida el ADE (Agent Development Environment) como categoría distinta del AI IDE, con worktrees paralelos y design mode — pieza con ángulo directo para una entrada sobre el cambio de unit-of-work en desarrollo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

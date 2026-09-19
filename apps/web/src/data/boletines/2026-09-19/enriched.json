@@ -1,0 +1,508 @@
+{
+  "version": 2,
+  "date": "2026-09-19",
+  "boletin_origen": "2026-09-19-trending.md",
+  "resumen_ejecutivo": "- **`affaan-m/ECC` se corona como el \"agente harness operating system\" más popular del 2026** — 262k★ en 8 meses (MIT, OSS meta-harness para Claude Code/Codex/OpenCode/Cursor/Antigravity). La tesis editorial es que el **harness** (skills + instincts + memory + security + research-first dev) es la capa que decide si un agente funciona en producción o sólo en el benchmark. Una persona (Affaan Mustafa, NYC, ex-Ito Markets) ship-and-sustenta weekly 7 engines con sponsors de peso (CodeRabbit, Greptile, Moonshot Kimi, SerpApi). Pieza editorial: \"qué hay dentro de un agente harness de 262k estrellas y por qué compite con Anthropic plugin marketplace\".\n- **`microsoft/agent-lightning` v1.0 cierra el círculo del \"self-improving agent\" en producción** — 18.3k★ (MIT, Microsoft Research, refactor total desde v0.x). Tres componentes: Trainer (verl+vLLM), API Gateway (proxy con captura de trajectories), Rollout Controller (local + Kubernetes Jobs). El killer demo: SWE-bench Verified sube del **41.8% al 56.4%** con sólo 6K training samples sobre Qwen3.5-9B. **Entrena tu agente sin cambiar tu harness**: el proxy intercepta y captura, los pesos se actualizan en verl. Pieza: \"agentic RL con cero cambios en tu harness: la promesa de Agent Lightning y cuándo se cumple\".\n- **`vercel-labs/json-render` es la apuesta formal de Vercel Labs por Generative UI** — 16.6k★ (Apache-2.0, cross-platform React/Vue/Svelte/Solid/RN/Next/Terminal/3D/Video/PDF/Email). La idea editorial: defines un catálogo de componentes con Zod schemas, el modelo genera JSON contra tu catálogo (no contra DOM arbitrario) y json-render lo pinta. 36 componentes shadcn/ui incluidos. Pieza: \"Generative UI con guardarraíles: por qué json-render es la capa que faltaba entre los LLMs y tus vistas React\".\n- **`stablyai/orca` consolida el patrón \"ADE = agent fleet orchestrator\"** — 72k★ (MIT, YC-backed, escritorio+mobile+SSH remote, Ghostty-class terminals con WebGL). Orca ejecuta **Codex, Claude Code, OpenCode y Pi side-by-side**, cada uno en su worktree git aislado, con split panes, fuzzy search entre sesiones, SSH worktrees sobre máquina remota, GitHub/Linear nativos y mobile companion app (iOS TestFlight + Android APK). Pieza: \"ADE vs CLI: por qué orquestar una flota de coding agents cambia el unit-of-work\".\n- **`autonomous-ai/openharness` lleva el coding agent al hardware abierto** — 361★ (MIT, software + open-hardware con ESP32 + USB, 18 domain-specific harnesses para CAD/3D/electronics/robotics/games). El truco: tu coding agent (Claude Code, Codex, OpenCode, Pi, Hermes, Cursor, …) corre en tmux persistente, conectas tus máquinas vía daemon end-to-end-encrypted + WebRTC peer-to-peer (no SSH server, no VPN, no open port), y el \"Harness device\" físico en tu mesa te da un panel dedicado. Pieza: \"software + open-hardware para coding agents: por qué el siguiente moat no es el modelo\".\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + slices TypeScript/Python/Rust/Go (81 items únicos), GitHub REST API para 16 candidatos verificados (presupuesto restante ~44/h). Blogwatcher no publicado hoy — la dependencia upstream sigue caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "meta-harness OSS (262.279★, MIT, 39.233 forks, JavaScript+Shell+TypeScript+Python+Go+Java+Perl+Markdown) que se instala como plugin marketplace (`ecc@ecc`) en Claude Code, Codex, OpenCode, Cursor, Antigravity, Grok Build y Kilo Code. La tesis editorial, en palabras del README: *\"Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond\"*. Lo distintivo: **no es un catálogo más de skills**, es una **capa operativa** que envuelve el agente: slash commands (`/plan`, `/build`, `/test`, `/review`, `/ship`, `/spec`, `/constraints`, `/webperf`, `/code-simplify`), sistema de instincts (reflex pattern matching contra heurísticas), memoria persistente entre sesiones, security scanner (`ecc-agentshield` npm package) y research-first dev (consultar documentación antes de cambiar código). Una persona (Affaan Mustafa, NYC, ex-Ito Markets, 11k followers) ship-and-sustenta weekly con sponsors de peso: CodeRabbit, Greptile, Moonshot Kimi, SerpApi. ECC Pro ($19/seat/mo) añade private repos vía GitHub App; **OSS stays free forever** según el README. NPM packages: `ecc-universal` (core) + `ecc-agentshield` (security).",
+        "por_que_importa": "ECC es el competidor OSS directo del Anthropic plugin marketplace que cubrimos en boletines previos. El grafo ya lo venía marcando desde el 2026-07-03 como nodo central del concepto meta-agent-harness, en competencia con anthropics/knowledge-work-plugins y bmad-code-org/BMAD-METHOD, y como complemento de vercel/eve. Donde `anthropics/knowledge-work-plugins` ofrece 11 plugins verticales listos para Slack/HubSpot/Snowflake, ECC aporta una capa operativa transversal — slash commands (`/plan`, `/build`, `/test`, `/review`, `/ship`), instincts (heurísticas reflex-pattern), memoria persistente entre sesiones, security scanner (`ecc-agentshield`) y research-first dev — que funciona sobre Claude Code, Codex, OpenCode, Cursor y otros. Caveat: los 262.279★ en 8 meses invitan al mismo filtro que el propio README advierte — *Official sources only. Third-party re-uploads and unofficial mirrors are not maintained or reviewed by the project and may contain malware*. Las señales que sostienen que el crecimiento no es hype genérico: README en 13 idiomas, downloads reales de `ecc-universal` y `ecc-agentshield` en npm, autor con audiencia previa (Affaan Mustafa, NYC) y sponsors verificables (CodeRabbit, Greptile, Moonshot Kimi, SerpApi). El ángulo editorial de cierre: ECC, Anthropic, BMAD y Monid son los cuatro polos del plugin marketplace — el siguiente boletín comparará cuál aguanta tu equipo.",
+        "madurez_senales": "262.279★ · 39.233 forks · JavaScript (multi-lang) · MIT (LICENSE revisado) · creado 2026-01-18 · último push 2026-09-19 · topics: `ai-agents`, `anthropic`, `claude`, `claude-code`, `developer-tools`, `llm`, `mcp`, `productivity`. Sponsors: CodeRabbit, Greptile, Moonshot AI Kimi, Itô Markets, SerpApi, Atlas Cloud (past). GitHub App oficial: https://github.com/apps/ecc-tools. Install: `claude plugin marketplace add affaan-m/ecc` + `/plugin install ecc@ecc`. Web https://ecc.tools. Discord https://discord.gg/36yGMHGFbR.",
+        "accion_sugerida": "**explorar** (instalar `/plugin marketplace add affaan-m/ecc` + `/plugin install ecc@ecc` en Claude Code, leer primero la página de Security del README para validar el threat model antes de activar `ecc-agentshield` en proyectos con código sensible; la sponsorship de CodeRabbit + Greptile sugiere que el modelo de mantenimiento está saneado pero conviene validar en un proyecto pequeño antes de اعتمادlo en producción).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "affaan-m/ECC",
+          "rel": "implements",
+          "dst": "concept:meta-agent-harness",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/knowledge-work-plugins",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "competes_with",
+          "dst": "repo:bmad-code-org/BMAD-METHOD",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "complements",
+          "dst": "repo:vercel/eve",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "affaan-m/ECC",
+          "rel": "relevant_to",
+          "dst": "company:anthropic-claude-code",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "microsoft/agent-lightning",
+      "url": "https://github.com/microsoft/agent-lightning",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework agentic RL (18.351★, MIT, Python, Microsoft Research, refactor total en v1.0) que entrena cualquier agente con RL **sin tocar su harness**. La tesis editorial en sus palabras: *\"Train with real agent harnesses: Agents interact with the model through the Agent Lightning v1.0 proxy with ZERO changes, while keeping tools, context, control flow, and environments in the loop\"*. Tres componentes mínimos: **Trainer** (corre `verl` + vLLM, construye training samples, actualiza policy), **API Gateway** (proxy transparente que captura trajectories) y **Rollout Controller** (lanza agentes local o como Kubernetes Jobs). Lo diferencial: el proxy **no necesita que el agente sepa que está siendo entrenado** — sigue hablando con Anthropic/OpenAI/Gemini, las llamadas pasan por el gateway y se registran. El killer demo: **SWE-bench Verified sube de 41.8% a 56.4%** con sólo 6K training samples sobre Qwen3.5-9B, **+14.6 percentage points**. Documentación oficial https://microsoft.github.io/agent-lightning/stable/, technical report arXiv:2608.17528, ejemplos oficiales (Calc-X, GSM8K, ScienceWorld, Search-R1, LLM-in-Sandbox, Coding Agent).",
+        "por_que_importa": "Agent Lightning cierra el trío del eje self-improving agent que el grafo ya viene trazando desde hace días. El boletin del 2026-09-17 introdujo a Q00/ouroboros como el camino de evolucion de prompts via grading command (cero GPU, sin modelo nuevo), y el del 2026-09-18 cubrio Human-Agent-Society/reef como el continual learning loop production-grade; Agent Lightning aporta el tercer camino: RL formal sobre coding agents en producción. Lo diferencial es la universalidad: el gateway HTTP OpenAI-compatible intercepta las llamadas del agente y las registra para construir training samples, sin que el agente sepa que está siendo entrenado — el harness queda intacto. El resultado concreto del killer demo es claro: SWE-bench Verified sube de 41.8% a 56.4% (+14.6 puntos) con 6K training samples sobre Qwen3.5-9B. Caveat honesto: requiere GPUs (la instalación con `uv sync` + `bash scripts/setup_verl.sh 0.8.0 cu130` ya avisa de la fricción inicial). Pieza editorial: la próxima entrega comparará Lightning, Ouroboros y Reef — los tres caminos para que un coding agent mejore solo, y cuándo aplica cada uno.",
+        "madurez_senales": "18.351★ · 1.618 forks · Python · MIT · creado 2025-06-18 · último push 2026-09-17 · topics: `agent`, `agentic-ai`, `llm`, `mlops`, `reinforcement-learning`. Technical report oficial arXiv:2608.17528, Microsoft Research project page, blog posts en Medium, integración con vLLM, Tinker, AutoGen, Youtu-Agent (Tencent Cloud, 128-GPU scaling verificado), AgentFlow (Stanford). Comunidad: Discord, WeChat group, issue #236 activo.",
+        "accion_sugerida": "**leer** (no instalarlo todavía — leer la sección \"Quick Start\" de https://microsoft.github.io/agent-lightning/stable/01-quick-start/ y el technical report arXiv:2608.17528 antes de comprometerse; entender bien el tradeoff entre verl + vLLM y un setup mínimo CPU; si tienes GPUs y un coding agent ya en producción, vale un smoke-test con SWE-bench).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "implements",
+          "dst": "concept:agentic-rl-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "implements",
+          "dst": "concept:harness-agnostic-training",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "complements",
+          "dst": "repo:Q00/ouroboros",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "complements",
+          "dst": "repo:Human-Agent-Society/reef",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "uses",
+          "dst": "tool:verl",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "uses",
+          "dst": "tool:vllm",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "microsoft/agent-lightning",
+          "rel": "relevant_to",
+          "dst": "company:microsoft-research",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-agent-lightning",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "vercel-labs/json-render",
+      "url": "https://github.com/vercel-labs/json-render",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework Generative UI (16.591★, Apache-2.0, TypeScript, Vercel Labs) que **define un catálogo de componentes con Zod schemas y deja que el LLM genere JSON contra ese catálogo**. La tesis editorial del README: *\"AI generates interfaces from natural language prompts, constrained to components you define. You set the guardrails, AI generates within them\"*. Cuatro propiedades explícitas: **Guardrailed** (sólo componentes de tu catálogo), **Predictable** (JSON output matches schema, every time), **Fast** (streaming progresivo) y **Cross-Platform** (mismo catálogo → React/Vue/Svelte/Solid web + React Native + Next.js + 3D vía three.js + Video vía Remotion + PDF vía react-pdf + Email vía react-email + Terminal vía Ink). **36 componentes shadcn/ui pre-built**. Instalación por adapter: `npm install @json-render/core @json-render/react` (o `@json-render/vue`, `@json-render/svelte`, `@json-render/solid`, `@json-render/react-native`, `@json-render/next`, `@json-render/three`, `@json-render/remotion`, `@json-render/react-pdf`, `@json-render/react-email`, `@json-render/ink`). Web https://json-render.dev.",
+        "por_que_importa": "Generative UI lleva meses como buzzword, pero la mayoría de intentos en producción — desde los Artifacts de Anthropic hasta Apps SDK de OpenAI y Gemini Gems de Google — acaban con UIs arbitrarias que rompen en producción. json-render pone un suelo explícito: tú defines un catálogo de componentes con Zod schemas (la web oficial https://json-render.dev muestra 36 componentes shadcn/ui ya preparados), el LLM genera JSON contra ese catálogo y la librería lo materializa en React, Vue, Svelte, Solid, React Native, Next, three.js, Remotion, react-pdf, react-email o Ink. El límite entre \"el modelo decide layout\" y \"el modelo inventa divs random\" queda en el catálogo que tú escribas — y ese es el caveat principal: si defines un catálogo pobre, json-render pinta UI pobre. En el grafo ya aparecía como complemento del Anthropic plugin marketplace desde el 2026-09-18 y se conecta al concepto claude-artifacts como competidor. Pieza editorial: la próxima entrega entrará en json-render como la capa que faltaba entre los LLMs y tus vistas, y qué catálogos mínimos merece la pena tener en producción.",
+        "madurez_senales": "16.591★ · 889 forks · TypeScript · Apache-2.0 · creado 2026-01-14 · último push 2026-09-18 · topics: vacío. NPM package `@json-render/core` con `@json-render/{react,vue,svelte,solid,react-native,next,three,remotion,react-pdf,react-email,ink,shadcn}`. Web oficial https://json-render.dev. Badge de Vercel Labs Product (no vercel principal, pero del equipo oficial de Labs).",
+        "accion_sugerida": "**leer** (no instalarlo todavía — leer https://json-render.dev para entender la API de catalog + Zod schema; si tu producto tiene UI React que ya genera desde datos estructurados (dashboards, formularios, wizards), json-render es la pieza que conecta LLMs con tu UI sin abrir un XSS en producción).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "implements",
+          "dst": "concept:generative-ui-guardrailed",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "uses",
+          "dst": "tool:zod",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "complements",
+          "dst": "repo:anthropics/knowledge-work-plugins",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "competes_with",
+          "dst": "concept:claude-artifacts",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "relevant_to",
+          "dst": "company:vercel",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-json-render",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AI orchestrator desktop+mobile (72.137★, MIT, TypeScript, Ghostty-class terminals con WebGL, YC-backed) diseñado para correr **Codex, Claude Code, OpenCode y Pi side-by-side, cada uno en su worktree git aislado, trackeados en un solo lugar**. La promesa editorial del README: *\"The AI Orchestrator for 100x builders. Run Codex, ClaudeCode, OpenCode or Pi side-by-side — each in its own worktree, tracked in one place\"*. Features clave: **Parallel Worktrees** (fan out un prompt a cinco agentes en worktrees aislados, comparas resultados, mergeas al ganador), **Mobile Companion** (iOS App Store + TestFlight + Android APK, recibes notificación cuando un agente termina, mandas follow-ups desde el teléfono), **Terminal Splits** (Ghostty-class con WebGL rendering, infinite splits, scrollback que sobrevive restarts), **SSH Worktrees** (corre agentes en máquina remota con file editing/git/terminal, auto-reconnect + port forwarding), **Design Mode** (click en cualquier elemento de un Chromium window real → mandas su HTML+CSS+screenshot al prompt del agente), **GitHub & Linear nativos** (browse PRs/issues/project boards in-app, abre worktree desde cualquier task) y **Annotate AI Diffs** (review inline sobre los diffs generados por IA). Web https://onOrca.dev, Discord, iOS App Store ID 6766130217.",
+        "por_que_importa": "Orca cristaliza el patrón ADE (Agent Development Environment) como categoría distinta de \"AI IDE\", y el grafo lo venía marcando desde el 2026-07-09 como nodo del concepto agent-orchestration-ide con parallel-agent-worktree. Donde un IDE con AI mete Copilot en el editor, un ADE mete el editor dentro de un orquestador de agentes: parallel worktrees con Codex, Claude Code, OpenCode o Pi corriendo side-by-side, design mode que captura HTML+CSS de cualquier elemento Chromium vía click, terminal Ghostty-class con WebGL y splits que sobreviven restarts, SSH worktrees con auto-reconnect, mobile companion (iOS App Store ID 6766130217) que notifica cuando un agente termina y permite mandar follow-ups, y anotación inline de diffs generados por IA. El cambio de unit-of-work es real: de \"una ventana, un agente\" a \"N worktrees en paralelo, M agentes compitiendo, mergeas al ganador\". Caveats honestos: es desktop-first (descargar .dmg/.exe, no es CLI puro) y cada agente conserva sus credenciales y suscripción propias — Orca lee los transcripts nativos e instala los hooks del vendor, no centraliza billing. Pieza editorial: la siguiente entrega comparará ADE, CLI y plugin marketplace como las tres capas de abstracción para coding agents.",
+        "madurez_senales": "72.137★ · 4.721 forks · TypeScript · MIT · creado 2026-03-17 · último push 2026-09-19 · topics: `ade`, `agent-ide`, `ai-agents`, `claude-code`, `cli`, `codex`, `cursor-agent`, `devtools`, `ghostty`, `ide`, `mobile-app`, `opencode`, `orchestration`, `parallel-agents`, `pi`, `terminal`, `worktrees`, `yc-backed`. Web https://onOrca.dev, iOS App Store, Android APK, Discord activo.",
+        "accion_sugerida": "**vigilar** (no instalarlo todavía — leer https://www.onorca.dev/docs/model/worktrees para entender el modelo de parallel worktree; descargar la macOS app y correr dos agentes en worktrees paralelos sobre un proyecto pequeño para validar si el UX del orchestrator aguanta tu flujo real antes de comprometerte).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "stablyai/orca",
+          "rel": "implements",
+          "dst": "concept:agent-orchestration-ide",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "implements",
+          "dst": "concept:parallel-agent-worktree",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "competes_with",
+          "dst": "repo:coder/coder",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "competes_with",
+          "dst": "repo:GCWing/OpenBitFun",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "stablyai/orca",
+          "rel": "relevant_to",
+          "dst": "company:yc",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "autonomous-ai/openharness",
+      "url": "https://github.com/autonomous-ai/openharness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma open-source **de software y hardware** (361★ pero caso único, MIT, C core + TypeScript daemon + Flutter desktop app, ESP32 firmware, WebRTC peer-to-peer E2EE) para correr coding agents (Claude Code, Codex, OpenCode, Pi, Hermes, Cursor, Command Code, Devin, Muse Code, Amp, Kilo, Grok Build, Antigravity, GitHub Copilot) **en terminales tmux persistentes en todas tus máquinas**, con **Domain-Specific Harnesses (DSH)** que convierten al coding agent en especialista de CAD, 3D, electrónica, robótica o juegos, y un **Harness device físico** open-hardware que se conecta por USB a tu laptop. Features clave: **Every engine, no wrappers** (lee el transcript que cada agente ya escribe, instala los hooks nativos del vendor, tus credenciales se quedan en `~/.claude`, `~/.codex`, etc.), **All your machines in one window** (laptop, Mac mini en casa, server en rack — cada uno corre un daemon con outbound connections only, terminal traffic end-to-end encrypted, relay sólo forwarda ciphertext, WebRTC peer-to-peer cuando puede, no SSH server, no VPN, no open port), **Built for many agents at once** (split panes, keyboard-driven layout, fuzzy search across sessions, shortcut a agentes waiting on you) y **18 domain-specific harnesses today** (CAD: Autonomous Workshop, text-to-cad; 3D: Blender; Electronics: Autonomous Circuit, CircuitJS, Yosys; y más). Web https://www.autonomous.ai/harness.",
+        "por_que_importa": "OpenHarness es la pieza más original del boletín porque fusiona tres ejes que suelen vivir separados: multi-engine agent orchestration (lee transcripts nativos, instala hooks del vendor, credenciales se quedan en `~/.claude`, `~/.codex`, etc., sin wrapper que las centralice), multi-machine peer-to-peer (relay forwarda solo ciphertext, WebRTC directo cuando puede, nada de SSH server, VPN ni puertos abiertos) y open-hardware como moat físico (un dispositivo ESP32 que se enchufa por USB y expone 18 domain-specific harnesses para CAD, 3D, electrónica, robótica o juegos). El grafo lo conecta como competidor de coder/coder desde el 2026-09-17 y como complemento de stablyai/orca desde el 2026-07-16. La tesis editorial de fondo: si el moat del coding agent ya no es el modelo — todos acceden al mismo Claude/GPT-5/Gemini — el siguiente moat está en la integración con tu workflow físico, tus máquinas y tu dominio. Caveats honestos que el README también recoge: 361★ es bajo (lanzado ~2026-08-04), macOS es la plataforma primary tested, Linux y Windows están en progreso, y arrancar requiere cuenta Harness. Pieza editorial: la siguiente entrega entrará en por qué software + open-hardware para coding agents es el siguiente moat, no el modelo.",
+        "madurez_senales": "361★ · 31 forks · C (core firmware) · MIT · creado 2026-08-04 · último push 2026-09-19 · topics: `3d-modeling`, `agent-framework`, `agent-harness`, `ai-agents`, `cad`, `claude-code`, `codex`, `coding-agents`, `developer-tools`, `domain-specific-harness`, `end-to-end-encryption`, `esp32`, `game-development`, `open-hardware`, `opencode`, `openharness`, `pcb`, `robotics`, `terminal`, `tmux`. Web https://www.autonomous.ai/harness, desktop app https://harness.autonomous.ai/desktop, CLI install `curl -fsSL https://harness.autonomous.ai/cli/install.sh | bash`.",
+        "accion_sugerida": "**vigilar** (proyecto joven, 361★, pero el ángulo open-hardware + peer-to-peer es único; leer `docs/architecture.md` y `docs/engines.md` antes de instalar; si tienes un setup multi-máquina y te interesa el ángulo peer-to-peer sin SSH, vale un smoke-test con la CLI antes de comprometerte al desktop app).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "autonomous-ai/openharness",
+          "rel": "implements",
+          "dst": "concept:open-hardware-agent-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "autonomous-ai/openharness",
+          "rel": "implements",
+          "dst": "concept:domain-specific-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "autonomous-ai/openharness",
+          "rel": "competes_with",
+          "dst": "repo:coder/coder",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "autonomous-ai/openharness",
+          "rel": "complements",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "autonomous-ai/openharness",
+          "rel": "uses",
+          "dst": "protocol:webrtc",
+          "primera_mencion": null
+        },
+        {
+          "src": "autonomous-ai/openharness",
+          "rel": "relevant_to",
+          "dst": "concept:esp32",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "autonomous-ai-openharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Tencent/BrowserSkill",
+      "url": "https://github.com/Tencent/BrowserSkill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "5.482★, push 2026-09-18, TypeScript, MIT — \"Let AI agents use your real, logged-in browser without interrupting your work\". CLI `bsk` + extension, conecta Cursor, Claude Code, Codex, **Hermes Agent**, DeepSeek Harness al browser logueado. **Built-in human-in-the-loop** cuando aparece captcha/login/dialogs. Pieza editorial: \"browser-use con respeto al humano\" — el ángulo es que los agentes no usan un browser headless paralelo sino que **piden prestada tu tab**, la devuelven, y el resto del browser sigue siendo tuyo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (instalar la extension desde Chrome Web Store + correr `bsk` desde Claude Code en una sesión real)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-browserskill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "weave-os/router",
+      "url": "https://github.com/weave-os/router",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "4.478★, push 2026-09-19, Go, **Elastic License v2 (ELv2, NO es OSS)** — \"Model router for agentic systems\". Drop-in proxy para Claude Code/Codex/opencode/pi que enruta cada prompt al modelo correcto en <50ms, prometiendo **reducir costes 40-70%**. Producto #1 of the day en Product Hunt, by Weave (Robinhood, PostHog, Redcrito). Instalación con `npx @weave-os/router`. **Caveat importante**: ELv2 no es OSS en sentido estricto (restringe hosting/managed offerings del código) — la adopción enterprise requiere leer la licencia.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no adopción build-dependency sin leer LICENSE — pero la pieza editorial \"model router como capa infra para coding agents\" es relevante; probar el demo `npx @weave-os/router` sin commit de dependencias)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "weave-os-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "82.242★, push 2026-09-18, Python, BSD-3-Clause — \"🕷️ An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl\". 4 fetchers (Fetcher, AsyncFetcher, StealthyFetcher vía Camoufox, DynamicFetcher vía Playwright), MCP server propio, soporta AI-scraping con selectores resilientes. Pieza editorial: ya cubierto por la skill `web-scraping-viability`; aquí aparece como **re-entry** con crecimiento excepcional (la versión 1.0 fue en 2024, ahora acumula 82k★).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (la decisión ladder de la skill ya marca Scrapling como default OSS; esta re-entry confirma que la tendencia es estable, no hype)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "d4vinci-scrapling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "96.548★, push 2026-09-18, JavaScript, MIT — \"Production-grade engineering skills for AI coding agents\" por **Addy Osmani** (ex-Director Google, autor de *Learning JavaScript Design Patterns* y *Image Optimization*, 53k followers). 9 slash commands (`/spec`, `/plan`, `/build`, `/test`, `/constraints`, `/review`, `/webperf`, `/code-simplify`, `/ship`) + 25 skills + install vía `npx skills add addyosmani/agent-skills` (skills CLI compatible con 70+ agents). **Diferencia vs ECC**: ECC es meta-harness con memory/security, Agent Skills es workflow skills production-grade.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (autor con credibilidad alta, el install path es universal, vale revisar 2-3 skills antes de evaluar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "addyosmani-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "elvisun/newsjack",
+      "url": "https://github.com/elvisun/newsjack",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "971★, push 2026-09-19, Go, MIT — \"The open-source skills that turn your agent into a full PR team\". 30+ skills divididos en **Detect** (newsjacking monitor, news-search, story-origin-check), **Act** (angle-generator, headline-generator, meanest-editor, crisis-holding, fact-check), **Strategize** (pr-strategist, pr-calendar) y **AI visibility** (ai-visibility-writing, prompt-proximity-architecture, prompt-set-qa). Pieza editorial: \"PR como skill de coding agent — y por qué el newsjacking tiene más sentido como subagente que como SaaS\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (proyecto joven pero el ángulo editorial es fuerte; útil como pieza complementaria a `anthropics/knowledge-work-plugins`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elvisun-newsjack",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "fastino-ai/GLiNER2",
+      "url": "https://github.com/fastino-ai/GLiNER2",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "1.964★, push 2026-09-18, Python, Apache-2.0 — \"Unified Schema-Based Information Extraction\" (NER + Text Classification + Structured Data + Relation Extraction + span attributes en un solo forward pass). Dos arquitecturas: `span` (GLiNER2/SpanExtractor) y `boundary` (GLiNER2.5/BoundaryExtractor con sparse start/end pairing). **CPU-first**, 100% local, zero external dependencies. Pieza editorial: \"NER zero-shot en CPU — por qué GLiNER2 sigue siendo el rey cuando los LLMs son overkill\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (si tu pipeline tiene extracción de entidades, vale revisar el API schema-driven antes de evaluar un LLM-based extraction)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fastino-ai-gliner2",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ahmedkhaleel2004/gitdiagram",
+      "url": "https://github.com/ahmedkhaleel2004/gitdiagram",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "16.544★, push 2026-09-19, TypeScript, MIT — \"Free, simple, fast interactive diagrams for any GitHub repository\". Web https://gitdiagram.com. Pieza editorial: **útil para la newsletter** — convierte un repo en un diagrama de arquitectura navegable, ideal para visualizaciones en Boletín.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (la web está operativa, vale probarla con tu propio repo antes de recomendarla en una pieza)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ahmedkhaleel2004-gitdiagram",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "bobeff/open-source-games",
+      "url": "https://github.com/bobeff/open-source-games",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "15.163★, push 2026-02-25, Python, CC0-1.0 — \"A list of open source games\" (lista awesome). Crecimiento lento pero estable, no IA/dev.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (sin ángulo editorial para Código Sin Siesta; CC0 es dominio público)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bobeff-open-source-games",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

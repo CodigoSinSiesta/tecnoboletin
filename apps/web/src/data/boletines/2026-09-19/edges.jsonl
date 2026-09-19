@@ -1,0 +1,54 @@
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-affaan-m-ecc", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-affaan-m-ecc", "dst": "tema:affaan-m-ecc", "rel": "trata", "added": "2026-09-19"}
+{"src": "affaan-m/ECC", "dst": "concept:meta-agent-harness", "rel": "implements", "added": "2026-09-19", "primera_mencion": "2026-07-03"}
+{"src": "affaan-m/ECC", "dst": "repo:anthropics/knowledge-work-plugins", "rel": "competes_with", "added": "2026-09-19", "primera_mencion": "2026-07-03"}
+{"src": "affaan-m/ECC", "dst": "repo:bmad-code-org/BMAD-METHOD", "rel": "competes_with", "added": "2026-09-19", "primera_mencion": "2026-07-03"}
+{"src": "affaan-m/ECC", "dst": "repo:vercel/eve", "rel": "complements", "added": "2026-09-19", "primera_mencion": "2026-07-03"}
+{"src": "affaan-m/ECC", "dst": "company:anthropic-claude-code", "rel": "relevant_to", "added": "2026-09-19", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-microsoft-agent-lightning", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-microsoft-agent-lightning", "dst": "tema:microsoft-agent-lightning", "rel": "trata", "added": "2026-09-19"}
+{"src": "microsoft/agent-lightning", "dst": "concept:agentic-rl-framework", "rel": "implements", "added": "2026-09-19", "primera_mencion": null}
+{"src": "microsoft/agent-lightning", "dst": "concept:harness-agnostic-training", "rel": "implements", "added": "2026-09-19", "primera_mencion": null}
+{"src": "microsoft/agent-lightning", "dst": "repo:Q00/ouroboros", "rel": "complements", "added": "2026-09-19", "primera_mencion": "2026-09-17"}
+{"src": "microsoft/agent-lightning", "dst": "repo:Human-Agent-Society/reef", "rel": "complements", "added": "2026-09-19", "primera_mencion": "2026-09-18"}
+{"src": "microsoft/agent-lightning", "dst": "tool:verl", "rel": "uses", "added": "2026-09-19", "primera_mencion": null}
+{"src": "microsoft/agent-lightning", "dst": "tool:vllm", "rel": "uses", "added": "2026-09-19", "primera_mencion": "2026-09-08"}
+{"src": "microsoft/agent-lightning", "dst": "company:microsoft-research", "rel": "relevant_to", "added": "2026-09-19", "primera_mencion": null}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-vercel-labs-json-render", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-vercel-labs-json-render", "dst": "tema:vercel-labs-json-render", "rel": "trata", "added": "2026-09-19"}
+{"src": "vercel-labs/json-render", "dst": "concept:generative-ui-guardrailed", "rel": "implements", "added": "2026-09-19", "primera_mencion": null}
+{"src": "vercel-labs/json-render", "dst": "tool:zod", "rel": "uses", "added": "2026-09-19", "primera_mencion": null}
+{"src": "vercel-labs/json-render", "dst": "repo:anthropics/knowledge-work-plugins", "rel": "complements", "added": "2026-09-19", "primera_mencion": "2026-09-18"}
+{"src": "vercel-labs/json-render", "dst": "concept:claude-artifacts", "rel": "competes_with", "added": "2026-09-19", "primera_mencion": null}
+{"src": "vercel-labs/json-render", "dst": "company:vercel", "rel": "relevant_to", "added": "2026-09-19", "primera_mencion": "2026-08-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-09-19"}
+{"src": "stablyai/orca", "dst": "concept:agent-orchestration-ide", "rel": "implements", "added": "2026-09-19", "primera_mencion": "2026-07-09"}
+{"src": "stablyai/orca", "dst": "concept:parallel-agent-worktree", "rel": "implements", "added": "2026-09-19", "primera_mencion": "2026-07-09"}
+{"src": "stablyai/orca", "dst": "repo:coder/coder", "rel": "competes_with", "added": "2026-09-19", "primera_mencion": "2026-07-09"}
+{"src": "stablyai/orca", "dst": "repo:GCWing/OpenBitFun", "rel": "competes_with", "added": "2026-09-19", "primera_mencion": "2026-07-09"}
+{"src": "stablyai/orca", "dst": "company:yc", "rel": "relevant_to", "added": "2026-09-19", "primera_mencion": "2026-07-09"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-autonomous-ai-openharness", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-autonomous-ai-openharness", "dst": "tema:autonomous-ai-openharness", "rel": "trata", "added": "2026-09-19"}
+{"src": "autonomous-ai/openharness", "dst": "concept:open-hardware-agent-harness", "rel": "implements", "added": "2026-09-19", "primera_mencion": null}
+{"src": "autonomous-ai/openharness", "dst": "concept:domain-specific-agent", "rel": "implements", "added": "2026-09-19", "primera_mencion": null}
+{"src": "autonomous-ai/openharness", "dst": "repo:coder/coder", "rel": "competes_with", "added": "2026-09-19", "primera_mencion": "2026-09-17"}
+{"src": "autonomous-ai/openharness", "dst": "repo:stablyai/orca", "rel": "complements", "added": "2026-09-19", "primera_mencion": "2026-07-16"}
+{"src": "autonomous-ai/openharness", "dst": "protocol:webrtc", "rel": "uses", "added": "2026-09-19", "primera_mencion": null}
+{"src": "autonomous-ai/openharness", "dst": "concept:esp32", "rel": "relevant_to", "added": "2026-09-19", "primera_mencion": null}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-tencent-browserskill", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-tencent-browserskill", "dst": "tema:tencent-browserskill", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-weave-os-router", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-weave-os-router", "dst": "tema:weave-os-router", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-d4vinci-scrapling", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-addyosmani-agent-skills", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-addyosmani-agent-skills", "dst": "tema:addyosmani-agent-skills", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-elvisun-newsjack", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-elvisun-newsjack", "dst": "tema:elvisun-newsjack", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-fastino-ai-gliner2", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-fastino-ai-gliner2", "dst": "tema:fastino-ai-gliner2", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-ahmedkhaleel2004-gitdiagram", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-ahmedkhaleel2004-gitdiagram", "dst": "tema:ahmedkhaleel2004-gitdiagram", "rel": "trata", "added": "2026-09-19"}
+{"src": "boletin:2026-09-19", "dst": "item:https-github-com-bobeff-open-source-games", "rel": "menciona", "added": "2026-09-19"}
+{"src": "item:https-github-com-bobeff-open-source-games", "dst": "tema:bobeff-open-source-games", "rel": "trata", "added": "2026-09-19"}
