@@ -1,0 +1,50 @@
+{"src": "boletin:2026-09-20", "dst": "item:idx-0", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:idx-0", "dst": "tema:el-cluster-system-1-decision-models", "rel": "trata", "added": "2026-09-20"}
+{"src": "NandhaKishorM/laya", "dst": "concept:non-autoregressive-decision-model", "rel": "implements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "NandhaKishorM/laya", "dst": "technique:proper-scoring-rules", "rel": "uses", "added": "2026-09-20", "primera_mencion": null}
+{"src": "bespokelabsai/nimble", "dst": "repo:NandhaKishorM/laya", "rel": "complements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "jaredpalmer/kev", "dst": "concept:on-device-agent", "rel": "relevant_to", "added": "2026-09-20", "primera_mencion": "2026-08-12"}
+{"src": "concept:non-autoregressive-decision-model", "dst": "concept:agent-router-fast-path", "rel": "enables", "added": "2026-09-20", "primera_mencion": null}
+{"src": "concept:non-autoregressive-decision-model", "dst": "repo:openai/responses-api", "rel": "complements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-context-labs-whip", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-context-labs-whip", "dst": "tema:context-labs-whip", "rel": "trata", "added": "2026-09-20"}
+{"src": "context-labs/whip", "dst": "concept:lightweight-coding-harness", "rel": "implements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "context-labs/whip", "dst": "repo:stablyai/orca", "rel": "competes_with", "added": "2026-09-20", "primera_mencion": "2026-07-16"}
+{"src": "context-labs/whip", "dst": "repo:earendil-works/pi-coding-agent", "rel": "competes_with", "added": "2026-09-20", "primera_mencion": "2026-09-12"}
+{"src": "context-labs/whip", "dst": "concept:byo-harness-orchestration", "rel": "relevant_to", "added": "2026-09-20", "primera_mencion": "2026-08-13"}
+{"src": "context-labs/whip", "dst": "protocol:mcp", "rel": "uses", "added": "2026-09-20", "primera_mencion": null}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-lahfir-agent-desktop", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-lahfir-agent-desktop", "dst": "tema:lahfir-agent-desktop", "rel": "trata", "added": "2026-09-20"}
+{"src": "lahfir/agent-desktop", "dst": "concept:accessibility-tree-computer-use", "rel": "implements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "lahfir/agent-desktop", "dst": "concept:claude-computer-use", "rel": "competes_with", "added": "2026-09-20", "primera_mencion": null}
+{"src": "lahfir/agent-desktop", "dst": "concept:browser-cdp-harness", "rel": "relevant_to", "added": "2026-09-20", "primera_mencion": "2026-08-23"}
+{"src": "lahfir/agent-desktop", "dst": "protocol:cdp", "rel": "uses", "added": "2026-09-20", "primera_mencion": null}
+{"src": "lahfir/agent-desktop", "dst": "concept:human-in-the-loop-agent-workflow", "rel": "relevant_to", "added": "2026-09-20", "primera_mencion": "2026-08-19"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-withastro-flue", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-withastro-flue", "dst": "tema:withastro-flue", "rel": "trata", "added": "2026-09-20"}
+{"src": "withastro/flue", "dst": "concept:agents-as-functions", "rel": "implements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "withastro/flue", "dst": "concept:programmable-harness", "rel": "implements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "withastro/flue", "dst": "repo:langchain-ai/deepagents", "rel": "competes_with", "added": "2026-09-20", "primera_mencion": "2026-08-25"}
+{"src": "withastro/flue", "dst": "repo:anthropics/knowledge-work-plugins", "rel": "complements", "added": "2026-09-20", "primera_mencion": "2026-09-18"}
+{"src": "withastro/flue", "dst": "protocol:mcp", "rel": "uses", "added": "2026-09-20", "primera_mencion": null}
+{"src": "withastro/flue", "dst": "concept:ai-agent-sandbox", "rel": "relevant_to", "added": "2026-09-20", "primera_mencion": "2026-08-22"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-openai-tunnel-client", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-openai-tunnel-client", "dst": "tema:openai-tunnel-client", "rel": "trata", "added": "2026-09-20"}
+{"src": "openai/tunnel-client", "dst": "concept:secure-mcp-tunnel", "rel": "implements", "added": "2026-09-20", "primera_mencion": null}
+{"src": "openai/tunnel-client", "dst": "concept:mcp-first-baas", "rel": "implements", "added": "2026-09-20", "primera_mencion": "2026-07-31"}
+{"src": "openai/tunnel-client", "dst": "concept:cloudflared-tunnel", "rel": "competes_with", "added": "2026-09-20", "primera_mencion": null}
+{"src": "openai/tunnel-client", "dst": "company:openai", "rel": "relevant_to", "added": "2026-09-20", "primera_mencion": "2026-08-31"}
+{"src": "openai/tunnel-client", "dst": "protocol:mcp", "rel": "uses", "added": "2026-09-20", "primera_mencion": null}
+{"src": "openai/tunnel-client", "dst": "repo:github/github-mcp-server", "rel": "complements", "added": "2026-09-20", "primera_mencion": "2026-08-28"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-zhouxiaoka-autoclip", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-zhouxiaoka-autoclip", "dst": "tema:zhouxiaoka-autoclip", "rel": "trata", "added": "2026-09-20"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-remorses-gpuix", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-remorses-gpuix", "dst": "tema:remorses-gpuix", "rel": "trata", "added": "2026-09-20"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-yynxxxxx-codex-x", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-yynxxxxx-codex-x", "dst": "tema:yynxxxxx-codex-x", "rel": "trata", "added": "2026-09-20"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-looplj-axonhub", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-looplj-axonhub", "dst": "tema:looplj-axonhub", "rel": "trata", "added": "2026-09-20"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-opendatalab-mineru", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-opendatalab-mineru", "dst": "tema:opendatalab-mineru", "rel": "trata", "added": "2026-09-20"}
+{"src": "boletin:2026-09-20", "dst": "item:https-github-com-warp-tech-warpgate", "rel": "menciona", "added": "2026-09-20"}
+{"src": "item:https-github-com-warp-tech-warpgate", "dst": "tema:warp-tech-warpgate", "rel": "trata", "added": "2026-09-20"}

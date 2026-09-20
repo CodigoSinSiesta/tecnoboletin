@@ -1,0 +1,460 @@
+{
+  "version": 2,
+  "date": "2026-09-20",
+  "boletin_origen": "2026-09-20-trending.md",
+  "resumen_ejecutivo": "- **El cluster \"System 1 decision models\" explota en GitHub** — seis repos trending (Laya, Bespoke Nimble, kev, NanoJev, laya-mlx, TypeSafe skills) consolidan una tesis editorial que TypeSafe AI publicó hace meses: **decisiones tipadas sin generación de texto, sub-50 ms en una sola pasada del modelo**. Laya (1.834★, Apache-2.0) es la implementación canónica en Python con ModernBERT/mmBERT (421M/322M); Bespoke Nimble (644★) es la receta OSS para replicar el efecto entrenando Qwen3.5-9B con LoRA — y en held-out pasa de 66,4% (base) a 90,1% de acierto, cerca del 93,2% de Jev 1.13.0 sin destilar. Pieza editorial: \"la decisión tipada vuelve como primitiva — y por qué sub-50 ms sin texto generado importa para routers, evaluadores y guardarraíles\".\n- **`context-labs/whip` condensa el consenso de los coding-agent harnesses en un binario de Go** — 618★ (Apache-2.0, creado 2026-08-20), TUI con bubbletea, tool-use loop con bash/read/write/edit/subagent, provider-routable a cualquier endpoint OpenAI-compatible, suscripción Codex reutilizable (`whip auth codex`) y actualización vía `whip update`. El README cita explícitamente pi, opencode, codex y exo como fuentes y declara \"whip cherry-picks the best ideas\" en `docs/roadmap.md`. Pieza editorial: \"whip, la primera respuesta en un solo binario al 'qué ha quedado en pie después del boom de coding agents'\".\n- **`lahfir/agent-desktop` lleva el computer-use al nivel de accessibility APIs en lugar de visión** — 1.312★ (Apache-2.0, Rust + C-ABI cdylib), 58 nombres de comando / 54 operacionales, progressive skeleton traversal (78–96% menos tokens sobre apps densas como Slack), snapshot refs estables (`@s8f3k2p9:e1`), CDP interop para browsers. La tesis editorial: en macOS el árbol de accesibilidad es **la fuente de verdad estructural** de la UI, así que cualquier agente que opere sobre píxeles está reinventando parsing que el sistema ya da gratis. Pieza editorial: \"computer-use production-grade via accessibility tree: por qué agent-desktop cambia la ecuación frente a vision-based computer use\".\n- **`withastro/flue` lleva el equipo Astro al terreno de agent infrastructure** — 8.310★ (Apache-2.0, creado 2026-02-07), sintaxis `'use agent'` estilo React Server Components, runtime con `useModel/useSandbox/useSkill/useTool`, canales verificados (Slack/Teams/Discord/GitHub), deploy target a Node/Cloudflare Workers/GitHub Actions/GitLab CI/Daytona/Render, observability vía OpenTelemetry/Braintrust/Sentry. Pieza editorial: \"el equipo detrás de Astro entra en agentes — y la tesis es que agents-as-functions merece el mismo cuidado DX que components-as-functions\".\n- **`openai/tunnel-client` cierra el loop oficial de OpenAI para MCP servers privados** — 438★ (Apache-2.0, Go, creado 2025-12-10), cliente run-by-customer que conecta un MCP server en localhost / VM / Kubernetes / red privada con ChatGPT, Codex, Responses API y AgentKit **sin abrir puertos públicos**. Documenta onboarding, architecture, permissions, deployment, troubleshooting, protocol, openapi.json — nivel enterprise. Pieza editorial: \"MCP sin firewall: el túnel oficial de OpenAI para que localhost-MCP hable con ChatGPT/Codex sin abrir un puerto\".\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily + slices TypeScript/Python/Rust/Go (74 items únicos), GitHub REST API para 18 candidatos verificados (presupuesto restante ~42/h). Blogwatcher no publicado hoy — la dependencia upstream sigue caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "El cluster \"System 1 decision models\"",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "una familia de modelos no-autoregresivos que toman **texto + un schema plano de preguntas** (`choice` / `score` / `boolean`) y devuelven **una decisión tipada con probabilidades por alternativa en un único forward pass**, sin generar texto.",
+        "por_que_importa": "En Codigo Sin Siesta hemos cubierto repetidamente el problema estructural: cuando le pides a un LLM una decisión estructurada (route, sí/no, score 1-5), el modelo gasta la mayor parte del tiempo y los tokens en generar prosa alrededor de la respuesta, y ahí es donde alucina. Laya y Nimble atacan exactamente ese punto: son modelos no-autoregresivos que leen el contexto una sola vez y emiten logits sobre códigos de un solo token; un scorer convierte con softmax, no hay JSON que parsear, no hay nada que pueda alucinar. El caso de uso editorial es directo: routers de agentes (qué agente / herramienta aplica), evaluadores de pipelines RAG, guardarraíles de compliance, ticket routing, priorización de backlog. En números: Laya corre a 33 ms por pregunta en T4 (7,2 ms en batch) y Nimble está validado con 2.676 ejemplos curated, mejorando 23,7 puntos sobre la base Qwen3.5-9B (66,4% → 90,1%) y acercándose al 93,2% del modelo propietario Jev 1.13.0 sin destilar de él. El ecosistema trae además `laya-mlx` (runtime nativo para Apple Silicon, 7–14 ms), `kev` (variante minúscula sobre Qwen2.5-0.5B), `NanoJev` y skills oficiales de TypeSafe para integrarlo en coding agents. Caveat honesto: `bespokelabsai/nimble` devuelve `license.spdx_id: NOASSERTION` y el repo no incluye archivo LICENSE en `main`/`master`/`develop`; la adopción como build-dependency queda pendiente de clarificación legal, aunque el uso para research/eval es válido. Laya y el resto del ecosistema TypeSafe sí son Apache-2.0 explícito.",
+        "madurez_senales": "`NandhaKishorM/laya`: 1.834★ · 172 forks · Python · Apache-2.0 · creado 2026-09-18 · último push 2026-09-20 · topics: `ai-decision-engine`, `non-autoregressive`, `rlcd`, `router`, `system-1`. PyPI `pip install laya`, tres checkpoints en HuggingFace (`convaiinnovations/laya`, `laya-multilingual`, `laya-typed-decisions`), dev.to article del autor, Colab demo, HuggingFace Space demo. RLCD (RL against strictly proper scoring rules) + Router que elige checkpoint por request. · `bespokelabsai/nimble`: 644★ · 46 forks · Python · **NOASSERTION — LICENSE file ausente en main/master/develop** · creado 2026-09-18 · último push 2026-09-20 · description: *\"Local typed decisions, contrastive data curation, and model evaluation\"*. Modelo en HF `bespokelabs/Bespoke-Nimble-9B` (Qwen3.5-9B + LoRA en answer tokens). Inspired by TypeSafe's Jev System One approach. · `mizorewww/laya-mlx`: 284★ · 9 forks · Python · Apache-2.0 · 2026-09-19 · *\"Native MLX runtime for Laya typed decision models — 7-14 ms short decisions on M-series\"*. · `jaredpalmer/kev`: 644★ · 36 forks · Python · Apache-2.0 · 2026-09-17 · *\"tiny Jev-like model built on top of Qwen2.5-0.5B you can train and run on your M-series\"*. · `TianyuCodings/NanoJev`: 1.117★ · 146 forks · Python · MIT · 2026-09-17 · *\"A nano replica of Jev: parallel decisions, dynamic candidates, and an end-to-end\"*. · `typesafe-ai/skills`: 807★ · 39 forks · MIT · 2026-08-24 · *\"Agent skills for building with TypeSafe's System One API\"*.",
+        "accion_sugerida": "**explorar** (instalar Laya vía `pip install laya` y probar el `Router` sobre un caso propio — ticket routing, intent classification, content moderation — antes de evaluar Nimble como receta de entrenamiento; si tienes HF GPUs, validar el flujo LoRA de Nimble sobre tu dominio; **no adoptes Nimble como dependencia hasta clarificar LICENSE** — abrir un issue o usar mirror compatible).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "NandhaKishorM/laya",
+          "rel": "implements",
+          "dst": "concept:non-autoregressive-decision-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "NandhaKishorM/laya",
+          "rel": "uses",
+          "dst": "technique:proper-scoring-rules",
+          "primera_mencion": null
+        },
+        {
+          "src": "bespokelabsai/nimble",
+          "rel": "complements",
+          "dst": "repo:NandhaKishorM/laya",
+          "primera_mencion": null
+        },
+        {
+          "src": "jaredpalmer/kev",
+          "rel": "relevant_to",
+          "dst": "concept:on-device-agent",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "concept:non-autoregressive-decision-model",
+          "rel": "enables",
+          "dst": "concept:agent-router-fast-path",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:non-autoregressive-decision-model",
+          "rel": "complements",
+          "dst": "repo:openai/responses-api",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "el-cluster-system-1-decision-models",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "context-labs/whip",
+      "url": "https://github.com/context-labs/whip",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "harness de coding agent compilado a **un único binario en Go** (618★, 145 forks, Apache-2.0, creado 2026-08-20, último push 2026-09-20). Tool-use loop con bash/read/write/edit/subagent, TUI interactivo basado en bubbletea, modelos provider-routable a cualquier endpoint OpenAI-compatible, suscripción Codex reutilizable.",
+        "por_que_importa": "Whip es el primer intento explícito de destilar el consenso 2025-2026 de coding-agent harnesses en un solo binario en Go (618★ en un mes, Apache-2.0). Lo que importa al lector de Codigo Sin Siesta: el README no esconde nada — cada feature cita su fuente en `docs/roadmap.md` y viene de pi, opencode, codex o exo. Se instala con un curl script firmado (Linux/macOS x64/arm64 con checksum) o con `go install` sobre Go ≥ 1.27. La killer feature es el provider routing: `whip auth openrouter` mete el catálogo completo en `/model`, `whip auth codex` reutiliza tu suscripción ChatGPT/Codex vía OAuth local con refresh en `~/.codex/auth.json` y catálogo refrescado cada 24h desde `chatgpt.com/backend-api/codex/models`, `/usage` muestra los rate-limit windows de la suscripción y `whip update` se auto-actualiza. La filosofía editorial declarada — \"a future where open-source models are the preferred models\" — encaja con lo que cubrimos en este boletín. Conexión con boletines previos: ya cubrimos el espacio competencial con `stablyai/orca` el 2026-07-16 y con `earendil-works/pi-coding-agent` el 2026-09-12, y la idea de orquestar harnesses propios con `concept:byo-harness-orchestration` el 2026-08-13; whip es la lectura más concentrada de ese mismo debate. Caveat honesto: 618★ es crecimiento orgánico joven pero acelerado (creado hace un mes, ya trending en daily); el proyecto está en fase \"first features hit\" y la `v1.0` con breaking changes sigue siendo promesa. No es para equipos que necesiten estabilidad hoy — es para early adopters que quieran opinar el consenso antes de que se cierre.",
+        "madurez_senales": "618★ · 145 forks · Go · Apache-2.0 · creado 2026-08-20 · último push 2026-09-20 · topics: `agent`, `cli`, `coding-agent`, `harness`, `opencode`, `pi`, `codex`. Install script firmado, Go binary, provider-routing OpenAI-compatible, `whip update` self-update, OAuth Codex login. Documentación: `docs/roadmap.md` (cada feature cita su fuente), `docs/concurrency.md` (channels de Go vs promises de TS), `docs/architecture.md`.",
+        "accion_sugerida": "**explorar** (instalar el binario con `curl -fsSL https://raw.githubusercontent.com/context-labs/whip/main/install.sh | sh`, probar `whip auth openrouter` para tener el catálogo de modelos, leer `docs/roadmap.md` para entender qué cherry-pickea de cada harness histórico; si tienes una suscripción Codex activa, validar `whip auth codex` + `/usage`; **no usar en proyectos críticos hasta que el repo acumule más estabilidad**).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "context-labs/whip",
+          "rel": "implements",
+          "dst": "concept:lightweight-coding-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "context-labs/whip",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "context-labs/whip",
+          "rel": "competes_with",
+          "dst": "repo:earendil-works/pi-coding-agent",
+          "primera_mencion": "2026-09-12"
+        },
+        {
+          "src": "context-labs/whip",
+          "rel": "relevant_to",
+          "dst": "concept:byo-harness-orchestration",
+          "primera_mencion": "2026-08-13"
+        },
+        {
+          "src": "context-labs/whip",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "context-labs-whip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "lahfir/agent-desktop",
+      "url": "https://github.com/lahfir/agent-desktop",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**CLI nativa en Rust** (1.312★, 87 forks, Apache-2.0, creado 2026-02-19, último push 2026-09-17) más **C-ABI cdylib** (`libagent_desktop_ffi`) que permite cargar la librería desde Python / Swift / Go / Ruby / Node / C sin forkear el CLI. La tesis editorial: en macOS el árbol de accesibilidad **es** la estructura real de la UI — agent-desktop la lee y la opera, con refs estables y acciones seguras de reintentar, en lugar de adivinar desde píxeles.",
+        "por_que_importa": "Aquí toca ser honestos sobre la limitación: el resto de entradas de computer-use (OpenAI Operator, Anthropic Claude Computer Use, Google Astra) que hemos cubierto en boletines previos trabajan con screenshots + visión multimodal — caro en tokens, frágil a reflows, propenso a \"fingir que entendió\". agent-desktop propone otra ruta: lee el Accessibility tree nativo de macOS (el mismo que usa VoiceOver), lo aplana en un snapshot estructurado con progressive skeleton traversal (78–96% menos tokens sobre apps densas como Slack según el README) y referencia los elementos por IDs compactos tipo `@s8f3k2p9:e1`. El catálogo de comandos es serio: 58 nombres / 54 operacionales cubriendo observación, interacción, teclado, ratón, notificaciones, clipboard, gestión de ventanas y ciclo de vida de sesión. Killer feature para nosotros: Chromium-app interop vía CDP (`launch --cdp` abre un DevTools port verificado) — cualquier framework que habla CDP (Playwright, Puppeteer, agent-browser) maneja el contenido web mientras los menús nativos siguen el path de accesibilidad. La adopción es trivial: `npm install -g agent-desktop` descarga el binario prebuilt, `npx agent-desktop snapshot --app Finder -i` funciona sin instalar aunque el bundle completo pida permisos. Caveat duro: macOS only (13.0+, Rust 1.89+, requiere Accessibility + Screen Recording + Automation permissions); para Linux/Windows ya cubrimos `warp-tech/warpgate` que cubre SSH/K8s/database bastion pero no computer-use nativo. Conexión con boletines previos: ya cubrimos el patrón browser-CDP-harness el 2026-08-23 y los flujos human-in-the-loop para agentes el 2026-08-19; agent-desktop aterriza ambos desde la esquina nativa.",
+        "madurez_senales": "1.312★ · 87 forks · Rust + npm wrapper · Apache-2.0 · creado 2026-02-19 · último push 2026-09-17 · topics: `agent`, `accessibility`, `claude-computer-use`, `computer-use`, `macos`, `osascript`, `rust`. CI workflow, releases en GitHub, npm package `agent-desktop`, ClawHub skill listing, skills.sh listing. Documentación: arquitectura + diagramas + star-history.",
+        "accion_sugerida": "**explorar** (instalar con `npm install -g agent-desktop`, ejecutar `npx agent-desktop snapshot --app Finder -i` para ver el output sobre tu propia sesión, validar `permissions --request` antes de comprometerte; si trabajas con Slack/Xcode/Finder/Safari y un coding agent, agent-desktop es la pieza que cierra el loop \"el agente opera sobre la UI real sin adivinar desde píxeles\"; **macOS only** — no aplica para Linux/Windows).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "lahfir/agent-desktop",
+          "rel": "implements",
+          "dst": "concept:accessibility-tree-computer-use",
+          "primera_mencion": null
+        },
+        {
+          "src": "lahfir/agent-desktop",
+          "rel": "competes_with",
+          "dst": "concept:claude-computer-use",
+          "primera_mencion": null
+        },
+        {
+          "src": "lahfir/agent-desktop",
+          "rel": "relevant_to",
+          "dst": "concept:browser-cdp-harness",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "lahfir/agent-desktop",
+          "rel": "uses",
+          "dst": "protocol:cdp",
+          "primera_mencion": null
+        },
+        {
+          "src": "lahfir/agent-desktop",
+          "rel": "relevant_to",
+          "dst": "concept:human-in-the-loop-agent-workflow",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lahfir-agent-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "withastro/flue",
+      "url": "https://github.com/withastro/flue",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework TypeScript del equipo Astro (8.310★, 496 forks, Apache-2.0, creado 2026-02-07, último push 2026-09-19) para construir agentes autónomos con un **runtime programable**. Sintaxis `'use agent'` estilo React Server Components, el agente **es una función** que compone el harness que necesita con `useModel('anthropic/claude-sonnet-4-6')` + `useSandbox(local())` + `useSkill(triage)` + `useTool(openIssue)`.",
+        "por_que_importa": "El equipo Astro popularizó \"components as functions\" para sitios estáticos y SSG. flue aplica esa misma filosofía a agentes: **el agente es la función, el harness es lo que la función importa**. Para un lector de Codigo Sin Siesta esto resuelve un problema estructural del agentic frame actual que hemos comentado en boletines previos: o compras el harness completo de Claude Code/Codex (opaco, vendor-locked) o te escribes un loop de tool-calls desde cero (y reinventas sessions, tools, skills, sandbox, durabilidad, observability). flue da el catálogo de primitivas (`useModel('anthropic/claude-sonnet-4-6')`, `useSandbox(local())`, `useSkill(triage)`, `useTool(openIssue)`) y targets de deploy reales: Node.js, Cloudflare Workers, GitHub Actions, GitLab CI/CD, Daytona, Render. Los canales verificados (Slack/Teams/Discord/GitHub) reciben eventos autenticados, MCP servers conectan herramientas autenticadas al ecosistema abierto, y la observability sale por OpenTelemetry a Braintrust/Sentry o tu propio collector. Conexión con boletines previos: ya cubrimos `langchain-ai/deepagents` como competidor el 2026-08-25, vimos cómo `anthropics/knowledge-work-plugins` complementa el catálogo de skills oficiales el 2026-09-18, y tratamos el problema del sandbox para agentes de IA el 2026-08-22; flue se posiciona explícitamente en esa intersección. Caveat honesto: 8.310★ en siete meses sugiere tracción real del equipo Astro, pero la ergonomía \"agente como función\" sigue siendo experimental — los ejemplos oficiales asumen Anthropic/OpenAI y un sandbox local, y el camino a self-hosting multi-tenant aún no está pulido.",
+        "madurez_senales": "8.310★ · 496 forks · TypeScript · Apache-2.0 · creado 2026-02-07 · último push 2026-09-19 · topics: `agent`, `anthropic`, `framework`, `harness`, `mcp`, `sdk`. Documentación oficial https://flueframework.com/docs/guide/building-agents/, packages `@flue/runtime`, `@flue/vite`, `@flue/cli`, `@flue/sdk`, `@flue/opentelemetry`, `@flue/postgres`. By same team as Astro (Fred K. Schott et al.).",
+        "accion_sugerida": "**leer** (visitar https://flueframework.com/docs/guide/building-agents/ para entender la API `useModel/useSandbox/useSkill/useTool`, leer el ejemplo `agents/triage.ts` del README para ver el modelo mental; si ya tienes un agente escrito como loop de tool-calls, evaluar Flue como forma de extraer las primitivas a funciones testeables; **no migrar producción todavía** — leer primero la sección Durability + Subagents + Channels para entender el modelo de recovery).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "withastro/flue",
+          "rel": "implements",
+          "dst": "concept:agents-as-functions",
+          "primera_mencion": null
+        },
+        {
+          "src": "withastro/flue",
+          "rel": "implements",
+          "dst": "concept:programmable-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "withastro/flue",
+          "rel": "competes_with",
+          "dst": "repo:langchain-ai/deepagents",
+          "primera_mencion": "2026-08-25"
+        },
+        {
+          "src": "withastro/flue",
+          "rel": "complements",
+          "dst": "repo:anthropics/knowledge-work-plugins",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "withastro/flue",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "withastro/flue",
+          "rel": "relevant_to",
+          "dst": "concept:ai-agent-sandbox",
+          "primera_mencion": "2026-08-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "withastro-flue",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "openai/tunnel-client",
+      "url": "https://github.com/openai/tunnel-client",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "cliente OSS oficial de OpenAI (438★, 87 forks, Go, Apache-2.0, creado 2025-12-10, último push 2026-09-20) que corre **en tu máquina / VM / Kubernetes / red privada** y conecta un MCP server local a ChatGPT, Codex, Responses API y AgentKit **a través de un endpoint tunnel hospedado por OpenAI**, sin abrir puertos públicos.",
+        "por_que_importa": "El patrón MCP privado tiene dos variantes que hemos visto en boletines previos: self-host el servidor entero o exponer tu localhost con un túnel ngrok-style. openai/tunnel-client resuelve la segunda variante con un cliente oficial de OpenAI, auditado, con endpoints de operador (`/healthz`, `/readyz`, `/metrics`, `/ui`) y modelo de permisos explícito. Lo que le importa al lector de Codigo Sin Siesta: el MCP server se queda fuera del internet público, el túnel es outbound-only desde tu host — exactamente el trust boundary que tu CISO te va a pedir. Tres docs lo hacen compartible con equipos de seguridad: `docs/onboarding.md` (5-min quickstart desde localhost o red privada), `docs/architecture.md` (network y trust boundary), `docs/permissions.md` (roles, grupos, tunnel IDs, API keys). El proyecto también define un protocolo abierto (`docs/protocol.md`, `docs/openapi.json`) y un header de capabilities (`X-Tunnel-Client-Capabilities`), así que terceros pueden escribir clientes compatibles sin lock-in. Conexión con boletines previos: cubrimos la idea de `concept:mcp-first-baas` el 2026-07-31 y vimos cómo `github/github-mcp-server` cubre el caso GitHub el 2026-08-28; tunnel-client es la pieza que faltaba para llevar ese stack a producción sin abrir puertos públicos. Caveat honesto: 438★ es tracción honesta de un cliente enterprise creado hace 9 meses; la adopción real está limitada a productos OpenAI-hosted (ChatGPT, Codex, Responses API, AgentKit) — no es un sustituto de ngrok/cloudflared para tráfico general.",
+        "madurez_senales": "438★ · 87 forks · Go · Apache-2.0 · creado 2025-12-10 · último push 2026-09-20 · topics: `agentkit`, `chatgpt`, `codex`, `mcp`, `model-context-protocol`, `openai`, `responses-api`, `secure-tunnel`. OpenAPI documentada, embedded demo con `server_info`/`echo`/`uppercase` tools (`tunnel-client run --embedded-stateless-mcp-stub --health.listen-addr 127.0.0.1:0`), examples en `examples/go-sdk-inmemory`, Go SDK con MCP in-memory transport.",
+        "accion_sugerida": "**leer** (no instalar todavía — leer primero `docs/onboarding.md` y `docs/architecture.md`; el demo embebido `tunnel-client run --embedded-stateless-mcp-stub --health.listen-addr 127.0.0.1:0` es la forma más rápida de validar la stack sin gastar API quota; si tienes un MCP server interno que necesitas exponer a ChatGPT/Codex sin abrir puertos, este es el camino oficial — pero lee primero `docs/permissions.md` para entender el modelo de tunnel IDs y API keys antes de pasar producción).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "openai/tunnel-client",
+          "rel": "implements",
+          "dst": "concept:secure-mcp-tunnel",
+          "primera_mencion": null
+        },
+        {
+          "src": "openai/tunnel-client",
+          "rel": "implements",
+          "dst": "concept:mcp-first-baas",
+          "primera_mencion": "2026-07-31"
+        },
+        {
+          "src": "openai/tunnel-client",
+          "rel": "competes_with",
+          "dst": "concept:cloudflared-tunnel",
+          "primera_mencion": null
+        },
+        {
+          "src": "openai/tunnel-client",
+          "rel": "relevant_to",
+          "dst": "company:openai",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "openai/tunnel-client",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "openai/tunnel-client",
+          "rel": "complements",
+          "dst": "repo:github/github-mcp-server",
+          "primera_mencion": "2026-08-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-tunnel-client",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "zhouxiaoka/autoclip",
+      "url": "https://github.com/zhouxiaoka/autoclip",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "7.655★ · push 2026-09-08 · Python · MIT — *\"AutoClip: AI-powered video clipping and highlight generation\"*. Pipeline FastAPI + Celery + React/TypeScript + Ant Design, soporta YouTube/Bilibili, providers Qwen/OpenAI-compatible/Gemini/Ollama (modo local offline), **MCP server + Agent skill** para que Cursor/Claude lo invoquen directamente (`autoclip run video.mp4 --provider ollama`). README bilingüe chino/inglés.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (si haces contenido en video con AI workflow, autoclip es la pieza que conecta download → AI clip → collection con un MCP server usable desde Claude Code/Cursor)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhouxiaoka-autoclip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "remorses/gpuix",
+      "url": "https://github.com/remorses/gpuix",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "2.031★ · push 2026-09-16 · Rust · Apache-2.0 — *\"React for Zed's GPUI — Node.js & React bindings. Build memory efficient native apps with Metal/DirectX/Vulkan\"*. Quickstart con `bunx @gpuix/cli new my-app` (sin clonar el repo, sin Rust toolchain, sin native build). `@gpuix/react` + `@gpuix/native` deben pinearse a la misma versión exacta (pre-1.0, breaking changes probables).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si te interesan apps nativas memory-efficient sin Electron, vale seguir el proyecto; todavía pre-1.0 — no adoptes como build-dependency crítica)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "remorses-gpuix",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "yynxxxxx/Codex-X",
+      "url": "https://github.com/yynxxxxx/Codex-X",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "3.488★ · push 2026-09-18 · Rust · MIT — *\"GUI Tauri 2 cross-platform (Windows/macOS/Linux) para OpenAI Codex Desktop/CLI: gestión visual de prompts, providers, sesiones, Skills/MCP y configuración TOML\"*. Gestiona prompts como plugins, importa proveedores desde cc-switch, sync/check/search/delete sesiones locales. README bilingüe chino/inglés.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si usas Codex CLI/Desktop con frecuencia y tu setup tiene muchos providers + skills + MCP, Codex-X es el GUI que centraliza el caos de TOML files; caveat: proyecto joven, validar la confianza antes de darle acceso a tus auth.json)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yynxxxxx-codex-x",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "looplj/axonhub",
+      "url": "https://github.com/looplj/axonhub",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "5.264★ · push 2026-09-20 · Go · **Apache-2.0 + LGPL-3.0 mixto (`llm/` directory bajo LGPL-3.0)** — *\"Open-source AI Gateway — use any SDK to call 100+ LLMs, built-in failover, load balancing\"*. Soporta Claude/OpenAI/Gemini/DeepSeek, 100+ modelos. **Caveat importante**: el directorio `llm/` es LGPL-3.0 (copyleft) — la adopción build-dependency para código propietario requiere linking strategy cuidado (dynamic linking es la salida estándar). README con sponsors de proveedores chinos (rotación de API gateways regionales).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si necesitas un gateway multi-provider con failover, lee primero la sección LICENSE para entender el copyleft del `llm/` directory; el camino más limpio es tratarlo como servicio standalone)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "looplj-axonhub",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "opendatalab/MinerU",
+      "url": "https://github.com/opendatalab/MinerU",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "80.282★ · push 2026-09-19 · Python · **NOASSERTION (verificar LICENSE antes de adopción)** — *\"Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON\"*. Pipeline completo de document parsing (PDF/DOCX/PPT/Excel/images → structured markdown + figures + tables + formulas).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (si tienes pipelines RAG que necesitan parsing robusto de PDFs escaneados o con fórmulas, MinerU es uno de los OSS más maduros del cuadrante — la alternativa SaaS es Azure Document Intelligence / Google Document AI; el NOASSERTION significa que **debes leer el LICENSE file antes de adopción build-dependency**)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opendatalab-mineru",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "warp-tech/warpgate",
+      "url": "https://github.com/warp-tech/warpgate",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "7.943★ · push 2026-09-19 · Rust · Apache-2.0 — *\"Fully transparent SSH, HTTPS, Kubernetes, database and RDP/VNC bastion/PAM\"*. Bastion/PAM open-source para acceso SSH/K8s/database/RDP/VNC con audit logging, MFA, recording. Creado 2022 (maduro, estable), trending hoy por release reciente.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si necesitas un bastion/PAM zero-trust-self-hosted, warpgate cubre SSH + K8s + Postgres + RDP en un binario Rust; no es lo mismo que `lahfir/agent-desktop` que opera sobre UI macOS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "warp-tech-warpgate",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
