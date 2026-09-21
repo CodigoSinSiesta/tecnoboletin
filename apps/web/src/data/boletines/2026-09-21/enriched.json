@@ -1,0 +1,509 @@
+{
+  "version": 2,
+  "date": "2026-09-21",
+  "boletin_origen": "2026-09-21-trending.md",
+  "resumen_ejecutivo": "- **`browser-use/jev-ultrafast` cierra el círculo del cluster System 1 decision models con un demo viral** — 13.184★ (MIT, Python), TypeSafe Jev decide operación + elemento sobre un action space indexado y un LLM pequeño escribe texto **solo cuando la operación es `TYPE_TEXT`**. La demo pública: Zürich → London en Google Flights en **7,1 segundos**, generación de ciudad + decisiones + waits incluidos. La tesis editorial del bulletin de ayer (\"Laya/Nimble/kev son la primitiva que faltaba para routing sub-50 ms\") aterriza en un browser agent que **se vende a sí mismo con un GIF**.\n- **`google/ax` es la apuesta institucional de Google por la orquestación agentic declarativa** — 3.940★ (Go, Apache-2.0). Sintaxis Kubernetes-like para definir `Workspace` y `Task` en `ax.io/v1alpha1`, corre sobre **Agent Substrate** (otro repo trending visto en el grafo), y el README promete **\"billions of autonomous agent workloads per cluster\"**. Es la confirmación de que el patrón \"agentic + declarative + sandboxed + cluster-scale\" es ahora mainstream — y el primero en ponerlo en producción es Google.\n- **`wang2122/sprix-sage-router` cubre la pieza que Laya no cubre: routing A2A mid-execution** — 3.945★ (Python, MIT), SAGE = State-Aware Graph Exchange. Decide **SELF / COLLABORATE / HANDOFF** después de que la ejecución empezó, considerando completed DAG nodes + artifacts reutilizables + partial quality + remaining work + failures + budget + deadline. Mientras Laya es la decisión tipada dentro de un solo agente, SAGE es la decisión tipada entre agentes: ambas son no-autoregresivas con utility auditable, las dos pertenecen al mismo eje editorial.\n- **`vshulcz/deja-vu` introduce la \"memoria que arranca llena\" para coding agents** — 905★ (Go, MIT), **85,3% hit@1 en LongMemEval-S, 69,7% retrieval hit@1 en LoCoMo**. Indexa retroactivamente las sesiones que Claude Code / Codex / Cursor / OpenCode / Hermes ya tienen en disco, las une en una sola capa de memoria, y expone un MCP `recall` tool. Redacta AWS keys / JWTs / PEM blocks al indexar; sobrevive 43 compactions (77% decisiones + 0,2% comandos conservados; devuelve el otro 99,8%); `deja handoff --to codex` mueve el contexto vivo entre agentes; `deja sync ssh laptop` mueve la memoria entre máquinas sin cloud. Conecta directamente con nuestro setup porque deja instala skill en `~/.agents/skills/`.\n- **`vercel-labs/json-render` define la capa Generative UI** — 17.585★ (TypeScript, Apache-2.0). Defines un catálogo de componentes en Zod → el modelo genera JSON constrained a esos componentes → render React/Vue/Svelte/Solid/RN/Remotion/PDF/HTML email. **36 componentes shadcn/ui prebuilt**, streaming progresivo, schema validation, `Zod nullable` para campos opcionales. Es la pieza que resuelve \"el LLM devuelve HTML\" sin sacrificar reliability — el mismo modelo mental que `vercel-labs/eve` (visto el 17 sep) pero con UI renderizada en lugar de chatbots.\n- **`anthropics/financial-services` consolida el movimiento \"vertical SaaS de Claude\"** — 35.522★ (Python, Apache-2.0). Once plugins verticales (Pitch Agent, Market Researcher, Model Builder, GL Reconciler, Earnings Reviewer, KYC Screener, Month-End Closer, Statement Auditor, Valuation Reviewer, Meeting Prep Agent, Coverage & Advisory) cada uno disponible como **Claude Cowork plugin** o como **Claude Managed Agents API template** (`/v1/agents`). La tesis editorial: Anthropic está vendiendo **verticales empaquetados** (skills + slash commands + data connectors + system prompt) a sectores con compliance maduro. Disclaimer explícito: nada de esto constituye asesoría financiera, legal o contable — todo va a sign-off humano.\nFuentes consultadas: Trendshift daily (25 items, 0 sponsors), GitHub Trending daily + slices TypeScript/Python/Rust/Go (67 items únicos), GitHub REST API para 17 candidatos verificados. Blogwatcher no publicado hoy — la dependencia upstream sigue caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "browser-use/jev-ultrafast",
+      "url": "https://github.com/browser-use/jev-ultrafast",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "browser agent que combina un **action space indexado dinámicamente** (cada observación produce una nueva tabla de elementos `[1] button Cambiar tipo de ticket · Round trip`, `[2] combobox ¿Desde? · San Francisco`, `[3] combobox ¿A? · empty`...) con **TypeSafe Jev** eligiendo operación + elemento, y un **LLM pequeño que escribe texto solo cuando la operación es `TYPE_TEXT`**. La demo pública: Zürich → London en Google Flights en **7,1 segundos**, con generación de ciudad, decisiones y waits incluidos.",
+        "por_que_importa": "Este repo cierra el cluster **System 1 decision models** que cubrimos en los últimos boletines (la tesis editorial del 2026-09-20 fue «decisiones tipadas sin generación de texto, sub-50 ms en una sola pasada», y el 2026-08-23 ya introdujimos el browser-cdp-harness sobre el que se monta). Los nodos previos del cluster (Laya, Nimble, kev, laya-mlx, NanoJev, vistos el 2026-09-20) atacaban la decisión dentro de un agente; jev-ultrafast aterriza esa primitiva en un browser agent público con un GIF de Zürich → London en 7,1 s que ya está siendo el showpiece viral del cluster — el primer «demo que se ve en Twitter» para System 1. Implicaciones concretas para CSS: (a) la primitiva se puede enchufar directamente en `browser-use` para ahorrar tokens de decisión; (b) Browser Use ya está abriendo una **Cloud waitlist** («Jev Ultrafast Cloud»), así que el siguiente paso razonable es hosting gestionado — relevante si no quieres correr el loop tú mismo; (c) el cluster ya tiene gancho editorial suficiente para justificar piezas más densas (arquitectura, comparativas de latencia, trade-offs vs agentes autoregresivos). Caveat: 13.184★ en un repo creado el 2026-09-15 es tracción rápida pero todavía temprana — los números de rendimiento de `docs/performance.md` están en su infancia y conviene leerlos como demo, no como benchmark independiente.",
+        "madurez_senales": "13.184★ · 812 forks · Python · MIT · creado 2026-09-15 · último push 2026-09-18. · Banner \"Jev Ultrafast · Browser Use × TypeSafe\" — colaboración explícita entre dos vendors ya conocidos (Browser Use + TypeSafe AI). · Docs `docs/performance.md` (mediciones) + código del loop en `jev_ultrafast/agent.py` (abierto para auditoría). · Demo MP4 + GIF disponibles en el README. · Caveat: marketing + waitlist — el repositorio es el OSS, el servicio comercial todavía no está abierto.",
+        "accion_sugerida": "**explorar** (clonar el repo, leer `docs/performance.md` para entender el action space dinámico, ejecutar el demo local con `pip install`; si te interesa la primitiva, evalúa instalar Laya por separado y usarla como capa de decisión sobre un agent loop propio; la Cloud waitlist es opcional y solo vale si quieres hosting gestionado).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "browser-use/jev-ultrafast",
+          "rel": "implements",
+          "dst": "concept:non-autoregressive-decision-model",
+          "primera_mencion": "2026-09-20"
+        },
+        {
+          "src": "browser-use/jev-ultrafast",
+          "rel": "uses",
+          "dst": "concept:browser-cdp-harness",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "browser-use/jev-ultrafast",
+          "rel": "complements",
+          "dst": "repo:NandhaKishorM/laya",
+          "primera_mencion": "2026-09-20"
+        },
+        {
+          "src": "browser-use/jev-ultrafast",
+          "rel": "relevant_to",
+          "dst": "concept:agent-router-fast-path",
+          "primera_mencion": "2026-09-20"
+        },
+        {
+          "src": "repo:browser-use/browser-use",
+          "rel": "relevant_to",
+          "dst": "repo:browser-use/jev-ultrafast",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "browser-use-jev-ultrafast",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "google/ax",
+      "url": "https://github.com/google/ax",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "orquestador agentic declarativo de Google (3.940★, 178 forks, Go, Apache-2.0, creado 2026-08-19, último push 2026-09-20). Sintaxis Kubernetes-like con `apiVersion: ax.io/v1alpha1`: declaras `Workspace` (git repo + branch) y `Task` (spec de lo que quieres correr), y AX **wire-up workspace, fenc network, runs at scale**. Corre sobre **Agent Substrate** (`agent-substrate/substrate`), el sandbox nativo que vimos en el grafo (visto el 2026-08-08).",
+        "por_que_importa": "AX es la primera apuesta institucional pública de Google por **agent infrastructure al estilo Kubernetes**: el README es deliberadamente familiar para quien viene de K8s (specs declarativos, controllers que reconcilian, promesa de «billions of autonomous agent workloads per cluster»). Esto posiciona a Google DeepMind no como fabricante de agentes, sino como candidato a **substrate** sobre el que otros corren agentes — un movimiento estratégico, no solo un producto. Para un lector CSS: si trabajas con agentes en serio, la pregunta «¿sobre qué runtime corro mis agentes?» empieza a tener respuestas serias con sponsorship de hyperscaler; AX es la primera que se parece al ecosistema K8s al que ya sabes operar. El grafo además lo conecta con Agent Substrate (que cubrimos el 2026-07-18), el sandbox nativo sobre el que AX ejecuta workspaces con fence de red. Caveat editorial honesto: el repo trae un WARNING literal en el README — «we are still actively refining our core concepts, protocols, and specifications. We will likely introduce major breaking changes prior to a stable release». Es pre-alpha con marca institucional: arquitectónicamente interesante, pero no apto como dependencia de build todavía.",
+        "madurez_senales": "3.940★ · 178 forks · Go · Apache-2.0 · creado 2026-08-19 · último push 2026-09-20. · Built on top of Agent Substrate para sandboxed execution. · Documentación con `task.yaml` examples (Workspace + Task + skill specification). · Apache-2.0 explícito — adopción build-dependency viable. · Caveat: pre-alpha, breaking changes probables. · Cross-team signal: Google Cloud / DeepMind no aparecen en el README pero el repo está bajo `google/ax` (no `google-research/`).",
+        "accion_sugerida": "**leer** (no instalar todavía — el WARNING del README lo dice explícitamente; leer `task.yaml` examples para entender el modelo mental, leer la sección de agent substrate para ver cómo se acopla al sandbox; vale seguir de cerca como señal institucional de hacia dónde va Google en agent infra; **no build-dependency hasta v1.0**).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "google/ax",
+          "rel": "implements",
+          "dst": "concept:declarative-agent-orchestrator",
+          "primera_mencion": null
+        },
+        {
+          "src": "google/ax",
+          "rel": "uses",
+          "dst": "repo:agent-substrate/substrate",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "google/ax",
+          "rel": "competes_with",
+          "dst": "concept:kubernetes-for-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "google/ax",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-sandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "google/ax",
+          "rel": "relevant_to",
+          "dst": "concept:company:google-deepmind",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-ax",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "wang2122/sprix-sage-router",
+      "url": "https://github.com/wang2122/sprix-sage-router",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "router A2A (Agent-to-Agent) **mid-execution**: después de que la ejecución empezó, decide si la tarea debe **continuar con el agente incumbent (SELF), reclutar colaboradores (COLLABORATE), o hacer handoff (HANDOFF)**. La decisión combina completed DAG nodes, reusable artifacts, observed partial quality, remaining work, failures, budget y deadline en una utility auditable. Implementa un algoritmo de búsqueda sobre candidatos con calibrated requirement owners + schedule, con falsificación por evaluador separado.",
+        "por_que_importa": "Cierra un hueco editorial del cluster System 1 decision models que seguimos desde el 2026-08-21. **Laya** (cubierto el 2026-08-21) decide la siguiente operación dentro de un solo agente; **SAGE** decide, una vez la ejecución ya empezó, si el agente debe seguir solo (SELF), reclutar colaboradores (COLLABORATE) o hacer handoff (HANDOFF). La pieza nueva y la que el ecosistema multi-agente todavía no había resuelto con rigor es la del runtime: el protocolo A2A estándar responde «qué agentes existen», pero no «quién debería trabajar con quién después de que la ejecución ya empezó». SAGE lo aborda combinando completed DAG nodes, reusable artifacts, partial quality observado, remaining work, failures, budget y deadline en una utility auditable (no es un LLM opaco), y falsifica su propia decisión con un evaluador separado. Para CSS, el ángulo concreto es: si vas a montar algo multi-agente serio, el cuello de botella ya no es el enrutamiento inicial — es decidir dinámicamente cómo reconfigurar el equipo a mitad de un trabajo. Caveat: el repo se marca explícitamente `Status: Research Preview` y los benchmarks (`python benchmark.py`) son del autor, así que conviene leerlo como dirección de investigación validada, no como pieza de producción.",
+        "madurez_senales": "3.945★ · 187 forks · Python · MIT · creado 2026-06-22 · último push 2026-08-28. · Research preview — el README explícitamente marca `Status: Research Preview`. · Quickstart con `python demo.py` (no requiere API keys ni runtime deps). · Verification suite: `python -m unittest -v`, `python benchmark.py`, `python benchmark_dynamic.py`, `python benchmark_trust.py`. · Documentación exhaustiva: `ALGORITHM.md`, `RELATED_WORK.md`, `docs/INTEGRATION.md` (A2A), `docs/OPERATIONS.md`, `CHANGELOG.md`, `CONTRIBUTING.md`. · Topics: `a2a`, `agent-orchestration`, `agent-routing`, `ai-agents`, `multi-agent-systems`, `python`, `sprix-ai`, `task-scheduling`.",
+        "accion_sugerida": "**explorar** (clonar y ejecutar `python demo.py` para ver el algoritmo en acción sin setup; leer `ALGORITHM.md` para entender cómo se calcula la utility; si trabajas con multi-agent systems, SAGE es el patrón de routing auditable que necesitabas y no estaba; caveat: research preview, no adoptes como dependencia de producción hasta validar el modelo en tu dominio).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "wang2122/sprix-sage-router",
+          "rel": "implements",
+          "dst": "concept:a2a-mid-execution-routing",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "wang2122/sprix-sage-router",
+          "rel": "implements",
+          "dst": "concept:typed-decision-multi-agent",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "wang2122/sprix-sage-router",
+          "rel": "complements",
+          "dst": "repo:NandhaKishorM/laya",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "wang2122/sprix-sage-router",
+          "rel": "relevant_to",
+          "dst": "concept:multi-agent-collaboration",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "wang2122/sprix-sage-router",
+          "rel": "relevant_to",
+          "dst": "concept:a2a-protocol",
+          "primera_mencion": "2026-08-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wang2122-sprix-sage-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "vshulcz/deja-vu",
+      "url": "https://github.com/vshulcz/deja-vu",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "capa de memoria compartida para **34 coding agents** que indexa retroactivamente las sesiones que ya están en disco (Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Antigravity, Qwen, Kimi Code, pi, Senpi, Copilot, VS Code Copilot Chat, Roo Code, omp, Amp, prime-agent, DeepSeek Harness, Continue, Crush, Zed, **Hermes**, y otros). Las une en una sola capa de memoria y expone un **MCP `recall` tool** que cualquier agente puede llamar. Métricas: **85,3 % hit@1 en LongMemEval-S**, **69,7 % retrieval hit@1 en LoCoMo**; sobrevive 43 compactions conservando el 77 % de las decisiones + el 0,2 % de los comandos (devuelve el otro 99,8 %).",
+        "por_que_importa": "El patrón convencional de memoria para coding agents (memvid, que cubrimos el 2026-08-19; supermemory, letta, etc.) **arranca vacío y graba hacia adelante**. deja-vu arranca con todo el historial que ya está en tu disco — Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Antigravity, Qwen, Kimi Code, pi, Senpi, Copilot, VS Code Copilot Chat, Roo Code, omp, Amp, prime-agent, DeepSeek Harness, Continue, Crush, Zed, Hermes (recordado desde el 2026-08-03 con NousResearch/hermes-agent en el grafo) — y contesta «¿lo arreglamos hace tres semanas?» con la sesión que lo arregló. El shift editorial es: **no necesitas configurar nada para tener memoria cross-agent**, basta con instalar deja-vu. Métricas duras que importan al lector CSS: **85,3 % hit@1 en LongMemEval-S** y **69,7 % retrieval hit@1 en LoCoMo**; sobrevive 43 compactions conservando el 77 % de las decisiones + el 0,2 % de los comandos (descarta el otro 99,8 %, lo cual es lo que hace el cache manejable). Características operativas concretas: (a) **redacta secretos** (AWS keys, JWTs, bearer tokens, bloques PEM, scheme://user:pass@host, contraseñas en prosa) antes de indexar; (b) **sync SSH entre máquinas** sin cloud en medio (`deja sync ssh laptop`); (c) **handoff entre agentes** (`deja handoff --to codex` empaqueta el contexto vivo); (d) **`deja stats --card`** dibuja un heatmap de sesiones para tu profile README; (e) con Hermes se integra vía skill en `~/.agents/skills/deja-search/SKILL.md` que reescribe el guidance file sin tocar el resto.",
+        "madurez_senales": "905★ · 87 forks · Go · MIT · creado 2026-04-11 · último push 2026-09-21. · Topics: `agent-memory`, `ai-memory`, `claude-code`, `claude-code-hooks`, `claude-code-memory`, `claude-code-plugins`, `codex`, `coding-agents`. · CI workflow + releases en GitHub. · MCP toplist badge. · Benchmarks públicos: `https://vshulcz.github.io/deja-vu/guide/benchmarks.html` (los números se pueden reproducir localmente). · Docs: `https://vshulcz.github.io/deja-vu/`, guía `agent setup`, guía de `integrating into your tool`, sección `compare`. · Caveat: 905★ es tracción honesta para un proyecto de hace medio año; la integración con tantos agentes implica una superficie de testing amplia — siempre lee `deja doctor` después de instalar para confirmar que tu setup está correctamente wired.",
+        "accion_sugerida": "**explorar** (instalar con `curl -sSL https://...install.sh | bash` o build desde Go, ejecutar `deja doctor` para verificar wiring con tus coding agents, probar `deja \"connection pool exhausted\"` sobre el historial de tu disco, leer `deja handoff --to codex` si quieres mover contexto entre agentes; caveat: redacta secretos automáticamente pero **lee `deja share` / `deja sync export` para entender qué sale del cache** antes de compartir nada).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vshulcz/deja-vu",
+          "rel": "implements",
+          "dst": "concept:cross-agent-memory-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "vshulcz/deja-vu",
+          "rel": "implements",
+          "dst": "concept:retroactive-session-indexing",
+          "primera_mencion": null
+        },
+        {
+          "src": "vshulcz/deja-vu",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "vshulcz/deja-vu",
+          "rel": "relevant_to",
+          "dst": "concept:compaction-survival",
+          "primera_mencion": null
+        },
+        {
+          "src": "vshulcz/deja-vu",
+          "rel": "complements",
+          "dst": "repo:memvid/memvid",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "vshulcz/deja-vu",
+          "rel": "relevant_to",
+          "dst": "repo:NousResearch/hermes-agent",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vshulcz-deja-vu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "vercel-labs/json-render",
+      "url": "https://github.com/vercel-labs/json-render",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework TypeScript (17.585★, 928 forks, Apache-2.0, creado 2026-04-09, último push 2026-09-18) para construir **Generative UI**: defines un catálogo de componentes en Zod (`defineCatalog(schema, { components: {...}, actions: {...} })`), el LLM genera JSON constreñido a esos componentes, y el renderer (React/Vue/Svelte/Solid/RN/Remotion/PDF/HTML email) los pinta. Incluye **36 componentes shadcn/ui prebuilt**, streaming progresivo, schema validation y `Zod nullable` para campos opcionales.",
+        "por_que_importa": "Cierra el patrón «el LLM devuelve HTML crudo» sin sacrificar reliability. La mayoría de demos de generative UI hoy generan HTML que el navegador re-parsea cada vez, con CSS que puede romper el layout del host. json-render (que introdujimos el 2026-09-19 junto a la base de generative UI frameworks) genera JSON constreñido a un catálogo definido en Zod con `defineCatalog(schema, { components, actions })`, de modo que el render es predecible, rápido y consistente con tu design system. El punto de seguridad clave es que **el agente no puede inventar un componente** porque no existe en el catálogo — la fiabilidad viene de cerrar el espacio de salida, no de pedirle al modelo «por favor, no te inventes cosas». Para un lector CSS con un producto tipo «AI assistant inside my app», es la pieza que necesita UI rica sin fragilidad: streaming progresivo, validación con Zod, `Zod nullable` para opcionales, 36 componentes shadcn/ui listos, y renderers para React/Vue/Svelte/Solid/RN/Remotion/PDF/HTML email. Caveat honesto: 17.585★ es tracción enorme pero el repo se creó en abril — la API es estable dentro del ecosistema Vercel, pero no hay todavía case studies públicos de producción pesada más allá de ese círculo, así que conviene leerlo como apuesta razonable, no como estándar de facto.",
+        "madurez_senales": "17.585★ · 928 forks · TypeScript · Apache-2.0 · creado 2026-04-09 · último push 2026-09-18. · `Vercel Labs Product` badge oficial. · npm: `@json-render/core`, `@json-render/react`, `@json-render/shadcn`, `@json-render/react-native`, `@json-render/remotion`, `@json-render/react-pdf`, `@json-render/react-email`, `@json-render/vue`, `@json-render/svelte`, `@json-render/solid`. · Descargas npm mensuales (badge activo). · Documentación oficial + examples.",
+        "accion_sugerida": "**leer** (instalar con `npm install @json-render/core @json-render/shadcn` para shadcn, leer la sección \"Define Your Catalog\" para entender el modelo mental; si estás construyendo un agente que devuelve UI, este es el framework de referencia; **no es drop-in** para casos donde necesitas HTML arbitrario — solo aplica cuando tu UI puede describirse como catálogo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "implements",
+          "dst": "concept:generative-ui-framework",
+          "primera_mencion": "2026-09-19"
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "implements",
+          "dst": "concept:catalog-constrained-llm-output",
+          "primera_mencion": "2026-09-19"
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "complements",
+          "dst": "repo:vercel-labs/eve",
+          "primera_mencion": "2026-09-19"
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "relevant_to",
+          "dst": "concept:ai-agent-frontend",
+          "primera_mencion": "2026-09-19"
+        },
+        {
+          "src": "vercel-labs/json-render",
+          "rel": "uses",
+          "dst": "concept:shadcn-ui",
+          "primera_mencion": "2026-09-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-json-render",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "anthropics/financial-services",
+      "url": "https://github.com/anthropics/financial-services",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "catálogo de **11 plugins verticales** para servicios financieros (35.522★, 5.258 forks, Python, Apache-2.0, creado 2026-05-12, último push 2026-09-18). Cada plugin es **self-contained** (skills + slash commands + data connectors + system prompt) y se ofrece de **dos formas**: como **Claude Cowork plugin** (instalable en Claude Desktop/Work) o como **Claude Managed Agents API template** (`/v1/agents`, desplegable detrás de tu propio engine). Plugins incluidos: Pitch Agent (Comps + Precedentes + LBO → branded pitch deck), Meeting Prep Agent, Market Researcher, Earnings Reviewer, Model Builder (DCF/LBO/3-statement/comps en Excel), Valuation Reviewer, GL Reconciler, Month-End Closer, Statement Auditor, KYC Screener.",
+        "por_que_importa": "el movimiento editorial es claro: **Anthropic vende verticales empaquetados a sectores con compliance maduro** (financial services tiene el modelo regulatorio más estricto y, por tanto, más dispuesto a pagar por un agente que ya viene con disclaimers, sign-off flows y audit trails baked-in). El repo no es solo código, es una declaración de producto: \"no somos solo el modelo, somos la vertical solution\". El README lo dice explícitamente: *\"Nothing in this repository constitutes investment, legal, tax, or accounting advice. These agents draft analyst work product — models, memos, research notes, reconciliations — for review by a qualified professional. They do not make investment recommendations, execute transactions, bind risk, post to a ledger, or approve onboarding; every output is staged for human sign-off.\"* — eso es **product strategy**, no solo código.",
+        "madurez_senales": "35.522★ · 5.258 forks · Python · Apache-2.0 · creado 2026-05-12 · último push 2026-09-18. · Estructura: `plugins/agent-plugins/<nombre>` (cada plugin self-contained), `managed-agent-cookbooks/` (deployment via `/v1/agents`). · Documentación por vertical (`Coverage & advisory`, `Research & modeling`, `Fund admin & finance ops`, `Operations & onboarding`). · Caveat: 35k★ es señal de tracción seria pero también de hype — el README tiene disclaimers fuertes porque el vertical es compliance-heavy y cualquier caso de mal uso es costoso.",
+        "accion_sugerida": "**leer** (no instalar los plugins directamente — están pensados para profesionales con compliance setup; **leer el README** para entender el modelo de delivery dual Cowork/Managed Agents; **leer `managed-agent-cookbooks/`** si quieres construir tu propio vertical plugin siguiendo el patrón; si trabajas en servicios financieros o quieres llevar el patrón a otro vertical regulado, este repo es la referencia de Anthropic para \"vertical AI agents con compliance baked-in\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "anthropics/financial-services",
+          "rel": "implements",
+          "dst": "concept:vertical-ai-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "anthropics/financial-services",
+          "rel": "implements",
+          "dst": "concept:compliance-baked-ai-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "anthropics/financial-services",
+          "rel": "uses",
+          "dst": "concept:claude-cowork",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "anthropics/financial-services",
+          "rel": "uses",
+          "dst": "concept:claude-managed-agents-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "anthropics/financial-services",
+          "rel": "relevant_to",
+          "dst": "company:anthropic",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "anthropics/financial-services",
+          "rel": "relevant_to",
+          "dst": "concept:human-in-the-loop-agent-workflow",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-financial-services",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "smol-machines/smolvm",
+      "url": "https://github.com/smol-machines/smolvm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "6.205★ · 297 forks · Rust · Apache-2.0. CLI para microVMs con **sub-second cold start** (libkrun + crun), cross-platform (macOS/Linux/Windows), que empaqueta una VM con estado en un único archivo `.smolmachine` rehidratable en cualquier plataforma soportada. Caso de uso: sandboxing para coding agents (similar a `warp-tech/warpgate` pero a nivel microVM).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si trabajas con agentes que ejecutan código no confiable, smolvm es una alternativa liviana a Docker para isolation; todavía joven, validar el roadmap antes de adoptarlo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "smol-machines-smolvm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "zai-org/ZCode",
+      "url": "https://github.com/zai-org/ZCode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "4.071★ · 1.081 forks · TypeScript · Apache-2.0. Coding agent harness de **Z.ai** (fabricante de GLM). Tres canales: Desktop (Electron), Web/TUI y Agent CLI. README en chino, con `README.en.md` aparte.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (Z.ai es un vendor relevante en China; si tienes contexto sobre el ecosistema GLM, vale seguir; si no, esperar a que la documentación en inglés madure)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zai-org-zcode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "QwenLM/Qwen-Image-2.1",
+      "url": "https://github.com/QwenLM/Qwen-Image-2.1",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "702★ · 26 forks · Python · **NOASSERTION (verificado: `Qwen RESEARCH LICENSE AGREEMENT`)**. Lanzamiento oficial 2026-09-20. 7B de parámetros en el componente visual, **RGBA nativo**, hasta **10 reference images**, mixed-granularity attention + prefix KV cache reuse. **Caveat importante: la LICENSE es \"research only\"** — el uso comercial requiere una licencia separada de Tongyi Lab.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (si trabajas en image generation y necesitas transparency / editing con refs, Qwen-Image-2.1 es un release serio; **no adoptes como dependencia de producto** hasta obtener licencia comercial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "qwenlm-qwen-image-2-1",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "bojieli/ai-agent-book",
+      "url": "https://github.com/bojieli/ai-agent-book",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "49.375★ · 5.534 forks · Python · Apache-2.0. Libro open-source \"AI Agents in-Depth\" (del autor chino Li Bojie), con la fórmula central **Agent = LLM + contexto + herramientas**. **10 capítulos + experimentos**: AI Agent intro, Context Engineering, User Memory & Knowledge Base, Tools (MCP), Coding Agents vs General Agents, Interaction (modalities + Computer Use), Evaluation, Post-training (SFT/RL), Continual Evolution y Multi-Agent Collaboration. **Traducido a más de 15 idiomas (incluye español).**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (si quieres una referencia densa y completa sobre el stack moderno de AI agents, este libro es la mejor entrada open-source disponible; el repositorio también incluye código de experimentos por capítulo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bojieli-ai-agent-book",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "BuilderIO/agent-native",
+      "url": "https://github.com/BuilderIO/agent-native",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "5.432★ · 504 forks · TypeScript · **NONE: el archivo LICENSE está ausente en main**. Framework agentic con UI: defines cada capability una sola vez como **action** (el agente la usa como tool, la UI la llama desde código). Arranca con `npx --yes @agent-native/core@latest create my-agent --standalone --template chat`. **Caveat: NO hay LICENSE en el repo** — la API devuelve `NONE` y el archivo `LICENSE` da 404. **No lo adoptes como build-dependency hasta aclararlo.**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (el approach \"UI + action unificado\" es interesante, pero sin LICENSE no se puede usar en producción; abrir un issue para clarificar el status)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "builderio-agent-native",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "krillinai/opencreator",
+      "url": "https://github.com/krillinai/opencreator",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "11.987★ · 1.199 forks · TypeScript · Apache-2.0. Ex-KrillinAI. Espacio de trabajo de IA open-source para creadores (video translation, dubbing, TTS, avatares). README multi-idioma (incluye español).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si trabajas en video localization / creator economy, opencreator es una alternativa OSS con tracción; no es pieza editorial nuclear para CSS pero vale tenerlo en el radar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "krillinai-opencreator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/6 items reescritos; rechazados por longitud sospechosa: [5]; faltantes en respuesta: [5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

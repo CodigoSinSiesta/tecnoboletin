@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-09-21",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La capa de agentes madura por tres flancos simultaneos",
+  "posicionamiento": "Los seis hallazgos de hoy no orbitan un único eje técnico sino que muestran la infraestructura agentic saliendo del taller por tres puertas simultáneas. La decisión tipada sin generación (jev-ultrafast, SAGE) y la memoria retroactiva cross-agent (deja-vu) consolidan primitivas que ya teníamos sueltas; AX y json-render profesionalizan el sustrato declarativo; y financial-services revela la apuesta vertical de Anthropic. Es un día de cierre de cluster, no de novedad disruptiva: las piezas nuevas encajan en casillas que el grafo llevaba semanas señalando.",
+  "convergencia_stack_css": "Tres hallazgos enchufan directo al stack local-first de CSS. jev-ultrafast aterriza la decisión tipada sobre browser-use, ya en el radar desde 2026-08-20; deja-vu indexa sesiones de Hermes (cubierto 2026-08-03) entre otros 33 agentes vía MCP; json-render ofrece la pieza que faltaba para que la UI generativa del asistente local no rompa el design system shadcn. SAGE completa el routing A2A mid-execution que el multi-agente local necesitaba desde 2026-08-21.",
+  "cruzado_grafo": "El grafo se refuerza sin grandes primeras menciones: jev-ultrafast re-ingresa browser-cdp-harness (2026-08-23) y los nodos de decision models del 2026-09-20; AX reactiva Agent Substrate (2026-07-18) como substrate de orquestación; deja-vu ancla cross-agent-memory-layer como concepto nuevo y conecta Hermes (2026-08-03) con memvid (2026-08-19); financial-services reutiliza claude-cowork (2026-09-18) y human-in-the-loop (2026-08-19). No hay conceptos huérfanos: todo cierra contra nodos previos.",
+  "tendencias_5_boletines": "El boletín de hoy consolida la tendencia de los últimos cinco días: el coding agent deja de ser un experimento de harness y se convierte en infraestructura con piezas intercambiables. El 2026-09-19 metía ECC, Agent Lightning y json-render como cimientos; el 2026-09-18 sumaba Bend, BMAD y AWS harness como costuras del proceso. Hoy la tendencia se desplaza hacia el sustrato: decisión tipada (jev, SAGE), orquestación K8s-like (AX) y memoria universal (deja-vu) son las tres patas que faltaban para tratar al agente como commodity.",
+  "alertas": [
+    "AX promete 'billions of autonomous agent workloads per cluster' en el README: claim de marketing, no benchmark público todavía.",
+    "deja-vu alcanza 85,3 % hit@1 en LongMemEval-S: métrica impresionante pero sobre un benchmark específico, no garantiza generalización a sesiones reales multi-agente.",
+    "financial-services de Anthropic se presenta como 'no es advice' pero la frontera entre 'work product for review' y automatización real en FS sigue siendo opaca en el repo."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "deja-vu es la pieza que convierte el historial de Hermes en ventaja competitiva inmediata: vale la pena auditar qué sesiones ya tienes indexables."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "AX redefine la pregunta 'sobre qué corro mis agentes'; aunque uses Ollama local, conviene mapear si el patrón Kubernetes-like aplica a tu setup."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "jev-ultrafast es viral hoy pero su valor real depende de si la primitiva de decisión tipada se estandariza o queda como demo aislada."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "json-render es la pieza que cierra el círculo de generative UI confiable sobre shadcn, directamente accionable para productos CSS con asistente embebido."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Anthropic moviéndose a verticales empaquetados es señal de dónde va el margen en agentes: observar si replican el patrón en healthcare o legal."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
