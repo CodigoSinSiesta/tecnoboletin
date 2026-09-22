@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-09-22",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Evenfire es el intelligence layer OSS que responde al lock-in de Cowork",
+  "posicionamiento": "La infraestructura OSS madura consolida reescrituras (DataFusion completa el círculo Arrow tras Polars, Neomacs promete Emacs en Rust sobre wgpu) mientras la AI aplicada se verticaliza (Paperless-ngx como DMS LLM-aware, Halo como training async, Evenfire como respuesta OSS al lock-in de Cowork).",
+  "convergencia_stack_css": "DataFusion encaja con PGLite/Postgres como capa Arrow-native embebible; Paperless-ngx cubre el self-hosted archival adyacente a Obsidian; Evenfire cierra el círculo \"agente self-hosted con BYOK\" que define la postura local-first frente al lock-in de Cowork.",
+  "cruzado_grafo": "Aparece por primera vez hoy repo:obra/superpowers (2026-08-08) como precedente del formato SKILL.md, reforzado por Auto-Empirical-Skills que lo lleva a bibliotecas verticales. El nodo repo:pola-rs/polars (visto el 19-09) se refuerza con DataFusion como gemelo Rust. Evenfire aterriza los nodos de self-hosted-agent y human-in-the-loop-by-default.",
+  "tendencias_5_boletines": "Solo dispongo de contexto de los últimos 3 días (19-09 y 21-09), no de 5 boletines. Hoy consolida dos hilos abiertos: el círculo Arrow del 19-09 con Polars se cierra con DataFusion como gemelo Rust; el lock-in de Cowork del 21-09 recibe su respuesta OSS en Evenfire. El resto son verticales nuevas sin línea editorial previa visible.",
+  "alertas": [
+    "Paperless-ngx: GPL-3.0; forkear para producto comercial obliga a relicenciar bajo GPL.",
+    "Halo: Apache-2.0 con Supplemental Terms; leer LICENSE antes de cualquier decisión enterprise.",
+    "Evenfire: 245 estrellas y 2 forks, tracción muy baja para un lanzamiento que se presenta como competidor de Cowork; la promesa editorial pesa más que la comunidad.",
+    "Auto-Empirical-Skills: claim \"20 minutos para paper empírico\" es marketing; el repo debe leerse como catálogo de skills, no como flujo automático validado.",
+    "Neomacs: \"10x performance\" y \"100% compatibilidad Emacs\" son promesa editorial sin benchmark reproducible; los intentos previos (Remacs, emacs-ng) no llegaron a producción."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "DataFusion es la pieza Arrow-native embebible que faltaba para cerrar el círculo con Polars; encaja directamente con PGLite/Postgres como capa de consulta SQL sobre el mismo modelo columnar."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "Evenfire cierra el hilo OSS-vs-Cowork abierto ayer; coherente con la línea local-first y BYOK del stack propio."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "La licencia Apache-2.0 con Supplemental Terms de Halo es decisión arquitectónica; revisar el LICENSE antes de evaluar adopción para training interno."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Neomacs promete Emacs en Rust con 100% compatibilidad; el reto histórico (Remacs, emacs-ng no llegaron a producción) obliga a observar milestones, no a adoptar todavía."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Paperless-ngx ofrece DMS maduro con OCR + LLM topics listos para agentes que leen PDFs o facturas en producción; encaja con el self-hosted archival."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,54 @@
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-apache-datafusion", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-apache-datafusion", "dst": "tema:apache-datafusion", "rel": "trata", "added": "2026-09-22"}
+{"src": "apache/datafusion", "dst": "concept:olap-query-engine-rust", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "apache/datafusion", "dst": "repo:pola-rs/polars", "rel": "complements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "apache/datafusion", "dst": "concept:apache-arrow", "rel": "uses", "added": "2026-09-22", "primera_mencion": null}
+{"src": "apache/datafusion", "dst": "concept:rust-lakehouse", "rel": "enables", "added": "2026-09-22", "primera_mencion": null}
+{"src": "apache/datafusion", "dst": "concept:company:apache-foundation", "rel": "relevant_to", "added": "2026-09-22", "primera_mencion": null}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-paperless-ngx-paperless-ngx", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-paperless-ngx-paperless-ngx", "dst": "tema:paperless-ngx-paperless-ngx", "rel": "trata", "added": "2026-09-22"}
+{"src": "paperless-ngx/paperless-ngx", "dst": "concept:dms-with-llm", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "paperless-ngx/paperless-ngx", "dst": "concept:ocr-classical-pipeline", "rel": "uses", "added": "2026-09-22", "primera_mencion": null}
+{"src": "paperless-ngx/paperless-ngx", "dst": "concept:agent-document-reading", "rel": "complements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "paperless-ngx/paperless-ngx", "dst": "concept:self-hosted-archival", "rel": "relevant_to", "added": "2026-09-22", "primera_mencion": null}
+{"src": "paperless-ngx/paperless-ngx", "dst": "concept:adobe-acrobat-cloud", "rel": "competes_with", "added": "2026-09-22", "primera_mencion": null}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-eval-exec-neomacs", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-eval-exec-neomacs", "dst": "tema:eval-exec-neomacs", "rel": "trata", "added": "2026-09-22"}
+{"src": "eval-exec/neomacs", "dst": "concept:emacs-rewrite-rust", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "eval-exec/neomacs", "dst": "concept:wgpu-display-engine", "rel": "uses", "added": "2026-09-22", "primera_mencion": null}
+{"src": "eval-exec/neomacs", "dst": "concept:gnu-emacs", "rel": "complements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "eval-exec/neomacs", "dst": "concept:zed-editor", "rel": "competes_with", "added": "2026-09-22", "primera_mencion": null}
+{"src": "eval-exec/neomacs", "dst": "concept:editor-as-ai-host", "rel": "relevant_to", "added": "2026-09-22", "primera_mencion": null}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-brycewang-stanford-auto-empirical-research", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-brycewang-stanford-auto-empirical-research", "dst": "tema:brycewang-stanford-auto-empirical-resear", "rel": "trata", "added": "2026-09-22"}
+{"src": "brycewang-stanford/Auto-Empirical-Research-Skills", "dst": "concept:agent-skills-library-vertical", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "brycewang-stanford/Auto-Empirical-Research-Skills", "dst": "concept:skill-md-progressive-disclosure", "rel": "uses", "added": "2026-09-22", "primera_mencion": null}
+{"src": "brycewang-stanford/Auto-Empirical-Research-Skills", "dst": "concept:reproducible-empirical-research", "rel": "enables", "added": "2026-09-22", "primera_mencion": null}
+{"src": "brycewang-stanford/Auto-Empirical-Research-Skills", "dst": "repo:obra/superpowers", "rel": "complements", "added": "2026-09-22", "primera_mencion": "2026-08-08"}
+{"src": "brycewang-stanford/Auto-Empirical-Research-Skills", "dst": "concept:company:copaper-ai", "rel": "relevant_to", "added": "2026-09-22", "primera_mencion": null}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-whitecircle-halo", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-whitecircle-halo", "dst": "tema:whitecircle-halo", "rel": "trata", "added": "2026-09-22"}
+{"src": "whitecircle/halo", "dst": "concept:training-framework-llm-multimodal", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "whitecircle/halo", "dst": "concept:huggingface-transformers", "rel": "uses", "added": "2026-09-22", "primera_mencion": null}
+{"src": "whitecircle/halo", "dst": "concept:vllm", "rel": "uses", "added": "2026-09-22", "primera_mencion": null}
+{"src": "whitecircle/halo", "dst": "concept:async-multi-turn-rl-training", "rel": "enables", "added": "2026-09-22", "primera_mencion": null}
+{"src": "whitecircle/halo", "dst": "concept:company:white-circle-pbc", "rel": "relevant_to", "added": "2026-09-22", "primera_mencion": null}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-evenfire-ai-evenfire", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-evenfire-ai-evenfire", "dst": "tema:evenfire-ai-evenfire", "rel": "trata", "added": "2026-09-22"}
+{"src": "evenfire-ai/evenfire", "dst": "concept:self-hosted-agent-platform", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "evenfire-ai/evenfire", "dst": "concept:human-in-the-loop-by-default", "rel": "implements", "added": "2026-09-22", "primera_mencion": null}
+{"src": "evenfire-ai/evenfire", "dst": "concept:anthropic-cowork-verticals", "rel": "competes_with", "added": "2026-09-22", "primera_mencion": null}
+{"src": "evenfire-ai/evenfire", "dst": "concept:byok-agent-deployment", "rel": "enables", "added": "2026-09-22", "primera_mencion": null}
+{"src": "evenfire-ai/evenfire", "dst": "concept:agent-on-infrastructure", "rel": "relevant_to", "added": "2026-09-22", "primera_mencion": null}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-cloudflare-quiche", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-cloudflare-quiche", "dst": "tema:cloudflare-quiche", "rel": "trata", "added": "2026-09-22"}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-mvt-project-mvt", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-mvt-project-mvt", "dst": "tema:mvt-project-mvt", "rel": "trata", "added": "2026-09-22"}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-heyjunpenn-awesome-jev", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-heyjunpenn-awesome-jev", "dst": "tema:heyjunpenn-awesome-jev", "rel": "trata", "added": "2026-09-22"}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-cloudflare-mcp-server-cloudflare", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-cloudflare-mcp-server-cloudflare", "dst": "tema:cloudflare-mcp-server-cloudflare", "rel": "trata", "added": "2026-09-22"}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-open-dev-society-openstock", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-open-dev-society-openstock", "dst": "tema:open-dev-society-openstock", "rel": "trata", "added": "2026-09-22"}
+{"src": "boletin:2026-09-22", "dst": "item:https-github-com-pocket-id-pocket-id", "rel": "menciona", "added": "2026-09-22"}
+{"src": "item:https-github-com-pocket-id-pocket-id", "dst": "tema:pocket-id-pocket-id", "rel": "trata", "added": "2026-09-22"}

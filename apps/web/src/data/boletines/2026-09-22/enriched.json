@@ -1,0 +1,497 @@
+{
+  "version": 2,
+  "date": "2026-09-22",
+  "boletin_origen": "2026-09-22-trending.md",
+  "resumen_ejecutivo": "- **`apache/datafusion` consolida la apuesta Rust del lado servidor del query engine** — 9.346★ (Rust, Apache-2.0), empujado hoy a `main` con actividad diaria continua desde 2021. Mientras `pola-rs/polars` (visto el 2026-09-19) es la primitiva DataFrame en proceso, **DataFusion es el mismo modelo Arrow pero en un motor SQL embebible que corre sobre clusters** — la combinación `DataFusion + Arrow Flight SQL` es lo que están adoptando servicios como InfluxDB 3.0, Delta Lake y GreptimeDB. El trending hoy marca el umbral: DataFusion cruza 9k estrellas y se acerca al grupo de cabeza de proyectos de datos Rust (1/3 de `pola-rs/polars` 30k★).\n- **`paperless-ngx/paperless-ngx` entra al radar masivo como DMS con LLM/OCR** — 45.862★ (Python, GPL-3.0). README destaca \"scan, index and archive all your documents\" con **AI topics declarados**: `ai`, `llm`, `machine-learning`, `ocr`. Es el clásico sleeper OSS que ya tiene 45k★ pero que ahora se reposiciona como \"DMS para la era LLM\" — el ángulo editorial es la convergencia entre gestión documental clásica y agentes que leen/responden PDFs.\n- **`eval-exec/neomacs` revive Emacs reescrito en Rust sobre GPU** — 1.464★ (GPL-3.0). Mantiene 100% compatibilidad con packages Elisp existentes pero promete \"10x performance, zero-pause concurrent GC\" con display engine sobre wgpu. Un Emacs moderno, multi-threaded, escrito en Rust, con la promesa de no romper el ecosistema actual. Es el equivalente editorial de `JetBrains Fleet` pero desde el lado OSS extremo.\n- **`brycewang-stanford/Auto-Empirical-Research-Skills` rompe la barrera de los 4k★ con 23.000 skills académicos** — 4.073★ (Stata, **CC-BY-SA-4.0**, no MIT). Mantenido por CoPaper.AI desde Stanford REAP. La tesis: \"20 minutos para producir un paper empírico reproducible\", con skills para 8 disciplinas de ciencias sociales (economics, education, political science, psychology, sociology, public administration, international relations, communication). Es la primera vez que vemos una skills-library masiva específica para ciencias sociales empíricas — relevante por la conexión directa con el agent-skills spec que cubrimos.\n- **`whitecircle/halo` entra como framework de training open-source de White Circle (PBC)** — 477★ (Python, **Apache-2.0 con Supplemental Terms**). Halo entrena modelos Hugging Face directamente (checkpoints cargables con `from_pretrained`), soporta pre-training, SFT, preference optimization y RL multi-turn asíncrono. Stacks: FSDP2, TP/EP/CP/ETP, fused kernels, BF16, distributed rollouts. Lo nuevo: el ecosistema PBC-public-benefit lanza su propio training framework — la **atención a la Supplemental Terms** antes de cualquier adopción como build-dependency.\n- **`evenfire-ai/evenfire` presenta una capa de \"intelligence layer\" para equipos + agentes** — 245★ (TypeScript, MPL-2.0, beta). Self-hosted backend con desktop app, BYOK (bring your own keys), y **\"every risky action waits for a human yes\"** como patrón de seguridad. Es el competidor open-source de Anthropic Cowork visto el 2026-09-21, con el mismo ángulo (vertical SaaS de agentes) pero sin el lock-in comercial.\nFuentes consultadas: Trendshift daily (25 items, 1 sponsor: `oomol-lab/open-connector` filtrado), GitHub Trending daily + slices Python/TypeScript/Rust/Go (86 items únicos, 30 con solapamiento Trendshift), GitHub REST API para 9 candidatos verificados. Blogwatcher no publicado hoy — la dependencia upstream sigue caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "apache/datafusion",
+      "url": "https://github.com/apache/datafusion",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor SQL de consultas OLAP embebible, escrito en Rust y compatible con Arrow. Ofrece la misma representación columnar in-memory que `pola-rs/polars`, pero expuesta como query engine ejecutable dentro de otra aplicación o servidor. Soporta agregaciones, joins, window functions y subqueries; se integra con APIs DataFrame y corre standalone o como librería.",
+        "por_que_importa": "DataFusion es la pieza que faltaba para cerrar el círculo Arrow en el lado servidor: ya cubrimos `pola-rs/polars` el 2026-09-19 como primitiva DataFrame del lado Python, y DataFusion es su gemelo del lado Rust — el mismo modelo columnar in-memory de Polars, pero expuesto como motor SQL embebible dentro de cualquier servicio backend o como query engine de un lakehouse distribuido. Si vienes de Polars, la traducción mental es directa: lo que Polars hace dentro de un proceso Python, DataFusion lo hace como dependencia Rust sin Python de por medio. La convergencia Arrow + DataFusion Flight SQL se está convirtiendo en arquitectura de referencia: InfluxDB 3.0, Delta Lake (vía `deltalake-rs`), GreptimeDB y ParadeDB la usan como capa de consulta. Si estás pensando en montar un lakehouse Rust-native, este es el candidato central; si ya operas uno, te interesa saber que el estándar de facto se está consolidando alrededor de aquí. Madurez contrastada: Apache TLP confirmado (no `incubator-`), 9.346★, último push hace 2h al cierre de este boletín.",
+        "madurez_senales": "9.346★ · 2.426 forks · Rust · Apache-2.0 · creado 2021-04-17 · último push 2026-09-22 (pushed hace 2h). · Apache TLP confirmado (no `apache/incubator-`). · Topics: `arrow`, `big-data`, `dataframe`, `datafusion`, `olap`, `python`, `query-engine`, `rust`, `sql`. · Default branch `main`. Actividad diaria continua desde 2021. · Ecosistema derivado: `datafusion-python` (bindings PyO3), `datafusion-flight` (Arrow Flight SQL server), `datafusion-cli`, `datafusion-substrait`.",
+        "accion_sugerida": "**leer** (clonar y leer `datafusion-examples/` para entender el modelo mental; si tienes un servicio Rust que ejecuta queries SQL, DataFusion es la pieza que reemplaza el \"SQLite embebido + parseo manual\"; no adoptes como build-dependency crítica todavía sin revisar la versión compatible con tu Arrow; vale seguir como \"el query engine del stack Arrow\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "apache/datafusion",
+          "rel": "implements",
+          "dst": "concept:olap-query-engine-rust",
+          "primera_mencion": null
+        },
+        {
+          "src": "apache/datafusion",
+          "rel": "complements",
+          "dst": "repo:pola-rs/polars",
+          "primera_mencion": null
+        },
+        {
+          "src": "apache/datafusion",
+          "rel": "uses",
+          "dst": "concept:apache-arrow",
+          "primera_mencion": null
+        },
+        {
+          "src": "apache/datafusion",
+          "rel": "enables",
+          "dst": "concept:rust-lakehouse",
+          "primera_mencion": null
+        },
+        {
+          "src": "apache/datafusion",
+          "rel": "relevant_to",
+          "dst": "concept:company:apache-foundation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apache-datafusion",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "paperless-ngx/paperless-ngx",
+      "url": "https://github.com/paperless-ngx/paperless-ngx",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema de gestión documental (DMS) comunitario, supercharged sobre Django + Angular. Escanea, indexa y archiva documentos, con detección de duplicados, etiquetado automático, OCR multi-idioma, búsqueda full-text, share links firmados y, ahora, **topics declarados `ai`, `llm`, `machine-learning`, `ocr`**. La capa AI/ML convierte el clásico \"archive de facturas\" en un sistema que entiende el contenido.",
+        "por_que_importa": "Paperless-ngx es un sleeper clásico: 45.862★ lo sitúa al nivel de `nvim/neovim` o `n8n-io/n8n`, pero rara vez aparece en trending porque su base de usuarios es operativa, no hype-driven. Lo que trae hoy: topics declarados `ai`, `llm`, `machine-learning`, `ocr` — un reposicionamiento explícito de \"archive de facturas en Django\" a \"DMS para la era LLM\", con auto-tagging semántico, OCR-as-a-service sobre la pipeline clásica y APIs listas para agentes que leen documentos. Para el cruce \"AI + infra\" que cubrimos en Codigo Sin Siesta es relevante: cualquier agente que necesite leer PDFs, facturas o contratos en producción se beneficia de un DMS maduro con extracción estructurada en lugar de improvisar OCR por su cuenta. La advertencia honesta: GPL-3.0, así que si pensabas forkearlo para un producto SaaS, el copyleft fuerte te obliga a liberar modificaciones; para self-host interno o como dependencia en producto también GPL, no hay sorpresa. Para el ángulo editorial, lo que importa es que valida la tesis \"infra madura + capa LLM encima\" que hemos visto en otros boletines.",
+        "madurez_senales": "45.862★ · 3.174 forks · Python · GPL-3.0 · creado 2022-02-12 · último push 2026-09-22 (hace ~7h). · Topics: `ai`, `angular`, `archiving`, `django`, `dms`, `document-management`, `document-management-system`, `llm`, `machine-learning`, `ocr`, `optical-character-recognition`, `pdf`. · Default branch `dev` (no `main`) — pin explícito en workflows CI/CD. · Comunidad activa con releases regulares; documentación detallada en `docs/`. · Caveat de licencia: GPL-3.0 — adopción como librería embebida requiere compatibilidad GPL, pero como servicio self-hosted no hay fricción.",
+        "accion_sugerida": "**vigilar** (es un sleeper de 45k★ que ahora sube porque su ángulo AI/LLM lo hace trending — vale seguir de cerca; **si necesitas un DMS con extracción LLM hoy**, esta es la opción OSS más madura; GPL-3.0 obliga a mantener derivados abiertos, así que lee la licencia antes de fork comercial; instalar requiere Docker Compose — no es trivial para first-time self-hosters).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "paperless-ngx/paperless-ngx",
+          "rel": "implements",
+          "dst": "concept:dms-with-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "paperless-ngx/paperless-ngx",
+          "rel": "uses",
+          "dst": "concept:ocr-classical-pipeline",
+          "primera_mencion": null
+        },
+        {
+          "src": "paperless-ngx/paperless-ngx",
+          "rel": "complements",
+          "dst": "concept:agent-document-reading",
+          "primera_mencion": null
+        },
+        {
+          "src": "paperless-ngx/paperless-ngx",
+          "rel": "relevant_to",
+          "dst": "concept:self-hosted-archival",
+          "primera_mencion": null
+        },
+        {
+          "src": "paperless-ngx/paperless-ngx",
+          "rel": "competes_with",
+          "dst": "concept:adobe-acrobat-cloud",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paperless-ngx-paperless-ngx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "eval-exec/neomacs",
+      "url": "https://github.com/eval-exec/neomacs",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "rewrite completo de GNU Emacs en Rust, con display engine sobre `wgpu` (WebGPU), y promesa de \"10x performance, zero-pause concurrent GC, multi-threaded Elisp\". Ofrece **100% compatibilidad con el ecosistema Emacs existente**: tu `init.el`, tus packages, tu muscle memory. La promesa editorial: GNU Emacs modernizado sin romper los más de 30 años de packages Elisp existentes.",
+        "por_que_importa": "Neomacs es la pieza que completa una tendencia editorial que llevamos siguiendo: editores modernos (Helix, Zed, Lapce, Fleet) están mostrando que GPU + Rust es la combinación ganadora para display engines de baja latencia, y la comunidad Emacs lleva años pidiendo un rewrite — los intentos previos `Remacs` y `emacs-ng` quedaron incompletos. Neomacs promete las tres cosas a la vez (display sobre `wgpu`/`winit`, GC sin pausas, Elisp multi-hilo) y, sobre todo, **100% compatibilidad con el ecosistema existente**: tu `init.el`, tus packages y tu muscle memory sobreviven. Para un lector con org-mode, magit o LLM packages en Elisp, la promesa editorial es enorme — Lisp como lenguaje de scripting AI-friendly encaja con el auge de \"editor como host de agentes\" (Cursor, Windsurf, Zed AI) sin sacrificar tres décadas de ecosistema. La advertencia de rigor, sin edulcorar: 1.464★, autor único, creado en febrero de 2026 — vale como radar editorial para evaluar en unos meses, no como dependencia diaria todavía.",
+        "madurez_senales": "1.464★ · 50 forks · Rust · GPL-3.0 · creado 2026-02-03 · último push 2026-09-22 (hace ~2h). · Topics: `editor`, `elisp`, `emacs`, `lambda`, `lisp`, `neomacs`, `neovim`, `productivity`, `rust`, `terminal`, `vim`, `wgpu`, `winit`. · Display engine sobre `wgpu` + `winit` (mismas deps que `lapce`, `zed`). · README con banner gráfico + slogan: *\"While other editors can save your files, only Emacs can save your soul.\"* · Releases en GitHub, downloads badge, CI workflow activo. · Caveat: WIP explícito, autor único (`eval-exec`), GPL-3.0 estricto.",
+        "accion_sugerida": "**vigilar** (es interesante pero WIP con autor único — instalar y probar como daily driver todavía no es razonable; **vale seguir de cerca** porque si consigue compatibilidad real con Elisp packages, es el editor OSS más potente para AI-assisted coding en 2027; revisa `/releases` para binaries compilados antes de buildear desde fuente).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "eval-exec/neomacs",
+          "rel": "implements",
+          "dst": "concept:emacs-rewrite-rust",
+          "primera_mencion": null
+        },
+        {
+          "src": "eval-exec/neomacs",
+          "rel": "uses",
+          "dst": "concept:wgpu-display-engine",
+          "primera_mencion": null
+        },
+        {
+          "src": "eval-exec/neomacs",
+          "rel": "complements",
+          "dst": "concept:gnu-emacs",
+          "primera_mencion": null
+        },
+        {
+          "src": "eval-exec/neomacs",
+          "rel": "competes_with",
+          "dst": "concept:zed-editor",
+          "primera_mencion": null
+        },
+        {
+          "src": "eval-exec/neomacs",
+          "rel": "relevant_to",
+          "dst": "concept:editor-as-ai-host",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "eval-exec-neomacs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "brycewang-stanford/Auto-Empirical-Research-Skills",
+      "url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**curated collection de más de 23.000 agent skills** para investigación empírica, cubriendo 8 disciplinas de ciencias sociales (economics, education, political science, psychology, sociology, public administration, international relations y communication). Mantenido por **CoPaper.AI** desde Stanford REAP (Research Education and Action for Peace). La promesa: \"20 minutos para producir un paper empírico reproducible\", con subida de skills custom por parte de los usuarios.",
+        "por_que_importa": "Es la primera skills-library masiva y vertical que vemos para ciencias sociales empíricas: más de 23.000 SKILL.md cubriendo 8 disciplinas (economics, education, political science, psychology, sociology, public administration, international relations y communication), mantenida por CoPaper.AI desde Stanford REAP. El ángulo para Codigo Sin Siesta es que conecta directamente con el agent-skills spec que cubrimos en deep-dive el 2026-07-04, cuando vimos `obra/superpowers` y `agentskills/agentskills`; lo que este repo demuestra es que el formato `SKILL.md` con progressive disclosure escala a bibliotecas masivas (>20k entries) y abre la conversación sobre **skills libraries verticales vs generalistas** — aquí la disciplina gana a la generalidad. La advertencia de rigor que conviene leer antes de adoptarlo como dependencia de código: la licencia es CC-BY-SA-4.0, apropiada para contenido pero **no es código fuente open source convencional** — ShareAlike te obliga a relicenciar derivados bajo la misma licencia, lo que descarta fork como dependencia interna en proyectos MIT/Apache sin relicenciar o aislar. Si lo vas a consumir como prompts/instrucciones para un agente, perfecto; si lo vas a importar como librería, lee la licencia primero.",
+        "madurez_senales": "4.073★ · 503 forks · Stata · **CC-BY-SA-4.0** (GitHub API reporta `NOASSERTION`; LICENSE file es Creative Commons Attribution-ShareAlike 4.0). · Creado 2026-04-03 · último push 2026-09-21. · Topics: `academic-research`, `agent-skills`, `ai-agent`, `awesome-list`, `communication`, `copaper`, `economics`, `education`, `empirical-research`, `international-relations`, `political-science`, `psychology`, `public-administration`, `reproducible-research`, `skills-library`, `social-science`, `sociology`. · Mantenido por CoPaper.AI (startup de Stanford REAP), no individual anónimo. · Caveat de licencia: CC-BY-SA-4.0 — uso como librería de código requiere cuidado con ShareAlike.",
+        "accion_sugerida": "**leer** (explorar la estructura del repo para entender cómo 23k skills se organizan — la pregunta \"cómo se discovery 23k skills sin saturar el context\" es no-trivial; **si trabajas en investigación reproducible**, vale clonar y leer `skills/` para entender la metodología; **no adoptes como build-dependency de código** — la licencia CC-BY-SA-4.0 con ShareAlike es un compromiso, no una licencia OSS estándar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "brycewang-stanford/Auto-Empirical-Research-Skills",
+          "rel": "implements",
+          "dst": "concept:agent-skills-library-vertical",
+          "primera_mencion": null
+        },
+        {
+          "src": "brycewang-stanford/Auto-Empirical-Research-Skills",
+          "rel": "uses",
+          "dst": "concept:skill-md-progressive-disclosure",
+          "primera_mencion": null
+        },
+        {
+          "src": "brycewang-stanford/Auto-Empirical-Research-Skills",
+          "rel": "enables",
+          "dst": "concept:reproducible-empirical-research",
+          "primera_mencion": null
+        },
+        {
+          "src": "brycewang-stanford/Auto-Empirical-Research-Skills",
+          "rel": "complements",
+          "dst": "repo:obra/superpowers",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "brycewang-stanford/Auto-Empirical-Research-Skills",
+          "rel": "relevant_to",
+          "dst": "concept:company:copaper-ai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "brycewang-stanford-auto-empirical-resear",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "whitecircle/halo",
+      "url": "https://github.com/whitecircle/halo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework open-source de White Circle (Public Benefit Corporation) para **entrenar modelos de lenguaje grandes y multimodales**. Soporta pre-training, SFT, preference optimization y RL multi-turn **completamente asíncrono**. El mismo codebase corre en una sola GPU o en múltiples nodos con EP/CP/TP/ETP/FSDP2, fused kernels, BF16 training y rollouts distribuidos. Entrena modelos Hugging Face directamente, con checkpoints cargables con `from_pretrained`. La integración de nuevas familias de modelos requiere típicamente menos de 140 líneas.",
+        "por_que_importa": "Halo entra en la categoría de frameworks de training open-source con stack distribuido maduro que hemos visto consolidarse este año (`verl`, `OpenRLHF`, `axolotl`); lo que aporta de diferencial honesto es la promesa de RL multi-turn **asíncrono** end-to-end — relevante si trabajas con agentes que necesitan aprender de trayectorias largas donde el roll-out secuencial sería el cuello de botella. El mismo codebase corre desde una sola GPU hasta clusters con EP/CP/TP/ETP/FSDP2, fused kernels y BF16, y entrena modelos Hugging Face con checkpoints cargables con `from_pretrained`, así que el camino de adopción si ya usas transformers es directo. La advertencia crítica de rigor, sin matices: la licencia es **Apache-2.0 con Supplemental Terms** — el archivo LICENSE declara explícitamente \"as modified by, and subject to, the Supplemental Terms\" y GitHub reporta `NOASSERTION`, no Apache-2.0 puro. Esto significa que White Circle PBC probablemente añade restricciones comerciales encima del Apache base; **no lo adoptes como build-dependency hasta leer los Supplemental Terms completos**. Madurez: 477★, creado hace menos de un mes (2026-08-26), activo — prometedor pero temprano.",
+        "madurez_senales": "477★ · 17 forks · Python · **Apache-2.0 + Supplemental Terms** (NO es Apache-2.0 puro — el archivo LICENSE declara \"as modified by, and subject to, the Supplemental Terms\"; White Circle PBC como entidad). · Creado 2026-08-26 · último push 2026-09-21. · Topics: `agent`, `async-rl`, `distributed-training`, `fine-tuning`, `grpo`, `large-language-models`, `llm`, `lora`, `model-parallelism`, `moe`, `multimodal`, `peft`, `post-training`, `pytorch`, `qlora`, `quantization`, `reinforcement-learning`, `rlhf`, `transformers`, `vllm`. · Docs estructuradas: `human-docs/README.md`, `human-docs/performance.md`, `examples/`. · Caveat: 477★ = early stage; Supplemental Terms sin leer atentamente son un blocker para adopción comercial.",
+        "accion_sugerida": "**vigilar** (es interesante pero 477★ = early stage; **no adoptes como build-dependency** hasta leer los Supplemental Terms del LICENSE file; **si trabajas en RL multi-turn para agentes**, vale leer `human-docs/performance.md` para ver los benchmarks y compararlos con `verl`; licencia Apache-2.0+ST = restricciones comerciales posibles — para uso en producción comercial pide clarificación a White Circle).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "whitecircle/halo",
+          "rel": "implements",
+          "dst": "concept:training-framework-llm-multimodal",
+          "primera_mencion": null
+        },
+        {
+          "src": "whitecircle/halo",
+          "rel": "uses",
+          "dst": "concept:huggingface-transformers",
+          "primera_mencion": null
+        },
+        {
+          "src": "whitecircle/halo",
+          "rel": "uses",
+          "dst": "concept:vllm",
+          "primera_mencion": null
+        },
+        {
+          "src": "whitecircle/halo",
+          "rel": "enables",
+          "dst": "concept:async-multi-turn-rl-training",
+          "primera_mencion": null
+        },
+        {
+          "src": "whitecircle/halo",
+          "rel": "relevant_to",
+          "dst": "concept:company:white-circle-pbc",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "whitecircle-halo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "evenfire-ai/evenfire",
+      "url": "https://github.com/evenfire-ai/evenfire",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma open-source \"intelligence layer\" para correr agentes LLM que **toman acciones reales en tu infraestructura**. Backend self-hosted con desktop app nativa, BYOK (bring your own keys) y el patrón clave: **\"every risky action waits for a human yes\"**. Es el equivalente OSS / self-hosted del patrón \"Cowork plugin\" que cubrimos con `anthropics/financial-services` el 2026-09-21.",
+        "por_que_importa": "Evenfire cierra la categoría \"vertical SaaS de Claude vs intelligence layer open-source\" que abrimos en el boletín de ayer, 2026-09-21, cuando cubrimos `anthropics/financial-services` con sus verticales empaquetados (Pitch Agent, GL Reconciler, etc.). Evenfire es el competidor que dice: puedes tener lo mismo sin lock-in comercial — backend self-hosted, BYOK (traes tus propias claves), desktop app nativa. El patrón editorialmente diferenciador es **\"every risky action waits for a human yes\"** como default, no como feature opcional: relevante porque el resto de la industria (incluso Cowork de Anthropic) trata el human-in-the-loop como configuración que puede desactivarse, y Evenfire lo invierte — toda acción arriesgada espera aprobación humana por diseño. La advertencia de rigor: 245★, 2 forks, creado hace poco más de dos meses (2026-07-08), badge **Beta** explícito en el README y topics vacíos en la API — es señal temprana, no producto maduro. La licencia MPL-2.0 es copyleft a nivel de archivo (más suave que GPL): permite adopción comercial con cuidado de no mezclar MPL dentro de un proyecto con licencia incompatible, y obliga a publicar modificaciones de los archivos MPL que distribuyas. Para un lector que ya evalúa verticales empaquetados, es el punto de referencia OSS a poner en la balanza.",
+        "madurez_senales": "245★ · 2 forks · TypeScript · **MPL-2.0** (file-level copyleft — adopción comercial viable con cuidado) · creado 2026-07-08 · último push 2026-09-22. · Topics: (vacío en API — sin topics declarados). · Status: **Beta** (badge explícito en README). · Logo + tagline: \"Build your company's intelligence layer, without losing control.\" · Website: evenfire.ai; CI workflow activo; GitHub releases con sort=semver. · Caveat: 245★, 2 forks — adopción todavía muy temprana; beta explícito.",
+        "accion_sugerida": "**vigilar** (245★ + beta + 2 forks = muy temprano, no adoptar todavía como base de producción; **vale seguir de cerca** porque el patrón \"human-in-the-loop by default\" es editorialmente interesante; **si quieres probar**, instala el desktop app desde GitHub releases; la competencia OSS con Anthropic Cowork / Claude Managed Agents API es la tesis a observar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "evenfire-ai/evenfire",
+          "rel": "implements",
+          "dst": "concept:self-hosted-agent-platform",
+          "primera_mencion": null
+        },
+        {
+          "src": "evenfire-ai/evenfire",
+          "rel": "implements",
+          "dst": "concept:human-in-the-loop-by-default",
+          "primera_mencion": null
+        },
+        {
+          "src": "evenfire-ai/evenfire",
+          "rel": "competes_with",
+          "dst": "concept:anthropic-cowork-verticals",
+          "primera_mencion": null
+        },
+        {
+          "src": "evenfire-ai/evenfire",
+          "rel": "enables",
+          "dst": "concept:byok-agent-deployment",
+          "primera_mencion": null
+        },
+        {
+          "src": "evenfire-ai/evenfire",
+          "rel": "relevant_to",
+          "dst": "concept:agent-on-infrastructure",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "evenfire-ai-evenfire",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "cloudflare/quiche",
+      "url": "https://github.com/cloudflare/quiche",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12.431★, último push 2026-09-21, BSD-2-Clause, Rust) — implementación de referencia del protocolo QUIC y HTTP/3 mantenida por Cloudflare. Vuelve a trendeard sin release mayor; útil como dependencia cuando necesitas HTTP/3 en tu stack Rust",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (es estable, masivo y mantenido; relevante solo si trabajas en networking o quieres QUIC en tu servicio)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-quiche",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "mvt-project/mvt",
+      "url": "https://github.com/mvt-project/mvt",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.714★, último push 2026-09-21, NOASSERTION→MVT License 1.1, Python) — Mobile Verification Toolkit de Amnesty International Security Lab, forense de dispositivos móviles para detectar signos de compromiso. Tema persistente en trending por noticias de Pegasus/Predator; útil si trabajas en seguridad móvil",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (lee la LICENSE 1.1 — restricción de uso contra law enforcement surveillance; **no es OSI-approved open source**; relevante solo si haces forense legítimo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvt-project-mvt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "heyjunpenn/awesome-jev",
+      "url": "https://github.com/heyjunpenn/awesome-jev",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(247★, último push 2026-09-22, MIT, Astro) — catálogo verificado de **640 proyectos open-source construidos con Jev** (la primitiva de decisión tipada del cluster System 1 que cubrimos el 2026-09-20)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (es un mapa del cluster System 1 decision models — útil para entender qué proyectos están derivando de Laya/Jev; caveat, 247★ = community-curated, validar antes de citar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heyjunpenn-awesome-jev",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "cloudflare/mcp-server-cloudflare",
+      "url": "https://github.com/cloudflare/mcp-server-cloudflare",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(último push reciente, TypeScript) — MCP server oficial de Cloudflare para Workers/KV/R2/D1. Re-entry tras el bulletin 2026-09-21; **no verificado en detalle** (rate-limit GitHub API respetado); sigue siendo la pieza canónica para dar a Claude/Cursor acceso a recursos Cloudflare",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (instala vía `npx` si tu agente necesita tocar Cloudflare; el spec MCP está madurando y este server es el reference implementation)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-mcp-server-cloudflare",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Open-Dev-Society/OpenStock",
+      "url": "https://github.com/Open-Dev-Society/OpenStock",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(TypeScript) — plataforma OSS de market data, alertas personalizadas y exploración detallada, alternativa a Bloomberg/TradingView. No verificado en detalle este run",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (tema fintech OSS recurrente en trending; vale explorar si haces algo en market data)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "open-dev-society-openstock",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "pocket-id/pocket-id",
+      "url": "https://github.com/pocket-id/pocket-id",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(Go) — passkey-only auth server OIDC-compatible, self-hosted. No verificado en detalle este run",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (alternativa OSS a Authentik/Keycloak si quieres solo passkeys)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pocket-id-pocket-id",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
