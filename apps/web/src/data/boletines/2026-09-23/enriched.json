@@ -1,0 +1,455 @@
+{
+  "version": 2,
+  "date": "2026-09-23",
+  "boletin_origen": "2026-09-23-trending.md",
+  "resumen_ejecutivo": "- **`CopilotKit/openmuse` aterriza como plantilla OSS de \"agente personal\"** (1.207★, MIT, TypeScript, último push hoy) — combina browser persistente, terminal Linux y filesystem en una app React Native self-hosted, lista para forkear y customizar. Es el siguiente paso de CopilotKit tras su framework de agentes: ahora publican el \"computer\" completo como referencia abierta.\n- **`HelixDB/helix-db` consolida el patrón \"graph+vector en una sola DB\"** (6.083★, Apache-2.0, Rust, último push 2026-09-22). Lanzado en YC, HelixDB reemplaza la pila típica `Neo4j + pgvector + Pinecone` con un solo motor OLTP nativo vector+graph; el detalle editorial fuerte es el `helix chef`, un MCP-driven scaffolder que detecta Claude Code / Codex / Cursor Agent y bootstrapea una app frontend+backend desde una sola frase.\n- **`superdesigndev/treg` presenta \"OpenRouter para herramientas\"** (2.356★, NOASSERTION, Python, último push hoy). Un único endpoint tokenizado expone 3.000+ APIs de 60+ proveedores (Semrush, Moz, Crunchbase, Apollo) con facturación por llamada desde 1 centavo — el agente no necesita cuenta propia con cada vendor. Tesis fuerte: la fragmentación de \"agentes × subscripciones caras\" tiene respuesta en un agregador pay-per-call.\n- **`skyhook-io/radar` introduce K8s UI single-binary con MCP server nativo** (3.449★, Apache-2.0, Go, último push hoy). Producto Open Source que reemplaza el Dashboard de Kubernetes con un binario único que expone topology, resources, Helm, GitOps, traffic, audit y un servidor MCP integrado para que los agentes operen el cluster desde el laptop. Es el primer K8s UI con \"MCP context for AI agents\" como feature declarada.\n- **`openclaw/crabbox` reduce el remote-build-runner al mínimo Go** (1.421★, MIT, Go, último push hoy). CLI que ejecuta comandos del repo sobre máquinas remotas, hosts SSH existentes o containers Docker/Podman; `crabbox run --provider docker -- uname -a` arranca contenedor, sincroniza working tree, streamea output, elimina contenedor. Cero cuentas cloud, cero login. La categoría \"local-first remote execution\" tiene nuevo contendiente maduro.\nFuentes consultadas: Trendshift daily (25 items, sponsor `oomol-lab/open-connector` filtrado), GitHub Trending daily + slices TypeScript/Python/Rust/Go (61 repos únicos), GitHub REST API para 17 candidatos verificados. Blogwatcher no publicado hoy — la dependencia upstream continúa caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "CopilotKit/openmuse",
+      "url": "https://github.com/CopilotKit/openmuse",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación open-source de \"agente personal\" que combina **Chromium persistente + workspace Linux opcional + filesystem** con un cliente nativo en React Native (iOS, Android, web). El usuario pide un outcome, el agente lo ejecuta (browse + comandos + mover PDFs), muestra resultados inline y permite \"Tomar control\" abriendo la misma sesión de browser. Compatible con cualquier agent harness. Licencia MIT, alpha documentado para self-hosting.",
+        "por_que_importa": "CopilotKit ya tenía el framework UI para agentes (AG-UI, Rich Threads, OpenBot); con OpenMuse publica además la aplicación de referencia completa bajo MIT, lista para forkear. Es el \"hello-world-con-agente-real\" oficial del stack CopilotKit y, en clave de producto, un nuevo ejemplo de plantilla OSS para agentes personales: el lector que está prototipando un agente con UI móvil puede partir de aquí sin tener que cablear browser persistente, workspace Linux y cliente nativo desde cero. Caveat honesto: el repo está en alpha documentado (creado el 2026-09-15) y la métrica de tracción (1.207★) es aún baja, así que conviene leer `docs/VERIFICATION.md` antes de apostar por él como base de producción.",
+        "madurez_senales": "1,207★ · 123 forks · TypeScript · MIT · creado 2026-09-15 · último push 2026-09-23. · Default branch `main`. CI badge verde. Documentación `docs/VERIFICATION.md` declara qué está probado (live Google accounts, Rich Threads) y qué es roadmap. · README incluye dos demos (iPhone 38s + desktop web 42s) y un `OPENBOT-INTEGRATION.md` que documenta el contrato con OpenBot para no fragmentar interfaces. · Caveat: alpha — auto-hospedaje requiere configurar live Google accounts y CopilotKit Rich Threads por separado. Descripción oficial: \"Clone this template and customize it however you want\".",
+        "accion_sugerida": "**explorar** (clonar y leer la estructura `apps/` para entender el split \"native client + agent computer + browser worker\"; si construyes un agente personal OSS, esta es la plantilla a forkear; **no adoptes como base de producción todavía** — alpha explícito, el README es honesto sobre lo que no está probado).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "CopilotKit/openmuse",
+          "rel": "implements",
+          "dst": "concept:personal-agent-app-template",
+          "primera_mencion": null
+        },
+        {
+          "src": "CopilotKit/openmuse",
+          "rel": "uses",
+          "dst": "concept:copilotkit-agui-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "CopilotKit/openmuse",
+          "rel": "relevant_to",
+          "dst": "concept:company:copilotkit",
+          "primera_mencion": null
+        },
+        {
+          "src": "CopilotKit/openmuse",
+          "rel": "complements",
+          "dst": "concept:openbot-runtime",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-openmuse",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "HelixDB/helix-db",
+      "url": "https://github.com/HelixDB/helix-db",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Base de datos graph-vector OLTP escrita desde cero en Rust, construida para knowledge graphs y AI memory. Reemplaza la pila `Neo4j + pgvector + Pinecone + aplicación` con **un solo motor** que combina graph (relaciones), vector (búsqueda semántica), KV, documentos y datos relacionales. Lanzado por Y Combinator (Naz, batch F25/W26).",
+        "por_que_importa": "El ángulo más interesante para esta newsletter es `helix chef`, un scaffolder MCP-driven que detecta qué agent harness usa el lector (Claude Code, OpenAI Codex, OpenCode, Cursor Agent) y bootstrapea una app frontend+backend desde una sola frase. Ya cubrimos el patrón \"MCP server\" el 2026-08-24; HelixDB lleva ese mismo concepto un paso más allá, hacia \"el vendor expone su DB como MCP con workflow scaffolder\", una capa editorial que probablemente veamos más en 2026-2027. Sustituye además la pila Neo4j + pgvector + Pinecone con un solo motor graph+vector+KV OLTP en Rust, con HelixDB Cloud prometiendo ACID y alta disponibilidad. Caveat: la versión cloud está en early access (Naz, YC F25/W26) y conviene validar SLA y modelo de precios antes de cualquier migración real.",
+        "madurez_senales": "6,083★ · 368 forks · Rust · Apache-2.0 · creado 2024-11-23 · último push 2026-09-22. · Default branch `main`. Docs en `docs.helix-db.com`. Discord activo, X/twitter feed. · Tagline: \"HelixDB is a database that makes it easy to build al[l knowledge graphs and AI memory]\". · Lanzamiento YC: https://www.ycombinator.com/launches/Naz-helixdb-the-database-for-rag-ai. · Caveat: NOASSERTION de licencia en el repo (leer LICENSE file antes de adopción crítica); ecosistema todavía joven (6k★) vs incumbentes maduros.",
+        "accion_sugerida": "**leer** (si trabajas con knowledge graphs + AI memory, vale leer los docs y probar `helix chef` con Claude Code para ver si el scaffolder es útil; **si ya tienes Neo4j + pgvector en producción**, no migres todavía — HelixDB tiene madurez equivalente a Neon o Memgraph hace 3 años; vale seguir de cerca porque el patrón \"DB-as-MCP-for-agents\" es editorialmente interesante).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "HelixDB/helix-db",
+          "rel": "implements",
+          "dst": "concept:graph-vector-oltp-rust",
+          "primera_mencion": null
+        },
+        {
+          "src": "HelixDB/helix-db",
+          "rel": "competes_with",
+          "dst": "concept:neo4j",
+          "primera_mencion": null
+        },
+        {
+          "src": "HelixDB/helix-db",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "HelixDB/helix-db",
+          "rel": "relevant_to",
+          "dst": "concept:company:helixdb-yc",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "helixdb-helix-db",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "superdesigndev/treg",
+      "url": "https://github.com/superdesigndev/treg",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Capa de routing para herramientas de agentes: un único endpoint tokenizado expone **3.000+ APIs de 60+ proveedores** (SEO, backlinks, social, trends, people/company data, ads, scraping, image/video gen). El agente pide \"lo que quiere hacer\", no el vendor; treg encuentra el endpoint correcto, gestiona la suscripción y cobra por llamada desde 1 centavo. Self-hostable, live en `treg.to`.",
+        "por_que_importa": "OpenRouter resolvió \"los agentes necesitan muchos LLMs sin 60 cuentas\"; treg resuelve el mismo problema para herramientas externas, unificando 3.000+ APIs de 60+ proveedores (Semrush, Moz, Crunchbase, Apollo, scraping, generación de imagen y vídeo) detrás de un único endpoint tokenizado con cobro por llamada desde 1 centavo. Para el lector que hoy paga varias suscripciones SaaS para alimentar a su agente, importa porque desplaza el vector de gasto de \"suscripción mensual fija\" a \"pay-per-call según uso real\". Caveat importante: la licencia es NOASSERTION, así que toca leer el archivo LICENSE antes de Adoptarlo como dependencia de un producto.",
+        "madurez_senales": "2,356★ · 226 forks · Python · NOASSERTION · creado 2026-07-15 · último push 2026-09-23. · Default branch `main`. Docs estructuradas en `docs/`. Demo en `treg.to`. Discord link en README. · 3.000+ catalogued endpoints, 60+ providers — cobertura masiva ya construida. · Caveat crítico: licencia NOASSERTION en API (leer LICENSE file antes de adopción como build-dependency comercial).",
+        "accion_sugerida": "**explorar** (live en `treg.to`; **si construyes agentes que necesitan SEO/social/scraping data**, vale probar treg antes de subscribir Semrush o Moz; **no adoptes como build-dependency** hasta leer LICENSE completo; **el ángulo editorial más fuerte**: la respuesta OSS al SaaS sprawl — si tienes 5 suscripciones SaaS que tu agente necesita, treg puede colapsarlas a un único endpoint).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "superdesigndev/treg",
+          "rel": "implements",
+          "dst": "concept:tool-routing-aggregator",
+          "primera_mencion": null
+        },
+        {
+          "src": "superdesigndev/treg",
+          "rel": "inspired_by",
+          "dst": "concept:openrouter",
+          "primera_mencion": null
+        },
+        {
+          "src": "superdesigndev/treg",
+          "rel": "enables",
+          "dst": "concept:pay-per-call-agent-tools",
+          "primera_mencion": null
+        },
+        {
+          "src": "superdesigndev/treg",
+          "rel": "competes_with",
+          "dst": "concept:apify-actors",
+          "primera_mencion": null
+        },
+        {
+          "src": "superdesigndev/treg",
+          "rel": "relevant_to",
+          "dst": "concept:company:superdesign",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superdesigndev-treg",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "skyhook-io/radar",
+      "url": "https://github.com/skyhook-io/radar",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**UI open-source para Kubernetes en un solo binario**, sin cuenta, sin CRDs, sin cloud sync, sin telemetría del cluster. Cubre topology, resources, Helm, GitOps, traffic, audit, upgrade impact y **un servidor MCP integrado** para que los agentes AI operen el cluster. Funciona desde el laptop o in-cluster. Lanzamiento reciente (Product Hunt #1).",
+        "por_que_importa": "Radar cierra una categoría muy concreta: \"UI de Kubernetes en un solo binario, sin cuenta ni telemetría, con servidor MCP integrado para que un agente AI opere el cluster\". El dashboard oficial de Kubernetes llevaba tiempo sin un reemplazo OSS moderno; Radar es la primera alternativa seria que (a) se ejecuta como binario único desde el laptop o in-cluster y (b) expone MCP context como feature declarada, no como apaño. Para el lector de \"AI + infra\" es el ejemplo más claro del patrón \"los vendors de infra exponen MCP server nativo\", un tema que ya cubrimos en otros boletines y que aquí aterriza sobre un caso de uso muy tangible: consultar topology, resources, Helm, GitOps y audit del cluster desde un agente en lenguaje natural en vez de pelearse con kubectl.",
+        "madurez_senales": "3,449★ · 217 forks · Go · Apache-2.0 · creado 2026-01-20 · último push 2026-09-23. · Default branch `main`. CI verde, CodeQL habilitado. Docs en `radarhq.io/docs`. Releases en GitHub. · Features declaradas: topology, resources, image filesystem, timeline, Helm, compare, TLS, GitOps, traffic, audit, RBAC, MCP. · Flags CLI: `--no-mcp` para desactivar el MCP server; `--mcp-catalog-stdio` para exponer solo el catálogo MCP sobre stdio. · Privacidad: \"Private by design — your cluster data stays on your machine. No account, no agents, no cloud sync, no cluster telemetry\".",
+        "accion_sugerida": "**probar** (instalar el binario y correr contra un kind/minikube cluster local; **si gestionas K8s**, vale reemplazar el dashboard oficial con Radar; **el MCP server es el diferenciador real** — exponer `manage_gitops` (sync/suspend/resume/reconcile/rollback) con lifecycle-aware refusal es exactamente el shape que otros vendors deberían copiar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "skyhook-io/radar",
+          "rel": "implements",
+          "dst": "concept:k8s-ui-single-binary",
+          "primera_mencion": null
+        },
+        {
+          "src": "skyhook-io/radar",
+          "rel": "uses",
+          "dst": "concept:mcp-server-native",
+          "primera_mencion": null
+        },
+        {
+          "src": "skyhook-io/radar",
+          "rel": "competes_with",
+          "dst": "concept:kubernetes-dashboard-official",
+          "primera_mencion": null
+        },
+        {
+          "src": "skyhook-io/radar",
+          "rel": "enables",
+          "dst": "concept:ai-agent-on-cluster",
+          "primera_mencion": null
+        },
+        {
+          "src": "skyhook-io/radar",
+          "rel": "relevant_to",
+          "dst": "concept:company:skyhook",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "skyhook-io-radar",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "openclaw/crabbox",
+      "url": "https://github.com/openclaw/crabbox",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI que ejecuta los comandos del repositorio sobre máquinas remotas, hosts SSH existentes o contenedores Docker/Podman. `crabbox run --provider docker -- uname -a` crea un Linux container, sincroniza el working tree, ejecuta el comando, streamea output y devuelve exit code. Sin cuentas cloud, sin login. Releases verificadas con CI + release-assets workflow.",
+        "por_que_importa": "La categoría \"local-first remote execution\" tiene con crabbox un contendiente maduro y honesto: un solo binario que ejecuta comandos del repo sobre hosts SSH ya existentes o contenedores Docker/Podman, sin cuentas cloud ni login, sincronizando el working tree y devolviendo exit code. Para el lector que hoy hace \"ssh a la box remota y corre esto\" o monta runners self-hosted solo para tests, crabbox es una primitiva más simple: el agente lanza un box limpio, sincroniza el código, ejecuta y lee el resultado. Caveat honesto: 1.421★ indica proyecto todavía temprano, y el propio repo tiene una sección `Security` explícita sobre el trust model, conviene leerla antes de adoptarlo para datos sensibles.",
+        "madurez_senales": "1,421★ · 186 forks · Go · MIT · creado 2026-04-30 · último push 2026-09-23. · Default branch `main`. CI verde, release-verification workflow. README activo en `github.com/openclaw/crabbox`. · Hero tagline: \"Run your code on the right machine.\" · Releases en GitHub, sort=semver. Documentación en `crabbox.sh/`. · Caveat: requiere Docker o Podman corriendo localmente; el trust model asume que el repo es de confianza (ver `Security` section).",
+        "accion_sugerida": "**probar** (instalar binario, correr `crabbox run --provider docker -- uname -a` en cualquier repo; **si trabajas con agentes que ejecutan código**, vale integrar crabbox como primitiva de sandbox; **la promesa editorial más fuerte**: ejecutar código de agentes sobre hardware propio, sin cloud intermediary, con sync de working tree incluido).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "openclaw/crabbox",
+          "rel": "implements",
+          "dst": "concept:local-first-remote-execution",
+          "primera_mencion": null
+        },
+        {
+          "src": "openclaw/crabbox",
+          "rel": "uses",
+          "dst": "concept:docker-podman-provider",
+          "primera_mencion": null
+        },
+        {
+          "src": "openclaw/crabbox",
+          "rel": "competes_with",
+          "dst": "concept:github-actions-self-hosted-runner",
+          "primera_mencion": null
+        },
+        {
+          "src": "openclaw/crabbox",
+          "rel": "enables",
+          "dst": "concept:agent-test-execution",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openclaw-crabbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "ai-evals-course/evals-skills",
+      "url": "https://github.com/ai-evals-course/evals-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Skills library de Hamel Husain / Parlance Labs (curso AI Evals en Maven) que enseña a AI coding agents a **construir product-specific evals** (no foundation model benchmarks). El entry point `evals-start` enruta a `eval-audit` (revisar pipeline existente) o `error-discovery` (analizar traces existentes con annotation interface custom). Instalable vía `npx skills add` (vercel-labs/skills).",
+        "por_que_importa": "Es la primera skills library seria y específica para AI evals, escrita por Hamel Husain / Parlance Labs como material del curso AI Evals en Maven, e instalable vía `npx skills add` (el patrón de skills verticales con `SKILL.md` ya lo cubrimos el 2026-09-22, y a `obra/superpowers` lo mencionamos el 2026-08-08). El entry point `evals-start` enruta a dos tareas enseñables: `eval-audit` para revisar un pipeline de evals existente y `error-discovery` para analizar traces con una annotation interface custom, justo los footguns que todo equipo que monta evals de producto acaba sufriendo. La tesis \"los skills verticales reemplazan a la consultora de evaluación\" se vuelve plausible con este repo: un agente puede instalar la skill y correr el audit sin que Hamel lo haga a mano. Caveat: la licencia no aparece en la API de GitHub (revisa el archivo LICENSE antes de Adoptarlo).",
+        "madurez_senales": "1,055★ · 74 forks · None · None · creado 2026-06-23 · último push 2026-09-16. · Default branch `main`. Instalable vía `npx skills add` (vercel-labs/skills). · Mantenido por **Parlance Labs / Hamel Husain** (Ham dev blog: https://hamel.dev/blog/posts/revenge/) — voz reconocida en AI evals. · Shreya (co-autora del curso) hace walkthrough en YouTube del `error-discovery` skill. · Caveat: sin topics en API, sin license explícita en la respuesta del API; leer LICENSE file antes de adopción.",
+        "accion_sugerida": "**leer** (instalar la skill y leer `skills/eval-audit/SKILL.md` y `skills/error-discovery/SKILL.md`; **si trabajas en AI evals**, vale integrar esta skill como recurso por defecto del agente; **la promesa editorial**: cualquier equipo con AI evals puede correr un audit estructurado sin contratar a Parlance Labs — democratiza el primer paso de la consultoría de evaluación).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ai-evals-course/evals-skills",
+          "rel": "implements",
+          "dst": "concept:agent-skills-vertical-ai-evals",
+          "primera_mencion": null
+        },
+        {
+          "src": "ai-evals-course/evals-skills",
+          "rel": "uses",
+          "dst": "concept:skill-md-progressive-disclosure",
+          "primera_mencion": "2026-09-22"
+        },
+        {
+          "src": "ai-evals-course/evals-skills",
+          "rel": "enables",
+          "dst": "concept:product-evals-by-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "ai-evals-course/evals-skills",
+          "rel": "complements",
+          "dst": "repo:obra/superpowers",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "ai-evals-course/evals-skills",
+          "rel": "relevant_to",
+          "dst": "concept:company:parlance-labs",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-evals-course-evals-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "aliyun/ai-agent-handbook",
+      "url": "https://github.com/aliyun/ai-agent-handbook",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(233★, Apache-2.0, push 2026-09-22) — Whitepaper chino de Aliyun sobre arquitectura, construcción, runtime, governance y tuning de agents enterprise. README bilingüe (zh/en), sigue al whitepaper de AI-native apps de septiembre 2025.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (Apache-2.0 declarado pero contenido principal en chino — vale ojear para capturar el patrón \"enterprise agent handbook\" antes de que se traduzca al inglés)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aliyun-ai-agent-handbook",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "huggingface/tokenizers",
+      "url": "https://github.com/huggingface/tokenizers",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.096★, Apache-2.0, Rust, push 2026-09-21) — Fast State-of-the-Art tokenizers optimizados para research y production. Trending estable pero empujado por updates recientes en inference optimization.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (referencia consolidada — si trabajas con LLMs, ya lo conoces; vale seguir su roadmap)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "huggingface-tokenizers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "caddyserver/caddy",
+      "url": "https://github.com/caddyserver/caddy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(76.009★, Apache-2.0, Go, push 2026-09-21) — HTTP/1-2-3 web server extensible single-binary. Empujado hoy por su madurez como reverse proxy + automatic HTTPS.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (incumbente estable; la tendencia es que se usa cada vez más como ingress de self-hosted apps)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "caddyserver-caddy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "aquasecurity/trivy",
+      "url": "https://github.com/aquasecurity/trivy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(38.025★, Apache-2.0, Go, push 2026-09-23) — Vulnerability scanner con SBOM, secrets, misconfigurations e IaC scanning. Trending diario.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (vale releer el changelog y los nuevos scanners de IaC si haces DevSecOps; estándar de facto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aquasecurity-trivy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "flipped-aurora/gin-vue-admin",
+      "url": "https://github.com/flipped-aurora/gin-vue-admin",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25.044★, Apache-2.0, Go+Vue, push 2026-09-20) — Vite+Vue3+Gin AI-assisted base development platform con MCP services internos. Origen chino, README bilingüe.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (la pieza editorial: AI + MCP services built-in en un admin scaffold — vale ojear el `mcp/` para ver qué exponen)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "flipped-aurora-gin-vue-admin",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
