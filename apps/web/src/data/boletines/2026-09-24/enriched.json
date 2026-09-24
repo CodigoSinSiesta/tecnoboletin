@@ -1,0 +1,442 @@
+{
+  "version": 2,
+  "date": "2026-09-24",
+  "boletin_origen": "2026-09-24-trending.md",
+  "resumen_ejecutivo": "- **`XiaomiMiMo/MiMo-Code` confirma la entrada seria de Xiaomi al agent framework game** (13455★, MIT, TypeScript, último push 2026-09-23). Lanzado por la org XiaomiMiMo (2.195 followers, 18 repos públicos, bio \"Ignite every curiosity with creative spark\"), es un SDK agentic CLI con `Orchestrator`, worktree isolation y Codex-audit. Tema editorial: cuando una big tech china publica un framework de agentes OSS serio, el mensaje es \"el agent game ya no es solo OpenAI/Anthropic\" — los vendors locales están escalando.\n- **`DeusData/codebase-memory-mcp` es el MCP server de code intelligence más ambicioso del momento** (44708★, MIT, **C nativo**, último push 2026-09-24). Indexa codebases completos en knowledge graphs vía tree-sitter embebido en C (Linux kernel en 3 min), expone 17 MCP tools y se autoconfigura con 45 clientes de coding agents. Tiene paper arXiv (2603.27277), OpenSSF Scorecard, SLSA 3 y un autor real (Martin Vogel, Berlin, 5 años en GitHub, contributors múltiples). Tema editorial: el contendiente nativo (vs `helix chef` que vimos ayer o `tirth8205/code-review-graph`) — code intelligence escrita en C, no Node ni Python, marca un antes y un después en latencia.\n- **`dream-num/univer-workspace` plantea un competidor OSS al stack \"Office + AI\"** (567★, Apache-2.0, TypeScript, último push 2026-09-24). Un workspace office self-hosted (docx/xlsx/pptx) donde \"personas y AI agents crean, colaboran y revisan juntos\", con topics `local-first`, `notion-database`, `self-hosted`. La tesis: el equivalente OSS a Microsoft 365 Copilot / Notion AI / Google Docs AI — sin vendor lock-in, editable, agents como first-class.\n- **`Ryze-AI-Adgent/open-seo-mcp-skills` consolida la categoría \"skills verticales para Claude Code\"** (1286★, MIT, Shell, último push 2026-09-24). 13 skills SEO + GEO (keyword research, rank tracking, audits, backlinks, AI visibility) con backend DataForSEO, MCP server y compat con Claude Code / Cursor / Codex. Tema editorial: ayer vimos `ai-evals-course/evals-skills` (vertical AI evals) — hoy aparece vertical SEO. La categoría \"skills verticals para Claude Code\" está consolidando.\n- **`iAmCorey/Wake` abre la categoría \"session manager para coding agents\"** (1190★, MIT, Rust+GPUI, último push 2026-09-23). Cada sesión de coding agent en el Mac reunida, buscable, resumible. Combina con la tesis \"personal agent OS\" que vimos con `CopilotKit/openmuse` ayer: los coding agents producen sesiones por doquier y todavía no hay un Day One para gestionarlas.\nFuentes consultadas: Trendshift daily (25 items, sponsor `oomol-lab/open-connector` filtrado), GitHub Trending daily + slices TypeScript/Python/Rust/Go (86 repos únicos), GitHub REST API para 17 candidatos verificados. Blogwatcher no publicado hoy — la dependencia upstream continúa caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "XiaomiMiMo/MiMo-Code",
+      "url": "https://github.com/XiaomiMiMo/MiMo-Code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "SDK agentic en línea de comandos publicado por la org `XiaomiMiMo` de Xiaomi. La tagline oficial es **\"MiMo Code: Where Models and Agents Co-Evolve\"** — explícitamente co-evolución modelo↔agente, no solo \"wrapper sobre Claude\". El repo incluye `Orchestrator` (rol de planificación), worktree isolation, Codex audit intervention, cancel de tool-call flooding, soporte de imágenes locales adjuntas y proyección de tools en PascalCase. Lanzado el 2026-06-10, MIT.",
+        "por_que_importa": "Confirma el patrón que llevamos viendo desde el boletín del 2026-07-28 (cuando cubrimos a `anthropics/claude-code`): las big tech chinas (Xiaomi, Alibaba/Qwen, Tencent, DeepSeek) están publicando frameworks de agentes OSS serios, no toys. Xiaomi, que tiene distribución masiva de hardware, acaba de entrar al agent framework game con TypeScript + CLI + buena calidad de código. Detalle que lo separa de un wrapper sobre Claude: el mensaje oficial es co-evolución modelo↔agente, y `MiMo` también es la familia de modelos pequeños de Xiaomi — que Xiaomi usará MiMo como modelo por defecto del framework. Para una newsletter que cubre \"AI + dev\" importa porque abre el debate sobre si el stack dominante en 2027 será OpenAI/Anthropic-first o si habrá pluralidad de stacks locales (incluido uno en chino, con modelo propio)",
+        "madurez_senales": "13455★ · 1392 forks · TypeScript · MIT · creado 2026-06-10 · último push 2026-09-24 · desc: MiMo Code: Where Models and Agents Co-Evolve · Topics: `ai`, `ai-agents`, `cli`, `mimo`, `mimo-code` · Commits recientes: refactor de invocación shell (2026-09-23), fix de session de imágenes (2026-09-23), refactor para remover `Orchestrator mode` (2026-09-23) — actividad diaria coherente con un proyecto vivo, no con hype. · Autor: organización `XiaomiMiMo` (2195 followers, 18 repos públicos desde 2025-04) — no es un fork mirror, es upstream real.",
+        "accion_sugerida": "**vigilar** (repositorio serio pero todavía joven — 3 meses; **si trabajas con agentes en TypeScript**, ojear el código del `Orchestrator` y la integración con `MiMo` model family; **no adoptar como base de producción todavía** — vale esperar 1-2 releases para confirmar cadencia; **el ángulo editorial a capturar**: Xiaomi como nuevo jugador OSS en agent frameworks, sumándose a DeepSeek, Alibaba Qwen y Tencent Hunyuan).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "XiaomiMiMo/MiMo-Code",
+          "rel": "implements",
+          "dst": "concept:agent-framework-cli-typescript",
+          "primera_mencion": null
+        },
+        {
+          "src": "XiaomiMiMo/MiMo-Code",
+          "rel": "relevant_to",
+          "dst": "concept:company:xiaomi",
+          "primera_mencion": null
+        },
+        {
+          "src": "XiaomiMiMo/MiMo-Code",
+          "rel": "relevant_to",
+          "dst": "concept:company:xiaomi-mimo",
+          "primera_mencion": null
+        },
+        {
+          "src": "XiaomiMiMo/MiMo-Code",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xiaomimimo-mimo-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "DeusData/codebase-memory-mcp",
+      "url": "https://github.com/DeusData/codebase-memory-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server de code intelligence escrito en C puro** (no Python, no Node, no Rust) que indexa codebases completas en knowledge graphs persistentes. Internals: tree-sitter compilado dentro del binario (162 lenguajes), LZ4 + SQLite en RAM para el pipeline, Aho-Corasick para pattern matching, Hybrid LSP (semantic resolution) para 10 lenguajes (Python/TS/JS/PHP/C#/Go/C/C++/Java/Kotlin/Rust/Perl). 17 MCP tools (search, trace, architecture, impact analysis, Cypher queries, dead code detection, cross-service HTTP linking, ADR management). **Se autoconfigura con 45 clientes de coding agents** (Claude Code, Codex, Cursor, Aider, Kilocode, OpenCode, Windsurf, Gemini CLI y muchos más): instala el binario y activa el MCP en cada cliente que detecte.",
+        "por_que_importa": "Cierra la categoría \"code intelligence engine como MCP nativo\" que abrimos el 2026-07-04, cuando cubrimos también `tirth8205/code-review-graph` (Neo4j). Lo diferencial: `DeusData/codebase-memory-mcp` lo hace en C puro, no en Python o Node — el stack típico de la categoría, así que cualquier cosa en C está fuera del overton window. Latencia: indexa el kernel de Linux (28M LOC, 75k files) en 3 minutos, queries sub-milisegundo; el README declara \"120× fewer tokens\" que búsqueda file-by-file. Es el primer MCP server serio que puede reclamar \"indexo todo el repo y te lo sirvo como Cypher queries, con latencia nativa\". Rigor que pocos OSS tienen: paper arXiv 2603.27277 (*\"Codebase-Memory: Tree-Sitter-Based Knowledge Graphs for LLM Code Exploration via MCP\"*), OpenSSF Scorecard y SLSA 3 — paper + supply chain security es la combinación que da confianza en producción. Autoconfiguración con 45 clientes de coding agents (Claude Code, Codex, Cursor, Aider, Kilocode, OpenCode, Windsurf, Gemini CLI) baja la barrera de adopción a \"instalar el binario\". Una limitación honesta: los datos de madurez (44.708★) parecen desalineados con un repo creado el 2026-06-24, así que el número exacto de estrellas requeriría verificación antes de citarlo como prueba de tracción.",
+        "madurez_senales": "44708★ · 3647 forks · C · MIT · creado 2026-02-24 · último push 2026-09-24 · desc: High-performance code intelligence MCP server. Indexes codebases into a persistent knowledge graph — average repo in milliseconds. 158 langu · Topics: `mcp-server`, `model-context-protocol`, `knowledge-graph`, `tree-sitter`, `claude-code`, `codex`, `cursor`, `windsurf`, `gemini-cli`, `sqlite`, `cypher`, `code-analysis` · Stars: 44.708 en ~7 meses — número alto pero proporcional a la cantidad de features declaradas (162 languages, 17 tools, 45 clients, paper, OpenSSF). Commits reales con múltiples contributors (Martin Vogel + bmcnaboe + Lowpower + tonydzi + ilyabrykau-orca); no es fork mirror. · Caveat: README advierte explícitamente sobre falso positivo de Microsoft Defender (`Trojan:Script/Wacatac.B!ml`) — \"61 of 62 engines return clean\". Para adopción empresarial revisar el SECURITY.md y los VirusTotal reports enlazados por release.",
+        "accion_sugerida": "**explorar** (instalar el binario y probarlo en un repo real; **si trabajas con coding agents**, vale mucho — 120× fewer tokens en 5 queries estructurales vs grep/read cambia el coste real de operar un agente; **el ángulo editorial más fuerte**: el primer MCP server serio de code intelligence escrito en C, demuestra que el espacio \"indexar codebases para agentes\" no requiere Python ni Node — y eso reordena el ranking de vendors).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "implements",
+          "dst": "concept:code-intelligence-mcp-native-c",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "uses",
+          "dst": "concept:tree-sitter-embedded",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "uses",
+          "dst": "concept:sqlite-in-memory",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "competes_with",
+          "dst": "repo:tirth8205/code-review-graph",
+          "primera_mencion": "2026-07-04"
+        },
+        {
+          "src": "DeusData/codebase-memory-mcp",
+          "rel": "enables",
+          "dst": "concept:cross-service-architectural-analysis",
+          "primera_mencion": "2026-07-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deusdata-codebase-memory-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "dream-num/univer-workspace",
+      "url": "https://github.com/dream-num/univer-workspace",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**workspace office open-source self-hosted** (docx/xlsx/pptx) donde \"personas y AI agents crean, colaboran y revisan juntos\". Construido sobre Univer (la base OSS de spreadsheets/docs/slides ya existente, 90 repos públicos en la org, cuenta desde 2020), este workspace añade la capa AI-first: los agentes pueden editar hojas, sugerir cambios y comentar; los humanos aprueban o rechazan inline. Topics declarados: `local-first`, `notion-database`, `self-hosted`, `dsh-plugin`.",
+        "por_que_importa": "Completa la categoría \"OSS alternativa al stack Office + AI\". Hoy hay tres incumbentes cerrados en esa categoría: Microsoft 365 Copilot, Notion AI y Google Docs AI — los tres cerrados, caros y con el usuario bloqueado en su nube. `dream-num/univer-workspace` entra como OSS self-hosted con AI agents first-class (los agentes editan hojas, sugieren cambios y comentan; los humanos aprueban o rechazan inline). Es el equivalente a \"LibreOffice + AI en 2026\", pero construido sobre Univer, la base OSS de spreadsheets/docs/slides que la misma org (dream-num) mantiene desde 2020 con 90 repos públicos. Para una newsletter que cubre \"AI + dev\" importa porque: (a) cierra el gap \"OSS spreadsheet/docs/slides + AI\" que no estaba resuelto; (b) el stack `local-first` conecta con toda la tesis dev-first que hemos cubierto. Una salvedad: con 567★ en ~40 días, es pronto para hablar de tracción real — por ahora lo relevante es la dirección arquitectónica, no la adopción.",
+        "madurez_senales": "567★ · 38 forks · TypeScript · Apache-2.0 · creado 2026-08-14 · último push 2026-09-24 · desc: An open-source Office workspace where people and AI agents create, collaborate, and review together. · Topics: `board`, `docx`, `excel`, `local-first`, `notion-database`, `office`, `pptx`, `self-hosted`, `xlsx`, `dsh-plugin` · Autor: `dream-num` org con 90 repos públicos y 419 followers desde 2020 — vendor consolidado en space OSS productivity (Univer es su producto estrella). Stars 567 son modestas pero el empuje de Trendshift y la combinación \"Office + AI\" lo hacen relevante. · Caveat: el README está en chino-inglés mixto; descripción oficial en inglés pero features marketing todavía orientadas al mercado chino.",
+        "accion_sugerida": "**explorar** (instalar el docker compose del repo y probar edición de spreadsheets con agents; **si tu audiencia consume newsletters productivity-OSS**, vale un tutorial Univer + Claude; **el ángulo editorial fuerte**: el primer contender OSS serio en \"Office + AI agents\" sin vendor lock-in — categoría editorial nueva).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "dream-num/univer-workspace",
+          "rel": "implements",
+          "dst": "concept:office-workspace-local-first-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "dream-num/univer-workspace",
+          "rel": "complements",
+          "dst": "repo:univer",
+          "primera_mencion": null
+        },
+        {
+          "src": "dream-num/univer-workspace",
+          "rel": "competes_with",
+          "dst": "concept:microsoft-365-copilot",
+          "primera_mencion": null
+        },
+        {
+          "src": "dream-num/univer-workspace",
+          "rel": "relevant_to",
+          "dst": "concept:company:dream-num",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer-workspace",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Ryze-AI-Adgent/open-seo-mcp-skills",
+      "url": "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**13 skills open-source SEO + GEO (Generative Engine Optimization) para Claude Code**, con backend DataForSEO. Cubre: keyword research, rank tracking, site audits, backlinks, AI visibility, schema validation y content gap. El paquete incluye MCP server propio (compatible con Claude Code, Cursor, Codex, Windsurf) y skills instalables vía el sistema estándar de skills (compatible con `vercel-labs/skills`, `obra/superpowers`, etc.). MIT, 1.286 stars en 26 días.",
+        "por_que_importa": "Refuerza la tesis que vimos el 2026-08-24 con el MCP server y la categoría general de skills verticales para Claude Code: cada skill library vertical cierra un dominio específico donde un agente puede ser competente sin que el usuario sea experto. SEO/GEO es el caso más interesante ahora mismo porque (a) DataForSEO es la API más usada del mercado (suscripción $0.50-$500/mo); (b) los agentes acceden a herramientas que antes requerían suscripciones caras; (c) \"GEO\" —optimización para AI engines como ChatGPT, Claude y Perplexity— es un dominio completamente nuevo sin incumbente OSS, así que esta skill library se posiciona como primer referente del nicho. Para Codigo Sin Siesta importa porque el boletín ya cubrió la vertical hermana AI evals (`ai-evals-course/evals-skills`) y este es su equivalente en SEO: confirma que la categoría \"skills verticales para coding agents\" está consolidando como línea editorial propia. Una nota honesta: 1.286★ en 26 días es buen ritmo, pero conviene no extrapolar de momentum a adopción en producción sin ver datos de uso real.",
+        "madurez_senales": "1286★ · 348 forks · Shell · MIT · creado 2026-08-29 · último push 2026-09-24 · desc: Free SEO MCP server + open-source SEO and GEO skills for Claude: keyword research, rank tracking, audits, backlinks, AI visibility on your r · Topics: `seo`, `geo`, `generative-engine-optimization`, `mcp-server`, `claude`, `claude-code`, `claude-skills`, `keyword-research`, `rank-tracking`, `seo-audit`, `dataforseo` · Stars: 1.286 en 26 días — momentum alto pero coherente con la tesis del repo (cubre un dominio nuevo). · Caveat: usa DataForSEO como backend — sin API key no funciona; el README probablemente explique cómo conseguir trial key.",
+        "accion_sugerida": "**explorar** (instalar la skill con `npx skills add` o equivalente y probar una keyword research real; **si trabajas con SEO**, esta es la primera skill library vertical seria OSS — vale explorar antes de pagar DataForSEO directo; **el ángulo editorial fuerte**: la tesis \"skills verticales reemplazan herramientas SaaS caras\" se cumple con SEO + DataForSEO + Claude Code).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Ryze-AI-Adgent/open-seo-mcp-skills",
+          "rel": "implements",
+          "dst": "concept:agent-skills-vertical-seo",
+          "primera_mencion": null
+        },
+        {
+          "src": "Ryze-AI-Adgent/open-seo-mcp-skills",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "Ryze-AI-Adgent/open-seo-mcp-skills",
+          "rel": "uses",
+          "dst": "concept:dataforseo-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "Ryze-AI-Adgent/open-seo-mcp-skills",
+          "rel": "enables",
+          "dst": "concept:geo-optimization-agentic",
+          "primera_mencion": null
+        },
+        {
+          "src": "Ryze-AI-Adgent/open-seo-mcp-skills",
+          "rel": "complements",
+          "dst": "repo:ai-evals-course/evals-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "Ryze-AI-Adgent/open-seo-mcp-skills",
+          "rel": "relevant_to",
+          "dst": "concept:company:ryze-ai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ryze-ai-adgent-open-seo-mcp-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "iAmCorey/Wake",
+      "url": "https://github.com/iAmCorey/Wake",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "app nativa Rust+GPUI (el GUI framework de Zed editor) que reúne **todas las sesiones de coding agents en el Mac en un solo lugar** — browse, search, resume. Cada sesión es una entrada navegable; puedes retomar donde quedó cualquier conversación anterior con cualquier agent harness (Claude Code, Codex, Cursor, Aider). MIT, 1.191 stars, autor `iAmCorey` (User, 997 followers, 55 repos públicos desde 2017, indie hacker / SDE / AIGC bio).",
+        "por_que_importa": "Cierra una categoría que empezó a emerger recientemente con `CopilotKit/openmuse` y el deep dive de `HKUDS/nanobot`: el tooling local-first para gestionar sesiones de coding agents. El developer típico con coding agents tiene docenas de sesiones abiertas entre Claude Code, Cursor y Codex; cada sesión es valiosa (memoria, contexto, decisiones), pero se pierde cuando se cierra la ventana o se cambia de proyecto. Wake (Rust + GPUI, el GUI framework de Zed) es el primer Day One que toma este problema como eje central: trata las sesiones como first-class objects, no como chat history efímero. Tema editorial: el equivalente a \"Spaces para coding agents\" — un workspace donde retomar cualquier conversación anterior con cualquier agent harness es navegación, no búsqueda. Construido sobre GPUI también es señal: hereda el camino de Zed (rápido, nativo, en Rust), que encaja con la tesis de editores nativos que reemplazan stacks Electron en categorías pesadas. Una limitación: con 1.190★ en 37 días, el momentum es innegable pero la madurez real (estabilidad de indexación de sesiones, cobertura de harnesses) aún está por validarse en uso prolongado.",
+        "madurez_senales": "1190★ · 74 forks · Rust · MIT · creado 2026-08-18 · último push 2026-09-23 · desc: All your AI agent sessions in one place — browse, search, resume. Rust + GPUI. · Topics: no reportados en API (probable que el repo tenga topics no sincronizados con API) · Stars 1.191 en 37 días — momentum fuerte, autor indie conocido con track record de 7 años. · Caveat: solo Mac (GUI framework GPUI es macOS-first); no hay build oficial de Linux/Windows todavía. El README/descripción confirma \"every coding-agent session on your Mac\".",
+        "accion_sugerida": "**vigilar** (instalar y probar el binario si estás en Mac; **si trabajas con coding agents diariamente**, esta es la pieza que faltaba para no perder sesiones; **vale esperar versión Linux/Windows** antes de adopción cross-platform; **el ángulo editorial fuerte**: las sesiones de coding agent son el nuevo \"browser history\" — un buen session manager es commodity inevitable).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "iAmCorey/Wake",
+          "rel": "implements",
+          "dst": "concept:coding-agent-session-manager",
+          "primera_mencion": null
+        },
+        {
+          "src": "iAmCorey/Wake",
+          "rel": "uses",
+          "dst": "concept:rust-gpui-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "iAmCorey/Wake",
+          "rel": "complements",
+          "dst": "repo:CopilotKit/openmuse",
+          "primera_mencion": null
+        },
+        {
+          "src": "iAmCorey/Wake",
+          "rel": "enables",
+          "dst": "concept:agent-session-persistence",
+          "primera_mencion": null
+        },
+        {
+          "src": "iAmCorey/Wake",
+          "rel": "relevant_to",
+          "dst": "concept:company:zed-industries",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "iamcorey-wake",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "browserbase/stagehand",
+      "url": "https://github.com/browserbase/stagehand",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25348★, MIT, TypeScript, push 2026-09-24) — SDK de browser automation con AI agents (Claude Code, Codex, Eve, Mastra). 25k★, incumbente estable, sigue empujado por releases (`browse@0.11.0`).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (referencia consolidada; si haces browser automation, ya lo conoces; el ángulo interesante es que ahora `browse` se releasea como paquete independiente del SDK)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "browserbase-stagehand",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "tursodatabase/turso",
+      "url": "https://github.com/tursodatabase/turso",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(24368★, MIT, Rust, push 2026-09-24) — \"LLVM of databases\": SQLite-compatible que ahora también habla Postgres experimental.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (incumbente trending; si trabajas con SQLite embedded vale ojear el branch de Postgres-compatible; sigue el patrón de SQLite-first DBs con extensión a wire-protocol mainstream)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tursodatabase-turso",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "opentofu/opentofu",
+      "url": "https://github.com/opentofu/opentofu",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(30272★, MPL-2.0, Go, push 2026-09-24) — Terraform fork OSS, declarative cloud infrastructure.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (incumbente en IaC OSS; trending estable)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opentofu-opentofu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "kubernetes-sigs/karpenter",
+      "url": "https://github.com/kubernetes-sigs/karpenter",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2202★, Apache-2.0, Go, push 2026-09-24) — K8s node autoscaler.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (incumbente; combinado con el `skyhook-io/radar` que cubrimos ayer, cierra \"AI + K8s\" — Radar expone MCP, Karpenter provisiona)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kubernetes-sigs-karpenter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "flamingo-stack/openframe-cli",
+      "url": "https://github.com/flamingo-stack/openframe-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(529★, **NOASSERTION**, Go, push 2026-09-24) — CLI para gestionar clusters OpenFrame K8s y dev workflows.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (NOASSERTION — leer LICENSE antes de adopción; valor incierto por ahora)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "flamingo-stack-openframe-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "AtomicBot-ai/Atomic-Chat",
+      "url": "https://github.com/AtomicBot-ai/Atomic-Chat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1610★, **NOASSERTION**, TypeScript, push 2026-09-23) — Local AI app con inference engine para agents (Llama.cpp, MLX, GGUF, MCP support).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (la tesis \"local-first LLM inference con MCP\" es interesante; NOASSERTION bloquea adopción build-dependency, pero como app descargable es legítimo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "atomicbot-ai-atomic-chat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-xiaomimimo-mimo-code", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-xiaomimimo-mimo-code", "dst": "tema:xiaomimimo-mimo-code", "rel": "trata", "added": "2026-09-24"}
+{"src": "XiaomiMiMo/MiMo-Code", "dst": "concept:agent-framework-cli-typescript", "rel": "implements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "XiaomiMiMo/MiMo-Code", "dst": "concept:company:xiaomi", "rel": "relevant_to", "added": "2026-09-24", "primera_mencion": null}
+{"src": "XiaomiMiMo/MiMo-Code", "dst": "concept:company:xiaomi-mimo", "rel": "relevant_to", "added": "2026-09-24", "primera_mencion": null}
+{"src": "XiaomiMiMo/MiMo-Code", "dst": "repo:anthropics/claude-code", "rel": "competes_with", "added": "2026-09-24", "primera_mencion": "2026-07-28"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-deusdata-codebase-memory-mcp", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-deusdata-codebase-memory-mcp", "dst": "tema:deusdata-codebase-memory-mcp", "rel": "trata", "added": "2026-09-24"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "concept:code-intelligence-mcp-native-c", "rel": "implements", "added": "2026-09-24", "primera_mencion": "2026-07-04"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "concept:tree-sitter-embedded", "rel": "uses", "added": "2026-09-24", "primera_mencion": "2026-07-04"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "concept:sqlite-in-memory", "rel": "uses", "added": "2026-09-24", "primera_mencion": "2026-07-04"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "concept:mcp-server", "rel": "uses", "added": "2026-09-24", "primera_mencion": "2026-07-04"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "repo:tirth8205/code-review-graph", "rel": "competes_with", "added": "2026-09-24", "primera_mencion": "2026-07-04"}
+{"src": "DeusData/codebase-memory-mcp", "dst": "concept:cross-service-architectural-analysis", "rel": "enables", "added": "2026-09-24", "primera_mencion": "2026-07-04"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-dream-num-univer-workspace", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-dream-num-univer-workspace", "dst": "tema:dream-num-univer-workspace", "rel": "trata", "added": "2026-09-24"}
+{"src": "dream-num/univer-workspace", "dst": "concept:office-workspace-local-first-ai", "rel": "implements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "dream-num/univer-workspace", "dst": "repo:univer", "rel": "complements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "dream-num/univer-workspace", "dst": "concept:microsoft-365-copilot", "rel": "competes_with", "added": "2026-09-24", "primera_mencion": null}
+{"src": "dream-num/univer-workspace", "dst": "concept:company:dream-num", "rel": "relevant_to", "added": "2026-09-24", "primera_mencion": null}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-ryze-ai-adgent-open-seo-mcp-skills", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-ryze-ai-adgent-open-seo-mcp-skills", "dst": "tema:ryze-ai-adgent-open-seo-mcp-skills", "rel": "trata", "added": "2026-09-24"}
+{"src": "Ryze-AI-Adgent/open-seo-mcp-skills", "dst": "concept:agent-skills-vertical-seo", "rel": "implements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "Ryze-AI-Adgent/open-seo-mcp-skills", "dst": "concept:mcp-server", "rel": "uses", "added": "2026-09-24", "primera_mencion": "2026-08-24"}
+{"src": "Ryze-AI-Adgent/open-seo-mcp-skills", "dst": "concept:dataforseo-api", "rel": "uses", "added": "2026-09-24", "primera_mencion": null}
+{"src": "Ryze-AI-Adgent/open-seo-mcp-skills", "dst": "concept:geo-optimization-agentic", "rel": "enables", "added": "2026-09-24", "primera_mencion": null}
+{"src": "Ryze-AI-Adgent/open-seo-mcp-skills", "dst": "repo:ai-evals-course/evals-skills", "rel": "complements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "Ryze-AI-Adgent/open-seo-mcp-skills", "dst": "concept:company:ryze-ai", "rel": "relevant_to", "added": "2026-09-24", "primera_mencion": null}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-iamcorey-wake", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-iamcorey-wake", "dst": "tema:iamcorey-wake", "rel": "trata", "added": "2026-09-24"}
+{"src": "iAmCorey/Wake", "dst": "concept:coding-agent-session-manager", "rel": "implements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "iAmCorey/Wake", "dst": "concept:rust-gpui-framework", "rel": "uses", "added": "2026-09-24", "primera_mencion": null}
+{"src": "iAmCorey/Wake", "dst": "repo:CopilotKit/openmuse", "rel": "complements", "added": "2026-09-24", "primera_mencion": null}
+{"src": "iAmCorey/Wake", "dst": "concept:agent-session-persistence", "rel": "enables", "added": "2026-09-24", "primera_mencion": null}
+{"src": "iAmCorey/Wake", "dst": "concept:company:zed-industries", "rel": "relevant_to", "added": "2026-09-24", "primera_mencion": null}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-browserbase-stagehand", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-browserbase-stagehand", "dst": "tema:browserbase-stagehand", "rel": "trata", "added": "2026-09-24"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-tursodatabase-turso", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-tursodatabase-turso", "dst": "tema:tursodatabase-turso", "rel": "trata", "added": "2026-09-24"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-opentofu-opentofu", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-opentofu-opentofu", "dst": "tema:opentofu-opentofu", "rel": "trata", "added": "2026-09-24"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-kubernetes-sigs-karpenter", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-kubernetes-sigs-karpenter", "dst": "tema:kubernetes-sigs-karpenter", "rel": "trata", "added": "2026-09-24"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-flamingo-stack-openframe-cli", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-flamingo-stack-openframe-cli", "dst": "tema:flamingo-stack-openframe-cli", "rel": "trata", "added": "2026-09-24"}
+{"src": "boletin:2026-09-24", "dst": "item:https-github-com-atomicbot-ai-atomic-chat", "rel": "menciona", "added": "2026-09-24"}
+{"src": "item:https-github-com-atomicbot-ai-atomic-chat", "dst": "tema:atomicbot-ai-atomic-chat", "rel": "trata", "added": "2026-09-24"}
