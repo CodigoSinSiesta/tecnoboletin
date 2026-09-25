@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "date": "2026-09-25",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Trail of Bits y Pydantic blindan al coding agent en producción",
+  "posicionamiento": "Dos marcas de primer nivel responden al mismo problema desde ángulos distintos: el coding agent tiene permiso para ejecutar código y tocar tu sistema, y el ecosistema necesita aislamientos serios. Pydantic firma un intérprete Python en Rust; Trail of Bits firma una microVM Firecracker. La capa de confianza para agentes deja de ser territorio de hobbyistas y entra al de firmas con reputación que se juegan su nombre.",
+  "convergencia_stack_css": "Ambas piezas encajan en la línea editorial local-first y de soberanía técnica de CSS: Monty corre Python sin necesitar un servicio en la nube, coop aísla al agente con infra open source (Firecracker + Lima) sin depender de un servicio de seguridad propietario, y el stack GGML/stable-diffusion.cpp del hallazgo 7 refuerza la misma tesis de inferencia on-device.",
+  "cruzado_grafo": "Se refuerzan nodos ya cubiertos: la categoría agent-memory-persistent de Hindsight vuelve a aparecer (primera mención 2026-08-10), junto con concept:firecracker-microvm (2026-09-16) y la consolidación de la competencia contra arcbox (2026-08-22). Context-engineering reaparece por segunda vez tras su primera mención del 2026-09-02 con llm-wiki-compiler.",
+  "tendencias_5_boletines": "La línea editorial de los últimos cinco días traza un movimiento claro: primero Firecracker como pieza de sandbox (2026-09-16), luego la computación del agente personal (2026-09-23), y hoy dos firmas reputadas cierran el círculo de seguridad y portabilidad. Los hallazgos de memoria persistente y context engineering ya venían cocinándose desde agosto.",
+  "alertas": [
+    "Magpie redirige llamadas a proveedores modelo: revisar Términos de Servicio de Anthropic y OpenAI antes de enrutar tráfico de Claude Code, porque algunos prohíbe sustitución de backend.",
+    "vectorize-io/hindsight lleva 28k★ en 11 meses: comprobar si la tracción de producción justifica el bombo o si es inflada por marketing de Vectorize.io."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Trail of Bits firmando una microVM para coding agents es señal editorial de peso: un hilo o pieza breve sobre por qué Firecracker + Lima se está convirtiendo en el estándar de facto para aislar coding agents"
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Monty reemplaza el trío Pyodide/RestrictedPython/subprocesos Docker para Python seguro. Vale la pena probar si su API soporta los casos típicos de un coding agent y compararlo en latencia con RestrictedPython."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Magpie del autor de OpenCode democratiza el switching entre modelos. Probarlo en local con Claude Code + DeepSeek/Kimi daría una pieza concreta sobre soberanía de modelo para developers europeos/latinos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Hindsight consolida su categoría (segunda aparición en cinco días). Si Letta/MemGPT actualizan su respuesta, hay movimiento real; si no, Hindsight puede estar capturando la narrativa."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "NVIDIA Model-Optimizer unifica quantization, distillation, pruning y sparsity. Merece una pieza técnica sobre si realmente reemplaza DeepSpeed+TensorRT-LLM en un pipeline realista o si es marketing de marca."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

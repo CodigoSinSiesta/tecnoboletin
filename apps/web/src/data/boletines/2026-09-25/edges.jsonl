@@ -1,0 +1,71 @@
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-pydantic-monty", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-pydantic-monty", "dst": "tema:pydantic-monty", "rel": "trata", "added": "2026-09-25"}
+{"src": "pydantic/monty", "dst": "concept:python-sandbox-rust", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "pydantic/monty", "dst": "concept:rust-interpreter-embedded", "rel": "uses", "added": "2026-09-25", "primera_mencion": null}
+{"src": "pydantic/monty", "dst": "concept:agent-code-execution-secure", "rel": "enables", "added": "2026-09-25", "primera_mencion": null}
+{"src": "pydantic/monty", "dst": "concept:company:pydantic", "rel": "complements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "pydantic/monty", "dst": "concept:pyodide", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": null}
+{"src": "pydantic/monty", "dst": "concept:company:samuel-colvin", "rel": "relevant_to", "added": "2026-09-25", "primera_mencion": null}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-trailofbits-coop", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-trailofbits-coop", "dst": "tema:trailofbits-coop", "rel": "trata", "added": "2026-09-25"}
+{"src": "trailofbits/coop", "dst": "concept:agent-vm-isolated-firecracker", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "trailofbits/coop", "dst": "concept:firecracker-microvm", "rel": "uses", "added": "2026-09-25", "primera_mencion": "2026-09-16"}
+{"src": "trailofbits/coop", "dst": "concept:lima-macos", "rel": "uses", "added": "2026-09-25", "primera_mencion": null}
+{"src": "trailofbits/coop", "dst": "concept:coding-agent-sandbox-secure", "rel": "enables", "added": "2026-09-25", "primera_mencion": null}
+{"src": "trailofbits/coop", "dst": "concept:company:trail-of-bits", "rel": "relevant_to", "added": "2026-09-25", "primera_mencion": null}
+{"src": "trailofbits/coop", "dst": "repo:arcboxlabs/arcbox", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": "2026-08-22"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-yetone-magpie", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-yetone-magpie", "dst": "tema:yetone-magpie", "rel": "trata", "added": "2026-09-25"}
+{"src": "yetone/magpie", "dst": "concept:model-router-menubar-macos", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "yetone/magpie", "dst": "concept:provider-api-multiplexing", "rel": "uses", "added": "2026-09-25", "primera_mencion": null}
+{"src": "yetone/magpie", "dst": "concept:vendor-agnostic-coding-agent", "rel": "enables", "added": "2026-09-25", "primera_mencion": null}
+{"src": "yetone/magpie", "dst": "concept:company:opencode", "rel": "relevant_to", "added": "2026-09-25", "primera_mencion": null}
+{"src": "yetone/magpie", "dst": "concept:openrouter", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": "2026-09-23"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-nvidia-model-optimizer", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-nvidia-model-optimizer", "dst": "tema:nvidia-model-optimizer", "rel": "trata", "added": "2026-09-25"}
+{"src": "NVIDIA/Model-Optimizer", "dst": "concept:model-optimization-unified-api", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "NVIDIA/Model-Optimizer", "dst": "concept:tensorrt-llm", "rel": "uses", "added": "2026-09-25", "primera_mencion": null}
+{"src": "NVIDIA/Model-Optimizer", "dst": "concept:model-deployment-efficient", "rel": "enables", "added": "2026-09-25", "primera_mencion": null}
+{"src": "NVIDIA/Model-Optimizer", "dst": "concept:company:nvidia", "rel": "relevant_to", "added": "2026-09-25", "primera_mencion": null}
+{"src": "NVIDIA/Model-Optimizer", "dst": "repo:deepseek-ai/DeepSpeed", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": null}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-vectorize-io-hindsight", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-vectorize-io-hindsight", "dst": "tema:vectorize-io-hindsight", "rel": "trata", "added": "2026-09-25"}
+{"src": "vectorize-io/hindsight", "dst": "concept:agent-memory-persistent", "rel": "implements", "added": "2026-09-25", "primera_mencion": "2026-08-10"}
+{"src": "vectorize-io/hindsight", "dst": "concept:vector-store-external", "rel": "uses", "added": "2026-09-25", "primera_mencion": "2026-08-10"}
+{"src": "vectorize-io/hindsight", "dst": "concept:agent-session-continuity", "rel": "enables", "added": "2026-09-25", "primera_mencion": "2026-08-10"}
+{"src": "vectorize-io/hindsight", "dst": "concept:company:vectorize", "rel": "relevant_to", "added": "2026-09-25", "primera_mencion": "2026-08-10"}
+{"src": "vectorize-io/hindsight", "dst": "repo:letta-ai/letta", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-alchemy-run-alchemy", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-alchemy-run-alchemy", "dst": "tema:alchemy-run-alchemy", "rel": "trata", "added": "2026-09-25"}
+{"src": "alchemy-run/alchemy", "dst": "concept:iac-effects-typed", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "alchemy-run/alchemy", "dst": "concept:effect-ts", "rel": "uses", "added": "2026-09-25", "primera_mencion": null}
+{"src": "alchemy-run/alchemy", "dst": "concept:type-safe-cloud-deploy", "rel": "enables", "added": "2026-09-25", "primera_mencion": null}
+{"src": "alchemy-run/alchemy", "dst": "repo:pulumi/pulumi", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": null}
+{"src": "alchemy-run/alchemy", "dst": "concept:cloudflare-workers", "rel": "relevant_to", "added": "2026-09-25", "primera_mencion": null}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-atomicstrata-llm-wiki-compiler", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-atomicstrata-llm-wiki-compiler", "dst": "tema:atomicstrata-llm-wiki-compiler", "rel": "trata", "added": "2026-09-25"}
+{"src": "atomicstrata/llm-wiki-compiler", "dst": "concept:knowledge-compiler-agent-context", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "atomicstrata/llm-wiki-compiler", "dst": "concept:context-engineering", "rel": "implements", "added": "2026-09-25", "primera_mencion": "2026-09-02"}
+{"src": "atomicstrata/llm-wiki-compiler", "dst": "concept:author:andrej-karpathy", "rel": "inspired_by", "added": "2026-09-25", "primera_mencion": null}
+{"src": "atomicstrata/llm-wiki-compiler", "dst": "repo:anthropics/skills", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": "2026-08-11"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-leejet-stable-diffusion-cpp", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-leejet-stable-diffusion-cpp", "dst": "tema:leejet-stable-diffusion-cpp", "rel": "trata", "added": "2026-09-25"}
+{"src": "leejet/stable-diffusion.cpp", "dst": "concept:diffusion-cpp-runtime", "rel": "implements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "leejet/stable-diffusion.cpp", "dst": "concept:ggml-tensor-library", "rel": "uses", "added": "2026-09-25", "primera_mencion": null}
+{"src": "leejet/stable-diffusion.cpp", "dst": "concept:on-device-image-generation", "rel": "enables", "added": "2026-09-25", "primera_mencion": null}
+{"src": "leejet/stable-diffusion.cpp", "dst": "repo:ggerganov/llama.cpp", "rel": "complements", "added": "2026-09-25", "primera_mencion": null}
+{"src": "leejet/stable-diffusion.cpp", "dst": "repo:comfyanonymous/ComfyUI", "rel": "competes_with", "added": "2026-09-25", "primera_mencion": null}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-fosowl-agenticseek", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-fosowl-agenticseek", "dst": "tema:fosowl-agenticseek", "rel": "trata", "added": "2026-09-25"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-zeronsh-zeron", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-zeronsh-zeron", "dst": "tema:zeronsh-zeron", "rel": "trata", "added": "2026-09-25"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-chunxiaoxx-nautilus-compass", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-chunxiaoxx-nautilus-compass", "dst": "tema:chunxiaoxx-nautilus-compass", "rel": "trata", "added": "2026-09-25"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-allenpeng0705-envoymesh", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-allenpeng0705-envoymesh", "dst": "tema:allenpeng0705-envoymesh", "rel": "trata", "added": "2026-09-25"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-superdesigndev-treg", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-superdesigndev-treg", "dst": "tema:superdesigndev-treg", "rel": "trata", "added": "2026-09-25"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-devdotfast-whiteboard", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-devdotfast-whiteboard", "dst": "tema:devdotfast-whiteboard", "rel": "trata", "added": "2026-09-25"}
+{"src": "boletin:2026-09-25", "dst": "item:https-github-com-asokurasu-text-humanizer", "rel": "menciona", "added": "2026-09-25"}
+{"src": "item:https-github-com-asokurasu-text-humanizer", "dst": "tema:asokurasu-text-humanizer", "rel": "trata", "added": "2026-09-25"}
