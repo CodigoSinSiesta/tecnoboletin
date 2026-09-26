@@ -1,0 +1,466 @@
+{
+  "version": 2,
+  "date": "2026-09-26",
+  "boletin_origen": "2026-09-26-trending.md",
+  "resumen_ejecutivo": "- **`unclecode/crawl4ai` pasa de librería OSS a producto vertical con cloud + MCP** (84277★, Apache-2.0, Python, último push 2026-09-25). El crawler LLM-ready más popular del ecosistema (84k★, 8.7k forks) lanza **Crawl4AI Cloud** (scrape/search/answer/extract vía REST + MCP server oficial) y entra así en el club restringido de vendors open-source que monetizan vía pay-per-use una API que ya es estándar de facto. Para agentes AI, el movimiento cierra el dilema \"DIY Playwright\" vs \"Firecrawl/ScrapingBee\": ahora hay una opción nativa del ecosistema Python con `/mcp` integrable en Claude Code.\n- **`vxcontrol/pentagi` demuestra que AI pentesting ya es categoría, no demo** (24972★, MIT, Go, último push 2026-09-23). PentAGI expone un sistema multi-agente (graphiti knowledge graph + 9 proveedores LLM incluyendo Ollama/Bedrock/DeepSeek/Qwen/Minimax + GraphQL API) que automatiza reconnaissance, exploitation y reporting. Tema editorial: el pentesting agent se ha consolidado como producto serio, no como PoC de Anthropic/Anthropic-comparable.\n- **`tokio-rs/topcoat` oficializa la expansión de Tokio al full-stack web** (5373★, MIT, Rust, último push 2026-09-24). El equipo detrás del runtime async más usado del ecosistema Rust (`tokio.rs`) lanza un framework \"batteries-included\" con router, view engine, file-based routing y macros `#[page]`/`#[component]` tipo JSX. Tema editorial: Tokio se mueve del async-runtime al **stack-completo**, compitiendo directamente con Axum + Maud + Tokio ServeMux.\n- **`openbkn-ai/bkn-foundry` introduce \"ontology-driven\" como categoría de backend para agentes AI empresariales** (573★, NOASSERTION, Go, último push 2026-09-26). Backend para OpenBKN: convierte datos/documentos/procesos dispersos en una \"business knowledge network\" tipada que los agentes pueden ejecutar y verificar. Tema editorial: aparece el primer producto serio en español/chino con licencia NOASSERTION que apunta al espacio \"ontology + agent governance\", categoría que hasta ahora solo Letta/MemGPT habían tocado.\n- **`samber/cc-skills-golang` consolida el patrón \"Agent Skills universal\" cross-tool** (3336★, MIT, Go, último push 2026-09-07). Skills específicas de Go (performance, testing, security, observability) instalables via `npx skills add` en Claude Code, Codex, Gemini CLI, Cursor, Copilot, Antigravity y OpenClaw. Tema editorial: el \"agent skills\" como categoría transversal ya tiene vendor con distribución seria (`samber/cc`, `samber/cc-skills`, `agentskills.io`); se aleja del tutorial de Anthropic hacia producto mantenido.\nFuentes consultadas: Trendshift daily (25 items, 1 sponsor filtrado), GitHub Trending daily + slices TypeScript/Python/Rust/Go (62 repos únicos, combinados con Trendshift = 86 candidatos antes de dedupe), GitHub REST API para 16 candidatos verificados (15 OK, 1 Not Found descartado). Blogwatcher no publicado hoy — la dependencia upstream continúa caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "unclecode/crawl4ai",
+      "url": "https://github.com/unclecode/crawl4ai",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Crawler + scraper open source para LLMs y AI agents** que convierte cualquier web en Markdown limpio listo para RAG. Es el referente OSS del espacio (84k★, 8,7k forks, primer release serio en mayo de 2024, v0.9.4 publicado el 23 de septiembre de 2026). Hoy da el salto a producto comercial con **Crawl4AI Cloud** (scrape/search/answer/extract con un único API key y MCP server oficial integrable vía `claude mcp add`).",
+        "por_que_importa": "Editorialmente marca el pivote de Crawl4AI —que ya cubrimos el 2026-07-10 cuando era solo un crawler OSS para LLM— hacia producto comercial: el propio vendor ahora vende Crawl4AI Cloud (scrape/search/answer/extract bajo una sola API key) y publica un MCP server oficial integrable con `claude mcp add`. El ángulo concreto para un lector de AI+dev: (a) cierra el debate «DIY con Playwright vs. Firecrawl vs. ScrapingBee» con una opción nativa del ecosistema Python/MCP —todas esas alternativas ya aparecieron en nuestro grafo el 2026-07-10 como competidores del mismo nodo—; (b) el modelo pay-per-use con «$10 gratis hasta el 31 de diciembre de 2026» es un patrón de conversión agresivo que estamos viendo repetirse en herramientas OSS que dan el salto a SaaS vertical; (c) cualquier Claude Code / Codex / Cursor —el mismo MCP host que Cubrimos el 2026-07-10 como nodo de arquitectura— puede ahora usar Crawl4AI como primitiva de primera clase para que sus agentes fetcheen web limpia en Markdown lista para RAG. Caveat honesto: el item no aporta capturas ni métricas de uso del Cloud, así que el «salto a producto» se constata por el anuncio y la disponibilidad del MCP server, no por tracción medida.",
+        "madurez_senales": "84277★ · 8714 forks · Python · Apache-2.0 · creado 2024-05-09 · último push 2026-09-25 · Desc oficial: \"Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key.\" · Topics: `ai`, `ai-agents`, `crawler`, `data-extraction`, `llm`, `markdown`, `mcp`, `open-source`, `playwright`, `python`, `rag`, `scraper`, `web-crawler`, `web-crawling`, `web-scraping` · Activo, release mensual, archivado=false, disabled=false.",
+        "accion_sugerida": "**explorar** (vale la pena probar el MCP server oficial en un Claude Code real: el `claude mcp add --transport http crawl4ai https://api.crawl4ai.com/mcp` con el primer crédito gratis es la mejor manera de medir la propuesta vs Playwright DIY; **vigilar** si la versión cloud escala correctamente porque Firecrawl ya tropezó en reliability; **ignorar para adopción profunda** hasta validar TOS + pricing real post-promoción).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "unclecode/crawl4ai",
+          "rel": "implements",
+          "dst": "concept:llm-ready-scraping",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "unclecode/crawl4ai",
+          "rel": "competes_with",
+          "dst": "concept:firecrawl",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "unclecode/crawl4ai",
+          "rel": "competes_with",
+          "dst": "concept:scrapingbee",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "unclecode/crawl4ai",
+          "rel": "enables",
+          "dst": "concept:agent-web-fetch-mcp",
+          "primera_mencion": "2026-07-10"
+        },
+        {
+          "src": "unclecode/crawl4ai",
+          "rel": "complements",
+          "dst": "concept:claude-code-mcp-host",
+          "primera_mencion": "2026-07-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "unclecode-crawl4ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "vxcontrol/pentagi",
+      "url": "https://github.com/vxcontrol/pentagi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Sistema multi-agente para penetration testing automatizado** que combina Graphiti (knowledge graph), 9 proveedores LLM (OpenAI, Anthropic, Google Gemini, AWS Bedrock, Ollama, DeepSeek, GLM, Kimi, Qwen, MiniMax) y una API GraphQL. PentAGI permite correr agentes que hacen reconnaissance, exploitation y reporting, e incluye «agent supervision» para limitar al LLM a un subconjunto del host vía APIs nativas (sin necesidad del binario `flux`/`argocd`). El repo trae demo video, integración con Langfuse y Docker compose para auto-deploy.",
+        "por_que_importa": "Editorialmente, el AI pentesting sale del PoC al producto. Cubrimos por primera vez el nodo «AI pentesting agent» el 2026-07-09, cuando Shannon (KeygraphHQ) era el referente único; hoy PentAGI lo supera en escala (25k★, multi-tenant, knowledge graph con Graphiti, sandbox RCE-aware) y se posiciona como competidor directo de ese mismo nodo en nuestro grafo. Para un lector de AI+dev, el caso de estudio concreto es que «agente + red team + LLM multi-provider» ya es un patrón de producto vendible y no solo una demo: PentAGI conecta Graphiti como knowledge graph, expone una API GraphQL, e integra9 proveedores LLM —incluyendo Ollama para inferencia local, y Qwen/GLM/Kimi/MiniMax para mercados no angloparlantes—. Esto último es especialmente relevante para equipos europeos o asiáticos que no pueden enviar datos a OpenAI/Anthropic porCompliance. Caveat honesto: el item menciona «agent supervision» para limitar al LLM a un subconjunto del host, pero no concreta con qué APIs nativas ni cómo se compara con sandboxes tipo Docker/gVisor; queda como pregunta abierta para quien evalúe adoptarlo.",
+        "madurez_senales": "24972★ · 3207 forks · Go · MIT · creado 2025-01-06 · último push 2026-09-23 · Desc oficial: \"Fully autonomous AI Agents system capable of performing complex penetration testing tasks\" · Topics: `ai-agents`, `ai-security-tool`, `anthropic`, `autonomous-agents`, `golang`, `gpt`, `graphql`, `multi-agent-system`, `offensive-security`, `open-source`, `openai`, `penetration-testing`, `penetration-testing-tools`, `react`, `security-automation`, `security-testing`, `security-tools`, `self-hosted` · Activo, contributors múltiples, archivado=false.",
+        "accion_sugerida": "**vigilar** (es la pieza más interesante del espacio AI red-team OSS ahora mismo; **probar** con un target CTF-style para validar que el supervision pattern evita escapes al host; **ignorar para producción** hasta que la licencia MIT y la ausencia de rate-limits abusivos se confirmen en benchmarks contra `KeygraphHQ/shannon`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vxcontrol/pentagi",
+          "rel": "implements",
+          "dst": "concept:ai-pentesting-agent",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "vxcontrol/pentagi",
+          "rel": "uses",
+          "dst": "concept:graphiti-knowledge-graph",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "vxcontrol/pentagi",
+          "rel": "uses",
+          "dst": "concept:multi-llm-provider",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "vxcontrol/pentagi",
+          "rel": "competes_with",
+          "dst": "keygraphhq/shannon",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "vxcontrol/pentagi",
+          "rel": "enables",
+          "dst": "concept:offensive-security-automation",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "vxcontrol/pentagi",
+          "rel": "relevant_to",
+          "dst": "concept:agent-supervision-pattern",
+          "primera_mencion": "2026-07-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vxcontrol-pentagi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "tokio-rs/topcoat",
+      "url": "https://github.com/tokio-rs/topcoat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Framework «batteries-included» para apps web full-stack en Rust**, publicado por el equipo Tokio (los autores de `tokio.rs`, `axum`, `hyper`, `tower`). Ofrece router con file-based discovery, view engine JSX-like (`#[page]`, `#[component]`), integración con CLI y macros para extraer el routing de la estructura del proyecto. El README declara «early-stage and experimental. Expect breaking changes», pero viene del vendor con más autoridad del ecosistema async-Rust.",
+        "por_que_importa": "Editorialmente, primera señal seria de que el equipo Tokio —autores de tokio.rs, axum, hyper, tower— quiere controlar el stack completo, no solo el runtime. Cubrimos por primera vez el nodo «Rust fullstack framework» el 2026-07-18, y Topcoat entra directamente a competir con Dioxus y Leptos en ese mismo grafo, además de declararse relevante respecto al propio axum que el equipo mantiene. Hasta ahora la composición típica de un proyecto Rust full-stack era pegar piezas —`axum + tower + sqlx + maud + askama`— y cada equipo debía decidir su propio árbol de dependencias; Topcoat propone **un solo vendor con un solo árbol de decisiones**, lo que cambia la dinámica competitiva del espacio. El README es claro en sus caveats: «early-stage and experimental. Expect breaking changes», y el item confirma apenas 5 meses de vida y 5.373★, así que todavía no es apuesta de producción. Caveat honesto: no hay benchmarks publicados comparando Topcoat contra Leptos/Dioxus en render, HMR o tiempo de build, así que la promesa «batteries-included» hoy es arquitectónica, no empírica.",
+        "madurez_senales": "5373★ · 183 forks · Rust · MIT · creado 2026-04-03 · último push 2026-09-24 · Desc oficial: \"A batteries-included framework for building web apps\" · Topics: ninguno declarado (vendor considera que la posición habla por sí sola) · Activo, releases recientes, archivado=false. · Caveat: solo 5 meses de vida, breaking changes garantizados.",
+        "accion_sugerida": "**vigilar** (vendor serio + momento temprano = ventana de adopción; **probar** clonando el repo y siguiendo el tour oficial antes del primer breaking change; **ignorar para producción** hasta v1.0).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "tokio-rs/topcoat",
+          "rel": "implements",
+          "dst": "concept:rust-fullstack-framework",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "tokio-rs/topcoat",
+          "rel": "uses",
+          "dst": "concept:tokio-runtime",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "tokio-rs/topcoat",
+          "rel": "competes_with",
+          "dst": "concept:dioxus",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "tokio-rs/topcoat",
+          "rel": "competes_with",
+          "dst": "concept:leptos",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "tokio-rs/topcoat",
+          "rel": "relevant_to",
+          "dst": "concept:axum",
+          "primera_mencion": "2026-07-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tokio-rs-topcoat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "openbkn-ai/bkn-foundry",
+      "url": "https://github.com/openbkn-ai/bkn-foundry",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Backend para OpenBKN (Open Business Knowledge Network)**: convierte datos, documentos, lógica, reglas y experiencia experta dispersas en una red de conocimiento ontology-driven que los agentes AI pueden ejecutar, verificar y gobernar. Trae SDK en TypeScript, AI agent skill propio, deploy one-click a Kubernetes con `deploy.sh`, preflight checks, docs OpenAPI y release notes estructurados. La tesis: los LLMs fallan en producción empresarial porque «leen data pattern» — OpenBKN los obliga a «leer ontología» (un esquema declarado).",
+        "por_que_importa": "Editorialmente, «backend ontology-driven para agentes» emerge como categoría de producto enterprise. El item lo conecta directamente con `atomicstrata/llm-wiki-compiler`, que Cubrimos el 2026-09-25 —hace apenas un boletín— bajo la etiqueta «context engineering»; OpenBKN es la versión enterprise de esa misma idea: en lugar de pegar knowledge bases ad-hoc, los agentes consumen un esquema formal (ontología) que el backend puede ejecutar, verificar y gobernar. Para un lector de AI+dev, lo concreto es: (a) SDK TypeScript, OpenAPI, deploy one-click a Kubernetes con `deploy.sh` y preflight checks —no es un paper, es un runtime con onboarding real—; (b) el repositorio original trae docs en inglés y chino simplificado, lo que sugiere base instalada en China y un ángulo de fragmentación geográfica del espacio agent que normalmente no se ve desde Europa; (c) la licencia es NOASSERTION, no MIT ni Apache-2.0, así que antes de adoptarlo hay que leer el archivo `LICENSE` directamente —en nuestro grafo este riesgo ya está modelado como nodo `license-noassertion-blocks-adoption`—. Caveat honesto: con 573★ y 4 meses de vida, la tracción enterprise real aún no está demostrada con casos públicos.",
+        "madurez_senales": "573★ · 53 forks · Go · **NOASSERTION** (revisar LICENSE antes de adopción) · creado 2026-05-26 · último push 2026-09-26 · Desc oficial: \"BKN Foundry is the Ontology back-end foundation of OpenBKN. It transforms ontology-driven business semantics into runtime services: data, logic, actions, security governance, and observability.\" · Topics: `context-engineering`, `harness-engineering`, `ontology`, `ontology-engineering`, `ontology-platform`, `opensource-ontology-platform` · Activo, primer push hoy, archivado=false. · Caveat crítico: licencia NOASSERTION — leer LICENSE antes de build-dependency.",
+        "accion_sugerida": "**leer** (clonar y revisar `LICENSE` para entender términos reales; **vigilar** si crece en estrellas y contributors — el espacio ontology-driven es serio y este es el primer producto con deploy real; **explorar** si Alejandro tiene un caso enterprise donde aplicar).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "openbkn-ai/bkn-foundry",
+          "rel": "implements",
+          "dst": "concept:ontology-driven-backend",
+          "primera_mencion": null
+        },
+        {
+          "src": "openbkn-ai/bkn-foundry",
+          "rel": "complements",
+          "dst": "atomicstrata/llm-wiki-compiler",
+          "primera_mencion": "2026-09-25"
+        },
+        {
+          "src": "openbkn-ai/bkn-foundry",
+          "rel": "relevant_to",
+          "dst": "concept:enterprise-agent-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "openbkn-ai/bkn-foundry",
+          "rel": "risk",
+          "dst": "concept:license-noassertion-blocks-adoption",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbkn-ai-bkn-foundry",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "samber/cc-skills-golang",
+      "url": "https://github.com/samber/cc-skills-golang",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Colección curada de skills para AI coding assistants específica para Golang** (performance, testing, security, observability). Instalable vía `npx skills add` universal (skills.sh), o vía plugins oficiales de Claude Code, Codex, Gemini CLI, Cursor, Copilot, Antigravity, OpenClaw. El README es taxativo: «**No AI slop here. AI-made skills are useless.** Built for Claude Code, Codex, Gemini, Copilot, Antigravity, Cursor...» — explícitamente human-curated, testeadas y retocadas.",
+        "por_que_importa": "Editorialmente, el concepto de «Agent Skills» pasa de ser un tutorial suelto de Anthropic a categoría de producto con vendor de referencia. Cubrimos por primera vez el nodo `anthropic-skills-official` —el competidor directo— en un boletín previo, y `samber/cc-skills-golang` aparece en el grafo como competidor de ese nodo y como complemento del marketplace de plugins de Claude Code. Para un lector de AI+dev, lo accionable es triple: (a) las skills se instalan con un comando universal (`npx skills add`, vía skills.sh) o vía plugins oficiales de Claude Code, Codex, Gemini CLI, Cursor, Copilot, Antigravity y OpenClaw —el mismo modelo de distribución cross-vendor ya tiene convención asentada, `agentskills.io`—; (b) el autor (samber) ya tiene tres repos en el espacio —`samber/cc` para config de Claude Code, `samber/cc-skills` para skills agnósticas de lenguaje, y este para Go— lo que confirma que «skills como paquete instalable» es una línea de producto, no un one-off; (c) la línea editorial del README —«No AI slop here. AI-made skills are useless»— abre un mercado para skills curadas por defecto como nuevo formato, distinto del ruido que generan los generadores automáticos. Caveat honesto: 3.336★ es tracción respetable pero modesta, y no hay métricas públicas de cuántas de esas skills están siendo adoptadas en producción real vs. simplemente starred.",
+        "madurez_senales": "3336★ · 219 forks · Go (es un repo de skills, no de runtime) · MIT · creado 2026-03-21 · último push 2026-09-07 · Desc oficial: \"🧑‍🎨 A collection of Golang agentic skills that works\" · Topics: `agent`, `agent-skills`, `ai`, `antigravity`, `claude`, `claude-code`, `code`, `codex`, `coding`, `copilot`, `cursor`, `gemini`, `gemini-cli-extension`, `openclaw`, `opencode`, `plugin`, `skills`, `skillsmp`, `vibe-coding` · Activo, archivado=false.",
+        "accion_sugerida": "**probar** (`npx skills add https://github.com/samber/cc-skills-golang --all` en un proyecto Go real es 30 segundos; **vigilar** la pista `samber/cc-skills` (skills no-Go) porque es donde aparecerá el próximo bundle importante; **leer** el README para entender el formato de skill que el vendor considera correcto).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "samber/cc-skills-golang",
+          "rel": "implements",
+          "dst": "concept:agent-skills-pack",
+          "primera_mencion": null
+        },
+        {
+          "src": "samber/cc-skills-golang",
+          "rel": "enables",
+          "dst": "concept:universal-skills-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "samber/cc-skills-golang",
+          "rel": "complements",
+          "dst": "concept:claude-code-plugin-marketplace",
+          "primera_mencion": null
+        },
+        {
+          "src": "samber/cc-skills-golang",
+          "rel": "competes_with",
+          "dst": "concept:anthropic-skills-official",
+          "primera_mencion": null
+        },
+        {
+          "src": "samber/cc-skills-golang",
+          "rel": "relevant_to",
+          "dst": "concept:vendor-agent-skills-sh",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "samber-cc-skills-golang",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "nklmilojevic/sofka",
+      "url": "https://github.com/nklmilojevic/sofka",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1507★, último push 2026-09-25, Rust, Apache-2.0) — TUI de Kubernetes reimaginado en Rust sobre `kube-rs` + `ratatui`, async-first, integra Flux CD y Argo CD nativamente sin binarios externos, con evidencia determinista para debugging (sin AI)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — alternativa seria a `k9s` con UX moderna",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nklmilojevic-sofka",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "TNT-Likely/PanWatch",
+      "url": "https://github.com/TNT-Likely/PanWatch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1800★, último push 2026-09-25, Python, MIT) — Asistente self-hosted tipo watch-assistant AI (monitor de cartera) que integra `TauricResearch/TradingAgents` (76k★) para análisis multi-agente de carteras A-shares / HK / US, con push a Telegram / WeChat / DingTalk y PWA instalable",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — es el ejemplo más concreto de \"TradingAgents en producción\" hasta la fecha (no verificado: README mezcla chino/inglés, revisar `docs/tradingagents-flow.md`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tnt-likely-panwatch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "vladelaina/BongoCat",
+      "url": "https://github.com/vladelaina/BongoCat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2958★, último push 2026-09-26, C, AGPL-3.0) — Animación viral de un gato que golpea el teclado, escrita en C + SDL3 + OpenGL",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar para IA/dev; nota cultural sobre mascotas-virtuales-OpenGL en GitHub",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vladelaina-bongocat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "drakkan/sftpgo",
+      "url": "https://github.com/drakkan/sftpgo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12578★, último push 2026-09-24, Go, AGPL-3.0) — Servidor SFTP/HTTP/FTP/WebDAV full-featured con S3/GCS/Azure, MFA, encryption at rest y métricas Prometheus. Estable desde 2019, tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "renovada — **Acción:** vigilar si necesitas SFTP empresarial moderno (alternativa OSS a GoAnywhere/Moveit)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "drakkan-sftpgo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "fullsend-ai/fullsend",
+      "url": "https://github.com/fullsend-ai/fullsend",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(143★, último push 2026-09-26, Go, Apache-2.0) — Agente autónomo de desarrollo para GitHub/GitLab/Forgejo con `CONTRIBUTING.md` que incluye un «vouch process» curado",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — early pero la curaduría humana explícita es una señal interesante para el espacio \"agent commits to production\"",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fullsend-ai-fullsend",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "zhoushoujianwork/easyeda-agent",
+      "url": "https://github.com/zhoushoujianwork/easyeda-agent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(543★, último push 2026-09-25, Go, NOASSERTION) — Capa AI para EasyEDA Pro (EDA profesional china) que automatiza schematic/PCB layout vía CLI + Agent Skill + stdio MCP",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — primer agente AI-hardware-vertical serio del ecosistema chino (no verificado: leer LICENSE antes de adopción)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhoushoujianwork-easyeda-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "photoprism/photoprism",
+      "url": "https://github.com/photoprism/photoprism",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(40239★, último push 2026-09-26, Go, NOASSERTION) — App de fotos self-hosted con ML, alternativa OSS a Google Photos; trending recurrente en Go",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar para IA/dev puro, pero mención porque es un clásico que vuelve a tracción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "photoprism-photoprism",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

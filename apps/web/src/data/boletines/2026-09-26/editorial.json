@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-09-26",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Modelos abiertos, agentes locales y el nuevo mapa del trabajo técnico diario",
+  "posicionamiento": "Tres repos OSS top saltan a producto comercial con un mismo eje: agentes AI que ejecutan, no solo asisten. Crawl4AI monetiza el scraping LLM-ready via cloud; PentAGI empaqueta pentesting multi-agente; OpenBKN ofrece backend de agentes como servicio. Patron claro: la frontera ya no es el modelo, es el envoltorio que cobra por trabajo hecho.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

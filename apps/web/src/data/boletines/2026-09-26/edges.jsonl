@@ -1,0 +1,49 @@
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-unclecode-crawl4ai", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-unclecode-crawl4ai", "dst": "tema:unclecode-crawl4ai", "rel": "trata", "added": "2026-09-26"}
+{"src": "unclecode/crawl4ai", "dst": "concept:llm-ready-scraping", "rel": "implements", "added": "2026-09-26", "primera_mencion": "2026-07-10"}
+{"src": "unclecode/crawl4ai", "dst": "concept:firecrawl", "rel": "competes_with", "added": "2026-09-26", "primera_mencion": "2026-07-10"}
+{"src": "unclecode/crawl4ai", "dst": "concept:scrapingbee", "rel": "competes_with", "added": "2026-09-26", "primera_mencion": "2026-07-10"}
+{"src": "unclecode/crawl4ai", "dst": "concept:agent-web-fetch-mcp", "rel": "enables", "added": "2026-09-26", "primera_mencion": "2026-07-10"}
+{"src": "unclecode/crawl4ai", "dst": "concept:claude-code-mcp-host", "rel": "complements", "added": "2026-09-26", "primera_mencion": "2026-07-10"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-vxcontrol-pentagi", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-vxcontrol-pentagi", "dst": "tema:vxcontrol-pentagi", "rel": "trata", "added": "2026-09-26"}
+{"src": "vxcontrol/pentagi", "dst": "concept:ai-pentesting-agent", "rel": "implements", "added": "2026-09-26", "primera_mencion": "2026-07-09"}
+{"src": "vxcontrol/pentagi", "dst": "concept:graphiti-knowledge-graph", "rel": "uses", "added": "2026-09-26", "primera_mencion": "2026-07-09"}
+{"src": "vxcontrol/pentagi", "dst": "concept:multi-llm-provider", "rel": "uses", "added": "2026-09-26", "primera_mencion": "2026-07-09"}
+{"src": "vxcontrol/pentagi", "dst": "keygraphhq/shannon", "rel": "competes_with", "added": "2026-09-26", "primera_mencion": "2026-07-09"}
+{"src": "vxcontrol/pentagi", "dst": "concept:offensive-security-automation", "rel": "enables", "added": "2026-09-26", "primera_mencion": "2026-07-09"}
+{"src": "vxcontrol/pentagi", "dst": "concept:agent-supervision-pattern", "rel": "relevant_to", "added": "2026-09-26", "primera_mencion": "2026-07-09"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-tokio-rs-topcoat", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-tokio-rs-topcoat", "dst": "tema:tokio-rs-topcoat", "rel": "trata", "added": "2026-09-26"}
+{"src": "tokio-rs/topcoat", "dst": "concept:rust-fullstack-framework", "rel": "implements", "added": "2026-09-26", "primera_mencion": "2026-07-18"}
+{"src": "tokio-rs/topcoat", "dst": "concept:tokio-runtime", "rel": "uses", "added": "2026-09-26", "primera_mencion": "2026-07-18"}
+{"src": "tokio-rs/topcoat", "dst": "concept:dioxus", "rel": "competes_with", "added": "2026-09-26", "primera_mencion": "2026-07-18"}
+{"src": "tokio-rs/topcoat", "dst": "concept:leptos", "rel": "competes_with", "added": "2026-09-26", "primera_mencion": "2026-07-18"}
+{"src": "tokio-rs/topcoat", "dst": "concept:axum", "rel": "relevant_to", "added": "2026-09-26", "primera_mencion": "2026-07-18"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-openbkn-ai-bkn-foundry", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-openbkn-ai-bkn-foundry", "dst": "tema:openbkn-ai-bkn-foundry", "rel": "trata", "added": "2026-09-26"}
+{"src": "openbkn-ai/bkn-foundry", "dst": "concept:ontology-driven-backend", "rel": "implements", "added": "2026-09-26", "primera_mencion": null}
+{"src": "openbkn-ai/bkn-foundry", "dst": "atomicstrata/llm-wiki-compiler", "rel": "complements", "added": "2026-09-26", "primera_mencion": "2026-09-25"}
+{"src": "openbkn-ai/bkn-foundry", "dst": "concept:enterprise-agent-runtime", "rel": "relevant_to", "added": "2026-09-26", "primera_mencion": null}
+{"src": "openbkn-ai/bkn-foundry", "dst": "concept:license-noassertion-blocks-adoption", "rel": "risk", "added": "2026-09-26", "primera_mencion": null}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-samber-cc-skills-golang", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-samber-cc-skills-golang", "dst": "tema:samber-cc-skills-golang", "rel": "trata", "added": "2026-09-26"}
+{"src": "samber/cc-skills-golang", "dst": "concept:agent-skills-pack", "rel": "implements", "added": "2026-09-26", "primera_mencion": null}
+{"src": "samber/cc-skills-golang", "dst": "concept:universal-skills-cli", "rel": "enables", "added": "2026-09-26", "primera_mencion": null}
+{"src": "samber/cc-skills-golang", "dst": "concept:claude-code-plugin-marketplace", "rel": "complements", "added": "2026-09-26", "primera_mencion": null}
+{"src": "samber/cc-skills-golang", "dst": "concept:anthropic-skills-official", "rel": "competes_with", "added": "2026-09-26", "primera_mencion": null}
+{"src": "samber/cc-skills-golang", "dst": "concept:vendor-agent-skills-sh", "rel": "relevant_to", "added": "2026-09-26", "primera_mencion": null}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-nklmilojevic-sofka", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-nklmilojevic-sofka", "dst": "tema:nklmilojevic-sofka", "rel": "trata", "added": "2026-09-26"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-tnt-likely-panwatch", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-tnt-likely-panwatch", "dst": "tema:tnt-likely-panwatch", "rel": "trata", "added": "2026-09-26"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-vladelaina-bongocat", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-vladelaina-bongocat", "dst": "tema:vladelaina-bongocat", "rel": "trata", "added": "2026-09-26"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-drakkan-sftpgo", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-drakkan-sftpgo", "dst": "tema:drakkan-sftpgo", "rel": "trata", "added": "2026-09-26"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-fullsend-ai-fullsend", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-fullsend-ai-fullsend", "dst": "tema:fullsend-ai-fullsend", "rel": "trata", "added": "2026-09-26"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-zhoushoujianwork-easyeda-agent", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-zhoushoujianwork-easyeda-agent", "dst": "tema:zhoushoujianwork-easyeda-agent", "rel": "trata", "added": "2026-09-26"}
+{"src": "boletin:2026-09-26", "dst": "item:https-github-com-photoprism-photoprism", "rel": "menciona", "added": "2026-09-26"}
+{"src": "item:https-github-com-photoprism-photoprism", "dst": "tema:photoprism-photoprism", "rel": "trata", "added": "2026-09-26"}
