@@ -1,0 +1,53 @@
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-paperclipai-paperclip", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:paperclipai-paperclip", "rel": "trata", "added": "2026-09-27"}
+{"src": "paperclipai/paperclip", "dst": "concept:agent-management-oss", "rel": "implements", "added": "2026-09-27", "primera_mencion": "2026-08-11"}
+{"src": "paperclipai/paperclip", "dst": "concept:agent-framework-generico", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": "2026-08-11"}
+{"src": "paperclipai/paperclip", "dst": "concept:openai-agentkit", "rel": "complements", "added": "2026-09-27", "primera_mencion": "2026-08-11"}
+{"src": "paperclipai/paperclip", "dst": "concept:enterprise-agent-runtime", "rel": "relevant_to", "added": "2026-09-27", "primera_mencion": "2026-08-11"}
+{"src": "paperclipai/paperclip", "dst": "concept:agent-plugin-marketplace", "rel": "enables", "added": "2026-09-27", "primera_mencion": "2026-08-11"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-wshobson-agents", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-wshobson-agents", "dst": "tema:wshobson-agents", "rel": "trata", "added": "2026-09-27"}
+{"src": "wshobson/agents", "dst": "concept:agentic-plugin-marketplace", "rel": "implements", "added": "2026-09-27", "primera_mencion": null}
+{"src": "wshobson/agents", "dst": "concept:single-source-multi-target-harness", "rel": "enables", "added": "2026-09-27", "primera_mencion": null}
+{"src": "wshobson/agents", "dst": "samber/cc-skills-golang", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": "2026-09-26"}
+{"src": "wshobson/agents", "dst": "anthropics/skills", "rel": "complements", "added": "2026-09-27", "primera_mencion": "2026-07-08"}
+{"src": "wshobson/agents", "dst": "concept:vendor-skills-agnostic", "rel": "relevant_to", "added": "2026-09-27", "primera_mencion": null}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-dream-num-univer", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-dream-num-univer", "dst": "tema:dream-num-univer", "rel": "trata", "added": "2026-09-27"}
+{"src": "dream-num/univer", "dst": "concept:office-harness-ai", "rel": "implements", "added": "2026-09-27", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "concept:facade-unified-api", "rel": "uses", "added": "2026-09-27", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "concept:microsoft-office-js", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "onlyoffice/sdkjs", "rel": "complements", "added": "2026-09-27", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "concept:agent-document-editing", "rel": "enables", "added": "2026-09-27", "primera_mencion": "2026-07-07"}
+{"src": "dream-num/univer", "dst": "concept:open-slide", "rel": "relevant_to", "added": "2026-09-27", "primera_mencion": "2026-07-07"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-tokio-rs-toasty", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-tokio-rs-toasty", "dst": "tema:tokio-rs-toasty", "rel": "trata", "added": "2026-09-27"}
+{"src": "tokio-rs/toasty", "dst": "concept:rust-async-orm", "rel": "implements", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tokio-rs/toasty", "dst": "concept:tokio-runtime", "rel": "uses", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tokio-rs/toasty", "dst": "sqlx", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tokio-rs/toasty", "dst": "diesel-async", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tokio-rs/toasty", "dst": "tokio-rs/topcoat", "rel": "complements", "added": "2026-09-27", "primera_mencion": "2026-07-18"}
+{"src": "tokio-rs/toasty", "dst": "concept:tokio-fullstack", "rel": "relevant_to", "added": "2026-09-27", "primera_mencion": null}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-tigerless-labs-agent-memory", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-tigerless-labs-agent-memory", "dst": "tema:tigerless-labs-agent-memory", "rel": "trata", "added": "2026-09-27"}
+{"src": "tigerless-labs/agent-memory", "dst": "concept:local-first-agent-memory", "rel": "implements", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tigerless-labs/agent-memory", "dst": "concept:markdown-as-source-of-truth", "rel": "uses", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tigerless-labs/agent-memory", "dst": "mem0", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": "2026-08-10"}
+{"src": "tigerless-labs/agent-memory", "dst": "concept:letta", "rel": "competes_with", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tigerless-labs/agent-memory", "dst": "tigerless-labs/cost-xray", "rel": "complements", "added": "2026-09-27", "primera_mencion": "2026-09-05"}
+{"src": "tigerless-labs/agent-memory", "dst": "concept:air-gapped-agent-runtime", "rel": "enables", "added": "2026-09-27", "primera_mencion": null}
+{"src": "tigerless-labs/agent-memory", "dst": "concept:agent-skills-pack", "rel": "relevant_to", "added": "2026-09-27", "primera_mencion": "2026-09-26"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-mobile-next-mobile-mcp", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-mobile-next-mobile-mcp", "dst": "tema:mobile-next-mobile-mcp", "rel": "trata", "added": "2026-09-27"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-rocketride-org-rocketride-server", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-rocketride-org-rocketride-server", "dst": "tema:rocketride-org-rocketride-server", "rel": "trata", "added": "2026-09-27"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-open-slide-open-slide", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-open-slide-open-slide", "dst": "tema:open-slide-open-slide", "rel": "trata", "added": "2026-09-27"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-hydra-db-hydradb", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-hydra-db-hydradb", "dst": "tema:hydra-db-hydradb", "rel": "trata", "added": "2026-09-27"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-ashhart-tensorfold", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-ashhart-tensorfold", "dst": "tema:ashhart-tensorfold", "rel": "trata", "added": "2026-09-27"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-reladraw-reladraw", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-reladraw-reladraw", "dst": "tema:reladraw-reladraw", "rel": "trata", "added": "2026-09-27"}
+{"src": "boletin:2026-09-27", "dst": "item:https-github-com-human-agent-society-reef", "rel": "menciona", "added": "2026-09-27"}
+{"src": "item:https-github-com-human-agent-society-reef", "dst": "tema:human-agent-society-reef", "rel": "trata", "added": "2026-09-27"}

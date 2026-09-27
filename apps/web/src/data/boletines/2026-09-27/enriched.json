@@ -1,0 +1,490 @@
+{
+  "version": 2,
+  "date": "2026-09-27",
+  "boletin_origen": "2026-09-27-trending.md",
+  "resumen_ejecutivo": "- **`paperclipai/paperclip` revalida \"agent management\" como categoría con tracción OSS real** (87937★, MIT, TypeScript, último push 2026-09-27). El \"app open-source para gestionar agentes en el trabajo\" regresó a Trending con 87k★ y 15.5k forks a 6 meses de su release inicial (2026-03-02). Tema editorial: el espacio \"agent governance / orchestration OSS\" ya tiene un líder indiscutible, con un ecosistema de plugins y un modelo SaaS en `paperclip.ing` que lo separan del lote de \"AI agent framework #45\".\n- **`wshobson/agents` consolida \"agentic plugin marketplace\" como formato de distribución cross-harness** (40014★, MIT, Python, último push 2026-09-26). El marketplace multi-harness (94 plugins, 202 agents, 183 skills, 105 commands) genera artefactos nativos para 6 harnesses desde una sola fuente `plugins/`: Claude Code, Codex, Cursor, OpenCode, Antigravity, Copilot y Pi. Tema editorial: el **single-source-of-truth + multi-target-harness** es la nueva arquitectura del \"skill pack\" — supera a `samber/cc-skills-golang` (cubierto ayer) por un orden de magnitud en tamaño y vendor-neutralidad.\n- **`dream-num/univer` se reactiva como \"Office harness\" para AI agents con dev-branch nuevo** (19732★, Apache-2.0, TypeScript, último push 2026-09-27, branch=`dev`). Re-entrada tras 51 días; Univer SDK es ahora Spreadsheets + Documents + Presentations + Bases + Boards + PDFs (próximamente) con Facade API única para browser y Node.js. Tema editorial: el SDK Office-style con API unificada ya tiene vendor serio apuntando al segmento \"AI agents editando hojas/docs/slides\".\n- **`tokio-rs/toasty` cierra el stack Rust \"full-vendor\" con el ORM que faltaba** (3172★, MIT, Rust, último push 2026-09-26). El equipo Tokio publica un ORM async con derive macros para SQLite/Turso/PostgreSQL/MySQL + DynamoDB. Tema editorial: tras el `topcoat` de ayer (web framework), `toasty` consolida el camino \"**un solo árbol de decisiones para full-stack Rust**\" (axum + toasty + topcoat, todos del mismo vendor). Última pieza OSS importante antes del \"v1.0 full-stack\".\n- **`tigerless-labs/agent-memory` ofrece memoria long-term local-first que evita el dilema embeddings-vs-filesystem** (1220★, MIT, Python, último push 2026-09-25). Del mismo autor de `tigerless-labs/cost-xray` (cubierto el 2026-09-25): markdown files como source-of-truth, SQLite como índice cacheable, retrieval local y rankeado, writes disparados en conversation boundaries, sleep-time pass que olvida por valor. Cero API keys. Tema editorial: el agente que abre sus memorias recibe paths (no chunks opacos) y la migración del store es trivial porque es un directorio — patrón que combina `grep` con vector search sin vendor lock-in.\nFuentes consultadas: Trendshift daily (25 items, 1 sponsor filtrado), GitHub Trending daily + slices TypeScript/Python/Rust/Go (62 repos únicos, combinados con Trendshift = 86 candidatos antes de dedupe), GitHub REST API para 17 candidatos verificados (17 OK). Blogwatcher no publicado hoy — la dependencia upstream continúa caída desde 2026-07-05; no hay duplicados a coordinar.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**aplicación open-source para gestionar agentes AI en el trabajo** — un producto con UI completa, persistencia, plugin ecosystem y un SaaS comercial complementario en `paperclip.ing`. El repo aporta el \"core engine\" + marketplace de plugins; la página web vende la versión gestionada.",
+        "por_que_importa": "Paperclip confirma que el espacio \"agent governance\" ya tiene líder OSS indiscutible: reentra en Trendshift tras su primera mención el 2026-08-11, y en seis meses (release inicial 2026-03-02) ha pasado de ser \"un AI agent framework más\" a separarse del resto por el ángulo producto (UI, persistencia, plugin marketplace y SaaS opcional) más que por el framework en sí. Para el lector de Código Sin Siesta importa porque (a) demuestra que la categoría \"agent management\" tiene product-market fit también en OSS, no solo en SaaS propietario; (b) el plugin ecosystem abierto permite a una empresa instalar o añadir conectores sin fork; (c) es referencia seria para comparar contra vendors comerciales de agent ops.",
+        "madurez_senales": "87937★ · 15490 forks · TypeScript · MIT · creado 2026-03-02 · último push 2026-09-27 · Desc oficial: \"The open-source app everyone uses to manage agents at work\" · Default branch `master`; activo, archivado=false · Re-entry desde 2026-08-11 (47 días); el mismo repo fue visto por Trendshift el 2026-08-11, 2026-08-17, 2026-08-22 — **persiste en trending con velocity constante**.",
+        "accion_sugerida": "**vigilar** (es el OSS agent-manager más instalado del ecosistema; **explorar** si Alejandro tiene un caso de uso empresarial donde instalar agentes con UI + persistencia + plugins sin vendor lock-in SaaS; **leer** el modelo de plugin system del repo para entender cómo resuelve \"agent as first-class citizen\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "paperclipai/paperclip",
+          "rel": "implements",
+          "dst": "concept:agent-management-oss",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "paperclipai/paperclip",
+          "rel": "competes_with",
+          "dst": "concept:agent-framework-generico",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "paperclipai/paperclip",
+          "rel": "complements",
+          "dst": "concept:openai-agentkit",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "paperclipai/paperclip",
+          "rel": "relevant_to",
+          "dst": "concept:enterprise-agent-runtime",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "paperclipai/paperclip",
+          "rel": "enables",
+          "dst": "concept:agent-plugin-marketplace",
+          "primera_mencion": "2026-08-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paperclipai-paperclip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "wshobson/agents",
+      "url": "https://github.com/wshobson/agents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**multi-harness agentic plugin marketplace**: 94 plugins, 202 agents, 183 skills, 105 commands, todos declarados en una sola fuente `plugins/` y transformados a artefactos nativos en 6+ harnesses (Claude Code, Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot, Pi). A diferencia de `samber/cc-skills-golang` (3.3k★), wshobson/agents **no escribe skills separadas por harness**, sino que genera los artefactos desde el mismo origen via `make generate HARNESS=...`.",
+        "por_que_importa": "wshobson/agents consolida el patrón \"single source, multi-target\" como respuesta a la fragmentación del espacio agentic: en lugar de mantener skills/agents/plugins separados por harness (formato Anthropic SKILL.md, OpenAI agents.json, Cursor .cursor-plugin/, etc.), la fuente canónica es el directorio `plugins/` en Markdown y cada harness recibe una transformación nativa vía `make generate HARNESS=...`, no una traducción al mínimo común denominador. Para el lector AI+dev importa porque (a) confirma que el plugin marketplace es ya el modelo de distribución (samber, wshobson, anthropic, addyosmani); (b) supera en escala al actor anterior del espacio — samber/cc-skills-golang, que ya cubrimos el 2026-09-26 con 3.3k★ — y se sitúa como complemento del repo oficial anthropics/skills, mencionado el 2026-07-08; (c) el README muestra de forma explícita la matriz de capabilities por harness, lo que lo convierte en referencia pedagógica para entender qué soporta cada entorno.",
+        "madurez_senales": "40014★ · 4269 forks · Python (es un repo de skills, no de runtime) · MIT · creado 2025-07-24 · último push 2026-09-26 · Desc oficial: \"Multi-harness agentic plugin marketplace for Claude Code, Codex, Cursor, OpenCode, Antigravity CLI, GitHub Copilot, and Pi\" · Topics: `agent-skills`, `agentic-ai`, `ai-agents`, `anthropic`, `antigravity`, `claude`, `claude-code`, `codex`, `cursor`, `opencode`, `pi`, `plugin` · Default branch `main`; activo, archivado=false.",
+        "accion_sugerida": "**probar** (`/plugin marketplace add wshobson/agents` en Claude Code y probar 2-3 plugins contra un proyecto real es 5 minutos; **vigilar** el `make generate HARNESS=...` workflow porque marca la nueva arquitectura de skills cross-vendor; **explorar** el catálogo de 94 plugins para identificar los que matcheen con casos de uso de la audiencia).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "wshobson/agents",
+          "rel": "implements",
+          "dst": "concept:agentic-plugin-marketplace",
+          "primera_mencion": null
+        },
+        {
+          "src": "wshobson/agents",
+          "rel": "enables",
+          "dst": "concept:single-source-multi-target-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "wshobson/agents",
+          "rel": "competes_with",
+          "dst": "samber/cc-skills-golang",
+          "primera_mencion": "2026-09-26"
+        },
+        {
+          "src": "wshobson/agents",
+          "rel": "complements",
+          "dst": "anthropics/skills",
+          "primera_mencion": "2026-07-08"
+        },
+        {
+          "src": "wshobson/agents",
+          "rel": "relevant_to",
+          "dst": "concept:vendor-skills-agnostic",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wshobson-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**SDK Office unificado para AI agents**: spreadsheets, documents, presentations, bases, boards y PDFs (próximamente). Una sola Facade API funciona en browser y Node.js; arquitectura de plugins, render Canvas-based, motor de fórmulas propio, build pipeline de 19k★ con releases activos y soporte i18n (EN, ZH-CN, ZH-TW, JA, KO, **ES**).",
+        "por_que_importa": "Univer consolida el \"Office SDK integrable\" como capa de infraestructura para AI agents: ya cubierto el 2026-07-07, reentra ahora tras 51 días con release nuevo en la rama `dev`, señal de que el vendor ha empujado hitos técnicos y no solo marketing. No es la suite ofimática final, sino el engine que apps AI pueden montar para dar a sus agentes la capacidad de editar o generar hojas, documentos y presentaciones mediante una API programática — la Facade API unificada que funciona en browser y Node.js. Para el lector AI+dev importa porque (a) la rama `dev` está activa con el repo archivado=false, así que el momentum es real y no un proyecto abandonado; (b) compite directamente con microsoft-office-js y se complementa con onlyoffice/sdkjs, también en nuestro grafo desde el 2026-07-07; (c) el soporte i18n incluye español, lo que lo hace inmediatamente usable para la audiencia LATAM.",
+        "madurez_senales": "19732★ · 1668 forks · TypeScript · Apache-2.0 · creado 2022-09-29 · último push 2026-09-27 · branch `dev` · Desc oficial: \"The Office Harness for AI Agents — Spreadsheets, Docs, Slides, Canvas, Relational UI\" · Topics: `board`, `collaboration`, `data-table`, `doc`, `docx`, `excel` · Activo, archivado=false. Release reciente (vía branch `dev`); última actualización del repo en Trendshift: 2026-08-07.",
+        "accion_sugerida": "**vigilar** (es el OSS Office-harness más serio que no es Microsoft; **probar** el Facade API en un proyecto TypeScript para validar latencia y ergonomía; **explorar** si el vendor publica SDK para Node-only y si hay clientes que lo monten en cloud sin licenciamiento Microsoft).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "dream-num/univer",
+          "rel": "implements",
+          "dst": "concept:office-harness-ai",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "dream-num/univer",
+          "rel": "uses",
+          "dst": "concept:facade-unified-api",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "dream-num/univer",
+          "rel": "competes_with",
+          "dst": "concept:microsoft-office-js",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "dream-num/univer",
+          "rel": "complements",
+          "dst": "onlyoffice/sdkjs",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "dream-num/univer",
+          "rel": "enables",
+          "dst": "concept:agent-document-editing",
+          "primera_mencion": "2026-07-07"
+        },
+        {
+          "src": "dream-num/univer",
+          "rel": "relevant_to",
+          "dst": "concept:open-slide",
+          "primera_mencion": "2026-07-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "tokio-rs/toasty",
+      "url": "https://github.com/tokio-rs/toasty",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**ORM async para Rust** publicado por el equipo Tokio (`tokio.rs`, `axum`, `hyper`, `tower`). Derive macros con `#[derive(toasty::Model)]`, soporte para SQLite/Turso/PostgreSQL/MySQL + DynamoDB, no oculta capacidades del DB target (las expone). Docs en `docs.rs/toasty`, guide en `tokio-rs.github.io/toasty/`.",
+        "por_que_importa": "toasty cierra el \"Tokio full-stack\" que empezamos a mapear el 2026-07-18 con topcoat: la secuencia que el vendor está construyendo va de `tokio` (runtime) → `axum` (web) → `tower` (middleware) → `toasty` (data layer) → `topcoat` (full-stack framework). Es la primera vez que el equipo Tokio ataca el data layer con un ORM propio, no solo con drivers async, y el soporte de DynamoDB (no-SQL) lo coloca en un terreno que ni sqlx ni diesel-async cubren. Para el lector AI+dev importa porque confirma la tendencia \"un solo vendor controla el stack completo en Rust\", un árbol de decisiones único que evita el compose hell típico de `axum + sqlx + diesel + askama`; la guía 0.11.0 activa indica releases recientes y momentum sostenido.",
+        "madurez_senales": "3172★ · 142 forks · Rust · MIT · creado 2024-10-22 · último push 2026-09-26 · Desc oficial: \"An async ORM for Rust\" · Sin topics declarados · Default branch `main`; guía 0.11.0 activa, activo, archivado=false.",
+        "accion_sugerida": "**vigilar** (vendor serio + momento temprano = ventana de adopción; **probar** con SQLite local y un derive macro simple para validar la propuesta vs sqlx; **leer** la guía 0.11.0 antes del primer breaking change; **ignorar para producción** hasta v1.0).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "tokio-rs/toasty",
+          "rel": "implements",
+          "dst": "concept:rust-async-orm",
+          "primera_mencion": null
+        },
+        {
+          "src": "tokio-rs/toasty",
+          "rel": "uses",
+          "dst": "concept:tokio-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "tokio-rs/toasty",
+          "rel": "competes_with",
+          "dst": "sqlx",
+          "primera_mencion": null
+        },
+        {
+          "src": "tokio-rs/toasty",
+          "rel": "competes_with",
+          "dst": "diesel-async",
+          "primera_mencion": null
+        },
+        {
+          "src": "tokio-rs/toasty",
+          "rel": "complements",
+          "dst": "tokio-rs/topcoat",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "tokio-rs/toasty",
+          "rel": "relevant_to",
+          "dst": "concept:tokio-fullstack",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tokio-rs-toasty",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "tigerless-labs/agent-memory",
+      "url": "https://github.com/tigerless-labs/agent-memory",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**runtime de memoria long-term para AI agents** donde archivos Markdown en un directorio son la fuente única de verdad y un índice SQLite adyacente es el cache (regenerable, borrable, no crítico). Retrieval local rankeado que responde con paths (no chunks opacos); writes disparados en conversation boundaries; sleep-time pass que olvida por valor. Cero API keys, soporta Claude Code y Codex CLI.",
+        "por_que_importa": "agent-memory resuelve el dilema \"embeddings vs filesystem\" sin vendor lock-in: donde mem0 (que ya cubrimos el 2026-08-10), Letta y Zep montan memory layers con embeddings + graph DB opaco, este runtime apuesta por archivos Markdown como única fuente de verdad y un SQLite adyacente como cache regenerable — si el SQLite se borra, se reconstruye desde el Markdown sin perder nada. Para el lector AI+dev importa porque (a) el enfoque local-first y zero-API-key lo hace viable en entornos air-gapped; (b) el retrieval devuelve paths exactos en lugar de chunks opacos, lo que reduce el coste de operar el agente al evitar pagar embeddings por consulta; (c) completa la vertical \"AI dev tooling\" del mismo vendor, tigerless-labs, que abrió con cost-xray el 2026-09-05 y ahora conecta con el agent-skills-pack que cubrimos el 2026-09-26.",
+        "madurez_senales": "1220★ · 76 forks · Python · MIT · creado 2026-09-01 · último push 2026-09-25 · Desc oficial: \"Long-term memory runtime for AI agents — plain Markdown as the source of truth, SQLite as a cache you can delete at any time.\" · Topics: `agent-memory`, `ai-agents`, `claude-code`, `codex`, `llm`, `local-first` · Activo, archivado=false. CLAUDE.md y SKILL.md presentes (vendor-friendly).",
+        "accion_sugerida": "**probar** (instalable como skill en Claude Code; **explorar** el patrón \"recall returns paths, not chunks\" porque es una decisión arquitectónica replicable en otros memory layers; **vigilar** el vendor tigerless-labs porque está construyendo una vertical AI dev tooling coherente).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "uses",
+          "dst": "concept:markdown-as-source-of-truth",
+          "primera_mencion": null
+        },
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "competes_with",
+          "dst": "mem0",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "competes_with",
+          "dst": "concept:letta",
+          "primera_mencion": null
+        },
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "complements",
+          "dst": "tigerless-labs/cost-xray",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "enables",
+          "dst": "concept:air-gapped-agent-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "tigerless-labs/agent-memory",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skills-pack",
+          "primera_mencion": "2026-09-26"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-agent-memory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "mobile-next/mobile-mcp",
+      "url": "https://github.com/mobile-next/mobile-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7508★, último push 2026-09-23, TypeScript, Apache-2.0) — MCP server para automatización mobile (iOS, Android, simulator, emulator, dispositivos reales), con cloud opcional en `mobilenext.ai`. Re-entry desde 2026-08-31 (27 días)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — único MCP server maduro para mobile automation; **probar** con un emulador local + Claude Code",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mobile-next-mobile-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "rocketride-org/rocketride-server",
+      "url": "https://github.com/rocketride-org/rocketride-server",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(14129★, último push 2026-09-25, Python, MIT, branch `develop`) — \"AIDE\" (AI Development Environment): pipeline builder visual en VS Code con 100+ nodos, 15+ LLM providers, 9 vector DBs; runtime C++ multithread; SDK Python + TypeScript; MCP server oficial. Re-entry desde 2026-08-27 (31 días)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — alternativa OSS a pipelines comerciales (Airflow + LLM glue, VectorShift) con UI visual",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rocketride-org-rocketride-server",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "open-slide/open-slide",
+      "url": "https://github.com/open-slide/open-slide",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7922★, último push 2026-09-27, TypeScript, MIT) — \"Slide framework built for agents\": describes tu deck en lenguaje natural, el agente escribe React, open-slide maneja canvas 1920x1080, escalado, navegación, hot-reload y present mode. Vía `npx @open-slide/cli init`. Parte del Vercel OSS Program.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — caso de uso claro: agentes generando slides con calidad presentable; **probar** con un proyecto de slides real",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "open-slide-open-slide",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "hydra-db/hydradb",
+      "url": "https://github.com/hydra-db/hydradb",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9120★, último push 2026-08-19, Rust, AGPL-3.0) — Graph database rápido sobre object storage. Re-entry desde 2026-08-27 (31 días)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar si tu stack tolera AGPL — escala bien con S3/GCS y query semantics de grafo, pero la licencia bloquea adopción SaaS propietario. Caveat: el \"último push\" es de hace ~5 semanas, momentum decreciente",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hydra-db-hydradb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "ashhart/TensorFold",
+      "url": "https://github.com/ashhart/TensorFold",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(319★, último push 2026-09-26, Python, MIT) — Decoding LLM exacto y rápido sobre Apple Silicon (MLX) detrás de un endpoint OpenAI-compatible. Topics: ai, ai-tools, llm, llm-inference, llm-tools.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — opción para correr LLMs en Mac sin pagar GPU cloud; **probar** con un modelo MoE en Apple Silicon",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ashhart-tensorfold",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "reladraw/reladraw",
+      "url": "https://github.com/reladraw/reladraw",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(457★, último push 2026-09-27, TypeScript, Apache-2.0, creado 2026-09-07) — Lenguaje de texto para diagramas entre Mermaid (auto-layout) y draw.io (manual). Posiciones relativas, sin coordenadas.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — relevante para agentes que generan diagramas de arquitectura; **probar** con un diagrama complejo en `reladraw.github.io/reladraw/`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "reladraw-reladraw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Human-Agent-Society/reef",
+      "url": "https://github.com/Human-Agent-Society/reef",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(re-entry 2026-09-18, Python) — Infra de continual learning para self-improving agents.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — área de \"self-improving agents\" está naciendo; leer la tesis técnica antes de comprometerse a la idea",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "human-agent-society-reef",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

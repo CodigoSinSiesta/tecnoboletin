@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-09-27",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La capa operativa del agente sale del framework y se reparte entre cuatroespecializaciones",
+  "posicionamiento": "Los hallazgos de hoy dibujan un mapa de especializacion operativa del agente AI: paperclip ocupa el angulo \"producto de gestion\", wshobson/agents el de \"distribucion cross-harness\", dream-num/univer el de \"ofimatica integrable\" y toasty el de \"data layer async\". agent-memory cierra el bloque con una pieza transversal: memoria local-first sin vendor lock-in. El hilo es que la categoria \"agent framework\" se ha fragmentado en roles con economia propia, cada uno con un OSS lider visible y una promesa concreta.",
+  "convergencia_stack_css": "agent-memory encaja directo con el stack local-first de CSS: Markdown como fuente de verdad, SQLite regenerable, cero API keys y soporte air-gapped lo alinean con el espiritu Ollama+DeepSeek y el patron GBrain. toasty y univer no tocan el stack propio pero si el de Rust async y ofimatica integrable, utiles como referencia para lectores que montan tooling propio. paperclip y wshobson/agents quedan como vigilancia: su adoption real en empresas pequenas vs grandes marcara si CSS debe documentarlos.",
+  "cruzado_grafo": "paperclip revalida cinco nodos ya cubiertos el 2026-08-11 (agent-management-oss, agent-framework-generico, openai-agentkit, enterprise-agent-runtime, agent-plugin-marketplace), confirmando que la categoria tiene continuidad real. wshobson/agents introduce por primera vez agentic-plugin-marketplace y single-source-multi-target-harness, y conecta con samber/cc-skills-golang (2026-09-26) y anthropics/skills (2026-07-08). univer revalida seis nodos del 2026-07-07. toasty introduce rust-async-orm y tokio-fullstack y conecta con topcoat (2026-07-18). agent-memory introduce local-first-agent-memory y markdown-as-source-of-truth y conecta con mem0 (2026-08-10), cost-xray (2026-09-05) y agent-skills-pack (2026-09-26).",
+  "tendencias_5_boletines": "Sumado al contexto previo: el 2026-09-25 marco la \"capa de confianza\" para coding agents (Pydantic, Trail of Bits) y el 2026-09-26 mostro como el envoltorio comercial se impone sobre el modelo. Hoy la tendencia es complementaria: la operacion del agente se especializa por capas (gestion, distribucion, ofimatica, datos, memoria) y cada capa ya tiene un OSS lider visible. Sin continuidad de 2026-09-23 y 2026-09-24 no se puede afirmar una curva de cinco dias, pero el patron de especializacion se sostiene al menos desde el 25.",
+  "alertas": [
+    "paperclip y wshobson/agents son repos grandes con metricas de estrella notables, pero su traccion empresarial real fuera de OSS no esta verificada en los datos.",
+    "toasty es ORM v0.x con API inestable probable: la guia 0.11.0 indica movimiento pero no madurez.",
+    "univer soporta ES en i18n pero la documentacion tecnica sigue mayoritariamente en EN/ZH, lo que puede lastrar la adopcion hispanohablante.",
+    "agent-memory evita embeddings por diseno; eso reduce coste y dependencia pero limita la calidad de recall frente a mem0 o Zep en cargas con volumen real."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "revalidacion con 87k★ confirma que agent management OSS tiene leader; vale la pena descargar y desplegar local para evaluar plugin ecosystem y compararlo con vendors comerciales de agent ops."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "el patron single-source multi-target es arquitectura reutilizable para skills propios de CSS; documentar el flujo `plugins/` -> artefactos por harness puede ahorrar duplicacion cuando crezca el vault de skills."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "toasty cerraria la vertical Tokio full-stack en Rust; relevante para quien evalue salir del compose hell de axum + sqlx + diesel en favor de un stack con un solo vendor detras."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "agent-memory es la pieza que mas directamente toca el stack local-first de CSS (Markdown + SQLite + cero API keys); merece prueba de concepto en air-gapped para validar recall frente a mem0."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "univer tiene momentum real y soporte ES, pero la adopcion depende de que apps AI lo integren como SDK; conviene vigilar integraciones con frameworks de agentes conocidos antes de recomendarlo como capa de ofimatica por defecto."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
