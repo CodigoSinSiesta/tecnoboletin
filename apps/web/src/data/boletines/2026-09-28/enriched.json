@@ -1,0 +1,449 @@
+{
+  "version": 2,
+  "date": "2026-09-28",
+  "boletin_origen": "2026-09-28-trending.md",
+  "resumen_ejecutivo": "- El tema dominante hoy sigue siendo el \"**multi-CLI harness**\": tres proyectos nuevos (OpenRig, agent-manager, cc-switch) atacan el mismo problema — coordinar Claude Code, Codex, OpenCode, Hermes y compañía desde un solo punto — y los tres lo hacen de forma distinta (rig YAML + tmux, TUI nativo en Go, app Tauri multiplataforma).\n- **Attestix** entra como el primer intento serio de \"compliance criptográfica para agentes\": identidad DID, W3C VC, EU AI Act, expuesto como servidor MCP. Es la pieza que faltaba para hablar de agentes en producción dentro de la UE.\n- **Reef** se posiciona como infraestructura de \"agentes que se mejoran a sí mismos\" — combina inferencia (vLLM/SGLang), RL (Slime/veRL) y optimización de harness (prompts/skills/rules) en un solo grafo de feedback.\n- **Easel** (ZJU-REAL + PKU) aterriza el patrón \"OpenClaw-powered\" en un vertical concreto: social media agent para Xiaohongshu/Douyin/Zhihu/Bilibili. 113 skills ya empaquetadas.\n- cc-switch confirma que la categoría \"manager de coding agents\" tiene tracción real: **137k★ en 13 meses** con MIT y release diaria desde China — útil para la audiencia internacional porque soporta Hermes y OpenClaw oficialmente.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily global + TypeScript + Python + Rust + Go (54 items únicos), GitHub API REST para los 6 hallazgos principales + 1 release check (oblien/dbx). Blogwatcher de las 08:00 no publicado hoy (no hay `2026-09-28-blogs.md`).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "OpenRig",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Un harness multi-agente escrito en TypeScript que orquesta Claude Code y Codex como un solo equipo: defines el equipo en YAML, lo arrancas con `rig up`, y un agente \"owner\" reparte trabajo a \"specialists\" que reportan al dashboard compartido.",
+        "por_que_importa": "Es el competidor más serio a stablyai/orca y gastownhall/gastown desde el lado \"primero Claude Code, después todo lo demás\" — los dos ya aparecieron en el boletín: orca el 2026-07-09 y gastown el 2026-07-06. Su README documenta explícitamente la fricción de mantener dos sesiones Codex separadas (owner + checker) y propone un modelo de \"address\" persistente: cada agente tiene una dirección estable a la que mandas mensajes. Para una newsletter que cubre Hermes como orquestador, OpenRig es una referencia a tener fichada porque su CLI es invocable y modificable.",
+        "madurez_senales": "1.189★ · 112 forks · TypeScript (Node 20/22/24) · Apache-2.0 · creado 2026-04-01 · último push 2026-09-28 · topics: `agent-harness`, `agent-orchestration`, `multi-agent-systems`, `claude-code`, `codex-cli`, `tmux` · publicado como `@openrig/cli` en npm.",
+        "accion_sugerida": "explorar (merece deep-dive; hay que probar `rig setup --dry-run` en una sandbox y leer el módulo de cola).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "mvschwarz/openrig",
+          "rel": "competes_with",
+          "dst": "stablyai/orca",
+          "primera_mencion": "2026-07-09"
+        },
+        {
+          "src": "mvschwarz/openrig",
+          "rel": "competes_with",
+          "dst": "gastownhall/gastown",
+          "primera_mencion": "2026-07-06"
+        },
+        {
+          "src": "mvschwarz/openrig",
+          "rel": "implements",
+          "dst": "multi-harness-orchestrator",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openrig",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Reef",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "El primer proyecto OSS que ataca el bucle completo de \"agente → feedback → aprendizaje → nueva versión\" conectando motores de inferencia (vLLM, SGLang) con frameworks de RL (Slime, veRL, AReaL) y, además, optimización de harness (prompts, rules, skills) sin GPUs locales.",
+        "por_que_importa": "Es la primera respuesta OSS a una pregunta que llevaba meses abierta: \"¿quién cierra el bucle entre cómo falla un agente y cómo se mejora?\". Tiene tres rutas — entrenar pesos, optimizar prompts, o test-time training — y todo se orquesta desde una sola API. La conexión con Slime (THUDM, el framework que ya cubrimos el 2026-09-18) le da pedigrí técnico, y los conceptos que aterriza — continual-self-improvement y harness-optimization-without-gpu, ambos ya mapeados en nuestro grafo desde el boletín del 2026-09-18 — convierten este proyecto en lectura obligatoria para entender hacia dónde se mueve el entrenamiento de agentes fuera de los hyperscalers.",
+        "madurez_senales": "6.695★ · 607 forks · Python ≥3.12 · Apache-2.0 · creado 2026-08-31 (¡un mes!) · último push 2026-09-28 · topics: `self-improving-agents`, `continual-learning`, `reinforcement-learning`, `llm-training` · publicado como `reef-infra` en PyPI · CI verde.",
+        "accion_sugerida": "leer (la documentación pública está en `reefinfra.ai/docs/getting-started/quickstart/` y el README trae la matriz de \"qué necesitas según tu objetivo\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "complements",
+          "dst": "THUDM/slime",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "implements",
+          "dst": "continual-self-improvement",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "Human-Agent-Society/reef",
+          "rel": "enables",
+          "dst": "harness-optimization-without-gpu",
+          "primera_mencion": "2026-09-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "reef",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Attestix",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Una capa de identidad, credenciales verificables y cumplimiento normativo para agentes: DIDs (identificadores descentralizados), W3C Verifiable Credentials, cadenas de delegación, reputation scoring, y un mapeo explícito al EU AI Act. Expone **47 herramientas MCP en 9 módulos** y 44 endpoints REST.",
+        "por_que_importa": "Es la pieza que faltaba para escribir sobre \"agentes en producción bajo regulación europea\". Hasta ahora solo había ensayos teóricos o compliance-as-a-service cerrados; Attestix ofrece DIDs (identificadores descentralizados), W3C Verifiable Credentials y un mapeo explícito al EU AI Act vía el paquete pip `attestix` (v0.4.0 stable, 0.4.1rc1 en --pre), integrable con LangChain, OpenAI Agents SDK y CrewAI. Su complemento natural es vercel-labs/agent-browser, que ya cubrimos el 2026-07-08: juntos dibujan la pareja \"identidad verificable del agente + navegador verificable\". El README es transparente sobre sus límites — \"single-maintainer, no independent security audit yet\" — exactamente la honestidad que queremos en el boletín.",
+        "madurez_senales": "528★ · 82 forks · Python · Apache-2.0 · creado 2026-02-16 · último push 2026-09-27 · topics: `agent-identity`, `attestation`, `did`, `ed25519`, `w3c`, `verifiable-credentials`, `eu-ai-act`, `mcp-server` · 531 tests (440 funcionales + 91 RFC/W3C conformance).",
+        "accion_sugerida": "explorar (es el primer repo que convierte \"agent compliance\" en un problema de software, no de policy — vale la pena auditar su modelo de amenazas antes de adoptarlo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "VibeTensor/attestix",
+          "rel": "implements",
+          "dst": "agent-identity-did",
+          "primera_mencion": null
+        },
+        {
+          "src": "VibeTensor/attestix",
+          "rel": "solves",
+          "dst": "eu-ai-act-agent-compliance",
+          "primera_mencion": null
+        },
+        {
+          "src": "VibeTensor/attestix",
+          "rel": "complements",
+          "dst": "vercel-labs/agent-browser",
+          "primera_mencion": "2026-07-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "attestix",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Easel",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Un agente social media end-to-end construido sobre OpenClaw: descubre tendencias, planifica temas, crea contenido (texto/audio/video), publica en Xiaohongshu/Douyin/Zhihu/Bilibili, y vuelve a alimentar las cuentas con analítica de rendimiento. Trae 113 skills preempaquetadas.",
+        "por_que_importa": "Confirma que el patrón \"agente vertical sobre OpenClaw\" ya tiene tracción real en China. Los labs detrás (ZJU-REAL Zhejiang + OpenDCAI PKU) son pesos pesados académicos, no un hackathon random, y las 113 skills preempaquetadas lo convierten en un caso de estudio tangible de la arquitectura skill-driven que defendemos desde el blog. Para una audiencia hispanohablante, Easel es la prueba de que la \"verticalización\" funciona — un agente dedicado a un dominio (social media en Xiaohongshu, Douyin, Zhihu y Bilibili) supera a un multi-tool genérico, y el bucle cierra con analítica de rendimiento realimentando la planificación.",
+        "madurez_senales": "1.963★ · 288 forks · Python ≥3.10 · Apache-2.0 · creado 2026-08-28 · último push 2026-09-28 · topics: `social-media`, `content-automation`, `openclaw`, `agent-skill`, `mcp` · sitio del proyecto en `zju-real.github.io/Easel/`.",
+        "accion_sugerida": "vigilar (su README está mayormente en chino — útil para confirmar el patrón, todavía no para adopción directa fuera del mercado chino).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ZJU-REAL/Easel",
+          "rel": "built_on",
+          "dst": "openclaw",
+          "primera_mencion": null
+        },
+        {
+          "src": "ZJU-REAL/Easel",
+          "rel": "implements",
+          "dst": "vertical-social-media-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "ZJU-REAL/Easel",
+          "rel": "example_of",
+          "dst": "skill-driven-agent-architecture",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "easel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "agent-manager",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Un TUI en Go (Bubble Tea) que corre **ocho CLIs de coding agents a la vez** en sesiones tmux persistentes: Claude Code, Codex, OpenCode, Grok, Gemini CLI, Pi, Command Code y Hermes Agent. Lista unificada con estado live, drag-to-reorder, code review con `ctrl+r` que abre el diff y permite enviar comentarios al agente.",
+        "por_que_importa": "Es el primer manager TUI nativo que lista Hermes explícitamente entre sus harnesses soportados — ya cubrimos a Hermes Agent en el boletín del 2026-07-03, y ahora vemos cómo un proyecto OSS de terceros lo trata como ciudadano de primera. Soporta también Pi y OpenCode, y su modelo — \"thin wrapper que respeta tu login, tu config y tus MCP servers del CLI subyacente\" — es exactamente el opuesto del lock-in vendor: tú traes tu CLI, agent-manager solo lo orquesta en sesiones tmux persistentes junto a Claude Code, Codex, Grok, Gemini CLI y Command Code. Para un newsletter que defiende soberanía local, este proyecto valida que el camino \"consume tu CLI tal cual\" es viable.",
+        "madurez_senales": "532★ · 55 forks · Go (Bubble Tea) · Apache-2.0 · creado 2026-07-15 · último push 2026-09-27 · topics: `ai-agents`, `bubble-tea`, `claude-code`, `codex`, `gemini-cli`, `grok`, `hermes-agent`, `opencode`, `pi`, `tmux`, `tui`, `mcp-server` · CI con cobertura.",
+        "accion_sugerida": "probar (instalable con `go install`, demo GIF en README, listar los temas de cobertura antes de adoptarlo en trabajo diario).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "YoanWai/agent-manager",
+          "rel": "supports",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        },
+        {
+          "src": "YoanWai/agent-manager",
+          "rel": "competes_with",
+          "dst": "farion1231/cc-switch",
+          "primera_mencion": null
+        },
+        {
+          "src": "YoanWai/agent-manager",
+          "rel": "implements",
+          "dst": "multi-cli-tui-orchestrator",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-manager",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "CC Switch",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "App desktop multiplataforma (Windows/macOS/Linux) hecha con Tauri 2 que centraliza el cambio de proveedor, gestión de MCP servers, skills y prompts para **nueve coding agents** (Claude Code, Claude Desktop, Codex, Gemini CLI, Grok Build, OpenCode, OpenClaw, Hermes Agent, Pi y Minimax Code). Reemplaza la edición manual de `settings.json`/`config.toml`/`~/.claude/...` por una GUI.",
+        "por_que_importa": "Es el ejemplo más visible de que la fragmentación de providers y configs ya pasó de ser molestia a ser problema de mercado. 137.842★ en 13 meses (creado 2025-08-04) lo coloca entre los repos OSS de developer-tools con crecimiento más rápido del año, y su soporte a Hermes Agent — que ya cubrimos el 2026-07-03 — confirma la centralidad del CLI en el ecosistema. Su modelo \"GUI + provider switch\" es la tesis opuesta al \"CLI-first\" defendido por proyectos como agent-manager o lidge-jun/opencodex (que mencionamos el 2026-07-21): a la mayoría de devs les viene mejor un botón que editar `settings.json`/`config.toml`/`~/.claude/...` a mano. El README incluye patrocinio de Kimi K2.7 y ZetaAPI — patrón comercial estable.",
+        "madurez_senales": "137.842★ · 9.346 forks · Rust (Tauri 2) · MIT · creado 2025-08-04 · último push 2026-09-28 · topics: `claude-code`, `codex`, `desktop-app`, `grok`, `hermes-agent`, `mcp`, `openclaw`, `openclaw-ui`, `opencode`, `pi`, `provider-management`, `skills-management`, `tauri` · sitio oficial `ccswitch.io`.",
+        "accion_sugerida": "probar (instalación multiplataforma sin sudo; comparar ergonomía con `agent-manager` para audiencia que prefiere GUI sobre TUI).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "farion1231/cc-switch",
+          "rel": "competes_with",
+          "dst": "YoanWai/agent-manager",
+          "primera_mencion": null
+        },
+        {
+          "src": "farion1231/cc-switch",
+          "rel": "competes_with",
+          "dst": "lidge-jun/opencodex",
+          "primera_mencion": "2026-07-21"
+        },
+        {
+          "src": "farion1231/cc-switch",
+          "rel": "supports",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cc-switch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "t8y2/dbx",
+      "url": "https://github.com/t8y2/dbx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(21.303★, push 2026-09-28, Rust, Apache-2.0) — Cliente de base de datos \"100+ engines en 25 MB\" con AI assistant integrado y MCP server. Releases v0.6.26 + v0.6.25 publicadas **hoy mismo**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si el AI assistant pasa de \"completar SQL\" a \"agente que migra entre esquemas\", cambia de categoría",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "t8y2-dbx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "oblien/openship",
+      "url": "https://github.com/oblien/openship",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.048★, push 2026-09-27, TypeScript, Apache-2.0) — Plataforma self-hosted para deploys de software. Release v0.8.0 ayer (2026-09-27)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — todavía verde, su promesa de \"self-hosted Vercel/Docker\" sigue siendo interesante",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oblien-openship",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "InfinityLoop1308/PipePipe",
+      "url": "https://github.com/InfinityLoop1308/PipePipe",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.697★, push 2026-09-26, Shell, GPL-3.0) — Cliente YouTube alternativo para Android",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — para CSS — fuera del scope técnico",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "infinityloop1308-pipepipe",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(re-trending · push 2026-09-25, Python, Apache-2.0) — Capa de memoria para agentes (ya cubierto en boletines previos)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — si aún no se profundizó en el patrón \"bank scoping + mental-model seeds\" del blog post de can1357",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vectorize-io-hindsight",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(re-trending · push 2026-09-27, TypeScript) — Orquestador agentic con planes persistentes",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el último push reciente sugiere release importante, merece un re-read",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paperclipai-paperclip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "vercel-labs/scriptc",
+      "url": "https://github.com/vercel-labs/scriptc",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(re-trending · push 2026-09-27, TypeScript) — Runtime para scripts determinísticos escritos para LLM",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — competencia directa del concepto \"code execution\" de Anthropic/OpenAI",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-scriptc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "moeru-ai/airi",
+      "url": "https://github.com/moeru-ai/airi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(re-trending · push 2026-09-27, TypeScript) — \"AI waifu\" que corre local con screen capture + audio",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — para CSS — el caso de uso es entertainment, no developer tooling",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "moeru-ai-airi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

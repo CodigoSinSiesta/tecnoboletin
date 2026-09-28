@@ -1,0 +1,44 @@
+{"src": "boletin:2026-09-28", "dst": "item:idx-0", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:idx-0", "dst": "tema:openrig", "rel": "trata", "added": "2026-09-28"}
+{"src": "mvschwarz/openrig", "dst": "stablyai/orca", "rel": "competes_with", "added": "2026-09-28", "primera_mencion": "2026-07-09"}
+{"src": "mvschwarz/openrig", "dst": "gastownhall/gastown", "rel": "competes_with", "added": "2026-09-28", "primera_mencion": "2026-07-06"}
+{"src": "mvschwarz/openrig", "dst": "multi-harness-orchestrator", "rel": "implements", "added": "2026-09-28", "primera_mencion": null}
+{"src": "boletin:2026-09-28", "dst": "item:idx-1", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:idx-1", "dst": "tema:reef", "rel": "trata", "added": "2026-09-28"}
+{"src": "Human-Agent-Society/reef", "dst": "THUDM/slime", "rel": "complements", "added": "2026-09-28", "primera_mencion": "2026-09-18"}
+{"src": "Human-Agent-Society/reef", "dst": "continual-self-improvement", "rel": "implements", "added": "2026-09-28", "primera_mencion": "2026-09-18"}
+{"src": "Human-Agent-Society/reef", "dst": "harness-optimization-without-gpu", "rel": "enables", "added": "2026-09-28", "primera_mencion": "2026-09-18"}
+{"src": "boletin:2026-09-28", "dst": "item:idx-2", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:idx-2", "dst": "tema:attestix", "rel": "trata", "added": "2026-09-28"}
+{"src": "VibeTensor/attestix", "dst": "agent-identity-did", "rel": "implements", "added": "2026-09-28", "primera_mencion": null}
+{"src": "VibeTensor/attestix", "dst": "eu-ai-act-agent-compliance", "rel": "solves", "added": "2026-09-28", "primera_mencion": null}
+{"src": "VibeTensor/attestix", "dst": "vercel-labs/agent-browser", "rel": "complements", "added": "2026-09-28", "primera_mencion": "2026-07-08"}
+{"src": "boletin:2026-09-28", "dst": "item:idx-3", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:idx-3", "dst": "tema:easel", "rel": "trata", "added": "2026-09-28"}
+{"src": "ZJU-REAL/Easel", "dst": "openclaw", "rel": "built_on", "added": "2026-09-28", "primera_mencion": null}
+{"src": "ZJU-REAL/Easel", "dst": "vertical-social-media-agent", "rel": "implements", "added": "2026-09-28", "primera_mencion": null}
+{"src": "ZJU-REAL/Easel", "dst": "skill-driven-agent-architecture", "rel": "example_of", "added": "2026-09-28", "primera_mencion": null}
+{"src": "boletin:2026-09-28", "dst": "item:idx-4", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:idx-4", "dst": "tema:agent-manager", "rel": "trata", "added": "2026-09-28"}
+{"src": "YoanWai/agent-manager", "dst": "hermes-agent", "rel": "supports", "added": "2026-09-28", "primera_mencion": "2026-07-03"}
+{"src": "YoanWai/agent-manager", "dst": "farion1231/cc-switch", "rel": "competes_with", "added": "2026-09-28", "primera_mencion": null}
+{"src": "YoanWai/agent-manager", "dst": "multi-cli-tui-orchestrator", "rel": "implements", "added": "2026-09-28", "primera_mencion": null}
+{"src": "boletin:2026-09-28", "dst": "item:idx-5", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:idx-5", "dst": "tema:cc-switch", "rel": "trata", "added": "2026-09-28"}
+{"src": "farion1231/cc-switch", "dst": "YoanWai/agent-manager", "rel": "competes_with", "added": "2026-09-28", "primera_mencion": null}
+{"src": "farion1231/cc-switch", "dst": "lidge-jun/opencodex", "rel": "competes_with", "added": "2026-09-28", "primera_mencion": "2026-07-21"}
+{"src": "farion1231/cc-switch", "dst": "hermes-agent", "rel": "supports", "added": "2026-09-28", "primera_mencion": "2026-07-03"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-t8y2-dbx", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-t8y2-dbx", "dst": "tema:t8y2-dbx", "rel": "trata", "added": "2026-09-28"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-oblien-openship", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-oblien-openship", "dst": "tema:oblien-openship", "rel": "trata", "added": "2026-09-28"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-infinityloop1308-pipepipe", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-infinityloop1308-pipepipe", "dst": "tema:infinityloop1308-pipepipe", "rel": "trata", "added": "2026-09-28"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-vectorize-io-hindsight", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-vectorize-io-hindsight", "dst": "tema:vectorize-io-hindsight", "rel": "trata", "added": "2026-09-28"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-paperclipai-paperclip", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:paperclipai-paperclip", "rel": "trata", "added": "2026-09-28"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-vercel-labs-scriptc", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-vercel-labs-scriptc", "dst": "tema:vercel-labs-scriptc", "rel": "trata", "added": "2026-09-28"}
+{"src": "boletin:2026-09-28", "dst": "item:https-github-com-moeru-ai-airi", "rel": "menciona", "added": "2026-09-28"}
+{"src": "item:https-github-com-moeru-ai-airi", "dst": "tema:moeru-ai-airi", "rel": "trata", "added": "2026-09-28"}
