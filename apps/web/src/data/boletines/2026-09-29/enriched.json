@@ -1,0 +1,389 @@
+{
+  "version": 2,
+  "date": "2026-09-29",
+  "boletin_origen": "2026-09-29-trending.md",
+  "resumen_ejecutivo": "- El tema del día es **\"infraestructura para que los coding agents trabajen sobre tu dominio\"**: dos proyectos nuevos (veedstudio/open-edit para video, HelpCode-ai/anythingmcp para ERPs/APIs legacy) enseñan que 2026 está cerrando el bucle \"agente generalista + vertical cerrado\" con herramientas auto-MCP y pipelines agent-nativos que cualquier coding agent puede invocar.\n- **EverMind-AI/Raven** entra como competidor directo a Reef y OpenRig: \"harness de harnesses\" con RSI (recursive self-improvement) que **ya lista a Hermes Agent entre los coding agents que orquesta**. Es el primer meta-harness que adopta Hermes explícitamente — dato de mercado relevante.\n- **Rizzo-AI/rizzo-pii** trae la primera implementación práctica y OSS de \"anonimiza localmente → manda al frontier LLM → restaura localmente\": un token-classifier de 0.3B que corre en CPU, detecta 22 categorías (incluye identificadores italianos que ningún modelo abierto cubre) y permite a despachos de abogados, notarías y contables usar GPT/Claude sin romper GDPR.\n- **firelex/jeff** demuestra que un fine-tune de 0.8B puede ganar a GPT en clasificación zero-shot (~22 ms/decisión en RTX PRO 6000): un recordatorio incómodo para quien asume que \"más grande = mejor\" en tareas de decisión.\n- **cloudflare/cf** abre la categoría \"agentic CLI para API entera de un proveedor\": el primer competidor serio al `vercel-labs/scriptc` cuando lo que necesitas es operar infraestructura cloud desde un agente.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily global + Python + TypeScript + Rust + Go (56 items únicos), GitHub API REST para los 6 hallazgos principales. Blogwatcher de las 08:00 no publicado hoy (no hay `2026-09-29-blogs.md`; el blogwatcher viene caído desde 2026-07-05 — confirmar con `hermes cron list`).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "veedstudio/open-edit",
+      "url": "https://github.com/veedstudio/open-edit",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Una CLI de Node (`@veedstudio/openedit-cli`) que expone el motor de renderizado de VEED como una caja de herramientas invocable: `transcribe`, `prep`, `generate`, `lipsync`, `background-removal`, `install-engine`... Cada comando está pensado para que un coding agent (Claude Code, Codex, Gemini) lo encadene en un pipeline: `transcribe → prep → generate`.",
+        "por_que_importa": "Es la prueba más visible de que la edición de vídeo se está convirtiendo en infraestructura para coding agents, no en una app de escritorio con botones. VEED expone su motor como piezas CLI (`transcribe`, `prep`, `generate`, `lipsync`, `background-removal`...) encadenables, de modo que un agente las compone en vez de usar una GUI: el output de un paso es input del siguiente (`runs/<key>/transcript.json`). Para CSS, open-edit es el patrón a observar: software comercial vende su motor como herramientas CLI para que los agentes las orquesten, en vez de esconderlo detrás de una interfaz. La señal de que el vídeo deja de ser “app creativa” y pasa a ser “servicio invocable desde un agente” también explica por qué interesa a Raven: en el grafo open-edit aparece marcado como `relevant_to` a `EverMind-AI/Raven`, que es un meta-orquestador de coding agents — y ya cubrimos Raven el 2026-09-18 como competidor directo de reef/openrig.",
+        "madurez_senales": "1.066★ · 71 forks · TypeScript (Node) · Apache-2.0 · creado 2026-07-22 · último push 2026-09-22 · topics: `ai-agents`, `captions`, `claude-code`, `ffmpeg`, `macos`, `subtitles`, `transcription`, `video`, `video-editing` · motor de render bajo licencia PolyForm Shield separada.",
+        "accion_sugerida": "explorar (vale la pena clonar y ejecutar `npx @veedstudio/openedit-cli --help` para entender el modelo de \"two-command billing approval\" que evita cobros sorpresa).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "veedstudio/open-edit",
+          "rel": "implements",
+          "dst": "agentic-video-pipeline",
+          "primera_mencion": null
+        },
+        {
+          "src": "veedstudio/open-edit",
+          "rel": "integrates_with",
+          "dst": "VEED",
+          "primera_mencion": null
+        },
+        {
+          "src": "veedstudio/open-edit",
+          "rel": "relevant_to",
+          "dst": "EverMind-AI/Raven",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "veedstudio-open-edit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "EverMind-AI/Raven",
+      "url": "https://github.com/EverMind-AI/Raven",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Meta-harness (Python, Apache-2.0, 4.436★) que orquesta **13 coding agents como specialists** dentro de una sola DAG con memoria persistente (EverOS), auto-evolución del propio harness (Evolver) y catálogo de 114k skills (SkillForge). Los built-in son Raven-Research, Raven-Code, Raven-Design y Raven-Oncall; los third-party incluyen Claude Code, Codex, OpenCode, **Hermes Agent**, OpenClaw, MiroThinker, GitHub Copilot, Qwen Code, CodeBuddy, Qoder, Grok Build, Kimi Code y Pi.",
+        "por_que_importa": "Es el competidor más serio a `Human-Agent-Society/reef` y `mvschwarz/openrig` desde el ángulo “yo orquesto a tus coding agents, no los reemplazo” — y, sobre todo, lista a Hermes explícitamente entre los harnesses soportados (visible en los topics del repo: `hermes-agent`, y en el bloque de third-party del README). Para CSS esto confirma que Raven trata a Hermes como target de primera clase, lo que ya notamos el 2026-07-03 cuando cubrimos Hermes Agent por primera vez. La pista de recursive self-improvement (RSI) está demostrada con cifras: en nanochat pre-training, 172 runs en 7 rondas bajaron `val_bpb` un 5.8% con una sola GPU en 20 min por run — un resultado pequeño pero suficiente para dejar de hablar de RSI como promesa y empezar a hablar como evidencia. La apuesta “harness-of-harnesses” implica que Raven se sitúa por encima de herramientas como Hermes: tú no reemplazas tu agente, lo enchufas a un DAG con memoria persistente (EverOS) y un catálogo de 114k skills (SkillForge).",
+        "madurez_senales": "4.436★ · 113 forks · Python ≥3.12 (probable) · Apache-2.0 · creado 2026-05-21 · último push 2026-09-29 (¡hoy!) · topics: `ai-agents`, `anthropic`, `chatgpt`, `claude`, `codex`, `evermind`, `hermes`, `hermes-agent`, `llm`, `openai`, `openclaw`, `recursive-self-improvement`, `rsi-ai`, `self-evolving`, `self-improving` · sitio raven.evermind.ai · repos showcase THRESHOLD (FPS en Godot 4) y angy-raven (mini-game física). **Pre-alpha**: interfaces pueden cambiar rápido.",
+        "accion_sugerida": "explorar (clonar y leer `docker/docker-compose.yml` para entender la separación Raven ↔ EverOS ↔ SkillForge; el informe técnico en PDF bajo releases es la mejor lectura del modelo RSI).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "EverMind-AI/Raven",
+          "rel": "competes_with",
+          "dst": "Human-Agent-Society/reef",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "EverMind-AI/Raven",
+          "rel": "implements",
+          "dst": "recursive-self-improvement",
+          "primera_mencion": null
+        },
+        {
+          "src": "EverMind-AI/Raven",
+          "rel": "implements",
+          "dst": "harness-of-harnesses",
+          "primera_mencion": null
+        },
+        {
+          "src": "EverMind-AI/Raven",
+          "rel": "supports",
+          "dst": "hermes-agent",
+          "primera_mencion": "2026-07-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "evermind-ai-raven",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "HelpCode-ai/anythingmcp",
+      "url": "https://github.com/HelpCode-ai/anythingmcp",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Gateway self-hosted (TypeScript, AGPL-3.0, 578★) que importa un OpenAPI/Swagger/WSDL/GraphQL/Postman/SQL y emite un servidor MCP. Trae **265 adaptadores empaquetados** (SAP Business One, Odoo, Xentral, Shopware, WooCommerce, Amazon Seller, DHL...) y funciona por \"per-tool response mapping\": tú declaras qué campos pueden llegar al modelo, las credenciales van cifradas AES-256-GCM en reposo, y el audit log guarda la respuesta upstream completa en tu lado.",
+        "por_que_importa": "Resuelve el problema más común al que se enfrenta cualquier equipo que intenta poner agentes en producción: el grueso de las APIs corporativas no es REST limpio — es SOAP/WSDL de hace quince años, SQL queries con joins que un LLM no debería escribir, o esquemas propietarios de SAP u Odoo que ningún agente improvisa. AnythingMCP hace el trabajo sucio: importa OpenAPI/Swagger/WSDL/GraphQL/Postman/SQL y emite un servidor MCP, con 265 adaptadores empaquetados, credenciales cifradas en reposo (AES-256-GCM) y audit log local con la respuesta completa. Es competidor directo de `ComposioHQ/composio`, pero con una diferencia clave para la audiencia europea de CSS: tú controlas los datos (Frankfurt, EU, on-prem), lo que encaja con GDPR y EU AI Act. En el grafo aparece como `competes_with` de composio y como implementación del patrón `anyapi-to-mcp-gateway` — si vas a montar un gateway MCP sobre APIs viejas, este es el molde a copiar antes que improvisar el tuyo.",
+        "madurez_senales": "578★ · 71 forks · TypeScript · AGPL-3.0 · creado 2026-02-28 · último push 2026-09-28 · topics: `ai-agents`, `chatgpt`, `claude`, `claude-connectors`, `ecommerce`, `erp`, `graphql-to-mcp`, `mcp`, `mcp-gateway`, `mcp-server`, `model-context-protocol`, `no-code`, `openapi-to-mcp`, `rest-to-mcp`, `s4hana`, `sap`, `self-hosted`, `soap-to-mcp`, `sql-to-mcp` · en producción en KOCH Freiburg GmbH con 15+ sistemas internos · Docker compose quickstart arranca en 24-31s.",
+        "accion_sugerida": "probar (el quickstart de tres líneas está pensado para evaluadores: `mkdir anythingmcp && cd anythingmcp && curl ... | docker compose up -d`; la web UI queda en `http://localhost:3000`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "HelpCode-ai/anythingmcp",
+          "rel": "implements",
+          "dst": "anyapi-to-mcp-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "HelpCode-ai/anythingmcp",
+          "rel": "competes_with",
+          "dst": "ComposioHQ/composio",
+          "primera_mencion": null
+        },
+        {
+          "src": "HelpCode-ai/anythingmcp",
+          "rel": "implements",
+          "dst": "mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "helpcode-ai-anythingmcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Rizzo-AI-Academy/rizzo-pii",
+      "url": "https://github.com/Rizzo-AI-Academy/rizzo-pii",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Token-classifier ligero (mmBERT/ModernBERT, ~0.3B parámetros, ~0.5 GB RAM, **CPU-only**) que detecta 22 tipos de PII con micro-F1 de **0.989** — incluyendo identificadores italianos que ningún modelo abierto cubre (`codice fiscale`, `partita IVA`, `dati catastali`). Implementa el flujo `anonymize local → placeholder + dictionary reversible → frontier LLM → restore local`. Binarios listos para Windows/macOS/Linux.",
+        "por_que_importa": "Es la primera implementación OSS seria del patrón “usa GPT sin darle tus datos”, pensada específicamente para el caso europeo: legal, contable, notarial. Rizzo-pii detecta 22 tipos de PII con micro-F1 de 0.989 corriendo en CPU (~0.5 GB RAM), e incluye identificadores italianos que ningún modelo abierto cubre (`codice fiscale`, `partita IVA`, `dati catastali`). El flujo reversible es la pieza clave: anonymize local → placeholder + dictionary reversible → frontier LLM → restore local, sin enviar originales fuera y sin necesidad de API key ni GPU. Es complementario a `VibeTensor/attestix`, cubierto el 2026-09-28: attestix firma quién hizo qué; rizzo-pii controla qué se envía fuera — juntos cubren la cadena GDPR completa (firma + minimización de datos), algo que en el grafo aparece explícito con el edge `complements`. Para equipos europeos que ya evalúan el EU AI Act, es la pieza que faltaba en el stack local-first.",
+        "madurez_senales": "1.103★ · 81 forks · Python · MIT · creado 2026-06-28 · último push 2026-09-25 · topics: `anonymization`, `gdpr`, `italian`, `legal-tech`, `llm`, `local-first`, `mmbert`, `named-entity-recognition`, `pii`, `privacy`, `token-classification`, `transformers` · sitio del proyecto con reporte técnico en PDF · binarios firmados para las tres plataformas.",
+        "accion_sugerida": "explorar (vale la pena probar el binario Linux con un contrato italiano de prueba y verificar el flujo reversible; también interesante como ejemplo de \"modelo pequeño + dominio específico + OSS\" — patrón opuesto al \"frontera todo\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "Rizzo-AI-Academy/rizzo-pii",
+          "rel": "implements",
+          "dst": "local-pii-reversible-anonymization",
+          "primera_mencion": null
+        },
+        {
+          "src": "Rizzo-AI-Academy/rizzo-pii",
+          "rel": "relevant_to",
+          "dst": "eu-ai-act-agent-compliance",
+          "primera_mencion": "2026-09-28"
+        },
+        {
+          "src": "Rizzo-AI-Academy/rizzo-pii",
+          "rel": "uses",
+          "dst": "mmbert",
+          "primera_mencion": null
+        },
+        {
+          "src": "Rizzo-AI-Academy/rizzo-pii",
+          "rel": "complements",
+          "dst": "VibeTensor/attestix",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rizzo-ai-academy-rizzo-pii",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "firelex/jeff",
+      "url": "https://github.com/firelex/jeff",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Tres fine-tunes abiertos (Qwen3.5-0.8B, Qwen3.5-2B, Gemma4-E2B) entrenados **íntegramente en hardware local** (un RTX PRO 6000 + dos DGX Sparks, datos sintéticos escritos por Qwen3.8-Flash-Next) para clasificación zero-shot: describes una situación en palabras, listas las opciones en palabras, y Jeff devuelve una **probabilidad por opción en un solo forward pass** (22 ms en RTX PRO 6000, 28 ms en Apple M4 Max con MLX). API minimalista tipo OpenAI con tipos `choice`, `noul` (yes/no), `score`.",
+        "por_que_importa": "Es el recordatorio más incómodo del mes para la narrativa “LLM grande para todo”: Jeff-Qwen3.5-2B alcanza 83.1% en cinco benchmarks de clasificación frente a 83.0% de Jev y 84.9% de AutoJev-27B, con 14× menos parámetros. En Financial Phrasebank y RAGTruth gana a ambos modelos grandes; en razonamiento puro (BBH, JudgeBench) cae — como cabe esperar de un clasificador fino frente a uno generalista. La conclusión operativa es directa: para tareas de decisión (routing, triage, moderación), un fine-tune de 0.8B–2B bien entrenado en dominio específico supera a un frontier LLM y corre ~50× más barato. El ejemplo del README lo deja claro: en voice-navigation, una pasada de fine-tune movió la accuracy del 31.7% al 95.8% en media hora y una GPU. El detalle clave, a veces pasado por alto, es que Jeff fue entrenado íntegramente en hardware local (RTX PRO 6000 + dos DGX Sparks) sin closed-model output — los datos sintéticos los escribió Qwen3.8-Flash-Next. Eso lo hace replicable: si tu caso de clasificación encaja, puedes re-entrenar tu propio Jeff en tu portátil sin pagar a OpenAI ni a Anthropic.",
+        "madurez_senales": "632★ · 20 forks · Python · MIT · creado 2026-09-28 (¡ayer!) · último push 2026-09-29 · modelos publicados en HuggingFace bajo `mstrasser/Jeff-*` · entrenado sin closed-model output (solo Qwen3.8-Flash-Next para datos sintéticos, cloudflare un closed model para spot-check de calidad).",
+        "accion_sugerida": "explorar (es la primera entrega OSS de un patrón que va a repetirse: fine-tunes locales ultra-especializados que vencen a frontier en su nicho. Merece un benchmark propio sobre tareas CSS — triage de issues, routing de skills, moderación de PRs).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "firelex/jeff",
+          "rel": "implements",
+          "dst": "zero-shot-classifier-finetune",
+          "primera_mencion": null
+        },
+        {
+          "src": "firelex/jeff",
+          "rel": "fine_tunes",
+          "dst": "qwen3.5",
+          "primera_mencion": null
+        },
+        {
+          "src": "firelex/jeff",
+          "rel": "fine_tunes",
+          "dst": "gemma-4",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "firelex-jeff",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "cloudflare/cf",
+      "url": "https://github.com/cloudflare/cf",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI en TypeScript (Apache-2.0, open beta desde hace una semana) que expone **toda la API de Cloudflare** con un único binario (`npm i -g cf`). Diseñado explícitamente para que los coding agents operen Cloudflare: comandos encontrables con búsqueda semántica bespoke, JSON default (pretty para humanos, condensado para agentes), `cloudflare.config.ts` como formato de configuración (TypeScript + LSP) y Vite como dev server por defecto.",
+        "por_que_importa": "Es el primer movimiento serio de un hyperscaler cloud respondiendo a la pregunta “y cómo le doy al agente acceso a mis 200 productos”. El ángulo no es solo técnico — es una declaración de que los proveedores cloud ven a los coding agents como clientes de primera clase y van a invertir en DX agent-friendly. La competencia inmediata es `vercel-labs/scriptc`, cubierto el 2026-09-28, pero Cloudflare tiene una ventaja específica: opera la infraestructura que el agente probablemente está configurando (Workers, R2, D1, KV, Pages, Durable Objects), de modo que el mismo binario `cf` que invoca el LLM es el que provisiona los recursos. Detalles de diseño que importan y que un devo al uso pasaría por alto: JSON por defecto (pretty para humanos, condensado para agentes), `cloudflare.config.ts` como configuración tipada (TypeScript + LSP) en vez de YAML, y Vite como dev server — todo pensado para que un agente encuentre el comando por búsqueda semántica en vez de tener que memorizar flags. Para CSS, es la señal de que el “agentic DevOps” ya tiene vendor adoption: AWS y GCP van a tener que responder con sus propios CLIs agent-friendly en los próximos meses.",
+        "madurez_senales": "341★ · 8 forks · TypeScript · Apache-2.0 · creado 2026-09-21 (hace 8 días) · último push 2026-09-29 (¡hoy!) · topics: `[]` (sin topics aún) · blog post de lanzamiento en `blog.cloudflare.com/cloudflare-cf-cli-launch/`.",
+        "accion_sugerida": "vigilar (es muy nuevo; vale la pena instalarlo y comparar ergonomía con `wrangler` clásico antes de adoptarlo, pero el movimiento de plataforma es importante y merece tracking).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cloudflare/cf",
+          "rel": "implements",
+          "dst": "agentic-cloud-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/cf",
+          "rel": "belongs_to",
+          "dst": "cloudflare",
+          "primera_mencion": null
+        },
+        {
+          "src": "cloudflare/cf",
+          "rel": "configures",
+          "dst": "workers",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-cf",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "steipete/agent-scripts",
+      "url": "https://github.com/steipete/agent-scripts",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.830★, push 2026-09-27, Shell, MIT) — Repo canónico de Peter Steinberger con `AGENTS.MD`, `skills/` reutilizables, `scripts/sync-skills` (idempotente, descubre skills para Codex + Claude Code con resolución de colisiones) y hooks de validación. Skills \"live\": birdclaw, discrawl, peekaboo, gog, imsg, slacrawl, wacli, wacrawl",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — la sección \"Skills\" del README documenta el patrón mínimo-viable para skills (front matter corto + descripción genérica + skill body operativo) que toda skill OSS debería copiar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "steipete-agent-scripts",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "denisidoro/navi",
+      "url": "https://github.com/denisidoro/navi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(17.682★, push 2026-09-20, Rust, Apache-2.0) — Cheatsheet interactivo para CLI; `navi` permite buscar comandos navegables con placeholders y ejecutar sin salir del shell.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — fuera del scope AI/dev directo, pero es el patrón \"prompts-as-CLI\" que podría aplicarse a skills de Hermes",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "denisidoro-navi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "agent0ai/agent-zero",
+      "url": "https://github.com/agent0ai/agent-zero",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(19.337★, push 2026-09-23, Python, **NOASSERTION** ⚠️) — Framework \"Agent Zero\" con Linux shell + computer use. Licencia no-SPDX en el GitHub API; **verificar LICENSE real antes de cualquier adopción**.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar para CSS — hasta confirmar la licencia real (puede ser BSL/Polyform-como)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent0ai-agent-zero",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "kitao/pyxel",
+      "url": "https://github.com/kitao/pyxel",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(18.263★, push 2026-09-28, Rust, **NOASSERTION** ⚠️) — Retro game engine para Python con WebAssembly export. Excelente para enseñar a un coding agent a generar juegos pequeños.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — fuera del scope AI/dev directo, pero merece nota como ejemplo \"Python + Rust + WASM + game dev\" si la newsletter toca agentes-creativos",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kitao-pyxel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 4,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

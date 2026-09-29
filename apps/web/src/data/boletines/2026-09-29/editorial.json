@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-09-29",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La infraestructura para coding agents sale a la calle: video, APIs legacy, cloud y PII como campos de batalla",
+  "posicionamiento": "Los seis hallazgos de hoy comparten una sola pregunta operativa: qué necesita un coding agent para trabajar sobre dominios reales. VEED expone su motor de vídeo como piezas CLI invocables; AnythingMCP convierte SOAP, SAP y SQL en servidores MCP; Cloudflare reinventa su CLI pensando en agentes; Raven los orquesta a todos. Jeff demuestra que el clasificador fino de 0.8–2B supera al frontier LLM en tareas de decisión, y Rizzo-pii cierra la cadena GDPR con anonimización reversible local. El hilo es la profesionalización de los muelles, no el modelo.",
+  "convergencia_stack_css": "Tres hallazgos conectan con el stack local-first ya conocido: Rizzo-pii ejecuta el patrón “anonymize local → frontier LLM → restore local” sin GPU ni API key, complementando el attestix cubierto el 2026-09-28. Raven lista a Hermes Agent entre sus harnesses soportados, alineándose con la preferencia CSS de orquestar variando roles. AnythingMCP, al ser self-hosted en Frankfurt/EU, encaja con GDPR y EU AI Act que el boletín trae como línea editorial.",
+  "cruzado_grafo": "Raven refuerza el nodo harness-of-harnesses que ya cubrimos el 2026-09-18 con Reef, y consolida hermes-agent (primera mención 2026-07-03) como target explícito de Raven. AnythingMCP aparece por primera vez compitiendo con composio, y rizzo-pii se ancla a eu-ai-act-agent-compliance desde 2026-09-28. Jeff y cloudflare/cf son nodos nuevos sin relación previa con cobertura editorial.",
+  "tendencias_5_boletines": "El contexto reciente encaja con tres hilos: el 2026-09-28 abrió la línea de orquestación de coding agents (OpenRig, agent-manager, templates) y attestation con attestix. Hoy esos frentes se completan: Raven sube un escalón al orquestar13 harnesses, AnythingMCP resuelve APIs legacy, Rizzo-pii cierra GDPR. La dirección sostenida cinco días es profesionalizar los muelles del agente, no el modelo.",
+  "alertas": [
+    "Raven lista métricas de RSI en un solo benchmark pequeño (nanochat, 7 rondas) que difícilmente generaliza; tratar el5.8% como evidencia sólida y no como señal.",
+    "Cloudflare/cf está en open beta desde hace una semana: comandos y DX pueden cambiar sin aviso; no invertir integraciones profundas todavía.",
+    "Rizzo-pii cubre 22 tipos de PII con F1 de 0.989 pero su cobertura geográfica real más allá de Italia no está validada fuera del README.",
+    "AnythingMCP usa AGPL-3.0: revisar implicaciones antes de integrarlo en productos cerrados."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Raven adopta a Hermes Agent como target explícito; relevante para la audiencia CSS que ya usa Hermes y necesita saber qué meta-harness lo soporta."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "AnythingMCP resuelve el cuello SOAP/WSDL/SAP que bloquea agentes en producción corporativa europea; vale la pena medir la cobertura real de los 265 adaptadores con un caso SAP u Odoo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Jeff-Qwen3.5-2B iguala a AutoJev-27B en clasificación con 14× menos parámetros; patrón replicable para routing, triage y moderación dentro del stack CSS."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Cloudflare/cf es el primer CLI hyperscaler pensado para agentes; evolución rápida probable, conviene seguirla antes de integraciones profundas."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Rizzo-pii habilita el flujo 'usa GPT sin darle datos' con PII italiana; pieza complementaria a attestix, abre casos notariales y contables para CSS."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
