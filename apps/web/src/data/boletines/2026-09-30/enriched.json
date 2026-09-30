@@ -1,0 +1,558 @@
+{
+  "version": 2,
+  "date": "2026-09-30",
+  "boletin_origen": "2026-09-30-trending.md",
+  "resumen_ejecutivo": "- El hilo conductor del día es **infraestructura madura alrededor del coding-agent stack**: TileLang (DSL para GPU kernels con soporte Ascend 950 lanzado hoy), OpenShell (runtime seguro a nivel kernel de NVIDIA), vinext (Cloudflare reescribe Next.js sobre Vite + Workers) e InferenceX (SemiAnalysis abre AgentX, el primer benchmark agentic multi-turn de 1M tokens). Todo empujado en las últimas 24h.\n- **tile-ai/tilelang** es la sorpresa: 7,7k★ en <2 años, Apache-2.0 (NOASSERTION vía GH API; revisar LICENSE), Pythonic DSL sobre TVM con paths CUDA/ROCm/Metal/Ascend, y ejemplos ya entregados para kernels de DeepSeek V3.2/V4, FlashAttention y MXFP8 block-scaled en Blackwell. Es el competidor OSS más serio a Triton para escribir kernels desde código Python.\n- **SemiAnalysisAI/InferenceX** lanzó AgentX este mes (agosto 2026): primer benchmark agentic 100% OSS, Apache-2.0, long-context 1M+ multi-turn. El dashboard en vivo ya corre DeepSeek V4.1 Flash, Qwen3.8-Flash-Next, MiniMax M3 y GLM5.3. Es la referencia que faltaba para comparar inferencia de modelos agentic.\n- **cloudflare/vinext** reimplements Next.js API sobre Vite en una semana (literalmente \"rebuilt Next.js with AI\"). Soporta App Router, RSC, Server Actions, ISR, deployment a Workers. Aún no es drop-in (Cache Components y PPR incompletos), pero el patrón importa: la frontera \"framework + edge\" se está moviendo de Node+CDN a Vite+Workers.\n- **vectorize-io/hindsight** y **mem0ai/mem0** consolidan el patrón \"memory layer para agentes\": ambos con paper, ambos con SOTA en LongMemEval, ambos OSS. La diferencia está en el modelo: Hindsight apunta a \"learn\" (bank-scoped, formal memory types), Mem0 a \"personalized + token-efficient\".\n- **mvschwarz/openrig** aterriza el concepto \"rig wraps your harnesses\" como CLI empaquetada: defines tu equipo de Claude Code / Codex en YAML y los arrancas con un comando. Es el competidor OSS al modelo de EverMind-AI/Raven visto ayer.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily global + TypeScript + Python + Rust + Go (74 items, 82 únicos mergeados), GitHub REST API para los 16 candidatos priorizados. Blogwatcher 08:00 no publicado hoy (último `-blogs.md` = 2026-07-05; verificar `hermes cron list`).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "tile-ai/tilelang",
+      "url": "https://github.com/tile-ai/tilelang",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Un DSL Pythonic sobre TVM para escribir kernels de alto rendimiento (GEMM, FlashAttention, Dequant, LinearAttention, kernels de modelos MoE). Soporta CUDA, ROCm, Metal, LLVM y, desde hoy 2026-09-30, Huawei Ascend 950 NPUs con code generation nativo. Trae LSP propio con inlay hints de shapes/dtypes, ejemplos para DeepSeek V3.2 sparse MLA, DeepSeek V4, SM120 NVF4 block-scaled, MXFP8 block-scaled GEMM en Blackwell, Metal simdgroup GEMM en Apple M5, y un profiler tipo IKET.",
+        "por_que_importa": "El espacio de escribir kernels de GPU desde Python lo dominaba Triton (de OpenAI). TileLang es la alternativa open source con un compilador distinto (TVM TIRX en lugar de MLIR), más superficie de lenguaje y cobertura multi-vendor real (NVIDIA + AMD + Apple + Huawei). Para una newsletter de infraestructura de IA, TileLang es la noticia del día por dos motivos concretos: (1) el soporte nativo para Ascend 950 abre el mercado chino de NPU a código open source escrito desde Python; (2) ya trae kernels entregados para DeepSeek V4, es decir, está a la altura de cargas de modelos reales y no solo de ejemplos de GEMM. Buen tema para un artículo tipo \"más allá de Triton: qué ofrece TileLang en 2026\".",
+        "madurez_senales": "7,720★ · 771 forks · Python · licencia NOASSERTION vía API (revisar LICENSE; el repo declara Apache-2.0 vía docs) · creado 2024-10-03 · último push 2026-09-30 (HOY) · default_branch `main` · 7,938 bytes README. Documentación en tilelang.com; canales Discord y DeepWiki.",
+        "accion_sugerida": "explorar (clonar y leer `examples/deepseek/` para entender el modelo del DSL; comparar con un kernel Triton equivalente).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tile-ai/tilelang",
+          "rel": "implements",
+          "dst": "concept:gpu-kernel-dsl",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tile-ai/tilelang",
+          "rel": "competes_with",
+          "dst": "repo:triton-lang/triton",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tile-ai/tilelang",
+          "rel": "uses",
+          "dst": "framework:tvm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tile-ai/tilelang",
+          "rel": "relevant_to",
+          "dst": "concept:inference-optimization",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tile-ai-tilelang",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "SemiAnalysisAI/InferenceX",
+      "url": "https://github.com/SemiAnalysisAI/InferenceX",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plataforma de benchmarking de inferencia open-source operada por SemiAnalysis (la gente de newsletter.semianalysis.com). Cubre NVIDIA Blackwell, AMD, Hopper y, desde febrero 2026, GB300 NVL72. En agosto 2026 lanzó **AgentX**: el primer benchmark agentic Apache-2.0 con contexto 1M+ multi-turn — corre continuamente DeepSeek V4.1 Flash, Qwen3.8-Flash-Next, GLM5.3, MiniMax M3, Kimi K3 2.8T desde día 0. Trae también CollectiveX (networking + collective comms) y OperatorX (operator/kernel level) en beta.",
+        "por_que_importa": "Para escribir sobre inferencia de modelos agentic, InferenceX es la fuente canónica: open source, mantenida por SemiAnalysis (la gente de newsletter.semianalysis.com), con resultados reproducibles y disclaimer explícito de que los forks no son oficiales. El lanzamiento de AgentX en agosto 2026 llena un hueco enorme: hasta ahora no había un benchmark open source para comparar agentes con contexto largo, así que cualquier afirmación sobre qué modelo agentic rinde mejor se apoyaba en benchmarks cerrados. Corre de forma continua modelos nuevos (DeepSeek V4.1 Flash, Qwen3.8-Flash-Next, GLM5.3, Kimi K3 2.8T) desde el día de salida, lo que lo convierte en el sitio donde mirar antes de fiarse de claims de proveedores. Buen tema para un análisis tipo \"AgentX: el benchmark que faltaba para comparar modelos agentic en inferencia\".",
+        "madurez_senales": "1,790★ · 310 forks · Python · Apache-2.0 · creado 2025-07-12 · último push 2026-09-30 (HOY) · default_branch `main` · README bilingüe (EN + chino simplificado) · usado por OpenAI, Meta, Microsoft, Oracle, PyTorch Foundation, vLLM, SGLang, Tri Dao (claims del propio repo; verificar si aplica a GitHub stars de InferenceX o a su servicio cloud).",
+        "accion_sugerida": "leer (visitar `inferencex.semianalysis.com/agentx` para ver el dashboard vivo; suscribirse al newsletter de SemiAnalysis para no perder el próximo preset).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:SemiAnalysisAI/InferenceX",
+          "rel": "implements",
+          "dst": "concept:agentic-benchmark",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:SemiAnalysisAI/InferenceX",
+          "rel": "implements",
+          "dst": "concept:inference-benchmark-platform",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:SemiAnalysisAI/InferenceX",
+          "rel": "tracks",
+          "dst": "company:semianalysis",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:SemiAnalysisAI/InferenceX",
+          "rel": "relevant_to",
+          "dst": "concept:llm-inference",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "semianalysisai-inferencex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "cloudflare/vinext",
+      "url": "https://github.com/cloudflare/vinext",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plugin de Vite que **reimplementa la superficie de Next.js** sobre Vite, con Cloudflare Workers como target principal de deployment. Soporta App Router y Pages Router, React Server Components, Server Actions, route handlers, middleware, ISR, static export, y los módulos `next/*` más usados. Tiene `vinext check`, `vinext init` y una Agent Skill para migrar. El blogpost \"How we rebuilt Next.js with AI in one week\" explica la génesis: literalmente usaron coding agents para reescribir el Next compiler/output como plugin de Vite.",
+        "por_que_importa": "Es un movimiento tectónico del frontend meta-framework: la API de Next.js reimplementada como plugin de Vite abre dos puertas concretas, deployment a Cloudflare Workers sin reescribir nada y acceso al ecosistema de Vite (plugins, config de Rollup, dev server) sin perder la ergonomía de Next. Los gaps documentados son honestos y útiles de saber: Cache Components y Partial Prerendering están incompletos, falta optimización build-time de imágenes y los módulos nativos en App Router dev no funcionan del todo; es decir, no es drop-in para cualquier app Next.js, pero sí para un porcentaje alto. El blogpost de Cloudflare explicando que lo reescribieron con coding agents en una semana es parte de la historia, porque deja a Vercel en una posición incómoda: su ventaja ya no es solo la DX. Buen tema tipo \"vinext y el futuro de los meta-frameworks: si Cloudflare puede reescribir Next.js en una semana con AI, ¿qué significa eso para Vercel?\".",
+        "madurez_senales": "9,012★ · 422 forks · TypeScript · MIT · creado 2026-02-24 · último push 2026-09-29 · default_branch `main` · LICENSE Apache-2.0/MIT en repo · README de 990 líneas con matriz detallada de compatibilidad · sitio vinext.dev.",
+        "accion_sugerida": "explorar (probar `vinext check` contra una app Next.js real; leer el blogpost `blog.cloudflare.com/vinext/` para entender el patrón \"AI reescribe framework en una semana\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cloudflare/vinext",
+          "rel": "implements",
+          "dst": "concept:next-on-vite",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudflare/vinext",
+          "rel": "competes_with",
+          "dst": "repo:vercel/next.js",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudflare/vinext",
+          "rel": "targets",
+          "dst": "runtime:cloudflare-workers",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:cloudflare/vinext",
+          "rel": "uses",
+          "dst": "tool:vite",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-vinext",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Runtime (Rust, Apache-2.0) que gobierna qué pueden hacer agentes autónomos en una máquina. Instrumenta el kernel para forzar policy en cada file access, syscall y conexión de red; usa verificación formal sobre cambios de policy antes de aplicarlos; nunca expone credenciales reales al agente (las inyecta solo en requests a endpoints aprobados). Re-entry con push HOY: trae 0.1.x stable con cadencia de releases, primitivas de aislamiento expandidas y nueva API de extensiones. El CLI `openshell` arranca un gateway local y `openshell sandbox create` levanta una sandbox Ubuntu con OpenCode conectado a un modelo OpenRouter.",
+        "por_que_importa": "Tema crítico y todavía sin resolver: cómo dejar a un coding agent ejecutar cosas reales sin entregarle tu filesystem, tu red y tus secretos. OpenShell es la apuesta de NVIDIA para cubrir ese hueco con primitivas a nivel de kernel y verificación formal sobre cambios de policy. El push de hoy consolida la rama 0.1.x como estable y amplía la API de extensiones. Ya cubrimos el problema en el boletín del 2026-08-07 al hablar de sandbox para agentes y de kubernetes-sigs/agent-sandbox como competidor; la diferencia práctica con OpenShell es dónde aplica el control, a nivel de kernel y syscall en lugar de a nivel de herramienta MCP. Buen tema tipo \"agent runtimes: kernel-level sandbox vs per-tool gateway\".",
+        "madurez_senales": "10,931★ · 1,441 forks · Rust · Apache-2.0 · creado 2026-02-24 · último push 2026-09-30 (HOY) · default_branch `main` · docs en docs.nvidia.com/openshell · upgrade guide 0.1.0 publicado · soporte Linux, macOS Apple Silicon, Windows WSL2 (experimental).",
+        "accion_sugerida": "explorar (clonar y ejecutar el quickstart con Docker; comparar con `kubernetes-sigs/agent-sandbox` para entender si la propuesta de NVIDIA es complementaria o sustitutiva del patrón CRD k8s).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "implements",
+          "dst": "concept:agent-sandbox",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "competes_with",
+          "dst": "repo:kubernetes-sigs/agent-sandbox",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "uses",
+          "dst": "technique:kernel-level-policy-enforcement",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "relevant_to",
+          "dst": "problem:agent-runtime-data-leak",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-openshell",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Memory system para agentes (Python + cliente JS/NPM) que apunta a \"make agents learn, not just remember\". SOTA en LongMemEval según benchmarks publicados, reproducido independientemente por Virginia Tech Sanghani Center y The Washington Post. Paper en arxiv 2512.12818. Modelo mental: tres operaciones (retain / recall / reflect), cuatro memory types, banks para scope, mental models y knowledge pages. Re-entry con push HOY — el repo se mantiene activo en producción con Fortune 500s y startups.",
+        "por_que_importa": "Junto con mem0, Hindsight consolida la categoría \"memory layer para agentes de IA\" como infraestructura crítica, no como feature opcional. El push de hoy confirma una cadencia de release sostenida y el paper en arxiv (2512.12818) le da base académica; además, las reproducciones independientes de Virginia Tech Sanghani Center y The Washington Post refuerzan que los números de LongMemEval no son auto-reportados. Ya cubrimos mem0 como competidor directo en el boletín del 2026-08-10, y earendil-works/pi (que cubrimos el 2026-08-08) ya lo tiene en uso, lo que da una pista de hacia dónde va el stack. La integración vía `npx skills add` lo conecta directamente al flujo de coding agents tipo Hermes o Claude Code. Buen tema tipo \"agent memory 2026: cuándo Mem0 y cuándo Hindsight\".",
+        "madurez_senales": "43,219★ · 5,811 forks · Python · MIT · creado 2025-10-30 · último push 2026-09-30 (HOY) · default_branch `main` · 24,805 bytes README · dashboards vivos en `benchmarks.hindsight.vectorize.io` · paquetes PyPI `hindsight-api` + `hindsight-client` · cliente NPM `@vectorize-io/hindsight-client`.",
+        "accion_sugerida": "leer (el paper 2512.12818 es la mejor referencia técnica; saltar al dashboard de benchmarks si solo quieres las cifras).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "releases",
+          "dst": "release:2026-09-30",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "competes_with",
+          "dst": "repo:mem0ai/mem0",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "implements",
+          "dst": "benchmark:longmemeval",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:vectorize-io/hindsight",
+          "rel": "used_by",
+          "dst": "repo:earendil-works/pi",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vectorize-io-hindsight",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "mvschwarz/openrig",
+      "url": "https://github.com/mvschwarz/openrig",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Una abstracción \"rig\" (rig de perforación) que envuelve uno o varios coding harnesses (Claude Code, Codex, o ambos) y los gestiona como un equipo. Defines el equipo en YAML, arrancas con `npm install -g @openrig/cli` + `rig setup --dry-run`. Hay tres starters (`first-project` = dos Codex, `first-project-claude` = dos Claude, `first-project-mixed` = Claude owner + Codex checker), todos owner/checker sobre la misma tarea. Trae TUI que muestra el rig como grafo de seats con runtime/modelo/context/estado. Re-entry con push HOY.",
+        "por_que_importa": "OpenRig aterriza el mismo concepto abstracto que EverMind-AI/Raven (que cubrimos en el boletín del 2026-09-28) pero con un foco más afilado: solo coding harnesses, patrón owner+checker, TUI y YAML como UX. Es el tipo de herramienta que un equipo pequeño podría usar mañana para correr Claude Code como lead y Codex como verifier sobre la misma tarea, sin escribir un orquestador a medida. El requerimiento de Node 22/24 + tmux lo deja lejos de ser un juguete: asume un entorno tipo máquina de desarrollador, no un dashboard en la nube. Buen tema tipo \"owner/checker pattern: cómo dividir el trabajo entre Claude y Codex en el mismo repo\".",
+        "madurez_senales": "2,585★ · 182 forks · TypeScript · Apache-2.0 · creado 2026-04-01 · último push 2026-09-30 (HOY) · default_branch `main` · requiere Node 22/24 + tmux · sitio openrig.dev · autor [@_feralmachine en X](https://x.com/_feralmachine).",
+        "accion_sugerida": "explorar (instalar y correr `rig setup --dry-run`; leer el Q&A en discussions/92).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mvschwarz/openrig",
+          "rel": "competes_with",
+          "dst": "repo:EverMind-AI/Raven",
+          "primera_mencion": "2026-09-28"
+        },
+        {
+          "src": "repo:mvschwarz/openrig",
+          "rel": "implements",
+          "dst": "concept:multi-harness-orchestrator",
+          "primera_mencion": "2026-09-28"
+        },
+        {
+          "src": "repo:mvschwarz/openrig",
+          "rel": "uses",
+          "dst": "pattern:owner-checker",
+          "primera_mencion": "2026-09-28"
+        },
+        {
+          "src": "repo:mvschwarz/openrig",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvschwarz-openrig",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "mem0ai/mem0",
+      "url": "https://github.com/mem0ai/mem0",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"The Memory Layer for AI Agents\" (Python, Apache-2.0, YC S24). Trae un algoritmo de memoria token-efficient que, según benchmarks propios, sube de 71.4 → 92.5 en LoCoMo y de 67.8 → 94.4 en LongMemEval con 7K tokens y <1.1s p50. Cliente Python (`mem0ai` en PyPI) y Node (`mem0ai` en NPM). Se posiciona como drop-in memory infrastructure para apps y agentes.",
+        "por_que_importa": "Es la pieza complementaria a Hindsight: ambos compiten en el mismo LongMemEval (que cubrimos el 2026-09-07 como benchmark de memoria) y ambos presumen paper + dashboard, pero atacan el problema desde ángulos distintos. Mem0 enfatiza memoria personalizada y token-efficient, con un SDK ligero para integrar en apps y agentes; Hindsight apunta al lado \"learn\" del problema y se integra más como servidor. Los números que aporta el repo son concretos (71.4 → 92.5 en LoCoMo y 67.8 → 94.4 en LongMemEval con 7K tokens y <1.1s p50), pero al ser auto-reportados conviene tratarlos como pista, no como verdad validada. Ya cubrimos el espacio de memory layer para agentes el 2026-08-10 al hablar de Hindsight; ahora con dos implementaciones de referencia asentadas (Mem0 + Hindsight), tiene sentido un artículo de comparación. Buen tema tipo \"Mem0 vs Hindsight: dos arquitecturas para memoria agentic\".",
+        "madurez_senales": "66,342★ · 7,812 forks · Python · Apache-2.0 · creado 2023-06-20 · último push 2026-09-25 · default_branch `main` · research en mem0.ai/research · YC S24 · sitio mem0.ai.",
+        "accion_sugerida": "explorar (clonar y leer `mem0/memory/` para entender el modelo de extracción; comparar con Hindsight en un agente real).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mem0ai/mem0",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:mem0ai/mem0",
+          "rel": "competes_with",
+          "dst": "repo:vectorize-io/hindsight",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:mem0ai/mem0",
+          "rel": "implements",
+          "dst": "benchmark:longmemeval",
+          "primera_mencion": "2026-09-07"
+        },
+        {
+          "src": "repo:mem0ai/mem0",
+          "rel": "founded_by",
+          "dst": "company:yc-s24",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mem0ai-mem0",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "tw93/Kaku",
+      "url": "https://github.com/tw93/Kaku",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6,044★, último push 2026-09-28, Rust, MIT) — Terminal macOS sobre WezTerm con fuentes/temas/shortcuts preconfigurados para AI coding; del autor de Mirrors/Pake",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (relevante para el flujo diario de CSS; aún no probado)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tw93-kaku",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(21,994★, último push 2026-09-29, TypeScript, Apache-2.0, branch `dev`) — SDK OSS de Office (Spreadsheets/Docs/Slides/Bases/Boards/PDFs) pensado como \"Office Harness for AI Agents\"; ya en grafo con 6 edges",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (probar el Facade API y comparar con OnlyOffice/Etherpad)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "heygen-com/hyperframes",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(54,331★, último push 2026-09-30, TypeScript, Apache-2.0) — Framework que convierte HTML+CSS+media en MP4 determinista; trae plugin para Claude Code; compite con Remotion",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (sigue a OpenAI Sora / Veo en el lado \"deterministic, not generative\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heygen-com-hyperframes",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "VoltAgent/voltagent",
+      "url": "https://github.com/VoltAgent/voltagent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10,705★, último push 2026-09-28, TypeScript, MIT) — \"AI Agent Engineering Platform\" sobre TS con MCP/observability/RAG/TTS built-in",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (maduro pero solapa con el espacio \"framework de agentes\"; ver si aguanta la presión de LangChain/LlamaIndex)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "voltagent-voltagent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "OpenCTI-Platform/opencti",
+      "url": "https://github.com/OpenCTI-Platform/opencti",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10,069★, último push 2026-09-30, TypeScript, NOASSERTION vía API) — Plataforma OSS para cyber threat intelligence sobre STIX2; integra MISP/MITRE ATT&CK; 6k+ miembros Slack",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (no es AI pero es relevante para security teams de audiencia CSS; conferencia THREAD 2026-10-15 en París)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opencti-platform-opencti",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "Anil-matcha/open-dots",
+      "url": "https://github.com/Anil-matcha/open-dots",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4,608★, último push 2026-09-29, Python, MIT) — Alternativa open-source a OpenAI Dots: workspace self-hosted con chat, tool use, approval prompts, runtime Playwright",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (prototipo aún; interesante porque visibiliza el patrón \"approvals por defecto\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anil-matcha-open-dots",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "Niko1221/Strata",
+      "url": "https://github.com/Niko1221/Strata",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1,997★, último push 2026-09-29, C++, MIT) — Wrapper para correr **Qwen3.8-Flash-Next** (125B MoE) en una sola GPU NVIDIA 12-24 GB + 64 GB RAM. Mide 93 tokens/s con Q2_0 en RTX 5070",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (si tienes GPU decente, es la demo más rápida del estado del arte en inferencia local de modelos MoE grandes)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "niko1221-strata",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "ninjahawk/livenerf",
+      "url": "https://github.com/ninjahawk/livenerf",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(462★, último push 2026-09-29, Python, sin licencia clara) — Benchmark para tracking de capacidad de modelos **después** del release (post-training dynamics)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (462★ y push reciente lo hacen interesante, pero la falta de LICENSE vía API exige leer el LICENSE antes de adoptarlo como dependencia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ninjahawk-livenerf",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

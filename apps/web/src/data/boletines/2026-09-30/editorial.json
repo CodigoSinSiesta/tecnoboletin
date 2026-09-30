@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-09-30",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Claude Skills, contexto a la carta y el navegador que ya no necesita intermediarios",
+  "posicionamiento": "La tesis de hoy: el stack de coding agents ya tiene capas diferenciadas, no una sola pila. TileLang, InferenceX y OpenShell cimentan el suelo (kernels, benchmarks, runtime); vinext, OpenRig y Mem0/Hindsight atacan la superficie (framework, memoria, experiencia de uso). Importa la división, no el catálogo.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
