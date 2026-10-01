@@ -1,0 +1,478 @@
+{
+  "version": 2,
+  "date": "2026-10-01",
+  "boletin_origen": "2026-10-01-trending.md",
+  "resumen_ejecutivo": "- **agent security deja de ser investigación y se vuelve producto.** `archestra-ai/OpenAPPA` entra a Trendshift con **927★ y paper aceptado en NeurIPS 2026 Workshop (AgentWILD)**, declarando política TOML determinista evaluada contra `AgentThreatBench` (OWASP Top 10 for Agentic Applications) y `Bench-Corp` — 0% ataques exitosos en 1.320 evaluaciones vs 10% Claude Auto y 28–35% Microsoft FIDES. **AWS** publica su propio toolkit oficial (`aws/agent-toolkit-for-aws`, status **GA**) con plugins `aws-core`, `aws-agents`, `aws-data-analytics` y `aws-agents-for-devsecops` para Claude Code, Codex, Cursor, Kiro. La línea \"agent sandbox / agent policy\" pasa de exploratoria a estándar de mercado.\n- **El código ahora tiene grafo semántico oficial para coding agents.** `colbymchenry/codegraph` (72,675★, kernel en Rust, 100% local) soporta explícitamente **9 coding agents** — Claude Code, Cursor, Codex, OpenCode, **Hermes Agent**, Gemini, Antigravity, Kiro y GitHub Copilot — y entra a GitHub Trending global. Es la pieza que faltaba para que cualquier coding agent tenga un code-graph pre-indexado sin pagar servicio cloud. Para CSS: relevance directo con `mcp__codebase_memory`.\n- **VoidZero consolida el toolchain de JS.** `voidzero-dev/vite-plus` (5.9k★, MIT) lanza `Vite+` como single entry point con `vp dev`, `vp check`, `vp test`, `vp build`, `vp pack`, `vp env`, `vp migrate` y `vp run` (con caché de tareas monorepo). Combina Vite + Vitest + Oxlint + Oxfmt + Rolldown + tsdown en **un binario**. Ayer vimos `cloudflare/vinext` reescribiendo Next.js sobre Vite+Workers — VoidZero está sentando el \"eslabón bajo\" que cualquier reinvención de meta-framework va a necesitar. Tesis: el toolchain fragmentado de JS se está consolidando en torno a Vite/Oxc/Rolldown.\n- **`pydantic/pydantic-ai` entra a Trending de Python con 20,3k★** y claim directo: *\"How Python does AI. Agents, realtime voice, image generation, embeddings. Every model, every interface, typed end to end.\"* Es la consolidación del framework agentic OSS tipo-LangChain pero sobre el ecosistema `pydantic` — el \"Python typed end-to-end\" se vuelve una alternativa real a `crewai`/`autogen`/`langgraph` en el nicho de agentes tipados. Cuidado: no es novedad de 24h (creado 2024-06), pero su push HOY confirma cadencia y posición consolidada.\n- **Bonus menor: OSS clones de OpenAI Dots proliferan.** OpenAI lanzó Dots el 29 sept; dos contendientes OSS aparecen en menos de 48h: `composio-community/open-dot` (hoy, 229★, TypeScript/Electron, sobre Composio) y `Anil-matcha/open-dots` (visto en radar de ayer). La categoría \"background personal AI agent on your own computer\" tiene dos entradas OSS casi simultáneas.\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily global + TypeScript + Python + Rust + Go (87 items, 98 únicos mergeados), GitHub REST API para los 8 candidatos priorizados, READMEs via `default_branch` para todos los hallazgos principales. Blogwatcher 08:00 no publicado hoy (último `-blogs.md` = 2026-07-05; verificar `hermes cron list`).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "archestra-ai/OpenAPPA",
+      "url": "https://github.com/archestra-ai/OpenAPPA",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sidecar que se coloca entre un agente y sus herramientas y responde **una sola pregunta antes de cada call**: ¿puede este dato ir a ese destino? La lógica corre sobre **APPA (Agentic Permissions Policy Algebra)**: tracking de sensitivity/trust de cada dato que el agente lee, evaluación contra una **política declarativa TOML** antes del call, decisión 100% determinista (sin red, sin acceso a filesystem en la decisión — mismo log ⇒ misma decisión). Acompañado de un paper aceptado en el **NeurIPS 2026 Workshop AgentWILD**.",
+        "por_que_importa": "Hoy la elección de seguridad agentic se repartía entre tres ejes: kernel-level (cubrimos NVIDIA/OpenShell el 2026-08-07), gateway por herramienta (cubrimos HelpCode-ai/anythingmcp el 2026-09-29) o confiar en el propio modelo. OpenAPPA abre un cuarto eje: una policy algebra determinista (APPA), evaluada antes de cada call contra una política declarativa en TOML, sin red y sin acceso a filesystem en la decisión. La diferencia operativa es concreta: el sidecar decide en ms sin clasificador probabilístico, así que el agente no paga latencia, y dos runs sobre el mismo log producen exactamente la misma decisión — algo que un LLM-judge no puede garantizar y que importa de verdad cuando auditas un incidente. Los benchmarks del repo (1.320 evaluaciones) muestran 0% de ataques exitosos manteniendo 89% de task completion, así que el enfoque no rompe usabilidad. Para CSS: ya cubrimos los otros dos ejes, faltaba este; el paper en el NeurIPS 2026 Workshop AgentWILD le da respaldo académico.",
+        "madurez_senales": "927★ · 39 forks · Rust · MIT · creado 2026-08-18 · último push 2026-09-30 (HOY) · default_branch `main` · topics: `guardrails`, `guardrails-ai`, `security` · instalación con `curl https://openappa.com/install.sh | sh` · integración Claude Code via `~/.local/bin/appa plugin install claude-code`.",
+        "accion_sugerida": "explorar (instalar con el one-liner, declarar una política TOML de prueba sobre Claude Code, leer el benchmark antes de ceder).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:archestra-ai/OpenAPPA",
+          "rel": "implements",
+          "dst": "concept:agent-policy-sidecar",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:archestra-ai/OpenAPPA",
+          "rel": "competes_with",
+          "dst": "repo:NVIDIA/OpenShell",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:archestra-ai/OpenAPPA",
+          "rel": "complements",
+          "dst": "repo:HelpCode-ai/anythingmcp",
+          "primera_mencion": "2026-09-29"
+        },
+        {
+          "src": "repo:archestra-ai/OpenAPPA",
+          "rel": "relevant_to",
+          "dst": "concept:agent-security",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:archestra-ai/OpenAPPA",
+          "rel": "tracked_by",
+          "dst": "benchmark:agent-threat-bench",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "archestra-ai-openappa",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "colbymchenry/codegraph",
+      "url": "https://github.com/colbymchenry/codegraph",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Code-graph pre-indexado y auto-sincronizado para coding agents. Kernel en **Rust**, **100% local** (sin servicios cloud), distribuido como npm `@colbychenry/codegraph`. Soporta oficialmente: **Claude Code, Cursor, Codex, OpenCode, Hermes Agent, Gemini, Antigravity, Kiro y GitHub Copilot** (los 9 están en el header del README). Tagline: \"surgical context · built for how agents actually work\".",
+        "por_que_importa": "CodeGraph ofrece a cualquier coding agent (incluido Hermes Agent, cubierto en este boletín el 2026-09-15) un code-graph semántico local comparable al indexing repo-wide de Cursor o a mcp__codebase_memory, sin pagar SaaS: kernel en Rust, distribución npm, sin servicios cloud. El modelo dual (OSS local + 'CodeGraph platform' hosted en waitlist) repite el patrón que ya vimos en mavis/graphify — la presión comercial llegará, pero el OSS local sigue siendo el modo principal. Para CSS la pregunta práctica es si CodeGraph sustituye o complementa a mcp__codebase_memory: CodeGraph apunta a queries sobre el grafo para agentes, codebase_memory a memoria + retrieval; son funciones distintas, no redundantes. Que el repo soporte oficialmente9 coding agents (Claude Code, Codex, Cursor, OpenCode, Hermes, Gemini, Antigravity, Kiro, GitHub Copilot) lo convierte en el primer code-graph multiplataforma con paridad real entre ellos.",
+        "madurez_senales": "72,675★ · 4,665 forks · C (kernel) + Node (binding npm) · MIT · creado 2026-01-18 · último push 2026-10-01 (HOY) · default_branch `main` · binary auto-bundled (Node.js + node-gyp en binary) · versiones firmadas y attestadas · sitio getcodegraph.com (waitlist para \"CodeGraph platform\" hosted).",
+        "accion_sugerida": "explorar (instalar `@colbychenry/codegraph` en un proyecto CSS real y comparar el tiempo de respuesta a queries de código frente a `mcp__codebase_memory`; revisar el waitlist de \"CodeGraph platform\" para entender su roadmap comercial).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "implements",
+          "dst": "concept:code-graph-for-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "competes_with",
+          "dst": "tool:codebase-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "supports",
+          "dst": "tool:hermes-agent",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "uses",
+          "dst": "language:rust",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "relevant_to",
+          "dst": "concept:code-understanding",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "colbymchenry-codegraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "aws/agent-toolkit-for-aws",
+      "url": "https://github.com/aws/agent-toolkit-for-aws",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Toolkit oficial de **AWS (Apache-2.0, GA)** que expone **skills, plugins y servidores MCP** para que coding agents (Claude Code, Codex, Cursor, Kiro, fx) puedan construir, desplegar y operar aplicaciones AWS. Trae cuatro paquetes oficiales: `aws-core` (selección de servicios, CDK/CloudFormation, serverless, containers, storage, observability, billing, SDK, deploy), `aws-agents` (Bedrock + AgentCore), `aws-data-analytics` (S3 Tables, Glue, Athena) y `aws-agents-for-devsecops` (incident review, UAT, vuln scan, pentesting con AWS DevOps/Security Agent). Integración nativa con AWS CLI vía `aws configure agent-toolkit`.",
+        "por_que_importa": "AWS publica oficialmente su toolkit para coding agents (Apache-2.0, GA), no un wrapper de terceros. Lo que cambia es la combinación: skills y servidores MCP para Claude Code, Codex, Cursor, Kiro y otros, distribuidos por el canal propio de Anthropic (`/plugin install aws-core@claude-plugins-official`); cuatro paquetes oficiales que cubren desde CDK/CloudFormation hasta Bedrock/AgentCore; y el path directo del paquete `aws-agents-for-devsecops` hacia AWS DevOps Agent y AWS Security Agent, conectando 'coding agent → infra → security' bajo la marca AWS. Para proveedores cloud pequeños (DigitalOcean, Railway, Vercel) esto sube el listón: hasta hoy no tenían nada oficial comparable. Donde OpenAPPA (cubierto en este número) decide si un tool call se ejecuta, este toolkit decide qué skills y servidores MCP tiene disponibles el agente al trabajar sobre AWS.",
+        "madurez_senales": "2,768★ · 338 forks · Python (skills/MCP servers) · Apache-2.0 · creado 2026-04-23 · último push 2026-10-01 (HOY) · default_branch `main` · status **GA (General Availability)** · integración AWS CLI estable.",
+        "accion_sugerida": "explorar (instalar el paquete `aws-core` en Claude Code y probarlo contra una app CDK/CloudFormation real; revisar `aws-agents-for-devsecops` para entender el patrón \"security como skill agentic\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:aws/agent-toolkit-for-aws",
+          "rel": "implements",
+          "dst": "concept:cloud-agent-toolkit",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aws/agent-toolkit-for-aws",
+          "rel": "targets",
+          "dst": "company:aws",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aws/agent-toolkit-for-aws",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aws/agent-toolkit-for-aws",
+          "rel": "supports",
+          "dst": "framework:codex",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aws/agent-toolkit-for-aws",
+          "rel": "relevant_to",
+          "dst": "concept:cloud-coding-agent-stack",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aws/agent-toolkit-for-aws",
+          "rel": "complements",
+          "dst": "repo:archestra-ai/OpenAPPA",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aws-agent-toolkit-for-aws",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "voidzero-dev/vite-plus",
+      "url": "https://github.com/voidzero-dev/vite-plus",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Vite+** es la herramienta unificada de VoidZero (la empresa de Evan You) que combina **Vite + Vitest + Oxlint + Oxfmt + Rolldown + tsdown + Vite Task** en **un solo binario** con comandos `vp dev`, `vp check`, `vp test`, `vp build`, `vp pack`, `vp env`, `vp migrate`, `vp run` (este último hace scheduling dependency-aware de scripts de monorepo). Configuración única vía `vite.config.ts` desde la raíz del proyecto. Migración automática de proyectos Vite existentes.",
+        "por_que_importa": "Ayer cubrimos cloudflare/vinext (Cloudflare reimplementando Next.js sobre Vite+Workers en una semana); hoy VoidZero publica la versión canónica del propio Vite con todo apilado en un único binario (`vp dev / check / test / build / pack / env / migrate / run`). El patrón es claro y se ve reforzado por la noticia de ayer: el frontend meta se mueve hacia un solo toolchain binario que reemplaza la fragmentación previa de npm scripts, ESLint, Prettier, Vitest, Rollup y compañía, con scheduling dependency-aware de scripts de monorepo vía `vp run`. Cada vez que alguien reinvente un meta-framework (vinext, Remix, Next), va a apoyarse en este binario como capa base. Migración automática desde proyectos Vite existentes, así que el coste de adoptarlo para un proyecto CSS con vite.config.ts es bajo.",
+        "madurez_senales": "5,928★ · 270 forks · Rust (binario) + TypeScript (config) · MIT · creado 2025-03-06 · último push 2026-10-01 (HOY) · default_branch `main` · instalador `curl -fsSL https://vite.plus | bash` (Linux/macOS), `irm https://viteplus.dev/install.ps1 | iex` (Windows).",
+        "accion_sugerida": "explorar (instalar `vp` con el curl one-liner en un proyecto Node actual, comparar tiempo de `vp check` vs `npm run lint + npx tsc --noEmit + npx prettier --check`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:voidzero-dev/vite-plus",
+          "rel": "implements",
+          "dst": "concept:unified-js-toolchain",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:voidzero-dev/vite-plus",
+          "rel": "operated_by",
+          "dst": "company:voidzero",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:voidzero-dev/vite-plus",
+          "rel": "uses",
+          "dst": "framework:vite",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:voidzero-dev/vite-plus",
+          "rel": "uses",
+          "dst": "framework:rolldown",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:voidzero-dev/vite-plus",
+          "rel": "complements",
+          "dst": "repo:cloudflare/vinext",
+          "primera_mencion": "2026-09-30"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "voidzero-dev-vite-plus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "pydantic/pydantic-ai",
+      "url": "https://github.com/pydantic/pydantic-ai",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework agentic Python (MIT) que unifica **agents + realtime voice + image generation + embeddings** con *every model, every interface, typed end to end*. Construido sobre el ecosistema `pydantic` (la Layer 2 de validación tipada de Python). 20,3k★, 2.834 forks.",
+        "por_que_importa": "Cubrimos pydantic-ai por primera vez el 2026-09-17; el empujón de hoy en Trending Python confirma que la consolidación sigue, no es hype pasajero. Hoy el campo de frameworks agentic OSS se reparte entre tres familias: LangChain/LangGraph (los más maduros, criticados por el peso de sus abstractions), crewAI/Autogen (multi-agent declarativo) y pydantic-ai, que se distingue por tipado end-to-end sobre Pydantic y soporte multimodelo edge-to-cloud (agents + realtime voice + image generation + embeddings en una sola capa tipada). Para CSS la regla de bolsillo es directa: si tu agente tiene un core Python tipado con Pydantic, pydantic-ai es el camino más corto; si vienes de LangChain, la migración merece evaluarse caso por caso. Su irrupción cierra un debate que estaba abierto: el framework agentic 'estándar de facto' del ecosistema Pydantic ya no tiene que esperar a terceros.",
+        "madurez_senales": "20,304★ · 2,834 forks · Python · MIT · creado 2024-06-21 · último push 2026-10-01 (HOY) · default_branch `main` · topics: `agent-framework`, `genai`, `harness`, `harness-engineering`, `llm`, `pydantic`, `python` · sitio ai.pydantic.dev.",
+        "accion_sugerida": "explorar (clonar y revisar `pydantic_ai/agent.py` para confirmar el modelo de tipado; comparar ergonomía con LangGraph en un mismo task).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pydantic/pydantic-ai",
+          "rel": "implements",
+          "dst": "concept:agent-framework",
+          "primera_mencion": "2026-09-17"
+        },
+        {
+          "src": "repo:pydantic/pydantic-ai",
+          "rel": "uses",
+          "dst": "framework:pydantic",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pydantic/pydantic-ai",
+          "rel": "competes_with",
+          "dst": "repo:langchain-ai/langchain",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pydantic/pydantic-ai",
+          "rel": "competes_with",
+          "dst": "repo:crewAIInc/crewAI",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pydantic/pydantic-ai",
+          "rel": "relevant_to",
+          "dst": "concept:typed-llm-stack",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pydantic-pydantic-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "composio-community/open-dot",
+      "url": "https://github.com/composio-community/open-dot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(229★, último push 2026-09-30, TypeScript, sin LICENSE explícita vía API) — OSS clone de **OpenAI Dots** (lanzado 29 sept) sobre Composio; mismo nicho que `Anil-matcha/open-dots` (visto en radar de ayer).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (la categoría \"background personal AI agent on your own computer\" tiene dos contendientes OSS en 48h; comparar ergonomía con el de Anil)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "composio-community-open-dot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "nicobailon/visual-explainer",
+      "url": "https://github.com/nicobailon/visual-explainer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.054★, último push 2026-08-28, HTML, MIT) — Agent skill que convierte output de terminal en HTML estilizado; soporta **Claude Code, Pi, MCP hosts, Antigravity CLI, Codex CLI, OpenCode, Cursor, VS Code Copilot y OpenClaw**.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (instalar el plugin marketplace `visual-explainer@visual-explainer-marketplace` en Claude Code y probar `/plan-review` contra un plan CSS real)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nicobailon-visual-explainer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "edenfunf/reelmimic",
+      "url": "https://github.com/edenfunf/reelmimic",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(543★, último push 2026-09-30, JavaScript, MIT) — \"AI crew\" (Claude Code / Codex) que **produce video 2D estilo transfer** aprendiendo de un video de referencia; construido sobre **HyperFrames** (visto en radar de ayer).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (todavía beta; cliente OSS de HyperFrames, no competidor)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "edenfunf-reelmimic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Louis-CFM/coucou",
+      "url": "https://github.com/Louis-CFM/coucou",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(sin verificar stars, último push 2026-10-01, Swift) — *\"A tiny friend that lives in your MacBook's notch and keeps an eye on your Claude Code sessions\"*.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (curiosidad Swift; solo macOS Apple Silicon; nicho de \"ambient monitor for Claude\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "louis-cfm-coucou",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "odysseus-dev/odysseus",
+      "url": "https://github.com/odysseus-dev/odysseus",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(87.892★, último push no verificado, Python, AGPL-3.0, branch `dev`) — *\"Self-hosted AI workspace\"*.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (stars alto y AGPL-3.0 merecen un README peek antes de probar — ver pitfall NOASSERTION general)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "odysseus-dev-odysseus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "mizchi/explainer",
+      "url": "https://github.com/mizchi/explainer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(285★, último push 2026-09-30, JavaScript, MIT, **README no accesible**) — sin descripción, push reciente.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (sin información suficiente; revisar el repo en próxima oportunidad)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mizchi-explainer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "byoungd/up",
+      "url": "https://github.com/byoungd/up",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(66.504★, último push 2026-10-01, JavaScript, **NOASSERTION** vía API, branch `master`) — reescritura del clásico `up` de apjanke (interactive shell writer) por byoungd; herramienta dev shell, no AI.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (revisar LICENSE antes de cualquier adopción como dependencia; el README aclara)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "byoungd-up",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-archestra-ai-openappa", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-archestra-ai-openappa", "dst": "tema:archestra-ai-openappa", "rel": "trata", "added": "2026-10-01"}
+{"src": "repo:archestra-ai/OpenAPPA", "dst": "concept:agent-policy-sidecar", "rel": "implements", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:archestra-ai/OpenAPPA", "dst": "repo:NVIDIA/OpenShell", "rel": "competes_with", "added": "2026-10-01", "primera_mencion": "2026-08-07"}
+{"src": "repo:archestra-ai/OpenAPPA", "dst": "repo:HelpCode-ai/anythingmcp", "rel": "complements", "added": "2026-10-01", "primera_mencion": "2026-09-29"}
+{"src": "repo:archestra-ai/OpenAPPA", "dst": "concept:agent-security", "rel": "relevant_to", "added": "2026-10-01", "primera_mencion": "2026-08-03"}
+{"src": "repo:archestra-ai/OpenAPPA", "dst": "benchmark:agent-threat-bench", "rel": "tracked_by", "added": "2026-10-01", "primera_mencion": null}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-colbymchenry-codegraph", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-colbymchenry-codegraph", "dst": "tema:colbymchenry-codegraph", "rel": "trata", "added": "2026-10-01"}
+{"src": "repo:colbymchenry/codegraph", "dst": "concept:code-graph-for-agents", "rel": "implements", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:colbymchenry/codegraph", "dst": "tool:codebase-memory", "rel": "competes_with", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:colbymchenry/codegraph", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:colbymchenry/codegraph", "dst": "tool:hermes-agent", "rel": "supports", "added": "2026-10-01", "primera_mencion": "2026-09-15"}
+{"src": "repo:colbymchenry/codegraph", "dst": "language:rust", "rel": "uses", "added": "2026-10-01", "primera_mencion": "2026-09-03"}
+{"src": "repo:colbymchenry/codegraph", "dst": "concept:code-understanding", "rel": "relevant_to", "added": "2026-10-01", "primera_mencion": null}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-aws-agent-toolkit-for-aws", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-aws-agent-toolkit-for-aws", "dst": "tema:aws-agent-toolkit-for-aws", "rel": "trata", "added": "2026-10-01"}
+{"src": "repo:aws/agent-toolkit-for-aws", "dst": "concept:cloud-agent-toolkit", "rel": "implements", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:aws/agent-toolkit-for-aws", "dst": "company:aws", "rel": "targets", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:aws/agent-toolkit-for-aws", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:aws/agent-toolkit-for-aws", "dst": "framework:codex", "rel": "supports", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:aws/agent-toolkit-for-aws", "dst": "concept:cloud-coding-agent-stack", "rel": "relevant_to", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:aws/agent-toolkit-for-aws", "dst": "repo:archestra-ai/OpenAPPA", "rel": "complements", "added": "2026-10-01", "primera_mencion": null}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-voidzero-dev-vite-plus", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-voidzero-dev-vite-plus", "dst": "tema:voidzero-dev-vite-plus", "rel": "trata", "added": "2026-10-01"}
+{"src": "repo:voidzero-dev/vite-plus", "dst": "concept:unified-js-toolchain", "rel": "implements", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:voidzero-dev/vite-plus", "dst": "company:voidzero", "rel": "operated_by", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:voidzero-dev/vite-plus", "dst": "framework:vite", "rel": "uses", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:voidzero-dev/vite-plus", "dst": "framework:rolldown", "rel": "uses", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:voidzero-dev/vite-plus", "dst": "repo:cloudflare/vinext", "rel": "complements", "added": "2026-10-01", "primera_mencion": "2026-09-30"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-pydantic-pydantic-ai", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-pydantic-pydantic-ai", "dst": "tema:pydantic-pydantic-ai", "rel": "trata", "added": "2026-10-01"}
+{"src": "repo:pydantic/pydantic-ai", "dst": "concept:agent-framework", "rel": "implements", "added": "2026-10-01", "primera_mencion": "2026-09-17"}
+{"src": "repo:pydantic/pydantic-ai", "dst": "framework:pydantic", "rel": "uses", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:pydantic/pydantic-ai", "dst": "repo:langchain-ai/langchain", "rel": "competes_with", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:pydantic/pydantic-ai", "dst": "repo:crewAIInc/crewAI", "rel": "competes_with", "added": "2026-10-01", "primera_mencion": null}
+{"src": "repo:pydantic/pydantic-ai", "dst": "concept:typed-llm-stack", "rel": "relevant_to", "added": "2026-10-01", "primera_mencion": null}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-composio-community-open-dot", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-composio-community-open-dot", "dst": "tema:composio-community-open-dot", "rel": "trata", "added": "2026-10-01"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-nicobailon-visual-explainer", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-nicobailon-visual-explainer", "dst": "tema:nicobailon-visual-explainer", "rel": "trata", "added": "2026-10-01"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-edenfunf-reelmimic", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-edenfunf-reelmimic", "dst": "tema:edenfunf-reelmimic", "rel": "trata", "added": "2026-10-01"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-louis-cfm-coucou", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-louis-cfm-coucou", "dst": "tema:louis-cfm-coucou", "rel": "trata", "added": "2026-10-01"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-odysseus-dev-odysseus", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-odysseus-dev-odysseus", "dst": "tema:odysseus-dev-odysseus", "rel": "trata", "added": "2026-10-01"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-mizchi-explainer", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-mizchi-explainer", "dst": "tema:mizchi-explainer", "rel": "trata", "added": "2026-10-01"}
+{"src": "boletin:2026-10-01", "dst": "item:https-github-com-byoungd-up", "rel": "menciona", "added": "2026-10-01"}
+{"src": "item:https-github-com-byoungd-up", "dst": "tema:byoungd-up", "rel": "trata", "added": "2026-10-01"}
