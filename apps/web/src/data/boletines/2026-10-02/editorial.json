@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "date": "2026-10-02",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El harness de un coding agent ya se bifurca: capa de skills que se autodefine y design-language ejecutable",
+  "posicionamiento": "El día muestra la misma pregunta por arriba y por abajo del harness: cómo dejan los coding agents de generar UI genérica y cómo dejan de acumular skills muertas. Impeccable codifica 61 reglas deterministas para que el agente dibuje con voz de producto; AutoHarness destila cada sesión en una skill, las mergea y prunea solo. Moli rompe la dependencia de Playwright/Puppeteer, ThinkWatch Lite pone un gateway local con cost-tracking y redaction de keys, y OpenDots planta la bandera de los AI coworkers always-on. Tres hallazgos pulen el harness, dos le cambian la base.",
+  "convergencia_stack_css": "Tres hallazgos tocan líneas ya trabajadas en CSS: Impeccable encaja con el foco editorial de diseño con AI y la nota previa sobre frontend-design de Anthropic; AutoHarness confirma la idea swyx de Big Harness vs Big Model; ThinkWatch Lite aterriza en el lector de CSS que alterna Claude Code y Codex y necesita visibilidad de cost sin vendor lock. Moli y OpenDots abren terreno menos trillado en el stack y conviene vigilarlos antes de recomendarlos.",
+  "cruzado_grafo": "Impeccable (2026-07-11) y AutoHarness (2026-09-05) reaparecen hoy con datos nuevos: 73.861★ y 42→78% en CORE-Bench HAL. Moli, ThinkWatch Lite y OpenDots entran al grafo sin primera_mencion previa. OpenDots se conecta con los clones open-dot cubiertos el 2026-10-01, Moli declara competir con Playwright/Puppeteer, y ThinkWatch Lite hereda los nodos framework:claude-code y framework:codex del 2026-10-01.",
+  "tendencias_5_boletines": "El contexto de continuidad disponible llega solo a 30-09 y 29-09, insuficiente para cinco boletines. Con esa ventana, la línea que se afianza es la división de la pila de coding agents: el 29-09 ya preguntaba qué necesita un agente para trabajar sobre dominios reales, el 30-09 separaba kernels/runtime de framework/memoria, y hoy la separación se hace explícita en harness, browser, gateway y plantilla de coworker.",
+  "alertas": [
+    "Resumen ejecutivo y radar secundario llegan truncados: posibles hallazgos no entregados",
+    "AutoHarness cita 42→78% en CORE-Bench HAL sin enlace al paper en el fragmento visible",
+    "OpenDots es alpha vendor-led (CopilotKit) y un README con CTA comercial no es validación comunitaria",
+    "Moli: 3.510★ en un mes con push HOY exige segunda mirada antes de proclamar producción estable"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "Impeccable cierra el hueco 'AI diseña con voz de producto' y conecta directo con el lector de CSS que experimenta con coding agents en frontend."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Moli rompe la dependencia Chromium/Node de Playwright y Puppeteer; si la promesa Rust+Servo se sostiene, reordena el stack de AI scraping."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "OpenDots es plantilla vendor-led en alpha: prometedor como infraestructura propia de AI coworkers, pero el sesgo comercial del README pide esperar tracción real."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "ThinkWatch Lite ofrece un tercer camino entre LiteLLM y OpenRouter con redaction de keys y cost-tracking; relevante para el flujo multi-cliente del lector de CSS."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

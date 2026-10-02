@@ -1,0 +1,53 @@
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-pbakaus-impeccable", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:pbakaus-impeccable", "rel": "trata", "added": "2026-10-02"}
+{"src": "repo:pbakaus/impeccable", "dst": "concept:design-skill-for-agents", "rel": "implements", "added": "2026-10-02", "primera_mencion": "2026-07-11"}
+{"src": "repo:pbakaus/impeccable", "dst": "repo:anthropics/skills", "rel": "fork_of", "added": "2026-10-02", "primera_mencion": "2026-07-11"}
+{"src": "repo:pbakaus/impeccable", "dst": "person:pbakaus", "rel": "operated_by", "added": "2026-10-02", "primera_mencion": "2026-07-11"}
+{"src": "repo:pbakaus/impeccable", "dst": "concept:coding-agent-frontend", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": "2026-07-11"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-lexmount-moli", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-lexmount-moli", "dst": "tema:lexmount-moli", "rel": "trata", "added": "2026-10-02"}
+{"src": "repo:lexmount/moli", "dst": "concept:headless-browser-for-ai", "rel": "implements", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:lexmount/moli", "dst": "tool:playwright", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:lexmount/moli", "dst": "tool:puppeteer", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:lexmount/moli", "dst": "language:rust", "rel": "uses", "added": "2026-10-02", "primera_mencion": "2026-09-03"}
+{"src": "repo:lexmount/moli", "dst": "engine:servo", "rel": "uses", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:lexmount/moli", "dst": "concept:ai-web-scraping", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:lexmount/moli", "dst": "concept:browser-automation", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": null}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-thinkwatchproject-thinkwatch-lite", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-thinkwatchproject-thinkwatch-lite", "dst": "tema:thinkwatchproject-thinkwatch-lite", "rel": "trata", "added": "2026-10-02"}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "concept:local-ai-gateway", "rel": "implements", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "tool:litellm", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "tool:openrouter", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-02", "primera_mencion": "2026-10-01"}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "framework:codex", "rel": "supports", "added": "2026-10-02", "primera_mencion": "2026-10-01"}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "framework:tauri", "rel": "uses", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:ThinkWatchProject/ThinkWatch-Lite", "dst": "concept:agent-cost-tracking", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": null}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-copilotkit-opendots", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-copilotkit-opendots", "dst": "tema:copilotkit-opendots", "rel": "trata", "added": "2026-10-02"}
+{"src": "repo:CopilotKit/OpenDots", "dst": "concept:persistent-agent-template", "rel": "implements", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:CopilotKit/OpenDots", "dst": "repo:composio-community/open-dot", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": "2026-10-01"}
+{"src": "repo:CopilotKit/OpenDots", "dst": "repo:Anil-matcha/open-dots", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": "2026-10-01"}
+{"src": "repo:CopilotKit/OpenDots", "dst": "company:copilotkit", "rel": "operated_by", "added": "2026-10-02", "primera_mencion": "2026-08-20"}
+{"src": "repo:CopilotKit/OpenDots", "dst": "framework:ag-ui", "rel": "uses", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:CopilotKit/OpenDots", "dst": "concept:always-on-agent", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": null}
+{"src": "repo:CopilotKit/OpenDots", "dst": "concept:agent-template-oss", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": null}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-tigerless-labs-autoharness", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-tigerless-labs-autoharness", "dst": "tema:tigerless-labs-autoharness", "rel": "trata", "added": "2026-10-02"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:self-curating-skill-layer", "rel": "implements", "added": "2026-10-02", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-02", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "benchmark:core-bench", "rel": "tracked_by", "added": "2026-10-02", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:big-harness-vs-big-model", "rel": "relevant_to", "added": "2026-10-02", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:manual-skills-maintenance", "rel": "competes_with", "added": "2026-10-02", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "problem:skill-entropy", "rel": "solves", "added": "2026-10-02", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-dietrichgebert-ponytail", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-dietrichgebert-ponytail", "dst": "tema:dietrichgebert-ponytail", "rel": "trata", "added": "2026-10-02"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-earendil-works-pi", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-earendil-works-pi", "dst": "tema:earendil-works-pi", "rel": "trata", "added": "2026-10-02"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-tigerless-labs-cost-xray", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-tigerless-labs-cost-xray", "dst": "tema:tigerless-labs-cost-xray", "rel": "trata", "added": "2026-10-02"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-imputnet-cobalt", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-imputnet-cobalt", "dst": "tema:imputnet-cobalt", "rel": "trata", "added": "2026-10-02"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-tester-army-e2e", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-tester-army-e2e", "dst": "tema:tester-army-e2e", "rel": "trata", "added": "2026-10-02"}
+{"src": "boletin:2026-10-02", "dst": "item:https-github-com-innei-lody-ios", "rel": "menciona", "added": "2026-10-02"}
+{"src": "item:https-github-com-innei-lody-ios", "dst": "tema:innei-lody-ios", "rel": "trata", "added": "2026-10-02"}

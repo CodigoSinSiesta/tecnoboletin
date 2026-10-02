@@ -1,0 +1,478 @@
+{
+  "version": 2,
+  "date": "2026-10-02",
+  "boletin_origen": "2026-10-02-trending.md",
+  "resumen_ejecutivo": "- **La semana cierra con dos jugadores OSS de peso en el \"AI harness layer\" — uno por arriba, uno por debajo.** `pbakaus/impeccable` (73.861★, Apache-2.0, push HOY) entra a Trendshall como **el design-language oficial para que los coding agents no generen UI genérica** — 24 commands + 61 reglas deterministas + extensión de browser sin LLM, autoría de **pbakaus (ex-Three.js, ex-Vercel)**. En paralelo, `tigerless-labs/autoharness` (6.896★, MIT, push HOY) entra a GitHub Trending como **la primera skill layer auto-curada para Claude Code** — aprende skills de sesiones reales, las mergea y prunea. Claim concreto: 42%→78% en CORE-Bench HAL. Entre los dos cubren \"el agente sabe diseñar\" y \"el agente sabe qué sabe\", dos huecos abiertos en cualquier harness.\n- **`lexmount/moli` (3.510★, Apache-2.0, Rust, push HOY) reta la hegemonía Playwright/Puppeteer en el nicho \"AI-agent browser\".** No es un scraper: es un **headless browser production-ready para agentes** sobre Servo + Kitesurf, con CLI / CDP / WebDriver Classic / WebDriver BiDi, multi-OS, footprint ligero. Ya trae 9 skills listas para que un coding agent lo instale y empiece a usarlo. El ángulo editorial: la \"AI scraping web\" está saliendo del nicho `curl + scrapling` y entrando en browser-grade — y el código es Rust, no Node. Tema: \"Moli: cuando el headless browser de tu coding agent deja de ser Chromium\".\n- **`ThinkWatchProject/ThinkWatch-Lite` (465★, MIT, push HOY) entra al canal Claude Code/Codex como local-first alpha-switch.** Tauri 2 + React 19, system tray, cross-platform (macOS/Windows/Linux), soporte de 20+ upstream APIs (OpenAI/Anthropic/OAI-compat). Funciones que la narrativa \"local-first\" tiene: **cost & route recording** por request, **API-key redaction** antes de salir, **tool-call interception** antes de ejecutar. Es el \"ghost de seguridad+observabilidad+control de costes\" que un developer corriendo agentes en su laptop necesita sin montar LiteLLM. Tema: \"ThinkWatch Lite: el gateway local que faltaba entre Claude Code, Codex y tu wallet\".\n- **CopilotKit entra oficialmente al \"AI coworker persistente\" con `CopilotKit/OpenDots` (656★, MIT, alpha, push 2026-10-01).** Plantilla OSS de **agentes always-on, cada uno con su propia computer**, sobre CopilotKit + AG-UI, Web + Mobile. Diferencia frente a los clones de ayer (`composio-community/open-dot`, `Anil-matcha/open-dots`): estos son **starters open-source listos para self-host**, no clientes de Dots de OpenAI. La categoría \"OSS persistent agent\" tiene tres entradas en 48h; el hueco común es \"cómplices de openai/dots sin vendor-lock\". Tema: \"OpenDots y el patrón 'agent-as-coworker' en versión self-hostable\".\n- **`pbakaus/impeccable` también confirma que el campo \"skill para coding agents\" se está moviendo hacia vendors con audiencia propia.** El README de Impeccable abre diciendo: *\"Anthropic's frontend-design was the first widely-used design skill for Claude. Impeccable started from there.\"* Es un fork espiritual explícito. Si hace 6 meses la pregunta era \"¿qué skill official existe?\", hoy es \"¿qué vendor con voz propia publica la próxima skill?\". Las implicaciones para CSS: la lista oficial de skills de Anthropic es una **base**, no el canon — los vendors van a empezar a **diferenciar contra ella**.\nFuentes consultadas: Trendshall daily (25 items), GitHub Trending daily global (11 items), GitHub REST API para los 11 candidatos priorizados, READMEs via `default_branch` (`main`/`master`) para los 5 hallazgos principales. Blogwatcher 08:00 no publicado hoy (último `-blogs.md` = 2026-07-05; verificar `hermes cron list`).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Design guidance CLI + 1 skill + 24 commands + extensión de browser con 61 reglas deterministas** para que un coding agent no genere UI con los mismos tells (Inter everywhere, gradientes purple-to-blue, cards anidadas, icon-tile redondeado encima del heading). Funciona en dos niveles: **CLI sin LLM** (las 61 reglas son deterministas, no requieren API key) y **LLM-only critique checks**. Comando de entrada: `npx impeccable install` → `/impeccable init` dentro del agente. `PRODUCT.md` registra verdad durable del producto (audiencia, propósito, voz, evidencia) que `/polish`, `/audit`, `/critique`, `/distill`, `/animate`, `/bolder`, `/quieter` consultan después.",
+        "por_que_importa": "Ya cubrimos la primera versión de Impeccable en el boletín del 2026-07-11 como el fork espiritual explícito del `frontend-design` de Anthropic, con pbakaus (Pablo Becker, ex-Three.js, ex-Vercel) detrás. Tres meses después, el repositorio se ha consolidado: 73.861★ y 4.448 forks en menos de un año, último push hoy, licencia Apache-2.0, y la promesa diferencial — \"design language ejecutable con vendor voice\" — está ahora respaldada por 61 reglas deterministas en la CLI (no necesitan API key) y 24 comandos como `/polish`, `/audit`, `/critique` o `/animate` que consultan un `PRODUCT.md` con la verdad durable del producto. El pitfall #16 del manual de curaduría (stars altos con autor conocido son señal real, no fork mirror) se confirma otra vez aquí. Para el lector de CSS que toca \"AI diseñando UI\": por fin hay un vocabulario concreto para pedirle a un coding agent que evite los tells deleznables (Inter en todas partes, gradientes purple-to-blue, cards anidadas, icon-tile redondeado) en vez de un prompt vago. pbakaus sigue siendo la persona adecuada para escribirlo por su trayectoria en design systems y por la adopción que ya está recibiendo.",
+        "madurez_senales": "73.861★ · 4.448 forks · JavaScript (Node) · creado 2025-11-16 · último push 2026-10-02 (HOY) · default_branch `main` · licencia **Apache-2.0** · topics: (vacío, no inferido) · sitio https://impeccable.style · comando: `npx impeccable install`.",
+        "accion_sugerida": "explorar (instalar `npx impeccable install` en un proyecto CSS real, correr `/impeccable init` y aplicar `/audit` + `/polish` para ver qué dice; comparar con `frontend-design` de Anthropic).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "implements",
+          "dst": "concept:design-skill-for-agents",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "fork_of",
+          "dst": "repo:anthropics/skills",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "operated_by",
+          "dst": "person:pbakaus",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "relevant_to",
+          "dst": "concept:coding-agent-frontend",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pbakaus-impeccable",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "lexmount/moli",
+      "url": "https://github.com/lexmount/moli",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Headless browser production-ready para AI agents**, escrito en **Rust puro** sobre Servo + Kitesurf. CLI, **CDP** (Chrome DevTools Protocol), **WebDriver Classic** y **WebDriver BiDi**. Multi-OS (Linux, macOS, Windows). El README incluye un prompt literal para que tu coding agent instale las skills oficiales y arranque: *\"Install the skills under https://github.com/lexmount/moli/tree/main/skills, follow their instructions to download and install...\"*. Tagline del repo: *\"Structure first. Pixels on demand.\"* — layout/rendering on-demand para mantener el footprint ligero.",
+        "por_que_importa": "Cuando un coding agent necesita navegar la web hoy, las opciones dominantes son Playwright y Puppeteer, ambos en Node y ambos atados a Chromium. Moli rompe esa dependencia siendo un headless browser escrito en Rust puro sobre Servo + Kitesurf, con CLI, CDP (Chrome DevTools Protocol), WebDriver Classic y WebDriver BiDi disponibles a la vez en Linux, macOS y Windows, y un tagline que define su filosofía: \"Structure first. Pixels on demand.\" El repositorio incluso incluye en el README un prompt literal para que un coding agent instale las skills oficiales y arranque solo, lo que lo coloca como infraestructura pensada desde el primer minuto para agentes, no adaptada después. Para el perfil \"AI scraping\" que la skill `web-scraping-viability` trata, Moli se posiciona como una alternativa open-source a los navegadores cloud comerciales (Fortress/Obscura), pero como browser completo y no como fetch simple. En la cobertura previa de Rust como opción para headless browsers (2026-09-03) ya apareció Kitesurf; Moli es su primer caso production-ready que combina CLI, CDP y WebDriver en un único binario.",
+        "madurez_senales": "3.510★ · 186 forks · **Rust** (Apache-2.0) · creado 2026-08-10 · último push 2026-10-02 (HOY) · default_branch `main` · topics: `ai-agents`, `ai-tools`, `browser`, `browser-automation`, `cloud-browser`, `kitesurf`, `playwright`, `puppeteer`, `rust`, `servo`, `web-crawler`, `web-crawling`, `web-scraper`, `web-scraping` · CLI + CDP + WebDriver Classic + WebDriver BiDi · Discord community activa.",
+        "accion_sugerida": "explorar (instalar `moli` CLI, comparar con Playwright el tiempo de un script de fetch+extract en una página real; revisar las skills oficiales en `moli/skills/` para entender el \"drop-in para coding agents\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "implements",
+          "dst": "concept:headless-browser-for-ai",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "competes_with",
+          "dst": "tool:playwright",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "competes_with",
+          "dst": "tool:puppeteer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "uses",
+          "dst": "language:rust",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "uses",
+          "dst": "engine:servo",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "relevant_to",
+          "dst": "concept:ai-web-scraping",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lexmount/moli",
+          "rel": "relevant_to",
+          "dst": "concept:browser-automation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lexmount-moli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "ThinkWatchProject/ThinkWatch-Lite",
+      "url": "https://github.com/ThinkWatchProject/ThinkWatch-Lite",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Local gateway** (Tauri 2 + React 19) para Claude Code, Codex y otros AI clients en macOS, Windows y Linux. Se instala una vez; después cambias upstream/model sin tocar la config del cliente. Cada request se registra con su **cost y route**, las **API keys se redactan antes de salir** de la máquina y los **tool calls peligrosos que un relay mete en una respuesta se cortan antes de que el cliente los ejecute**. System tray app con un dashboard React 19.",
+        "por_que_importa": "El developer que hoy alterna entre Claude Code, Codex, Cursor y Kiro vive con un dilema: o monta LiteLLM como servidor HTTP dedicado, o pasa por OpenRouter como SaaS sujeto a vendor lock, o sufre la fragmentación de config cliente a cliente. ThinkWatch Lite abre un tercer camino: un gateway local en Tauri 2 + React 19 (system tray app con dashboard) que se instala una vez y permite cambiar upstream y modelo sin tocar la config de cada cliente. Tres features lo diferencian de las opciones anteriores: registra cost y route por cada request, redacta las API keys antes de que salgan de la máquina (clave si reenvías prompts a relays externos) e intercepta tool calls peligrosos que un relay pueda colar en una respuesta antes de que el cliente los ejecute. Ya cubrimos Claude Code y Codex en el boletín del 2026-10-01 como frameworks soportados, y los 20+ tags en `topics` (`ai-gateway`, `llm-observability`, `secret-redaction`, `cost-monitoring`, `system-tray`, `usage-tracking`) dibujan exactamente la navaja suiza que un AI-client runner necesita para no perder el control de lo que hace su agente. Aún es un proyecto joven (465★, 6 forks, creado el 2026-09-12), por lo que conviene mirarlo como una dirección emergente más que como un reemplazo ya consolidado de LiteLLM.",
+        "madurez_senales": "465★ · 6 forks · TypeScript (Tauri 2 + React 19) · creado 2026-09-12 · último push 2026-10-02 (HOY) · default_branch `main` · licencia **MIT** · topics: `ai-gateway`, `anthropic`, `claude-code`, `codex`, `cost-monitoring`, `cost-tracking`, `cross-platform`, `linux`, `llm-cost`, `llm-gateway`, `llm-observability`, `llm-proxy`, `llm-usage`, `macos`, `openai`, `secret-redaction`, `system-tray`, `token-usage`, `usage-tracking`, `windows` · código de release temprano pero con cadencia de push diaria.",
+        "accion_sugerida": "explorar (instalar la app Tauri y conectar Claude Code + Codex como clientes upstream; verificar que la secret-redaction funciona con un relay de prueba; comparar ergonomía vs `gpt-load`, `LiteLLM`, `OpenRouter`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "implements",
+          "dst": "concept:local-ai-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "competes_with",
+          "dst": "tool:litellm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "competes_with",
+          "dst": "tool:openrouter",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "supports",
+          "dst": "framework:codex",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "uses",
+          "dst": "framework:tauri",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ThinkWatchProject/ThinkWatch-Lite",
+          "rel": "relevant_to",
+          "dst": "concept:agent-cost-tracking",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thinkwatchproject-thinkwatch-lite",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "CopilotKit/OpenDots",
+      "url": "https://github.com/CopilotKit/OpenDots",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Plantilla open-source** (status: **alpha**) de **AI coworkers always-on que se mueven entre texto, llamadas y Slack**, cada uno con su propia computer. Web + Mobile, self-hostable. Construida sobre **CopilotKit** (la librería agentic-UI) y **AG-UI** (Agent-UI protocol). El flujo visible: *Ask → browse → approve → save*, con live computer view + human review card en el chat, y el draft aprobado se convierte en una Space page.",
+        "por_que_importa": "En el boletín del 2026-10-01 cubrimos `composio-community/open-dot` y `Anil-matcha/open-dots`, dos clones open-source de OpenAI Dots lanzados en menos de 48 horas desde el anuncio oficial. OpenDots, del propio CopilotKit (vendor con peso, ya mencionado en el boletín del 2026-08-20), entra en la misma categoría desde otro ángulo: no clona Dots, ofrece una plantilla open-source para que cada equipo construya su propia versión sobre CopilotKit y el protocolo AG-UI. El matiz importa porque los clones del día anterior eran \"front-end para OpenAI\", mientras OpenDots es \"infra para tu propio sistema\". El status alpha (656★, 81 forks, creado el 2026-09-29, último push el 2026-10-01) y el CTA `Meet with the CopilotKit team` en el README son señales de que es un proyecto vendor-led más que un experimento comunitario, así que el lector de CSS debería valorarlo como referencia arquitectónica antes que como producto listo para producción. El flujo visible — Ask → browse → approve → save, con live computer view y human review card en el chat — describe el patrón \"always-on agent\" con suficiente detalle para imaginar integraciones propias.",
+        "madurez_senales": "656★ · 81 forks · TypeScript · creado 2026-09-29 · último push 2026-10-01 · default_branch `main` · licencia **MIT** · topics: (vacío, no inferido) · status **alpha** · CI workflow activo · `Meet with the CopilotKit team` CTA en README.",
+        "accion_sugerida": "explorar (clonar la plantilla, levantar el dev server, leer `CONTRIBUTING.md` y el diagrama de Dots; comparar con los clones de ayer — CopilotKit puede tener ventaja por vendor weight, los clones por zero-config).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "implements",
+          "dst": "concept:persistent-agent-template",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "competes_with",
+          "dst": "repo:composio-community/open-dot",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "competes_with",
+          "dst": "repo:Anil-matcha/open-dots",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "operated_by",
+          "dst": "company:copilotkit",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "uses",
+          "dst": "framework:ag-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "relevant_to",
+          "dst": "concept:always-on-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CopilotKit/OpenDots",
+          "rel": "relevant_to",
+          "dst": "concept:agent-template-oss",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-opendots",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "tigerless-labs/autoharness",
+      "url": "https://github.com/tigerless-labs/autoharness",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Capa de skills auto-aprendibles para Claude Code**. Cada episodio (sesión real del dev con Claude Code) se destila en una skill al final, **sin replay loop ni data-collection separado**. Aprende, mergea skills equivalentes en lugar de apilarlas, las actualiza en uso y prunea las que no se llaman: la capa se mantiene limpia por sí sola. **Solo toca las skills que él mismo escribió** (no las oficiales). Claim verificable: 42%→78% en **CORE-Bench** bajo el paper HAL ([arXiv:2510.11977](https://arxiv.org/abs/2510.11977)) — *\"same model, different harness\"*. Tesis: *\"The harness does much of the work (swyx's Big Model vs Big Harness), yet it's still rebuilt by hand every model generation. autoharness bets one slice of it — the skill layer — can maintain itself.\"*",
+        "por_que_importa": "Ya cubrimos AutoHarness en el boletín del 2026-09-05 como el primer intento serio de mantener la skill layer de un coding agent auto-curada: destila cada sesión real en una skill, mergea equivalentes en vez de apilarlas, actualiza las que están en uso y prunea las que nadie llama, todo sin replay loop ni data-collection separado. La novedad frente a aquella primera cobertura es el respaldo numérico: el repositorio cita un salto de 42% a 78% en CORE-Bench bajo el paper HAL (arXiv:2510.11977), con la tesis explícita \"same model, different harness\", que conecta directo con la idea de swyx \"Big Model vs Big Harness\" que guía todo el campo de agentic infra y que ya marcamos como relevante. La limitación obvia es que una skill mal destilada puede romper el flujo, y el counter-argument del repo — \"solo toca lo que escribió él\", sin tocar las skills oficiales — es un aislamiento fuerte pero no infalible, así que conviene leer el benchmark como promesa de techo, no como resultado medio. Para el lector de CSS: si tu agente tiene una library de skills que crece, el patrón \"self-cleaning skill layer\" es lo que evita la entropía sin obligarte a una rutina manual de mantenimiento.",
+        "madurez_senales": "6.896★ · 557 forks · Python (3.11+) · creado 2026-06-09 · último push 2026-10-01 · default_branch `main` · licencia **MIT** · topics: `agent-skills`, `claude-code`, `claude-code-plugin`, `llm-agents`, `python` · **plugin marketplace** `autoharness@autoharness-marketplace` · `Skills self-distill from your real sessions`.",
+        "accion_sugerida": "explorar (instalar el plugin `autoharness@autoharness-marketplace` en Claude Code, dejar que aprenda de 5-10 sesiones reales, revisar el diff de skills antes/después; comparar con el flujo manual de crear skills a mano).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "implements",
+          "dst": "concept:self-curating-skill-layer",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "tracked_by",
+          "dst": "benchmark:core-bench",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "relevant_to",
+          "dst": "concept:big-harness-vs-big-model",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "competes_with",
+          "dst": "concept:manual-skills-maintenance",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "solves",
+          "dst": "problem:skill-entropy",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-autoharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(150.881★, último push 2026-09-14, JavaScript, MIT, 20 agents soportados) — *\"He says nothing. He writes one line. It works.\"* Persona YAGNI para coding agent, npm package `@dietrichgebert/ponytail`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (stars alto con push 18 días = momentum asentado; ya visto en radar 2026-08-05, pero ángulo \"lazy senior dev\" sigue siendo único)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dietrichgebert-ponytail",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "earendil-works/pi",
+      "url": "https://github.com/earendil-works/pi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(111.413★, último push 2026-10-01, TypeScript, MIT) — AI agent toolkit: unified LLM API + agent loop + TUI + coding agent CLI; ya en state.json (first_seen 2026-07-14) y explorado en skill `codigosinsiesta-trends-bulletin`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (re-entry válida por cadencia HOY + stars 111k confirmar consolidación OSS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earendil-works-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "tigerless-labs/cost-xray",
+      "url": "https://github.com/tigerless-labs/cost-xray",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.689★, último push 2026-09-29, Python, MIT, default_branch `master`) — *\"See what Claude Code and Codex actually send to the API — and what each part costs.\"* Proxy de observabilidad con cost-tracking per-request, prompt-caching visibility",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-09-05; hoy refuerza el cluster \"observabilidad de coding agents\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-cost-xray",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "imputnet/cobalt",
+      "url": "https://github.com/imputnet/cobalt",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(44.266★, último push 2026-04-06, Svelte, **AGPL-3.0**) — Downloader media multi-plataforma (Instagram, TikTok, YouTube, Reddit, etc.)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry; **AGPL-3.0 bloquea adopción como dependencia**; mantener solo como referencia del cluster media-downloader)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "imputnet-cobalt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "tester-army/e2e",
+      "url": "https://github.com/tester-army/e2e",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(966★, último push 2026-10-01, TypeScript, Apache-2.0) — Next-gen e2e testing framework sobre Playwright, soporte web + mobile",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (categoría testing sigue fragmentada; tester-army tiene nicho \"multi-platform\" que merece peek al README)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tester-army-e2e",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Innei/lody-ios",
+      "url": "https://github.com/Innei/lody-ios",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(352★, último push 2026-09-30, Swift, **NOASSERTION vía API**) — iOS client para \"Lody\" (sessions + native chat for coding agents)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (categoría \"coding agent on mobile\" en alza; **NOASSERTION bloquea adopción como dependencia** — verificar LICENSE antes de cualquier uso real)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "innei-lody-ios",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
