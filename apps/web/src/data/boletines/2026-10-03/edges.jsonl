@@ -1,0 +1,61 @@
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-heygen-com-hyperframes", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-heygen-com-hyperframes", "dst": "tema:heygen-com-hyperframes", "rel": "trata", "added": "2026-10-03"}
+{"src": "repo:heygen-com/hyperframes", "dst": "concept:video-rendering-for-agents", "rel": "implements", "added": "2026-10-03", "primera_mencion": "2026-09-09"}
+{"src": "repo:heygen-com/hyperframes", "dst": "tool:remotion", "rel": "competes_with", "added": "2026-10-03", "primera_mencion": "2026-09-09"}
+{"src": "repo:heygen-com/hyperframes", "dst": "company:heygen", "rel": "operated_by", "added": "2026-10-03", "primera_mencion": "2026-09-09"}
+{"src": "repo:heygen-com/hyperframes", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-03", "primera_mencion": "2026-09-09"}
+{"src": "repo:heygen-com/hyperframes", "dst": "concept:agent-output-video", "rel": "relevant_to", "added": "2026-10-03", "primera_mencion": "2026-09-09"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-mksglu-context-mode", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-mksglu-context-mode", "dst": "tema:mksglu-context-mode", "rel": "trata", "added": "2026-10-03"}
+{"src": "repo:mksglu/context-mode", "dst": "concept:context-window-optimizer", "rel": "implements", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "protocol:mcp", "rel": "uses", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "framework:codex", "rel": "supports", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "tool:cursor", "rel": "supports", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "problem:context-rot", "rel": "solves", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "problem:compaction-state-loss", "rel": "solves", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "concept:manual-compaction-strategies", "rel": "competes_with", "added": "2026-10-03", "primera_mencion": "2026-09-08"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-aoci-spec-aoci-code", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-aoci-spec-aoci-code", "dst": "tema:aoci-spec-aoci-code", "rel": "trata", "added": "2026-10-03"}
+{"src": "repo:aoci-spec/aoci-code", "dst": "concept:codebase-map-spec", "rel": "implements", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:aoci-spec/aoci-code", "dst": "protocol:mcp", "rel": "uses", "added": "2026-10-03", "primera_mencion": "2026-09-21"}
+{"src": "repo:aoci-spec/aoci-code", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-03", "primera_mencion": "2026-10-01"}
+{"src": "repo:aoci-spec/aoci-code", "dst": "framework:codex", "rel": "supports", "added": "2026-10-03", "primera_mencion": "2026-10-01"}
+{"src": "repo:aoci-spec/aoci-code", "dst": "tool:cursor", "rel": "supports", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:aoci-spec/aoci-code", "dst": "repo:colbymchenry/codegraph", "rel": "competes_with", "added": "2026-10-03", "primera_mencion": "2026-10-01"}
+{"src": "repo:aoci-spec/aoci-code", "dst": "tool:aider-repomap", "rel": "competes_with", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:aoci-spec/aoci-code", "dst": "concept:agents-md", "rel": "relevant_to", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:aoci-spec/aoci-code", "dst": "concept:fsl-fair-source-license", "rel": "risk", "added": "2026-10-03", "primera_mencion": null}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-effect-ts-effect", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-effect-ts-effect", "dst": "tema:effect-ts-effect", "rel": "trata", "added": "2026-10-03"}
+{"src": "repo:Effect-TS/effect", "dst": "concept:typescript-functional-runtime", "rel": "implements", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:Effect-TS/effect", "dst": "language:typescript", "rel": "uses", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:Effect-TS/effect", "dst": "concept:try-catch-status-quo", "rel": "competes_with", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:Effect-TS/effect", "dst": "tool:ts-pattern", "rel": "competes_with", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:Effect-TS/effect", "dst": "language:scala-zio", "rel": "inspired_by", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:Effect-TS/effect", "dst": "concept:coding-agent-runtime", "rel": "relevant_to", "added": "2026-10-03", "primera_mencion": "2026-08-10"}
+{"src": "repo:Effect-TS/effect", "dst": "concept:deterministic-scheduling", "rel": "relevant_to", "added": "2026-10-03", "primera_mencion": null}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-getsentry-sentry", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-getsentry-sentry", "dst": "tema:getsentry-sentry", "rel": "trata", "added": "2026-10-03"}
+{"src": "repo:getsentry/sentry", "dst": "concept:error-tracking-platform", "rel": "implements", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:getsentry/sentry", "dst": "company:sentry-inc", "rel": "operated_by", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:getsentry/sentry", "dst": "framework:django", "rel": "uses", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:getsentry/sentry", "dst": "language:python", "rel": "uses", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:getsentry/sentry", "dst": "concept:noassertion-license", "rel": "risk", "added": "2026-10-03", "primera_mencion": "2026-08-27"}
+{"src": "repo:getsentry/sentry", "dst": "repo:getsentry/snuba", "rel": "complements", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:getsentry/sentry", "dst": "repo:getsentry/relay", "rel": "complements", "added": "2026-10-03", "primera_mencion": null}
+{"src": "repo:getsentry/sentry", "dst": "concept:devops-observability", "rel": "relevant_to", "added": "2026-10-03", "primera_mencion": null}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-google-skills", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-google-skills", "dst": "tema:google-skills", "rel": "trata", "added": "2026-10-03"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-colbymchenry-codegraph", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-colbymchenry-codegraph", "dst": "tema:colbymchenry-codegraph", "rel": "trata", "added": "2026-10-03"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-ruvnet-ruflo", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-ruvnet-ruflo", "dst": "tema:ruvnet-ruflo", "rel": "trata", "added": "2026-10-03"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-nvidia-openshell", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-nvidia-openshell", "dst": "tema:nvidia-openshell", "rel": "trata", "added": "2026-10-03"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-grafana-gcx", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-grafana-gcx", "dst": "tema:grafana-gcx", "rel": "trata", "added": "2026-10-03"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-vercel-labs-skills", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-vercel-labs-skills", "dst": "tema:vercel-labs-skills", "rel": "trata", "added": "2026-10-03"}
+{"src": "boletin:2026-10-03", "dst": "item:https-github-com-warpdotdev-warp", "rel": "menciona", "added": "2026-10-03"}
+{"src": "item:https-github-com-warpdotdev-warp", "dst": "tema:warpdotdev-warp", "rel": "trata", "added": "2026-10-03"}

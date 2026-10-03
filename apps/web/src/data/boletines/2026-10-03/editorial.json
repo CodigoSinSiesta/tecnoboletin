@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-10-03",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El output del coding agent deja de ser texto y se vuelve vídeo determinista y contexto compactable",
+  "posicionamiento": "Tres hallazgos empujan la misma frontera: lo que el coding agent recibe, lo que produce y cómo razona sobre el código cambian a la vez. HyperFrames convierte HTML+CSS en MP4 reproducible bit a bit, con el cliente-agente antes que el humano. Context Mode ataca el context rot por cuatro costados en un solo MCP server y entra a HN #1. AOCI propone un spec abierto para que el agente deje de re-escanear el codebase en cada tarea. La capa de I/O del agente se independiza del editor.",
+  "convergencia_stack_css": "Context Mode y AOCI se apoyan en el mismo protocolo (MCP) que ya revisamos al cubrir tooling local-first para agentes, y ambos asumen Claude Code/Codex/Cursor como clientes — la pila convergente de octubre sigue siendo esa. HyperFrames encaja con la línea editorial de outputs no-textuales para agentes (vídeo determinista en lugar de frames opacos) que ya tratamos al hablar de Remotion. Effect-TS entra como runtime type-safe que un agente puede razonar sin perder invariantes, no como drop-in.",
+  "cruzado_grafo": "HyperFrames reaparece con cinco aristas fuertes ya en el grafo desde el 2026-09-09, incluida la competencia con Remotion y el respaldo de Heygen, pero hoy el cambio relevante es de peso: deja de ser \"otra opción HTML→MP4\" y se reposiciona como infra para agentes. Context Mode refuerza el cluster de context-window-optimizer y context-rot (primera_mencion 2026-09-08) con tracción HN y Trending global. Sentry reactiva la arista de riesgo por licencia NOASSERTION que ya vimos el 2026-08-27.",
+  "tendencias_5_boletines": "No hay cinco días previos en el contexto; solo dos. El del 2026-10-02 preguntaba cómo los coding agents dejan de generar UI genérica y de acumular skills muertas; el de 2026-09-30 separaba el stack en suelo (kernels, runtime) y superficie (framework, memoria). Hoy, HyperFrames, Context Mode y AOCI prolongan la pregunta de la superficie: qué outputs, qué contexto y qué representación del código consume el agente. Effect-TS reabre el lado del runtime que el 30 dejamos en segundo plano. La línea estable es la misma: el stack se estratifica, no se unifica.",
+  "alertas": [
+    "HyperFrames: el push HOY necesita verificación de que el plugin para Claude Code sigue el canal oficial y no es wrapper de terceros.",
+    "Context Mode: ELv2 permite uso comercial pero bloquea offering-as-hosted-service; relevante si alguien quiere SaaS encima.",
+    "AOCI-CODE: el repo arrastra un nodo de riesgo por Fair Source License que conviene leer antes de adoptarlo.",
+    "Sentry: la licencia sigue marcada NOASSERTION por la API de GitHub; hay que leer el LICENSE real, no fiarse del campo.",
+    "Context Mode: el claim de 98% de reducción proviene del propio README, no de benchmark externo independiente."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Verificar si el plugin oficial para Claude Code está en el repo vendor (heygen-com) y comparar API con Remotion para posicionamiento editorial."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Instalar el MCP server en una sesión real y medir la compactación en Playwright snapshots; comprobar si los 98% aguantan fuera del benchmark del README."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "AOCI es la primera propuesta abierta de spec para codebase map; seguir si la comunidad adopta el formato o se queda en el limbo de los standards."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Effect 4.x LTS + structured concurrency encaja con la línea editorial de stacks type-safe que el agente pueda razonar; buen tema para un ensayo de la serie técnica."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "El giro del monolito Sentry hacia Python+Django es señal estratégica; leer el LICENSE real y el CHANGELOG para confirmar dirección antes de un hallazgo posterior."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

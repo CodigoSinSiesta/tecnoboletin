@@ -1,0 +1,538 @@
+{
+  "version": 2,
+  "date": "2026-10-03",
+  "boletin_origen": "2026-10-03-trending.md",
+  "resumen_ejecutivo": "- **El \"video para agentes\" entra al centro de la conversación con `heygen-com/hyperframes` (56k★, Apache-2.0, push HOY).** Tagline literal: *\"Write HTML. Render video. Built for agents.\"* — convierte HTML+CSS+animaciones seekable en MP4 deterministas, y trae un plugin oficial para Claude Code. La categoría \"video-from-code\" existía (Remotion, etc.) pero siempre pensó en devs; HyperFrames la reposiciona como **infra para coding agents** que necesitan renderizar vídeo sin editor. Tema: \"HyperFrames: cuando el output del coding agent deja de ser texto y se vuelve vídeo determinista\".\n- **`mksglu/context-mode` (25k★, ELv2, push HOY) ataca el \"context rot\" de Claude Code/Codex/Cursor por cuatro lados a la vez.** MCP server que (1) sandbox-ea tool outputs (98% de reducción; 315KB→5.4KB), (2) cachéa con semantic lookup, (3) compacta con preservation de state, (4) reduce output tokens. Fue **#1 en Hacker News con 570+ puntos** y aparece en trending global con cadencia diaria. Es la pieza que faltaba entre \"Claude Code come 40% del context window\" y \"no puedes confiar en la memoria larga\". Tema: \"Context Mode: la otra mitad del problema de context, resuelta en un MCP\".\n- **`aoci-spec/aoci-code` (845★, FSL-1.1-MIT, Go, push HOY) propone el primer estándar abierto de \"codebase map\" para coding agents.** Un índice Git-versioned, una línea por archivo (responsabilidad / relaciones / API pública / invariants), escrito por el propio agente desde el código, mantenido por un MCP server local. Soporta MySQL/PostgreSQL/openGauss. Tesis: tu agente \"sabe\" el sistema desde la primera lectura, no re-escanea cada tarea. La licencia es FSL-1.1-MIT (fair source: open tras 2 años) — primer competidor serio de un estándar. Tema: \"AOCI-CODE: cuando el mapa del codebase se versiona junto al código\".\n- **`Effect-TS/effect` (16.6k★, MIT, push HOY) entra a trending con LTS 4.x — un runtime TypeScript funcional que llega a GitHub Trending en el momento exacto en que los coding agents necesitan scheduling/concurrency determinista.** 6 años de maduración, ahora con `strict TS` + `Node 18+` como requisitos, `Effect 4.x` declarado LTS con guía de migración desde 3.x. La tesis editorial: Effect existía desde 2019, pero es **el primer momento en que la demanda de runtime determinista para coding agents coincide con la oferta**. Tema: \"Effect 4.x LTS: el runtime TS que los coding agents estaban esperando\".\n- **`getsentry/sentry` (45k★, push HOY) confirma que la reescritura a Python del gigante de error-tracking está en marcha.** El repo OSS central vuelve a trending con `language: Python` declarado y topics `python`, `fair-source`, `apm` activos. Historia: Sentry nació sobre Django en 2010; la capa server llevaba años re-arquitecturándose hacia servicios más pequeños (Snuba, Relay, Symbolicator); que el monorepo central aparezca en trending con lenguaje Python es la confirmación visible. Tema: \"Sentry en 2026: el monorelo OSS vuelve a su raíz Python\".\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily global (17 items) + TypeScript (17) + Python (14) + Rust (15) + Go (21) = 84 entries, dedupadas a 73 candidatas únicas, 32 nuevas vs `seen_items`. GitHub REST API sin token (12 verificaciones de hallazgos principales + radar, dentro del límite de 30 req/día). READMEs cargados via `default_branch` desde la API (effect/main, hyperframes/main, context-mode/main, aoci-code/main, sentry/master, ruflo/main, codegraph/main, OpenShell/main, vercel-labs/skills/main). Blogwatcher 08:00 no publicado hoy (último `-blogs.md` = `2026-07-05`; verificar `hermes cron list` si persiste el silencio).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "heygen-com/hyperframes",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework open-source para convertir **HTML + CSS + media + animaciones seekable** en **vídeo MP4 determinista**. Se usa como CLI local, desde coding agents (Claude Code, Codex, Cursor, etc.) vía un plugin oficial, o como core de renderizado para flujos alojados. La promesa \"determinista\" no es marketing: cada frame del output se puede regenerar idénticamente — clave cuando un agente itera sobre un vídeo y necesita diffs estables.",
+        "por_que_importa": "La categoría \"video-from-code\" lleva cinco años orientada a desarrolladores (Remotion, Lottie…). HyperFrames la reposiciona como infra para coding agents: el output por defecto ya no es \"para un editor humano\" sino \"para que el propio agente itere\", con frames regenerables bit a bit y diffs estables entre iteraciones. El README lo deja claro con el orden de secciones: el `Quickstart with an AI coding agent` aparece antes que el `Quickstart with humans`, y hay plugin oficial para Claude Code/Codex/Cursor. El vendor es Heygen, lo que da confianza sobre continuidad del proyecto (no es un side-project de fin de semana). Cubrimos el repositorio por primera vez el 2026-09-09 — entonces era solo \"otra opción HTML→MP4\"; hoy lo que trae nuevo es el giro explícito hacia agente-como-cliente-primario, suficiente para reconsiderar el núcleo del Boletín. Tema: \"HyperFrames: HTML→MP4 como output nativo del coding agent, no como exportación final\".",
+        "madurez_senales": "56.008★ · 5.044 forks · TypeScript · creado 2025-04-22 · último push 2026-10-03 (HOY) · default_branch `main` · licencia **Apache-2.0** · topics: `ai`, `animation`, `ffmpeg`, `framework`, `gsap` · vendor: Heygen (generative video SaaS), lo que da confianza sobre dirección y mantenimiento.",
+        "accion_sugerida": "explorar (instalar el plugin Claude Code y producir un explainer de 30s desde un prompt; comparar con Remotion en ergonomía y velocidad de iteración; revisar la doc de \"deterministic frame\" para entender el modelo de diff de vídeo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "implements",
+          "dst": "concept:video-rendering-for-agents",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "competes_with",
+          "dst": "tool:remotion",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "operated_by",
+          "dst": "company:heygen",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "relevant_to",
+          "dst": "concept:agent-output-video",
+          "primera_mencion": "2026-09-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heygen-com-hyperframes",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server** que resuelve el problema de context window desde cuatro frentes simultáneos. (1) **Context saving**: sandbox-ea tool outputs (Playwright snapshot 56KB→5.4KB, 20 issues 59KB→5.4KB, log 45KB→1KB — claim del repo: **98% de reducción**). (2) **Semantic cache** con lookup en lugar de re-fetch. (3) **Smart compaction** que preserva qué archivos se estaban editando, qué tareas están en progreso, qué pidió el usuario por última vez — los datos que el `/compact` por defecto destruye. (4) **Output pruning** que filtra filler, pleasantries y verbose explanations para que el agente gaste tokens en substance, no en formato. Soporta Claude Code, Codex, Cursor, Kiro, OpenCode, Copilot, Zed, Pi, Antigravity.",
+        "por_que_importa": "El problema que aborda Context Mode es universal para cualquiera que use Claude Code o Codex a diario: tras30 minutos de sesión, ~40% del context está ocupado y, al compactar, el agente pierde el estado de la tarea. Context Mode lo aborda por cuatro costados a la vez (ahorro en el output, caché semántica, compactación que conserva qué se estaba editando y qué pidió el usuario por última vez, y filtrado de relleno), todos dentro de un mismo MCP server instalable. La tracción externa lo avala: fue #1 en Hacker News con 570+ puntos y entró a GitHub Trending global con cadencia diaria. Hay que mirar la licencia con lupa: ELv2 permite uso comercial pero restringe offering-as-hosted-service, así que es relevante si alguna vez quieres montar un SaaS encima. Cubrimos el concepto de context-window-optimizer el 2026-09-08, antes de que esta implementación concreta apareciera en trending; lo que justifica volver sobre él hoy es que Context Mode se ha convertido en la pieza canónica de esa categoría. Tema: \"Context Mode: la otra mitad del problema de context, resuelta en un MCP\".",
+        "madurez_senales": "25.105★ · 1.803 forks · TypeScript · creado 2026-02-23 · último push 2026-10-03 (HOY) · default_branch `main` · licencia **Elastic License v2 (ELv2)** · topics: `claude`, `claude-code`, `claude-code-hooks`, `claude-code-plugins`, `codex`, `codex-cli`, `context-mode`, `mcp`, `mcp-server`, `mcp-tools`, `opencode`, `pi-agent`, `skills` · npx `context-mode` · HN #1 570+ puntos · Discord activo.",
+        "accion_sugerida": "explorar (instalar `npx context-mode`, conectarlo a Claude Code, correr 1h de trabajo real y comparar el dump de context-window-usage antes/después; revisar la nota de **ELv2** si planeas ofrecer servicio gestionado).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "implements",
+          "dst": "concept:context-window-optimizer",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "supports",
+          "dst": "framework:codex",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "supports",
+          "dst": "tool:cursor",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "solves",
+          "dst": "problem:context-rot",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "solves",
+          "dst": "problem:compaction-state-loss",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "competes_with",
+          "dst": "concept:manual-compaction-strategies",
+          "primera_mencion": "2026-09-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "aoci-spec/aoci-code",
+      "url": "https://github.com/aoci-spec/aoci-code",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server + spec abierta** (AOCI = AI-Oriented Cognition Infrastructure) que mantiene un **mapa persistente y Git-versioned** del codebase. Formato: una línea por archivo, escrita por el agente, con cuatro campos: `F` (responsabilidad), `R` (qué leer junto), `A` (API pública de la que dependen los callers), `S` (qué no puedes inferir del código pero no debes romper — invariants). Tag por capa/dominio/importancia/tamaño. El MCP server detecta cambios y dispara entries a actualizar; el agente los llena al cerrar cada task. Soporta indexar también MySQL/PostgreSQL/openGauss (estructura, no datos). **Local-first**: nunca Internet, credenciales por env var, status page en loopback.",
+        "por_que_importa": "AOCI-CODE es la primera propuesta formal de estándar abierto para resolver \"tu agente re-escanea el codebase entero en cada tarea\". La idea es una línea por archivo, escrita por el agente, con cuatro campos (F=qué hace, R=qué leer junto, A=API que exponen sus callers, S=invariantes que no se infieren del código), versionada en Git junto al repo; el MCP server detecta cambios y dispara entries a actualizar. El formato es lo bastante compacto como para que ~300 líneas cubran un sistema entero, y el modelo de mantenimiento es automático al cerrar cada task. La categoría \"codebase map\" tiene tres pesos pesados hoy (`colbymchenry/codegraph` cerrado, `aider/repomap` per-session, indexing estilo Cursor propietario); AOCI es el primero que apuesta por un spec abierto en un repo público. La licencia FSL-1.1-MIT (MIT tras 2 años) es fair-source: abierta pero no gratuita para vendors que quieran hacer fork-as-service, lo cual conviene leer antes de adoptarla. Cubrimos MCP como protocolo el 2026-09-21, y la terna Claude Code/Codex/Cursor + la aparición en trending ya la vimos el 2026-10-01; lo que trae hoy es el delta de que el spec AOCI empieza a consolidarse como referencia. Tema: \"AOCI-CODE: cuando el mapa del codebase se versiona junto al código (y la spec vive en un repo público)\".",
+        "madurez_senales": "845★ · 133 forks · **Go** · creado 2026-08-08 · último push 2026-10-02 (HOY) · default_branch `main` · licencia **FSL-1.1-MIT** (Functional Source License 1.1, MIT tras 2 años — fair source, NO open source estricto) · status v0.1.0-rc17 · 9 MCP tools · topics: `agent-memory`, `agents-md`, `ai-coding`, `ai-context`, `claude-code`, `code-indexing`, `code-intelligence`, `codex`, `coding-agent`, `context-engineering`, `cursor`, `database-schema`, `golang`, `llm`, `local-first`, `mcp`, `mcp-server`, `model-context-protocol`, `opencode`, `repo-map` · README bilingüe EN/chino · soporta 4 backends de modelo.",
+        "accion_sugerida": "explorar (clonar el repo, levantar el MCP server, pedirle a Claude Code/Codex que indexe un proyecto pequeño, revisar la calidad de los entries — si la prosa es buena, este spec tiene futuro; leer la nota de FSL si quieres hacer fork).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "implements",
+          "dst": "concept:codebase-map-spec",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "supports",
+          "dst": "framework:codex",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "supports",
+          "dst": "tool:cursor",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "competes_with",
+          "dst": "repo:colbymchenry/codegraph",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "competes_with",
+          "dst": "tool:aider-repomap",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "relevant_to",
+          "dst": "concept:agents-md",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aoci-spec/aoci-code",
+          "rel": "risk",
+          "dst": "concept:fsl-fair-source-license",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aoci-spec-aoci-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Effect-TS/effect",
+      "url": "https://github.com/Effect-TS/effect",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Runtime TypeScript** para construir aplicaciones production-grade, type-safe y robustas a escala. Resuelve los problemas \"duros\" de TS a escala: typed errors, dependency injection, structured concurrency, scheduling, tracing, unified schema validation. **Effect 4.x es LTS** con guía de migración desde 3.x. Requisitos: TS 5.9+ (TS 7 recomendado), Node 18+ (algunos packages 22.16+), `strict: true` en tsconfig.",
+        "por_que_importa": "Effect existe desde finales de 2019, pero entra a GitHub Trending en octubre de 2026 con 16.6k★ — el momento exacto en que los coding agents necesitan scheduling determinista, dependency injection tipado y error handling que no se traga el `try/catch` clásico. La narrativa clásica \"Effect es la respuesta de TS a Scala/ZIO\" se queda corta: la pregunta correcta en 2026 es \"Effect es la respuesta de TS a lo que los coding agents necesitan de un runtime\". La combinación LTS de Effect 4.x + typed-everything + structured concurrency es lo que faltaba para que un agente pueda razonar sobre un programa largo sin perder invariantes. Hay que tener en cuenta los requisitos duros: TS 5.9+ (TS 7 recomendado), Node 18+ (algunos packages piden 22.16+) y `strict: true` en tsconfig — no es drop-in sobre cualquier codebase. Cubrimos el concepto de coding-agent-runtime el 2026-08-10, antes de que Effect se viralizara; lo que aporta este pase es que Effect 4.x LTS se ha convertido en la referencia concreta de ese concepto. Tema: \"Effect 4.x LTS: el runtime TS que los coding agents estaban esperando\".",
+        "madurez_senales": "16.624★ · 806 forks · TypeScript · creado 2019-11-13 · último push 2026-10-03 (HOY) · default_branch `main` · licencia **MIT** · 6+ años de maduración · Effect 4.x LTS activo · topics: `cli`, `clustering`, `concurrency`, `dependency-injection`, `effect`, `error-handling`, `javascript`, `observability`, `opentelemetry`, `platform`, `schema`, `typescript`, `workflows` · Discord activo, \"Effect jobs\" page (vendor de contratación) · adoption partners: lista de consultoras oficiales.",
+        "accion_sugerida": "explorar (instalar `npm install effect`, portar un módulo real con `try/catch` a `Effect.gen` + `Effect.tryPromise`, comparar la legibilidad; leer la MIGRATION guide 3.x→4.x para entender qué se rompió y qué se mantiene; evaluar si el cost de adopción (curva funcional) se paga con la mejora en agent-readability).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "implements",
+          "dst": "concept:typescript-functional-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "uses",
+          "dst": "language:typescript",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "competes_with",
+          "dst": "concept:try-catch-status-quo",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "competes_with",
+          "dst": "tool:ts-pattern",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "inspired_by",
+          "dst": "language:scala-zio",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "relevant_to",
+          "dst": "concept:coding-agent-runtime",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:Effect-TS/effect",
+          "rel": "relevant_to",
+          "dst": "concept:deterministic-scheduling",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "effect-ts-effect",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "getsentry/sentry",
+      "url": "https://github.com/getsentry/sentry",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Plataforma de debugging** (error tracking + performance monitoring + tracing) que Sentry Inc mantiene como producto comercial con un core OSS extenso. El repo central vuelve a GitHub Trending con **`language: Python`** declarado y `topics: python`, `fair-source`, `apm` activos. Push HOY con cadencia sostenida.",
+        "por_que_importa": "Sentry nació sobre Django en 2010, y durante años la capa server fue re-arquitecturándose silenciosamente hacia servicios más pequeños (Snuba para queries, Relay para ingestion, Symbolicator para debug info). Que el monorepo central reaparezca en trending con Python declarado y `fair-source` como topic activo es la señal visible de un giro estratégico: el monolito Django se está modernizando y el centro de gravedad del producto vuelve a su raíz Python, no al stack Node/Go que creció en los márgenes. La licencia sigue marcada como NOASSERTION en la API de GitHub (patrón conocido de licencias custom o fair-source que el detector automático no clasifica); para saber el modelo exacto hay que leer el archivo LICENSE en el repo, no fiarse del campo. Cubrimos el riesgo de licencia NOASSERTION el 2026-08-27 a propósito de otro repo; aquí reaparece porque Sentry es el ejemplo canónico: tracción de producto madura con clasificación de licencia ambigua, y eso es editorializable por sí o por la dirección que confirma. Tema: \"Sentry en 2026: el monolito OSS vuelve a su raíz Python, con fair-source explícito\".",
+        "madurez_senales": "45.073★ · 4.894 forks · **Python** (declarado, nuevo) · creado 2010-08-30 · último push 2026-10-03 (HOY) · default_branch `master` · licencia **NOASSERTION** (vía API — verificar LICENSE file en repo: declarado `fair-source` en topics) · topics: `apm`, `crash-reporting`, `crash-reports`, `csp-report`, `devops`, `django`, `error-logging`, `error-monitoring`, `fair-source`, `hacktoberfest`, `monitor`, `monitoring`, `python`, `sentry`, `tag-production` · vendor Sentry Inc con producto comercial alrededor.",
+        "accion_sugerida": "vigilar (no adopción como dependencia por la **licencia NOASSERTION**; sí lectura del LICENSE file para entender el modelo fair-source; interesante seguir la trayectoria Python-only del monolito en próximos boletines).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "implements",
+          "dst": "concept:error-tracking-platform",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "operated_by",
+          "dst": "company:sentry-inc",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "uses",
+          "dst": "framework:django",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "uses",
+          "dst": "language:python",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "risk",
+          "dst": "concept:noassertion-license",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "complements",
+          "dst": "repo:getsentry/snuba",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "complements",
+          "dst": "repo:getsentry/relay",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getsentry/sentry",
+          "rel": "relevant_to",
+          "dst": "concept:devops-observability",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "getsentry-sentry",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "google/skills",
+      "url": "https://github.com/google/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(20.825★, último push 2026-10-02, Python, Apache-2.0) — \"Agent Skills for Google products and technologies\". Skills oficial de Google para agentes: BigQuery, Cloud, Gemini, etc. Re-entry válida por cadencia HOY + el campo \"skills oficiales por hyperscaler\" se consolida.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry desde 2026-08-09; completar con Anthropic Skills, AWS Skills — la convergencia es la historia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "colbymchenry/codegraph",
+      "url": "https://github.com/colbymchenry/codegraph",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(73.037★, último push 2026-10-03, C/MIT) — \"Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini\". Kernel en Rust, 100% local, soporta 9+ coding agents. Compite con AOCI en la categoría \"codebase map\" pero con modelo comercial/vendor; aquí MIT pero closed-ecosystem.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-10-01; comparar con AOCI en openness y con cursor-indexing en integración)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "colbymchenry-codegraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "ruvnet/ruflo",
+      "url": "https://github.com/ruvnet/ruflo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(73.755★, último push 2026-10-03, TypeScript/MIT) — \"An agent meta-harness for Claude Code and Codex\". 14-chapter guide, 8.1M+ ecosystem downloads, integra RuVector Agentic DB. Claim: \"the original agent harness\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-09-10; momentum sostenido 73k★, pero la prosa del README es high-vendor-claim — necesita deep-dive para separar marketing de sustancia)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruflo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(14.526★, último push 2026-10-03, Rust/Apache-2.0) — \"OpenShell is the safe, private runtime for autonomous AI agents\". Kernel-level enforcement + formal verification de policy changes. v0.1.x estable.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-09-30; el ángulo \"runtime con enforcement kernel-level para fleets de agentes\" es único — alternativa seria a containers para AI agent fleets)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-openshell",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "grafana/gcx",
+      "url": "https://github.com/grafana/gcx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(760★, último push 2026-10-03, Go/Apache-2.0) — CLI para Grafana y Grafana Cloud, **optimizado para uso agentic**. Salida JSON-first, machine-readable, pensada para que un coding agent la invoque.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (es el ejemplo canónico de \"tool for AI agents\" bien hecho por un vendor con peso; revisar el README y la lista de subcommands)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "grafana-gcx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "vercel-labs/skills",
+      "url": "https://github.com/vercel-labs/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(33.011★, último push 2026-10-02, TypeScript/MIT) — \"The open agent skills tool — npx skills\". CLI universal para skills, soporta **75+ coding agents** (OpenCode, Claude Code, Codex, Cursor, etc.).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — (instalar `npx skills add vercel-labs/agent-skills`; el README promete el \"package manager\" del ecosistema de skills — pieza crítica de infra)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "warpdotdev/warp",
+      "url": "https://github.com/warpdotdev/warp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(65.349★, último push 2026-10-03, Rust/**AGPL-3.0**) — \"Warp is an agentic development environment, born out of the terminal\". Terminal con agentic features.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-08-17; **AGPL-3.0 bloquea adopción como dependencia** — solo usable como terminal local, no integrable en productos distribuidos; interesante por el ángulo \"terminal as agentic environment\" pero la licencia limita el caso de uso)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "warpdotdev-warp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
