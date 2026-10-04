@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-10-04",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Tendencias tech del dia: IA, agentes autonomos y Rust en produccion",
+  "posicionamiento": "Un agente sin memoria persistente reinicia en cada sesión. Tres proyectos atacan el mismo problema desde lados opuestos: obsidian-mind convierte una vault de Obsidian en memoria externa declarativa, agno eleva la memoria a plataforma gestionada con runtime y consola propios, y el SDK canónico de MCP estandariza cómo el cliente y el servidor intercambian ese estado. Son tres formas distintas de responder a la misma pregunta: qué recuerda un agente cuando vuelve mañana.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

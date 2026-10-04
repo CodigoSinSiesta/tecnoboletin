@@ -1,0 +1,67 @@
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-breferrari-obsidian-mind", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-breferrari-obsidian-mind", "dst": "tema:breferrari-obsidian-mind", "rel": "trata", "added": "2026-10-04"}
+{"src": "repo:breferrari/obsidian-mind", "dst": "concept:agent-vault-memory", "rel": "implements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:breferrari/obsidian-mind", "dst": "tool:obsidian", "rel": "uses", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:breferrari/obsidian-mind", "dst": "framework:claude-code", "rel": "supports", "added": "2026-10-04", "primera_mencion": "2026-10-01"}
+{"src": "repo:breferrari/obsidian-mind", "dst": "framework:codex", "rel": "supports", "added": "2026-10-04", "primera_mencion": "2026-10-01"}
+{"src": "repo:breferrari/obsidian-mind", "dst": "framework:gemini-cli", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:breferrari/obsidian-mind", "dst": "tool:qmd-semantic-search", "rel": "complements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:breferrari/obsidian-mind", "dst": "concept:mcp-context-caches", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": null}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-agno-agi-agno", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-agno-agi-agno", "dst": "tema:agno-agi-agno", "rel": "trata", "added": "2026-10-04"}
+{"src": "repo:agno-agi/agno", "dst": "concept:agent-platform-framework", "rel": "implements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "concept:agentos-runtime", "rel": "complements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "concept:agentos-ui", "rel": "complements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "tool:langchain", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "tool:llamaindex", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "concept:managed-agent-saas", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "concept:rbac-jwt", "rel": "uses", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:agno-agi/agno", "dst": "concept:on-prem-agent-stack", "rel": "relevant_to", "added": "2026-10-04", "primera_mencion": null}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-modelcontextprotocol-python-sdk", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-modelcontextprotocol-python-sdk", "dst": "tema:modelcontextprotocol-python-sdk", "rel": "trata", "added": "2026-10-04"}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "protocol:mcp", "rel": "implements", "added": "2026-10-04", "primera_mencion": "2026-09-21"}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "language:python", "rel": "uses", "added": "2026-10-04", "primera_mencion": "2026-10-03"}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "transport:stdio", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "transport:streamable-http", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "transport:sse", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "concept:mcp-ecosystem", "rel": "relevant_to", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:modelcontextprotocol/python-sdk", "dst": "repo:modelcontextprotocol/servers", "rel": "complements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-edge0-ai-edge0", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-edge0-ai-edge0", "dst": "tema:edge0-ai-edge0", "rel": "trata", "added": "2026-10-04"}
+{"src": "repo:Edge0-AI/Edge0", "dst": "concept:moe-edge-inference", "rel": "implements", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "technique:ssd-expert-offload", "rel": "uses", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "technique:recover-lora", "rel": "uses", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "technique:prerouter-routing-prediction", "rel": "uses", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "tool:llama-cpp", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "tool:mlx", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "concept:on-device-llm", "rel": "relevant_to", "added": "2026-10-04", "primera_mencion": "2026-09-07"}
+{"src": "repo:Edge0-AI/Edge0", "dst": "platform:macos", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "platform:ios", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "platform:android", "rel": "supports", "added": "2026-10-04", "primera_mencion": null}
+{"src": "repo:Edge0-AI/Edge0", "dst": "paper:arxiv-2609-18063", "rel": "published", "added": "2026-10-04", "primera_mencion": null}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-agentgateway-agentgateway", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-agentgateway-agentgateway", "dst": "tema:agentgateway-agentgateway", "rel": "trata", "added": "2026-10-04"}
+{"src": "repo:agentgateway/agentgateway", "dst": "concept:agentic-l7-proxy", "rel": "implements", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "protocol:mcp", "rel": "uses", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "platform:kubernetes", "rel": "supports", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "concept:gateway-api", "rel": "complements", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "concept:service-mesh", "rel": "complements", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "tool:envoy", "rel": "competes_with", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "problem:agent-fleet-routing", "rel": "solves", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "repo:agentgateway/agentgateway", "dst": "problem:mcp-server-observability", "rel": "solves", "added": "2026-10-04", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-modelcontextprotocol-servers", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-modelcontextprotocol-servers", "dst": "tema:modelcontextprotocol-servers", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-sqlfluff-sqlfluff", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-sqlfluff-sqlfluff", "dst": "tema:sqlfluff-sqlfluff", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-arc53-docsgpt", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-arc53-docsgpt", "dst": "tema:arc53-docsgpt", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-jamwithai-production-agentic-rag-course", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-jamwithai-production-agentic-rag-course", "dst": "tema:jamwithai-production-agentic-rag-course", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-primeintellect-ai-prime-agent", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-primeintellect-ai-prime-agent", "dst": "tema:primeintellect-ai-prime-agent", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-calesthio-openmontage", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-calesthio-openmontage", "dst": "tema:calesthio-openmontage", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-tracer-cloud-opensre", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-tracer-cloud-opensre", "dst": "tema:tracer-cloud-opensre", "rel": "trata", "added": "2026-10-04"}
+{"src": "boletin:2026-10-04", "dst": "item:https-github-com-usestrix-strix", "rel": "menciona", "added": "2026-10-04"}
+{"src": "item:https-github-com-usestrix-strix", "dst": "tema:usestrix-strix", "rel": "trata", "added": "2026-10-04"}

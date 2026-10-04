@@ -1,0 +1,586 @@
+{
+  "version": 2,
+  "date": "2026-10-04",
+  "boletin_origen": "2026-10-04-trending.md",
+  "resumen_ejecutivo": "- **`breferrari/obsidian-mind` (4.886★, MIT, TypeScript, push HOY) es el primer \"vault\" de Obsidian que se vende explícitamente como memoria persistente para coding agents.** Hooks nativos para Claude Code, Codex CLI y Gemini CLI; integra `kepano/obsidian-cli`, `kepano/obsidian-skills` y `tobi/qmd` (búsqueda semántica). El tagline es literal: *\"An Obsidian vault that gives AI coding agents persistent memory\"*. Tema: \"Cuando el vault deja de ser para humanos y se vuelve para agentes\".\n- **`agno-agi/agno` (42.543★, Apache-2.0, Python, push HOY) entra a trending con el \"Django admin de los agent platforms\".** Tres piezas en un mismo repo: SDK para construir agentes, **AgentOS** (runtime que los expone como servicio) y **AgentOS UI** (consola web para gestionar la plataforma, con JWT/RBAC). El claim del README: *\"Agno allows you to own your agent stack. Maintain control of your data, memory, and security posture\"*. Tema: \"De framework a plataforma: Agno ya no compite con LangChain, compite con los vendors\".\n- **`modelcontextprotocol/python-sdk` (24.476★, MIT, Python, push 2026-10-02) publica la v2 con guía de migración propia.** El SDK oficial de Python para construir servers y clients MCP — la pieza que faltaba como referencia canónica. Habla stdio, **Streamable HTTP** y SSE; el `what's new in v2` es lectura obligatoria si mantienes un MCP server Python (incluye AOCI, Context Mode, Grafana MCP, etc.). Tema: \"MCP Python SDK v2: el manual canónico que tu MCP server necesita\".\n- **`Edge0-AI/Edge0` (2.766★, Apache-2.0, Python, push 2026-10-02) es un framework MoE de inferencia streaming con offload de expertos a SSD y prerouter predictivo.** Apunta a Mac, iOS y Android con una sola receta. Paper arXiv **2609.18063** y modelos preview en Hugging Face (`Edge0-35B-A3B-preview`, `Edge0-8B-A1B-preview`). README en **5 idiomas incluyendo Español**. Tema: \"MoE en el bolsillo: ejecutar modelos grandes en edge con SSD como extension de RAM\".\n- **`agentgateway/agentgateway` (5.164★, Apache-2.0, Rust, push 2026-10-03) es el \"API gateway\" de la era agentic — proxy L7 para fleets de agentes y MCP servers, Kubernetes-native.** Tras 3 meses de cadencia diaria en trending vuelve a aparecer con release visible y Discord activo. Tema: \"Agentgateway: cuando tu fleet de agentes necesita el equivalente a ingress-nginx, pero L7-aware\".\nFuentes consultadas: Trendshift daily (25 items), GitHub Trending daily global (18) + TypeScript (20) + Python (17) + Rust (13) = 68 entries, dedupadas a 47 candidatas únicas, **15 nuevas vs `seen_items`**. GitHub REST API sin token (19 verificaciones de hallazgos principales + radar + reentradas relevantes, dentro del límite de 30 req/día). READMEs cargados via `default_branch` desde la API (obsidian-mind/main, agno/main, python-sdk/main, edge0/main, agentgateway/main, sqlfluff/main, docsgpt/main, jamwithai/main, prime-agent/main, opensre/main, strix/main, OpenMontage/main, kaifcodec/user-scanner/main, rea/main, roundhouse/main). Blogwatcher 08:00 no publicado hoy (último `-blogs.md` = `2026-07-05`; verificar `hermes cron list` si persiste el silencio).\n---",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "breferrari/obsidian-mind",
+      "url": "https://github.com/breferrari/obsidian-mind",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Una vault de **Obsidian** que existe explícitamente para servir de **memoria persistente a coding agents** (Claude Code, Codex CLI, Gemini CLI). No es un plugin: es la propia estructura de la vault — notas autogeneradas, índices, links, performance tracking — pensada para que un agente la consulte y la extienda en cada sesión. README disponible en **inglés, japonés, chino simplificado y coreano**.",
+        "por_que_importa": "Es la primera respuesta \"vault-first\" al problema de la amnesia entre sesiones de un coding agent: en lugar de cachear resultados en un MCP, el agente escribe y lee notas en una vault de Obsidian con la misma forma que un humano (links, daily notes, MOCs, índices, performance tracking), de modo que cada conversación se apoya literalmente en la anterior. El repo integra tres piezas que ya cubrimos en boletines previos: claude-code y codex-cli (ambos el 2026-10-01), junto con obsidian-cli y obsidian-skills de kepano y el buscador semántico qmd de tobi. Su tesis editorial —\"cuando el vault deja de ser para humanos y se vuelve para agentes\"— choca de frente con la idea de un MCP context cache, así que el ángulo para el lector es claro: si te interesa el patrón agent-as-keeper, mira primero cómo se estructura la vault antes de pelearte con el context window. Limitación honesta: el README está en inglés, japonés, chino y coreano, pero no en español.",
+        "madurez_senales": "4.886★ · 550 forks · TypeScript · creado 2026-02-28 · último push 2026-10-03 (HOY) · default_branch `main` · licencia **MIT** · topics: `ai-agents`, `claude-code`, `codex-cli`, `gemini-cli`, `knowledge-management`, `obsidian` · requiere Node 22+ y Obsidian 1.12+ · integra `obsidian-cli` y `obsidian-skills` (kepano) y `qmd` (tobi).",
+        "accion_sugerida": "explorar (clonar, abrir como Obsidian vault, conectar a Claude Code con los hooks oficiales, hacer 1 semana de uso real y revisar la calidad de los notes auto-generados; comparar con un setup manual \"yo escribo las notas\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "implements",
+          "dst": "concept:agent-vault-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "uses",
+          "dst": "tool:obsidian",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "supports",
+          "dst": "framework:claude-code",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "supports",
+          "dst": "framework:codex",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "supports",
+          "dst": "framework:gemini-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "complements",
+          "dst": "tool:qmd-semantic-search",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:breferrari/obsidian-mind",
+          "rel": "competes_with",
+          "dst": "concept:mcp-context-caches",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "breferrari-obsidian-mind",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "agno-agi/agno",
+      "url": "https://github.com/agno-agi/agno",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Framework + runtime + UI** para construir **plataformas de agentes** — no agentes sueltos. Tres piezas: (1) el **SDK** de Agno para definir agentes, (2) **AgentOS**, el runtime que los sirve como servicio, y (3) **AgentOS UI**, una consola web con JWT/RBAC para gestionar la plataforma. El claim del README: *\"Agno allows you to own your agent stack. Maintain control of your data, memory, and security posture (JWT-based RBAC), and turn your agent platform into a learning loop with simulations and usage data\"*. La sección \"Get started\" del README se abre con un **prompt listo para entregar a un coding agent** (Claude Code, Cursor, Codex) — un detalle de producto que dice mucho del target.",
+        "por_que_importa": "Con 42.5k★ y cuatro años de historia, Agno ya no se vende como framework Python más: se vende como plataforma completa — SDK + runtime (AgentOS) + consola web con JWT/RBAC + simulaciones + telemetría de uso. Eso lo desplaza del ring de LangChain y LlamaIndex y lo pone a competir con los vendors SaaS de agentes (Vertex AI Agents, AWS Bedrock Agents, Azure AI Agent Service), sobre todo en el segmento \"quiero mi propio stack de agentes on-prem y mantener el control de datos, memoria y postura de seguridad\". El detalle de producto más elocuente está en el README: la sección \"Get started\" arranca con un prompt listo para pegar en Claude Code, Cursor o Codex, lo que indica que el target real es el desarrollador que ya trabaja con un coding agent. Para el lector de Código Sin Siesta la pregunta práctica es: ¿me conviene un framework de agentes o ya estoy montando una plataforma y necesito el runtime con UI?",
+        "madurez_senales": "42.543★ · 6.086 forks · Python · creado 2022-05-04 (4+ años de historia) · último push 2026-10-03 (HOY) · default_branch `main` · licencia **Apache-2.0** · topics: `agents`, `ai`, `ai-agents`, `developer-tools`, `python` · vendor: agno.com (sitio comercial) · sitio de docs activo.",
+        "accion_sugerida": "explorar (instalar `pip install agno`, levantar AgentOS con el quickstart, abrir la UI en localhost, desplegar un par de agentes y revisar la experiencia de \"platform admin\" — ¿se siente como Django admin para agentes?).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "implements",
+          "dst": "concept:agent-platform-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "complements",
+          "dst": "concept:agentos-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "complements",
+          "dst": "concept:agentos-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "competes_with",
+          "dst": "tool:langchain",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "competes_with",
+          "dst": "tool:llamaindex",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "competes_with",
+          "dst": "concept:managed-agent-saas",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "uses",
+          "dst": "concept:rbac-jwt",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:agno-agi/agno",
+          "rel": "relevant_to",
+          "dst": "concept:on-prem-agent-stack",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agno-agi-agno",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "modelcontextprotocol/python-sdk",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Implementación canónica en Python del Model Context Protocol (MCP)**: permite construir **MCP servers** (que exponen tools/resources/prompts) y **MCP clients** (que se conectan a cualquier MCP server). Soporta los tres transports estándar: **stdio**, **Streamable HTTP** y **SSE**. Acaba de publicar **v2 con guía de migración propia** (`migration/`) y `whats-new/` detallado. La documentación oficial vive en `py.sdk.modelcontextprotocol.io`.",
+        "por_que_importa": "Es la implementación canónica en Python del Model Context Protocol, mantenida por la propia org modelcontextprotocol (con respaldo de Anthropic): si tienes un MCP server en Python —incluidos los que cubrimos en boletines recientes como AOCI-CODE, Context Mode, AWS, Grafana, n8n, fastmcp de PrefectHQ o whatsapp-mcp de lharries— este repo es la referencia contra la que se mide tu código. Importa especialmente ahora que acaban de publicar v2 con guía de migración propia y whats-new detallado, porque las APIs que cambiaron forzarán actualizaciones en todos los proyectos downstream. La pieza ya apareció en el boletín del 2026-09-21 cuando cubrimos el propio protocolo MCP, y Python como lenguaje del SDK lo vimos el 2026-10-03: en este boletín cerramos el círculo con la referencia canónica. Soporta los tres transports (stdio, Streamable HTTP y SSE), así que no hay excusa de runtime para no migrar.",
+        "madurez_senales": "24.476★ · 4.013 forks · Python · creado 2024-09-24 (casi 2 años) · último push 2026-10-02 · default_branch `main` · licencia **MIT** · topics: `mcp`, `mcp-client`, `mcp-server`, `python` · maintained por la org `modelcontextprotocol` (Anthropic + open source) · v2 publicado con guía de migración.",
+        "accion_sugerida": "leer (la guía `whats-new/v2` y `migration/` son obligatorias si mantienes un MCP server; revisar el `API reference` para entender los cambios; no requiere instalación profunda para entender qué cambia).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "implements",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "uses",
+          "dst": "language:python",
+          "primera_mencion": "2026-10-03"
+        },
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "supports",
+          "dst": "transport:stdio",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "supports",
+          "dst": "transport:streamable-http",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "supports",
+          "dst": "transport:sse",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "relevant_to",
+          "dst": "concept:mcp-ecosystem",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:modelcontextprotocol/python-sdk",
+          "rel": "complements",
+          "dst": "repo:modelcontextprotocol/servers",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "modelcontextprotocol-python-sdk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Edge0-AI/Edge0",
+      "url": "https://github.com/Edge0-AI/Edge0",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Framework de inferencia streaming para modelos MoE** (Mixture of Experts) que ataca el problema del **tamaño del modelo vs RAM del dispositivo** con tres técnicas: (1) **SSD expert offload** — los expertos que no caben en RAM se cargan desde SSD bajo demanda; (2) **Recover-LoRA** — adaptación LoRA que se recupera del offload; (3) **prerouter routing prediction** — predice qué experto se activará antes de que el router decida. Apunta a **macOS, iOS y Android** con \"una sola receta\". Tiene paper en arXiv: **2609.18063** y modelos preview en Hugging Face (`Edge0-35B-A3B-preview`, `Edge0-8B-A1B-preview`) y ModelScope. README en **5 idiomas**: inglés, chino, japonés, **español** y francés.",
+        "por_que_importa": "El santo grial del edge-LLM es correr un MoE de 30B+ parámetros en un móvil, y las alternativas habituales (llama.cpp, MLX, TFLite) o son CPU-only con modelos densos, o no gestionan bien la activación dispersa de expertos. Edge0 ataca exactamente esa restricción con tres técnicas combinadas: SSD expert offload para sacar de RAM los expertos que no caben (similar en idea a QLoRA pero aplicado a inferencia, no a fine-tuning), Recover-LoRA para que la adaptación LoRA sobreviva al offload desde disco, y un prerouter que predice qué experto se activará antes de que el router decida —todo con la promesa de una sola receta para macOS, iOS y Android. Para el lector de Código Sin Siesta, el interés es doble: el on-device LLM ya lo cubrimos el 2026-09-07, y Edge0 entra como competidor directo de llama.cpp y MLX en ese segmento. Limitación honesta: la madurez real es baja (≈1 mes de vida, sin topics en el repo, vendor Edge0 Inc probable pero no confirmado), aunque el paper en arXiv (2609.18063) y los modelos preview en HuggingFace y ModelScope apuntan a que la apuesta es seria.",
+        "madurez_senales": "2.766★ · 312 forks · Python · creado 2026-09-08 (≈1 mes) · último push 2026-10-02 · default_branch `main` · licencia **Apache-2.0** · README en 5 idiomas (inglés, chino, japonés, **español**, francés) · paper arXiv:2609.18063 · modelos preview en HuggingFace y ModelScope · sin topics en el repo (raro, posiblemente pre-anuncio público).",
+        "accion_sugerida": "vigilar (proyecto de ~1 mes, stars y forks sugieren tracción real pero conviene esperar 2-3 semanas para confirmar cadencia; revisar el paper arXiv:2609.18063 para validar las claims de SSD-offload vs soluciones como `awq`/`gptq`; probar uno de los modelos preview en HuggingFace en local con M2/M3).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "implements",
+          "dst": "concept:moe-edge-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "uses",
+          "dst": "technique:ssd-expert-offload",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "uses",
+          "dst": "technique:recover-lora",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "uses",
+          "dst": "technique:prerouter-routing-prediction",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "competes_with",
+          "dst": "tool:llama-cpp",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "competes_with",
+          "dst": "tool:mlx",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "relevant_to",
+          "dst": "concept:on-device-llm",
+          "primera_mencion": "2026-09-07"
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "supports",
+          "dst": "platform:macos",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "supports",
+          "dst": "platform:ios",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "supports",
+          "dst": "platform:android",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "published",
+          "dst": "paper:arxiv-2609-18063",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "edge0-ai-edge0",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "agentgateway/agentgateway",
+      "url": "https://github.com/agentgateway/agentgateway",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Proxy L7 \"agentic\"** pensado para ser el **API gateway de la era de los agentes**: enrutamiento, autenticación, observabilidad y policy enforcement para **fleets de agentes AI y MCP servers**. Topics oficiales: `agents`, `ai`, `ai-gateway`, `api-gateway`, `gateway-api`, `kubernetes`. Tiene release visible y Discord activo. Reentry: ya fue radar el 2026-07-16 y el 2026-10-03; vuelve a aparecer con cadencia sostenida.",
+        "por_que_importa": "Cuando un developer tiene cinco agentes hablando con tres MCP servers cada uno, el service mesh casero se rompe rápido; agentgateway ataca ese punto con un proxy L7 \"agentic\" que aplica el vocabulario clásico de ingress (gateway, route, policy) al tráfico MCP y de agentes. La etiqueta `gateway-api` no es decorativa: apunta al Gateway API de Kubernetes, lo que lo hace drop-in en clusters que ya lo usan y le da una capa de alineación con el estándar de la CNCF. Para el lector de Código Sin Siesta el ángulo es muy concreto: si vas en serio con un fleet de agentes y MCP servers, necesitas observabilidad, autenticación y routing centralizados igual que necesitas un ingress-nginx para HTTP —agentgateway es el equivalente L7-aware de ese rol. Este proyecto ya lo cubrimos el 2026-07-16 (junto con el protocolo MCP, Kubernetes, Gateway API, service mesh, Envoy y los problemas de routing y observabilidad de fleets), y vuelve a salir con cadencia sostenida, lo que confirma tracción más que hype. Limitación honesta: no hay cifras de adopción en producción, solo tracción comunitaria (5.164★, release pattern activo, Discord activo).",
+        "madurez_senales": "5.164★ · 912 forks · Rust · creado 2025-03-18 (≈19 meses) · último push 2026-10-03 (HOY) · default_branch `main` · licencia **Apache-2.0** · topics: `agents`, `ai`, `ai-gateway`, `api-gateway`, `gateway-api`, `kubernetes` · release pattern activo · Discord activo (`discord.gg/BdJpzaPjHv`).",
+        "accion_sugerida": "leer (release notes y arquitectura — la pregunta es: ¿qué añade sobre Envoy + un sidecar MCP?); explorar (desplegar en un cluster K8s pequeño, registrar 2-3 MCP servers y un agente, validar la observabilidad; revisar la doc de policy/authn).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "implements",
+          "dst": "concept:agentic-l7-proxy",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "supports",
+          "dst": "platform:kubernetes",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "complements",
+          "dst": "concept:gateway-api",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "complements",
+          "dst": "concept:service-mesh",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "competes_with",
+          "dst": "tool:envoy",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "solves",
+          "dst": "problem:agent-fleet-routing",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:agentgateway/agentgateway",
+          "rel": "solves",
+          "dst": "problem:mcp-server-observability",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentgateway-agentgateway",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "Repositorio hermano de servers MCP de referencia mantenidos por la org oficial",
+        "por_que_importa": "",
+        "madurez_senales": "no verificado en este boletín, antes `2026-08-23`",
+        "accion_sugerida": "vigilar — (conviene releer tras la v2 del Python SDK; cambios en transports o auth probablemente aparecen aquí primero)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "modelcontextprotocol-servers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "sqlfluff/sqlfluff",
+      "url": "https://github.com/sqlfluff/sqlfluff",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.922★, último push 2026-10-04, Python, MIT) — *\"The SQL Linter for Humans\"*. Linter + auto-formatter SQL con soporte para múltiples dialectos y templated code. 8 años de maduración, Docker pulls masivo, descargas en PyPI",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (útil para pipelines que generan SQL con agentes; el enfoque \"templated code\" encaja con dbt/SQLFluff en code-gen)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sqlfluff-sqlfluff",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "arc53/DocsGPT",
+      "url": "https://github.com/arc53/DocsGPT",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(18.312★, último push 2026-10-03, Python, MIT) — *\"Open-source AI agents grounded in your docs. Private, self-hosted, any model\"*. Agent builder + deep research + document analysis, badge OpenSSF Best Practices",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (alternativa OSS a los vendor RAG platforms; el claim \"any model\" lo hace drop-in para setups con Ollama o vLLM local)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "arc53-docsgpt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "jamwithai/production-agentic-rag-course",
+      "url": "https://github.com/jamwithai/production-agentic-rag-course",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.452★, último push 2026-06-05, Python, MIT) — *\"The Mother of AI Project: arXiv Paper Curator\"*. Curso de RAG production-grade con FastAPI, OpenSearch, Docker. Push stale (4 meses) pero trending sostenido por cadencia de forks",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (el repositorio es un curso, no un framework — útil como referencia de arquitectura RAG production; revisar qué se ha quedado obsoleto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jamwithai-production-agentic-rag-course",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "PrimeIntellect-ai/prime-agent",
+      "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(21.522★, último push 2026-10-04, Rust, **NOASSERTION vía API**) — *\"A self-improving RLM agent for coding workflows and long-running autonomous tasks\"*. Paper arXiv:2608.23552. Reentry con cadencia diaria; **verificar el archivo LICENSE antes de adoptarlo como dependencia** (pitfall #11)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-08-06 con cadencia sostenida; la tesis \"self-improving RLM\" es el claim fuerte — el README apunta a `verifiers` y `prime-rl` como primos)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "primeintellect-ai-prime-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(62.759★, último push 2026-10-03, Python, **AGPL-3.0**) — *\"World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+...\"*. Reentry con cadencia",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (la licencia **AGPL-3.0 bloquea adopción como dependencia** en productos distribuidos; usable solo para uso interno; interesante como referencia de \"agente de producción audiovisual\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "calesthio-openmontage",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "Tracer-Cloud/opensre",
+      "url": "https://github.com/Tracer-Cloud/opensre",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.363★, último push 2026-10-04, Python, Apache-2.0) — *\"Build your own AI SRE agents. The open source toolkit for the AI era\"*. Topics: `ai-sre`, `alerting`, `datadog`, `grafana`, `incident-management`. Reentry con cadencia",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-08-25; alternativa OSS a los SRE assistants comerciales; revisar si la integración con Grafana/Datadog es real o vaporware)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tracer-cloud-opensre",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "usestrix/strix",
+      "url": "https://github.com/usestrix/strix",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(66.384★, último push 2026-10-04, Python, Apache-2.0) — *\"Open-source AI penetration testing tool to find and fix your app's vulnerabilities\"*. Topics: `agents`, `ai-hacking`, `ai-penetration-testing`, `ai-pentesting`, `ai-security`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (re-entry 2026-06-30 con cadencia; útil para audits de seguridad con coding agents, pero **revisar el disclaimer de uso ético en el repo** antes de cualquier prueba real)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "usestrix-strix",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
