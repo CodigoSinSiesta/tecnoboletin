@@ -1,0 +1,36 @@
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-deepseek-ai-deepgemm", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-deepseek-ai-deepgemm", "dst": "tema:1-deepseek-ai-deepgemm", "rel": "trata", "added": "2026-10-05"}
+{"src": "repo:deepseek-ai/DeepGEMM", "dst": "concept:gpu-kernels", "rel": "implements", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:deepseek-ai/DeepGEMM", "dst": "concept:moe-inference", "rel": "enables", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:deepseek-ai/DeepGEMM-Ascend", "dst": "repo:deepseek-ai/DeepGEMM", "rel": "port_of", "added": "2026-10-05", "primera_mencion": null}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-morluto-rea", "dst": "tema:2-morluto-rea", "rel": "trata", "added": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "concept:reverse-engineering-agent", "rel": "implements", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:morluto/rea", "dst": "protocol:mcp", "rel": "uses", "added": "2026-10-05", "primera_mencion": "2026-09-21"}
+{"src": "repo:morluto/rea", "dst": "tool:hopper-disassembler", "rel": "integrates_with", "added": "2026-10-05", "primera_mencion": null}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-michael-denyer-pstack-claude", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-michael-denyer-pstack-claude", "dst": "tema:3-michael-denyer-pstack-claude", "rel": "trata", "added": "2026-10-05"}
+{"src": "repo:michael-denyer/pstack-claude", "dst": "concept:rigorous-agent-workflow", "rel": "implements", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:michael-denyer/pstack-claude", "dst": "concept:cursor-pstack", "rel": "port_of", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:michael-denyer/pstack-claude", "dst": "repo:addyosmani/agent-skills", "rel": "complements", "added": "2026-10-05", "primera_mencion": "2026-07-11"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-niko1221-strata", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-niko1221-strata", "dst": "tema:4-niko1221-strata-reentry-con-crecimient", "rel": "trata", "added": "2026-10-05"}
+{"src": "repo:Niko1221/Strata", "dst": "concept:qwen3-flash-next", "rel": "runs", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:Niko1221/Strata", "dst": "spec:openai-compatible-api", "rel": "exposes", "added": "2026-10-05", "primera_mencion": null}
+{"src": "repo:Niko1221/Strata", "dst": "spec:anthropic-compatible-api", "rel": "exposes", "added": "2026-10-05", "primera_mencion": null}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-storytold-photocraft", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-storytold-photocraft", "dst": "tema:storytold-photocraft", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-storytold-filmcraft", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-storytold-filmcraft", "dst": "tema:storytold-filmcraft", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-omlahore-removemacai", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-omlahore-removemacai", "dst": "tema:omlahore-removemacai", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-blueheisenberg-scskiller", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-blueheisenberg-scskiller", "dst": "tema:blueheisenberg-scskiller", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-opencloudgaming-opennow", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-opencloudgaming-opennow", "dst": "tema:opencloudgaming-opennow", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-boykopovar-anyps5", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-boykopovar-anyps5", "dst": "tema:boykopovar-anyps5", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-omnirush-ai-omnirush-gui", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-omnirush-ai-omnirush-gui", "dst": "tema:omnirush-ai-omnirush-gui", "rel": "trata", "added": "2026-10-05"}
+{"src": "boletin:2026-10-05", "dst": "item:https-github-com-selmiabderrahim-rankme-fast", "rel": "menciona", "added": "2026-10-05"}
+{"src": "item:https-github-com-selmiabderrahim-rankme-fast", "dst": "tema:selmiabderrahim-rankme-fast", "rel": "trata", "added": "2026-10-05"}

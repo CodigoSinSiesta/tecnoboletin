@@ -1,0 +1,387 @@
+{
+  "version": 2,
+  "date": "2026-10-05",
+  "boletin_origen": "2026-10-05-trending.md",
+  "resumen_ejecutivo": "- **DeepSeek abre la semana con DeepGEMM-Ascend**: la librería de kernels BLAS de DeepSeek para GPUs NVIDIA suma soporte oficial para NPUs Ascend (Huawei) en su release del 2026-09-30. Es la señal más clara hasta ahora de que la infraestructura china de IA se está portando a silicio doméstico. Detalle en el primer hallazgo.\n- **Tres repos de tooling agentic se consolidan en la misma semana**: `morluto/rea` (reverse engineering por CLI+MCP), `michael-denyer/pstack-claude` (port multi-harness de Cursor pstack) y `omnihub-gui` (un desktop agent con acceso \"gratis\" a modelos frontier) muestran que la semana se está cerrando alrededor de tooling para coding agents.\n- **Niko1221/Strata reentra al radar con un crecimiento de 6× en 5 días** (de ~2.000 a casi 12.000 estrellas). Es el caso más fuerte de momentum sostenido de la semana: Qwen3.8-Flash-Next 125B MoE en una sola RTX 5070 de 12 GB.\n- **El espacio de open-source visual no se detiene**: PhotoCraft y FilmCraft (ambos `storytold/`, Rust nativo) salen al radar como un intento serio de reimplementar Photoshop y un editor de video en Rust sin Electron.\n- **Mención pequeña pero útil**: `omlahore/RemoveMacAI` permite desactivar Apple Intelligence en macOS 27 con un comando y liberar disco. Temática privacidad/debloat.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (página general + TypeScript, Python, Rust), GitHub API cuando aplica. Blogwatcher de las 08:00 no publicó el archivo de hoy, así que este boletín no duplica contenido de blogs (patrón conocido desde julio).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "1. deepseek-ai/DeepGEMM",
+      "url": "https://github.com/deepseek-ai/DeepGEMM",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Librería open-source de kernels GEMM para tensor cores NVIDIA que reúne las primitivas de cómputo reales que usa DeepSeek en producción: GEMMs (FP8, FP4, BF16), MoE fusionado con comunicación NVLink solapada (Mega MoE), MQA scoring para el indexer, HyperConnection y más; todo compilado on-the-fly con DeepJIT (sin nvcc en install).",
+        "por_que_importa": "Dos movimientos del README del 2026-09-30 importan juntos. Primero, el repo hermano DeepGEMM-Ascend lleva las mismas primitivas (FP8/FP4/BF16 GEMM, Mega MoE, indexer) a NPUs Huawei Ascend; es una señal directa de que la pila abierta china de IA empieza a independizarse del silicio NVIDIA, y de las pocas veces al año que se documenta un paso así en código de frontera. Segundo, el repo principal incorpora locality domain features, sparse indexer, Mega Gate, Mega mHC y mejoras en MoE/Indexer, que son las primitivas que DeepSeek ya ejecuta en producción. El patrón de diseño (kernels compilados on-the-fly con DeepJIT, sin invocar nvcc durante el install) baja la barrera de adopción y es directamente copiable a otros proyectos CUDA.",
+        "madurez_senales": "Estrellas: 8.307 (verificado 2026-10-05) · Forks: 1.328 (verificado) · Issues abiertos: 149 (verificado) · Lenguaje: Cuda (verificado) · Fecha creación: 2025-02-13 (verificado) · Último push: 2026-09-30 (verificado, hace 5 días) · Licencia: MIT (verificado) · Descripción oficial: \"DeepGEMM: clean and efficient BLAS kernel library on GPU\" (verificado) · Topics: (vacío en la API)",
+        "accion_sugerida": "**leer** (el README explica la filosofía de diseño y por qué evitan CUTLASS) y **vigilar** DeepGEMM-Ascend (¿se va a convertir en el kernel de referencia para inferencia MoE en NPUs chinos?).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/DeepGEMM",
+          "rel": "implements",
+          "dst": "concept:gpu-kernels",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deepseek-ai/DeepGEMM",
+          "rel": "enables",
+          "dst": "concept:moe-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deepseek-ai/DeepGEMM-Ascend",
+          "rel": "port_of",
+          "dst": "repo:deepseek-ai/DeepGEMM",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1-deepseek-ai-deepgemm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "2. morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Un agente CLI + servidor MCP para hacer reverse engineering de cualquier app, desde comportamiento hasta binarios nativos, integrando Hopper, Ghidra y un desensamblador experimental para Windows x64 PE.",
+        "por_que_importa": "REA formaliza un flujo que hasta ahora había que improvisar: integrar un cliente LLM con Ghidra y Hopper para revertir desde comportamiento hasta código nativo, ahora expuesto como servidor MCP integrable con Claude Code, Claude Desktop, Codex, Cursor, Gemini CLI, Windsurf y Devin. La madurez importa porque ya cubrimos MCP en el boletín del 2026-09-21, así que este repo es uno de los primeros consumidores serios del protocolo fuera del toolset de Anthropic. Tiene una skill pública y un `npx rea-agents setup` que pide permiso antes de modificar nada, lo que lo hace auditable en un entorno de equipo. El modelo de tres pasos (decompile → understand → recreate) más los Evidence records reproducibles sirven tanto para aprender reversing como para automatizar análisis en CI.",
+        "madurez_senales": "Estrellas: 3.099 (verificado 2026-10-05) · Forks: 322 (verificado) · Issues abiertos: 62 (verificado) · Lenguaje: TypeScript (verificado) · Fecha creación: 2026-04-14 (verificado) · Último push: 2026-10-05 (verificado, hoy) · Licencia: MIT (verificado) · Descripción oficial: \"Reverse engineer anything with agents, from app behavior down to native binaries.\" (verificado) · Topics (verificado): `agent-skills`, `cli`, `coding-agent`, `decompiler`, `disassembler`, `mcp`, `mcp-server`, `model-context-protocol`, `reverse-engineering`, `static-analysis`",
+        "accion_sugerida": "**explorar** (vale la pena clonar y hacer un `--dry-run` con una app pequeña para ver el output del Evidence record). Si quieres probarlo en una app real que te interese, pídemelo y lanzo un deep-dive.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:morluto/rea",
+          "rel": "implements",
+          "dst": "concept:reverse-engineering-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "integrates_with",
+          "dst": "tool:hopper-disassembler",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "2-morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "3. michael-denyer/pstack-claude",
+      "url": "https://github.com/michael-denyer/pstack-claude",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "El port a Claude Code / Codex / Pi / OpenCode / Gemini CLI / Prime Agent de la skill stack `pstack` que Lauren Tan mantiene en el repo oficial de Cursor (`cursor/plugins/tree/main/pstack`).",
+        "por_que_importa": "`pstack` es la stack de \"rigorous agent workflow\" que Lauren Tan (ex-Cursor) diseñó para que un agente reproduzca un bug, investigue con `how` y `why`, delegue el fix y vuelva a correr el failing test. El valor práctico está en `poteto-mode`: la skill declara qué sub-agents invoca (architect, arena, swarm) y en qué orden, así que el flujo es inspeccionable en lugar de opaco. Como complemento, el plugin hermano `michael-denyer/agent-formal-verify` añade TLA+ model checking y pruebas en Lean sobre invariants, algo poco habitual fuera del mundo académico. Sirve de contrapunto a `garrytan/gstack` (135k★): pstack es más académico y opinado, gstack más orientado a CEO. Ya cubrimos skills para agentes el 2026-07-11, así que este port consolida la categoría.",
+        "madurez_senales": "Estrellas: 1.226 (verificado 2026-10-05) · Forks: 139 (verificado) · Issues abiertos: 10 (verificado) · Lenguaje: JavaScript (verificado) · Fecha creación: 2026-05-26 (verificado) · Último push: 2026-10-04 (verificado) · Licencia: MIT (verificado) · Descripción oficial: \"Claude Code, Codex, Pi, OpenCode, Gemini, and Prime Agent versions of Poteto's pstack. Rigorous agent workflows with Cursor primitives translated for other harnesses.\" (verificado) · Topics (verificado): `agent-skills`, `claude-code`, `codex`, `cursor`, `coding-agent`, `developer-tools`, `mcp`, `pstack`",
+        "accion_sugerida": "**leer** (el README es corto y bien estructurado) y **probar** (instalar la skill en Claude Code y `poteto-mode` sobre un bug pequeño).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:michael-denyer/pstack-claude",
+          "rel": "implements",
+          "dst": "concept:rigorous-agent-workflow",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:michael-denyer/pstack-claude",
+          "rel": "port_of",
+          "dst": "concept:cursor-pstack",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:michael-denyer/pstack-claude",
+          "rel": "complements",
+          "dst": "repo:addyosmani/agent-skills",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "3-michael-denyer-pstack-claude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "4. Niko1221/Strata (reentry con crecimiento excepcional)",
+      "url": "https://github.com/Niko1221/Strata",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de inferencia local que corre Qwen3.8-Flash-Next (125B MoE de Alibaba) en una sola GPU NVIDIA o AMD de 12-24 GB + 64 GB RAM, exponiendo API compatible con OpenAI y Anthropic en `localhost`. Ya cubrimos este repo el 2026-09-30 cuando tenía ~2.000 estrellas; vuelve a entrar al boletín porque en 5 días ha multiplicado su tracción por ~6.",
+        "por_que_importa": "El proyecto pasó de ~2.000 a 11.850 estrellas en cinco días (de 2026-09-30 a 2026-10-05), un salto de tracción x6 que justifica volver a mirarlo. El ritmo de releases lo respalda: diez versiones (v0.1.26 → v0.1.36) en una semana indican que el autor está estabilizando el motor. El caso de uso importa al lector local-first: corre Qwen3.8-Flash-Next (125B MoE de Alibaba) en una sola GPU NVIDIA o AMD de 12-24 GB más 64 GB de RAM y expone un endpoint compatible con OpenAI y Anthropic en localhost, justo lo que hace falta para enchufarle un coding agent. La nueva documentación `docs/AI_SETUP.md` y el soporte multi-GPU con tarjetas de 12-24 GB reducen la fricción de entrada, y el `Buy Me a Coffee` sugiere que el autor busca sostener el ritmo de releases.",
+        "madurez_senales": "Estrellas: 11.850 (verificado 2026-10-05, era 1.997 el 2026-09-30) · Forks: 1.022 (verificado) · Issues abiertos: 322 (verificado) · Lenguaje: C++ (verificado) · Fecha creación: 2026-09-24 (verificado) · Último push: 2026-10-04 (verificado) · Licencia: MIT (verificado) · Descripción oficial: \"Qwen3.8-Flash-Next (125B MoE) on a 12-24 GB NVIDIA GPU + 64 GB RAM: one-click install for Windows / Linux. Strata inference engine, OpenAI/Anthropic API on localhost, optional image input.\" (verificado) · Topics: (vacío en la API)",
+        "accion_sugerida": "**vigilar** (en este momento, ya cubrimos el lanzamiento; lo interesante es el ritmo de crecimiento y la estabilidad del motor). **Probar** solo si tienes GPU NVIDIA RTX 20/30/40/50 o AMD RX 7900+/9070 con 12+ GB de VRAM y 32-64 GB de RAM — el sweet spot del README es la RTX 5070.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Niko1221/Strata",
+          "rel": "runs",
+          "dst": "concept:qwen3-flash-next",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Niko1221/Strata",
+          "rel": "exposes",
+          "dst": "spec:openai-compatible-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Niko1221/Strata",
+          "rel": "exposes",
+          "dst": "spec:anthropic-compatible-api",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "4-niko1221-strata-reentry-con-crecimient",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "storytold/photocraft",
+      "url": "https://github.com/storytold/photocraft",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.137★, último push 2026-10-05, Rust, MIT/Apache-2.0) — Reimplementación clean-room de Adobe Photoshop en Rust nativo, con GPU compositor sobre wgpu (Metal/Vulkan/DX12/WebGPU), copy-on-write tiles, multithreaded filters, **sin Electron**. Soporta 134/135 archivos PSD reales round-trip.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (early alpha; el \"agent-ready\" del README sugiere que vienen features de scripting MCP). Forma dupla con el siguiente",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-photocraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "storytold/filmcraft",
+      "url": "https://github.com/storytold/filmcraft",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(359★, último push 2026-10-05, Rust, Apache-2.0) — Editor de video del mismo autor que PhotoCraft, también Rust nativo. Stars modestas, pero la combinación con PhotoCraft apunta a un \"Adobe Creative Suite en Rust\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-filmcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "omlahore/RemoveMacAI",
+      "url": "https://github.com/omlahore/RemoveMacAI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(742★, último push 2026-10-05, Swift, MIT) — Una línea `RemoveMacAI` para desactivar Apple Intelligence en macOS 27 y liberar el espacio en disco que se come. **Comando reversible**: no rompe el sistema.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (si tienes un Mac con macOS 27 y Apple Intelligence, este es de bajo riesgo)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "omlahore-removemacai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "BlueHeisenberg/SCSKiller",
+      "url": "https://github.com/BlueHeisenberg/SCSKiller",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(427★, último push 2026-10-04, C#, GPL-3.0) — Compilador de shaders ahead-of-time para Windows que elimina el stutter de compilación de DirectX 12 al lanzar juegos. Soporta NVIDIA y AMD.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (GPL-3.0 limita adopción en proyectos comerciales; pero la promesa \"no más stutter\" es real para jugadores)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "blueheisenberg-scskiller",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "OpenCloudGaming/OpenNOW",
+      "url": "https://github.com/OpenCloudGaming/OpenNOW",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.993★, último push 2026-10-05, Rust, MIT) — Cliente alternativo de código abierto para GeForce Now (NVIDIA). Repositorio grande (237 MB), mantenido desde 2023.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si NVIDIA cambia el protocolo del GFN, este repo se va a quedar atrás; mientras tanto, da una opción legal para usar el servicio sin el cliente oficial)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opencloudgaming-opennow",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "boykopovar/AnyPS5",
+      "url": "https://github.com/boykopovar/AnyPS5",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.224★, último push 2026-10-05, C++, GPL-2.0) — Tool para portar ejecutables PS5 a Linux y Windows usando librerías dinámicas y SPIR-V/Vulkan.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (la idea de portar juegos PS5 sin emulación completa es interesante a nivel arquitectura; GPL-2.0 lo hace no usable en productos cerrados)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "boykopovar-anyps5",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "omnirush-ai/omnirush-gui",
+      "url": "https://github.com/omnirush-ai/omnirush-gui",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.299★, último push 2026-10-05, TypeScript, **licencia NOASSERTION**) — Desktop coding agent que ofrece \"acceso gratis a modelos frontier\". **STOP**: el campo `license.spdx_id` viene como `NOASSERTION` desde la API. Antes de recomendar adopción, hay que leer el `LICENSE` real; patrón conocido de proyectos que esconden restricciones comerciales detrás de NOASSERTION.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — hasta verificar el LICENSE file",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "omnirush-ai-omnirush-gui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "SelmiAbderrahim/rankme.fast",
+      "url": "https://github.com/SelmiAbderrahim/rankme.fast",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(521★, último push 2026-09-28, TypeScript, AGPL-3.0) — Plataforma de SEO self-hosted que se vende como alternativa open-source a Semrush. 521★ con 19 forks tras 13 días.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (AGPL-3.0 limita adopción comercial; pero el caso de uso \"SEO self-hosted\" es real para devs que no quieren pagar Semrush)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "selmiabderrahim-rankme-fast",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/4 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

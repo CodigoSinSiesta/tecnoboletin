@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-10-05",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Repostería, deuda IA y el coste oculto de los vídeos automáticos",
+  "posicionamiento": "DeepGEMM-Ascend documenta el movimiento que la pila abierta china llevaba tiempo cocinando: las primitivas reales que DeepSeek corre en producción (FP8/FP4, Mega MoE, indexer) ya existen compiladas para NPUs Huawei, no solo para tensor cores NVIDIA. En paralelo, Google publica una guía práctica de Vibe Coding que destapa el fallo típico: agentes que aprueban código muerto sin examen.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
