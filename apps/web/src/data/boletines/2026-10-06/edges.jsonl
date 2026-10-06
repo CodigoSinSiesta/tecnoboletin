@@ -1,0 +1,52 @@
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-thedotmack-claude-mem", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-thedotmack-claude-mem", "dst": "tema:thedotmack-claude-mem", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:thedotmack/claude-mem", "dst": "concept:agent-memory", "rel": "implements", "added": "2026-10-06", "primera_mencion": "2026-08-10"}
+{"src": "repo:thedotmack/claude-mem", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-09-15"}
+{"src": "repo:thedotmack/claude-mem", "dst": "tool:chromadb", "rel": "uses", "added": "2026-10-06", "primera_mencion": null}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-ai-dynamo-dynamo", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-ai-dynamo-dynamo", "dst": "tema:ai-dynamo-dynamo", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:ai-dynamo/dynamo", "dst": "concept:disaggregated-inference", "rel": "implements", "added": "2026-10-06", "primera_mencion": "2026-08-22"}
+{"src": "repo:ai-dynamo/dynamo", "dst": "tool:sglang", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-08-22"}
+{"src": "repo:ai-dynamo/dynamo", "dst": "tool:tensorrt-llm", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-08-22"}
+{"src": "repo:ai-dynamo/dynamo", "dst": "tool:vllm", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-08-22"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-panniantong-agent-reach", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:panniantong-agent-reach", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:Panniantong/Agent-Reach", "dst": "concept:agent-infrastructure", "rel": "implements", "added": "2026-10-06", "primera_mencion": "2026-08-09"}
+{"src": "repo:Panniantong/Agent-Reach", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-08-09"}
+{"src": "repo:Panniantong/Agent-Reach", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-08-09"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-nealbridges-vulnhunter", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-nealbridges-vulnhunter", "dst": "tema:nealbridges-vulnhunter", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:nealbridges/VulnHunter", "dst": "repo:capitalone/VulnHunter", "rel": "fork_of", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:nealbridges/VulnHunter", "dst": "concept:agentic-security", "rel": "implements", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:nealbridges/VulnHunter", "dst": "tool:docker", "rel": "uses", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:nealbridges/VulnHunter", "dst": "problem:dual-use-cybersecurity", "rel": "risk", "added": "2026-10-06", "primera_mencion": null}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-amontlabs-lcu", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-amontlabs-lcu", "dst": "tema:amontlabs-lcu", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:amontlabs/lcu", "dst": "concept:computer-use-decoupled", "rel": "implements", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:amontlabs/lcu", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": "2026-09-15"}
+{"src": "repo:amontlabs/lcu", "dst": "tool:pi-agent", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:amontlabs/lcu", "dst": "tool:codex-cli", "rel": "integrates_with", "added": "2026-10-06", "primera_mencion": null}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-calesthio-openmontage", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-calesthio-openmontage", "dst": "tema:calesthio-openmontage", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:calesthio/OpenMontage", "dst": "concept:agentic-video-production", "rel": "implements", "added": "2026-10-06", "primera_mencion": "2026-08-12"}
+{"src": "repo:calesthio/OpenMontage", "dst": "tool:remotion", "rel": "uses", "added": "2026-10-06", "primera_mencion": "2026-08-12"}
+{"src": "repo:calesthio/OpenMontage", "dst": "tool:ffmpeg", "rel": "uses", "added": "2026-10-06", "primera_mencion": "2026-08-12"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-m-abozaid-esp32-c3-adblock", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-m-abozaid-esp32-c3-adblock", "dst": "tema:m-abozaid-esp32-c3-adblock", "rel": "trata", "added": "2026-10-06"}
+{"src": "repo:M-Abozaid/esp32-c3-adblock", "dst": "concept:dns-sinkhole", "rel": "implements", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:M-Abozaid/esp32-c3-adblock", "dst": "tool:pi-hole", "rel": "inspired_by", "added": "2026-10-06", "primera_mencion": null}
+{"src": "repo:M-Abozaid/esp32-c3-adblock", "dst": "tool:esp32-c3", "rel": "runs_on", "added": "2026-10-06", "primera_mencion": null}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-calcium-ion-moejs", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-calcium-ion-moejs", "dst": "tema:calcium-ion-moejs", "rel": "trata", "added": "2026-10-06"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-droid-deck-droiddeck", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-droid-deck-droiddeck", "dst": "tema:droid-deck-droiddeck", "rel": "trata", "added": "2026-10-06"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-joooook-12306-mcp", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-joooook-12306-mcp", "dst": "tema:joooook-12306-mcp", "rel": "trata", "added": "2026-10-06"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-falkordb-falkordb", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-falkordb-falkordb", "dst": "tema:falkordb-falkordb", "rel": "trata", "added": "2026-10-06"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-longbridge-gpui-kit", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-longbridge-gpui-kit", "dst": "tema:longbridge-gpui-kit", "rel": "trata", "added": "2026-10-06"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-gtsteffaniak-filebrowser", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-gtsteffaniak-filebrowser", "dst": "tema:gtsteffaniak-filebrowser", "rel": "trata", "added": "2026-10-06"}
+{"src": "boletin:2026-10-06", "dst": "item:https-github-com-slavakurilyak-awesome-ai-agents", "rel": "menciona", "added": "2026-10-06"}
+{"src": "item:https-github-com-slavakurilyak-awesome-ai-agents", "dst": "tema:slavakurilyak-awesome-ai-agents", "rel": "trata", "added": "2026-10-06"}

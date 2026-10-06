@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-10-06",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La infraestructura del coding agent se consolida en tooling maduro",
+  "posicionamiento": "Cuatro hallazgos comparten una misma lectura: el coding agent ya no vive en un script suelto, sino que se apoya en una capa de infra que se consolida. claude-mem blinda la memoria persistente con evals, NVIDIA Dynamo abre la inferencia distribuida a cualquier equipo, Agent-Reach normaliza el acceso a fuentes externas sin API keys, y amontlabs/lcu desacopla el runtime de computer-use del harness. El hilo no es casual: cada pieza resuelve un fallo conocido (memoria que se pierde, inferencia que no escala, navegación web que se atasca, GUI que requiere app oficial).",
+  "convergencia_stack_css": "Tres hallazgos casan con la línea local-first: ChromaDB como backend de memoria en claude-mem coincide con el stack PGLite+pgvector del proyecto, el plugin lcu para Claude Code en macOS encaja con el flujo bring-your-own-harness que ya cubrimos, y OpenMontage con licencia AGPL es un caso de manual de 'leer antes de instalar' que casa con el criterio del boletín. Vulkan/ESP32-C3 no toca el stack pero documenta buen hacer en constraints.",
+  "cruzado_grafo": "Cuatro nodos se refuerzan hoy: agent-memory (claude-mem, ya cubierto el 2026-08-10), claude-code como herramienta integrada (2026-09-15, reaparece en claude-mem y lcu), disaggregated-inference consolidado por Dynamo (2026-08-22), y agentic-video-production con OpenMontage (2026-08-12). MCP reaparece como protocolo canónico vía Agent-Reach (2026-08-09). computer-use-decoupled y agentic-security entran como nodos nuevos sin fecha previa.",
+  "tendencias_5_boletines": "La línea de memoria persistente para agentes que abrió el 2026-10-04 con obsidian-mind, agno y MCP se concreta hoy en claude-mem v13.32.0 con evals, no solo patrones. La conversación sobre agentes también gira: el 2026-10-05 denunciaba agentes que aprueban código muerto y hoy aparece la contrarreplica en VulnHunter (contenedores + operator skill + benchmark) y en la guía de aprobación Touch ID de lcu. La tendencia de fondo: el tooling de agentes deja de ser demos y exige contratos de entorno y validación medible.",
+  "alertas": [
+    "OpenMontage es AGPL-3.0: válido para experimentar, problemático si lo embebes en producto comercial.",
+    "VulnHunter es dual-use: la metodología de cazar vulnerabilidades con agentes es la misma que para explotarlas, leer con responsabilidad.",
+    "Agent-Reach Trendshift #1 pese a release de junio: el trending mide exposición de patrocinios cruzados, no tracción de código nuevo; no confundir con release train."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "claude-mem rehabilita el File Read Gate con evals publicados (PR #4549) — vale la pena leer la metodología de eval para entender qué se considera 'memoria útil' en coding agents."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Dynamo con 160+ contributors y serving disagregado sobre vLLM/SGLang/TRT-LLM es un punto de partida concreto para cualquier dev que monte endpoint de inferencia serio."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "El patrón bring-your-own-harness de lcu (computer-use sin app Codex) es señal temprana de un desacoplo más amplio entre runtimes y harnesses; seguir si OpenAI reacciona."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "VulnHunter documenta el problema del 'exploit depth arbitrario' con un benchmark interno; la metodología operator-skill + Docker-first es replicable a otros dominios agentic."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

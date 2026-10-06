@@ -1,0 +1,510 @@
+{
+  "version": 2,
+  "date": "2026-10-06",
+  "boletin_origen": "2026-10-06-trending.md",
+  "resumen_ejecutivo": "- **thedotmack/claude-mem vuelve al centro del escenario con v13.32.0 publicado HOY**: el \"File Read Gate\" vuelve a ser default-on y se acompaña de evals (#4549). El proyecto, que es el sistema de memoria persistente más instalado en el ecosistema Claude Code, suma 96.744★ y un ritmo de releases diario (v13.32.0 + v13.31.1 ambos del 2026-10-06). Detalle en el primer hallazgo.\n- **NVIDIA Dynamo (ai-dynamo/dynamo) sigue acelerando su release train**: el framework open-source de inferencia distribuida (Rust core, Python SDK) suma push HOY con 8.228★ y 160+ contributors, posicionándose como el orquestador de referencia sobre SGLang, TensorRT-LLM y vLLM. Es la señal más clara de que el \"serving disaggregado\" ha salido de los hyperscalers al toolbox de cualquier equipo de plataforma.\n- **Panniantong/Agent-Reach consolida su posición como \"swiss-army knife\" de los agentes en chino**: 92.137★, sigue siendo Trendshift #1 Repository of the Day, con última release v1.5.0 (junio) pero exposición renovada por patrocinios cruzados con Tencent Cloud, BrowserAct y CoreClaw. Caso de manual sobre cómo un CLI bien mantenido se convierte en infraestructura.\n- **Tres repos frescos con ángulo editorial real para CSS**: `amontlabs/lcu` desacopla el computer use de Codex de la app ChatGPT y lo integra en Claude Code/Pi/Codex CLI con aprobación nativa Touch ID (push HOY); `nealbridges/VulnHunter` es un fork mantenido de Capital One que ejecuta PoCs en Docker y mide impacto (push HOY); `M-Abozaid/esp32-c3-adblock` mete Pi-hole en un ESP32-C3 de $2 (push 2026-10-04). Detalles abajo.\n- **calesthio/OpenMontage se reentry con AGPL-3.0 y 64.264★**: el \"primer sistema open-source de producción agentic de vídeo\" ya no es beta: tiene 12 pipelines de producción, 100+ tools, 700+ agent skill files y un agente que construye corpus desde stock footage libre. Mantiene su sitio en el radar.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (página general + TypeScript, Python, Rust, Go), GitHub API cuando aplica. Blogwatcher de las 08:00 no publicó el archivo de hoy (patrón conocido desde julio), así que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema de compresión de memoria persistente para Claude Code que captura todo lo que el agente hace en una sesión, lo resume con IA e inyecta contexto relevante en sesiones futuras. Incluye backends ChromaDB, mem0, OpenMemory, Supermemory y almacenamiento en SQLite.",
+        "por_que_importa": "El release de hoy (v13.32.0) rehabilita el File Read Gate como default-on y lo acompaña de evals (PR #4549): exactamente la decisión que un dev local-first quiere, porque el agente pasa a leer archivos solo con permiso explícito en lugar de pasar por encima sin preguntar. El ritmo de releases es fuerte —v13.32.0 y v13.31.1 ambos del 2026-10-06— y la documentación ya está en más de 30 idiomas (incluido `docs/i18n/README.es.md`). El proyecto está en el programa OSS de Vercel y Greptile/SerpApi lo tienen como sponsor visible; en la práctica, se ha convertido en el estándar de facto para memoria persistente en coding agents. Sobre el grafo: ya cubrimos el concepto de agent-memory el 2026-08-10, y a claude-code como herramienta integrada el 2026-09-15; chromaDB aparece como backend soportado pero no tiene primera_mencion documentada en boletines previos.",
+        "madurez_senales": "Estrellas: 96.744 (verificado 2026-10-06) · Forks: 8.535 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: TypeScript (verificado) · Fecha creación: 2025-08-31 (verificado) · Último push: 2026-10-06 (verificado, HOY) · Licencia: Apache-2.0 (verificado) · Descripción oficial: \"Persistent Context Across Sessions for Every Agent – Captures everything your agent does during sessions, compresses it with AI, and injects relevant context b\" (verificado) · Topics (verificado): `ai`, `ai-agents`, `ai-memory`, `anthropic`, `artificial-intelligence`, `chromadb`, `claude`, `claude-agent-sdk`, `claude-agents`, `claude-code`, `claude-code-plugin`, `claude-skills`, `embeddings`, `long-term-memory`, `mem0`, `memory-engine`, `openmemory`, `rag`, `sqlite`, `supermemory`",
+        "accion_sugerida": "**leer** el CHANGELOG (entradas v13.32.0 + v13.31.1) y **probar** la flag File Read Gate en una sesión nueva. Si ya lo tienes instalado, actualiza y revisa que las evals no rompan tu flujo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:thedotmack/claude-mem",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:thedotmack/claude-mem",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:thedotmack/claude-mem",
+          "rel": "uses",
+          "dst": "tool:chromadb",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thedotmack-claude-mem",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "ai-dynamo/dynamo",
+      "url": "https://github.com/ai-dynamo/dynamo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Capa de orquestación open-source (core en Rust, SDK en Python) de NVIDIA que se sitúa por encima de SGLang, TensorRT-LLM y vLLM para convertirlos en un sistema de inferencia distribuido multi-nodo: serving disagregado, routing consciente de KV, KV cache multi-tier y auto-scaling que cumple SLAs de latencia minimizando TCO.",
+        "por_que_importa": "Este proyecto ya no es solo lo de NVIDIA: tiene más de 160 community contributors, push hoy, un programa oficial de recipes/examples/containers, eventos comunitarios propios y roadmap público (#9178). Es la materialización práctica del patrón engine + orchestrator que la industria lleva dos años prometiendo: en lugar de casarte con vLLM o SGLang, montas Dynamo encima y cambias el backend sin tocar el serving layer. Para el lector de CSS el caso de uso es concreto: cualquier dev/IA que monte un endpoint de inferencia serio (multimodal, vídeo, reasoning) tiene aquí un punto de partida, porque Dynamo se encarga de serving disagregado, routing consciente de KV cache, KV cache multi-tier y auto-scaling con SLAs de latencia. En el grafo, los cuatro nodos centrales —disaggregated-inference, sglang, tensorrt-llm y vllm— los cubrimos juntos el 2026-08-22, lo que refuerza que Dynamo es el siguiente paso natural de aquel debate. Nota técnica: el prefijo de licencia en el repo es Apache-2.0 (SPDX header del README), aunque la API de GitHub devuelve `NOASSERTION`; la fuente fiable es el header del README.",
+        "madurez_senales": "Estrellas: 8.228 (verificado 2026-10-06) · Forks: 1.667 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: Rust (verificado) · Fecha creación: 2025-03-03 (verificado) · Último push: 2026-10-06 (verificado, HOY) · Licencia: Apache-2.0 (verificado, SPDX header en README; API devuelve `NOASSERTION` por auto-detector) · Descripción oficial: \"A Datacenter Scale Distributed Inference Serving Framework\" (verificado) · Topics (verificado): `diffusion`, `disaggregated-serving`, `kubernetes`, `llm-inference`, `omni`, `routing-engine`, `rust`, `sglang`, `tensorrt-llm`, `vllm`",
+        "accion_sugerida": "**leer** la página \"When to use Dynamo\" del README (es taxonomía clara) y **vigilar** los recipes oficiales. Si corres inferencia multi-GPU o multi-nodo, vale la pena un piloto con uno de los recipes `examples/`.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "implements",
+          "dst": "concept:disaggregated-inference",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "integrates_with",
+          "dst": "tool:sglang",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "integrates_with",
+          "dst": "tool:tensorrt-llm",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "repo:ai-dynamo/dynamo",
+          "rel": "integrates_with",
+          "dst": "tool:vllm",
+          "primera_mencion": "2026-08-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-dynamo-dynamo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI en Python que dota a un agente (Claude Code, Cursor, Pi, etc.) de ojos para leer y buscar en Twitter/X, Reddit, YouTube, GitHub, Bilibili y XiaoHongShu, sin API keys ni cuotas.",
+        "por_que_importa": "A pesar de que el último release (v1.5.0) es de junio, el proyecto ha seguido empujando y vuelve a Trendshift #1 hoy. La razón del trending no es el código nuevo, sino la red de patrocinios cruzados (BrowserAct, Tencent Cloud OpenClaw, CoreClaw, UCloud AstraFlow) más exposición en el ecosistema chino. Para CSS el ángulo concreto: es el ejemplo real de un agent infra tool que ha mutado de una CLI a una capa de acceso —el agente ya no necesita API keys ni cuotas de cada plataforma para leer Twitter/X, Reddit, YouTube, GitHub, Bilibili o XiaoHongShu—. La documentación multilingüe (chino, inglés, japonés, coreano) y la estrategia de sponsorship (partnerships con clouds que ofrecen hosting, no banners) son un patrón a estudiar para cualquiera que monte infraestructura para agentes. En el grafo, agent-infrastructure, claude-code y mcp ya aparecieron juntos el 2026-08-09, así que este repo es la confirmación práctica de que ese eje se consolidó. Tiene 17 topics oficiales; `mcp` y `claude-code` están entre ellos, lo que refuerza su rol en la cadena actual.",
+        "madurez_senales": "Estrellas: 92.137 (verificado 2026-10-06) · Forks: 8.085 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: Python (verificado) · Fecha creación: 2026-02-24 (verificado) · Último push: 2026-09-15 (verificado, ~3 semanas) · Licencia: MIT (verificado) · Descripción oficial: \"Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.\" (verificado) · Topics (verificado): `agent-infrastructure`, `ai-agent`, `ai-search`, `automation`, `bilibili`, `claude-code`, `cli`, `cursor`, `free-api`, `llm-tools`, `mcp`, `python`, `reddit-scraper`, `twitter-scraper`, `web-scraper`, `xiaohongshu`, `youtube-transcript`",
+        "accion_sugerida": "**vigilar** (el trending es por exposición, no por release nuevo). **Leer** `docs/README_en.md` para entender su abstracción de \"canal → backend fallback\" — el patrón es replicable. No aporta valor instalarlo localmente en CSS porque el sistema ya tiene web-scraping nativo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Panniantong/Agent-Reach",
+          "rel": "implements",
+          "dst": "concept:agent-infrastructure",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:Panniantong/Agent-Reach",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:Panniantong/Agent-Reach",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "panniantong-agent-reach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "nealbridges/VulnHunter",
+      "url": "https://github.com/nealbridges/VulnHunter",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Fork mantenido de `capitalone/VulnHunter` que reescribe la metodología de agente de seguridad que caza vulnerabilidades para que sea harness-portable (cualquier harness con `~/.skills` + sub-agents), ejecute los exploits en contenedores Docker y mida impacto (rows leaked, ×-amplification, key-hours stranded).",
+        "por_que_importa": "El upstream (Capital One, Apache-2.0) instala skills solo en Claude Code y asume Opus; este fork lo reescribe como prompt files harness-neutrales (cualquier harness con `~/.skills` + sub-agents), expone un contrato de entorno explícito (`VULNHUNT_SKILLS_DIR`, `VULNHUNT_AGENTS_DIR`, `VULNHUNT_MODEL`, `VULNHUNT_HOST_CMD`) y define un operator skill `vulnhunter-run` que clona, caza, valida y escribe el manifest sin improvisar. Lo más interesante para CSS: el benchmark interno del propio fork muestra que el exploit depth del upstream era arbitrario —el mismo commit podía dar 3 o 42 findings según el instinto del modelo de levantar o no un contenedor—; la versión fork graba el runtime por finding y exige Docker-first en severidades Medium+. El README avisa con honestidad de que la metodología está pensada para modelos open-weight abliterated, no para Opus/Sonnet directamente, y de que el contenido es dual-use. En el grafo, los cuatro nodos asociados (fork_of capitalone/VulnHunter, implements agentic-security, uses docker, risk dual-use-cybersecurity) no tienen primera_mencion previa, así que esta entrada introduce la cadena completa en el boletín.",
+        "madurez_senales": "Estrellas: 329 (verificado 2026-10-06) — proyecto joven pero con base seria (Capital One upstream) · Forks: 61 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: Python (verificado) · Fecha creación: 2026-09-22 (verificado, ~2 semanas) · Último push: 2026-10-05 (verificado, HOY-1) · Licencia: Apache-2.0 (verificado, hereda de upstream; el fork añade NOTICE) · Descripción oficial: \"Agentic AI security scanner that hunts exploitable vulnerabilities like an adversary, proves them with executable PoCs, and fixes them test-first. A maintained [fork of Capital One's VulnHunter].\" (verificado) · Topics (verificado): `agent-harness`, `agentic-ai`, `appsec`, `exploit-verification`, `poc`, `sast`, `security`, `vulnerability-scanner`",
+        "accion_sugerida": "**leer** la sección \"The numbers behind the fork\" (cuantifica el efecto del exploit-depth arbitrario). **Probar** solo en código propio y con un modelo open-weight: en el ecosistema CSS no tenemos el hábito de correr security agents, pero este es un buen ejemplo de cómo un security agent serio se diseña alrededor del modelo, no del harness.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:nealbridges/VulnHunter",
+          "rel": "fork_of",
+          "dst": "repo:capitalone/VulnHunter",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nealbridges/VulnHunter",
+          "rel": "implements",
+          "dst": "concept:agentic-security",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nealbridges/VulnHunter",
+          "rel": "uses",
+          "dst": "tool:docker",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nealbridges/VulnHunter",
+          "rel": "risk",
+          "dst": "problem:dual-use-cybersecurity",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nealbridges-vulnhunter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "amontlabs/lcu",
+      "url": "https://github.com/amontlabs/lcu",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Capa de integración que expone el runtime de computer-use del escritorio oficial de ChatGPT a tu harness (Pi, Codex CLI, Claude Code) sin necesidad de autenticarte en la app Codex, con aprobación nativa Touch ID en macOS.",
+        "por_que_importa": "El patrón es interesante y resuelve un dolor real: la app Codex/ChatGPT desktop sigue siendo la fuente del runtime de computer-use y de las instrucciones (mismo modelo, misma política de permisos), pero el harness local (Pi, Codex CLI, Claude Code) pasa a ser quien dispara la acción. Esto interesa especialmente a usuarios europeos/no-USA donde la app de escritorio ha tenido baneos o demoras, y abre la puerta a un modelo bring your own harness para computer-use. El PR #8 (merged 2026-10-05) añade un plugin de Claude Code (`claude plugin marketplace add amontlabs/lcu` + `claude plugin install lcu@lcu`). El detalle de seguridad clave: el mod `lcu-approve` muestra un panel Computer use approval nativo en la app Claude con Touch ID en macOS, y el modelo no puede ver, pulsar ni falsificar el panel (texto literal del README) —solo el humano en la máquina puede aprobar. En el grafo, claude-code como herramienta integrada ya tiene primera_mencion el 2026-09-15; pi-agent y codex-cli no tienen fecha previa documentada, así que este repo es la primera aparición de esos dos nodos en el boletín.",
+        "madurez_senales": "Estrellas: 548 (verificado 2026-10-06) · Forks: 23 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: Python (verificado) · Fecha creación: 2026-09-22 (verificado, ~2 semanas) · Último push: 2026-10-05 (verificado, HOY-1) · Licencia: MIT (verificado) · Descripción oficial: \"Codex computer use, decoupled from the app, for usage inside any harness.\" (verificado) · Topics (verificado): `accessibility`, `agent-skills`, `browser-automation`, `claude-code`, `codex-cli`, `computer-use`, `desktop-automation`, `linux`, `macos`, `mcp`, `pi-agent`, `x11`",
+        "accion_sugerida": "**explorar** (instalar el plugin en Claude Code en una máquina limpia y probar la aprobación Touch ID). El README es claro sobre los límites: requiere la app ChatGPT desktop oficial, Python 3.12+ y un harness soportado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:amontlabs/lcu",
+          "rel": "implements",
+          "dst": "concept:computer-use-decoupled",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:amontlabs/lcu",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:amontlabs/lcu",
+          "rel": "integrates_with",
+          "dst": "tool:pi-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:amontlabs/lcu",
+          "rel": "integrates_with",
+          "dst": "tool:codex-cli",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "amontlabs-lcu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "El primer sistema open-source de producción agentic de vídeo: convierte un coding assistant (Claude, Cursor, Copilot) en un estudio de vídeo que investiga, escribe guion, genera assets, edita y compone.",
+        "por_que_importa": "Ya cubrimos este repo en el boletín del 2026-08-12 (cuando present agentic-video-production, remotion y ffmpeg aparecieron juntos por primera vez), pero la reentry de hoy tiene un motivo concreto: el README afirma que construye el corpus desde stock footage libre y archivos abiertos y recupera motion clips reales, no que anima unos cuantos stills y los llama vídeo. Esa es la distinción técnica clave que evita el truco de marketing habitual en agentes de vídeo. Mantiene 12 pipelines, más de 100 tools, más de 700 agent skill files, e integración con ElevenLabs/Flux/Remotion/Stable Diffusion/OpenAI/Anthropic. Licencia AGPL-3.0: relevante si lo embebes en un producto comercial, irrelevante para experimentación personal. Sponsors: Bloome (multi-agent) y Atlas Cloud. Para CSS, lo que justifica volver sobre él no es el código, sino el avance de la promesa hecha en agosto.",
+        "madurez_senales": "Estrellas: 64.264 (verificado 2026-10-06) · Forks: 8.144 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: Python (verificado) · Fecha creación: 2026-03-29 (verificado) · Último push: 2026-10-03 (verificado, hace 3 días) · Licencia: AGPL-3.0 (verificado) · Descripción oficial: \"World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI c\" (verificado) · Topics (verificado): `agent`, `agentic-ai`, `ai`, `claude`, `copilot`, `cursor`, `elevenlabs`, `ffmpeg`, `flux`, `image-generation`, `open-source`, `openai`, `python`, `remotion`, `stable-diffusion`, `text-to-speech`, `text-to-video`, `video-generation`, `video-production`",
+        "accion_sugerida": "**vigilar** (ya cubierto en boletines previos; la señal es que la tracción no se ha estancado). **Probar** solo si tienes API keys de OpenAI/Anthropic + ElevenLabs — el coste por minuto de vídeo sigue siendo el cuello de botella.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:calesthio/OpenMontage",
+          "rel": "implements",
+          "dst": "concept:agentic-video-production",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:calesthio/OpenMontage",
+          "rel": "uses",
+          "dst": "tool:remotion",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:calesthio/OpenMontage",
+          "rel": "uses",
+          "dst": "tool:ffmpeg",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "calesthio-openmontage",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "M-Abozaid/esp32-c3-adblock",
+      "url": "https://github.com/M-Abozaid/esp32-c3-adblock",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Ad-blocker DNS al estilo Pi-hole que corre en un ESP32-C3 (MCU RISC-V de $2 sin PSRAM) con 537k dominios comprimidos como hashes FNV-1a de 40 bits en flash, búsqueda binaria, sinkhole UDP DNS y web dashboard.",
+        "por_que_importa": "Es un caso de manual de constraints programming para IoT: cómo meter 537k dominios en los 4 MB de flash de un ESP32-C3 (MCU RISC-V de unos $2 sin PSRAM) y aún así servir DNS a la LAN. El detalle técnico que merece la pena leer está en el storage layout: los dominios se almacenan como hashes FNV-1a de 40 bits (no de 64, decisión consciente del autor), se consultan con búsqueda binaria y el sinkhole responde por UDP; el README entra en el porqué de cada decisión. Es la clase de proyecto que vale la pena leer aunque no lo instales, por el diseño bajo restricciones duras. Tiene doble fuente de trending (Trendshift + GitHub Trending all), lo que confirma que está sonando en dos circuitos distintos a la vez. En el grafo, los tres nodos asociados (dns-sinkhole como concepto, pi-hole como inspiración, esp32-c3 como hardware) no tienen primera_mencion previa, así que esta entrada los introduce juntos en el boletín.",
+        "madurez_senales": "Estrellas: 1.516 (verificado 2026-10-06) · Forks: 132 (verificado) · Issues abiertos: (no consultado en este run) · Lenguaje: C++ (verificado) · Fecha creación: 2026-06-19 (verificado) · Último push: 2026-10-04 (verificado, hace 2 días) · Licencia: MIT (verificado) · Descripción oficial: \"Pi-hole-class DNS ad-blocker on a $2 ESP32-C3 (no PSRAM): 537k domains as 40-bit FNV-1a hashes in flash, binary-searched. UDP DNS sinkhole + web dashboard. http\" (verificado) · Topics (verificado): `adblocker`, `arduino`, `dns`, `dns-sinkhole`, `esp32`, `esp32-c3`, `iot`, `pi-hole`, `platformio`",
+        "accion_sugerida": "**leer** (la encoding de 40-bit y el benchmark son lo interesante, no el wiring). **Probar** si tienes un ESP32-C3 y quieres un DNS sinkhole barato para una VLAN aislada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:M-Abozaid/esp32-c3-adblock",
+          "rel": "implements",
+          "dst": "concept:dns-sinkhole",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:M-Abozaid/esp32-c3-adblock",
+          "rel": "inspired_by",
+          "dst": "tool:pi-hole",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:M-Abozaid/esp32-c3-adblock",
+          "rel": "runs_on",
+          "dst": "tool:esp32-c3",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "m-abozaid-esp32-c3-adblock",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Calcium-Ion/moejs",
+      "url": "https://github.com/Calcium-Ion/moejs",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(127★, último push 2026-10-06 hoy, Go, Apache-2.0) — Runtime JavaScript en Go puro, optimizado para correr muchos sandboxes de plugins pequeños en paralelo (sandbox por goroutine + engine tipo V8, sin CGo). Temprano pero con push hoy: vale la pena vigilar para ver si aguanta el ritmo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "calcium-ion-moejs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Droid-Deck/DroidDeck",
+      "url": "https://github.com/Droid-Deck/DroidDeck",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.208★, último push 2026-10-06 hoy, C, GPL-3.0) — SteamOS en Android: capa que lleva la experiencia de Steam Deck a un teléfono o tablet Android (probablemente con gamepad pairing + big-picture mode). 2k★ con push hoy es señal real, pero la GPL-3.0 complica el uso comercial.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "droid-deck-droiddeck",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Joooook/12306-mcp",
+      "url": "https://github.com/Joooook/12306-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.076★, último push 2026-07-31, JavaScript, MIT) — Servidor MCP para buscar billetes de tren chinos en 12306 (el Renfe chino). Caso de uso de nicho, pero es un ejemplo real de que cualquier API del mundo real se puede exponer como MCP con un solo repo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (el patrón de implementación es replicable). (no verificado push reciente más allá de 2026-07-31)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "joooook-12306-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "FalkorDB/FalkorDB",
+      "url": "https://github.com/FalkorDB/FalkorDB",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.536★, último push 2026-10-06 hoy, Rust, NOASSERTION — licencia SSPL en repo) — Graph database sobre matrices dispersas (GraphBLAS), propiedad-graph compatible con OpenCypher, usado en GraphRAG/agent memory. Reentry. La licencia SSPL limita el uso comercial, pero el motor es rápido y está activo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — ; el grafo de CSS ya tiene un nodo FalkorDB y conviene revisar si el SSPL bloquea algún caso de uso",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "falkordb-falkordb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "longbridge/gpui-kit",
+      "url": "https://github.com/longbridge/gpui-kit",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(reentry, Rust, push reciente) — Toolkit UI para gpui (el framework GUI que usa Zed). Si te interesa construir apps de escritorio Rust-native con la misma arquitectura que Zed, este es el catálogo de componentes.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "longbridge-gpui-kit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "gtsteffaniak/filebrowser",
+      "url": "https://github.com/gtsteffaniak/filebrowser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(reentry, Go) — Filebrowser clásico (interfaz web sobre un filesystem) renacido en trending.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — salvo que necesites exactamente esto",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gtsteffaniak-filebrowser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "slavakurilyak/awesome-ai-agents",
+      "url": "https://github.com/slavakurilyak/awesome-ai-agents",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(reentry, última actualización 2026-10-06 hoy) — Lista curada de agentes de IA. El valor está en la curaduría, no en el código.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — (10 min de browse pueden destapar 2-3 proyectos que no habías visto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "slavakurilyak-awesome-ai-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
