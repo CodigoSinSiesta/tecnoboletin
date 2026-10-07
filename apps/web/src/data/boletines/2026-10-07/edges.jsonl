@@ -1,0 +1,47 @@
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-openai-math", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-openai-math", "dst": "tema:openai-math", "rel": "trata", "added": "2026-10-07"}
+{"src": "repo:openai/math", "dst": "concept:ai-formal-mathematics", "rel": "implements", "added": "2026-10-07", "primera_mencion": null}
+{"src": "repo:openai/math", "dst": "tool:lean", "rel": "uses", "added": "2026-10-07", "primera_mencion": null}
+{"src": "repo:openai/math", "dst": "problem:unverified-lean-proofs", "rel": "risk", "added": "2026-10-07", "primera_mencion": null}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-tigerless-labs-autoharness", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-tigerless-labs-autoharness", "dst": "tema:tigerless-labs-autoharness", "rel": "trata", "added": "2026-10-07"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:self-learning-skills", "rel": "implements", "added": "2026-10-07", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-07", "primera_mencion": "2026-09-05"}
+{"src": "repo:tigerless-labs/autoharness", "dst": "concept:spec-driven-development", "rel": "complements", "added": "2026-10-07", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-rtk-ai-rtk", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-rtk-ai-rtk", "dst": "tema:rtk-ai-rtk", "rel": "trata", "added": "2026-10-07"}
+{"src": "repo:rtk-ai/rtk", "dst": "concept:output-compression-for-llm", "rel": "implements", "added": "2026-10-07", "primera_mencion": "2026-08-12"}
+{"src": "repo:rtk-ai/rtk", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-07", "primera_mencion": "2026-08-12"}
+{"src": "repo:rtk-ai/rtk", "dst": "tool:ripgrep", "rel": "competes_with", "added": "2026-10-07", "primera_mencion": "2026-08-12"}
+{"src": "repo:rtk-ai/rtk", "dst": "repo:JuliusBrussee/caveman", "rel": "pairs_with", "added": "2026-10-07", "primera_mencion": "2026-08-12"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "dst": "tema:chromedevtools-chrome-devtools-mcp", "rel": "trata", "added": "2026-10-07"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "concept:browser-automation-for-agents", "rel": "implements", "added": "2026-10-07", "primera_mencion": "2026-08-20"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-07", "primera_mencion": "2026-08-20"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "repo:playwright-mcp", "rel": "complements", "added": "2026-10-07", "primera_mencion": "2026-08-20"}
+{"src": "repo:ChromeDevTools/chrome-devtools-mcp", "dst": "company:Google-Chrome", "rel": "maintained_by", "added": "2026-10-07", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-anthropics-knowledge-work-plugins", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-anthropics-knowledge-work-plugins", "dst": "tema:anthropics-knowledge-work-plugins", "rel": "trata", "added": "2026-10-07"}
+{"src": "repo:anthropics/knowledge-work-plugins", "dst": "concept:plugin-store-pattern", "rel": "implements", "added": "2026-10-07", "primera_mencion": "2026-09-18"}
+{"src": "repo:anthropics/knowledge-work-plugins", "dst": "company:Anthropic", "rel": "maintained_by", "added": "2026-10-07", "primera_mencion": "2026-09-18"}
+{"src": "repo:anthropics/knowledge-work-plugins", "dst": "product:claude-cowork", "rel": "related_to", "added": "2026-10-07", "primera_mencion": "2026-09-18"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-raja0sama-vibex", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-raja0sama-vibex", "dst": "tema:raja0sama-vibex", "rel": "trata", "added": "2026-10-07"}
+{"src": "repo:Raja0sama/vibex", "dst": "concept:diagram-as-spec", "rel": "implements", "added": "2026-10-07", "primera_mencion": null}
+{"src": "repo:Raja0sama/vibex", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-07", "primera_mencion": "2026-09-15"}
+{"src": "repo:Raja0sama/vibex", "dst": "concept:c4-model", "rel": "uses", "added": "2026-10-07", "primera_mencion": null}
+{"src": "repo:Raja0sama/vibex", "dst": "repo:tigerless-labs/autoharness", "rel": "pairs_with", "added": "2026-10-07", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-llm-d-llm-d-router", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-llm-d-llm-d-router", "dst": "tema:llm-d-llm-d-router", "rel": "trata", "added": "2026-10-07"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-pingdotgg-t3code", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-pingdotgg-t3code", "dst": "tema:pingdotgg-t3code", "rel": "trata", "added": "2026-10-07"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-cursor-plugins", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-cursor-plugins", "dst": "tema:cursor-plugins", "rel": "trata", "added": "2026-10-07"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-ayghri-i-have-adhd", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-ayghri-i-have-adhd", "dst": "tema:ayghri-i-have-adhd", "rel": "trata", "added": "2026-10-07"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-earthtojake-text-to-cad", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-earthtojake-text-to-cad", "dst": "tema:earthtojake-text-to-cad", "rel": "trata", "added": "2026-10-07"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-omnigent-ai-omnigent", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-omnigent-ai-omnigent", "dst": "tema:omnigent-ai-omnigent", "rel": "trata", "added": "2026-10-07"}
+{"src": "boletin:2026-10-07", "dst": "item:https-github-com-ruvnet-ruflo", "rel": "menciona", "added": "2026-10-07"}
+{"src": "item:https-github-com-ruvnet-ruflo", "dst": "tema:ruvnet-ruflo", "rel": "trata", "added": "2026-10-07"}

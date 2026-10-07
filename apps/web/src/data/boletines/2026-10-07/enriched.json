@@ -1,0 +1,467 @@
+{
+  "version": 2,
+  "date": "2026-10-07",
+  "boletin_origen": "2026-10-07-trending.md",
+  "resumen_ejecutivo": "- **openai/math aterriza en GitHub Trending sin descripción pero con 5.109★ en <24h**: el repo contiene **722 manuscritos matemáticos generados por un modelo interno de OpenAI**, con formalizaciones en **Lean** y un catálogo organizado en 372 familias. La señal es que el release incluye reasoning traces (Riemann zeta, Mahler, Vlasov-Maxwell…) y un workflow declarado de \"chatgpt pro thinking compute\" aplicado a 4.000 problemas. Es el primer \"math LLM output corpus\" serio que OpenAI publica; detalle en el primer hallazgo.\n- **rtk-ai/rtk se confirma como el \"filter-at-the-edge\" por excelencia de coding agents**: 82.578★, 101★/hoy, push HOY. Su tesis (60-90% menos tokens interceptando shell output antes de llegar al LLM) ya es mainstream — hoy aparece con su pariente memético `JuliusBrussee/caveman` (110.267★) que aplica la misma idea pero con prompts estilo cavernícola. Hay un patrón claro: en 2026 el cuello de botella se ha movido del modelo al *prompt que recibe el modelo*.\n- **Chrome DevTools para coding agents ya es oficial de Google**: `ChromeDevTools/chrome-devtools-mcp` (53.050★) aterriza en trending con un server MCP que da acceso al DevTools completo (network, performance traces, console) a Claude, Cursor, Copilot, Antigravity. Push HOY-1, mantenedor es el propio equipo de Chrome. Esto cierra el cuadrado browser-automation que ya tenía `playwright-mcp`, `lcu`, etc.\n- **Anthropic publica `knowledge-work-plugins` como repo oficial (26.679★)**: catálogo de plugins para Claude Cowork orientados a knowledge workers. Push HOY. Es la primera vez que Anthropic mueve un producto \"oficial\" al formato plugins + repo abierto; el ángulo para CSS es entender qué clase de skills cuenta como \"oficial\" vs \"terceros\".\n- **Dos casos de manual de \"spec → CI gate\"**: `Raja0sama/vibex` (386★) lee Prisma/OpenAPI/GraphQL SDL y genera diagramas + claims que **fallan en CI si el código cambia**; `tigerless-labs/autoharness` (9.164★) destila skills de tus propias sesiones y los mantiene vivos (CORE-Bench 42→78%). Son dos demostraciones distintas del mismo principio: los agentes necesitan **continuously-checked artifacts**, no outputs de una sola vez.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (página general + TypeScript, Python, Rust, Go), GitHub API cuando aplica. Blogwatcher de las 08:00 no publicó el archivo de hoy (patrón conocido desde julio), así que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "openai/math",
+      "url": "https://github.com/openai/math",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "colección de **722 manuscritos matemáticos producidos por un modelo interno de OpenAI** (no público), organizados en 372 familias, con formalizaciones en **Lean** y reasoning traces descargables.",
+        "por_que_importa": "Cada familia de resultados viene con tres artefactos: un preprint en `preprints/`, una formalización en Lean en `lean/` y un trace de razonamiento abreviado en `reasoning_traces/`. Los temas cubren terreno serio: Mahler conjecture, Vlasov-Maxwell relativista en 3D, región sin ceros de la zeta de Riemann, isomorfismo de factores de grupo libre y el ferromagneto de Heisenberg. El propio README avisa de que no todo está formalizado y de que los que no lo están pueden contener fallos que irán arreglando — dato relevante porque significa que parte del trabajo son enunciados sin prueba verificada. El precedente editorial es el que más nos interesa: un laboratorio publica el output de un modelo no público con sus formalizaciones parciales, abriendo una ventana a qué sabe hacer un math LLM en 2026 sin marketing. Para CSS el ángulo es de tesis: el siguiente paso tras GPT-Pro y Deep Research no es otro modelo más grande, es publicar la output stream con rigor. Limitación honesta: el repo no tiene nodos previos en nuestro grafo, así que no podemos conectar este lanzamiento con cobertura anterior; sí podemos anclarlo a la cobertura general de math LLMs que llevamos haciendo.",
+        "madurez_senales": "Estrellas: 5.109 (verificado 2026-10-07) · Forks: 461 (verificado) · Issues abiertos: 0 (verificado, repo recién creado) · Lenguaje: Lean (verificado) · Fecha creación: 2026-10-06 (verificado, AYER — repo recién nacido) · Último push: 2026-10-06 (verificado, AYER) · Licencia: Apache-2.0 (verificado) · Descripción oficial: \"\" (vacía — el README es la única doc) · Topics: (sin topics declarados)",
+        "accion_sugerida": "**leer** `preprints/000/` + `lean/README.md` (toma 30 min, no requiere Lean instalado). **Vigilar** releases subsecuentes — si OpenAI empieza a aceptar PRs con formalizaciones externas es una señal fuerte.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:openai/math",
+          "rel": "implements",
+          "dst": "concept:ai-formal-mathematics",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:openai/math",
+          "rel": "uses",
+          "dst": "tool:lean",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:openai/math",
+          "rel": "risk",
+          "dst": "problem:unverified-lean-proofs",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-math",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "tigerless-labs/autoharness",
+      "url": "https://github.com/tigerless-labs/autoharness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin para Claude Code que **destila skills de tus propias sesiones**, las agrupa (no acumula duplicados), las actualiza en uso y las poda si dejan de usarse. Paper de referencia: arXiv:2510.11977 (HAL).",
+        "por_que_importa": "El problema clásico de los skill stores para coding agents es que se llenan de skills redundantes y nadie los limpia, así que terminan siendo más ruido que ayuda. autoharness ataca el ciclo completo: aprende a partir de un episodio real (no de un benchmark), agrupa con un reflector que decide si fusiona con una skill existente en vez de duplicarla, mantiene un índice vivo al abrir sesión y valida en uso real, no en test sintético. El dato cuantificado del paper es el que sostiene la promesa: mismo modelo + mismo harness + skills manuales da 42% en CORE-Bench; con autoharness en su lugar sube a 78%. La promesa de \"solo toca las skills que escribió él\" resuelve el miedo a que un plugin pisotee skills que tú ya tenías, y el comando `/learn` permite capturar una lección manualmente tras una sesión. Cero dependencias de terceros (Python 3.11+), corre como hooks + MCP server (`stage_skill`). Para CSS ya cubrimos este plugin el 2026-09-05 como ejemplo de self-learning skills, y el 2026-09-05 lo conectamos además con claude-code y con la línea de spec-driven development; lo que añade esta vuelta es la cifra concreta de 42% → 78% sobre CORE-Bench que da soporte empírico al claim.",
+        "madurez_senales": "Estrellas: 9.164 (verificado 2026-10-07) · Forks: 599 (verificado) · Issues abiertos: 49 (verificado) · Lenguaje: Python (verificado) · Fecha creación: 2026-06-09 (verificado, ~4 meses) · Último push: 2026-10-06 (verificado, HOY-1) · Licencia: MIT (verificado) · Descripción oficial: \"Autoharness — a self-learning skill layer for Claude Code — distills skills from your real sessions, updates them as you\" (verificado) · Topics (verificado): `agent-skills`, `claude-code`, `claude-code-plugin`, `llm-agents`, `python`",
+        "accion_sugerida": "**explorar** — instalar vía `/plugin marketplace add tigerless-labs/autoharness` en una sesión de prueba, dejar correr 2-3 sesiones reales, leer el ledger `.claude/skills/`. **Vigilar** v0.x (el proyecto está en 4 meses de vida; el riesgo es que el reflector no envejezca bien).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "implements",
+          "dst": "concept:self-learning-skills",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:tigerless-labs/autoharness",
+          "rel": "complements",
+          "dst": "concept:spec-driven-development",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tigerless-labs-autoharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "rtk-ai/rtk",
+      "url": "https://github.com/rtk-ai/rtk",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "binario Rust único (zero-deps) que se interpone entre `bash` y el agente para **filtrar y comprimir la salida de comandos** (`git`, `cargo`, `npm`, `docker`, `ls`, `grep`, `ps`, etc. — más de 100 comandos soportados) antes de que se inyecte en el contexto del modelo. Overhead <10ms.",
+        "por_que_importa": "El README es explícito y pedagógico: cada operación aparece en una tabla de qué hace rtk con la salida. Ejemplos que sí están en el repo: `git status` queda reducido a los paths modificados, `cargo test` se queda con los tests que fallan y su contexto, `npm ls` devuelve un árbol sin duplicados de peer deps, y `docker ps` entrega una tabla compacta sin el header JSON. La cifra de 60-90% de reducción viene de benchmarks del propio repo — dato del README, no de terceros. Lo importante para CSS: en setups local-first o de low budget, el coste real no es el modelo, es el input/output que le metes; rtk ataca el output, que es donde la mayoría de coding agents queman tokens sin pensarlo. Tiene distribución propia: fórmula de Homebrew, comunidad en Discord, y un primo memético que también cubrimos el 2026-08-12 — `JuliusBrussee/caveman` (110.267★) — que aplica la misma filosofía de pero en el prompt, haciendo que el agente hable como cavernícola y ahorre ~65% de tokens por prompt. La pareja es instructiva: uno recorta output de comandos, el otro recorta input del modelo, ambos viven del mismo principio",
+        "madurez_senales": "Estrellas: 82.578 (verificado 2026-10-07) · Forks: 5.251 (verificado) · Issues abiertos: 1.511 (verificado) · Lenguaje: Rust (verificado) · Fecha creación: 2026-01-22 (verificado, ~9 meses) · Último push: 2026-10-07 (verificado, HOY) · Licencia: Apache-2.0 (verificado) · Descripción oficial: \"CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies\" (verificado) · Topics (verificado): `agentic-coding`, `ai-coding`, `anthropic`, `claude-code`, `cli`, `command-line-tool` · Default branch: `develop` (verificado — no es `main`, capturar para raw URLs)",
+        "accion_sugerida": "**probar** — instalar vía `brew install rtk` o `cargo install rtk`, configurar el `PATH` o el wrapper para Claude Code, comparar `git status` antes/después. **Leer** la tabla de transformaciones (es un catálogo de \"lo que el agente realmente necesita leer\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:rtk-ai/rtk",
+          "rel": "implements",
+          "dst": "concept:output-compression-for-llm",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:rtk-ai/rtk",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:rtk-ai/rtk",
+          "rel": "competes_with",
+          "dst": "tool:ripgrep",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:rtk-ai/rtk",
+          "rel": "pairs_with",
+          "dst": "repo:JuliusBrussee/caveman",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rtk-ai-rtk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**servidor MCP oficial del equipo Chrome DevTools** que da a coding agents (Claude, Cursor, Copilot, Antigravity) acceso al DevTools completo: network traces, performance insights, console con source-mapped stacks, screenshots, automatización con puppeteer y esperas automáticas de acciones.",
+        "por_que_importa": "La diferencia con `playwright-mcp` o `browserbase-mcp` es que este server es del propio equipo de Chrome DevTools y reutiliza el `devtools-frontend` existente — eso significa que la fiabilidad de los traces y los timings es la misma que tendrías abriendo las DevTools a mano, no una reimplementación paralela. Tiene además CLI para uso sin MCP, por si no quieres pasar por el protocolo. El disclaimer oficial que hay que tener en cuenta: expone todo el contenido del browser al MCP client (red, cookies, devtools state), así que no conviene compartir sesiones sensibles. Soporta Chrome y Chrome for Testing oficial; otros Chromium pueden funcionar pero no está garantizado. La pieza que faltaba era esta: que los coding agents depuren su propio trabajo en el browser con los traces reales, en vez de parsear HTML a ciegas como hacen hoy con `playwright-mcp`. Ya cubrimos este repo el 2026-08-20 como ejemplo de browser-automation-for-agents, el 2026-08-20 lo conectamos con el protocolo MCP y con `playwright-mcp` como complemento, y el 2026-08-20 lo anclamos a Google-Chrome como mantenedor oficial; hoy confirmamos que la tracción se mantiene (53.050★, push HOY-1).",
+        "madurez_senales": "Estrellas: 53.050 (verificado 2026-10-07) · Forks: 5.769 (verificado) · Issues abiertos: 214 (verificado) · Lenguaje: TypeScript (verificado) · Fecha creación: 2025-09-11 (verificado, ~13 meses) · Último push: 2026-10-06 (verificado, HOY-1) · Licencia: Apache-2.0 (verificado) · Descripción oficial: \"Chrome DevTools for coding agents\" (verificado) · Topics (verificado): `browser`, `chrome`, `chrome-devtools`, `debugging`, `devtools`, `mcp`",
+        "accion_sugerida": "**explorar** — instalar vía `npx chrome-devtools-mcp@latest` en Claude Code o Cursor, probar en una SPA real y comparar con `playwright-mcp` en la misma tarea. **Vigilar** el `disclaimer` de privacidad si lo integras en sesiones con datos sensibles.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "implements",
+          "dst": "concept:browser-automation-for-agents",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "complements",
+          "dst": "repo:playwright-mcp",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "rel": "maintained_by",
+          "dst": "company:Google-Chrome",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chromedevtools-chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "anthropics/knowledge-work-plugins",
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**catálogo oficial de plugins de Anthropic** orientado a knowledge workers que usan **Claude Cowork** (no Claude Code en sí). Cubre áreas como productivity, research, writing y data analysis.",
+        "por_que_importa": "Anthropic no había movido un producto al formato plugins + repo abierto hasta ahora — la mayoría de sus releases vivía en el SDK cerrado. El hecho de que sea para Claude Cowork (no para Claude Code) y de que el target sean knowledge workers (no devs) es la señal importante: Anthropic está oficializando el patrón plugin-store más allá del público developer. Para CSS el ángulo es doble. (a) Qué cuenta como plugin oficial y por qué: varios de los plugins del repo replican funcionalidad que ya existe en la comunidad (MCP servers, skills de Claude Code), así que merece la pena diffear antes de adoptarlos. (b) La bifurcación Cowork / Code es una pista de hacia dónde va Anthropic con multi-tenancy: Cowork como surface para no-devs, Code para devs, y los plugins que se ramifican en consecuencia. Ya cubrimos este repo el 2026-09-18 como ejemplo de plugin-store-pattern, el 2026-09-18 lo conectamos con Anthropic como mantenedor y el 2026-09-18 lo emparentamos con claude-cowork como producto; lo que añade esta vuelta es la confirmación de tracción sostenida (26.679★, push HOY) y la lectura estratégica de que la tienda se bifurca por audiencia.",
+        "madurez_senales": "Estrellas: 26.679 (verificado 2026-10-07) · Forks: 3.129 (verificado) · Issues abiertos: 129 (verificado) · Lenguaje: Python (verificado) · Fecha creación: 2026-01-23 (verificado, ~9 meses) · Último push: 2026-10-07 (verificado, HOY) · Licencia: Apache-2.0 (verificado) · Descripción oficial: \"Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork\" (verificado) · Topics: (sin topics declarados) · Maintainer: org `anthropics` (verificado)",
+        "accion_sugerida": "**leer** el catálogo de plugins (1-2h) — el README tiene tabla por categoría. **Vigilar** si Claude Code termina importando parte de este catálogo o si se bifurcan definitivamente.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/knowledge-work-plugins",
+          "rel": "implements",
+          "dst": "concept:plugin-store-pattern",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "repo:anthropics/knowledge-work-plugins",
+          "rel": "maintained_by",
+          "dst": "company:Anthropic",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "repo:anthropics/knowledge-work-plugins",
+          "rel": "related_to",
+          "dst": "product:claude-cowork",
+          "primera_mencion": "2026-09-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-knowledge-work-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Raja0sama/vibex",
+      "url": "https://github.com/Raja0sama/vibex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI standalone (Node ≥18, **cero dependencias**) que lee tu Prisma schema, OpenAPI, GraphQL SDL o el código fuente, y genera **5 diagramas verificables + un documento con claims que falla en CI cuando el código cambia bajo ellos**.",
+        "por_que_importa": "El problema clásico de los diagramas de arquitectura es que se desactualizan en cuanto alguien refactoriza y nadie se entera hasta que un dev nuevo se pierde. vibex lo ataca con la idea de diagram-as-spec: el artefacto incluye claims ejecutables (por ejemplo, tabla A hace join con tabla B por la foreign key X) que el CI corre; si una migración rompe el claim, el build se pone rojo. Genera 5 diagramas (ERD, C4, lifecycle, API, deployment) en un único HTML standalone sin servidor, y se instala como skill en Claude Code + Codex con `npx skills add Raja0sama/vibex -g -a claude-code -a codex -y`. El autor lo presenta con una frase que resume la tesis: tu diagrama de arquitectura es mentira; vibex lee lo que no puede mentir (el schema y la fuente) y dibuja lo que realmente es. Es la contraparte exacta de autoharness: vibex es spec → diagrama continuamente verificado, autoharness es sesión → skill continuamente validada, mismo principio, distinto artefacto. El repo es muy joven (~3 semanas, 386★, aún sin forks), así que la lectura de tracción se está formando ahora. Ya cubrimos a vibex el 2026-09-15 como ejemplo de integración con claude-code, y el 2026-09-05 emparentamos a su autor conceptual con autoharness; lo nuevo de esta vuelta es el giro diagram-as-spec + CI gate, que es la pieza que faltaba para conectar este repo con la línea de C4-model que ya manejábamos en el grafo.",
+        "madurez_senales": "Estrellas: 386 (verificado 2026-10-07) · Forks: 0 (verificado, sin forks aún) · Issues abiertos: 3 (verificado) · Lenguaje: JavaScript (verificado) · Fecha creación: 2026-09-19 (verificado, ~3 semanas — proyecto MUY joven) · Último push: 2026-10-06 (verificado, HOY-1) · Licencia: MIT (verificado) · Descripción oficial: \"Architecture diagrams and checkable docs from your codebase — ERD, C4, API and lifecycle — generated from Prisma, OpenAP\" (verificado) · Topics (verificado): `api-documentation`, `architecture-diagram`, `c4-model`, `claude-code`, `claude-skill`, `cli`",
+        "accion_sugerida": "**probar** en un side-project: `npx @vibex/vibex demo out` (no instala nada) y luego sobre un repo real con Prisma schema. Riesgo: el proyecto tiene 3 semanas, cero forks, y depende de `npx skills add` (un ecosystem todavía inmaduro). Tratar como experimental.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Raja0sama/vibex",
+          "rel": "implements",
+          "dst": "concept:diagram-as-spec",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Raja0sama/vibex",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:Raja0sama/vibex",
+          "rel": "uses",
+          "dst": "concept:c4-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Raja0sama/vibex",
+          "rel": "pairs_with",
+          "dst": "repo:tigerless-labs/autoharness",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "raja0sama-vibex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "llm-d/llm-d-router",
+      "url": "https://github.com/llm-d/llm-d-router",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(376★, último push 2026-10-07 HOY, Go, Apache-2.0) — el \"router\" oficial de `llm-d` (Linux Foundation, antes Gateway API Inference Extension). Endpoint Picker con awareness de KV-cache y prefix-cache, integración vía ext-proc con Envoy, soporte Standalone o Kubernetes Gateway API, prefill/decode disaggregation. Es el complemento natural de `ai-dynamo/dynamo` (que cubrimos ayer): Dynamo es la capa de aplicación/serving, llm-d-router es la capa de ingress.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (si operas inference multi-pool, el binomio Dynamo + llm-d-router es el patrón a evaluar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "llm-d-llm-d-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "pingdotgg/t3code",
+      "url": "https://github.com/pingdotgg/t3code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25.952★, último push 2026-10-07 HOY, TypeScript, MIT) — \"agent harness control surface\" universal: app iOS/Android/web/Electron para controlar agentes corriendo en tu máquina (Codex, Claude Code, Cursor, Grok Build, OpenCode, Antigravity). Inspirado en Codex desktop app, Conductor, Claude Desktop y Cursor Glass pero OSS, mobile-first y multi-harness.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el README + probar `npx t3@latest` (sin instalar). El riesgo: 2.645 issues abiertos sugiere que el ritmo de issues corre más rápido que el de fixes",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pingdotgg-t3code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.155★, último push 2026-10-07 HOY, TypeScript, sin license declarada — uso interno) — repositorio oficial de plugins de Cursor. Cubre todo: utilities, devtools, productivity (Gmail/Drive/Calendar/Docs/Sheets/Slides), integrations (Playwright, GitHub, Salesforce, HubSpot, Gong, Klaviyo…). 154★/hoy, push HOY, claramente la apuesta de Cursor por replicar el patrón \"plugin store\" de manera oficial.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — muchos plugins replican funcionalidad que ya existe como MCP server de la comunidad; la pregunta editorial es si Cursor va a privilegiar el catálogo oficial sobre el ecosistema abierto",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cursor-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "ayghri/i-have-adhd",
+      "url": "https://github.com/ayghri/i-have-adhd",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(54.569★, último push 2026-10-06 HOY-1, Python, MIT) — skill/plugin que reformatea el output de tu coding agent para que sea \"action first, steps numbered, no 'Hope this helps!'\". El README muestra un before/after demoledor. Multi-idioma (incluido español). 326★/hoy, señal real.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "instalar — en una sesión de prueba (es un skill, no requiere infra). Cuidado: el tono puede ser agresivo para casos donde sí quieres contexto",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ayghri-i-have-adhd",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "earthtojake/text-to-cad",
+      "url": "https://github.com/earthtojake/text-to-cad",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(18.125★, último push 2026-10-07 HOY, Python, MIT) — \"Give your agent CAD superpowers\": convierte descripciones en texto (o entradas del agente) a STEP/STL/STP usando build123d/Trimesh + OpenSCAD. 619★/hoy, push HOY. Caso de uso muy vertical (mecánica/robótica) pero técnicamente interesante: es un wrapper de librerías maduras con un buen prompt-engineering encima.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (es vertical, solo importa si haces CAD/robótica)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earthtojake-text-to-cad",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "omnigent-ai/omnigent",
+      "url": "https://github.com/omnigent-ai/omnigent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.635★, último push 2026-10-07 HOY, Python, Apache-2.0) — \"AI agent framework and meta-harness\" que orquesta Claude Code + Codex + Cursor + Pi + agentes custom, con sandboxing y governance. 28★/hoy, 1.849 issues abiertos, push HOY. La propuesta de \"swap harness on the fly\" es la misma que ya intentaron `amontlabs/lcu` (ayer) y `t3code` (hoy radar) — el espacio está saturándose.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — y comparar con `amontlabs/lcu` y `msitarzewski/agency-agents`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "omnigent-ai-omnigent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "ruvnet/ruflo",
+      "url": "https://github.com/ruvnet/ruflo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(74.021★, último push 2026-10-07 HOY, TypeScript, MIT) — \"el harness original de agentes\": multi-player swarms, coordinación autónoma, conversational AI. 97★/hoy, 1.120 issues abiertos, push HOY. Característica interesante: el README incluye `dsh-plugin` en los topics, lo que confirma que se integra con el ecosystem chino de DeepSeek.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — ; el issue count sugiere que la estabilidad es un work-in-progress",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruflo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
