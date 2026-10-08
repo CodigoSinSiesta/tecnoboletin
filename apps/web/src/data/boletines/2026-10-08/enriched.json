@@ -1,0 +1,582 @@
+{
+  "version": 2,
+  "date": "2026-10-08",
+  "boletin_origen": "2026-10-08-trending.md",
+  "resumen_ejecutivo": "- **Docker entra oficialmente al mercado de AI agents con `docker/docker-agent`** (3.904★, Apache-2.0, Go, push HOY): CLI plugin `docker agent` con YAML declarativo, multi-agente, MCP-first, AI provider-agnóstico (OpenAI, Anthropic, Gemini, Bedrock, Docker Model Runner local) y *push/pull a OCI registries*. Lo más interesante: el README dice \"no code required\" para definir agentes, lo que coloca a Docker en el cuadrante \"spec declarativa\" donde antes vivían solo proyectos open-source.\n- **`manaflow-ai/cmux` (27.950★, NOASSERTION, Swift, push HOY)** es el primer \"terminal para coding agents\" con masa crítica real: Ghostty-based, vertical tabs, notification rings cuando un agent pide input, in-app browser split con API scriptable (porte de `vercel-labs/agent-browser`), SSH-first-class con `--command 'omp \"investigate auth\"'`. Demuestra que el multiplexor del futuro ya no es tmux puro: necesita notificaciones asíncronas y sidebars por proyecto (git branch, listening ports, último texto del agent).\n- **`garrytan/gbrain` (30.671★, MIT, TypeScript, push HOY)** es la apuesta de Garry Tan (CEO de Y Combinator) por un \"memory you control\" portable: 155k páginas, 24.589 personas, 5.340 empresas, 66 crons, ingest 24/7. Sintetiza respuestas en prosa con citas y gap analysis (no devuelve páginas, devuelve la respuesta), expone `llms.txt`/`AGENTS.md`/`CLAUDE.md` para que los agentes lo lean, y un typed knowledge graph que en BrainBench P@5 0.3421 vs 0.1917 plain hybrid. Es un competidor directo de Hindsight/MemTensor pero con un claim de \"company brain\" y conectores para Grok Bot, Muse, Codex, Claude Code.\n- **`fabio-rovai/open-ontologies` (929★, MIT, Rust, push 2026-10-01)** lleva el patrón \"spec → plan → CI gate\" al mundo de los knowledge graphs: un binario Rust que lee un CSV/TTL, genera un grafo de capas (426 asserted, 259 derived), produce un certificado Lean 4 que **prueba las consecuencias**, y rechaza líneas forjadas con exit 1 + nombre de la regla. La imagen del README es la mejor demo de la idea: \"same machinery on HQDM\" detecta 23 terms usados como clase sin declarar y 12 `rdfs:range` mal declarados. Conceptualmente es `vibex` + Lean aplicado a ontologías.\n- **`xerj-org/xerj` (3.137★, Apache-2.0, Rust, push HOY)** ataca exactamente el problema que dejó `rtk-ai/rtk` a medias: comprimir tokens antes de que lleguen al LLM, pero **en el input de búsqueda de código**. Single static binary, BM25+kNN+hybrid, autoindex zero-config, `llms.txt`, y un claim medido: en un estudio controlado \"reference coding\" un coding agent reduce output tokens 2.7x al mismo solve rate. Una vez más, en 2026 el cuello de botella no es el modelo, es lo que le metes.\n- **`shader-effects-inc/shaders` (2.908★, MIT, TypeScript, push 2026-10-07)** es WebGPU components-as-DX: 200+ effects para React/Vue/Svelte/Solid/JS, design editor online en `shaders.com` que exporta el árbol de componentes exacto, MCP server nativo, `npm install shaders` y funciona. Lo relevante para CSS: por primera vez hay un \"shadcn para shaders\" usable con type-safety, multi-framework y editor visual.\n- **La suite `storytold/*craft` (photocraft 19.805★, artcraft 5.388★, filmcraft 3.772★, todos en Rust)** sigue creciendo: PhotoCraft es una reimplementación clean-room de Photoshop en Rust con PSD/PSB real (capas, máscaras, type, brushes), FilmCraft idem para Premiere Pro, ArtCraft es la \"intentional crafting engine\" con AI image/video generation. El ángulo para CSS: el \"open-source suite of creative tools\" en Rust es ahora una familia de 6+ productos con downloads medibles y Discord activo.\n- Fuentes consultadas: Trendshift daily (25 items parseados, 1 sponsored filtrado), GitHub Trending daily (página general + TypeScript, Python, Rust slices — 46 repos únicos), GitHub API sin token (25 calls para hallazgos principales y radar secundario). Blogwatcher de las 08:00 no publicó el archivo de hoy (patrón conocido desde julio), así que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "docker/docker-agent",
+      "url": "https://github.com/docker/docker-agent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**CLI plugin oficial de Docker (`docker agent`) para construir, correr y compartir agentes AI** con configuración declarativa en YAML, multi-agente, MCP-first, AI-provider-agnóstico, *push/pull a OCI registries* y RAG con BM25/embeddings/hybrid/rerank. Mantenido por Docker Engineering.",
+        "por_que_importa": "Docker completa una secuencia clara con este lanzamiento: tras Docker Model Runner (modelos locales) y el catálogo de MCP servers oficiales, llega docker-agent — el CLI oficial (`docker agent`) que define agentes en YAML, les da herramientas y los corre, y además los mueve por registries OCI con `docker agent run myorg/agent:tag`, exactamente igual que una imagen. El repo es `docker/docker-agent` (singular, importante para no confundir con forks o repos paralelos). Como ya cubrimos el 2026-08-28 tanto el concepto de declarative-agent-spec, la integración con MCP, la pieza Docker Model Runner y el patrón de distribución por OCI registry, este item es la confirmación práctica de aquella tesis: la distribución de agentes en 2026 va por registries, no por SDKs. Multi-agente viene por defecto (`agents.root` puede delegar en hijos). Cosa a tener en cuenta: la telemetría está activada por defecto, así que conviene revisar el flag `--no-telemetry` antes de cualquier despliegue serio.",
+        "madurez_senales": "Estrellas: 3.904 · Forks: 489 · Lenguaje: Go · Fecha creación: no verificada en este cron (consultar git log para historia exacta) · Último push: 2026-10-08 (HOY) · Licencia: Apache-2.0 · Descripción oficial: \"AI Agent Builder and Runtime by Docker Engineering\" · Topics: `agents`, `ai` · Maintainer: org `docker`",
+        "accion_sugerida": "**probar** — instalar vía `brew install docker-agent`, definir un agente mínimo en YAML con un MCP server, ejecutar `docker agent run agent.yaml`, leer `examples/` para entender el patrón. **Vigilar** la documentación en `docker.github.io/docker-agent/` (especialmente \"MCP Mode\" y \"Multi-Agent\"); el proyecto tiene telemetría por defecto, decidir si se acepta antes de uso en producción.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "implements",
+          "dst": "concept:declarative-agent-spec",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "paired_with",
+          "dst": "product:docker-model-runner",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "distributes_via",
+          "dst": "concept:oci-registry",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:docker/docker-agent",
+          "rel": "competes_with",
+          "dst": "repo:manaflow-ai/cmux",
+          "primera_mencion": "2026-08-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "docker-docker-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "manaflow-ai/cmux",
+      "url": "https://github.com/manaflow-ai/cmux",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**terminal macOS open source basado en Ghostty** con vertical tabs, notification rings/panel cuando un coding agent necesita input, split panes verticales/horizontales, in-app browser scriptable (porte de `vercel-labs/agent-browser`), SSH-first-class que crea un workspace para una máquina remota y soporta `--command 'omp \"investigate auth\"'`.",
+        "por_que_importa": "cmux parte de una realidad nueva del workflow 2026: corres 3-5 coding agents en paralelo (Claude Code, Codex, Gemini CLI, opencode) en directorios y ramas distintas, y necesitas saber cuál está bloqueado esperando tu input sin vigilar cinco ventanas. Su respuesta concreta: notification ring azul alrededor del pane, badge en la sidebar y un panel de notificaciones con salto directo al más reciente sin leer. El diferencial real es el SSH mode (`cmux ssh user@remote`) — le pasas `--command` para arrancar el agent en el primer terminal remoto, y los browser panes rutean a través de la red remota, así que el localhost del agente remoto \"just works\". Compite de frente con `tmux`, que ya cubrimos el 2026-08-10; integra internals de `vercel-labs/agent-browser` (porte scriptable que vimos el 2026-08-08); y arrastra un riesgo conocido, la licencia NOASSERTION, que ya tratamos como tema el 2026-08-27 — antes de meterlo como dependencia conviene abrir el LICENSE file y leerlo.",
+        "madurez_senales": "Estrellas: 27.950 · Forks: 2.466 · Lenguaje: Swift · Último push: 2026-10-08 (HOY) · Licencia: NOASSERTION (verificar LICENSE file antes de adopción como build dependency; el README es ambiguo) · Descripción oficial: \"Open source Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents\" · Topics (18, parcial): `claude-code`, `codex`, `gemini`, `ghostty`, `macos`, `multiplexer`, `opencode`, `parallel-agents`, `tmux`, `workspace-manager`",
+        "accion_sugerida": "**probar** en macOS (descargar `.dmg` desde GitHub Releases, leer el demo video). **Vigilar** el `LICENSE` real del repo (NOASSERTION en API ≠ necesariamente OSS); leer `LICENSE` raw antes de adoptar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:manaflow-ai/cmux",
+          "rel": "implements",
+          "dst": "concept:terminal-for-coding-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:manaflow-ai/cmux",
+          "rel": "integrates_with",
+          "dst": "repo:vercel-labs/agent-browser",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:manaflow-ai/cmux",
+          "rel": "competes_with",
+          "dst": "tool:tmux",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:manaflow-ai/cmux",
+          "rel": "risk",
+          "dst": "concept:noassertion-license",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "manaflow-ai-cmux",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "garrytan/gbrain",
+      "url": "https://github.com/garrytan/gbrain",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**sistema de memoria persistente portable** (\"Give the agent you already use a memory you control\") que almacena hechos explícitos con fuentes, soporta correcciones y withdrawals, y los expone como MCP server. Mantenido por Garry Tan (CEO de Y Combinator) y usado como cerebro detrás de sus despliegues OpenClaw/Hermes con 155.795 páginas, 24.589 personas, 5.340 empresas, 66 crons.",
+        "por_que_importa": "GBrain no es otro dump vectorial: almacena hechos explícitos con su fuente, soporta correcciones y withdrawals, y expone la misma memoria a cualquier agente vía MCP (protocolo que cubrimos el 2026-09-21). Lo que lo separa de alternativas como claude-mem es la combinación de cuatro cosas: (a) typed knowledge graph que extrae referencias sin pasar por el LLM cuando el auto-linking está activo, con una mejora medida en BrainBench P@5 de 0.3421 frente a 0.1917 de un híbrido simple; (b) synthesis layer que devuelve prosa con citas y un gap analysis explícito, por ejemplo \"no se ha añadido nada al brain sobre Alice desde el 22 de abril, hace seis semanas; puede que haya respondido por email o DM de Slack, canales que el brain no ve\", en lugar de una lista cruda de páginas; (c) shared brain skills con catálogo donde solo editores aprobados pueden publicar; (d) company brain con auth source/operation grants y visibility filters, un trust boundary explícito entre callers remotos y archivos locales. El repo viene agent-friendly por diseño: incluye `llms.txt`, `llms-full.txt`, `AGENTS.md`, `CLAUDE.md`. Detalle práctico a recordar: el default branch es `master`, importante para construir raw URLs.",
+        "madurez_senales": "Estrellas: 30.671 · Forks: 4.597 · Lenguaje: TypeScript · Último push: 2026-10-08 (HOY) · Licencia: MIT · Descripción oficial: \"Garry's Opinionated OpenClaw/Hermes Agent Brain\" · Topics: (vacíos — el repo vive por su narrativa, no por discoverability) · Default branch: `master` (importante para `raw.githubusercontent.com` — ver pitfall #21)",
+        "accion_sugerida": "**leer** `llms.txt` + `AGENTS.md` primero (5 min); **explorar** localmente vía `gbrain mcp expose` sobre Tailscale; **vigilar** los benchmarks de retrieval refresh (`gbrain-evals` repo, ej. `2026-09-09-retrieval-refresh.md`) — son los ground truth que importan.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:garrytan/gbrain",
+          "rel": "implements",
+          "dst": "concept:portable-agent-memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:garrytan/gbrain",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:garrytan/gbrain",
+          "rel": "maintained_by",
+          "dst": "company:Y-Combinator",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:garrytan/gbrain",
+          "rel": "competes_with",
+          "dst": "repo:thedotmack/claude-mem",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:garrytan/gbrain",
+          "rel": "complements",
+          "dst": "concept:knowledge-graph-with-evidence",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:garrytan/gbrain",
+          "rel": "enables",
+          "dst": "concept:company-brain-pattern",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "garrytan-gbrain",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "fabio-rovai/open-ontologies",
+      "url": "https://github.com/fabio-rovai/open-ontologies",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**binario Rust que planifica cambios a una ontología de producción, deriva cada consecuencia, emite un certificado Lean 4 que prueba las consecuencias, y rechaza líneas forjadas con exit 1 + nombre de la regla**. Está shipping un MCP server para que agentes AI lo consuman directamente.",
+        "por_que_importa": "open-ontologies sube el listón del patrón \"spec → CI gate\" para knowledge graphs: un binario Rust planifica cambios sobre una ontología de producción, deriva cada consecuencia, emite un certificado Lean 4 que las prueba y rechaza líneas mal formadas con exit 1 más el nombre de la regla. La demo del README lo hace tangible: sobre un CSV/TTL reporta 426 asserted + 259 certified + 1 rejected, y un único run del checker acepta el certificado con las 259. Con un archivo RDFS de HQDM detecta cosas que un auditor humano no lee en 1400 términos, como 23 términos usados como clase sin declarar, 12 `rdfs:range` mal declarados y 13 pares de nombres que difieren por un guión bajo (3 con mismo dominio y rango). El loop plan/apply/roll-back se monta con un blast radius report explícito. Como ya vimos el 2026-09-21 el MCP como capa de integración, encaja como consumidor natural; además complementa a `openai/math` y `Raja0sama/vibex`, que tratamos el 2026-10-07. Para CSS, la tesis es directa: en un mundo donde los knowledge graphs alimentan RAG y agentes, la calidad de la ontología es el cuello de botella, y esto la audita antes de que llegue al agente.",
+        "madurez_senales": "Estrellas: 929 · Forks: 123 · Lenguaje: Rust · Último push: 2026-10-01 (esta semana) · Licencia: MIT · Descripción oficial: \"Plan, apply and roll back changes to a production ontology, with a blast radius report and a proof an auditor can re-check\" · Topics (18, parcial): `ai-native`, `description-logics`, `formal-verification`, `isabelle-language`, `knowledge-graph`, `lean`, `lean4`, `mcp`, `mcp-server`, `ontology`, `owl`, `owl2`, `reasoning`, `rust`, `shacl`, `sparql`, `theorem-proving` · Default branch: `main`",
+        "accion_sugerida": "**probar** con el [TRY IT IN THE BROWSER](https://open-ontologies-try.vercel.app/?sample=epc-sample.csv&auto=1) que ejecuta el binario en el cliente. **Leer** `docs/assets/hqdm/PROVENANCE.md` para entender la metodología. **Vigilar** el plan comercial: el engine es MIT, la plataforma hospedada es de pago (tesseractsemantics.com).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:fabio-rovai/open-ontologies",
+          "rel": "implements",
+          "dst": "concept:ontology-plan-apply-rollback",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:fabio-rovai/open-ontologies",
+          "rel": "uses",
+          "dst": "tool:lean4",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:fabio-rovai/open-ontologies",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:fabio-rovai/open-ontologies",
+          "rel": "complements",
+          "dst": "repo:openai/math",
+          "primera_mencion": "2026-10-07"
+        },
+        {
+          "src": "repo:fabio-rovai/open-ontologies",
+          "rel": "complements",
+          "dst": "repo:Raja0sama/vibex",
+          "primera_mencion": "2026-10-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fabio-rovai-open-ontologies",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "xerj-org/xerj",
+      "url": "https://github.com/xerj-org/xerj",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**search engine local-first para coding agents** que autoindexa cualquier carpeta, soporta BM25 + kNN + hybrid retrieval, expone MCP + `llms.txt`, y reemplaza el `read_file → read_file → read_file` de los coding agents por `xerj def \"symbol\"` y `xerj search \"concept\"`. Single static binary (sin JVM, sin Docker daemon). Claim medido: en un estudio controlado de reference coding, un agent reduce output tokens a 2.7x con mismo solve rate.",
+        "por_que_importa": "XERJ ataca exactamente el agujero que dejan `rtk-ai/rtk` (comprimir output del shell) y los modelos locales: el coding agent abre un repo y se va en leer archivo tras archivo para construir contexto. Es un search engine local-first, single static binary (sin JVM, sin Docker daemon), con BM25 + kNN + hybrid retrieval, MCP server y `llms.txt` expuesto, pensado para sustituir el `read_file` repetido por `xerj def \"symbol\"` y `xerj search \"concept\"`. Claim medido del propio repo: en un estudio controlado de reference coding, un agent reduce output tokens 2.7x manteniendo el solve rate. La instalación es una línea: `curl -fsSL https://xerj.org/get | sh && xerj init && xerj autoindex ~/my-project`. La membresía del proyecto se gana enviando un field report, un PR con un markdown en `user-feedback/16-agent-field-reports/`. Aviso de seguridad explícito en su propio material: el flag `--insecure` apaga TLS/auth y deja a cualquier caller como superuser, está pensado para un único usuario en dev, nada más. Encuadre para CSS: ya cubrimos el 2026-08-12 la pieza `rtk-ai/rtk` como compañero natural, y el 2026-09-21 el MCP como capa de integración; este item es la pieza que faltaba en la cadena local-first, donde el cuello de botella ya no es lo que el agente piensa, sino lo que lee.",
+        "madurez_senales": "Estrellas: 3.137 · Forks: 235 · Lenguaje: Rust · Último push: 2026-10-08 (HOY) · Licencia: Apache-2.0 · Descripción oficial: \"XERJ is the new way for AI to search data. Its autoindex capability activates agents to know your data without the tokens cost\" · Topics (20, parcial): `ai-search`, `bm25-search`, `hybrid-search`, `hybrid-semantic-search`, `semantic-search`, `vector-search`, `vector-database`",
+        "accion_sugerida": "**probar** localmente con un proyecto tuyo real, ejecutar `xerj gain` para ver el delta de tokens. **Leer** `docs/SECURITY_MODEL.md` antes de exponer fuera de localhost.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "implements",
+          "dst": "concept:autoindex-for-coding-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "pairs_with",
+          "dst": "repo:rtk-ai/rtk",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "enables",
+          "dst": "concept:reference-coding",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xerj-org-xerj",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "shader-effects-inc/shaders",
+      "url": "https://github.com/shader-effects-inc/shaders",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**paquete `npm install shaders` que expone 200+ WebGPU effects como componentes** para React, Vue, Svelte, Solid y JavaScript; editor visual online en `shaders.com` que exporta el árbol de componentes exacto; MCP server nativo; usado por 16k+ design engineers.",
+        "por_que_importa": "shaders es el primer paquete tipo \"shadcn\" para WebGPU effects: 200+ efectos (gradients, noise, glass, metal, light, distortions, transitions, blurs, cursor effects) expuestos como componentes para React, Vue, Svelte, Solid y JavaScript, todos componibles (nested + blended), con type-safety y editor visual online en `shaders.com` que exporta exactamente el árbol de componentes resultante. Hay además un CLI en el repo y un MCP server (protocolo que cubrimos el 2026-09-21) para que un agente AI pueda integrar shader effects directamente en componentes que diseña. Lo que lo separa de aproximaciones anteriores tipo `react-shader-fiber`: ya no hay que escribir GLSL inline, los shaders se tratan como props declarativas, igual que cualquier otro componente. Encuadre para CSS: para un lector que diseña interfaces o que está explorando AI-generated UI effects, esta es la pieza que baja la barrera de entrada a WebGPU — el editor visual cubre el caso \"quiero probarlo sin aprender la API\" y el catálogo cerrado da una base estable sobre la que iterar.",
+        "madurez_senales": "Estrellas: 2.908 · Forks: 103 · Lenguaje: TypeScript · Último push: 2026-10-07 · Licencia: MIT · Descripción oficial: \"WebGPU components for React, Vue, Svelte, Solid, JS & Framer\" · Topics: `cli`, `javascript`, `mcp`, `react`, `shaders`, `solid`, `svelte`, `vue`, `webgpu-shaders`",
+        "accion_sugerida": "**probar** instalando en un proyecto React/Vue existente, usar el editor `shaders.com` para diseñar + exportar el árbol. **Vigilar** la versión Pro (de pago, según el README) si la API gratuita cubre lo que necesitas.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:shader-effects-inc/shaders",
+          "rel": "implements",
+          "dst": "concept:webgpu-shaders-as-components",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:shader-effects-inc/shaders",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:shader-effects-inc/shaders",
+          "rel": "enables",
+          "dst": "concept:ai-generated-ui-effects",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:shader-effects-inc/shaders",
+          "rel": "competes_with",
+          "dst": "tool:react-three-fiber",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shader-effects-inc-shaders",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "storytold/photocraft",
+      "url": "https://github.com/storytold/photocraft",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**PhotoCraft es la reimplementación clean-room y open-source de Adobe Photoshop en pure Rust** — soporta PSD/PSB real con capas, máscaras, adjustment layers, layer styles, type, vectors, brushes. Multiplataforma (macOS, Windows, Linux, FreeBSD, Web), MIT/Apache-2.0, status early alpha. Parte de la suite ArtCraft que también incluye ArtCraft (intentional crafting engine) y FilmCraft (Premiere Pro reimplementation, también en Rust).",
+        "por_que_importa": "PhotoCraft no es \"otro editor de imágenes\": es la reimplementación clean-room y open-source de Adobe Photoshop en pure Rust, con PSD/PSB real (capas, máscaras, adjustment layers, layer styles, type, vectors, brushes) y claim explícito \"PSD without compromise\". Encuadre para CSS: cuando Adobe retire soporte de un formato, una reimplementation open-source en Rust es la única vía realista para mantener archivos legibles a largo plazo. Forma parte de la suite ArtCraft (photocraft 19.805★, artcraft 5.388★, filmcraft 3.772★), un movimiento open-source serio hacia un Adobe Creative Suite en Rust, con Discord activo y sitio comercial en `getartcraft.com`. Ya tratamos el 2026-10-05 la propia PhotoCraft, su pieza hermana FilmCraft y ArtCraft, y laencia directa con Adobe Photoshop, así que este re-push llega como confirmación de momentum: mismo problema, misma tesis, tres repos empujando a la vez",
+        "madurez_senales": "Estrellas: 19.805 · Forks: 2.591 · Lenguaje: Rust · Último push: 2026-10-08 (HOY) · Licencia: MIT OR Apache-2.0 (verificada) · Descripción oficial: \"An open-source, clean-room reimplementation of Adobe Photoshop in pure Rust\" · Topics: `adobe`, `image-editing`, `image-editor`, `photo-editing`, `photoshop`, `psd`, `rust`",
+        "accion_sugerida": "**explorar** descargando una build desde `getartcraft.com/apps/photocraft`, abrir un PSD real, leer el README sección \"Built for agents\" para entender el ángulo \"AI agents that edit images\". **Vigilar** los releases — el repo está en \"early alpha\", la velocidad de adopción dictará si se mantiene como proyecto a largo plazo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:storytold/photocraft",
+          "rel": "implements",
+          "dst": "concept:image-editing-rust",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/photocraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/filmcraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/photocraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/artcraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/photocraft",
+          "rel": "competes_with",
+          "dst": "tool:adobe-photoshop",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-photocraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "elder-plinius/G0DM0D3",
+      "url": "https://github.com/elder-plinius/G0DM0D3",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.558★, push 2026-07-15, TypeScript, AGPL-3.0) — \"LIBERATED AI CHAT\"; repositorio del autor de la serie \"liberated\" con jailbreaks y exploits de sistemas AI. AGPL-3.0 lo hace no apto para uso comercial, pero es excelente como catálogo de investigación de seguridad de modelos.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — solo desde el ángulo \"qué están probando los jailbreakers hoy\"; **ignorar** para adopción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elder-plinius-g0dm0d3",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "EpicGames/raddebugger",
+      "url": "https://github.com/EpicGames/raddebugger",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.943★, push 2026-10-07, C, MIT) — debugger nativo multi-proceso en user-mode publicado por Epic Games, base para Fortnite/Unreal. Para CSS es interesante como referencia de debugging moderno en C++.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el README + arquitectura si trabajas en tools de developer experience",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "epicgames-raddebugger",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "GraphiteEditor/Graphite",
+      "url": "https://github.com/GraphiteEditor/Graphite",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(27.499★, push 2026-10-08, Rust, Apache-2.0) — editor 2D procedural con node-graph; competidor de Photoshop con énfasis en generative art. Distinto del PhotoCraft mencionado antes (PhotoCraft es raster; Render produce motion graphics).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si haces UI/motion design",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "graphiteeditor-graphite",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "harry0703/MangoDisk",
+      "url": "https://github.com/harry0703/MangoDisk",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.830★, push 2026-10-08, Rust, GPL-3.0) — disk cleaner y space analyzer para macOS y Windows, con duplicate cleanup y uninstall GUI en Tauri. GPL-3.0 lo descarta para build dependency, pero el patrón Tauri + Rust + tree visualization es instructive.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — como referencia de UI patterns",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "harry0703-mangodisk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "storytold/artcraft",
+      "url": "https://github.com/storytold/artcraft",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.388★, push 2026-10-07, Rust, NOASSERTION) — \"intentional crafting engine\" para artistas y filmmakers; combina image generation + video generation + image editing. NOASSERTION license requiere verificación.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el LICENSE raw antes de cualquier adopción; **explorar** la landing `getartcraft.com` para entender la suite completa",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-artcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "MDX-Tom/gpt-instruct",
+      "url": "https://github.com/MDX-Tom/gpt-instruct",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.332★, push 2026-10-04, Python, MIT) — \"Codex jailbreak prompt and test pack for gpt\". MIT y play-button; documenta vectores de ataque de prompt injection contra Codex.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — solo desde el ángulo seguridad; **ignorar** para uso en producción (el README admite bypass tests)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mdx-tom-gpt-instruct",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "nullmoth/nvidia-macos-driver",
+      "url": "https://github.com/nullmoth/nvidia-macos-driver",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(565★, push 2026-10-08, Rust, NOASSERTION) — Metal driver open-source para tarjetas NVIDIA GeForce RTX en macOS 15 Sequoia (Intel / OpenCore). Nicho extremo: usuarios Mac Intel con GPU NVIDIA queriendo GPU GeForce — un mercado residual que el driver oficial de Apple nunca cubrió. NOASSERTION requiere verificación.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — solo si tienes el hardware exacto",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nullmoth-nvidia-macos-driver",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "eolix/photosuite",
+      "url": "https://github.com/eolix/photosuite",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(915★★, push 2026-10-08, Rust, Apache-2.0) — desktop image editor \"faithful to classic Adobe Photoshop\" con PSD/PSB compatibility. Apunte: el espacio está lleno de 15+ alternativas con cleaner edges (Photoshop reimpl en Rust); es competidor directo de storytold/photocraft pero con menos tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "(915★ vs 19 — 805★). Acción: **ignorar** salvo para research comparativo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "eolix-photosuite",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

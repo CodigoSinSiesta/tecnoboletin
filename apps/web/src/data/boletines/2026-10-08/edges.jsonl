@@ -1,0 +1,62 @@
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-docker-docker-agent", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-docker-docker-agent", "dst": "tema:docker-docker-agent", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:docker/docker-agent", "dst": "concept:declarative-agent-spec", "rel": "implements", "added": "2026-10-08", "primera_mencion": "2026-08-28"}
+{"src": "repo:docker/docker-agent", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-08", "primera_mencion": "2026-08-28"}
+{"src": "repo:docker/docker-agent", "dst": "product:docker-model-runner", "rel": "paired_with", "added": "2026-10-08", "primera_mencion": "2026-08-28"}
+{"src": "repo:docker/docker-agent", "dst": "concept:oci-registry", "rel": "distributes_via", "added": "2026-10-08", "primera_mencion": "2026-08-28"}
+{"src": "repo:docker/docker-agent", "dst": "repo:manaflow-ai/cmux", "rel": "competes_with", "added": "2026-10-08", "primera_mencion": "2026-08-28"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-manaflow-ai-cmux", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-manaflow-ai-cmux", "dst": "tema:manaflow-ai-cmux", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:manaflow-ai/cmux", "dst": "concept:terminal-for-coding-agents", "rel": "implements", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:manaflow-ai/cmux", "dst": "repo:vercel-labs/agent-browser", "rel": "integrates_with", "added": "2026-10-08", "primera_mencion": "2026-08-08"}
+{"src": "repo:manaflow-ai/cmux", "dst": "tool:tmux", "rel": "competes_with", "added": "2026-10-08", "primera_mencion": "2026-08-10"}
+{"src": "repo:manaflow-ai/cmux", "dst": "concept:noassertion-license", "rel": "risk", "added": "2026-10-08", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-garrytan-gbrain", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-garrytan-gbrain", "dst": "tema:garrytan-gbrain", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:garrytan/gbrain", "dst": "concept:portable-agent-memory", "rel": "implements", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:garrytan/gbrain", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-08", "primera_mencion": "2026-09-21"}
+{"src": "repo:garrytan/gbrain", "dst": "company:Y-Combinator", "rel": "maintained_by", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:garrytan/gbrain", "dst": "repo:thedotmack/claude-mem", "rel": "competes_with", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:garrytan/gbrain", "dst": "concept:knowledge-graph-with-evidence", "rel": "complements", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:garrytan/gbrain", "dst": "concept:company-brain-pattern", "rel": "enables", "added": "2026-10-08", "primera_mencion": null}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-fabio-rovai-open-ontologies", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-fabio-rovai-open-ontologies", "dst": "tema:fabio-rovai-open-ontologies", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:fabio-rovai/open-ontologies", "dst": "concept:ontology-plan-apply-rollback", "rel": "implements", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:fabio-rovai/open-ontologies", "dst": "tool:lean4", "rel": "uses", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:fabio-rovai/open-ontologies", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-08", "primera_mencion": "2026-09-21"}
+{"src": "repo:fabio-rovai/open-ontologies", "dst": "repo:openai/math", "rel": "complements", "added": "2026-10-08", "primera_mencion": "2026-10-07"}
+{"src": "repo:fabio-rovai/open-ontologies", "dst": "repo:Raja0sama/vibex", "rel": "complements", "added": "2026-10-08", "primera_mencion": "2026-10-07"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-xerj-org-xerj", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-xerj-org-xerj", "dst": "tema:xerj-org-xerj", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:xerj-org/xerj", "dst": "concept:autoindex-for-coding-agents", "rel": "implements", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:xerj-org/xerj", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-08", "primera_mencion": "2026-09-21"}
+{"src": "repo:xerj-org/xerj", "dst": "repo:rtk-ai/rtk", "rel": "pairs_with", "added": "2026-10-08", "primera_mencion": "2026-08-12"}
+{"src": "repo:xerj-org/xerj", "dst": "concept:reference-coding", "rel": "enables", "added": "2026-10-08", "primera_mencion": null}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-shader-effects-inc-shaders", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-shader-effects-inc-shaders", "dst": "tema:shader-effects-inc-shaders", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:shader-effects-inc/shaders", "dst": "concept:webgpu-shaders-as-components", "rel": "implements", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:shader-effects-inc/shaders", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-08", "primera_mencion": "2026-09-21"}
+{"src": "repo:shader-effects-inc/shaders", "dst": "concept:ai-generated-ui-effects", "rel": "enables", "added": "2026-10-08", "primera_mencion": null}
+{"src": "repo:shader-effects-inc/shaders", "dst": "tool:react-three-fiber", "rel": "competes_with", "added": "2026-10-08", "primera_mencion": null}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-storytold-photocraft", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-storytold-photocraft", "dst": "tema:storytold-photocraft", "rel": "trata", "added": "2026-10-08"}
+{"src": "repo:storytold/photocraft", "dst": "concept:image-editing-rust", "rel": "implements", "added": "2026-10-08", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/photocraft", "dst": "repo:storytold/filmcraft", "rel": "paired_with", "added": "2026-10-08", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/photocraft", "dst": "repo:storytold/artcraft", "rel": "paired_with", "added": "2026-10-08", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/photocraft", "dst": "tool:adobe-photoshop", "rel": "competes_with", "added": "2026-10-08", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-elder-plinius-g0dm0d3", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-elder-plinius-g0dm0d3", "dst": "tema:elder-plinius-g0dm0d3", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-epicgames-raddebugger", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-epicgames-raddebugger", "dst": "tema:epicgames-raddebugger", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-graphiteeditor-graphite", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-graphiteeditor-graphite", "dst": "tema:graphiteeditor-graphite", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-harry0703-mangodisk", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-harry0703-mangodisk", "dst": "tema:harry0703-mangodisk", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-storytold-artcraft", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-storytold-artcraft", "dst": "tema:storytold-artcraft", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-mdx-tom-gpt-instruct", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-mdx-tom-gpt-instruct", "dst": "tema:mdx-tom-gpt-instruct", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-nullmoth-nvidia-macos-driver", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-nullmoth-nvidia-macos-driver", "dst": "tema:nullmoth-nvidia-macos-driver", "rel": "trata", "added": "2026-10-08"}
+{"src": "boletin:2026-10-08", "dst": "item:https-github-com-eolix-photosuite", "rel": "menciona", "added": "2026-10-08"}
+{"src": "item:https-github-com-eolix-photosuite", "dst": "tema:eolix-photosuite", "rel": "trata", "added": "2026-10-08"}

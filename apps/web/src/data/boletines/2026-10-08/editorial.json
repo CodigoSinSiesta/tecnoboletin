@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "date": "2026-10-08",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La infra operativa del coding agent sale del taller y entra a registries, terminales y memorias portables",
+  "posicionamiento": "Siete hallazgos de una misma mudanza: el coding agent deja de ser un script suelto y aparece como artefacto distribuible. Docker pone agentes en registries OCI junto a imágenes; cmux les da terminal multisesión con notificaciones; gbrain les da memoria con citas; open-ontologies y xerj cierran el círculo de integridad y búsqueda; shaders y photocraft extienden la conversación al material visual del front. El hilo es claro — la capa operativa se vuelve commodity y los claims empiezan a medirse.",
+  "convergencia_stack_css": "La conexión con el stack local-first de Código Sin Siesta es directa: gbrain encaja con el patrón de memoria portable que ya se arrastraba desde claude-mem (cubierto el 2026-10-06 como capa de infra consolidada), xerj se empareja con rtk bajo la misma lógica de podar el contexto antes de que llegue al modelo (cubierto el 2026-10-07), y open-ontologies aporta el certificado Lean 4 que faltaba en el patrón \"spec → CI gate\" que vibex materializó hace dos días. Docker-agent opera exactamente sobre Docker Model Runner, pieza local-first ya cubierta el 2026-08-28.",
+  "cruzado_grafo": "Cinco hallazgos aterrizan sobre nodos ya conocidos del grafo: docker-agent cierra el ciclo abierto el 2026-08-28 (declarative-agent-spec + MCP + Docker Model Runner + OCI registry) y compite de frente con cmux, que también aterriza sobre tmux (2026-08-10), agent-browser (2026-08-08) y el riesgo de licencia NOASSERTION (2026-08-27). open-ontologies se apoya en MCP (2026-09-21) y complementa math + vibex del 2026-10-07. xerj reusa rtk (2026-08-12) y shaders vuelve a tocar MCP. Tres nodos aparecen por primera vez: terminal-for-coding-agents, portable-agent-memory y autoindex-for-coding-agents. photocraft re-puja como continuación del 2026-10-05 sin nuevas aristas.",
+  "tendencias_5_boletines": "Tres días consecutivos cuentan la misma película con acento distinto. El 2026-10-06 abrió la puerta: el coding agent vive encima de una capa de infra que se consolida (claude-mem, Dynamo, Agent-Reach, lcu). El 2026-10-07 cambió el foco al podar: autoharness, rtk y vibex enseñan a recortar y atar claims ejecutables en CI. Hoy 2026-10-08 cierra el arco publicando el resultado: la capa operativa ya es commodity (registries, terminales, memorias, ontologías, search) y los proyectos nuevos llegan con claims medidos en lugar de benchmarks sponsorizados. La dirección de los tres boletines coincide sin que ninguno la nombre.",
+  "alertas": [
+    "docker-agent con YAML declarativo y claim \"no code required\": el YAML sigue siendo código y arrastra los mismos problemas de revisión y supply-chain que cualquier manifiesto",
+    "cmux con licencia NOASSERTION verificada y codebase Swift: limita el proyecto a macOS y a quien acepte una licencia source-available sin SPDX claro",
+    "xerj publica un claim \"2.7x output tokens\" sin paper reproducible; el método y el baseline no están en el repo",
+    "gbrain mantenido por Garry Tan (CEO de YC): la motivación del proyecto no es puramente técnica y la dependencia de un proyecto personal para memoria portable es un riesgo de continuidad",
+    "open-ontologies es early alpha; un certificado Lean 4 real sobre una ontología de producción es distinto de la demo de 426/259/1 que muestra el README",
+    "shaders en `npm install shaders` con editor comercial en `shaders.com` y claim \"16k+ design engineers\": el repositorio es el escaparate, el negocio está en el SaaS"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "docker-agent oficial cierra una tesis abierta el 2026-08-28; vale la pena un deep-dive para confirmar si la distribución por OCI ya funciona de verdad entre equipos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "cmux es la respuesta más concreta al problema \"corres 5 agentes en paralelo\", pero su NOASSERTION + Swift-only lo deja en un rincón del mercado. Vigilar forks o portes."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "xerj ataca el agujero del read_file repetido con un claim medido; conviene esperar a que publiquen el setup del estudio antes de adoptarlo como pieza diaria."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "shaders como componentes WebGPU encaja directo con la línea editorial de UI generativa del newsletter; es material publicable."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 6,
+      "razon": "photocraft re-puja con movement ArtCraft en Rust; sirve como pieza recurrente sobre la apuesta open-source al Adobe Creative Suite, ya cubierta el 2026-10-05."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
