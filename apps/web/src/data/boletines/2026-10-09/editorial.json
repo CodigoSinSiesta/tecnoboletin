@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-10-09",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Maestros digitales: pizarras táctiles, maletines WiFi y libros que escuchan",
+  "posicionamiento": "Cuando el código lo escribe un modelo, las piezas que faltan son contención y portabilidad duradera. Microsoft tapa la primera con un SDK tipado que esconde diez backends de contención detrás de un mismo modelo declarativo; DHH tapa la segunda al defender que el software solo envejece bien si depende de poco y de algo que tú controlas. Ambos golpes van al mismo punto: menos magia, más cimientos que sobrevivan al cambio.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

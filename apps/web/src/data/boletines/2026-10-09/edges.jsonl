@@ -1,0 +1,58 @@
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-microsoft-mxc", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-microsoft-mxc", "dst": "tema:microsoft-mxc", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:microsoft/mxc", "dst": "concept:sandbox-for-untrusted-code", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:microsoft/mxc", "dst": "concept:coding-agents", "rel": "complements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:microsoft/mxc", "dst": "concept:policy-driven-containment", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:microsoft/mxc", "dst": "concept:firecracker-microvm", "rel": "alternative_to", "added": "2026-10-09", "primera_mencion": "2026-09-16"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-rubys-roundhouse", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-rubys-roundhouse", "dst": "tema:rubys-roundhouse", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:rubys/roundhouse", "dst": "concept:spec-preserving-framework", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:rubys/roundhouse", "dst": "person:dhh", "rel": "authored_by", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:rubys/roundhouse", "dst": "tool:tsc", "rel": "competes_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:rubys/roundhouse", "dst": "tool:crystal-compiler", "rel": "competes_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:rubys/roundhouse", "dst": "concept:spinelforth", "rel": "inspired_by", "added": "2026-10-09", "primera_mencion": null}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-storytold-pdfcraft", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-storytold-pdfcraft", "dst": "tema:storytold-pdfcraft", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:storytold/pdfcraft", "dst": "repo:storytold/photocraft", "rel": "paired_with", "added": "2026-10-09", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/pdfcraft", "dst": "repo:storytold/filmcraft", "rel": "paired_with", "added": "2026-10-09", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/pdfcraft", "dst": "repo:storytold/artcraft", "rel": "paired_with", "added": "2026-10-09", "primera_mencion": "2026-10-08"}
+{"src": "repo:storytold/pdfcraft", "dst": "concept:clean-room-adobe-reimplementation", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:storytold/pdfcraft", "dst": "concept:open-source-creative-suite", "rel": "complements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-cursortouch-windows-mcp", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-cursortouch-windows-mcp", "dst": "tema:cursortouch-windows-mcp", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:CursorTouch/Windows-MCP", "dst": "protocol:mcp", "rel": "implements", "added": "2026-10-09", "primera_mencion": "2026-09-21"}
+{"src": "repo:CursorTouch/Windows-MCP", "dst": "concept:claude-desktop", "rel": "integrates_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:CursorTouch/Windows-MCP", "dst": "problem:windows-computer-use", "rel": "solves", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:CursorTouch/Windows-MCP", "dst": "repo:anthropics/knowledge-work-plugins", "rel": "complements", "added": "2026-10-09", "primera_mencion": "2026-09-18"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-albert-weasker-niubigeo", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-albert-weasker-niubigeo", "dst": "tema:albert-weasker-niubigeo", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:Albert-Weasker/niubigeo", "dst": "concept:open-source-geo-tool", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:Albert-Weasker/niubigeo", "dst": "problem:black-box-geo-scoring", "rel": "solves", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:Albert-Weasker/niubigeo", "dst": "concept:aeo-for-dev-creators", "rel": "complements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:Albert-Weasker/niubigeo", "dst": "tool:profound.ai", "rel": "competes_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-whitetowerai-ohmygame", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-whitetowerai-ohmygame", "dst": "tema:whitetowerai-ohmygame", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:WhiteTowerAI/ohmygame", "dst": "concept:ai-native-game-ide", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:WhiteTowerAI/ohmygame", "dst": "tool:pi-coding-agent", "rel": "integrates_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:WhiteTowerAI/ohmygame", "dst": "concept:godot-engine", "rel": "competes_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:WhiteTowerAI/ohmygame", "dst": "concept:byok-game-development", "rel": "enables", "added": "2026-10-09", "primera_mencion": null}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-tracel-ai-burn", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-tracel-ai-burn", "dst": "tema:tracel-ai-burn", "rel": "trata", "added": "2026-10-09"}
+{"src": "repo:tracel-ai/burn", "dst": "concept:rust-ml-framework", "rel": "implements", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:tracel-ai/burn", "dst": "framework:pytorch", "rel": "competes_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:tracel-ai/burn", "dst": "concept:wasm-ml-inference", "rel": "enables", "added": "2026-10-09", "primera_mencion": null}
+{"src": "repo:tracel-ai/burn", "dst": "tool:onnx", "rel": "integrates_with", "added": "2026-10-09", "primera_mencion": null}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-mhtsec-artex", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-mhtsec-artex", "dst": "tema:mhtsec-artex", "rel": "trata", "added": "2026-10-09"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-yi1108-printfilm", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-yi1108-printfilm", "dst": "tema:yi1108-printfilm", "rel": "trata", "added": "2026-10-09"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-ajeetdsouza-zoxide", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-ajeetdsouza-zoxide", "dst": "tema:ajeetdsouza-zoxide", "rel": "trata", "added": "2026-10-09"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-invoke-ai-invokeai", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-invoke-ai-invokeai", "dst": "tema:invoke-ai-invokeai", "rel": "trata", "added": "2026-10-09"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-thebuggeddev-anatomy", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-thebuggeddev-anatomy", "dst": "tema:thebuggeddev-anatomy", "rel": "trata", "added": "2026-10-09"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-davidmonterocrespo24-velxio", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-davidmonterocrespo24-velxio", "dst": "tema:davidmonterocrespo24-velxio", "rel": "trata", "added": "2026-10-09"}
+{"src": "boletin:2026-10-09", "dst": "item:https-github-com-yuxino-mimi", "rel": "menciona", "added": "2026-10-09"}
+{"src": "item:https-github-com-yuxino-mimi", "dst": "tema:yuxino-mimi", "rel": "trata", "added": "2026-10-09"}

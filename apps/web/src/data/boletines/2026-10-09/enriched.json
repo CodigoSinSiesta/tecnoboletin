@@ -1,0 +1,546 @@
+{
+  "version": 2,
+  "date": "2026-10-09",
+  "boletin_origen": "2026-10-09-trending.md",
+  "resumen_ejecutivo": "- **`microsoft/mxc` (Microsoft eXecution Container)** entra al escenario como el primer sandbox oficial de Microsoft para ejecutar código no confiable — output de modelos, plugins, tools — en Windows, Linux y macOS. Policy-driven, JSON-config, diez backends de contención (ProcessContainer, Windows Sandbox, LXC, Bubblewrap, Seatbelt, MicroVM/Nanvix, Hyperlight, IsolationSession, WSLC) detrás de un modelo unificado y un SDK tipado. Lo interesante: Microsoft publica un sandbox *para sandbox* — la pieza que faltaba entre \"agente capaz de ejecutar código\" y \"agente capaz de ejecutarse en producción\".\n- **`rubys/roundhouse` (_the_ rubys, DHH) — \"Rails as a specification; deployment is a build flag\"**: lee Ruby source (Rails apps) y produce proyectos standalone en Rust, Swift, TypeScript, Crystal, Go, Elixir/OTP, Kotlin/JVM, C#/.NET, Python, browser bundle, o Ruby-spinel. Inferencia whole-program sin anotaciones — `has_many :comments` ya es un type declaration, las convenciones de Rails cargan la type info que nunca se anotó. Pasa Mastodon (1.173 files, 337 controllers, HAML) en 1.5s. Toma de posición: Rails como spec preservable, no como framework fino.\n- **`storytold/pdfcraft` (Apache-2.0/MIT, Rust, push HOY)** completa la trinidad de la suite creativa open-source en Rust con la pieza que faltaba: **Acrobat**. Llega después de PhotoCraft (Photoshop) y FilmCraft (Premiere). Read/organize/combine/split/secure PDFs, native macOS/Windows/Linux/FreeBSD/web, readme dice \"the PDF workbench\". Para CSS, ángulo tesis: la suite storytold/*craft ya cubre los 4 formatos del flujo creativo profesional (PSD, video timeline, AI generation, PDF) en pure Rust. Si la suite aterriza, Adobe tiene un competidor open-source end-to-end por primera vez en una década.\n- **`CursorTouch/Windows-MCP` (MIT, Python, push 2026-10-08)** ya pasó **2M users en Claude Desktop Extensions** y está en el MCP Registry oficial. Es el MCP server de Computer Use para Windows 7–11: file navigation, application control, UI interaction, QA testing. Disponible en PyPI (`uvx windows-mcp`), y los autores ya shippearon `🪟Windows-Use` (un agente construido encima). El ángulo: el hueco Windows que Anthropic nunca cerró con su propio `computer-use` CLI lo está llenando la comunidad open-source.\n- **`Albert-Weasker/niubigeo` (Apache-2.0, TypeScript, push 2026-10-08)** es **open-source AI brand visibility / GEO research tool** — entra domain, compara respuestas entre modelos, inspecciona citas, repite el research después. Self-hosted, BYOK. Se posiciona explícitamente contra SaaS GEO de $5k/año: \"Refuse black-box GEO scores. Put the evidence back in your hands.\" Para CSS, **este es el primer repo open-source maduro del trend GEO/AEO que cubre el AEO stack de creadores**. Tiene Trendshift daily badge + Product Hunt featured.\n- **`WhiteTowerAI/ohmygame` (Apache-2.0, TypeScript, push HOY)** — \"the open-source studio for making games with AI\" — your own one-person game studio, todo en una app, BYOK. **40+ model providers**, badges dicen \"built on Pi\" (referencia a `@earendil-works/pi-coding-agent` MCP). macOS + Windows desktop apps, Discord activo. Es el primer \"Godot-style\" AI-native game IDE con multi-model desde el día uno.\n- **`tracel-ai/burn` (Apache-2.0, Rust, 16.071★, push 2026-10-08)** — next-generation tensor library + Deep Learning framework pure Rust. Re-emerge en trending: lleva 4+ años de desarrollo, multi-backend (CPU, GPU, WebGPU, Vulkan, Metal, CUDA via custom kernel), autodiff, ONNX import/export. Para CSS, ángulo tesis: en el mundo PyTorch/TF/JAX hay un solo framework serious en Rust — y trae GPU first, no Python/Mobile.\n- Fuentes consultadas: Trendshift daily (25 items parseados, 0 sponsored filtrados), GitHub Trending daily (página general + TypeScript, Python, Rust slices — 66 repos únicos), GitHub API sin token (24 verificaciones para hallazgos nuevos). Blogwatcher de las 08:00 no publicó archivo de hoy (patrón conocido desde julio), así que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "microsoft/mxc",
+      "url": "https://github.com/microsoft/mxc",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Microsoft eXecution Container** — sistema unificado de ejecución sandboxed para correr código no confiable (output de LLM, herramientas, plugins) en Windows, Linux y macOS, con JSON-config, policy-driven, diez backends de contención detrás de un modelo único y un SDK tipado.",
+        "por_que_importa": "En 2026 existen decenas de frameworks que ejecutan código generado por un agente (Codex CLI, Claude Code, Open Interpreter, Daytona, E2B, Modal, Fly machines). Casi todos resuelven bien cómo arrancar el código; muy pocos resuelven cómo contenerlo cuando el código lo escribe un modelo y puede ser hostil. Microsoft eXecution Container (MXC) ataca exactamente esa pieza: un único SDK tipado y cross-platform (Windows, Linux, macOS) que esconde diez backends de contención —ProcessContainer, Windows Sandbox, LXC, Bubblewrap, Seatbelt, MicroVM/Nanvix, Hyperlight, IsolationSession y WSLC— detrás de un mismo modelo declarativo en JSON, policy-driven y versionable. Lo firma el equipo de Platform Security, no un lab experimental, y por política de Microsoft no hay telemetría por defecto (no existe flag --no-telemetry porque no hace falta). El contexto importa: el 2026-09-16 ya cubrimos Firecracker como referencia del espacio microVM; MXC se posiciona explícitamente como alternativa a esa línea (ver triple alternative_to en el grafo), pero subiendo el piso con policy declarativa en lugar de configuración por backend. Para un lector de Código Sin Siesta: si trabajas con código no confiable en 2026, el cuello de botella ya no es razonar, es la zona de ejecución, y MXC es la respuesta más seria del momento a ese problema.",
+        "madurez_senales": "Estrellas: 1.878 · Forks: 109 · Lenguaje: Rust · Fecha creación: no verificada en este cron · Último push: 2026-10-09 (HOY) · Licencia: MIT · Descripción oficial: \"Policy-driven, layered isolation and containment\" · Topics: (vacíos — repo descubrible por búsqueda directa, no por topics) · Maintainer: org `microsoft` · Default branch: `main`",
+        "accion_sugerida": "**leer** `docs/architecture.md` (10 min), **explorar** ejecutando el demo de 3 backends (ProcessContainer + Seatbelt + LXC), **vigilar** roadmap (v0.1 → GA). Ideal para auditar tu propia pipeline de agentes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/mxc",
+          "rel": "implements",
+          "dst": "concept:sandbox-for-untrusted-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/mxc",
+          "rel": "complements",
+          "dst": "concept:coding-agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/mxc",
+          "rel": "implements",
+          "dst": "concept:policy-driven-containment",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/mxc",
+          "rel": "alternative_to",
+          "dst": "concept:firecracker-microvm",
+          "primera_mencion": "2026-09-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-mxc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "rubys/roundhouse",
+      "url": "https://github.com/rubys/roundhouse",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Compilador cross-target que lee Ruby source (Rails apps) y emite proyectos standalone** en Rust, Swift, TypeScript, Crystal, Go, Elixir/OTP, Kotlin/JVM, C#/.NET, Python, browser bundle, o Spinel-compiled Ruby — la elección del deployment target es un flag del compilador, no una decisión runtime.",
+        "por_que_importa": "La firma del repo manda: David Heinemeier Hansson (DHH), creador de Rails y CTO de 37signals/HEY/Basecamp, está empujando públicamente la idea de tratar Rails como specification preservable, no como framework fino que reescribes cada vez que cambia el runtime de turno. Roundhouse es la materialización de esa tesis: un compilador cross-target escrito en Rust que lee el código fuente de una app Rails y la reemite completa a otro stack —Rust, Swift, TypeScript, Crystal, Go, Elixir/OTP, Kotlin/JVM, C#/.NET, Python, un bundle para navegador, o Ruby otra vez vía Spinel— donde elegir el deployment target es un flag del compilador, no una decisión en producción. La técnica clave es whole-program type inference sin anotaciones: parte de la base de que \"Rails ya estaba tipado\" — `has_many :comments` es una declaración de tipo, `find_by` devuelve `T | nil` cuando la inferencia lo sabe— y sobre eso monta tres puertas separadas, Analyze (extrae types), Translate (emite target) y Compile (link al runtime destino). El benchmark interno del repo: procesa Mastodon entero (1.173 archivos, controllers y HAML incluidos) en 1,5 s. Para un lector de Código Sin Siesta: si cubres arquitectura web, la pregunta 2026 ya no es \"qué framework uso\", sino \"qué specification preservo cuando el runtime se va\", y Roundhouse es la primera herramienta seria que asume ese modelo de verdad.",
+        "madurez_senales": "Estrellas: 425 · Forks: 34 · Lenguaje: Rust · Fecha creación: no verificada en este cron · Último push: 2026-10-09 (HOY) · Licencia: Apache-2.0 · Descripción oficial: (vacía — el repo es demasiado joven, README es la doc) · Topics: (vacíos — sin SEO discoverability por ahora) · Maintainer: `rubys` (David Heinemeier Hansson) · Default branch: `main`",
+        "accion_sugerida": "**leer** `WHY.md` (15 min — el argumento filosófico) + `docs/guide/README.md` (10 min); **vigilar** el progreso del soporte de `find_by` y associations; **probar** sobre un Rails app pequeño propio (no crítico) si tienes curiosidad.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:rubys/roundhouse",
+          "rel": "implements",
+          "dst": "concept:spec-preserving-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rubys/roundhouse",
+          "rel": "authored_by",
+          "dst": "person:dhh",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rubys/roundhouse",
+          "rel": "competes_with",
+          "dst": "tool:tsc",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rubys/roundhouse",
+          "rel": "competes_with",
+          "dst": "tool:crystal-compiler",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rubys/roundhouse",
+          "rel": "inspired_by",
+          "dst": "concept:spinelforth",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rubys-roundhouse",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "storytold/pdfcraft",
+      "url": "https://github.com/storytold/pdfcraft",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"The PDF workbench; an open-source, clean-room reimplementation of Adobe Acrobat, rebuilt in pure Rust\"** — read, organize, combine, split y secure PDFs en una app nativa para macOS, Windows, Linux, FreeBSD y web. MIT/Apache-2.0. Es el cuarto miembro de la suite storytold (junto a PhotoCraft, FilmCraft, ArtCraft).",
+        "por_que_importa": "El 2026-10-05 cubrimos PhotoCraft (reimplementación open-source de Photoshop) y FilmCraft (reimplementación de Premiere) como parte de la suite storytold/*craft, y el 2026-10-08 añadimos ArtCraft (motor creativo de AI) como tercer miembro deliberado. Faltaba el cuarto formato canónico del flujo creativo profesional —PDF, el equivalente a Acrobat— y pdfcraft lo cierra: read, organize, combine, split y secure PDFs en una app nativa para macOS, Windows, Linux, FreeBSD y web, escrita en pure Rust bajo licencia MIT/Apache-2.0. Lo que importa para un lector de Código Sin Siesta es el patrón, no el producto aislado: cuatro productos (PSD, video timeline, AI generation, PDF) en pure Rust, cross-platform, mismo branding, misma licencia, misma org (storytold). Si la suite se mantiene coherente, Adobe tiene por primera vez en una década un competidor open-source end-to-end cubriendo los cuatro formatos canónicos del flujo creativo. El README lleva el banner explícito de ArtCraft arriba, confirmando que es el cuarto lanzamiento deliberado de la org y no un side-project —el grafo lo registra como paired_with de los tres repos anteriores con sus fechas de primera mención.",
+        "madurez_senales": "Estrellas: 5.024 · Forks: 1.744 · Lenguaje: Rust · Fecha creación: no verificada en este cron · Último push: 2026-10-09 (HOY) · Licencia: Apache-2.0 (badge dice \"MIT OR Apache-2.0\") · Descripción oficial: \"An open-source, clean-room reimplementation of Adobe Acrobat\" · Topics: (vacíos — descubrible por Trendshift) · Maintainer: org `storytold`",
+        "accion_sugerida": "**probar** descargando una build desde `getartcraft.com/apps/pdfcraft`, abrir un PDF con forms (donde Acrobat brilla y los demás fallan); **vigilar** la velocidad de releases — el resto de la suite tiene cadencia alta, pdfcraft debería seguirla.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:storytold/pdfcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/photocraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/pdfcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/filmcraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/pdfcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/artcraft",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:storytold/pdfcraft",
+          "rel": "implements",
+          "dst": "concept:clean-room-adobe-reimplementation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/pdfcraft",
+          "rel": "complements",
+          "dst": "concept:open-source-creative-suite",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-pdfcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "CursorTouch/Windows-MCP",
+      "url": "https://github.com/CursorTouch/Windows-MCP",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server open-source para Computer Use en Windows 7–11** — habilita file navigation, aplicación control, UI interaction, QA testing para LLMs. Disponible en PyPI (`uvx windows-mcp`) y en el **MCP Registry oficial**. PyPI downloads crecen.",
+        "por_que_importa": "Anthropic publicó su CLI de computer-use, pero nunca cerró bien el hueco de Windows —y Windows-MCP lleva un año llenándolo en abierto: un MCP server open-source (MIT, Python 3.13+) que habilita file navigation, control de aplicaciones, interacción con ventanas y QA testing para Windows, distribuido vía PyPI como `uvx windows-mcp` y listado en el MCP Registry oficial. Las señales de tracción son concretas: 8.377 estrellas, 926 forks, último push ayer (2026-10-08), y los propios autores ya shippearon 🪟Windows-Use, un agente construido encima del propio Windows-MCP que está en producción, lo que valida product-market-fit por uso real y no por métricas de vanidad. El contexto importa: el 2026-09-21 ya cubrimos este repo cuando entró al radar MCP, y el 2026-09-18 cubrimos anthropics/knowledge-work-plugins, con el que Windows-MCP es complementario. Para un lector de Código Sin Siesta: el ecosistema MCP de Computer Use sigue siendo Windows-first deficitario, quien resuelve Windows Computer Use en producción tiene un incumbente de facto, y Windows-MCP ya está en esa posición con un año de ventaja sobre Anthropic.",
+        "madurez_senales": "Estrellas: 8.377 · Forks: 926 · Lenguaje: Python (3.13+) · Fecha creación: no verificada en este cron · Último push: 2026-10-08 (HOY) · Licencia: MIT · Descripción oficial: \"MCP Server for Computer Use in Windows\" · Topics: (verificar en repo, parcial probable: `mcp`, `computer-use`, `windows`, `claude-desktop`) · Maintainer: org `CursorTouch` · Métrica custom: 2M users en Claude Desktop Extensions (no verificable vía API, citado del README)",
+        "accion_sugerida": "**probar** instalando `uvx windows-mcp` y conectándolo a Claude Desktop o cualquier host MCP-compatible; **vigilar** el registry oficial de MCP para ver cuándo Anthropic lo añade como recommended; **leer** la sección \"Updates\" del README — hay un roadmap implícito.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CursorTouch/Windows-MCP",
+          "rel": "implements",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:CursorTouch/Windows-MCP",
+          "rel": "integrates_with",
+          "dst": "concept:claude-desktop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CursorTouch/Windows-MCP",
+          "rel": "solves",
+          "dst": "problem:windows-computer-use",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CursorTouch/Windows-MCP",
+          "rel": "complements",
+          "dst": "repo:anthropics/knowledge-work-plugins",
+          "primera_mencion": "2026-09-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cursortouch-windows-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Albert-Weasker/niubigeo",
+      "url": "https://github.com/Albert-Weasker/niubigeo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Open-source GEO research tool para AI visibility** — entra domain, compara respuestas entre modelos, inspecciona citas, repite el mismo research reproducible; self-hosted, BYOK. Se posiciona explícitamente contra SaaS GEO de $5k/año.",
+        "por_que_importa": "En 2026 todo el mundo habla de GEO (Generative Engine Optimization) y AEO (Answer Engine Optimization), pero las herramientas del espacio son SaaS black-box de ~5k/año (Otterly.AI, Profound, Athena HQ, Peec AI) que devuelven un score sin la evidencia de qué dijo cada uno ni por qué. NiubiGEO es el primer repo open-source maduro de ese segmento: 5.478 estrellas, 523 forks, Apache-2.0, Product Hunt featured, Trendshift badge, self-hosted y BYOK. Le metes un dominio, comparas respuestas entre modelos, inspeccionas las citas y puedes repetir el mismo research de forma reproducible —el tagline lo dice todo: \"Put the evidence back in your hands\". Para un lector de Código Sin Siesta: si cubres dev/AI, GEO/AEO es el trend de búsqueda 2026 que necesitas entender antes que tu competencia principal, y la única herramienta que te deja enseñar cómo se mide (no solo el número) es open-source. Es, en la práctica, el equivalente a \"Postman para GEO\": el primer client reproducible del nuevo API.",
+        "madurez_senales": "Estrellas: 5.478 · Forks: 523 · Lenguaje: TypeScript · Fecha creación: no verificada en este cron · Último push: 2026-10-08 (HOY) · Licencia: Apache-2.0 · Descripción oficial: \"Open-source AI brand visibility and competitor reports. Official...\" · Topics: (verificar; probable `geo`, `aeo`, `llm`) · Maintainer: `Albert-Weasker` · Métrica custom: Product Hunt featured, Trendshift daily badge",
+        "accion_sugerida": "**explorar** con `docker compose up` siguiendo `docs/deployment/docker.md`, **leer** la página de Product Hunt para entender el positioning, **vigilar** el roadmap de competidores — Profound AI acaba de anunciar funding, el espacio se mueve rápido.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Albert-Weasker/niubigeo",
+          "rel": "implements",
+          "dst": "concept:open-source-geo-tool",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Albert-Weasker/niubigeo",
+          "rel": "solves",
+          "dst": "problem:black-box-geo-scoring",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Albert-Weasker/niubigeo",
+          "rel": "complements",
+          "dst": "concept:aeo-for-dev-creators",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Albert-Weasker/niubigeo",
+          "rel": "competes_with",
+          "dst": "tool:profound.ai",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "albert-weasker-niubigeo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "WhiteTowerAI/ohmygame",
+      "url": "https://github.com/WhiteTowerAI/ohmygame",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**The open-source studio for making games with AI** — your own one-person game studio, todo en una app desktop, **40+ model providers con BYOK**. macOS + Windows desktop apps, Apache-2.0. Los badges dicen \"built on Pi\" (referencia a `@earendil-works/pi-coding-agent` MCP).",
+        "por_que_importa": "Es el primer IDE de juegos AI-native estilo Godot que llega a GitHub Trending con tracción, y la tesis que plantea es clara: en 2026 los engines de juego necesitan AI en el editor desde el día uno, no como plugin que se añade después. La pieza que lo diferencia es el multi-modelo sin lock-in: rota entre 40+ providers en modo BYOK, así que puedes usar Claude para dialogue, Stable Diffusion para art y Suno para music dentro del mismo flujo sin salir del editor. Se distribuye como app nativa para macOS y Windows bajo Apache-2.0, y los badges del repo dicen \"built on Pi\", referencia directa a la skill `pi-coding-agent` (MCP de `@earendil-works/pi-coding-agent`) que ya está documentada en las referencias internas del workflow de boletines. Las señales de tracción son aún tempranas —243 estrellas, 27 forks, repo muy joven sin topics— y el grafo lo conecta explícitamente como competidor del espacio Godot y habilitador del concepto BYOK-game-development. Para un lector de Código Sin Siesta: los AI-native IDEs están comiendo terreno a los engines clásicos, y los que ganan son los que abrazan multi-modelo desde el día uno; OhMyGame es la primera señal seria de que eso también llega al desarrollo de juegos.",
+        "madurez_senales": "Estrellas: 243 · Forks: 27 · Lenguaje: TypeScript · Fecha creación: no verificada en este cron · Último push: 2026-10-09 (HOY) · Licencia: Apache-2.0 · Descripción oficial: \"The open-source studio for making games with AI. Your own on...\" · Topics: (vacíos — repo muy joven) · Maintainer: org `WhiteTowerAI`",
+        "accion_sugerida": "**vigilar** los primeros 30 días de releases — el repo tiene 243★ y push HOY, así que está en fase de product validation; **explorar** si haces games, descargar el `.dmg` desde `ohmygame.ai/download/mac`; **leer** el Discord para captar feedback temprano.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:WhiteTowerAI/ohmygame",
+          "rel": "implements",
+          "dst": "concept:ai-native-game-ide",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:WhiteTowerAI/ohmygame",
+          "rel": "integrates_with",
+          "dst": "tool:pi-coding-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:WhiteTowerAI/ohmygame",
+          "rel": "competes_with",
+          "dst": "concept:godot-engine",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:WhiteTowerAI/ohmygame",
+          "rel": "enables",
+          "dst": "concept:byok-game-development",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "whitetowerai-ohmygame",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "tracel-ai/burn",
+      "url": "https://github.com/tracel-ai/burn",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Next-generation tensor library + Deep Learning framework pure Rust** — multi-backend (CPU, GPU, WebGPU, Vulkan, Metal, CUDA via custom kernel), autodiff, ONNX import/export, training/inference unificado.",
+        "por_que_importa": "Burn es el segundo framework serio de Deep Learning fuera de Python —y trae GPU first desde el diseño, no como capa posterior. Es pure Rust, multi-backend real (CPU, GPU, WebGPU, Vulkan, Metal y CUDA vía kernel propio), con autodiff, import/export de ONNX y entrenamiento e inferencia unificados bajo Apache-2.0. La señal de madurez importa: 16.071 estrellas, 1.082 forks, 4+ años de desarrollo y re-emergencia en2026-10-08 en trending porque el ecosystem Rust-ML está madurando al mismo tiempo que crece la presión por baselines que no dependan de Python (WASM, edge, browser inference, RISC-V). Para un lector de Código Sin Siesta: si cubres ML/AI, el segundo framework importante después de PyTorch ya no va a ser JAX ni TensorFlow, va a ser Rust, y Burn es la apuesta más sólida de ese futuro. La pregunta 2026 ya no es \"¿puedo correr ML en el navegador?\", es \"¿puedo correr ML en WASM sin Python?\", y Burn es el repo que mejor responde eso hoy.",
+        "madurez_senales": "Estrellas: 16.071 · Forks: 1.082 · Lenguaje: Rust · Fecha creación: no verificada en este cron · Último push: 2026-10-08 (HOY) · Licencia: Apache-2.0 · Descripción oficial: \"Burn is a next generation tensor library and Deep Learning F...\" · Topics: (verificar; probable `rust`, `deep-learning`, `tensor`, `gpu`, `wasm`, `autodiff`) · Maintainer: org `tracel-ai`",
+        "accion_sugerida": "**leer** el `burn-book/` (guía oficial, 30 min para overview), **vigilar** los releases v0.x → v1.0; **explorar** el ejemplo MNIST en `examples/` para ver el API style.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tracel-ai/burn",
+          "rel": "implements",
+          "dst": "concept:rust-ml-framework",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tracel-ai/burn",
+          "rel": "competes_with",
+          "dst": "framework:pytorch",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tracel-ai/burn",
+          "rel": "enables",
+          "dst": "concept:wasm-ml-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tracel-ai/burn",
+          "rel": "integrates_with",
+          "dst": "tool:onnx",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tracel-ai-burn",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "mhtsec/ARTEX",
+      "url": "https://github.com/mhtsec/ARTEX",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.320★, 3.105 forks, Go+Next.js, push 2026-10-08, AGPL-3.0) — sistema de pentesting autónomo con AI (Go backend + Next.js frontend). Ganador del Baidu \"agent+\" attack/defense challenge. AGPL-3.0 limita adopción en SaaS cerrados.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — para entender qué patrones de agentic pentesting están validándose en CTF; **ignorar** para adopción como build dependency",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mhtsec-artex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "yi1108/printfilm",
+      "url": "https://github.com/yi1108/printfilm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.049★, 573 forks, Python, push 2026-10-08, MIT) — \"PRINTFILM: AI short-video marketing and AI short-drama creator\" — pipeline guiado tema → script → storyboard → image → video → final cut. Voiceover generado por Seedance durante la salida de video.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si cubres AI short-video; **leer** el README_EN.md (bilingüe)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yi1108-printfilm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "ajeetdsouza/zoxide",
+      "url": "https://github.com/ajeetdsouza/zoxide",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(39.991★, 920 forks, Rust, push 2026-10-03, MIT) — \"smarter cd command, supports all major shells\" — clásico re-emergente. No es nuevo, pero su reaparición en trending indica uso creciente en agentic workflows donde el agente necesita cd rápido y predecible.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — (`brew install zoxide && eval \"$(zoxide init zsh)\"`), reemplazar `cd` por `z`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ajeetdsouza-zoxide",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "invoke-ai/InvokeAI",
+      "url": "https://github.com/invoke-ai/InvokeAI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(28.487★, 3.015 forks, TypeScript, push 2026-10-09, Apache-2.0) — \"Invoke is a leading creative engine for Stable Diffusion models\". Multi-SD-model, profesional, open-source, mantiene tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "alta — Acción: **vigilar** la v6 release notes; **explorar** si haces generación de imágenes con AI",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "invoke-ai-invokeai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "thebuggeddev/anatomy",
+      "url": "https://github.com/thebuggeddev/anatomy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.440★, 919 forks, TypeScript, push 2026-08-09, sin licencia) — \"An interactive 3D human anatomy explorer built using threejs\". Demuestra que three.js tiene nicho educativo real. (no verificado — push del 2026-08-09, fuera del HOY window; puede ser artefacto de Trendshift).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thebuggeddev-anatomy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "davidmonterocrespo24/velxio",
+      "url": "https://github.com/davidmonterocrespo24/velxio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.130★, 323 forks, TypeScript, push 2026-10-08, NOASSERTION) — \"Emulate Arduino, ESP32 & Raspberry Pi in your browser. Write code and see hardware simulation\". NOASSERTION requiere lectura del LICENSE file antes de adopción.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — como complemento a `vercel-labs/agent-browser`; **ignorar** para uso comercial hasta aclarar licencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "davidmonterocrespo24-velxio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "yuxino/Mimi",
+      "url": "https://github.com/yuxino/Mimi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(639★, 33 forks, Rust+Tauri, push 2026-10-09, MIT) — \"Live translated subtitles from computer or microphone sound\" — selección de source (system audio / mic / both), target translation, overlay. macOS/Windows/Linux/Android.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — si haces tutoriales o workshops",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yuxino-mimi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
