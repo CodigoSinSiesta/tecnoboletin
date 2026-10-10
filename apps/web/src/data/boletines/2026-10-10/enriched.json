@@ -1,0 +1,605 @@
+{
+  "version": 2,
+  "date": "2026-10-10",
+  "boletin_origen": "2026-10-10-trending.md",
+  "resumen_ejecutivo": "- **`storytold/wordcraft` (Apache-2.0/MIT, Rust, 2.191★, push HOY)** aterriza en Trendshift como **el quinto miembro de la suite `storytold/*craft`** — ayer cubrimos el cuarto, `pdfcraft` (Acrobat reimpl). Hoy llega **Microsoft Word reimpl en pure Rust**, agent-drivable over MCP. La suite ya cubre Photoshop, Premiere, generación creativa, PDF y Word en pure Rust open-source — Adobe y Microsoft Office tienen competidor end-to-end por primera vez en una década, y todo bajo dos licencias permisivas.\n- **`BerriAI/litellm` (60.797★, Python, NOASSERTION, push HOY)** re-emerge con release industrial diaria: **`v1.106.0-dev.3` del 2026-10-09 y `v1.105.0-rc.3` el mismo día**. El README ha cambiado de copy: la nueva descripción oficial dice \"The fastest, litest AI Gateway. **Rust core with Python SDK**\" — confirma que el núcleo Rust anunciado hace meses ya es la ruta soportada. Cadencia industrial diaria en un repo de 60k+ estrellas es inusual y dice mucho del product-market-fit de \"AI Gateway\" como categoría.\n- **`Tencent-Hunyuan/Hy-MT2` (1.203★, Python, NOASSERTION, push 2026-08-26)** es la **familia \"fast-thinking\" de modelos de traducción multilingüe de Tencent** — 1.8B / 7B / 30B-A3B (MoE), 33 idiomas. El equipo de Hunyuan publica reporte en arXiv (2605.22064) donde afirma que los modelos de 7B y 30B-A3B **superan a DeepSeek-V4-Pro y Kimi K2.6 en modo fast-thinking**; el 1.8B supera a APIs comerciales como Microsoft Translator y Doubao. Tambien publican `IFMTBench` y un skill de traducción; participate WMT26 sponsoreado.\n- **`VERT-sh/VERT` (15.816★, TypeScript, AGPL-3.0, push HOY)** es **el \"file converter universal\" que corre enteramente en tu dispositivo via WebAssembly** — soporta 250+ formatos (imágenes, audio, documentos, video) sin subir nada a la nube. Se compone con `vertd` (daemon self-hostable) para casos donde WASM no llega. Re-emerge con fuerza tras un período en calma — el espacio \"local-first file conversion\" tiene un nuevo incumbente open-source.\n- **`CopilotKit/OpenIntelligentUI` (2.099★, TypeScript, MIT, push HOY)** es **el primer chat agent open-source que decide entre texto, componente nativo o UI interactiva generada** para responder. Construido sobre `CopilotKit` y el protocolo **`AG-UI`**. No es \"otro chatbot\"; es una implementación de la tesis \"el modelo elige el medio de salida más útil para la pregunta\" que estaban investigando OpenAI y Google.\n- **`xtool-org/xtool` (5.967★, Swift, MIT, push 2026-10-06)** es **el reemplazo cross-platform de Xcode que ya estaba maduro, pero acabamos de verificar**: build + sign + install de apps iOS desde Linux, Windows o macOS usando SwiftPM y el Darwin Swift SDK. Para CSS, ángulo tesis — **la dependencia histórica de macOS para desarrollar iOS se rompe con un proyecto open-source en Swift, de la mano del equipo de Swift**.\n- Re-entries de ayer que se mantienen trending con métricas nuevas: `mattpocock/skills` (283.233★, push HOY) y `cathrynlavery/diagram-design` (48.225★, push HOY). El radar secundario los cubre sin duplicar análisis.\n- Fuentes consultadas: Trendshift daily (25 items parseados, 0 sponsored filtrados), GitHub Trending daily + TypeScript + Python + Rust slices (41 repos únicos, dedupe case-insensitive contra `seen_items`), GitHub API sin token (19 verificaciones; 5 chequeos adicionales via `/releases` endpoint). Blogwatcher 08:00 no publicó archivo de hoy (patrón conocido desde julio), por lo que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "storytold/wordcraft",
+      "url": "https://github.com/storytold/wordcraft",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"Writing and document design; an open-source, clean-room reimplementation of Microsoft Word, rebuilt in pure Rust\"** — word processor nativo con ribbon, estilos, tablas, track changes, references y mail merge; lee y escribe `.docx`; corre en macOS, Windows, Linux, BSD y web (WASM); **expone MCP + CLI para que un agente lo maneje**.",
+        "por_que_importa": "Hace cinco días (2026-10-05) cubrimos por primera vez los *craft de storytold, y entonces PhotoCraft, FilmCraft y ArtCraft parecían side-projects. El 2026-10-08 se sumó ArtCraft como producto propio y el 2026-10-09 llegó PdfCraft como cuarto miembro de la suite. Hoy aterriza WordCraft como el quinto: editor de documentos en pure Rust con ribbon, estilos, tablas, track changes y `.docx` — todo con el mismo banner (ArtCraft arriba, link a `getartcraft.com/apps/wordcraft`). Lo que parecía disperso es ya una suite deliberada que replica el stack creativo de Adobe (PhotoCraft↔Photoshop, FilmCraft↔Premiere, PdfCraft↔Acrobat) y Office (WordCraft↔Word) en Rust. La tesis diferenciadora está en la exposición de MCP + CLI: no es solo un editor, es un editor que un agente puede operar. Cadencia de cohete: v0.1.0 el 2026-10-07, v0.3.0 el 2026-10-08, v0.4.0 hoy. Para CSS, ángulo tesis — si cubres dev/AI, \"suite open-source que reemplaza Adobe+Office, en Rust y agent-drivable\" es uno de los pocos ángulos con narrativa, tracción y releases simultáneos. Adobe y Office tienen competidor end-to-end open-source por primera vez en una década. También conectamos este release con el protocolo MCP, que ya cubrimos el 2026-09-21 como estándar para tooling de agentes.",
+        "madurez_senales": "Estrellas: 2.191 · Forks: 646 · Lenguaje: Rust · Fecha creación: 2026-10-07 (3 días de antigüedad) · Último push: 2026-10-10 (HOY) · Licencia: MIT OR Apache-2.0 · Descripción oficial: \"Writing and document design; an open-source, clean-room reimplementation of Microsoft Word, rebuilt in pure Rust.\" · Topics: (no verificables en este paso) · Maintainer: org `storytold` · Default branch: `main` · Releases: `v0.1.0` (2026-10-07), `v0.3.0` (2026-10-08), `v0.4.0` (2026-10-10)",
+        "accion_sugerida": "**leer** el README completo (15 min — la sección \"For agents (CLI and MCP)\" es la tesis), **probar** abriendo el binario en `getartcraft.com/apps/wordcraft`, **vigilar** los releases (v0.5.0+, mayor cadencia que la mayoría de office-suites open-source).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/pdfcraft",
+          "primera_mencion": "2026-10-09"
+        },
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/photocraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/filmcraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "paired_with",
+          "dst": "repo:storytold/artcraft",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "implements",
+          "dst": "concept:clean-room-microsoft-office-reimplementation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "integrates_with",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:storytold/wordcraft",
+          "rel": "enables",
+          "dst": "technique:agent-driven-document-editing",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-wordcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "BerriAI/litellm",
+      "url": "https://github.com/BerriAI/litellm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**AI Gateway open-source que unifica 100+ proveedores LLM detrás de una API OpenAI-compatible**, ahora con **core en Rust + SDK en Python**; self-hosted, enterprise-ready, Y Combinator W23. Cadencia industrial: múltiples releases por día.",
+        "por_que_importa": "litellm ya entró a la conversación CSS el 2026-08-27 como uno de los conceptos fundacionales del espacio AI Gateway — junto a sus competidores Cloudflare AI Gateway y OpenRouter — y como integrador canónico de los proveedores OpenAI y Anthropic. Lo que justifica su reaparición trending hoy son dos cambios concretos. Primero, la descripción oficial del repo pasó de \"Python library\" a \"The fastest, litest AI Gateway. Rust core with Python SDK\" — confirma que el núcleo Rust del que hablamos el 27 de agosto es la ruta soportada y que la latencia es ahora el argumento de venta (latencia P50 baja importa cuando el gateway está en el hot-path entre tu app y el LLM). Segundo, la cadencia industrial: cinco releases en tres días — `v1.104.2` y `v1.102.4` (2026-10-08), `v1.105.0-rc.3` (2026-10-08), `v1.106.0-dev.2` y `v1.106.0-dev.3` (2026-10-09). La categoría \"AI Gateway\" ya no es emergente: compite con Portkey, Cloudflare AI Gateway, OpenRouter y Helicone por un hueco estable en el stack. Para CSS, ángulo tesis — si cubres infra de LLMs, litellm es el incumbente open-source que tienes que entender, y el patrón Rust-core + SDK-lenguaje-amigable es la apuesta técnica a seguir. Una nota honesta de cautela: la licencia aparece como NOASSERTION en GitHub; antes de adopción enterprise conviene verificar el archivo LICENSE directamente, dato que no está contrastado en este item.",
+        "madurez_senales": "Estrellas: 60.797 · Forks: 12.201 · Lenguaje: Python (con core en Rust — mencionado en la descripción oficial) · Fecha creación: 2023-07-27 (3+ años de desarrollo) · Último push: 2026-10-10 (HOY) · Licencia: NOASSERTION (verificar licencia real en LICENSE file antes de adopción enterprise — el repo es source-available pero no es OSI-approved per GitHub detection; recomendado uso open-source) · Descripción oficial: \"The fastest, litest AI Gateway. Rust core with Python SDK.\" · Topics: (no verificados en este paso) · Maintainer: org `BerriAI` (Y Combinator W23) · Default branch: `main` · Releases: `v1.106.0-dev.3` (2026-10-09), `v1.105.0-rc.3` (2026-10-08)",
+        "accion_sugerida": "**leer** la sección \"Why LiteLLM\" (5 min), **explorar** el builder local (`uv` + `cargo build`) si quieres validar la tesis Rust, **vigilar** el repo para detectar cuándo GA del Rust core (no dev/rc) llega a `stable`.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:BerriAI/litellm",
+          "rel": "implements",
+          "dst": "concept:llm-gateway",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:BerriAI/litellm",
+          "rel": "competes_with",
+          "dst": "concept:cloudflare-ai-gateway",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:BerriAI/litellm",
+          "rel": "competes_with",
+          "dst": "concept:openrouter",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:BerriAI/litellm",
+          "rel": "integrates_with",
+          "dst": "provider:openai",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:BerriAI/litellm",
+          "rel": "integrates_with",
+          "dst": "provider:anthropic",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:BerriAI/litellm",
+          "rel": "implements",
+          "dst": "tech:rust-core-python-sdk",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "berriai-litellm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Tencent-Hunyuan/Hy-MT2",
+      "url": "https://github.com/Tencent-Hunyuan/Hy-MT2",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Familia \"fast-thinking\" de modelos de traducción multilingüe** de Tencent Hunyuan — 1.8B, 7B y 30B-A3B (MoE); 33 idiomas; soporte para instrucciones de traducción estructuradas (terminología, estilo, personalización, delimiters); incluye `IFMTBench`, un benchmark open para evaluar la fidelidad a instrucciones de traducción.",
+        "por_que_importa": "Tencent Hunyuan publica Hy-MT2 como familia \"fast-thinking\" para traducción multilingüe: tres tamaños (1.8B, 7B, 30B-A3B MoE), 33 idiomas y soporte para instrucciones estructuradas de traducción (terminología, estilo, delimiters). El ángulo tesis que sostienen es serio: según el paper arXiv 2605.22064, los modelos de 7B y 30B-A3B en modo fast-thinking superan a DeepSeek-V4-Pro y Kimi K2.6 en tareas de traducción generales y de negocio, y el 1.8B comprimido a 1.25-bit (440 MB) mediante `AngelSlim` supera a Microsoft Translator y Doubao — esto último no está verificado fuera del paper y debe leerse con cautela. El repo trae además `IFMTBench` (benchmark open para fidelidad a instrucciones), la skill `Hy-MT2-Translator` en ClawHub + SkillHub, y sponsorship oficial de WMT26 con premio especial Hunyuan. Para CSS, ángulo tesis — \"fast-thinking translation\" (razonamiento tipo CoT aplicado a traducir) es una técnica que en 2026 sale de papers chinos hacia producción, y Hy-MT2 es el release open-source más serio del año con esa tesis. Caveat honesto: el último push al repo es del 2026-08-26 (tres meses sin commits); los pesos sí siguen versionándose en HuggingFace/ModelScope, pero el código del repo no recibe actividad reciente — dato relevante si lo evalúas como dependencia. Licencia NOASSERTION en GitHub, pendiente de verificar.",
+        "madurez_senales": "Estrellas: 1.203 · Forks: 116 · Lenguaje: Python (training/inference scripts; los modelos son checkpoints en HuggingFace y ModelScope) · Fecha creación: 2026-05-18 · Último push: 2026-08-26 (3 meses sin push en el repo — pero los modelos están en HF y se siguen versionando) · Licencia: NOASSERTION (verificar LICENSE file antes de uso comercial — los modelos individuales pueden tener licencias específicas, recomendado revisar HF model cards) · Descripción oficial: \"Hy-MT2 is a family of 'fast-thinking' multilingual translation models...\" · Topics: (no verificados en este paso — visiblidad china del repo) · Maintainer: org `Tencent-Hunyuan` · Default branch: `main` · Modelos: Hy-MT2-1.8B/7B/30B-A3B en HuggingFace y ModelScope; variantes FP8, GGUF, 2-bit, 1.25-bit",
+        "accion_sugerida": "**leer** el Hy-MT2 Report (arxiv 2605.22064, 30 min) si cubres modelos de traducción, **probar** `Hy-MT2-1.8B-1.25bit-GGUF` con `llama.cpp` en una laptop (440 MB), **vigilar** las próximas actualizaciones del repo (los modelos en HF pueden evolucionar independientemente del repo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-MT2",
+          "rel": "implements",
+          "dst": "concept:fast-thinking-translation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-MT2",
+          "rel": "competes_with",
+          "dst": "model:deepseek-v4-pro",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-MT2",
+          "rel": "competes_with",
+          "dst": "model:kimi-k2.6",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-MT2",
+          "rel": "releases",
+          "dst": "benchmark:ifmtbench",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-MT2",
+          "rel": "paired_with",
+          "dst": "repo:Tencent/AngelSlim",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-MT2",
+          "rel": "enables",
+          "dst": "technique:edge-translation-1.25bit",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-hunyuan-hy-mt2",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "VERT-sh/VERT",
+      "url": "https://github.com/VERT-sh/VERT",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Utilidad de conversión de archivos que corre WebAssembly en tu dispositivo** — 250+ formatos soportados (imágenes, audio, documentos, video); nada sube a la nube por defecto; self-hostable vía `vertd` para video que no cabe en WASM.",
+        "por_que_importa": "VERT reescribe la categoría \"file conversion\" desde el navegador: 250+ formatos (imagen, audio, documento, video) sin subir nada a la nube por defecto, todo vía WebAssembly ejecutándose local. El espacio llevaba años partido entre SaaS cerrados (CloudConvert, Zamzar, Online-Convert) y utilidades locales especializadas (FFmpeg para video, ImageMagick para imagen, Pandoc para docs); VERT los unifica en una sola UI web sin sacrificar local-first. Para video que no cabe en WASM existe `vertd` como complemento self-hosted, lo que cubre el hueco sin romper la promesa \"nada sube a la nube\". La licencia AGPL-3.0 encaja bien con el modelo: si alguien hace fork SaaS tiene que abrir su código. Hoy (2026-10-09) hay push tras un período de calma, lo que explica el trending. Para CSS, ángulo tesis — si cubres privacidad o local-first, VERT es el ejemplo canónico de producto que SaaS-ifica la UX (UI limpia, web) sin perder la garantía local-first (WASM en el dispositivo); todavía hay pocos competidores serios en ese nicho en 2026. Caveat: los topics del repo no están verificados en este item, y la antigüedad de casi dos años con15.816★ apunta a un proyecto ya maduro, no experimental.",
+        "madurez_senales": "Estrellas: 15.816 · Forks: 845 · Lenguaje: TypeScript (Svelte + WASM) · Fecha creación: 2024-11-11 (casi 2 años) · Último push: 2026-10-09 (HOY) · Licencia: AGPL-3.0 · Descripción oficial: \"The next-generation file converter. Open source, fully local.\" · Topics: (no verificados en este paso) · Maintainer: org `VERT-sh` · Live instance: https://vert.sh",
+        "accion_sugerida": "**probar** subiendo un PDF/MOV/AVI en https://vert.sh y verificando que no sale del navegador, **vigilar** el repo `VERT-sh/vertd` para auto-host cuando necesites video conversion server-side, **leer** `docs/FAQ.md` (5 min — cubre tradeoffs WASM vs server).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:VERT-sh/VERT",
+          "rel": "implements",
+          "dst": "concept:local-first-file-conversion",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VERT-sh/VERT",
+          "rel": "uses",
+          "dst": "tech:webassembly",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VERT-sh/VERT",
+          "rel": "complements",
+          "dst": "repo:VERT-sh/vertd",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VERT-sh/VERT",
+          "rel": "competes_with",
+          "dst": "service:cloudconvert",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VERT-sh/VERT",
+          "rel": "enables",
+          "dst": "technique:browser-only-file-conversion",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vert-sh-vert",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "CopilotKit/OpenIntelligentUI",
+      "url": "https://github.com/CopilotKit/OpenIntelligentUI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Chat interface open-source donde el agente decide si responder con texto, un componente nativo o una UI interactiva generada**, según lo que ayude al usuario. Construido sobre `CopilotKit` y el protocolo **`AG-UI`** (Agent-Generated UI, doc en `ag-ui.com`).",
+        "por_que_importa": "OpenIntelligentUI de CopilotKit aterriza como el primer framework open-source maduro para \"Agent-Generated UI\": el agente decide si responder con texto, con un componente nativo o con una UI interactiva generada según lo que ayude al usuario. El protocolo que estandariza esa decisión es AG-UI (`ag-ui.com`), que ya cubrimos el 2026-08-20 cuando repasamos el repo `ag-ui-protocol/ag-ui`, y el propio repo hermano `CopilotKit/openmuse` entró a la conversación el 2026-09-24. La demo (launch film de 54s en el README) muestra tres modos en un mismo chat: rotar un avión 3D al preguntar por ejes, generar una tabla comparativa al pedir comparativa de planes, y armar una calculadora funcional al pedir una herramienta. Para CSS, ángulo tesis — el \"chat agent\" como categoría de producto está dejando de ser \"responde texto\" para volverse \"elige el medio de salida más útil\", y AG-UI es la pieza de protocolo que faltaba para que esa decisión sea interoperable. Caveat honesto: el proyecto es de marzo de 2026 (7 meses), tiene 2.099★ y un solo maintainer (la org `CopilotKit`); la madurez es buena para un framework nuevo, pero la sostenibilidad a largo plazo depende de que la org mantenga el ritmo.",
+        "madurez_senales": "Estrellas: 2.099 · Forks: 256 · Lenguaje: TypeScript · Fecha creación: 2026-03-12 (7 meses) · Último push: 2026-10-09 (HOY) · Licencia: MIT · Descripción oficial: \"Open-Source Generative UI Framework\" · Topics: (no verificados en este paso) · Maintainer: org `CopilotKit`",
+        "accion_sugerida": "**clonar** el repo y conectar tu propio modelo (cualquier OpenAI-compatible vía AG-UI router), **leer** la sección \"Architecture\" del README (10 min), **vigilar** el protocolo AG-UI en `ag-ui-protocol/ag-ui` para la próxima spec del router.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CopilotKit/OpenIntelligentUI",
+          "rel": "implements",
+          "dst": "concept:agent-generated-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CopilotKit/OpenIntelligentUI",
+          "rel": "integrates_with",
+          "dst": "protocol:ag-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CopilotKit/OpenIntelligentUI",
+          "rel": "uses",
+          "dst": "framework:copilotkit",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:CopilotKit/OpenIntelligentUI",
+          "rel": "paired_with",
+          "dst": "repo:ag-ui-protocol/ag-ui",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:CopilotKit/OpenIntelligentUI",
+          "rel": "paired_with",
+          "dst": "repo:CopilotKit/openmuse",
+          "primera_mencion": "2026-09-24"
+        },
+        {
+          "src": "repo:CopilotKit/OpenIntelligentUI",
+          "rel": "enables",
+          "dst": "technique:chat-agent-decides-ui-medium",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-openintelligentui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "xtool-org/xtool",
+      "url": "https://github.com/xtool-org/xtool",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Reemplazo cross-platform de Xcode** — builda proyectos SwiftPM para iOS, los firma, los instala en dispositivo e interactúa con Apple Developer Services — desde **Linux, Windows (WSL) o macOS**.",
+        "por_que_importa": "xtool es el reemplazo open-source de Xcode para build + firma + deploy de apps iOS con SwiftPM desde Linux, Windows (WSL) o macOS. La dependencia histórica de macOS para desarrollo iOS llevaba años rompiéndose con soluciones comerciales (Xcode Cloud, Runway, Bitrise) o scripts comunitarios (`ios-deploy`, SwiftPM puro); faltaba lo maduro en open-source. xtool cubre los tres pilares desde CLI estándar (subcomandos `setup`, `auth`, `sdk`, `new`, `dev`, `ds`, `devices`, `install`, `launch`), con 5.967★, MIT y v1.21.0 publicada el 2026-10-05. El detalle clave que evita obsolescencia rápida: xtool no mantiene un SDK propio, usa Darwin Swift SDK upstream como dependencia, así que aguanta el ritmo de Swift/Xcode sin quedar descolgado. Para CSS, ángulo tesis — si cubres dev iOS/mobile o tooling Swift, xtool es la pieza open-source que faltaba para sostener el titular \"iOS development is multi-platform now\" sin pagar SaaS. Caveat honesto: el repo lleva casi dos años, lo que avala estabilidad, pero los topics y el detalle de mantenimiento no están verificados en este item — conviene revisar el grafo de commits reciente antes de adoptarlo como dependencia crítica.",
+        "madurez_senales": "Estrellas: 5.967 · Forks: 186 · Lenguaje: Swift · Fecha creación: 2024-11-17 (~2 años) · Último push: 2026-10-06 · Licencia: MIT · Descripción oficial: \"Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, and macOS.\" · Topics: (no verificados en este paso) · Maintainer: org `xtool-org` · Releases: `v1.21.0` (2026-10-05), `v1.20.1` (2026-09-21)",
+        "accion_sugerida": "**probar** siguiendo `xtool.sh/documentation/xtooldocs/installation-linux` (10 min en WSL o Linux), **vigilar** releases (cadencia ~2 semanas), **leer** `tutorials/xtooldocs/first-app` si tienes un SwiftPM propio.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:xtool-org/xtool",
+          "rel": "implements",
+          "dst": "concept:cross-platform-ios-development",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xtool-org/xtool",
+          "rel": "uses",
+          "dst": "tech:swiftpm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xtool-org/xtool",
+          "rel": "replaces",
+          "dst": "tool:xcode",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xtool-org/xtool",
+          "rel": "replaces",
+          "dst": "tool:ios-deploy",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xtool-org/xtool",
+          "rel": "complements",
+          "dst": "project:darwin-swift-sdk",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:xtool-org/xtool",
+          "rel": "enables",
+          "dst": "technique:linux-ios-build",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xtool-org-xtool",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(283.233★, push HOY, Shell/MIT) — re-entry de ayer; sin release formal nueva esta semana, pero Matt Pocock (Total TypeScript) sigue empujando daily; el agent-skill marketplace de Matt sigue siendo el más grande de GitHub por engagement.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mattpocock-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(48.225★, push HOY, HTML/MIT) — re-entry; sin release formal, pero el repo recibe commits diarios. Genera \"editorial diagrams\" como archivos HTML+SVG self-contained para agentes (Claude Code, Codex, Copilot, Cursor).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — la doc (10 min) si usas agentes con skill-host; **probar** `npx skills add cathrynlavery/diagram-design`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cathrynlavery-diagram-design",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "noahdunnagan/fsearch",
+      "url": "https://github.com/noahdunnagan/fsearch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.298★, 2026-10-08, Rust/MIT) — \"Whole-disk file search for macOS\"; p50 ~1.3 ms name search sobre 7.7M archivos en M4 Max; vs `fff` gana por 12× en latencia y typo tolerance 98% vs 88%. Demuestra que en Rust es posible un \"Everything\" replacement para macOS sin Electron.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (3 días de vida, 1.3k★ ya es tracción fuerte para un tool de macOS)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "noahdunnagan-fsearch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+      "url": "https://github.com/Tencent-Hunyuan/Hunyuan3D-WorldClaw",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(no verificado en este cron, ya visto en boletines anteriores) — vigilancia continúa.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-hunyuan-hunyuan3d-worldclaw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "sirioberati/Genjustsu-Open-Source-Workflow",
+      "url": "https://github.com/sirioberati/Genjustsu-Open-Source-Workflow",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(274★, 2026-10-06, Python/MIT) — \"Open-source AI video replacement workflow by TEIN\" — combina face-restoration + segmentation + color-grade, pipeline explicado paso a paso.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (poco stars pero README es tutorial completo; merece un deep-dive)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sirioberati-genjustsu-open-source-workfl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "cartesiancs/map3d",
+      "url": "https://github.com/cartesiancs/map3d",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.582★, 2025-02-23, TypeScript/MIT) — \"Generate City 3D map with R3F\"; trending en daily sin release reciente, push 2026-05-13 (5 meses stale).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (empujado por repo-pinning, no por momentum real)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cartesiancs-map3d",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "Hinln/ARTEX",
+      "url": "https://github.com/Hinln/ARTEX",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(450★, 2026-10-08, Go/AGPL-3.0) — \"ARTEX source-code backup based on Autumn-27/ARTEX v0.3.15\" con descripción en chino; fork con commits preservados.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — (es un fork mirror, no editorial — confirmado por descripción y default_branch main)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hinln-artex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "twostraws/SwiftUI-Agent-Skill",
+      "url": "https://github.com/twostraws/SwiftUI-Agent-Skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.584★, 2026-03-05, MIT) — \"SwiftUI agent skill for Claude Code, Codex, and other AI tools\" — Paul Hudson (Hacking with Swift), el formador más conocido de Swift.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — (probable lanzamiento editorial próximamente)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "twostraws-swiftui-agent-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "anthropics/knowledge-work-plugins",
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(28.440★, 2026-01-23, Python/Apache-2.0) — re-entry; sin release nuevo esta semana. Sigue siendo el repo de plugins más oficial para Claude Cowork/Code; tabla de 11 plugins y conectores en el README es la mejor doc.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el README (10 min) si usas Claude Cowork o Claude Code en contexto de empresa",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-knowledge-work-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 9,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

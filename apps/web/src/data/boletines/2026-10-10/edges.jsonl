@@ -1,0 +1,66 @@
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-storytold-wordcraft", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-storytold-wordcraft", "dst": "tema:storytold-wordcraft", "rel": "trata", "added": "2026-10-10"}
+{"src": "repo:storytold/wordcraft", "dst": "repo:storytold/pdfcraft", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": "2026-10-09"}
+{"src": "repo:storytold/wordcraft", "dst": "repo:storytold/photocraft", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/wordcraft", "dst": "repo:storytold/filmcraft", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/wordcraft", "dst": "repo:storytold/artcraft", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": "2026-10-08"}
+{"src": "repo:storytold/wordcraft", "dst": "concept:clean-room-microsoft-office-reimplementation", "rel": "implements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:storytold/wordcraft", "dst": "protocol:mcp", "rel": "integrates_with", "added": "2026-10-10", "primera_mencion": "2026-09-21"}
+{"src": "repo:storytold/wordcraft", "dst": "technique:agent-driven-document-editing", "rel": "enables", "added": "2026-10-10", "primera_mencion": null}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-berriai-litellm", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-berriai-litellm", "dst": "tema:berriai-litellm", "rel": "trata", "added": "2026-10-10"}
+{"src": "repo:BerriAI/litellm", "dst": "concept:llm-gateway", "rel": "implements", "added": "2026-10-10", "primera_mencion": "2026-08-27"}
+{"src": "repo:BerriAI/litellm", "dst": "concept:cloudflare-ai-gateway", "rel": "competes_with", "added": "2026-10-10", "primera_mencion": "2026-08-27"}
+{"src": "repo:BerriAI/litellm", "dst": "concept:openrouter", "rel": "competes_with", "added": "2026-10-10", "primera_mencion": "2026-08-27"}
+{"src": "repo:BerriAI/litellm", "dst": "provider:openai", "rel": "integrates_with", "added": "2026-10-10", "primera_mencion": "2026-08-27"}
+{"src": "repo:BerriAI/litellm", "dst": "provider:anthropic", "rel": "integrates_with", "added": "2026-10-10", "primera_mencion": "2026-08-27"}
+{"src": "repo:BerriAI/litellm", "dst": "tech:rust-core-python-sdk", "rel": "implements", "added": "2026-10-10", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-tencent-hunyuan-hy-mt2", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-tencent-hunyuan-hy-mt2", "dst": "tema:tencent-hunyuan-hy-mt2", "rel": "trata", "added": "2026-10-10"}
+{"src": "repo:Tencent-Hunyuan/Hy-MT2", "dst": "concept:fast-thinking-translation", "rel": "implements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hy-MT2", "dst": "model:deepseek-v4-pro", "rel": "competes_with", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hy-MT2", "dst": "model:kimi-k2.6", "rel": "competes_with", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hy-MT2", "dst": "benchmark:ifmtbench", "rel": "releases", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hy-MT2", "dst": "repo:Tencent/AngelSlim", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:Tencent-Hunyuan/Hy-MT2", "dst": "technique:edge-translation-1.25bit", "rel": "enables", "added": "2026-10-10", "primera_mencion": null}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-vert-sh-vert", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-vert-sh-vert", "dst": "tema:vert-sh-vert", "rel": "trata", "added": "2026-10-10"}
+{"src": "repo:VERT-sh/VERT", "dst": "concept:local-first-file-conversion", "rel": "implements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:VERT-sh/VERT", "dst": "tech:webassembly", "rel": "uses", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:VERT-sh/VERT", "dst": "repo:VERT-sh/vertd", "rel": "complements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:VERT-sh/VERT", "dst": "service:cloudconvert", "rel": "competes_with", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:VERT-sh/VERT", "dst": "technique:browser-only-file-conversion", "rel": "enables", "added": "2026-10-10", "primera_mencion": null}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-copilotkit-openintelligentui", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-copilotkit-openintelligentui", "dst": "tema:copilotkit-openintelligentui", "rel": "trata", "added": "2026-10-10"}
+{"src": "repo:CopilotKit/OpenIntelligentUI", "dst": "concept:agent-generated-ui", "rel": "implements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:CopilotKit/OpenIntelligentUI", "dst": "protocol:ag-ui", "rel": "integrates_with", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:CopilotKit/OpenIntelligentUI", "dst": "framework:copilotkit", "rel": "uses", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:CopilotKit/OpenIntelligentUI", "dst": "repo:ag-ui-protocol/ag-ui", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": "2026-08-20"}
+{"src": "repo:CopilotKit/OpenIntelligentUI", "dst": "repo:CopilotKit/openmuse", "rel": "paired_with", "added": "2026-10-10", "primera_mencion": "2026-09-24"}
+{"src": "repo:CopilotKit/OpenIntelligentUI", "dst": "technique:chat-agent-decides-ui-medium", "rel": "enables", "added": "2026-10-10", "primera_mencion": null}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-xtool-org-xtool", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-xtool-org-xtool", "dst": "tema:xtool-org-xtool", "rel": "trata", "added": "2026-10-10"}
+{"src": "repo:xtool-org/xtool", "dst": "concept:cross-platform-ios-development", "rel": "implements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:xtool-org/xtool", "dst": "tech:swiftpm", "rel": "uses", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:xtool-org/xtool", "dst": "tool:xcode", "rel": "replaces", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:xtool-org/xtool", "dst": "tool:ios-deploy", "rel": "replaces", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:xtool-org/xtool", "dst": "project:darwin-swift-sdk", "rel": "complements", "added": "2026-10-10", "primera_mencion": null}
+{"src": "repo:xtool-org/xtool", "dst": "technique:linux-ios-build", "rel": "enables", "added": "2026-10-10", "primera_mencion": null}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-mattpocock-skills", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-mattpocock-skills", "dst": "tema:mattpocock-skills", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-cathrynlavery-diagram-design", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-cathrynlavery-diagram-design", "dst": "tema:cathrynlavery-diagram-design", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-noahdunnagan-fsearch", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-noahdunnagan-fsearch", "dst": "tema:noahdunnagan-fsearch", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-tencent-hunyuan-hunyuan3d-worldclaw", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-tencent-hunyuan-hunyuan3d-worldclaw", "dst": "tema:tencent-hunyuan-hunyuan3d-worldclaw", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-sirioberati-genjustsu-open-source-workflow", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-sirioberati-genjustsu-open-source-workflow", "dst": "tema:sirioberati-genjustsu-open-source-workfl", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-cartesiancs-map3d", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-cartesiancs-map3d", "dst": "tema:cartesiancs-map3d", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-hinln-artex", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-hinln-artex", "dst": "tema:hinln-artex", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-twostraws-swiftui-agent-skill", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-twostraws-swiftui-agent-skill", "dst": "tema:twostraws-swiftui-agent-skill", "rel": "trata", "added": "2026-10-10"}
+{"src": "boletin:2026-10-10", "dst": "item:https-github-com-anthropics-knowledge-work-plugins", "rel": "menciona", "added": "2026-10-10"}
+{"src": "item:https-github-com-anthropics-knowledge-work-plugins", "dst": "tema:anthropics-knowledge-work-plugins", "rel": "trata", "added": "2026-10-10"}
