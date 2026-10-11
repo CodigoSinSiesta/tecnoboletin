@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-10-11",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Repensar la IA local cuando la nube sube de precio",
+  "posicionamiento": "La tesis de hoy son dos narrativas opuestas. Por un lado, `storytold/craft-launcher` apuesta por Rust nativo con un único binario (egui, sin Electron) para coordinar 12 apps de craft unifamiliares, unificando distribucion y arranque. Por otro, `yingwu-zh/specter` y `pproenca/dotflow` se especializan: el primero en auditoria de seguridad de Claude Code con dashboards de skills/MCP/hooks, el segundo en wrapping de LLMs con guardrails y presupuestos. Rust consolida frente a IA vigilada.",
+  "convergencia_stack_css": "",
+  "cruzado_grafo": "",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

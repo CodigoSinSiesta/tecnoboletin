@@ -1,0 +1,501 @@
+{
+  "version": 2,
+  "date": "2026-10-11",
+  "boletin_origen": "2026-10-11-trending.md",
+  "resumen_ejecutivo": "- **`storytold/craft-launcher` (Apache-2.0/MIT, Rust, 626★, push HOY)** no es un editor más: es **el launcher que unifica la suite `storytold/*craft` que ayer contábamos como 5 productos Rust (PhotoCraft, WordCraft, PdfCraft, FilmCraft, ArtCraft). El README de hoy revela 12 aplicaciones: PhotoCraft, LightCraft, FilmCraft, DesignCraft, VectorCraft, PdfCraft, EffectCraft, WordCraft, DeckCraft, GridCraft, CADCraft y SoundCraft**. Es decir: una suite open-source que cubre Photoshop, Lightroom, Premiere, InDesign, Illustrator, Acrobat, AfterEffects, Word, PowerPoint, Keynote/AutoCAD/Logic/Reaper — todo en pure Rust, todo con misma marca, mismo launcher, mismo binario por plataforma. Adobe+Office+AutoCAD tienen competidor end-to-end open-source, y el hub que lo mantiene coherente acaba de aterrizar en trending.\n- **`morluto/rea` (MIT, TypeScript, 79.669★, push HOY)** re-emerge en posición #1 de Trendshift como **\"Reverse engineer anything with agents, from app behavior down to native binaries\"**. La cifra importa: 79k★ en un proyecto de reversing agent-driven es masa crítica. La tesis: agentes que ejecutan tareas de reversing end-to-end (decompilación, instrumentación dinámica, análisis de protocolos) sin intervención humana. Pasa el \"smell test\" de la skill (re-entries con sustancia: 1 día desde último seen y release industrial).\n- **`Yeachan-Heo/oh-my-claudecode` (MIT, TypeScript, 39.779★, push HOY)** es **\"Multi-agent orchestration for Claude Code. Zero learning curve\"** — el \"oh-my-zsh\" de Claude Code, pero con esteroides: workflows multi-agente preempaquetados, slash commands, integración con Codex (vía `oh-my-codex`) y **un spin-off (`gajae-code`) que el README anuncia como pensado para OpenClaw, Hermes, Grokbot y runtimes agent similares**. Tracción: 7 colaboradores top con 65/52/20 commits; releases activos; Discord activo. Para CSS, ángulo tesis — **es la pieza que faltaba para que Claude Code sea un producto, no solo una CLI**.\n- **`aindeev/agent-chrome-relay` (MIT, JavaScript, 249★, push HOY)** resuelve un problema real: **deja que tus agentes (Claude Code, Codex, Cursor, Paseo) usen TU Chrome logueado en background tabs, sin robar foco ni abrir diálogos**. Arquitectura: extensión MV3 + relay local (`127.0.0.1:9333`) + CLI. Comandos ~0.15s por acción. Setup en 2 minutos con un prompt pre-hecho para Claude Code/Codex/Cursor. Para CSS — **es la pieza de infraestructura que faltaba para \"agente con su propio browser sin pelearse con tu sesión\"**, y encima lo publica alguien (Alexey Indeev) que tiene blog (`The Leveraged Mind`) y sabe vender.\n- Re-entries con historia nueva: `storytold/wordcraft` (3.497★, push HOY, v0.5.0+ ya desde el suite), `storytold/photocraft` (43.437★, push HOY), `mattpocock/skills` (284.920★, push 2026-10-09) y `cathrynlavery/diagram-design` (49.263★, push 2026-10-10). Sin novedad editorial: ya cubiertos ayer.\n- Fuentes consultadas: Trendshift daily (25 items parseados, 0 sponsored filtrados), GitHub Trending daily + TypeScript + Python + Rust slices (37 repos únicos, dedupe case-insensitive contra `seen_items` con `seen_lc` lookup), GitHub API sin token (25 verificaciones completas; ningún rate-limit hit). Blogwatcher 08:00 no publicó archivo de hoy (patrón conocido desde julio), por lo que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "storytold/craft-launcher",
+      "url": "https://github.com/storytold/craft-launcher",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"ArtCraft Launcher — One place to install, update and open every app in the Craft App Suite, rebuilt in pure Rust\"** — un launcher nativo (egui, sin Electron) que instala, actualiza y abre los 12 productos de la suite desde una sola ventana o icono en menu bar, con SHA-256 checksums contra cada release.",
+        "por_que_importa": "La suite `storytold/*craft` ya pasó por aquí: cubrimos PhotoCraft, PdfCraft, WordCraft, FilmCraft y ArtCraft entre el 2026-10-05 y el 2026-10-10 (ver boletim de cada fecha). Hoy aparece el launcher que faltaba para sostener la tesis — un único binario Rust (con `egui`, sin Electron) que instala, actualiza y abre los 12 productos de la suite, verificando SHA-256 contra cada release. El README del launcher nombra los 12: PhotoCraft, LightCraft, FilmCraft, DesignCraft, VectorCraft, PdfCraft, EffectCraft, WordCraft, DeckCraft, GridCraft, CADCraft y SoundCraft — el equivalente open-source en Rust de Photoshop+Lightroom, Premiere, InDesign, Illustrator, Acrobat, After Effects, Word, PowerPoint/Keynote, AutoCAD y Logic/Reaper, todos bajo la misma marca `getartcraft.com`. Para CSS, ángulo tesis: el \"Adobe/Office suite open-source\" deja de ser hipotético y se convierte en un producto con su propio gestor de releases multiplataforma. Caveat de rigor: con 2 semanas de vida y 626★, la tracción no valida todavía reemplazo real; lo significativo es el shape — un launcher centralizado para 12apps Rust nativas es la primera vez que vemos este patrón en espacio creativo OSS.",
+        "madurez_senales": "Estrellas: 626 · Forks: 211 · Lenguaje: Rust (UI nativa con `egui`, \"no Electron, no web view\") · Fecha creación: 2026-09-26 (~2 semanas) · Último push: 2026-10-11 (HOY) · Licencia: MIT OR Apache-2.0 · Descripción oficial: \"The Craft App Launcher\" · Topics: (no verificables en este paso) · Default branch: `main` · Suite declarada en README: 12 productos (PhotoCraft, LightCraft, FilmCraft, DesignCraft, VectorCraft, PdfCraft, EffectCraft, WordCraft, DeckCraft, GridCraft, CADCraft, SoundCraft)",
+        "accion_sugerida": "**vigilar** la cadencia de releases (los 12 productos están en early alpha; cada semana sale algo); **explorar** descargando el launcher desde `getartcraft.com/apps` y abriendo uno o dos de los productos para confirmar la tesis \"Rust GUI nativa, agent-drivable\"; **leer** el README del launcher (15 min, sección \"The Craft App Suite\").",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/photocraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/pdfcraft",
+          "primera_mencion": "2026-10-09"
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/wordcraft",
+          "primera_mencion": "2026-10-10"
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/filmcraft",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/artcraft",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/designcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/vectorcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/effectcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/deckcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/gridcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/cadcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "hub_of",
+          "dst": "repo:storytold/soundcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "implements",
+          "dst": "concept:open-source-adobe-office-suite",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "written_in",
+          "dst": "tech:rust",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:storytold/craft-launcher",
+          "rel": "ui_framework",
+          "dst": "tech:egui",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-craft-launcher",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**agente open-source que automatiza reversing de aplicaciones** — desde comportamiento de UI hasta binarios nativos — orquestando LLMs con herramientas de análisis estático/dinámico.",
+        "por_que_importa": "Cubrimos `morluto/rea` por primera vez el 2026-08-24 como caso de reversing agent-driven, y el 2026-10-05 profundizamos cuando entró al grafo como competidor de Ghidra e IDA Pro y habilitador de análisis binario automatizado; los detalles de arquitectura y benchmarks están en aquel boletim. Hoy reaparece en posición #1 de Trendshift y vuelve a empujar código: 79.669★ / 17.210 forks en TypeScript bajo MIT es masa crítica inusual para un proyecto de reversing, y la cadencia de releases sugiere iteración real, no solo hype. La tesis importa porque el flujo manual con Ghidra/IDA está siendo reemplazado por agentes que orquestan decompilación, instrumentación dinámica y análisis de protocolos — el equivalente 2026-2027 de lo que Ghidra fue en 2019, ahora agent-driven. Para el lector CSS: si tocas seguridad, dev o AI, este es el nuevo incumbent a vigilar; si solo consumes OSS creativo, no es tu pieza. Caveat: el repo no tiene fecha de creación verificada en este paso, así que la antigüedad exacta no la puedo confirmar.",
+        "madurez_senales": "Estrellas: 79.669 · Forks: 17.210 · Lenguaje: TypeScript · Fecha creación: (no verificado en este paso) · Último push: 2026-10-11 (HOY) · Licencia: MIT · Descripción oficial: \"Reverse engineer anything with agents, from app behavior down to native binaries.\" · Topics: (no verificados en este paso) · Default branch: `main` · Estado en grafo: visto en `seen_items` con last_seen=2026-10-09 (re-entry pos 1, 2 días)",
+        "accion_sugerida": "**leer** el README (10 min) para entender qué herramientas LLM integra y qué pipelines automatiza; **vigilar** los commits (la cadencia es industrial: push diario en repos >50k★ no es lo normal); **explorar** con un binario de prueba propio si tienes uno a mano (no ejecutar contra software de terceros sin autorización).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:morluto/rea",
+          "rel": "implements",
+          "dst": "concept:agent-driven-reverse-engineering",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "competes_with",
+          "dst": "tool:ghidra",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "competes_with",
+          "dst": "tool:ida-pro",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "enables",
+          "dst": "technique:automated-binary-analysis",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "written_in",
+          "dst": "tech:typescript",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "relevant_to",
+          "dst": "concept:ai-assisted-security",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Yeachan-Heo/oh-my-claudecode",
+      "url": "https://github.com/Yeachan-Heo/oh-my-claudecode",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**capa de orquestación multi-agente para Claude Code** que empaqueta workflows, slash commands y plugins pre-hechos — el \"oh-my-zsh\" de Claude Code. Tiene un sister-repo para OpenAI Codex (`oh-my-codex`) y un spin-off (`gajae-code`) que el propio README presenta como **\"built for OpenClaw, Hermes, Grokbot, and similar agent runtimes\"**.",
+        "por_que_importa": "Cubrimos orquestación multi-agente para Claude Code el 2026-08-27 y la integración concreta con Claude Code el 2026-09-15; el detalle del wrapper y los comandos pre-hechos está en aquel boletim. Hoy `oh-my-claudecode` vuelve con 39.779★ / 3.563 forks en TypeScript MIT, 7 contribuidores top con cadencia real (65/52/20/20/20/20/15 commits), README localizado a 7 idiomas (EN/KO/ZH/JA/ES/VI/PT) y un spin-off, `gajae-code`, que su README presenta explícitamente como \"built for OpenClaw, Hermes, Grokbot, and similar agent runtimes\" — uno de los primeros proyectos OSS mainstream que nombra a Hermes como peer de integración junto a OpenAI/Anthropic. Para CSS, doble ángulo: producto (la tracción es madura, no hype) y local-first (que un orquestador deClaude referencie runtimes open-source valida que el ecosistema agentic ve a los runtimes locales como pares). Caveat de rigor: la marca Hermes en el README no está contrastada con su homónima agent runtime de Nous Research — podría coincidir el nombre sin ser el mismo proyecto, y no tengo cómo verificarlo en este paso.",
+        "madurez_senales": "Estrellas: 39.779 · Forks: 3.563 · Lenguaje: TypeScript · Fecha creación: (no verificado en este paso) · Último push: 2026-10-11 (HOY) · Licencia: MIT · Descripción oficial: \"Teams-first Multi-agent orchestration for Claude Code\" · Topics: (no verificados en este paso) · Default branch: `main` · Multiidioma: README en EN, KO, ZH, JA, ES, VI, PT · Maintainer principal: Yeachan Heo + 7 colaboradores top con commits de 65/52/20/20/20/15 · Producto hermano: `oh-my-codex` (OpenAI Codex), `gajae-code` (spin-off para OpenClaw/Hermes/Grokbot)",
+        "accion_sugerida": "**leer** el README (10 min, especialmente \"Quick Start\" y \"CLI Reference\"); **explorar** instalando el plugin en Claude Code para una sesión real; **vigilar** `gajae-code` que es el spin-off con ángulo local-first y menciona Hermes explícitamente.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Yeachan-Heo/oh-my-claudecode",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:Yeachan-Heo/oh-my-claudecode",
+          "rel": "wraps",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:Yeachan-Heo/oh-my-claudecode",
+          "rel": "paired_with",
+          "dst": "repo:Yeachan-Heo/oh-my-codex",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Yeachan-Heo/oh-my-claudecode",
+          "rel": "spin_off",
+          "dst": "repo:Yeachan-Heo/gajae-code",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Yeachan-Heo/gajae-code",
+          "rel": "integrates_with",
+          "dst": "runtime:hermes",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Yeachan-Heo/gajae-code",
+          "rel": "integrates_with",
+          "dst": "runtime:openclaw",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Yeachan-Heo/gajae-code",
+          "rel": "integrates_with",
+          "dst": "runtime:grokbot",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Yeachan-Heo/oh-my-claudecode",
+          "rel": "written_in",
+          "dst": "tech:typescript",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Yeachan-Heo/oh-my-claudecode",
+          "rel": "relevant_to",
+          "dst": "company:anthropic",
+          "primera_mencion": "2026-08-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yeachan-heo-oh-my-claudecode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "aindeev/agent-chrome-relay",
+      "url": "https://github.com/aindeev/agent-chrome-relay",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**relé que conecta tu agente (Claude Code, Codex, Cursor, Paseo) con tu Chrome real, manteniendo tus logins y ejecutando en tabs inactivas en background** — sin robar foco, sin diálogos, sin la pantalla \"Allow remote debugging?\".",
+        "por_que_importa": "Resuelve un problema que cualquiera que ha intentado automatizar con agentes conoce: \"¿cómo hago que el agente use mi browser sin que se pelee con mi sesión?\". El enfoque es una extensión Chrome MV3 más un relay local en `127.0.0.1:9333` más una CLI, cada componente con su propio endpoint DevTools; los comandos que típicamente roban foco o disparan el diálogo \"Allow remote debugging?\" se interceptan, de modo que el agente opera en tabs inactivas sin interrumpir al usuario. Setup en ~2 minutos con un prompt pre-hecho. Para CSS: es la pieza de infraestructura que faltaba para que \"agente con su propio browser en background\" pase de truco de demo a producto reproducible, firmada por Alexey Indeev (autor del blog The Leveraged Mind, donde desarrolla la tesis). Caveats de rigor: el repo es nuevo (249★, 3 forks, fecha de creación no verificada en este paso) — la promesa arquitectónica es creíble, pero el producto aún no tiene masa crítica que lo avale; el grafo tampoco aporta primera_mencion para este nodo, así que esta es la primera cobertura en el boletín. Si cubre dev o AI, vigílalo; si no, ignorarlo.",
+        "madurez_senales": "Estrellas: 249 · Forks: 3 · Lenguaje: JavaScript (extensión MV3 + relay Node.js + CLI) · Fecha creación: (no verificado en este paso) · Último push: 2026-10-11 (HOY) · Licencia: MIT · Descripción oficial: \"Let your AI agents use your Chrome, signed in as you, in background tabs. By Alexey Indeev · blog: read.aindeev.com · X: @AlexeyIndeev\" · Topics: (no verificados en este paso) · Default branch: `main` · Latencia reportada por README: ~0.15s por comando · Plataformas: macOS (extensión MV3 + LaunchAgent), Chrome · Dependencias: Node.js 20+, `agent-browser` (`npm i -g agent-browser`), Google Chrome · Compatible con: Claude Code, Codex, Cursor, Paseo",
+        "accion_sugerida": "**probar** en macOS siguiendo el README (2 min de setup, 5 min de prueba); **leer** el blog asociado (`read.aindeev.com`) para entender la tesis completa; **vigilar** compatibilidad con Windows/Linux (el README es macOS-first).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "enables",
+          "dst": "technique:agent-browser-control",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "uses",
+          "dst": "protocol:chrome-devtools",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "integrates_with",
+          "dst": "tool:openai-codex",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "integrates_with",
+          "dst": "tool:cursor",
+          "primera_mencion": "2026-10-03"
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "integrates_with",
+          "dst": "tool:agent-browser",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "complements",
+          "dst": "concept:browser-automation",
+          "primera_mencion": "2026-10-02"
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "complements",
+          "dst": "tool:playwright",
+          "primera_mencion": "2026-10-02"
+        },
+        {
+          "src": "repo:aindeev/agent-chrome-relay",
+          "rel": "written_in",
+          "dst": "tech:javascript",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aindeev-agent-chrome-relay",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "BitterSecurity/Decepticon",
+      "url": "https://github.com/BitterSecurity/Decepticon",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.875★, push 2026-10-10, Python, Apache-2.0) — \"Autonomous Hacking Agent for Red Team\"; el README lo posiciona como \"Another AI hacker? Let us guess — it runs nmap and writes a report\" (anti-hype). Live hosted app en `app.decepticon.red`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si eres de seguridad, **ignorar** si no",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bittersecurity-decepticon",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "rociiu/talorys",
+      "url": "https://github.com/rociiu/talorys",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(499★, push 2026-10-11, TypeScript, MIT) — **\"Tu AI agent personal en tu propia cuenta de Cloudflare\"**; `npx create-talorys@latest` deploy un agente con chat, memoria, tareas, notas y recordatorios en Cloudflare Pages + Workers AI (Z.ai/GLM-4.7-flash). Single-user by design",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — si Cloudflare Workers AI es tu stack; tesis local-first parcial (corre en TU cuenta, no en la del vendor)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rociiu-talorys",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "marclou/mailcheap",
+      "url": "https://github.com/marclou/mailcheap",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(584★, push 2026-10-10, JavaScript, MIT) — newsletter self-hosted sobre Amazon SES + Vercel + MongoDB; ~$0.10 por 1.000 emails. \"No support. This is a one-time open-source release\" — autor declara que no va a mantenerlo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el README si quieres auto-hospedar tu newsletter (10 min); **probar** el fork si te convence el modelo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "marclou-mailcheap",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "wheresryan22/anatomy",
+      "url": "https://github.com/wheresryan22/anatomy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(477★, push 2026-10-10, JavaScript, MIT) — skill de Claude Code que convierte una idea técnica en una figura isométrica interactiva SVG de una máquina real",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — instalándolo como skill; **vigilar** más skills de este autor (estilo \"skills-as-software\")",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wheresryan22-anatomy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "ARahim3/DigUp",
+      "url": "https://github.com/ARahim3/DigUp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(325★, push 2026-10-10, Swift, MIT) — búsqueda local en tu Mac por contenido de archivos (fotos, PDFs, vídeos, código); on-device, usa EmbeddingGemma 2 de Google DeepMind",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si te importa búsqueda local-first; **probar** en macOS",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "arahim3-digup",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "krishhgg/Insomnia",
+      "url": "https://github.com/krishhgg/Insomnia",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(551★, push 2026-10-11, Swift, MIT) — app macOS menu-bar que mantiene tu Mac despierto de forma segura durante sesiones de agentes temporizadas",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — si automatizas cosas con agentes en Mac y no quieres que se duerma a mitad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "krishhgg-insomnia",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/4 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

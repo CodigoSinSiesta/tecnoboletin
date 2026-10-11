@@ -1,0 +1,59 @@
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-storytold-craft-launcher", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-storytold-craft-launcher", "dst": "tema:storytold-craft-launcher", "rel": "trata", "added": "2026-10-11"}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/photocraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/pdfcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": "2026-10-09"}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/wordcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": "2026-10-10"}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/filmcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/artcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": "2026-10-08"}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/designcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/vectorcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/effectcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/deckcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/gridcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/cadcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "repo:storytold/soundcraft", "rel": "hub_of", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "concept:open-source-adobe-office-suite", "rel": "implements", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "tech:rust", "rel": "written_in", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:storytold/craft-launcher", "dst": "tech:egui", "rel": "ui_framework", "added": "2026-10-11", "primera_mencion": null}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-10-11"}
+{"src": "repo:morluto/rea", "dst": "concept:agent-driven-reverse-engineering", "rel": "implements", "added": "2026-10-11", "primera_mencion": "2026-08-24"}
+{"src": "repo:morluto/rea", "dst": "tool:ghidra", "rel": "competes_with", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "tool:ida-pro", "rel": "competes_with", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "technique:automated-binary-analysis", "rel": "enables", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "tech:typescript", "rel": "written_in", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "concept:ai-assisted-security", "rel": "relevant_to", "added": "2026-10-11", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-yeachan-heo-oh-my-claudecode", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-yeachan-heo-oh-my-claudecode", "dst": "tema:yeachan-heo-oh-my-claudecode", "rel": "trata", "added": "2026-10-11"}
+{"src": "repo:Yeachan-Heo/oh-my-claudecode", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-10-11", "primera_mencion": "2026-08-27"}
+{"src": "repo:Yeachan-Heo/oh-my-claudecode", "dst": "tool:claude-code", "rel": "wraps", "added": "2026-10-11", "primera_mencion": "2026-09-15"}
+{"src": "repo:Yeachan-Heo/oh-my-claudecode", "dst": "repo:Yeachan-Heo/oh-my-codex", "rel": "paired_with", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:Yeachan-Heo/oh-my-claudecode", "dst": "repo:Yeachan-Heo/gajae-code", "rel": "spin_off", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:Yeachan-Heo/gajae-code", "dst": "runtime:hermes", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:Yeachan-Heo/gajae-code", "dst": "runtime:openclaw", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:Yeachan-Heo/gajae-code", "dst": "runtime:grokbot", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:Yeachan-Heo/oh-my-claudecode", "dst": "tech:typescript", "rel": "written_in", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:Yeachan-Heo/oh-my-claudecode", "dst": "company:anthropic", "rel": "relevant_to", "added": "2026-10-11", "primera_mencion": "2026-08-18"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-aindeev-agent-chrome-relay", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-aindeev-agent-chrome-relay", "dst": "tema:aindeev-agent-chrome-relay", "rel": "trata", "added": "2026-10-11"}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "technique:agent-browser-control", "rel": "enables", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "protocol:chrome-devtools", "rel": "uses", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": "2026-09-15"}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "tool:openai-codex", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "tool:cursor", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": "2026-10-03"}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "tool:agent-browser", "rel": "integrates_with", "added": "2026-10-11", "primera_mencion": null}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "concept:browser-automation", "rel": "complements", "added": "2026-10-11", "primera_mencion": "2026-10-02"}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "tool:playwright", "rel": "complements", "added": "2026-10-11", "primera_mencion": "2026-10-02"}
+{"src": "repo:aindeev/agent-chrome-relay", "dst": "tech:javascript", "rel": "written_in", "added": "2026-10-11", "primera_mencion": null}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-bittersecurity-decepticon", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-bittersecurity-decepticon", "dst": "tema:bittersecurity-decepticon", "rel": "trata", "added": "2026-10-11"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-rociiu-talorys", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-rociiu-talorys", "dst": "tema:rociiu-talorys", "rel": "trata", "added": "2026-10-11"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-marclou-mailcheap", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-marclou-mailcheap", "dst": "tema:marclou-mailcheap", "rel": "trata", "added": "2026-10-11"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-wheresryan22-anatomy", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-wheresryan22-anatomy", "dst": "tema:wheresryan22-anatomy", "rel": "trata", "added": "2026-10-11"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-arahim3-digup", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-arahim3-digup", "dst": "tema:arahim3-digup", "rel": "trata", "added": "2026-10-11"}
+{"src": "boletin:2026-10-11", "dst": "item:https-github-com-krishhgg-insomnia", "rel": "menciona", "added": "2026-10-11"}
+{"src": "item:https-github-com-krishhgg-insomnia", "dst": "tema:krishhgg-insomnia", "rel": "trata", "added": "2026-10-11"}
