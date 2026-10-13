@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-10-13",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La inferencia de frontera se democratiza: LLM en una sola tarjeta y1-bit oficial",
+  "posicionamiento": "Tres hallazgos de hoy convergen en una sola tesis: la barrera de hardware para correr modelos frontera cae por dos vías simultáneas. Microsoft publica BitNet como framework 1-bit production-grade (CPU ARM/x86 + GPU, ASR y embeddings), airllm demuestra que modelos de 2.8T parámetros caben en una sola tarjeta con streaming por capas, y NVIDIA abre USD BRep como primer ladrillo oficial post-Omniverse. Context-mode y el trend-radar son el sustrato operativo: el primero exprime el contexto, el segundo detecta la próxima ola 7-14 días antes.",
+  "convergencia_stack_css": "La convergencia con el stack local-first de CSS es directa: BitNet + airllm son exactamente el camino \"Ollama + DeepSeek sobre hardware modesto\" que defendemos, con cifras concretas (Kimi K3 en 3.72 GB, embeddings 1-bit con 1.42-2.28× speedup). Context-mode encaja en el flujo Claude Code de OpenCode/Codex que Alejandro opera a diario. El trend-radar completa el círculo del propio boletín como producto editorial.",
+  "cruzado_grafo": "BitNet re-entra reforzando el nodo company:microsoft-research (cubierto el 2026-09-19) y compitiendo con llama.cpp (primera mención2026-08-17). airllm actualiza la cadena Kimi K3 (2026-07-28) y reta a llama.cpp y vllm. Context-mode reaparece con todas sus relaciones MCP/Claude Code/Cursor/OpenAI Codex ya mapeadas desde 2026-09-08. USD BRep es nuevo en el grafo como competidor oficial de solidcraft y la suite storytold/* que cubrimos el 2026-10-12.",
+  "tendencias_5_boletines": "Con solo dos días previos en contexto (10-11 y 10-12) no hay una ventana de cinco boletines, así que la lectura honesta es: hoy el hilo se separa del CAD open-source en Rust de los días anteriores (que sigue avanzando vía NVIDIA oficial) y se cruza con la línea de inferencia frugal que llevaba semanas gestándose. La tesis \"ofimática + agente integrado\" del 10-12 se complementa hoy con \"LLM frontera + hardware modesto\" como segunda línea editorial clara.",
+  "alertas": [
+    "Context-mode es Elastic License v2 / source-available: los badges de adopción enterprise no implican contribución abierta y pueden restringir uso comercial.",
+    "Los benchmarks de airllm (Kimi K3 en 3.72 GB) son del autor; verificarlos antes de planificar infraestructura propia.",
+    "El claim de BitNet como \"production-grade\" se apoya en RTF<1 y kernels oficiales, pero la madurez en GPU es de mayo 2025: queda por ver la tracción real fuera de Microsoft.",
+    "El demo online de YuE2 puede no reflejar latencia y coste de inferencia real, los audioles son proxies jugables no demostrables."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "BitNet como framework maduro de inferencia 1-bit cambia el cálculo de coste del stack local-first; medir RTF y consumo de RAM en Raspberry Pi es accionable hoy."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "airllm con streaming por capas habilita fine-tuning local en RTX 3060 Ti; caso de uso directo para adapters del agente CSS."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Context-mode resuelve el dolor real de tool output devorando contexto; instalarlo en el flujo OpenCode/Claude Code tiene retorno inmediato."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "El trend-radar promete 7-14 días de ventaja editorial; útil como segundo signal source junto al pipeline actual de Boletín."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "YuE2 cruza planificación simbólica LLM con generación de audio: ángulo de 'agentes creativos' encaja con la línea editorial de IA aplicada."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

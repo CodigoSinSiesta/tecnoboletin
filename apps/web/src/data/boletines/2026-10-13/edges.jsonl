@@ -1,0 +1,85 @@
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-microsoft-bitnet", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-microsoft-bitnet", "dst": "tema:microsoft-bitnet", "rel": "trata", "added": "2026-10-13"}
+{"src": "repo:microsoft/BitNet", "dst": "concept:1-bit-llm-inference", "rel": "implements", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "tech:cpp", "rel": "written_in", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "tech:avx2", "rel": "targets", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "tech:arm-neon", "rel": "targets", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "tool:llama.cpp", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-08-17"}
+{"src": "repo:microsoft/BitNet", "dst": "tool:ggml-quantization", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "technique:edge-llm-inference", "rel": "enables", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "technique:on-device-asr", "rel": "enables", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:microsoft/BitNet", "dst": "company:microsoft-research", "rel": "company", "added": "2026-10-13", "primera_mencion": "2026-09-19"}
+{"src": "repo:microsoft/BitNet", "dst": "repo:microsoft/VibeASR.cpp", "rel": "extends_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-lyogavin-airllm", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-lyogavin-airllm", "dst": "tema:lyogavin-airllm", "rel": "trata", "added": "2026-10-13"}
+{"src": "repo:lyogavin/airllm", "dst": "technique:layer-streaming-inference", "rel": "implements", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:lyogavin/airllm", "dst": "technique:on-device-llm", "rel": "enables", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:lyogavin/airllm", "dst": "tool:llama.cpp", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-08-17"}
+{"src": "repo:lyogavin/airllm", "dst": "tool:vllm", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:lyogavin/airllm", "dst": "technique:adapter-finetune-on-consumer-gpu", "rel": "enables", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:lyogavin/airllm", "dst": "repo:MoonshotAI/Kimi-K3", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": "2026-07-28"}
+{"src": "repo:lyogavin/airllm", "dst": "repo:Qwen3.8-Flash-Next", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:lyogavin/airllm", "dst": "tech:python", "rel": "written_in", "added": "2026-10-13", "primera_mencion": "2026-10-12"}
+{"src": "repo:lyogavin/airllm", "dst": "concept:apache-2.0", "rel": "license", "added": "2026-10-13", "primera_mencion": null}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-mksglu-context-mode", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-mksglu-context-mode", "dst": "tema:mksglu-context-mode", "rel": "trata", "added": "2026-10-13"}
+{"src": "repo:mksglu/context-mode", "dst": "concept:context-window-optimizer", "rel": "implements", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "concept:context-compression", "rel": "implements", "added": "2026-10-13", "primera_mencion": "2026-08-08"}
+{"src": "repo:mksglu/context-mode", "dst": "protocol:MCP", "rel": "exposes", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "tool:openai-codex", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "tool:opencode", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "tool:cursor", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "concept:elastic-license-v2", "rel": "risk", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "concept:ELv2-source-available", "rel": "license", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "repo:mksglu/context-mode", "dst": "tech:typescript", "rel": "written_in", "added": "2026-10-13", "primera_mencion": "2026-09-08"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-zhuyansen-new-term-radar", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-zhuyansen-new-term-radar", "dst": "tema:zhuyansen-new-term-radar", "rel": "trata", "added": "2026-10-13"}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "concept:trend-radar-tool", "rel": "implements", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "concept:seo-ai-tools", "rel": "implements", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "platform:x", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "platform:huggingface", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "platform:github", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "platform:google-search-console", "rel": "integrates_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "api:aisa-key", "rel": "uses", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "concept:mit", "rel": "license", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:zhuyansen/new-term-radar", "dst": "tech:python", "rel": "written_in", "added": "2026-10-13", "primera_mencion": "2026-10-12"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-multimodal-art-projection-yue", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-multimodal-art-projection-yue", "dst": "tema:multimodal-art-projection-yue", "rel": "trata", "added": "2026-10-13"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "concept:symbolic-music-generation", "rel": "implements", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "concept:audio-frontier-model", "rel": "implements", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "technique:agentic-music-editing", "rel": "enables", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "repo:MERT-v2-FullSong", "rel": "extends_with", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "repo:SheetSage2", "rel": "extends_with", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "tool:musicgen", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "tool:suno-bark", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "concept:apache-2.0", "rel": "license", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "institution:hkust", "rel": "organization", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "institution:stanford", "rel": "organization", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "repo:multimodal-art-projection/YuE", "dst": "institution:nyu", "rel": "organization", "added": "2026-10-13", "primera_mencion": "2026-09-11"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-nvidia-omniverse-usd-brep", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-nvidia-omniverse-usd-brep", "dst": "tema:nvidia-omniverse-usd-brep", "rel": "trata", "added": "2026-10-13"}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "concept:nurbs-brep", "rel": "implements", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "protocol:openusd", "rel": "uses", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "technique:parametric-cad-on-usd", "rel": "enables", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "repo:bherbruck/solidcraft", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-10-12"}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "repo:storytold/", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "tool:freecad", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-10-12"}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "tool:openscad", "rel": "competes_with", "added": "2026-10-13", "primera_mencion": "2026-10-12"}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "company:nvidia", "rel": "company", "added": "2026-10-13", "primera_mencion": "2026-08-12"}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "concept:apache-2.0", "rel": "license", "added": "2026-10-13", "primera_mencion": null}
+{"src": "repo:NVIDIA-Omniverse/usd-brep", "dst": "tech:cpp", "rel": "written_in", "added": "2026-10-13", "primera_mencion": null}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-alishahryar1-free-claude-code", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-alishahryar1-free-claude-code", "dst": "tema:alishahryar1-free-claude-code", "rel": "trata", "added": "2026-10-13"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-yetone-magpie", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-yetone-magpie", "dst": "tema:yetone-magpie", "rel": "trata", "added": "2026-10-13"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-openbmb-voxcpm", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-openbmb-voxcpm", "dst": "tema:openbmb-voxcpm", "rel": "trata", "added": "2026-10-13"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-copilotkit-openintelligentui", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-copilotkit-openintelligentui", "dst": "tema:copilotkit-openintelligentui", "rel": "trata", "added": "2026-10-13"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-onehumanbeing-esp32-iphone-agent", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-onehumanbeing-esp32-iphone-agent", "dst": "tema:onehumanbeing-esp32-iphone-agent", "rel": "trata", "added": "2026-10-13"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-ranxianglei-billion-context", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-ranxianglei-billion-context", "dst": "tema:ranxianglei-billion-context", "rel": "trata", "added": "2026-10-13"}
+{"src": "boletin:2026-10-13", "dst": "item:https-github-com-bennettxai-founderos", "rel": "menciona", "added": "2026-10-13"}
+{"src": "item:https-github-com-bennettxai-founderos", "dst": "tema:bennettxai-founderos", "rel": "trata", "added": "2026-10-13"}

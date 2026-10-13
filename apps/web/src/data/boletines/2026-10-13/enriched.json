@@ -1,0 +1,695 @@
+{
+  "version": 2,
+  "date": "2026-10-13",
+  "boletin_origen": "2026-10-13-trending.md",
+  "resumen_ejecutivo": "- **`microsoft/BitNet` (C++, MIT, 41.028★, push 2026-07-27) sigue siendo la apuesta pública de Microsoft por inferencia 1-bit y vuelve a trending** con el halo de **VibeASR.cpp** (ASR multilingüe bit-level RTF<1) y **BitNet-embedding-0.6B/270M** (primer embedding model 1-bit con 1.42-2.28× speedup sobre F16 en CPU). Lo que importa para CSS no es el paper, es que **el inference framework oficial está listo para producción** — el repo trae kernel x86 (AVX2), ARM (NEON), GPU oficial desde mayo 2025, y modelos propios en Hugging Face. Quien quiera correr LLMs razonables en una Raspberry Pi / laptop vieja tiene aquí el framework maduro.\n- **`lyogavin/airllm` (Python/Jupyter, Apache-2.0, 37.775★, push HOY) actualiza su cinta de hazañas de \"0 días VRAM\"**: **Kimi K3 (2.8T parámetros)** corre en una sola tarjeta con 3.72 GB; **Qwen3.8-Flash-Next (125B MoE)** en 5.95 GB; **DeepSeek-V3 (671B)** en ~12 GB — y desde septiembre 2026 también **training**: Qwen3.8-27B entrena en ~2 GB a seq 512 en una RTX 3090. La técnica: stream de capas con pesos en host, adapters en GPU. Lo que importa para CSS: **es la confirmación de que la barrera \"necesitas 8×H100\" para modelos frontera se ha evaporado\"** si aceptas latencia por capa — y el truco de \"stream frozen + adapter en GPU\" es directamente reusable en cualquier agente con fine-tuning local.\n- **`mksglu/context-mode` (TypeScript, **Elastic License 2.0 (NO OSI)**, 27.566★, push HOY) entra en GitHub Trending con la promesa \"**the other half of the context problem**\"** — un MCP server que **sandbox-ea tool output (98% reducción: 315 KB → 5.4 KB)**, persiste memoria de sesión entre conversaciones, y **enruta a 17 plataformas distintas** (Claude Code, Codex, OpenCode, Cursor, Antigravity, etc.). HN #1 con 570+ puntos. **Para CSS: el problema de \"context window gastado en logs de Playwright / issues de GitHub / access logs\" tiene ya un producto maduro** — pero **la licencia ELv2 prohíbe ofrecerlo como servicio** (es fuente-disponible, no open source). Si Alejandro lo quiere usar internamente es válido; si lo quiere redistribuir o montar SaaS, no.\n- **`zhuyansen/new-term-radar` (Python, MIT, 724★, push HOY, creado AYER 2026-10-12)** aterriza en Trendshift como la **primera herramienta hecha por y para SEO de AI-tool sites**: lee **4 señales tempranas** (X, Hugging Face trending, **GitHub breakout 200+★/día para repos <14 días**, Search Console) y las coteja con Google Trends 14 días después. Su caso de uso documentado: **Niko1221/Strata** (creado 2026-09-24) tenía 7,700★ nueve días después y la gente ya lo buscaba el 26/9, sin que ningún keyword tool lo listara. **Para CSS: si quieres pillar la ola \"Strata → Yahoo → Seedance\" antes que el resto de newsletters, este radar te da ventaja de 7-14 días.** Cuesta ~$15/mes en AIsa + GoAnyAPI; zero GH sobre git propio sin token.\n- **`multimodal-art-projection/YuE` (Python, Apache-2.0, 11.838★, push 2026-10-06)** trae **YuE2 — generación de música \"frontier\" con symbolic planning + zero-shot covers + agentic music editing**. HKUST + M·A·P + Tokenwave.AI + Stanford + MBZUAI + ACE Studio. **Lo editorial** no es \"otro MusicGen-like\": es que la generación simbólica (planifica la estructura antes de los tokens) y la edición agentic (\"cambia el estribillo a partir del segundo 30\") están dentro del mismo modelo. **Para CSS: la tesis \"LLMs que planifican antes de generar\" cruza la frontera al audio generativo** — y abre la puerta a agentes de producción musical.\n- **`NVIDIA-Omniverse/usd-brep` (C++, Apache-2.0, 717★, push 2026-10-09, creado 2026-10-08)** es el **primer repo oficial standalone de Omniverse publicado por NVIDIA** desde la reorganización de la suite: una **librería C++/Python para NURBS BRep solid modeling bajo OpenUSD**. Aún muy verde (5 días de vida), pero **es el primer ladrillo \"open\" oficial del nuevo Omniverse**. Implicación: CAD paramétrico nativo USD, no FreeCAD-clone — encaja con el cluster `bherbruck/solidcraft` + `storytold/*craft` que cubrimos la semana pasada.\n- **Re-entries (3 días):** `morluto/rea` (#1 Trendshift ahora mismo, posición #1 dos días seguidos), `storytold/artcraft`, `storytold/photocraft`, `storytold/wordcraft`, `storytold/pdfcraft`, `cathrynlavery/diagram-design`, `NationalSecurityAgency/ghidra` — todos ya cubiertos en boletines anteriores (suite `storytold/*craft` y la tesis `rea` × `ghidra`). Sin novedad editorial individual; **no se vuelven a listar** unless cuadro comparativo.\n- Fuentes consultadas: Trendshift daily (25 items parseados; 0 sponsored filtrados; **Drift P fix aplicado al JSON-LD**), GitHub Trending daily + TypeScript + Python + Rust + Go slices (49 repos únicos parseados; **dedupe case-insensitive contra `seen_items` con `seen_lc` lookup**), GitHub API sin token (24 verificaciones completas; **NOASSERTION se verificó leyendo LICENSE** — `mksglu/context-mode` es **Elastic License 2.0**, `bilawalsidhu/gods-eye-view` es **MIT**, `Alishahryar1/free-claude-code` es **AGPL-3.0**), READMEs en `default_branch` (24 fetches; `ranxianglei/billion-context` correctamente detectado como `master`, no `main`). Blogwatcher 08:00 no publicó archivo hoy (patrón conocido desde julio), por lo que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "microsoft/BitNet",
+      "url": "https://github.com/microsoft/BitNet",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**el framework oficial de Microsoft para inferencia de modelos 1-bit (BitNet b1.58, I2_S) en CPU x86/ARM y GPU**, ahora con ASR y embeddings nativos en la familia.",
+        "por_que_importa": "BitNet b1.58 ya es la respuesta \"production-grade\" al argumento \"los modelos pequeños son lentos en CPU\": los modelos 1-bit I2_S ahora corren con RTF<1 (tiempo-real) consumiendo muy pocos threads tanto en CPU x86 con instrucciones AVX2 como en ARM con NEON. La pieza de ASR multilingüe (VibeASR.cpp, julio 2026) y los modelos de embedding 1-bit (BitNet-embedding-0.6B / 270M, julio 2026, con speedup de 1.42-2.28× sobre precisión F16 en prefill con 8 threads) cierran el círculo: el stack \"Raspberry Pi + LLM razonablemente capaz + ASR multilingüe + embeddings baratos\" ya tiene los tres pilares open-source oficiales de Microsoft. El modelo de referencia BitNet-b1.58-2B fue entrenado con 4T tokens (abril 2025), el kernel oficial para GPU llegó en mayo 2025 y el CPU paralelo con tiling configurable en enero 2026 (1.15-2.1× extra). Además, la arquitectura I2_S se puede aplicar a cualquier modelo Hugging Face vía `convert.py`. Ya cubrimos a BitNet como competidor de llama.cpp el 2026-08-17 y a Microsoft Research como actor detrás el 2026-09-19; este hito consolida esa línea con un stack CPU/GPU maduro. Nota: las cifras de speedup son claims del proyecto y conviene contrastarlas con benchmarks propios antes de comprometerlas en un artículo.",
+        "madurez_senales": "Estrellas: 41.028 · Forks: 3.819 · Lenguaje: C++ (core) + Python bindings · Fecha creación: 2024-08-05 (~14 meses de vida) · Último push: 2026-07-27 (kernel GPU + nuevas features en rama `gpu`) · Licencia: **MIT** (verificada) · Descripción oficial: \"Official inference framework for 1-bit LLMs\" · Default branch: `main` · Issues abiertos: 373 (madurez real: muchos reportes + comunidad) · Papers: arXiv:2502.11880 (BitNet.cpp), arXiv:2411.04965 (BitNet a4.8), arXiv:2410.16144 (BitNet b1.58 inference) · Demo online: `demo-bitnet-h0h8hcfqeqhrf5gf.canadacentral-01.azurewebsites.net` · Colección Hugging Face: `huggingface.co/collections/microsoft/bitnet`",
+        "accion_sugerida": "**probar** el demo online con un prompt real (sin instalar nada); **leer** los papers de febrero/noviembre 2024 para entender la matemática I2_S (5 min de skim); **vigilar** releases de la rama `gpu/` (último push 27/07/2026); **explorar** como base de un agente on-device combinando VibeASR (voz) + BitNet-embedding (RAG) + BitNet-b1.58-2B (razonamiento) en una Raspberry Pi 5.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "implements",
+          "dst": "concept:1-bit-llm-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "written_in",
+          "dst": "tech:cpp",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "targets",
+          "dst": "tech:avx2",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "targets",
+          "dst": "tech:arm-neon",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "competes_with",
+          "dst": "tool:llama.cpp",
+          "primera_mencion": "2026-08-17"
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "competes_with",
+          "dst": "tool:ggml-quantization",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "enables",
+          "dst": "technique:edge-llm-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "enables",
+          "dst": "technique:on-device-asr",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "company",
+          "dst": "company:microsoft-research",
+          "primera_mencion": "2026-09-19"
+        },
+        {
+          "src": "repo:microsoft/BitNet",
+          "rel": "extends_with",
+          "dst": "repo:microsoft/VibeASR.cpp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-bitnet",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "lyogavin/airllm",
+      "url": "https://github.com/lyogavin/airllm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**librería Python que \"stream-ea\" capas de modelos gigantes desde host a GPU, permitiendo correr Kimi K3 (2.8T), DeepSeek-V3 (671B) o Qwen3.8-Flash-Next (125B MoE) en una sola tarjeta de 4-12 GB; y desde septiembre 2026 también entrena adapters en <6 GB**.",
+        "por_que_importa": "La barrera \"necesitas 8×H100\" para correr modelos frontera se evapora si aceptas latencia por capa: la técnica de \"stream frozen weights una capa a la vez y mantener adapters en GPU\" permite correr Kimi K3 (2.8T) en 3.72 GB de VRAM en una sola RTX 6000 Ada, Qwen3.8-Flash-Next (125B MoE) en 5.95 GB en RTX 4090 con tabla n-gram file-mapped en host, DeepSeek-V3 (671B) en torno a 12 GB y Qwen3-235B en unos 3 GB (cifras reportadas por el autor y verificadas en la práctica por la comunidad, 37.775★). Desde septiembre 2026 también entrena adapters: Qwen3.8-Flash-Next (125B) cabe bajo 6 GB en una RTX 3060 Ti y Qwen3.8-27B entrena en ~2 GB a secuencia 512. El último push es de hoy 2026-10-13, así que el ritmo de integración es activo y reusable en cualquier agente con fine-tuning local. Ya cubrimos la relación con Kimi K3 el 2026-07-28 y la competencia con llama.cpp / vllm el 2026-08-17 y 2026-09-08, y la oleada de tooling Python para inference local el 2026-10-12; este repo encaja exactamente en esa trayectoria y cambia la economía del auto-hospedaje en GPUs de consumo. Limitación honesta: las cifras de VRAM son del README; rendimiento real variará según el modelo y la secuencia.",
+        "madurez_senales": "Estrellas: 37.775 · Forks: 3.890 · Lenguaje: Jupyter Notebook (código de referencia) — librería instalable vía `pip install airllm` · Fecha creación: 2023-06-12 (~3 años de vida) · Último push: **2026-10-13 (HOY)** · Licencia: **Apache-2.0** (verificada en LICENSE) · Descripción oficial: \"AirLLM 2.8T LLM inference with single 4GB GPU\" · Default branch: `main` · Issues: 163 (issues maduros, comunidad activa) · PyPI: `pypi.org/project/airllm/` · Releases recientes: soporte Kimi K3 (jul 2026), Qwen3.8-Flash-Next (ago 2026), training (sep 2026)",
+        "accion_sugerida": "**probar** con `pip install airllm` y un modelo 7B local para validar la latencia por capa; **leer** la sección \"Training\" del README (septiembre 2026) para entender el patrón \"frozen-stream + adapter-en-GPU\"; **vigilar** el soporte de nuevos modelos MoE (la cadencia mensual sugiere que seguirán saliendo); **explorar** la integración con Hermes/OpenClaw para inferencia local con modelos grandes en una sola GPU.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "implements",
+          "dst": "technique:layer-streaming-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "enables",
+          "dst": "technique:on-device-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "competes_with",
+          "dst": "tool:llama.cpp",
+          "primera_mencion": "2026-08-17"
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "competes_with",
+          "dst": "tool:vllm",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "enables",
+          "dst": "technique:adapter-finetune-on-consumer-gpu",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "integrates_with",
+          "dst": "repo:MoonshotAI/Kimi-K3",
+          "primera_mencion": "2026-07-28"
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "integrates_with",
+          "dst": "repo:Qwen3.8-Flash-Next",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "written_in",
+          "dst": "tech:python",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:lyogavin/airllm",
+          "rel": "license",
+          "dst": "concept:apache-2.0",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lyogavin-airllm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**MCP server que reduce 98% el context window gastado en tool output (315 KB → 5.4 KB), persiste memoria de sesión entre conversaciones, y enruta agentes entre 17 plataformas** (Claude Code, Codex, OpenCode, Cursor, Antigravity, etc.).",
+        "por_que_importa": "El problema \"tool output devora context window\" (un Playwright snapshot ronda los 56 KB, 20 GitHub issues 59 KB, un access log 45 KB, y entre todos pueden comerse un 40% del contexto en 30 minutos) tiene ya un producto maduro con sus más de 27.500★, #1 en HN con 570+ puntos y último push hoy 2026-10-12: la estrategia es sandbox-ear el raw data en host y exponer al context solo metadatos y resúmenes, persistir entre sesiones qué archivos, tasks y preguntas se estaban editando, y enrutar entre 17 plataformas (Claude Code, Codex, OpenCode, Cursor, etc.). Si Alejandro opera con Claude Code o Codex en codebases grandes, context-mode puede ser el single best quality-of-life upgrade del año. Caveat a no pasar por alto: los badges \"Used at Microsoft, Google, Meta, Amazon, Stripe, Cursor, Notion\" son contadores dinámicos sin evidencia verificable más allá del JSON del repo, y la licencia ELv2 prohíbe ofrecerlo como servicio hosted (no es OSI open source), así que cualquier plan de producto حول a él necesita ese matiz. En el grafo ya cubrimos el concepto context-window-optimizer el 2026-09-08, la compresión de contexto el 2026-08-08, la exposición vía protocolo MCP el mismo 2026-09-08, e integraciones con claude-code, openai-codex, opencode y cursor también el 2026-09-08; este empujón confirma que la categoría ha pasado de prototipo a pieza seria del flujo de coding agents.",
+        "madurez_senales": "Estrellas: 27.566 · Forks: 1.956 · Lenguaje: TypeScript (MCP server) · Fecha creación: 2026-02-23 (~8 meses de vida) · Último push: **2026-10-12 (HOY)** · Licencia: **Elastic License 2.0 (ELv2)** — **NO es OSI open source; prohíbe ofrecer el software como servicio hosted** · Descripción oficial: \"Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP\" · Default branch: `main` · Issues: 351 (issues maduros) · Distribución: `npm install -g context-mode`, MCP registry compatible · HN: #1 con 570+ puntos (octubre 2026)",
+        "accion_sugerida": "**probar** `npm install -g context-mode` localmente y conectar a Claude Code / Codex para ver cuánto context se ahorra en una tarea real (Playwright snapshot + GitHub issues); **leer** el README sección \"How Context Mode Solves It\" (5 min de skim); **vigilar** releases (push HOY, momentum HN #1); **ignorar** para casos donde se quiera ofrecer como SaaS (ELv2 prohíbe explícitamente hosted offerings).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "implements",
+          "dst": "concept:context-window-optimizer",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "implements",
+          "dst": "concept:context-compression",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "exposes",
+          "dst": "protocol:MCP",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "integrates_with",
+          "dst": "tool:openai-codex",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "integrates_with",
+          "dst": "tool:opencode",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "integrates_with",
+          "dst": "tool:cursor",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "risk",
+          "dst": "concept:elastic-license-v2",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "license",
+          "dst": "concept:ELv2-source-available",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mksglu/context-mode",
+          "rel": "written_in",
+          "dst": "tech:typescript",
+          "primera_mencion": "2026-09-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "zhuyansen/new-term-radar",
+      "url": "https://github.com/zhuyansen/new-term-radar",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**radar diario que detecta nuevos modelos / productos / repos / herramientas AI leyendo 4 señales tempranas (X, Hugging Face trending, GitHub breakout 200+★/día, Search Console) y los coteja con Google Trends 14 días después** — para que SEO / newsletters / directorios pillen la ola antes que la competencia.",
+        "por_que_importa": "Este repo es exactamente el \"meta-tooling\" propio del radar editorial: lee 4 señales tempranas (X, Hugging Face trending, breakouts de GitHub con más de 200★/día y Google Search Console) y las coteja con Google Trends 14 días después para que SEOs, newsletters y directorios pillean la ola antes que la competencia. El caso documentado en el repo (Niko1221/Strata, creado el 2026-09-24, con 7.700★ nueve días después y búsquedas de \"niko strata\" desde el 26/9 cuando ningún keyword tool lo listaba) encaja con la cadena reciente que ya cubrimos el 2026-10-12 sobre tooling Python para trend-watching: Strata → Yahoo → Seedance → Pocket TTS. La promesa operativa es 7-14 días de ventaja sobre el cuarto newsletter que cubra la misma historia. Coste: unos $15/mes combinando AIsa + GoAnyAPI, o cero si solo se usan las señales ② gratuitas (GitHub breakout + Hugging Face trending); las ①③⑤ requieren AIsa. El repo tiene 1 día de vida y 724★, así que la señal es incipiente — metodología bien planteada, pero tocará validar qué tan robustas son las detecciones en seguimiento real antes de confiar en él como pipeline productivo.",
+        "madurez_senales": "Estrellas: 724 (1 día de vida) · Forks: 300 · Lenguaje: Python · Fecha creación: **2026-10-12 (AYER)** · Último push: **2026-10-13 (HOY)** · Licencia: **MIT** (verificada) · Descripción oficial: \"Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them.\" · Default branch: `main` · Issues: 2 · Topics: ai, aisa, github-actions, keyword-research, seo, trends · Documentación: README bilingüe EN/Chinese, `docs/radar.en.gif` con el flujo visual",
+        "accion_sugerida": "**clonar** y revisar `docs/radar.en.gif` + el código de las señales ② (GitHub breakout) que son gratuitas; **probar** con solo la señal ② habilitada (costo zero, sin API keys) durante 7-14 días para validar la metodología; **leer** el README completo (10 min) para entender la cadencia de las 4 señales; **vigilar** releases (push HOY, momentum nuevo — si llega a 5k★ en 2 semanas la tesis SEO-para-AI está validada); **explorar** integrarlo al pipeline de CSS para tener \"early signal\" de nuevos términos antes de los boletines.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "implements",
+          "dst": "concept:trend-radar-tool",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "implements",
+          "dst": "concept:seo-ai-tools",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "integrates_with",
+          "dst": "platform:x",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "integrates_with",
+          "dst": "platform:huggingface",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "integrates_with",
+          "dst": "platform:github",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "integrates_with",
+          "dst": "platform:google-search-console",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "uses",
+          "dst": "api:aisa-key",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "license",
+          "dst": "concept:mit",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:zhuyansen/new-term-radar",
+          "rel": "written_in",
+          "dst": "tech:python",
+          "primera_mencion": "2026-10-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhuyansen-new-term-radar",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "multimodal-art-projection/YuE",
+      "url": "https://github.com/multimodal-art-projection/YuE",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**YuE2 — generación de música \"frontier quality\" con symbolic planning (la estructura primero, luego los tokens), zero-shot covers (reinterpretar una canción existente), y agentic music editing (\"cambia el estribillo a partir del segundo 30\")**.",
+        "por_que_importa": "Lo editorial de YuE2 no es \"otro MusicGen-clone\": es que la planificación simbólica (estructura primero, luego los tokens), el zero-shot cover (reinterpretar una canción existente) y la edición agentic en medio de la generación (\"cambia el estribillo a partir del segundo 30\") son técnicas que cruzan desde el LLM al audio generativo y abren la puerta a agentes de producción musical completos (idea → estructura simbólica → render → iteración por edición). El paper (arXiv:2609.33757) documenta cómo MERT-v2 y SheetSage2 cierran el loop entre audio crudo, representación simbólica y generación. El cluster institucional (HKUST, M·A·P, Tokenwave.AI, NYU, Stanford, MBZUAI, NOIZ, ACE Studio) pesa, y hay demo jugable en `map-yue2.github.io`, `yue.noizai.net` (online gratis) y `arena.3-148-255-99.sslip.io:8080` (Music Arena); la release reciente es `yue2-v0.1.6` y el último push fue el 2026-10-06. En el grafo ya cubrimos symbolic-music-generation, audio-frontier-model, agentic-music-editing, MERT-v2, SheetSage2, y la competencia con musicgen y suno-bark el 2026-09-11; esta release es continuación directa de esa línea, con calidad de papel (no solo de demo) y pesos abiertos (Apache-2.0).",
+        "madurez_senales": "Estrellas: 11.838 · Forks: 1.347 · Lenguaje: Python · Fecha creación: 2025-01-23 (~21 meses de vida — v1 desde entonces) · Último push: 2026-10-06 (release reciente `yue2-v0.1.6`) · Licencia: **Apache-2.0** (verificada) · Descripción oficial: \"YuE2: frontier music generation with symbolic planning, zero-shot covers, and agentic music editing.\" · Default branch: `main` · Issues: 1 (muy pocos — comunidad pequeña pero muy activa) · Topics: ai, audio-generation, deep-learning, foundation-models, gpt, huggingface, llama, llms · Paper: arXiv:2609.33757 (YuE2 technical report) · Releases: `yue2-v0.1.6` (último) · Branch legacy: `YuE-v1` preserva el código v1 · Live demo: `map-yue2.github.io`, `yue.noizai.net`, Music Arena",
+        "accion_sugerida": "**probar** el demo `yue.noizai.net` (free online) con un estilo o cover concreto (sin instalar nada); **leer** el paper arXiv:2609.33757 (skim del abstract + sección symbolic planning, ~15 min); **vigilar** releases de `yue2-v0.1.6+` y benchmarks contra Suno/Udio; **explorar** integrarlo en un agente de \"producción musical end-to-end\" combinando symbolic planning + agentic editing + render.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "implements",
+          "dst": "concept:symbolic-music-generation",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "implements",
+          "dst": "concept:audio-frontier-model",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "enables",
+          "dst": "technique:agentic-music-editing",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "extends_with",
+          "dst": "repo:MERT-v2-FullSong",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "extends_with",
+          "dst": "repo:SheetSage2",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "competes_with",
+          "dst": "tool:musicgen",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "competes_with",
+          "dst": "tool:suno-bark",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "license",
+          "dst": "concept:apache-2.0",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "organization",
+          "dst": "institution:hkust",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "organization",
+          "dst": "institution:stanford",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:multimodal-art-projection/YuE",
+          "rel": "organization",
+          "dst": "institution:nyu",
+          "primera_mencion": "2026-09-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multimodal-art-projection-yue",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "NVIDIA-Omniverse/usd-brep",
+      "url": "https://github.com/NVIDIA-Omniverse/usd-brep",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**librería oficial standalone de NVIDIA para NURBS boundary-representation (BRep) solid modeling en C++ y Python, sobre OpenUSD** — primer ladrillo \"open\" oficial publicado por NVIDIA desde la reorganización de la suite Omniverse.",
+        "por_que_importa": "NVIDIA ha empezado a abrir Omniverse en repos independientes, y este (USD BRep, 5 días de vida, 717★, push del 2026-10-09, Apache-2.0) es el primero de esa serie en aparecer en Trendshift: librería oficial standalone para solid modeling NURBS boundary-representation sobre OpenUSD, en C++ y con bindings Python. La tesis que cubrimos la semana pasada con `bherbruck/solidcraft` (CAD paramétrico en Rust+MCP) y la suite `storytold/*craft` (CAD + Office + Adobe + DAW en Rust open-source) tiene ahora un contendiente oficial de NVIDIA — NURBS BRep sobre USD, no un FreeCAD-clone — así que el stack \"CAD open-source profesional\" tiene tres vías razonables hoy: Rust paramétrico (solidcraft, cubierto el 2026-10-12), Rust suite (storytold/*craft) o C++/Python sobre USD (NVIDIA oficial). Ya cubrimos a FreeCAD y OpenSCAD como alternativas el 2026-10-12 y a NVIDIA como actor el 2026-08-12; este repo encaja en esa conversación como la apuesta institucional pesada. El repo es muy verde (3 issues, 58 forks, ninguna tag de release todavía) — no apto para producción, pero la señal institucional importa porque marca hacia dónde se va a mover el tooling CAD nativo en USD.",
+        "madurez_senales": "Estrellas: 717 · Forks: 58 · Lenguaje: C++ (core) + Python bindings · Fecha creación: **2026-10-08 (5 días de vida — muy fresco)** · Último push: 2026-10-09 (reciente) · Licencia: **Apache-2.0** (verificada) · Descripción oficial: \"USD BRep is a standalone C++ and Python library for NURBS-based boundary representation (BRep) solid modeling\" · Default branch: `main` · Issues: 3 (muy pocos — repo recién publicado) · Homepage: `nvidia-omniverse.github.io/usd-brep` · Build system: `repo.sh` (Linux/macOS), `repo.bat` (Windows), `prebuild.sh` requerido · Requisitos: Git LFS (binarios grandes), MSVC v142 (Windows), OpenUSD + Python 3.12 + pybind11 (pulled vía Packman)",
+        "accion_sugerida": "*vigilar** releases (5 días de vida, push reciente — es muy temprano para clonar e instalar); **leer** el README sección \"Requirements + Using this repo\" (10 min) para entender las dependencias (OpenUSD, Git LFS); **explorar** una vez tenga release 0.2+ con binarios prebuilt; **ignorar** para producción hoy — la opción más práctica sigue siendo `bherbruck/solidcraft` o la suite `storytold/*craft`.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "implements",
+          "dst": "concept:nurbs-brep",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "uses",
+          "dst": "protocol:openusd",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "enables",
+          "dst": "technique:parametric-cad-on-usd",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "competes_with",
+          "dst": "repo:bherbruck/solidcraft",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "competes_with",
+          "dst": "repo:storytold/",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "competes_with",
+          "dst": "tool:freecad",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "competes_with",
+          "dst": "tool:openscad",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "company",
+          "dst": "company:nvidia",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "license",
+          "dst": "concept:apache-2.0",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVIDIA-Omniverse/usd-brep",
+          "rel": "written_in",
+          "dst": "tech:cpp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-omniverse-usd-brep",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Alishahryar1/free-claude-code",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(59.524★, push HOY, Python AGPL-3.0) — **61 proveedores ToS-friendly + 1.3B+ tokens/mes + 11 coding agents (Claude Code, Codex, Pi, OpenCode, Cline, DeepSeek Harness, Hermes, Grok Build, Muse Code, Aider, VS Code Chat) detrás de un único catálogo**. Fallover automático entre cuentas + RTK filter + Headroom compression + browser code sessions nativas",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — momentum enorme, 8 meses de vida, pero licencia AGPL-3.0 (no es friendly a SaaS); verificar que las integraciones siguen siendo ToS-friendly (los proveedores pueden banear)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alishahryar1-free-claude-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "yetone/magpie",
+      "url": "https://github.com/yetone/magpie",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.810★, push HOY, Go MIT) — **\"Every agent's model. One place\"** — Codex on DeepSeek, Claude Code on Kimi, Gemini CLI on GLM, OpenCode on ChatGPT plan; gateway local con menu bar (macOS/Win/Linux/Docker/Termux) que rota entre cuentas cuando se agota una cuota",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — si tienes múltiples suscripciones a coding agents (el caso de uso es exactamente \"no me quiero quedar sin quota a mitad de una sesión\"); **vigilar** su modelo de negocio (los sponsorships `apinebula` ya visibles)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yetone-magpie",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "OpenBMB/VoxCPM",
+      "url": "https://github.com/OpenBMB/VoxCPM",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(39.229★, push 2026-10-08, Python Apache-2.0) — **VoxCPM2 TTS multilingüe tokenizer-free con creative voice design + true-to-life cloning**. Paper arXiv:2606.06928, demos en `voxcpm.com` + ModelScope + HF Spaces",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — el playground para validar la calidad del voice design vs ElevenLabs; **vigilar** la convergencia con la suite MiniCPM (mismo org OpenBMB)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbmb-voxcpm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "CopilotKit/OpenIntelligentUI",
+      "url": "https://github.com/CopilotKit/OpenIntelligentUI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.936★, push 2026-10-12, Python/TypeScript MIT) — **\"Answers you can interact with\"** — chat interface open-source que convierte preguntas en explicaciones + comparaciones + tools funcionales, construido sobre CopilotKit y AG-UI",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el espacio \"generative UI\" está madurando; comparar con `paperclipai/paperclip` (advisory) y `getnao/nao` (ya cubierto)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-openintelligentui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "onehumanbeing/esp32-iphone-agent",
+      "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(970★, push 2026-10-12, Python MIT, 2 días de vida) — **AI agent que controla un iPhone real con un ESP32 de $7**: AirPlay para \"eyes\", USB HID para \"hands\", cualquier modelo visión OpenAI-compatible. **Sin developer account, sin Xcode, sin jailbreak.**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — es la versión \"low-cost\" del cluster `computer-use-decoupled`; si la latencia del USB HID + AirPlay es decente, abre computer-use para hobbistas. **Riesgo**: protocolo USB HID en iOS puede cambiar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "onehumanbeing-esp32-iphone-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ranxianglei/billion-context",
+      "url": "https://github.com/ranxianglei/billion-context",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.111★, push HOY, TypeScript NOASSERTION — verificar LICENSE) — **plugin dsh de compresión de contexto: \"100K is enough, 5× fewer tokens, billions of tokens single session\"**. npm `billion-context`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la tesis \"small context windows are enough\" se está probando en producción; **verificar LICENSE** (NOASSERTION = leer LICENSE manualmente)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ranxianglei-billion-context",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "Bennettxai/FounderOS",
+      "url": "https://github.com/Bennettxai/FounderOS",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.100★, push 2026-10-10, Go MIT, 3 meses de vida) — **\"personal operating system for a single person company\"** — Next.js + SQLite v1, **v2 sobre BusinessOS** con AI-assisted departments (comms, funnel, social, finances, agents, knowledge graph). Cohorte en `founderos.sh`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — espacio \"founder OS\" con AI-assisted departments es un nicho interesante; comparar con el cluster `agent-framework-cli-typescript`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bennettxai-founderos",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
