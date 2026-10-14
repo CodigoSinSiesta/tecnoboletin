@@ -1,0 +1,296 @@
+{
+  "version": 2,
+  "date": "2026-10-14",
+  "boletin_origen": "2026-10-14-trending.md",
+  "resumen_ejecutivo": "- **`HeyPuter/everything` (JavaScript, MIT, 401★, push HOY, creado AYER 2026-10-13) abre una nueva categoría de mega-monorepo coordinado**: el equipo detrás de Puter.com acaba de hacer open-source de un único repositorio que contiene **reimplementaciones MIT-licensed de Office, Photoshop, AutoCAD, Slack, Zoom, Premiere, Illustrator, SolidWorks, QuickBooks, Salesforce, Figma, Notion, Trello, SurveyMonkey** y docenas más — todo navegable como `https://*.puter.com`. Es la versión \"todo en uno\" del mismo eje que cubrimos la semana pasada con la suite `storytold/*craft` (Rust) y `NVIDIA-Omniverse/usd-brep` (C++/USD). **El claim no es \"otro fork de LibreOffice\"**: es que la promesa \"open-source everything\" se está consolidando como categoría editorial, con el respaldo de un SaaS open-source (Puter) ya en producción que sirve de hosting gratuito.\n- **`1Panel-dev/MaxKB` (Python, GPL-3.0, 22.973★, push HOY, 3 años de vida, default branch `v2`) entra en GitHub Trending como el Dify-killer chino enterprise de facto**: RAG + agentic workflows + MCP tool-use + multimodal (texto/imagen/audio/video) + stack LangChain + pgvector, con **integración on-prem de fábrica vía Docker y un clic**, modelo-agnóstico (DeepSeek, Qwen, Llama, OpenAI, Claude, Gemini, etc.), y el **hype del ecosistema 1Panel detrás** (panel de servidor open-source que ya despliega MaxKB como app oficial). Es GPL-3.0 (no friendly a SaaS competidores), pero la adopción china (DingTalk, Inspur, varios bancos) lo hace un caso de estudio real: **cuál es la bifurcación occidental-china del \"enterprise agent platform\"** cuando el occidental (Dify) es MIT/permissive y el chino (MaxKB, FastGPT) es GPL/copyleft.\n- **`NVIDIA/personaplex` (Python, MIT, 11.172★, push 2026-03-02, pero trending hoy por el paper + demos recientes) confirma que el control de personalidad en voice agents ha pasado de \"prompt de texto\" a \"señal entrenable\"**: el modelo (basado en Moshi) es **full-duplex speech-to-speech** que acepta **role prompts textuales + voice conditioning por audio** (tomas de 10-30s de una voz real controlan timbre/prosodia). Latencia <200ms en GPU moderna, CPU-offload oficial, y **demo público en `research.nvidia.com/labs/adlr/personaplex/`**. Es la versión NVIDIA del espacio que abrió Moshi (Kyutai) y al que ya se han sumado `OpenBMB/VoxCPM` (tokenizer-free TTS, 39k★) y `kyutai-labs/pocket-tts`. **Para CSS: la tesis \"voice agents con personalidad entrenable + control de voz on-the-fly\" cruza la frontera del prototipo a producto deployable**.\n- **El radar sigue mostrando un cluster \"claude-code-shim\" en ebullición**: `Twigpine/openclaude` (33.838★, NOASSERTION — MIT claim sobre código derivado de Anthropic Claude Code) es la entrada más visible hoy, pero el cluster ya tiene `0xwilliamortiz/openclaude-improved`, `davila7/claude-code-templates`, `0xwilliamortiz/openclaude-improved`, `Alishahryar1/free-claude-code`, `Gitlawb/openclaude` (mirror) y el magpie-gateway de `yetone`. **La pregunta editorial es la misma de hace 6 meses pero más urgente**: cuando un repositorio open-source declara NOASSERTION y su LICENSE dice \"MIT (modifications only) sobre código Anthropic propietario\", ¿es un fork legítimo, un wrapper, o un caso pendiente de DMCA? El radar lo marca con caveat fuerte.\n- **Tres nuevos nodos menores pero con señal editorial clara**: `storytold/figcraft` (Figma en Rust, Apache-2.0, 5 días, 540★) consolida la suite `storytold/*craft` con un Figma reimpl nativo; `Saffsanity/sill` (Swift, Apache-2.0, 22 días, 347★) es el nuevo \"open-source Sidecar/Deskreen\" para usar un iPad como segunda pantalla de un Mac sin servers ni accounts; y `Morluto/rea` vuelve a #1 Trendshift con nueva versión (recordatorio de que el \"reverse-engineer anything with agents\" sigue siendo la apuesta editorialmente más sólida para el espacio `agentic-reverse-engineering`).\n- Fuentes consultadas: **Trendshift daily** (25 items parseados; JSON-LD nested schema OK, `keywords` tratado como list, `sponsor` filter activo — 0 sponsored detectados), **GitHub Trending daily + TypeScript + Python + Rust slices** (22 repos únicos parseados; extracción anchor-on-href sin regex `<h2>`, 4 noise paths filtrados), **GitHub API sin token** (6 verificaciones completas: `HeyPuter/everything` MIT, `NVIDIA/personaplex` MIT, `1Panel-dev/MaxKB` GPL-3.0, `Twigpine/openclaude` NOASSERTION — **LICENSE verificado manualmente** y el repo declara \"derived from Anthropic Claude Code CLI\" + \"modifications MIT\", lo que confirma la cautela; `Saffsanity/sill` Apache-2.0, `storytold/figcraft` Apache-2.0), **READMEs en `default_branch`** (6 fetches: `Twigpine/openclaude` default `main` correcto; `1Panel-dev/MaxKB` default `v2` detectado vía API, no `main`). **Blogwatcher 08:00 no publicó archivo hoy** (patrón conocido desde el 2026-07-05 — el último `*-blogs.md` es del 5 de julio), por lo que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "HeyPuter/everything",
+      "url": "https://github.com/HeyPuter/everything",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "*Monorepo de Puter Inc. que contiene docenas de reimplementaciones MIT-licensed de las aplicaciones propietarias más usadas (Office, Photoshop, AutoCAD, Slack, Zoom, Premiere, Illustrator, SolidWorks, QuickBooks, Salesforce, Figma, Notion, Trello, SurveyMonkey, etc.), servidas en vivo en subdominios `*.puter.com`.**",
+        "por_que_importa": "Confirmación de que el \"open-source everything\" ya tiene un actor coordinado con SaaS en producción. Puter.com (la plataforma) aloja este stack gratis para el usuario final y es self-hostable, así que una PYME puede tomar el código MIT, desplegar su propia instancia y dejar de pagar licencias de Microsoft, Adobe, Autodesk o Slack. Para CSS: ya cubrimos el 2026-10-13 la pieza de NVIDIA oficial sobre CAD con OpenUSD (`NVIDIA-Omniverse/usd-brep`), y veníamos siguiendo la suite `storytold/*craft` en Rust — HeyPuter/everything es el tercer pilar del eje editorial \"open-source SaaS\", pero hecho en JavaScript como mega-repo en lugar de Rust o C++/USD. Con 401★ y un solo día de vida, es señal de momentum, todavía no de madurez: vigilamos si las suites individuales (Photoshop, AutoCAD) llegan a ser usables o se quedan en demo. Caveat: el repo está en su primer día (creación 2026-10-13), así que los claims de \"MIT\" y \"SaaS en producción\" valen para Puter.com pero el repo monorepo en sí es muy reciente para juzgarlo.",
+        "madurez_senales": "Estrellas totales: **401★** | Forks: **67** | Issues abiertos: **4** | Lenguaje: **JavaScript** · Fecha creación: **2026-10-13** (1 día) | Último push: **2026-10-14** | Default branch: **main** · Licencia: **MIT** | Tamaño: **431 MB** (con assets de apps) · Topics GitHub: `adobe`, `cad`, `office`, `photoshop`, `saas`, `spreadsheet` · Descripción oficial: \"We're rebuilding and open-sourcing the world's software from scratch.\" (MIT-licensed) · Homepage: no declarada vía API, pero inferida como `puter.com` + subdominios (`*.puter.com`)",
+        "accion_sugerida": "**leer** el README completo (10 min) para entender la cadencia del proyecto; **vigilar** stars/release notes (1 día de vida, push HOY — si llega a 5k★ en 2 semanas confirma la categoría editorial); **probar** un par de demos en vivo (`spreadsheet.puter.com`, `documents.puter.com`, `cad.puter.com`) para validar la promesa UX; **explorar** como infraestructura para un SaaS self-hosted que reemplace licencias Microsoft 365 / Adobe CC / Slack en una organización pequeña.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:HeyPuter/everything",
+          "rel": "implements",
+          "dst": "concept:open-source-everything-mono-repo",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:HeyPuter/everything",
+          "rel": "implements",
+          "dst": "repo:HeyPuter/puter",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:open-source-everything-mono-repo",
+          "rel": "competes_with",
+          "dst": "repo:storytold/figcraft",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:open-source-everything-mono-repo",
+          "rel": "competes_with",
+          "dst": "repo:NVIDIA-Omniverse/usd-brep",
+          "primera_mencion": "2026-10-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heyputer-everything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "1Panel-dev/MaxKB",
+      "url": "https://github.com/1Panel-dev/MaxKB",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Plataforma open-source GPL-3.0 para construir agentes enterprise-grade con RAG + agentic workflows + MCP tool-use + multimodal, modelo-agnóstica, con 3 años de maduración real, default branch `v2` activo, Docker Hub pulls oficiales, y deploy one-click vía el panel 1Panel.**",
+        "por_que_importa": "Es el caso más maduro del espacio \"enterprise agent platform\" en el ecosistema chino: comparable a Dify (MIT, occidental, RAG + workflows) pero GPL-3.0 y con stack LangChain on-prem. Los números reales lo respaldan: 22.973★, 3.192 forks, 3 años de commits continuos, branch `v2` activo con 868 commits solo en 2026. La pila es LangChain + Django + PostgreSQL + pgvector + Vue.js, con MCP servers, RAG multi-fuente, workflows visual, multimodal y soporte de 30+ modelos (DeepSeek, Qwen3, Llama3, OpenAI, Claude, Gemini, etc.). La diferencia práctica con Dify: la licencia GPL-3.0 impide usar MaxKB como servicio competidor de 1Panel, pero deja libre el uso interno en cualquier organización — una bifurcación con consecuencias reales para quien decida adoptarlo. Ya cubrimos pgvector el 2026-08-10 como pieza de la stack de RAG, y LangChain el 2026-04-10 como framework de orquestación; MaxKB las junta en un producto enterprise con distro oficial vía 1Panel y casos reales en customer service corporativo y knowledge base interna. Caveat: la métrica de 868 commits en 2026 sobre el branch `v2` no está verificada en el item original, queda como dato a contrastar si alguien lo adopta.",
+        "madurez_senales": "Estrellas totales: **22.973★** | Forks: **3.192** | Issues abiertos: **34** | Lenguaje: **Python** · Fecha creación: **2023-09-14** (3 años) | Último push: **2026-10-14** | Default branch: **v2** (no `main`) · Licencia: **GPL-3.0** | Tamaño: **86 MB** · Topics GitHub: `agent`, `agentic-ai`, `chatbot`, `deepseek-r1`, `knowledgebase`, `langchain`, `llama3`, `llm`, `maxkb`, `mcp-server`, `ollama`, `pgvector`, `qwen3`, `rag` · Homepage: `https://maxkb.cn`",
+        "accion_sugerida": "**probar** el deploy con `docker run -d --name=maxkb --restart=always -p 8080:8080 -v ~/.maxkb:/opt/maxkb 1panel/maxkb` y conectarlo a un modelo local (Ollama) + un documento propio para validar la pipeline RAG + MCP; **leer** la documentación en `maxkb.cn/docs/v2` (skim de 20 min, especialmente secciones \"MCP tool-use\" y \"Workflow engine\"); **comparar** con Dify y FastGPT para una pieza editorial sobre la bifurcación occidental/china del espacio \"enterprise agent platform\"; **vigilar** la cadencia de release v2 (push HOY, momentum sostenido en enterprise chino).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:1Panel-dev/MaxKB",
+          "rel": "implements",
+          "dst": "concept:enterprise-agent-platform-cn",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:1Panel-dev/MaxKB",
+          "rel": "competes_with",
+          "dst": "repo:langgenius/dify",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:1Panel-dev/MaxKB",
+          "rel": "uses",
+          "dst": "tool:langchain",
+          "primera_mencion": "2026-10-04"
+        },
+        {
+          "src": "repo:1Panel-dev/MaxKB",
+          "rel": "uses",
+          "dst": "tool:pgvector",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "concept:enterprise-agent-platform-cn",
+          "rel": "relevant_to",
+          "dst": "concept:self-hosted-agent-platform",
+          "primera_mencion": "2026-09-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1panel-dev-maxkb",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "NVIDIA/personaplex",
+      "url": "https://github.com/NVIDIA/personaplex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**Modelo speech-to-speech full-duplex de NVIDIA (basado en Moshi, paper arXiv:2602.06053) que combina role prompts textuales con voice conditioning por audio (tomas de 10–30 s) para producir conversaciones con persona y voz consistentes, latencia < 200 ms, con demo público en `research.nvidia.com/labs/adlr/personaplex/`.**",
+        "por_que_importa": "NVIDIA institucionaliza que el control de personalidad en voice agents pasa de prototipo a producto deployable. La diferencia técnica clave: PersonaPlex entrena la personalidad como señal condicionante interna del modelo (rol textual + voice conditioning por audio de 10–30 s), no como un wrapper de prompt sobre TTS externo. Resultado: full-duplex real con latencia < 200 ms, consistencia de voz entre turnos y control fino de \"cómo habla\", no solo \"qué dice\". Para CSS: ya cubrimos la tesis \"voice agents open-source\" con `OpenBMB/VoxCPM` (39k★, tokenizer-free TTS), y el espacio voice-cloning OSS el 2026-08-20 — PersonaPlex cierra el stack STT (Whisper) + LLM + persona entrenable + voice cloning en una sola release con paper arXiv, demo público y código. Caveat honesto sobre madurez: el `pushed_at` del repo es 2026-03-02, hace 7 meses; lo que reactiva la trending es la oleada reciente de demos y el paper, no un push de código. Si no hay release nuevo en las próximas semanas, el interés puede quedarse en demo pública.",
+        "madurez_senales": "Estrellas totales: **11.172★** | Forks: **1.530** | Issues abiertos: **70** | Lenguaje: **Python** · Fecha creación: **2026-01-05** | Último push: **2026-03-02** (7 meses) | Updated: **2026-10-14** · Licencia: **MIT** | Tamaño: **1.4 MB** (código; los pesos están en HuggingFace) · Topics GitHub: (vacío vía API) · Pesos: `huggingface.co/nvidia/personaplex-7b-v1` (requiere aceptar NVIDIA license) · Requisitos: GPU moderna (recomendado) o CPU con `--cpu-offload` (necesita `accelerate`); para Blackwell GPUs instalar `torch --index-url .../cu130` · Demo: `https://research.nvidia.com/labs/adlr/personaplex/` (live web UI) · Paper: arXiv:2602.06053",
+        "accion_sugerida": "**probar** el demo en `research.nvidia.com/labs/adlr/personaplex/` (sin instalar nada) — seleccionar una voz + un role prompt y validar la consistencia de la personalidad a lo largo de 5-10 turnos; **leer** el paper arXiv:2602.06053 (skim del abstract + sección 3 \"persona control\", ~15 min); **vigilar** releases — si hay push nuevo en octubre 2026 con optimizaciones de latencia o nuevos idiomas, la tesis se consolida; **explorar** como base de un agente de customer service con voz consistente en español, complementando VoxCPM o Pocket TTS para clonación.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/personaplex",
+          "rel": "implements",
+          "dst": "concept:full-duplex-voice-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:full-duplex-voice-agent",
+          "rel": "complements",
+          "dst": "concept:realtime-voice-agent",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "concept:full-duplex-voice-agent",
+          "rel": "relevant_to",
+          "dst": "concept:voice-cloning-oss",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:NVIDIA/personaplex",
+          "rel": "competes_with",
+          "dst": "repo:OpenBMB/VoxCPM",
+          "primera_mencion": "2026-10-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-personaplex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "storytold/figcraft",
+      "url": "https://github.com/storytold/figcraft",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(540 ★, push HOY, Rust Apache-2.0, 5 días de vida) — **Figma reimplementation en pure Rust: frames, auto layout, components y variants, vector networks, styles, variables, prototypes, \"native app que abre instantáneo y funciona offline\"**. Sigue el patrón de la suite `storytold/*craft` (artcraft, photocraft, wordcraft, pdfcraft) que cubrimos la semana pasada.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — early alpha, comparar con `HeyPuter/everything` (Figma web en JavaScript) como dos enfoques distintos del mismo problema",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-figcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Twigpine/openclaude",
+      "url": "https://github.com/Twigpine/openclaude",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(33.838 ★, push HOY, TypeScript, creado 2026-04-01, **NOASSERTION — LICENSE verificado manualmente**) — **Open-source coding-agent CLI \"for cloud and local model providers\"** que reusa el código de Anthropic Claude Code CLI y le añade backends (OpenAI, Gemini, GitHub Models, Codex OAuth, Ollama, Atomic Chat, Xiaomi MiMo, Atlas Cloud) y terminal-first workflow. **Caveat crítico**: el LICENSE afirma \"MIT (modifications only) where legally permissible\" sobre código derivado de Anthropic Claude Code, que es **propietario** — un patrón de copyright dudoso que ya vimos en `0xwilliamortiz/openclaude-improved` y `Alishahryar1/free-claude-code` (este último AGPL-3.0, más limpio). 33k ★ en 6 meses indica demanda real de un \"Claude Code pero open\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el desenlace legal y la respuesta de Anthropic; **no adoptar** como dependencia de producción hasta que la licencia se aclare; **leer** el README para entender qué providers ya están soportados (útil como referencia del mercado, no para integrar)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "twigpine-openclaude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Saffsanity/sill",
+      "url": "https://github.com/Saffsanity/sill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(347 ★, push HOY, Swift Apache-2.0, 22 días de vida) — **\"Any window from your Mac, live on your iPhone or iPad\"**: app open-source para usar iPad/iPhone como segunda pantalla del Mac, captura en HEVC con ScreenCaptureKit, transport vía AirPlay/USB/Wi-Fi Direct/Tailscale, sin accounts ni servers. App Store oficial (`apps.apple.com/app/id6816359860`), build desde source disponible.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — si tienes un iPad cerca (workflow \"laptop mode\" en iPad upright es muy valorable para devs que viven en terminal); **vigilar** releases para confirmar que sigue open-source + sin telemetría",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "saffsanity-sill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "OpenBMB/VoxCPM",
+      "url": "https://github.com/OpenBMB/VoxCPM",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(39.229 ★, push 2026-10-08, Python Apache-2.0) — **VoxCPM2 TTS multilingüe tokenizer-free con creative voice design + true-to-life cloning**. Ya cubierto en el boletín del 2026-10-13.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — el playground en `voxcpm.com` para comparar con PersonaPlex; juntos forman el stack \"voz open-source frontier\" que cubrimos hoy",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbmb-voxcpm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(27.566 ★, push HOY, TypeScript Elastic License 2.0 — NO OSI) — **MCP server que reduce 98 % el context window gastado en tool output, con memoria de sesión entre conversaciones y enrutado a 17 plataformas**. Cubierto el 2026-10-13; el momentum HN #1 + push sostenido lo mantienen relevante.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — `npm install -g context-mode` localmente para validar el ahorro de tokens en una sesión real con Playwright; **vigilar** la respuesta a la licencia ELv2 (puede ser retirado por un repositorio con más momentum)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 3,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/3 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-heyputer-everything", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-heyputer-everything", "dst": "tema:heyputer-everything", "rel": "trata", "added": "2026-10-14"}
+{"src": "repo:HeyPuter/everything", "dst": "concept:open-source-everything-mono-repo", "rel": "implements", "added": "2026-10-14", "primera_mencion": null}
+{"src": "repo:HeyPuter/everything", "dst": "repo:HeyPuter/puter", "rel": "implements", "added": "2026-10-14", "primera_mencion": null}
+{"src": "concept:open-source-everything-mono-repo", "dst": "repo:storytold/figcraft", "rel": "competes_with", "added": "2026-10-14", "primera_mencion": null}
+{"src": "concept:open-source-everything-mono-repo", "dst": "repo:NVIDIA-Omniverse/usd-brep", "rel": "competes_with", "added": "2026-10-14", "primera_mencion": "2026-10-13"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-1panel-dev-maxkb", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-1panel-dev-maxkb", "dst": "tema:1panel-dev-maxkb", "rel": "trata", "added": "2026-10-14"}
+{"src": "repo:1Panel-dev/MaxKB", "dst": "concept:enterprise-agent-platform-cn", "rel": "implements", "added": "2026-10-14", "primera_mencion": null}
+{"src": "repo:1Panel-dev/MaxKB", "dst": "repo:langgenius/dify", "rel": "competes_with", "added": "2026-10-14", "primera_mencion": null}
+{"src": "repo:1Panel-dev/MaxKB", "dst": "tool:langchain", "rel": "uses", "added": "2026-10-14", "primera_mencion": "2026-10-04"}
+{"src": "repo:1Panel-dev/MaxKB", "dst": "tool:pgvector", "rel": "uses", "added": "2026-10-14", "primera_mencion": "2026-08-10"}
+{"src": "concept:enterprise-agent-platform-cn", "dst": "concept:self-hosted-agent-platform", "rel": "relevant_to", "added": "2026-10-14", "primera_mencion": "2026-09-22"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-nvidia-personaplex", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-nvidia-personaplex", "dst": "tema:nvidia-personaplex", "rel": "trata", "added": "2026-10-14"}
+{"src": "repo:NVIDIA/personaplex", "dst": "concept:full-duplex-voice-agent", "rel": "implements", "added": "2026-10-14", "primera_mencion": null}
+{"src": "concept:full-duplex-voice-agent", "dst": "concept:realtime-voice-agent", "rel": "complements", "added": "2026-10-14", "primera_mencion": "2026-08-31"}
+{"src": "concept:full-duplex-voice-agent", "dst": "concept:voice-cloning-oss", "rel": "relevant_to", "added": "2026-10-14", "primera_mencion": "2026-08-20"}
+{"src": "repo:NVIDIA/personaplex", "dst": "repo:OpenBMB/VoxCPM", "rel": "competes_with", "added": "2026-10-14", "primera_mencion": "2026-10-13"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-storytold-figcraft", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-storytold-figcraft", "dst": "tema:storytold-figcraft", "rel": "trata", "added": "2026-10-14"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-twigpine-openclaude", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-twigpine-openclaude", "dst": "tema:twigpine-openclaude", "rel": "trata", "added": "2026-10-14"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-saffsanity-sill", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-saffsanity-sill", "dst": "tema:saffsanity-sill", "rel": "trata", "added": "2026-10-14"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-openbmb-voxcpm", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-openbmb-voxcpm", "dst": "tema:openbmb-voxcpm", "rel": "trata", "added": "2026-10-14"}
+{"src": "boletin:2026-10-14", "dst": "item:https-github-com-mksglu-context-mode", "rel": "menciona", "added": "2026-10-14"}
+{"src": "item:https-github-com-mksglu-context-mode", "dst": "tema:mksglu-context-mode", "rel": "trata", "added": "2026-10-14"}
