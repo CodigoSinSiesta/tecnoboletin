@@ -1,0 +1,42 @@
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-yakuikai-tokentab", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-yakuikai-tokentab", "dst": "tema:yakuikai-tokentab", "rel": "trata", "added": "2026-10-15"}
+{"src": "repo:yakuikai/tokentab", "dst": "concept:llm_cost_observability", "rel": "solves", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:yakuikai/tokentab", "dst": "repo:BerriAI/litellm", "rel": "complements", "added": "2026-10-15", "primera_mencion": "2026-08-27"}
+{"src": "repo:yakuikai/tokentab", "dst": "repo:mksglu/context_mode", "rel": "relevant_to", "added": "2026-10-15", "primera_mencion": null}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-google-agentmesh", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-google-agentmesh", "dst": "tema:google-agentmesh", "rel": "trata", "added": "2026-10-15"}
+{"src": "repo:google/agentmesh", "dst": "concept:agent_discovery_protocol", "rel": "implements", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:google/agentmesh", "dst": "protocol:a2a", "rel": "complements", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:google/agentmesh", "dst": "problem:agent_nat_traversal", "rel": "solves", "added": "2026-10-15", "primera_mencion": null}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-razorpay-slashdocs", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-razorpay-slashdocs", "dst": "tema:razorpay-slashdocs", "rel": "trata", "added": "2026-10-15"}
+{"src": "repo:razorpay/slashdocs", "dst": "concept:agent_human_collaborative_documents", "rel": "solves", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:razorpay/slashdocs", "dst": "protocol:mcp", "rel": "uses", "added": "2026-10-15", "primera_mencion": "2026-09-21"}
+{"src": "repo:razorpay/slashdocs", "dst": "concept:spec_driven_development", "rel": "complements", "added": "2026-10-15", "primera_mencion": "2026-07-24"}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-deeplethe-solid-glass", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-deeplethe-solid-glass", "dst": "tema:deeplethe-solid-glass", "rel": "trata", "added": "2026-10-15"}
+{"src": "repo:deeplethe/solid-glass", "dst": "problem:ai_app_ui_improvisation", "rel": "solves", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:deeplethe/solid-glass", "dst": "framework:shadcn", "rel": "built_on", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:deeplethe/solid-glass", "dst": "concept:agent_workspace_ui", "rel": "complements", "added": "2026-10-15", "primera_mencion": null}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-caho1-open-claude-ui", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-caho1-open-claude-ui", "dst": "tema:caho1-open-claude-ui", "rel": "trata", "added": "2026-10-15"}
+{"src": "repo:Caho1/open-claude-ui", "dst": "repo:morluto/rea", "rel": "uses", "added": "2026-10-15", "primera_mencion": "2026-10-05"}
+{"src": "repo:Caho1/open-claude-ui", "dst": "company:anthropic_design_system", "rel": "relevant_to", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:Caho1/open-claude-ui", "dst": "concept:skill_driven_reverse_engineering", "rel": "demonstrates", "added": "2026-10-15", "primera_mencion": null}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-armur-ai-pentest-swarm-ai", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-armur-ai-pentest-swarm-ai", "dst": "tema:armur-ai-pentest-swarm-ai", "rel": "trata", "added": "2026-10-15"}
+{"src": "repo:Armur-Ai/Pentest-Swarm-AI", "dst": "company:xbow", "rel": "competes_with", "added": "2026-10-15", "primera_mencion": null}
+{"src": "repo:Armur-Ai/Pentest-Swarm-AI", "dst": "repo:vxcontrol/pentagi", "rel": "complements", "added": "2026-10-15", "primera_mencion": "2026-09-26"}
+{"src": "repo:Armur-Ai/Pentest-Swarm-AI", "dst": "technique:swarm_attack_path_scoring", "rel": "implements", "added": "2026-10-15", "primera_mencion": null}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "dst": "tema:chromedevtools-chrome-devtools-mcp", "rel": "trata", "added": "2026-10-15"}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-isair-jarvis", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-isair-jarvis", "dst": "tema:isair-jarvis", "rel": "trata", "added": "2026-10-15"}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-agent-substrate-substrate", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:agent-substrate-substrate", "rel": "trata", "added": "2026-10-15"}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-10-15"}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-p-e-w-heretic", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-p-e-w-heretic", "dst": "tema:p-e-w-heretic", "rel": "trata", "added": "2026-10-15"}
+{"src": "boletin:2026-10-15", "dst": "item:https-github-com-krillinai-opencreator", "rel": "menciona", "added": "2026-10-15"}
+{"src": "item:https-github-com-krillinai-opencreator", "dst": "tema:krillinai-opencreator", "rel": "trata", "added": "2026-10-15"}

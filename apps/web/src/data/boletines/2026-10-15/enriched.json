@@ -1,0 +1,425 @@
+{
+  "version": 2,
+  "date": "2026-10-15",
+  "boletin_origen": "2026-10-15-trending.md",
+  "resumen_ejecutivo": "- **Token economics manda**: `yakuikai/tokentab` (1.253★, MIT, Python) entra como hallazgo principal porque condensa en un CLI local-first lo que toda la conversación sobre dev-tools con LLM viene necesitando — convertir los logs JSONL que ya escriben Claude Code, Codex y Gemini CLI en dashboards de uso y coste. Sin telemetría, sin API key, con `-web` para verlo en el navegador. Encaja directo en cualquier artículo sobre \"cuánto te cuesta de verdad tu flujo de coding agents\".\n- **Google se mueve en agent infra**: dos repos bajo el paraguas de Google en tendencia simultánea — `google/agentmesh` (1.068★, Go Apache-2.0) propone una malla peer-to-peer para que agentes se descubran y llamen entre sí via OpenID, y `agent-substrate/substrate` (5.180★, Apache-2.0) reaparece como runtime de agentes estilo Kubernetes con multiplexación 30× via gVisor/microVM. El primero empuja A2A; el segundo empuja substrate; los dos son la dirección que Google está consolidando hacia finales de 2026.\n- **Documentos agénticos se consolidan**: `razorpay/slashdocs` (295★, Go MIT) entra como hallazgo porque aterriza el patrón \"HTML auto-contenido + comentarios humanos anclados + versiones inmutables + OAuth/agent accounts\" que estaba disperso entre Linear, Notion AI y los PDF de Coda. El twist: agentes publican HTML que humanos comentan por anclas, y los agentes releen los comentarios y vuelven a iterar. Versiones inmutables obligatorias. Vale como caso editorial de \"agentes y humanos en el mismo loop\".\n- **Pentest con enjambre y design system para IA**: `Armur-Ai/Pentest-Swarm-AI` (2.970★, Go AGPL-3.0) trae el primer \"swarm pentester\" open-source con attack-path scoring adaptativo, posicionado como alternativa XBOW; `deeplethe/solid-glass` (806★, TS MIT, 3 días de vida) es el primer design system construido específicamente para UI de aplicaciones de IA — entre flat y liquid glass, con 13 componentes y bloques completos, encima de shadcn/ui + Tailwind 4 + React 19.\n- **REA sigue rompiendo records**: `morluto/rea` reaparece en Trendshift #1 con 251.658★ en apenas 6 meses (vimos 209k★ el 2026-08-08). El badge \"Reverse Engineered with REA\" ya está pegado en `Caho1/open-claude-ui` y la prueba social crece — `storytold/artcraft`, `wheresryan22/anatomy` y `mattpocock/skills` también se mantienen en radar. Patrón \"skills para coding agents\" sigue siendo el eje de momentum en 2026-Q4.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (TypeScript, Python, Rust, Go), GitHub API para verificación.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "yakuikai/tokentab",
+      "url": "https://github.com/yakuikai/tokentab",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI + web dashboard que parsea los logs JSONL que Claude Code (`~/.claude/projects/**/*.jsonl`), Codex (`~/.codex/sessions/**/rollout-*.jsonl`) y Gemini CLI (`~/.gemini/tmp/**/session-*.json`) ya dejan en disco y agrega uso de tokens y coste por modelo, proyecto, día y \"tipo de trabajo\" inferido de la sesión. `pip install .` + `python cli.py` (o `-web` para dashboard). Sin cuenta, sin API key, todo local.",
+        "por_que_importa": "Durante todo el año hemos discutido el coste real de los coding agents; `tokentab` es la primera herramienta que lo mide sin enviar telemetría a un SaaS — `pip install .` y arranca. Encaja directo en cualquier pieza sobre cómo auditar tu gasto en coding agents o en una comparativa Codex vs Claude Code vs Gemini con sesiones reales. Ya cubrimos `BerriAI/litellm` el 2026-08-27 desde el lado del gateway; `tokentab` complementa esa cobertura desde el observability layer de abajo (lee los JSONL que las CLIs ya escriben), no desde el proxy de arriba. Licencia MIT, sin cuenta ni API key, todo local.",
+        "madurez_senales": "1.253★ · 119 forks · Python · MIT · creado 2026-09-21 (24 días de vida) · último push 2026-10-11 (hace 4 días) · topics: `ai`, `ai-token`, `ai-token-optimizer`, `claude-code`, `codex`, `python`, `token-usage`.",
+        "accion_sugerida": "**probar** (`pip install` + correr sobre tus logs existentes) + **leer** el README para entender el esquema de parseo (útil si quieres construir tu propio exporter).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:yakuikai/tokentab",
+          "rel": "solves",
+          "dst": "concept:llm_cost_observability",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:yakuikai/tokentab",
+          "rel": "complements",
+          "dst": "repo:BerriAI/litellm",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:yakuikai/tokentab",
+          "rel": "relevant_to",
+          "dst": "repo:mksglu/context_mode",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yakuikai-tokentab",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "google/agentmesh",
+      "url": "https://github.com/google/agentmesh",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Red privada para agentes AI. Un nodo corre al lado del agente y le da tres cosas: publicar herramientas/modelos a la red, encontrar y llamar lo que publican otros nodos, e identidad verificable por cualquier otro nodo. Los nodos se conectan directo cuando pueden, a través de relays cuando no pueden (NAT traversal). \"Nada es alcanzable por defecto\": cada nodo expone servicios solo si su config lo dice, y los grants se evalúan sobre nombres de servicio, nunca sobre direcciones. Identidad vía OpenID Connect o token bootstrap one-time → credencial offline-verifiable atada a la clave del nodo. Quickstart: `curl -sL https://google.github.io/agentmesh/install.sh | bash` → `agentmesh-node join https://bananas.sam-mesh.dev` → `agentmesh-node run --daemonize`.",
+        "por_que_importa": "Google ya tiene A2A como protocolo, MCP como transporte y Gemini como modelo; ahora suma el plano de mesh sobre el que múltiples agentes distribuidos pueden encontrarse sin que cada uno tenga que saber la IP del otro — la pieza que faltaba para que el 'agente que llama a otro agente' funcione cross-org. La red aplica NAT traversal con relays, evalúa grants sobre nombres de servicio (no sobre direcciones) y emite identidades verificables vía OpenID Connect o token bootstrap one-time. El README incluye un GitHub Codespaces con `make testnet` que arranca una control plane con URL pública, suficiente para un tutorial paso a paso. Sitio y quickstart: https://google.github.io/agentmesh.",
+        "madurez_senales": "1.068★ · 175 forks · Go · Apache-2.0 · creado 2026-04-21 (~6 meses) · último push HOY 2026-10-15 · topics: `a2a`, `a2a-protocol`, `agent-mesh`, `agentic-ai`, `inference`, `mcp`, `mesh`, `mesh-network`. Oficial Google (no confundir con `agent-substrate/substrate`, también trending y distinto bajo \"de Google\").",
+        "accion_sugerida": "**explorar** (probar `agentmesh-node join` en Codespaces, validar quickstart) + **vigilar** la convergencia con `agent-substrate/substrate` y con el stack `MCP + A2A`.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google/agentmesh",
+          "rel": "implements",
+          "dst": "concept:agent_discovery_protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google/agentmesh",
+          "rel": "complements",
+          "dst": "protocol:a2a",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google/agentmesh",
+          "rel": "solves",
+          "dst": "problem:agent_nat_traversal",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-agentmesh",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "razorpay/slashdocs",
+      "url": "https://github.com/razorpay/slashdocs",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"The collaborative workspace for agentic organizations\". Los agentes publican HTML auto-contenido (un archivo por documento, imágenes base64, Mermaid/inline-SVG). Los humanos abren el HTML en el browser, comentan sobre palabras exactas con anchors, comparten, y los agentes leen los comentarios y publican la siguiente versión. **Todas las versiones se conservan**. Self-hosted Go server + React frontend embebido + Go CLI + MCP server remoto con OAuth en el browser (no requiere CLI local). OpenID Connect para humanos (Google/Okta/Entra/Keycloak/Dex), service accounts para headless/agents. Casos de uso: architecture reviews, incident reports, product specs, QA findings, dashboards como HTML portable.",
+        "por_que_importa": "Hay docenas de 'documentos agénticos' propietarios (Coda, Notion AI, Linear Asks, los PDF auto-generados de Lindy.ai); `slashdocs` es la primera implementación open-source con el modelo mental completo — HTML auto-contenido portable (un archivo por documento, imágenes base64, Mermaid/inline-SVG), comentario anclado sobre palabras exactas con anchors, versiones inmutables conservadas todas, e identidad dual humano/agente (OIDC para humanos, service accounts para headless). Es el ejemplo concreto que necesita un artículo sobre cómo conseguir que un agente produzca documentos revisables en lugar de PDFs enviados al vacío. Ya cubrimos MCP el 2026-09-21 (la `slashdocs` lo expone como MCP server remoto con OAuth en el browser, sin requerir CLI local) y el concepto de spec-driven development desde el 2026-07-24, así que el repo conecta dos líneas previas del boletín con un caso de uso real. Viene del equipo de Razorpay, no de un actor hip.",
+        "madurez_senales": "295★ · 38 forks · Go · MIT · creado 2026-06-04 (~4 meses) · último push HOY 2026-10-15 · topics: `ai-agents`, `claude-code`, `code-review`, `documents`, `golang`, `html`, `mcp`, `mcp-server`. Branch `master` (no `main`) — verificado via API.",
+        "accion_sugerida": "**probar** el quickstart docker compose + **leer** el `docs/comment-notifications.md` para entender el modelo de grants/identity (relevante para IA/devs europeos con GDPR).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:razorpay/slashdocs",
+          "rel": "solves",
+          "dst": "concept:agent_human_collaborative_documents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:razorpay/slashdocs",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:razorpay/slashdocs",
+          "rel": "complements",
+          "dst": "concept:spec_driven_development",
+          "primera_mencion": "2026-07-24"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "razorpay-slashdocs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "deeplethe/solid-glass",
+      "url": "https://github.com/deeplethe/solid-glass",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Design system construido encima de shadcn/ui + Tailwind 4 + React 19, con 13 componentes y bloques completos (agent workspace con sessions, thread, files, background tasks; home dark/light). Posicionado \"entre flat design y liquid glass\" — el flat es opaco sin acabado, el liquid glass es casi transparente y en páginas con texto el lector pelea contra el fondo; solid glass deja pasar solo el outline. Sitio: https://deeplethe.github.io/solid-glass. Registry: https://deeplethe.github.io/solid-glass/r/registry.json.",
+        "por_que_importa": "Hemos cubierto docenas de AI agent UIs en 2026 y casi todas improvisan su CSS; `solid-glass` es la primera librería de componentes que se posiciona explícitamente como 'designed for AI applications' (badge oficial) y trae bloques completos reutilizables sobre shadcn/ui + Tailwind 4 + React 19 — agent workspace con sessions, thread, files y background tasks, más home dark/light. Para cualquier desarrollador construyendo la UI de su propio agente o IDE sirve como base en lugar de partir de cero. La estética se define entre flat y liquid glass: deja pasar solo el outline, lo que mejora la legibilidad en páginas con texto denso. Sitio: https://deeplethe.github.io/solid-glass · Registry: https://deeplethe.github.io/solid-glass/r/registry.json.",
+        "madurez_senales": "806★ · 9 forks · TypeScript · MIT · creado 2026-10-12 (3 días de vida) · último push HOY 2026-10-15 · topics: `agent-ui`, `ai`, `ai-agents`, `chat-ui`, `design-system`, `llm`, `react`, `shadcn`.",
+        "accion_sugerida": "**explorar** el registry + clonar y probar el bloque \"agent workspace\" sobre un proyecto propio + **vigilar** la cadencia de releases (3 días de vida = riesgo de pivot).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deeplethe/solid-glass",
+          "rel": "solves",
+          "dst": "problem:ai_app_ui_improvisation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deeplethe/solid-glass",
+          "rel": "built_on",
+          "dst": "framework:shadcn",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deeplethe/solid-glass",
+          "rel": "complements",
+          "dst": "concept:agent_workspace_ui",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deeplethe-solid-glass",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Caho1/open-claude-ui",
+      "url": "https://github.com/Caho1/open-claude-ui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Reimplementación open-source (MIT) de la UI de escritorio de Claude basada en el desensamblado profundo de `morluto/rea`. 30 componentes React hechos a mano, 8 \"algoritmos físicos de interacción hard-code\" (motion/animation physics), y un manual de 3000+ líneas de análisis inverso que documenta el Design System de Anthropic (cds). La documentación explica el proceso de \"clean-room compliance\" para los assets.",
+        "por_que_importa": "Es el primer repo público con badge 'Reverse Engineered with REA' que entrega un resultado tangible — 30 componentes React hechos a mano, 8 algoritmos físicos de interacción hard-codeados (motion/animation physics) y un manual de 3000+ líneas que documenta el Design System de Anthropic, no solo la técnica. Vale como ejemplo editorial de qué se puede construir cuando aplicas skills de reverse-engineering a una UI objetivo con valor, y el manual sirve como material de referencia para devs de UI/UX interesados en la motion physics del DS de Anthropic. Ya cubrimos `morluto/rea` el 2026-10-05; este repo es el segundo hito del cluster, donde la skill se demuestra con producto. Caveat honesto: el README principal está en chino simplificado (existe README-en.md en inglés), así que la fricción de entrada es real para lectores no bilingües.",
+        "madurez_senales": "400★ · 93 forks · TypeScript · MIT · creado 2026-10-14 (1 día de vida) · último push HOY 2026-10-15 · topics: `anthropic`, `audioworklet`, `claude`, `design-system`, `framer-motion`, `motion-physics`, `react`, `reverse-engineering`.",
+        "accion_sugerida": "**leer** el manual de RE de 3000+ líneas (es el verdadero valor) + **vigilar** releases para confirmar que la principal versión traducida se mantiene sincronizada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Caho1/open-claude-ui",
+          "rel": "uses",
+          "dst": "repo:morluto/rea",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:Caho1/open-claude-ui",
+          "rel": "relevant_to",
+          "dst": "company:anthropic_design_system",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Caho1/open-claude-ui",
+          "rel": "demonstrates",
+          "dst": "concept:skill_driven_reverse_engineering",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "caho1-open-claude-ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Armur-Ai/Pentest-Swarm-AI",
+      "url": "https://github.com/Armur-Ai/Pentest-Swarm-AI",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"The first open-source pentesting tool built on a real swarm\". Docenas de agentes AI que no se limitan a escanear — explotan**, encadenan ataques (BOLA/IDOR, JWT forgery, mass assignment, SSRF, injection), construyen y puntúan attack paths, y demuestran vulnerabilidades reales a velocidad de máquina. El scoring adaptativo (ver `docs/adaptive-scoring.gif`) genera estrategias candidatas, las puntúa con JEV contra el estado live, persigue las mejores y refuerza lo que funciona vía feromonas. Built for: backend/pentesters, bug bounty hunters, red teamers, security researchers. Status: alpha.",
+        "por_que_importa": "Ya cubrimos `vxcontrol/pentagi` el 2026-09-26 y `KeygraphHQ/shannon` el 2026-09-03 como deep-dives del cluster 'AI red-team productizado'; `Armur-Ai/Pentest-Swarm-AI` es el tercer punto del trío y el primero en posicionarse explícitamente como alternativa a XBOW. La distinción técnica frente a los dos anteriores es 'swarm vs multi-agent': docenas de agentes que encadenan exploits (BOLA/IDOR, JWT forgery, mass assignment, SSRF, injection), construyen attack paths y los puntúan con scoring adaptativo (JEV contra el estado live, refuerzo vía feromonas) en vez de seguir playbooks predefinidos — esto le acerca más al modelo XBOW que a un orquestador de LLMs. Caveat de licensing honesto: AGPL-3.0 es copyleft fuerte, no apta para integración en SaaS propietario sin abrir tu código; y el repo está en alpha, así que no es producto de producción. El repo tiene 2.5 años de historia (creado 2024-03-26), lo que aporta estabilidad de base incluso en alpha.",
+        "madurez_senales": "2.970★ · 545 forks · Go · **AGPL-3.0** · creado 2024-03-26 (2.5 años) · último push 2026-10-11 (4 días) · topics: `ai-agents`, `bug-bounty`, `cybersecurity`, `offensive-security`, `penetration-testing`, `penetration-testing-framework`, `penetration-testing-tools`.",
+        "accion_sugerida": "**vigilar** releases para confirmar cadencia alpha→beta + **leer** la documentación antes de probar (AGPL-3.0 implica que un demo abierto lo cubre; un producto cerrado no).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Armur-Ai/Pentest-Swarm-AI",
+          "rel": "competes_with",
+          "dst": "company:xbow",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Armur-Ai/Pentest-Swarm-AI",
+          "rel": "complements",
+          "dst": "repo:vxcontrol/pentagi",
+          "primera_mencion": "2026-09-26"
+        },
+        {
+          "src": "repo:Armur-Ai/Pentest-Swarm-AI",
+          "rel": "implements",
+          "dst": "technique:swarm_attack_path_scoring",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "armur-ai-pentest-swarm-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(53.564★, push HOY, TypeScript Apache-2.0, 13 meses) — **Chrome DevTools para coding agents via official MCP server**: performance traces, advanced browser debugging, screenshots, console messages con source-mapped stack traces, reliable automation via Puppeteer. Oficial de Google, opt-out de usage statistics con `--no-usage-statistics`.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — para integración cuando el agente necesite browser introspection real; **probar** sobre un proyecto con stack traces no triviales para validar el valor diagnóstico",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chromedevtools-chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "isair/jarvis",
+      "url": "https://github.com/isair/jarvis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.072★, push 2026-10-14, Python NOASSERTION — verificar antes de adoptar) — **asistente AI local-first para desktop con voz, modo conversación asistente que cita transcripciones rolling, memoria personal, MCP tools**. macOS arm64/x64 + Windows x64 binaries en releases. Caveat de licencia: NOASSERTION, abrir LICENSE antes de integrar.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — + abrir LICENSE para clasificar la adopción antes de probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "isair-jarvis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "agent-substrate/substrate",
+      "url": "https://github.com/agent-substrate/substrate",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.180★, push HOY, Go Apache-2.0, 5 meses) — **runtime \"agent substrate\" estilo Kubernetes para agentes a escala**: multiplexa 30×+ agentes sobre el mismo pool de workers via gVisor/microVM, suspend/resume sub-segundo, teleport de actores entre workers, \"Agent Substrate\" explícitamente **no es producto oficial de Google** (note en el README) — sí es del mismo equipo.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — para entender la dirección de serving de agentes a escala; **no** adoptar todavía (5 meses de vida, modelo de release aún verde)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-substrate-substrate",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(251.658★, push HOY, TypeScript MIT, 6 meses) — reentry. Sigue siendo #1 en Trendshift y creciendo (de 209k a 251k en 5 semanas). El badge \"Reverse Engineered with REA\" ya es un patrón visible en `Caho1/open-claude-ui`.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la cadencia de releases para confirmar que el modelo de \"skill library con el equipo\" sigue pagando",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "p-e-w/heretic",
+      "url": "https://github.com/p-e-w/heretic",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(35.319★, push 2026-10-12, Python AGPL-3.0, 13 meses) — **\"fully automatic censorship removal for language models\"** combinando directional ablation (Arditi et al. 2024) con TPE-based parameter optimizer (Optuna). Soporta modelos dense, multimodal, MoE, hybrid (Qwen3.5). Patrón **NO production-safe**: es investigación de desalineación deliberada, pero la tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "(35k★ en 13 meses) indica que la comunidad lo usa — Acción: **vigilar** como referencia del cluster `concern:model_safety_removal`; **no** adoptar como dependencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "p-e-w-heretic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "krillinai/OpenCreator",
+      "url": "https://github.com/krillinai/OpenCreator",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.117★, push HOY, TypeScript Apache-2.0, master branch, 22 meses) — **workspace AI todo-en-uno para creators** (video translation, dubbing, image generation, voice, scripts). Antiguamente KrillinAI. README en 13 idiomas incluyendo español. Combina `codex-cli` con skills para creadores.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si el perfil incluye audio-creación (siguiente paso natural después de `Saffsanity/sill` cubierto el 2026-10-14)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "krillinai-opencreator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
