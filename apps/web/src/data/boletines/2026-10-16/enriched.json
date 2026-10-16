@@ -1,0 +1,215 @@
+{
+  "version": 2,
+  "date": "2026-10-16",
+  "boletin_origen": "2026-10-16-trending.md",
+  "resumen_ejecutivo": "- **Perplexity entra al ring de sandboxing**: `perplexityai/SPACE` (Rust Apache-2.0, 714★, 15 días de vida) entra como hallazgo principal porque Perplexity abre su propio \"Sandboxed Platform for Agentic Code Execution\" sobre Firecracker microVMs con API HTTP y Kubernetes-ready. Es el mismo problema que `NVIDIA/Nemotron-Cortex-RoPE` y otros han intentado por dentro; Perplexity lo publica y lo mantiene como producto. Implicación editorial: la barrera de entrada para \"agente seguro que ejecuta código\" baja drásticamente cuando un hyperscaler publica su implementación.\n- **Anthropic Scion reaparece, esta vez open-source**: `feder-cr/open_scion` (Go NOASSERTION, 1.020★, 1 día de vida) es la primera implementación open-source del sistema de control de versiones server-centric que Anthropic describió en su paper \"Redesigning source control\". Cubre compare-and-swap, history-walk server-side y changeset log. Caveat: NOASSERTION en `license.spdx_id` — abrir `LICENSE` antes de adoptarlo como dependencia.\n- **\"Caveman\" sigue rompiendo records y se institucionaliza**: `JuliusBrussee/caveman` (Go Apache-2.0) pasa de 35k★ el 2026-08-08 a 112.804★ hoy (3,2× en 9 semanas). El README ahora cita Adobe Research (arXiv:2606.24083), JetBrains A/B test y Elasticsearch Labs (Elasticsearch-caveman para reducir tokens). Pasó de \"viral truco de prompt\" a \"patrón de industria con benchmark académico\" — entra como hallazgo con la historia de fondo.\n- **Pi Coding Agent recibe su capa operativa**: `wangmiaozero/pi-harness` (TypeScript AGPL-3.0, 827★, ~2 meses) se posiciona como \"superset operativo de Pi Coding Agent\" con workspace visual, run controls, recovery y agent teams. Es la respuesta a la pregunta \"¿quién gestiona mis agentes cuando falla uno?\" para el cluster Pi.\n- **OpenBitFun 1.0.0 y chenglou/handwired completan la mesa**: `GCWing/OpenBitFun` (Rust MIT, 2.674★, ~8 meses) llega a 1.0.0 con 4 Agent Harness modes y remote cross-device — el \"agente OS\" ya tiene producto maduro. `chenglou/handwired` (TypeScript MIT, 1.243★, 1 día) es el experimento del ex-React core team que convierte cualquier código JS en una red neuronal diferenciable sin entrenamiento — rareza editorial más que hallazgo accionable, pero vale la mención.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub API cuando aplica. Blogwatcher no publicado hoy (último `*-blogs.md` es 2026-07-05).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Supermedo/uncharted_pc",
+      "url": "https://github.com/Supermedo/uncharted_pc",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(780★, push HOY, C++ GPL-2.0, 1 día) — port open source de Uncharted: The Nathan Drake Collection a Windows nativo. Editor: \"by SuperMedo\"",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — como curiosidad de la escena reverse-engineering + cluster `morluto/rea`; no relevante para IA/dev",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "supermedo-uncharted-pc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "rootSunc/CNEquity",
+      "url": "https://github.com/rootSunc/CNEquity",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(513★, push 2026-10-08, Python Apache-2.0, ~4 meses) — infraestructura de datos A-share (mercado bursátil chino) con 55 datasets diarios, akshare, backtesting, MCP nativo y self-host sin claves de API",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si tu audiencia incluye finanzas o data engineering con foco chino; descripción de la API en chino simplificado",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rootsunc-cnequity",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "jub0t/concat",
+      "url": "https://github.com/jub0t/concat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.024★, push HOY, Rust AGPL-3.0, ~2 meses) — reemplazo open source multiplataforma de CapCut con soporte MCP y API, offline-first, basado en ffmpeg",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si cubrimos video-IA; AGPL-3.0 bloquea adopción como dependencia en SaaS propietario",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jub0t-concat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(93.789★, push HOY, TypeScript MIT, ~7 meses) — reentry. ADE para correr una flota de coding agents en paralelo con tu propia suscripción",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — ; el badge \"Reverse Engineered with REA\" lo posiciona en la conversación `morluto/rea`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(277.788★, push HOY, TypeScript MIT, ~6 meses) — reentry con nuevo techo. Pasó de 251k★ el 2026-10-15 a 277k★ hoy (+26k en un día). La métrica ya no cabe en el titular; pasamos a seguimiento",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la cadencia para confirmar si el modelo \"skill library con equipo\" sigue pagando 30 días al año",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "JuliusBrussee/caveman",
+      "url": "https://github.com/JuliusBrussee/caveman",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(112.804★, push 2026-10-15, Go Apache-2.0) — reentry con momentum institucional (Adobe Research, JetBrains, Elasticsearch Labs)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — los siguientes 30 días para ver si la \"consagración\" se traduce en adopción fuera del cluster coding-agents",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "juliusbrussee-caveman",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "microsoft/playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(97.825★, push HOY, TypeScript Apache-2.0, ~7 años) — reentry. No es nuevo, pero sigue trendeando por el empuje de los MCP servers para browser automation (cluster `ChromeDevTools/chrome-devtools-mcp`)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si tu coding agent necesita browser introspection más sólida que `chrome-devtools-mcp`; `playwright` es la base bajo `devtools-mcp`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-playwright",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "tailscale/tailscale",
+      "url": "https://github.com/tailscale/tailscale",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(37.631★, push HOY, Go BSD-3-Clause, ~6 años) — reentry. WireGuard + 2FA + SSO. No es IA, pero el empuje en trending coincide con la conversación de \"agents distributed on NAT'd infra\" (cluster `google/agentmesh`)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si trabajas con agentes distribuidos cross-VPC; sigue siendo la opción más simple para mesh VPN",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tailscale-tailscale",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 0,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
