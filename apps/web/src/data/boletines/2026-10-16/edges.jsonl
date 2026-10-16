@@ -1,16 +1,43 @@
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-supermedo-uncharted-pc", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-supermedo-uncharted-pc", "dst": "tema:supermedo-uncharted-pc", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-rootsunc-cnequity", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-rootsunc-cnequity", "dst": "tema:rootsunc-cnequity", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-jub0t-concat", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-jub0t-concat", "dst": "tema:jub0t-concat", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-juliusbrussee-caveman", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-juliusbrussee-caveman", "dst": "tema:juliusbrussee-caveman", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-microsoft-playwright", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-microsoft-playwright", "dst": "tema:microsoft-playwright", "rel": "trata", "added": "2026-10-16"}
-{"src": "boletin:2026-10-16", "dst": "item:https-github-com-tailscale-tailscale", "rel": "menciona", "added": "2026-10-16"}
-{"src": "item:https-github-com-tailscale-tailscale", "dst": "tema:tailscale-tailscale", "rel": "trata", "added": "2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-perplexityai-SPACE","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-perplexityai-SPACE","dst":"tema:perplexityai-space","rel":"trata","added":"2026-10-16"}
+{"src":"repo:perplexityai/SPACE","dst":"concept:agent-sandbox","rel":"implements","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:perplexityai/SPACE","dst":"tool:firecracker","rel":"uses","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:perplexityai/SPACE","dst":"repo:e2b-dev/E2B","rel":"competes_with","added":"2026-10-16","primera_mencion":"2026-07-15"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-feder-cr-open_scion","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-feder-cr-open_scion","dst":"tema:feder-cr-open-scion","rel":"trata","added":"2026-10-16"}
+{"src":"repo:feder-cr/open_scion","dst":"concept:server_centric_vcs","rel":"implements","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:feder-cr/open_scion","dst":"paper:anthropic_redesigning_source_control","rel":"inspired_by","added":"2026-10-16","primera_mencion":null}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-JuliusBrussee-caveman","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-JuliusBrussee-caveman","dst":"tema:juliusbrussee-caveman","rel":"trata","added":"2026-10-16"}
+{"src":"repo:JuliusBrussee/caveman","dst":"concept:output-compression-for-llm","rel":"solves","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:JuliusBrussee/caveman","dst":"repo:yakuikai/tokentab","rel":"complements","added":"2026-10-16","primera_mencion":"2026-10-15"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-wangmiaozero-pi-harness","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-wangmiaozero-pi-harness","dst":"tema:wangmiaozero-pi-harness","rel":"trata","added":"2026-10-16"}
+{"src":"repo:wangmiaozero/pi-harness","dst":"repo:earendil-works/pi","rel":"extends","added":"2026-10-16","primera_mencion":"2026-07-14"}
+{"src":"repo:wangmiaozero/pi-harness","dst":"concept:agent-harness-environment","rel":"implements","added":"2026-10-16","primera_mencion":null}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-GCWing-OpenBitFun","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-GCWing-OpenBitFun","dst":"tema:gcwing-openbitfun","rel":"trata","added":"2026-10-16"}
+{"src":"repo:GCWing/OpenBitFun","dst":"concept:agent_workspace_ui","rel":"solves","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:GCWing/OpenBitFun","dst":"repo:HKUDS/nanobot","rel":"competes_with","added":"2026-10-16","primera_mencion":"2026-07-22"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-chenglou-handwired","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-chenglou-handwired","dst":"tema:chenglou-handwired","rel":"trata","added":"2026-10-16"}
+{"src":"repo:chenglou/handwired","dst":"concept:differentiable_programming","rel":"explores","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:chenglou/handwired","dst":"technique:code_to_matmul_lowering","rel":"demonstrates","added":"2026-10-16","primera_mencion":null}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-Thysrael-Horizon","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-Thysrael-Horizon","dst":"tema:thysrael-horizon","rel":"trata","added":"2026-10-16"}
+{"src":"repo:Thysrael/Horizon","dst":"concept:agent_news_radar","rel":"solves","added":"2026-10-16","primera_mencion":null}
+{"src":"repo:Thysrael/Horizon","dst":"protocol:mcp","rel":"uses","added":"2026-10-16","primera_mencion":null}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-Supermedo-uncharted_pc","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-Supermedo-uncharted_pc","dst":"tema:supermedo-uncharted-pc","rel":"trata","added":"2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-rootSunc-CNEquity","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-rootSunc-CNEquity","dst":"tema:rootsunc-cnequity","rel":"trata","added":"2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-jub0t-concat","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-jub0t-concat","dst":"tema:jub0t-concat","rel":"trata","added":"2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-stablyai-orca","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-stablyai-orca","dst":"tema:stablyai-orca","rel":"trata","added":"2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-morluto-rea","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-morluto-rea","dst":"tema:morluto-rea","rel":"trata","added":"2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-microsoft-playwright","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-microsoft-playwright","dst":"tema:microsoft-playwright","rel":"trata","added":"2026-10-16"}
+{"src":"boletin:2026-10-16","dst":"item:https-github-com-tailscale-tailscale","rel":"menciona","added":"2026-10-16"}
+{"src":"item:https-github-com-tailscale-tailscale","dst":"tema:tailscale-tailscale","rel":"trata","added":"2026-10-16"}

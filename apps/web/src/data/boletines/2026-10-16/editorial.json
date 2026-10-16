@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "date": "2026-10-16",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Tres niveles de infra para coding agents: sandbox (Perplexity), source control (Scional open source) y harness operativo (Pi + OpenBitFun)",
+  "posicionamiento": "2026-Q4 consolida que la conversación sobre coding agents en producción dejó de ser 'qué modelo usar' y pasó a ser 'qué infraestructura necesita mi agente para correr 24/7 sin romper el host'. Hoy el grafo muestra esa infraestructura repartida en tres niveles: ejecución segura (Perplexity SPACE sobre Firecracker), control de versiones repensado para cientos de agentes (open_scion aterriza el paper de Scion de Anthropic) y workspace + harness operativo (pi-harness para Pi, OpenBitFun a 1.0.0). Encima, dos líneas laterales que también maduran: reducción de coste en tokens (caveman pasa de meme a paper) y un experimento que abre differentiable programming como nuevo eje editorial (chenglou/handwired).",
+  "convergencia_stack_css": "Para Código Sin Siesta, el stack concreto que empieza a tomar forma es: (1) **sandbox**: `perplexityai/SPACE` (Apache-2.0, Perplexity-backed, Kind para local) si quieres hyperscaler-grade self-host, o `e2b-dev/E2B` si prefieres servicio gestionado. (2) **VCS**: `feder-cr/open_scion` re-implementa el paper de Scion — caveat NOASSERTION obliga a abrir LICENSE, pero el patrón compare-and-swap server-centric encaja con N agentes en paralelo. (3) **workspace + harness**: `wangmiaozero/pi-harness` (AGPL-3.0, copyleft fuerte, no apta para SaaS) si tu agente es Pi, o `GCWing/OpenBitFun` (MIT, Rust core, 1.0.0 con breaking change) si quieres self-host neutral. (4) **coste**: `JuliusBrussee/caveman` (Apache-2.0, npm) reduce tokens 33% antes de medirlos, `yakuikai/tokentab` (MIT, Python) los mide después. (5) **monitor lateral**: `Thysrael/Horizon` (MIT, Python) si quieres un news radar bilingüe con MCP nativo para alimentar el contexto del agente.",
+  "cruzado_grafo": "El boletín de hoy ancla 7 hallazgos principales y abre 4 conceptos nuevos en el grafo: `concept:agent_news_radar` (Horizon), `concept:differentiable_programming` (handwired), `concept:server_centric_vcs` (open_scion) y la técnica `technique:code_to_matmul_lowering`. Encima refuerza el clúster de `agent-sandbox` (Perplexity SPACE vs E2B) y consolida el de `agent-harness-environment` (pi-harness, OpenBitFun, paperclip, substrate). El clúster de reducción de coste recibe un impulso claro: caveman se conecta con tokentab (cubierto el 2026-10-15) formando el eje 'reducir antes / medir después'. Las re-entradas del radar (stablyai/orca, morluto/rea, microsoft/playwright, tailscale/tailscale) consolidan la cobertura de cluster sin aportar nodos nuevos — son seguimiento, no descubrimiento.",
+  "tendencias_5_boletines": "Mirando los últimos 5 boletines, la tendencia dominante es **infraestructura operativa para coding agents**: el 2026-10-02 entraron pi-harness (extensión de Pi con run controls) y OpenBitFun como agente-OS; el 2026-10-08 hubo foco en MEMVID/hindsight (memoria); el 2026-10-11 Letta Code consolidó memoria persistente; el 2026-10-15 tokentab cubrió observabilidad de coste; y hoy 2026-10-16 cierra el trío sandbox + VCS + harness con piezas de hyperscaler y paper-anchored. La conversación de 2026-Q4 puede resumirse en una frase: 'código que ejecuta código, versionado por código, observado por código, costeado por código'. El ángulo lateral de caveman + handwired añade dos vectores secundarios: (a) la reducción de tokens ha pasado de truco a estándar, y (b) la programación diferenciable abre la puerta a unfreeze y entrenar sobre código existente sin reescribir.",
+  "alertas": [
+    "ATENCIÓN: el enriquecimiento automático del cron 52621d797729 (2026-10-16 10:12) clasificó los 7 hallazgos principales como radar_secundario y los items del radar saltaron a los primeros lugares del JSON. El commit a064b60 salió igualmente y el deploy pasó. Este enriched.json es una reescritura manual a las 17:55 del mismo día tras detectar el bug. Pendiente: investigar por qué el LLM (hermes -z, batch de 8 items) perdió la clasificación hallazgo vs radar y si el prompt de enrichment_items.py tiene drift.",
+    "feder-cr/open_scion tiene NOASSERTION (license.spdx_id). Cualquier pieza editorial o dependencia que cite este repo debe abrir LICENSE antes de recomendar adopción."
+  ],
+  "acciones_concretas": [
+    "Reescribir enriched.json de 2026-10-16 con los 7 hallazgos + 7 radar en sus secciones correctas (DONE).",
+    "Regenerar editorial.json con las 4 secciones (posicionamiento, convergencia_stack_css, cruzado_grafo, tendencias_5_boletines) (DONE).",
+    "Regenerar edges.jsonl con los 16+ edges del día (PENDIENTE — siguiente paso).",
+    "Verificar que el build local de Astro pasa con el nuevo JSON (PENDIENTE).",
+    "Commit + push + esperar deploy (PENDIENTE).",
+    "Abrir nota de seguimiento en ~/obsidian-vault sobre el bug del clasificador del cron (PENDIENTE)."
+  ],
+  "generado_por": "manual-fix tras detectar fallo del clasificador del cron 52621d797729 el 2026-10-16 17:55. Datos del boletin original 2026-10-16-trending.md, no del LLM."
+}
