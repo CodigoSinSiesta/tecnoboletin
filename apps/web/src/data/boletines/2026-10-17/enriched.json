@@ -1,0 +1,191 @@
+{
+  "version": 2,
+  "date": "2026-10-17",
+  "boletin_origen": "2026-10-17-trending.md",
+  "resumen_ejecutivo": "- **Google publica Scion, su orquestador de equipos de agentes**: `GoogleCloudPlatform/scion` (Apache-2.0, Go) aterriza como hallazgo principal: es la plataforma de Google para correr agentes Claude Code/Antigravity/Codex/OpenCode como procesos independientes, con Workstation web UI, Homebrew tap, contenedores multi-arch y filosofía \"less is more\". Cuidado: comparte nombre con `feder-cr/open_scion` (de ayer) pero es un proyecto totalmente distinto — orquestación de agentes vs. reimplementación del paper de VCS server-centric.\n- **El video agéntico se consolida con dos proyectos serios y diferenciados**: `openfilm/openfilm` (MIT, 13 días, 650★) aterriza como \"the open source AI video agent\" — un film como un solo `film.html` con `frame(t)` y un Studio local que cualquier agente puede editar. `heygen-com/hyperframes` (Apache-2.0, 65k★) entra como reentry con crecimiento notable (★822 today) — su framework de HTML→MP4 determinístico es la capa de render que complementan productos como OpenFilm.\n- **Ciencia agéntica gana credibilidad con K-Dense BYOK**: `K-Dense-AI/scientific-agent-skills` (MIT, Python, 51k★) reentra con la versión BYOK desktop que corre localmente con 40+ modelos + 177 skills + 100+ bases de datos científicas. arXiv 2609.00065. Esto convierte el \"skill library\" en producto instalable.\n- **Tencent entra al ring de la memoria agéntica**: `Tencent-Hunyuan/Hy-Memory` (Apache-2.0 — verificado en LICENSE, aunque `spdx_id` devuelve NOASSERTION; 445★, 2 días) lanza motor de memoria cognitiva dual-system + MemHub desktop/CLI + modelo Hy-Memory-30B-A3B en Hugging Face + paper en ICLR 2027 (CMB). Tras Hybri.ai, HuggingFace mem-traj y `super_memory`, el grafo de memoria agéntica suma un hyperscaler.\n- **Los coding agents reciben sus sentidos**: `Leonxlnx/earshot` (MIT, 423★, 2 días) — \"ears for coding agents\": describe, match, find, critique y sintetiza audio (incluso música y SFX para films) directamente desde un CLI/MCP server, todo CPU-only. Es el complemento auditivo a `mksglu/context-mode` (vista) y `openfilm/openfilm` (vídeo).\n- **MCP servers maduran hacia verticales serios**: `anujasid/mcp-for-blender-pro` (MIT, Python, 339★, 1 día) aterriza con un MCP server para Blender 4.2+ con Studio visual, 21 herramientas de escena y soporte Team chain (Manager/Workers/Reviewers). Se posiciona en el cluster `anujasid/mcp-for-3d-printing` y consolida que \"MCP vertical premium\" es ahora una categoría por derecho propio.\n- **MOSS-Image demuestra que la línea base abierta sigue acelerando**: `OpenMOSS/MOSS-Image` (Apache-2.0, 292★, 1 día) publica MOSS-Image-Base + SFT, DiT de 5B parámetros para generación controlable, con technical report.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` es 2026-07-05).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "OpenMOSS/MOSS-Image",
+      "url": "https://github.com/OpenMOSS/MOSS-Image",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(292★, push 2026-10-16, Python Apache-2.0, 1 día) — DiT de 5B parámetros para generación de imágenes controlable; SFT + Base, technical report y demo en HF Spaces",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si tu audiencia hace generación de imágenes — el lanzamiento Base + SFT + report en un día es señal fuerte de roadmap",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openmoss-moss-image",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "RUC-NLPIR/Agent-Reflex",
+      "url": "https://github.com/RUC-NLPIR/Agent-Reflex",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(221★, push 2026-10-14, Python MIT, 11 días) — paper \"Teaching Language Agents to Act Reflectively\" (arXiv 2610.17953) + modelo Qwen3-8B + dataset ReSFT-54K + RL-2K (ORPO). Trae 1.170 meta-skills RSD",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el paper + **vigilar** si Hugging Face Team lo sube a `Open R1`-style leaderboard",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruc-nlpir-agent-reflex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(295.201★, push HOY, TypeScript MIT, ~6 meses) — reentry. Pasa de 277k★ el 2026-10-15 a 295k★ hoy (+18k★/24h)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la cadencia — el dominio de \"skills library for reverse engineering\" se está consolidando",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(94.686★, push HOY, TypeScript MIT, ~7 meses) — reentry. Orca para flotas de coding agents en paralelo con tu propia suscripción",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — ; la métrica sigue creciendo (~1k★/día) y posiciona el cluster ADE/Orca como el layer \"operador de coding agents\" listo para producción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "android/skills",
+      "url": "https://github.com/android/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(8.161★, push 2026-10-16, Kotlin Apache-2.0, ~7 meses) — Google publica skills oficiales para Android",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si tu audiencia es Android — es el homólogo de `apple/ml-skill` y entra al cluster \"vendor skills\" (`android/skills`, `apple/ml-skill`, `cursor/plugins`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "android-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "magnitudedev/magnitude",
+      "url": "https://github.com/magnitudedev/magnitude",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.030★, push HOY, Rust Apache-2.0, ~4 meses) — inference engine open-source que tunea kernels sobre tu hardware",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si necesitas reducir coste en inferencia local sin sacrificar coverage de modelos; el repo es el puente entre `candle/candle` y `microsoft/bito` en términos de maturity",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "magnitudedev-magnitude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "OpenCut-app/OpenCut",
+      "url": "https://github.com/OpenCut-app/OpenCut",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(en Rust+TS trending) — reentry; CapCut alternativo open-source con UI web",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si cubres edición de vídeo no-IA; no es hallazgo principal porque está eclipsado por OpenFilm/HyperFrames en plano agéntico",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opencut-app-opencut",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 7,
+    "items_hallazgo_principal": 0,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "7/7 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
