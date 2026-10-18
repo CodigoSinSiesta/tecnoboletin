@@ -1,0 +1,167 @@
+{
+  "version": 2,
+  "date": "2026-10-18",
+  "boletin_origen": "2026-10-18-trending.md",
+  "resumen_ejecutivo": "- **PilotDeck 2.0 aterriza como sistema operativo de agentes con pedigree Tsinghua**: `OpenBMB/PilotDeck` (4.631★, AGPL-3.0, TS, 5 meses) lanza v2.0 el 2026-10-15 con la tesis \"WorkSpace as memory boundary\": un proyecto = filesystem aislado + memoria white-box editable + skill set propio + smart routing por modelo. Código abierto desde 2026-05-28. Co-desarrollado por THUNLP, ModelBest, OpenBMB y AI9Stars.\n- **El anti-bot se vuelve ciudadano MCP de primera**: `vibheksoni/stealth-browser-mcp` (2.650★, MIT, Python, branch `master`) entrega 101 herramientas modulares para que un agente pase Cloudflare / Queue-It vía nodriver + CDP + FastMCP. Es el puente directo entre la skill `web-scraping-viability` y el cluster MCP vertical premium (mismo plano que `anujasid/mcp-for-blender-pro`).\n- **Magnitude se postula como \"Ollama × 2\" con anclaje a nuestros agentes**: `magnitudedev/magnitude` (7.082★, Apache-2.0, Rust) declara >2× el rendimiento de Ollama ajustando kernels por hardware y conecta nativamente con Pi, OpenCode, **Hermes** y Codex. Reentry de ayer pero con release reciente.\n- **K-Dense-AI/scientific-agent-skills** reentra con cifras grandes (52.425★) y producto instalable: K-Dense BYOK desktop ya descargable, 40+ modelos + 177 skills + 100+ bases científicas.\n- **Ghostex abre otra trinchera de \"agent workspace\" en Rust nativo**: `maddada/Ghostex` (1.277★, MIT, Rust+GPUI) — shell nativa con panes Chromium embebidos + app iOS/Android para monitorizar agentes en remoto. Cobertura móvil diferenciadora frente a Scion/PilotDeck (que son Web/IM).\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` es 2026-07-05).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "elie222/rakazo",
+      "url": "https://github.com/elie222/rakazo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.488★, push HOY, TypeScript Apache-2.0, ~2 meses) — alternativa open-source al Grok Bot: trae tu propio modelo y sandbox, stack Electron + Docker + Expo",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — ; si escribes sobre \"AI desktop con sandbox local\", entra como ángulo frente a Grok Bot comercial",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elie222-rakazo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "ScrapeCreators/social-media-research-skills",
+      "url": "https://github.com/ScrapeCreators/social-media-research-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.060★, push 2026-08-26, Python MIT, ~4 meses) — agent skills para investigación en redes sociales: outlier posts, comment mining, competitor teardowns, integrable en Claude Code / Cursor",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el índice de skills y **vigilar** su roadmap si tu audiencia es growth/marketing técnico",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "scrapecreators-social-media-research-ski",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "jasonxu114514/opencode2api",
+      "url": "https://github.com/jasonxu114514/opencode2api",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.019★, push 2026-10-17, Go GPL-3.0, ~2 meses) — proxy en Go que convierte OpenCode Zen / Zen Go a OpenAI/Anthropic-compatible (keys/quotas)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si dependes de OpenCode Zen y quieres failover transparente a tu propia API key",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jasonxu114514-opencode2api",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "KnifeLemon/Filee",
+      "url": "https://github.com/KnifeLemon/Filee",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.855★, push HOY, C# MIT, ~19 días) — conversor universal de archivos open-source: más de 180 formatos offline, drag & drop, UI Avalonia multiplataforma",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si necesitas una alternativa local a CloudConvert sin subir a la nube",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "knifelemon-filee",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "maddada/Ghostex",
+      "url": "https://github.com/maddada/Ghostex",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "ya cubierto arriba; si no lo moviste a principal, queda aquí como referencia cruzada.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maddada-ghostex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "breezeSolicitorMap/undress.a",
+      "url": "https://github.com/breezeSolicitorMap/undress.a",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(no verificado), **`lightseekorg/tokenspeed`** (sponsor card, no editorial), **`AhmadHassan-BTed/Turnitout-Humanizer`** (HTML \"AI plagiarism remover\" — no editorial, evita).",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "breezesolicitormap-undress-a",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 6,
+    "items_hallazgo_principal": 0,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "6/6 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
