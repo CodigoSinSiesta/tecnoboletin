@@ -1,0 +1,167 @@
+{
+  "version": 2,
+  "date": "2026-10-19",
+  "boletin_origen": "2026-10-19-trending.md",
+  "resumen_ejecutivo": "- **`google-research/harness2` entra al #1 de Trendshift con una tesis incómoda: el cuello de botella ya no es el modelo, es el harness.** Google Research publica un framework plug-and-play para **refinar el sistema alrededor del modelo** (prompt + guardrails + memory + tools + subagents + skills + scripts + plugins) sin tocar pesos. Recursión a dos niveles: a nivel de tarea con un paso Propose-Probe-Compose contrastivo, y a nivel de harness para acumular mejoras entre tareas. Mide +11.5/+4.5/+11.8 puntos sobre GLM-5 y Gemini 3.5 Flash en WorkBuddy-Bench, JobBench y LAB. Paper arXiv 2610.14224. 8.214★, Apache-2.0, 13 días de vida.\n- **`mozilla-ai/otari` aterriza como gateway LLM open-source con pedigree Mozilla y un giro de tuerca: virtual keys + budgets + tracking, todo detrás de un endpoint OpenAI/Anthropic-compatible.** Compite con LiteLLM/Portkey, pero añade MCP, code execution, web search, inference guardrails y file understanding como features opcionales. 40+ proveedores. Docker one-liner. 674★, Apache-2.0.\n- **`NVlabs/ASPIRE v1.0 sale en octubre y resuelve el cubo de Rubik**: NVIDIA Research presenta continual learning sin gradientes — el \"modelo entrenado\" es un repo de skills sensoriomotoras en lugar de pesos flotantes. SOTA en LIBERO-Pro, Robosuite y BEHAVIOR-1K. Claude Opus 4.6, GPT-5.5 y GPT-6 Astra como modelos de razonamiento. Paper arXiv 2607.00272. 629★, Apache-2.0, 3 meses.\n- **`VersusControl/versus-incident` se postula como AI SRE teammate self-hosted en Go.** Tres modos (training/shadow/detect), aprende tu normal a partir de logs/metrics/traces/Kubernetes, abre incidente solo cuando aparece una anomalía nueva. Webhook alerts + Slack/Teams/Telegram/Viber/Email/Lark + PagerDuty/Opsgenie/incident.io. 875★, MIT.\n- **`LibreChat-AI/LibreChat` reentra con cadencia diaria y superficie ampliada:** ahora soporta GPT-5, MCP, Skills (el nuevo spec), Artifacts, Responses API, 30+ proveedores. 45.953★, MIT, 3.7 años en el ring.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` sigue siendo 2026-07-05).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "ahujasid/mcp-for-blender",
+      "url": "https://github.com/ahujasid/mcp-for-blender",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(31.607★, push HOY, Python MIT, ~19 meses) — el repo es el rebranding de `blender-mcp` (issue #366 documenta el cambio; PyPI ya expone `mcp-for-blender`, pero `uvx blender-mcp` sigue funcionando). Mismo autor que el ya cubierto `anujasid/mcp-for-blender-pro`",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si la confusión entre los dos nombres genera fricción en producción (alias `blender-mcp` debería continuar); **leer** el issue #366 si necesitas migrar instalaciones",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ahujasid-mcp-for-blender",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "alvinunreal/lazyskills",
+      "url": "https://github.com/alvinunreal/lazyskills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(569★, push 2026-09-26, Go MIT, ~4 meses) — TUI en Go para gestionar agent skills: ver qué hay instalado (project / global / universal / per-agent), diagnosticar SKILL.md roto, previsualizar comandos, abrir / reinstalar / podar. Compatible con Claude Code, OpenCode, Codex, Cursor, Gemini CLI",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar — el instalador `curl -fsSL https://lazyskills.sh/install | sh` y, si dependes de muchas skills, **vigilar** su roadmap (skills.sh search in-TUI es el ángulo interesante)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alvinunreal-lazyskills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "twentyhq/twenty",
+      "url": "https://github.com/twentyhq/twenty",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(58.517★, push HOY, TypeScript NOASSERTION, ~3.9 años) — \"open alternative to Salesforce, designed for AI\". Monorepo con GraphQL + React + NestJS + PostgreSQL; CLI para scaffold de apps. Caveat de licencia: la API devuelve `NOASSERTION` — leer la `LICENSE` antes de adoptarlo como dependencia interna (para uso como producto SaaS no aplica)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el roadmap público (`github.com/orgs/twentyhq/projects/1`) y, si construyes CRM a medida, **leer** `docs.twenty.com`",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "twentyhq-twenty",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "NVlabs/ASPIRE",
+      "url": "https://github.com/NVlabs/ASPIRE",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(629★, push 2026-10-16, Python Apache-2.0, ~3 meses) — robot skills discovery (ver descripción arriba en hallazgos). Repito aquí para audiencia no robótica: si tu vertical es dev/IA puro, baja prioridad",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si abren SDK para construir skills sin robots físicos",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvlabs-aspire",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "mlabonne/llm-course",
+      "url": "https://github.com/mlabonne/llm-course",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(84.224★, push 2026-02-05, `lang=None`, Apache-2.0, ~3.4 años) — reentry masivo con curso de LLM, roadmaps y Colab notebooks",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la métrica `last_push 2026-02-05` sugiere cadencia lenta reciente, el pico de hoy probablemente viene de trending-day, no de release nueva",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mlabonne-llm-course",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "google/ax",
+      "url": "https://github.com/google/ax",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.949★, push HOY, Go Apache-2.0, ~7 meses) — reentry (visto por el cron el 2026-09-21). \"Agent Executor (AX) is Google's open agentic orchestration runtime\". Sin release notoria nueva, pero la cadencia diaria en trending de hoy lo mantiene relevante",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si suben release mayor",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-ax",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 6,
+    "items_hallazgo_principal": 0,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "6/6 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
