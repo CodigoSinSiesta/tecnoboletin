@@ -2,20 +2,279 @@
   "version": 2,
   "date": "2026-10-18",
   "boletin_origen": "2026-10-18-trending.md",
-  "resumen_ejecutivo": "- **PilotDeck 2.0 aterriza como sistema operativo de agentes con pedigree Tsinghua**: `OpenBMB/PilotDeck` (4.631★, AGPL-3.0, TS, 5 meses) lanza v2.0 el 2026-10-15 con la tesis \"WorkSpace as memory boundary\": un proyecto = filesystem aislado + memoria white-box editable + skill set propio + smart routing por modelo. Código abierto desde 2026-05-28. Co-desarrollado por THUNLP, ModelBest, OpenBMB y AI9Stars.\n- **El anti-bot se vuelve ciudadano MCP de primera**: `vibheksoni/stealth-browser-mcp` (2.650★, MIT, Python, branch `master`) entrega 101 herramientas modulares para que un agente pase Cloudflare / Queue-It vía nodriver + CDP + FastMCP. Es el puente directo entre la skill `web-scraping-viability` y el cluster MCP vertical premium (mismo plano que `anujasid/mcp-for-blender-pro`).\n- **Magnitude se postula como \"Ollama × 2\" con anclaje a nuestros agentes**: `magnitudedev/magnitude` (7.082★, Apache-2.0, Rust) declara >2× el rendimiento de Ollama ajustando kernels por hardware y conecta nativamente con Pi, OpenCode, **Hermes** y Codex. Reentry de ayer pero con release reciente.\n- **K-Dense-AI/scientific-agent-skills** reentra con cifras grandes (52.425★) y producto instalable: K-Dense BYOK desktop ya descargable, 40+ modelos + 177 skills + 100+ bases científicas.\n- **Ghostex abre otra trinchera de \"agent workspace\" en Rust nativo**: `maddada/Ghostex` (1.277★, MIT, Rust+GPUI) — shell nativa con panes Chromium embebidos + app iOS/Android para monitorizar agentes en remoto. Cobertura móvil diferenciadora frente a Scion/PilotDeck (que son Web/IM).\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` es 2026-07-05).",
+  "resumen_ejecutivo": "- **PilotDeck 2.0 aterriza como sistema operativo de agentes con pedigree Tsinghua**: `OpenBMB/PilotDeck` (4.761★, AGPL-3.0, TS, 5 meses) lanza v2.0 el 2026-10-15 con la tesis \"WorkSpace as memory boundary\": un proyecto = filesystem aislado + memoria white-box editable + skill set propio + smart routing por modelo. Código abierto desde 2026-05-28. Co-desarrollado por THUNLP, ModelBest, OpenBMB y AI9Stars.\n- **El anti-bot se vuelve ciudadano MCP de primera**: `vibheksoni/stealth-browser-mcp` (3.009★, MIT, Python, branch `master`) entrega 101 herramientas modulares para que un agente pase Cloudflare / Queue-It vía nodriver + CDP + FastMCP. Es el puente directo entre la skill `web-scraping-viability` y el cluster MCP vertical premium (mismo plano que `anujasid/mcp-for-blender-pro`).\n- **Magnitude se postula como \"Ollama × 2\" con anclaje a nuestros agentes**: `magnitudedev/magnitude` (7.185★, Apache-2.0, Rust) declara >2× el rendimiento de Ollama ajustando kernels por hardware y conecta nativamente con Pi, OpenCode, **Hermes** y Codex. Reentry de ayer pero con release reciente.\n- **K-Dense-AI/scientific-agent-skills** reentra con cifras grandes (52.768★) y producto instalable: K-Dense BYOK desktop ya descargable, 40+ modelos + 177 skills + 100+ bases científicas.\n- **Ghostex abre otra trinchera de \"agent workspace\" en Rust nativo**: `maddada/Ghostex` (1.326★, MIT, Rust+GPUI) — shell nativa con panes Chromium embebidos + app iOS/Android para monitorizar agentes en remoto. Cobertura móvil diferenciadora frente a Scion/PilotDeck (que son Web/IM).\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` es 2026-07-05).",
   "items": [
     {
       "idx": 0,
+      "titulo": "OpenBMB/PilotDeck — sistema operativo de agentes con cuatro padrinos académicos chinos",
+      "url": "https://github.com/OpenBMB/PilotDeck",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Agente SO open-source centrado en el concepto **WorkSpace** — cada proyecto tiene filesystem, memoria y skill set aislados; la memoria es **white-box** (se puede editar a mano cada entrada que el modelo recordará); smart routing escoge automáticamente el modelo más barato por tarea; \"Always-on\" deja a los agentes trabajar mientras no estás. MCP nativo, front-ends Web/CLI/IM. Lanzado open-source el 2026-05-28; **PilotDeck 2.0** cae el 2026-10-15 con instalación one-click y skills Word/Excel/PPT.",
+        "por_que_importa": "Junto con el `GoogleCloudPlatform/scion` de ayer (orquestación de equipos) y `claude-cowork` (con su noción de project-level isolation), PilotDeck cierra el trío de \"agentes de larga duración con memoria edit-traceable\" — pero viene de THUNLP/ModelBest, no de un hyperscaler. La conversación AGPL-3.0 vs Apache importa: en código propietario hay que leerlo; en SaaS/publicaciones/blog vale.",
+        "madurez_senales": "4.761★ · 518 forks · TypeScript · AGPL-3.0 · creado 2026-05-22 (~5 meses) · último push HOY 2026-10-19 · topics: (no declarados) · branch `main` · sitio `pilotdeck.openbmb.cn` · Discord + Feishu + WeChat.",
+        "accion_sugerida": "**leer** la doc oficial y el README en `/README.zh.md` para matices de producto, **vigilar** la cadencia de release de skills Word/Excel/PPT y, si tu audiencia es China-first, **probar** la demo en vivo.",
+        "descripcion_raw": "Agente SO open-source con WorkSpace as memory boundary. Memoria white-box editable. Smart routing por modelo. Always-on. MCP nativo. Frontends Web/CLI/IM. AGPL-3.0."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:OpenBMB/PilotDeck",
+          "rel": "implements",
+          "dst": "concept:workspace_isolated_memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:OpenBMB/PilotDeck",
+          "rel": "competes_with",
+          "dst": "repo:GoogleCloudPlatform/scion",
+          "primera_mencion": "2026-10-17"
+        },
+        {
+          "src": "repo:OpenBMB/PilotDeck",
+          "rel": "extends",
+          "dst": "repo:OpenBMB/MOSS-Image",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:OpenBMB/PilotDeck",
+          "rel": "implements",
+          "dst": "protocol:mcp_native",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "zh",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbmb-pilotdeck",
+        "temas_secundarios": [
+          "workspace-memory",
+          "agpl",
+          "mcp"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "vibheksoni/stealth-browser-mcp — tu agente ya puede pasar Cloudflare",
+      "url": "https://github.com/vibheksoni/stealth-browser-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Servidor MCP que monta Chrome real (nodriver + Chrome DevTools Protocol + FastMCP) con 101 herramientas modulares para sortear Cloudflare, Queue-It y login walls. Ofrece navegación, extracción pixel-accurate de elementos (CSS + DOM + eventos + animaciones + assets), inspección de red con captura de bodies, sistema de hooks Python para interceptar/redirect/fulfill flows, modo agente-skill. Modular: full 101-tool surface o un core mínimo de 21. Soporta FastMCP 0.2.5, Python 3.10+.",
+        "por_que_importa": "Es la primera implementación MCP de stealth browsing que aterriza con momentum serio, y se acopla directamente con la skill `web-scraping-viability`. Las opciones actuales (Scrapling StealthyFetcher / Obscura / Fortress) son librerías; aquí el agente recibe un **canon de tools** en lenguaje natural. Caveat: la sección \"Sponsors\" del README es un placement pagado de NodeMaven — no es editorial. La promesa \"pasa Cloudflare en testing; los resultados varían por site/region/versión del detector\" es honesta.",
+        "madurez_senales": "3.009★ · 393 forks · Python · MIT · creado 2025-08-09 (~14 meses) · último push 2026-10-12 · topics: `anti-bot-bypass`, `cloudflare-bypass`, `fastmcp`, `mcp-server`, `stealth-browser`, `undetectable-browser`, `web-scraping` (20 topics) · branch `master`.",
+        "accion_sugerida": "**probar** el quickstart en un target sencillo (LinkedIn de un perfil propio, GitHub trending privado de org, etc.) + **leer** la sección Trust Model + **vigilar** la cadencia de releases (v0.2.5 actual — Release semver serio).",
+        "descripcion_raw": "Servidor MCP con Chrome real (nodriver + CDP + FastMCP) y 101 herramientas para sortear Cloudflare, Queue-It y login walls."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vibheksoni/stealth-browser-mcp",
+          "rel": "implements",
+          "dst": "concept:agent_stealth_browsing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vibheksoni/stealth-browser-mcp",
+          "rel": "complements",
+          "dst": "repo:anujasid/mcp-for-blender-pro",
+          "primera_mencion": "2026-10-17"
+        },
+        {
+          "src": "repo:vibheksoni/stealth-browser-mcp",
+          "rel": "competes_with",
+          "dst": "repo:D4Vinci/Scrapling",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:vibheksoni/stealth-browser-mcp",
+          "rel": "implements",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vibheksoni-stealth-browser-mcp",
+        "temas_secundarios": [
+          "mcp",
+          "anti-bot",
+          "cloudflare"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "magnitudedev/magnitude — Ollama × 2, gratis, con conexión nativa a Hermes/Codex/OpenCode",
+      "url": "https://github.com/magnitudedev/magnitude",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de inferencia open-source que **ajusta kernels por hardware** y declara >2× la velocidad de Ollama en popular benchmarks locales; corre en Apple Silicon, NVIDIA, AMD y CPU puro. Cada modelo trae su drafter especulativo más rápido, KV quantizado (la mitad de memoria por agente), sesiones concurrentes con prefix-cache compartido. Conexión one-click a Pi, OpenCode, **Hermes**, Codex. CLI `magnitude` incluida en el binario; modo servidor (`magnitude server setup`) para dejarlo como servicio en Linux/macOS.",
+        "por_que_importa": "Reentry motivado por su crecimiento constante (7.185★, +76/d). Lo que importa son tres cosas: (a) tienen a **Hermes** en su lista de integraciones oficiales, lo cual es material de orgullo del stack; (b) promete resolver el \"inference local lento\" sin tocar el modelo — es un reproductor de kernels, no un nuevo modelo; (c) el binario es desktop (mac/Win/Linux), lo que evita el atrincheramiento Ollama-canónico. Caveat: \"2× faster than Ollama\" es claim de vendor; falta benchmark independiente para validar en nuestro hardware.",
+        "madurez_senales": "7.185★ · 494 forks · Rust · Apache-2.0 · creado 2026-06-12 (~4 meses) · último push HOY 2026-10-19 · branch `main` · sitio `magnitude.dev` · binarios descargables para macOS/Windows/Linux + Discord.",
+        "accion_sugerida": "**probar** descargando el binario en macOS y midiendo latency frente a Ollama en un Qwen2.5-7B local + **leer** `docs.magnitude.dev` para entender qué modelos están \"Discover\"-ready + **vigilar** si suben benchmark independiente.",
+        "descripcion_raw": "Motor de inferencia open-source que ajusta kernels por hardware. >2× Ollama claim. Conexión nativa a Pi, OpenCode, Hermes, Codex. Rust."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "competes_with",
+          "dst": "repo:ollama/ollama",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "integrates",
+          "dst": "repo:earendil-works/pi",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "integrates",
+          "dst": "repo:NousResearch/hermes-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "integrates",
+          "dst": "repo:sst/opencode",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "integrates",
+          "dst": "repo:openai/codex",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "magnitudedev-magnitude",
+        "temas_secundarios": [
+          "inference",
+          "rust",
+          "hermes-integration"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "K-Dense-AI/scientific-agent-skills — reentry con cohorte K-Dense BYOK desktop",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "177 skills científicos (medicina, química, biología, informática, datos) compatibles con el standard abierto [Agent Skills](https://agentskills.io/). Cursor, Claude Code, Codex, Google Antigravity. Lanzamiento paralelo de **K-Dense BYOK** — un co-scientist desktop open-source powered por estos skills: BYOK, 40+ modelos, 100+ bases de datos científicas, escalable a Modal para workloads pesadas. Paper arXiv 2609.00065. Webinar en YouTube.",
+        "por_que_importa": "Reentry con salto enorme (52.768★, +878/d) — la conversación \"scientific agent\" dejó de ser \"skill library flotante\" y se convirtió en \"producto desktop ejecutable\". El giro editorial es claro: instalable desde un binario, sin entregar API keys a un SaaS. Compite en el plano \"AI co-scientist desktop\" con el cluster `OpenMOSS-WorkShop/coscientist` + `JoeHR/cogni-research-assistant`. Para audiencia con foco en science-ops, vale como tutorial.",
+        "madurez_senales": "52.768★ · 4.677 forks · Python · MIT · creado 2025-10-19 (~12 meses) · último push 2026-10-19 · topics: `agent-skills`, `ai-scientist`, `bioinformatics`, `chemoinformatics`, `clinical-research`, `drug-discovery`, `genomics`, `materials-science`, `proteomics`, `scientific-computing` (18 topics) · branch `main`.",
+        "accion_sugerida": "**probar** K-Dense BYOK desktop con un workflow real de revisión de literatura + **leer** el paper arXiv 2609.00065 para entender el panel de benchmarks y, si tu audiencia es DS/biotech, **vigilar** qué bases científicas aceptan los skills nuevos.",
+        "descripcion_raw": "177 skills científicos. K-Dense BYOK desktop open-source con 40+ modelos + 100+ bases científicas. arXiv 2609.00065. Compatible con Agent Skills standard."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "extends",
+          "dst": "concept:byok_scientific_desktop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "complements",
+          "dst": "repo:OpenMOSS-WorkShop/coscientist",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "implements",
+          "dst": "standard:agent_skills_v1",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "k-dense-ai-scientific-agent-skills",
+        "temas_secundarios": [
+          "byok",
+          "scientific",
+          "agent-skills"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "maddada/Ghostex — workspace nativo para N agentes vivos a la vez",
+      "url": "https://github.com/maddada/Ghostex",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Shell nativa Rust + GPUI con un chat por agente, panes Chromium embebidos, app móvil iOS/Android con Easy Connect / Tailscale. El posicionamiento es \"mantén a varios agentes vivos simultáneamente y supervísalos desde el bolsillo\". Las sesiones sobreviven a restarts.",
+        "por_que_importa": "Completa el plano \"agent workspace\" desde otro lado al de PilotDeck/Scion. Aquí no hay orquestación de equipos ni WorkSpace memory; hay una **cáscara nativa** que entiende que el agente es un proceso vivo, lo presenta en una vista de chat, lo proyecta a tu bolsillo y persiste. Caveat editorial: el README es muy visual; la sección \"Features\" tiene más GIFs que prosa, así que el ángulo crítico no está en la documentación. 1.326★ + 6 meses de vida = señal consistente, no hype.",
+        "madurez_senales": "1.326★ · 95 forks · Rust · MIT · creado 2026-04-27 (~6 meses) · último push HOY 2026-10-19 · branch `main` · sitio `ghostex.dev` · tour 3 min en YouTube · Discord.",
+        "accion_sugerida": "**leer** el tour en YouTube (3 min) + **vigilar** las próximas releases (Desktop + mobile companion) — si Ghostex soporta MCP inbound en una release futura, se convierte en candidato directo a hallazgo principal.",
+        "descripcion_raw": "Shell nativa Rust + GPUI con chat por agente, panes Chromium embebidos, app móvil iOS/Android. Las sesiones sobreviven a restarts."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:maddada/Ghostex",
+          "rel": "implements",
+          "dst": "concept:native_agent_workspace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:maddada/Ghostex",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:maddada/Ghostex",
+          "rel": "extends",
+          "dst": "tool:gpui",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maddada-ghostex",
+        "temas_secundarios": [
+          "agent-workspace",
+          "rust",
+          "gpui"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 5,
       "titulo": "elie222/rakazo",
       "url": "https://github.com/elie222/rakazo",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(4.488★, push HOY, TypeScript Apache-2.0, ~2 meses) — alternativa open-source al Grok Bot: trae tu propio modelo y sandbox, stack Electron + Docker + Expo",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — ; si escribes sobre \"AI desktop con sandbox local\", entra como ángulo frente a Grok Bot comercial",
-        "descripcion_raw": ""
+        "que_es": "Open-source Grok Bot alternative: trae tu propio modelo y sandbox, stack Electron + Docker + Expo (4.659★, push HOY 2026-10-19, TypeScript Apache-2.0, ~2 meses).",
+        "por_que_importa": "Si escribes sobre \"AI desktop con sandbox local\", entra como ángulo frente a Grok Bot comercial.",
+        "madurez_senales": "4.659★ · 848 forks · TypeScript · Apache-2.0 · creado 2026-08-13 · último push HOY 2026-10-19.",
+        "accion_sugerida": "vigilar; si escribes sobre AI desktop con sandbox local, entra como ángulo frente a Grok Bot comercial",
+        "descripcion_raw": "Open-source Grok Bot alternative. BYO model + sandbox. Electron + Docker + Expo."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -24,22 +283,25 @@
         "autor": null,
         "medio": null,
         "tema_principal": "elie222-rakazo",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "ai-desktop",
+          "grok-bot-alternative"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 1,
+      "idx": 6,
       "titulo": "ScrapeCreators/social-media-research-skills",
       "url": "https://github.com/ScrapeCreators/social-media-research-skills",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(4.060★, push 2026-08-26, Python MIT, ~4 meses) — agent skills para investigación en redes sociales: outlier posts, comment mining, competitor teardowns, integrable en Claude Code / Cursor",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "leer — el índice de skills y **vigilar** su roadmap si tu audiencia es growth/marketing técnico",
-        "descripcion_raw": ""
+        "que_es": "Agent skills para investigación en redes sociales: outlier posts, comment mining, competitor teardowns, integrable en Claude Code / Cursor (4.150★, push 2026-08-26, Python MIT, ~4 meses).",
+        "por_que_importa": "Si tu audiencia es growth/marketing técnico, vale leer el índice de skills.",
+        "madurez_senales": "4.150★ · 98 forks · Python · MIT · creado 2026-06-06 · último push 2026-08-26.",
+        "accion_sugerida": "leer el índice de skills y vigilar su roadmap si tu audiencia es growth/marketing técnico",
+        "descripcion_raw": "Agent skills para investigación en redes sociales. Outlier posts, comment mining, competitor teardowns."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -47,23 +309,26 @@
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "scrapecreators-social-media-research-ski",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "tema_principal": "scrapecreators-social-media-research-skills",
+        "temas_secundarios": [
+          "social-media",
+          "research-skills"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 2,
+      "idx": 7,
       "titulo": "jasonxu114514/opencode2api",
       "url": "https://github.com/jasonxu114514/opencode2api",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(1.019★, push 2026-10-17, Go GPL-3.0, ~2 meses) — proxy en Go que convierte OpenCode Zen / Zen Go a OpenAI/Anthropic-compatible (keys/quotas)",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si dependes de OpenCode Zen y quieres failover transparente a tu propia API key",
-        "descripcion_raw": ""
+        "que_es": "Proxy Go que convierte OpenCode Zen / Zen Go a OpenAI/Anthropic-compatible (keys/quotas) (1.094★, push 2026-10-19, Go GPL-3.0, ~2 meses).",
+        "por_que_importa": "Si dependes de OpenCode Zen y quieres failover transparente a tu propia API key.",
+        "madurez_senales": "1.094★ · 192 forks · Go · GPL-3.0 · creado 2026-08-13 · último push 2026-10-19.",
+        "accion_sugerida": "vigilar si dependes de OpenCode Zen y quieres failover transparente a tu propia API key",
+        "descripcion_raw": "Proxy Go OpenCode Zen → OpenAI/Anthropic compatible."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -72,22 +337,25 @@
         "autor": null,
         "medio": null,
         "tema_principal": "jasonxu114514-opencode2api",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "proxy",
+          "opencode"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 3,
+      "idx": 8,
       "titulo": "KnifeLemon/Filee",
       "url": "https://github.com/KnifeLemon/Filee",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(2.855★, push HOY, C# MIT, ~19 días) — conversor universal de archivos open-source: más de 180 formatos offline, drag & drop, UI Avalonia multiplataforma",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si necesitas una alternativa local a CloudConvert sin subir a la nube",
-        "descripcion_raw": ""
+        "que_es": "Conversor universal de archivos open-source: 180+ formatos offline, drag & drop, Avalonia UI multiplataforma (5.303★, push HOY 2026-10-19, C# MIT, ~19 días).",
+        "por_que_importa": "Alternativa local a CloudConvert sin subir a la nube.",
+        "madurez_senales": "5.303★ · 309 forks · C# · MIT · creado 2026-09-29 · último push HOY 2026-10-19.",
+        "accion_sugerida": "vigilar si necesitas una alternativa local a CloudConvert sin subir a la nube",
+        "descripcion_raw": "Conversor universal de archivos open-source. 180+ formatos offline. Avalonia UI."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -96,68 +364,24 @@
         "autor": null,
         "medio": null,
         "tema_principal": "knifelemon-filee",
-        "temas_secundarios": [],
-        "confianza": 0.4
-      }
-    },
-    {
-      "idx": 4,
-      "titulo": "maddada/Ghostex",
-      "url": "https://github.com/maddada/Ghostex",
-      "url_inferida": true,
-      "seccion": "radar_secundario",
-      "contenido": {
-        "que_es": "ya cubierto arriba; si no lo moviste a principal, queda aquí como referencia cruzada.",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
-      },
-      "relacion_grafo": [],
-      "clasificacion": {
-        "tipo": "repo",
-        "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "maddada-ghostex",
-        "temas_secundarios": [],
-        "confianza": 0.4
-      }
-    },
-    {
-      "idx": 5,
-      "titulo": "breezeSolicitorMap/undress.a",
-      "url": "https://github.com/breezeSolicitorMap/undress.a",
-      "url_inferida": true,
-      "seccion": "radar_secundario",
-      "contenido": {
-        "que_es": "(no verificado), **`lightseekorg/tokenspeed`** (sponsor card, no editorial), **`AhmadHassan-BTed/Turnitout-Humanizer`** (HTML \"AI plagiarism remover\" — no editorial, evita).",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
-      },
-      "relacion_grafo": [],
-      "clasificacion": {
-        "tipo": "repo",
-        "idioma": "en",
-        "autor": null,
-        "medio": null,
-        "tema_principal": "breezesolicitormap-undress-a",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "file-converter",
+          "offline",
+          "avalonia"
+        ],
+        "confianza": 0.6
       }
     }
   ],
   "stats": {
-    "items_total": 6,
-    "items_hallazgo_principal": 0,
-    "items_radar_secundario": 6,
-    "llm_backend": "hermes",
-    "llm_polish_notes": "6/6 items pulidos",
+    "items_total": 9,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 4,
+    "llm_backend": "manual-fix",
+    "llm_polish_notes": "Reescrito a mano el 2026-10-20 17:55 tras detectar que el enriquecimiento automatico del cron 52621d797729 (10:10 del 2026-10-18) clasifico los 5 hallazgos principales como radar_secundario. Datos verificados contra el boletin original ~/obsidian-vault/Research/Boletines/2026-10-18-trending.md + GitHub API del 2026-10-20.",
     "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 hallazgos principales reescritos con datos del boletin original (por_que_importa, madurez_senales, descripcion_raw).",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

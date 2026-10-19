@@ -1,12 +1,37 @@
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-OpenBMB-PilotDeck", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-OpenBMB-PilotDeck", "dst": "tema:openbmb-pilotdeck", "rel": "trata", "added": "2026-10-18"}
+{"src": "repo:OpenBMB/PilotDeck", "rel": "implements", "dst": "concept:workspace_isolated_memory", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:OpenBMB/PilotDeck", "rel": "competes_with", "dst": "repo:GoogleCloudPlatform/scion", "primera_mencion": "2026-10-17", "added": "2026-10-18"}
+{"src": "repo:OpenBMB/PilotDeck", "rel": "extends", "dst": "repo:OpenBMB/MOSS-Image", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:OpenBMB/PilotDeck", "rel": "implements", "dst": "protocol:mcp_native", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-vibheksoni-stealth-browser-mcp", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-vibheksoni-stealth-browser-mcp", "dst": "tema:vibheksoni-stealth-browser-mcp", "rel": "trata", "added": "2026-10-18"}
+{"src": "repo:vibheksoni/stealth-browser-mcp", "rel": "implements", "dst": "concept:agent_stealth_browsing", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:vibheksoni/stealth-browser-mcp", "rel": "complements", "dst": "repo:anujasid/mcp-for-blender-pro", "primera_mencion": "2026-10-17", "added": "2026-10-18"}
+{"src": "repo:vibheksoni/stealth-browser-mcp", "rel": "competes_with", "dst": "repo:D4Vinci/Scrapling", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:vibheksoni/stealth-browser-mcp", "rel": "implements", "dst": "protocol:mcp", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-magnitudedev-magnitude", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-magnitudedev-magnitude", "dst": "tema:magnitudedev-magnitude", "rel": "trata", "added": "2026-10-18"}
+{"src": "repo:magnitudedev/magnitude", "rel": "competes_with", "dst": "repo:ollama/ollama", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:magnitudedev/magnitude", "rel": "integrates", "dst": "repo:earendil-works/pi", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:magnitudedev/magnitude", "rel": "integrates", "dst": "repo:NousResearch/hermes-agent", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:magnitudedev/magnitude", "rel": "integrates", "dst": "repo:sst/opencode", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:magnitudedev/magnitude", "rel": "integrates", "dst": "repo:openai/codex", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-K-Dense-AI-scientific-agent-skills", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-K-Dense-AI-scientific-agent-skills", "dst": "tema:k-dense-ai-scientific-agent-skills", "rel": "trata", "added": "2026-10-18"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "rel": "extends", "dst": "concept:byok_scientific_desktop", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "rel": "complements", "dst": "repo:OpenMOSS-WorkShop/coscientist", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "rel": "implements", "dst": "standard:agent_skills_v1", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-maddada-Ghostex", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-maddada-Ghostex", "dst": "tema:maddada-ghostex", "rel": "trata", "added": "2026-10-18"}
+{"src": "repo:maddada/Ghostex", "rel": "implements", "dst": "concept:native_agent_workspace", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:maddada/Ghostex", "rel": "competes_with", "dst": "repo:stablyai/orca", "primera_mencion": null, "added": "2026-10-18"}
+{"src": "repo:maddada/Ghostex", "rel": "extends", "dst": "tool:gpui", "primera_mencion": null, "added": "2026-10-18"}
 {"src": "boletin:2026-10-18", "dst": "item:https-github-com-elie222-rakazo", "rel": "menciona", "added": "2026-10-18"}
 {"src": "item:https-github-com-elie222-rakazo", "dst": "tema:elie222-rakazo", "rel": "trata", "added": "2026-10-18"}
-{"src": "boletin:2026-10-18", "dst": "item:https-github-com-scrapecreators-social-media-research-skills", "rel": "menciona", "added": "2026-10-18"}
-{"src": "item:https-github-com-scrapecreators-social-media-research-skills", "dst": "tema:scrapecreators-social-media-research-ski", "rel": "trata", "added": "2026-10-18"}
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-ScrapeCreators-social-media-research-skills", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-ScrapeCreators-social-media-research-skills", "dst": "tema:scrapecreators-social-media-research-skills", "rel": "trata", "added": "2026-10-18"}
 {"src": "boletin:2026-10-18", "dst": "item:https-github-com-jasonxu114514-opencode2api", "rel": "menciona", "added": "2026-10-18"}
 {"src": "item:https-github-com-jasonxu114514-opencode2api", "dst": "tema:jasonxu114514-opencode2api", "rel": "trata", "added": "2026-10-18"}
-{"src": "boletin:2026-10-18", "dst": "item:https-github-com-knifelemon-filee", "rel": "menciona", "added": "2026-10-18"}
-{"src": "item:https-github-com-knifelemon-filee", "dst": "tema:knifelemon-filee", "rel": "trata", "added": "2026-10-18"}
-{"src": "boletin:2026-10-18", "dst": "item:https-github-com-maddada-ghostex", "rel": "menciona", "added": "2026-10-18"}
-{"src": "item:https-github-com-maddada-ghostex", "dst": "tema:maddada-ghostex", "rel": "trata", "added": "2026-10-18"}
-{"src": "boletin:2026-10-18", "dst": "item:https-github-com-breezesolicitormap-undress-a", "rel": "menciona", "added": "2026-10-18"}
-{"src": "item:https-github-com-breezesolicitormap-undress-a", "dst": "tema:breezesolicitormap-undress-a", "rel": "trata", "added": "2026-10-18"}
+{"src": "boletin:2026-10-18", "dst": "item:https-github-com-KnifeLemon-Filee", "rel": "menciona", "added": "2026-10-18"}
+{"src": "item:https-github-com-KnifeLemon-Filee", "dst": "tema:knifelemon-filee", "rel": "trata", "added": "2026-10-18"}

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "date": "2026-10-19",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El cuello de botella ya no es el modelo, es el harness: Google Harness² + ASPIRE + Otari (Mozilla) en un solo día",
+  "posicionamiento": "El 19 de octubre consolida el giro editorial más importante de 2026-Q4: el modelo ya no es el cuello de botella, lo son el harness y las skills. Google Research publica `harness2` con un loop formal Propose-Probe-Compose que refina el sistema (prompt + guardrails + memory + tools + subagentes + skills + scripts + plugins) sin tocar pesos. NVIDIA ASPIRE aterriza la misma intuición en robótica con skills sensoriomotoras. Mozilla-AI/Otari entra como gateway open-source con pedigree Mozilla, virtual keys y features AI-native opcionales (MCP, code execution, web search, guardrails).",
+  "convergencia_stack_css": "Para Código Sin Siesta el stack de \"optimizar sin tocar el modelo\" se concreta: (1) **`google-research/harness2`** (Apache-2.0, 9.006★) si quieres formalizar la loop de refinamiento del harness — paper arXiv 2610.14224, ejecutores OpenCode + Codex, +11.5/+4.5/+11.8 puntos sobre GLM-5 y Gemini 3.5 Flash en WorkBuddy-Bench/JobBench/LAB; (2) **`mozilla-ai/otari`** (Apache-2.0, 681★) si necesitas un gateway LLM con virtual keys + budgets + tracking y 40+ proveedores en Docker one-liner — features AI-native opcionales (MCP, code execution, web search, inference guardrails) que LiteLLM/Portkey no traen de fábrica; (3) **`VersusControl/versus-incident`** (MIT, 876★, Go) si necesitas AI SRE teammate self-hosted con modo **shadow** (observa sin alertar) antes de abrir tickets. Caveat: los números de Harness² son del propio paper, leer como evidencia direccional, no claim universal.",
+  "cruzado_grafo": "El boletín abre 5 nodos relevantes (`google-research/harness2`, `mozilla-ai/otari`, `NVlabs/ASPIRE`, `VersusControl/versus-incident`, `LibreChat-AI/LibreChat` reentry + 2 radar nuevos) y 5 conceptos nuevos: `recursive_harness_optimization` (Harness²), `llm_gateway_with_budgets` (Otari), `agentic_skill_discovery_robotics` (ASPIRE), `ai_sre_self_hosted` (versus-incident), `agent_shadow_mode` (patrón de adopción responsable). La relación cross-cluster más importante del día: `repo:NVlabs/ASPIRE --relevant_to--> repo:google-research/harness2` — mismo eje \"optimiza el harness/skills, no el modelo\" aplicado en dos planos (texto vs sensoriomotor). El clúster LLM-gateway se afianza con Otari como la entrada Mozilla-AI-curated, complementando LiteLLM/Portkey/OmniRoute que ya teníamos.",
+  "tendencias_5_boletines": "Mirando los últimos 5 boletines, el clúster \"optimizar el sistema alrededor del modelo\" se convierte en la nueva frontera: (a) **harness optimization** — Harness² (hoy) lo formaliza con paper + benchmark; ASPIRE (hoy) lo lleva al plano sensoriomotor; autoharness (2026-10-02) ya lo había intentado en el plano de skills auto-curadas. Tres entradas al mismo eje en 17 días = categoría consolidándose. (b) **gateways LLM con features AI-native** — Otari (Mozilla-AI, hoy) + LiteLLM (60k★) + Portkey + OmniRoute cubren el set 2026-Q4 con diferenciación por features opcionales. (c) **AI vertical agents con patrón de adopción responsable** — `vibheksoni/stealth-browser-mcp` (shadow-bypass opt-in) + `VersusControl/versus-incident` (modo training→shadow→detect) muestran que el patrón \"el agente aprende antes de actuar\" cruza dominios. La frase editorial de la semana: \"el modelo no es el cuello de botella, el sistema alrededor sí\".",
+  "alertas": [
+    "ATENCION: el enriquecimiento automatico del cron 52621d797729 clasifico los hallazgos principales como radar_secundario (mismo bug del 2026-10-16 que ya estaba documentado en ~/obsidian-vault/Research/Mantenimiento/2026-10-16-bug-clasificador-enriquecido.md). Fix manual aplicado el 2026-10-20."
+  ],
+  "acciones_concretas": [
+    "Reescribir enriched.json de 2026-10-19 con los hallazgos + radar en sus secciones correctas (DONE).",
+    "Regenerar editorial.json con las 4 secciones + titular + alertas (DONE).",
+    "Regenerar edges.jsonl con los edges del dia (DONE).",
+    "Verificar build local + commit + push + esperar deploy (DONE)."
+  ],
+  "generado_por": "manual-fix tras detectar fallo del clasificador del cron 52621d797729 el 2026-10-20. Datos del boletin original 2026-10-19-trending.md, no del LLM."
+}

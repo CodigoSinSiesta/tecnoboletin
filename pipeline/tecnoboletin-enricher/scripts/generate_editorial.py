@@ -254,6 +254,31 @@ def _validate_posicionamiento(t: str) -> str | None:
     return None
 
 
+# Constantes de validacion para las 3 secciones que antes se publicaban sin check.
+# Mismo criterio que posicionamiento: 80-600 chars, sin muletilla.
+SECTION_MIN_OK = 80
+SECTION_MAX_OK = 600
+
+
+def _validate_section(t: str, name: str) -> str | None:
+    """Valida convergencia_stack_css / cruzado_grafo / tendencias_5_boletines.
+
+    Mismo set de reglas que _validate_posicionamiento: longitud + sin muletilla.
+    Devuelve None si OK, o un string con el motivo (incluye el nombre de la
+    seccion para que el log del cron sea accionable).
+    """
+    t = (t or "").strip()
+    if not t:
+        return f"{name}: vacio"
+    if len(t) < SECTION_MIN_OK:
+        return f"{name}: demasiado corto ({len(t)} chars < {SECTION_MIN_OK})"
+    if len(t) > SECTION_MAX_OK:
+        return f"{name}: demasiado largo ({len(t)} chars > {SECTION_MAX_OK})"
+    if _starts_with_filler(t):
+        return f"{name}: arranca con muletilla (El boletin de hoy / Hoy / ...)"
+    return None
+
+
 def _strip_filler_prefix(t: str) -> str:
     """Quita el prefijo de muletilla si esta, dejando la primera frase con
     tesis. Fallback: devuelve el texto tal cual."""
@@ -473,6 +498,18 @@ def run_generation(enriched_path: Path, repo_data_dir: Path, date: str, work_dir
         "acciones_concretas": acciones,
         "generado_por": "generate_editorial.py --llm hermes (generacion nueva)",
     }
+
+    # Validacion de las 3 secciones que antes se publicaban sin check.
+    # Si el LLM las omite o devuelve texto malo, el validador lo detecta y
+    # se persiste como string vacio (mejor un hueco explicito que texto malo
+    # que pasa el build). El motivo queda en stderr para que el cron
+    # pueda alertar.
+    for sec_name in ("convergencia_stack_css", "cruzado_grafo", "tendencias_5_boletines"):
+        sec_problema = _validate_section(data[sec_name], sec_name)
+        if sec_problema:
+            motivo += f"; {sec_name} invalida ({sec_problema}) -> persistida como vacia"
+            print(f"  {sec_problema} -- persistida como vacia", file=sys.stderr)
+            data[sec_name] = ""
 
     if dropped_idx:
         motivo += f"; item_idx invalidos descartados de acciones_concretas: {dropped_idx}"

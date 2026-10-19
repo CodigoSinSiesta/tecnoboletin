@@ -1,11 +1,40 @@
+{"src": "boletin:2026-10-19", "dst": "item:https-github-com-google-research-harness2", "rel": "menciona", "added": "2026-10-19"}
+{"src": "item:https-github-com-google-research-harness2", "dst": "tema:google-research-harness2", "rel": "trata", "added": "2026-10-19"}
+{"src": "repo:google-research/harness2", "rel": "implements", "dst": "concept:recursive_harness_optimization", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:google-research/harness2", "rel": "complements", "dst": "repo:ulab-uiuc/LLMRouter", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:google-research/harness2", "rel": "relevant_to", "dst": "repo:earendil-works/pi", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:google-research/harness2", "rel": "competes_with", "dst": "concept:manual_prompt_engineering", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "boletin:2026-10-19", "dst": "item:https-github-com-mozilla-ai-otari", "rel": "menciona", "added": "2026-10-19"}
+{"src": "item:https-github-com-mozilla-ai-otari", "dst": "tema:mozilla-ai-otari", "rel": "trata", "added": "2026-10-19"}
+{"src": "repo:mozilla-ai/otari", "rel": "competes_with", "dst": "repo:BerriAI/litellm", "primera_mencion": "2026-08-28", "added": "2026-10-19"}
+{"src": "repo:mozilla-ai/otari", "rel": "competes_with", "dst": "repo:portkey-ai/portkey", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:mozilla-ai/otari", "rel": "complements", "dst": "repo:diegosouzapw/OmniRoute", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:mozilla-ai/otari", "rel": "uses", "dst": "repo:mozilla-ai/any-llm", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:mozilla-ai/otari", "rel": "implements", "dst": "concept:llm_gateway_with_budgets", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "boletin:2026-10-19", "dst": "item:https-github-com-NVlabs-ASPIRE", "rel": "menciona", "added": "2026-10-19"}
+{"src": "item:https-github-com-NVlabs-ASPIRE", "dst": "tema:nvlabs-aspire", "rel": "trata", "added": "2026-10-19"}
+{"src": "repo:NVlabs/ASPIRE", "rel": "implements", "dst": "concept:agentic_skill_discovery_robotics", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:NVlabs/ASPIRE", "rel": "extends", "dst": "concept:byok_scientific_desktop", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:NVlabs/ASPIRE", "rel": "complements", "dst": "repo:K-Dense-AI/scientific-agent-skills", "primera_mencion": "2026-10-18", "added": "2026-10-19"}
+{"src": "repo:NVlabs/ASPIRE", "rel": "relevant_to", "dst": "repo:google-research/harness2", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "boletin:2026-10-19", "dst": "item:https-github-com-VersusControl-versus-incident", "rel": "menciona", "added": "2026-10-19"}
+{"src": "item:https-github-com-VersusControl-versus-incident", "dst": "tema:versuscontrol-versus-incident", "rel": "trata", "added": "2026-10-19"}
+{"src": "repo:VersusControl/versus-incident", "rel": "implements", "dst": "concept:ai_sre_self_hosted", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:VersusControl/versus-incident", "rel": "complements", "dst": "repo:vibheksoni/stealth-browser-mcp", "primera_mencion": "2026-10-18", "added": "2026-10-19"}
+{"src": "repo:VersusControl/versus-incident", "rel": "relevant_to", "dst": "concept:agent_shadow_mode", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "boletin:2026-10-19", "dst": "item:https-github-com-LibreChat-AI-LibreChat", "rel": "menciona", "added": "2026-10-19"}
+{"src": "item:https-github-com-LibreChat-AI-LibreChat", "dst": "tema:librechat-ai-librechat", "rel": "trata", "added": "2026-10-19"}
+{"src": "repo:LibreChat-AI/LibreChat", "rel": "implements", "dst": "concept:open_chatgpt_clone", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:LibreChat-AI/LibreChat", "rel": "relevant_to", "dst": "repo:mozilla-ai/otari", "primera_mencion": null, "added": "2026-10-19"}
+{"src": "repo:LibreChat-AI/LibreChat", "rel": "implements", "dst": "protocol:mcp", "primera_mencion": null, "added": "2026-10-19"}
 {"src": "boletin:2026-10-19", "dst": "item:https-github-com-ahujasid-mcp-for-blender", "rel": "menciona", "added": "2026-10-19"}
 {"src": "item:https-github-com-ahujasid-mcp-for-blender", "dst": "tema:ahujasid-mcp-for-blender", "rel": "trata", "added": "2026-10-19"}
 {"src": "boletin:2026-10-19", "dst": "item:https-github-com-alvinunreal-lazyskills", "rel": "menciona", "added": "2026-10-19"}
 {"src": "item:https-github-com-alvinunreal-lazyskills", "dst": "tema:alvinunreal-lazyskills", "rel": "trata", "added": "2026-10-19"}
 {"src": "boletin:2026-10-19", "dst": "item:https-github-com-twentyhq-twenty", "rel": "menciona", "added": "2026-10-19"}
 {"src": "item:https-github-com-twentyhq-twenty", "dst": "tema:twentyhq-twenty", "rel": "trata", "added": "2026-10-19"}
-{"src": "boletin:2026-10-19", "dst": "item:https-github-com-nvlabs-aspire", "rel": "menciona", "added": "2026-10-19"}
-{"src": "item:https-github-com-nvlabs-aspire", "dst": "tema:nvlabs-aspire", "rel": "trata", "added": "2026-10-19"}
+{"src": "boletin:2026-10-19", "dst": "item:https-github-com-NVlabs-ASPIRE", "rel": "menciona", "added": "2026-10-19"}
+{"src": "item:https-github-com-NVlabs-ASPIRE", "dst": "tema:nvlabs-aspire-radar", "rel": "trata", "added": "2026-10-19"}
 {"src": "boletin:2026-10-19", "dst": "item:https-github-com-mlabonne-llm-course", "rel": "menciona", "added": "2026-10-19"}
 {"src": "item:https-github-com-mlabonne-llm-course", "dst": "tema:mlabonne-llm-course", "rel": "trata", "added": "2026-10-19"}
 {"src": "boletin:2026-10-19", "dst": "item:https-github-com-google-ax", "rel": "menciona", "added": "2026-10-19"}

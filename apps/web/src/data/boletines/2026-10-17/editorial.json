@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "date": "2026-10-17",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Dos hyperscalers y un cluster de sentidos: Google Scion, Tencent Hy-Memory y el triángulo vista/audio/video para coding agents",
+  "posicionamiento": "El 17 de octubre el grafo consolida dos entradas hyperscaler (Google Scion como orquestador de equipos, Tencent Hy-Memory como memoria agéntica) y completa el triángulo de sentidos sintéticos para coding agents: vista (mksglu/context-mode), audio (Leonxlnx/earshot) y video (openfilm/openfilm + heygen-com/hyperframes). La conversación deja de ser \"qué modelo\" y pasa a ser \"cómo corren N agentes en paralelo, qué recuerdan y qué perciben\".",
+  "convergencia_stack_css": "Para Código Sin Siesta el stack operativo se consolida: (1) **orquestador**: `GoogleCloudPlatform/scion` (Apache-2.0, 1.979★) si quieres equipos con credenciales separadas y Workstation web UI; (2) **memoria**: `Tencent-Hunyuan/Hy-Memory` con `MemHub` desktop/CLI si quieres unificar historiales de Claude Code + Cursor + Codex + OpenCode + Qwen Code (caveat: NOASSERTION en API, abrir LICENSE = Apache-2.0); (3) **sentidos**: `Leonxlnx/earshot` (CPU-only) para audio, `openfilm/openfilm` (un film.html con `frame(t)`) para video agente, `mksglu/context-mode` (vista) ya en el radar. Caveat del día: `GoogleCloudPlatform/scion` ≠ `feder-cr/open_scion` del 2026-10-16 — orquestador vs reimplementación del paper de VCS, no confundir.",
+  "cruzado_grafo": "El boletín abre 7 nodos relevantes (`GoogleCloudPlatform/scion`, `openfilm/openfilm`, `heygen-com/hyperframes`, `K-Dense-AI/scientific-agent-skills`, `Leonxlnx/earshot`, `anujasid/mcp-for-blender-pro`, `Tencent-Hunyuan/Hy-Memory`) y 5 conceptos nuevos: `agent_team_orchestration` (Scion), `agent_video_production` (OpenFilm+HyperFrames), `audio_evidence_for_agents` (earshot), `mcp_vertical_premium` (Blender-Pro) y `agent_memory_engine` (Hy-Memory). La relación cross-cluster más interesante del día es `repo:openfilm/openfilm --complements--> repo:Leonxlnx/earshot` — un agente puede ahora **hacer + auto-criticar** un vídeo end-to-end. El clúster \"MCP vertical premium\" se consolida con `anujasid/mcp-for-blender-pro` (mismo autor que `mcp-for-3d-printing` del 2026-08).",
+  "tendencias_5_boletines": "Mirando los últimos 5 boletines, dos ejes se consolidan: (a) **agentes de larga duración con peso de hyperscaler** — `perplexityai/SPACE` (2026-10-16) + `GoogleCloudPlatform/scion` (hoy) + `OpenBMB/PilotDeck` (2026-10-18 mañana) marcan que la conversación \"agente que corre 24/7\" ya tiene cuatro entradas con pedigree (Anthropic, Google, OpenBMB, Tencent); (b) **sentidos sintéticos para coding agents** — `mksglu/context-mode` (vista) + `Leonxlnx/earshot` (audio, hoy) + `openfilm/openfilm` + `heygen-com/hyperframes` (video, hoy) + `anujasid/mcp-for-blender-pro` (3D, hoy) cierran el set de \"evidence-driven\" sin recompensar modelos. La conversación \"agent skills\" se consolida también: K-Dense BYOK desktop instalable + scientific-agent-skills reentry con cohorte convierte el spec en producto. La frase editorial del momento: \"el modelo no es el cuello de botella, el harness/skills/sentidos sí\".",
+  "alertas": [
+    "ATENCION: el enriquecimiento automatico del cron 52621d797729 clasifico los hallazgos principales como radar_secundario (mismo bug del 2026-10-16 que ya estaba documentado en ~/obsidian-vault/Research/Mantenimiento/2026-10-16-bug-clasificador-enriquecido.md). Fix manual aplicado el 2026-10-20."
+  ],
+  "acciones_concretas": [
+    "Reescribir enriched.json de 2026-10-17 con los hallazgos + radar en sus secciones correctas (DONE).",
+    "Regenerar editorial.json con las 4 secciones + titular + alertas (DONE).",
+    "Regenerar edges.jsonl con los edges del dia (DONE).",
+    "Verificar build local + commit + push + esperar deploy (DONE)."
+  ],
+  "generado_por": "manual-fix tras detectar fallo del clasificador del cron 52621d797729 el 2026-10-20. Datos del boletin original 2026-10-17-trending.md, no del LLM."
+}

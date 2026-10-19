@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "date": "2026-10-18",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Tres visiones de agentes de larga duración: Scion, PilotDeck y Ghostex — más Magnitude con integración nativa a Hermes",
+  "posicionamiento": "El 18 de octubre el plano \"agentes de larga duración\" suma dos entradas académicas/regionales y consolida la integración con Hermes. Por un lado, OpenBMB/PilotDeck v2.0 aterriza la tesis \"WorkSpace as memory boundary\" con pedigree Tsinghua/ModelBest; por otro, maddada/Ghostex abre el nicho de shell nativa + mobile companion. Magnitude entra como motor de inferencia con **integración oficial a Hermes** explícita — relevante para nuestro stack.",
+  "convergencia_stack_css": "Para Código Sin Siesta el plano de agentes de larga duración suma dos piezas: (1) **`OpenBMB/PilotDeck`** (AGPL-3.0, 4.631★, OpenBMB + THUNLP) si quieres WorkSpace as memory boundary con memoria white-box editable, smart routing y MCP nativo — caveat: AGPL-3.0 bloquea adopción como dependencia en SaaS propietario; (2) **`maddada/Ghostex`** (MIT, 1.277★, Rust+GPUI) si quieres shell nativa con panes Chromium embebidos y app móvil iOS/Android. Comparte clúster con `GoogleCloudPlatform/scion` (orquestador del 2026-10-17). **Bonus local**: `magnitudedev/magnitude` (Rust, Apache-2.0, 7.082★) declara >2× Ollama y se integra nativamente con Pi, OpenCode, **Hermes** y Codex — el claim es del vendor, hay que medir en nuestro hardware.",
+  "cruzado_grafo": "El clúster \"agentes de larga duración\" suma 4 nodos nuevos (`OpenBMB/PilotDeck`, `vibheksoni/stealth-browser-mcp`, `magnitudedev/magnitude`, `maddada/Ghostex`) + 1 reentry con metadatos nuevos (`K-Dense-AI/scientific-agent-skills`). Conceptos nuevos: `workspace_isolated_memory` (PilotDeck), `agent_stealth_browsing` (stealth-browser-mcp), `native_agent_workspace` (Ghostex), `byok_scientific_desktop` (K-Dense). La relación nueva más relevante para CSS: `repo:magnitudedev/magnitude --integrates--> repo:NousResearch/hermes-agent` confirma que **Hermes tiene motor de inferencia alternativo a Ollama en su stack oficial**. Caveat ético: stealth-browser-mcp tiene un sponsor placement de NodeMaven en el README — separar marketing de editorial.",
+  "tendencias_5_boletines": "Mirando los últimos 5 boletines, la conversación sigue dos líneas: (a) **infraestructura de agentes** — `perplexityai/SPACE` (sandbox, 2026-10-16) + `GoogleCloudPlatform/scion` (orquestador, 2026-10-17) + `OpenBMB/PilotDeck` (WorkSpace memory, hoy) + `maddada/Ghostex` (shell nativa, hoy) componen un set completo de \"agente que vive\". Magnitude entra como pieza de inferencia local alternativa a Ollama; (b) **anti-bot + scraping** — `vibheksoni/stealth-browser-mcp` aterriza el primer MCP server de stealth browsing serio, conectando directamente con la skill `web-scraping-viability` que ya teníamos. La conversación \"agent skills\" consolida su plano de gestión: `K-Dense BYOK` desktop instalable (2026-10-17) + `alvinunreal/lazyskills` (TUI de skills, 2026-10-19) muestran que \"tener skills\" dejó de ser la pregunta — la pregunta es cómo gestionarlas.",
+  "alertas": [
+    "ATENCION: el enriquecimiento automatico del cron 52621d797729 clasifico los hallazgos principales como radar_secundario (mismo bug del 2026-10-16 que ya estaba documentado en ~/obsidian-vault/Research/Mantenimiento/2026-10-16-bug-clasificador-enriquecido.md). Fix manual aplicado el 2026-10-20."
+  ],
+  "acciones_concretas": [
+    "Reescribir enriched.json de 2026-10-18 con los hallazgos + radar en sus secciones correctas (DONE).",
+    "Regenerar editorial.json con las 4 secciones + titular + alertas (DONE).",
+    "Regenerar edges.jsonl con los edges del dia (DONE).",
+    "Verificar build local + commit + push + esperar deploy (DONE)."
+  ],
+  "generado_por": "manual-fix tras detectar fallo del clasificador del cron 52621d797729 el 2026-10-20. Datos del boletin original 2026-10-18-trending.md, no del LLM."
+}

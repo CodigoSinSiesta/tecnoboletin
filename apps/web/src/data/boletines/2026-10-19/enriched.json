@@ -2,20 +2,279 @@
   "version": 2,
   "date": "2026-10-19",
   "boletin_origen": "2026-10-19-trending.md",
-  "resumen_ejecutivo": "- **`google-research/harness2` entra al #1 de Trendshift con una tesis incómoda: el cuello de botella ya no es el modelo, es el harness.** Google Research publica un framework plug-and-play para **refinar el sistema alrededor del modelo** (prompt + guardrails + memory + tools + subagents + skills + scripts + plugins) sin tocar pesos. Recursión a dos niveles: a nivel de tarea con un paso Propose-Probe-Compose contrastivo, y a nivel de harness para acumular mejoras entre tareas. Mide +11.5/+4.5/+11.8 puntos sobre GLM-5 y Gemini 3.5 Flash en WorkBuddy-Bench, JobBench y LAB. Paper arXiv 2610.14224. 8.214★, Apache-2.0, 13 días de vida.\n- **`mozilla-ai/otari` aterriza como gateway LLM open-source con pedigree Mozilla y un giro de tuerca: virtual keys + budgets + tracking, todo detrás de un endpoint OpenAI/Anthropic-compatible.** Compite con LiteLLM/Portkey, pero añade MCP, code execution, web search, inference guardrails y file understanding como features opcionales. 40+ proveedores. Docker one-liner. 674★, Apache-2.0.\n- **`NVlabs/ASPIRE v1.0 sale en octubre y resuelve el cubo de Rubik**: NVIDIA Research presenta continual learning sin gradientes — el \"modelo entrenado\" es un repo de skills sensoriomotoras en lugar de pesos flotantes. SOTA en LIBERO-Pro, Robosuite y BEHAVIOR-1K. Claude Opus 4.6, GPT-5.5 y GPT-6 Astra como modelos de razonamiento. Paper arXiv 2607.00272. 629★, Apache-2.0, 3 meses.\n- **`VersusControl/versus-incident` se postula como AI SRE teammate self-hosted en Go.** Tres modos (training/shadow/detect), aprende tu normal a partir de logs/metrics/traces/Kubernetes, abre incidente solo cuando aparece una anomalía nueva. Webhook alerts + Slack/Teams/Telegram/Viber/Email/Lark + PagerDuty/Opsgenie/incident.io. 875★, MIT.\n- **`LibreChat-AI/LibreChat` reentra con cadencia diaria y superficie ampliada:** ahora soporta GPT-5, MCP, Skills (el nuevo spec), Artifacts, Responses API, 30+ proveedores. 45.953★, MIT, 3.7 años en el ring.\nFuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` sigue siendo 2026-07-05).",
+  "resumen_ejecutivo": "- **`google-research/harness2` entra al #1 de Trendshift con una tesis incómoda: el cuello de botella ya no es el modelo, es el harness.** Google Research publica un framework plug-and-play para **refinar el sistema alrededor del modelo** (prompt + guardrails + memory + tools + subagents + skills + scripts + plugins) sin tocar pesos. Recursión a dos niveles: a nivel de tarea con un paso Propose-Probe-Compose contrastivo, y a nivel de harness para acumular mejoras entre tareas. Mide +11.5/+4.5/+11.8 puntos sobre GLM-5 y Gemini 3.5 Flash en WorkBuddy-Bench, JobBench y LAB. Paper arXiv 2610.14224. 9.006★, Apache-2.0, 13 días de vida.\n- **`mozilla-ai/otari` aterriza como gateway LLM open-source con pedigree Mozilla y un giro de tuerca: virtual keys + budgets + tracking, todo detrás de un endpoint OpenAI/Anthropic-compatible.** Compite con LiteLLM/Portkey, pero añade MCP, code execution, web search, inference guardrails y file understanding como features opcionales. 40+ proveedores. Docker one-liner. 681★, Apache-2.0.\n- **`NVlabs/ASPIRE v1.0 sale en octubre y resuelve el cubo de Rubik**: NVIDIA Research presenta continual learning sin gradientes — el \"modelo entrenado\" es un repo de skills sensoriomotoras en lugar de pesos flotantes. SOTA en LIBERO-Pro, Robosuite y BEHAVIOR-1K. Claude Opus 4.6, GPT-5.5 y GPT-6 Astra como modelos de razonamiento. Paper arXiv 2607.00272. 658★, Apache-2.0, 3 meses.\n- **`VersusControl/versus-incident` se postula como AI SRE teammate self-hosted en Go.** Tres modos (training/shadow/detect), aprende tu normal a partir de logs/metrics/traces/Kubernetes, abre incidente solo cuando aparece una anomalía nueva. Webhook alerts + Slack/Teams/Telegram/Viber/Email/Lark + PagerDuty/Opsgenie/incident.io. 876★, MIT.\n- **`LibreChat-AI/LibreChat` reentra con cadencia diaria y superficie ampliada:** ahora soporta GPT-5, MCP, Skills (el nuevo spec), Artifacts, Responses API, 30+ proveedores. 45.953★, MIT, 3.7 años en el ring.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all + TypeScript + Python + Rust + Go), GitHub REST API para verificación. Blogwatcher no publicado hoy (último `*-blogs.md` sigue siendo 2026-07-05).",
   "items": [
     {
       "idx": 0,
+      "titulo": "google-research/harness2 — el cuello de botella ya no es el modelo, es el harness",
+      "url": "https://github.com/google-research/harness2",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework plug-and-play para **refinar recursivamente el sistema alrededor del modelo** (harness) sin tocar pesos. Un harness son los ocho componentes editables: prompt del sistema, guardrails, memoria, tool guidance, subagentes, skills, scripts y plugins. Harness² conecta dos niveles de recursión: (1) **task-level** — paso contrastivo Propose-Probe-Compose (proponer ediciones al harness, probar su efecto en la misma tarea, componer un harness refinado de los contrastes), y (2) **harnessing-level** — un \"improvement harness\" persistente que adopta los harnesses exitosos y guarda lecciones con evidencia para la próxima tarea. Paper arXiv 2610.14224, sitio harness2.github.io. Ejecutores: OpenCode y Codex. Benchmarks: JobBench, LAB, WorkBuddy-Bench.",
+        "por_que_importa": "Cambia el eje del optimizador. Mientras la conversación de 2026 llevaba \"sube de modelo\", Harness² dice \"el modelo ya no cambia, lo que cambia es el harness\" — y aporta una loop formal (no artesanal) para mejorarlo. Los números importan: una sola iteración de Harness² mejora GLM-5 y Gemini 3.5 Flash sobre sus harnesses base en 11.5pp (WorkBuddy-Bench), 4.5pp (JobBench) y 11.8pp (LAB partial pass rate). Caveat: los benchmarks son del propio paper, hay que leerlos como evidencia direccional, no como claim de universalidad.",
+        "madurez_senales": "9.006★ · 790 forks · Python · Apache-2.0 · creado 2026-10-06 (~13 días) · último push 2026-10-14 · branch `main` · sitio `harness2.github.io` · ejecutores OpenCode + Codex.",
+        "accion_sugerida": "**leer** el paper (arXiv 2610.14224) y `docs/BENCHMARKS.md` + **probar** `harness2-demo --output runs/demo --k 2` (corre sin credenciales, ejecutores deterministas) + **vigilar** si suben ejecutores para Claude Code/Hermes.",
+        "descripcion_raw": "Framework plug-and-play para refinar recursivamente el sistema alrededor del modelo sin tocar pesos. Harness editable con 8 componentes. Propose-Probe-Compose. arXiv 2610.14224."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google-research/harness2",
+          "rel": "implements",
+          "dst": "concept:recursive_harness_optimization",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google-research/harness2",
+          "rel": "complements",
+          "dst": "repo:ulab-uiuc/LLMRouter",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google-research/harness2",
+          "rel": "relevant_to",
+          "dst": "repo:earendil-works/pi",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google-research/harness2",
+          "rel": "competes_with",
+          "dst": "concept:manual_prompt_engineering",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-research-harness2",
+        "temas_secundarios": [
+          "harness",
+          "recursive-optimization",
+          "paper"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "mozilla-ai/otari — gateway LLM open-source con virtual keys, budgets y tracking",
+      "url": "https://github.com/mozilla-ai/otari",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Gateway LLM OpenAI y Anthropic-compatible que se ejecuta self-hosted (Docker one-liner o Kubernetes). Una sola API que rutea a 40+ proveedores, mantiene las credenciales detrás del gateway, emite virtual keys con scope (usuario / workspace / modelo), enforce budgets antes del spend y registra usage después. Routing local con failover, weighting y selección aprendida. Sobre esa base añade features opcionales: **code execution, web search, MCP, inference guardrails y file understanding** — un giro que LiteLLM/Portkey no traen de fábrica. Las llamadas a providers pasan por la librería companion `mozilla-ai/any-llm`.",
+        "por_que_importa": "Cierra el triángulo \"gateway agnóstico + control financiero + features AI-native\" en una sola dependencia open-source con pedigree Mozilla. Para una audiencia que ya curó `diegosouzapw/OmniRoute` y `mag1c/AIStudio2API` como gateways, Otari entra como la opción **Mozilla-AI-curated** con el set de features más amplio. Es Docker simple (`mzdotai/otari:latest`), no requiere cuenta cloud, y entra en el clúster LLM gateway que tenemos en grafo.",
+        "madurez_senales": "681★ · 89 forks · Python · Apache-2.0 · creado 2026-04-02 (~6 meses) · último push HOY 2026-10-19 · topics: `ai`, `ai-gateway`, `anthropic`, `api-key-management`, `budgets`, `cost-tracking`, `gateway`, `litellm-alternative`, `llm`, `llm-gateway`, `llm-proxy`, `llm-routing`, `llmops`, `multi-provider`, `open-source` (15 topics) · branch `main` · sitio `otari.ai` · Discord + launch blog en `blog.mozilla.ai/otari-own-your-ai-stack`.",
+        "accion_sugerida": "**probar** con un Docker compose local contra un proveedor + **leer** `docs/index.md` para entender el flujo de virtual keys y, si dependes de LiteLLM hoy, **vigilar** si Mozilla mantiene el ritmo de releases.",
+        "descripcion_raw": "Gateway LLM OpenAI/Anthropic-compatible self-hosted. Virtual keys + budgets + tracking. MCP + code execution + web search + inference guardrails + file understanding como features opcionales. Mozilla."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mozilla-ai/otari",
+          "rel": "competes_with",
+          "dst": "repo:BerriAI/litellm",
+          "primera_mencion": "2026-08-28"
+        },
+        {
+          "src": "repo:mozilla-ai/otari",
+          "rel": "competes_with",
+          "dst": "repo:portkey-ai/portkey",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mozilla-ai/otari",
+          "rel": "complements",
+          "dst": "repo:diegosouzapw/OmniRoute",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mozilla-ai/otari",
+          "rel": "uses",
+          "dst": "repo:mozilla-ai/any-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mozilla-ai/otari",
+          "rel": "implements",
+          "dst": "concept:llm_gateway_with_budgets",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mozilla-ai-otari",
+        "temas_secundarios": [
+          "gateway",
+          "virtual-keys",
+          "mozilla"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "NVlabs/ASPIRE — training sin gradientes: skills sensoriomotoras en lugar de pesos",
+      "url": "https://github.com/NVlabs/ASPIRE",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework de NVIDIA Research para **continual learning agentic en robótica**. La tesis es: en lugar de gradient descent, \"entrenar\" es **skill refinement**. El \"modelo entrenado\" no son pesos flotantes, es un repo de skills sensoriomotoras. \"Distributed training\" es un panel de agentes practicando cada uno una skill distinta (no minibatches shardados). v1.0 sale este mes y resuelve el cubo de Rubik con 99% de éxito en 80 tareas LIBERO-Pro (Goal/Object/Spatial/Long) y en tareas seleccionadas de Robosuite y BEHAVIOR-1K. Modelos de razonamiento usados: Claude Opus 4.6 (sim-to-real), GPT-5.5 (real), GPT-6 Astra. Paper arXiv 2607.00272.",
+        "por_que_importa": "La tesis \"el modelo no es el cuello de botella, las habilidades del agente sí\" es **la misma intuición** que Harness² pero en el plano físico. Si te interesa la conversación \"agent skills\" que ya tenemos con `K-Dense-AI/scientific-agent-skills`, `agentskills/agentskills` y `gastownhall/beads`, ASPIRE entra como el primer caso serio de **skills library** en el dominio sensoriomotor — no en texto, sino en acciones físicas. Caveat: para una audiencia dev/AI clásica (no robotics), es lectura recomendada, no experimento replicable mañana. Caveat editorial: las menciones a \"GPT-6 Astra\" son claims del repo, no validados independientemente.",
+        "madurez_senales": "658★ · 55 forks · Python · Apache-2.0 · creado 2026-07-08 (~3 meses) · último push 2026-10-16 · branch `main` · sitio `research.nvidia.com/labs/gear/aspire` · paper arXiv 2607.00272.",
+        "accion_sugerida": "**leer** el paper (arXiv 2607.00272) y la `docs/system2.md` para entender el routing a GPT-6 Astra + **vigilar** si NVIDIA abre un SDK para construir skills sin acceso a robots físicos.",
+        "descripcion_raw": "Continual learning agentic sin gradientes. Skills sensoriomotoras en lugar de pesos. Resuelve el cubo de Rubik 99%. arXiv 2607.00272."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVlabs/ASPIRE",
+          "rel": "implements",
+          "dst": "concept:agentic_skill_discovery_robotics",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/ASPIRE",
+          "rel": "extends",
+          "dst": "concept:byok_scientific_desktop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:NVlabs/ASPIRE",
+          "rel": "complements",
+          "dst": "repo:K-Dense-AI/scientific-agent-skills",
+          "primera_mencion": "2026-10-18"
+        },
+        {
+          "src": "repo:NVlabs/ASPIRE",
+          "rel": "relevant_to",
+          "dst": "repo:google-research/harness2",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvlabs-aspire",
+        "temas_secundarios": [
+          "robotics",
+          "skill-discovery",
+          "continual-learning"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "VersusControl/versus-incident — AI SRE teammate self-hosted en Go",
+      "url": "https://github.com/VersusControl/versus-incident",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AI SRE teammate open-source self-hosted que aprende tu \"normal\" a partir de logs, métricas, traces y estado de Kubernetes, y abre incidentes solo cuando aparece una anomalía nueva. Tres modos progresivos: **training** (solo observa, sin alertas — para aprender), **shadow** (observa y registra \"habría alertado\" sin hacerlo — para validar el juicio del agente antes de ir a producción), y **detect** (abre incidente real y el AI SRE redacta summary + severidad + siguientes pasos antes de mandarlo a Slack/Teams/Telegram/Viber/Email/Lark). Soporta webhook alerts de Alertmanager/Grafana/Sentry/CloudWatch SNS/FluentBit. On-call con PagerDuty/Opsgenie/incident.io/ServiceNow. Templates Go customizables.",
+        "por_que_importa": "Completa el plano \"vertical AI agent\" en el dominio SRE, mismo nivel de madurez que `VersusControl/versus-incident` aporta frente a `vibheksoni/stealth-browser-mcp` (stealth vertical) o `anujasid/mcp-for-blender-pro` (3D vertical). La diferencia clave: **el modo shadow** es un patrón de adopción responsable para SRE — puedes validar el juicio del agente durante semanas antes de cortar el cordón. Caveat: 876★ es señal consistente pero no hype; los benchmarks de \"reduce MTTR\" no están en el repo, hay que leerlos como promesa de vendor.",
+        "madurez_senales": "876★ · 164 forks · Go · MIT · creado 2025-02-04 (~20 meses) · último push 2026-10-17 · topics: `ai`, `ai-agent`, `ai-tools`, `alert`, `aws`, `devops`, `devops-agent`, `golang`, `helm`, `kubernetes`, `monitoring-tool`, `on-call`, `pagerduty`, `slack`, `sre` (15 topics) · branch `main`.",
+        "accion_sugerida": "**probar** el modo `shadow` en un cluster k8s pequeño durante una semana + **leer** `docs.versusincident.com` y, si operas Kubernetes en producción, **vigilar** la cadencia de releases.",
+        "descripcion_raw": "AI SRE teammate self-hosted. Aprende tu normal de logs/metrics/traces/K8s. Tres modos: training, shadow, detect. Webhook alerts. Shadow mode es el patrón de adopción responsable."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:VersusControl/versus-incident",
+          "rel": "implements",
+          "dst": "concept:ai_sre_self_hosted",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:VersusControl/versus-incident",
+          "rel": "complements",
+          "dst": "repo:vibheksoni/stealth-browser-mcp",
+          "primera_mencion": "2026-10-18"
+        },
+        {
+          "src": "repo:VersusControl/versus-incident",
+          "rel": "relevant_to",
+          "dst": "concept:agent_shadow_mode",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "versuscontrol-versus-incident",
+        "temas_secundarios": [
+          "sre",
+          "ai-agent",
+          "shadow-mode"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "LibreChat-AI/LibreChat — ChatGPT clone open-source que sigue marcando cadencia diaria con GPT-5, MCP y Skills",
+      "url": "https://github.com/LibreChat-AI/LibreChat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Clon open-source de ChatGPT con Agents, MCP, Skills (el nuevo spec), DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching y memorias. Multi-proveedor unificado. Despliegue one-click en Railway, Zeabur y Sealos. 13+ idiomas traducidos, Discord activo.",
+        "por_que_importa": "Reentry — el repo ya estaba visto, pero el ritmo sigue. La lectura editorial es que **el plano \"ChatGPT clone open-source\" sigue siendo una categoría viva**, no una reliquia: cada release añade superficie (esta vuelta suma Skills + GPT-5 + Responses API). Caveat: la cobertura del último año es amplia pero dispersa — si tu audiencia busca \"single-binary local AI gateway\", Otari de hoy o Magnitude de ayer encajan mejor que LibreChat.",
+        "madurez_senales": "45.953★ · 6.747 forks · TypeScript · MIT · creado 2023-02-12 (~3.7 años) · último push HOY 2026-10-19 · topics: `ai`, `anthropic`, `artifacts`, `aws`, `azure`, `chatgpt`, `chatgpt-clone`, `claude`, `clone`, `deepseek`, `gemini`, `google`, `gpt-5`, `librechat`, `mcp` (15 topics) · branch `main`.",
+        "accion_sugerida": "**vigilar** la cadencia — si publican una release mayor en los próximos 7 días, vale una pieza corta de \"qué cambió\".",
+        "descripcion_raw": "Clon open-source de ChatGPT. Agents + MCP + Skills + GPT-5 + Responses API. Multi-proveedor unificado. 13+ idiomas. Cadencia diaria."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:LibreChat-AI/LibreChat",
+          "rel": "implements",
+          "dst": "concept:open_chatgpt_clone",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:LibreChat-AI/LibreChat",
+          "rel": "relevant_to",
+          "dst": "repo:mozilla-ai/otari",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:LibreChat-AI/LibreChat",
+          "rel": "implements",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "librechat-ai-librechat",
+        "temas_secundarios": [
+          "chatgpt-clone",
+          "mcp",
+          "agent-skills"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 5,
       "titulo": "ahujasid/mcp-for-blender",
       "url": "https://github.com/ahujasid/mcp-for-blender",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(31.607★, push HOY, Python MIT, ~19 meses) — el repo es el rebranding de `blender-mcp` (issue #366 documenta el cambio; PyPI ya expone `mcp-for-blender`, pero `uvx blender-mcp` sigue funcionando). Mismo autor que el ya cubierto `anujasid/mcp-for-blender-pro`",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si la confusión entre los dos nombres genera fricción en producción (alias `blender-mcp` debería continuar); **leer** el issue #366 si necesitas migrar instalaciones",
-        "descripcion_raw": ""
+        "que_es": "El repo es el rebranding de `blender-mcp` (issue #366 documenta el cambio; PyPI ahora expone `mcp-for-blender`, pero `uvx blender-mcp` sigue funcionando). Mismo autor que el ya cubierto `anujasid/mcp-for-blender-pro`.",
+        "por_que_importa": "Vigilar si la confusión entre los dos nombres genera fricción en producción (alias `blender-mcp` debería continuar); leer el issue #366 si necesitas migrar instalaciones.",
+        "madurez_senales": "31.607★ (según boletin original). Topic tags: blender, mcp.",
+        "accion_sugerida": "vigilar si la confusión entre los dos nombres genera fricción en producción",
+        "descripcion_raw": "Rebranding de blender-mcp. Issue #366 documenta el cambio. Mismo autor que mcp-for-blender-pro."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -24,22 +283,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "ahujasid-mcp-for-blender",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "blender",
+          "mcp",
+          "rebranding"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 1,
+      "idx": 6,
       "titulo": "alvinunreal/lazyskills",
       "url": "https://github.com/alvinunreal/lazyskills",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(569★, push 2026-09-26, Go MIT, ~4 meses) — TUI en Go para gestionar agent skills: ver qué hay instalado (project / global / universal / per-agent), diagnosticar SKILL.md roto, previsualizar comandos, abrir / reinstalar / podar. Compatible con Claude Code, OpenCode, Codex, Cursor, Gemini CLI",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "probar — el instalador `curl -fsSL https://lazyskills.sh/install | sh` y, si dependes de muchas skills, **vigilar** su roadmap (skills.sh search in-TUI es el ángulo interesante)",
-        "descripcion_raw": ""
+        "que_es": "TUI Go para gestionar agent skills: ver qué hay instalado (project / global / universal / per-agent), diagnosticar SKILL.md roto, previsualizar comandos, abrir / reinstalar / podar. Compatible con Claude Code, OpenCode, Codex, Cursor, Gemini CLI.",
+        "por_que_importa": "Si dependes de muchas skills, vigilar su roadmap (skills.sh search in-TUI es el ángulo interesante).",
+        "madurez_senales": "569★ · Go · MIT · creado ~4 meses · último push 2026-09-26.",
+        "accion_sugerida": "probar el instalador `curl -fsSL https://lazyskills.sh/install | sh` y, si dependes de muchas skills, vigilar su roadmap",
+        "descripcion_raw": "TUI Go para gestionar agent skills. project / global / universal / per-agent. SKILL.md diagnostico. Compatible con Claude Code, OpenCode, Codex, Cursor, Gemini CLI."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -48,22 +311,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "alvinunreal-lazyskills",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "tui",
+          "skill-management",
+          "go"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 2,
+      "idx": 7,
       "titulo": "twentyhq/twenty",
       "url": "https://github.com/twentyhq/twenty",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(58.517★, push HOY, TypeScript NOASSERTION, ~3.9 años) — \"open alternative to Salesforce, designed for AI\". Monorepo con GraphQL + React + NestJS + PostgreSQL; CLI para scaffold de apps. Caveat de licencia: la API devuelve `NOASSERTION` — leer la `LICENSE` antes de adoptarlo como dependencia interna (para uso como producto SaaS no aplica)",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — el roadmap público (`github.com/orgs/twentyhq/projects/1`) y, si construyes CRM a medida, **leer** `docs.twenty.com`",
-        "descripcion_raw": ""
+        "que_es": "\"Open alternative to Salesforce, designed for AI\". GraphQL + React + NestJS + PostgreSQL monorepo; CLI para scaffold apps (58.517★, TypeScript NOASSERTION, ~3.9 años).",
+        "por_que_importa": "Caveat de licencia: API devuelve NOASSERTION — leer la LICENSE antes de adoptarlo como dependencia interna. Para uso como producto SaaS no aplica.",
+        "madurez_senales": "58.517★ · TypeScript · NOASSERTION · creado ~3.9 años · último push HOY.",
+        "accion_sugerida": "vigilar el roadmap público y, si construyes CRM a medida, leer docs.twenty.com",
+        "descripcion_raw": "Open alternative to Salesforce. GraphQL + React + NestJS + PostgreSQL. CLI para scaffold apps."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -72,22 +339,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "twentyhq-twenty",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "crm",
+          "alternative-salesforce",
+          "noassertion"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 3,
+      "idx": 8,
       "titulo": "NVlabs/ASPIRE",
       "url": "https://github.com/NVlabs/ASPIRE",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(629★, push 2026-10-16, Python Apache-2.0, ~3 meses) — robot skills discovery (ver descripción arriba en hallazgos). Repito aquí para audiencia no robótica: si tu vertical es dev/IA puro, baja prioridad",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si abren SDK para construir skills sin robots físicos",
-        "descripcion_raw": ""
+        "que_es": "Repetido aquí para audiencia no robótica: si tu vertical es dev/AI puro, baja prioridad. Robot skills discovery (ver descripción arriba en hallazgos).",
+        "por_que_importa": "Vigilar si abren SDK para construir skills sin robots físicos.",
+        "madurez_senales": "Ver hallazgo principal #2 de hoy.",
+        "accion_sugerida": "vigilar si abren SDK para construir skills sin robots físicos",
+        "descripcion_raw": "Robot skills discovery. Repetido en radar para audiencia no robótica."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -95,23 +366,26 @@
         "idioma": "en",
         "autor": null,
         "medio": null,
-        "tema_principal": "nvlabs-aspire",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "tema_principal": "nvlabs-aspire-radar",
+        "temas_secundarios": [
+          "robotics",
+          "secondary-mention"
+        ],
+        "confianza": 0.5
       }
     },
     {
-      "idx": 4,
+      "idx": 9,
       "titulo": "mlabonne/llm-course",
       "url": "https://github.com/mlabonne/llm-course",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(84.224★, push 2026-02-05, `lang=None`, Apache-2.0, ~3.4 años) — reentry masivo con curso de LLM, roadmaps y Colab notebooks",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — la métrica `last_push 2026-02-05` sugiere cadencia lenta reciente, el pico de hoy probablemente viene de trending-day, no de release nueva",
-        "descripcion_raw": ""
+        "que_es": "Reentry masivo con curso LLM, roadmaps y Colab notebooks (84.224★, Apache-2.0, ~3.4 años).",
+        "por_que_importa": "La métrica `last_push 2026-02-05` sugiere cadencia lenta reciente; el pico de hoy probablemente viene de trending-day, no de release nueva.",
+        "madurez_senales": "84.224★ · Apache-2.0 · creado ~3.4 años · último push 2026-02-05.",
+        "accion_sugerida": "vigilar — la métrica last_push sugiere cadencia lenta reciente, el pico de hoy probablemente viene de trending-day",
+        "descripcion_raw": "Reentry masivo con curso LLM, roadmaps y Colab notebooks. 84k stars."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -120,22 +394,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "mlabonne-llm-course",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "course",
+          "llm",
+          "notebooks"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 5,
+      "idx": 10,
       "titulo": "google/ax",
       "url": "https://github.com/google/ax",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(13.949★, push HOY, Go Apache-2.0, ~7 meses) — reentry (visto por el cron el 2026-09-21). \"Agent Executor (AX) is Google's open agentic orchestration runtime\". Sin release notoria nueva, pero la cadencia diaria en trending de hoy lo mantiene relevante",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si suben release mayor",
-        "descripcion_raw": ""
+        "que_es": "Reentry (visto por el cron el 2026-09-21). \"Agent Executor (AX) is Google's open agentic orchestration runtime\". Sin release notoria nueva, pero la cadencia diaria en trending de hoy lo mantiene relevante.",
+        "por_que_importa": "Vigilar si suben release mayor.",
+        "madurez_senales": "13.949★ · Go · Apache-2.0 · creado ~7 meses · último push HOY.",
+        "accion_sugerida": "vigilar si suben release mayor",
+        "descripcion_raw": "Google's open agentic orchestration runtime. Reentry con cadencia diaria."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -144,20 +422,24 @@
         "autor": null,
         "medio": null,
         "tema_principal": "google-ax",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "orchestration",
+          "google",
+          "agent-executor"
+        ],
+        "confianza": 0.6
       }
     }
   ],
   "stats": {
-    "items_total": 6,
-    "items_hallazgo_principal": 0,
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
     "items_radar_secundario": 6,
-    "llm_backend": "hermes",
-    "llm_polish_notes": "6/6 items pulidos",
+    "llm_backend": "manual-fix",
+    "llm_polish_notes": "Reescrito a mano el 2026-10-20 17:55 tras detectar que el enriquecimiento automatico del cron 52621d797729 (10:10 del 2026-10-19) clasifico los 5 hallazgos principales como radar_secundario. Datos verificados contra el boletin original ~/obsidian-vault/Research/Boletines/2026-10-19-trending.md + GitHub API del 2026-10-20.",
     "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 hallazgos principales reescritos con datos del boletin original (por_que_importa, madurez_senales, descripcion_raw).",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

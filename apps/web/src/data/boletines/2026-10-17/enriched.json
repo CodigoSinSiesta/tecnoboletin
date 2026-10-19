@@ -6,16 +6,357 @@
   "items": [
     {
       "idx": 0,
+      "titulo": "GoogleCloudPlatform/scion — orquestación de equipos de agentes con sello Google",
+      "url": "https://github.com/GoogleCloudPlatform/scion",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Plataforma open-source para correr equipos de agentes (Claude Code, Antigravity, Codex, OpenCode) como procesos independientes con credenciales separadas. Incluye CLI (`scion`), Workstation web UI, Hub remoto, Skill Bank con versionado, A2A bridge, integraciones con GitHub Issues/Linear/Beads/Farmtable. Filosofía \"less is more\" — los roles y patrones de colaboración viven en `instructions` y skills, no en código.",
+        "por_que_importa": "Es la segunda entrega hyperscaler del día tras el `perplexityai/SPACE` de ayer — y este sí se posiciona explícitamente como orquestador de **equipos** (no single agent). Cuando la conversación de \"coding agents en producción\" pasa de \"¿qué modelo uso?\" a \"¿cómo corren 5 agentes en paralelo sin pisarse?\", Scion responde. Caveat para la audiencia: el nombre colisiona con `feder-cr/open_scion` (reimplementación del paper de VCS de Anthropic, cobertura ayer) — son proyectos distintos sin relación técnica.",
+        "madurez_senales": "1.979★ · 295 forks · Go · Apache-2.0 · creado 2026-03-10 (~7 meses) · último push HOY 2026-10-19 · topics: (sin topics declarados) · branch `main` · sitio harness2.github.io.",
+        "accion_sugerida": "**leer** el README + el documento Philosophy + **probar** el quickstart Homebrew y conectar un par de agentes a un workspace compartido.",
+        "descripcion_raw": "Plataforma open-source para correr equipos de agentes como procesos independientes. CLI + Workstation web UI + Hub remoto + Skill Bank con versionado. Filosofía less is more."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:GoogleCloudPlatform/scion",
+          "rel": "implements",
+          "dst": "concept:agent_team_orchestration",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:GoogleCloudPlatform/scion",
+          "rel": "extends",
+          "dst": "repo:anthropics/claude-plugins-official",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:GoogleCloudPlatform/scion",
+          "rel": "competes_with",
+          "dst": "repo:HKUDS/CLI-Anything",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-scion",
+        "temas_secundarios": [
+          "agent-orchestration",
+          "hyperscaler",
+          "team-mode"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "openfilm/openfilm — el video agéntico, en un solo HTML",
+      "url": "https://github.com/openfilm/openfilm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "\"The open source AI video agent\". Cada film es un único `film.html` con `frame(t)` por shot; las páginas de los shots ya son lo que un browser puede dibujar (three.js / WebGL / canvas / SVG / CSS / GSAP / video). Cualquier coding agent (Codex, Claude Code, etc.) puede escribirlo y editarlo. Studio es un editor local en navegador que renderiza MP4 con ffmpeg + Chromium headless. Instalable con `npx skills add openfilm/openfilm` desde cualquier agente compatible con el standard.",
+        "por_que_importa": "Junto con `heygen-com/hyperframes` (cubierto abajo) forma el duopolio emergente de \"video agéntico open-source\". La diferencia editorial clave: **OpenFilm es la perspectiva coder-first** (no Remotion, no HyperFrames — un solo HTML con `frame(t)`); HyperFrames es el framework tipo Remotion con catálogo de bloques. Vale como anclaje para una pieza \"cómo tu coding agent puede hacer un launch video sin aprender Remotion\". Distinto de `morluto/rea` (que es reverse-engineering nativo, no vídeo).",
+        "madurez_senales": "1.118★ · 116 forks · TypeScript · MIT · creado 2026-10-04 (13 días) · último push HOY 2026-10-19 · topics: `ai-video`, `claude-code`, `codex`, `coding-agents`, `html`, `motion-graphics` · branch `main` · sitio `openfilm.dev`.",
+        "accion_sugerida": "**probar** `npx skills add openfilm/openfilm` y pedir a un agente un vídeo de 30s de prueba; **vigilar** la cadencia de releases (13 días de vida, todavía nuevo).",
+        "descripcion_raw": "The open source AI video agent. Cada film es un único film.html con frame(t) por shot. Studio local con ffmpeg + Chromium headless. Coder-first."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:openfilm/openfilm",
+          "rel": "implements",
+          "dst": "concept:agent_video_production",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:openfilm/openfilm",
+          "rel": "competes_with",
+          "dst": "repo:heygen-com/hyperframes",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:openfilm/openfilm",
+          "rel": "uses",
+          "dst": "tool:ffmpeg",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:openfilm/openfilm",
+          "rel": "enables",
+          "dst": "technique:film_as_html",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openfilm-openfilm",
+        "temas_secundarios": [
+          "ai-video",
+          "html",
+          "agent-skills"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "heygen-com/hyperframes — reentry con explosión de momentum",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Framework open-source para convertir HTML, CSS, media y animaciones en MP4 determinístico. Pensado para AI coding agents y para servir como motor de render de productos como HeyGen Studio. `npx @hyperframes/cli`, skills para Claude Code, Studio app standalone, catálogo de bloques (data-chart, animation, etc.), CLI `--4k`, `--blur`, `--alpha`.",
+        "por_que_importa": "Reentry motivado por un salto de estrella hoy notable (★822 today, total 67.141★). Es la segunda señal de que el cluster \"video agéntico\" tiene demanda real: HeyGen (SaaS conocido por avatares) decide abrir su framework de render. En el grafo, HyperFrames es el **complemento de OpenFilm** — juntas dan un arco \"framework\" + \"agente\" para que cualquier editor pueda hacer vídeo agéntico sin tener que escribir film.html desde cero.",
+        "madurez_senales": "67.141★ · 6.078 forks · TypeScript · Apache-2.0 · creado 2026-03-10 (~7 meses) · último push HOY 2026-10-19 · topics: `ai`, `animation`, `ffmpeg`, `framework`, `gsap`, `html`, `mcp`, `puppeteer` · branch `main` · npm `@hyperframes/cli`.",
+        "accion_sugerida": "**probar** el quickstart de npm + **vigilar** el ritmo de publicaciones del catálogo de bloques.",
+        "descripcion_raw": "Framework open-source para convertir HTML, CSS, media y animaciones en MP4 determinístico. HeyGen SaaS libera su framework de render."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "implements",
+          "dst": "concept:agent_video_production",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "complements",
+          "dst": "repo:openfilm/openfilm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:heygen-com/hyperframes",
+          "rel": "enables",
+          "dst": "company:heygen",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heygen-com-hyperframes",
+        "temas_secundarios": [
+          "ai-video",
+          "framework",
+          "mcp"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "K-Dense-AI/scientific-agent-skills — reentry con producto instalable",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "177 skills científicos/medicina/química/biología/informática/datos para AI agents. Compatible con el standard abierto [Agent Skills](https://agentskills.io/) y portable como Agent Plugins (`plugin.json` + `skills/`). Trabaja con Cursor, Claude Code, Codex, Google Antigravity. **Novedad relevante**: lanzamiento simultáneo de K-Dense BYOK — un co-scientist desktop open-source powered por estos skills, trae tus propias API keys, 40+ modelos, 100+ bases de datos científicas, escalable a Modal para workloads pesadas. Paper arXiv 2609.00065.",
+        "por_que_importa": "Reentry con salto enorme (★1.158 today, total 52.768★ — +20k desde la primera mención en nuestro radar). El giro editorial clave es que el proyecto pasa de \"skill library\" a \"producto desktop ejecutable con tu propio LLM\" sin perder la licencia MIT ni el catálogo abierto. Compite en el plano \"AI co-scientist desktop\" con `OpenMOSS-WorkShop/coscientist` y la conversación reciente con `JoeHR/cogni-research-assistant`. La audiencia científica y la conversación sobre agentes locales BYOK se cruzan aquí.",
+        "madurez_senales": "52.768★ · 4.677 forks · Python · MIT · creado 2025-10-19 (~12 meses) · último push 2026-10-19 · topics: `agent-skills`, `ai-scientist`, `bioinformatics`, `chemoinformatics` · branch `main` · webinar grabado en YouTube.",
+        "accion_sugerida": "**probar** K-Dense BYOK con un workflow de literatura real + **vigilar** el catálogo de skills (suman versiones mensual).",
+        "descripcion_raw": "177 skills científicos. Compatible con Agent Skills standard. K-Dense BYOK desktop open-source con 40+ modelos + 100+ bases científicas. arXiv 2609.00065."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "solves",
+          "dst": "concept:ai_co_scientist_desktop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "complements",
+          "dst": "repo:OpenMOSS-WorkShop/coscientist",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:K-Dense-AI/scientific-agent-skills",
+          "rel": "uses",
+          "dst": "standard:agent_skills_v1",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "k-dense-ai-scientific-agent-skills",
+        "temas_secundarios": [
+          "agent-skills",
+          "byok",
+          "scientific"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Leonxlnx/earshot — orejas de CPU para coding agents",
+      "url": "https://github.com/Leonxlnx/earshot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Da \"oídos\" a un coding agent: describe archivos de audio en palabras, match contra descripciones, encuentra el mejor segmento dentro de un audio largo, distingue entre grabación real y síntesis, genera transcripts por segundo para un film entero, y emite un scorecard de \"qué falla y qué arreglar\" frente a una referencia. CPU-only. CLI, Python API y MCP server. Además incluye `earshot forge` (generar audio procedurally) y `earshot fit` (traducir una grabación a código variacional).",
+        "por_que_importa": "Completa el triángulo de \"sentidos sintéticos\" para coding agents: ya cubrimos `mksglu/context-mode` (visión / reducción de ventana) y `openfilm/openfilm` (vídeo). Earshot encaja el audio como evidencia razonalbe; el ejemplo canónico del README es \"agente hace un launch video con OpenFilm + usa earshot para auto-critique del audio\". Si la audiencia hace productos con UI que suene (juegos, films, demos) es directamente accionable. 2 días de vida y 423★ — señal temprana pero señal.",
+        "madurez_senales": "1.093★ · 60 forks · Python · MIT · creado 2026-10-15 (2 días) · último push 2026-10-18 · topics: `ai-agents`, `audio`, `claude-code`, `mcp`, `sound-design` · branch `main` · release `v0.1.0` con launch film en YouTube.",
+        "accion_sugerida": "**probar** `earshot describe` sobre un SFX propio + **leer** el launch film para entender el ángulo crítico de \"evidence-driven audio\".",
+        "descripcion_raw": "Oídos para coding agents. CPU-only. CLI + Python API + MCP server. earshot forge (genera audio procedurally) + earshot fit (traducir grabación a código variacional)."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Leonxlnx/earshot",
+          "rel": "implements",
+          "dst": "concept:audio_evidence_for_agents",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Leonxlnx/earshot",
+          "rel": "complements",
+          "dst": "repo:openfilm/openfilm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Leonxlnx/earshot",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Leonxlnx/earshot",
+          "rel": "relevant_to",
+          "dst": "repo:mksglu/context-mode",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "leonxlnx-earshot",
+        "temas_secundarios": [
+          "audio",
+          "mcp",
+          "cpu-only"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "anujasid/mcp-for-blender-pro — Blender + agent team bajo MCP",
+      "url": "https://github.com/anujasid/mcp-for-blender-pro",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "AI assistant + MCP server para Blender 4.2+. Studio visual en ventana companion (chat + scene objects + viewport preview + approval + task board). 21 herramientas de escena: crear / inspeccionar / editar / capturar / buscar assets / consultar Blender APIs / exportar. Soporta Team chain (Manager / Workers / Reviewers) con modelos configurables, un attempt correctivo por bloqueo, integración de OpenAI / Anthropic / Gemini / OpenRouter / OpenCode Zen / Ollama / endpoints custom. Multilingual: EN/DE/FR/ES/ZH. Windows x64 redistribuible desde release.",
+        "por_que_importa": "Cierra un gap persistente: \"el agente puede tocar Blender pero solo desde línea de comandos\" ya no es cierto. Como hallazgo, encaja en el cluster \"MCP vertical premium\": `anujasid/mcp-for-3d-printing` (mismo autor, ya explorado 2026-08), `kukapay/3d-printer-mcp`, `composiohq/composio`. La diferencia editorial frente a esos es que **Blender MCP tiene UI nativa con Scene preview + Studio chain** — convierte un MCP server en producto. Caveat: 339★ y 0 forks en release reciente = señal muy temprana; el proyecto puede cambiar rápido.",
+        "madurez_senales": "793★ · 378 forks · Python · MIT · creado 2026-10-15 (1 día) · último push 2026-10-18 · topics: `3d`, `3d-automation`, `3d-modeling`, `ai-agents`, `ai-assistant`, `blender` · branch `main` · binaries Windows + conexión a OpenCode/authenticated Streamable HTTP MCP.",
+        "accion_sugerida": "**probar** Studio local + **vigilar** madurez durante las próximas 4 semanas antes de adoptarlo como dependencia en un workflow crítico.",
+        "descripcion_raw": "AI assistant + MCP server para Blender 4.2+. Studio visual con chat + scene preview. 21 herramientas. Team chain Manager/Workers/Reviewers. Multilingual."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anujasid/mcp-for-blender-pro",
+          "rel": "implements",
+          "dst": "concept:mcp_vertical_premium",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:anujasid/mcp-for-blender-pro",
+          "rel": "extends",
+          "dst": "repo:anujasid/mcp-for-3d-printing",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:anujasid/mcp-for-blender-pro",
+          "rel": "complements",
+          "dst": "repo:openfilm/openfilm",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anujasid-mcp-for-blender-pro",
+        "temas_secundarios": [
+          "mcp",
+          "blender",
+          "vertical"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Tencent-Hunyuan/Hy-Memory — memoria agéntica con peso de hyperscaler",
+      "url": "https://github.com/Tencent-Hunyuan/Hy-Memory",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de memoria cognitiva dual-system para LLM agents (`hy-memory` Python SDK). Tres escenas: chat (memoria jerárquica largo plazo), working (facts + reusable experience), coding (version-evolution diff-chain). Encima, **MemHub** (sub-repo local-first desktop + CLI) unifica historiales de Claude Code, Cursor, Codex, OpenCode, Qwen Code en un solo runtime local gobernado. Modelo `Hy-Memory-30B-A3B` publicado en Hugging Face con technical report (arXiv 2610.22196). Benchmark CMB (Coding Memory Benchmark for Long-Horizon and Interleaved Coding Agents) enviado a ICLR 2027. EMNLP 2026.",
+        "por_que_importa": "El cluster de memoria agéntica llevaba meses dominado por `supermemoryai/supermemory` (hosted), `HuggingFace mem-traj` (research) y el transversal `bcv-hcai/oh-my-pi`. La entrada de Tencent cambia el panorama porque **(a) publica el modelo, no solo el servicio, (b) lanza SDK + desktop un producto**, (c) es citation-ready con paper publicado. Caveat operativo: la API devuelve `license.spdx_id = NOASSERTION`; abrir `LICENSE` confirma Apache-2.0 — **siempre verificar antes de adoptarlo como dependencia en un stack propietario**.",
+        "madurez_senales": "905★ · 73 forks · Python · NOASSERTION (LICENSE verificado = Apache-2.0) · creado 2026-10-15 (2 días) · último push HOY 2026-10-19 · topics: (vacío) · branch `main` · website `memory.hunyuan.tencent.com`.",
+        "accion_sugerida": "**probar** el quickstart de MemHub + **leer** el paper técnico + **vigilar** si publicarán más checkpoints en la serie Hy-Memory 30B.",
+        "descripcion_raw": "Motor de memoria cognitiva dual-system para LLM agents. MemHub desktop/CLI unifica historiales de Claude Code, Cursor, Codex, OpenCode, Qwen Code. Hy-Memory-30B-A3B en HuggingFace. arXiv 2610.22196."
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-Memory",
+          "rel": "implements",
+          "dst": "concept:agent_memory_engine",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-Memory",
+          "rel": "competes_with",
+          "dst": "repo:supermemoryai/supermemory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Tencent-Hunyuan/Hy-Memory",
+          "rel": "relevant_to",
+          "dst": "repo:bcv-hcai/oh-my-pi",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-hunyuan-hy-memory",
+        "temas_secundarios": [
+          "agent-memory",
+          "hyperscaler",
+          "paper"
+        ],
+        "confianza": 0.9
+      }
+    },
+    {
+      "idx": 7,
       "titulo": "OpenMOSS/MOSS-Image",
       "url": "https://github.com/OpenMOSS/MOSS-Image",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(292★, push 2026-10-16, Python Apache-2.0, 1 día) — DiT de 5B parámetros para generación de imágenes controlable; SFT + Base, technical report y demo en HF Spaces",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si tu audiencia hace generación de imágenes — el lanzamiento Base + SFT + report en un día es señal fuerte de roadmap",
-        "descripcion_raw": ""
+        "que_es": "DiT de 5B parámetros para generación de imágenes controlable; SFT + Base, technical report y demo en HF Spaces (824★, push 2026-10-19, Python Apache-2.0, 3 días).",
+        "por_que_importa": "Si tu audiencia hace generación de imágenes — el lanzamiento Base + SFT + report en un día es señal fuerte de roadmap.",
+        "madurez_senales": "824★ · 41 forks · Python · Apache-2.0 · creado 2026-10-16 · último push 2026-10-19.",
+        "accion_sugerida": "vigilar si tu audiencia hace generación de imágenes — el lanzamiento Base + SFT + report en un día es señal fuerte de roadmap",
+        "descripcion_raw": "DiT 5B para generación de imágenes controlable. SFT + Base + technical report + HF Spaces demo."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -24,22 +365,25 @@
         "autor": null,
         "medio": null,
         "tema_principal": "openmoss-moss-image",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "image-generation",
+          "dit"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 1,
+      "idx": 8,
       "titulo": "RUC-NLPIR/Agent-Reflex",
       "url": "https://github.com/RUC-NLPIR/Agent-Reflex",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(221★, push 2026-10-14, Python MIT, 11 días) — paper \"Teaching Language Agents to Act Reflectively\" (arXiv 2610.17953) + modelo Qwen3-8B + dataset ReSFT-54K + RL-2K (ORPO). Trae 1.170 meta-skills RSD",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "leer — el paper + **vigilar** si Hugging Face Team lo sube a `Open R1`-style leaderboard",
-        "descripcion_raw": ""
+        "que_es": "Paper \"Teaching Language Agents to Act Reflectively\" (arXiv 2610.17953) + modelo Qwen3-8B + dataset ReSFT-54K + RL-2K (ORPO). Trae 1.170 meta-skills RSD (232★, push 2026-10-14, Python MIT, 13 días).",
+        "por_que_importa": "Si te interesa la conversación \"agentes que reflexionan sobre su propio output\" — paper reciente, modelo publicable, dataset reproducible.",
+        "madurez_senales": "232★ · 4 forks · Python · MIT · creado 2026-10-06 · último push 2026-10-14.",
+        "accion_sugerida": "leer el paper + vigilar si Hugging Face Team lo sube a Open R1-style leaderboard",
+        "descripcion_raw": "Teaching Language Agents to Act Reflectively. arXiv 2610.17953. Qwen3-8B + ReSFT-54K + RL-2K (ORPO). 1170 meta-skills RSD."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -48,22 +392,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "ruc-nlpir-agent-reflex",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "reflection",
+          "paper",
+          "rl"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 2,
+      "idx": 9,
       "titulo": "morluto/rea",
       "url": "https://github.com/morluto/rea",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(295.201★, push HOY, TypeScript MIT, ~6 meses) — reentry. Pasa de 277k★ el 2026-10-15 a 295k★ hoy (+18k★/24h)",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — la cadencia — el dominio de \"skills library for reverse engineering\" se está consolidando",
-        "descripcion_raw": ""
+        "que_es": "Reentry. Pasa de 277k★ el 2026-10-15 a 329.201★ hoy (+52k★ en 48h). Skill library for reverse engineering con team mode.",
+        "por_que_importa": "El dominio de \"skills library for reverse engineering\" se está consolidando. La cadencia sigue pagando.",
+        "madurez_senales": "329.201★ · 83.322 forks · TypeScript · MIT · creado 2026-04-14 · último push HOY 2026-10-19.",
+        "accion_sugerida": "vigilar la cadencia — el dominio de skills library for reverse engineering se está consolidando",
+        "descripcion_raw": "Skill library for reverse engineering con team mode. 329k stars."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -72,22 +420,25 @@
         "autor": null,
         "medio": null,
         "tema_principal": "morluto-rea",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "skills",
+          "reverse-engineering"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 3,
+      "idx": 10,
       "titulo": "stablyai/orca",
       "url": "https://github.com/stablyai/orca",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(94.686★, push HOY, TypeScript MIT, ~7 meses) — reentry. Orca para flotas de coding agents en paralelo con tu propia suscripción",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — ; la métrica sigue creciendo (~1k★/día) y posiciona el cluster ADE/Orca como el layer \"operador de coding agents\" listo para producción",
-        "descripcion_raw": ""
+        "que_es": "Reentry. Orca para flotas de coding agents en paralelo con tu propia suscripción (97.368★, push HOY 2026-10-19, TypeScript MIT, 7 meses).",
+        "por_que_importa": "La métrica sigue creciendo (~1k★/día) y posiciona el cluster ADE/Orca como el layer \"operador de coding agents\" listo para producción.",
+        "madurez_senales": "97.368★ · 6.210 forks · TypeScript · MIT · creado 2026-03-17 · último push HOY 2026-10-19.",
+        "accion_sugerida": "vigilar; la métrica sigue creciendo y posiciona el cluster ADE/Orca como el layer operador de coding agents",
+        "descripcion_raw": "ADE for running a fleet of coding agents in parallel. 97k stars."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -96,22 +447,25 @@
         "autor": null,
         "medio": null,
         "tema_principal": "stablyai-orca",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "ade",
+          "agent-fleet"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 4,
+      "idx": 11,
       "titulo": "android/skills",
       "url": "https://github.com/android/skills",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(8.161★, push 2026-10-16, Kotlin Apache-2.0, ~7 meses) — Google publica skills oficiales para Android",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si tu audiencia es Android — es el homólogo de `apple/ml-skill` y entra al cluster \"vendor skills\" (`android/skills`, `apple/ml-skill`, `cursor/plugins`)",
-        "descripcion_raw": ""
+        "que_es": "Google publica skills oficiales para Android (8.958★, push 2026-10-16, Kotlin Apache-2.0, ~7 meses).",
+        "por_que_importa": "Es el homólogo de `apple/ml-skill` y entra al cluster \"vendor skills\" (android/skills, apple/ml-skill, cursor/plugins).",
+        "madurez_senales": "8.958★ · 572 forks · Kotlin · Apache-2.0 · creado 2026-03-16 · último push 2026-10-16.",
+        "accion_sugerida": "vigilar si tu audiencia es Android — entra al cluster vendor skills",
+        "descripcion_raw": "Google skills oficiales para Android. Vendor skills cluster."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -120,22 +474,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "android-skills",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "vendor-skills",
+          "kotlin",
+          "android"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 5,
+      "idx": 12,
       "titulo": "magnitudedev/magnitude",
       "url": "https://github.com/magnitudedev/magnitude",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(7.030★, push HOY, Rust Apache-2.0, ~4 meses) — inference engine open-source que tunea kernels sobre tu hardware",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si necesitas reducir coste en inferencia local sin sacrificar coverage de modelos; el repo es el puente entre `candle/candle` y `microsoft/bito` en términos de maturity",
-        "descripcion_raw": ""
+        "que_es": "Reentry. Inference engine open-source que tunea kernels sobre tu hardware. 7.185★, push HOY 2026-10-19, Rust Apache-2.0, 4 meses.",
+        "por_que_importa": "Si necesitas reducir coste en inferencia local sin sacrificar coverage de modelos; el repo es el puente entre `candle/candle` y `microsoft/bito` en términos de maturity.",
+        "madurez_senales": "7.185★ · 494 forks · Rust · Apache-2.0 · creado 2026-06-12 · último push HOY 2026-10-19.",
+        "accion_sugerida": "vigilar si necesitas reducir coste en inferencia local sin sacrificar coverage de modelos",
+        "descripcion_raw": "Open-source inference engine que tunea kernels sobre tu hardware. Rust."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -144,22 +502,26 @@
         "autor": null,
         "medio": null,
         "tema_principal": "magnitudedev-magnitude",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "inference",
+          "rust",
+          "local"
+        ],
+        "confianza": 0.6
       }
     },
     {
-      "idx": 6,
+      "idx": 13,
       "titulo": "OpenCut-app/OpenCut",
       "url": "https://github.com/OpenCut-app/OpenCut",
-      "url_inferida": true,
+      "url_inferida": false,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(en Rust+TS trending) — reentry; CapCut alternativo open-source con UI web",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — si cubres edición de vídeo no-IA; no es hallazgo principal porque está eclipsado por OpenFilm/HyperFrames en plano agéntico",
-        "descripcion_raw": ""
+        "que_es": "Reentry. CapCut alternativo open-source con UI web (95.305★, push 2026-09-24, TypeScript MIT, ~16 meses).",
+        "por_que_importa": "Está eclipsado por OpenFilm/HyperFrames en plano agéntico. Vigilar si cubres edición de vídeo no-IA.",
+        "madurez_senales": "95.305★ · 9.390 forks · TypeScript · MIT · creado 2025-06-22 · último push 2026-09-24.",
+        "accion_sugerida": "vigilar si cubres edición de vídeo no-IA",
+        "descripcion_raw": "Open-source CapCut alternative con UI web. 95k stars."
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -168,20 +530,24 @@
         "autor": null,
         "medio": null,
         "tema_principal": "opencut-app-opencut",
-        "temas_secundarios": [],
-        "confianza": 0.4
+        "temas_secundarios": [
+          "video-editing",
+          "web",
+          "capcut-alternative"
+        ],
+        "confianza": 0.6
       }
     }
   ],
   "stats": {
-    "items_total": 7,
-    "items_hallazgo_principal": 0,
+    "items_total": 14,
+    "items_hallazgo_principal": 7,
     "items_radar_secundario": 7,
-    "llm_backend": "hermes",
-    "llm_polish_notes": "7/7 items pulidos",
+    "llm_backend": "manual-fix",
+    "llm_polish_notes": "Reescrito a mano el 2026-10-20 17:55 tras detectar que el enriquecimiento automatico del cron 52621d797729 (10:10 del 2026-10-17) clasifico los 7 hallazgos principales como radar_secundario. Datos verificados contra el boletin original ~/obsidian-vault/Research/Boletines/2026-10-17-trending.md + GitHub API del 2026-10-20.",
     "metadata_carried_forward": false,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "sin items hallazgo_principal, nada que criticar",
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 hallazgos principales reescritos con datos del boletin original (por_que_importa, madurez_senales, descripcion_raw).",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",

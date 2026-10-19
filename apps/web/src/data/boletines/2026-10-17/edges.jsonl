@@ -1,7 +1,44 @@
-{"src": "boletin:2026-10-17", "dst": "item:https-github-com-openmoss-moss-image", "rel": "menciona", "added": "2026-10-17"}
-{"src": "item:https-github-com-openmoss-moss-image", "dst": "tema:openmoss-moss-image", "rel": "trata", "added": "2026-10-17"}
-{"src": "boletin:2026-10-17", "dst": "item:https-github-com-ruc-nlpir-agent-reflex", "rel": "menciona", "added": "2026-10-17"}
-{"src": "item:https-github-com-ruc-nlpir-agent-reflex", "dst": "tema:ruc-nlpir-agent-reflex", "rel": "trata", "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-GoogleCloudPlatform-scion", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-GoogleCloudPlatform-scion", "dst": "tema:google-scion", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:GoogleCloudPlatform/scion", "rel": "implements", "dst": "concept:agent_team_orchestration", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:GoogleCloudPlatform/scion", "rel": "extends", "dst": "repo:anthropics/claude-plugins-official", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:GoogleCloudPlatform/scion", "rel": "competes_with", "dst": "repo:HKUDS/CLI-Anything", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-openfilm-openfilm", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-openfilm-openfilm", "dst": "tema:openfilm-openfilm", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:openfilm/openfilm", "rel": "implements", "dst": "concept:agent_video_production", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:openfilm/openfilm", "rel": "competes_with", "dst": "repo:heygen-com/hyperframes", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:openfilm/openfilm", "rel": "uses", "dst": "tool:ffmpeg", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:openfilm/openfilm", "rel": "enables", "dst": "technique:film_as_html", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-heygen-com-hyperframes", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-heygen-com-hyperframes", "dst": "tema:heygen-com-hyperframes", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:heygen-com/hyperframes", "rel": "implements", "dst": "concept:agent_video_production", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:heygen-com/hyperframes", "rel": "complements", "dst": "repo:openfilm/openfilm", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:heygen-com/hyperframes", "rel": "enables", "dst": "company:heygen", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-K-Dense-AI-scientific-agent-skills", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-K-Dense-AI-scientific-agent-skills", "dst": "tema:k-dense-ai-scientific-agent-skills", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "rel": "solves", "dst": "concept:ai_co_scientist_desktop", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "rel": "complements", "dst": "repo:OpenMOSS-WorkShop/coscientist", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:K-Dense-AI/scientific-agent-skills", "rel": "uses", "dst": "standard:agent_skills_v1", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-Leonxlnx-earshot", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-Leonxlnx-earshot", "dst": "tema:leonxlnx-earshot", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:Leonxlnx/earshot", "rel": "implements", "dst": "concept:audio_evidence_for_agents", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:Leonxlnx/earshot", "rel": "complements", "dst": "repo:openfilm/openfilm", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:Leonxlnx/earshot", "rel": "uses", "dst": "protocol:mcp", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:Leonxlnx/earshot", "rel": "relevant_to", "dst": "repo:mksglu/context-mode", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-anujasid-mcp-for-blender-pro", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-anujasid-mcp-for-blender-pro", "dst": "tema:anujasid-mcp-for-blender-pro", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:anujasid/mcp-for-blender-pro", "rel": "implements", "dst": "concept:mcp_vertical_premium", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:anujasid/mcp-for-blender-pro", "rel": "extends", "dst": "repo:anujasid/mcp-for-3d-printing", "primera_mencion": "2026-08-12", "added": "2026-10-17"}
+{"src": "repo:anujasid/mcp-for-blender-pro", "rel": "complements", "dst": "repo:openfilm/openfilm", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-Tencent-Hunyuan-Hy-Memory", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-Tencent-Hunyuan-Hy-Memory", "dst": "tema:tencent-hunyuan-hy-memory", "rel": "trata", "added": "2026-10-17"}
+{"src": "repo:Tencent-Hunyuan/Hy-Memory", "rel": "implements", "dst": "concept:agent_memory_engine", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:Tencent-Hunyuan/Hy-Memory", "rel": "competes_with", "dst": "repo:supermemoryai/supermemory", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "repo:Tencent-Hunyuan/Hy-Memory", "rel": "relevant_to", "dst": "repo:bcv-hcai/oh-my-pi", "primera_mencion": null, "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-OpenMOSS-MOSS-Image", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-OpenMOSS-MOSS-Image", "dst": "tema:openmoss-moss-image", "rel": "trata", "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-RUC-NLPIR-Agent-Reflex", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-RUC-NLPIR-Agent-Reflex", "dst": "tema:ruc-nlpir-agent-reflex", "rel": "trata", "added": "2026-10-17"}
 {"src": "boletin:2026-10-17", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-17"}
 {"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-10-17"}
 {"src": "boletin:2026-10-17", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-10-17"}
@@ -10,5 +47,5 @@
 {"src": "item:https-github-com-android-skills", "dst": "tema:android-skills", "rel": "trata", "added": "2026-10-17"}
 {"src": "boletin:2026-10-17", "dst": "item:https-github-com-magnitudedev-magnitude", "rel": "menciona", "added": "2026-10-17"}
 {"src": "item:https-github-com-magnitudedev-magnitude", "dst": "tema:magnitudedev-magnitude", "rel": "trata", "added": "2026-10-17"}
-{"src": "boletin:2026-10-17", "dst": "item:https-github-com-opencut-app-opencut", "rel": "menciona", "added": "2026-10-17"}
-{"src": "item:https-github-com-opencut-app-opencut", "dst": "tema:opencut-app-opencut", "rel": "trata", "added": "2026-10-17"}
+{"src": "boletin:2026-10-17", "dst": "item:https-github-com-OpenCut-app-OpenCut", "rel": "menciona", "added": "2026-10-17"}
+{"src": "item:https-github-com-OpenCut-app-OpenCut", "dst": "tema:opencut-app-opencut", "rel": "trata", "added": "2026-10-17"}
