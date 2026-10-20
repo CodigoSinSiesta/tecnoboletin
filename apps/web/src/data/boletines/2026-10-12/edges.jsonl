@@ -1,0 +1,67 @@
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-bherbruck-solidcraft", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-bherbruck-solidcraft", "dst": "tema:bherbruck-solidcraft", "rel": "trata", "added": "2026-10-12"}
+{"src": "repo:bherbruck/solidcraft", "dst": "repo:storytold/craft-launcher", "rel": "family_of", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:bherbruck/solidcraft", "dst": "concept:parametric-feature-history", "rel": "implements", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:bherbruck/solidcraft", "dst": "tool:freecad", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:bherbruck/solidcraft", "dst": "tool:openscad", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:bherbruck/solidcraft", "dst": "tool:autodesk-fusion-360", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:bherbruck/solidcraft", "dst": "protocol:mcp", "rel": "exposes", "added": "2026-10-12", "primera_mencion": "2026-09-21"}
+{"src": "repo:bherbruck/solidcraft", "dst": "tech:tauri", "rel": "ui_shell", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:bherbruck/solidcraft", "dst": "tech:wasm", "rel": "browser_build", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:bherbruck/solidcraft", "dst": "tech:rust", "rel": "written_in", "added": "2026-10-12", "primera_mencion": null}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-repowise-dev-repowise", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-repowise-dev-repowise", "dst": "tema:repowise-dev-repowise", "rel": "trata", "added": "2026-10-12"}
+{"src": "repo:repowise-dev/repowise", "dst": "concept:codebase-intelligence", "rel": "implements", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:repowise-dev/repowise", "dst": "tool:codescene", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:repowise-dev/repowise", "dst": "tool:graphify", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:repowise-dev/repowise", "dst": "tool:codebase-memory", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": "2026-10-01"}
+{"src": "repo:repowise-dev/repowise", "dst": "protocol:MCP", "rel": "exposes", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:repowise-dev/repowise", "dst": "tool:claude-code", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": "2026-09-15"}
+{"src": "repo:repowise-dev/repowise", "dst": "tool:openai-codex", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:repowise-dev/repowise", "dst": "technique:agent-driven-codebase-qa", "rel": "enables", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:repowise-dev/repowise", "dst": "tech:python", "rel": "written_in", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:repowise-dev/repowise", "dst": "concept:AGPL-3.0-or-commercial", "rel": "license", "added": "2026-10-12", "primera_mencion": null}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-getnao-nao", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-getnao-nao", "dst": "tema:getnao-nao", "rel": "trata", "added": "2026-10-12"}
+{"src": "repo:getnao/nao", "dst": "concept:text-to-sql-agent", "rel": "implements", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "tool:dify", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "tool:langchain-data", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "technique:agent-reliability-testing", "rel": "enables", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "tech:bigquery", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "tech:snowflake", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "tech:databricks", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "tech:postgresql", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "protocol:MCP", "rel": "complements", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:getnao/nao", "dst": "concern:license-noassertion", "rel": "risk", "added": "2026-10-12", "primera_mencion": null}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-storytold-gridcraft", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-storytold-gridcraft", "dst": "tema:storytold-gridcraft", "rel": "trata", "added": "2026-10-12"}
+{"src": "repo:storytold/gridcraft", "dst": "repo:storytold/craft-launcher", "rel": "hub_of", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:storytold/gridcraft", "dst": "concept:open-source-excel-suite", "rel": "implements", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:storytold/gridcraft", "dst": "tool:microsoft-excel", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:storytold/gridcraft", "dst": "tool:libreoffice-calc", "rel": "competes_with", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:storytold/gridcraft", "dst": "protocol:MCP", "rel": "exposes", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:storytold/gridcraft", "dst": "tech:wasm", "rel": "browser_build", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "repo:storytold/gridcraft", "dst": "tech:rust", "rel": "written_in", "added": "2026-10-12", "primera_mencion": "2026-10-11"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-liseami-ccbaga", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-liseami-ccbaga", "dst": "tema:liseami-ccbaga", "rel": "trata", "added": "2026-10-12"}
+{"src": "repo:liseami/CCBaga", "dst": "concept:claude-code-cleanup", "rel": "implements", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:liseami/CCBaga", "dst": "concept:browser-fingerprint-rotation", "rel": "implements", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:liseami/CCBaga", "dst": "technique:ai-guided-network-setup", "rel": "enables", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:liseami/CCBaga", "dst": "tool:claude-code-cli", "rel": "integrates_with", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:liseami/CCBaga", "dst": "tech:tauri", "rel": "uses", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:liseami/CCBaga", "dst": "tech:chromium-fingerprint-isolated-profile", "rel": "uses", "added": "2026-10-12", "primera_mencion": null}
+{"src": "repo:liseami/CCBaga", "dst": "tech:rust", "rel": "written_in", "added": "2026-10-12", "primera_mencion": null}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-10-12"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-nationalsecurityagency-ghidra", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-nationalsecurityagency-ghidra", "dst": "tema:nationalsecurityagency-ghidra", "rel": "trata", "added": "2026-10-12"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-project-hami-hami", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-project-hami-hami", "dst": "tema:project-hami-hami", "rel": "trata", "added": "2026-10-12"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-bishopfox-sliver", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-bishopfox-sliver", "dst": "tema:bishopfox-sliver", "rel": "trata", "added": "2026-10-12"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-shaongitbd-doory", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-shaongitbd-doory", "dst": "tema:shaongitbd-doory", "rel": "trata", "added": "2026-10-12"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-akshayykadam-pixelboard", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-akshayykadam-pixelboard", "dst": "tema:akshayykadam-pixelboard", "rel": "trata", "added": "2026-10-12"}
+{"src": "boletin:2026-10-12", "dst": "item:https-github-com-darrenprx-lolping", "rel": "menciona", "added": "2026-10-12"}
+{"src": "item:https-github-com-darrenprx-lolping", "dst": "tema:darrenprx-lolping", "rel": "trata", "added": "2026-10-12"}

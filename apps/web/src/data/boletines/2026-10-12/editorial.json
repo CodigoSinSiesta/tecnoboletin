@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "date": "2026-10-12",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Rust open-source ya tiene CAD y spreadsheet con servidor MCP nativo",
+  "posicionamiento": "La jugada \"Adobe + Office + AutoCAD\" en Rust open-source deja de ser lema: solidcraft aterriza como CAD paramétrico con servidor MCP nativo, y gridcraft sube al #25 de Trendshift como spreadsheet maduro. El hilo del día es la convergencia: ofimática open-source con agente integrado de serie, no parcheado encima.",
+  "convergencia_stack_css": "Repowise conecta directo con la línea editorial local-first de CSS: indexa código sin LLM, expóne por MCP y se autohostea, igual que el stack que defendemos (PGLite/pgvector, Graphify, código local). Solidcraft y gridcraft añaden el ángulo \"Rust nativo + WASM + MCP de serie\" que ya vimos en craft-launcher.",
+  "cruzado_grafo": "Solidcraft se une al cluster \"craft family\" (cubierto el 2026-10-11 desde craft-launcher) y reusa el nodo protocol:mcp, mencionado por primera vez el 2026-09-21. Repowise se apoya en nodos ya mapeados: codebase-memory (2026-10-01), claude-code (2026-09-15) y openai-codex (2026-10-11). El resto de relaciones aparecen por primera vez.",
+  "tendencias_5_boletines": "El boletín 2026-10-11 dejó dos narrativas opuestas: una suite Rust unificada y herramientas especializadas. Hoy se consolida la primera y se suma un competidor directo de CodeScene/Codeball para coding agents. La tendencia: la inteligencia de código y ofimática pasa de herramientas sueltas a productos con agente integrado de serie.",
+  "alertas": [
+    "repowise es AGPL-3.0 con doble vía comercial: la adopción real depende de cuánto moleste esa combinación a equipos jurídicos.",
+    "getnao/nao aparece con etiqueta de licencia \"noassertion\" en el grafo: antes de recomendarlo, conviene verificar la licencia exacta del repo.",
+    "liseami/CCBaga opera en territorio sensible (limpieza de rastros y rotación de fingerprint): el caso de uso legítimo existe, pero el mismo binario sirve para evadir auditorías — nomos al describirlo."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Repowise se postula como alternativa local-first a Graphify/codebase-memory con MCP expuesto; clonar y revisar contra nuestro stack actual merecería un repo-investigation dedicado."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Solidcraft cierra la tesis CAD paramétrico con servidor MCP nativo; comparar su modelo de feature-history con nuestras piezas CAD/documentación propias."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "nao encarna la tesis \"framework open-source para agentes\" en data warehousing; la licencia \"noassertion\" obliga a vigilarla antes de adoptarla como ejemplo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "CCBaga introduce la categoría \"anti-trail\" para coding agents: la tendencia puede crecer rápido y conviene mapearla antes de que aparezca el primer incidente público."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Gridcraft en #25 de Trendshift, con ratio forks/stars 0,42, es el dato más limpio del día sobre tracción real en ofimática open-source agent-drivable."
+    }
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
+}

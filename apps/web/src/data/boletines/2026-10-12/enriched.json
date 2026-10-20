@@ -1,0 +1,574 @@
+{
+  "version": 2,
+  "date": "2026-10-12",
+  "boletin_origen": "2026-10-12-trending.md",
+  "resumen_ejecutivo": "- **`bherbruck/solidcraft` (Rust, Apache-2.0, 728★, push HOY)** aterriza en Trendshift #4 y completa la tesis que abrimos ayer: **\"Adobe + Office + AutoCAD\" en pure Rust open-source ya tiene su módulo CAD paramétrico (Fusion 360 clean-room)**. Y tiene un as bajo la manga — **servidor MCP nativo para que agentes modelen geometría en SolidCraft directamente**. Documentación en formato \"SolidCraft book\" (`bherbruck.github.io/solidcraft`), webapp en WASM, 76/76 benchmarks superados en volume/area/topology. La suite `storytold/*craft` ya no es la única: solidcraft entra como proyecto hermano con MCP de serie.\n- **`repowise-dev/repowise` (Python, AGPL-3.0/comercial, 7.555★, push HOY)** es **el primer competidor serio de CodeScene/Codeball que se posiciona explícitamente como \"codebase intelligence para AI coding agents\"**: indexa call graph + git history + tests + docs + decisiones arquitectónicas una sola vez, sin LLM calls (gráfico de llamadas + análisis estático puro). Su benchmark interno reporta **−31.6% de tool calls de agente** y **2.3× más defectos que CodeScene con el mismo budget de revisión** (`p<0.0001` y `p=0.003`). **0 LLM calls = 0 API key**. AGPL-3.0 con doble licencia comercial disponible. **Para CSS es la pieza que faltaba para que Claude Code/Codex/hermanos entiendan codebases grandes sin pagar a OpenAI/Anthropic por cada pregunta**.\n- **`getnao/nao` (TypeScript, NOASSERTION, 1.908★, push 2026-10-09)** es **\"the open-source analytics agent\"** — Dify/Lindy para datos. Construyes un contexto Open (data + metadata + docs + tools + MCPs, todo filesystem-like) con `nao-core` CLI, despliegas un chat UI para que cualquiera consulte tu warehouse (BigQuery, Snowflake, Databricks, Postgres) en lenguaje natural. Diferenciador: **\"Agent Reliability Visibility\"** — unit-tests de agente antes de deploy, versionado del contexto, tracking de feedback. Self-hosted, sin lock-in de vendor.\n- **`storytold/gridcraft` (Rust, MIT/Apache-2.0, 3.186★, push HOY)** entra en Trendshift #25 como **el decimotercer producto de la suite `storytold/*craft`/`bherbruck/solidcraft`** — un Excel-style spreadsheet en pure Rust con sparklines, conditional formatting, charts, banded rows, todo desde comandos CLI. WebAssembly para el browser, MCP para agentes. **Adobe (Photoshop/Lightroom) + Office (Word/Excel/PowerPoint) + AutoCAD (Fusion 360) + DAW (SoundCraft) tiene 12-14 productos open-source en Rust** — la suite creativa más ambiciosa del open source ya cubre ofimática + creatividad + CAD.\n- **`liseami/CCBaga` (Rust, MIT, 794★, push HOY, creado 2026-10-11)** es **un toolkit nativo macOS/Linux escrito en Rust+Tauri para \"Claude cleanup · Browser fingerprints · System settings · Network Skill\"**. Doble aplicación: CCBaga-A controla el SO, CCBaga-B ejecuta un Chromium con perfil de fingerprint aislado. Característica editorial: **\"AI-guided network setup\"** — el propio repo genera prompts Skill instalables para coding agents según la red del usuario**. Para CSS es la pieza \"anti-trail\" de Claude Code: rotación de fingerprint, limpieza de caches, alineación de timezone/locale, todo desde una app nativa verificada. Producto de un solo autor (liseami), push HOY, muy fresco — vigilar cadencia.\n- **`morluto/rea` (TypeScript, MIT, 79.669★, push HOY) re-emerge en Trendshift #1** por segundo día consecutivo. Sin novedad editorial confirmada hoy (mismo repo, mismo push), pero **el meta-trending importa: Ghidra oficial de la NSA entra en Trendshift #14 el mismo día** — el incumbent manual de reversing y el agente AI-driven de reversing coexisten en el ranking. Esa yuxtaposición es la nota editorial. (Ver radar secundario).\n- **Re-entries con historia nueva:** `storytold/wordcraft` (#2, last_seen 2026-10-10, v0.5+ en suite), `storytold/photocraft` (#7, last_seen 2026-10-09), `storytold/artcraft` (#9), `storytold/pdfcraft` (#19), `storytold/filmcraft` (#20) — todos parte de la suite que ayer cubrimos. Sin novedad editorial sustantiva individual; los cubrimos como suite collective en `bherbruck/solidcraft` y `storytold/gridcraft`.\n- Fuentes consultadas: Trendshift daily (25 items parseados; 0 sponsored filtrados; Drift P fix aplicado al JSON-LD), GitHub Trending daily + TypeScript + Python + Rust + Go slices (49 repos únicos parseados; dedupe case-insensitive contra `seen_items` con `seen_lc` lookup), GitHub API sin token (18 verificaciones completas; ningún rate-limit hit). Blogwatcher 08:00 no publicó archivo hoy (patrón conocido desde julio), por lo que este boletín no duplica contenido de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "bherbruck/solidcraft",
+      "url": "https://github.com/bherbruck/solidcraft",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**aplicación CAD paramétrica open-source, clean-room reimplementation de Autodesk Fusion 360, construida en pure Rust** — con servidor MCP nativo para que agentes AI modelen geometría directamente sobre SolidCraft.",
+        "por_que_importa": "**Completa la tesis \"Adobe + Office + AutoCAD en Rust open-source\"** que abrimos el 2026-10-11 al cubrir `storytold/craft-launcher` y los 12 productos de la suite `storytold/*craft`. SolidCraft no es uno de ellos: es un proyecto hermano de `bherbruck`, aunque su README se anuncia como \"Part of the storytold 'craft' family\" y repite el mismo discurso — MCP para agentes, UI nativa sin Electron. Tres ángulos concretos. (1) El CAD open-source tiene ya un contendiente serio que no es un clon de FreeCAD: supera76 de 76 benchmarks propios de volumen, área y topología, trae flatpak para Linux, build WASM para navegador y documentación completa. (2) Su \"parametric feature timeline\" es lo que lo separa de OpenSCAD: cambias una dimensión y el modelo se reconstruye, en lugar de ser un script que se re-ejecuta entero. (3) El servidor MCP integrado significa que un agente puede pedir \"agranda esta pieza 20mm y añade un boss aquí\" sin que escribas scripts custom. Sobre MCP, nota de continuidad: ya lo treatamos el 2026-09-21 con `craft-launcher`; lo interesante aquí es que el caso de uso es geométrico, no de ofimática.",
+        "madurez_senales": ": · Estrellas: 728 · Forks: 63 · Lenguaje: Rust (core) + Tauri (UI shell) + WASM (browser build) · Fecha creación: 2026-10-07 (5 días de vida — muy fresco) · Último push: 2026-10-12 (HOY) · Licencia: Apache-2.0 · Descripción oficial: \"An open-source parametric 3D CAD application built in pure Rust\" · Default branch: `main` · Status declarado: \"early but usable for simple parts\" · Benchmarks propios: 76/76 reference parts matching volume, area, topology · Disponibilidad: Linux Flatpak, macOS/Windows/BSD nativa, browser WASM en `bherbruck.github.io/solidcraft/app/` · Distribución: cambia nombre de SolveCraft → SolidCraft (alias `solvecraft-cli`, `.solvecraft` files siguen funcionando)",
+        "accion_sugerida": ": **probar** la webapp WASM en `bherbruck.github.io/solidcraft/app/` para validar la tesis CAD-paramétrico sin instalar Flatpak; **leer** el SolidCraft book (5 min de skim de la sección \"Getting Started\"); **vigilar** la cadencia de releases (5 días desde creación, push HOY — momentum fuerte); **explorar** con un agente MCP-enabled (Claude Code o Hermes) esbozando una pieza simple.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "family_of",
+          "dst": "repo:storytold/craft-launcher",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "implements",
+          "dst": "concept:parametric-feature-history",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "competes_with",
+          "dst": "tool:freecad",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "competes_with",
+          "dst": "tool:openscad",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "competes_with",
+          "dst": "tool:autodesk-fusion-360",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "exposes",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "ui_shell",
+          "dst": "tech:tauri",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "browser_build",
+          "dst": "tech:wasm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:bherbruck/solidcraft",
+          "rel": "written_in",
+          "dst": "tech:rust",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bherbruck-solidcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "repowise-dev/repowise",
+      "url": "https://github.com/repowise-dev/repowise",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"codebase intelligence for AI and humans\"** — indexa code, call graph, git history, tests, docs y design decisions **sin LLM calls** (graph + static analysis puro), y expone todo vía MCP para que tu coding agent consulte lo que necesita sin re-descubrir el codebase.",
+        "por_que_importa": "**La pieza que faltaba para un coding agent que entienda un codebase grande sin pagar a OpenAI por cada pregunta.** Y aquí hay que ser precisos: la ventaja no es \"el grafo es gratis\", es que la capa de inteligencia se construye con análisis estático puro — sin una sola llamada a LLM — así que no hay claves de API que gestionar y se puede auto-hostear. Los benchmarks publicados por el propio proyecto (con las filas perdedoras incluidas) apuntan en esa línea: −31.6% de tool calls del agente (3.8 vs 7.2, 43 preguntas, p<0.0001), 2.3× más defectos detectados que CodeScene con el mismo presupuesto de revisión (2.770 ficheros, p=0.003), precisión de call graph de 0.976-0.995 en Go y TypeScript verificada contra el compilador, y 58.924 archivos indexados en un solo run (dotnet/runtime, 120 min, 11.7 GiB de pico). Sobre Graphify y codebase-memory, ya escribimos el 2026-10-01 sobre la alternativa open-source para mapear proyectos a grafos; Repowise entra en el mismo espacio y además se posiciona en el lado del coding agent, que es donde nosotros lo usamos. También tiene puente con lo que ya cubrimos: la integración con Claude Code venía del 2026-09-15 y con OpenAI Codex del 2026-10-11, así que encaja en la cadena que ya venís siguiendo. Licencia AGPL-3.0 con doble licencia comercial para quien no quiera copyleft.",
+        "madurez_senales": ": · Estrellas: 7.555 · Forks: 846 · Lenguaje: Python · Fecha creación: 2026-03-23 (~7 meses de vida) · Último push: 2026-10-12 (HOY) · Licencia: AGPL-3.0 o comercial (README: \"AGPL-3.0 or commercial\") · Descripción oficial: \"Codebase intelligence for AI and humans: code health scores, auto-generated docs, git analytics, dead code detection, and architectural decisions via MCP.\" · Topics: ai, code-complexity, code-health, code-intelligence, code-quality, dead-code, developer-tools, documentation, git-analytics, mcp, open-source, python, refactoring, static-analysis, technical-debt · Default branch: `main` · Live demo: `https://app.repowise.dev/repo/repowise-dev/repowise` · Badge protocol: `<mcp-name: dev.repowise/repowise>` declarado en README header · MCP server oficial, sin LLM calls en graph/risk/health/tests/dead-code",
+        "accion_sugerida": ": **probar** en una codebase propia mediana (10k-100k LOC) con `pip install repowise` siguiendo el README; **leer** la sección de benchmarks (5 min — están bien explicitados); **vigilar** releases (push HOY, momentum activo); **explorar** conectándolo a un agente MCP (Claude Code o Hermes) para validar la tesis \"−31.6% tool calls\".",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "implements",
+          "dst": "concept:codebase-intelligence",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "competes_with",
+          "dst": "tool:codescene",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "competes_with",
+          "dst": "tool:graphify",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "competes_with",
+          "dst": "tool:codebase-memory",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "exposes",
+          "dst": "protocol:MCP",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "integrates_with",
+          "dst": "tool:openai-codex",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "enables",
+          "dst": "technique:agent-driven-codebase-qa",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "written_in",
+          "dst": "tech:python",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:repowise-dev/repowise",
+          "rel": "license",
+          "dst": "concept:AGPL-3.0-or-commercial",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "repowise-dev-repowise",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "getnao/nao",
+      "url": "https://github.com/getnao/nao",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**framework open-source para construir y desplegar agentes de analytics** — defines el contexto (data + metadata + docs + tools + MCPs, sin lock-in de proveedor) con la CLI `nao-core`, despliegas un chat UI para que cualquiera consulte tu warehouse en lenguaje natural.",
+        "por_que_importa": "**El primo-hermano de data warehousing de Dify que faltaba en el radar open-source.** Lo que aporta frente a un text-to-SQL genérico no es la generación de SQL, es el ciclo de vida alrededor: antes del deploy defines el contexto —datos, metadata, docs, tools y servidores MCP, sin atarte a un proveedor—, lo versionas y lo unit-testeas con preguntas reales; después del deploy, el feedback de usuarios te permite medirlo. Ese \"probar el agente antes de enseñárselo a nadie\" es exactamente la capa que casi ningún proyecto open-source de la categoría trae. Conectado con MCP, que ya cubrimos el 2026-09-21: aquí MCP entra como parte del contexto que el agente puede consultar, no como servidor que el proyecto expone. Funciona contra BigQuery, Snowflake, Databricks y Postgres, y se auto-hostea con tus propias claves de LLM. Para CSS, si estás en data o analytics es el competidor open-source que se planta contra los incumbentes de agentes de datos. Aviso honesto antes de que te interese: GitHub devuelve NOASSERTION en la licencia, así que hay que verificar el LICENSE file a mano si vas a usarlo en algo serio.",
+        "madurez_senales": ": · Estrellas: 1.908 · Forks: 284 · Lenguaje: TypeScript (frontend chat UI) + nao-core (Python CLI para contexto) · Fecha creación: 2025-12-30 (~9 meses de vida) · Último push: 2026-10-09 (3 días) · Licencia: NOASSERTION (GitHub API) — **requiere verificación manual de LICENSE file** antes de adopción build-dependency (pitfall del skill `web-scraping-viability`) · Descripción oficial: \"👾 nao is an open source analytics agent. (1) Create context with nao-core cli, (2) deploy nao chat interface for everyone\" · Topics: agentic-analytics, analytics, analytics-engineering, bigquery, business-intelligence, chat-with-your-data, context-engineering, data, data-analysis, data-analyst, data-engineering, databricks, postgresql, self-hosted, slack-bot, snowflake, sql, text-to-sql · Homepage: https://getnao.io · Slack: invitación en README",
+        "accion_sugerida": ": **leer** el README (10 min) y la doc en `docs.getnao.io` para entender el formato del contexto; **explorar** levantándolo con Postgres local siguiendo la \"Quickstart\"; **vigilar** la cadencia (push 2026-10-09, ritmo semanal); **investigar** el LICENSE file en `main` antes de adopción build-dependency (pitfall #11 del skill `repo-investigation`).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:getnao/nao",
+          "rel": "implements",
+          "dst": "concept:text-to-sql-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "competes_with",
+          "dst": "tool:dify",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "competes_with",
+          "dst": "tool:langchain-data",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "enables",
+          "dst": "technique:agent-reliability-testing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "integrates_with",
+          "dst": "tech:bigquery",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "integrates_with",
+          "dst": "tech:snowflake",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "integrates_with",
+          "dst": "tech:databricks",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "integrates_with",
+          "dst": "tech:postgresql",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "complements",
+          "dst": "protocol:MCP",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:getnao/nao",
+          "rel": "risk",
+          "dst": "concern:license-noassertion",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "getnao-nao",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "storytold/gridcraft",
+      "url": "https://github.com/storytold/gridcraft",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**\"Spreadsheets and data; an open-source, clean-room reimplementation of Microsoft Excel, rebuilt in pure Rust\"** — sparklines, conditional formatting, charts, banded rows, todo desde comandos CLI; nativo en macOS/Windows/Linux/BSD y en browser vía WASM; agent-drivable sobre MCP.",
+        "por_que_importa": "**Junto con `bherbruck/solidcraft`, cierra la tesis \"Adobe + Office + AutoCAD\" en Rust open-source** que abrimos ayer, 2026-10-11, cuando identificamos los 12 productos de la suite `storytold/*craft` desde el README del launcher. Gridcraft es el eslabón que falta: el spreadsheet open-source con sparklines, formato condicional, gráficos y filas con bandas, todo invocable desde CLI, nativo en macOS/Windows/Linux/BSD y con build WASM para navegador. Sobre MCP, WASM y Rust como pilares de la suite yatalkamos el 2026-10-11 con el mismo grafo, así que lo nuevo aquí no es la pila tecnológica sino el producto: la ofimática open-source ya tiene spreadsheet, procesador de texto, editor de PDF y presentaciones, y el \"office suite\" OSS deja de ser un meme. Un dato que sí conviene mirar con pinzas: 1.332 forks frente a 3.186 estrellas es un ratio del 42%, inusual — puede ser tracción real de contribución o Simple Flat. Con cinco días de vida, el README y el LICENSE hay que leerlos antes de sacar conclusiones.",
+        "madurez_senales": ": · Estrellas: 3.186 · Forks: 1.332 (ratio forks/stars 0.42 — muy alto, indica tracción de contribución) · Lenguaje: Rust · Fecha creación: 2026-10-07 (5 días) · Último push: 2026-10-12 (HOY) · Licencia: MIT OR Apache-2.0 · Descripción oficial: \"Spreadsheets and data; an open-source, clean-room reimplementation of Microsoft Excel, rebuilt in pure Rust.\" · Default branch: `main` · Disponibilidad: macOS / Windows / Linux / BSD nativo + browser via WebAssembly · Agent-drivable: MCP · Suite: parte de los 12 productos declarados en `storytold/craft-launcher` README",
+        "accion_sugerida": ": **leer** el README (10 min, seccion \"Quickstart\"); **probar** la versión browser en `getartcraft.com/apps/gridcraft` para validar la tesis \"Rust GUI nativa, agent-drivable\" sobre datos; **vigilar** la cadencia de releases (5 días desde creación, push HOY).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "hub_of",
+          "dst": "repo:storytold/craft-launcher",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "implements",
+          "dst": "concept:open-source-excel-suite",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "competes_with",
+          "dst": "tool:microsoft-excel",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "competes_with",
+          "dst": "tool:libreoffice-calc",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "exposes",
+          "dst": "protocol:MCP",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "browser_build",
+          "dst": "tech:wasm",
+          "primera_mencion": "2026-10-11"
+        },
+        {
+          "src": "repo:storytold/gridcraft",
+          "rel": "written_in",
+          "dst": "tech:rust",
+          "primera_mencion": "2026-10-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-gridcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "liseami/CCBaga",
+      "url": "https://github.com/liseami/CCBaga",
+      "url_inferida": true,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "**app nativa macOS/Linux en Rust+Tauri que limpia tu Claude (caches, sessions, config remnants), rota el fingerprint de tu browser companion, alinea timezone/locale y genera prompts Skill instalables para coding agents según tu red**.",
+        "por_que_importa": "**El \"anti-rastro\" de Claude Code que faltaba en el radar.** Tres tesis, todas concretas. (1) Limpieza de Claude Code: audita y borra selectivamente cachés, sesiones, restos de configuración y rastros de cuenta, que es lo que se acumula en local al usar el CLI a diario. (2) Rotación de fingerprint de navegador: genera una semilla nueva, alinea zona horaria y locale con tu región y reinicia el browser companion, todo desde una UI nativa en vez de a mano con scripts sueltos. (3) Setup de red guiado por IA: el propio repo genera prompts Skill instalables para que tu coding agent —Claude Code, Codex— configure la red según los archivos del usuario. Lo que más la ingeniería es la arquitectura en dos piezas: CCBaga-A para el control del sistema operativo y CCBaga-B con un perfil de Chromium de fingerprint aislado, con medición cruzada \"browser vs network exit\" para verificar que ambos caminos coinciden. Con 794★ en un día de creación el momentum es excepcional, pero recuerda que el repo tiene24 horas: el README sí está verificado y la licencia es MIT, así que el riesgo está en la madurez, no en la claridad de las promesas",
+        "madurez_senales": ": · Estrellas: 794 · Forks: 74 · Lenguaje: Rust + Tauri · Fecha creación: 2026-10-11 (1 día) · Último push: 2026-10-12 (HOY) · Licencia: MIT · Descripción oficial (verificada via README): \"A native macOS and Linux toolkit for a cleaner workspace and an environment you can verify. Claude cleanup · Browser fingerprints · System settings · Network Skill\" · Default branch: `main` · Plataformas: macOS 12+, Linux x86_64 · Arquitectura dual: CCBaga-A (control nativo) + CCBaga-B (Chromium con perfil fingerprint aislado, sesión local de medición) · Auto-detección: método de instalación y versión de CLI Claude (npm, brew, native) · README: chino + inglés en hero, content principalmente en chino con secciones en inglés",
+        "accion_sugerida": ": **leer** el README en su versión en inglés (10 min, el README mixa chino/inglés; revisar sección \"Features\" y \"Quick start\"); **vigilar** releases (1 día de vida, push HOY); **explorar** en Linux si tienes Claude Code instalado (la funcionalidad \"Claude cleanup\" es la más inmediata de validar); **probar** la generación de un prompt Skill en una red real.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "implements",
+          "dst": "concept:claude-code-cleanup",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "implements",
+          "dst": "concept:browser-fingerprint-rotation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "enables",
+          "dst": "technique:ai-guided-network-setup",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "integrates_with",
+          "dst": "tool:claude-code-cli",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "uses",
+          "dst": "tech:tauri",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "uses",
+          "dst": "tech:chromium-fingerprint-isolated-profile",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:liseami/CCBaga",
+          "rel": "written_in",
+          "dst": "tech:rust",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "liseami-ccbaga",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(79.669★, push 2026-10-11, MIT, Trendshift #1 segundo día consecutivo) — agente de reverse engineering end-to-end. Sin novedad editorial sustantiva vs. ayer (lo cubrimos como hallazgo principal el 2026-10-11); el meta-trending es que aparece a la vez que el incumbent Ghidra en #14.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la coexistencia con `NationalSecurityAgency/ghidra` y si sale release nuevo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "NationalSecurityAgency/ghidra",
+      "url": "https://github.com/NationalSecurityAgency/ghidra",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(83.877★, push 2026-10-09, Java, Apache-2.0, Trendshift #14) — **META-STORY del día**: el incumbent manual de reverse engineering reaparece en el mismo Trendshift que el agente AI-driven `morluto/rea` (pos #1). Ambos en el ranking diario = la coexistencia \"manual SRE framework vs agent-driven reversing\" es la narrativa.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — el README (5 min) para confirmar que sigue siendo el mismo reversing framework de la NSA; **vigilar** si la tesis \"incumbent opens app sharing space con AI agents\" se confirma",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nationalsecurityagency-ghidra",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Project-HAMi/HAMi",
+      "url": "https://github.com/Project-HAMi/HAMi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.705★, push 2026-10-12 HOY, Go, Apache-2.0, GitHub Trending Go slice) — **CNCF \"Heterogeneous GPU Sharing on Kubernetes\"**; vGPU device plugin para NVIDIA + Ascend + Cambricon + Hygon + Iluvatar + Metax + Mthreads. En producción real.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si trabajas con k8s GPU; **leer** la doc en `project-hami.io` (5 min) para entender el modelo vGPU",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "project-hami-hami",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "BishopFox/sliver",
+      "url": "https://github.com/BishopFox/sliver",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12.093★, push 2026-10-10, Go, GPL-3.0, GitHub Trending Go slice) — **\"Adversary Emulation Framework\"** oficial de Bishop Fox; C2 con DNS/HTTP/multiplexor, herramienta de red-team engagement. Estable (creado en 2019), tr",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "real — Acción: **vigilar** si trabajas en seguridad/red team; **leer** la doc para entender el modelo de implants",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bishopfox-sliver",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "shaongitbd/doory",
+      "url": "https://github.com/shaongitbd/doory",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(199★, push 2026-10-10, TypeScript+React 19 + Django 5, \"Attribution Assurance\" license — verificar antes de adopción) — **\"the open-source Canva alternative\"**; editor de diseño full-featured en browser, export a PNG/JPG/SVG/PDF/MP4/GIF, self-hosted con Docker en 3 comandos. \"Every feature is free, nobody needs an account to start, and you can run the whole thing on your own server\".",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — madurez (creado 2026-10-10, 2 días); **verificar LICENSE** antes de adopción (pitfall #11 del skill `repo-investigation`)",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shaongitbd-doory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Akshayykadam/PixelBoard",
+      "url": "https://github.com/Akshayykadam/PixelBoard",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(336★, push 2026-10-06, Java, GPL-3.0, Trendshift #24) — **\"Unlock Google 11's Gemini 'Rambler' Natural Voice Dictation & AI Writing Tools\"**; nicho, pero interesante si cubre AI dictation.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si Gemini Rambler sale de Google y abre API; **ignorar** si no trabajas con AI dictation",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "akshayykadam-pixelboard",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "darrenprx/lolPing",
+      "url": "https://github.com/darrenprx/lolPing",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(454★, push 2026-10-12 HOY, TypeScript, NOASSERTION license — verificar antes de adopción, Trendshift #13) — **League of Legends ping wheel overlay para Windows/macOS**; Alt+drag → ping animation; Ctrl+drag → emote wheel con imágenes custom.",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si juegas LoL y quieres overlay; **verificar LICENSE** antes de adopción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "darrenprx-lolping",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
