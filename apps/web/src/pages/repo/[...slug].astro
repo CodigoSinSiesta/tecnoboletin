@@ -21,33 +21,39 @@ import { getNode, layeredNeighbors, colorForType, REL_LABEL, TYPE_LABEL } from '
 
 export async function getStaticPaths() {
   const dates = await listDates();
-  const porSlug = new Map<string, { date: string; idx: number; seccion: string }[]>();
+  const porSlug = new Map<string, { slug: string; apariciones: { date: string; idx: number; seccion: string }[] }>();
 
   for (const date of dates) {
     const b = await loadBoletin(date);
     for (const it of b.items) {
       const slug = repoSlug(it);
       if (!slug) continue;
-      if (!porSlug.has(slug)) porSlug.set(slug, []);
-      porSlug.get(slug)!.push({ date, idx: it.idx, seccion: it.seccion });
+      const key = slug.toLowerCase();
+      const existing = porSlug.get(key);
+      if (existing) {
+        existing.apariciones.push({ date, idx: it.idx, seccion: it.seccion });
+        // dates are descending; overwrite so the canonical slug casing and
+        // metadata source come from the most recent appearance.
+        existing.slug = slug;
+      } else {
+        porSlug.set(key, { slug, apariciones: [{ date, idx: it.idx, seccion: it.seccion }] });
+      }
     }
   }
 
-  return [...porSlug.entries()].map(([slug, apariciones]) => ({
+  return [...porSlug.values()].map(({ slug, apariciones }) => ({
     params: { slug },
-    // `dates` viene ordenado de más reciente a más antiguo, así que la
-    // primera aparición del array es la más reciente.
-    props: { apariciones },
+    props: { slug, apariciones },
   }));
 }
 
-const { slug } = Astro.params;
-const { apariciones } = Astro.props as {
+const { slug, apariciones } = Astro.props as {
+  slug: string;
   apariciones: { date: string; idx: number; seccion: string }[];
 };
 const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/');
 
-const ultima = apariciones[0];
+const ultima = apariciones[apariciones.length - 1]!;
 const boletin = await loadBoletin(ultima.date);
 const item = boletin.items.find((it) => it.idx === ultima.idx) as BoletinItem;
 

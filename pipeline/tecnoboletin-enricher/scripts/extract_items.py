@@ -28,6 +28,17 @@ Este parser es deliberadamente tolerante: reconoce las variantes por
 contenido normalizado (minúsculas, sin acentos), no por una unica regex
 rígida. Se valida por conteo contra enriched.json existentes -- ver
 scripts/validate_extraction.py.
+
+Reglas recuperadas de un fallo real de pipeline (2026-10-20):
+- Los boletines actuales usan etiquetas `**Qué es:**` con el colon dentro
+  de negrita, y URL independiente `**https://github.com/...**`.
+- La sección puede ser h3 y las tarjetas h4 numeradas; el límite de sección
+  solo puede ser un encabezado del mismo nivel o superior. Extraer solo
+  `#### N.` dentro de `Hallazgos principales`.
+- Antes de aceptar la extracción, validar URL y todos los campos de cada
+  hallazgo. El job se ha ejecutado tanto desde la skill activa en
+  `~/.hermes/skills/research/tecnoboletin-enricher/` como desde su espejo
+  en el repo; comparar y sincronizar ambas copias cuando se cambia el parser.
 """
 from __future__ import annotations
 
@@ -149,17 +160,19 @@ def infer_github_url(slug: str) -> str | None:
 # adicional, classify_label() filtra por frases conocidas; un label que
 # matchea esta regex pero no contiene "que es" / "por que importa" / etc.
 # se ignora silenciosamente.
+# Current bulletin format labels appear as standalone bold headings with
+# colon inside bold (e.g. **Qué es:**). Legacy bullets with bold/plain labels
+# are accepted too. Labels always begin at the start of their line.
 LABEL_LINE_RE = re.compile(
-    r"^-\s+"
+    r"^(?:-\s+)?"
     r"(?:"
-    r"\*\*(?P<label>[^*]+)\*\*(?:\s*\([^)]*\))?"  # **Label** opcional (...)
+    r"\*\*(?P<label>[^*]+):\*\*"
     r"|"
-    r"(?P<label_plain>[A-ZÁÉÍÓÚÑ][^:]+?)(?=\s*:|\s*$)"  # Plain label (Mayuscula inicial, hasta : o EOL)
+    r"(?P<label_plain>[A-ZÁÉÍÓÚÑ][^:]+?)(?=\s*:|\s*$)"
     r")"
-    r"\s*:?\s*"
-    r"(?P<rest>.*)$"
+    r"\s*(?P<rest>.*)$"
 )
-URL_LINE_RE = re.compile(r"^-\s*\*{0,2}URL\*{0,2}\s*:\s*(?P<url>https?://\S+)", re.IGNORECASE)
+URL_LINE_RE = re.compile(r"^(?:-\s*)?\*\*(?P<url>https?://[^*]+)\*\*$", re.IGNORECASE)
 NESTED_BULLET_RE = re.compile(r"^\s{2,}-\s*(?P<rest>.*)$")
 TOPLEVEL_BULLET_RE = re.compile(r"^-\s*(?P<rest>.*)$")
 
@@ -222,7 +235,7 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
             continue
 
         m_url = URL_LINE_RE.match(line)
-        if m_url and not url:
+        if m_url:
             url = m_url.group("url").rstrip(".,;:)")
             current = None
             continue
@@ -342,33 +355,34 @@ def parse_radar_line(line: str, idx: int) -> dict | None:
     }
 
 
+HALLAZGO_HEADER_RE = re.compile(r"^####\s+\d+\.\s+")
+
+
 def find_section_slice(lines: list[str], section_key: str) -> tuple[int, int] | None:
-    """Devuelve (start, end) exclusivo de indices de linea para el contenido
-    (sin la propia linea de encabezado) de la seccion cuyo nombre normalizado
-    contiene `section_key`. None si no se encuentra."""
+    """Get content span for a named section without mistaking h4 finding cards for sections."""
     headers = []
     for i, line in enumerate(lines):
         m = HEADER_RE.match(line)
         if m:
-            headers.append((i, m.group(2)))
-
+            headers.append((i, len(m.group(1)), m.group(2)))
     start = None
-    for i, text in headers:
+    start_level = None
+    for i, level, text in headers:
         if section_key in norm(text):
-            start = i
+            start, start_level = i, level
             break
     if start is None:
         return None
-
     end = len(lines)
-    for i, text in headers:
+    for i, level, text in headers:
         if i <= start:
             continue
-        known = is_known_section(text)
-        if known is not None:
+        # A section ends only at an equal-or-higher-level header. Numbered h4
+        # findings inside an h3 section are content, not section boundaries.
+        if level <= start_level and is_known_section(text) is not None:
             end = i
             break
-    return (start + 1, end)
+    return start + 1, end
 
 
 def parse(path: Path) -> dict:
@@ -391,7 +405,11 @@ def parse(path: Path) -> dict:
     if hs:
         block_lines = lines[hs[0]:hs[1]]
         # localizar encabezados de item dentro del bloque
-        head_idxs = [i for i, line in enumerate(block_lines) if HEADER_RE.match(line)]
+        head_idxs = []
+        for i, line in enumerate(block_lines):
+            header = HEADER_RE.match(line)
+            if header and len(header.group(1)) == 4 and HALLAZGO_HEADER_RE.match(line):
+                head_idxs.append(i)
         boundaries = head_idxs + [len(block_lines)]
         for j, hidx in enumerate(head_idxs):
             head_text = HEADER_RE.match(block_lines[hidx]).group(2)

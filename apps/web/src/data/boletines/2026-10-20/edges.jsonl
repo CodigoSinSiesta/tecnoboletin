@@ -1,15 +1,33 @@
-{"src": "boletin:2026-10-20", "dst": "item:idx-0", "rel": "menciona", "added": "2026-10-20"}
-{"src": "item:idx-0", "dst": "tema:solidcraft", "rel": "trata", "added": "2026-10-20"}
-{"src": "boletin:2026-10-20", "dst": "item:idx-1", "rel": "menciona", "added": "2026-10-20"}
-{"src": "item:idx-1", "dst": "tema:smg-shepherd-model-gateway", "rel": "trata", "added": "2026-10-20"}
-{"src": "boletin:2026-10-20", "dst": "item:idx-2", "rel": "menciona", "added": "2026-10-20"}
-{"src": "item:idx-2", "dst": "tema:xerj", "rel": "trata", "added": "2026-10-20"}
-{"src": "boletin:2026-10-20", "dst": "item:idx-3", "rel": "menciona", "added": "2026-10-20"}
-{"src": "item:idx-3", "dst": "tema:ai-memory", "rel": "trata", "added": "2026-10-20"}
-{"src": "boletin:2026-10-20", "dst": "item:idx-4", "rel": "menciona", "added": "2026-10-20"}
-{"src": "item:idx-4", "dst": "tema:artemis-google", "rel": "trata", "added": "2026-10-20"}
-{"src": "boletin:2026-10-20", "dst": "item:idx-5", "rel": "menciona", "added": "2026-10-20"}
-{"src": "item:idx-5", "dst": "tema:andee", "rel": "trata", "added": "2026-10-20"}
+{"src": "boletin:2026-10-20", "dst": "item:https-github-com-tangency-labs-solidcraft", "rel": "menciona", "added": "2026-10-20"}
+{"src": "item:https-github-com-tangency-labs-solidcraft", "dst": "tema:solidcraft", "rel": "trata", "added": "2026-10-20"}
+{"src": "repo:tangency-labs/solidcraft", "dst": "concept:parametric-cad", "rel": "implements", "added": "2026-10-20", "primera_mencion": null}
+{"src": "repo:tangency-labs/solidcraft", "dst": "concept:mcp-server", "rel": "exposes_via_mcp", "added": "2026-10-20", "primera_mencion": "2026-08-24"}
+{"src": "repo:tangency-labs/solidcraft", "dst": "product:fusion-360", "rel": "competes_with", "added": "2026-10-20", "primera_mencion": null}
+{"src": "boletin:2026-10-20", "dst": "item:https-github-com-smg-project-smg", "rel": "menciona", "added": "2026-10-20"}
+{"src": "item:https-github-com-smg-project-smg", "dst": "tema:smg-shepherd-model-gateway", "rel": "trata", "added": "2026-10-20"}
+{"src": "repo:smg-project/smg", "dst": "concept:llm-gateway", "rel": "implements", "added": "2026-10-20", "primera_mencion": "2026-09-09"}
+{"src": "repo:smg-project/smg", "dst": "engine:vllm", "rel": "uses", "added": "2026-10-20", "primera_mencion": null}
+{"src": "repo:smg-project/smg", "dst": "tool:litellm", "rel": "competes_with", "added": "2026-10-20", "primera_mencion": "2026-10-02"}
+{"src": "boletin:2026-10-20", "dst": "item:https-github-com-xerj-org-xerj", "rel": "menciona", "added": "2026-10-20"}
+{"src": "item:https-github-com-xerj-org-xerj", "dst": "tema:xerj", "rel": "trata", "added": "2026-10-20"}
+{"src": "repo:xerj-org/xerj", "dst": "concept:hybrid-search", "rel": "implements", "added": "2026-10-20", "primera_mencion": "2026-10-08"}
+{"src": "repo:xerj-org/xerj", "dst": "product:elasticsearch", "rel": "competes_with", "added": "2026-10-20", "primera_mencion": "2026-10-08"}
+{"src": "repo:xerj-org/xerj", "dst": "concept:agent-memory", "rel": "enables", "added": "2026-10-20", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-10-20", "dst": "item:https-github-com-akitaonrails-ai-memory", "rel": "menciona", "added": "2026-10-20"}
+{"src": "item:https-github-com-akitaonrails-ai-memory", "dst": "tema:ai-memory", "rel": "trata", "added": "2026-10-20"}
+{"src": "repo:akitaonrails/ai-memory", "dst": "concept:agent-memory", "rel": "implements", "added": "2026-10-20", "primera_mencion": "2026-08-10"}
+{"src": "repo:akitaonrails/ai-memory", "dst": "problem:vendor-lockin", "rel": "solves", "added": "2026-10-20", "primera_mencion": "2026-08-18"}
+{"src": "repo:akitaonrails/ai-memory", "dst": "repo:xerj-org/xerj", "rel": "complements", "added": "2026-10-20", "primera_mencion": "2026-08-18"}
+{"src": "boletin:2026-10-20", "dst": "item:https-github-com-google-artemis", "rel": "menciona", "added": "2026-10-20"}
+{"src": "item:https-github-com-google-artemis", "dst": "tema:artemis-google", "rel": "trata", "added": "2026-10-20"}
+{"src": "repo:google/artemis", "dst": "concept:mobile-agent", "rel": "implements", "added": "2026-10-20", "primera_mencion": "2026-09-10"}
+{"src": "repo:google/artemis", "dst": "problem:mobile-e2e-testing", "rel": "solves", "added": "2026-10-20", "primera_mencion": "2026-09-10"}
+{"src": "repo:google/artemis", "dst": "concept:mcp-server", "rel": "uses", "added": "2026-10-20", "primera_mencion": "2026-08-24"}
+{"src": "boletin:2026-10-20", "dst": "item:https-github-com-kuafuai-andee", "rel": "menciona", "added": "2026-10-20"}
+{"src": "item:https-github-com-kuafuai-andee", "dst": "tema:andee", "rel": "trata", "added": "2026-10-20"}
+{"src": "repo:kuafuai/andee", "dst": "concept:mobile-agent", "rel": "implements", "added": "2026-10-20", "primera_mencion": null}
+{"src": "repo:kuafuai/andee", "dst": "repo:google/artemis", "rel": "competes_with", "added": "2026-10-20", "primera_mencion": "2026-09-10"}
+{"src": "repo:kuafuai/andee", "dst": "concern:agent-verifiability", "rel": "relevant_to", "added": "2026-10-20", "primera_mencion": null}
 {"src": "boletin:2026-10-20", "dst": "item:https-github-com-strelov1-freehire", "rel": "menciona", "added": "2026-10-20"}
 {"src": "item:https-github-com-strelov1-freehire", "dst": "tema:strelov1-freehire", "rel": "trata", "added": "2026-10-20"}
 {"src": "boletin:2026-10-20", "dst": "item:https-github-com-gathin23-cleanyourtv", "rel": "menciona", "added": "2026-10-20"}

@@ -7,145 +7,259 @@
     {
       "idx": 0,
       "titulo": "SolidCraft",
-      "url": "",
+      "url": "https://github.com/tangency-labs/solidcraft",
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "CAD paramétrico open-source en Rust puro",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "una aplicación de CAD paramétrico (sketch → restricciones → línea de tiempo de features → sólidos) escrita enteramente en Rust, con cliente de escritorio, versión web y servidor MCP para que un agente de IA modele directamente.",
+        "por_que_importa": "La propuesta tiene una diferencia concreta frente al dibujo generativo: el agente produce un modelo CAD paramétrico que conserva restricciones e historial, de modo que una persona puede cambiar dimensiones y seguir editándolo. El proyecto ofrece aplicación de escritorio, web y servidor MCP. No confundir con `bherbruck/solidcraft`, que es otro repositorio y apareció el 2026-10-12.",
+        "madurez_senales": "7,771★ · 892 forks · Rust · Apache-2.0 · creado 2026-10-07 · último push 2026-10-20 · topics: 3d-modeling, brep, cad, egui, mcp, parametric-cad, rust, step, wasm",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": "una aplicación de CAD paramétrico (sketch → restricciones → línea de tiempo de features → sólidos) escrita enteramente en Rust, con cliente de escritorio, versión web y servidor MCP para que un agente de IA modele directamente."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:tangency-labs/solidcraft",
+          "rel": "implements",
+          "dst": "concept:parametric-cad",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tangency-labs/solidcraft",
+          "rel": "exposes_via_mcp",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:tangency-labs/solidcraft",
+          "rel": "competes_with",
+          "dst": "product:fusion-360",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
         "tema_principal": "solidcraft",
         "temas_secundarios": [],
-        "confianza": 0.4
+        "confianza": 0.85
       }
     },
     {
       "idx": 1,
       "titulo": "SMG (Shepherd Model Gateway)",
-      "url": "",
+      "url": "https://github.com/smg-project/smg",
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "gateway LLM multi-motor en Rust",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "un gateway de inferencia agnóstico de motor que centraliza el ciclo de vida de los workers y balancea tráfico entre vLLM, TRT-LLM, SGLang, TokenSpeed, OpenAI y Gemini detrás de una API compatible con OpenAI y Anthropic.",
+        "por_que_importa": "SMG reúne en un gateway el enrutamiento entre motores propios y proveedores cloud. Su routing según la caché KV y la canalización gRPC apuntan a despliegues donde importan el uso de GPU y la latencia. Frente a LiteLLM, que ya vimos el 2026-10-02, su foco distintivo es el control del tráfico de inferencia; conviene contrastar esas capacidades en una prueba, no asumirlas por el README.",
+        "madurez_senales": "651★ · 198 forks · Rust · Apache-2.0 · creado 2025-11-22 · último push 2026-10-20 · topics: anthropic, anthropic-api, chat, claude, gemini, inference-gateway, lightseek, llm, mcp, openai, responses-api, routing, sglang, tensorrtllm, tokenspeed, trtllm, vllm",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": "un gateway de inferencia agnóstico de motor que centraliza el ciclo de vida de los workers y balancea tráfico entre vLLM, TRT-LLM, SGLang, TokenSpeed, OpenAI y Gemini detrás de una API compatible con OpenAI y Anthropic."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:smg-project/smg",
+          "rel": "implements",
+          "dst": "concept:llm-gateway",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:smg-project/smg",
+          "rel": "uses",
+          "dst": "engine:vllm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:smg-project/smg",
+          "rel": "competes_with",
+          "dst": "tool:litellm",
+          "primera_mencion": "2026-10-02"
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
         "tema_principal": "smg-shepherd-model-gateway",
         "temas_secundarios": [],
-        "confianza": 0.4
+        "confianza": 0.85
       }
     },
     {
       "idx": 2,
       "titulo": "XERJ",
-      "url": "",
+      "url": "https://github.com/xerj-org/xerj",
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "buscador local-first + memoria de agentes en un binario Rust",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "un buscador local-first y servidor MCP que indexa código, documentación, logs, JSONL/CSV y PDFs para hacer búsqueda BM25, vectorial e híbrida, sin depender de Elasticsearch.",
+        "por_que_importa": "XERJ junta indexación local, búsqueda por texto y vectores, y acceso por MCP en un binario. Eso reduce piezas a operar frente a montar Elasticsearch y una base vectorial por separado; también permite que el agente consulte pasajes concretos en vez de cargar archivos enteros. El proyecto informa menos tokens en sus propias pruebas, pero esa mejora no está verificada independientemente.",
+        "madurez_senales": "10,820★ · 672 forks · Rust · Apache-2.0 · creado 2026-06-30 · último push 2026-10-20 · topics: agent-memory, ai-agents, bm25, claude-code, cli, code-search, cursor, elasticsearch, elasticsearch-alternative, full-text-search, hybrid-search, jsonl, local-first, mcp, mcp-server, model-context-protocol, rag, rust, search-engine, vector-search",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": "un buscador local-first y servidor MCP que indexa código, documentación, logs, JSONL/CSV y PDFs para hacer búsqueda BM25, vectorial e híbrida, sin depender de Elasticsearch."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "implements",
+          "dst": "concept:hybrid-search",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "competes_with",
+          "dst": "product:elasticsearch",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:xerj-org/xerj",
+          "rel": "enables",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
         "tema_principal": "xerj",
         "temas_secundarios": [],
-        "confianza": 0.4
+        "confianza": 0.85
       }
     },
     {
       "idx": 3,
       "titulo": "ai-memory",
-      "url": "",
+      "url": "https://github.com/akitaonrails/ai-memory",
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "memoria de largo plazo compartida entre harnesses de código",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "una memoria persistente en Rust que un agente de coding (Claude Code, Codex, Cursor, Gemini CLI, OpenCode, Devin, Kimi, Kiro…) leen y escriben en un mismo directorio, con traspasos como protocolo tipado.",
+        "por_que_importa": "ai-memory busca que una tarea pueda pasar de Claude Code a Codex u otro asistente sin reexplicar el contexto. Comparte notas y traspasos con más de veinte herramientas y mantiene el contenido en archivos Markdown bajo control local. La pregunta relevante es si sus hooks, permisos y protocolo de traspaso encajan con nuestros perfiles y requisitos de privacidad; todavía no lo hemos probado.",
+        "madurez_senales": "11.683 estrellas · 831 forks · Rust · MIT · creado 2026-05-21 · último push 2026-10-19 · web aimemory.sh · más de 20 asistentes compatibles; sin topics oficiales.",
+        "accion_sugerida": "probar",
+        "descripcion_raw": "una memoria persistente en Rust que un agente de coding (Claude Code, Codex, Cursor, Gemini CLI, OpenCode, Devin, Kimi, Kiro…) leen y escriben en un mismo directorio, con traspasos como protocolo tipado."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:akitaonrails/ai-memory",
+          "rel": "implements",
+          "dst": "concept:agent-memory",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:akitaonrails/ai-memory",
+          "rel": "solves",
+          "dst": "problem:vendor-lockin",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "repo:akitaonrails/ai-memory",
+          "rel": "complements",
+          "dst": "repo:xerj-org/xerj",
+          "primera_mencion": "2026-08-18"
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
         "tema_principal": "ai-memory",
         "temas_secundarios": [],
-        "confianza": 0.4
+        "confianza": 0.85
       }
     },
     {
       "idx": 4,
       "titulo": "ARTEMIS (Google)",
-      "url": "",
+      "url": "https://github.com/google/artemis",
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "automatización Android en lenguaje natural, SOTA en AndroidWorld",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "un agente que convierte instrucciones en lenguaje natural en automatización fiable de Android, ejecutando flujos end-to-end entre apps y capturando logs, con integración directa con asistentes de código.",
+        "por_que_importa": "ARTEMIS permite que asistentes de programación ejecuten flujos en un teléfono Android y recojan registros mediante MCP. Puede servir para pruebas de varias aplicaciones sin construir una integración distinta para cada una. Google declara más del 99% de éxito en AndroidWorld; hace falta una reproducción independiente antes de usar esa cifra como comparación concluyente.",
+        "madurez_senales": "13,118★ · 1,597 forks · Python · Apache-2.0 · creado 2026-08-13 · último push 2026-10-01 · topics: ai-agents, android, google, test-automation, testing",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": "un agente que convierte instrucciones en lenguaje natural en automatización fiable de Android, ejecutando flujos end-to-end entre apps y capturando logs, con integración directa con asistentes de código."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:google/artemis",
+          "rel": "implements",
+          "dst": "concept:mobile-agent",
+          "primera_mencion": "2026-09-10"
+        },
+        {
+          "src": "repo:google/artemis",
+          "rel": "solves",
+          "dst": "problem:mobile-e2e-testing",
+          "primera_mencion": "2026-09-10"
+        },
+        {
+          "src": "repo:google/artemis",
+          "rel": "uses",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
         "tema_principal": "artemis-google",
         "temas_secundarios": [],
-        "confianza": 0.4
+        "confianza": 0.85
       }
     },
     {
       "idx": 5,
       "titulo": "Andee",
-      "url": "",
+      "url": "https://github.com/kuafuai/andee",
       "url_inferida": false,
       "seccion": "hallazgo_principal",
       "contenido": {
-        "que_es": "un agente que vive dentro del teléfono Android, en un solo APK",
-        "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "",
-        "descripcion_raw": ""
+        "que_es": "un APK único que se instala en Android 11+ y automatiza cualquier app sin integraciones, sin servidor y sin APIs: el agente se ejecuta on-device.",
+        "por_que_importa": "Andee plantea otra vía para automatizar Android: una aplicación que opera distintas apps sin integraciones específicas y se ejecuta en el teléfono. El README describe controles de permisos y formas de inspeccionar lo que hace, pero eso no sustituye una revisión de seguridad. GitHub marca su licencia como NOASSERTION y el README añade condiciones a Apache-2.0: no adoptarlo hasta revisar el LICENSE.",
+        "madurez_senales": "1,473★ · 93 forks · Kotlin · NOASSERTION · creado 2026-09-17 · último push 2026-10-20 · topics: agent, ai, ai-agents, android-automation, mobile-agents, personal-agent, personal-ai, phone-automation",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": "un APK único que se instala en Android 11+ y automatiza cualquier app sin integraciones, sin servidor y sin APIs: el agente se ejecuta on-device."
       },
-      "relacion_grafo": [],
+      "relacion_grafo": [
+        {
+          "src": "repo:kuafuai/andee",
+          "rel": "implements",
+          "dst": "concept:mobile-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:kuafuai/andee",
+          "rel": "competes_with",
+          "dst": "repo:google/artemis",
+          "primera_mencion": "2026-09-10"
+        },
+        {
+          "src": "repo:kuafuai/andee",
+          "rel": "relevant_to",
+          "dst": "concern:agent-verifiability",
+          "primera_mencion": null
+        }
+      ],
       "clasificacion": {
-        "tipo": "otro",
+        "tipo": "repo",
         "idioma": "en",
         "autor": null,
         "medio": null,
         "tema_principal": "andee",
         "temas_secundarios": [],
-        "confianza": 0.4
+        "confianza": 0.85
       }
     },
     {
@@ -155,11 +269,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(1.549★, 183 forks, último push 2026-10-20, Go, MIT) — buscador de empleo open source que indexa **3,3M+ ofertas vivas directamente de las páginas de career de las empresas**, sin recruiters ni enlaces muertos; stack Go + PostgreSQL + Meilisearch + SvelteKit",
+        "que_es": "buscador de empleo open source que indexa **3,3M+ ofertas vivas directamente de las páginas de career de las empresas**, sin recruiters ni enlaces muertos; stack Go + PostgreSQL + Meilisearch + SvelteKit",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — la cifra de 3,3M es del README (no verificada contra la DB), pero el proyecto es joven (2026-06-07) y ya se autopresentó en Product Hunt. Interesante por el ángulo de scraping sostenible y legal de fuentes oficiales",
-        "descripcion_raw": ""
+        "madurez_senales": "1.549★, 183 forks, último push 2026-10-20, Go, MIT",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": "buscador de empleo open source que indexa **3,3M+ ofertas vivas directamente de las páginas de career de las empresas**, sin recruiters ni enlaces muertos; stack Go + PostgreSQL + Meilisearch + SvelteKit"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -179,11 +293,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(7.163★, 832 forks, último push 2026-10-20, Java, **NOASSERTION**) — elimina el bloatware de cualquier Android TV o Google TV por ADB y pone un launcher estilo Apple TV; el topic declara `claude-code` y `vibe-coding`. Creado 2026-10-17, o sea **3 días y 7.163★**",
+        "que_es": "elimina el bloatware de cualquier Android TV o Google TV por ADB y pone un launcher estilo Apple TV; el topic declara `claude-code` y `vibe-coding`. Creado 2026-10-17, o sea **3 días y 7.163★**",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "vigilar — velocidad de adopción absurda; `NOASSERTION` significa leer LICENSE antes de redistribuir",
-        "descripcion_raw": ""
+        "madurez_senales": "7.163★, 832 forks, último push 2026-10-20, Java, **NOASSERTION**",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": "elimina el bloatware de cualquier Android TV o Google TV por ADB y pone un launcher estilo Apple TV; el topic declara `claude-code` y `vibe-coding`. Creado 2026-10-17, o sea **3 días y 7.163★**"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -203,11 +317,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(83.385★, 5.043 forks, último push 2026-10-20, Rust, Apache-2.0, **repo enorme: 745 MB**) — un \"design language\" que hace que tu harness de IA mejore en diseño. Ya visto el 2026-10-07 como hallazgo principal. Re-entry justificada: sigue en tendencia con +422★/día y empuja hoy el tramo TypeScript",
+        "que_es": "un \"design language\" que hace que tu harness de IA mejore en diseño. Ya visto el 2026-10-07 como hallazgo principal. Re-entry justificada: sigue en tendencia con +422★/día y empuja hoy el tramo TypeScript",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "leer — merece al menos un vistazo al README por el ángulo \"harness + diseño\", pero los 745 MB y el hype de las 83k★ piden prudencia",
-        "descripcion_raw": ""
+        "madurez_senales": "83.385★, 5.043 forks, último push 2026-10-20, Rust, Apache-2.0, **repo enorme: 745 MB**",
+        "accion_sugerida": "leer",
+        "descripcion_raw": "un \"design language\" que hace que tu harness de IA mejore en diseño. Ya visto el 2026-10-07 como hallazgo principal. Re-entry justificada: sigue en tendencia con +422★/día y empuja hoy el tramo TypeScript"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -227,11 +341,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(76.400★, 5.931 forks, último push 2026-10-20, Python, Apache-2.0) — comprime salidas de herramientas, logs, ficheros y chunks RAG antes de que lleguen al LLM: **20% menos tokens para coding agents, 60-95% menos para JSON**. Se ofrece como librería, proxy y servidor MCP. Ya visto el 2026-09-08. Re-entry: sigue activa (310★/día) y es el contrapunto natural de XERJ en compresión de contexto",
+        "que_es": "comprime salidas de herramientas, logs, ficheros y chunks RAG antes de que lleguen al LLM: **20% menos tokens para coding agents, 60-95% menos para JSON**. Se ofrece como librería, proxy y servidor MCP. Ya visto el 2026-09-08. Re-entry: sigue activa (310★/día) y es el contrapunto natural de XERJ en compresión de contexto",
         "por_que_importa": "",
-        "madurez_senales": "",
+        "madurez_senales": "76.400★, 5.931 forks, último push 2026-10-20, Python, Apache-2.0",
         "accion_sugerida": "vigilar",
-        "descripcion_raw": ""
+        "descripcion_raw": "comprime salidas de herramientas, logs, ficheros y chunks RAG antes de que lleguen al LLM: **20% menos tokens para coding agents, 60-95% menos para JSON**. Se ofrece como librería, proxy y servidor MCP. Ya visto el 2026-09-08. Re-entry: sigue activa (310★/día) y es el contrapunto natural de XERJ en compresión de contexto"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -251,11 +365,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(393★, 111 forks, último push 2026-10-20, Go, MIT) — expone Google AI Studio Playground y Build como API compatible con OpenAI, Anthropic y Gemini. Los topics confirman `camoufox` y `playwright`, o sea ingeniería inversa con navegador automatizado",
+        "que_es": "expone Google AI Studio Playground y Build como API compatible con OpenAI, Anthropic y Gemini. Topics confirman `camoufox` y `playwright`, o sea ingeniería inversa con navegador automatizado",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "explorar — pequeño pero revelador sobre el estado del \"envoltura de servicios propietarios\"; **la sostenibilidad y legalidad del enfoque es la duda real**, no la técnica",
-        "descripcion_raw": ""
+        "madurez_senales": "393★, 111 forks, último push 2026-10-20, Go, MIT",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": "expone Google AI Studio Playground y Build como API compatible con OpenAI, Anthropic y Gemini. Topics confirman `camoufox` y `playwright`, o sea ingeniería inversa con navegador automatizado"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -275,11 +389,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(7.073★, 275 forks, último push 2026-10-18, Go, AGPL-3.0) — reescritura en Go del `immich-CLI` que no depende de Node.js, pensada para importar los Takeout de Google Photos. **README no accesible en `main` (pitfall #21: 14 bytes = `404: Not Found`); la descripción oficial viene de la API de GitHub, no del README. (no verificado — README no accesible)**",
+        "que_es": "reescrita en Go del `immich-CLI` que no depende de Node.js, para importar los Takeout de Google Photos. **README no accesible en `main` (pitfall #21: 14 bytes = `404: Not Found`); descripción oficial viene de la API de GitHub, no del README. (no verificado — README no accesible)**",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "ignorar — función correcta (liberar a los usuarios de Node) pero sin ángulo de IA ni novedad relevante para Código Sin Siesta",
-        "descripcion_raw": ""
+        "madurez_senales": "7.073★, 275 forks, último push 2026-10-18, Go, AGPL-3.0",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": "reescrita en Go del `immich-CLI` que no depende de Node.js, para importar los Takeout de Google Photos. **README no accesible en `main` (pitfall #21: 14 bytes = `404: Not Found`); descripción oficial viene de la API de GitHub, no del README. (no verificado — README no accesible)**"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -299,11 +413,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(6.317★, 1.025 forks, último push 2026-10-19, JavaScript, **ODbL-1.0**) — ya visto el 2026-07-10. **La API de GitHub no devuelve `description` ni topics** para este repo, así que su propósito exacto queda (no verificado) más allá de lo que la API revela",
+        "que_es": "ya visto el 2026-07-10. **La API de GitHub no devuelve `description` ni topics** para este repo, así que su propósito exacto está (no verificado) más allá de lo que la API revela",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "ignorar — sin metadatos verificables ni ángulo IA claro hoy",
-        "descripcion_raw": ""
+        "madurez_senales": "6.317★, 1.025 forks, último push 2026-10-19, JavaScript, **ODbL-1.0**",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": "ya visto el 2026-07-10. **La API de GitHub no devuelve `description` ni topics** para este repo, así que su propósito exacto está (no verificado) más allá de lo que la API revela"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -323,11 +437,11 @@
       "url_inferida": true,
       "seccion": "radar_secundario",
       "contenido": {
-        "que_es": "(352★, 42 forks, último push 2026-10-20, HTML, CC0-1.0) — colección curada de skills para producir series cortas de IA (el README original lo llama \"AI duanju\"): guion, storyboard y prompts de vídeo para Seedance / Kling / MiniMax; funciona con Claude Code, Codex, OpenClaw, etc. Creado 2026-10-13",
+        "que_es": "colección curada de skills para producir series cortas de IA (el README original lo llama \"AI duanju\"): guion, storyboard, prompts de vídeo para Seedance / Kling / MiniMax; funciona con Claude Code, Codex, OpenClaw, etc. Creado 2026-10-13",
         "por_que_importa": "",
-        "madurez_senales": "",
-        "accion_sugerida": "leer — sin valor técnico directo, pero es un termómetro de la \\\"capa de skills\\\" y de cómo se está monetizando el contenido creativo de vídeo en la comunidad agentica china",
-        "descripcion_raw": ""
+        "madurez_senales": "352★, 42 forks, último push 2026-10-20, HTML, CC0-1.0",
+        "accion_sugerida": "leer",
+        "descripcion_raw": "colección curada de skills para producir series cortas de IA (el README original lo llama \"AI duanju\"): guion, storyboard, prompts de vídeo para Seedance / Kling / MiniMax; funciona con Claude Code, Codex, OpenClaw, etc. Creado 2026-10-13"
       },
       "relacion_grafo": [],
       "clasificacion": {
@@ -345,15 +459,16 @@
     "items_total": 14,
     "items_hallazgo_principal": 6,
     "items_radar_secundario": 8,
-    "llm_backend": "hermes",
+    "llm_backend": "hermes + verificación GitHub API",
     "llm_polish_notes": "14/14 items pulidos",
     "metadata_carried_forward": true,
-    "critica_lentes_aplicada": false,
-    "critica_notes": "0/6 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4, 5]; faltantes en respuesta: [0, 1, 2, 3, 4, 5]",
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos; descripción, URL y métricas contrastadas con el .md y la API de GitHub.",
     "lentes": [
       "rigor_tecnico",
       "claridad_accesibilidad",
       "relevancia_editorial"
-    ]
+    ],
+    "radar_fields_recovered": "Parsed directly from original bulletin radar bullets; no generated field used as source."
   }
 }

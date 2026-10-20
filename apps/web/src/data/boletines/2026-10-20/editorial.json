@@ -6,32 +6,42 @@
     "claridad_accesibilidad",
     "relevancia_editorial"
   ],
-  "titular": "La infraestructura de agentes se reescribe en Rust y llega al CAD",
-  "posicionamiento": "Tres de los seis hallazgos de hoy comparten patrón: reescribir en Rust puro piezas que hasta ahora eran de Python, TypeScript o SaaS cerrado, y exponerlas vía MCP. SolidCraft reimplementa un CAD paramétrico, SMG es un gateway LLM, XERJ es un buscador local-first con memoria persistente. La memoria de agentes sale del lock-in por vendor con ai-memory como protocolo único entre harnesses. El borde, además, baja al teléfono: ARTEMIS (Google) y Andee llevan la automatización al dispositivo Android sin servidor intermediario.",
-  "convergencia_stack_css": "El vector MCP como capa de infraestructura —no solo de herramientas— conecta con la línea editorial local-first de CSS: PGLite, Ollama, Graphify. XERJ replica exactamente esa tesis (buscador + memoria + binario único) y ai-memory resuelve el handoff que faltaba entre harnesses. SolidCraft abre un flanco nuevo: el CAD paramétrico como pieza soberana del setup del usuario, no como SaaS.",
-  "cruzado_grafo": "Sin primera_mención en los datos de hoy. Los seis nodos llegan como entradas nuevas al grafo; la conexión con lo ya cubierto se ve por tema (MCP, Rust, harness-agnóstico) pero no por coincidencia exacta con un boletín previo.",
-  "tendencias_5_boletines": "",
+  "titular": "Rust se come la capa de infraestructura de los agentes y la memoria pierde al vendor",
+  "posicionamiento": "MCP se está convirtiendo en una interfaz común para herramientas completas: hoy aparece en CAD, búsqueda de código y automatización Android. A la vez, la memoria de agentes se desacopla de un proveedor: ai-memory comparte traspasos entre más de veinte herramientas, mientras XERJ reúne búsqueda y memoria local en un solo binario.",
+  "convergencia_stack_css": "XERJ cubre directamente el bucle local-first: un binario Rust que indexa código, docs y PDFs con BM25 + vectorial sin Elasticsearch, y se complementa con ai-memory para el guardado. Eso es la alternativa concreta al «meter un servicio de búsqueda para que el agente pueda buscar».",
+  "cruzado_grafo": "El grafo conecta MCP, búsqueda híbrida y memoria de agentes con proyectos concretos: SolidCraft añade CAD; XERJ combina recuperación local y memoria; ai-memory aporta traspasos entre asistentes. ARTEMIS y Andee vuelven a poner a prueba la categoría de agentes móviles; sus diferencias son benchmark frente a ejecución local sin integraciones.",
+  "tendencias_5_boletines": "Los boletines recientes ya venían siguiendo la memoria de agentes, los buscadores locales y los gateways de modelos. Hoy aparecen implementaciones concretas en Rust y más opciones móviles. Es continuidad de esas líneas, no evidencia suficiente para afirmar que el mercado entero ya cambió.",
   "alertas": [
-    "ARTEMIS y Andee son hallazgos sin `por_que_importa` recibido: falta verificación independiente antes de presentarlos como SOTA móvil.",
-    "SolidCraft con 865 forks en 13 días es adopción real, pero 7,6k★ en dos semanas también es tramo clásico de hype inicial —vigilar tracción sostenida a 30 días.",
-    "ai-memory (11,5k★, MIT) es el más maduro del lote; usarlo como protocolo único hoy es razonable, pero atado al modelo de datos del autor: si rompe compatibilidad, el lock-in se muda, no se elimina."
+    "ARTEMIS afirma superar el 99% en AndroidWorld; es un resultado publicado por el propio proyecto y requiere replicación independiente.",
+    "La licencia de Andee figura como NOASSERTION en GitHub y el README añade condiciones a Apache-2.0; revisar el archivo LICENSE antes de integrarlo.",
+    "Las cifras de reducción de tokens de XERJ proceden de sus pruebas publicadas, no de una verificación independiente."
   ],
   "acciones_concretas": [
     {
-      "tipo": "comparte-hallazgo-con-CSS",
+      "tipo": "vigilar",
       "item_idx": 3,
-      "razon": "Es la pieza que aterriza directamente la tesis local-first + harness-agnóstico; el resto del lote la valida como complemento."
+      "razon": "ai-memory es el contrapunto más maduro al lock-in de memoria; vale la pena ver si el handoff tipado aguanta más de dos harnesses reales."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "XERJ cubre el bucle recuperar del stack local-first sin Elasticsearch; probar si el autoindexado y el llms.txt nativo funcionan sin configuración."
     },
     {
       "tipo": "explora",
       "item_idx": 0,
-      "razon": "SolidCraft es la sorpresa del día: CAD open source en Rust con servidor MCP nativo, ángulo diferencial para un artículo técnico de CSS."
+      "razon": "SolidCraft muestra MCP como interfaz real con una herramienta de ingeniería seria, no un toy; útil como referencia de arquitectura."
     },
     {
       "tipo": "vigilar",
-      "item_idx": 4,
-      "razon": "ARTEMIS y Andee llegan juntos como 'agente-en-el-teléfono' desde dos lados (Google + indie); comparar madurez real antes de la siguiente cobertura."
+      "item_idx": 5,
+      "razon": "La licencia ambigua de Andee puede ser un problema si se quiere distribuir o integrar en un producto."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "El detalle de routing consciente de KV cache esmaterial de artículo técnico: es exactamente el O(n²) invisible que la gente reimplementa a mano."
     }
   ],
-  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
 }

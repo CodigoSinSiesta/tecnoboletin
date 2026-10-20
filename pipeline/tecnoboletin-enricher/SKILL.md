@@ -109,6 +109,14 @@ En el runtime de Contabo (`ibid`) a fecha 2026-08-13:
   totales por dia en la corrida real. Verificar que ese margen encaja en
   la ventana del cron (ver pitfall #8 mas abajo).
 
+## Corrección del generador (2026-10-20)
+
+- El origen usa etiquetas `**Qué es:**` (dos puntos dentro de negrita), URLs como `**https://...**` y tarjetas `#### N.` dentro de `### Hallazgos principales`. El extractor debe reconocer esas variantes; los h4 numerados no cierran la sección h3.
+- Probar el script que realmente invoca el cron, que puede vivir en `~/.hermes/skills/research/tecnoboletin-enricher/`, y mantener sincronizada la copia del repo.
+- No aceptar una extracción ni publicar si algún hallazgo principal pierde URL, descripción, `por_que_importa`, madurez, acción o grafo. El radar debe conservar su descripción, métricas y acción desde el bullet origen.
+- Después de modificar el extractor, correrlo sobre el boletín afectado y días vecinos, revisar el JSON extraído, luego los JSON persistidos y el build. Una build exitosa no prueba que los datos estén completos.
+- La reparación de fichas `/repo/<owner>/<name>/` debe seleccionar la aparición más reciente del repo, no la más antigua; repos pueden cambiar de clasificación/sección entre boletines.
+
 ## Cuando se activa
 
 - **Cron automatico**: encadenado 1h despues del boletin (10:10 diario) o
