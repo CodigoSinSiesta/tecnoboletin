@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "date": "2026-10-20",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La infraestructura de agentes se reescribe en Rust y llega al CAD",
+  "posicionamiento": "Tres de los seis hallazgos de hoy comparten patrón: reescribir en Rust puro piezas que hasta ahora eran de Python, TypeScript o SaaS cerrado, y exponerlas vía MCP. SolidCraft reimplementa un CAD paramétrico, SMG es un gateway LLM, XERJ es un buscador local-first con memoria persistente. La memoria de agentes sale del lock-in por vendor con ai-memory como protocolo único entre harnesses. El borde, además, baja al teléfono: ARTEMIS (Google) y Andee llevan la automatización al dispositivo Android sin servidor intermediario.",
+  "convergencia_stack_css": "El vector MCP como capa de infraestructura —no solo de herramientas— conecta con la línea editorial local-first de CSS: PGLite, Ollama, Graphify. XERJ replica exactamente esa tesis (buscador + memoria + binario único) y ai-memory resuelve el handoff que faltaba entre harnesses. SolidCraft abre un flanco nuevo: el CAD paramétrico como pieza soberana del setup del usuario, no como SaaS.",
+  "cruzado_grafo": "Sin primera_mención en los datos de hoy. Los seis nodos llegan como entradas nuevas al grafo; la conexión con lo ya cubierto se ve por tema (MCP, Rust, harness-agnóstico) pero no por coincidencia exacta con un boletín previo.",
+  "tendencias_5_boletines": "",
+  "alertas": [
+    "ARTEMIS y Andee son hallazgos sin `por_que_importa` recibido: falta verificación independiente antes de presentarlos como SOTA móvil.",
+    "SolidCraft con 865 forks en 13 días es adopción real, pero 7,6k★ en dos semanas también es tramo clásico de hype inicial —vigilar tracción sostenida a 30 días.",
+    "ai-memory (11,5k★, MIT) es el más maduro del lote; usarlo como protocolo único hoy es razonable, pero atado al modelo de datos del autor: si rompe compatibilidad, el lock-in se muda, no se elimina."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Es la pieza que aterriza directamente la tesis local-first + harness-agnóstico; el resto del lote la valida como complemento."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "SolidCraft es la sorpresa del día: CAD open source en Rust con servidor MCP nativo, ángulo diferencial para un artículo técnico de CSS."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "ARTEMIS y Andee llegan juntos como 'agente-en-el-teléfono' desde dos lados (Google + indie); comparar madurez real antes de la siguiente cobertura."
+    }
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
+}

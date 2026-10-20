@@ -1,0 +1,359 @@
+{
+  "version": 2,
+  "date": "2026-10-20",
+  "boletin_origen": "2026-10-20-trending.md",
+  "resumen_ejecutivo": "- **El día viene marcado por el eje \"infraestructura de agentes en Rust\".** Tres de los hallazgos principales de hoy (`tangency-labs/solidcraft`, `smg-project/smg`, `xerj-org/xerj`) comparten un patrón: reimplementar en Rust una pieza que hasta ahora era dominio de Python/TypeScript o de un SaaS cerrado, y exponerla vía MCP. Es la señal de que MCP se está comiendo la capa de infraestructura, no solo la de herramientas.\n- **La memoria de agentes sale del locking por vendor.** `akitaonrails/ai-memory` (11.5k★, MIT, Rust) lleva el handoff entre harnesses —Claude Code, Codex, Cursor, Gemini CLI, OpenCode— a un protocolo tipado con dueño único. Es el contrapunto más maduro al lock-in de memoria que arrastramos desde los primeros días de Claude Code.\n- **El CAD paramétrico tiene su momento open-source.** SolidCraft (7,6k★ en 13 días, Apache-2.0) es una reimplementación clean-room en Rust puro con servidor MCP, y ya aparece #25 en Trendshift. 865 forks en dos semanas es adopción, no curiosidad.\n- **Android como plataforma de agentes es el nuevo frente.** ARTEMIS de Google (13k★, Apache-2.0, SOTA en AndroidWorld con 99%+ de éxito) y `kuafuai/andee` (Kotlin, un solo APK, on-device) apuntan al mismo sitio: dejar de tratar el móvil como un dispositivo con API y tratarlo como un objetivo de automatización nativo.\n- **Dos avisos operativos**: el blogwatcher de las 08:00 no produce archivo desde el 2026-07-05 (108 días sin publicar) — este boletín no puede complementarlo porque no hay nada que complementar. Y `simulot/immich-go` tiene README inaccesible en `main`, ver nota de verificación más abajo.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all/python/typescript/rust/go), GitHub REST API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "SolidCraft",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CAD paramétrico open-source en Rust puro",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "solidcraft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "SMG (Shepherd Model Gateway)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "gateway LLM multi-motor en Rust",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "smg-shepherd-model-gateway",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "XERJ",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "buscador local-first + memoria de agentes en un binario Rust",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xerj",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "ai-memory",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "memoria de largo plazo compartida entre harnesses de código",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ai-memory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "ARTEMIS (Google)",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "automatización Android en lenguaje natural, SOTA en AndroidWorld",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "artemis-google",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Andee",
+      "url": "",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un agente que vive dentro del teléfono Android, en un solo APK",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "andee",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "strelov1/freehire",
+      "url": "https://github.com/strelov1/freehire",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.549★, 183 forks, último push 2026-10-20, Go, MIT) — buscador de empleo open source que indexa **3,3M+ ofertas vivas directamente de las páginas de career de las empresas**, sin recruiters ni enlaces muertos; stack Go + PostgreSQL + Meilisearch + SvelteKit",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — la cifra de 3,3M es del README (no verificada contra la DB), pero el proyecto es joven (2026-06-07) y ya se autopresentó en Product Hunt. Interesante por el ángulo de scraping sostenible y legal de fuentes oficiales",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "strelov1-freehire",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Gathin23/cleanyourtv",
+      "url": "https://github.com/Gathin23/cleanyourtv",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.163★, 832 forks, último push 2026-10-20, Java, **NOASSERTION**) — elimina el bloatware de cualquier Android TV o Google TV por ADB y pone un launcher estilo Apple TV; el topic declara `claude-code` y `vibe-coding`. Creado 2026-10-17, o sea **3 días y 7.163★**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — velocidad de adopción absurda; `NOASSERTION` significa leer LICENSE antes de redistribuir",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gathin23-cleanyourtv",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(83.385★, 5.043 forks, último push 2026-10-20, Rust, Apache-2.0, **repo enorme: 745 MB**) — un \"design language\" que hace que tu harness de IA mejore en diseño. Ya visto el 2026-10-07 como hallazgo principal. Re-entry justificada: sigue en tendencia con +422★/día y empuja hoy el tramo TypeScript",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — merece al menos un vistazo al README por el ángulo \"harness + diseño\", pero los 745 MB y el hype de las 83k★ piden prudencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pbakaus-impeccable",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "headroomlabs-ai/headroom",
+      "url": "https://github.com/headroomlabs-ai/headroom",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(76.400★, 5.931 forks, último push 2026-10-20, Python, Apache-2.0) — comprime salidas de herramientas, logs, ficheros y chunks RAG antes de que lleguen al LLM: **20% menos tokens para coding agents, 60-95% menos para JSON**. Se ofrece como librería, proxy y servidor MCP. Ya visto el 2026-09-08. Re-entry: sigue activa (310★/día) y es el contrapunto natural de XERJ en compresión de contexto",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "headroomlabs-ai-headroom",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Mag1cFall/AIStudio2API",
+      "url": "https://github.com/Mag1cFall/AIStudio2API",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(393★, 111 forks, último push 2026-10-20, Go, MIT) — expone Google AI Studio Playground y Build como API compatible con OpenAI, Anthropic y Gemini. Los topics confirman `camoufox` y `playwright`, o sea ingeniería inversa con navegador automatizado",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "explorar — pequeño pero revelador sobre el estado del \"envoltura de servicios propietarios\"; **la sostenibilidad y legalidad del enfoque es la duda real**, no la técnica",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mag1cfall-aistudio2api",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "simulot/immich-go",
+      "url": "https://github.com/simulot/immich-go",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.073★, 275 forks, último push 2026-10-18, Go, AGPL-3.0) — reescritura en Go del `immich-CLI` que no depende de Node.js, pensada para importar los Takeout de Google Photos. **README no accesible en `main` (pitfall #21: 14 bytes = `404: Not Found`); la descripción oficial viene de la API de GitHub, no del README. (no verificado — README no accesible)**",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — función correcta (liberar a los usuarios de Node) pero sin ángulo de IA ni novedad relevante para Código Sin Siesta",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "simulot-immich-go",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "withmarbleapp/os-taxonomy",
+      "url": "https://github.com/withmarbleapp/os-taxonomy",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.317★, 1.025 forks, último push 2026-10-19, JavaScript, **ODbL-1.0**) — ya visto el 2026-07-10. **La API de GitHub no devuelve `description` ni topics** para este repo, así que su propósito exacto queda (no verificado) más allá de lo que la API revela",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar — sin metadatos verificables ni ángulo IA claro hoy",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "withmarbleapp-os-taxonomy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "UnderleveledBuilder/awesome-short-drama-skills",
+      "url": "https://github.com/UnderleveledBuilder/awesome-short-drama-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(352★, 42 forks, último push 2026-10-20, HTML, CC0-1.0) — colección curada de skills para producir series cortas de IA (el README original lo llama \"AI duanju\"): guion, storyboard y prompts de vídeo para Seedance / Kling / MiniMax; funciona con Claude Code, Codex, OpenClaw, etc. Creado 2026-10-13",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — sin valor técnico directo, pero es un termómetro de la \\\"capa de skills\\\" y de cómo se está monetizando el contenido creativo de vídeo en la comunidad agentica china",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "underleveledbuilder-awesome-short-drama-",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "0/6 items reescritos; rechazados por longitud sospechosa: [0, 1, 2, 3, 4, 5]; faltantes en respuesta: [0, 1, 2, 3, 4, 5]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
