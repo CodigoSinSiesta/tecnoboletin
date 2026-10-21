@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-10-21",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "IA, Rust y BBS: lo que la red divulga esta semana",
+  "posicionamiento": "Mide la distancia entre abrir código y abrir de verdad: DeepSeek publica motor y protocolo, pero se reserva lo necesario para producción multi-tenant; tsrs promete 100% de conformance de TypeScript 7 desde Rust y aun así cierra PRs; claw-code se declara museo y sigue empujando commits.",
+  "convergencia_stack_css": "DeepSeek ha publicado dos piezas complementarias: DeepInfer, un motor optimizado para sus aceleradores, y deepseek-recipe, que adapta protocolos y formatos de conversación. Para un stack autoalojado, la pregunta no es solo qué código abren, sino qué queda fuera: la versión de DeepInfer excluye la caché KV y el balanceo entre réplicas, por lo que no equivale a una alternativa completa a vLLM. El otro eje conecta con tsrs: tanto ese proyecto como Oxc están trasladando herramientas centrales de JavaScript a Rust.",
+  "cruzado_grafo": "El grafo sitúa DeepInfer sobre vLLM y enlaza tsrs con la necesidad de un compilador fiable para agentes. nanoMuse añade el patrón del agente personal con relay autoalojable, mientras dsh-context convierte el uso del contexto y el coste en datos visibles. awesome-reverse-engineered complementa el trabajo de ingeniería inversa con un catálogo reutilizable; claw-code aporta el contraste sobre estrellas frente a uso. Son conexiones entre proyectos y conceptos registrados, no pruebas independientes de adopción.",
+  "tendencias_5_boletines": "",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

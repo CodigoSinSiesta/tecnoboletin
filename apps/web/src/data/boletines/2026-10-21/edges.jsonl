@@ -1,0 +1,44 @@
+{"src": "boletin:2026-10-21", "dst": "item:idx-0", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:idx-0", "dst": "tema:deepinfer-deepseek-recipe", "rel": "trata", "added": "2026-10-21"}
+{"src": "repo:deepseek-ai/DeepInfer", "dst": "engine:vllm", "rel": "derived_from", "added": "2026-10-21", "primera_mencion": "2026-10-20"}
+{"src": "repo:deepseek-ai/DeepInfer", "dst": "concept:moe-inference", "rel": "implements", "added": "2026-10-21", "primera_mencion": "2026-10-05"}
+{"src": "repo:deepseek-ai/deepseek-recipe", "dst": "concept:protocol-adapter-layer", "rel": "implements", "added": "2026-10-21", "primera_mencion": null}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-oxc-project-tsrs", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-oxc-project-tsrs", "dst": "tema:tsrs", "rel": "trata", "added": "2026-10-21"}
+{"src": "repo:oxc-project/tsrs", "dst": "repo:microsoft/TypeScript", "rel": "reimplements", "added": "2026-10-21", "primera_mencion": null}
+{"src": "repo:oxc-project/tsrs", "dst": "concept:unified-js-toolchain", "rel": "relevant_to", "added": "2026-10-21", "primera_mencion": "2026-10-01"}
+{"src": "repo:oxc-project/tsrs", "dst": "problem:agent-needs-real-toolchain", "rel": "solves", "added": "2026-10-21", "primera_mencion": "2026-09-10"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-nano-muse-nanomuse", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-nano-muse-nanomuse", "dst": "tema:nanomuse", "rel": "trata", "added": "2026-10-21"}
+{"src": "repo:nano-muse/nanoMuse", "dst": "concept:self-hosted-relay", "rel": "implements", "added": "2026-10-21", "primera_mencion": null}
+{"src": "repo:nano-muse/nanoMuse", "dst": "repo:openclaw/openclaw", "rel": "competes_with", "added": "2026-10-21", "primera_mencion": "2026-08-12"}
+{"src": "repo:nano-muse/nanoMuse", "dst": "company:meta", "rel": "inspired_by", "added": "2026-10-21", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-bowenliang123-dsh-context", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-bowenliang123-dsh-context", "dst": "tema:dsh-context", "rel": "trata", "added": "2026-10-21"}
+{"src": "repo:bowenliang123/dsh-context", "dst": "repo:deepseek-ai/deepseek-harness", "rel": "part_of", "added": "2026-10-21", "primera_mencion": "2026-08-14"}
+{"src": "repo:bowenliang123/dsh-context", "dst": "concept:llm_cost_observability", "rel": "relevant_to", "added": "2026-10-21", "primera_mencion": "2026-10-15"}
+{"src": "repo:bowenliang123/dsh-context", "dst": "concept:context-engineering", "rel": "enables", "added": "2026-10-21", "primera_mencion": "2026-09-02"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-alexgaoth-awesome-reverse-engineered", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-alexgaoth-awesome-reverse-engineered", "dst": "tema:awesome-reverse-engineered", "rel": "trata", "added": "2026-10-21"}
+{"src": "repo:alexgaoth/awesome-reverse-engineered", "dst": "repo:morluto/rea", "rel": "complements", "added": "2026-10-21", "primera_mencion": "2026-10-05"}
+{"src": "repo:alexgaoth/awesome-reverse-engineered", "dst": "concept:reverse-engineering-agent", "rel": "relevant_to", "added": "2026-10-21", "primera_mencion": "2026-10-05"}
+{"src": "repo:alexgaoth/awesome-reverse-engineered", "dst": "concept:agent-skills-layer", "rel": "implements", "added": "2026-10-21", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-ultraworkers-claw-code", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-ultraworkers-claw-code", "dst": "tema:claw-code", "rel": "trata", "added": "2026-10-21"}
+{"src": "repo:ultraworkers/claw-code", "dst": "concept:agent-managed-repo", "rel": "relevant_to", "added": "2026-10-21", "primera_mencion": null}
+{"src": "concept:agent-managed-repo", "dst": "problem:hype-metrics", "rel": "relevant_to", "added": "2026-10-21", "primera_mencion": null}
+{"src": "repo:ultraworkers/claw-code", "dst": "repo:stablyai/orca", "rel": "competes_with", "added": "2026-10-21", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-10-21"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:cloudflare-security-audit-skill", "rel": "trata", "added": "2026-10-21"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-gamedev-skills-awesome-gamedev-agent-skills", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-gamedev-skills-awesome-gamedev-agent-skills", "dst": "tema:gamedev-skills-awesome-gamedev-agent-ski", "rel": "trata", "added": "2026-10-21"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-kingcharleslzy-ai-dsh-purge", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-kingcharleslzy-ai-dsh-purge", "dst": "tema:kingcharleslzy-ai-dsh-purge", "rel": "trata", "added": "2026-10-21"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-luongnv89-claude-howto", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-luongnv89-claude-howto", "dst": "tema:luongnv89-claude-howto", "rel": "trata", "added": "2026-10-21"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-emdash-cms-emdash", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-emdash-cms-emdash", "dst": "tema:emdash-cms-emdash", "rel": "trata", "added": "2026-10-21"}
+{"src": "boletin:2026-10-21", "dst": "item:https-github-com-kruk2-jasna", "rel": "menciona", "added": "2026-10-21"}
+{"src": "item:https-github-com-kruk2-jasna", "dst": "tema:kruk2-jasna", "rel": "trata", "added": "2026-10-21"}

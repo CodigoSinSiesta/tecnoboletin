@@ -1,0 +1,449 @@
+{
+  "version": 2,
+  "date": "2026-10-21",
+  "boletin_origen": "2026-10-21-trending.md",
+  "resumen_ejecutivo": "- **DeepSeek abre dos piezas de su stack de inferencia en cinco días.** `DeepInfer` (motor de serving que usa en producción) y `deepseek-recipe` (capa de conversión de protocolo) salen como Apache-2.0 y MIT respectivamente. Lo interesante no es que abra el código, sino **qué decide no abrir**: DeepInfer excluye explícitamente la caché KV, la disociación VE/Prefill/Decode y el balanceo entre réplicas, y solo soporta NVIDIA SM100 y Ascend 950. Es una declaración de qué es commodity y qué sigue siendo secreto.\n- **La convergencia del toolchain JS a Rust ya tiene su pieza más seria: `oxc-project/tsrs`.** El port en Rust del type checker de TypeScript 7, con objetivo declarado de 100% de conformance y drop-in (`tsrs --noEmit`). Ojo con el matiz: `--init` y `--showConfig` no están soportados y las PRs están cerradas por falta de capacidad de review.\n- **nanoMuse consolida el \"agente personal auto-hospedable\" como categoría, no como proyecto.** 1.917★ en 28 días, GPL-3.0, Swift, con relay propio, README en 11 idiomas y un paper en arXiv. La tesis (agente con nombre, persistente con la app cerrada, relay que puedes operar en casa) es exactamente la que diferencia a esta oleada de un simple wrapper de API.\n- **La observabilidad de contexto se ha convertido en producto de primera clase dentro de un harness.** `dsh-context` (2.842★, Apache-2.0) mete un panel de KPIs de tokens/coste a 7 días, heatmap de actividad, composición del contexto y red de agentes dentro de DeepSeek Harness. Dejamos de medir \"tokens gastados\" en la intuición y empezamos a medirlo en la interfaz.\n- **Dos casos que sirven de termómetro sobre las métricas de GitHub.** `ultraworkers/claw-code` tiene 195.163★ y 107.883 forks sobre 1 issue abierta, 0 topics y un README que se autodescribe como \"museo gestionado por agentes\"; `morluto/rea` ya va por 351.108★. Ninguno de los dos números describe uso. El grafo los registra, pero el boletín deja de tratarlos como señal de adopción.\n- **Aviso operativo**: el blogwatcher de las 08:00 sigue sin producir archivo (último: `2026-07-05-blogs.md`, día 109 de silencio). No hay nada que complementar hoy.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (all/python/typescript/rust/go), GitHub REST API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "DeepInfer + deepseek-recipe",
+      "url": "https://github.com/deepseek-ai/DeepInfer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "el par cubre las dos mitades que había que reconstruir a mano para servir DeepSeek: el motor que ejecuta y la capa que traduce entre protocolos. El repositorio de la capa de protocolos es [deepseek-recipe](https://github.com/deepseek-ai/deepseek-recipe).",
+        "por_que_importa": "Lo publicable es el recorte, no la apertura. El README de DeepInfer lista como «no incluido en esta release» la caché KV, la disociación VE/Prefill/Decode y el balanceo entre réplicas data-paralelas — justamente la capa que hace falta para producción multi-tenant. Lo que sí trae es DSpark con verificación programada por confianza, MoE Expert Parallelism con EPLB, inferencia batch-invariant y muestreo determinista. Para quien autoaloja, la lectura correcta es: «esto es un motor de inferencia para un dominio de escala, no un reemplazo de vLLM». El README acredita explícitamente las tecnologías de las que parte y en las que se inspira. El repositorio complementario, [deepseek-recipe](https://github.com/deepseek-ai/deepseek-recipe), define el contrato de prompts y salidas de V4/V4.1, incluidos los límites de `max_tokens`; también advierte que `ReqwestImageFetcher` puede conectarse a cualquier dirección por defecto y recomienda un `DestinationFilter` si recibe URLs no confiables.",
+        "madurez_senales": "DeepInfer: 15.406★ · 1.512 forks · Python · Apache-2.0 · creado 2026-10-16 (5 días) · último push 2026-10-21 · 162 issues abiertas · topics: vacío · hardware declarado: NVIDIA SM100 y Huawei Ascend 950 NPUs · requiere Linux, GCC 13+, Python 3.12, CUDA 13 o CANN 9.2. deepseek-recipe: 1.774★ · 209 forks · Rust · MIT · creado 2026-09-10 · último push 2026-10-19 · 36 issues · `description` vacía en la API (puro README) · publicado en crates.io y PyPI.",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/DeepInfer",
+          "rel": "derived_from",
+          "dst": "engine:vllm",
+          "primera_mencion": "2026-10-20"
+        },
+        {
+          "src": "repo:deepseek-ai/DeepInfer",
+          "rel": "implements",
+          "dst": "concept:moe-inference",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-recipe",
+          "rel": "implements",
+          "dst": "concept:protocol-adapter-layer",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "otro",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepinfer-deepseek-recipe",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "tsrs",
+      "url": "https://github.com/oxc-project/tsrs",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "reemplazo directo del compilador y el language server de TypeScript 7, escrito en Rust, con objetivo declarado de conformance del 100% y menos memoria.",
+        "por_que_importa": "encaja en una línea del grafo que ya existía como intención sin realización (`concept:unified-js-toolchain`), y ataca el problema de `problem:agent-needs-real-toolchain` que registramos el 2026-09-10: si vas a meter agentes en tu proyecto, necesitan un type checker de verdad, no un borrador. Por eso importa el ángulo, no el proyecto: la conformidad del compilador de TypeScript está medida contra el compilador Go fijado dentro de TS, y hay «order issues» conocidos —el compilador produce diagnósticos distintos según el orden en que se haga el parseo, la resolución de tipos y el chequeo—, mientras `tsrs` canonicaliza parte del historial del checker por defecto. A `--init` y `--showConfig` no les llega soporte, y las PRs están cerradas porque el equipo no tiene capacidad de review. La afirmación del autor («no hemos encontrado bugs de corrección en proyectos existentes») es una observación sobre las pruebas que han hecho, no una garantía: así debe leerse. Con1.356★, 23 forks y 18 issues en menos de un mes, la señal es de curiosidad, no de adopción. Lo que sí es una señal de calendario: Microsoft reescribe TypeScript 7 en Go nativo y Oxc responde con un port en Rust en paralelo — dos vértices compitiendo por el mismo tooling desde lenguajes de sistemas distintos, y el grafo ya tenía ninguno de los dosVertices",
+        "madurez_senales": "1.356★ · 23 forks · Rust · Apache-2.0 · creado 2026-10-01 · último push 2026-10-21 · 18 issues · publicado en npm como `tsrs` · también `@tsrs/wasm` (WASI Preview 1) · CI patrocinada por Depot · indica `default_branch: main` y README accesible (5.235 bytes).",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:oxc-project/tsrs",
+          "rel": "reimplements",
+          "dst": "repo:microsoft/TypeScript",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:oxc-project/tsrs",
+          "rel": "relevant_to",
+          "dst": "concept:unified-js-toolchain",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:oxc-project/tsrs",
+          "rel": "solves",
+          "dst": "problem:agent-needs-real-toolchain",
+          "primera_mencion": "2026-09-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tsrs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "nanoMuse",
+      "url": "https://github.com/nano-muse/nanoMuse",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un agente personal open source (Swift, GPL-3.0-or-later) con identidad propia —nombre y apariencia— que sigue trabajando cuando la app está cerrada, recuerda al usuario y pide confirmación antes de lo irreversible; app de móvil, de escritorio, consola web y el relay que las une, todo en el mismo repositorio.",
+        "por_que_importa": "es el caso más limpio que hemos visto del patrón «el agente no vive en la nube de otro», y las tres decisiones concretas son verificables: (a) el relay —el servidor que conecta móvil, escritorio y consola web— se puede desplegar en tu propio servidor, así que el contenido no tiene que salir de casa; (b) hay cuota gratuita de modelos en el relay comunitario y luego llave propia, con el mismo relay corriendo en local; (c) publica paper en arXiv y releases cada pocos días (1.0.0 «Keel» el 2026-10-09, 1.0.5 «Lookout»). Lo relevante para un lector local-first es el punto (a) combinado con el (b): puedes probar sin gastar y luegoProduction sin migrar de arquitectura. El contexto de mercado lo coloca como alternativa explícita a Meta Muse (anunciado en septiembre de 2026), lo que sugiere que la categoría «agente personal con identidad» se está consolidando alrededor de una sola referencia. Sobre el grafo: la relación de competencia con openclaw la registramos el 2026-08-12, así que esto no es un competidor nuevo sino un rival que llega tarde pero con una diferencia estructural — GPL-3.0 y 102 MB de repo, las dos señales de que es un proyecto de producto, no un prototipo. Limitación honesta: la homepage es nanomuse.cn y hay demo web, pero no hay métricas de uso reales en las señales de madurez, así que las estrellas (1.917★) no distinguen conversión.",
+        "madurez_senales": "1.917★ · 212 forks · Swift · GPL-3.0 · creado 2026-09-23 (28 días) · último push 2026-10-21 · 68 issues abiertas · topics: ai-agent, android, computer-use, cross-device, gui-agent, ios, mcp, personal-agent · homepage: nanomuse.cn · demo web en demo.nanomuse.dev · README en 11 idiomas (incluye español) · paper arXiv:2610.08699 · CI con badge de test suite · el propio README documenta el ritmo: 1.000★ en 18 días.",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:nano-muse/nanoMuse",
+          "rel": "implements",
+          "dst": "concept:self-hosted-relay",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nano-muse/nanoMuse",
+          "rel": "competes_with",
+          "dst": "repo:openclaw/openclaw",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:nano-muse/nanoMuse",
+          "rel": "inspired_by",
+          "dst": "company:meta",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nanomuse",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "dsh-context",
+      "url": "https://github.com/bowenliang123/dsh-context",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin del harness DeepSeek Harness que expone el ciclo de vida completo del contexto: página de insights cross-sesión con banda de KPIs, gráfico de tokens/coste a 7 días, heatmap de actividad y anillo de composición; tab de contexto con estadísticas, tendencia y eventos; tab \"Fleet\" con el agente actual, sus padres y cada subagente como una tarjeta viva; panel lateral y comando `/context`.",
+        "por_que_importa": "el grafo llevaba semanas tratando `problem:context-rot` y `concept:context-engineering` como problemas conceptuales; esto es la señal de que se están convirtiendo en superficie de producto, con UI y métricas. La pieza defendible es la vista Fleet: cuando un agente lanza subagentes, deja de ser una llamada y pasa a ser un grafo, y poder mirar ese grafo en vivo (agente actual, sus padres, cada subagente como una tarjeta viva) es la diferencia entre depurar y adivinar. El resto —banda de KPIs, gráfico de tokens/coste a 7 días, heatmap de actividad, anillo de composición— es el panel que convierte el gasto de tokens en algo que puedes auditar, que es exactamente lo que pide `concept:llm_cost_observability`, un nodo que registramos el 2026-10-15. El plugin es `part_of` de `deepseek-ai/deepseek-harness` desde el 2026-08-14, y habilita `concept:context-engineering`, que veníamos siguiendo desde el 2026-09-02. Y el dato de contexto que da la escala: el harness base tiene 256.308★ y 30.899 forks, con lo que el ecosistema de plugins alrededor no es teórico, es masivo. Limitación: el README no publica benchmarks de rendimiento del propio plugin, así que la utilidad se infiere de las funciones documentadas, no de mediciones",
+        "madurez_senales": "2.842★ · 98 forks · TypeScript · Apache-2.0 · creado 2026-08-14 · último push 2026-10-21 (dos horas antes de este boletín) · 2 issues · publicado en npm como `dsh-context` · instalable por el wizard de plugins o por `dsh plugin --profile web add dsh-context` · topics: dsh-plugin, cordis-plugin, deepseek-harness-plugin.",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:bowenliang123/dsh-context",
+          "rel": "part_of",
+          "dst": "repo:deepseek-ai/deepseek-harness",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:bowenliang123/dsh-context",
+          "rel": "relevant_to",
+          "dst": "concept:llm_cost_observability",
+          "primera_mencion": "2026-10-15"
+        },
+        {
+          "src": "repo:bowenliang123/dsh-context",
+          "rel": "enables",
+          "dst": "concept:context-engineering",
+          "primera_mencion": "2026-09-02"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dsh-context",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "awesome-reverse-engineered",
+      "url": "https://github.com/alexgaoth/awesome-reverse-engineered",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "índice con 12.869 herramientas open source que nacieron de invertir una app, API, dispositivo, protocolo, formato de fichero, juego o producto de IA cerrado, con 10,7M de estrellas agregadas, búsqueda web y skill de agente instalable con `npx skills add alexgaoth/awesome-reverse-engineered`, y refresco nocturno por workflow.",
+        "por_que_importa": "es el mayor catálogo de ingeniería inversa que ha pasado por este grafo, y llega en el momento justo: `morluto/rea` y Ghidra ya habían hecho el RE accesible a un agente —lo registramos el 2026-10-05—, pero el problema que resuelve este índice es distinto y complementario: el de no repetir trabajo ya hecho. La tesis del README es explícita y es una norma de higiene profesional para el stack local-first: busca primero, si está usa y arregla, si no está hazlo y publícalo. El argumento concreto para quien lee Código Sin Siesta: las categorías donde hay más masa son 3.036 decompilaciones y reimplementaciones de juegos, 3.028 dispositivos e IoT, 904 clientes de API no oficiales y 737 herramientas y clientes de IA — ese último bloque es directamente aplicable a quien automatiza contra servicios de modelos. Y publica el estado de cada proyecto (7.077 activos, 1.953 ralentizándose, 2.491 dormidos, 900 archivados), que es metadato que casi nadie mantiene y que evita que LinkDead ends el plan. En el grafo, `concept:agent-skills-layer` ya existía desde el 2026-08-08; lo nuevo es que aquí hay skill de agente instalable con `npx skills add alexgaoth/awesome-reverse-engineered` y refresco nocturno por workflow, o sea que se puede encadenar al trabajo del grafo sin intervención manual. Limitación: 280★ y 10 días de vida, así que la calidad del filtrado aún no está contrastada.",
+        "madurez_senales": "280★ · 67 forks · Python · MIT · creado 2026-10-11 (10 días) · último push 2026-10-20 · 1 issue abierta · topics: agent-skills, ai-agents, awesome-list, reverse-engineering, unofficial-api, home-assistant, interoperability · homepage: awesome.alexgaoth.com · licencia de datos CC0 · refresh nocturno vía GitHub Actions. **Nota de escala**: 280★ es poco en términos de tendencia; el valor está en el corpus, no en la atención. La cifra de 12.869 proyectos es del README (no verificada contra el índice).",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alexgaoth/awesome-reverse-engineered",
+          "rel": "complements",
+          "dst": "repo:morluto/rea",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:alexgaoth/awesome-reverse-engineered",
+          "rel": "relevant_to",
+          "dst": "concept:reverse-engineering-agent",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:alexgaoth/awesome-reverse-engineered",
+          "rel": "implements",
+          "dst": "concept:agent-skills-layer",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "awesome-reverse-engineered",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "claw-code",
+      "url": "https://github.com/ultraworkers/claw-code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "la implementación pública en Rust del harness `claw`, que el propio README describe como \"una pieza de museo, no un pitch de producto\", mantenido por agentes (Gajae-Code / LazyCodex) \"sin intervención humana\".",
+        "por_que_importa": "lo meta es el hallazgo, y aquí la Lesson es de medición, no de código. El README se autodeclara «una pieza de museo, no un pitch de producto», avisa de que `cargo install claw-code` instala un stub obsoleto porque el crate se renombró a `agent-code`, y remite a dos repositorios upstream para el trabajo real — todo mantenido por agentes, dice, sin intervención humana. Mientras tanto acumula 195.163★ y 107.883 forks. Ese ratio forks/estrellas de 0,55 es lo relevante: los forks son consecuencia de clonar, no de usar, y con una sola issue abierta el repo no está ni atendido niляхusedado; simplemente no genera de problemas. El contraste con `stablyai/orca` (100.179★ y 8.544 issues abiertas) y con `morluto/rea` (88.238 forks sobre 351.108★) es la lección: la distribución de estrellas/forks/issues separa «mucha atención» de «mucho uso», y este repo está en el extremo más raro de esa distribución. Sobre el grafo: `concept:agent-managed-repo` aparece por primera vez aquí, y encaja directamente con `problem:hype-metrics` — este repo es un caso de estudio de por qué las estrellas no son una métrica de adopción. La competencia con orca la veníamos registrando desde el 2026-07-16. Lo útil para el lector: cuando ve un repo de agentes con cifras altísimas, la primera pregunta es qué hace el README para decir hasta dónde llega",
+        "madurez_senales": "195.163★ · 107.883 forks · Rust · MIT · creado 2026-03-31 · último push 2026-10-19 · 1 issue abierta · topics: vacío · sin homepage · owner: organización · ratio forks/estrellas 0,55 · 26,7 MB · README de 14.255 bytes accesible en `main`.",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ultraworkers/claw-code",
+          "rel": "relevant_to",
+          "dst": "concept:agent-managed-repo",
+          "primera_mencion": null
+        },
+        {
+          "src": "concept:agent-managed-repo",
+          "rel": "relevant_to",
+          "dst": "problem:hype-metrics",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ultraworkers/claw-code",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "claw-code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(100.179★, 6.351 forks, último push 2026-10-21, TypeScript, MIT) — re-entrada: **#2 en GitHub Trending hoy con +1.565★ en 24h**. Vuelve por crecimiento excepcional, no por re-trend vacío. Los datos que no encajan con el titular: 8.544 issues abiertas sobre 100k★ y 1,5 GB de repositorio. Topics que sí resultan interesantes: yc-backed, worktrees, ghostty, openclaw, pi, hermes-agent",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — vale la pena una exploración de la gestión de 8,5k issues en un proyecto de esa edad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(34.758★, 2.188 forks, último push 2026-09-14, JavaScript, MIT) — re-entrada: **#1 en GitHub Trending con +1.712★ hoy, sin un solo push desde hace 37 días**. Es momentum de distribución sin cambio de código: una skill de auditoría de seguridad multi-fase con hallazgos verificados de forma independiente y legibles por máquina",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — es el mejor ejemplo del día de que la tendencia de GitHub mide atención, no actividad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "gamedev-skills/awesome-gamedev-agent-skills",
+      "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.048★, 174 forks, último push 2026-10-09, Python, Apache-2.0) — 74 skills para agentes de IA en Godot, Unity, Unreal, Phaser, PixiJS, three.js, Bevy, pygame y LÖVE, en formato SKILL.md con un router que carga la skill correcta según motor y tarea; funciona en Claude Code, Cursor, Kiro, Codex, Copilot y Gemini CLI",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — es un termómetro de hasta dónde llega la verticalización del formato SKILL.md",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gamedev-skills-awesome-gamedev-agent-ski",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "kingcharleslzy-ai/dsh-purge",
+      "url": "https://github.com/kingcharleslzy-ai/dsh-purge",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.182★, 524 forks, último push 2026-10-21, JavaScript, MIT, `fork: true`) — plugin de gestión de prompts y prompts de sistema para DeepSeek Harness, con autodiagnóstico de estado y rollback local. **Ratio forks/estrellas de 0,44 y `fork: true` declarado**: es la señal de un ecosistema inundado de espejos. El mismo día Trendshift lista `mmparko/dsh-purge`, que se describe en su propia descripción como espejo de otro upstream que va a borrar el repositorio (no verificado vía API)",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — el ecosistema de plugins de un harness está siendo colonizado por copias, y eso termina rompiendo la confianza en el canal de instalación",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kingcharleslzy-ai-dsh-purge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "luongnv89/claude-howto",
+      "url": "https://github.com/luongnv89/claude-howto",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(42.322★, 5.294 forks, último push 2026-10-20, Python, MIT) — guía visual y basada en ejemplos de Claude Code, con plantillas para copiar y pegar. Creado 2025-11-07, es material de referencia consolidado",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "leer — útil como base para un artículo propio en español, porque la cobertura en español sigue siendo floja",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "luongnv89-claude-howto",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "emdash-cms/emdash",
+      "url": "https://github.com/emdash-cms/emdash",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.843★, 1.319 forks, último push 2026-10-21, TypeScript, MIT) — CMS full-stack sobre Astro que se autodefine como \"sucesor espiritual de WordPress\"; 329 issues abiertas y 285 MB de repositorio",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — si publica a escala, es candidato directo para publicar el vault de Obsidian sin depender de WordPress",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "emdash-cms-emdash",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "Kruk2/jasna",
+      "url": "https://github.com/Kruk2/jasna",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.285★, 246 forks, último push 2026-10-20, Python, AGPL-3.0) — restauración de mosaicos en vídeo e imagen en GPU (BasicVSR++ libre, modelo LTX solo para \"supporter\" con clave de licencia de pago). +441★ hoy en el tramo de Python",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar — open-core con el modelo de calidad detrás de un pago, patrón que se repite cada vez más",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kruk2-jasna",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/6 items reescritos; rechazados por longitud sospechosa: [0]; faltantes en respuesta: [0]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
