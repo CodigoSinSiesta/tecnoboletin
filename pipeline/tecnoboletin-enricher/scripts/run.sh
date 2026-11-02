@@ -54,6 +54,7 @@ OLD_EDITORIAL="${REPO_DATA_DIR}/${DATE}/editorial.json"
 
 echo "[1/6] Extrayendo items de ${DATE}..."
 python3 "${SKILL_DIR}/scripts/extract_items.py" "${MD}" > "${ITEMS_JSON}"
+python3 "${SKILL_DIR}/scripts/validate_quality.py" extraction "${ITEMS_JSON}"
 
 echo "[2/6] Enriqueciendo (conserva contenido + cruce con el grafo)..."
 CARRY_ARGS=()
@@ -66,6 +67,7 @@ python3 "${SKILL_DIR}/scripts/enrich_items.py" "${ITEMS_JSON}" --date "${DATE}" 
 echo "[3/6] Critica (3 lentes, 1 llamada batcheada) + reescritura..."
 python3 "${SKILL_DIR}/scripts/synthesize_article.py" --date "${DATE}" --enriched "${ENRICHED_JSON}" \
   --llm "${LLM_BACKEND}" --work-dir "${WORK_DIR}" --out "${FINAL_JSON}"
+python3 "${SKILL_DIR}/scripts/validate_quality.py" enriched "${FINAL_JSON}"
 
 echo "[4/6] editorial.json..."
 if [[ -f "${OLD_EDITORIAL}" ]]; then
@@ -91,6 +93,7 @@ echo "[5/6] CJK check..."
 CJK_ARGS=("${FINAL_JSON}")
 [[ -f "${EDITORIAL_JSON}" ]] && CJK_ARGS+=("${EDITORIAL_JSON}")
 python3 "${SKILL_DIR}/scripts/clean_cjk.py" "${CJK_ARGS[@]}"
+python3 "${SKILL_DIR}/scripts/validate_quality.py" enriched "${FINAL_JSON}"
 
 echo "[6/6] Persistiendo al repo (${REPO_DATA_DIR}/${DATE}/)..."
 python3 "${SKILL_DIR}/scripts/persist.py" --date "${DATE}" --enriched "${FINAL_JSON}" --repo-data-dir "${REPO_DATA_DIR}"

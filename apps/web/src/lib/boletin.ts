@@ -24,6 +24,8 @@ export interface BoletinItem {
   idx: number;
   titulo: string;
   url?: string;
+  /** Additional repository URLs for findings that cover multiple repositories. */
+  urls_adicionales?: string[];
   url_inferida?: boolean;
   seccion: 'hallazgo_principal' | 'radar_secundario' | string;
   contenido?: {
@@ -346,11 +348,21 @@ export function senalesLine(sen: Senales, opts: { estado?: boolean; issues?: boo
 
 const REPO_RE = /^[\w.-]+\/[\w.-]+$/;
 
+/** "owner/name" de la identidad principal o de una URL adicional del hallazgo. */
+export function repoSlugs(item: Pick<BoletinItem, 'titulo' | 'url' | 'urls_adicionales'>): string[] {
+  const urls = [item.url, ...(item.urls_adicionales ?? [])].filter((value): value is string => Boolean(value));
+  const slugs = new Set<string>();
+  if (item.titulo && REPO_RE.test(item.titulo)) slugs.add(item.titulo);
+  for (const url of urls) {
+    const match = url.match(/github\.com\/([\w.-]+\/[\w.-]+?)(?:\.git)?(?:[/#?]|$)/);
+    if (match) slugs.add(match[1]);
+  }
+  return [...slugs];
+}
+
 /** "owner/name" si el item es un repo de GitHub identificable; si no, null. */
 export function repoSlug(item: Pick<BoletinItem, 'titulo' | 'url'>): string | null {
-  if (item.titulo && REPO_RE.test(item.titulo)) return item.titulo;
-  const m = (item.url ?? '').match(/github\.com\/([\w.-]+\/[\w.-]+?)(?:\.git)?(?:[/#?]|$)/);
-  return m ? m[1] : null;
+  return repoSlugs(item)[0] ?? null;
 }
 
 /** Id del nodo del grafo de conocimiento para un repo ("repo:owner/name"). */

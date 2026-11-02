@@ -264,6 +264,12 @@ passthrough (`stats.critica_lentes_aplicada = false`, motivo reportado en
 
 ### Fase 5 -- Editorial (`scripts/generate_editorial.py`)
 
+- Fail-closed y rutas estáticas (2026-11-02): el cron debe validar campos tras extracción/síntesis y antes de persistir. Un gate que falla produce exit no-cero; no se publica contenido incompleto.
+- Hallazgo principal requiere identidad GitHub, `que_es`, `por_que_importa`, madurez, acción y relación de grafo. Radar requiere URL, descripción y acción; madurez puede faltar en fuentes antiguas y nunca se inventa.
+- Los hallazgos multi-repo conservan `urls_adicionales`; Astro debe generar una ficha por cada URL GitHub.
+- Diagnóstico 404: comprobar enriched JSON, `dist/repo/<owner>/<repo>/index.html`, y luego deployment remoto.
+- Pruebas: `python3 -m unittest discover -s pipeline/tecnoboletin-enricher/tests -v`.
+
 - `--carry-forward <editorial.json existente>`: conserva el contenido
   (ya es bueno, revisado por Alejandro), solo ajusta el schema
   (`perfiles_involucrados` -> `lentes_aplicadas`) y repara mojibake UTF-8

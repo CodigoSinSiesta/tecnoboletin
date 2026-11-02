@@ -60,6 +60,33 @@ def build_edges(enriched: dict, date: str) -> list[dict]:
     return edges
 
 
+def validate_enriched(enriched: dict) -> list[str]:
+    """Validate publishable content before touching output or processing state."""
+    errors = []
+    items = enriched.get("items")
+    if not isinstance(items, list) or not items:
+        return ["no hay items"]
+    for item in items:
+        title = item.get("titulo", f"idx={item.get('idx', '?')}")
+        content = item.get("contenido") or {}
+        if not str(item.get("titulo", "")).strip():
+            errors.append(f"{title}: titulo vacio")
+        urls = [item.get("url", ""), *(item.get("urls_adicionales") or [])]
+        if not any(str(url).strip() for url in urls):
+            errors.append(f"{title}: url vacia")
+        if item.get("seccion") == "hallazgo_principal":
+            for field in ("que_es", "por_que_importa", "madurez_senales", "accion_sugerida"):
+                if not str(content.get(field, "")).strip():
+                    errors.append(f"{title}: {field} vacio")
+            if not item.get("relacion_grafo"):
+                errors.append(f"{title}: relacion_grafo vacia")
+        elif item.get("seccion") == "radar_secundario":
+            for field in ("que_es", "accion_sugerida"):
+                if not str(content.get(field, "")).strip():
+                    errors.append(f"{title}: {field} vacio")
+    return errors
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Persiste enriched.json + edges.jsonl al repo y actualiza state.json de la skill")
     ap.add_argument("--date", type=str, required=True)
@@ -72,6 +99,10 @@ def main() -> int:
         return 1
 
     enriched = json.loads(args.enriched.read_text(encoding="utf-8"))
+    errors = validate_enriched(enriched)
+    if errors:
+        print("ERROR: enriquecido incompleto; " + "; ".join(errors), file=sys.stderr)
+        return 4
     edges = build_edges(enriched, args.date)
 
     out_dir = args.repo_data_dir / args.date

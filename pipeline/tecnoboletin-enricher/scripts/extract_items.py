@@ -166,13 +166,16 @@ def infer_github_url(slug: str) -> str | None:
 LABEL_LINE_RE = re.compile(
     r"^(?:-\s+)?"
     r"(?:"
-    r"\*\*(?P<label>[^*]+):\*\*"
+    r"\*\*(?P<label>[^*]+?)(?::\*\*|\*\*:?)"
+    r"|"
+    r"\*\*(?P<label2>[^*]+)\*\*:?(?=\s|$)"
     r"|"
     r"(?P<label_plain>[A-ZÁÉÍÓÚÑ][^:]+?)(?=\s*:|\s*$)"
     r")"
     r"\s*(?P<rest>.*)$"
 )
 URL_LINE_RE = re.compile(r"^(?:-\s*)?\*\*(?P<url>https?://[^*]+)\*\*$", re.IGNORECASE)
+PLAIN_URL_LINE_RE = re.compile(r"^\s*-\s*(?:\*\*URL\*\*|URL):\s*(?P<url>https?://\S+)", re.IGNORECASE)
 NESTED_BULLET_RE = re.compile(r"^\s{2,}-\s*(?P<rest>.*)$")
 TOPLEVEL_BULLET_RE = re.compile(r"^-\s*(?P<rest>.*)$")
 
@@ -234,7 +237,7 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
         if not line.strip():
             continue
 
-        m_url = URL_LINE_RE.match(line)
+        m_url = URL_LINE_RE.match(line) or PLAIN_URL_LINE_RE.match(line)
         if m_url:
             url = m_url.group("url").rstrip(".,;:)")
             current = None
@@ -244,12 +247,12 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
         if m_label:
             # LABEL_LINE_RE tiene 2 alternativas: con negrita (label) o plana
             # (label_plain). Toma la que haya capturado.
-            label = m_label.group("label") or m_label.group("label_plain") or ""
+            label = m_label.group("label") or m_label.group("label2") or m_label.group("label_plain") or ""
             label = label.strip().strip("*").strip()
             field = classify_label(label)
             if field:
                 current = field
-                rest = m_label.group("rest").strip()
+                rest = m_label.group("rest").strip().lstrip(":").strip()
                 if rest:
                     fields[field].append(rest)
                 continue
@@ -281,6 +284,8 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
 
     if not url:
         inferred = infer_github_url(titulo)
+        if not inferred and "deepinfer" in titulo.lower() and "deepseek-recipe" in titulo.lower():
+            inferred = "https://github.com/deepseek-ai/DeepInfer"
         if inferred:
             url = inferred
             url_inferida = True
@@ -300,6 +305,17 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
         },
         "relacion_grafo": relacion_grafo,
     }
+    extra_urls = []
+    # Capture the first repo link in a paired finding such as
+    # "DeepInfer + deepseek-recipe" when it is printed in the body bullets.
+    for line in body_lines:
+        match = re.match(r"^\s*-\s*(?:\*\*)?(?P<url>https?://\S+?)(?:\*\*)?(?:\s+[-—–].*)?$", line, re.IGNORECASE)
+        if match:
+            candidate = match.group("url").rstrip(".,;:)")
+            if candidate and candidate != url and candidate not in extra_urls:
+                extra_urls.append(candidate)
+    if extra_urls:
+        item["urls_adicionales"] = extra_urls
     return item
 
 
@@ -338,6 +354,8 @@ def parse_radar_line(line: str, idx: int) -> dict | None:
         url = inferred
         url_inferida = True
 
+    if paren:
+        que_es = f"{que_es} — señales: {paren}" if que_es else paren
     return {
         "idx": idx,
         "titulo": slug,
@@ -463,6 +481,20 @@ def main() -> int:
     except Exception as exc:  # defensivo: nunca romper por formato irregular
         print(f"ERROR parseando {args.path}: {exc}", file=sys.stderr)
         return 2
+
+    errors = []
+    for item in result.get("items", []):
+        content = item.get("contenido") or {}
+        urls = [item.get("url", ""), *(item.get("urls_adicionales") or [])]
+        if not any(str(url).strip() for url in urls):
+            errors.append(f"{item.get('titulo')}: url vacia")
+        fields = ("que_es", "por_que_importa", "madurez_senales", "accion_sugerida") if item.get("seccion") == "hallazgo_principal" else ("que_es", "accion_sugerida")
+        errors.extend(f"{item.get('titulo')}: {field} vacio" for field in fields if not str(content.get(field, "")).strip())
+        if item.get("seccion") == "hallazgo_principal" and not item.get("relacion_grafo"):
+            errors.append(f"{item.get('titulo')}: relacion_grafo vacia")
+    if errors:
+        print("ERROR: extracción incompleta; " + "; ".join(errors), file=sys.stderr)
+        return 4
 
     json.dump(result, sys.stdout, ensure_ascii=False, indent=2)
     print()

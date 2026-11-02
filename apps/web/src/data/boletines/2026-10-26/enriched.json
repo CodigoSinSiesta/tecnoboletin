@@ -1,0 +1,389 @@
+{
+  "version": 2,
+  "date": "2026-10-26",
+  "boletin_origen": "2026-10-26-manual.md",
+  "resumen_ejecutivo": "- JetBrains ThinkRail convierte un coding agent basado en pi en un IDE con worktrees aislados, sesiones concurrentes y specs vivas; aporta un ejemplo tangible de contexto de proyecto que sobrevive a la conversación.\n- Cloudflare Security Audit Skill y NVIDIA OpenShell cubren capas distintas de seguridad: auditoría verificable del código y restricciones de runtime para lo que el agente puede tocar. OpenShell ha publicado la serie 0.1.x, pero exige validar compatibilidad e instalación local antes de adoptarlo.\n- Cindy empaqueta varios harnesses y modelos en un cliente local común; el repositorio es solo el cliente y el README confirma que el servicio de backend está separado, así que local-first no equivale a que todas las funciones sean autónomas.\n- Impeccable aborda el problema recurrente del diseño de interfaz generado por modelos con reglas deterministas y comandos reutilizables; DeepTutor ofrece una aplicación de tutoría más amplia, pero sus muchas funciones y ritmo de cambios invitan a revisar alcance y privacidad.\n- No se publicó archivo de blogwatcher hoy. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "1. ThinkRail",
+      "url": "https://github.com/JetBrains/thinkrail",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "IDE agéntico de JetBrains construido alrededor de pi, con workspaces por git worktree, varias sesiones concurrentes, specs persistentes en archivos y soporte de skills/MCP.",
+        "por_que_importa": "aterriza una arquitectura de coding agent donde aislamiento de cambios, memoria de proyecto y revisión de PR son funciones del producto y no instrucciones sueltas en un chat. El proyecto se identifica como incubador de JetBrains; el README documenta binarios Linux x64/ARM64 y requisitos de escritorio.",
+        "madurez_senales": "2.140 estrellas · 119 forks · TypeScript · creado 2026-07-08 · último push 2026-10-26 · Apache-2.0 · topics: agent, agent-skills, pi-agent, spec-driven. Verificado vía GitHub REST API; descripción/funciones contrastadas con README.",
+        "accion_sugerida": "explorar worktrees, specs y aprobaciones MCP; comparar con el flujo de perfiles/Kanban sin asumir que lo sustituye.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:JetBrains/thinkrail",
+          "rel": "implements",
+          "dst": "concept:agentic-ide",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:JetBrains/thinkrail",
+          "rel": "uses",
+          "dst": "concept:cross-harness-local-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "1-thinkrail",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "2. Cloudflare Security Audit Skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill de auditoría multi-etapa que organiza reconocimiento, búsqueda guiada por cobertura, validación independiente de candidatos e informes desde registros estructurados.",
+        "por_que_importa": "distingue indicios de hallazgos confirmados, registra cobertura y exige verificación independiente. El propio proyecto exige un sandbox con red externa desactivada para ejecutar código del objetivo; no se debe probar con código no confiable sin aislamiento fuerte.",
+        "madurez_senales": "47.494 estrellas · 2.948 forks · JavaScript · creado 2026-06-18 · último push 2026-09-14 · MIT. Verificado vía GitHub REST API y README.",
+        "accion_sugerida": "leer el diseño de ledger y validación; no ejecutar sobre repos externos sin sandbox apropiado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "implements",
+          "dst": "concept:agent-security-audit",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "complements",
+          "dst": "concept:agent-security-audit",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "2-cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "3. NVIDIA OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime para agentes con sandbox y políticas de archivos, procesos y red, aplicadas en ejecución y revisadas antes de aprobar cambios.",
+        "por_que_importa": "aborda el límite operativo entre conceder herramientas a un agente y exponerle el host o credenciales. Kernel-level enforcement y revisión formal de políticas son afirmaciones del proyecto, no una auditoría independiente. Requiere Linux, macOS Apple Silicon o WSL2 experimental, más Docker/Podman o virtualización.",
+        "madurez_senales": "19.954 estrellas · 1.972 forks · Rust · creado 2026-02-24 · último push 2026-10-26 · Apache-2.0. Verificado vía GitHub REST API y README.",
+        "accion_sugerida": "vigilar la madurez de 0.1.x y validar matriz de soporte/políticas antes de instalar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "implements",
+          "dst": "concept:agent-sandboxing",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "complements",
+          "dst": "concept:agent-security-audit",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "3-nvidia-openshell",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "4. Cindy",
+      "url": "https://github.com/makecindy/cindy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "cliente de escritorio y móvil, mayormente TypeScript, que conecta Claude Code/Codex y otros modelos/harnesses con memoria, skills, herramientas, automatizaciones y tareas paralelas.",
+        "por_que_importa": "explora continuidad al cambiar de harness o modelo. Matiz: el repositorio es el cliente; el servicio backend está separado. El README distingue el modo sin iniciar sesión, donde algunas capacidades de servidor no están disponibles.",
+        "madurez_senales": "5.397 estrellas · 705 forks · TypeScript · creado 2026-07-22 · último push 2026-10-26 · Apache-2.0. Verificado vía GitHub REST API y README.",
+        "accion_sugerida": "leer el límite entre capacidades locales y servicio remoto antes de compararlo con Hermes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:makecindy/cindy",
+          "rel": "implements",
+          "dst": "concept:cross-harness-local-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:JetBrains/thinkrail",
+          "rel": "complements",
+          "dst": "repo:makecindy/cindy",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "4-cindy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "5. Impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill/CLI para coding agents con comandos de diseño, auditoría visual, reglas deterministas y modo de iteración en navegador.",
+        "por_que_importa": "mezcla contexto de producto persistente, vocabulario de acciones y chequeos automáticos independientes del modelo. El README distingue reglas locales de críticas que usan un LLM.",
+        "madurez_senales": "88.190 estrellas · 5.267 forks · Rust · creado 2025-11-16 · último push 2026-10-25 · Apache-2.0. Verificado vía GitHub REST API y README.",
+        "accion_sugerida": "probar sus reglas deterministas sobre una interfaz de muestra y medir falsos positivos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "implements",
+          "dst": "concept:agentic-ui-quality",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:google-labs-code/stitch-skills",
+          "rel": "complements",
+          "dst": "concept:agentic-ui-quality",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "5-impeccable",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "6. DeepTutor",
+      "url": "https://github.com/HKUDS/DeepTutor",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "entorno de aprendizaje personalizado con agentes, lectura de documentos, bases de conocimiento y actividades de práctica; ofrece interfaz y CLI.",
+        "por_que_importa": "permite observar cómo combinar recuperación, progreso persistente y tutoría en una aplicación vertical, y contrastar ese patrón con grafos locales. El README registra cambios hasta v1.6.15 (19 de octubre); el volumen de funciones no demuestra por sí mismo calidad pedagógica ni privacidad.",
+        "madurez_senales": "42.982 estrellas · 5.439 forks · Python · creado 2025-12-28 · último push 2026-10-19 · Apache-2.0 · topics incluyen ai-tutor, deepresearch, interactive-learning, multi-agent-systems y rag. Verificado vía GitHub REST API y README.",
+        "accion_sugerida": "leer modelo de espacios y fuentes; revisar privacidad antes de probar con documentos privados.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:HKUDS/DeepTutor",
+          "rel": "implements",
+          "dst": "concept:adaptive-ai-tutoring",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:amosblomqvist/learnharness",
+          "rel": "complements",
+          "dst": "concept:adaptive-ai-tutoring",
+          "primera_mencion": "2026-10-25"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "6-deeptutor",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "deepseek-ai/DeepInfer",
+      "url": "https://github.com/deepseek-ai/DeepInfer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "22.675 estrellas, último push 2026-10-26, Python. Serving de DeepSeek V4.1 Flash con soporte específico de aceleradores; el README enumera piezas que aún faltan para un servicio completo. Apache-2.0",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar requisitos de hardware",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-ai-deepinfer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "oxc-project/tsrs",
+      "url": "https://github.com/oxc-project/tsrs",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "2.300 estrellas, último push 2026-10-26, Rust. Reemplazo experimental del checker de TypeScript; el README enumera diferencias de diagnóstico. Apache-2.0",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "probar solo en rama aislada",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oxc-project-tsrs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "135.555 estrellas, último push 2026-10-23, Python. Convierte código/documentación en grafo navegable. Apache-2.0. Reentrada sin novedad sustancial",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar versiones",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "graphify-labs-graphify",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "106.260 estrellas, último push 2026-10-26, TypeScript. Entorno para coordinar coding agents en worktrees. MIT. Reentrada sin novedad verificada",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "vigilar cambios sustanciales",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "google-labs-code/stitch-skills",
+      "url": "https://github.com/google-labs-code/stitch-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "8.596 estrellas, último push 2026-08-17, TypeScript. Skills de diseño para Stitch MCP. Apache-2.0",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "comparar convenciones con Impeccable",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-labs-code-stitch-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "pollen-robotics/microduck",
+      "url": "https://github.com/pollen-robotics/microduck",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "11.978 estrellas, último push 2026-10-25, Rust. Control de robot bípedo compacto. Apache-2.0",
+        "por_que_importa": "",
+        "madurez_senales": "",
+        "accion_sugerida": "ignorar repetición sin novedad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pollen-robotics-microduck",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 6,
+    "llm_backend": "none",
+    "llm_polish_notes": "",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

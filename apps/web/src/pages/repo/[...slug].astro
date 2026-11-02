@@ -13,7 +13,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { mdInline } from '../../lib/markdown';
 import {
   accionDetail, accionEstado, fmtNum, fuenteSlug, itemTema, listDates, loadBoletin,
-  normalizeFuente, parseSenales, parseTopics, repoNodeId, repoSlug, type BoletinItem,
+  normalizeFuente, parseSenales, parseTopics, repoNodeId, repoSlug, repoSlugs, type BoletinItem,
 } from '../../lib/boletin';
 import StateBadge from '../../components/StateBadge.astro';
 import GraphChips from '../../components/GraphChips.astro';
@@ -26,17 +26,17 @@ export async function getStaticPaths() {
   for (const date of dates) {
     const b = await loadBoletin(date);
     for (const it of b.items) {
-      const slug = repoSlug(it);
-      if (!slug) continue;
-      const key = slug.toLowerCase();
-      const existing = porSlug.get(key);
-      if (existing) {
-        existing.apariciones.push({ date, idx: it.idx, seccion: it.seccion });
-        // dates are descending; overwrite so the canonical slug casing and
-        // metadata source come from the most recent appearance.
-        existing.slug = slug;
-      } else {
-        porSlug.set(key, { slug, apariciones: [{ date, idx: it.idx, seccion: it.seccion }] });
+      const slugs = repoSlugs(it);
+      for (const slug of slugs) {
+        const key = slug.toLowerCase();
+        const existing = porSlug.get(key);
+        if (!existing) {
+          porSlug.set(key, { slug, apariciones: [{ date, idx: it.idx, seccion: it.seccion }] });
+        } else {
+          existing.apariciones.push({ date, idx: it.idx, seccion: it.seccion });
+          // dates are descending; the final entry remains the latest occurrence.
+          existing.slug = slug;
+        }
       }
     }
   }

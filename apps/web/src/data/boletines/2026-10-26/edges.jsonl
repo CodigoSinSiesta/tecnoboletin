@@ -1,0 +1,36 @@
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-jetbrains-thinkrail", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-jetbrains-thinkrail", "dst": "tema:1-thinkrail", "rel": "trata", "added": "2026-10-26"}
+{"src": "repo:JetBrains/thinkrail", "dst": "concept:agentic-ide", "rel": "implements", "added": "2026-10-26", "primera_mencion": null}
+{"src": "repo:JetBrains/thinkrail", "dst": "concept:cross-harness-local-agent", "rel": "uses", "added": "2026-10-26", "primera_mencion": null}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:2-cloudflare-security-audit-skill", "rel": "trata", "added": "2026-10-26"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "concept:agent-security-audit", "rel": "implements", "added": "2026-10-26", "primera_mencion": "2026-09-15"}
+{"src": "repo:NVIDIA/OpenShell", "dst": "concept:agent-security-audit", "rel": "complements", "added": "2026-10-26", "primera_mencion": "2026-08-07"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-nvidia-openshell", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-nvidia-openshell", "dst": "tema:3-nvidia-openshell", "rel": "trata", "added": "2026-10-26"}
+{"src": "repo:NVIDIA/OpenShell", "dst": "concept:agent-sandboxing", "rel": "implements", "added": "2026-10-26", "primera_mencion": "2026-08-07"}
+{"src": "repo:NVIDIA/OpenShell", "dst": "concept:agent-security-audit", "rel": "complements", "added": "2026-10-26", "primera_mencion": "2026-08-07"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-makecindy-cindy", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-makecindy-cindy", "dst": "tema:4-cindy", "rel": "trata", "added": "2026-10-26"}
+{"src": "repo:makecindy/cindy", "dst": "concept:cross-harness-local-agent", "rel": "implements", "added": "2026-10-26", "primera_mencion": null}
+{"src": "repo:JetBrains/thinkrail", "dst": "repo:makecindy/cindy", "rel": "complements", "added": "2026-10-26", "primera_mencion": null}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-pbakaus-impeccable", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:5-impeccable", "rel": "trata", "added": "2026-10-26"}
+{"src": "repo:pbakaus/impeccable", "dst": "concept:agentic-ui-quality", "rel": "implements", "added": "2026-10-26", "primera_mencion": "2026-07-11"}
+{"src": "repo:google-labs-code/stitch-skills", "dst": "concept:agentic-ui-quality", "rel": "complements", "added": "2026-10-26", "primera_mencion": null}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-hkuds-deeptutor", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-hkuds-deeptutor", "dst": "tema:6-deeptutor", "rel": "trata", "added": "2026-10-26"}
+{"src": "repo:HKUDS/DeepTutor", "dst": "concept:adaptive-ai-tutoring", "rel": "implements", "added": "2026-10-26", "primera_mencion": null}
+{"src": "repo:amosblomqvist/learnharness", "dst": "concept:adaptive-ai-tutoring", "rel": "complements", "added": "2026-10-26", "primera_mencion": "2026-10-25"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-deepseek-ai-deepinfer", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-deepseek-ai-deepinfer", "dst": "tema:deepseek-ai-deepinfer", "rel": "trata", "added": "2026-10-26"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-oxc-project-tsrs", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-oxc-project-tsrs", "dst": "tema:oxc-project-tsrs", "rel": "trata", "added": "2026-10-26"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-graphify-labs-graphify", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-graphify-labs-graphify", "dst": "tema:graphify-labs-graphify", "rel": "trata", "added": "2026-10-26"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-10-26"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-google-labs-code-stitch-skills", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-google-labs-code-stitch-skills", "dst": "tema:google-labs-code-stitch-skills", "rel": "trata", "added": "2026-10-26"}
+{"src": "boletin:2026-10-26", "dst": "item:https-github-com-pollen-robotics-microduck", "rel": "menciona", "added": "2026-10-26"}
+{"src": "item:https-github-com-pollen-robotics-microduck", "dst": "tema:pollen-robotics-microduck", "rel": "trata", "added": "2026-10-26"}
