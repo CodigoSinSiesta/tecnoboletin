@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "date": "2026-11-03",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "T3 Code convierte el harness en panel de control",
+  "posicionamiento": "El harness deja de ser el producto y pasa a ser la superficie de control: T3 Code no añade otro agente, ordena los que ya tienes autenticados. Lo local-first se juega mientras tanto en el disco y en la memoria, no en el modelo.",
+  "convergencia_stack_css": "Convergencia directa: colibri mueve la restricción de VRAM al disco y al ancho de banda, claude-mem lleva la memoria a SQLite con vectores y OmniRoute se instala como pasarela en tu equipo. El matiz es el de siempre: las tres funcionan, pero el camino por defecto ya apunta al servicio alojado.",
+  "cruzado_grafo": "Aparecen tres nodos sin primera_mencion: moe_streaming_inference, free-tier-tos-exposure y agent-scope-drift. El resto refuerza líneas ya abiertas: el plano de control (2026-08-09), la memoria local-first (2026-09-27) y la viabilidad de scraping (2026-08-31) suman arista nueva hoy.",
+  "tendencias_5_boletines": "La continuidad es explícita: el 2026-11-01 el eje era el cerco del agente y el 2026-11-02, devolver el mando al humano. Hoy ese mando se materializa en un panel, T3 Code, y la memoria deja de ser promesa para volverse instalador con login.",
+  "alertas": [
+    "claude-mem pide iniciar sesión y ofrece un observador alojado con prueba temporal: lo local es opción explícita, no el camino por defecto.",
+    "T3 Code está muy al principio y su README no acepta contribuciones grandes; el panel es gratis, el valor está en suscripciones que ya pagas.",
+    "OmniRoute apilar capas gratuitas expone las condiciones de uso de cada proveedor: material para artículo, no recomendación de uso.",
+    "ECC depende de un solo mantenedor y avisa de que fijar una versión no equivale a auditar el paquete.",
+    "Scrapling trae un motor orientado a evadir detección: sirve para medir viabilidad, no para saltarse límites ajenos.",
+    "colibri pide 8 GB de RAM y 22 GB libres para el modelo más pequeño: local sí, gratis en disco no."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Es el hallazgo con más consecuencias prácticas para el stack propio: cambia qué hardware sirve. Conviene medir latencia y disco reales antes de darlo por bueno."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Su arquitectura de memoria es legible y verificable, y se integra con T3 Code. Vale la pena comprobar si el modo local se sostiene sin la cuenta alojada."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "Mayor movimiento de Trending hoy, pero el propio README lo sitúa muy al principio. Seguimiento, no adopción todavía."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Publica la metodología de sus tokens gratuitos y marca los proveedores con riesgo: ángulo honesto para un artículo sobre el coste real de apilar capas gratuitas."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 6,
+      "razon": "Contrapunto útil a las suites gigantes: poca superficie y decisión escrita en el repositorio. Sirve para explicar dónde se rompe el flujo cuando falta la convergencia final."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

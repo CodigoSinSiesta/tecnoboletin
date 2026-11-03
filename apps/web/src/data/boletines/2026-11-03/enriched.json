@@ -1,0 +1,498 @@
+{
+  "version": 2,
+  "date": "2026-11-03",
+  "boletin_origen": "2026-11-03-trending.md",
+  "resumen_ejecutivo": "- La tesis del día es que el harness deja de ser el producto y pasa a ser la superficie de control: T3 Code es el mayor movimiento de Trending con +3.229 estrellas hoy y no añade otro agente, sino un panel para gobernar los que ya tienes instalados.\n- El discurso local-first se desplaza del modelo a dos capas concretas: el disco (colibri lee expertos de un MoE enorme en lugar de cargarlos) y la memoria (claude-mem comprime el histórico de sesión). En ambos casos el matiz está en el camino por defecto, no en la promesa.\n- Descartes con motivo: `karpathy/nanochat` sigue en Trending sin commits desde septiembre y `vercel-labs/agent-desktop` reentra dos días después con +2.275, así que hoy va al radar y no a los hallazgos.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (global y cortes de TypeScript, Python, Rust, Go y JavaScript), GitHub API (17 repos verificados, README leído en la rama por defecto de cada uno). Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "pingdotgg/t3code",
+      "url": "https://github.com/pingdotgg/t3code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor local más aplicaciones de escritorio, web y móvil que controlan los agentes ya autenticados en la máquina (Codex, Claude Code, Cursor, Grok Build, OpenCode, Antigravity y fx) desde un único panel, con acceso remoto desde el teléfono.",
+        "por_que_importa": "No compite añadiendo otro modelo ni otro agente: se coloca por encima y trata el harness como infraestructura, lo que permite separar el plano de control del plano de inferencia. Ya cubrimos t3code el 2026-08-09. La pregunta que deja abierta: el panel es abierto y gratuito, pero el valor real está en las suscripciones que el usuario ya paga. Su propio README avisa de que está muy al principio y no aceptan contribuciones grandes.",
+        "madurez_senales": "42.649 estrellas · 9.145 forks · TypeScript · creado 2026-02-08 · último push 2026-11-03 · MIT · +3.229 hoy en Trending · topics: ninguno publicado · el README avisa de que el proyecto está muy al principio y de que no aceptan contribuciones grandes (verificado vía GitHub API; README en la rama `main`).",
+        "accion_sugerida": "**explorar** el modelo de permisos y el acceso remoto antes de instalarlo; hoy vale como patrón, no como producto estable.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pingdotgg/t3code",
+          "rel": "implements",
+          "dst": "concept:agent-harness-control-plane",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:pingdotgg/t3code",
+          "rel": "relevant_to",
+          "dst": "concept:multi-harness-orchestration",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pingdotgg-t3code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema de memoria para agentes de código que se engancha al ciclo de vida de la sesión, resume con un modelo lo que hizo el agente y lo recupera después mediante búsqueda híbrida sobre SQLite y una base vectorial, con varias herramientas MCP organizadas en capas de consulta.",
+        "por_que_importa": "Resuelve la continuidad entre sesiones con una arquitectura legible y verificable: resume con un modelo lo que hizo el agente y lo recupera con búsqueda híbrida sobre SQLite y vectores. Ya cubrimos la memoria local-first de agentes el 2026-09-27 y el riesgo de que la memoria acabe siendo servicio alojado por defecto el 2026-10-08; el instalador confirma ese patrón, porque pide iniciar sesión y ofrece un observador alojado con prueba temporal, con el local como opción explícita. La memoria local existe, pero ya no es el camino por defecto, igual que pasó con la inferencia. Se integra con t3code, cubierto el 2026-08-09.",
+        "madurez_senales": "111.107 estrellas · 9.683 forks · TypeScript · creado 2025-08-31 · último push 2026-11-03 · Apache-2.0 · +1.803 hoy en Trending · topics: `ai-memory`, `claude-code`, `claude-agent-sdk`, `chromadb`, `mcp` · versión 15.9.0 en el README (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** qué se envía al observador y qué queda en la base local antes de instalarlo en un proyecto real.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:thedotmack/claude-mem",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-memory",
+          "primera_mencion": "2026-09-27"
+        },
+        {
+          "src": "repo:thedotmack/claude-mem",
+          "rel": "risk",
+          "dst": "problem:memory-as-a-service-default",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:thedotmack/claude-mem",
+          "rel": "integrates",
+          "dst": "repo:pingdotgg/t3code",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thedotmack-claude-mem",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "JustVugg/colibri",
+      "url": "https://github.com/JustVugg/colibri",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor en C puro que ejecuta modelos de mezcla de expertos de cientos de miles de millones de parámetros manteniendo en RAM solo la parte activa de cada token y leyendo el resto desde el disco; incluye implementaciones para familias como GLM, Kimi, DeepSeek, Qwen y OLMoE, sin GPU obligatoria.",
+        "por_que_importa": "Demuestra que lo local no exige datacenter: cambia la restricción de memoria de vídeo por la de ancho de banda y disco, y eso reordena qué hardware sirve. El stack local-first del que forma parte ya apareció el 2026-08-19, y la comparación con FreeToken, el 2026-08-23. Para el blog da una comparación honesta: se gana privacidad y coste marginal cero, se pierde latencia y espacio en disco; el README pide 8 GB de RAM y 22 GB libres para el modelo más pequeño.",
+        "madurez_senales": "46.805 estrellas · 5.404 forks · C · creado 2026-07-01 · último push 2026-11-03 · Apache-2.0 · +675 hoy en Trending · topics: ninguno publicado · el README exige 8 GB de RAM como mínimo y 22 GB libres para el modelo más pequeño (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** el modelo más pequeño en una máquina de 16 GB y medir latencia real antes de citar cifras de rendimiento.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:JustVugg/colibri",
+          "rel": "implements",
+          "dst": "concept:moe_streaming_inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:JustVugg/colibri",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-agent-stack",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:JustVugg/colibri",
+          "rel": "competes_with",
+          "dst": "repo:FlashML-org/FreeToken",
+          "primera_mencion": "2026-08-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "justvugg-colibri",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "cheaper-inference/OmniRoute",
+      "url": "https://github.com/cheaper-inference/OmniRoute",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pasarela local compatible con la API de OpenAI que escucha en el propio equipo y enruta peticiones a cientos de proveedores con retroceso automático entre suscripción, clave propia, proveedor barato y capa gratuita; añade compresión de contexto y un catálogo de niveles gratuitos con su metodología.",
+        "por_que_importa": "Corre en tu equipo como pasarela compatible con OpenAI y hace retroceso automático entre suscripción, clave propia, proveedor barato y capa gratuita. Hace algo poco frecuente en este nicho: publica cómo calcula la cifra de tokens gratuitos y marca de forma explícita los proveedores con riesgo en sus condiciones de uso, además de excluirlos del enrutado automático. Ya hablamos de pasarelas LLM el 2026-09-09; esto añade la capa incómoda, el coste real de apilar niveles gratuitos. Es material para un artículo, no una recomendación de uso.",
+        "madurez_senales": "84.061 estrellas · 12.604 forks · TypeScript · creado 2026-02-13 · último push 2026-11-03 · MIT · +402 hoy en Trending · rama por defecto `release/v3.8.53` · topics: `ai-gateway`, `free-ai`, `claude-code`, `codex`, `deepseek` (verificado vía GitHub API; README leído desde la API porque la rama lleva barra en el nombre).",
+        "accion_sugerida": "**leer** la tabla de condiciones de uso y el cálculo de cuotas antes de conectarlo a una cuenta principal.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cheaper-inference/OmniRoute",
+          "rel": "implements",
+          "dst": "concept:llm-gateway",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:cheaper-inference/OmniRoute",
+          "rel": "risk",
+          "dst": "problem:free-tier-tos-exposure",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cheaper-inference-omniroute",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "suite que empaqueta agentes especializados, skills, hooks, reglas, memoria y análisis de seguridad como un sistema de trabajo único para varios harnesses de código, con un asistente que detecta qué agentes hay instalados antes de tocar nada.",
+        "por_que_importa": "Es el extremo opuesto a la pieza pequeña y verificable, y compite con spec-kit, que ya apareció el 2026-09-08. Promete planificar, verificar y aprender en el mismo flujo, y a la vez enseña el coste de las suites: duplicación de skills, choques al instalar y dependencia de un solo mantenedor, justo el problema de colisiones que cubrimos el 2026-09-08. Su propio README avisa de que fijar una versión no equivale a auditar el paquete, un detalle que conviene citar tal cual.",
+        "madurez_senales": "295.935 estrellas · 43.786 forks · JavaScript · creado 2026-01-18 · último push 2026-11-02 · MIT · +849 hoy en Trending · topics: `ai-agents`, `claude-code`, `mcp`, `developer-tools` · versión 2.2.3 citada en el README (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** la matriz de soporte por harness antes de asumir paridad de funciones entre ellos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:affaan-m/ECC",
+          "rel": "implements",
+          "dst": "concept:agent-harness-optimization",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:affaan-m/ECC",
+          "rel": "risk",
+          "dst": "problem:skill-suite-collision",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:affaan-m/ECC",
+          "rel": "competes_with",
+          "dst": "repo:github/spec-kit",
+          "primera_mencion": "2026-09-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework de scraping en Python que cubre desde una petición suelta hasta un rastreo completo, con varios motores de descarga (uno de ellos orientado a evadir detección), selectores que se adaptan cuando cambia el HTML y un servidor MCP para que un agente lo use como herramienta.",
+        "por_que_importa": "Encaja directo con la guía de viabilidad de scraping que ya cubrimos el 2026-08-31: antes de pagar proxies conviene probar un marco que lleva el coste marginal a cero. Cubre desde una petición suelta hasta un rastreo completo, con varios motores de descarga, uno orientado a evadir detección, y un servidor MCP para que un agente lo use como herramienta. El ángulo útil no es raspar más, sino qué parte del trabajo resuelve de verdad (selectores que se adaptan, bloqueos básicos) y qué parte sigue dependiendo del objetivo.",
+        "madurez_senales": "93.461 estrellas · 9.827 forks · Python · creado 2024-10-13 · último push 2026-11-02 · BSD-3-Clause · +706 hoy en Trending · topics: `ai-scraping`, `crawler`, `mcp-server`, `playwright`, `automation` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** contra un objetivo con protección ligera y anotar qué falla antes de recomendarlo como sustituto de un servicio gestionado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:D4Vinci/Scrapling",
+          "rel": "implements",
+          "dst": "concept:web-scraping",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "repo:D4Vinci/Scrapling",
+          "rel": "mitigates",
+          "dst": "problem:anti-bot-blocking",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "repo:D4Vinci/Scrapling",
+          "rel": "complements",
+          "dst": "concept:web-scraping-viability",
+          "primera_mencion": "2026-08-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "d4vinci-scrapling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "conjunto de procesos y plantillas para trabajar con agentes de código a partir de una especificación: desarrollo guiado por especificación, arreglo de errores con causa registrada y evaluación de ideas, más primitivas para montar procesos propios.",
+        "por_que_importa": "Separa el proceso del modelo y deja la decisión escrita en el repositorio, en forma de artefactos revisables. Es el contrapunto a las suites gigantes: poca superficie y mucha trazabilidad. Ya cubrimos el desarrollo guiado por especificación el 2026-10-07, y esta pieza sirve para explicar dónde se rompe ese flujo cuando falta el paso de convergencia final. No aparece en Trending hoy, así que conviene presentarlo por lo que enseña, no por el ruido de estrellas.",
+        "madurez_senales": "145.941 estrellas · 13.088 forks · Python · creado 2025-08-21 · último push 2026-11-02 · MIT · topics: `spec-driven`, `prd`, `copilot`, `ai` (verificado vía GitHub API; README en `main`). No aparece en Trending hoy.",
+        "accion_sugerida": "**leer** las extensiones de arreglo de errores y evaluación de ideas; son las que menos se documentan y más se usan.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:github/spec-kit",
+          "rel": "implements",
+          "dst": "concept:spec-driven-development",
+          "primera_mencion": "2026-10-07"
+        },
+        {
+          "src": "repo:github/spec-kit",
+          "rel": "solves",
+          "dst": "problem:agent-scope-drift",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-spec-kit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "vercel-labs/agent-desktop",
+      "url": "https://github.com/vercel-labs/agent-desktop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.002 estrellas, último push 2026-11-03, Rust) — CLI de escritorio para agentes que se apoya en el árbol de accesibilidad del sistema; reentra dos días después con +2.275 hoy y sigue siendo la referencia más sobria frente al control por píxeles — señales: https://github.com/vercel-labs/agent-desktop",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vercel-labs/agent-desktop",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "anomalyco/hex",
+      "url": "https://github.com/anomalyco/hex",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.158 estrellas, último push 2026-11-03, Rust) — dictado por voz local en las tres plataformas de escritorio; tras la primera descarga del modelo, nada sale del equipo y no aceptan pull requests, solo incidencias — señales: https://github.com/anomalyco/hex",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anomalyco/hex",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anomalyco-hex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "FlashML-org/FreeToken",
+      "url": "https://github.com/FlashML-org/FreeToken",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.316 estrellas, último push 2026-11-03, Python) — servidor de modelos de mezcla de expertos en el escritorio con reutilización de caché de contexto; el competidor directo de colibri por la vía del servidor y no del motor mínimo — señales: https://github.com/FlashML-org/FreeToken",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/FlashML-org/FreeToken",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "flashml-org-freetoken",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "max-sixty/worktrunk",
+      "url": "https://github.com/max-sixty/worktrunk",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.176 estrellas, último push 2026-11-03, Rust) — CLI que convierte los worktrees de Git en algo tan simple como ramas para lanzar varios agentes en paralelo sin que se pisen los ficheros — señales: https://github.com/max-sixty/worktrunk",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/max-sixty/worktrunk",
+        "accion_sugerida": "leer — la licencia antes de adoptarlo, porque la API la declara sin identificar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "max-sixty-worktrunk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.134 estrellas, último push 2026-11-03, Python) — capa de razonamiento semántico sobre datos que genera consultas deterministas en lugar de dejar que el modelo improvise la estructura; interesante para el grafo de conocimiento de Código Sin Siesta — señales: https://github.com/NVIDIA/auto-ontology",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/NVIDIA/auto-ontology",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-auto-ontology",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(110.602 estrellas, último push 2026-11-03, TypeScript) — aplicación para gestionar agentes de trabajo con skills y gobierno compartido; el competidor natural de T3 Code en la capa de control, con otra apuesta de producto — señales: https://github.com/paperclipai/paperclip",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/paperclipai/paperclip",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paperclipai-paperclip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "Nasiko-Labs/nasiko",
+      "url": "https://github.com/Nasiko-Labs/nasiko",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.558 estrellas, último push 2026-10-23, Rust) — runtime abierto para agentes con pasarela MCP y control de coste por tokens; el README promete bastante y la licencia no está identificada en la API — señales: https://github.com/Nasiko-Labs/nasiko",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Nasiko-Labs/nasiko",
+        "accion_sugerida": "ignorar — como dependencia hasta que aclaren licencia y actividad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nasiko-labs-nasiko",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "karpathy/nanochat",
+      "url": "https://github.com/karpathy/nanochat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(60.067 estrellas, último push 2026-09-07, Python) — entrenamiento de un chat completo por un coste bajo; sigue apareciendo en Trending pero lleva dos meses sin commits, así que su interés hoy es didáctico y no de actualidad — señales: https://github.com/karpathy/nanochat",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/karpathy/nanochat",
+        "accion_sugerida": "ignorar — como novedad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "karpathy-nanochat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-pingdotgg-t3code", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-pingdotgg-t3code", "dst": "tema:pingdotgg-t3code", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:pingdotgg/t3code", "dst": "concept:agent-harness-control-plane", "rel": "implements", "added": "2026-11-03", "primera_mencion": "2026-08-09"}
+{"src": "repo:pingdotgg/t3code", "dst": "concept:multi-harness-orchestration", "rel": "relevant_to", "added": "2026-11-03", "primera_mencion": "2026-08-09"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-thedotmack-claude-mem", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-thedotmack-claude-mem", "dst": "tema:thedotmack-claude-mem", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:thedotmack/claude-mem", "dst": "concept:local-first-agent-memory", "rel": "implements", "added": "2026-11-03", "primera_mencion": "2026-09-27"}
+{"src": "repo:thedotmack/claude-mem", "dst": "problem:memory-as-a-service-default", "rel": "risk", "added": "2026-11-03", "primera_mencion": "2026-10-08"}
+{"src": "repo:thedotmack/claude-mem", "dst": "repo:pingdotgg/t3code", "rel": "integrates", "added": "2026-11-03", "primera_mencion": "2026-08-09"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-justvugg-colibri", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-justvugg-colibri", "dst": "tema:justvugg-colibri", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:JustVugg/colibri", "dst": "concept:moe_streaming_inference", "rel": "implements", "added": "2026-11-03", "primera_mencion": null}
+{"src": "repo:JustVugg/colibri", "dst": "concept:local-first-agent-stack", "rel": "relevant_to", "added": "2026-11-03", "primera_mencion": "2026-08-19"}
+{"src": "repo:JustVugg/colibri", "dst": "repo:FlashML-org/FreeToken", "rel": "competes_with", "added": "2026-11-03", "primera_mencion": "2026-08-23"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-cheaper-inference-omniroute", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-cheaper-inference-omniroute", "dst": "tema:cheaper-inference-omniroute", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:cheaper-inference/OmniRoute", "dst": "concept:llm-gateway", "rel": "implements", "added": "2026-11-03", "primera_mencion": "2026-09-09"}
+{"src": "repo:cheaper-inference/OmniRoute", "dst": "problem:free-tier-tos-exposure", "rel": "risk", "added": "2026-11-03", "primera_mencion": null}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-affaan-m-ecc", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-affaan-m-ecc", "dst": "tema:affaan-m-ecc", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:affaan-m/ECC", "dst": "concept:agent-harness-optimization", "rel": "implements", "added": "2026-11-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:affaan-m/ECC", "dst": "problem:skill-suite-collision", "rel": "risk", "added": "2026-11-03", "primera_mencion": "2026-09-08"}
+{"src": "repo:affaan-m/ECC", "dst": "repo:github/spec-kit", "rel": "competes_with", "added": "2026-11-03", "primera_mencion": "2026-09-08"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-d4vinci-scrapling", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:D4Vinci/Scrapling", "dst": "concept:web-scraping", "rel": "implements", "added": "2026-11-03", "primera_mencion": "2026-08-31"}
+{"src": "repo:D4Vinci/Scrapling", "dst": "problem:anti-bot-blocking", "rel": "mitigates", "added": "2026-11-03", "primera_mencion": "2026-08-31"}
+{"src": "repo:D4Vinci/Scrapling", "dst": "concept:web-scraping-viability", "rel": "complements", "added": "2026-11-03", "primera_mencion": "2026-08-31"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-github-spec-kit", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-github-spec-kit", "dst": "tema:github-spec-kit", "rel": "trata", "added": "2026-11-03"}
+{"src": "repo:github/spec-kit", "dst": "concept:spec-driven-development", "rel": "implements", "added": "2026-11-03", "primera_mencion": "2026-10-07"}
+{"src": "repo:github/spec-kit", "dst": "problem:agent-scope-drift", "rel": "solves", "added": "2026-11-03", "primera_mencion": null}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-vercel-labs-agent-desktop", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-vercel-labs-agent-desktop", "dst": "tema:vercel-labs-agent-desktop", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-anomalyco-hex", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-anomalyco-hex", "dst": "tema:anomalyco-hex", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-flashml-org-freetoken", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-flashml-org-freetoken", "dst": "tema:flashml-org-freetoken", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-max-sixty-worktrunk", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-max-sixty-worktrunk", "dst": "tema:max-sixty-worktrunk", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-nvidia-auto-ontology", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-nvidia-auto-ontology", "dst": "tema:nvidia-auto-ontology", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-paperclipai-paperclip", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-paperclipai-paperclip", "dst": "tema:paperclipai-paperclip", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-nasiko-labs-nasiko", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-nasiko-labs-nasiko", "dst": "tema:nasiko-labs-nasiko", "rel": "trata", "added": "2026-11-03"}
+{"src": "boletin:2026-11-03", "dst": "item:https-github-com-karpathy-nanochat", "rel": "menciona", "added": "2026-11-03"}
+{"src": "item:https-github-com-karpathy-nanochat", "dst": "tema:karpathy-nanochat", "rel": "trata", "added": "2026-11-03"}
