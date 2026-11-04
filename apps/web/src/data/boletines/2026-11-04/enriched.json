@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-04",
+  "boletin_origen": "2026-11-04-trending.md",
+  "resumen_ejecutivo": "- La novedad de hoy no son agentes nuevos, sino las capas que van por debajo: Anthropic publica un prototipo que permite a un proveedor demostrar qué modelo respondió sin enseñar los pesos, y esa idea de «prueba verificable» es la que más recorrido editorial tiene.\n- El discurso local-first baja del modelo a la infraestructura: floci sustituye AWS en local como reemplazo directo de LocalStack y voxl convierte un escritorio remoto en una emisión de vídeo con cifras públicas de latencia, justo la pieza que necesitan los agentes de uso de escritorio.\n- El «gratis» vuelve a enseñar la letra pequeña: freellmapi agrega 34 capas gratuitas y cobra por que el catálogo llegue al día, un patrón idéntico al de la pasarela de ayer.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (global y cortes de TypeScript, Python, Rust, Go y JavaScript), GitHub API (15 repos verificados, README leído en la rama por defecto de cada uno). Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "anthropics/FlashProve",
+      "url": "https://github.com/anthropics/FlashProve",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "artefacto de investigación de Anthropic, escrito en Lean, con el que un proveedor de inferencia publica un compromiso sobre un conjunto de pesos y, para cada respuesta, genera una prueba de que esa respuesta la produjo el modelo comprometido; cualquiera puede verificar esa prueba en una CPU normal en segundos, sin tener los pesos.",
+        "por_que_importa": "Hoy no hay forma de comprobar que la API que pagas ejecuta el modelo que anuncia: FlashProve ataca ese problema de confianza, no de rendimiento, con un prototipo en Lean 4 que publica un compromiso sobre los pesos y una prueba verificable en una CPU normal en segundos. Ya tocamos la verificación de agentes el 2026-10-20 y el código respaldado por pruebas el 2026-09-18; esto es la pieza que faltaba, trasladada al proveedor de inferencia. El README avisa de que no está mantenido ni acepta contribuciones: es una demostración con corrección comprobable, no un producto, y da para un artículo con tesis, no para un tutorial.",
+        "madurez_senales": "598 estrellas · 52 forks · Lean (con la demostración de corrección en Lean 4) · creado 2026-10-30 · último push 2026-10-30 · Apache-2.0 · topics: ninguno publicado · el README declara que ejecuta Llama 4 Maverick con ventana de 1.024 tokens en una sola H100 y que la ruta de verificación se compila y comprueba en menos de dos segundos (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** la ruta de verificación antes que la del probador; es la única que se puede ejecutar hoy en un portátil sin GPU.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/FlashProve",
+          "rel": "implements",
+          "dst": "concept:zero-knowledge-inference-proof",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:anthropics/FlashProve",
+          "rel": "solves",
+          "dst": "concern:agent-verifiability",
+          "primera_mencion": "2026-10-20"
+        },
+        {
+          "src": "repo:anthropics/FlashProve",
+          "rel": "relevant_to",
+          "dst": "concept:proof-backed-agent-code",
+          "primera_mencion": "2026-09-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-flashprove",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "floci-io/floci",
+      "url": "https://github.com/floci-io/floci",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "emulador local de servicios de AWS que escucha en el puerto 4566 y se anuncia como reemplazo directo de LocalStack: se cambia la imagen y siguen funcionando los SDK, la CLI, Terraform, CDK y las suites de pruebas. Forma parte de una familia con emuladores hermanos para Azure, GCP y OCI.",
+        "por_que_importa": "El local-first deja de ser una postura sobre modelos y pasa a ser una decisión de infraestructura: si las pruebas caben en el portátil, la nube es un destino y no una dependencia de desarrollo. En el grafo compite con el stack local-first de agentes que cubrimos el 2026-08-19 y habilita la ejecución remota local-first del 2026-09-23. El ángulo está en el modelo de negocio del rival: aquí no hay cuenta, ni token, ni funciones tras un plan de pago, que es justo lo que se cobra en este nicho; conviene comprobar si esa gratuidad se sostiene.",
+        "madurez_senales": "29.093 estrellas · 3.235 forks · Java · creado 2026-02-18 · último push 2026-11-04 · MIT · topics: `aws`, `aws-emulation`, `devops`, `docker`, `ec2`, `ecs`, `localstack`, `s3`, `sqs`, `testcontainers` · 174 incidencias abiertas · la familia incluye floci-az (Azure, puerto 4577), floci-gcp (GCP, 4588) y floci-oci (OCI, 4599) (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** el reemplazo de imagen en un proyecto con Terraform y anotar qué servicios faltan antes de mover el CI.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:floci-io/floci",
+          "rel": "implements",
+          "dst": "concept:local-cloud-emulator",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:floci-io/floci",
+          "rel": "competes_with",
+          "dst": "concept:local-first-agent-stack",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:floci-io/floci",
+          "rel": "enables",
+          "dst": "concept:local-first-remote-execution",
+          "primera_mencion": "2026-09-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "floci-io-floci",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "tembo/voxl",
+      "url": "https://github.com/tembo/voxl",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor en Rust que emite un escritorio X11, macOS o Windows como vídeo H.264 por WebSocket hacia un cliente web que lo decodifica con WebCodecs; incluye entrada, portapapeles, audio, micrófono, transferencia de ficheros y resolución dinámica.",
+        "por_que_importa": "El cuello de botella de un agente que maneja un escritorio no es el modelo sino el transporte: sin emisión fluida no hay forma de observarlo ni corregirlo mientras hace clic. Según el README, alcanza 60 FPS con latencia mediana de 12 a 99 ms en 16 vCPU sin GPU y publica los bancos de pruebas para reproducirlo, lo que hace la promesa discutible con datos. Enlaza con el computer use de escritorio que cubrimos el 2026-10-31 y con el sandbox de agentes del 2026-09-09, y su caso declarado (máquinas de agentes en contenedor) cierra el círculo con el resto del boletín.",
+        "madurez_senales": "698 estrellas · 25 forks · Rust · creado 2026-06-18 · último push 2026-11-04 · MIT · topics: `ai-agents`, `computer-use`, `desktop-streaming`, `novnc`, `sandbox`, `vnc`, `webcodecs`, `windows` · el README compara sobre una máquina de 16 vCPU sin GPU y declara 60 FPS con latencia mediana de 12 a 99 ms frente a menos de 8 FPS de noVNC (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** un contenedor con Xvfb y medir latencia desde el portátil antes de fiarse de la tabla.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tembo/voxl",
+          "rel": "implements",
+          "dst": "concept:remote-desktop-streaming",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tembo/voxl",
+          "rel": "enables",
+          "dst": "concept:desktop-computer-use",
+          "primera_mencion": "2026-10-31"
+        },
+        {
+          "src": "repo:tembo/voxl",
+          "rel": "complements",
+          "dst": "concept:agent-sandbox",
+          "primera_mencion": "2026-09-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tembo-voxl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "keploy/keploy",
+      "url": "https://github.com/keploy/keploy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de pruebas de API e integración que captura llamadas, consultas a base de datos y eventos de streaming con eBPF y las reproduce después como pruebas y mocks, sin tocar el código ni añadir un SDK.",
+        "por_que_importa": "Si el agente escribe el código, ¿quién escribe las pruebas? Keploy captura tráfico real con eBPF —llamadas, consultas a base de datos, eventos de streaming— y lo congela como pruebas y mocks sin SDK ni cambios en el código: la cobertura se genera en vez de redactarse. Conecta con las pruebas móviles E2E que cubrimos el 2026-10-20 y con la fiabilidad de agentes medida con pruebas del 2026-10-12. El contrapeso: la prueba hereda la calidad del tráfico, y 840 incidencias abiertas invitan a medirlo antes de fiarlo en CI.",
+        "madurez_senales": "19.322 estrellas · 2.448 forks · Go · creado 2022-01-19 · último push 2026-11-04 · Apache-2.0 · topics: `agentic-ai`, `ai-testing-tool`, `api-testing`, `test-generation`, `mock`, `test-automation` · 840 incidencias abiertas · figura en el panorama de la CNCF (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** el modo grabación en un servicio pequeño con base de datos y revisar qué mocks genera antes de meterlo en CI.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:keploy/keploy",
+          "rel": "implements",
+          "dst": "concept:traffic-capture-testing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:keploy/keploy",
+          "rel": "solves",
+          "dst": "problem:mobile-e2e-testing",
+          "primera_mencion": "2026-10-20"
+        },
+        {
+          "src": "repo:keploy/keploy",
+          "rel": "complements",
+          "dst": "technique:agent-reliability-testing",
+          "primera_mencion": "2026-10-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "keploy-keploy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "tashfeenahmed/freellmapi",
+      "url": "https://github.com/tashfeenahmed/freellmapi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pasarela compatible con la API de OpenAI que agrega las capas gratuitas de decenas de proveedores (34 según el README, 635 puntos finales) detrás de una sola dirección, con enrutado, conmutación automática cuando un proveedor limita y claves cifradas.",
+        "por_que_importa": "Lo interesante no es agregar las capas gratuitas de decenas de proveedores tras una sola URL compatible con OpenAI, sino la fecha del catálogo: la instalación gratuita recibe una instantánea mensual y los modelos nuevos tardan treinta días, mientras la versión de pago entrega la fuente firmada el mismo día. Así el catálogo se vuelve el producto y el usuario gratuito prueba modelos viejos sin saberlo. Conecta con la exposición a los términos de servicio de las capas gratuitas que tratamos el 2026-11-03 y con la pasarela local de IA del 2026-10-02; el propio repo se describe como experimentación personal.",
+        "madurez_senales": "47.233 estrellas · 6.453 forks · TypeScript · creado 2026-04-21 · último push 2026-11-03 · MIT · topics: ninguno publicado · la descripción del repositorio la limita a «experimentación personal» y el README anuncia 7.400 millones de tokens al mes entre todas las capas y una suscripción de 19 dólares al año para el catálogo al día (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** qué se envía a cada proveedor y cómo se contabiliza la cuota antes de conectarle una clave que importe.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tashfeenahmed/freellmapi",
+          "rel": "implements",
+          "dst": "concept:free-tier-aggregation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tashfeenahmed/freellmapi",
+          "rel": "risk",
+          "dst": "problem:free-tier-tos-exposure",
+          "primera_mencion": "2026-11-03"
+        },
+        {
+          "src": "repo:tashfeenahmed/freellmapi",
+          "rel": "competes_with",
+          "dst": "concept:local-ai-gateway",
+          "primera_mencion": "2026-10-02"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tashfeenahmed-freellmapi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "herdrdev/herdr",
+      "url": "https://github.com/herdrdev/herdr",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "multiplexor de terminal en Rust pensado para agentes de código: mantiene las sesiones en un servidor en segundo plano aunque se cierre el cliente o se caiga el SSH, reúne varias máquinas en una ventana, marca cada panel como «trabajando», «bloqueado» o «inactivo» y expone una API de socket para que los propios agentes lo manejen.",
+        "por_que_importa": "Resuelve el problema aburrido y real de tener cinco agentes abiertos: saber cuál está esperando respuesta, ahora con cada panel marcado como trabajando, bloqueado o inactivo y una API de socket para que los propios agentes lo manejen. Al separar servidor de cliente, la sesión deja de depender de una ventana abierta. Enlaza con el runtime de agentes de código y el terminal para agentes que cubrimos el 2026-08-10, y compite con t3code, del 2026-08-09. El matiz honesto: tras reiniciar recupera la disposición y reanuda las sesiones soportadas, pero los procesos originales no sobreviven.",
+        "madurez_senales": "47.960 estrellas · 3.847 forks · Rust · creado 2026-03-27 · último push 2026-11-03 · Apache-2.0 · topics: `agent-orchestration`, `terminal-multiplexer`, `coding-agents`, `tui`, `tmux`, `workspace-manager` · 426 incidencias abiertas · rama por defecto `master` (verificado vía GitHub API; README en `master`).",
+        "accion_sugerida": "**vigilar** cómo evoluciona la reanudación de sesiones; es la función que decide si sustituye a tmux o solo lo acompaña.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "implements",
+          "dst": "concept:coding-agent-runtime",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "extends",
+          "dst": "concept:terminal-for-coding-agents",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:herdrdev/herdr",
+          "rel": "competes_with",
+          "dst": "repo:pingdotgg/t3code",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "herdrdev-herdr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "mattpocock/sandcastle",
+      "url": "https://github.com/mattpocock/sandcastle",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(8.824 estrellas, último push 2026-11-04, TypeScript) — biblioteca que lanza agentes en sandboxes con una estrategia de ramas y fusiona los commits al final; usa el aislamiento del propio sistema (Bubblewrap y Seatbelt) y añade Docker, Podman, Daytona, E2B, Modal y Vercel — señales: https://github.com/mattpocock/sandcastle",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mattpocock/sandcastle",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mattpocock-sandcastle",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "JuliusBrussee/caveman",
+      "url": "https://github.com/JuliusBrussee/caveman",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(117.319 estrellas, último push 2026-11-04, Go) — proxy y skill que reduce tokens haciendo que el agente hable como un cavernícola, con medidas publicadas y dos validaciones externas citadas en el README; vuelve a entrar con fuerza, pero sigue siendo un truco de prompt con envoltorio — señales: https://github.com/JuliusBrussee/caveman",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/JuliusBrussee/caveman",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "juliusbrussee-caveman",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "blader/humanizer",
+      "url": "https://github.com/blader/humanizer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(64.554 estrellas, último push 2026-10-28, Python) — skill que reescribe texto generado siguiendo la lista de señales de escritura artificial de Wikipedia y avisa de que su objetivo no es engañar a los detectores — señales: https://github.com/blader/humanizer",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/blader/humanizer",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "blader-humanizer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Asymptote-Labs/agent-beacon",
+      "url": "https://github.com/Asymptote-Labs/agent-beacon",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.251 estrellas, último push 2026-11-04, Go) — capa de memoria entre distintos harness que se presenta como auto-mejorable y añade telemetría y trazas de sesión; el README mezcla memoria con seguridad y observabilidad, y ahí conviene separar promesas — señales: https://github.com/Asymptote-Labs/agent-beacon",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Asymptote-Labs/agent-beacon",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "asymptote-labs-agent-beacon",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "spotify/portal-ai-plugins",
+      "url": "https://github.com/spotify/portal-ai-plugins",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.107 estrellas, último push 2026-10-23, TypeScript) — mercado de plugins con el que Spotify mete su catálogo de servicios y su CLI dentro de Claude Code, Codex, Cursor y pi, incluido un plugin que deriva trabajo mecánico a modelos más baratos — señales: https://github.com/spotify/portal-ai-plugins",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/spotify/portal-ai-plugins",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "spotify-portal-ai-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "KKKKhazix/agent-autoloop",
+      "url": "https://github.com/KKKKhazix/agent-autoloop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.526 estrellas, último push 2026-11-04, TypeScript) — núcleo de automatización mínimo que deja a un agente de terminal trabajando en segundo plano y solo avisa cuando hace falta una decisión; creado ayer y documentado primero en chino, con versión en inglés — señales: https://github.com/KKKKhazix/agent-autoloop",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/KKKKhazix/agent-autoloop",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kkkkhazix-agent-autoloop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "ivankovic/omnidiff",
+      "url": "https://github.com/ivankovic/omnidiff",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.006 estrellas, último push 2026-11-03, Rust) — herramienta de diferencias que reconoce el tipo de contenido y compara código, fuentes, imágenes o PDF según su estructura, con demostración en el navegador — señales: https://github.com/ivankovic/omnidiff",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ivankovic/omnidiff",
+        "accion_sugerida": "vigilar — la licencia: la API no la identifica y el README declara AGPL-3.0",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ivankovic-omnidiff",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "janhq/jan",
+      "url": "https://github.com/janhq/jan",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(45.416 estrellas, último push 2026-11-04, Rust) — cliente de escritorio para ejecutar modelos en local, ya veterano y con una licencia sin identificar en la API; cubre el mismo hueco que Ollama con interfaz gráfica y no aporta nada nuevo hoy — señales: https://github.com/janhq/jan",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/janhq/jan",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "janhq-jan",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

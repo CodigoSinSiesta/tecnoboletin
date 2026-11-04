@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-04",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Anthropic hace verificable la inferencia sin enseñar los pesos",
+  "posicionamiento": "El agente ya no es la noticia: hoy lo son las capas que lo sostienen. Una prueba criptográfica de qué modelo respondió, un escritorio emitido como vídeo y pruebas que se capturan en vez de escribirse atacan la misma pregunta: cómo saber que lo de abajo es lo que crees.",
+  "convergencia_stack_css": "El local-first que venimos siguiendo baja del modelo a la infraestructura: floci emula AWS en local sin cuenta ni token y voxl emite un escritorio como vídeo para agentes de computer use. freellmapi toca la pasarela, pero como negocio de catálogo, no como stack.",
+  "cruzado_grafo": "Aparecen cinco nodos sin mención previa: prueba de inferencia zero-knowledge, emulador de nube local, escritorio remoto en vídeo, pruebas por captura de tráfico y agregación de capas gratuitas. El resto cuelga de fechas ya cubiertas: verificación de agentes (2026-10-20) y capas gratuitas (2026-11-03).",
+  "tendencias_5_boletines": "Con dos días de contexto la línea se sostiene: el 2026-11-03 el harness pasó a ser superficie de control y el 2026-11-02 el mando volvió al humano. Hoy ese control se vuelve comprobable por debajo, en la prueba, el transporte y las pruebas capturadas.",
+  "alertas": [
+    "FlashProve no está mantenido y no acepta contribuciones: es una demostración con corrección comprobable, no un producto.",
+    "floci promete gratuidad sin cuenta ni token frente a LocalStack; falta ver si ese modelo de negocio se sostiene.",
+    "freellmapi retrasa 30 días el catálogo en la versión gratuita y el propio repo se declara experimentación personal.",
+    "Keploy arrastra 840 incidencias abiertas y la prueba generada hereda la calidad del tráfico capturado.",
+    "Las cifras de latencia de voxl salen de su README y de sus propios bancos de pruebas, sin verificación externa."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Da para artículo con tesis sobre confianza en la inferencia, no para tutorial: el nodo es nuevo y el prototipo es solo lectura de código."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Es la pieza de transporte que le falta al computer use ya cubierto; publica bancos de pruebas, así que la promesa se puede discutir con datos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Reemplazo directo de LocalStack y familia con Azure, GCP y OCI: conviene ver si la gratuidad aguanta y si el emulador cubre suficiente superficie."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Conecta pruebas E2E y fiabilidad de agentes ya cubiertas; el contrapeso de las 840 incidencias pide medirlo antes de recomendarlo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "Multiplexor con API de socket para que los propios agentes lo manejen y rival directo de t3code, tema vivo en la línea editorial."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-anthropics-flashprove", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-anthropics-flashprove", "dst": "tema:anthropics-flashprove", "rel": "trata", "added": "2026-11-04"}
+{"src": "repo:anthropics/FlashProve", "dst": "concept:zero-knowledge-inference-proof", "rel": "implements", "added": "2026-11-04", "primera_mencion": null}
+{"src": "repo:anthropics/FlashProve", "dst": "concern:agent-verifiability", "rel": "solves", "added": "2026-11-04", "primera_mencion": "2026-10-20"}
+{"src": "repo:anthropics/FlashProve", "dst": "concept:proof-backed-agent-code", "rel": "relevant_to", "added": "2026-11-04", "primera_mencion": "2026-09-18"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-floci-io-floci", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-floci-io-floci", "dst": "tema:floci-io-floci", "rel": "trata", "added": "2026-11-04"}
+{"src": "repo:floci-io/floci", "dst": "concept:local-cloud-emulator", "rel": "implements", "added": "2026-11-04", "primera_mencion": null}
+{"src": "repo:floci-io/floci", "dst": "concept:local-first-agent-stack", "rel": "competes_with", "added": "2026-11-04", "primera_mencion": "2026-08-19"}
+{"src": "repo:floci-io/floci", "dst": "concept:local-first-remote-execution", "rel": "enables", "added": "2026-11-04", "primera_mencion": "2026-09-23"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-tembo-voxl", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-tembo-voxl", "dst": "tema:tembo-voxl", "rel": "trata", "added": "2026-11-04"}
+{"src": "repo:tembo/voxl", "dst": "concept:remote-desktop-streaming", "rel": "implements", "added": "2026-11-04", "primera_mencion": null}
+{"src": "repo:tembo/voxl", "dst": "concept:desktop-computer-use", "rel": "enables", "added": "2026-11-04", "primera_mencion": "2026-10-31"}
+{"src": "repo:tembo/voxl", "dst": "concept:agent-sandbox", "rel": "complements", "added": "2026-11-04", "primera_mencion": "2026-09-09"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-keploy-keploy", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-keploy-keploy", "dst": "tema:keploy-keploy", "rel": "trata", "added": "2026-11-04"}
+{"src": "repo:keploy/keploy", "dst": "concept:traffic-capture-testing", "rel": "implements", "added": "2026-11-04", "primera_mencion": null}
+{"src": "repo:keploy/keploy", "dst": "problem:mobile-e2e-testing", "rel": "solves", "added": "2026-11-04", "primera_mencion": "2026-10-20"}
+{"src": "repo:keploy/keploy", "dst": "technique:agent-reliability-testing", "rel": "complements", "added": "2026-11-04", "primera_mencion": "2026-10-12"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-tashfeenahmed-freellmapi", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-tashfeenahmed-freellmapi", "dst": "tema:tashfeenahmed-freellmapi", "rel": "trata", "added": "2026-11-04"}
+{"src": "repo:tashfeenahmed/freellmapi", "dst": "concept:free-tier-aggregation", "rel": "implements", "added": "2026-11-04", "primera_mencion": null}
+{"src": "repo:tashfeenahmed/freellmapi", "dst": "problem:free-tier-tos-exposure", "rel": "risk", "added": "2026-11-04", "primera_mencion": "2026-11-03"}
+{"src": "repo:tashfeenahmed/freellmapi", "dst": "concept:local-ai-gateway", "rel": "competes_with", "added": "2026-11-04", "primera_mencion": "2026-10-02"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-herdrdev-herdr", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-herdrdev-herdr", "dst": "tema:herdrdev-herdr", "rel": "trata", "added": "2026-11-04"}
+{"src": "repo:herdrdev/herdr", "dst": "concept:coding-agent-runtime", "rel": "implements", "added": "2026-11-04", "primera_mencion": "2026-08-10"}
+{"src": "repo:herdrdev/herdr", "dst": "concept:terminal-for-coding-agents", "rel": "extends", "added": "2026-11-04", "primera_mencion": "2026-08-10"}
+{"src": "repo:herdrdev/herdr", "dst": "repo:pingdotgg/t3code", "rel": "competes_with", "added": "2026-11-04", "primera_mencion": "2026-08-09"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-mattpocock-sandcastle", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-mattpocock-sandcastle", "dst": "tema:mattpocock-sandcastle", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-juliusbrussee-caveman", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-juliusbrussee-caveman", "dst": "tema:juliusbrussee-caveman", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-blader-humanizer", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-blader-humanizer", "dst": "tema:blader-humanizer", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-asymptote-labs-agent-beacon", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-asymptote-labs-agent-beacon", "dst": "tema:asymptote-labs-agent-beacon", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-spotify-portal-ai-plugins", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-spotify-portal-ai-plugins", "dst": "tema:spotify-portal-ai-plugins", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-kkkkhazix-agent-autoloop", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-kkkkhazix-agent-autoloop", "dst": "tema:kkkkhazix-agent-autoloop", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-ivankovic-omnidiff", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-ivankovic-omnidiff", "dst": "tema:ivankovic-omnidiff", "rel": "trata", "added": "2026-11-04"}
+{"src": "boletin:2026-11-04", "dst": "item:https-github-com-janhq-jan", "rel": "menciona", "added": "2026-11-04"}
+{"src": "item:https-github-com-janhq-jan", "dst": "tema:janhq-jan", "rel": "trata", "added": "2026-11-04"}
