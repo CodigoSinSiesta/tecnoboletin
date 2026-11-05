@@ -1,0 +1,401 @@
+{
+  "version": 2,
+  "date": "2026-11-05",
+  "boletin_origen": "2026-11-05-trending.md",
+  "resumen_ejecutivo": "- El día lo definen las capas de abajo, no los agentes nuevos: NVIDIA coloca su capa de ontología como el repositorio que más estrellas gana en Trending y Locals reescribe cómo se sirve un modelo local cuando hay ocho agentes pidiendo a la vez.\n- Los dos hallazgos más útiles son mecanismos, no productos: sapper-v2 gana un CTF con un grafo de hechos compartido y la cuarta parte de los tokens del segundo, y octomind cambia las ventanas de aprobación por reglas escritas en TOML.\n- El número uno de Trendshift hoy es una herramienta que automatiza cuentas y tarjetas para encadenar meses de prueba gratuita de Google. Sirve para recordar que el ranking mide atención, no utilidad.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (global y cortes de TypeScript, Python, Rust y Go), GitHub API (14 repos verificados, README leído en la rama por defecto de cada uno). Blogwatcher sigue sin publicar archivo desde el 5 de julio.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Generated-Computers/Locals",
+      "url": "https://github.com/Generated-Computers/Locals",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor de modelos para Mac con chip de Apple que sirve a la vez las peticiones de varios agentes: junta las solicitudes en un lote, escribe las llamadas a herramientas con la gramática propia de cada modelo aplicada en la tarjeta gráfica para que siempre se puedan leer, y conserva el prompt largo del sistema en disco entre turnos. Se arranca con un comando y descarga un modelo de unos 3 GB; funciona con OpenCode, Cline, Aider, OpenHands y Claude Code.",
+        "por_que_importa": "el local-first se venía midiendo por modelo y aquí se mide por concurrencia, que es lo que de verdad se rompe cuando ocho agentes trabajan en el mismo proyecto. La pieza técnica que más enseña es la gramática aplicada en la GPU: un agente pequeño que devuelve una llamada mal formada es la causa silenciosa de la mitad de los fallos en local, y aquí eso se ataca en el motor y no en el prompt. Además publica el artículo que lo justifica y los guiones de medición, así que se puede discutir con datos en mano.",
+        "madurez_senales": "967 estrellas · 39 forks · Python · creado 2026-10-12 · último push 2026-11-05 · Apache-2.0 · topics: `agents`, `apple-silicon`, `coding-agents`, `inference-acceleration`, `inference-engine`, `macos` · 8 incidencias abiertas · solo macOS sobre Apple silicon · el README declara 620 tokens por segundo con ocho peticiones simultáneas frente a 207 de mlx-lm en un M2 Pro de 16 GB (2,99 veces más) y 3.300 frente a 142 en la calculadora que corre en CPU (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**leer** los guiones de medición y el artículo antes que el README comercial; en este servidor Linux no se puede ejecutar, así que la lectura es la verificación posible.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Generated-Computers/Locals",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-runtime",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:Generated-Computers/Locals",
+          "rel": "complements",
+          "dst": "concept:local-first-agent-stack",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:Generated-Computers/Locals",
+          "rel": "relevant_to",
+          "dst": "concept:inference-benchmark-platform",
+          "primera_mencion": "2026-09-30"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "generated-computers-locals",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "biblioteca en Python que arma una ontología a partir de los metadatos de una empresa, reconcilia definiciones que no coinciden entre sistemas, comprueba las consultas SQL que genera el modelo contra esas definiciones certificadas y sirve ese contexto a cualquier agente por MCP, CLI y API. Por debajo monta Next.js, FastAPI y Postgres con pgvector, y usa modelos Nemotron servidos por NVIDIA.",
+        "por_que_importa": "reentra, y conviene decirlo: estaba en el radar el 3 de noviembre con 1.134 estrellas y hoy es el repositorio que más estrellas gana en Trending, sin versión publicada. El interés editorial está en el contraste: una ontología es la pieza que evita que un agente invente una métrica de negocio, pero este README avisa de que no acepta contribuciones externas y la única etiqueta del repositorio es una copia de seguridad previa a una fusión. Es decir, la idea es buena y el proyecto todavía no es un bien común. Da para un artículo sobre qué compra de verdad una capa de significado.",
+        "madurez_senales": "5.924 estrellas (eran 1.134 el 3 de noviembre) · 462 forks · Python · creado 2026-04-27 · último push 2026-11-04 · Apache-2.0 · sin topics publicados · 46 incidencias abiertas · ninguna versión publicada (la única etiqueta es `pre-main-merge-backup`) · exige clave de la API de NVIDIA para los modelos · +2.050 hoy en Trending (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**vigilar** — una subida de estrellas sin versión publicada es más ruido que señal; merece volver cuando etiquete la primera release.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/auto-ontology",
+          "rel": "implements",
+          "dst": "concept:ontology-driven-backend",
+          "primera_mencion": "2026-09-26"
+        },
+        {
+          "src": "repo:NVIDIA/auto-ontology",
+          "rel": "complements",
+          "dst": "concept:ontology-grounded-agent-memory",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:NVIDIA/auto-ontology",
+          "rel": "relevant_to",
+          "dst": "concept:graph-native-ai-infra",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-auto-ontology",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "N1nEmAn/sapper-v2",
+      "url": "https://github.com/N1nEmAn/sapper-v2",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "arnés de orquestación multiagente para pruebas de seguridad autorizadas: un comandante lee el estado del ejercicio y reparte trabajo, varios generales y soldados atacan en paralelo y un vigilante mantiene viva la flota. Todo lo aprendido queda en un grafo de hechos por capas (título, resumen y documento de evidencia) que sobrevive a la muerte de cada sesión. Se puede cambiar la herramienta y el modelo de cada papel: Claude Code, Codex o DeepSeek.",
+        "por_que_importa": "el argumento del README no es que un modelo sea más listo, sino que el mecanismo (reparto, comunicación, memoria compartida y autorreparación) es lo que gana; y ese mecanismo se puede trasladar a cualquier trabajo largo en equipo. Para Código Sin Siesta es la excusa para escribir sobre memoria de equipo frente a memoria de sesión con un caso medido, no con una promesa. El contrapeso honesto es que el escenario es un concurso, y que la doctrina que dirige la flota son 426 líneas de instrucciones que hay que reescribir para otro uso.",
+        "madurez_senales": "1.052 estrellas · 660 forks · Python · creado 2026-10-30 · último push 2026-11-03 · MIT · topics: `ai-agents`, `autonomous-agents`, `ctf`, `llm`, `multi-agent`, `pentest` · 2 incidencias abiertas · rama por defecto `master` · la doctrina que reparte el trabajo son 426 líneas de instrucciones · el README declara primer puesto en la clasificación en línea del tercer reto de ataque y defensa de Tencent (634 equipos, 80,18 sobre 100, 8 horas sin supervisión) y las mismas 85 banderas que el segundo con 1.000 millones de tokens frente a 4.500 millones (verificado vía GitHub API; README en `master`)",
+        "accion_sugerida": "**leer** la doctrina antes que el código; el mecanismo está en las instrucciones, no en el arnés.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:N1nEmAn/sapper-v2",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:N1nEmAn/sapper-v2",
+          "rel": "extends",
+          "dst": "concept:layered_memory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:N1nEmAn/sapper-v2",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-security-analysis",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "n1neman-sapper-v2",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "JuneYaooo/rea-video",
+      "url": "https://github.com/JuneYaooo/rea-video",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "habilidad para agentes de terminal que parte un vídeo en planos y dictamina, para cada uno, si es grabación real, vídeo generado por IA, 3D, animación o interfaz hecha con código. Además reconstruye textos y rótulos con sus tiempos, marca los cortes, mide la música y propone un plan para rehacer la pieza separando lo que hay que rodar, lo que hay que generar y lo que hay que programar; devuelve un informe HTML con fotogramas y pruebas.",
+        "por_que_importa": "pone nombre a una pregunta que ya está en cualquier redacción: qué parte de lo que vemos está generada. El diferencial no es detectar «IA sí o no», sino descomponer el proceso de producción plano a plano, con la luz, la cámara y el prompt reconstruido de cada toma; eso lo convierte en material didáctico sobre producción con IA y no en un detector más.",
+        "madurez_senales": "1.506 estrellas · 218 forks · Python · creado 2026-10-29 · último push 2026-11-05 · Apache-2.0 · topics: `agent-skills`, `ai-video`, `aigc-detection`, `claude-code`, `codex`, `ffmpeg`, `remotion`, `reverse-engineering`, `shot-detection` · 1 incidencia abierta · necesita ffmpeg y Python 3.10 o superior · la documentación detallada está en chino y los informes de ejemplo publicados están en inglés (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** con un vídeo propio de menos de un minuto y comparar el veredicto del modelo de visión con lo que grabó la persona que estuvo allí.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:JuneYaooo/rea-video",
+          "rel": "implements",
+          "dst": "concept:agent-video-pipeline",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:JuneYaooo/rea-video",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-video-production",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:JuneYaooo/rea-video",
+          "rel": "extends",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "juneyaooo-rea-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "mcpjungle/MCPJungle",
+      "url": "https://github.com/mcpjungle/MCPJungle",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pasarela MCP autoalojada: registras cada servidor MCP una vez y todos los clientes (Claude, Cursor, Codex o agentes propios) hablan con un único punto final. Añade grupos de herramientas para exponer solo las que toca a cada cliente, control de acceso y trazas para instalaciones compartidas. Se levanta con un archivo de Docker Compose y su CLI se instala desde Homebrew o desde las versiones publicadas.",
+        "por_que_importa": "la configuración de MCP se ha vuelto un problema de inventario: cinco clientes, cinco copias del mismo JSON, permisos repetidos y ningún sitio donde ver qué herramientas hay. Esto lo convierte en infraestructura con una sola fuente de verdad, y su licencia MPL-2.0 permite adoptarlo sin el riesgo de las licencias que la API no identifica, como pasó ayer con dos proyectos del radar. Es también el tipo de pieza que cabe en el portátil o en un servidor pequeño sin depender de un servicio de pago.",
+        "madurez_senales": "1.598 estrellas · 201 forks · Go · creado 2025-05-15 · último push 2026-11-03 · MPL-2.0 · topics: `mcp`, `mcp-gateway`, `mcp-registry`, `model-context-protocol`, `self-hosted`, `ai-agents` · 117 incidencias abiertas · +51 hoy en Trending · imagen de contenedor publicada en GHCR (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** con Docker Compose y dos servidores registrados antes de decidir si sustituye la configuración por cliente.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mcpjungle/MCPJungle",
+          "rel": "implements",
+          "dst": "concept:anyapi-to-mcp-gateway",
+          "primera_mencion": "2026-09-29"
+        },
+        {
+          "src": "repo:mcpjungle/MCPJungle",
+          "rel": "extends",
+          "dst": "concept:stateful-agent-gateway",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:mcpjungle/MCPJungle",
+          "rel": "relevant_to",
+          "dst": "concept:mcp-server-native",
+          "primera_mencion": "2026-09-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mcpjungle-mcpjungle",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Muvon/octomind",
+      "url": "https://github.com/Muvon/octomind",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "arnés de agente de código en un único binario de Rust que corre en el terminal, por tubería estándar, como demonio, por WebSocket o como agente dentro del editor. Un modelo supervisor mantiene el plan, recorta los resultados enormes y no acepta un «terminado» sin pruebas; las reglas de seguridad se declaran en TOML y las decisiones repetidas se pueden delegar en un clasificador barato.",
+        "por_que_importa": "ataca justo lo que bloquea a los agentes desatendidos: si cada paso delicado exige una ventana de confirmación, no hay manera de dejarlo en integración continua ni en una tarea programada. Política escrita como código más un supervisor que pide evidencia antes de dar por bueno el trabajo es una respuesta seria, y sus números vienen con guía de reproducción, que es lo que separa un arnés de una captura de pantalla. Buen contrapeso al goteo de arneses de las últimas semanas.",
+        "madurez_senales": "518 estrellas · 66 forks · Rust · creado 2025-06-01 · último push 2026-11-04 · Apache-2.0 · topics: `agent-client-protocol`, `ai-coding-agent`, `autonomous-agents`, `claude-code-alternative`, `mcp` · 29 incidencias abiertas · rama por defecto `master` · +128 hoy en Trending · el README declara 24 de 25 tareas resueltas frente a 19 de OpenCode con el mismo modelo y cerca del doble de coste (verificado vía GitHub API; README en `master`)",
+        "accion_sugerida": "**explorar** el archivo de reglas TOML y el modo demonio; son las dos piezas que no existen en los arneses de chat.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Muvon/octomind",
+          "rel": "implements",
+          "dst": "concept:lightweight-agent-harness",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:Muvon/octomind",
+          "rel": "extends",
+          "dst": "concept:agent-harness-environment",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "repo:Muvon/octomind",
+          "rel": "solves",
+          "dst": "problem:agent-approval-bottleneck",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "muvon-octomind",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "github/copilot-cli",
+      "url": "https://github.com/github/copilot-cli",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.357 estrellas, último push 2026-11-04, Python) — CLI oficial que lleva el agente de Copilot al terminal, con el servidor MCP de GitHub incluido y aprobación previa de cada — señales: https://github.com/github/copilot-cli",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/github/copilot-cli",
+        "accion_sugerida": "; la API no identifica la licencia — Acción: **leer** cómo declara los permisos antes de compararlo con los arneses abiertos",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-copilot-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(97.048 estrellas, último push 2026-11-04, Python) — reentra dos días después con 2.005 estrellas ganadas hoy; framework de extr — señales: https://github.com/D4Vinci/Scrapling",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/D4Vinci/Scrapling",
+        "accion_sugerida": "web con cuatro formas de descarga, incluida una pensada para sitios con defensas — Acción: **probar** la variante sigilosa en un sitio de pruebas propio antes de usarla contra uno que importe",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "d4vinci-scrapling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "s1dashu/quiet-md",
+      "url": "https://github.com/s1dashu/quiet-md",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(861 estrellas, último push 2026-11-05, Rust) — aplicación de notas que se dibuja entera con Rust y GPUI, sin WebView, guarda cada nota como un XML compatible con Feishu y funciona sin cuenta; beta de cuatro días — señales: https://github.com/s1dashu/quiet-md",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/s1dashu/quiet-md",
+        "accion_sugerida": "vigilar — , porque el formato propietario de otra plataforma puede ser una atadura",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "s1dashu-quiet-md",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "worldonlyu/Google_AI_Pro_2Year_ZeroCost_Auto",
+      "url": "https://github.com/worldonlyu/Google_AI_Pro_2Year_ZeroCost_Auto",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.184 estrellas, último push 2026-11-04, Python) — automatización que importa listas de cuentas y tarjetas para encadenar meses de prueba gratuita de Google AI Pro; sin licencia y primera posición de Trendshift hoy — señales: https://github.com/worldonlyu/Google_AI_Pro_2Year_ZeroCost_Auto",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/worldonlyu/Google_AI_Pro_2Year_ZeroCost_Auto",
+        "accion_sugerida": "ignorar — ; es abuso de condiciones, no una herramienta de desarrollo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "worldonlyu-google-ai-pro-2year-zerocost-",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Minireel/HGhub",
+      "url": "https://github.com/Minireel/HGhub",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(968 estrellas, último push 2026-11-05, TypeScript) — cliente no oficial de un servicio de preguntas, con 793 forks en dos días y sin relación con el hilo de IA/dev — señales: https://github.com/Minireel/HGhub",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Minireel/HGhub",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "minireel-hghub",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 5,
+    "llm_backend": "none",
+    "llm_polish_notes": "hermes no disponible: 'hermes --version' fallo: Command '['/home/ibid/.local/bin/hermes', '--version']' timed out after 15 seconds",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "hermes no disponible: 'hermes --version' fallo: Command '['/home/ibid/.local/bin/hermes', '--version']' timed out after 15 seconds",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

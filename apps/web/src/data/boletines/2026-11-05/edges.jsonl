@@ -1,0 +1,40 @@
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-generated-computers-locals", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-generated-computers-locals", "dst": "tema:generated-computers-locals", "rel": "trata", "added": "2026-11-05"}
+{"src": "repo:Generated-Computers/Locals", "dst": "concept:local-first-agent-runtime", "rel": "implements", "added": "2026-11-05", "primera_mencion": "2026-08-20"}
+{"src": "repo:Generated-Computers/Locals", "dst": "concept:local-first-agent-stack", "rel": "complements", "added": "2026-11-05", "primera_mencion": "2026-08-19"}
+{"src": "repo:Generated-Computers/Locals", "dst": "concept:inference-benchmark-platform", "rel": "relevant_to", "added": "2026-11-05", "primera_mencion": "2026-09-30"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-nvidia-auto-ontology", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-nvidia-auto-ontology", "dst": "tema:nvidia-auto-ontology", "rel": "trata", "added": "2026-11-05"}
+{"src": "repo:NVIDIA/auto-ontology", "dst": "concept:ontology-driven-backend", "rel": "implements", "added": "2026-11-05", "primera_mencion": "2026-09-26"}
+{"src": "repo:NVIDIA/auto-ontology", "dst": "concept:ontology-grounded-agent-memory", "rel": "complements", "added": "2026-11-05", "primera_mencion": "2026-08-24"}
+{"src": "repo:NVIDIA/auto-ontology", "dst": "concept:graph-native-ai-infra", "rel": "relevant_to", "added": "2026-11-05", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-n1neman-sapper-v2", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-n1neman-sapper-v2", "dst": "tema:n1neman-sapper-v2", "rel": "trata", "added": "2026-11-05"}
+{"src": "repo:N1nEmAn/sapper-v2", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-11-05", "primera_mencion": "2026-08-27"}
+{"src": "repo:N1nEmAn/sapper-v2", "dst": "concept:layered_memory", "rel": "extends", "added": "2026-11-05", "primera_mencion": null}
+{"src": "repo:N1nEmAn/sapper-v2", "dst": "concept:agentic-security-analysis", "rel": "relevant_to", "added": "2026-11-05", "primera_mencion": null}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-juneyaooo-rea-video", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-juneyaooo-rea-video", "dst": "tema:juneyaooo-rea-video", "rel": "trata", "added": "2026-11-05"}
+{"src": "repo:JuneYaooo/rea-video", "dst": "concept:agent-video-pipeline", "rel": "implements", "added": "2026-11-05", "primera_mencion": "2026-09-09"}
+{"src": "repo:JuneYaooo/rea-video", "dst": "concept:agentic-video-production", "rel": "relevant_to", "added": "2026-11-05", "primera_mencion": "2026-08-12"}
+{"src": "repo:JuneYaooo/rea-video", "dst": "concept:agent-skills-standard", "rel": "extends", "added": "2026-11-05", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-mcpjungle-mcpjungle", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-mcpjungle-mcpjungle", "dst": "tema:mcpjungle-mcpjungle", "rel": "trata", "added": "2026-11-05"}
+{"src": "repo:mcpjungle/MCPJungle", "dst": "concept:anyapi-to-mcp-gateway", "rel": "implements", "added": "2026-11-05", "primera_mencion": "2026-09-29"}
+{"src": "repo:mcpjungle/MCPJungle", "dst": "concept:stateful-agent-gateway", "rel": "extends", "added": "2026-11-05", "primera_mencion": "2026-09-08"}
+{"src": "repo:mcpjungle/MCPJungle", "dst": "concept:mcp-server-native", "rel": "relevant_to", "added": "2026-11-05", "primera_mencion": "2026-09-23"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-muvon-octomind", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-muvon-octomind", "dst": "tema:muvon-octomind", "rel": "trata", "added": "2026-11-05"}
+{"src": "repo:Muvon/octomind", "dst": "concept:lightweight-agent-harness", "rel": "implements", "added": "2026-11-05", "primera_mencion": "2026-08-19"}
+{"src": "repo:Muvon/octomind", "dst": "concept:agent-harness-environment", "rel": "extends", "added": "2026-11-05", "primera_mencion": "2026-08-23"}
+{"src": "repo:Muvon/octomind", "dst": "problem:agent-approval-bottleneck", "rel": "solves", "added": "2026-11-05", "primera_mencion": null}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-github-copilot-cli", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-github-copilot-cli", "dst": "tema:github-copilot-cli", "rel": "trata", "added": "2026-11-05"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-d4vinci-scrapling", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-11-05"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-s1dashu-quiet-md", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-s1dashu-quiet-md", "dst": "tema:s1dashu-quiet-md", "rel": "trata", "added": "2026-11-05"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-worldonlyu-google-ai-pro-2year-zerocost-aut", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-worldonlyu-google-ai-pro-2year-zerocost-aut", "dst": "tema:worldonlyu-google-ai-pro-2year-zerocost-", "rel": "trata", "added": "2026-11-05"}
+{"src": "boletin:2026-11-05", "dst": "item:https-github-com-minireel-hghub", "rel": "menciona", "added": "2026-11-05"}
+{"src": "item:https-github-com-minireel-hghub", "dst": "tema:minireel-hghub", "rel": "trata", "added": "2026-11-05"}

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-11-05",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La ontología de NVIDIA lidera Trending y Locals ataca la concurrencia local",
+  "posicionamiento": "El hilo de hoy está debajo del agente: gramática aplicada en la GPU, grafo de hechos que sobrevive a la sesión, reglas de seguridad escritas en TOML. Ninguno de los seis hallazgos vende un modelo mejor; venden el mecanismo que evita que el modelo falle en silencio.",
+  "convergencia_stack_css": "Locals es la pieza más directamente local-first en semanas: inferencia en Mac, prompt largo en disco, gramática en la GPU para ocho agentes a la vez. MCPJungle encaja como inventario único de servidores MCP y octomind como arnés de un binario que corre desatendido.",
+  "cruzado_grafo": "Locals refuerza local-first-agent-runtime (primera mención 2026-08-20) y auto-ontology vuelve sobre ontology-driven-backend (2026-09-26). Sapper-v2 estrena layered_memory y agentic-security-analysis sin mención previa, igual que octomind y agent-approval-bottleneck.",
+  "tendencias_5_boletines": "Tres días seguidos mirando la capa de abajo: el 3 de noviembre el harness como superficie de control, el 4 la prueba de qué modelo respondió, hoy ontología, gramática y política escrita. La línea no se fuerza, continúa.",
+  "alertas": [
+    "auto-ontology no acepta contribuciones externas, no tiene versión publicada y su única etiqueta es una copia previa a una fusión: idea buena, proyecto que aún no es un bien común.",
+    "Sapper-v2 se midió en un CTF y su doctrina son 426 líneas de instrucciones que hay que reescribir para otro uso; el mecanismo se traslada, los números no.",
+    "El número uno de Trendshift automatiza cuentas y tarjetas para encadenar pruebas gratuitas de Google: el ranking mide atención, no utilidad.",
+    "Blogwatcher sigue sin publicar archivo desde el 5 de julio, así que la señal de blogs lleva cuatro meses ausente de la muestra."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el hallazgo con más recorrido práctico: concurrencia real y gramática en la GPU atacan la causa silenciosa de la mitad de fallos en local. Trae artículo y guiones de medición para discutir con datos."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Sirve para un artículo sobre memoria de equipo frente a memoria de sesión con un caso medido: cuarta parte de los tokens del segundo clasificado. Hay que separar el mecanismo del escenario de concurso."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Sube en Trending sin versión publicada y sin contribuciones externas. Vale seguirlo por si abre el código, pero hoy no es adoptable como capa de significado."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Resuelve el inventario de MCP con licencia MPL-2.0 y Docker Compose. Cabe en un servidor pequeño; conviene probar grupos de herramientas por cliente antes de recomendarlo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "Política en TOML más supervisor que exige pruebas responde justo al bloqueo de los agentes desatendidos. Es contrapeso útil frente al goteo de arneses de las últimas semanas."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
