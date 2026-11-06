@@ -1,0 +1,516 @@
+{
+  "version": 2,
+  "date": "2026-11-06",
+  "boletin_origen": "2026-11-06-trending.md",
+  "resumen_ejecutivo": "- El día no lo definen modelos nuevos sino el empaquetado del conocimiento: las skills de agente ya se instalan con un comando (`npx skills add`), se publican en un catálogo con versiones y las firman empresas como Google, Cloudflare y Scenario.\n- Dos piezas atacan el mismo hueco, la comprobación: agent-desktop opera aplicaciones por el árbol de accesibilidad en lugar de por píxeles, y la skill de auditoría de Cloudflare entrega hallazgos con esquema y verificador independiente en vez de prosa.\n- El resto del día son entornos de ejecución: monty quita el contenedor de en medio para ejecutar código escrito por un modelo, sand3d reduce el modelado 3D a un programa corto que cabe en un prompt y Genesis hace que lo que sobreviva sea una versión aceptada del repositorio, no la sesión del agente.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (global y cortes de TypeScript, Python, Rust, Go y JavaScript), GitHub API (15 repos verificados, README leído en la rama por defecto de cada uno). Blogwatcher sigue sin publicar archivo desde el 5 de julio.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Skill de agente que lo convierte en auditor de seguridad en seis fases: reconocimiento con un registro de cobertura; búsqueda repartida entre cazadores aislados; validación de cada candidato por un verificador nuevo que intenta refutarlo; salida estructurada en un fichero de hallazgos validado contra un esquema; verificación independiente de cada afirmación y, solo al final, el informe. Distingue tres veredictos: confirmado con traza completa, pendiente de validación sin gravedad asignada y descartado. Se instala con el instalador de skills y nació del arnés de descubrimiento de vulnerabilidades que Cloudflare presentó en su blog.",
+        "por_que_importa": "La cobertura registrada y la salida JSON validada hacen que la auditoría se pueda revisar y repetir, en vez de confiar en un informe sin trazas. La búsqueda y la refutación separan candidatos de hallazgos confirmados; aun así, no hay commits desde septiembre, así que la atención de hoy no indica una versión nueva. Ya cubrimos el análisis de seguridad con agentes el 2026-09-15 y el formato de skills el 2026-09-08.",
+        "madurez_senales": "62.302 estrellas · 4.041 forks · JavaScript · creado 2026-06-18 · último push 2026-09-14 · MIT · 115 incidencias abiertas · sin topics · sin commits desde septiembre, así que el empuje de hoy es atención acumulada y no una versión nueva (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**leer** — el esquema de hallazgos y los dos validadores son la parte que se puede reutilizar en cualquier proyecto, con o sin la skill.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "implements",
+          "dst": "concept:agentic-security-analysis",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "extends",
+          "dst": "concept:agent-skill",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "enables",
+          "dst": "concept:verification-loop",
+          "primera_mencion": "2026-09-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "google/skills",
+      "url": "https://github.com/google/skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Colección oficial de skills para productos de Google, sobre todo Google Cloud, en el formato Agent Skills: cada skill es una carpeta con instrucciones y material de referencia que el agente carga cuando la necesita. Están agrupadas por producto y flujo de trabajo. Se instala con `npx skills add google/skills`, se actualiza con `npx skills update` y el instalador pregunta qué skills concretas se quieren, para qué agentes y en qué ámbito.",
+        "por_que_importa": "Google empaqueta instrucciones y referencias para que el agente las cargue cuando las necesita: así, el conocimiento oficial de productos puede entrar directamente en los flujos de trabajo. Para quien trabaja con varias nubes, plantea una cuestión concreta: qué documentación ocupa el contexto del agente cuando hay varias skills para la misma tarea. El formato de skills ya apareció el 2026-08-08, junto con la idea de distribuirlas como paquetes; ese día también cubrimos otra colección de skills.",
+        "madurez_senales": "22.538 estrellas · 1.899 forks · Python · creado 2026-03-31 · último push 2026-11-05 · Apache-2.0 · topics: `google`, `googlecloud`, `skills` · 25 incidencias abiertas · +211 hoy en Trending (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**leer** — el índice de skills de Cloud enseña qué se considera una tarea en este formato y qué se queda fuera.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google/skills",
+          "rel": "implements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:google/skills",
+          "rel": "uses",
+          "dst": "concept:skill-as-package",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:google/skills",
+          "rel": "competes_with",
+          "dst": "repo:mattpocock/skills",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "scenario-labs/skills",
+      "url": "https://github.com/scenario-labs/skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Más de ochenta skills de una empresa de generación de imágenes, vídeo, audio y modelos 3D, agrupadas por oficio y resultado, además de familias llamadas expertas que manejan Blender, Maya, ZBrush, Unreal, Unity, Godot o Roblox Studio y que se destilaron de tutoriales, charlas y documentación oficial. Se instalan con el instalador de skills, por grupos o de una en una, y permiten fijar una versión concreta por commit en lugar de aceptar siempre lo último de la rama principal.",
+        "por_que_importa": "La colección convierte guías de herramientas creativas en skills instalables y permite fijar una versión por commit, útil para repetir flujos sin depender de cambios en la rama principal. No todas funcionan igual: las de servidor MCP no requieren instalación, pero las expertas necesitan la aplicación de modelado. El catálogo de skills ya lo cubrimos el 2026-08-16; este proyecto lo conecta con el modelado 3D.",
+        "madurez_senales": "3.264 estrellas · 283 forks · Python · creado 2026-08-12 · último push 2026-11-06 · MIT · 20 topics · 39 incidencias abiertas · cada familia documenta cómo se construyó y hasta dónde se verificó · CI y puntuación de OpenSSF en el README · +667 hoy en Trending (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**explorar** — el instalador por oficio y el README de una familia experta son la parte que no se puede deducir del catálogo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:scenario-labs/skills",
+          "rel": "implements",
+          "dst": "concept:skill-as-package",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:scenario-labs/skills",
+          "rel": "integrates",
+          "dst": "concept:mcp-3d-modeling",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:scenario-labs/skills",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skill-registry",
+          "primera_mencion": "2026-08-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "scenario-labs-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "vercel-labs/agent-desktop",
+      "url": "https://github.com/vercel-labs/agent-desktop",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Herramienta de línea de comandos, con biblioteca en C, que lee el árbol de accesibilidad de una aplicación de escritorio y lo devuelve en JSON, con una referencia para cada elemento sobre el que el agente puede actuar. El agente hace clic o escribe usando esa referencia, vuelve a leer la interfaz para comprobar el resultado y repite. No lleva un modelo dentro: el bucle vive en el agente que la llama. Funciona en macOS, Windows y Linux y, por defecto, actúa sin mover el puntero ni robar el foco. Cuando cambia la interfaz, la referencia antigua se rechaza con un error explícito en lugar de hacer clic donde no corresponde.",
+        "por_que_importa": "Al leer el árbol de accesibilidad, el agente obtiene nombres y referencias de elementos de la interfaz, en vez de deducirlos de una imagen. Puede actuar y volver a consultar el árbol para comprobar el resultado; si la interfaz cambió, una referencia antigua se rechaza. Ya cubrimos el uso del árbol de accesibilidad para controlar el escritorio el 2026-09-20; esta herramienta complementa el navegador de Vercel, cubierto el 2026-08-08.",
+        "madurez_senales": "17.417 estrellas · 1.240 forks · Rust · creado 2026-02-19 · último push 2026-11-06 · Apache-2.0 · topics: `computer-use`, `accessibility-api`, `desktop-automation`, `mcp` · 175 incidencias abiertas · +2.173 hoy en Trending · el README avisa de que las instantáneas y capturas pueden contener datos privados del escritorio (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** — con una aplicación propia y dos acciones; el árbol se puede leer a ojo antes de dejar que el agente toque nada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/agent-desktop",
+          "rel": "implements",
+          "dst": "concept:accessibility-tree-computer-use",
+          "primera_mencion": "2026-09-20"
+        },
+        {
+          "src": "repo:vercel-labs/agent-desktop",
+          "rel": "complements",
+          "dst": "repo:vercel-labs/agent-browser",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:vercel-labs/agent-desktop",
+          "rel": "relevant_to",
+          "dst": "concept:agent-native-cli-generation",
+          "primera_mencion": "2026-08-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "pydantic/monty",
+      "url": "https://github.com/pydantic/monty",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Intérprete de Python 3.14 escrito en Rust que se usa como caja de arena para código generado por modelos. Dentro no hay sistema de archivos, variables de entorno ni red: solo se puede acceder al host mediante las funciones y los montajes que se le pasan. Los errores y las llamadas se devuelven a quien lo invoca, de modo que el agente ve lo que pasó. Se instala como paquete de Python, JavaScript o Rust, y hay una versión comercial que expone el mismo intérprete por gRPC.",
+        "por_que_importa": "Ejecutar código generado sin dar acceso directo a archivos, variables de entorno o red reduce lo que ese código puede tocar. Monty ofrece ese aislamiento en un intérprete reutilizable; el README declara un arranque inferior a un milisegundo desde una reserva creada, pero el dato disponible no permite comparar todas las condiciones con otros entornos. Ya cubrimos las cajas de arena para código no confiable y su implementación en Rust el 2026-09-25.",
+        "madurez_senales": "8.845 estrellas · 487 forks · Rust · creado 2023-05-28 · último push 2026-11-06 · MIT · 214 incidencias abiertas · topics: `python`, `rust`, `sandbox`, `sandboxing` · el README declara menos de un milisegundo de arranque desde una reserva ya creada, frente a unos 1.500 milisegundos de un servicio de cajas de arena · +10 hoy en Trending (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** — un script corto con una función inyectada basta para ver si el aislamiento aguanta el uso real antes de fiarse del README.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pydantic/monty",
+          "rel": "implements",
+          "dst": "concept:python-sandbox-rust",
+          "primera_mencion": "2026-09-25"
+        },
+        {
+          "src": "repo:pydantic/monty",
+          "rel": "solves",
+          "dst": "concept:sandbox-for-untrusted-code",
+          "primera_mencion": "2026-09-25"
+        },
+        {
+          "src": "repo:pydantic/monty",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/sandbox-runtime",
+          "primera_mencion": "2026-09-25"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pydantic-monty",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "EMI-Group/genesis",
+      "url": "https://github.com/EMI-Group/genesis",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema escrito en Elixir que convierte un objetivo en un árbol de agentes: los gestores descomponen el trabajo y revisan los resultados; los ejecutores implementan y validan en copias de trabajo de Git aisladas; y lo aceptado queda registrado como una versión del software con su historial. Cada tarea tiene su lugar y su contrato en ficheros de contexto dentro del repositorio, y el panel de escritorio permite seguir el árbol, los modelos usados y los cambios. Publica los resultados de lo construido con él frente a conjuntos de pruebas ajenos.",
+        "por_que_importa": "Cuando el agente trabaja en varias tareas, Genesis conserva el resultado como cambios aceptados en el repositorio y registra el historial, no solo como un resumen de sesión. Publica pruebas externas para mostrar lo construido, aunque esos resultados no garantizan que cada proyecto encaje con tus necesidades; además, su licencia AGPL-3.0 conviene revisar antes de adoptarlo. El trabajo con agentes de programación ya apareció el 2026-10-29; el uso de copias de trabajo de Git, el 2026-09-03.",
+        "madurez_senales": "310 estrellas · 34 forks · Elixir · creado 2025-07-17 · último push 2026-11-06 · AGPL-3.0 · 0 incidencias abiertas · 16 topics · publica un artículo y una tabla de evidencias: 220 de 220 pruebas de c-testsuite con un compilador de C escrito en Rust, 1.052 de 1.052 pruebas con trece módulos de Fortran reescritos y 2.017 de 2.019 pruebas del conjunto de WebGL (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**leer** — la tabla de evidencias y el diseño del árbol recursivo valen más que instalarlo hoy.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:EMI-Group/genesis",
+          "rel": "implements",
+          "dst": "concept:long-horizon-software-evolution",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:EMI-Group/genesis",
+          "rel": "uses",
+          "dst": "concept:git-worktrees",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:EMI-Group/genesis",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-coding",
+          "primera_mencion": "2026-10-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "emi-group-genesis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Sandflow-ai/sand3d",
+      "url": "https://github.com/Sandflow-ai/sand3d",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Biblioteca de Python para crear objetos 3D mediante código: perfiles, sólidos, ediciones, marcos, articulaciones y ensamblajes sobre Blender. Cada parte, cara y borde se alcanza por su nombre y nunca mediante coordenadas calculadas a mano; el resultado se exporta a GLB, USD, URDF, OBJ o STL. La misma entrada produce la misma malla, bit a bit. El README incluye una lavadora completa en treinta y ocho líneas, con sus cuatro articulaciones.",
+        "por_que_importa": "Sand3D permite crear piezas y ensamblajes en Blender por nombres de elementos, sin depender de coordenadas calculadas a mano, y repetir el resultado con la misma entrada. El ejemplo de una lavadora en 38 líneas muestra una interfaz compacta para describir un objeto con cuatro articulaciones. El README compara el uso de tokens con bibliotecas similares, pero las cifras disponibles no bastan para generalizar que siempre resulte más eficiente.",
+        "madurez_senales": "476 estrellas · 49 forks · HTML como lenguaje del repositorio · creado 2026-11-03 · último push 2026-11-05 · Apache-2.0 · 3 incidencias abiertas · 7 topics · tres días de vida y ya publica conjuntos de datos y un explorador en Hugging Face · el README declara entre dos y seis veces menos tokens por pieza que Blender en Python, CadQuery o FeatureScript (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** — una pieza sencilla y comparar líneas y tokens con el mismo objeto escrito a mano en Blender.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Sandflow-ai/sand3d",
+          "rel": "implements",
+          "dst": "concept:token-efficient-tool-api",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Sandflow-ai/sand3d",
+          "rel": "relevant_to",
+          "dst": "concept:mcp-3d-modeling",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Sandflow-ai/sand3d",
+          "rel": "enables",
+          "dst": "concept:agent-skill-3d",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sandflow-ai-sand3d",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(315.817 estrellas, último push 2026-11-05, Shell) — La colección personal que más estrellas acumula en el ecosistema vuelve a Trending con 2.071 estrellas ganadas hoy y sin novedades de código. Señales: https://github.com/mattpocock/skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mattpocock/skills",
+        "accion_sugerida": "leer — el índice antes de decidir si una skill propia merece publicarse",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mattpocock-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(104.239 estrellas, último push 2026-11-05, Rust) — Vocabulario de diseño para el agente: verbos como «pulir» o «criticar» para revisar el acabado y detectar el aspecto genérico de la IA antes de publicar. Señales: https://github.com/pbakaus/impeccable",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/pbakaus/impeccable",
+        "accion_sugerida": "probar — con una pantalla propia y comparar su criterio con el de un revisor humano",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pbakaus-impeccable",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(46.130 estrellas, último push 2026-11-06, Rust) — El hermano de navegador del hallazgo de hoy: automatiza el navegador por línea de comandos para agentes. Señales: https://github.com/vercel-labs/agent-browser",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vercel-labs/agent-browser",
+        "accion_sugerida": "vigilar — si los dos acaban compartiendo el mismo formato de referencias",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "ConardLi/garden-skills",
+      "url": "https://github.com/ConardLi/garden-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(14.363 estrellas, último push 2026-10-25, JavaScript) — Colección de skills de diseño web, recuperación de conocimiento y generación de imágenes, sin commits en las dos últimas semanas. Señales: https://github.com/ConardLi/garden-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ConardLi/garden-skills",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "conardli-garden-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "max-sixty/worktrunk",
+      "url": "https://github.com/max-sixty/worktrunk",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.667 estrellas, último push 2026-11-06, Rust) — Convierte las copias de trabajo de Git en algo tan sencillo como las ramas, pensado para ejecutar varios agentes en paralelo. La API no identifica la licencia y el README la declara MIT o Apache-2.0. Señales: https://github.com/max-sixty/worktrunk",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/max-sixty/worktrunk",
+        "accion_sugerida": "vigilar — hasta que la licencia quede clara para adoptarlo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "max-sixty-worktrunk",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "anomalyco/rune",
+      "url": "https://github.com/anomalyco/rune",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.116 estrellas, último push 2026-11-06, Rust) — Framework de interfaz nativo con renderizado propio que puede ejecutarse sin ventana, de modo que el agente dibuja a PNG y revisa su propio trabajo. Está en versión preliminar y solo se publica en la rama `dev`. Señales: https://github.com/anomalyco/rune",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anomalyco/rune",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anomalyco-rune",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "vAPI-Network/vapi-network",
+      "url": "https://github.com/vAPI-Network/vapi-network",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.605 estrellas, último push 2026-11-05, TypeScript) — Cliente no custodial para pagar interfaces con el protocolo x402 en USDC, desde la terminal o por MCP, con una política de gasto aplicada antes de firmar y un recibo guardado en local. Señales: https://github.com/vAPI-Network/vapi-network",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vAPI-Network/vapi-network",
+        "accion_sugerida": "leer — el modelo de recibos y de política antes de dejar que un agente gaste",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vapi-network-vapi-network",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "sandbox-quantum/switch",
+      "url": "https://github.com/sandbox-quantum/switch",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.986 estrellas, último push 2026-11-06, Python) — Compañeros de IA autoalojados en Slack, Teams, Discord y Telegram, compatibles con cualquier modelo y cualquier arnés. Tiene 546 incidencias abiertas y la API no identifica la licencia. Señales: https://github.com/sandbox-quantum/switch",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/sandbox-quantum/switch",
+        "accion_sugerida": "ignorar — por ahora",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sandbox-quantum-switch",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

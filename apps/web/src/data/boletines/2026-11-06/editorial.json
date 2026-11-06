@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-11-06",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La verificación distingue las skills de agente fiables",
+  "posicionamiento": "El conocimiento para agentes empieza a distribuirse como software: se instala, versiona y se adapta a tareas concretas. La diferencia importante no es cuántas skills aparecen, sino si las acciones y sus resultados pueden comprobarse.",
+  "convergencia_stack_css": "El registro de cobertura y los hallazgos verificables de Cloudflare conectan con la línea de CSS sobre mecanismos que evitan fallos silenciosos. Monty también aborda el aislamiento local de código generado, aunque los datos no muestran integración directa con el stack local-first.",
+  "cruzado_grafo": "Se refuerzan conexiones ya cubiertas: skills como paquetes (2026-08-08), escritorio por árbol de accesibilidad (2026-09-20), sandbox para código no confiable y Rust (2026-09-25), y agentes de programación (2026-10-29). Genesis y Sand3D añaden nodos sin primera_mencion registrada.",
+  "tendencias_5_boletines": "La continuidad prolonga el desplazamiento del agente hacia la infraestructura que lo hace comprobable: tras reglas, memoria persistente y pruebas, aparecen skills instalables y verificadores explícitos. El foco sigue en trazabilidad y control, no en modelos nuevos.",
+  "alertas": [
+    "Cloudflare/security-audit-skill no tiene commits desde septiembre; su atención actual no implica una versión nueva.",
+    "La cifra de arranque de Monty no permite compararlo con otros entornos en condiciones equivalentes.",
+    "Genesis usa licencia AGPL-3.0, que conviene revisar antes de adoptarlo.",
+    "Las comparaciones de tokens de Sand3D no bastan para concluir que siempre sea más eficiente."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Examinar cómo el registro de cobertura, la validación estructurada y la refutación independiente hacen revisable una auditoría con agentes."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Seguir cómo se distribuyen y actualizan las skills oficiales, y qué ocurre cuando varias ofrecen instrucciones para una misma tarea."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Contrastar el control de escritorio por árbol de accesibilidad con la interacción basada en píxeles y comprobar sus límites prácticos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Evaluar el aislamiento de Monty con cargas y condiciones comparables; la cifra de arranque del README no basta para medir su ventaja."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Revisar el encaje de Genesis y las obligaciones de AGPL-3.0 antes de considerar su adopción."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,51 @@
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:cloudflare-security-audit-skill", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "concept:agentic-security-analysis", "rel": "implements", "added": "2026-11-06", "primera_mencion": "2026-09-15"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "concept:agent-skill", "rel": "extends", "added": "2026-11-06", "primera_mencion": "2026-09-08"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "concept:verification-loop", "rel": "enables", "added": "2026-11-06", "primera_mencion": "2026-09-15"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-google-skills", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-google-skills", "dst": "tema:google-skills", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:google/skills", "dst": "concept:agent-skills", "rel": "implements", "added": "2026-11-06", "primera_mencion": "2026-08-08"}
+{"src": "repo:google/skills", "dst": "concept:skill-as-package", "rel": "uses", "added": "2026-11-06", "primera_mencion": "2026-08-08"}
+{"src": "repo:google/skills", "dst": "repo:mattpocock/skills", "rel": "competes_with", "added": "2026-11-06", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-scenario-labs-skills", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-scenario-labs-skills", "dst": "tema:scenario-labs-skills", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:scenario-labs/skills", "dst": "concept:skill-as-package", "rel": "implements", "added": "2026-11-06", "primera_mencion": null}
+{"src": "repo:scenario-labs/skills", "dst": "concept:mcp-3d-modeling", "rel": "integrates", "added": "2026-11-06", "primera_mencion": null}
+{"src": "repo:scenario-labs/skills", "dst": "concept:agent-skill-registry", "rel": "relevant_to", "added": "2026-11-06", "primera_mencion": "2026-08-16"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-vercel-labs-agent-desktop", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-vercel-labs-agent-desktop", "dst": "tema:vercel-labs-agent-desktop", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:vercel-labs/agent-desktop", "dst": "concept:accessibility-tree-computer-use", "rel": "implements", "added": "2026-11-06", "primera_mencion": "2026-09-20"}
+{"src": "repo:vercel-labs/agent-desktop", "dst": "repo:vercel-labs/agent-browser", "rel": "complements", "added": "2026-11-06", "primera_mencion": "2026-08-08"}
+{"src": "repo:vercel-labs/agent-desktop", "dst": "concept:agent-native-cli-generation", "rel": "relevant_to", "added": "2026-11-06", "primera_mencion": "2026-08-16"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-pydantic-monty", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-pydantic-monty", "dst": "tema:pydantic-monty", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:pydantic/monty", "dst": "concept:python-sandbox-rust", "rel": "implements", "added": "2026-11-06", "primera_mencion": "2026-09-25"}
+{"src": "repo:pydantic/monty", "dst": "concept:sandbox-for-untrusted-code", "rel": "solves", "added": "2026-11-06", "primera_mencion": "2026-09-25"}
+{"src": "repo:pydantic/monty", "dst": "repo:anthropics/sandbox-runtime", "rel": "competes_with", "added": "2026-11-06", "primera_mencion": "2026-09-25"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-emi-group-genesis", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-emi-group-genesis", "dst": "tema:emi-group-genesis", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:EMI-Group/genesis", "dst": "concept:long-horizon-software-evolution", "rel": "implements", "added": "2026-11-06", "primera_mencion": null}
+{"src": "repo:EMI-Group/genesis", "dst": "concept:git-worktrees", "rel": "uses", "added": "2026-11-06", "primera_mencion": "2026-09-03"}
+{"src": "repo:EMI-Group/genesis", "dst": "concept:agentic-coding", "rel": "relevant_to", "added": "2026-11-06", "primera_mencion": "2026-10-29"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-sandflow-ai-sand3d", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-sandflow-ai-sand3d", "dst": "tema:sandflow-ai-sand3d", "rel": "trata", "added": "2026-11-06"}
+{"src": "repo:Sandflow-ai/sand3d", "dst": "concept:token-efficient-tool-api", "rel": "implements", "added": "2026-11-06", "primera_mencion": null}
+{"src": "repo:Sandflow-ai/sand3d", "dst": "concept:mcp-3d-modeling", "rel": "relevant_to", "added": "2026-11-06", "primera_mencion": null}
+{"src": "repo:Sandflow-ai/sand3d", "dst": "concept:agent-skill-3d", "rel": "enables", "added": "2026-11-06", "primera_mencion": null}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-mattpocock-skills", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-mattpocock-skills", "dst": "tema:mattpocock-skills", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-pbakaus-impeccable", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:pbakaus-impeccable", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-vercel-labs-agent-browser", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:vercel-labs-agent-browser", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-conardli-garden-skills", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-conardli-garden-skills", "dst": "tema:conardli-garden-skills", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-max-sixty-worktrunk", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-max-sixty-worktrunk", "dst": "tema:max-sixty-worktrunk", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-anomalyco-rune", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-anomalyco-rune", "dst": "tema:anomalyco-rune", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-vapi-network-vapi-network", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-vapi-network-vapi-network", "dst": "tema:vapi-network-vapi-network", "rel": "trata", "added": "2026-11-06"}
+{"src": "boletin:2026-11-06", "dst": "item:https-github-com-sandbox-quantum-switch", "rel": "menciona", "added": "2026-11-06"}
+{"src": "item:https-github-com-sandbox-quantum-switch", "dst": "tema:sandbox-quantum-switch", "rel": "trata", "added": "2026-11-06"}
