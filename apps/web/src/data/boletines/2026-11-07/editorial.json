@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-07",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Kandev y Multica mueven la tarea fuera de la sesión del agente",
+  "posicionamiento": "La tarea deja de vivir en la sesión del agente y pasa a una incidencia con copia de trabajo, diff y revisión. Kandev y Multica llegan al mismo sitio por caminos distintos; Rivet pone debajo el estado durable que ambos dan por hecho.",
+  "convergencia_stack_css": "Lo más cercano al stack local-first es agent-security: pasarela local, reglas antes de ejecutar y auditoría en disco, justo la capa que un gancho no alcanza. Rivet apunta al mismo sitio con estado durable, aunque desplegarlo no es trivial.",
+  "cruzado_grafo": "Dos nodos entran sin primera_mencion: tool-call-enforcement-gateway y agent-native-design-system. El resto refuerza lo ya cubierto: plano de control (2026-08-11), copias de trabajo de Git (2026-09-03), objetos duraderos (2026-08-07) y la competencia Kandev-Multica (2026-08-03).",
+  "tendencias_5_boletines": "Con dos días de contexto y no cinco, la línea se sostiene: si ayer el conocimiento se instalaba y anteayer el mecanismo iba debajo del agente, hoy ese mecanismo sube al plano de control. El foco pasa de la pieza a quién aprueba.",
+  "alertas": [
+    "Multica se declara source-available y la API no identifica licencia: no debe tratarse como código abierto.",
+    "Astryx sigue en beta y arrastra 731 incidencias abiertas.",
+    "Rivet da persistencia de estado, no gestión segura de datos ni de conversaciones.",
+    "Kandev afirma veinte CLI de agente compatibles; no verificado en ejecución.",
+    "Blogwatcher sin archivo desde el 5 de julio: un canal de fuentes lleva meses caído."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Es la única pieza de hoy que bloquea antes de ejecutar, no después. Merece una prueba con reglas reales del entorno."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "El flujo tarea-worktree-diff-revisión es replicable con lo que ya usamos. Conviene medir el coste de montarlo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "La idea es sólida pero la licencia no está resuelta. No adoptar hasta que se aclare por escrito."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Beta con 731 incidencias abiertas: interesante como referencia de diseño, arriesgado como dependencia."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Actor durable con SQLite propia responde al problema de sesión que arrastramos. Encaja en la línea local-first."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,41 @@
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-kdlbs-kandev", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-kdlbs-kandev", "dst": "tema:kdlbs-kandev", "rel": "trata", "added": "2026-11-07"}
+{"src": "repo:kdlbs/kandev", "dst": "concept:agent_control_plane", "rel": "implements", "added": "2026-11-07", "primera_mencion": "2026-08-11"}
+{"src": "repo:kdlbs/kandev", "dst": "concept:git-worktrees", "rel": "uses", "added": "2026-11-07", "primera_mencion": "2026-09-03"}
+{"src": "repo:kdlbs/kandev", "dst": "repo:multica-ai/multica", "rel": "competes_with", "added": "2026-11-07", "primera_mencion": "2026-08-03"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-multica-ai-multica", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-multica-ai-multica", "dst": "tema:multica-ai-multica", "rel": "trata", "added": "2026-11-07"}
+{"src": "repo:multica-ai/multica", "dst": "concept:agent-teammate-workspace", "rel": "implements", "added": "2026-11-07", "primera_mencion": "2026-08-03"}
+{"src": "repo:multica-ai/multica", "dst": "concept:human-in-the-loop", "rel": "relevant_to", "added": "2026-11-07", "primera_mencion": "2026-08-03"}
+{"src": "repo:multica-ai/multica", "dst": "problem:license-noassertion", "rel": "risk", "added": "2026-11-07", "primera_mencion": "2026-08-03"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-solongate-agent-security", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-solongate-agent-security", "dst": "tema:solongate-agent-security", "rel": "trata", "added": "2026-11-07"}
+{"src": "repo:solongate/agent-security", "dst": "concept:tool-call-enforcement-gateway", "rel": "implements", "added": "2026-11-07", "primera_mencion": null}
+{"src": "repo:solongate/agent-security", "dst": "repo:cloudflare/security-audit-skill", "rel": "complements", "added": "2026-11-07", "primera_mencion": "2026-09-15"}
+{"src": "repo:solongate/agent-security", "dst": "concept:agent-policy-governance", "rel": "relevant_to", "added": "2026-11-07", "primera_mencion": "2026-10-23"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-meta-astryx", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-meta-astryx", "dst": "tema:meta-astryx", "rel": "trata", "added": "2026-11-07"}
+{"src": "repo:meta/astryx", "dst": "concept:agent-native-design-system", "rel": "implements", "added": "2026-11-07", "primera_mencion": null}
+{"src": "repo:meta/astryx", "dst": "problem:agent-design-system-drift", "rel": "solves", "added": "2026-11-07", "primera_mencion": "2026-09-15"}
+{"src": "repo:meta/astryx", "dst": "concept:agentic-ui-quality", "rel": "relevant_to", "added": "2026-11-07", "primera_mencion": "2026-10-26"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-rivet-dev-rivet", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-rivet-dev-rivet", "dst": "tema:rivet-dev-rivet", "rel": "trata", "added": "2026-11-07"}
+{"src": "repo:rivet-dev/rivet", "dst": "concept:durable-object-runtime", "rel": "implements", "added": "2026-11-07", "primera_mencion": "2026-08-07"}
+{"src": "repo:rivet-dev/rivet", "dst": "concept:agent-runtime", "rel": "enables", "added": "2026-11-07", "primera_mencion": "2026-10-30"}
+{"src": "repo:rivet-dev/rivet", "dst": "concept:multi-agent-orchestration", "rel": "relevant_to", "added": "2026-11-07", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-nvidia-auto-ontology", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-nvidia-auto-ontology", "dst": "tema:nvidia-auto-ontology", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-deeplethe-sandstorm", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-deeplethe-sandstorm", "dst": "tema:deeplethe-sandstorm", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-d4vinci-scrapling", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-d4vinci-scrapling", "dst": "tema:d4vinci-scrapling", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-vercel-labs-json-render", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-vercel-labs-json-render", "dst": "tema:vercel-labs-json-render", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-voyager-so-vork", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-voyager-so-vork", "dst": "tema:voyager-so-vork", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-ppmpreetham-bui", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-ppmpreetham-bui", "dst": "tema:ppmpreetham-bui", "rel": "trata", "added": "2026-11-07"}
+{"src": "boletin:2026-11-07", "dst": "item:https-github-com-had0yun-cozyclay", "rel": "menciona", "added": "2026-11-07"}
+{"src": "item:https-github-com-had0yun-cozyclay", "dst": "tema:had0yun-cozyclay", "rel": "trata", "added": "2026-11-07"}

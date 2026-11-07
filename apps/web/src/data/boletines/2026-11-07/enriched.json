@@ -1,0 +1,430 @@
+{
+  "version": 2,
+  "date": "2026-11-07",
+  "boletin_origen": "2026-11-07-trending.md",
+  "resumen_ejecutivo": "- El día lo define el plano de control: tres proyectos nuevos colocan al humano donde decide, no donde ejecuta, y le dan un tablero para asignar trabajo, una pasarela para bloquear herramientas y una biblioteca de piezas para que el agente no improvise la interfaz.\n- Los dos primeros, kandev y multica, resuelven el mismo problema por caminos distintos: la tarea deja de vivir en la sesión del agente y pasa a vivir en una incidencia con su copia de trabajo, su diff y su revisión.\n- rivet pone la capa que faltaba debajo de todo eso: el estado del agente en un actor durable con su propia base de datos, en lugar de en un proceso que muere al cerrar la terminal.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (105 repositorios únicos), GitHub API (16 repositorios verificados, README leído en la rama por defecto de cada uno). Blogwatcher sigue sin publicar archivo desde el 5 de julio.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "kdlbs/kandev",
+      "url": "https://github.com/kdlbs/kandev",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Binario de Go con el frontend compilado dentro que integra un tablero kanban, la ejecución de tareas en paralelo y la revisión en una sola aplicación. Cada tarea corre en su propia copia de trabajo de Git y admite cualquiera de las veinte CLI de agente que lista el README mediante el protocolo de cliente de agente. Los ejecutores pueden ser un proceso local, Docker, Kubernetes, SSH o una nube externa. Los flujos de trabajo se exportan como YAML portable, las tareas pueden generar subtareas que retoman la sesión del padre y el propio sistema expone un MCP para que un agente cree tareas hermanas o consulte conversaciones relacionadas. Funciona en local o autoalojado, sin telemetría, y guarda sus datos en el directorio del usuario.",
+        "por_que_importa": "El reto no es solo lanzar agentes, sino revisar sus cambios antes de aceptarlos. Kandev reúne tarea, copia de trabajo de Git, diferencia y vista previa; nada se cierra sin aprobación. Si ya coordinas varios agentes, propone un flujo concreto: una tarea aislada, su propio espacio de trabajo y revisión humana. Ya cubrimos el plano de control de agentes el 2026-08-11, las copias de trabajo de Git el 2026-09-03 y Multica el 2026-08-03; Kandev combina esos temas en una sola aplicación.",
+        "madurez_senales": "1.075 estrellas · 179 forks · Go · creado 2026-01-09 · último push 2026-11-07 · AGPL-3.0 · 286 incidencias abiertas · topics: `agent-orchestration`, `kanban`, `code-review`, `github-copilot` · el frontend compilado viaja dentro del binario, sin Node en tiempo de ejecución (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** — se instala con brew o npx, y la prueba honesta es meter una tarea pequeña y ver si la revisión ahorra más tiempo del que cuesta configurarla.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:kdlbs/kandev",
+          "rel": "implements",
+          "dst": "concept:agent_control_plane",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:kdlbs/kandev",
+          "rel": "uses",
+          "dst": "concept:git-worktrees",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:kdlbs/kandev",
+          "rel": "competes_with",
+          "dst": "repo:multica-ai/multica",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kdlbs-kandev",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "multica-ai/multica",
+      "url": "https://github.com/multica-ai/multica",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Espacio de trabajo autoalojable donde el trabajo se reparte como a un compañero de equipo: se le asigna una incidencia a un agente, este la recoge, comenta el avance, señala bloqueos y la devuelve para revisión. Funciona con las CLI de agente que ya se usan y mantiene unidos en la misma incidencia la intención, la ejecución, las decisiones y la diferencia de código, de modo que nadie tiene que reconstruir el contexto ni nada se publica sin que una persona lo apruebe.",
+        "por_que_importa": "El estado del trabajo queda en la incidencia, no en la sesión del agente: otra persona o agente puede retomarlo sin reconstruir la conversación. Ya cubrimos este espacio de trabajo para agentes y la aprobación humana el 2026-08-03; Multica aplica esa idea a asignaciones, bloqueos y revisión de código. Antes de adoptarlo, ojo con la licencia: el README lo declara «source-available» y la API no identifica una, así que no debe tratarse como software de código abierto.",
+        "madurez_senales": "55.193 estrellas · 7.273 forks · Go · creado 2026-01-13 · último push 2026-11-07 · licencia no identificada por la API, el README la declara source-available · 1.907 incidencias abiertas · +130 hoy en Trending · publica CI y releases (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**leer** — el modelo de incidencia y de ejecución es lo reutilizable aunque no se adopte la herramienta.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:multica-ai/multica",
+          "rel": "implements",
+          "dst": "concept:agent-teammate-workspace",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:multica-ai/multica",
+          "rel": "relevant_to",
+          "dst": "concept:human-in-the-loop",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:multica-ai/multica",
+          "rel": "risk",
+          "dst": "problem:license-noassertion",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-multica",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "solongate/agent-security",
+      "url": "https://github.com/solongate/agent-security",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Pasarela local para agentes de código: revisa cada llamada a una herramienta contra las reglas antes de ejecutarla, con detección de secretos en cuatro modos (desactivado, detectar, redactar y bloquear), límites de frecuencia por minuto, hora o día, y registro de auditoría en disco. Incluye funciones que un gancho normal no alcanza: enmascara el cuerpo de la petición saliente al modelo, protege su propio estado para que una política incluida en el repositorio no pueda desactivarla y puede encerrar al agente en una raíz mínima donde lo que no está no se puede denegar.",
+        "por_que_importa": "Una auditoría puede detectar un problema; esta pasarela puede impedir que una llamada a herramienta se ejecute según la política y dejar constancia local. Además de denegar acciones, puede limitar lo que el agente ve: si un archivo no está dentro de su raíz de trabajo, no puede acceder a él para eludir una regla. Complementa la skill de auditoría de seguridad que ya cubrimos el 2026-09-15 y conecta con la gobernanza de políticas para agentes, tratada el 2026-10-23.",
+        "madurez_senales": "361 estrellas · 32 forks · Go · creado 2026-09-27 · último push 2026-11-06 · Apache-2.0 · 151 incidencias abiertas · topics: `agent-security`, `local-first`, `policy-enforcement`, `dlp` · el README muestra CI, CodeQL, insignias de OpenSSF y certificación SLSA (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** — con una regla que bloquee la lectura de un fichero de entorno y una sesión real se ve en dos minutos si el agente lo respeta o lo rodea.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:solongate/agent-security",
+          "rel": "implements",
+          "dst": "concept:tool-call-enforcement-gateway",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:solongate/agent-security",
+          "rel": "complements",
+          "dst": "repo:cloudflare/security-audit-skill",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:solongate/agent-security",
+          "rel": "relevant_to",
+          "dst": "concept:agent-policy-governance",
+          "primera_mencion": "2026-10-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "solongate-agent-security",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema de diseño que Meta usó durante ocho años internamente, con más de 150 componentes y presencia en miles de aplicaciones de la empresa, y que ahora publica en beta sobre React 19 y StyleX. Incluye temas como variables CSS, modo oscuro, plantillas y una CLI con documentación por componente, andamios y codemods. Hay una decisión explícita: la API, los documentos y la CLI se diseñaron juntos para que una persona y un asistente construyan de la misma manera. Los componentes se pueden extraer al proyecto para conservar su código, y los estilos se sobrescriben con los que ya use cada uno.",
+        "por_que_importa": "Para integrar la interfaz de una aplicación con un agente importa poder inspeccionar y adaptar los componentes, no solo elegirlos de un catálogo: aquí se pueden extraer al proyecto y sobrescribir sus estilos. Meta diseñó API, documentación y CLI conjuntamente para que personas y asistentes trabajen con las mismas herramientas. Ya cubrimos la deriva de los sistemas de diseño para agentes el 2026-09-15 y la calidad de interfaces generadas por agentes el 2026-10-26. Sigue en beta, con 731 incidencias abiertas.",
+        "madurez_senales": "14.079 estrellas · 1.168 forks · TypeScript · creado 2026-01-09 · último push 2026-11-07 · MIT · 731 incidencias abiertas · +198 hoy en Trending · el README marca el proyecto como beta y avisa de que los paquetes de gráficas solo se publican bajo la etiqueta canary (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**leer** — la CLI de documentación y un componente eyectado enseñan el criterio mejor que la portada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:meta/astryx",
+          "rel": "implements",
+          "dst": "concept:agent-native-design-system",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:meta/astryx",
+          "rel": "solves",
+          "dst": "problem:agent-design-system-drift",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:meta/astryx",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-ui-quality",
+          "primera_mencion": "2026-10-26"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "meta-astryx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "rivet-dev/rivet",
+      "url": "https://github.com/rivet-dev/rivet",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Orquestador de actores duraderos pensado para cargas de trabajo de agentes. Cada actor es un proceso de larga vida con estado en memoria, su propia base de datos SQLite, WebSockets y planificación, y se puede crear uno por agente, usuario, sesión o inquilino. Hiberna cuando está inactivo, despierta con la siguiente petición sin perder nada y todos los datos viven en almacenamiento de objetos, de modo que un clúster puede crecer sin mover el estado de sitio.",
+        "por_que_importa": "Un actor duradero conserva su estado entre peticiones aunque su proceso se duerma; así, una sesión de agente no depende de mantener un proceso activo ni de guardar el estado manualmente. Rivet ofrece esta base para diseñar agentes con sesiones persistentes, pero no implica por sí sola que sus datos o conversaciones se gestionen de forma segura. Ya cubrimos los objetos duraderos el 2026-08-07, la orquestación multiagente el 2026-08-27 y el entorno de ejecución de agentes el 2026-10-30.",
+        "madurez_senales": "6.767 estrellas · 311 forks · Rust · creado 2023-06-16 · último push 2026-11-06 · Apache-2.0 · 387 incidencias abiertas · +162 hoy en Trending · topics: `actors`, `durable-objects`, `cloudflare-durable-objects`, `realtime` · el README declara 72 KB por actor, 4,99 ms de arranque en frío p99 y 1,07 ms de escritura durable, medidos por el propio proyecto (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**explorar** — el ejemplo mínimo de un agente con SQLite y WebSockets es corto y se puede correr sin montar el clúster.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:rivet-dev/rivet",
+          "rel": "implements",
+          "dst": "concept:durable-object-runtime",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:rivet-dev/rivet",
+          "rel": "enables",
+          "dst": "concept:agent-runtime",
+          "primera_mencion": "2026-10-30"
+        },
+        {
+          "src": "repo:rivet-dev/rivet",
+          "rel": "relevant_to",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rivet-dev-rivet",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(118.036 estrellas, último push el 2026-11-07, TypeScript): reaparece con 1.155 estrellas ganadas hoy y suma casi doce mil desde su última aparición, el 26 de octubre; una flota de agentes en copias de trabajo, con escritorio y móvil. Señales: https://github.com/stablyai/orca",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/stablyai/orca",
+        "accion_sugerida": "vigilar — si el crecimiento se sostiene sin versión nueva",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.421 estrellas, último push el 2026-11-06, Python): vuelve a Trending dos días después de ser el hallazgo principal; capa de ontología que genera consultas deterministas y las valida contra definiciones certificadas. Señales: https://github.com/NVIDIA/auto-ontology",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/NVIDIA/auto-ontology",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-auto-ontology",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "deeplethe/sandstorm",
+      "url": "https://github.com/deeplethe/sandstorm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.441 estrellas, último push el 2026-11-01, Rust): cajas de arena con cuatro niveles de vida, de caliente a separada, para alojar miles en una máquina; vuelve tras su paso del 1 de noviembre con las mismas mediciones. Señales: https://github.com/deeplethe/sandstorm",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/deeplethe/sandstorm",
+        "accion_sugerida": "leer — la tabla de latencias antes que el código",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deeplethe-sandstorm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(98.988 estrellas, último push el 2026-11-05, Python): tercera aparición en cinco días; el framework de extr — señales: https://github.com/D4Vinci/Scrapling",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/D4Vinci/Scrapling",
+        "accion_sugerida": "web ya publica servidor MCP y skill de agente además de sus cuatro formas de descarga — Acción: **probar** la variante que resuelve el desafío de Cloudflare antes de pagar proxies",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "d4vinci-scrapling",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "vercel-labs/json-render",
+      "url": "https://github.com/vercel-labs/json-render",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(19.133 estrellas, último push el 2026-11-06, TypeScript): marco de interfaz generativa en el que el modelo devuelve una estructura y el render la muestra; vuelve tras su paso de septiembre. Señales: https://github.com/vercel-labs/json-render",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vercel-labs/json-render",
+        "accion_sugerida": "explorar — el esquema de salida como contrato",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-json-render",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "voyager-so/vork",
+      "url": "https://github.com/voyager-so/vork",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(521 estrellas, último push el 2026-11-07, Rust): kernel de renderizado 3D y efectos sin interfaz gráfica para agentes. Tiene dos días de vida: el agente escribe la escena, la renderiza, mira la imagen y corrige. Señales: https://github.com/voyager-so/vork",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/voyager-so/vork",
+        "accion_sugerida": "vigilar — mientras siga en vista previa de investigación",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "voyager-so-vork",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ppmpreetham/BUI",
+      "url": "https://github.com/ppmpreetham/BUI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.683 estrellas, último push el 2026-11-07, C++): interfaz de Blender acelerada por GPU, separada de su código original y utilizable desde Rust, Python, JavaScript, React y C++. Señales: https://github.com/ppmpreetham/BUI",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ppmpreetham/BUI",
+        "accion_sugerida": "explorar — si sirve para sacar herramientas de escritorio del entorno de Blender",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ppmpreetham-bui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "HaD0Yun/CozyClay",
+      "url": "https://github.com/HaD0Yun/CozyClay",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.561 estrellas, último push el 2026-11-07, JavaScript): previsualización cinematográfica en el navegador: se bloquea la escena, se colocan los personajes y los mismos planos se llevan a un modelo de vídeo. Señales: https://github.com/HaD0Yun/CozyClay",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HaD0Yun/CozyClay",
+        "accion_sugerida": "leer — el flujo de traspaso entre escena y vídeo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "had0yun-cozyclay",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "13/13 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
