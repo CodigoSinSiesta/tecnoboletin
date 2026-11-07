@@ -85,8 +85,13 @@ editorial de dias previos recientes, solo como contexto de continuidad.
 RESTRICCIONES DUREAS DE LONGITUD (no son sugerencias, son limites):
 
 - TODOS los parrafos (posicionamiento, convergencia_stack_css, cruzado_grafo, \
-tendencias_5_boletines) deben tener entre 80 y 350 chars. Por debajo de 80 es vacio, por \
-encima de 350 es vaciado. Si la tesis pide mas, dividela en 2-3 frases cortas, no en una sola \
+tendencias_5_boletines) deben tener entre 80 y 350 chars (limite absoluto: 400; por encima \
+se rechaza y se te pide de nuevo). Por debajo de 80 se trata como vacio.
+
+- NINGUN parrafo puede ir vacio. Si un campo no tiene material fuerte, escribe 1-2 frases \
+honestas que lo digan con lo que si hay (ej. "Ningun hallazgo de hoy toca el stack \
+local-first; lo mas cercano es X, y solo de forma tangencial."). Un campo vacio hace fallar \
+la publicacion del dia. Si la tesis pide mas, dividela en 2-3 frases cortas, no en una sola \
 oracion larga.
 
 - Cada parrafo arranca DIRECTO con la idea. NUNCA arranques con meta-comentario sobre el \
@@ -119,7 +124,7 @@ puertas simultaneas que conviene mirar con calma' (parrafo).",
   "posicionamiento": "1 parrafo (80-350 chars): que hace especial al boletin de hoy en su \
 conjunto, cual es el hilo conductor entre los hallazgos (si lo hay). Arranca con la tesis, no \
 con meta-comentario. No es un resumen de cada item, es la lectura editorial del dia.",
-  "convergencia_stack_css": "1 parrafo (80-350 chars, o vacio '' si de verdad no aplica): que \
+  "convergencia_stack_css": "1 parrafo (80-350 chars, NUNCA vacio; si no hay conexion clara, dilo en 1-2 frases): que \
 hallazgos de hoy conectan con el stack local-first / lineas editoriales ya conocidas de Codigo \
 Sin Siesta. No inventes piezas del stack que no esten mencionadas en los propios hallazgos de \
 hoy o en el contexto de continuidad recibido.",
@@ -139,8 +144,9 @@ solo si de verdad los hay, no rellenes por rellenar"],
 item_idx en acciones_concretas DEBE ser uno de los idx reales que recibiste en los hallazgos \
 de hoy -- nunca un numero inventado. Maximo 5 acciones_concretas. No inventes metricas, \
 fechas ni conexiones que no esten en los datos recibidos. Si un dia tiene poco material para \
-alguno de estos campos, un parrafo corto y honesto ("hoy no hay una convergencia clara con el \
-stack") es preferible a rellenar con generalidades.
+alguno de estos campos, un parrafo corto y honesto ("no hay una convergencia clara con el \
+stack: lo mas cercano es X") es preferible a rellenar con generalidades, y siempre \
+preferible a dejar el campo vacio.
 
 DATOS DE HOY:
 """
@@ -159,7 +165,7 @@ TENDENCIAS_MAX = 900
 # Rangos del validador post-LLM. Si el LLM se queda corto o se pasa, se
 # considera respuesta inutil y se reintenta con un patch prompt.
 POS_MIN_OK = 80
-POS_MAX_OK = 600  # mas estricto que el cap defensivo: deja margen
+POS_MAX_OK = 400  # mismo limite absoluto que se le comunica al modelo
 
 # El titular es el unico campo con cap duro real: si no cabe en una linea
 # de h1 deja de ser titular. El maximo se valida contra 110 (el prompt
@@ -257,7 +263,7 @@ def _validate_posicionamiento(t: str) -> str | None:
 # Constantes de validacion para las 3 secciones que antes se publicaban sin check.
 # Mismo criterio que posicionamiento: 80-600 chars, sin muletilla.
 SECTION_MIN_OK = 80
-SECTION_MAX_OK = 600
+SECTION_MAX_OK = 400  # mismo limite absoluto que se le comunica al modelo
 
 
 def _validate_section(t: str, name: str) -> str | None:
@@ -396,8 +402,11 @@ def run_generation(enriched_path: Path, repo_data_dir: Path, date: str, work_dir
         "Respuesta anterior (rechazada): {previo}\n\n"
     )
 
-    def _do_call(prompt: str) -> str | None:
-        return call_hermes(prompt, work_dir, tag=f"{date}.editorial", timeout=timeout)
+    def _do_call(prompt: str, suffix: str = "") -> str | None:
+        # Cada llamada deja sus propios .prompt/.response.txt: el primer
+        # intento (el que decide casi todo el editorial) ya no se pierde al
+        # sobrescribirlo el reintento, lo que impedia diagnosticar fallos.
+        return call_hermes(prompt, work_dir, tag=f"{date}.editorial{suffix}", timeout=timeout)
 
     def _clean_parse(raw: str | None) -> dict | None:
         if raw is None:
@@ -419,7 +428,7 @@ def run_generation(enriched_path: Path, repo_data_dir: Path, date: str, work_dir
     if pos_problema:
         print(f"  posicionamiento falla validador: {pos_problema} -- reintentando", file=sys.stderr)
         retry_prompt = retry_template.format(motivo=pos_problema, previo=pos[:300])
-        retry_parsed = _clean_parse(_do_call(retry_prompt))
+        retry_parsed = _clean_parse(_do_call(retry_prompt, ".retry-pos"))
         if retry_parsed and isinstance(retry_parsed.get("posicionamiento"), str):
             pos2 = retry_parsed["posicionamiento"]
             if not _validate_posicionamiento(pos2):
@@ -451,7 +460,7 @@ def run_generation(enriched_path: Path, repo_data_dir: Path, date: str, work_dir
             "Devuelve SOLO {\"titular\": \"...\"} con un titular de 35-85 chars, una sola idea, "
             "sin punto final, sin muletilla ('El boletin de hoy', 'Hoy', 'Tres ejes') y sin "
             "enumerar. Sin markdown fences."
-        ))
+        , ".retry-titular"))
         if tit_retry and isinstance(tit_retry.get("titular"), str):
             cand = tit_retry["titular"].strip()
             if not _validate_titular(cand):
@@ -498,6 +507,34 @@ def run_generation(enriched_path: Path, repo_data_dir: Path, date: str, work_dir
         "acciones_concretas": acciones,
         "generado_por": "generate_editorial.py --llm hermes (generacion nueva)",
     }
+
+    # Reintento unico de las secciones invalidas (vacias, cortas, largas o con
+    # muletilla). Antes se persistian vacias sin mas, y el gate del cron
+    # abortaba (21-oct: convergencia_stack_css y cruzado_grafo vacias). Se
+    # reenvia el prompt completo porque `hermes -z` no conserva contexto.
+    # tendencias_5_boletines solo se reintenta si hay contexto previo: sin
+    # editoriales de dias anteriores puede quedar vacia legitimamente.
+    reintentables = [
+        n for n in ("convergencia_stack_css", "cruzado_grafo", "tendencias_5_boletines")
+        if _validate_section(data[n], n) and (n != "tendencias_5_boletines" or context.strip())
+    ]
+    if reintentables:
+        print(f"  secciones invalidas {reintentables} -- reintentando una vez", file=sys.stderr)
+        sec_prompt = (
+            main_prompt
+            + "\n\nTu respuesta anterior dejo estas secciones vacias o invalidas: "
+            + ", ".join(reintentables)
+            + ". Devuelve SOLO un JSON con esas claves, cada una con 80-350 chars, "
+            "sin muletilla, sin markdown fences. Si la conexion es debil, dilo con "
+            "honestidad en 1-2 frases en vez de dejarla vacia ni inventar datos."
+        )
+        sec_retry = _clean_parse(_do_call(sec_prompt, ".retry-sections"))
+        if sec_retry:
+            for n in reintentables:
+                cand = sec_retry.get(n)
+                if isinstance(cand, str) and not _validate_section(cand.strip(), n):
+                    data[n] = _cap(cand.strip(), {"convergencia_stack_css": CONVERGENCIA_MAX, "cruzado_grafo": CRUZADO_MAX, "tendencias_5_boletines": TENDENCIAS_MAX}[n])
+                    motivo += f"; {n} regenerada tras 1 reintento"
 
     # Validacion de las 3 secciones que antes se publicaban sin check.
     # Si el LLM las omite o devuelve texto malo, el validador lo detecta y

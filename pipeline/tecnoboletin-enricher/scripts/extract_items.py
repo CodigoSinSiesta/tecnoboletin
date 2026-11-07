@@ -89,6 +89,11 @@ KNOWN_SECTIONS = [
     "ideas de contenido",
     "candidatos para exploracion",
     "candidatos para exploraci",  # variante con tilde ya stripeada distinto
+    "cada item lleva URL",
+    "cómo conectan con nodos previos",
+    "relaciones nuevas clave",
+    "ideas de contenido para código sin siesta",
+    "candidatos para exploración profunda",
 ]
 
 
@@ -110,6 +115,10 @@ ITEM_HEAD_PATTERNS = [
     re.compile(r"^\d+\.\s*`(?P<title>[^`]+)`\s*[-—–:]?\s*(?P<subtitle>.*)$"),
     # #### `slug` - sub
     re.compile(r"^`(?P<title>[^`]+)`\s*[-—–:]?\s*(?P<subtitle>.*)$"),
+    # Hallazgo numerado: repo slug o nombre de proyecto con separador ` — `.
+    re.compile(r"^\d+\.\s*(?P<title>[\w.-]+/[\w.-]+|[^—–-]+?)\s+[-—–]\s+(?P<subtitle>.*)$"),
+    # Encabezados sin numeración, con slug o título de repo seguido de subtítulo.
+    re.compile(r"^(?P<title>[\w.-]+/[\w.-]+|[^—–-]+?)\s+[-—–]\s+(?P<subtitle>.*)$"),
     # #### N. slug - sub  (plano, sin backticks ni link). El separador exige
     # espacios a ambos lados para no cortar en un guion interno del slug
     # (ej. "esengine/DeepSeek-Reasonix" no debe partirse en "DeepSeek").
@@ -171,18 +180,38 @@ LABEL_LINE_RE = re.compile(
     r"\*\*(?P<label2>[^*]+)\*\*:?(?=\s|$)"
     r"|"
     r"(?P<label_plain>[A-ZÁÉÍÓÚÑ][^:]+?)(?=\s*:|\s*$)"
+    r"|"
+    r"(?P<label_plain_legacy>[A-ZÁÉÍÓÚÑ][^:]+?)(?=\s*:|\s*$)"
     r")"
     r"\s*(?P<rest>.*)$"
 )
 URL_LINE_RE = re.compile(r"^(?:-\s*)?\*\*(?P<url>https?://[^*]+)\*\*$", re.IGNORECASE)
 PLAIN_URL_LINE_RE = re.compile(r"^\s*-\s*(?:\*\*URL\*\*|URL):\s*(?P<url>https?://\S+)", re.IGNORECASE)
+# "- **URL**: GHSA-xxxx-xxxx-xxxx (CVE-...)" sin enlace (2026-10-22): se
+# normaliza a la URL canonica del advisory en vez de tumbar el dia entero.
+URL_LABEL_NO_LINK_RE = re.compile(r"^\s*-\s*(?:\*\*URL\*\*|URL)\s*:?\s*(?P<rest>(?!.*https?://).+)$", re.IGNORECASE)
+ADVISORY_RE = re.compile(r"\b(GHSA(?:-[23456789cfghjmpqrvwx]{4}){3}|CVE-\d{4}-\d{4,})\b", re.IGNORECASE)
+
+
+def advisory_urls(text: str) -> list[str]:
+    urls = []
+    for token in ADVISORY_RE.findall(text):
+        if token.upper().startswith("GHSA"):
+            url = "https://github.com/advisories/GHSA" + token[4:].lower()
+        else:
+            url = f"https://nvd.nist.gov/vuln/detail/{token.upper()}"
+        if url not in urls:
+            urls.append(url)
+    return urls
+
+
 NESTED_BULLET_RE = re.compile(r"^\s{2,}-\s*(?P<rest>.*)$")
 TOPLEVEL_BULLET_RE = re.compile(r"^-\s*(?P<rest>.*)$")
 
 
 def classify_label(label: str) -> str | None:
     n = norm(label)
-    if "que es" in n:
+    if "que es" in n or "una frase" in n:
         return "que_es"
     if "por que importa" in n:
         return "por_que_importa"
@@ -190,7 +219,7 @@ def classify_label(label: str) -> str | None:
         return "madurez_senales"
     if "relacion" in n and "grafo" in n:
         return "relacion_grafo"
-    if "accion" in n and "sugerid" in n:
+    if "accion" in n and ("sugerid" in n or n == "accion"):
         return "accion_sugerida"
     return None
 
@@ -211,6 +240,16 @@ def extract_triples(raw: str) -> list[dict]:
             continue
         seen.add(key)
         triples.append({"src": src, "rel": rel, "dst": dst})
+    # Parse both modern ``--[relation]-->`` and legacy ``--relation-->`` triples.
+    legacy = re.compile(r"`?(?P<src>[A-Za-z0-9_./:-]+)`?\s+--\[?(?P<rel>[A-Za-z_]+)\]?-->\s+`?(?P<dst>[A-Za-z0-9_./:-]+)`?")
+    # Relations are sometimes split across semicolon-separated inline triples.
+    loose = re.compile(r"(?P<src>[A-Za-z0-9_./:-]+)\s+--\[?(?P<rel>[A-Za-z_]+)\]?-->\s+(?P<dst>[A-Za-z0-9_./:-]+)")
+    for m in loose.finditer(raw):
+        src, rel, dst = m.group("src"), m.group("rel"), m.group("dst")
+        key = (src, rel, dst)
+        if key not in seen:
+            seen.add(key)
+            triples.append({"src": src, "rel": rel, "dst": dst})
     return triples
 
 
@@ -219,7 +258,12 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
     titulo = head["titulo"]
     url = head["url"]
     url_inferida = False
-
+    # Encabezados con numeral incrustado pasan como "1. foo/bar — título".
+    if titulo[:1].isdigit() and ". " in titulo:
+        prefix, rest = titulo.split(". ", 1)
+        if prefix.isdigit():
+            head = parse_item_head(f"{prefix}. {rest} — {head['subtitulo']}")
+            titulo, url = head["titulo"], head["url"]
     fields: dict[str, list[str]] = {
         "que_es": [],
         "por_que_importa": [],
@@ -233,6 +277,7 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
         fields.setdefault("_subtitulo", []).append(head["subtitulo"])
 
     current: str | None = None
+    advisory_extra: list[str] = []
     for line in body_lines:
         if not line.strip():
             continue
@@ -243,11 +288,17 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
             current = None
             continue
 
+        m_adv = URL_LABEL_NO_LINK_RE.match(line)
+        if m_adv and advisory_urls(m_adv.group("rest")):
+            adv = advisory_urls(m_adv.group("rest"))
+            url = url or adv[0]
+            advisory_extra.extend(u for u in adv if u != url)
+            current = None
+            continue
+
         m_label = LABEL_LINE_RE.match(line)
         if m_label:
-            # LABEL_LINE_RE tiene 2 alternativas: con negrita (label) o plana
-            # (label_plain). Toma la que haya capturado.
-            label = m_label.group("label") or m_label.group("label2") or m_label.group("label_plain") or ""
+            label = m_label.group("label") or m_label.group("label2") or m_label.group("label_plain") or m_label.group("label_plain_legacy") or ""
             label = label.strip().strip("*").strip()
             field = classify_label(label)
             if field:
@@ -256,8 +307,12 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
                 if rest:
                     fields[field].append(rest)
                 continue
-            # bullet con label desconocido (ej. "- Para CSS: ..."): no rompe
-            # el parseo, simplemente no se asocia a ningun campo conocido.
+            # Un bullet no etiquetado cuenta como continuación del campo activo
+            # (en boletines antiguos las líneas de grafo usan - en cada tripleta).
+            bullet = TOPLEVEL_BULLET_RE.match(line)
+            if current and bullet:
+                fields[current].append(bullet.group("rest").strip())
+                continue
             current = None
             continue
 
@@ -305,7 +360,7 @@ def parse_hallazgo_block(head_line: str, body_lines: list[str], idx: int) -> dic
         },
         "relacion_grafo": relacion_grafo,
     }
-    extra_urls = []
+    extra_urls = list(advisory_extra)
     # Capture the first repo link in a paired finding such as
     # "DeepInfer + deepseek-recipe" when it is printed in the body bullets.
     for line in body_lines:
@@ -422,11 +477,17 @@ def parse(path: Path) -> dict:
     hs = find_section_slice(lines, "hallazgos principales")
     if hs:
         block_lines = lines[hs[0]:hs[1]]
-        # localizar encabezados de item dentro del bloque
         head_idxs = []
         for i, line in enumerate(block_lines):
             header = HEADER_RE.match(line)
-            if header and len(header.group(1)) == 4 and HALLAZGO_HEADER_RE.match(line):
+            if not header:
+                continue
+            level = len(header.group(1))
+            text = header.group(2).strip()
+            numbered_card = bool(re.match(r"^\d+\.\s+", text))
+            plain_repo_card = bool(REPO_SLUG_RE.match(text))
+            is_item = (level == 4 and (HALLAZGO_HEADER_RE.match(line) or plain_repo_card)) or (level == 3 and numbered_card)
+            if is_item:
                 head_idxs.append(i)
         boundaries = head_idxs + [len(block_lines)]
         for j, hidx in enumerate(head_idxs):

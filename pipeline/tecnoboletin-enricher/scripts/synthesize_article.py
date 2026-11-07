@@ -60,7 +60,10 @@ el 2026-07-16 con X"), en vez de una referencia vaga tipo "el boletin de \
 ayer".
 
 Reescribe por_que_importa de cada item incorporando mejoras reales segun \
-esos 3 criterios -- SIN inventar hechos, cifras o citas que no esten ya \
+esos 3 criterios. LONGITUD: cada item trae `max_chars`; la reescritura \
+NO puede superarlo (cuenta caracteres, no palabras). Mejorar no es \
+alargar: si anades contexto, quita relleno. 2-4 frases es lo normal. \
+SIN inventar hechos, cifras o citas que no esten ya \
 en el item (que_es, madurez_senales o el propio por_que_importa \
 original). Si te falta un dato para cumplir un criterio, sé honesto \
 sobre la limitacion en vez de inventarlo.
@@ -88,8 +91,31 @@ def build_payload(items: list[dict]) -> list[dict]:
             "por_que_importa": it["contenido"]["por_que_importa"],
             "madurez_senales": it["contenido"]["madurez_senales"][:300],
             "relacion_grafo": it.get("relacion_grafo", []),
+            "max_chars": max_chars(it["contenido"]["por_que_importa"]),
         })
     return payload
+
+
+# Limite por item que se le COMUNICA al modelo y que el codigo aplica igual.
+# Antes el prompt pedia "mejoras reales" sin tope y el codigo rechazaba lo
+# que pasaba de 2.5x: el 2026-10-30 se perdieron 3 de 4 reescrituras de
+# ~2.8x. Mismo numero en los dos lados.
+MAX_RATIO = 1.8
+MAX_ABS = 700
+MIN_ABS = 450  # textos originales muy cortos pueden crecer hasta aqui
+
+
+def max_chars(original: str) -> int:
+    return min(MAX_ABS, max(int(len(original) * MAX_RATIO), MIN_ABS))
+
+
+SHORTEN_INSTRUCTIONS = """Estas reescrituras de por_que_importa superan su `max_chars`. \
+Acorta cada una por debajo de su `max_chars` conservando la idea central y los datos \
+concretos (fechas, nombres, cifras); quita relleno y repeticiones. No anadas nada nuevo. \
+No uses herramientas. Responde EXCLUSIVAMENTE con un JSON [{"idx": N, "por_que_importa": "..."}].
+
+ITEMS:
+"""
 
 
 def run_critique_and_rewrite(items: list[dict], date: str, work_dir: Path, timeout: int) -> tuple[dict[int, str], str]:
@@ -106,9 +132,38 @@ def run_critique_and_rewrite(items: list[dict], date: str, work_dir: Path, timeo
     if not isinstance(parsed, list):
         return {}, f"respuesta no parseable como lista JSON (primeros 200 chars: {raw[:200]!r})"
 
-    orig_by_idx = {p["idx"]: p["por_que_importa"] for p in payload}
-    result: dict[int, str] = {}
-    rejected = []
+    limit_by_idx = {p["idx"]: p["max_chars"] for p in payload}
+    result, too_long = _accept(parsed, limit_by_idx)
+    returned = set(result) | set(too_long)
+
+    shortened = []
+    if too_long:
+        # Un unico reintento: pedir que acorte en vez de tirar la mejora.
+        retry_payload = [{"idx": i, "max_chars": limit_by_idx[i], "por_que_importa": t} for i, t in too_long.items()]
+        raw2 = call_hermes(SHORTEN_INSTRUCTIONS + json.dumps(retry_payload, ensure_ascii=False, indent=2),
+                           work_dir, tag=f"{date}.critique.shorten", timeout=timeout)
+        parsed2 = parse_json_lenient(raw2) if raw2 else None
+        if isinstance(parsed2, list):
+            ok2, _ = _accept(parsed2, {i: limit_by_idx[i] for i in too_long})
+            result.update(ok2)
+            shortened = sorted(ok2)
+
+    rejected = sorted(i for i in too_long if i not in result)
+    missing = [p["idx"] for p in payload if p["idx"] not in returned]
+    motivo = f"{len(result)}/{len(payload)} items reescritos"
+    if shortened:
+        motivo += f"; acortados tras 1 reintento: {shortened}"
+    if rejected:
+        motivo += f"; rechazados por superar max_chars incluso tras reintento (se conserva el original): {rejected}"
+    if missing:
+        motivo += f"; no devueltos por el modelo: {missing}"
+    return result, motivo
+
+
+def _accept(parsed: list, limit_by_idx: dict[int, int]) -> tuple[dict[int, str], dict[int, str]]:
+    """Separa reescrituras validas de las que superan su max_chars."""
+    ok: dict[int, str] = {}
+    too_long: dict[int, str] = {}
     for entry in parsed:
         if not isinstance(entry, dict) or "idx" not in entry:
             continue
@@ -116,25 +171,16 @@ def run_critique_and_rewrite(items: list[dict], date: str, work_dir: Path, timeo
             idx = int(entry["idx"])
         except (TypeError, ValueError):
             continue
+        if idx not in limit_by_idx:
+            continue
         text = strip_cjk(str(entry.get("por_que_importa", "")).strip())
-        original = orig_by_idx.get(idx, "")
         if not text:
             continue
-        # tope generoso (la reescritura elabora de verdad -- en pruebas
-        # reales el ratio fue 1.5x-2x) pero con techo absoluto para
-        # frenar generacion desbocada / invencion
-        if len(text) > max(len(original) * 2.5, len(original) + 400) or len(text) > 1800:
-            rejected.append(idx)
-            continue
-        result[idx] = text
-
-    missing = [p["idx"] for p in payload if p["idx"] not in result]
-    motivo = f"{len(result)}/{len(payload)} items reescritos"
-    if rejected:
-        motivo += f"; rechazados por longitud sospechosa: {rejected}"
-    if missing:
-        motivo += f"; faltantes en respuesta: {missing}"
-    return result, motivo
+        if len(text) > limit_by_idx[idx]:
+            too_long[idx] = text
+        else:
+            ok[idx] = text
+    return ok, too_long
 
 
 def main() -> int:
