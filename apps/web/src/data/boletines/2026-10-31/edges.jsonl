@@ -1,0 +1,25 @@
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-microsoft-tokeneconomizer", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-microsoft-tokeneconomizer", "dst": "tema:microsoft-tokeneconomizer", "rel": "trata", "added": "2026-10-31"}
+{"src": "microsoft/TokenEconomizer", "dst": "problem:repeated-agent-session-cost", "rel": "solves", "added": "2026-10-31", "primera_mencion": null}
+{"src": "microsoft/TokenEconomizer", "dst": "technique:tool-pruning", "rel": "uses", "added": "2026-10-31", "primera_mencion": null}
+{"src": "microsoft/TokenEconomizer", "dst": "concept:coding-agent-observability", "rel": "relevant_to", "added": "2026-10-31", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-vercel-labs-agent-desktop", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-vercel-labs-agent-desktop", "dst": "tema:vercel-agent-desktop", "rel": "trata", "added": "2026-10-31"}
+{"src": "vercel-labs/agent-desktop", "dst": "concept:desktop-computer-use", "rel": "implements", "added": "2026-10-31", "primera_mencion": null}
+{"src": "vercel-labs/agent-desktop", "dst": "technique:accessibility-tree", "rel": "uses", "added": "2026-10-31", "primera_mencion": null}
+{"src": "vercel-labs/agent-desktop", "dst": "tool:cua-driver", "rel": "complements", "added": "2026-10-31", "primera_mencion": null}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:cloudflare-security-audit-skill", "rel": "trata", "added": "2026-10-31"}
+{"src": "cloudflare/security-audit-skill", "dst": "technique:independent-finding-validation", "rel": "implements", "added": "2026-10-31", "primera_mencion": "2026-09-15"}
+{"src": "cloudflare/security-audit-skill", "dst": "problem:security-audit-false-positives", "rel": "solves", "added": "2026-10-31", "primera_mencion": "2026-09-15"}
+{"src": "cloudflare/security-audit-skill", "dst": "problem:unsafe-target-execution", "rel": "risk", "added": "2026-10-31", "primera_mencion": "2026-09-15"}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-wangzan101-mika", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-wangzan101-mika", "dst": "tema:wangzan101-mika", "rel": "trata", "added": "2026-10-31"}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-oxc-project-tsrs", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-oxc-project-tsrs", "dst": "tema:oxc-project-tsrs", "rel": "trata", "added": "2026-10-31"}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-milind-soni-openmausbot", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-milind-soni-openmausbot", "dst": "tema:milind-soni-openmausbot", "rel": "trata", "added": "2026-10-31"}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-heydamir-unslop", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-heydamir-unslop", "dst": "tema:heydamir-unslop", "rel": "trata", "added": "2026-10-31"}
+{"src": "boletin:2026-10-31", "dst": "item:https-github-com-chris124567-cfsolve", "rel": "menciona", "added": "2026-10-31"}
+{"src": "item:https-github-com-chris124567-cfsolve", "dst": "tema:chris124567-cfsolve", "rel": "trata", "added": "2026-10-31"}

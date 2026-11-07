@@ -1,0 +1,25 @@
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-deepseek-ai-dsh-superagent-prototype", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-deepseek-ai-dsh-superagent-prototype", "dst": "tema:deepseek-dsh-superagent-prototype", "rel": "trata", "added": "2026-11-01"}
+{"src": "deepseek-ai/dsh-superagent-prototype", "dst": "concept:repository-scoped-agent", "rel": "implements", "added": "2026-11-01", "primera_mencion": null}
+{"src": "deepseek-ai/dsh-superagent-prototype", "dst": "technique:task-isolation", "rel": "uses", "added": "2026-11-01", "primera_mencion": null}
+{"src": "deepseek-ai/dsh-superagent-prototype", "dst": "concept:human-in-the-loop-agents", "rel": "relevant_to", "added": "2026-11-01", "primera_mencion": null}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-deeplethe-sandstorm", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-deeplethe-sandstorm", "dst": "tema:deeplethe-sandstorm", "rel": "trata", "added": "2026-11-01"}
+{"src": "deeplethe/sandstorm", "dst": "concept:agent-sandbox-orchestration", "rel": "implements", "added": "2026-11-01", "primera_mencion": null}
+{"src": "deeplethe/sandstorm", "dst": "tool:gvisor", "rel": "uses", "added": "2026-11-01", "primera_mencion": null}
+{"src": "deeplethe/sandstorm", "dst": "tool:firecracker", "rel": "uses", "added": "2026-11-01", "primera_mencion": "2026-08-22"}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-haydenschmitty-floorplan", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-haydenschmitty-floorplan", "dst": "tema:floorplan", "rel": "trata", "added": "2026-11-01"}
+{"src": "haydenschmitty/floorplan", "dst": "concept:codebase-architecture-map", "rel": "implements", "added": "2026-11-01", "primera_mencion": null}
+{"src": "haydenschmitty/floorplan", "dst": "tool:claude-code", "rel": "uses", "added": "2026-11-01", "primera_mencion": "2026-09-15"}
+{"src": "haydenschmitty/floorplan", "dst": "tool:codebase-memory-mcp", "rel": "complements", "added": "2026-11-01", "primera_mencion": null}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-sickn33-agentic-awesome-skills", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-sickn33-agentic-awesome-skills", "dst": "tema:sickn33-agentic-awesome-skills", "rel": "trata", "added": "2026-11-01"}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-the-pr-agent-pr-agent", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-the-pr-agent-pr-agent", "dst": "tema:the-pr-agent-pr-agent", "rel": "trata", "added": "2026-11-01"}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-patch-gg-pixelfx", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-patch-gg-pixelfx", "dst": "tema:patch-gg-pixelfx", "rel": "trata", "added": "2026-11-01"}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-patchy631-ai-engineering-hub", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-patchy631-ai-engineering-hub", "dst": "tema:patchy631-ai-engineering-hub", "rel": "trata", "added": "2026-11-01"}
+{"src": "boletin:2026-11-01", "dst": "item:https-github-com-tauri-apps-tauri", "rel": "menciona", "added": "2026-11-01"}
+{"src": "item:https-github-com-tauri-apps-tauri", "dst": "tema:tauri-apps-tauri", "rel": "trata", "added": "2026-11-01"}

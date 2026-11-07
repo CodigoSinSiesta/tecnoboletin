@@ -1,0 +1,219 @@
+{
+  "version": 2,
+  "date": "2026-10-28",
+  "boletin_origen": "2026-10-28-trending.md",
+  "resumen_ejecutivo": "- Google publica un flujo de trabajo de diseño guiado por especificaciones: un agente con contexto redacta y subagentes frescos revisan supuestos sin heredar el diálogo previo.\n- Orkas presenta una aplicación local-first que coordina agentes especialistas y coding agents externos; su propuesta útil es la continuidad entre tareas, aunque su distribución empaquetada incluye servicios gestionados opcionales.\n- NVIDIA Auto Ontology aborda un problema empresarial menos vistoso pero concreto: dar contexto semántico y procedencia a consultas de datos hechas por agentes; exige NVIDIA NIM/API key, así que no es una pila puramente local.\n- OpenDuet formaliza un agente proactivo con aprobación humana antes de acciones sensibles; está en desarrollo temprano y requiere CopilotKit Intelligence para memoria e hilos.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Google Elephant-Goldfish Model",
+      "url": "https://github.com/google/elephant-goldfish-model",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "conjunto de skills compatibles con varios agentes de código que permiten pasar de la exploración y la especificación a una revisión aislada por subagentes antes de implementar.",
+        "por_que_importa": "Convierte la revisión independiente en una etapa explícita del flujo: el agente que redacta conserva el contexto del proyecto y revisores nuevos leen el documento y las fuentes sin el sesgo de la conversación. Esto engancha con tres hilos que ya hemos tocado: los marcos que preservan la especificación (2026-10-09), la revisión aislada por subagentes (2026-08-30) y la orquestación multiagente (2026-08-27). Los límites los pone el propio README y conviene leerlos antes de adoptarlo: no sustituye las pruebas ni el criterio humano y exige un harness capaz de crear subagentes, así que no es un plugin que se instale y funcione solo. Con 3.737 estrellas y licencia Apache-2.0 desde el 2026-09-13, el interés es real, pero vale más como patrón de trabajo que como promesa de calidad.",
+        "madurez_senales": "3.737 estrellas · 239 forks · Python · creado 2026-09-13 · último push 2026-10-28 · Apache-2.0 · descripción oficial: “Open-source skills for designing and reviewing software with AI agents” · topics: `agent-skills`, `coding-agents`, `context-engineering`, `spec-driven-development`, entre otros. Verificado vía GitHub REST API; README y documentación consultados.",
+        "accion_sugerida": "**probar** el flujo en un cambio pequeño con decisiones de diseño, comprobando qué hallazgos aparecen al retirar el contexto previo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google/elephant-goldfish-model",
+          "rel": "implements",
+          "dst": "concept:spec-preserving-framework",
+          "primera_mencion": "2026-10-09"
+        },
+        {
+          "src": "repo:google/elephant-goldfish-model",
+          "rel": "enables",
+          "dst": "concept:agent-review-ui",
+          "primera_mencion": "2026-08-30"
+        },
+        {
+          "src": "repo:google/elephant-goldfish-model",
+          "rel": "complements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-elephant-goldfish-model",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Orkas",
+      "url": "https://github.com/Orkas-AI/Orkas",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio local-first que coordina 16 agentes especialistas y herramientas externas como Claude Code, Codex, OpenCode y Hermes mediante proyectos, tareas, memoria y automatizaciones.",
+        "por_que_importa": "Reúne en un solo espacio lo que normalmente está disperso: persistencia de proyecto, delegación entre agentes y los agentes que el usuario ya tiene instalados (Claude Code, Codex, OpenCode, Hermes). Eso lo emparenta con la orquestación multiagente que ya tratamos el 2026-08-27, con el agente sobre infraestructura del 2026-09-22 y con thinkrail, que mencionamos el 2026-10-26 como pieza complementaria. El matiz que importa antes de instalarlo es que el repositorio no es la aplicación empaquetada: la sincronización en la nube y la colaboración no están en la compilación de código abierto. El README declara almacenamiento local por defecto y llamadas directas al proveedor cuando usas claves propias, dato que solo tiene valor si lo verificas en tu propia instalación.",
+        "madurez_senales": "2.741 estrellas · 137 forks · JavaScript · creado 2026-04-29 · último push 2026-10-28 · MIT · descripción oficial: “Orkas is an open-source (MIT), local-first AI team for your desktop…” · topics: `agent-orchestration`, `agent-team`, `local-first`, `multi-agent-system`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**leer** el modelo de proyectos y ejecución local; confirmar límites entre build comunitaria y app empaquetada antes de recomendarlo como autoalojado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Orkas-AI/Orkas",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:Orkas-AI/Orkas",
+          "rel": "complements",
+          "dst": "repo:JetBrains/thinkrail",
+          "primera_mencion": "2026-10-26"
+        },
+        {
+          "src": "repo:Orkas-AI/Orkas",
+          "rel": "relevant_to",
+          "dst": "concept:agent-on-infrastructure",
+          "primera_mencion": "2026-09-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "orkas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "NVIDIA Auto Ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework Python que construye una capa semántica/ontológica sobre metadatos empresariales y la expone a agentes mediante MCP, CLI y API, con generación de consultas, validación y procedencia.",
+        "por_que_importa": "Desplaza el problema del NL-to-SQL desde el modelo hacia el dato: el cuello de botella está en las definiciones de métricas, el linaje y la reconciliación entre fuentes, no solo en la calidad del LLM. Se apoya en una línea que ya venimos siguiendo, el backend guiado por ontología que cubrimos el 2026-09-26, la memoria de agente anclada a ontología del 2026-08-24 y el uso de pgvector que apareció el 2026-08-10. Tiene arquitectura comprobable (FastAPI, PostgreSQL/pgvector, UI y worker), pero sus flujos de inferencia dependen de endpoints NVIDIA NIM y exigen una clave, y el proyecto indica que actualmente no acepta contribuciones externas: sirve para leer y evaluar, no para extender.",
+        "madurez_senales": "416 estrellas · 52 forks · Python · creado 2026-04-27 · último push 2026-10-28 · Apache-2.0 · descripción oficial: “Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data…” · topics: ninguno publicado. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**leer** el diseño de catálogo, procedencia y validación; tratar la dependencia de NIM como restricción central para una evaluación local-first.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/auto-ontology",
+          "rel": "implements",
+          "dst": "concept:ontology-driven-backend",
+          "primera_mencion": "2026-09-26"
+        },
+        {
+          "src": "repo:NVIDIA/auto-ontology",
+          "rel": "complements",
+          "dst": "concept:ontology-grounded-agent-memory",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:NVIDIA/auto-ontology",
+          "rel": "uses",
+          "dst": "tool:pgvector",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-auto-ontology",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "OpenDuet",
+      "url": "https://github.com/CopilotKit/OpenDuet",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plantilla autoalojada de agente proactivo que prepara resúmenes, trabaja en un entorno propio y espera aprobación para las acciones con efectos externos.",
+        "por_que_importa": "Aterriza un patrón de control que suele quedarse en abstracto: revisar cada acción con efectos externos, pedir aprobación antes de enviar o borrar, ocultar credenciales de la conversación y comprobar los datos que salen. Eso concreta la compuerta de aprobación que ya cubrimos el 2026-09-04, encaja con la memoria persistente de agente del 2026-09-25 y se apoya en openbot, que mencionamos el 2026-08-20. La contrapartida es material y el propio proyecto la admite: está marcado como desarrollo temprano y necesita un proyecto CopilotKit Intelligence incluso si eliges el modelo por tu cuenta, así que hoy es una plantilla para estudiar, no una base de producción.",
+        "madurez_senales": "775 estrellas · 104 forks · TypeScript · creado 2026-10-21 · último push 2026-10-27 · MIT · descripción oficial: “An Open Source template for a proactive AI agent that gets your work done and keeps you in the loop.” · topics: ninguno publicado. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**leer** la política de aprobación y el manejo de credenciales; no asumir que el stack de memoria es independiente del servicio CopilotKit.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CopilotKit/OpenDuet",
+          "rel": "implements",
+          "dst": "concept:approval-gate-pattern",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "repo:CopilotKit/OpenDuet",
+          "rel": "uses",
+          "dst": "repo:CopilotKit/openbot",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:CopilotKit/OpenDuet",
+          "rel": "relevant_to",
+          "dst": "concept:agent-memory-persistent",
+          "primera_mencion": "2026-09-25"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openduet",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "video-db/call.md",
+      "url": "https://github.com/video-db/call.md",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.951 estrellas, último push 2026-08-19, TypeScript) — aplicación de reuniones con captura y transcripción en tiempo real, sugerencias durante llamadas y activación de herramientas MCP; el propio README limita la grabación a macOS y Windows x64 por ahora. API: licencia no identificada; topics incluyen `mcp`, `meeting` y `agentic-workflow` — señales: https://github.com/video-db/call.md",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/video-db/call.md",
+        "accion_sugerida": "vigilar — la actividad y los límites de privacidad antes de probar audio/pantalla",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "video-db-call-md",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 5,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 1,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "5/5 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/4 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

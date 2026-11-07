@@ -1,0 +1,272 @@
+{
+  "version": 2,
+  "date": "2026-11-01",
+  "boletin_origen": "2026-11-01-trending.md",
+  "resumen_ejecutivo": "- El prototipo de DeepSeek para agentes de equipo expone su modelo de autorización, aislamiento por tarea y atención humana mínima; el propio equipo lo etiqueta como investigación, no como producto listo.\n- Sandstorm presenta una capa de sandbox de agentes con gVisor/Firecracker, suspensión y restauración; sus benchmarks son interesantes, aunque dependen del hardware y condiciones descritas por el proyecto.\n- Floorplan intenta convertir el análisis de código por Claude/Codex en mapas locales y editables de aplicaciones, con un énfasis inusual en privacidad y comprobaciones de seguridad del plugin.\n- La tendencia también premia catálogos reutilizables y recursos didácticos, pero popularidad y volumen no sustituyen curación ni evaluación independiente.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "DeepSeek dsh-superagent-prototype",
+      "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "prototipo de agente proactivo para un repositorio GitHub, empaquetado para DeepSeek Harness, que recibe solicitudes, trabaja en una sesión y un directorio propios y devuelve resultados al canal de origen, por ejemplo mediante un pull request.",
+        "por_que_importa": "Lo interesante no es solo que el agente escriba código, sino el contrato que lo rodea: quién puede activarlo, qué acciones se le autorizan y en qué momento hace falta una persona. El propio README lo etiqueta como prototipo de investigación, no oficial y no apto para producción, y admite que el código publicado no implementa todo lo que describe el artículo asociado; conviene leerlo como material para estudiar un diseño de agente acotado a un repositorio, no como herramienta para poner en marcha. En el grafo no consta ninguna mención previa de este repositorio ni de las ideas que toca (agente limitado a un repositorio, aislamiento por tarea, humano en el bucle), así que esta es su primera aparición en el boletín.",
+        "madurez_senales": "4.344 estrellas · 401 forks · TypeScript · creado 2026-10-31 · último push 2026-10-31 · MIT · descripción oficial: “Towards a More Autonomous Agent System” · topics: ninguno publicado. Verificado vía GitHub API; README consultado.",
+        "accion_sugerida": "**leer** primero los documentos de autorización, ejecución y despliegue; no tratarlo como software listo para producción.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "deepseek-ai/dsh-superagent-prototype",
+          "rel": "implements",
+          "dst": "concept:repository-scoped-agent",
+          "primera_mencion": null
+        },
+        {
+          "src": "deepseek-ai/dsh-superagent-prototype",
+          "rel": "uses",
+          "dst": "technique:task-isolation",
+          "primera_mencion": null
+        },
+        {
+          "src": "deepseek-ai/dsh-superagent-prototype",
+          "rel": "relevant_to",
+          "dst": "concept:human-in-the-loop-agents",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-dsh-superagent-prototype",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "DeepLethe Sandstorm",
+      "url": "https://github.com/deeplethe/sandstorm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plano de control para ejecutar muchos sandboxes de agentes en pocas máquinas, suspendiendo los inactivos y restaurándolos bajo demanda; ofrece backends gVisor y Firecracker.",
+        "por_que_importa": "El foco no está en la inferencia sino en el coste de mantener agentes aislados esperando: el proyecto suspende los inactivos y los restaura bajo demanda, con backends gVisor y Firecracker, y publica métricas de arranque, clonación y flota junto con su metodología y sus límites, lo que permite una comparación técnica con contenedores persistentes. Hay que tener en cuenta dos condiciones: reproducir esa comparación exige Linux, cgroups v2 y las condiciones de virtualización que indica el README, y la rama por defecto es `dev`, no una rama estable. Firecracker ya lo cubrimos el 2026-08-22; aquí reaparece como una de las dos piezas de aislamiento sobre las que se monta la orquestación de sandboxes.",
+        "madurez_senales": "3.588 estrellas · 307 forks · Rust · creado 2026-05-11 · último push 2026-11-01 · Apache-2.0 · descripción oficial: “Run thousands of AI agent sandboxes on the cheapest machines.” · topics: `agent-infrastructure`, `ai-agents`, `checkpoint-restore`, `code-execution`, `gvisor`, `rust`, `sandbox`, `self-hosted`, `snapshot`. Verificado vía GitHub API; README y benchmark enlazado consultados.",
+        "accion_sugerida": "**explorar** arquitectura y metodología de benchmarks; separar resultados de laboratorio de requisitos operativos reales.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "deeplethe/sandstorm",
+          "rel": "implements",
+          "dst": "concept:agent-sandbox-orchestration",
+          "primera_mencion": null
+        },
+        {
+          "src": "deeplethe/sandstorm",
+          "rel": "uses",
+          "dst": "tool:gvisor",
+          "primera_mencion": null
+        },
+        {
+          "src": "deeplethe/sandstorm",
+          "rel": "uses",
+          "dst": "tool:firecracker",
+          "primera_mencion": "2026-08-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deeplethe-sandstorm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Floorplan",
+      "url": "https://github.com/haydenschmitty/floorplan",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin para Claude Code y Codex que analiza repositorios y produce un mapa interactivo de componentes, archivos, pantallas y conexiones entre servicios.",
+        "por_que_importa": "Lleva la lectura asistida por el modelo a un artefacto local y editable —un mapa de componentes, archivos, pantallas y conexiones entre servicios—, de modo que no dependes solo de documentación generada para orientarte en un repositorio desconocido. El README promete cero dependencias, modo offline y ningún uso de hooks, MCP ni descargas, y enlaza la lista de procesos ejecutados y las pruebas para contrastarlo; son afirmaciones del autor, no verificadas de forma independiente en este boletín. Claude Code ya salió el 2026-09-15; lo nuevo aquí es que este plugin se apoya en él (y en Codex) para dibujar el mapa, y que se plantea como complemento de codebase-memory-mcp, no como sustituto.",
+        "madurez_senales": "1.030 estrellas · 72 forks · JavaScript · creado 2026-10-27 · último push 2026-10-31 · MIT · descripción oficial: “See how your app actually fits together. An interactive, plain-English map of your codebase, drawn by Claude or Codex.” · topics: `ai-coding`, `architecture-diagram`, `claude`, `claude-code`, `claude-code-plugin`, `codebase-visualization`, `codex`, `codex-plugin`, `developer-tools`, `onboarding`, `openai`, `vibe-coding`. Verificado vía GitHub API; README y documentación de privacidad consultados.",
+        "accion_sugerida": "**probar** primero en un repositorio de ejemplo y contrastar los mapas con Graphify/codebase-memory.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "haydenschmitty/floorplan",
+          "rel": "implements",
+          "dst": "concept:codebase-architecture-map",
+          "primera_mencion": null
+        },
+        {
+          "src": "haydenschmitty/floorplan",
+          "rel": "uses",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "haydenschmitty/floorplan",
+          "rel": "complements",
+          "dst": "tool:codebase-memory-mcp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "floorplan",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "sickn33/agentic-awesome-skills",
+      "url": "https://github.com/sickn33/agentic-awesome-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(48.943 estrellas, último push 2026-10-31, Python) — catálogo de 2.884+ skills y herramienta local para buscar, seleccionar y previsualizar planes; el README advierte que aplicar y recuperar cambios sigue siendo experimental — señales: https://github.com/sickn33/agentic-awesome-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/sickn33/agentic-awesome-skills",
+        "accion_sugerida": "leer — los límites de confianza antes de instalar skills de terceros",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sickn33-agentic-awesome-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "The-PR-Agent/pr-agent",
+      "url": "https://github.com/The-PR-Agent/pr-agent",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(13.848 estrellas, último push 2026-10-31, Python) — agente comunitario de revisión de pull requests; el README lo distingue del producto comercial actual de Qodo — señales: https://github.com/The-PR-Agent/pr-agent",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/The-PR-Agent/pr-agent",
+        "accion_sugerida": "vigilar — mantenimiento y compatibilidad con proveedores antes de adoptarlo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "the-pr-agent-pr-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "patch-gg/pixelfx",
+      "url": "https://github.com/patch-gg/pixelfx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.790 estrellas, último push 2026-10-31, JavaScript) — colección de 244 efectos de pixel art y una skill para crear otros con Claude Code — señales: https://github.com/patch-gg/pixelfx",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/patch-gg/pixelfx",
+        "accion_sugerida": "leer — como ejemplo concreto de skills ligadas a una librería creativa",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "patch-gg-pixelfx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "patchy631/ai-engineering-hub",
+      "url": "https://github.com/patchy631/ai-engineering-hub",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(39.595 estrellas, último push 2026-11-01, Jupyter Notebook) — catálogo de tutoriales y proyectos sobre LLM, RAG y agentes; el README anuncia 93+ proyectos, señal de amplitud más que de validación de producción — señales: https://github.com/patchy631/ai-engineering-hub",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/patchy631/ai-engineering-hub",
+        "accion_sugerida": "vigilar — y seleccionar materiales por proyecto, no por volumen",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "patchy631-ai-engineering-hub",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "tauri-apps/tauri",
+      "url": "https://github.com/tauri-apps/tauri",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(112.390 estrellas, último push 2026-10-31, Rust) — framework maduro para aplicaciones de escritorio y móviles con frontend web; reentrada transversal, no novedad del ecosistema IA — señales: https://github.com/tauri-apps/tauri",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/tauri-apps/tauri",
+        "accion_sugerida": "ignorar — para cobertura IA específica; útil solo si se aborda empaquetado local",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tauri-apps-tauri",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 3,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/3 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

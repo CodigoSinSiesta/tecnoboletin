@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "date": "2026-10-30",
+  "boletin_origen": "2026-10-30-trending.md",
+  "resumen_ejecutivo": "- NearAI IronClaw destaca por tratar seguridad, herramientas no confiables y memoria como componentes del runtime de un asistente personal, no como añadidos opcionales; su arquitectura Rust está muy modularizada.\n- Magnitude compite con Ollama desde otra capa: autotunea kernels para cada equipo y conecta directamente con Hermes y otros agentes; las cifras de rendimiento son del propio proyecto, no una evaluación independiente.\n- NVIDIA/CUDA-Rust e Hydro Infinity señalan dos líneas distintas de infraestructura: kernels CUDA expresados en Rust y concurrencia agentic con protocolos explícitos.\n- Hubo bastante ruido y recurrencias en las tendencias; se omiten repos ya cubiertos sin novedad editorial y proyectos de jailbreak o afirmaciones dudosas.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "IronClaw",
+      "url": "https://github.com/nearai/ironclaw",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime de asistente personal escrito en Rust que combina herramientas WASM, políticas de capacidades, almacenamiento de secretos, defensa ante inyección de prompts, memoria híbrida y canales de comunicación.",
+        "por_que_importa": "Aterriza el debate sobre seguridad de agentes en decisiones arquitectónicas concretas: límites de salida de red, secretos inyectados en el host y sandbox para herramientas. El README promete varias capas; hay que distinguir garantías declaradas de garantías verificadas en auditoría.",
+        "madurez_senales": "12.692 estrellas · 1.490 forks · Rust · creado 2026-02-03 · último push 2026-10-30 · Apache-2.0 según API (README declara MIT o Apache-2.0) · descripción oficial: “IronClaw is an Agent OS focused on privacy, security and extensibility” · topics: `codeact`, `openclaw`, `rlm`, `rust`, `wasm`. Verificado vía GitHub API y README; corpus de Rust extenso, así que no se instaló ni compiló.",
+        "accion_sugerida": "**explorar** arquitectura de permisos y límites de seguridad antes de considerarlo para uso diario.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "nearai/ironclaw",
+          "rel": "implements",
+          "dst": "concept:secure-agent-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "nearai/ironclaw",
+          "rel": "uses",
+          "dst": "tool:wasm-sandbox",
+          "primera_mencion": null
+        },
+        {
+          "src": "nearai/ironclaw",
+          "rel": "solves",
+          "dst": "problem:agent-tool-isolation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ironclaw",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Magnitude",
+      "url": "https://github.com/magnitudedev/magnitude",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de inferencia local en Rust que ajusta kernels al hardware disponible y expone modelos abiertos a aplicaciones y agentes.",
+        "por_que_importa": "Propone una alternativa al motor único de inferencia local y menciona integración directa con Hermes, Pi, OpenCode y Codex. Sus afirmaciones de “más de 2×” frente a Ollama deben validarse con modelos, cuantización y equipos comparables.",
+        "madurez_senales": "7.581 estrellas · 541 forks · Rust · creado 2026-06-12 · último push 2026-10-30 · Apache-2.0 · descripción oficial: “Open source inference engine that tunes its kernels on your hardware to find the fastest way to run each model. 2x faster than Ollama. Works on Apple Silicon, NVIDIA, AMD, Intel, or just a CPU.” · topics: ninguno publicado en la API. Verificado vía GitHub API y README; benchmarks consultados solo como afirmaciones del proyecto.",
+        "accion_sugerida": "**probar** en una comparación controlada con Ollama usando el mismo modelo, cuantización y hardware.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "magnitudedev/magnitude",
+          "rel": "competes_with",
+          "dst": "tool:ollama",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "magnitudedev/magnitude",
+          "rel": "enables",
+          "dst": "concept:local-agent-inference",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "magnitudedev/magnitude",
+          "rel": "complements",
+          "dst": "tool:hermes-agent",
+          "primera_mencion": "2026-08-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "magnitude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "NVIDIA CUDA-Rust",
+      "url": "https://github.com/NVIDIA/cuda-rust",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repositorio de NVIDIA para runtime CUDA en Rust y modelos de programación de kernels Tile/SIMT idiomáticos para ese lenguaje.",
+        "por_que_importa": "Acerca Rust al desarrollo CUDA de bajo nivel y puede ser relevante para equipos que construyen motores de inferencia o kernels propios; la tendencia por sí sola no demuestra que reemplace los flujos CUDA/C++ existentes.",
+        "madurez_senales": "3.898 estrellas · 350 forks · Rust · creado 2026-04-22 · último push 2026-10-30 · Apache-2.0 · descripción oficial: “NVIDIA's CUDA platform for Rust. Host runtime crates plus Tile (cutile-rs) and SIMT (cuda-oxide) kernel programming models in idiomatic Rust.” · topics: no publicados en la API. Verificado vía GitHub API.",
+        "accion_sugerida": "**vigilar**; esperar ejemplos y matriz de compatibilidad antes de recomendarlo para producción.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "NVIDIA/cuda-rust",
+          "rel": "implements",
+          "dst": "concept:cuda-kernel-programming",
+          "primera_mencion": null
+        },
+        {
+          "src": "NVIDIA/cuda-rust",
+          "rel": "uses",
+          "dst": "tool:rust",
+          "primera_mencion": null
+        },
+        {
+          "src": "NVIDIA/cuda-rust",
+          "rel": "enables",
+          "dst": "concept:gpu-inference-optimization",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-cuda-rust",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Hydro Infinity",
+      "url": "https://github.com/hydro-project/infinity",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime y protocolo de herramientas para coordinar concurrencia entre agentes con reglas explícitas.",
+        "por_que_importa": "El 2026-08-27 ya tratamos la orquestación multiagente; lo que aporta este proyecto es la capa de abajo, no otra interfaz de escritorio para lanzar varios agentes: un runtime y un protocolo de herramientas que ponen reglas explícitas a la concurrencia (quién puede ejecutar qué y cuándo), que es donde suelen romperse los montajes caseros. Ese enfoque de infraestructura es el motivo para seguirlo pese a su escala: 396 estrellas y 38 forks significan que aún no hay validación comunitaria amplia, así que conviene leerlo como propuesta de diseño a evaluar, no como estándar consolidado.",
+        "madurez_senales": "396 estrellas · 38 forks · Rust · creado 2026-04-13 · último push 2026-10-29 · Apache-2.0 · descripción oficial: “An agent runtime and tool protocol for principled agent concurrency” · topics: no verificados (no aparecen en la respuesta API revisada). Verificado vía GitHub API.",
+        "accion_sugerida": "**leer** el protocolo y ejemplos para evaluar si define garantías útiles más allá de una API de tareas.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "hydro-project/infinity",
+          "rel": "implements",
+          "dst": "concept:agent-concurrency-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "hydro-project/infinity",
+          "rel": "complements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "hydro-project/infinity",
+          "rel": "relevant_to",
+          "dst": "concept:agent-runtime",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hydro-infinity",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "qybaihe/bla",
+      "url": "https://github.com/qybaihe/bla",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.060 estrellas, último push 2026-10-29, TypeScript) — propone endurecer binarios y bundles frente a análisis automatizado por agentes; la descripción promocional no constituye evidencia de resistencia efectiva — señales: https://github.com/qybaihe/bla",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/qybaihe/bla",
+        "accion_sugerida": "leer — el diseño y buscar pruebas reproducibles",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "qybaihe-bla",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "jub0t/Concat",
+      "url": "https://github.com/jub0t/Concat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12.714 estrellas, último push 2026-10-28, Rust) — editor de vídeo local-first con API JSON-RPC y MCP; licencia AGPL-3.0, relevante si se evalúa integración o redistribución — señales: https://github.com/jub0t/Concat",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/jub0t/Concat",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jub0t-concat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Donchitos/Claude-Code-Game-Studios",
+      "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(29.695 estrellas, último push 2026-10-19, Shell) — conjunto de agentes y skills para organizar flujos de desarrollo de videojuegos; volumen de estrellas alto, validar actividad y utilidad del contenido antes de adoptarlo — señales: https://github.com/Donchitos/Claude-Code-Game-Studios",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "donchitos-claude-code-game-studios",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "skyzh/tiny-llm",
+      "url": "https://github.com/skyzh/tiny-llm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.073 estrellas, último push 2026-10-22, Python) — material práctico para aprender sistemas de inferencia de LLM en Apple Silicon con un vLLM pequeño y Qwen — señales: https://github.com/skyzh/tiny-llm",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/skyzh/tiny-llm",
+        "accion_sugerida": "leer — como recurso educativo, no como servidor listo para producción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "skyzh-tiny-llm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "anchore/syft",
+      "url": "https://github.com/anchore/syft",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.795 estrellas, último push 2026-10-30, Go) — CLI y biblioteca para generar SBOM de imágenes y sistemas de archivos; utilidad transversal para revisar cadenas de suministro de herramientas — señales: https://github.com/anchore/syft",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anchore/syft",
+        "accion_sugerida": "probar — en un artefacto propio",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anchore-syft",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "vllm-project/semantic-router",
+      "url": "https://github.com/vllm-project/semantic-router",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.331 estrellas, último push 2026-10-30, Go) — capa programable de decisión y enrutamiento de modelos/cómputo; puede compararse con gateways de LLM existentes — señales: https://github.com/vllm-project/semantic-router",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vllm-project/semantic-router",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vllm-project-semantic-router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "1/4 items reescritos; rechazados por longitud sospechosa: [0, 1, 2]; faltantes en respuesta: [0, 1, 2]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

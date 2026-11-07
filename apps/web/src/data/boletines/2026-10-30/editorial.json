@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "date": "2026-10-30",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La seguridad del agente se dirime en el runtime, no en el prompt",
+  "posicionamiento": "La carrera de agentes se desplaza al runtime: IronClaw pone límites, Magnitude y CUDA-Rust optimizan la ejecución, Hydro ordena la concurrencia. Ninguno vende interfaz; todos discuten qué permite ejecutar el sistema.",
+  "convergencia_stack_css": "Magnitude toca el núcleo local-first al competir con Ollama y anunciar integración con Hermes; IronClaw aporta el vocabulario de sandbox y secretos que ese stack todavía resuelve a mano.",
+  "cruzado_grafo": "Magnitude reabre nodos con primera mención del 2026-08-21 (Ollama, inferencia local de agentes, Hermes) y Hydro engancha con la orquestación multiagente del 2026-08-27. IronClaw y CUDA-Rust entran sin antecedente previo.",
+  "tendencias_5_boletines": "El 2026-10-28 el hilo era la contención y el 2026-10-29 la interfaz; hoy la discusión baja un piso, al runtime donde esos límites se aplican de verdad. Menos escaparate, más condiciones de ejecución.",
+  "alertas": [
+    "El 'más de 2×' de Magnitude es cifra del propio proyecto, sin evaluación independiente con modelos y cuantización comparables.",
+    "IronClaw declara varias capas de defensa en el README: son garantías prometidas, no verificadas en auditoría.",
+    "Hydro Infinity suma 396 estrellas y 38 forks: propuesta de diseño, no estándar con validación comunitaria.",
+    "CUDA-Rust no implica por tendencia que vaya a reemplazar los flujos CUDA/C++ existentes."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Leer las políticas de capacidades y el sandbox WASM de IronClaw para contrastarlas con el aislamiento que hoy montamos a mano."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Magnitude merece seguimiento, pero sin benchmark reproducible contra Ollama no hay razón para tocar el motor actual."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Hydro ataca la concurrencia con reglas explícitas, justo donde fallan los montajes multiagente caseros; encaja con la línea de contención."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "CUDA-Rust solo es relevante si llegamos a escribir kernels propios; por ahora es señal de dirección, no herramienta."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,272 @@
+{
+  "version": 2,
+  "date": "2026-10-31",
+  "boletin_origen": "2026-10-31-trending.md",
+  "resumen_ejecutivo": "- El hallazgo editorial más fuerte es **Microsoft TokenEconomizer**: intenta reducir costes de agentes de programación aprendiendo por repositorio, con resultados publicados en SWE-Bench y límites que conviene revisar en metodología.\n- **Vercel Agent Desktop** ataca la fragilidad del computer-use basado en píxeles: usa árboles de accesibilidad y referencias verificables; abre una vía concreta para automatización menos heurística.\n- **Cloudflare Security Audit Skill** traduce auditoría asistida por agentes en un proceso por fases con validación independiente y salida estructurada; el README documenta controles, no una garantía de detección completa.\n- **tsrs** vuelve a aparecer tras el boletín del 21 de octubre, pero hoy no se presenta como novedad: la actualización de README sobre compatibilidad y modo rápido es una señal a seguir, no motivo suficiente para duplicarlo como hallazgo.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Microsoft TokenEconomizer",
+      "url": "https://github.com/microsoft/TokenEconomizer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plugin local para agentes de programación que aprende de sesiones previas en cada repositorio y aplica micro-habilidades, poda las herramientas no usadas e interviene ante bucles de fallo.",
+        "por_que_importa": "Cambia la pregunta de «qué modelo sale más barato» a «cuánto trabajo repetido se ahorra en cada sesión»: el plugin aprende de las sesiones previas en un repositorio, conserva micro-habilidades (instrucciones cortas reutilizables), poda las herramientas que no se usan e interviene cuando el agente entra en un bucle de fallo. El dato de coste —18,4–30,9 % menos de gasto medio en 277 tareas de SWE-Bench, un banco de pruebas de tareas reales de ingeniería de software— sale del README del propio equipo y cubre cinco combinaciones agente-modelo: trátalo como resultado propio pendiente de réplica independiente, no como medición neutral. Para quien monta agentes en local lo práctico es que declara compatibilidad con Claude Code, Codex, Copilot CLI y Pi. Ya tocamos el concepto de observabilidad de agentes de código el 2026-09-05; esto es su cara de control de coste.",
+        "madurez_senales": "2.374 estrellas · 136 forks · Python · creado 2026-10-13 · último push 2026-10-31 · Apache-2.0 · descripción oficial: “Experience-Driven Black-Box Cost Control for Coding Agents” · topics: ninguno publicado. Verificado vía GitHub API; README y metodología enlazada consultados.",
+        "accion_sugerida": "**explorar** el diseño y reproducir una comparación controlada antes de instalarlo en flujos habituales.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "microsoft/TokenEconomizer",
+          "rel": "solves",
+          "dst": "problem:repeated-agent-session-cost",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/TokenEconomizer",
+          "rel": "uses",
+          "dst": "technique:tool-pruning",
+          "primera_mencion": null
+        },
+        {
+          "src": "microsoft/TokenEconomizer",
+          "rel": "relevant_to",
+          "dst": "concept:coding-agent-observability",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-tokeneconomizer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Vercel Agent Desktop",
+      "url": "https://github.com/vercel-labs/agent-desktop",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI y biblioteca nativa para que los agentes lean y operen interfaces de escritorio mediante árboles de accesibilidad, con referencias de elementos verificadas entre capturas.",
+        "por_que_importa": "Ataca un punto débil concreto de la automatización de escritorio: en vez de clicar coordenadas o fiarse del reconocimiento visual, el agente lee el árbol de accesibilidad (la estructura de elementos que el sistema ya expone, por ejemplo para lectores de pantalla) y opera sobre referencias de elemento verificadas entre capturas, con aviso cuando una referencia queda obsoleta y la opción de actuar sin robar el foco. Eso debería hacer la automatización menos frágil. El propio README advierte que snapshots, portapapeles y salidas pueden arrastrar datos privados: es una superficie de fuga, no un detalle menor. Para valorarlo con criterio, compáralo con Computer Use de Hermes y con la automatización puramente visual; lo que este item no trae es rendimiento medido, solo arquitectura y tracción (2.804 estrellas, 185 forks), así que la comparación queda pendiente de benchmarks.",
+        "madurez_senales": "2.804 estrellas · 185 forks · Rust · creado 2026-02-19 · último push 2026-10-31 · Apache-2.0 · descripción oficial: “Agent Desktop gives any agent reliable computer use on the desktop…” · topics: `accessibility`, `ai-agents`, `automation`, `computer-use`, `desktop-automation`, `mcp`, `rust`. Verificado vía GitHub API y README.",
+        "accion_sugerida": "**leer** las diferencias por plataforma y el modelo de referencias antes de probarlo en una sesión con datos sensibles.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "vercel-labs/agent-desktop",
+          "rel": "implements",
+          "dst": "concept:desktop-computer-use",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/agent-desktop",
+          "rel": "uses",
+          "dst": "technique:accessibility-tree",
+          "primera_mencion": null
+        },
+        {
+          "src": "vercel-labs/agent-desktop",
+          "rel": "complements",
+          "dst": "tool:cua-driver",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-agent-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Cloudflare Security Audit Skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill de auditoría que coordina fases de reconocimiento, búsqueda guiada por cobertura, validación adversarial de hallazgos y generación de informes estructurados.",
+        "por_que_importa": "Aporta un patrón concreto contra el problema clásico de las auditorías automáticas, que es el ruido: un verificador distinto del que encontró el fallo intenta refutarlo y cada hallazgo queda clasificado como confirmado, pendiente o rechazado, en un informe legible por máquina. La parte incómoda es el requisito operativo: recomienda ejecutar código del objetivo aislado y sin red, y si no hay sandbox los casos se quedan como pendientes de validar; hacerlo sin aislamiento es un riesgo real, no teórico. Ya tratamos el 2026-09-15 la validación independiente de hallazgos, el problema de los falsos positivos y el riesgo de ejecutar código del objetivo, así que esto se lee como continuación de ese hilo. La tracción llama la atención (54.482 estrellas con último push el 2026-09-14), pero el propio item corta la nota sobre popularidad: no la interpretes como señal de madurez.",
+        "madurez_senales": "54.482 estrellas · 3.536 forks · JavaScript · creado 2026-06-18 · último push 2026-09-14 · MIT · descripción oficial: “A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings” · topics: ninguno publicado. Verificado vía GitHub API y README; la popularidad no equivale a eficacia de auditoría demostrada.",
+        "accion_sugerida": "**leer** el esquema de findings y sus validadores; no ejecutar auditorías contra código no confiable sin el aislamiento requerido.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "implements",
+          "dst": "technique:independent-finding-validation",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "solves",
+          "dst": "problem:security-audit-false-positives",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "cloudflare/security-audit-skill",
+          "rel": "risk",
+          "dst": "problem:unsafe-target-execution",
+          "primera_mencion": "2026-09-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "wangzan101/Mika",
+      "url": "https://github.com/wangzan101/Mika",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.901 estrellas, último push 2026-10-31, Kotlin) — agente Android que se ejecuta localmente en el dispositivo, opera apps en una pantalla de fondo, incluye un sandbox arm64 y ofrece conexión MCP con token a través de USB; el proyecto está en beta pública — señales: https://github.com/wangzan101/Mika",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/wangzan101/Mika",
+        "accion_sugerida": "vigilar — el modelo de permisos y el alcance real de las acciones en el teléfono",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wangzan101-mika",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "oxc-project/tsrs",
+      "url": "https://github.com/oxc-project/tsrs",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.642 estrellas, último push 2026-10-30, Rust) — reemplazo en Rust del checker de TypeScript 7, con objetivo de conformidad, modo rápido y documentación de diferencias. Ya figuró el 21 de octubre; se conserva aquí solo como reentrada con señal nueva en el README, no como hallazgo principal — señales: https://github.com/oxc-project/tsrs",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/oxc-project/tsrs",
+        "accion_sugerida": "vigilar — compatibilidad y benchmarks reproducibles",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oxc-project-tsrs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.015 estrellas, último push 2026-10-31, TypeScript) — aplicación de escritorio para coordinar bots basados en Claude o Codex, cada uno con su propio agente y entorno de cómputo; proyecto independiente y no afiliado a Grok — señales: https://github.com/milind-soni/OpenMausBot",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/milind-soni/OpenMausBot",
+        "accion_sugerida": "leer — el modelo de ejecución y permisos antes de considerar adopción",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "milind-soni-openmausbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "heydamir/unslop",
+      "url": "https://github.com/heydamir/unslop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.769 estrellas, último push 2026-10-29, JavaScript) — skill para revisar y rediseñar interfaces generadas por IA; su licencia CC BY 4.0 exige atribución, por lo que no debe tratarse como una dependencia de código MIT/Apache — señales: https://github.com/heydamir/unslop",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/heydamir/unslop",
+        "accion_sugerida": "leer — los ejemplos y el flujo de aprobación previa a cambios",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heydamir-unslop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "chris124567/cfsolve",
+      "url": "https://github.com/chris124567/cfsolve",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(259 estrellas, último push 2026-10-29, Rust) — afirma resolver páginas de desafío de Cloudflare mediante ingeniería inversa y solicitudes directas. El planteamiento puede implicar elusión de controles antiabuso y no es una recomendación de uso — señales: https://github.com/chris124567/cfsolve",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/chris124567/cfsolve",
+        "accion_sugerida": "ignorar — para adopción; observar únicamente como señal de la carrera anti-bot",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chris124567-cfsolve",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 8,
+    "items_hallazgo_principal": 3,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "8/8 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/3 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

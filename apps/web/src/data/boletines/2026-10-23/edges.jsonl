@@ -1,0 +1,37 @@
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-nvidia-openshell", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-nvidia-openshell", "dst": "tema:nvidia-openshell", "rel": "trata", "added": "2026-10-23"}
+{"src": "repo:NVIDIA/OpenShell", "dst": "concept:agent-sandbox", "rel": "implements", "added": "2026-10-23", "primera_mencion": "2026-08-07"}
+{"src": "repo:NVIDIA/OpenShell", "dst": "problem:agent-credential-exposure", "rel": "mitigates", "added": "2026-10-23", "primera_mencion": "2026-08-07"}
+{"src": "repo:NVIDIA/OpenShell", "dst": "concept:agent-policy-governance", "rel": "complements", "added": "2026-10-23", "primera_mencion": "2026-08-07"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-deepseek-ai-deepseek-harness", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-deepseek-ai-deepseek-harness", "dst": "tema:deepseek-ai-deepseek-harness", "rel": "trata", "added": "2026-10-23"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "framework:Cordis", "rel": "uses", "added": "2026-10-23", "primera_mencion": "2026-08-14"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "concept:plugin-based-agent-harness", "rel": "implements", "added": "2026-10-23", "primera_mencion": "2026-08-14"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "concept:agent-skills", "rel": "complements", "added": "2026-10-23", "primera_mencion": "2026-08-14"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-10-23"}
+{"src": "repo:morluto/rea", "dst": "concept:mcp-tooling", "rel": "implements", "added": "2026-10-23", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "technique:agent-assisted-reverse-engineering", "rel": "enables", "added": "2026-10-23", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "tool:Ghidra", "rel": "complements", "added": "2026-10-23", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-beenuar-aisoc", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-beenuar-aisoc", "dst": "tema:beenuar-aisoc", "rel": "trata", "added": "2026-10-23"}
+{"src": "repo:beenuar/AiSOC", "dst": "problem:security-alert-triage", "rel": "solves", "added": "2026-10-23", "primera_mencion": null}
+{"src": "repo:beenuar/AiSOC", "dst": "problem:agent-unreviewed-actions", "rel": "mitigates", "added": "2026-10-23", "primera_mencion": null}
+{"src": "repo:beenuar/AiSOC", "dst": "tool:ollama", "rel": "uses", "added": "2026-10-23", "primera_mencion": null}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-ethanarbuckle-fairplay-decrypt", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-ethanarbuckle-fairplay-decrypt", "dst": "tema:ethanarbuckle-fairplay-decrypt", "rel": "trata", "added": "2026-10-23"}
+{"src": "repo:EthanArbuckle/fairplay-decrypt", "dst": "technique:binary-analysis", "rel": "implements", "added": "2026-10-23", "primera_mencion": null}
+{"src": "repo:EthanArbuckle/fairplay-decrypt", "dst": "concept:reverse-engineering", "rel": "relevant_to", "added": "2026-10-23", "primera_mencion": null}
+{"src": "repo:EthanArbuckle/fairplay-decrypt", "dst": "problem:unclear-redistribution-rights", "rel": "risk", "added": "2026-10-23", "primera_mencion": null}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-anthropics-knowledge-work-plugins", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-anthropics-knowledge-work-plugins", "dst": "tema:anthropics-knowledge-work-plugins", "rel": "trata", "added": "2026-10-23"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-trymirai-uzu", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-trymirai-uzu", "dst": "tema:trymirai-uzu", "rel": "trata", "added": "2026-10-23"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-asymptote-labs-agent-beacon", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-asymptote-labs-agent-beacon", "dst": "tema:asymptote-labs-agent-beacon", "rel": "trata", "added": "2026-10-23"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-hashicorp-vault", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-hashicorp-vault", "dst": "tema:hashicorp-vault", "rel": "trata", "added": "2026-10-23"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-datadog-dd-trace-go", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-datadog-dd-trace-go", "dst": "tema:datadog-dd-trace-go", "rel": "trata", "added": "2026-10-23"}
+{"src": "boletin:2026-10-23", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-10-23"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:cloudflare-security-audit-skill", "rel": "trata", "added": "2026-10-23"}

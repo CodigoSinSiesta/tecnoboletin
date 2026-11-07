@@ -1,0 +1,27 @@
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-nvidia-skillspector", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-nvidia-skillspector", "dst": "tema:nvidia-skillspector", "rel": "trata", "added": "2026-10-27"}
+{"src": "repo:NVIDIA/SkillSpector", "dst": "concept:agent-skill-supply-chain-security", "rel": "implements", "added": "2026-10-27", "primera_mencion": "2026-09-05"}
+{"src": "repo:NVIDIA/SkillSpector", "dst": "repo:cloudflare/security-audit-skill", "rel": "complements", "added": "2026-10-27", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-harnessrouter-harnessrouter", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-harnessrouter-harnessrouter", "dst": "tema:harnessrouter", "rel": "trata", "added": "2026-10-27"}
+{"src": "repo:HarnessRouter/harnessrouter", "dst": "concept:unified-harness-protocol", "rel": "implements", "added": "2026-10-27", "primera_mencion": null}
+{"src": "repo:HarnessRouter/harnessrouter", "dst": "concept:cross-harness-agent", "rel": "enables", "added": "2026-10-27", "primera_mencion": null}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-nightly-labs-openbot", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-nightly-labs-openbot", "dst": "tema:openbot", "rel": "trata", "added": "2026-10-27"}
+{"src": "repo:nightly-labs/openbot", "dst": "concept:cross-harness-local-workspace", "rel": "implements", "added": "2026-10-27", "primera_mencion": null}
+{"src": "repo:nightly-labs/openbot", "dst": "concept:unrestricted-agent-execution", "rel": "risk", "added": "2026-10-27", "primera_mencion": null}
+{"src": "repo:nightly-labs/openbot", "dst": "repo:JetBrains/thinkrail", "rel": "complements", "added": "2026-10-27", "primera_mencion": "2026-10-26"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-eugeniughelbur-obsidian-second-brain", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-eugeniughelbur-obsidian-second-brain", "dst": "tema:eugeniughelbur-obsidian-second-brain", "rel": "trata", "added": "2026-10-27"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-panniantong-agent-reach", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-panniantong-agent-reach", "dst": "tema:panniantong-agent-reach", "rel": "trata", "added": "2026-10-27"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-jetbrains-thinkrail", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-jetbrains-thinkrail", "dst": "tema:jetbrains-thinkrail", "rel": "trata", "added": "2026-10-27"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-nutlope-hallmark", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-nutlope-hallmark", "dst": "tema:nutlope-hallmark", "rel": "trata", "added": "2026-10-27"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-affaan-m-ecc", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-affaan-m-ecc", "dst": "tema:affaan-m-ecc", "rel": "trata", "added": "2026-10-27"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-microsoft-skill-recorder", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-microsoft-skill-recorder", "dst": "tema:microsoft-skill-recorder", "rel": "trata", "added": "2026-10-27"}
+{"src": "boletin:2026-10-27", "dst": "item:https-github-com-debpalash-voicestudio", "rel": "menciona", "added": "2026-10-27"}
+{"src": "item:https-github-com-debpalash-voicestudio", "dst": "tema:debpalash-voicestudio", "rel": "trata", "added": "2026-10-27"}

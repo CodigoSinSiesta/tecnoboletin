@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "date": "2026-11-01",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "DeepSeek y Sandstorm mueven la carrera al cerco del agente",
+  "posicionamiento": "Los tres hallazgos no compiten por el modelo, compiten por el cerco. DeepSeek publica el contrato de autorización, Sandstorm lo aísla y Floorplan lo hace local. El hilo es quién deja correr al agente y bajo qué condiciones.",
+  "convergencia_stack_css": "Floorplan encaja con el stack local-first: mapa editable en local, sin hooks ni MCP, y declarado complemento de codebase-memory-mcp. Sandstorm apunta a lo mismo desde el aislamiento: sandboxes en máquinas propias, no en un servicio ajeno.",
+  "cruzado_grafo": "Solo dos nodos traen fecha previa: Firecracker (2026-08-22) y Claude Code (2026-09-15). Los demás —repository-scoped-agent, task-isolation, agent-sandbox-orchestration, gvisor, codebase-architecture-map— aparecen hoy sin mención anterior.",
+  "tendencias_5_boletines": "Viene de dos días mirando el runtime (2026-10-30) y el coste de fallar (2026-10-31). Hoy el eje se cierra: no basta ejecutar barato, hay que decidir quién autoriza, qué se aísla y qué queda en local.",
+  "alertas": [
+    "DeepSeek lo etiqueta como prototipo de investigación: el código publicado no implementa todo lo que describe el artículo asociado.",
+    "Los benchmarks de Sandstorm son del propio proyecto y dependen de Linux, cgroups v2 y las condiciones de virtualización de su README.",
+    "La rama por defecto de Sandstorm es `dev`, no una rama estable.",
+    "Floorplan afirma cero dependencias, modo offline y ningún hook ni MCP; son afirmaciones del autor, sin verificación independiente.",
+    "El radar premia catálogos reutilizables y material didáctico: popularidad y volumen no equivalen a curación."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Leer el contrato de autorización y el aislamiento por tarea sirve como material de diseño aunque el código esté incompleto. No es una herramienta para poner en marcha."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Sandstorm publica metodología y límites junto a sus métricas, así que es comparable. Esperar a una rama estable antes de reproducir el benchmark en local."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "Se declara complemento de codebase-memory-mcp, que ya usamos para mapear repos. Merece una prueba sobre un repo real antes de recomendarlo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-10-25",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Octopus y LearnHarness mueven el peso del modelo al entorno",
+  "posicionamiento": "El día se ordena por sustrato, no por modelo: LearnHarness guarda el conocimiento en un grafo local, Octopus traslada permisos y drivers al runtime, y Microduck lleva la política hasta un bípedo de 800 g. Iggy y Alloy ponen la parte aburrida que hace falta para que eso aguante.",
+  "convergencia_stack_css": "LearnHarness valida la apuesta local-first con un grafo reutilizable, aunque el contexto de las peticiones sale al proveedor configurado. Iggy y Alloy cubren lo que en nuestro stack aún se resuelve a mano: cola durable y telemetría con OpenTelemetry.",
+  "cruzado_grafo": "Cuatro nodos ya traían fecha: grafo de conocimiento temporal (2026-09-01), harness como entorno (2026-08-23), streaming de datos agéntico (2026-08-07) y OpenTelemetry (2026-08-22). Entran dos sin mención previa: permisos por proyecto y auto-mejora no verificada.",
+  "tendencias_5_boletines": "La continuidad es estrecha: el 23 y el 24 la pregunta era dónde se aplica el control. Octopus responde con contratos de runtime y LearnHarness añade la otra mitad de la misma pregunta, dónde vive la memoria cuando el modelo no la sostiene.",
+  "alertas": [
+    "Octopus se declara research preview, exige macOS 14 y una cuenta ChatGPT, y la auto-evolución es hipótesis, no mejora medida.",
+    "Iggy anuncia throughput muy alto sin benchmark independiente: contrastar garantías de entrega y coste operativo.",
+    "Microduck es software abierto sobre hardware comercial: no se construye sin comprar el robot.",
+    "LearnHarness dice almacenamiento local, pero las peticiones envían contexto al proveedor del modelo.",
+    "Alloy es telemetría general, no observabilidad específica de LLM."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Comprobar si el grafo guarda afirmaciones con fuentes verificables y no solo conversaciones."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Revisar el modelo de permisos por proyecto y drivers; es la pieza reutilizable de la idea."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Esperar pruebas de entrega y coste operativo antes de ponderarlo frente a alternativas conocidas."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Caso tangible de sim2real para separar agentes de software de sistemas con límites físicos."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,30 @@
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-paradevai-paradev", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-paradevai-paradev", "dst": "tema:paradev", "rel": "trata", "added": "2026-10-29"}
+{"src": "ParadevAI/Paradev", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-10-29", "primera_mencion": "2026-08-27"}
+{"src": "ParadevAI/Paradev", "dst": "concept:git-worktrees", "rel": "uses", "added": "2026-10-29", "primera_mencion": "2026-09-03"}
+{"src": "ParadevAI/Paradev", "dst": "JetBrains/thinkrail", "rel": "complements", "added": "2026-10-29", "primera_mencion": "2026-10-26"}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-minimax-ai-mcode-stack", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-minimax-ai-mcode-stack", "dst": "tema:minimax-code-stack", "rel": "trata", "added": "2026-10-29"}
+{"src": "MiniMax-AI/mcode-stack", "dst": "concept:agent-skills", "rel": "implements", "added": "2026-10-29", "primera_mencion": "2026-10-22"}
+{"src": "MiniMax-AI/mcode-stack", "dst": "concept:harness-engineering", "rel": "relevant_to", "added": "2026-10-29", "primera_mencion": "2026-08-22"}
+{"src": "MiniMax-AI/mcode-stack", "dst": "google/elephant-goldfish-model", "rel": "complements", "added": "2026-10-29", "primera_mencion": "2026-10-28"}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-l0ng-ai-openidea", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-l0ng-ai-openidea", "dst": "tema:openidea", "rel": "trata", "added": "2026-10-29"}
+{"src": "l0ng-ai/openidea", "dst": "concept:lightweight-ide", "rel": "implements", "added": "2026-10-29", "primera_mencion": null}
+{"src": "l0ng-ai/openidea", "dst": "tool:tauri", "rel": "uses", "added": "2026-10-29", "primera_mencion": "2026-09-04"}
+{"src": "l0ng-ai/openidea", "dst": "concept:developer-ide", "rel": "competes_with", "added": "2026-10-29", "primera_mencion": null}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-zeabur-oss-zeabur", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-zeabur-oss-zeabur", "dst": "tema:zeabur-oss", "rel": "trata", "added": "2026-10-29"}
+{"src": "zeabur-oss/zeabur", "dst": "concept:self-hosted-paas", "rel": "implements", "added": "2026-10-29", "primera_mencion": null}
+{"src": "zeabur-oss/zeabur", "dst": "tool:kubernetes", "rel": "uses", "added": "2026-10-29", "primera_mencion": null}
+{"src": "zeabur-oss/zeabur", "dst": "problem:pre-alpha-cluster-operations", "rel": "risk", "added": "2026-10-29", "primera_mencion": null}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-expo-skills", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-expo-skills", "dst": "tema:expo-skills", "rel": "trata", "added": "2026-10-29"}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-elayadesign-ai-design-skills", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-elayadesign-ai-design-skills", "dst": "tema:elayadesign-ai-design-skills", "rel": "trata", "added": "2026-10-29"}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-davidhdev-react-bits", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-davidhdev-react-bits", "dst": "tema:davidhdev-react-bits", "rel": "trata", "added": "2026-10-29"}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-decolua-9router", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-decolua-9router", "dst": "tema:decolua-9router", "rel": "trata", "added": "2026-10-29"}
+{"src": "boletin:2026-10-29", "dst": "item:https-github-com-plandex-ai-plandex", "rel": "menciona", "added": "2026-10-29"}
+{"src": "item:https-github-com-plandex-ai-plandex", "dst": "tema:plandex-ai-plandex", "rel": "trata", "added": "2026-10-29"}

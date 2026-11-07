@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "date": "2026-10-23",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La seguridad de los agentes exige control del entorno y supervisión humana",
+  "posicionamiento": "La seguridad de los agentes deja de ser solo una cuestión de límites al modelo: también depende del aislamiento del entorno, de cómo se amplía el runtime y de quién aprueba sus acciones. Los hallazgos plantean enfoques distintos, no una solución común ya validada.",
+  "convergencia_stack_css": "El interés por runtimes extensibles y reverse engineering asistido por MCP conecta con la línea editorial sobre agentes y herramientas. Los datos no muestran una conexión directa con el stack local-first.",
+  "cruzado_grafo": "Los hallazgos no incluyen valores de `primera_mencion` ni relaciones del grafo. No se puede determinar qué nodos se refuerzan o aparecen por primera vez.",
+  "tendencias_5_boletines": "La continuidad reciente apuntaba a distinguir apertura declarada de apertura efectiva y a MCP como interfaz común. Hoy el foco se desplaza a la seguridad operativa de los agentes; con solo dos días de contexto no hay base para afirmar una tendencia de cinco boletines.",
+  "alertas": [
+    "DeepSeek Harness está en developer preview y el último push verificado fue hace seis días.",
+    "AiSOC es joven y sus despliegues no son livianos."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "El aislamiento a nivel de kernel y la revisión formal de políticas ofrecen un contraste útil con sandboxing a nivel de proceso. Los datos no detallan resultados de despliegue."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "El harness extensible por plugins puede ser relevante para la infraestructura de agentes, pero sigue en developer preview."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "La trazabilidad de llamadas y la aprobación humana antes de responder hacen de AiSOC un caso concreto para estudiar controles defensivos; conviene tener presente su juventud y coste operativo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --carry-forward (contenido original conservado, schema ajustado)"
+}

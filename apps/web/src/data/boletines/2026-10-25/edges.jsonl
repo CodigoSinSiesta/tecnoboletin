@@ -1,0 +1,35 @@
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-amosblomqvist-learnharness", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-amosblomqvist-learnharness", "dst": "tema:learnharness", "rel": "trata", "added": "2026-10-25"}
+{"src": "repo:amosblomqvist/learnharness", "dst": "concept:multi-agent-educational-ui", "rel": "implements", "added": "2026-10-25", "primera_mencion": "2026-08-16"}
+{"src": "repo:amosblomqvist/learnharness", "dst": "concept:temporal-knowledge-graph", "rel": "uses", "added": "2026-10-25", "primera_mencion": "2026-09-01"}
+{"src": "repo:amosblomqvist/learnharness", "dst": "concept:local-first-agent-workspace", "rel": "relevant_to", "added": "2026-10-25", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-pollen-robotics-microduck", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-pollen-robotics-microduck", "dst": "tema:microduck", "rel": "trata", "added": "2026-10-25"}
+{"src": "repo:pollen-robotics/microduck", "dst": "concept:robotics-rl", "rel": "implements", "added": "2026-10-25", "primera_mencion": "2026-09-01"}
+{"src": "repo:pollen-robotics/microduck", "dst": "technique:sim2real", "rel": "uses", "added": "2026-10-25", "primera_mencion": "2026-09-01"}
+{"src": "repo:pollen-robotics/microduck_rl", "dst": "repo:pollen-robotics/microduck", "rel": "enables", "added": "2026-10-25", "primera_mencion": "2026-09-01"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-miuuyy-octopus-si-os", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-miuuyy-octopus-si-os", "dst": "tema:octopus-superintelligence-os", "rel": "trata", "added": "2026-10-25"}
+{"src": "repo:miuuyy/Octopus-SI-OS", "dst": "concept:agent-harness-environment", "rel": "implements", "added": "2026-10-25", "primera_mencion": "2026-08-23"}
+{"src": "repo:miuuyy/Octopus-SI-OS", "dst": "concept:project-scoped-permissions", "rel": "uses", "added": "2026-10-25", "primera_mencion": null}
+{"src": "repo:miuuyy/Octopus-SI-OS", "dst": "problem:unverified-agent-self-improvement", "rel": "risk", "added": "2026-10-25", "primera_mencion": null}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-apache-iggy", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-apache-iggy", "dst": "tema:apache-iggy", "rel": "trata", "added": "2026-10-25"}
+{"src": "repo:apache/iggy", "dst": "concept:agentic-data-streaming", "rel": "implements", "added": "2026-10-25", "primera_mencion": "2026-08-07"}
+{"src": "repo:apache/iggy", "dst": "protocol:quic", "rel": "uses", "added": "2026-10-25", "primera_mencion": null}
+{"src": "repo:apache/iggy", "dst": "concept:multi-agent-orchestration", "rel": "complements", "added": "2026-10-25", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-grafana-alloy", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-grafana-alloy", "dst": "tema:grafana-alloy", "rel": "trata", "added": "2026-10-25"}
+{"src": "repo:grafana/alloy", "dst": "tool:opentelemetry", "rel": "implements", "added": "2026-10-25", "primera_mencion": "2026-08-22"}
+{"src": "repo:grafana/alloy", "dst": "concept:agent-observability", "rel": "enables", "added": "2026-10-25", "primera_mencion": "2026-08-29"}
+{"src": "repo:grafana/alloy", "dst": "concept:llm-observability", "rel": "complements", "added": "2026-10-25", "primera_mencion": "2026-08-10"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-triliumnext-trilium", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-triliumnext-trilium", "dst": "tema:triliumnext-trilium", "rel": "trata", "added": "2026-10-25"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-crewaiinc-crewai", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-crewaiinc-crewai", "dst": "tema:crewaiinc-crewai", "rel": "trata", "added": "2026-10-25"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-goreleaser-goreleaser", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-goreleaser-goreleaser", "dst": "tema:goreleaser-goreleaser", "rel": "trata", "added": "2026-10-25"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-umami-software-umami", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-umami-software-umami", "dst": "tema:umami-software-umami", "rel": "trata", "added": "2026-10-25"}
+{"src": "boletin:2026-10-25", "dst": "item:https-github-com-slee-persis-gvs5h", "rel": "menciona", "added": "2026-10-25"}
+{"src": "item:https-github-com-slee-persis-gvs5h", "dst": "tema:slee-persis-gvs5h", "rel": "trata", "added": "2026-10-25"}

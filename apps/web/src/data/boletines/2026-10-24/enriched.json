@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "date": "2026-10-24",
+  "boletin_origen": "2026-10-24-trending.md",
+  "resumen_ejecutivo": "- La tendencia más sustantiva es la seguridad de ejecución: Anthropic publica un runtime que aplica restricciones de filesystem y red al proceso completo; la diferencia frente a permisos conversacionales es importante, aunque sigue en beta y el soporte Linux depende de bubblewrap.\n- HumanLayer y Open Duet representan dos capas distintas de coordinación humana: control de una flota de coding agents en equipo frente a un espacio autoalojable con agentes, memoria, rutinas y aprobación configurable.\n- JiuwenSwarm destaca por la amplitud de su propuesta multiagente (canales, flujos deterministas, permisos y evolución de skills), pero sus afirmaciones de autonomía deben contrastarse con el código y el estado real del producto.\n- No repetimos AiSOC ni DeepSeek Harness como hallazgos: ya aparecieron ayer y no detectamos novedad editorial suficiente. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub REST API cuando aplica; blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Anthropic Sandbox Runtime",
+      "url": "https://github.com/anthropics/sandbox-runtime",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de línea de comandos y biblioteca que limita el sistema de archivos, la red y los sockets de los procesos sin exigir un contenedor; usa Seatbelt en macOS, bubblewrap y aislamiento de espacios de nombres en Linux, y cuenta de usuario y filtros WFP en Windows.",
+        "por_que_importa": "Lo relevante para quien construye con agentes es dónde se aplica el control: aquí el límite lo pone el sistema operativo —Seatbelt en macOS, bubblewrap y aislamiento de espacios de nombres en Linux, cuenta de usuario y filtros WFP (el firewall de Windows) en Windows—, no el prompt. Eso implica que un servidor MCP o un comando de shell lanzado por el agente hereda ese perímetro en lugar de depender de que el modelo obedezca. Ya cubrimos el concepto de sandbox de agentes el 2026-09-09; esta pieza lo implementa sin contenedor, y el README insiste en el doble aislamiento (archivos y red). Dos matices que declara el propio proyecto: es una beta de investigación pensada para Claude Code, con políticas y API que pueden cambiar, y en Linux depende de bubblewrap; no es una garantía frente a todos los límites del sistema operativo.",
+        "madurez_senales": "6.092 estrellas · 534 forks · TypeScript · creado 2025-10-20 · último push 2026-10-23 · Apache-2.0 · descripción oficial: herramienta ligera para restricciones de filesystem y red a nivel de SO sin requerir contenedor · topics: ninguno en API. El README lo marca como *Beta Research Preview*.",
+        "accion_sugerida": "**leer** la configuración y las limitaciones por plataforma; evaluar primero en un entorno de prueba.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/sandbox-runtime",
+          "rel": "implements",
+          "dst": "concept:agent-sandbox",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:anthropics/sandbox-runtime",
+          "rel": "mitigates",
+          "dst": "problem:unrestricted-process-access",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:anthropics/sandbox-runtime",
+          "rel": "complements",
+          "dst": "concept:mcp-tool-isolation",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropic-sandbox-runtime",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "humanlayer/humanlayer",
+      "url": "https://github.com/humanlayer/humanlayer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "suite para coordinar agentes de código que corren en máquinas propias mediante tareas, sesiones, planes y revisiones sincronizadas entre una app, una API y daemons locales.",
+        "por_que_importa": "Para quien ya sigue Claude Code —lo tratamos el 2026-09-15— esto es la capa de coordinación que suele faltar: tareas, sesiones, planes y revisiones compartidas entre una app, una API y daemons (procesos en segundo plano) que corren en máquinas propias, con Claude Code, Codex, OpenCode y Pi como motores. El monorepo incluye plugins y extensiones por harness (el entorno que ejecuta al agente) y un devstack local por worktree, así que permite reproducir el flujo en local antes de llevarlo a un equipo. El matiz que impide recomendarlo sin reservas: el README dice que HumanLayer Cloud ejecuta este código, pero las guías de autoalojamiento siguen en progreso, así que no des por hecho que el despliegue propio está listo.",
+        "madurez_senales": "12.096 estrellas · 977 forks · TypeScript · creado 2024-08-05 · último push 2026-10-24 · Apache-2.0 · descripción oficial: «The best way to get AI coding agents to solve hard problems in complex codebases.» · topics: `agents`, `ai`, `claude-code`, `codex`, `human-in-the-loop`, `opencode`, entre otros.",
+        "accion_sugerida": "**leer** el modelo de daemon/sesiones y esperar documentación de autoalojamiento antes de proponerlo como stack local.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:humanlayer/humanlayer",
+          "rel": "enables",
+          "dst": "concept:human-in-the-loop-agent-workflows",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:humanlayer/humanlayer",
+          "rel": "complements",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:humanlayer/humanlayer",
+          "rel": "complements",
+          "dst": "tool:codex",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "humanlayer-humanlayer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Anil-matcha/open-duet",
+      "url": "https://github.com/Anil-matcha/open-duet",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "espacio de trabajo open source para crear agentes con rol, motor, memoria y permisos, coordinar especialistas y programar rutinas en un equipo o servidor controlado por el usuario.",
+        "por_que_importa": "La propuesta es un espacio de trabajo de agentes que corre en tu equipo o servidor: cada agente tiene rol, motor, memoria y permisos, se coordinan especialistas y se programan rutinas con aprobación explícita antes de actuar. Ya cubrimos la idea de espacio de trabajo local-first el 2026-08-10, y Ollama apareció en el boletín del 2026-10-23; aquí ambos hilos se juntan, porque el motor es intercambiable (Claude Code, Codex, Gemini CLI, ACP, Ollama o LM Studio) y eso permite montarlo sin atarse a un proveedor. El propio proyecto se declara en desarrollo activo y marca límites concretos: la delegación de equipos requiere Claude, y las computadoras aisladas y el navegador son experimentales y opcionales.",
+        "madurez_senales": "6.120 estrellas · 759 forks · Python · creado 2023-05-25 · último push 2026-10-24 · Apache-2.0 · descripción oficial: alternativa autoalojable a Claude Duet con agentes nombrados, memoria, rutinas y computadora aislada · topics incluyen `self-hosted`, `personal-ai-agent`, `computer-use-agent` y `ai-workspace`.",
+        "accion_sugerida": "**vigilar** las capacidades de servidor y límites de seguridad; no confundir la etiqueta local-first con ejecución de modelos incluida (el README dice que cada usuario aporta su motor/modelo).",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Anil-matcha/open-duet",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:Anil-matcha/open-duet",
+          "rel": "enables",
+          "dst": "concept:human-in-the-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Anil-matcha/open-duet",
+          "rel": "complements",
+          "dst": "tool:ollama",
+          "primera_mencion": "2026-10-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anil-matcha-open-duet",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "openJiuwen-ai/jiuwenswarm",
+      "url": "https://github.com/openJiuwen-ai/jiuwenswarm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema de agentes extensible con modos individual y de equipo, despliegue distribuido, flujos deterministas con intervención humana y acceso desde interfaz web, terminal y aplicaciones de mensajería.",
+        "por_que_importa": "Lo interesante es que reúne en un solo sistema decisiones que normalmente se evalúan por separado: modos individual y de equipo, permisos por herramienta, skills reutilizables y flujos deterministas con intervención humana (pasos fijos donde una persona aprueba antes de continuar) con presupuesto de tokens por flujo. Ya hablamos de orquestación multiagente el 2026-08-27 y de skills de agente el 2026-10-22, así que aquí se ve cómo encajan esas piezas. Corre sobre openJiuwen y se accede por interfaz web, terminal y aplicaciones de mensajería, con soporte documentado para modelos locales y API compatibles con OpenAI. La reserva: la autoevolución de skills y las mejoras de harness se anuncian como capacidades del producto, no como resultados auditados —el README está en inglés y la rama por defecto es develop—, así que conviene verificar implementación, aislamiento y cadencia real de desarrollo antes de adoptarlo.",
+        "madurez_senales": "8.700 estrellas · 1.121 forks · Python · creado 2026-03-05 · último push 2026-10-24 · Apache-2.0 · descripción oficial: agente inteligente construido sobre openJiuwen, con acceso desde aplicaciones de comunicación · topics: ninguno en API · rama por defecto: `develop`. README en inglés consultado; no se inspeccionó el código fuente en esta pasada.",
+        "accion_sugerida": "**vigilar**; para una exploración profunda, empezar por permisos, distribución entre procesos y pruebas de autoevolución.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:openJiuwen-ai/jiuwenswarm",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:openJiuwen-ai/jiuwenswarm",
+          "rel": "uses",
+          "dst": "concept:human-in-the-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:openJiuwen-ai/jiuwenswarm",
+          "rel": "complements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-10-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openjiuwen-ai-jiuwenswarm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "promptfoo/promptfoo",
+      "url": "https://github.com/promptfoo/promptfoo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(26.359 estrellas, último push 2026-10-24, TypeScript) — CLI y biblioteca para evaluar aplicaciones LLM, comparar proveedores y hacer red teaming automatizado; MIT, 2.565 forks. El README indica que ahora forma parte de OpenAI y que seguirá siendo open source bajo MIT — señales: https://github.com/promptfoo/promptfoo",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/promptfoo/promptfoo",
+        "accion_sugerida": "vigilar — continuidad de gobernanza y roadmap tras la adquisición",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "promptfoo-promptfoo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "xevrion/hatchzip",
+      "url": "https://github.com/xevrion/hatchzip",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.173 estrellas, último push 2026-10-23, Rust) — extractor que libera espacio del archivo a medida que extrae y puede reanudar tras una interrupción; Apache-2.0, 24 forks. Repositorio nuevo con afirmaciones de integridad y pruebas descritas en el README, sin verificación independiente — señales: https://github.com/xevrion/hatchzip",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/xevrion/hatchzip",
+        "accion_sugerida": "leer — el diseño de crash-safety si se manejan archivos grandes con poco espacio",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "xevrion-hatchzip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "GortexAI/franco",
+      "url": "https://github.com/GortexAI/franco",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(361 estrellas, último push 2026-10-23, Python) — agente local de prospección comercial que usa suscripciones existentes de Claude Code/Codex y pone los correos en revisión antes de enviar, salvo que se active el autopilot; MIT, 92 forks. Incluye reglas de exclusión y modo de copia aprobada; es una integración de nicho, no un agente de código general — señales: https://github.com/GortexAI/franco",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/GortexAI/franco",
+        "accion_sugerida": "vigilar — controles de envío, privacidad y cumplimiento antes de cualquier prueba con datos reales",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gortexai-franco",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "github/gh-stack",
+      "url": "https://github.com/github/gh-stack",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.718 estrellas, último push 2026-10-23, Go) — extensión oficial de `gh` para gestionar pull requests apiladas; MIT, 86 forks. No es un proyecto de IA, pero es una señal útil de flujo de trabajo para cambios paralelos y revisión incremental — señales: https://github.com/github/gh-stack",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/github/gh-stack",
+        "accion_sugerida": "probar — en un repositorio de prueba si se adoptan stacks de PR",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "github-gh-stack",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "anomalyco/hex",
+      "url": "https://github.com/anomalyco/hex",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(564 estrellas, último push 2026-10-24, Rust) — dictado por voz local para macOS con reconocimiento en el dispositivo y beta para Linux; MIT, 70 forks — señales: https://github.com/anomalyco/hex",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anomalyco/hex",
+        "accion_sugerida": "vigilar — la madurez de Linux antes de recomendarlo para escritorios no macOS",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anomalyco-hex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "liguobao/ds-harness-remote",
+      "url": "https://github.com/liguobao/ds-harness-remote",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(811 estrellas, último push 2026-10-23, TypeScript) — plugin de acceso remoto a DeepSeek Harness y Codex desde PC, Android y web mediante una red P2P con cifrado de extremo a extremo, según su descripción (traducida del README); 74 forks, licencia no declarada en la API — señales: https://github.com/liguobao/ds-harness-remote",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/liguobao/ds-harness-remote",
+        "accion_sugerida": "leer — el modelo de confianza y verificar licencia antes de instalarlo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "liguobao-ds-harness-remote",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "4/4 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

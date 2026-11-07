@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-10-27",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "HarnessRouter propone un contrato común mientras OpenBot entrega acceso total",
+  "posicionamiento": "La capa de agentes se formaliza por el contrato y por la auditoría previa, mientras OpenBot va en dirección contraria y entrega acceso completo sin aprobaciones por defecto.",
+  "convergencia_stack_css": "HarnessRouter nombra a Hermes entre los harnesses que quiere unificar y se ejecuta autoalojado, con Docker y unos 4 GB: encaja en la línea local-first, pero el coste no es cero. SkillSpector traslada al catálogo de skills la revisión previa que hoy hacemos a mano.",
+  "cruzado_grafo": "SkillSpector y la skill de auditoría de Cloudflare ya estaban en el grafo desde el 2026-09-05, y hoy se refuerza su relación de complemento. OpenBot se engancha a thinkrail, cubierto el 2026-10-26; unified-harness-protocol y cross-harness-agent aparecen sin mención previa.",
+  "tendencias_5_boletines": "La continuidad encaja: el 2026-10-25 el día se ordenó por sustrato y el 2026-10-26 por lo que persiste y por los límites de ejecución. Hoy ese límite se vuelve contrato explícito en HarnessRouter y revisión previa en SkillSpector; OpenBot es la excepción.",
+  "alertas": [
+    "OpenBot usa PolyForm Noncommercial: no es licencia permisiva para uso comercial.",
+    "OpenBot arranca con danger-full-access y approvalPolicy: never; el consentimiento inicial es todo el freno.",
+    "Los 71 patrones y 17 categorías de SkillSpector son cifras del propio proyecto, sin evaluación independiente.",
+    "HarnessRouter exige Docker, ~4 GB y clave de proveedor; no hay comparativa medida entre harnesses.",
+    "Agent Reach depende de sesiones de terceros por plataforma; lo autenticado se rompe con cambios upstream."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Pasar SkillSpector por una skill propia antes de instalarla dice más que sus cifras de README."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "UHP es una propuesta: conviene ver si Hermes u otro harness publican adaptador real."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "El contraste entre auditoría previa y autonomía sin frenos da un ángulo editorial sólido."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "Si el escáner se mantiene, puede entrar en el flujo de revisión de skills del equipo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

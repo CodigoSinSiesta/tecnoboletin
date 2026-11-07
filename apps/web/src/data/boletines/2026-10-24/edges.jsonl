@@ -1,0 +1,32 @@
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-anthropics-sandbox-runtime", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-anthropics-sandbox-runtime", "dst": "tema:anthropic-sandbox-runtime", "rel": "trata", "added": "2026-10-24"}
+{"src": "repo:anthropics/sandbox-runtime", "dst": "concept:agent-sandbox", "rel": "implements", "added": "2026-10-24", "primera_mencion": "2026-09-09"}
+{"src": "repo:anthropics/sandbox-runtime", "dst": "problem:unrestricted-process-access", "rel": "mitigates", "added": "2026-10-24", "primera_mencion": null}
+{"src": "repo:anthropics/sandbox-runtime", "dst": "concept:mcp-tool-isolation", "rel": "complements", "added": "2026-10-24", "primera_mencion": null}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-humanlayer-humanlayer", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-humanlayer-humanlayer", "dst": "tema:humanlayer-humanlayer", "rel": "trata", "added": "2026-10-24"}
+{"src": "repo:humanlayer/humanlayer", "dst": "concept:human-in-the-loop-agent-workflows", "rel": "enables", "added": "2026-10-24", "primera_mencion": null}
+{"src": "repo:humanlayer/humanlayer", "dst": "tool:claude-code", "rel": "complements", "added": "2026-10-24", "primera_mencion": "2026-09-15"}
+{"src": "repo:humanlayer/humanlayer", "dst": "tool:codex", "rel": "complements", "added": "2026-10-24", "primera_mencion": null}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-anil-matcha-open-duet", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-anil-matcha-open-duet", "dst": "tema:anil-matcha-open-duet", "rel": "trata", "added": "2026-10-24"}
+{"src": "repo:Anil-matcha/open-duet", "dst": "concept:local-first-agent-workspace", "rel": "implements", "added": "2026-10-24", "primera_mencion": "2026-08-10"}
+{"src": "repo:Anil-matcha/open-duet", "dst": "concept:human-in-the-loop", "rel": "enables", "added": "2026-10-24", "primera_mencion": null}
+{"src": "repo:Anil-matcha/open-duet", "dst": "tool:ollama", "rel": "complements", "added": "2026-10-24", "primera_mencion": "2026-10-23"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-openjiuwen-ai-jiuwenswarm", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-openjiuwen-ai-jiuwenswarm", "dst": "tema:openjiuwen-ai-jiuwenswarm", "rel": "trata", "added": "2026-10-24"}
+{"src": "repo:openJiuwen-ai/jiuwenswarm", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-10-24", "primera_mencion": "2026-08-27"}
+{"src": "repo:openJiuwen-ai/jiuwenswarm", "dst": "concept:human-in-the-loop", "rel": "uses", "added": "2026-10-24", "primera_mencion": null}
+{"src": "repo:openJiuwen-ai/jiuwenswarm", "dst": "concept:agent-skills", "rel": "complements", "added": "2026-10-24", "primera_mencion": "2026-10-22"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-promptfoo-promptfoo", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-promptfoo-promptfoo", "dst": "tema:promptfoo-promptfoo", "rel": "trata", "added": "2026-10-24"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-xevrion-hatchzip", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-xevrion-hatchzip", "dst": "tema:xevrion-hatchzip", "rel": "trata", "added": "2026-10-24"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-gortexai-franco", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-gortexai-franco", "dst": "tema:gortexai-franco", "rel": "trata", "added": "2026-10-24"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-github-gh-stack", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-github-gh-stack", "dst": "tema:github-gh-stack", "rel": "trata", "added": "2026-10-24"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-anomalyco-hex", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-anomalyco-hex", "dst": "tema:anomalyco-hex", "rel": "trata", "added": "2026-10-24"}
+{"src": "boletin:2026-10-24", "dst": "item:https-github-com-liguobao-ds-harness-remote", "rel": "menciona", "added": "2026-10-24"}
+{"src": "item:https-github-com-liguobao-ds-harness-remote", "dst": "tema:liguobao-ds-harness-remote", "rel": "trata", "added": "2026-10-24"}

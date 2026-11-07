@@ -1,0 +1,30 @@
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-modelflare-ai-anymodelbot", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-modelflare-ai-anymodelbot", "dst": "tema:anymodelbot", "rel": "trata", "added": "2026-11-02"}
+{"src": "modelflare-ai/AnyModelBot", "dst": "concept:repository-scoped-agent", "rel": "implements", "added": "2026-11-02", "primera_mencion": "2026-11-01"}
+{"src": "modelflare-ai/AnyModelBot", "dst": "tool:modelflare", "rel": "uses", "added": "2026-11-02", "primera_mencion": null}
+{"src": "modelflare-ai/AnyModelBot", "dst": "concept:human-in-the-loop-agents", "rel": "relevant_to", "added": "2026-11-02", "primera_mencion": "2026-11-01"}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-storytold-craft-anything", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-storytold-craft-anything", "dst": "tema:craft-anything", "rel": "trata", "added": "2026-11-02"}
+{"src": "storytold/craft-anything", "dst": "concept:software-reconstruction-loop", "rel": "implements", "added": "2026-11-02", "primera_mencion": null}
+{"src": "storytold/craft-anything", "dst": "protocol:mcp", "rel": "uses", "added": "2026-11-02", "primera_mencion": "2026-09-21"}
+{"src": "storytold/craft-anything", "dst": "problem:reverse-engineering-boundaries", "rel": "risk", "added": "2026-11-02", "primera_mencion": null}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-leepokai-codync", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-leepokai-codync", "dst": "tema:codync", "rel": "trata", "added": "2026-11-02"}
+{"src": "leepokai/Codync", "dst": "concept:remote-coding-agent-control", "rel": "implements", "added": "2026-11-02", "primera_mencion": null}
+{"src": "leepokai/Codync", "dst": "protocol:agent-client-protocol", "rel": "uses", "added": "2026-11-02", "primera_mencion": null}
+{"src": "leepokai/Codync", "dst": "concept:human-in-the-loop-agents", "rel": "complements", "added": "2026-11-02", "primera_mencion": "2026-11-01"}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-scenario-labs-skills", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-scenario-labs-skills", "dst": "tema:scenario-agent-skills", "rel": "trata", "added": "2026-11-02"}
+{"src": "scenario-labs/skills", "dst": "concept:cross-harness-agent-skills", "rel": "implements", "added": "2026-11-02", "primera_mencion": "2026-10-29"}
+{"src": "scenario-labs/skills", "dst": "protocol:mcp", "rel": "uses", "added": "2026-11-02", "primera_mencion": "2026-09-21"}
+{"src": "scenario-labs/skills", "dst": "concept:creative-agent-workflows", "rel": "enables", "added": "2026-11-02", "primera_mencion": null}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-caru-ini-stack-diagram", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-caru-ini-stack-diagram", "dst": "tema:caru-ini-stack-diagram", "rel": "trata", "added": "2026-11-02"}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-verlintas-noir", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-verlintas-noir", "dst": "tema:verlintas-noir", "rel": "trata", "added": "2026-11-02"}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-ccch1mneyyy-dsh-go", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-ccch1mneyyy-dsh-go", "dst": "tema:ccch1mneyyy-dsh-go", "rel": "trata", "added": "2026-11-02"}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-techjarves-portable-local-studio", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-techjarves-portable-local-studio", "dst": "tema:techjarves-portable-local-studio", "rel": "trata", "added": "2026-11-02"}
+{"src": "boletin:2026-11-02", "dst": "item:https-github-com-thtbee-nectarlink", "rel": "menciona", "added": "2026-11-02"}
+{"src": "item:https-github-com-thtbee-nectarlink", "dst": "tema:thtbee-nectarlink", "rel": "trata", "added": "2026-11-02"}

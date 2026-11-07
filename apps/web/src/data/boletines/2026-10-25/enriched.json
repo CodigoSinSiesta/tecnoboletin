@@ -1,0 +1,358 @@
+{
+  "version": 2,
+  "date": "2026-10-25",
+  "boletin_origen": "2026-10-25-trending.md",
+  "resumen_ejecutivo": "- LearnHarness mezcla enseñanza adaptativa con un grafo local de conocimientos; es una aplicación concreta del harness de agentes fuera del coding y declara almacenamiento local, aunque las consultas al modelo salen al proveedor configurado.\n- Microduck conecta una política de control por refuerzo con robot físico pequeño y código de entrenamiento/simulación aparte: un buen caso tangible de sim2real, no solo una demo de agente software.\n- Octopus SI-OS propone mover el centro del agente del modelo al entorno de ejecución y los permisos, pero se autodefine *research preview*, limitado a macOS y sin evidencia de que la auto-mejora sea efectiva.\n- Apache Iggy y Grafana Alloy son piezas maduras de infraestructura abierta con tendencias visibles hoy; son menos “IA” que la conversación de agentes, pero útiles para hablar de datos/telemetría y operación fiable.\n- El blogwatcher no publicó archivo hoy; no hay temas de blogs que excluir. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub REST API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "LearnHarness",
+      "url": "https://github.com/amosblomqvist/learnharness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio en TypeScript que mide conocimientos previos, construye una ruta de aprendizaje, enseña y propone práctica adaptativa; persiste proposiciones y cadenas de razonamiento como grafo local reutilizable.",
+        "por_que_importa": "Sirve para ver el mismo patrón de memoria estructurada que usamos para el conocimiento, pero aplicado a la enseñanza: la app persiste afirmaciones y cadenas de razonamiento en un grafo local reutilizable. No es una pieza suelta: ya hablamos de interfaces educativas multiagente el 2026-08-16, del grafo de conocimiento que sitúa cada concepto en el tiempo (temporal knowledge graph) el 2026-09-01, y del espacio de trabajo local-first el 2026-08-10; conviene leerlo como continuación de esas tres líneas. El interés concreto para nuestro lector es evaluar si ese grafo guarda afirmaciones verificables y sus fuentes, y no solo conversaciones. Matiz importante para no confundirse: el README aclara que chats, grafo, ajustes y claves quedan en el equipo, pero las peticiones envían contexto a los proveedores, así que no es procesamiento offline. Licencia AGPL-3.0; con 1.195 estrellas, creado el 2026-10-16 y último push del 2026-10-24, es todavía un proyecto joven.",
+        "madurez_senales": "1.195 estrellas · 201 forks · TypeScript · creado 2026-10-16 · último push 2026-10-24 · AGPL-3.0 · descripción oficial: “Agent harness for learning difficult things.” · topics: ninguno. La API indica versión 0.3.7 en commits recientes.",
+        "accion_sugerida": "**explorar** el formato de proposiciones, trazabilidad a sesiones y exportación antes de comparar con notas/Obsidian.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:amosblomqvist/learnharness",
+          "rel": "implements",
+          "dst": "concept:multi-agent-educational-ui",
+          "primera_mencion": "2026-08-16"
+        },
+        {
+          "src": "repo:amosblomqvist/learnharness",
+          "rel": "uses",
+          "dst": "concept:temporal-knowledge-graph",
+          "primera_mencion": "2026-09-01"
+        },
+        {
+          "src": "repo:amosblomqvist/learnharness",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "learnharness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Microduck",
+      "url": "https://github.com/pollen-robotics/microduck",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "software de control para un robot bípedo de unos 25 cm y 800 g: ejecuta políticas neuronales en un Rockchip RK3566, con lazos de control a 50 Hz, quince servos, cámara y actualización remota; el entrenamiento está en el repositorio hermano `microduck_rl`, con MuJoCo/PPO y exportación ONNX.",
+        "por_que_importa": "muestra un trayecto completo de la simulación al hardware y permite discutir las diferencias entre agentes con herramientas digitales y sistemas embebidos con límites físicos. La combinación incluye software abierto con hardware comercial, por lo que “open source” no significa construirlo sin comprar el robot.",
+        "madurez_senales": "11.183 estrellas · 1.431 forks · Rust · creado 2026-07-29 · último push 2026-10-24 · Apache-2.0 · descripción oficial: “A Tiny biped duck robot” · topics: ninguno. README enlaza documentación de arquitectura, CI y entrenamiento complementario.",
+        "accion_sugerida": "**leer** arquitectura y pipeline sim2real; probar solo si se dispone del hardware.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pollen-robotics/microduck",
+          "rel": "implements",
+          "dst": "concept:robotics-rl",
+          "primera_mencion": "2026-09-01"
+        },
+        {
+          "src": "repo:pollen-robotics/microduck",
+          "rel": "uses",
+          "dst": "technique:sim2real",
+          "primera_mencion": "2026-09-01"
+        },
+        {
+          "src": "repo:pollen-robotics/microduck_rl",
+          "rel": "enables",
+          "dst": "repo:pollen-robotics/microduck",
+          "primera_mencion": "2026-09-01"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microduck",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Octopus Superintelligence OS",
+      "url": "https://github.com/miuuyy/Octopus-SI-OS",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "entorno experimental de agentes escrito principalmente en Rust que organiza proyectos con permisos, tareas persistentes, drivers (carpeta, worktree, navegador, escritorio, contenedor o máquina remota) e integraciones MCP; plantea que el núcleo sea el entorno de ejecución, y no el modelo ni el bucle del agente.",
+        "por_que_importa": "Merece atención por una idea concreta y comprobable: tratar los límites por proyecto y las capacidades como contratos del propio runtime (permisos, tareas persistentes, drivers de carpeta, worktree, navegador, escritorio, contenedor o máquina remota) en vez de confiar todo al modelo o al bucle del agente. Es la misma línea de 'el harness como entorno de ejecución' que ya cubrimos el 2026-08-23, y aquí se lleva al extremo de permitir que el sistema se modifique a sí mismo, un riesgo que su propio README no resuelve. Hay que leerlo con escepticismo calibrado: se declara research preview, exige macOS 14+, Node 24 y una cuenta ChatGPT, y reconoce que los modelos actuales no muestran iniciativa propia; la 'auto-evolución' es una hipótesis de investigación, no una mejora medida. Para quien despliega agentes en local, el interés real está en el diseño de permisos, no en las promesas: 150 estrellas, catorce forks y creado el 2026-10-09 significan que aún no hay evidencia externa de que funcione en producción.",
+        "madurez_senales": "150 estrellas · 14 forks · Rust · creado 2026-10-09 · último push 2026-10-24 · MIT · descripción oficial: “A self-evolving agentic OS…” · topics incluyen `agentic-os`, `computer-use`, `mcp`, `research-preview` y `self-modifying`.",
+        "accion_sugerida": "**vigilar**; no adoptarlo como runtime hasta que haya evidencia y soporte fuera de macOS.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:miuuyy/Octopus-SI-OS",
+          "rel": "implements",
+          "dst": "concept:agent-harness-environment",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "repo:miuuyy/Octopus-SI-OS",
+          "rel": "uses",
+          "dst": "concept:project-scoped-permissions",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:miuuyy/Octopus-SI-OS",
+          "rel": "risk",
+          "dst": "problem:unverified-agent-self-improvement",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "octopus-superintelligence-os",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Apache Iggy",
+      "url": "https://github.com/apache/iggy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma persistente de *message streaming* escrita en Rust, con transporte QUIC, WebSocket, TCP y HTTP, SDKs para varios lenguajes, conectores y soporte de MCP.",
+        "por_que_importa": "es infraestructura potencial para sistemas de agentes y de eventos cuando una cola durable o varios consumidores importan más que el bucle único del agente. El README anuncia un throughput muy alto, pero no tomamos esas afirmaciones como un benchmark independiente; conviene contrastar pruebas, garantías de entrega y coste operativo con alternativas más conocidas antes de elegirlo.",
+        "madurez_senales": "5.198 estrellas · 491 forks · Rust · creado 2023-03-18 · último push 2026-10-24 · Apache-2.0 · descripción oficial: “Apache Iggy: Hyper-Efficient Message Streaming at Laser Speed” · topics: `messaging`, `streaming`, `quic`, `tcp`, `rust`, entre otros.",
+        "accion_sugerida": "**leer** las garantías de persistencia/consumidores y benchmarks reproducibles; no introducirlo sin carga real que lo justifique.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:apache/iggy",
+          "rel": "implements",
+          "dst": "concept:agentic-data-streaming",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:apache/iggy",
+          "rel": "uses",
+          "dst": "protocol:quic",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:apache/iggy",
+          "rel": "complements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "apache-iggy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Grafana Alloy",
+      "url": "https://github.com/grafana/alloy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "distribución programable de OpenTelemetry Collector con pipelines Prometheus integrados para métricas, logs, trazas y perfiles.",
+        "por_que_importa": "los agentes locales y las automatizaciones también necesitan trazabilidad y diagnóstico; Alloy ofrece una capa de telemetría que puede integrarse con backends distintos, incluidos los conocidos de Grafana. Es infraestructura general y no una solución específica de observabilidad de LLM.",
+        "madurez_senales": "3.639 estrellas · 746 forks · Go · creado 2024-02-28 · último push 2026-10-24 · Apache-2.0 · descripción oficial: distribución de OpenTelemetry Collector con pipelines programables · topics incluyen `monitoring`, `observability`, `opentelemetry`, `prometheus` y `loki`.",
+        "accion_sugerida": "**vigilar**; probar solo si hace falta consolidar telemetría más allá de logs locales.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:grafana/alloy",
+          "rel": "implements",
+          "dst": "tool:opentelemetry",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "repo:grafana/alloy",
+          "rel": "enables",
+          "dst": "concept:agent-observability",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:grafana/alloy",
+          "rel": "complements",
+          "dst": "concept:llm-observability",
+          "primera_mencion": "2026-08-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "grafana-alloy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "TriliumNext/Trilium",
+      "url": "https://github.com/TriliumNext/Trilium",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(38.546 estrellas, último push 2026-10-25, TypeScript) — base de conocimiento personal multiplataforma con notas jerárquicas, enlaces y mapas de relaciones, scripting, API REST y sincronización autohospedada; AGPL-3.0. README en español consultado; es un proyecto de notas maduro, no un producto de IA — señales: https://github.com/TriliumNext/Trilium",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/TriliumNext/Trilium",
+        "accion_sugerida": "leer — si se compara almacenamiento local de conocimiento con Obsidian",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "triliumnext-trilium",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "crewAIInc/crewAI",
+      "url": "https://github.com/crewAIInc/crewAI",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(60.079 estrellas, último push 2026-10-24, Python) — framework de orquestación de agentes y crews con actividad y comunidad amplias; MIT — señales: https://github.com/crewAIInc/crewAI",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/crewAIInc/crewAI",
+        "accion_sugerida": "vigilar — cambios de versión y contrastar su modelo de tareas con harnesses más ligeros",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "crewaiinc-crewai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "goreleaser/goreleaser",
+      "url": "https://github.com/goreleaser/goreleaser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.124 estrellas, último push 2026-10-23, Go) — automatiza el empaquetado y la publicación de binarios; MIT, una tendencia útil de ingeniería aunque no centrada en IA — señales: https://github.com/goreleaser/goreleaser",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/goreleaser/goreleaser",
+        "accion_sugerida": "leer — si se prepara distribución multiplataforma de CLIs",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "goreleaser-goreleaser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "umami-software/umami",
+      "url": "https://github.com/umami-software/umami",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(39.661 estrellas, último push 2026-10-23, TypeScript) — analítica web y de producto autohospedable con enfoque en privacidad; MIT — señales: https://github.com/umami-software/umami",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/umami-software/umami",
+        "accion_sugerida": "vigilar — como alternativa de métricas propias para proyectos publicados",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "umami-software-umami",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "slee-persis/GVS5H",
+      "url": "https://github.com/slee-persis/GVS5H",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(871 estrellas, último push 2026-09-23, Python) — repositorio que presenta un método de coordinación de cinco instancias mediante archivos compartidos y afirma resultados altos en LiveCodeBench; MIT. La tendencia coincide hoy en Trendshift; no validamos de forma independiente el benchmark ni el PDF del paper — señales: https://github.com/slee-persis/GVS5H",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/slee-persis/GVS5H",
+        "accion_sugerida": "leer — con escepticismo y exigir protocolo/datos reproducibles antes de citar resultados",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "slee-persis-gvs5h",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "2/5 items reescritos; rechazados por longitud sospechosa: [1, 3, 4]; faltantes en respuesta: [1, 3, 4]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

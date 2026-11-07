@@ -1,0 +1,308 @@
+{
+  "version": 2,
+  "date": "2026-10-27",
+  "boletin_origen": "2026-10-27-trending.md",
+  "resumen_ejecutivo": "- SkillSpector y la skill de auditoría de Cloudflare apuntan a una capa de seguridad concreta: revisar skills antes de instalarlas; el primero ofrece análisis estático y evaluación semántica opcional.\n- OpenBot vende una experiencia de equipo local persistente, pero su README advierte que los agentes operan con acceso completo y sin aprobaciones por acción; además, su licencia es PolyForm Noncommercial, no una licencia permisiva para uso comercial.\n- HarnessRouter propone un protocolo común para conectar múltiples harnesses y manejar sesiones, streaming, archivos y cancelaciones mediante una sola interfaz. Es una propuesta de infraestructura más que otro agente final.\n- Agent Reach sigue subiendo, aunque su integración depende de herramientas y sesiones de terceros por plataforma; las funciones autenticadas y las plataformas experimentales requieren especial cuidado con cuentas y cambios upstream.\n- No se publicó archivo de blogwatcher hoy. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "NVIDIA SkillSpector",
+      "url": "https://github.com/NVIDIA/SkillSpector",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "escáner para skills de agentes y artefactos MCP que combina análisis estático con una etapa semántica opcional basada en LLM, y emite resultados en formatos como JSON, Markdown y SARIF.",
+        "por_que_importa": "las skills ejecutan instrucciones y pueden pedir herramientas; un paso de inspección antes de instalarlas reduce el riesgo de prompt injection, exfiltración y abuso de permisos. El README describe 71 patrones en 17 categorías, pero esas cifras y su tasa de detección son afirmaciones del proyecto, no una evaluación independiente.",
+        "madurez_senales": "22.510 estrellas · 1.960 forks · Python · creado 2026-03-21 · último push 2026-10-27 · Apache-2.0 · descripción oficial: “Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.” · topics: `agent-security`, `agent-skills`, `ai-security`, `mcp`, `prompt-injection`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**probar** en un entorno aislado con un conjunto benigno y otro deliberadamente inseguro antes de incorporarlo a un flujo de instalación.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/SkillSpector",
+          "rel": "implements",
+          "dst": "concept:agent-skill-supply-chain-security",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:NVIDIA/SkillSpector",
+          "rel": "complements",
+          "dst": "repo:cloudflare/security-audit-skill",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-skillspector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "HarnessRouter",
+      "url": "https://github.com/HarnessRouter/harnessrouter",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servicio autoalojado que expone una interfaz común para ejecutar distintos coding-agent harnesses, con sesiones persistentes, streaming, archivos, artefactos, cancelación y fallos estructurados; el proyecto lo formaliza como Unified Harness Protocol (UHP).",
+        "por_que_importa": "Un harness es el armazón que ejecuta al agente: el bucle de herramientas, el control de permisos y la sesión. Hoy Codex, Claude Code, Hermes y Pi se integran cada uno a su manera, lo que obliga a mantener un adaptador por harness; el Unified Harness Protocol propone un contrato único con sesiones persistentes, streaming, archivos, artefactos, cancelación y fallos estructurados, de forma que cambiar de harness no implique reescribir la integración. Dos matices antes de ilusionarse: el proyecto pide Docker, unos 4 GB de disco y una clave de proveedor, así que no es ejecución gratuita, y un contrato común no borra las diferencias de comportamiento entre harnesses. El item no trae ninguna comparativa medida entre ellos, así que la promesa de compararlos es una promesa de diseño, no un resultado verificado.",
+        "madurez_senales": "3.716 estrellas · 395 forks · Python · creado 2026-08-09 · último push 2026-10-27 · Apache-2.0 · descripción oficial: “HarnessRouter Community Edition: the self-hosted, Apache-2.0 edition of the unified interface for agent harnesses.” · topics: `agent-harness`, `self-hosted`, `uhp`, `unified-harness-protocol`, `hermes`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**leer** la especificación y matriz de soporte; evaluar con una integración pequeña antes de ponerlo entre clientes y agentes reales.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:HarnessRouter/harnessrouter",
+          "rel": "implements",
+          "dst": "concept:unified-harness-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:HarnessRouter/harnessrouter",
+          "rel": "enables",
+          "dst": "concept:cross-harness-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "harnessrouter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "OpenBot",
+      "url": "https://github.com/nightly-labs/openbot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio para equipos de agentes persistentes, con espacios de trabajo separados, colas locales, intercambio de archivos, navegador integrado y mensajería entre agentes.",
+        "por_que_importa": "Los patrones que aquí vienen resueltos —espacios de trabajo separados, colas locales, intercambio de archivos, navegador integrado y mensajería entre agentes— son los que uno acaba improvisando a base de terminales y pestañas de chat, y tenerlos en una app de escritorio ahorra ese pegamento. Ya cubrimos el 2026-10-26 el trabajo de JetBrains con thinkrail, y esto se presenta como complementario: mismo problema de continuidad y de espacio local, otra pieza. La advertencia del README manda sobre lo demás: los agentes arrancan con danger-full-access y approvalPolicy: never, y tras el consentimiento inicial pueden leer y escribir archivos, ejecutar comandos, usar la red y manejar el navegador; eso es autonomía sin frenos por defecto, no un detalle de configuración. Y la licencia no es de uso libre: la API responde NOASSERTION y el README declara PolyForm Noncommercial 1.0.0, así que no debería darse por válida su adopción en un producto comercial sin revisarlo.",
+        "madurez_senales": "1.740 estrellas · 206 forks · TypeScript · creado 2026-08-12 · último push 2026-10-27 · licencia: `NOASSERTION` en API; el README declara PolyForm Noncommercial 1.0.0 · descripción oficial: “A local-first desktop workspace for persistent AI teammates.” · topics: `ai-agents`, `codex`, `electron`, `local-first`, `typescript`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**leer** la arquitectura y el modelo de permisos; no instalarlo con acceso al workspace habitual sin sandbox y revisión de licencia.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:nightly-labs/openbot",
+          "rel": "implements",
+          "dst": "concept:cross-harness-local-workspace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nightly-labs/openbot",
+          "rel": "risk",
+          "dst": "concept:unrestricted-agent-execution",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nightly-labs/openbot",
+          "rel": "complements",
+          "dst": "repo:JetBrains/thinkrail",
+          "primera_mencion": "2026-10-26"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "eugeniughelbur/obsidian-second-brain",
+      "url": "https://github.com/eugeniughelbur/obsidian-second-brain",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.963 estrellas, último push 2026-10-26, Python) — guarda memoria de varios agentes como Markdown en un vault y añade Crew, un registro compartido de tareas que no requiere Obsidian. El instalador recomendado ejecuta un script remoto con `curl | bash`; revisar el contenido antes de usarlo. Licencia MIT — señales: https://github.com/eugeniughelbur/obsidian-second-brain",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/eugeniughelbur/obsidian-second-brain",
+        "accion_sugerida": "leer — el diseño y contrastarlo con la memoria Markdown local",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "eugeniughelbur-obsidian-second-brain",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(104.240 estrellas, último push 2026-10-25, Python) — CLI para buscar/leer en GitHub, YouTube, Reddit y plataformas adicionales, recurriendo a distintas herramientas por canal. Parte de las funciones usa sesiones autenticadas y el README indica que varias plataformas están en fase experimental. Licencia MIT. Reentrada: ya apareció recientemente y no hay novedad sustancial que justifique repetirlo como hallazgo principal — señales: https://github.com/Panniantong/Agent-Reach",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Panniantong/Agent-Reach",
+        "accion_sugerida": "vigilar — estabilidad y límites de sesión",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "panniantong-agent-reach",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "JetBrains/thinkrail",
+      "url": "https://github.com/JetBrains/thinkrail",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.318 estrellas, último push 2026-10-27, TypeScript) — IDE sobre pi con worktrees y especificaciones persistentes; fue hallazgo principal ayer y hoy no aparece un cambio editorial sustancial que justifique reabrirlo. Apache-2.0 — señales: https://github.com/JetBrains/thinkrail",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/JetBrains/thinkrail",
+        "accion_sugerida": "ignorar — la repetición de hoy; retomar ante una novedad de producto",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jetbrains-thinkrail",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "Nutlope/hallmark",
+      "url": "https://github.com/Nutlope/hallmark",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(37.355 estrellas, último push 2026-10-22, CSS) — skill de diseño anti-slop para Claude Code, Cursor y Codex. MIT — señales: https://github.com/Nutlope/hallmark",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Nutlope/hallmark",
+        "accion_sugerida": "leer — junto a Impeccable para distinguir directrices estilísticas de validaciones automáticas",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nutlope-hallmark",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(290.151 estrellas, último push 2026-10-26, JavaScript) — conjunto de optimizaciones de harness, skills, memoria, seguridad e investigación previa. MIT — señales: https://github.com/affaan-m/ECC",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/affaan-m/ECC",
+        "accion_sugerida": "vigilar — ; su alcance amplio requiere revisar cada componente antes de adoptar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "microsoft/skill-recorder",
+      "url": "https://github.com/microsoft/skill-recorder",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.257 estrellas, último push 2026-10-24, TypeScript) — reconstruye intención y pasos a partir de una grabación de pantalla para convertirlos en automatizaciones reutilizables. MIT — señales: https://github.com/microsoft/skill-recorder",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/microsoft/skill-recorder",
+        "accion_sugerida": "leer — el flujo de captura y comprobar qué contenido visual procesa o almacena",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-skill-recorder",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(90.075 estrellas, último push 2026-10-27, Python) — aplicación local para síntesis, clonación y transcripción de voz. AGPL-3.0; comprobar requisitos de acelerador y obligaciones de licencia antes de integrarla — señales: https://github.com/debpalash/VoiceStudio",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/debpalash/VoiceStudio",
+        "accion_sugerida": "vigilar — la viabilidad en hardware local",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "debpalash-voicestudio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 3,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "2/3 items reescritos; rechazados por longitud sospechosa: [0]; faltantes en respuesta: [0]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

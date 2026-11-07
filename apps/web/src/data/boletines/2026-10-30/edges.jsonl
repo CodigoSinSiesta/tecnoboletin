@@ -1,0 +1,32 @@
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-nearai-ironclaw", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-nearai-ironclaw", "dst": "tema:ironclaw", "rel": "trata", "added": "2026-10-30"}
+{"src": "nearai/ironclaw", "dst": "concept:secure-agent-runtime", "rel": "implements", "added": "2026-10-30", "primera_mencion": null}
+{"src": "nearai/ironclaw", "dst": "tool:wasm-sandbox", "rel": "uses", "added": "2026-10-30", "primera_mencion": null}
+{"src": "nearai/ironclaw", "dst": "problem:agent-tool-isolation", "rel": "solves", "added": "2026-10-30", "primera_mencion": null}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-magnitudedev-magnitude", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-magnitudedev-magnitude", "dst": "tema:magnitude", "rel": "trata", "added": "2026-10-30"}
+{"src": "magnitudedev/magnitude", "dst": "tool:ollama", "rel": "competes_with", "added": "2026-10-30", "primera_mencion": "2026-08-21"}
+{"src": "magnitudedev/magnitude", "dst": "concept:local-agent-inference", "rel": "enables", "added": "2026-10-30", "primera_mencion": "2026-08-21"}
+{"src": "magnitudedev/magnitude", "dst": "tool:hermes-agent", "rel": "complements", "added": "2026-10-30", "primera_mencion": "2026-08-21"}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-nvidia-cuda-rust", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-nvidia-cuda-rust", "dst": "tema:nvidia-cuda-rust", "rel": "trata", "added": "2026-10-30"}
+{"src": "NVIDIA/cuda-rust", "dst": "concept:cuda-kernel-programming", "rel": "implements", "added": "2026-10-30", "primera_mencion": null}
+{"src": "NVIDIA/cuda-rust", "dst": "tool:rust", "rel": "uses", "added": "2026-10-30", "primera_mencion": null}
+{"src": "NVIDIA/cuda-rust", "dst": "concept:gpu-inference-optimization", "rel": "enables", "added": "2026-10-30", "primera_mencion": null}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-hydro-project-infinity", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-hydro-project-infinity", "dst": "tema:hydro-infinity", "rel": "trata", "added": "2026-10-30"}
+{"src": "hydro-project/infinity", "dst": "concept:agent-concurrency-protocol", "rel": "implements", "added": "2026-10-30", "primera_mencion": null}
+{"src": "hydro-project/infinity", "dst": "concept:multi-agent-orchestration", "rel": "complements", "added": "2026-10-30", "primera_mencion": "2026-08-27"}
+{"src": "hydro-project/infinity", "dst": "concept:agent-runtime", "rel": "relevant_to", "added": "2026-10-30", "primera_mencion": null}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-qybaihe-bla", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-qybaihe-bla", "dst": "tema:qybaihe-bla", "rel": "trata", "added": "2026-10-30"}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-jub0t-concat", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-jub0t-concat", "dst": "tema:jub0t-concat", "rel": "trata", "added": "2026-10-30"}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-donchitos-claude-code-game-studios", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-donchitos-claude-code-game-studios", "dst": "tema:donchitos-claude-code-game-studios", "rel": "trata", "added": "2026-10-30"}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-skyzh-tiny-llm", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-skyzh-tiny-llm", "dst": "tema:skyzh-tiny-llm", "rel": "trata", "added": "2026-10-30"}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-anchore-syft", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-anchore-syft", "dst": "tema:anchore-syft", "rel": "trata", "added": "2026-10-30"}
+{"src": "boletin:2026-10-30", "dst": "item:https-github-com-vllm-project-semantic-router", "rel": "menciona", "added": "2026-10-30"}
+{"src": "item:https-github-com-vllm-project-semantic-router", "dst": "tema:vllm-project-semantic-router", "rel": "trata", "added": "2026-10-30"}

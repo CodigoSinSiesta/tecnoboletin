@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-10-28",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La revisión aislada se vuelve etapa del flujo agéntico",
+  "posicionamiento": "Cuatro piezas coinciden en separar contexto de ejecución: quien redacta conserva el hilo, quien revisa llega limpio, quien actúa pide permiso. El hilo del día es la contención, no la autonomía.",
+  "convergencia_stack_css": "Orkas es local-first solo en parte: la compilación abierta no trae la sincronización en la nube. NVIDIA Auto Ontology usa pgvector, pero su inferencia pasa por NIM y exige clave. Local-first se verifica, no se declara.",
+  "cruzado_grafo": "Dos nodos se refuerzan sin estrenar fecha: spec-preserving-framework (2026-10-09) y approval-gate-pattern (2026-09-04). Orkas cruza con thinkrail (2026-10-26) y con agent-on-infrastructure (2026-09-22). Ningún nodo aparece por primera vez hoy.",
+  "tendencias_5_boletines": "El 27 la capa de agentes se formalizaba por contrato y auditoría previa; el 26, por persistencia y límites de ejecución. Hoy se añade la revisión independiente como etapa explícita. La madurez se mide por control, no por respuesta.",
+  "alertas": [
+    "Orkas: la app empaquetada incluye servicios gestionados que el repositorio abierto no trae; el almacenamiento local por defecto es un claim del README, sin verificar.",
+    "NVIDIA Auto Ontology no acepta contribuciones externas y su inferencia depende de NIM con clave: se lee y se evalúa, no se extiende.",
+    "OpenDuet está marcado como desarrollo temprano y exige CopilotKit Intelligence incluso eligiendo modelo propio.",
+    "Elephant-Goldfish no sustituye pruebas ni criterio humano y necesita un harness capaz de crear subagentes."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Leer los límites del README antes de adoptarlo. Vale como patrón de revisión aislada, no como plugin que se instala solo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "El revisor sin diálogo heredado es exactamente el patrón de segunda revisión del flujo editorial de CSS."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Su tesis —el cuello de botella está en definiciones y linaje, no en el LLM— se aplica sin instalar nada."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Comprobar en instalación propia si el almacenamiento local por defecto se sostiene frente a la build empaquetada."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Seguir la compuerta de aprobación: hoy es plantilla de estudio, no base de producción."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "date": "2026-10-24",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El control de los agentes baja del prompt al sistema operativo",
+  "posicionamiento": "Los cuatro hallazgos comparten una pregunta: dónde se aplica el control. Anthropic lo baja al sistema operativo; HumanLayer, Open Duet y JiuwenSwarm lo ponen en capas de permisos y aprobación explícita. Ninguno cierra el problema completo.",
+  "convergencia_stack_css": "Dos piezas tocan de cerca el stack local-first: Open Duet acepta Ollama y LM Studio como motor intercambiable, y JiuwenSwarm documenta modelos locales y API compatible con OpenAI. HumanLayer apunta a daemons en máquinas propias, pero su autoalojamiento sigue en progreso.",
+  "cruzado_grafo": "agent-sandbox (2026-09-09) deja de ser concepto y gana una implementación concreta. human-in-the-loop aparece hoy sin mención previa registrada, en tres hallazgos distintos. claude-code (2026-09-15), multi-agent-orchestration (2026-08-27) y agent-skills (2026-10-22) se reactivan.",
+  "tendencias_5_boletines": "Engancha directo con el 2026-10-23: allí la seguridad de agentes dejó de ser solo límites al modelo y pasó a depender del aislamiento y de quién aprueba. Hoy llegan implementaciones de esas piezas, todas en beta y sin validación común.",
+  "alertas": [
+    "Sandbox Runtime es beta de investigación: políticas y API pueden cambiar, y en Linux depende de bubblewrap.",
+    "HumanLayer Cloud ejecuta ese código; las guías de autoalojamiento siguen en progreso.",
+    "JiuwenSwarm anuncia autoevolución de skills sin resultados auditados.",
+    "Open Duet exige Claude para delegar equipos y marca navegador y computadoras aisladas como experimentales."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Clonar y probar el perímetro real con un servidor MCP y un comando de shell: verificar si el límite lo impone el sistema operativo y no el prompt."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Seguir el avance de las guías de autoalojamiento antes de recomendarlo a un equipo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Montar Open Duet con Ollama como motor para tener un espacio de agentes local sin atarse a un proveedor."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Su mezcla de permisos por herramienta, skills y flujos deterministas es material directo para la línea de orquestación."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

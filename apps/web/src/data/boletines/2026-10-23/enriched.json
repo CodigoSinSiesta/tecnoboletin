@@ -1,0 +1,382 @@
+{
+  "version": 2,
+  "date": "2026-10-23",
+  "boletin_origen": "2026-10-23-trending.md",
+  "resumen_ejecutivo": "- **NVIDIA OpenShell** encabeza el debate de runtime seguro para agentes: aislamiento a nivel kernel, reglas de red/archivos y revisión formal de cambios de política. Interesante como contraste con sandboxing solo a nivel de proceso.\n- **DeepSeek Harness** y **REA** dibujan otra tendencia: harness extensible por plugins y reverse engineering asistido por agentes vía MCP. REA verifica actividad reciente; el Harness está en developer preview y su último push verificado fue hace seis días.\n- En seguridad defensiva, **AiSOC** muestra un SOC autoalojable con trazabilidad de cada llamada del agente y aprobación humana antes de respuesta. El README expone requisitos reales y límites, pero es un proyecto joven y sus despliegues no son livianos.\n- Reaparecen nombres ya cubiertos: `agent-beacon`, `uzu`, `Graphify`, `cloudflare/security-audit-skill` y `anthropics/knowledge-work-plugins`. No los elevamos de nuevo como hallazgos por no haber novedad suficiente; tampoco hay archivo blogwatcher de hoy. Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub REST API cuando aplica; blogwatcher no publicado hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime para agentes autónomos que los ejecuta en sandboxes con control del kernel, políticas de archivos/red y credenciales añadidas solo a destinos aprobados; las modificaciones de política pasan por verificación formal antes de requerir aprobación humana.",
+        "por_que_importa": "desplaza la discusión de «qué puede hacer el agente» desde el prompt al perímetro de ejecución. El contraste útil es entre control de filesystem/red, identidad de credenciales y revisión de políticas, no la etiqueta genérica de seguridad. Requiere Docker/Podman o virtualización y su telemetría anónima viene habilitada por defecto, aunque se puede desactivar.",
+        "madurez_senales": "18.390 estrellas · 1.856 forks · Rust · creado 2026-02-24 · último push 2026-10-23 · Apache-2.0 · descripción oficial: runtime seguro y privado para agentes autónomos · topics: ninguno en API.",
+        "accion_sugerida": "**explorar** sus políticas y modelo de permisos antes de tratarlo como candidato de despliegue local.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "implements",
+          "dst": "concept:agent-sandbox",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "mitigates",
+          "dst": "problem:agent-credential-exposure",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:NVIDIA/OpenShell",
+          "rel": "complements",
+          "dst": "concept:agent-policy-governance",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-openshell",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "harness de agentes extensible construido alrededor de Cordis, con arquitectura «todo es un plugin» y UI web arrancable desde npm.",
+        "por_que_importa": "permite examinar cómo un proveedor convierte extensiones en límite arquitectónico del agente; los plugins pueden ser más que conectores, pero el coste es compatibilidad y superficie de confianza. El README lo declara developer preview y advierte de cambios incompatibles; la estrella cuenta no equivale a madurez.",
+        "madurez_senales": "259.164 estrellas · 31.289 forks · TypeScript · creado 2026-08-13 · último push 2026-10-17 · MIT · descripción oficial: «DeepSeek Harness: Everything is a Plugin.» · topics: `ai-agents`, `cordis`, `dsh`, `dsh-plugin`.",
+        "accion_sugerida": "**leer** la documentación de arquitectura y el aviso de seguridad antes de instalarlo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "uses",
+          "dst": "framework:Cordis",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "implements",
+          "dst": "concept:plugin-based-agent-harness",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "complements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-08-14"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-ai-deepseek-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor MCP y conjunto de flujos para que agentes inspeccionen aplicaciones, sitios y binarios nativos, presentando pruebas y limitaciones de sus conclusiones.",
+        "por_que_importa": "conecta herramientas de reverse engineering (Ghidra, Hopper o IDA, según disponibilidad) con harnesses como Claude Code, Codex y Cursor. Es un ejemplo concreto de herramientas especializadas detrás de MCP; en Linux tiene prerequisitos de proceso para algunos análisis y la instalación cambia configuración del agente con aprobación.",
+        "madurez_senales": "370.843 estrellas · 92.873 forks · TypeScript · creado 2026-04-14 · último push 2026-10-23 · MIT · descripción oficial: reverse engineering asistido por agentes, desde comportamiento de apps hasta binarios · topics: `agent-skills`, `ai-agents`, `binary-analysis`, `mcp`, `reverse-engineering`, entre otros.",
+        "accion_sugerida": "**leer** la guía de instalación y el catálogo MCP; reservar pruebas de análisis binario para un entorno autorizado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:morluto/rea",
+          "rel": "implements",
+          "dst": "concept:mcp-tooling",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "enables",
+          "dst": "technique:agent-assisted-reverse-engineering",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "complements",
+          "dst": "tool:Ghidra",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "beenuar/AiSOC",
+      "url": "https://github.com/beenuar/AiSOC",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma autoalojable de operaciones de seguridad que ingiere telemetría, correlaciona alertas, investiga con agentes y registra prompts, herramientas, citas y costes en un ledger auditable.",
+        "por_que_importa": "el README hace afirmaciones verificables y útiles sobre madurez: las respuestas del agente requieren aprobación humana por defecto, su modelo local Ollama es pequeño, y separa datos reales, muestras y demos sintéticas. También acota el coste operativo: perfil mínimo indicado de ~8 GB RAM y 20 GB libres en la VM Docker; no sustituye un SIEM de retención larga.",
+        "madurez_senales": "3.145 estrellas · 332 forks · Python · creado 2026-05-02 · último push 2026-10-22 · MIT · descripción oficial: SOC open source con triage de alertas por agentes y ledger reproducible · topics: `ai-security`, `alert-triage`, `incident-response`, `mcp`, `self-hosted`, `siem`, entre otros. Los números detallados de reglas y cobertura son afirmaciones del README, no auditoría independiente.",
+        "accion_sugerida": "**leer** el documento de arquitectura y su sección «qué es realmente»; no levantar el stack salvo que se quiera evaluar infraestructura de SOC.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:beenuar/AiSOC",
+          "rel": "solves",
+          "dst": "problem:security-alert-triage",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:beenuar/AiSOC",
+          "rel": "mitigates",
+          "dst": "problem:agent-unreviewed-actions",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:beenuar/AiSOC",
+          "rel": "uses",
+          "dst": "tool:ollama",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "beenuar-aisoc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "EthanArbuckle/fairplay-decrypt",
+      "url": "https://github.com/EthanArbuckle/fairplay-decrypt",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta en C que deriva claves para descifrar localmente paquetes IPA de App Store protegidos por FairPlay.",
+        "por_que_importa": "caso técnico de interés para ingeniería inversa e interoperabilidad, pero no es una utilidad general de desarrollo. El README plantea descifrado sin conexión; el uso debe limitarse a software y dispositivos sobre los que se tengan derechos. No hay licencia declarada en la API, así que no asumir permisos de redistribución.",
+        "madurez_senales": "1.281 estrellas · 195 forks · C · creado 2026-10-19 · último push 2026-10-23 · licencia: no declarada · descripción oficial: descifrado offline de IPA con derivación independiente de claves · topics: ninguno.",
+        "accion_sugerida": "**vigilar** como caso de ingeniería inversa; no adoptar ni redistribuir sin aclarar licencia y permisos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:EthanArbuckle/fairplay-decrypt",
+          "rel": "implements",
+          "dst": "technique:binary-analysis",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:EthanArbuckle/fairplay-decrypt",
+          "rel": "relevant_to",
+          "dst": "concept:reverse-engineering",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:EthanArbuckle/fairplay-decrypt",
+          "rel": "risk",
+          "dst": "problem:unclear-redistribution-rights",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ethanarbuckle-fairplay-decrypt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "anthropics/knowledge-work-plugins",
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(31.993 estrellas, último push 2026-10-23, Python) — plugins open source dirigidos a flujos de trabajo de conocimiento en Claude Cowork; hoy tuvo 643 estrellas en la vista diaria de GitHub. API: Apache-2.0, 3.556 forks, creado 2026-01-23, sin topics. Reentrada ya cubierta; — señales: https://github.com/anthropics/knowledge-work-plugins",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anthropics/knowledge-work-plugins",
+        "accion_sugerida": "vigilar — evolución del formato de plugins",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-knowledge-work-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "trymirai/uzu",
+      "url": "https://github.com/trymirai/uzu",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.549 estrellas, último push 2026-10-23, Rust) — motor de inferencia de modelos como librería embebida con foco en alto rendimiento. Reentrada ya cubierta; — señales: https://github.com/trymirai/uzu",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/trymirai/uzu",
+        "accion_sugerida": "vigilar — bindings y cobertura de hardware",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trymirai-uzu",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "Asymptote-Labs/agent-beacon",
+      "url": "https://github.com/Asymptote-Labs/agent-beacon",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.679 estrellas, último push 2026-10-22, Go) — memoria de agente que intenta hacer reutilizables los aprendizajes entre harnesses; 124 estrellas hoy en GitHub Trending Go. MIT, 244 forks, creado 2026-05-12, topics incluyen memory, observability y telemetry — señales: https://github.com/Asymptote-Labs/agent-beacon",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Asymptote-Labs/agent-beacon",
+        "accion_sugerida": "leer — cómo se configura el almacenamiento local/cloud",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "asymptote-labs-agent-beacon",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "hashicorp/vault",
+      "url": "https://github.com/hashicorp/vault",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(36.419 estrellas, último push 2026-10-23, Go) — gestión de secretos, cifrado y control de acceso; tendencia estable, no novedad de producto. API detecta Business Source License con concesión adicional, SPDX `NOASSERTION` (no tratar como Apache/MIT) — señales: https://github.com/hashicorp/vault",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/hashicorp/vault",
+        "accion_sugerida": "vigilar — condiciones de licencia si se adopta",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hashicorp-vault",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "DataDog/dd-trace-go",
+      "url": "https://github.com/DataDog/dd-trace-go",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(863 estrellas, último push 2026-10-23, Go) — librería Go para APM, profiling y monitorización de seguridad, 560 forks. API devuelve `NOASSERTION`; el LICENSE publicado permite elegir Apache-2.0 o BSD-3-Clause — señales: https://github.com/DataDog/dd-trace-go",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/DataDog/dd-trace-go",
+        "accion_sugerida": "leer — únicamente si el stack necesita observabilidad Go",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "datadog-dd-trace-go",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(41.109 estrellas, último push 2026-09-14, JavaScript) — skill de auditoría multi-fase para agentes con hallazgos verificables por máquina; reentrada y sin actividad reciente de push. MIT, 2.563 forks, creado 2026-06-18 — señales: https://github.com/cloudflare/security-audit-skill",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/cloudflare/security-audit-skill",
+        "accion_sugerida": "vigilar — mantenimiento; no confundir popularidad con actividad",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "none",
+    "llm_polish_notes": "",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

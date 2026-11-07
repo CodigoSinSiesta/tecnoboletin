@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-02",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El agente baja al escritorio, pero no la inferencia",
+  "posicionamiento": "Dos maneras de devolver el mando al humano compiten hoy. AnyModelBot empaqueta el agente en una app de escritorio con gateway comercial; Codync se limita a puentear los agentes de código que ya tienes. El cerco deja de ser política y pasa a ser interfaz.",
+  "convergencia_stack_css": "Codync es el que toca de cerca el stack: no sustituye las sesiones locales de Hermes o Claude Code, las expone por ACP y relay cifrado. Craft Anything y Scenario amplían esa misma capa con herramientas MCP y skills portables entre harnesses.",
+  "cruzado_grafo": "human-in-the-loop-agents y repository-scoped-agent se repiten desde el 2026-11-01, ahora dentro de un producto instalable. MCP vuelve por partida doble vía Craft Anything y Scenario. Aparecen sin mención previa remote-coding-agent-control y software-reconstruction-loop.",
+  "tendencias_5_boletines": "La línea del 2026-11-01 se mantiene: quién deja correr al agente y bajo qué condiciones. Ayer eran autorización y aislamiento; hoy es la interfaz que lo opera. Respecto al 2026-10-31, el acento ya no está en abaratar el ciclo sino en repartir el mando.",
+  "alertas": [
+    "AnyModelBot se vende como local-first pero infiere por Modelflare, que retiene logs de peticiones.",
+    "Craft Anything está en alfa temprana y declara 314 herramientas sin verificación independiente.",
+    "Codync afirma relay cifrado y colaboración entre bots sin auditoría pública; revisar ACP y acceso remoto.",
+    "En Scenario, «skill local» no equivale a generación local: muchas exigen cuenta o API externa.",
+    "DSH Go y NOIR: subir estrellas y un README no sustituyen revisión de seguridad ni de licencia."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Verificar por dónde entra el relay cifrado y qué expone ACP antes de dar acceso remoto a sesiones locales."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Determinar qué sale del dispositivo cuando trabaja contra Modelflare, más allá de memoria y claves."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Alfa temprana: seguir la frontera clean-room y qué pasa a leer archivos en modo Deep."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Es un caso concreto de empaquetado de skills fuera del coding, con criterio de verificación por skill."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "date": "2026-10-29",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Paradev convierte la supervisión de agentes en un IDE de escritorio",
+  "posicionamiento": "La interfaz se come al agente: Paradev y OpenIDEA rearman el escritorio de quien programa, mientras MiniMax y Zeabur cubren el frente opuesto, las prácticas y la infraestructura que sostienen esa capa.",
+  "convergencia_stack_css": "Paradev y OpenIDEA tocan el escritorio, no el modelo. MiniMax Code Stack es material comparable con las skills propias del boletín, y Zeabur encaja con el criterio local-first: comodidad de PaaS sin ceder el Kubernetes.",
+  "cruzado_grafo": "multi-agent-orchestration (2026-08-27) y git-worktrees (2026-09-03) se refuerzan con Paradev; agent-skills (2026-10-22) gana una implementación de equipo. IDE ligero, PaaS autoalojado y riesgo pre-alpha aparecen sin primera mención: nodos nuevos.",
+  "tendencias_5_boletines": "El 2026-10-28 el hilo era contener la autonomía; el 2026-10-27, el contrato y la auditoría previa. El acento se mueve al puesto de trabajo: menos permisos por defecto y más superficie para revisar lo que el agente hizo.",
+  "alertas": [
+    "OpenIDEA se mide contra IntelliJ con benchmark propio y admite profundidad de análisis no equivalente",
+    "Zeabur OSS es pre-alpha y su propio README desaconseja clusters críticos",
+    "MiniMax Code Stack es un repo recién publicado, sin validación comunitaria",
+    "Los worktrees de Paradev separan archivos, no procesos ni conflictos"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es la única pieza de hoy con interfaz operativa real para trabajo paralelo. Ver si sus worktrees resuelven algo que hoy hacemos a mano."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 1,
+      "razon": "Prácticas de un equipo de producto sobre subagentes y presupuesto de contexto, comparables con nuestras skills."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "La franqueza del README es la señal; conviene ver si sale de pre-alpha antes de recomendarlo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Reproducir su benchmark o esperar medición independiente antes de citarlo como comparación."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

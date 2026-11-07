@@ -1,0 +1,315 @@
+{
+  "version": 2,
+  "date": "2026-10-29",
+  "boletin_origen": "2026-10-29-trending.md",
+  "resumen_ejecutivo": "- Paradev sube en GitHub Trending con un IDE de escritorio para repartir trabajo entre coding agents, revisar diffs y usar worktrees; el impulso de hoy coincide con cambios recientes de subagentes y trabajo en segundo plano.\n- MiniMax publica su propia colección de workflows y skills de ingeniería: más útil como evidencia de prácticas de equipo que como otra lista genérica de prompts.\n- OpenIDEA intenta combinar núcleo Rust con herramientas de IDE conocidas; su benchmark es una afirmación del proyecto y requiere reproducirse antes de tomarlo como comparación concluyente.\n- Zeabur OSS propone operar Kubernetes propio sin estado persistente propio, pero el README lo etiqueta pre-alpha y advierte no usarlo en clusters críticos.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "Paradev",
+      "url": "https://github.com/ParadevAI/Paradev",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio para ejecutar Claude Code, Codex y otros agentes CLI en workspaces separados, con terminales, revisión de cambios, vistas previas y flujos de PR.",
+        "por_que_importa": "plantea una interfaz operativa para supervisar trabajo paralelo en vez de solo lanzar agentes; el README aclara que los worktrees separan archivos, pero no aíslan procesos ni eliminan conflictos. El Trending diario registró +48 estrellas hoy.",
+        "madurez_senales": "15.703 estrellas · 1.401 forks · TypeScript · creado 2025-10-21 · último push 2026-10-29 · licencia NOASSERTION (GitHub API; revisar LICENSE antes de adoptar) · descripción oficial: “Paradev (formerly Superset) is an agentic IDE to orchestrate 100+ coding agents in parallel. Run any agent with your own subscription.” · topics: `agent-orchestration`, `parallel-agents`, `worktrees`, `ide`, entre otros. Verificado vía GitHub REST API; README y commits consultados.",
+        "accion_sugerida": "**leer**; revisar aislamiento y licencia antes de probar en un repositorio real.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "ParadevAI/Paradev",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "ParadevAI/Paradev",
+          "rel": "uses",
+          "dst": "concept:git-worktrees",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "ParadevAI/Paradev",
+          "rel": "complements",
+          "dst": "JetBrains/thinkrail",
+          "primera_mencion": "2026-10-26"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "paradev",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "MiniMax Code Stack",
+      "url": "https://github.com/MiniMax-AI/mcode-stack",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "colección instalable de skills, checklists y plugins que el equipo de MiniMax Code declara usar en su trabajo diario de ingeniería.",
+        "por_que_importa": "contiene prácticas concretas sobre división en subagentes, sesiones largas y presupuesto de contexto; permite comparar material diseñado por un equipo de producto con skills comunitarias. Aún es un repo recién publicado, con poca validación comunitaria.",
+        "madurez_senales": "339 estrellas · 21 forks · Python · creado 2026-10-28 · último push 2026-10-29 · MIT · descripción oficial: “The workflows and skills the MiniMax Code team uses to build MiniMax Code. Open source, install and use.” · topics: `agent-skills`, `ai-coding`, `harness-engineering`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**leer** las skills de división y gestión de contexto; no instalar stacks completos sin inspeccionar scripts y permisos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "MiniMax-AI/mcode-stack",
+          "rel": "implements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-10-22"
+        },
+        {
+          "src": "MiniMax-AI/mcode-stack",
+          "rel": "relevant_to",
+          "dst": "concept:harness-engineering",
+          "primera_mencion": "2026-08-22"
+        },
+        {
+          "src": "MiniMax-AI/mcode-stack",
+          "rel": "complements",
+          "dst": "google/elephant-goldfish-model",
+          "primera_mencion": "2026-10-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "minimax-code-stack",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "OpenIDEA",
+      "url": "https://github.com/l0ng-ai/openidea",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "IDE de escritorio con núcleo Rust que busca reproducir el flujo de IntelliJ —editor, depuración, Git, terminal, base de datos y cliente HTTP— en macOS, Windows y Linux.",
+        "por_que_importa": "La pregunta útil no es si arranca más rápido, sino si se puede tener editor, depuración, Git, terminal, base de datos y cliente HTTP sin el peso de un IDE completo, y sin quedarse en un chat con agente. Su benchmark mide tiempo y memoria contra IntelliJ, pero el propio autor advierte que la profundidad de análisis no es equivalente: es una medición propia, no una evaluación independiente, y conviene leerla así. Del grafo: Tauri ya lo tratamos el 2026-09-04; en cambio el concepto de IDE ligero y la comparación con el IDE de siempre aparecen aquí por primera vez, sin mención previa en boletines anteriores. 882 estrellas y Apache-2.0.",
+        "madurez_senales": "882 estrellas · 86 forks · TypeScript (metadato API; repositorio también usa Rust/Tauri) · creado 2026-10-21 · último push 2026-10-29 · Apache-2.0 · descripción oficial: “The IDE you know, rebuilt in Rust.” · topics: `ide`, `rust`, `tauri`, `lsp`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**vigilar** su evolución y esperar builds/pruebas independientes antes de comparar rendimiento.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "l0ng-ai/openidea",
+          "rel": "implements",
+          "dst": "concept:lightweight-ide",
+          "primera_mencion": null
+        },
+        {
+          "src": "l0ng-ai/openidea",
+          "rel": "uses",
+          "dst": "tool:tauri",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "l0ng-ai/openidea",
+          "rel": "competes_with",
+          "dst": "concept:developer-ide",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openidea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Zeabur OSS",
+      "url": "https://github.com/zeabur-oss/zeabur",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma autoalojada para desplegar y operar servicios sobre Kubernetes propio, con diagnóstico legible y cambios basados en objetos Kubernetes estándar.",
+        "por_que_importa": "Apunta a quien quiere la comodidad de un PaaS (una plataforma que despliega y opera los servicios por ti) sin salir de su propio Kubernetes. Lo que lo hace citable es la franqueza del README: estado pre-alpha (antes de la primera versión estable), pocos clusters probados, sin base de datos ni CRDs propios (definiciones de recursos personalizadas de Kubernetes) y advertencia explícita de no usarlo en clusters críticos. Traducido: promesa de producto con madurez de prototipo. En el grafo no hay cobertura previa ni del proyecto ni del concepto de PaaS autoalojado, así que esta es su primera aparición; no puedo apoyarme en un hilo anterior para contextualizarlo. 397 estrellas y Apache-2.0.",
+        "madurez_senales": "397 estrellas · 53 forks · Rust · creado 2026-10-24 · último push 2026-10-29 · Apache-2.0 · descripción oficial: “Self-hosted PaaS on your own Kubernetes.” · topics: `kubernetes`, `self-hosted`, `paas`, `deployment`, entre otros. Verificado vía GitHub REST API; README consultado.",
+        "accion_sugerida": "**vigilar**; experimentar solo en un cluster desechable hasta que acumule uso y pruebas.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "zeabur-oss/zeabur",
+          "rel": "implements",
+          "dst": "concept:self-hosted-paas",
+          "primera_mencion": null
+        },
+        {
+          "src": "zeabur-oss/zeabur",
+          "rel": "uses",
+          "dst": "tool:kubernetes",
+          "primera_mencion": null
+        },
+        {
+          "src": "zeabur-oss/zeabur",
+          "rel": "risk",
+          "dst": "problem:pre-alpha-cluster-operations",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zeabur-oss",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "expo/skills",
+      "url": "https://github.com/expo/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.694 estrellas, último push 2026-10-28, Shell) — skills oficiales de Expo para construir, desplegar, actualizar y depurar aplicaciones Expo; la documentación de Expo sigue siendo la fuente de verdad. Señales: https://github.com/expo/skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/expo/skills",
+        "accion_sugerida": "probar — en una tarea Expo acotada",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "expo-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "elayadesign/ai-design-skills",
+      "url": "https://github.com/elayadesign/ai-design-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.515 estrellas, último push 2026-10-27, lenguaje no detectado por GitHub) — colección MIT centrada en diseño de landing pages, con instrucciones de estructura, copy y sistema visual; actualmente el README lista una skill principal. Señales: https://github.com/elayadesign/ai-design-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/elayadesign/ai-design-skills",
+        "accion_sugerida": "leer — antes de reutilizarla",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elayadesign-ai-design-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "DavidHDev/react-bits",
+      "url": "https://github.com/DavidHDev/react-bits",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(50.568 estrellas, último push 2026-10-19, JavaScript) — biblioteca de componentes React/Next.js animados y personalizables; la licencia llega como NOASSERTION en la API, por lo que hay que leer LICENSE antes de incorporarla como dependencia. Señales: https://github.com/DavidHDev/react-bits",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/DavidHDev/react-bits",
+        "accion_sugerida": "vigilar — y confirmar licencia",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "davidhdev-react-bits",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "decolua/9router",
+      "url": "https://github.com/decolua/9router",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(31.607 estrellas, último push 2026-10-28, JavaScript) — proxy/gateway que conecta herramientas de coding con proveedores de modelos; el README promete acceso gratuito y amplia compatibilidad, pero no lo recomendamos sin revisar términos, seguridad y estabilidad del servicio. Señales: https://github.com/decolua/9router",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/decolua/9router",
+        "accion_sugerida": "ignorar — como dependencia de producción; solo evaluar con cautela",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "decolua-9router",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "plandex-ai/plandex",
+      "url": "https://github.com/plandex-ai/plandex",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(15.840 estrellas, último push 2025-10-03, Go) — agente CLI de código orientado a proyectos grandes; aunque reapareció en Trending, el último push verificado es antiguo. Señales: https://github.com/plandex-ai/plandex",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/plandex-ai/plandex",
+        "accion_sugerida": "ignorar — por ahora salvo reactivación del desarrollo",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "plandex-ai-plandex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 9,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "9/9 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "2/4 items reescritos; rechazados por longitud sospechosa: [0, 1]; faltantes en respuesta: [0, 1]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "version": 2,
+  "date": "2026-11-02",
+  "boletin_origen": "2026-11-02-trending.md",
+  "resumen_ejecutivo": "- Vuelve a aparecer la categoría de agentes personales con control humano, pero con dos enfoques distintos: un escritorio multi-modelo ligado a un gateway comercial (AnyModelBot) y un puente local hacia agentes de programación ya instalados (Codync).\n- Craft Anything convierte la inspección de software en un ciclo explícito de observación, construcción y comparación; su modo «clean room» separa lo observable de la ingeniería inversa profunda. Está en alfa temprana, así que el valor principal hoy es arquitectónico, no de adopción.\n- Scenario publica un catálogo de skills para producción creativa que registra qué familias requieren servicio externo y cuáles conducen software local; es un caso concreto para estudiar Skills/MCP más allá del coding.\n- Dos señales a vigilar con cautela: el cliente móvil DSH Go está subiendo rápido y NOIR ofrece auditoría Android local. Popularidad y afirmaciones del README no sustituyen una revisión de seguridad/licencia.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily, GitHub API cuando aplica. Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "AnyModelBot",
+      "url": "https://github.com/modelflare-ai/AnyModelBot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación local-first para crear bots persistentes con modelo, memoria y espacio de trabajo propios, que se pueden operar desde el escritorio y desde canales de mensajería; las acciones fuera del workspace piden aprobación.",
+        "por_que_importa": "Retoma dos hilos que ya cubrimos el 2026-11-01: el agente con alcance limitado al repositorio (repository-scoped-agent) y el patrón de agentes con aprobación humana (human-in-the-loop-agents). Aquí ambos suben de nivel a una app de escritorio instalable, operable también desde canales de mensajería, que pide aprobación para cualquier acción fuera del workspace. El matiz que hay que leer con cuidado es «local-first»: según el README la memoria, los archivos y las claves se quedan en el dispositivo, pero las inferencias pasan por Modelflare —la capa que da acceso a sus más de 70 modelos— y ese servicio retiene logs de peticiones. Es decir, ni inferencia completamente local ni independencia del proveedor; quien lo adopte por privacidad debería revisar primero qué se registra fuera. Datos para situarlo: 909 estrellas, TypeScript, MIT, creado 2026-10-27 y último push 2026-11-02.",
+        "madurez_senales": "909 estrellas · 11 forks · TypeScript · creado 2026-10-27 · último push 2026-11-02 · MIT · descripción oficial: alternativa local-first a Grok Bot, OpenAI dots y Claude Duet con más de 70 modelos mediante Modelflare · topics: `ai-agent`, `computer-use`, `deepseek`, `local-first`, `multi-model`, `wechat`. Verificado vía GitHub API; README consultado en la rama `master`.",
+        "accion_sugerida": "**leer** su modelo de permisos y el aviso de retención de logs antes de probar; comparar con el prototipo de DeepSeek y opciones BYO-provider.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "modelflare-ai/AnyModelBot",
+          "rel": "implements",
+          "dst": "concept:repository-scoped-agent",
+          "primera_mencion": "2026-11-01"
+        },
+        {
+          "src": "modelflare-ai/AnyModelBot",
+          "rel": "uses",
+          "dst": "tool:modelflare",
+          "primera_mencion": null
+        },
+        {
+          "src": "modelflare-ai/AnyModelBot",
+          "rel": "relevant_to",
+          "dst": "concept:human-in-the-loop-agents",
+          "primera_mencion": "2026-11-01"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anymodelbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Craft Anything",
+      "url": "https://github.com/storytold/craft-anything",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación y motor en Rust que inspecciona webs, aplicaciones y juegos, dirige un agente de programación para construir una alternativa y compara iterativamente el resultado con el original.",
+        "por_que_importa": "No es «genera código desde un prompt»: el motor en Rust inspecciona la web, la aplicación o el juego original, dirige un agente de programación para construir una alternativa y compara el resultado con el original de forma iterativa, así que el criterio de éxito es la evidencia, no lo plausible del output. La distinción que importa es el modo de trabajo: por defecto, clean-room limita la inspección a lo observable desde fuera; el modo Deep sí lee código y archivos. Esa frontera —junto con sus 314 herramientas CLI/MCP declaradas, apoyadas en el protocolo MCP que ya tratamos el 2026-09-21— es lo que convierte al proyecto en buen material para hablar de reproducibilidad, permisos y límites legales y técnicos de la ingeniería inversa. Aviso honesto: se declara alfa temprana, así que lo interesante hoy es el diseño del flujo, no su fiabilidad.",
+        "madurez_senales": "1.860 estrellas · 298 forks · Rust · creado 2026-10-31 · último push 2026-11-02 · Apache-2.0 · descripción oficial: “Craft Anything: understand how any software works, and craft your own.” · topics: ninguno publicado. Verificado vía API; README consultado en `main`.",
+        "accion_sugerida": "**explorar** las herramientas de inspección y el modo clean-room; no evaluar como producto maduro mientras siga en alfa.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "storytold/craft-anything",
+          "rel": "implements",
+          "dst": "concept:software-reconstruction-loop",
+          "primera_mencion": null
+        },
+        {
+          "src": "storytold/craft-anything",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "storytold/craft-anything",
+          "rel": "risk",
+          "dst": "problem:reverse-engineering-boundaries",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "craft-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Codync",
+      "url": "https://github.com/leepokai/Codync",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Host en Rust que mantiene bots asociados a agentes de programación locales y permite conversar con ellos desde iPhone, escritorio o terminal, con colaboración entre bots y aprobaciones.",
+        "por_que_importa": "Materializa la idea de llevar Hermes/Claude Code/Codex a un canal remoto sin sustituir sus sesiones por un modelo nuevo. La arquitectura documentada usa ACP, SQLite y un relay cifrado; merece una revisión específica de la superficie de acceso remoto y de las afirmaciones de cifrado.",
+        "madurez_senales": "1.649 estrellas · 158 forks · Rust · creado 2026-03-18 · último push 2026-11-02 · Apache-2.0 · descripción oficial: alternativa open source a Grok Bot que conecta más de 40 agentes locales · topics: `acp`, `agent-client-protocol`, `coding-agents`, `self-hosted`, `rust`. Verificado vía GitHub API y README consultado.",
+        "accion_sugerida": "**leer** la arquitectura del relay y el protocolo de pairing; probar solo en un entorno de confianza tras revisar permisos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "leepokai/Codync",
+          "rel": "implements",
+          "dst": "concept:remote-coding-agent-control",
+          "primera_mencion": null
+        },
+        {
+          "src": "leepokai/Codync",
+          "rel": "uses",
+          "dst": "protocol:agent-client-protocol",
+          "primera_mencion": null
+        },
+        {
+          "src": "leepokai/Codync",
+          "rel": "complements",
+          "dst": "concept:human-in-the-loop-agents",
+          "primera_mencion": "2026-11-01"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "codync",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Scenario Agent Skills",
+      "url": "https://github.com/scenario-labs/skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Colección de skills y equipos de skills para que los agentes creen imágenes, vídeo, audio y recursos 3D usando Scenario MCP o herramientas creativas instaladas localmente.",
+        "por_que_importa": "El valor no está en las skills sueltas sino en el empaquetado: conocimiento operativo de herramientas creativas (imagen, vídeo, audio y 3D) organizado por skill y por equipos de skills, con instrucciones de instalación, releases y notas sobre cuánto se ha verificado cada una, de forma que sirva en varios harnesses de agente. Continúa dos hilos ya cubiertos: las skills de agente portables entre harnesses del 2026-10-29 y el protocolo MCP del 2026-09-21, que aquí es la vía de acceso a Scenario. Ojo con la expectativa: muchas capacidades exigen cuenta o API externa (Scenario MCP o herramientas DCC instaladas en local), así que «skill local» no equivale a generación local. 1.476 estrellas, Python, MIT.",
+        "madurez_senales": "1.476 estrellas · 181 forks · Python · creado 2026-08-12 · último push 2026-11-02 · MIT · descripción oficial: skills para contenido visual/audio/3D vía Scenario MCP y herramientas DCC locales · topics: `agent-skills`, `ai-agents`, `blender`, `mcp`, `unreal-engine`, `unity`. Verificado vía GitHub API; README consultado.",
+        "accion_sugerida": "**leer** cómo distingue skills del MCP de las que automatizan software local y cómo registra verificación por familia.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "scenario-labs/skills",
+          "rel": "implements",
+          "dst": "concept:cross-harness-agent-skills",
+          "primera_mencion": "2026-10-29"
+        },
+        {
+          "src": "scenario-labs/skills",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "scenario-labs/skills",
+          "rel": "enables",
+          "dst": "concept:creative-agent-workflows",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "scenario-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "caru-ini/stack-diagram",
+      "url": "https://github.com/caru-ini/stack-diagram",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(730 estrellas, último push 2026-11-02, TypeScript) — skill que convierte una descripción de stack en un diagrama con logos oficiales y exporta HTML autocontenido; revisé README y API. Señales: https://github.com/caru-ini/stack-diagram",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/caru-ini/stack-diagram",
+        "accion_sugerida": "probar — con un stack conocido y medir correcciones necesarias",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "caru-ini-stack-diagram",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Verlintas/NOIR",
+      "url": "https://github.com/Verlintas/NOIR",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(571 estrellas, último push 2026-11-01, Kotlin) — auditor local de apps Android que relaciona permisos, endpoints y posibles flujos de datos; API y README verificados, licencia MIT confirmada en LICENSE. Señales: https://github.com/Verlintas/NOIR",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Verlintas/NOIR",
+        "accion_sugerida": "leer — los límites de análisis estático y probar solo en dispositivo propio/autorizado",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "verlintas-noir",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "ccch1mneyyy/dsh-Go",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.203 estrellas, último push 2026-11-02, Dart) — cliente Android para ejecutar DeepSeek Harness en el móvil o controlar el DSH del ordenador; API y README consultados, licencia AGPL-3.0. Señales: https://github.com/ccch1mneyyy/dsh-Go",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ccch1mneyyy/dsh-Go",
+        "accion_sugerida": "vigilar — ; comprobar permisos, transporte y madurez antes de instalar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ccch1mneyyy-dsh-go",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "techjarves/Portable-Local-Studio",
+      "url": "https://github.com/techjarves/Portable-Local-Studio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.763 estrellas, último push 2026-11-01, JavaScript) — interfaz de escritorio que agrupa chat GGUF, generación de imágenes, transcripción y voz con backends locales; API y README consultados. Señales: https://github.com/techjarves/Portable-Local-Studio",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/techjarves/Portable-Local-Studio",
+        "accion_sugerida": "leer — la matriz real de hardware/formatos y validar consumo de recursos",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "techjarves-portable-local-studio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "thtbee/nectarlink",
+      "url": "https://github.com/thtbee/nectarlink",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(975 estrellas, último push 2026-11-01, Rust) — enlace local cifrado entre Android y Windows; GitHub devuelve `NOASSERTION`, y su archivo LICENSE recoge licencias distintas por componente. Señales: https://github.com/thtbee/nectarlink",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/thtbee/nectarlink",
+        "accion_sugerida": "ignorar como dependencia — hasta revisar las licencias de cada subdirectorio; como referencia de producto, vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "thtbee-nectarlink",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 9,
+    "items_hallazgo_principal": 4,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "9/9 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "3/4 items reescritos; rechazados por longitud sospechosa: [2]; faltantes en respuesta: [2]",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
