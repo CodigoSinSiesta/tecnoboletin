@@ -1,0 +1,346 @@
+{
+  "version": 2,
+  "date": "2026-11-08",
+  "boletin_origen": "2026-11-08-trending.md",
+  "resumen_ejecutivo": "- El día lo definen las piezas que se enchufan al agente, no las aplicaciones: un servidor MCP que convierte la ingeniería inversa en evidencias citables y un binario de Google que pone los modelos de Gemini a disposición de cualquier agente con shell.\n- En el otro extremo, dos proyectos que se quedan en casa: OpenMausBot encierra un equipo de agentes en `127.0.0.1` con todo el estado en una carpeta del usuario, y localthings habla CoAP sobre DTLS con los electrodomésticos Samsung sin cuenta ni nube.\n- AutoRAG cambia de forma: la librería de RAG en Python se reescribe como bibliotecario de escritorio en TypeScript y el proyecto original se queda en `legacy/`, mantenido.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (80 repositorios únicos), GitHub API (12 repositorios verificados, README leído en la rama por defecto de cada uno). Blogwatcher sigue sin publicar archivo; el último es del 5 de julio.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "servidor MCP que da al agente herramientas para inspeccionar binarios nativos, aplicaciones JavaScript y Electron, ensamblados .NET, APK de Android, firmware y sitios web. El análisis corre en local y cada conclusión vuelve con la evidencia y los límites de lo observado; para binarios nativos puede apoyarse en Hopper, Ghidra, IDA o Kuna ya instalados, y el análisis estático de JavaScript o .NET no necesita motor nativo. Se instala con `npx rea-agents setup` y registra el servidor y las instrucciones de flujo en Claude Code, Codex, Cursor o Gemini CLI.",
+        "por_que_importa": "Es el patrón que venimos siguiendo, llevado a un terreno incómodo: entender cómo funciona algo sin su código. Ya lo tratamos el 2026-08-24 al hablar de reverse engineering guiado por agente, y volvió el 2026-10-05 con el catálogo Awesome-REA. Lo aprovechable no es la promesa de copiar una función, sino el contrato de salida: código, referencias y huecos declarados, para que el agente no rellene lo que no sabe. Para quien escribe hay dos caras: el estudio más rápido de un formato propietario y los límites legales de hacerlo.",
+        "madurez_senales": "441.833 estrellas · 109.280 forks · TypeScript · creado 2026-04-14 · último push 2026-11-08 · MIT · 1.610 incidencias abiertas · topics: `agent-skills`, `mcp`, `security`, `typescript` · +3.286 hoy en Trending · vuelve a ser hallazgo principal tras el 23 de octubre; el 21 de octubre la API daba 351.108 estrellas (verificado vía GitHub API; README en `main`, instalación por npm)",
+        "accion_sugerida": "**probar** — el análisis estático de un paquete .NET o de un bundle de Electron no necesita motor nativo; con eso se mide la calidad de la evidencia en una sola sesión.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:morluto/rea",
+          "rel": "implements",
+          "dst": "concept:agent-driven-reverse-engineering",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "complements",
+          "dst": "repo:reacher-z/Awesome-REA",
+          "primera_mencion": "2026-10-05"
+        },
+        {
+          "src": "repo:morluto/rea",
+          "rel": "relevant_to",
+          "dst": "problem:reverse-engineering-boundaries",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "morluto-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio en la que cada chat de la barra lateral es un agente real, ejecutado sobre las CLI de Claude, Codex o Grok que ya están instaladas en la máquina, con su personalidad, su modelo, su ordenador y sus aplicaciones conectadas. Un servidor de coordinación en `127.0.0.1` es dueño de cada proceso; las transcripciones y las claves viven en `~/.openmausbot`, y lo que importa pasa por tarjetas de aprobación. Cada bot puede usar un escritorio Linux en la nube, una máquina virtual local aislada o el propio equipo tras aceptarlo de forma explícita.",
+        "por_que_importa": "La forma del producto es la noticia: no un asistente en una caja, sino una plantilla de bots con memoria de su hilo y aprobación antes de lo delicado, con el estado en una carpeta del usuario y no en una cuenta ajena. El espacio de trabajo local-first ya salió el 2026-08-10, y el uso del escritorio por el agente el 2026-10-31. Para quien escribe, el párrafo está en dónde vive el estado y en qué se delega: el control del equipo anfitrión depende de la plataforma y de un permiso explícito. El README compara el modelo con cuatro productos cerrados: material directo.",
+        "madurez_senales": "17.404 estrellas · 2.450 forks · TypeScript · creado 2026-08-11 · último push 2026-11-08 · Apache-2.0 · 860 incidencias abiertas · +1.955 hoy en Trending · era radar el 31 de octubre con 9.015 estrellas (verificado vía GitHub API; README en `main`, instaladores para macOS, Windows y Ubuntu)",
+        "accion_sugerida": "**leer** — la tabla que compara el producto con las alternativas cerradas deja ver qué se queda en casa y qué no; eso se lee antes de instalar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:milind-soni/OpenMausBot",
+          "rel": "implements",
+          "dst": "concept:local-first-agent-workspace",
+          "primera_mencion": "2026-08-10"
+        },
+        {
+          "src": "repo:milind-soni/OpenMausBot",
+          "rel": "uses",
+          "dst": "concept:desktop-computer-use",
+          "primera_mencion": "2026-10-31"
+        },
+        {
+          "src": "repo:milind-soni/OpenMausBot",
+          "rel": "relevant_to",
+          "dst": "concept:personal-agent-app-template",
+          "primera_mencion": "2026-09-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "milind-soni-openmausbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Marker-Inc-Korea/AutoRAG",
+      "url": "https://github.com/Marker-Inc-Korea/AutoRAG",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "el repositorio aloja ahora AutoRAG 2.0, un bibliotecario personal con aplicación de escritorio que indexa carpetas, correo y conversaciones, responde con citas a los pasajes exactos, agrupa versiones duplicadas de un mismo documento y previsualiza Markdown, código, PDF, ofimática y vídeo. La herramienta original, la librería en Python que buscaba la mejor tubería de RAG para un conjunto de datos, se ha movido a `legacy/`, sigue recibiendo correcciones y se publica en PyPI.",
+        "por_que_importa": "Es el caso poco habitual de un cambio de rumbo que no abandona a quien ya dependía del proyecto: el motor viejo sigue mantenido mientras el nuevo se escribe en otro lenguaje y con otra forma de producto. Cubrimos el RAG agéntico el 2026-08-19 y la oficina local-first el 2026-09-24; aquí se ve cómo aterrizan en una app de escritorio. Hay dos artículos: cómo se migra sin romper usuarios y qué se gana cuando el RAG deja de ser una tubería configurable y pasa a ser un buscador que cita. Falta saber si aguanta una carpeta real o solo la demo.",
+        "madurez_senales": "5.406 estrellas · 486 forks · TypeScript · creado 2024-01-10 · último push 2026-11-08 · Apache-2.0 · 69 incidencias abiertas · topics: `rag`, `librarian`, `agent`, `retrieval-augmented-generation` · el README pide Node 24 o superior y Bun 1.2 · +25 hoy en Trending (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**explorar** — indexar una carpeta con documentos reales y comprobar si las citas llevan a la frase correcta es la prueba que decide si esto sustituye al buscador del sistema.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Marker-Inc-Korea/AutoRAG",
+          "rel": "implements",
+          "dst": "concept:agentic-rag",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:Marker-Inc-Korea/AutoRAG",
+          "rel": "relevant_to",
+          "dst": "concept:office-workspace-local-first-ai",
+          "primera_mencion": "2026-09-24"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "marker-inc-korea-autorag",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "google-gemini/gemini-api-cli",
+      "url": "https://github.com/google-gemini/gemini-api-cli",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un único binario en Go, sin estado, que expone modelos de texto y razonamiento, análisis de archivos multimodales, generación de imagen, audio, música y vídeo, y agentes gestionados que se lanzan en segundo plano y devuelven un identificador con el que recoger el resultado. Se describe a sí mismo: esquemas de petición y ayuda legible por máquina dentro del binario, validación en seco que imprime la petición HTTP sin tocar la red ni el llavero del sistema, y salida en JSON, en formato compacto o filtrada por campos. Con la clave configurada y el binario en el `PATH`, lo usa cualquier agente con acceso a shell.",
+        "por_que_importa": "El README nombra a Hermes y a OpenClaw entre los agentes que pueden llamarlo, y esa es la tesis: no hace falta integración con el proveedor si hay un binario que sabe describirse y devolver rutas de archivo. La CLI estilo Unix como capacidad ya la vimos el 2026-08-19, y su encaje junto a Claude Code el 2026-07-28. Lo copiable es el diseño de interfaz, no el catálogo de modelos: esquemas dentro del ejecutable, modo seco que no gasta cuota y salida pensada para una máquina. Ejemplo limpio de CLI como capacidad frente a CLI como aplicación.",
+        "madurez_senales": "473 estrellas · 74 forks · Go · creado 2026-04-29 · último push 2026-11-06 · Apache-2.0 · 41 incidencias abiertas · topics: `gemini`, `gemini-api` · el propio README lo marca como experimental · +14 hoy en Trending (verificado vía GitHub API; README en `main`)",
+        "accion_sugerida": "**probar** — el modo seco valida la petición sin red ni clave, así que la interfaz se puede juzgar entera sin gastar cuota.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google-gemini/gemini-api-cli",
+          "rel": "implements",
+          "dst": "concept:unix-style-agent-cli",
+          "primera_mencion": "2026-08-19"
+        },
+        {
+          "src": "repo:google-gemini/gemini-api-cli",
+          "rel": "complements",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-gemini-gemini-api-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "mbillow/localthings",
+      "url": "https://github.com/mbillow/localthings",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "integración de Home Assistant que controla lavadoras, frigoríficos, aires acondicionados, hornos y otros electrodomésticos Samsung a través de la red local. Descubre cada aparato por sus recursos OCF, lee su tipo de dispositivo y habla CoAP sobre DTLS con certificado de cliente, con observación para recibir cambios al instante y transferencia por bloques para las respuestas grandes. Después de la instalación no vuelve a contactar con los servidores de Samsung; solo la primera alta lee un identificador público, sin cuenta ni acceso. Cada tipo de aparato es una tabla declarativa que se prueba contra más de noventa capturas reales.",
+        "por_que_importa": "Es local-first hasta el protocolo, no hasta el eslogan: el dato no sale porque no hay a dónde salir. El interés está en el método, copiable en cualquier integración con un protocolo propietario: tabla declarativa de capacidades por modelo, más de noventa capturas reales como conjunto de pruebas y aviso de diagnóstico cuando un aparato no se reconoce. También muestra lo que cuesta el control local: certificados de cliente, claves precompartidas y un aparato que a veces se niega. Sin cobertura previa nuestra de CoAP ni OCF, sirve como primera entrada al tema.",
+        "madurez_senales": "1.110 estrellas · 114 forks · Python · creado 2026-06-30 · último push 2026-11-08 · MIT · 80 incidencias abiertas · topics: `home-assistant`, `coap-protocol`, `dtls`, `samsung` · +186 hoy en Trending (verificado vía GitHub API; README en `main`, integración en la lista por defecto de HACS)",
+        "accion_sugerida": "**leer** — el README explica el flujo de certificado y de clave precompartida, que es la parte que decide si tu aparato concreto entra o se queda fuera.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:mbillow/localthings",
+          "rel": "uses",
+          "dst": "protocol:coap",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mbillow/localthings",
+          "rel": "uses",
+          "dst": "protocol:ocf",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:mbillow/localthings",
+          "rel": "solves",
+          "dst": "problem:cloud-account-dependency",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mbillow-localthings",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "reacher-z/Awesome-REA",
+      "url": "https://github.com/reacher-z/Awesome-REA",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.815 estrellas, último push 2026-11-08, Python) — catálogo con 1.253 recursos, 431 casos y 235 artículos sobre ingeniería inversa de webs, juegos, aplicaciones, binarios, firmware y protocolos, con web propia y entradas revisadas antes de publicarse — señales: https://github.com/reacher-z/Awesome-REA",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/reacher-z/Awesome-REA",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "reacher-z-awesome-rea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "sarpstar/cinecode",
+      "url": "https://github.com/sarpstar/cinecode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.090 estrellas, último push 2026-11-03, Python) — agente de código que escribe el guion, construye cada fotograma con three.js, renderiza en Chrome sin ventana y entrega un MP4 con ffmpeg, dentro de Claude Code o Cursor y sin servicio de pago — señales: https://github.com/sarpstar/cinecode",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/sarpstar/cinecode",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sarpstar-cinecode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "jamesondh/chimera-vocal-synth",
+      "url": "https://github.com/jamesondh/chimera-vocal-synth",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(200 estrellas, último push 2026-11-08, Rust) — sintetizador de voz que modela la física del tracto vocal en WebAssembly en lugar de reproducir muestras; canta, habla, hace beatbox y dibuja la presión del aire en pantalla — señales: https://github.com/jamesondh/chimera-vocal-synth",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/jamesondh/chimera-vocal-synth",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jamesondh-chimera-vocal-synth",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "ranxianglei/billion-context",
+      "url": "https://github.com/ranxianglei/billion-context",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.762 estrellas, último push 2026-11-08, TypeScript) — plugin de compresión de contexto para sesiones de un mes en ventanas de 100.000 tokens; la API no identifica licencia y acumula 911 incidencias abiertas — señales: https://github.com/ranxianglei/billion-context",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ranxianglei/billion-context",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ranxianglei-billion-context",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "kepano/kepano-obsidian",
+      "url": "https://github.com/kepano/kepano-obsidian",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.017 estrellas, último push 2026-01-09, sin lenguaje principal en la API) — plantilla personal de bóveda de Obsidian; no tiene README en la raíz y no recibe cambios desde enero, así que vale como referencia de estructura y no como proyecto vivo — señales: https://github.com/kepano/kepano-obsidian",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/kepano/kepano-obsidian",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kepano-kepano-obsidian",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

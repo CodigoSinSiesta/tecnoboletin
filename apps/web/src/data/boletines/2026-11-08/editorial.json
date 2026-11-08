@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-11-08",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Las piezas que se enchufan al agente ganan a las aplicaciones",
+  "posicionamiento": "El valor de hoy está en el contrato de salida, no en la aplicación: un MCP que devuelve evidencia y huecos declarados, un binario que lleva sus esquemas dentro y un estado que vive en una carpeta del usuario. La misma exigencia de decir qué se sabe y qué no, aplicada a binarios ajenos, a electrodomésticos y al propio agente.",
+  "convergencia_stack_css": "Dos piezas tocan el stack de cerca: gemini-api-cli nombra a Hermes entre los agentes que pueden llamarlo, y OpenMausBot guarda transcripciones y claves en ~/.openmausbot, igual que nuestro patrón de estado en el home. localthings y AutoRAG empujan en la misma dirección local-first, sin integrarse con nada que ya usemos.",
+  "cruzado_grafo": "Cuatro nodos vuelven a aparecer: reverse engineering guiado por agente (2026-08-24), espacio de trabajo local-first (2026-08-10), RAG agéntico y CLI estilo Unix (ambos 2026-08-19). Lo nuevo son CoAP, OCF y la dependencia de cuenta en la nube, los tres sin primera_mencion: entran hoy al grafo.",
+  "tendencias_5_boletines": "Engancha con la línea de verificabilidad del 2026-11-06: si las acciones deben poder comprobarse, hoy el mecanismo es el contrato de salida. También continúa el 2026-11-07 por el lado del estado durable, ahora en una carpeta del usuario en vez de un servicio.",
+  "alertas": [
+    "rea depende de herramientas propietarias ya instaladas (Hopper, IDA) y su promesa roza los límites legales de la ingeniería inversa",
+    "AutoRAG 2.0 cambia de lenguaje y de producto a la vez; no hay dato de rendimiento sobre carpetas reales",
+    "gemini-api-cli es de Google y ata las capacidades al catálogo de un proveedor, pese al buen diseño de interfaz",
+    "localthings exige certificados de cliente y claves precompartidas: el control local tiene coste de mantenimiento"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 3,
+      "razon": "Probar el binario con Hermes y su modo seco: si el agente puede llamarlo sin integración previa, es material directo para un artículo sobre CLI como capacidad."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "El contrato de salida con evidencia y límites declarados es la parte copiable, más que el propio análisis de binarios."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Ver si la migración a TypeScript deja el motor Python en legacy/ mantenido de verdad o solo de nombre."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Primera entrada del boletín a CoAP y OCF: local-first hasta el protocolo, sin cobertura previa."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "El estado en ~/.openmausbot y el permiso explícito sobre el host son el detalle que decide si el patrón se sostiene."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

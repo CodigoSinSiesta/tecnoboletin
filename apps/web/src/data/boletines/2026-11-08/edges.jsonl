@@ -1,0 +1,33 @@
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-morluto-rea", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-morluto-rea", "dst": "tema:morluto-rea", "rel": "trata", "added": "2026-11-08"}
+{"src": "repo:morluto/rea", "dst": "concept:agent-driven-reverse-engineering", "rel": "implements", "added": "2026-11-08", "primera_mencion": "2026-08-24"}
+{"src": "repo:morluto/rea", "dst": "repo:reacher-z/Awesome-REA", "rel": "complements", "added": "2026-11-08", "primera_mencion": "2026-10-05"}
+{"src": "repo:morluto/rea", "dst": "problem:reverse-engineering-boundaries", "rel": "relevant_to", "added": "2026-11-08", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-milind-soni-openmausbot", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-milind-soni-openmausbot", "dst": "tema:milind-soni-openmausbot", "rel": "trata", "added": "2026-11-08"}
+{"src": "repo:milind-soni/OpenMausBot", "dst": "concept:local-first-agent-workspace", "rel": "implements", "added": "2026-11-08", "primera_mencion": "2026-08-10"}
+{"src": "repo:milind-soni/OpenMausBot", "dst": "concept:desktop-computer-use", "rel": "uses", "added": "2026-11-08", "primera_mencion": "2026-10-31"}
+{"src": "repo:milind-soni/OpenMausBot", "dst": "concept:personal-agent-app-template", "rel": "relevant_to", "added": "2026-11-08", "primera_mencion": "2026-09-23"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-marker-inc-korea-autorag", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-marker-inc-korea-autorag", "dst": "tema:marker-inc-korea-autorag", "rel": "trata", "added": "2026-11-08"}
+{"src": "repo:Marker-Inc-Korea/AutoRAG", "dst": "concept:agentic-rag", "rel": "implements", "added": "2026-11-08", "primera_mencion": "2026-08-19"}
+{"src": "repo:Marker-Inc-Korea/AutoRAG", "dst": "concept:office-workspace-local-first-ai", "rel": "relevant_to", "added": "2026-11-08", "primera_mencion": "2026-09-24"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-google-gemini-gemini-api-cli", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-google-gemini-gemini-api-cli", "dst": "tema:google-gemini-gemini-api-cli", "rel": "trata", "added": "2026-11-08"}
+{"src": "repo:google-gemini/gemini-api-cli", "dst": "concept:unix-style-agent-cli", "rel": "implements", "added": "2026-11-08", "primera_mencion": "2026-08-19"}
+{"src": "repo:google-gemini/gemini-api-cli", "dst": "repo:anthropics/claude-code", "rel": "complements", "added": "2026-11-08", "primera_mencion": "2026-07-28"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-mbillow-localthings", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-mbillow-localthings", "dst": "tema:mbillow-localthings", "rel": "trata", "added": "2026-11-08"}
+{"src": "repo:mbillow/localthings", "dst": "protocol:coap", "rel": "uses", "added": "2026-11-08", "primera_mencion": null}
+{"src": "repo:mbillow/localthings", "dst": "protocol:ocf", "rel": "uses", "added": "2026-11-08", "primera_mencion": null}
+{"src": "repo:mbillow/localthings", "dst": "problem:cloud-account-dependency", "rel": "solves", "added": "2026-11-08", "primera_mencion": null}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-reacher-z-awesome-rea", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-reacher-z-awesome-rea", "dst": "tema:reacher-z-awesome-rea", "rel": "trata", "added": "2026-11-08"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-sarpstar-cinecode", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-sarpstar-cinecode", "dst": "tema:sarpstar-cinecode", "rel": "trata", "added": "2026-11-08"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-jamesondh-chimera-vocal-synth", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-jamesondh-chimera-vocal-synth", "dst": "tema:jamesondh-chimera-vocal-synth", "rel": "trata", "added": "2026-11-08"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-ranxianglei-billion-context", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-ranxianglei-billion-context", "dst": "tema:ranxianglei-billion-context", "rel": "trata", "added": "2026-11-08"}
+{"src": "boletin:2026-11-08", "dst": "item:https-github-com-kepano-kepano-obsidian", "rel": "menciona", "added": "2026-11-08"}
+{"src": "item:https-github-com-kepano-kepano-obsidian", "dst": "tema:kepano-kepano-obsidian", "rel": "trata", "added": "2026-11-08"}
