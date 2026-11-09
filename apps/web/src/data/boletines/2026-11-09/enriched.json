@@ -1,0 +1,516 @@
+{
+  "version": 2,
+  "date": "2026-11-09",
+  "boletin_origen": "2026-11-09-trending.md",
+  "resumen_ejecutivo": "- El día va de sacar al agente de la ventana de chat: un arnés de auditoría de Cloudflare que convierte el método en procedimiento verificable, y un arnés de empresa de Kortix que separa computación de estado para que las sesiones sobrevivan al portátil.\n- La otra mitad es minimalismo: cien líneas de Python con bash ganan a los andamiajes grandes, y un documento de doce principios sin commits desde septiembre de 2025 vuelve a Trending porque lo que tracciona es el texto.\n- El formato `SKILL.md` se consolida como canal de distribución: Jane Street publica una skill de tutor socrático y Cloudflare reparte su auditor como skill instalable, no como producto.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (62 repositorios únicos), GitHub API (16 repositorios verificados, README leído en la rama por defecto de cada hallazgo). GitHub Trending devolvió error 504 en varios intentos y hubo que repetir los cortes; blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "una skill para agentes de código que convierte al agente en auditor de seguridad en seis fases: reconocimiento con `architecture.md` y un libro de cobertura, caza guiada por unidades del libro, validación de cada candidato por un verificador nuevo que intenta refutarlo, salida estructurada en `findings.json` validada contra un esquema, verificación independiente de las afirmaciones finales y un informe neutro respecto al objetivo. Los veredictos están separados: `confirmed` exige rastro completo de fuente, `needs_validation` lleva el hecho exacto sin resolver y no tiene severidad, `rejected` deja constancia de lo descartado. Nace del arnés de búsqueda de vulnerabilidades de Cloudflare y se instala con `npx skills add`. Pide un agente con subagentes en paralelo y un sandbox del sistema operativo sin red para ejecutar código del objetivo.",
+        "por_que_importa": "el valor no está en la lista de clases de ataque, está en el libro de cobertura y en los verificadores que intentan tirar abajo cada hallazgo. Eso es exactamente lo que separa un informe de auditoría de una lista de sospechas generada por un modelo, y es un patrón que se puede copiar para cualquier trabajo donde el agente tenga que demostrar lo que afirma. Para quien escribe, el ángulo es que el producto ya no es el prompt: es el procedimiento con contrapesos.",
+        "madurez_senales": "67.238 estrellas · 4.393 forks · JavaScript · creado 2026-06-18 · último push 2026-09-14 · MIT · 120 incidencias abiertas · topics: ninguno · +1.376 hoy en Trending (verificado vía GitHub API; README en `main`). El último commit es de septiembre: vuelve a Trending sin novedades de código.",
+        "accion_sugerida": "**leer** — vale la pena leer el libro de cobertura y el esquema de `findings.json` antes que el resto de ficheros: ahí está el diseño reutilizable.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "implements",
+          "dst": "concept:agent-security-audit",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "solves",
+          "dst": "problem:security-audit-false-positives",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:cloudflare/security-audit-skill",
+          "rel": "extends",
+          "dst": "concept:cross-harness-agent-skills",
+          "primera_mencion": "2026-09-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-security-audit-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "SWE-agent/mini-swe-agent",
+      "url": "https://github.com/SWE-agent/mini-swe-agent",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "la versión 2 del agente mínimo del equipo que creó SWE-bench y SWE-agent. El bucle del agente son unas cien líneas de Python; no hay más herramienta que bash, ni siquiera usa la interfaz de llamada a herramientas del modelo, y el historial es completamente lineal, sin estado intermedio entre el rastro y los mensajes que recibe el modelo. Cada acción se ejecuta con `subprocess.run`, independiente de las demás, así que cambiar eso por `docker exec` basta para mover el agente a un sandbox. Soporta entornos locales, Docker o Podman, Singularity y Apptainer, y cualquier modelo a través de litellm, OpenRouter o Portkey.",
+        "por_que_importa": "es la tesis contraria a la fiebre de andamiajes, y está argumentada en el propio README. Si el modelo ya sabe usar una shell, cada herramienta que añade el agente es superficie que hay que mantener y depurar; el historial lineal y las acciones sin sesión persistente hacen que el rastro sea también el depurador. Sirve como línea base honesta para comparar prompts y modelos, y como pieza didáctica: cien líneas se leen enteras en una sesión.",
+        "madurez_senales": "9.438 estrellas · 1.298 forks · Python · creado 2025-06-28 · último push 2026-11-02 · MIT · 140 incidencias abiertas · topics: `agent`, `agentic-ai`, `agentic-ai-cli`, `ai`, `ai-agent`, `textual` · +86 hoy en Trending (verificado vía GitHub API; README en `main`). El README atribuye más de 74 % en SWE-bench verified y uso en Meta, NVIDIA, IBM, Nebius y Anyscale.",
+        "accion_sugerida": "**probar** — montar el agente en local con un modelo pequeño y leer el fichero del bucle entero es la forma más rápida de tener una opinión propia sobre el andamiaje.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:SWE-agent/mini-swe-agent",
+          "rel": "implements",
+          "dst": "concept:minimal-agent-scaffold",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:SWE-agent/mini-swe-agent",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-coding",
+          "primera_mencion": "2026-10-29"
+        },
+        {
+          "src": "repo:SWE-agent/mini-swe-agent",
+          "rel": "uses",
+          "dst": "concept:agent-sandboxing",
+          "primera_mencion": "2026-10-26"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "swe-agent-mini-swe-agent",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "janestreet/agent_skills",
+      "url": "https://github.com/janestreet/agent_skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repositorio de skills para agentes y chatbots de Jane Street, con el formato común de una carpeta por skill y un `SKILL.md` con las instrucciones. Hoy contiene una sola: `socratic-tutor`, que convierte al modelo en un tutor estricto con diagnóstico inicial, mapa de destrezas por niveles del 0 al 5, una pregunta cada vez, repaso espaciado y evaluación final. Se usa copiando la carpeta al directorio de skills del agente o pegando el cuerpo del fichero en el prompt del chat.",
+        "por_que_importa": "lo noticioso no es el contenido, es quién lo publica y en qué formato. Una firma financiera que no vende software educativo elige `SKILL.md` como vehículo, lo que confirma que el formato se ha convertido en canal de distribución de procedimientos y no en un detalle de un producto concreto. El tema elegido, enseñar con método socrático, es además material directo para una newsletter que explica cosas.",
+        "madurez_senales": "808 estrellas · 53 forks · sin lenguaje principal en la API · creado 2026-11-03 · último push 2026-11-03 · MIT · 0 incidencias abiertas · topics: ninguno · visible en Trendshift (verificado vía GitHub API; README en `master`). Seis días de vida y sin cambios desde el primero.",
+        "accion_sugerida": "**leer** — el `SKILL.md` completo son unas decenas de líneas y deja ver cómo se escribe un procedimiento para que un modelo lo siga sin inventar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:janestreet/agent_skills",
+          "rel": "implements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-10-22"
+        },
+        {
+          "src": "repo:janestreet/agent_skills",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skill-distribution",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:janestreet/agent_skills",
+          "rel": "relevant_to",
+          "dst": "concept:cross-harness-agent-skills",
+          "primera_mencion": "2026-10-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "janestreet-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "DIYgod/pinky",
+      "url": "https://github.com/DIYgod/pinky",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación nativa para macOS, Windows y Linux que expone un iPhone desde iOS 17.4 o un Android de la 10 a la 17 como servidor MCP, de forma que Claude Code, Codex, Cursor o un script lo controlan por comandos. Las aprobaciones viven en la pasarela de la aplicación y no en instrucciones al agente: pagos, compras y transferencias esperan un clic, y se puede configurar que también esperen envíos, pedidos, borrados, llamadas e instalaciones. Banca, cartera y gestores de contraseñas son invisibles por defecto y el agente no puede escribir en campos de contraseña ni de códigos de un solo uso. El PIN del teléfono se guarda una vez y se confirma con Touch ID o Windows Hello, sin que el agente lo vea. En Android 13 o superior el agente trabaja en una segunda pantalla oculta; cada ejecución deja capturas y grabación en el equipo propio. Está en pre-alfa.",
+        "por_que_importa": "lo interesante no es controlar un teléfono, es dónde se aplica el límite. Si la aprobación la aplica la pasarela, el texto que aparece en pantalla no puede convencer al agente de aprobarse a sí mismo, y eso es justo el fallo clásico de las demostraciones de uso de ordenador. Es el patrón a copiar en cualquier automatización con consecuencias reales, con la advertencia de que aquí todavía hay partes que solo se han probado a mano.",
+        "madurez_senales": "1.145 estrellas · 117 forks · Go · creado 2026-11-06 · último push 2026-11-09 · Apache-2.0 · 15 incidencias abiertas · topics: ninguno · visible en Trendshift (verificado vía GitHub API; README en `main`). Tres días de repositorio y estado declarado pre-alfa.",
+        "accion_sugerida": "**vigilar** — es demasiado joven para montarlo, pero el diseño de la pasarela de aprobaciones merece seguirse de cerca.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:DIYgod/pinky",
+          "rel": "implements",
+          "dst": "concept:on-device-mobile-agent",
+          "primera_mencion": "2026-10-31"
+        },
+        {
+          "src": "repo:DIYgod/pinky",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:DIYgod/pinky",
+          "rel": "mitigates",
+          "dst": "problem:agent-approval-bottleneck",
+          "primera_mencion": "2026-11-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diygod-pinky",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "googlecolab/google-colab-cli",
+      "url": "https://github.com/googlecolab/google-colab-cli",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "interfaz de línea de comandos para los entornos de ejecución de Google Colab. Levanta máquinas con CPU, GPU T4, L4, G4, H100 o A100 y TPU v5e1 o v6e1, ejecuta scripts de Python, cuadernos `.ipynb` o código enviado por la entrada estándar, abre consolas y REPL interactivos, monta Drive y autentica credenciales de Google Cloud. El subcomando `colab run` aprovisiona una máquina nueva, ejecuta un script local con sus argumentos, recoge los ficheros de salida y la destruye en una sola orden. El historial se puede exportar a cuaderno, Markdown o JSONL. Solo Linux y macOS.",
+        "por_que_importa": "convierte una máquina con GPU en un recurso que un agente pide y suelta dentro de una llamada. Lo reutilizable es el ciclo efímero, no la GPU: aprovisionar, ejecutar, recoger resultados y borrar sin dejar estado es la forma correcta de dar capacidad de cálculo a un agente sin darle un servidor encendido para siempre. El propio README lo plantea como pieza para automatización sin interfaz e integraciones de agentes, y hay un servidor MCP hermano para el flujo dentro del cuaderno.",
+        "madurez_senales": "2.101 estrellas · 299 forks · Python · creado 2026-04-17 · último push 2026-11-06 · Apache-2.0 · 41 incidencias abiertas · topics: ninguno · +104 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — un `colab run` con un script corto mide en minutos si el ciclo de vida efímero aguanta lo que promete.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:googlecolab/google-colab-cli",
+          "rel": "implements",
+          "dst": "concept:remote-gpu-notebook",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:googlecolab/google-colab-cli",
+          "rel": "enables",
+          "dst": "concept:agentic-coding",
+          "primera_mencion": "2026-10-29"
+        },
+        {
+          "src": "repo:googlecolab/google-colab-cli",
+          "rel": "relevant_to",
+          "dst": "concept:agent-sandbox-orchestration",
+          "primera_mencion": "2026-11-01"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googlecolab-google-colab-cli",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "kortix-ai/CompanyOS",
+      "url": "https://github.com/kortix-ai/CompanyOS",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "arnés de agentes pensado para la nube donde cada sesión corre en su propio ordenador, con el estado separado de la computación: el ordenador se duerme entre quince y veinte minutos después del último turno y despierta con su historial completo. Los agentes arrancan por evento (calendario, webhook firmado, evento de un conector, cambio fusionado), un agente central reparte el trabajo a agentes especializados sin bloquear la conversación, y las sesiones pueden lanzar flujos que coordinan muchos agentes. Cuando el contexto se llena, el agente continúa en uno nuevo y busca en el registro completo las líneas exactas que necesita en lugar de resumir. Se construye sobre el arnés `pi` y se despliega en infraestructura propia o en la del proveedor.",
+        "por_que_importa": "la separación entre computación desechable y estado persistente es la idea copiable; el resto es producto y mercadotecnia. Y el detalle de no resumir, sino buscar en el registro, es una respuesta distinta al problema del contexto que la compresión que vimos ayer en otro proyecto: aquí se apuesta por conservar el original y consultarlo, no por perder información a cambio de espacio. El contraste entre ambos enfoques es un artículo por sí solo.",
+        "madurez_senales": "20.583 estrellas · 3.465 forks · TypeScript · creado 2024-10-05 · último push 2026-11-09 · licencia no identificada por la API · 62 incidencias abiertas · rama por defecto `dev` · +72 hoy en Trending (verificado vía GitHub API; README en `dev`). La API no reconoce la licencia, así que la adopción como dependencia exige leer el fichero de licencia antes.",
+        "accion_sugerida": "**explorar** — antes que instalarlo, conviene leer cómo separa estado y computación y qué se queda en el repositorio del cliente.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:kortix-ai/CompanyOS",
+          "rel": "implements",
+          "dst": "concept:always-on-agent-harness",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:kortix-ai/CompanyOS",
+          "rel": "extends",
+          "dst": "concept:agent-harness-control-plane",
+          "primera_mencion": "2026-11-03"
+        },
+        {
+          "src": "repo:kortix-ai/CompanyOS",
+          "rel": "article_angle",
+          "dst": "concept:company-as-code",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kortix-ai-companyos",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "humanlayer/12-factor-agents",
+      "url": "https://github.com/humanlayer/12-factor-agents",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "guía de principios para construir software con modelos que aguante en producción, escrita al estilo de las doce reglas de las aplicaciones en la nube. Su tesis es que los buenos agentes son en su mayoría software determinista con pasos de modelo colocados en los puntos justos, y no un bucle de instrucciones más una bolsa de herramientas que gira hasta acertar. Los factores tratan, entre otras cosas, de quién posee la ventana de contexto, cómo se controla el estado de cada paso y cómo se parte el trabajo en piezas que se puedan probar. El código se declara Apache-2.0 y el contenido CC BY-SA 4.0 en los distintivos del README, aunque la API no identifica la licencia.",
+        "por_que_importa": "un repositorio sin commits desde septiembre de 2025 vuelve a Trending con +19 hoy: lo que tracciona es el texto. Funciona como contrapeso a la carrera de andamiajes y como fuente de citas para explicar por qué un agente en producción se parece más a un flujo de trabajo con intervenciones puntuales del modelo que a un chat que hace cosas. Cuando todo el mundo enseña su bucle, este repositorio enseña dónde no hace falta bucle.",
+        "madurez_senales": "27.054 estrellas · 2.039 forks · TypeScript · creado 2025-03-30 · último push 2025-09-21 · licencia no identificada por la API · 28 incidencias abiertas · topics: `12-factor`, `12-factor-agents`, `agents`, `ai`, `context-window`, `framework`, `llms`, `memory` · +19 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el factor sobre poseer la ventana de contexto y el que separa estado de pasos son los dos que se pueden aplicar mañana mismo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:humanlayer/12-factor-agents",
+          "rel": "implements",
+          "dst": "concept:production-agent-principles",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:humanlayer/12-factor-agents",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-coding",
+          "primera_mencion": "2026-10-29"
+        },
+        {
+          "src": "repo:humanlayer/12-factor-agents",
+          "rel": "article_angle",
+          "dst": "concept:deterministic-agent-workflows",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "humanlayer-12-factor-agents",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "snarktank/ralph",
+      "url": "https://github.com/snarktank/ralph",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(22.178 estrellas, último push 2026-02-02, TypeScript) — bucle que relanza la herramienta de código con contexto limpio en cada iteración hasta cerrar todos los puntos del documento de requisitos, con la memoria en el historial de git, un fichero de progreso y otro de tareas — señales: https://github.com/snarktank/ralph",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/snarktank/ralph",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snarktank-ralph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(47.968 estrellas, último push 2026-11-09, Rust) — CLI que devuelve la página como árbol de accesibilidad con una referencia por elemento para que el agente actúe paso a paso desde la shell — señales: https://github.com/vercel-labs/agent-browser",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vercel-labs/agent-browser",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(17.863 estrellas, último push 2026-11-09, TypeScript) — sistema de diseño de Meta con más de 150 componentes, React 19 y StyleX, con la interfaz de programación, la documentación y la CLI pensadas para que una persona y un asistente construyan igual — señales: https://github.com/meta/astryx",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/meta/astryx",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "meta-astryx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "0sec-labs/0",
+      "url": "https://github.com/0sec-labs/0",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(838 estrellas, último push 2026-11-09, TypeScript) — arnés de seguridad con interfaz web, CLI y servidor MCP para revisar código, hacer pruebas de penetración y proponer arreglos; la API no identifica su licencia — señales: https://github.com/0sec-labs/0",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/0sec-labs/0",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "0sec-labs-0",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "TwiN/gatus",
+      "url": "https://github.com/TwiN/gatus",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12.657 estrellas, último push 2026-11-09, Go) — página de estado para desarrolladores con alertas e incidencias, donde cada comprobación se declara en un fichero de configuración — señales: https://github.com/TwiN/gatus",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/TwiN/gatus",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "twin-gatus",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "poco-ai/Agentero",
+      "url": "https://github.com/poco-ai/Agentero",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.124 estrellas, último push 2026-11-09, TypeScript) — espacio de trabajo de investigación compartido entre persona y agente, con preguntas sobre documentos en PDF, citas y una bóveda de fuentes — señales: https://github.com/poco-ai/Agentero",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/poco-ai/Agentero",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "poco-ai-agentero",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "shinyobjectz/raea",
+      "url": "https://github.com/shinyobjectz/raea",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(903 estrellas, último push 2026-11-09, Rust) — motor que convierte una instrucción en vídeo, gráficos en movimiento, 3D o un juego renderizado en la GPU propia; la API no identifica su licencia — señales: https://github.com/shinyobjectz/raea",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/shinyobjectz/raea",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shinyobjectz-raea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "jhaizhou-ops/S2Arm",
+      "url": "https://github.com/jhaizhou-ops/S2Arm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.053 estrellas, último push 2026-11-09, C#) — reescribe juegos de Switch a ARM64 nativo para iPhone, iPad y Mac sin emulador, y exige tus propias copias y claves; el riesgo legal es evidente — señales: https://github.com/jhaizhou-ops/S2Arm",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/jhaizhou-ops/S2Arm",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jhaizhou-ops-s2arm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": false,
+    "critica_notes": "hermes no disponible: 'hermes --version' fallo: Command '['/home/ibid/.local/bin/hermes', '--version']' timed out after 15 seconds",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

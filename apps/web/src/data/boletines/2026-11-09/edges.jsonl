@@ -1,0 +1,51 @@
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-cloudflare-security-audit-skill", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-cloudflare-security-audit-skill", "dst": "tema:cloudflare-security-audit-skill", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "concept:agent-security-audit", "rel": "implements", "added": "2026-11-09", "primera_mencion": "2026-09-15"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "problem:security-audit-false-positives", "rel": "solves", "added": "2026-11-09", "primera_mencion": "2026-09-15"}
+{"src": "repo:cloudflare/security-audit-skill", "dst": "concept:cross-harness-agent-skills", "rel": "extends", "added": "2026-11-09", "primera_mencion": "2026-09-15"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-swe-agent-mini-swe-agent", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-swe-agent-mini-swe-agent", "dst": "tema:swe-agent-mini-swe-agent", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:SWE-agent/mini-swe-agent", "dst": "concept:minimal-agent-scaffold", "rel": "implements", "added": "2026-11-09", "primera_mencion": null}
+{"src": "repo:SWE-agent/mini-swe-agent", "dst": "concept:agentic-coding", "rel": "relevant_to", "added": "2026-11-09", "primera_mencion": "2026-10-29"}
+{"src": "repo:SWE-agent/mini-swe-agent", "dst": "concept:agent-sandboxing", "rel": "uses", "added": "2026-11-09", "primera_mencion": "2026-10-26"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-janestreet-agent-skills", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-janestreet-agent-skills", "dst": "tema:janestreet-agent-skills", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:janestreet/agent_skills", "dst": "concept:agent-skills", "rel": "implements", "added": "2026-11-09", "primera_mencion": "2026-10-22"}
+{"src": "repo:janestreet/agent_skills", "dst": "concept:agent-skill-distribution", "rel": "relevant_to", "added": "2026-11-09", "primera_mencion": null}
+{"src": "repo:janestreet/agent_skills", "dst": "concept:cross-harness-agent-skills", "rel": "relevant_to", "added": "2026-11-09", "primera_mencion": "2026-10-29"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-diygod-pinky", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-diygod-pinky", "dst": "tema:diygod-pinky", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:DIYgod/pinky", "dst": "concept:on-device-mobile-agent", "rel": "implements", "added": "2026-11-09", "primera_mencion": "2026-10-31"}
+{"src": "repo:DIYgod/pinky", "dst": "protocol:mcp", "rel": "uses", "added": "2026-11-09", "primera_mencion": "2026-09-21"}
+{"src": "repo:DIYgod/pinky", "dst": "problem:agent-approval-bottleneck", "rel": "mitigates", "added": "2026-11-09", "primera_mencion": "2026-11-05"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-googlecolab-google-colab-cli", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-googlecolab-google-colab-cli", "dst": "tema:googlecolab-google-colab-cli", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:googlecolab/google-colab-cli", "dst": "concept:remote-gpu-notebook", "rel": "implements", "added": "2026-11-09", "primera_mencion": null}
+{"src": "repo:googlecolab/google-colab-cli", "dst": "concept:agentic-coding", "rel": "enables", "added": "2026-11-09", "primera_mencion": "2026-10-29"}
+{"src": "repo:googlecolab/google-colab-cli", "dst": "concept:agent-sandbox-orchestration", "rel": "relevant_to", "added": "2026-11-09", "primera_mencion": "2026-11-01"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-kortix-ai-companyos", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-kortix-ai-companyos", "dst": "tema:kortix-ai-companyos", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:kortix-ai/CompanyOS", "dst": "concept:always-on-agent-harness", "rel": "implements", "added": "2026-11-09", "primera_mencion": null}
+{"src": "repo:kortix-ai/CompanyOS", "dst": "concept:agent-harness-control-plane", "rel": "extends", "added": "2026-11-09", "primera_mencion": "2026-11-03"}
+{"src": "repo:kortix-ai/CompanyOS", "dst": "concept:company-as-code", "rel": "article_angle", "added": "2026-11-09", "primera_mencion": null}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-humanlayer-12-factor-agents", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-humanlayer-12-factor-agents", "dst": "tema:humanlayer-12-factor-agents", "rel": "trata", "added": "2026-11-09"}
+{"src": "repo:humanlayer/12-factor-agents", "dst": "concept:production-agent-principles", "rel": "implements", "added": "2026-11-09", "primera_mencion": null}
+{"src": "repo:humanlayer/12-factor-agents", "dst": "concept:agentic-coding", "rel": "relevant_to", "added": "2026-11-09", "primera_mencion": "2026-10-29"}
+{"src": "repo:humanlayer/12-factor-agents", "dst": "concept:deterministic-agent-workflows", "rel": "article_angle", "added": "2026-11-09", "primera_mencion": null}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-snarktank-ralph", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-snarktank-ralph", "dst": "tema:snarktank-ralph", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-vercel-labs-agent-browser", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:vercel-labs-agent-browser", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-meta-astryx", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-meta-astryx", "dst": "tema:meta-astryx", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-0sec-labs-0", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-0sec-labs-0", "dst": "tema:0sec-labs-0", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-twin-gatus", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-twin-gatus", "dst": "tema:twin-gatus", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-poco-ai-agentero", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-poco-ai-agentero", "dst": "tema:poco-ai-agentero", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-shinyobjectz-raea", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-shinyobjectz-raea", "dst": "tema:shinyobjectz-raea", "rel": "trata", "added": "2026-11-09"}
+{"src": "boletin:2026-11-09", "dst": "item:https-github-com-jhaizhou-ops-s2arm", "rel": "menciona", "added": "2026-11-09"}
+{"src": "item:https-github-com-jhaizhou-ops-s2arm", "dst": "tema:jhaizhou-ops-s2arm", "rel": "trata", "added": "2026-11-09"}

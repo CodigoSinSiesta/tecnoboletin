@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-11-09",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Cloudflare empaqueta la auditoría de seguridad como skill instalable",
+  "posicionamiento": "El valor se desplaza del producto al procedimiento verificable: un arnés de auditoría que intenta refutarse a sí mismo y un agente de cien líneas defienden lo mismo desde extremos opuestos. Lo que se publica ya no es una herramienta, es un método que se puede auditar y comparar.",
+  "convergencia_stack_css": "El stack local-first asoma por dos piezas ya trabajadas: MCP, ahora como servidor que expone el teléfono en pinky, y el estado que sobrevive fuera de la máquina efímera en CompanyOS. El CLI de Colab aporta el ciclo contrario, cómputo que se pide, ejecuta y borra.",
+  "cruzado_grafo": "Cinco nodos aparecen sin mención previa: andamiaje mínimo, distribución de skills, cuaderno remoto con GPU, arnés siempre encendido y principios de agente en producción. El resto refuerza lo conocido: agentic-coding desde el 29 de octubre, agent-skills desde el 22 y MCP desde el 21 de septiembre.",
+  "tendencias_5_boletines": "La línea de los dos días previos se sostiene: la tarea salió de la sesión hacia una incidencia con copia de trabajo, y después el contrato de salida pasó a ser lo valioso. Hoy ese contrato se llama arnés y se reparte como skill; la auditoría de Cloudflare es su forma más explícita.",
+  "alertas": [
+    "12-factor-agents vuelve a Trending sin commits desde septiembre de 2025: la tracción es del texto, no del proyecto.",
+    "pinky admite partes probadas solo a mano; no está claro qué flujos de pago están cubiertos de verdad.",
+    "CompanyOS mezcla una idea copiable con mucho envoltorio de producto; separar una de otro exige leer el README con desconfianza.",
+    "mini-swe-agent es línea base para comparar, no un arnés de producción: cien líneas no incluyen sandbox ni permisos."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "El libro de cobertura y los verificadores que refutan cada hallazgo son el patrón reutilizable: se puede copiar para cualquier trabajo donde el agente deba demostrar lo que afirma."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Cien líneas de Python se leen en una sesión y sirven como línea base honesta para comparar prompts y modelos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "La aprobación aplicada en la pasarela y no en el prompt es la defensa correcta frente al agente que se autoriza a sí mismo; conviene ver si el patrón se extiende."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 5,
+      "razon": "El contraste entre conservar el registro y buscar en él, frente a resumir el contexto, da un artículo por sí solo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "El ciclo efímero de aprovisionar, ejecutar y borrar es la forma correcta de dar cálculo a un agente sin dejar un servidor encendido."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
