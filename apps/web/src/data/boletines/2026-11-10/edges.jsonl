@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-shadcn-improve", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-shadcn-improve", "dst": "tema:shadcn-improve", "rel": "trata", "added": "2026-11-10"}
+{"src": "repo:shadcn/improve", "dst": "concept:plan-executor-split", "rel": "implements", "added": "2026-11-10", "primera_mencion": null}
+{"src": "repo:shadcn/improve", "dst": "concept:llm-cost-routing", "rel": "enables", "added": "2026-11-10", "primera_mencion": "2026-09-09"}
+{"src": "repo:shadcn/improve", "dst": "concept:agent-skills-standard", "rel": "extends", "added": "2026-11-10", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-snap-stanford-memorilla", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-snap-stanford-memorilla", "dst": "tema:snap-stanford-memorilla", "rel": "trata", "added": "2026-11-10"}
+{"src": "repo:snap-stanford/memorilla", "dst": "concept:latent-memory-tokens", "rel": "implements", "added": "2026-11-10", "primera_mencion": null}
+{"src": "repo:snap-stanford/memorilla", "dst": "concept:context-compression", "rel": "solves", "added": "2026-11-10", "primera_mencion": "2026-08-08"}
+{"src": "repo:snap-stanford/memorilla", "dst": "repo:microsoft/graphrag", "rel": "competes_with", "added": "2026-11-10", "primera_mencion": null}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-zleap-ai-sag-wiki", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-zleap-ai-sag-wiki", "dst": "tema:zleap-ai-sag-wiki", "rel": "trata", "added": "2026-11-10"}
+{"src": "repo:Zleap-AI/SAG-Wiki", "dst": "concept:vectorless-retrieval", "rel": "implements", "added": "2026-11-10", "primera_mencion": "2026-08-13"}
+{"src": "repo:Zleap-AI/SAG-Wiki", "dst": "concept:agent-skills-standard", "rel": "integrates", "added": "2026-11-10", "primera_mencion": "2026-09-13"}
+{"src": "repo:Zleap-AI/SAG-Wiki", "dst": "concept:local-first-agent-stack", "rel": "relevant_to", "added": "2026-11-10", "primera_mencion": "2026-08-19"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-runanywhereai-trnrt", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-runanywhereai-trnrt", "dst": "tema:runanywhereai-trnrt", "rel": "trata", "added": "2026-11-10"}
+{"src": "repo:RunanywhereAI/trnrt", "dst": "concept:trainium-inference", "rel": "implements", "added": "2026-11-10", "primera_mencion": null}
+{"src": "repo:RunanywhereAI/trnrt", "dst": "problem:cross-hardware-llm-serving", "rel": "solves", "added": "2026-11-10", "primera_mencion": "2026-09-11"}
+{"src": "repo:RunanywhereAI/trnrt", "dst": "concept:gpu-kernels", "rel": "uses", "added": "2026-11-10", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-expo-exact", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-expo-exact", "dst": "tema:expo-exact", "rel": "trata", "added": "2026-11-10"}
+{"src": "repo:expo/exact", "dst": "concept:declarative-ui-contract", "rel": "implements", "added": "2026-11-10", "primera_mencion": null}
+{"src": "repo:expo/exact", "dst": "concept:agent-driven-ui-development", "rel": "enables", "added": "2026-11-10", "primera_mencion": null}
+{"src": "repo:expo/exact", "dst": "concept:verification-loop", "rel": "relevant_to", "added": "2026-11-10", "primera_mencion": "2026-11-06"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-homeassistant-ai-ha-mcp", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-homeassistant-ai-ha-mcp", "dst": "tema:homeassistant-ai-ha-mcp", "rel": "trata", "added": "2026-11-10"}
+{"src": "repo:homeassistant-ai/ha-mcp", "dst": "concept:home-automation-mcp", "rel": "implements", "added": "2026-11-10", "primera_mencion": null}
+{"src": "repo:homeassistant-ai/ha-mcp", "dst": "protocol:mcp", "rel": "uses", "added": "2026-11-10", "primera_mencion": "2026-09-21"}
+{"src": "repo:homeassistant-ai/ha-mcp", "dst": "problem:agent-approval-bottleneck", "rel": "risk", "added": "2026-11-10", "primera_mencion": "2026-11-05"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-opensandbox-group-opensandbox", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-opensandbox-group-opensandbox", "dst": "tema:opensandbox-group-opensandbox", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-anthropics-skills", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-anthropics-skills", "dst": "tema:anthropics-skills", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-anthropics-claude-plugins-official", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-anthropics-claude-plugins-official", "dst": "tema:anthropics-claude-plugins-official", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-experientiallabs-experiential", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-experientiallabs-experiential", "dst": "tema:experientiallabs-experiential", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-kuafuai-andee", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-kuafuai-andee", "dst": "tema:kuafuai-andee", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-basketikun-infinite-canvas", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-basketikun-infinite-canvas", "dst": "tema:basketikun-infinite-canvas", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-ooolabdev-ooosplat", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-ooolabdev-ooosplat", "dst": "tema:ooolabdev-ooosplat", "rel": "trata", "added": "2026-11-10"}
+{"src": "boletin:2026-11-10", "dst": "item:https-github-com-virattt-dexter", "rel": "menciona", "added": "2026-11-10"}
+{"src": "item:https-github-com-virattt-dexter", "dst": "tema:virattt-dexter", "rel": "trata", "added": "2026-11-10"}

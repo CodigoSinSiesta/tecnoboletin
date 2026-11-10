@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-10",
+  "boletin_origen": "2026-11-10-trending.md",
+  "resumen_ejecutivo": "- La memoria deja de resolverse metiendo más texto en la ventana: un sistema de Stanford entrega al modelo congelado solo dieciséis tokens de memoria y supera al contexto completo en un benchmark de hechos, mientras una base de conocimiento local indexa carpetas enteras sin embeddings ni llamadas al modelo.\n- El otro movimiento del día es repartir el trabajo por precio: una skill de shadcn usa el modelo más caro solo para auditar y escribir el plan, y deja la ejecución a uno más barato dentro de un worktree aislado, con un revisor que compara el diff contra el plan.\n- Completan el día la inferencia abierta fuera de NVIDIA, un runtime de aplicaciones que un agente puede construir, ejecutar y probar en tres plataformas, y un servidor MCP que entra en la casa con un modelo de permisos explícito.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (65 repositorios únicos), GitHub API (14 repositorios verificados, README leído en la rama por defecto de cada hallazgo). Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "shadcn/improve",
+      "url": "https://github.com/shadcn/improve",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Una skill para agentes que audita un repositorio y escribe planes de implementación para que los ejecute otro agente. El reparto es explícito: el modelo más capaz entiende el código, decide qué merece la pena y redacta la especificación; el trabajo de escribir código se entrega a un modelo más barato. La skill nunca implementa nada: sus únicas escrituras van a `plans/`, un fichero por hallazgo con el código actual citado, los pasos exactos, los comandos de compilación y pruebas del propio repositorio como puertas de verificación, condiciones de parada para cuando la realidad no coincida con el plan y el commit contra el que se escribió. El subcomando `execute` lanza un ejecutor barato en un worktree desechable de git, vuelve a ejecutar cada criterio de hechos y da un veredicto: aprobar, devolver para revisión o bloquear. El audit previo descarta falsos positivos releyendo cada ubicación citada y guarda las razones del descarte.",
+        "por_que_importa": "Separa dos trabajos que casi todo el mundo paga al mismo precio: entender el código y decidir qué hacer rinde con el modelo caro; ejecutar un plan cerrado no. Ya tocamos el enrutado por coste el 2026-09-09 y el estándar de skills de agente el 2026-09-13; esto los junta. Lo copiable no es la skill sino la forma del plan: autocontenido para un modelo que nunca vio la sesión del asesor, con criterios de hechos comprobables por comando y condiciones de parada. Dos meses sin commits, así que vuelve sin novedades de código.",
+        "madurez_senales": "9.947 estrellas · 421 forks · sin lenguaje principal en la API · creado 2026-06-10 · último push 2026-09-12 · MIT · 17 incidencias abiertas · topics: ninguno · visible en Trendshift (verificado vía GitHub API; README en `main`). Dos meses sin commits: vuelve a la lista sin novedades de código.",
+        "accion_sugerida": "**leer** — el ejemplo de plan que enlaza el README y su lista de condiciones de parada son la parte reutilizable.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:shadcn/improve",
+          "rel": "implements",
+          "dst": "concept:plan-executor-split",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:shadcn/improve",
+          "rel": "enables",
+          "dst": "concept:llm-cost-routing",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:shadcn/improve",
+          "rel": "extends",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shadcn-improve",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "snap-stanford/memorilla",
+      "url": "https://github.com/snap-stanford/memorilla",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Sistema de memoria que lee una colección completa de documentos —conversaciones pasadas de un usuario, un libro entero— y entrega a un modelo congelado solo dieciséis tokens de memoria que dependen de la pregunta. Los tokens los produce un módulo entrenado, no un resumen escrito por el propio modelo. En el artículo que acompaña al código, esa memoria de tamaño fijo supera al contexto completo en el conjunto FactKG (84,33 % frente a 80,43 %) usando 108 veces menos tokens, y sirve también como memoria de un agente que aprende de su propio historial con recompensa en juegos de texto. El ejemplo del README usa un Qwen3-8B congelado y necesita una GPU de 80 GB; los puntos de control están publicados en Hugging Face.",
+        "por_que_importa": "Ataca el problema al revés de lo habitual: en vez de ordenar o trocear mejor los documentos, aprende un estado fijo que se consulta igual sin importar cuánto material haya detrás. Ya cubrimos la compresión de contexto el 2026-08-08; esto es la variante que discute con las pilas de recuperación y con GraphRAG. El dato que da crédito a la idea viene del artículo: 84,33 % frente a 80,43 % en FactKG con 108 veces menos tokens. La contrapartida está en el README: 80 GB de GPU para servir el ejemplo, así que lo aprovechable hoy es el criterio, no el despliegue.",
+        "madurez_senales": "774 estrellas · 60 forks · Python · creado 2026-06-23 · último push 2026-11-09 · Apache-2.0 · topics: `context-compression`, `long-context`, `memory`, `personalization`, `retrieval-augmented-generation` · +62 hoy en Trending (verificado vía GitHub API; README en `main`). Exige Linux con CUDA y Python 3.11; el ejemplo necesita una GPU de 80 GB y descarga unos 25 GB de modelos.",
+        "accion_sugerida": "**leer** — la sección de cómo se construye la memoria y el ejemplo de personalización valen más que las cifras del titular.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:snap-stanford/memorilla",
+          "rel": "implements",
+          "dst": "concept:latent-memory-tokens",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:snap-stanford/memorilla",
+          "rel": "solves",
+          "dst": "concept:context-compression",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:snap-stanford/memorilla",
+          "rel": "competes_with",
+          "dst": "repo:microsoft/graphrag",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snap-stanford-memorilla",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Zleap-AI/SAG-Wiki",
+      "url": "https://github.com/Zleap-AI/SAG-Wiki",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Aplicación de escritorio (Rust con Tauri y Svelte) que indexa carpetas de documentos, notas y código y responde preguntas señalando el pasaje exacto del que sale cada respuesta. La indexación y la recuperación no usan embeddings ni llamadas al modelo: construye un índice propio y recupera con su método SAG2, y el modelo solo entra si pides que redacte una respuesta. Convierte PDF, Office y EPUB de serie, vigila los cambios de fichero para actualizar el índice y se ofrece como CLI más una skill instalable para que un agente de código consulte la misma base. El README la compara con el patrón de wiki mantenida por un agente y con la recuperación vectorial clásica.",
+        "por_que_importa": "Un índice que no depende de un proveedor de embeddings, se puede rehacer y no manda tus notas fuera. La recuperación sin vectores ya apareció el 2026-08-13, el stack local-first el 2026-08-19 y el estándar de skills el 2026-09-13: esto junta las tres y se ofrece como skill instalable. Para quien mantiene una bóveda de notas, el detalle que cuenta es que cada respuesta se abre en su pasaje original, no que el texto generado suene bien. Contrapunto a la moda de trocear y embeber: aquí se recupera del original. Aviso: versión 0.2.6 y tres semanas de vida.",
+        "madurez_senales": "564 estrellas · 73 forks · Rust · creado 2026-10-18 · último push 2026-11-10 · MIT · 5 incidencias abiertas · topics: ninguno · visible en Trendshift (verificado vía GitHub API; README en `main`). Versión 0.2.6 y tres semanas de vida; el formateo de documentos y los modelos de reconocimiento se descargan aparte.",
+        "accion_sugerida": "**probar** — apuntarlo a una carpeta de notas reales y comparar la calidad del pasaje citado con la recuperación que ya uses es media hora de trabajo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Zleap-AI/SAG-Wiki",
+          "rel": "implements",
+          "dst": "concept:vectorless-retrieval",
+          "primera_mencion": "2026-08-13"
+        },
+        {
+          "src": "repo:Zleap-AI/SAG-Wiki",
+          "rel": "integrates",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        },
+        {
+          "src": "repo:Zleap-AI/SAG-Wiki",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-agent-stack",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zleap-ai-sag-wiki",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "RunanywhereAI/trnrt",
+      "url": "https://github.com/RunanywhereAI/trnrt",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de inferencia para modelos grandes sobre AWS Trainium, con API compatible con OpenAI, decodificación por megakernels NKI (aproximadamente uno por cada media capa) y contexto de un millón de tokens mediante atención dispersa y atención lineal con estado de tamaño fijo. La caché de prefijo es un árbol de radix sobre páginas de KV en FP8 con un nivel en memoria del host para las páginas desalojadas. Cada caja lleva dos motores en paralelo tensorial sobre treinta y dos NeuronCores lógicos, detrás de un enrutador que fija cada sesión a su motor. Todos los grafos se compilan en un host x86 normal y la máquina que sirve no compila nada. El primer modelo soportado es GLM-5.3-Flash.",
+        "por_que_importa": "Durante dos años la inferencia abierta ha sido sinónimo de CUDA; esto rompe la ecuación con una pieza legible. Ya tratamos el servicio de LLM entre hardware distinto el 2026-09-11 y los kernels de GPU el 2026-10-05, y aquí se ven las dos cosas llevadas a Trainium. Lo trasladable no es el chip: es separar compilar en cualquier host x86 de servir en la máquina cara, lo que abarata el arranque y hace reproducible el despliegue. El ángulo para una newsletter técnica son las decisiones de kernel y de caché leídas como coste por token, no como nota de proveedor. Once días de repo, GLM-5.3-Flash como primer modelo soportado.",
+        "madurez_senales": "512 estrellas · 7 forks · Python · creado 2026-10-30 · último push 2026-11-09 · Apache-2.0 · topics: `aws`, `inference`, `llm-serving`, `megakernels`, `neuron`, `nki`, `openai-api`, `trainium` · visible en Trendshift (verificado vía GitHub API; README en `development`). Once días de repositorio, un solo modelo soportado y despliegue atado a una única instancia `trn2.48xlarge`.",
+        "accion_sugerida": "**leer** — la documentación de los megakernels y de la caché de prefijo se entiende sin acceso a Trainium.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:RunanywhereAI/trnrt",
+          "rel": "implements",
+          "dst": "concept:trainium-inference",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:RunanywhereAI/trnrt",
+          "rel": "solves",
+          "dst": "problem:cross-hardware-llm-serving",
+          "primera_mencion": "2026-09-11"
+        },
+        {
+          "src": "repo:RunanywhereAI/trnrt",
+          "rel": "uses",
+          "dst": "concept:gpu-kernels",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "runanywhereai-trnrt",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "expo/exact",
+      "url": "https://github.com/expo/exact",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Runtime de aplicaciones multiplataforma donde la interfaz se describe en Contract, un lenguaje declarativo, y la lógica se escribe en TypeScript o Rust. El compilador convierte la interfaz en un plan: en web es un módulo ES sobre un runtime de unos 20 KB que mueve el DOM real; en macOS, iOS y Linux lo ejecuta un runner en Rust, con un motor de maquetación que aplica reglas de CSS y dibujo nativo con AppKit, UIKit o un pintor en GPU. No hay webview ni puente de JavaScript en la interfaz, y no corre JavaScript de la aplicación antes del primer píxel. El README está escrito para que un agente lo use: da el prompt concreto para Claude Code y cuenta que un agente recién arrancado, en un clon limpio, completó una lista de tareas con pruebas pasando en web, macOS y simulador de iOS en unos 57 minutos, de los cuales 25 fueron las primeras compilaciones. Está en pre-1.0 y cambia a diario, sin estabilidad de API por diseño.",
+        "por_que_importa": "El interés no está en otra forma de escribir interfaces: está en que el ciclo de verificación sea parte del lenguaje. Ya hablamos del bucle de verificación el 2026-11-06, y este es un caso concreto: un contrato declarativo que el agente pasa en web, macOS y simulador de iOS convierte «lo he hecho» en algo comprobable, justo donde fallan las demos. El dato del README es ese, 57 minutos con pruebas en las tres plataformas. Sin la decisión de no meter webview no habría nada nativo que probar. Aviso: pre-1.0, ocho días de vida y cambios diarios.",
+        "madurez_senales": "1.387 estrellas · 29 forks · Rust · creado 2026-11-02 · último push 2026-11-10 · MIT · 24 incidencias abiertas · topics: ninguno · visible en Trendshift (verificado vía GitHub API; README en `main`). Ocho días de vida, pre-1.0 declarado y sin guía de migración.",
+        "accion_sugerida": "**vigilar** — la idea del contrato ejecutable es buena, pero pre-1.0 y con cambios diarios no es para montarlo encima.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:expo/exact",
+          "rel": "implements",
+          "dst": "concept:declarative-ui-contract",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:expo/exact",
+          "rel": "enables",
+          "dst": "concept:agent-driven-ui-development",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:expo/exact",
+          "rel": "relevant_to",
+          "dst": "concept:verification-loop",
+          "primera_mencion": "2026-11-06"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "expo-exact",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "homeassistant-ai/ha-mcp",
+      "url": "https://github.com/homeassistant-ai/ha-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Servidor MCP con 87 herramientas para configurar y automatizar Home Assistant desde Claude, ChatGPT u otros asistentes. Se instala como integración dentro del propio Home Assistant y corre en el mismo proceso, así que funciona igual en las cuatro formas de instalación del sistema. En el arranque se elige con qué cuenta actúa: un token de larga duración de tu propio usuario o, la opción que el README recomienda, una cuenta de administrador dedicada con acceso solo local. El acceso remoto por webhook y el acceso de red local vienen desactivados de fábrica, y mientras corre aparece un panel de administración en la barra lateral con las herramientas, los indicadores de funciones y las copias de seguridad.",
+        "por_que_importa": "Hasta ahora casi todo lo que se conectaba por MCP vivía en un editor o una terminal; esto lo mete en un sistema que abre cerraduras y enciende calefacciones. El protocolo ya lo cubrimos el 2026-09-21 y el cuello de botella de aprobaciones de agentes el 2026-11-05: aquí ambos se vuelven concretos. El README lo trata como tal: cuenta de administrador dedicada para que los cambios no salgan a tu nombre, acceso remoto por webhook y de red apagados de fábrica, y un panel para ver qué herramientas están activas. Ejemplo práctico de por qué el diseño de permisos importa más que la lista de herramientas.",
+        "madurez_senales": "6.217 estrellas · 302 forks · Python · creado 2025-09-14 · último push 2026-11-10 · MIT · 17 incidencias abiertas · topics: `ai`, `claude`, `home-assistant`, `home-automation`, `llm`, `mcp` · +31 hoy en Trending (verificado vía GitHub API; README en `master`). Versión 9.0.0 y cambio incompatible reciente: la escritura de YAML de configuración se movió a la rama beta.",
+        "accion_sugerida": "**leer** — la parte de creación de la cuenta y de permisos del arranque es lo que se copia a cualquier integración con consecuencias físicas.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:homeassistant-ai/ha-mcp",
+          "rel": "implements",
+          "dst": "concept:home-automation-mcp",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:homeassistant-ai/ha-mcp",
+          "rel": "uses",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:homeassistant-ai/ha-mcp",
+          "rel": "risk",
+          "dst": "problem:agent-approval-bottleneck",
+          "primera_mencion": "2026-11-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "homeassistant-ai-ha-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "opensandbox-group/OpenSandbox",
+      "url": "https://github.com/opensandbox-group/OpenSandbox",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(17.029 estrellas, último push 2026-11-10, Python) — runtime de sandboxes para agentes sobre Docker y Kubernetes, proyecto de la Agentic AI Foundation, con microVM Firecracker y bóveda de credenciales para no exponerlas al código que corre dentro — señales: https://github.com/opensandbox-group/OpenSandbox",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/opensandbox-group/OpenSandbox",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opensandbox-group-opensandbox",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(191.499 estrellas, último push 2026-11-06, Python) — repositorio público de skills de Anthropic que vuelve arriba de Trending sin cambios de código; sirve como referencia del formato que ya usan las skills de hoy — señales: https://github.com/anthropics/skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anthropics/skills",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(46.685 estrellas, último push 2026-11-10, Python) — directorio gestionado por Anthropic de plugins para Claude Code, con estructura fija por plugin y nombres inmutables para no romper instalaciones — señales: https://github.com/anthropics/claude-plugins-official",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anthropics/claude-plugins-official",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-claude-plugins-official",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "experientiallabs/experiential",
+      "url": "https://github.com/experientiallabs/experiential",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(15.680 estrellas, último push 2026-11-10, Python) — pasarela y enrutador abierto para flujos con agentes: una sola API compatible con OpenAI para modelos alojados, con clave propia o locales, con control de gasto por identidad y un enrutador que aprende del tráfico real — señales: https://github.com/experientiallabs/experiential",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/experientiallabs/experiential",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "experientiallabs-experiential",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "kuafuai/andee",
+      "url": "https://github.com/kuafuai/andee",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.244 estrellas, último push 2026-11-09, Kotlin) — agente que vive en el teléfono o el Mac y maneja cualquier aplicación como lo haría una persona, sin integraciones ni root, con memoria y contraseñas que no salen del dispositivo; su licencia no la identifica la API — señales: https://github.com/kuafuai/andee",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/kuafuai/andee",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kuafuai-andee",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "basketikun/infinite-canvas",
+      "url": "https://github.com/basketikun/infinite-canvas",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.140 estrellas, último push 2026-10-25, TypeScript) — lienzo infinito de creación de imágenes con generación, edición de referencias y agentes, en desarrollo y sin compatibilidad garantizada de datos — señales: https://github.com/basketikun/infinite-canvas",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/basketikun/infinite-canvas",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "basketikun-infinite-canvas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "ooolabdev/ooosplat",
+      "url": "https://github.com/ooolabdev/ooosplat",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.425 estrellas, último push 2026-10-30, Rust) — aplicación de escritorio que convierte vídeos e imágenes en splats gaussianos 3D en local, con FFmpeg, COLMAP y el entrenador empaquetados — señales: https://github.com/ooolabdev/ooosplat",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ooolabdev/ooosplat",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ooolabdev-ooosplat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "virattt/dexter",
+      "url": "https://github.com/virattt/dexter",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(27.807 estrellas, último push 2026-09-23, TypeScript) — agente autónomo de investigación financiera con planificación, datos de mercado en vivo y advertencia de que no sirve para invertir; sin licencia declarada — señales: https://github.com/virattt/dexter",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/virattt/dexter",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "virattt-dexter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

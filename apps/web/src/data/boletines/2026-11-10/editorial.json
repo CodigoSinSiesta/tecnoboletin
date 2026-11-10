@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-10",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Dieciséis tokens de memoria fija baten al contexto completo",
+  "posicionamiento": "Dos recortes de coste con la misma lógica: la memoria no se arregla metiendo más texto, se arregla aprendiendo un estado fijo de dieciséis tokens; y el trabajo de un agente no se paga entero al modelo caro. Entender y ejecutar pasan a tener precios distintos.",
+  "convergencia_stack_css": "Lo local-first entra por el índice: SAG-Wiki recupera sin embeddings ni llamadas al modelo y se ofrece como skill instalable, que es la pieza que faltaba para una bóveda de notas. Memorilla va al revés, con 80 GB de GPU, así que del stack interesa el criterio, no el despliegue.",
+  "cruzado_grafo": "Estrenan entrada plan-executor-split, latent-memory-tokens, trainium-inference, declarative-ui-contract y home-automation-mcp, sin mención previa. Lo que se refuerza son aristas viejas: enrutado por coste (2026-09-09), compresión de contexto (2026-08-08), recuperación sin vectores (2026-08-13) y bucle de verificación (2026-11-06).",
+  "tendencias_5_boletines": "Ayer el eje era el procedimiento verificable; hoy el acento se mueve al coste y a quién paga cada paso. La exigencia de declarar qué se sabe y qué no sigue ahí, aplicada ahora al gasto: qué modelo entiende, cuál ejecuta y cuántos tokens cuesta recordar.",
+  "alertas": [
+    "memorilla pide 80 GB de GPU para servir el ejemplo: el 84,33 % frente a 80,43 % sale del artículo, no de una réplica independiente.",
+    "SAG-Wiki está en la 0.2.6 con tres semanas de vida; nadie ha auditado su índice SAG2 fuera del repo.",
+    "expo/exact es pre-1.0 con cambios diarios: el contrato todavía no es estable y el dato de 57 minutos es del README.",
+    "shadcn/improve lleva dos meses sin commits; vuelve como método, no como novedad de código.",
+    "ha-mcp expone 87 herramientas sobre un sistema que abre cerraduras: el diseño de permisos pesa más que el catálogo."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Es la única pieza instalable hoy: índice local sin embeddings sobre una bóveda real. Verificar si el pasaje citado aguanta preguntas de varias fuentes."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "La forma del plan autocontenido, con criterios comprobables por comando, es lo trasladable al flujo de revisión del boletín."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "La idea de estado fijo merece seguimiento, pero con 80 GB de GPU no hay despliegue posible. Esperar variante con menos memoria."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Las decisiones de permisos sirven de referencia para cualquier MCP con efectos físicos, aunque no haya Home Assistant aquí."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
