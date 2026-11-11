@@ -1,0 +1,41 @@
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-hybridrobotics-supermimic", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-hybridrobotics-supermimic", "dst": "tema:hybridrobotics-supermimic", "rel": "trata", "added": "2026-11-11"}
+{"src": "repo:HybridRobotics/supermimic", "dst": "concept:differentiable-world-model", "rel": "implements", "added": "2026-11-11", "primera_mencion": null}
+{"src": "repo:HybridRobotics/supermimic", "dst": "concept:robotics-rl", "rel": "extends", "added": "2026-11-11", "primera_mencion": null}
+{"src": "repo:HybridRobotics/supermimic", "dst": "concept:compute-amortization", "rel": "enables", "added": "2026-11-11", "primera_mencion": null}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-googlechrome-modern-web-guidance", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-googlechrome-modern-web-guidance", "dst": "tema:googlechrome-modern-web-guidance", "rel": "trata", "added": "2026-11-11"}
+{"src": "repo:GoogleChrome/modern-web-guidance", "dst": "concept:web-platform-guidance", "rel": "implements", "added": "2026-11-11", "primera_mencion": null}
+{"src": "repo:GoogleChrome/modern-web-guidance", "dst": "concept:web-platform-modernization", "rel": "enables", "added": "2026-11-11", "primera_mencion": null}
+{"src": "repo:GoogleChrome/modern-web-guidance", "dst": "concept:agent-skills-standard", "rel": "integrates", "added": "2026-11-11", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-conorbronsdon-avoid-ai-writing", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-conorbronsdon-avoid-ai-writing", "dst": "tema:conorbronsdon-avoid-ai-writing", "rel": "trata", "added": "2026-11-11"}
+{"src": "repo:conorbronsdon/avoid-ai-writing", "dst": "concept:de-ai-writing-skill", "rel": "implements", "added": "2026-11-11", "primera_mencion": "2026-08-29"}
+{"src": "repo:conorbronsdon/avoid-ai-writing", "dst": "concept:ai-text-humanization", "rel": "extends", "added": "2026-11-11", "primera_mencion": "2026-09-04"}
+{"src": "repo:conorbronsdon/avoid-ai-writing", "dst": "concept:agent-skills-standard", "rel": "relevant_to", "added": "2026-11-11", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-tencent-weknora", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-tencent-weknora", "dst": "tema:tencent-weknora", "rel": "trata", "added": "2026-11-11"}
+{"src": "repo:Tencent/WeKnora", "dst": "repo:infiniflow/ragflow", "rel": "competes_with", "added": "2026-11-11", "primera_mencion": "2026-08-12"}
+{"src": "repo:Tencent/WeKnora", "dst": "concept:enterprise-knowledge-platform", "rel": "implements", "added": "2026-11-11", "primera_mencion": "2026-08-12"}
+{"src": "repo:Tencent/WeKnora", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-11", "primera_mencion": "2026-08-12"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-imbad0202-academic-research-skills", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-imbad0202-academic-research-skills", "dst": "tema:imbad0202-academic-research-skills", "rel": "trata", "added": "2026-11-11"}
+{"src": "repo:Imbad0202/academic-research-skills", "dst": "concept:human-in-the-loop", "rel": "implements", "added": "2026-11-11", "primera_mencion": "2026-09-03"}
+{"src": "repo:Imbad0202/academic-research-skills", "dst": "problem:citation-hallucination", "rel": "solves", "added": "2026-11-11", "primera_mencion": "2026-09-03"}
+{"src": "repo:Imbad0202/academic-research-skills", "dst": "problem:noncommercial-license", "rel": "risk", "added": "2026-11-11", "primera_mencion": "2026-09-03"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-ruvnet-ruview", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-ruvnet-ruview", "dst": "tema:ruvnet-ruview", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-sherlock-project-sherlock", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-sherlock-project-sherlock", "dst": "tema:sherlock-project-sherlock", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-microsoft-procexp-mac", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-microsoft-procexp-mac", "dst": "tema:microsoft-procexp-mac", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-a-ghorbani-pocketpal-ai", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-a-ghorbani-pocketpal-ai", "dst": "tema:a-ghorbani-pocketpal-ai", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-lee-xeo-claude-cage", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-lee-xeo-claude-cage", "dst": "tema:lee-xeo-claude-cage", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-zhulinsen-daily-stock-analysis", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-zhulinsen-daily-stock-analysis", "dst": "tema:zhulinsen-daily-stock-analysis", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-ashishpatel26-500-ai-agents-projects", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-ashishpatel26-500-ai-agents-projects", "dst": "tema:ashishpatel26-500-ai-agents-projects", "rel": "trata", "added": "2026-11-11"}
+{"src": "boletin:2026-11-11", "dst": "item:https-github-com-anefzaoui-misterdownloadmanager", "rel": "menciona", "added": "2026-11-11"}
+{"src": "item:https-github-com-anefzaoui-misterdownloadmanager", "dst": "tema:anefzaoui-misterdownloadmanager", "rel": "trata", "added": "2026-11-11"}

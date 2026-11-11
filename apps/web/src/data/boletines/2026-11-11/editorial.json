@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "date": "2026-11-11",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Las skills pasan de prompt a conocimiento curado y verificable",
+  "posicionamiento": "El hilo del día no es un modelo nuevo, sino el material que se le mete al agente: una guía web firmada por cuatro navegadores, una tabla de muletillas ejecutable y un flujo académico con puertas de integridad. En los tres, el conocimiento deja de ser prompt y pasa a ser fuente curada que se carga a demanda.",
+  "convergencia_stack_css": "Dos piezas encajan con el stack local-first: WeKnora junta recuperación, wiki y grafo sobre el mismo corpus con MCP, y avoid-ai-writing es una skill portable que Hermes carga tal cual. Memoria y grafo no traen novedad fuerte hoy; lo más cercano es WeKnora, y con 921 incidencias abiertas.",
+  "cruzado_grafo": "Cuatro de los cinco hallazgos reabren nodos viejos: WeKnora vuelve a competir con RAGFlow desde el 2026-08-12, y avoid-ai-writing reincide en de-ai-writing-skill (2026-08-29) y humanización (2026-09-04). agent-skills-standard (2026-09-13) es el nodo que más se refuerza. supermimic entra sin primera_mencion: mundo diferenciable y amortización de cómputo son nuevos.",
+  "tendencias_5_boletines": "Engancha con las dos jornadas previas: si ayer el ahorro venía de no meter más texto en la memoria, hoy el conocimiento entra curado y a demanda, no como prompt largo. Las puertas del flujo académico siguen la línea del 2026-11-09: vale el procedimiento verificable, no la herramienta.",
+  "alertas": [
+    "WeKnora: la API devuelve NOASSERTION en licencia (MIT en el fichero, con componentes Apache-2.0); leerla antes de desplegar.",
+    "WeKnora: 921 incidencias abiertas para un proyecto joven; no es producto terminado.",
+    "academic-research-skills va con CC BY-NC 4.0: uso comercial excluido.",
+    "avoid-ai-writing: los 112 reemplazos están calibrados para inglés y no se traducen solos.",
+    "Las tres horas de una GPU en supermimic son la cifra del artículo, no verificadas de forma independiente.",
+    "Jornada floja en nombres nuevos: la mayoría de los 65 repos de Trending ya estaban en el boletín de ayer."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Instalar modern-web-guidance y pasar el rastreador de patrones obsoletos por un proyecto propio da una medida real de si la guía sirve o solo suena bien."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "La arquitectura de severidades, tope de pasadas y detector en CI se puede copiar para una guía de estilo en español, sin tocar la tabla de reemplazos inglesa."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "WeKnora apunta justo al grafo local-first, pero licencia ambigua y 921 incidencias abiertas lo dejan en observación antes de desplegarlo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "El claim de cómputo merece seguimiento solo si el modelo del mundo diferenciable se replica fuera del G1; por ahora es un resultado de paper con código."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Las puertas de integridad y las anclas de cita encajan con el flujo de revisión de artículos del boletín y se pueden reutilizar tal cual."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

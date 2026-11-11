@@ -1,0 +1,430 @@
+{
+  "version": 2,
+  "date": "2026-11-11",
+  "boletin_origen": "2026-11-11-trending.md",
+  "resumen_ejecutivo": "- El día lo ganan las skills que meten conocimiento curado en el agente: el manual de la plataforma web que firman Chrome, Edge, Firefox y MDN, una tabla de muletillas de la IA que se puede ejecutar y un pipeline académico con puertas de integridad.\n- En robótica, un modelo del mundo diferenciable dentro del bucle de entrenamiento cambia la factura del entrenamiento: horas de una GPU frente a días de un clúster, según el artículo que acompaña al código.\n- Jornada floja en nombres nuevos: de los 65 repositorios únicos en Trending, la mayoría ya estaban en el boletín de ayer, y dos de los hallazgos de hoy vuelven a la lista tras dos y tres meses con cifras nuevas y lo digo en su tarjeta.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (65 repositorios únicos), GitHub API (15 repositorios verificados, README leído en la rama por defecto de cada hallazgo). Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "HybridRobotics/supermimic",
+      "url": "https://github.com/HybridRobotics/supermimic",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "implementación del método del artículo arXiv 2610.28480 para entrenar un rastreador de movimiento de cuerpo completo en un humanoide. En lugar del aprendizaje por refuerzo sin modelo que se usa hoy —especialistas por movimiento destilados con pérdida, o una sola política a base de cómputo de clúster—, ajusta un modelo del mundo diferenciable de la dinámica compartida a partir de transiciones registradas en un simulador de cuerpos rígidos. El modelo y la política se entrenan en el mismo bucle, y la retropropagación en el tiempo sobre rollouts imaginados cortos da gradientes analíticos a la política. Se monta sobre mjlab, trae dos tareas para el robot G1 (coordenadas generalizadas y coordenadas maximales) y necesita un segundo repositorio clonado al lado.",
+        "por_que_importa": "El cuello de botella del control de humanoides era el cómputo, y esto lo ataca cambiando qué se aprende: la dinámica se ajusta una vez en un modelo del mundo diferenciable —derivable, para sacar gradientes— y luego se imagina barato, sin repetir episodios por cada movimiento. El artículo reporta tres horas en una sola GPU frente al clúster o a un especialista destilado por movimiento. Para desarrollo lo interesante no es el robot G1: es que un modelo del mundo pasa a ser infraestructura de entrenamiento, con la misma forma que una caché. Que luego se transfiera a un G1 físico es lo que separa esto de otro resultado de simulador.",
+        "madurez_senales": "805 estrellas · 56 forks · Python · creado 2026-11-10 · último push 2026-11-11 · Apache-2.0 · 13 incidencias abiertas · sin topics · primera posición en Trendshift (verificado vía GitHub API; README en `main`). Cifras del artículo que acompaña al código: tres horas en una sola GPU superan el retorno de una referencia entrenada siete días en 128 GPUs, con más de mil veces menos horas de GPU; falla en 25 de 129.514 movimientos frente a 179 de la referencia, y tras 9,8 horas en dos GPUs llega a cero fallos. Exige GPU con CUDA y no publica puntos de control entrenados.",
+        "accion_sugerida": "**leer** — la configuración de las dos tareas y el bucle de entrenamiento son lo reutilizable aunque no haya un humanoide a mano.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:HybridRobotics/supermimic",
+          "rel": "implements",
+          "dst": "concept:differentiable-world-model",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:HybridRobotics/supermimic",
+          "rel": "extends",
+          "dst": "concept:robotics-rl",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:HybridRobotics/supermimic",
+          "rel": "enables",
+          "dst": "concept:compute-amortization",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hybridrobotics-supermimic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "GoogleChrome/modern-web-guidance",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "conjunto de skills que meten en el agente conocimiento de la plataforma web, buenas prácticas y datos de compatibilidad de navegador para que deje de generar soluciones heredadas donde ya hay una función nativa. Se instala con un asistente de npx y también se puede usar sin instalar, con tres subcomandos: buscar una guía, recuperarla por identificador y rastrear un código en busca de patrones obsoletos. Cubre 250 funciones repartidas en seis áreas —experiencia de usuario, maquetación con CSS, rendimiento, formularios, accesibilidad e IA integrada en el navegador— y poda el contenido con evaluaciones para no gastar contexto en lo que el modelo ya sabe. Lo custodian los equipos de Chrome, Edge, Firefox y MDN junto a la comunidad.",
+        "por_que_importa": "Ataca una causa poco discutida: el agente escribe código de hace cinco años porque su material de entrenamiento es de hace cinco años. La respuesta no es un prompt más largo, es una fuente curada que entra en el contexto solo cuando hace falta, y un subcomando que rastrea el código en busca de patrones obsoletos y lo convierte en lista de tareas comprobables —justo lo delegable. Se engancha al estándar de skills (instrucciones que el agente carga a demanda) que ya cubrimos el 2026-09-13. Y el detalle a seguir es la gobernanza: Chrome, Edge, Firefox y MDN mantienen el mismo corpus; quien controla la guía decide qué considera correcto el agente.",
+        "madurez_senales": "3.577 estrellas · 121 forks · sin lenguaje principal en la API · creado 2026-03-23 · último push 2026-11-10 · Apache-2.0 · 1 incidencia abierta · topics: ninguno · cuarta posición en Trendshift (verificado vía GitHub API; README en `main`). Documentación propia en developer.chrome.com y un panel de evaluaciones público.",
+        "accion_sugerida": "**probar** — lanzar el rastreo de patrones heredados sobre un repositorio propio cuesta minutos y da la medida de cuánto código viejo genera el agente.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:GoogleChrome/modern-web-guidance",
+          "rel": "implements",
+          "dst": "concept:web-platform-guidance",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:GoogleChrome/modern-web-guidance",
+          "rel": "enables",
+          "dst": "concept:web-platform-modernization",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:GoogleChrome/modern-web-guidance",
+          "rel": "integrates",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googlechrome-modern-web-guidance",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "conorbronsdon/avoid-ai-writing",
+      "url": "https://github.com/conorbronsdon/avoid-ai-writing",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill portable para Claude Code, Codex, OpenClaw, Hermes y cualquier agente compatible con el formato de skills que audita y reescribe texto para quitarle los patrones de escritura de IA. Tiene tres modos —reescribir, detectar sin tocar y editar un fichero en sitio—, un límite configurable de pasadas de edición, perfiles de voz (casual, profesional, técnico, cálido, directo) y un detector propio con puntuación que se puede usar como puerta en integración continua, por línea de comandos o por MCP. Las reglas no son impresiones: hay una tabla de 112 reemplazos en tres niveles —de «utilizar» a «usar», por ejemplo— y 74 categorías de patrones con contador verificado en CI. Avisa de que las reglas están calibradas para inglés y remite a adaptaciones de la comunidad para otros idiomas.",
+        "por_que_importa": "Convierte el estilo en algo contable: cada palabra marcada tiene sustituto concreto (112 reemplazos en tres niveles de severidad), cada nivel pesa distinto y el resultado se mide en CI. Ya hablamos de la idea el 2026-08-29 y volvimos el 2026-09-04; esto es la implementación que la vuelve operativa, con tres modos (reescribir, detectar, editar en sitio) y detector como puerta. Para un boletín en español lo aprovechable no es la lista —calibrada para inglés, no se traduce sola— sino la arquitectura: severidades, tope de pasadas y auditoría, aplicable tal cual a una guía de estilo propia.",
+        "madurez_senales": "5.570 estrellas · 478 forks · JavaScript · creado 2026-03-06 · último push 2026-11-11 · MIT · 19 incidencias abiertas · topics: `ai-writing`, `claude`, `claude-code`, `llm`, `prompt-engineering`, `skill`, `writing` · +37 hoy en Trending (verificado vía GitHub API; README en `main`). Publica el detector como paquete de npm y mantiene una batería de pruebas del propio detector en acciones.",
+        "accion_sugerida": "**probar** — pasar el modo de detección por un texto propio y comparar sus marcas con lo que uno cambiaría a mano es la forma más rápida de ver si la tabla acierta.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:conorbronsdon/avoid-ai-writing",
+          "rel": "implements",
+          "dst": "concept:de-ai-writing-skill",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:conorbronsdon/avoid-ai-writing",
+          "rel": "extends",
+          "dst": "concept:ai-text-humanization",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "repo:conorbronsdon/avoid-ai-writing",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "conorbronsdon-avoid-ai-writing",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Tencent/WeKnora",
+      "url": "https://github.com/Tencent/WeKnora",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma de conocimiento escrita en Go que reúne tres modos sobre los mismos corpus: recuperación aumentada con búsqueda híbrida, análisis multimodal de documentos y citas; un agente que ejecuta tareas en varios pasos con skills dentro de contenedores desechables, navegador local, herramientas MCP y memoria; y una wiki que organiza los documentos con grafo de conocimiento y posibilidad de revertir cambios. Incluye 29 proveedores de modelos, conectores para Feishu, Confluence, GitLab, Notion o Telegram, permisos por espacio de trabajo y registro de auditoría, y se puede desplegar en local o en nube privada con el almacenamiento y la base vectorial intercambiables.",
+        "por_que_importa": "La diferencia frente a una pila de recuperación al uso no es el troceado: mirar, razonar y organizar comparten el mismo corpus, así que la wiki se regenera desde lo que el agente ya leyó y no hay buscador por un lado y notas por otro. Competía con RAGFlow cuando lo cubrimos el 2026-08-12 y sigue en la misma apuesta. El detalle incómodo: 921 incidencias abiertas y una licencia que la API devuelve como NOASSERTION (MIT en el fichero, con componentes Apache-2.0). Proyecto grande y joven, no producto terminado: conviene leer la licencia con lupa antes de desplegarlo.",
+        "madurez_senales": "37.161 estrellas · 5.140 forks · Go · creado 2025-07-22 · último push 2026-11-09 · licencia MIT en el fichero LICENSE, con componentes de terceros en Apache-2.0, aunque la API devuelve `NOASSERTION` · 921 incidencias abiertas · topics: `agent`, `agentic`, `embeddings`, `golang`, `knowledge-base`, `llm`, `multi-tenant`, `ollama`, `rag` · +117 hoy en Trending (verificado vía GitHub API; README en `main`). Versión 0.9.0, todavía anterior a la 1.0. Vuelve a la lista tras dos meses en el radar, cuando tenía 24.611 estrellas.",
+        "accion_sugerida": "**explorar** — montarlo en local con un corpus propio y comparar la wiki generada con la recuperación clásica es la prueba que decide si aporta algo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent/WeKnora",
+          "rel": "competes_with",
+          "dst": "repo:infiniflow/ragflow",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:Tencent/WeKnora",
+          "rel": "implements",
+          "dst": "concept:enterprise-knowledge-platform",
+          "primera_mencion": "2026-08-12"
+        },
+        {
+          "src": "repo:Tencent/WeKnora",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-08-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-weknora",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Imbad0202/academic-research-skills",
+      "url": "https://github.com/Imbad0202/academic-research-skills",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "suite de skills para Claude Code que cubre el ciclo completo de un artículo —investigar, escribir, revisar, corregir y cerrar— y que se detiene a pedir confirmación en cada etapa en lugar de encadenarlas sola. Las partes interesantes son las puertas: una lista de siete modos de fallo típicos de la investigación automática que bloquea el avance, anclas de localización en cada cita y una auditoría opcional que recupera la fuente citada y juzga si de verdad sostiene la afirmación. Añade un modo de planificación por diálogo socrático para la estructura del texto, calibración de estilo a partir de trabajos previos y distribución para otros agentes.",
+        "por_que_importa": "La discusión sobre IA y escritura académica suele quedarse en detectar o esconder; aquí se toma la otra vía: comprobar. Convertir «verifica las citas» en una puerta que impide entregar el texto es distinto de pedirlo en el prompt, y el diseño asume que el agente falla de formas previsibles: siete modos listados, anclas en cada cita y auditoría que recupera la fuente. Ya tratamos la cita inventada el 2026-09-03; esto la convierte en flujo con frenos. Sirve para cualquier texto con fuentes, no solo papers. Ojo: CC BY-NC 4.0, uso comercial excluido.",
+        "madurez_senales": "56.415 estrellas · 4.293 forks · Python · creado 2026-02-26 · último push 2026-11-11 · licencia CC BY-NC 4.0 según el README, que la API no identifica (`NOASSERTION`) y que excluye el uso comercial · 40 incidencias abiertas · topics: `academic-pipeline`, `academic-writing`, `claude-code`, `literature-review`, `peer-review` · +225 hoy en Trending (verificado vía GitHub API; README en `main`). Versión 3.24.2; vuelve a la lista tras dos meses en el radar, cuando tenía 45.700 estrellas. El README cita una auditoría de 111 millones de referencias en 2,5 millones de artículos que estima 146.932 citas inventadas solo en 2025.",
+        "accion_sugerida": "**leer** — el documento de modos de fallo y la puerta de integridad se pueden trasladar a cualquier pipeline de escritura con fuentes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Imbad0202/academic-research-skills",
+          "rel": "implements",
+          "dst": "concept:human-in-the-loop",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:Imbad0202/academic-research-skills",
+          "rel": "solves",
+          "dst": "problem:citation-hallucination",
+          "primera_mencion": "2026-09-03"
+        },
+        {
+          "src": "repo:Imbad0202/academic-research-skills",
+          "rel": "risk",
+          "dst": "problem:noncommercial-license",
+          "primera_mencion": "2026-09-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "imbad0202-academic-research-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "ruvnet/RuView",
+      "url": "https://github.com/ruvnet/RuView",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(103.962 estrellas, último push 2026-11-11, Rust) — sensor wifi con ESP32 que estima presencia, respiración y postura sin cámara; vuelve tres meses después con un arnés para agentes por MCP, más de 3.600 instantáneas de integración continua y la precisión aún sin validar con datos reales — señales: https://github.com/ruvnet/RuView",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ruvnet/RuView",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ruvnet-ruview",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(109.508 estrellas, último push 2026-11-11, Python) — busca un mismo nombre de usuario en más de 400 redes sociales desde la línea de comandos, con +2.393 estrellas hoy y sin release nueva desde septiembre — señales: https://github.com/sherlock-project/sherlock",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/sherlock-project/sherlock",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "sherlock-project-sherlock",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "microsoft/Procexp-Mac",
+      "url": "https://github.com/microsoft/Procexp-Mac",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(374 estrellas, último push 2026-11-10, Swift) — reescritura nativa para macOS del explorador de procesos de Sysinternals, con árbol de procesos, identificadores y gráficas de sistema, sin licencia declarada en la API — señales: https://github.com/microsoft/Procexp-Mac",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/microsoft/Procexp-Mac",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-procexp-mac",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "a-ghorbani/pocketpal-ai",
+      "url": "https://github.com/a-ghorbani/pocketpal-ai",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.204 estrellas, último push 2026-11-11, TypeScript) — aplicación que carga modelos de lenguaje directamente en el teléfono, sin servidor intermedio, y sigue recibiendo commits dos años después de su creación — señales: https://github.com/a-ghorbani/pocketpal-ai",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/a-ghorbani/pocketpal-ai",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "a-ghorbani-pocketpal-ai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Lee-xeo/Claude-Cage",
+      "url": "https://github.com/Lee-xeo/Claude-Cage",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.721 estrellas, último push 2026-11-11, Go) — máquina virtual aislada con proxy y huella de navegador propias para usar Claude desde redes restringidas, una carrera contra los términos de uso más que una herramienta para recomendar — señales: https://github.com/Lee-xeo/Claude-Cage",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Lee-xeo/Claude-Cage",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lee-xeo-claude-cage",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(69.654 estrellas, último push 2026-11-10, Python) — sistema de análisis bursátil con modelos de lenguaje, en chino y con documentación mínima; tiene casi un fork por estrella, señal de uso como plantilla más que de adopción real — señales: https://github.com/ZhuLinsen/daily_stock_analysis",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ZhuLinsen/daily_stock_analysis",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhulinsen-daily-stock-analysis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "ashishpatel26/500-AI-Agents-Projects",
+      "url": "https://github.com/ashishpatel26/500-AI-Agents-Projects",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(39.679 estrellas, último push 2026-11-06, Python) — índice de casos de uso de agentes por sector, útil como listado y nada más — señales: https://github.com/ashishpatel26/500-AI-Agents-Projects",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ashishpatel26/500-AI-Agents-Projects",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ashishpatel26-500-ai-agents-projects",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "anefzaoui/misterdownloadmanager",
+      "url": "https://github.com/anefzaoui/misterdownloadmanager",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.015 estrellas, último push 2026-11-11, Rust) — gestor de descargas de escritorio escrito desde cero en Rust, sin relación con el hilo de agentes del día — señales: https://github.com/anefzaoui/misterdownloadmanager",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/anefzaoui/misterdownloadmanager",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anefzaoui-misterdownloadmanager",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 13,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 8,
+    "llm_backend": "none",
+    "llm_polish_notes": "hermes no disponible: 'hermes --version' fallo: Command '['/home/ibid/.local/bin/hermes', '--version']' timed out after 15 seconds",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
