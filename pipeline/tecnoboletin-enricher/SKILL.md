@@ -17,6 +17,13 @@ Workflow para auditar, enriquecer, validar y publicar los boletines de tendencia
 - El rebase va con `--autostash` para que cambios ajenos al boletín no bloqueen la publicación, y el `push` tiene un reintento acotado (fetch + rebase + push) por si el remoto se mueve entre el fetch y el push.
 - Si el árbol acumula trabajo sin commitear ajeno al cron, commitearlo o sacarlo del checkout: un árbol sucio crónico es la causa típica de fallos repetidos en días consecutivos.
 
+## Backend LLM: por qué se degrada el enriquecido
+
+- `hermes --version` **no es un sondeo barato**: imprime el estado de actualizaciones y, cuando caduca su caché de 6 h, consulta la red. Con un timeout de 15 s se quedaba colgado y `hermes_available()` devolvía "no disponible", lo que degradaba el día entero a `--llm none` (sin pulido ni crítica) y, en `generate_editorial.py`, abortaba la generación del editorial.
+- El sondeo tolera ahora un timeout de 60 s y, si expira, deja pasar la ejecución: la llamada real (`hermes -z`, 240 s) es la que decide. Un stall del chequeo de versiones no debe apagar la capa editorial.
+- `run.sh` reintenta el editorial 2 veces (fallo transitorio típico); si aun así falla, el cron publica el día sin síntesis y lo dice explícitamente en el mensaje, en vez de abortar y dejar el día sin commit ni push.
+- Señal de diagnóstico: `stats.llm_backend='none'` o `stats.critica_lentes_aplicada=false` en el `enriched.json` del día, con el motivo en `stats.critica_notes`.
+
 ## Fail-closed
 
 - Extraer del Markdown original antes de confiar en `enriched.json`; el JSON publicado permite detectar síntomas, no distinguir por sí solo un fallo del parser de un campo que nunca estuvo en la fuente.

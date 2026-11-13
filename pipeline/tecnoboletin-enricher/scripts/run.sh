@@ -73,18 +73,22 @@ echo "[4/6] editorial.json..."
 if [[ -f "${OLD_EDITORIAL}" ]]; then
   python3 "${SKILL_DIR}/scripts/generate_editorial.py" --date "${DATE}" --carry-forward "${OLD_EDITORIAL}" --out "${EDITORIAL_JSON}"
 else
-  # Generacion nueva vale la pena intentarla pero NO debe tumbar el pipeline
-  # completo si falla (set -e esta activo) -- el hallazgo/por_que_importa ya
-  # persistido en FINAL_JSON es el contenido central; el editorial es una
-  # capa de sintesis adicional. Si falla, se loguea y la pagina renderiza
-  # sin seccion editorial, igual que el comportamiento original.
+  # Generacion nueva: 2 intentos. El fallo tipico es transitorio (backend LLM
+  # ocupado o `hermes --version` esperando el chequeo de actualizaciones), y un
+  # solo intento dejaba el dia sin editorial y sin publicar.
   set +e
-  python3 "${SKILL_DIR}/scripts/generate_editorial.py" --date "${DATE}" --enriched "${FINAL_JSON}" \
-    --repo-data-dir "${REPO_DATA_DIR}" --llm "${LLM_BACKEND}" --work-dir "${WORK_DIR}" --out "${EDITORIAL_JSON}"
-  EDITORIAL_STATUS=$?
+  EDITORIAL_STATUS=1
+  for ATTEMPT in 1 2; do
+    python3 "${SKILL_DIR}/scripts/generate_editorial.py" --date "${DATE}" --enriched "${FINAL_JSON}" \
+      --repo-data-dir "${REPO_DATA_DIR}" --llm "${LLM_BACKEND}" --work-dir "${WORK_DIR}" --out "${EDITORIAL_JSON}"
+    EDITORIAL_STATUS=$?
+    [[ ${EDITORIAL_STATUS} -eq 0 ]] && break
+    echo "  intento ${ATTEMPT}/2 de editorial.json fallo (exit ${EDITORIAL_STATUS})." >&2
+    [[ ${ATTEMPT} -eq 1 ]] && sleep 20
+  done
   set -e
   if [[ ${EDITORIAL_STATUS} -ne 0 ]]; then
-    echo "  AVISO: generacion de editorial.json fallo (exit ${EDITORIAL_STATUS}) -- continuando sin seccion editorial." >&2
+    echo "  AVISO: generacion de editorial.json fallo tras 2 intentos (exit ${EDITORIAL_STATUS}) -- continuando sin seccion editorial." >&2
     rm -f "${EDITORIAL_JSON}"
   fi
 fi

@@ -46,12 +46,22 @@ def find_hermes() -> Path | None:
 
 
 def hermes_available() -> tuple[bool, str]:
-    """Devuelve (disponible, motivo). No asume -- si no esta, dice por que."""
+    """Devuelve (disponible, motivo). No asume -- si no esta, dice por que.
+
+    `hermes --version` no es una comprobacion barata: imprime el estado de
+    actualizaciones y, cuando la cache de 6h caduca, hace una consulta de red
+    que puede tardar mas que cualquier timeout razonable. Se le da margen y,
+    si aun asi no responde, se asume que el binario esta y se deja que la
+    llamada real (`hermes -z`, timeout 240s) decida: un stall del chequeo de
+    updates no debe degradar el dia entero a `--llm none`.
+    """
     binpath = find_hermes()
     if not binpath:
         return False, "binario 'hermes' no encontrado (probado ~/.local/bin/hermes y PATH)"
     try:
-        proc = subprocess.run([str(binpath), "--version"], capture_output=True, text=True, timeout=15)
+        proc = subprocess.run([str(binpath), "--version"], capture_output=True, text=True, timeout=60)
+    except subprocess.TimeoutExpired:
+        return True, "'hermes --version' no respondio en 60s (probable chequeo de actualizaciones); se intenta el backend real"
     except Exception as exc:
         return False, f"'hermes --version' fallo: {exc}"
     if proc.returncode != 0:
