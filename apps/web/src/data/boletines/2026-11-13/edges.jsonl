@@ -1,0 +1,38 @@
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-vercel-labs-ui", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-vercel-labs-ui", "dst": "tema:vercel-labs-ui", "rel": "trata", "added": "2026-11-13"}
+{"src": "repo:vercel-labs/ui", "dst": "concept:agent-native-design-system", "rel": "implements", "added": "2026-11-13", "primera_mencion": "2026-11-07"}
+{"src": "repo:vercel-labs/ui", "dst": "concept:agent-skills-standard", "rel": "extends", "added": "2026-11-13", "primera_mencion": "2026-09-13"}
+{"src": "repo:vercel-labs/ui", "dst": "problem:agent-design-system-drift", "rel": "relevant_to", "added": "2026-11-13", "primera_mencion": "2026-09-15"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-nvidia-skillevaluator", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-nvidia-skillevaluator", "dst": "tema:nvidia-skillevaluator", "rel": "trata", "added": "2026-11-13"}
+{"src": "repo:NVIDIA/SkillEvaluator", "dst": "concept:agent-skills-evaluation", "rel": "implements", "added": "2026-11-13", "primera_mencion": "2026-08-14"}
+{"src": "repo:NVIDIA/SkillEvaluator", "dst": "repo:NVIDIA/SkillSpector", "rel": "integrates", "added": "2026-11-13", "primera_mencion": "2026-09-05"}
+{"src": "repo:NVIDIA/SkillEvaluator", "dst": "concept:agent-skill-security-scanner", "rel": "relevant_to", "added": "2026-11-13", "primera_mencion": "2026-09-05"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-hyperionaidev-smolmaxxing", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-hyperionaidev-smolmaxxing", "dst": "tema:hyperionaidev-smolmaxxing", "rel": "trata", "added": "2026-11-13"}
+{"src": "repo:hyperionaidev/smolmaxxing", "dst": "concept:moe-edge-inference", "rel": "implements", "added": "2026-11-13", "primera_mencion": "2026-10-04"}
+{"src": "repo:hyperionaidev/smolmaxxing", "dst": "tool:llama.cpp", "rel": "uses", "added": "2026-11-13", "primera_mencion": "2026-08-17"}
+{"src": "repo:hyperionaidev/smolmaxxing", "dst": "technique:moe-expert-offload", "rel": "extends", "added": "2026-11-13", "primera_mencion": "2026-09-10"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-copilotkit-openbot", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-copilotkit-openbot", "dst": "tema:copilotkit-openbot", "rel": "trata", "added": "2026-11-13"}
+{"src": "repo:CopilotKit/openbot", "dst": "concept:ag-ui-runtime", "rel": "implements", "added": "2026-11-13", "primera_mencion": "2026-08-20"}
+{"src": "repo:CopilotKit/openbot", "dst": "concept:approval-gate-pattern", "rel": "implements", "added": "2026-11-13", "primera_mencion": "2026-08-20"}
+{"src": "repo:CopilotKit/openbot", "dst": "concept:agent-policy-governance", "rel": "relevant_to", "added": "2026-11-13", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-tailscale-tailcat", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-tailscale-tailcat", "dst": "tema:tailscale-tailcat", "rel": "trata", "added": "2026-11-13"}
+{"src": "repo:tailscale/tailcat", "dst": "concept:p2p-encrypted-tunnel", "rel": "implements", "added": "2026-11-13", "primera_mencion": "2026-08-27"}
+{"src": "repo:tailscale/tailcat", "dst": "concept:local-first-remote-execution", "rel": "relevant_to", "added": "2026-11-13", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-mksglu-context-mode", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-mksglu-context-mode", "dst": "tema:mksglu-context-mode", "rel": "trata", "added": "2026-11-13"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-nvidia-skillspector", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-nvidia-skillspector", "dst": "tema:nvidia-skillspector", "rel": "trata", "added": "2026-11-13"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-purpledoubled-locally-uncensored", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-purpledoubled-locally-uncensored", "dst": "tema:purpledoubled-locally-uncensored", "rel": "trata", "added": "2026-11-13"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-shanliuling-dsh-image-gen", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-shanliuling-dsh-image-gen", "dst": "tema:shanliuling-dsh-image-gen", "rel": "trata", "added": "2026-11-13"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-adewaskar-jarvis", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-adewaskar-jarvis", "dst": "tema:adewaskar-jarvis", "rel": "trata", "added": "2026-11-13"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-oaustegard-claude-skills", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-oaustegard-claude-skills", "dst": "tema:oaustegard-claude-skills", "rel": "trata", "added": "2026-11-13"}
+{"src": "boletin:2026-11-13", "dst": "item:https-github-com-simpsoka-zigzag", "rel": "menciona", "added": "2026-11-13"}
+{"src": "item:https-github-com-simpsoka-zigzag", "dst": "tema:simpsoka-zigzag", "rel": "trata", "added": "2026-11-13"}

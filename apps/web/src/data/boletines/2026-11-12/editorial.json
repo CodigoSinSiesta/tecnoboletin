@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-12",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "AWS publica el emulador local de su propia nube",
+  "posicionamiento": "La firma del sustituto importa más que el sustituto: si AWS publica el emulador local de sus propias interfaces, cambia la referencia de comportamiento. El resto del día mueve ese mismo límite: Edge0 saca expertos a disco, Codex Security valida antes de avisar y LoopForge guarda el procedimiento con compuertas.",
+  "convergencia_stack_css": "El stack local-first tiene hoy dos roces y ningún acierto directo: Edge0 empuja la inferencia local al disco, la misma pregunta que se hace Ollama cuando el modelo no cabe, y el emulador de AWS permite probar sin cuenta ni red. Codex Security va al revés: su acceso pasa por su nube.",
+  "cruzado_grafo": "El grafo estrena dos aristas sin fecha previa: binary-translation, que entra con Stela, y la competencia con LocalStack, que solo aparece hoy al firmar AWS el emulador. Lo demás refuerza nodos ya fechados: ssd-expert-offload vuelve desde el 2026-10-04 y approval-gate-pattern desde el 2026-09-04.",
+  "tendencias_5_boletines": "Las dos entradas previas hablaban de no gastar recursos en lo que no rinde: memoria de dieciséis tokens y trabajo repartido por precio. Hoy el mismo criterio se aplica al hardware y a la confianza: expertos que se quedan en disco, hallazgos que no se publican sin validar. La continuidad es de criterio, no de tema.",
+  "alertas": [
+    "Edge0 promete cifras de velocidad que no se han reproducido; leer sus puntos de referencia antes de citarlas.",
+    "El emulador de AWS trae telemetría activada y su documentación lo descarta para producción y para auditar seguridad.",
+    "LoopForge: el fichero dice MIT con excepciones y la API devuelve NOASSERTION; quien lo adopte debe leer la licencia.",
+    "Codex Security exige pasar por la nube de OpenAI y versiones concretas de Node y Python.",
+    "Stela avisa de que las probabilidades de arrancar son bajas: es material de lectura, no de instalación."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "El modo embebido arranca el servicio falso dentro del propio test, sin contenedor ni demonio. Es la pieza que se puede medir hoy en un repo real."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "El enrutador previo entrenado es lo nuevo frente a inferssd. Seguirlo hasta que haya puntos de referencia reproducibles."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "La validación explícita con cobertura declarada encaja con la línea de no publicar conocimiento sin compuertas de integridad."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "El patrón de guardar la entrega como procedimiento con compuertas humanas es trasladable sin adoptar el producto."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "El traductor arm64e a x86-64 con más de tres mil codificaciones sirve como método, no como resultado instalable."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

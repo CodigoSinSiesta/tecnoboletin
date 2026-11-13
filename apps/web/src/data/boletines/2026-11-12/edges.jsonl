@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-aws-aws-emulator", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-aws-aws-emulator", "dst": "tema:aws-aws-emulator", "rel": "trata", "added": "2026-11-12"}
+{"src": "repo:aws/aws-emulator", "dst": "concept:local-cloud-emulator", "rel": "implements", "added": "2026-11-12", "primera_mencion": "2026-11-04"}
+{"src": "repo:aws/aws-emulator", "dst": "repo:localstack/localstack", "rel": "competes_with", "added": "2026-11-12", "primera_mencion": null}
+{"src": "repo:aws/aws-emulator", "dst": "concept:agent-skills-standard", "rel": "integrates", "added": "2026-11-12", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-meta-astryx", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-meta-astryx", "dst": "tema:meta-astryx", "rel": "trata", "added": "2026-11-12"}
+{"src": "repo:meta/astryx", "dst": "concept:agent-native-design-system", "rel": "implements", "added": "2026-11-12", "primera_mencion": "2026-11-07"}
+{"src": "repo:meta/astryx", "dst": "problem:agent-design-system-drift", "rel": "solves", "added": "2026-11-12", "primera_mencion": "2026-09-15"}
+{"src": "repo:meta/astryx", "dst": "concept:react-component-library", "rel": "extends", "added": "2026-11-12", "primera_mencion": "2026-10-29"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-edge0-ai-edge0", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-edge0-ai-edge0", "dst": "tema:edge0-ai-edge0", "rel": "trata", "added": "2026-11-12"}
+{"src": "repo:Edge0-AI/Edge0", "dst": "technique:ssd-expert-offload", "rel": "implements", "added": "2026-11-12", "primera_mencion": "2026-10-04"}
+{"src": "repo:Edge0-AI/Edge0", "dst": "concept:moe_streaming_inference", "rel": "extends", "added": "2026-11-12", "primera_mencion": "2026-10-04"}
+{"src": "repo:Edge0-AI/Edge0", "dst": "repo:wici-ai/inferssd", "rel": "competes_with", "added": "2026-11-12", "primera_mencion": "2026-10-04"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-openai-codex-security", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-openai-codex-security", "dst": "tema:openai-codex-security", "rel": "trata", "added": "2026-11-12"}
+{"src": "repo:openai/codex-security", "dst": "concept:devsecops-agents", "rel": "implements", "added": "2026-11-12", "primera_mencion": "2026-08-07"}
+{"src": "repo:openai/codex-security", "dst": "problem:vulnerability-discovery-at-scale", "rel": "solves", "added": "2026-11-12", "primera_mencion": "2026-08-07"}
+{"src": "repo:openai/codex-security", "dst": "concept:agent-security", "rel": "complements", "added": "2026-11-12", "primera_mencion": "2026-08-03"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-tencent-loopforge", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-tencent-loopforge", "dst": "tema:tencent-loopforge", "rel": "trata", "added": "2026-11-12"}
+{"src": "repo:Tencent/LoopForge", "dst": "concept:approval-gate-pattern", "rel": "implements", "added": "2026-11-12", "primera_mencion": "2026-09-04"}
+{"src": "repo:Tencent/LoopForge", "dst": "concept:multi-harness-orchestration", "rel": "uses", "added": "2026-11-12", "primera_mencion": "2026-09-04"}
+{"src": "repo:Tencent/LoopForge", "dst": "concept:human-in-the-loop-agent-workflow", "rel": "relevant_to", "added": "2026-11-12", "primera_mencion": "2026-08-19"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-tylertms-stela", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-tylertms-stela", "dst": "tema:tylertms-stela", "rel": "trata", "added": "2026-11-12"}
+{"src": "repo:tylertms/Stela", "dst": "concept:binary-translation", "rel": "implements", "added": "2026-11-12", "primera_mencion": null}
+{"src": "repo:tylertms/Stela", "dst": "framework:apple-metal", "rel": "uses", "added": "2026-11-12", "primera_mencion": "2026-08-11"}
+{"src": "repo:tylertms/Stela", "dst": "concept:shader-compilation", "rel": "relevant_to", "added": "2026-11-12", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-wici-ai-inferssd", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-wici-ai-inferssd", "dst": "tema:wici-ai-inferssd", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-garrytan-gbrain", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-garrytan-gbrain", "dst": "tema:garrytan-gbrain", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-vercel-labs-agent-browser", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-vercel-labs-agent-browser", "dst": "tema:vercel-labs-agent-browser", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-yt1988-who-are-you", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-yt1988-who-are-you", "dst": "tema:yt1988-who-are-you", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-n8n-io-nod", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-n8n-io-nod", "dst": "tema:n8n-io-nod", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-googlechrome-modern-web-guidance-src", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-googlechrome-modern-web-guidance-src", "dst": "tema:googlechrome-modern-web-guidance-src", "rel": "trata", "added": "2026-11-12"}
+{"src": "boletin:2026-11-12", "dst": "item:https-github-com-ranxianglei-billion-context", "rel": "menciona", "added": "2026-11-12"}
+{"src": "item:https-github-com-ranxianglei-billion-context", "dst": "tema:ranxianglei-billion-context", "rel": "trata", "added": "2026-11-12"}

@@ -1,0 +1,400 @@
+{
+  "version": 2,
+  "date": "2026-11-13",
+  "boletin_origen": "2026-11-13-trending.md",
+  "resumen_ejecutivo": "- Vercel Labs entra por la puerta de la interfaz: en lugar de repartir componentes cerrados, publica comportamientos y una skill para que el agente los componga, y hoy es lo más votado de Trendshift.\n- NVIDIA cierra el círculo de las skills: su evaluador pone compuertas de calidad y se apoya en su escáner de seguridad, así que instalar una skill deja de ser un acto de fe.\n- El hardware manda en el otro extremo: smolmaxxing mide cuánto modelo aguanta una tele de 1 GB de RAM, y OpenBot y tailcat enseñan dos formas de dar infraestructura a un agente sin montar una nube.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (78 repositorios únicos), GitHub API (16 repositorios verificados, README leído en la rama por defecto de cada hallazgo y de cada item del radar). Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "vercel-labs/ui",
+      "url": "https://github.com/vercel-labs/ui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Biblioteca de comportamientos de interfaz —navegación por teclado, foco, selección, cierre de capas, ventanas emergentes, arrastrar y soltar, y el ARIA que cada uno necesita— reunida en un núcleo con adaptadores para React, Vue, Svelte, Solid y componentes web. No entrega componentes cerrados: expone primitivas que se declaran con `definePrimitive` y se renderizan con `createParts`, de modo que la misma pieza se usa igual en los cinco marcos. Está en beta y se distribuye también como skill para el agente.",
+        "por_que_importa": "Una biblioteca de componentes supone que alguien con criterio decide cómo se compone; si el que compone es un agente, el contrato cambia y lo que hay que darle son reglas de comportamiento y accesibilidad, no un catálogo de piezas con estilos. El README lo dice sin rodeos: no hace falta aprender a escribirlo, el agente lo hará. Ya cubrimos el sistema de diseño nativo para agentes el 2026-11-07 y el estándar de skills el 2026-09-13; lo que queda por comprobar es la deriva entre diseño y agente que señalamos el 2026-09-15. La promesa solo se sostiene si el resultado pasa la prueba del teclado y del lector de pantalla, y eso no lo garantiza el andamiaje.",
+        "madurez_senales": "2.449 estrellas · 54 forks · TypeScript · creado 2026-10-26 · último push 2026-11-12 · Apache-2.0 · 3 incidencias abiertas · topics: `accessibility`, `agent`, `aria`, `headless`, `mcp`, `web-components`, `webmcp` · primera posición en Trendshift · en beta declarada por el propio repositorio (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — montar el adaptador de un marco y pedirle a un agente una primitiva concreta; la prueba de verdad es si el resultado se puede usar solo con el teclado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:vercel-labs/ui",
+          "rel": "implements",
+          "dst": "concept:agent-native-design-system",
+          "primera_mencion": "2026-11-07"
+        },
+        {
+          "src": "repo:vercel-labs/ui",
+          "rel": "extends",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        },
+        {
+          "src": "repo:vercel-labs/ui",
+          "rel": "relevant_to",
+          "dst": "problem:agent-design-system-drift",
+          "primera_mencion": "2026-09-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "NVIDIA/SkillEvaluator",
+      "url": "https://github.com/NVIDIA/SkillEvaluator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Marco de evaluación multinivel para skills de agente. Hace comprobaciones estáticas sin modelo —puntuación determinista con umbral de aprobado por defecto en 70, sin clave de interfaz de programación, sin contenedor y sin tarjeta gráfica—, evaluación por rúbrica con modelo, detección de solapamiento semántico entre skills, generación de conjuntos de prueba y evaluación en vivo que compara ejecuciones con y sin la skill para medir si cambia el comportamiento del agente. Trae plantillas de integración continua para GitHub y GitLab, sin tener que importar código del evaluador, y llama a su escáner hermano SkillSpector para la parte de seguridad. Forma parte de la canalización Verified Skills de NVIDIA y tiene artículo en arXiv (2608.20614).",
+        "por_que_importa": "Una skill se instala como una dependencia, pero hasta ahora nadie la sometía a las mismas preguntas: qué instrucciones trae, si se solapa con las que ya tengo y si mejora de verdad al agente. La evaluación de skills la tratamos el 2026-08-14 y el escáner de seguridad SkillSpector el 2026-09-05; esto une las dos piezas. Lo reutilizable es la separación de niveles: la parte estática corre en integración continua y bloquea una petición de cambios sin clave de API ni tarjeta gráfica, y el juicio con modelo se reserva para cuando hace falta. Viene de la canalización Verified Skills de NVIDIA, con artículo en arXiv (2608.20614).",
+        "madurez_senales": "955 estrellas · 114 forks · Python · creado 2026-06-24 · último push 2026-11-13 · Apache-2.0 · 51 incidencias abiertas · topics: `agent-evaluation`, `agent-security`, `agent-skills`, `benchmark`, `skill-evaluation` · +108 hoy en Trending · parte de la canalización Verified Skills junto a SkillSpector (25.746 estrellas y +297 hoy en Trending), cuyo README cifra en 26,1 % las skills con vulnerabilidades sobre 31.132 analizadas (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — pasar la comprobación estática a una skill propia y ver qué hallazgos devuelve antes de fiarse del aprobado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/SkillEvaluator",
+          "rel": "implements",
+          "dst": "concept:agent-skills-evaluation",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:NVIDIA/SkillEvaluator",
+          "rel": "integrates",
+          "dst": "repo:NVIDIA/SkillSpector",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:NVIDIA/SkillEvaluator",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skill-security-scanner",
+          "primera_mencion": "2026-09-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-skillevaluator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "hyperionaidev/smolmaxxing",
+      "url": "https://github.com/hyperionaidev/smolmaxxing",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Parche sobre llama.cpp para exprimir equipos con alrededor de 1 GB de memoria útil. Mide dos dispositivos: un Xiaomi TV Box S de tercera generación, con chip Amlogic S7D y Android 14 sin root, y un iPad Air de 2013 con iOS 12.5.7 y jailbreak. Las técnicas son concretas: núcleos de 1 bit con tablas de búsqueda, formatos reempaquetados de 2 bits y ternarios para el Cortex-A55, recorte de las filas del vocabulario que casi nunca se usan, expertos paginados desde el almacenamiento flash con precarga de la capa siguiente y transmisión por trozos para modelos densos mayores que la memoria.",
+        "por_que_importa": "La conversación sobre modelos locales suele girar sobre comprar hardware o cuantizar más; aquí la pregunta es qué se puede hacer con lo que ya está enchufado y ocioso. La inferencia de mezcla de expertos en el borde la cubrimos el 2026-10-04, llama.cpp el 2026-08-17 y la descarga de expertos a otro medio el 2026-09-10: esto lleva las tres ideas al límite de 1 GB. Cifras del README, no reproducidas aquí: Qwen3.5-2B a 7,7 tokens por segundo y un modelo de mezcla de 16B a 5,1 en la tele, y un modelo de 1 bit a 24-26 en el iPad. El valor está en el método: cada número se midió en el dispositivo y el repositorio invita a enviar los de otros equipos.",
+        "madurez_senales": "397 estrellas · 13 forks · C · creado 2026-11-04 · último push 2026-11-13 · MIT · 2 incidencias abiertas · topics: `edge-ai`, `llama-cpp`, `quantization`, `on-device` · posición 22 en Trendshift · cifras de rendimiento declaradas por el autor, no reproducidas aquí (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — los núcleos de 1 bit y el paginado de expertos son las dos piezas que se pueden llevar a otro equipo sin adoptar el proyecto entero.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:hyperionaidev/smolmaxxing",
+          "rel": "implements",
+          "dst": "concept:moe-edge-inference",
+          "primera_mencion": "2026-10-04"
+        },
+        {
+          "src": "repo:hyperionaidev/smolmaxxing",
+          "rel": "uses",
+          "dst": "tool:llama.cpp",
+          "primera_mencion": "2026-08-17"
+        },
+        {
+          "src": "repo:hyperionaidev/smolmaxxing",
+          "rel": "extends",
+          "dst": "technique:moe-expert-offload",
+          "primera_mencion": "2026-09-10"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hyperionaidev-smolmaxxing",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "CopilotKit/OpenBot",
+      "url": "https://github.com/CopilotKit/OpenBot",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Espacio de trabajo modular y autoalojable para lo que CopilotKit llama compañeros de trabajo de IA. Cada agente recibe su propio ordenador —navegador, ficheros y herramientas—, acepta agentes construidos sobre AG-UI y servidores MCP, y registra la acción: cada paso se decide antes de ejecutarse y queda anotado después. Hay aplicaciones para Mac con silicio de Apple y con Intel, instalador para Windows, despliegue en Kubernetes y ejecución desde el código fuente.",
+        "por_que_importa": "La diferencia con un chat con herramientas no es la interfaz, es el registro: un agente que decide antes de actuar y deja constancia de lo que hizo se puede auditar; uno que improvisa, no. Ya el 2026-08-20 cubrimos el tiempo de ejecución de AG-UI y el patrón de compuerta de aprobación, que son justo las dos piezas sobre las que se apoya. Se instala en Mac, Windows, Kubernetes o desde el código fuente, con licencia MIT. La tensión que merece un artículo llega al empaquetarlo como producto de escritorio: cuánta autonomía se puede dar a un agente con un ordenador entero y quién lee el registro.",
+        "madurez_senales": "11.890 estrellas · 1.460 forks · TypeScript · creado 2026-08-17 · último push 2026-11-13 · MIT · 92 incidencias abiertas · topics: `ag-ui`, `agent-governance`, `browser-automation`, `generative-ui`, `mcp` · +298 hoy en Trending · posición 11 en Trendshift · su última aparición en este boletín fue el 2026-08-20 (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — la parte que se puede copiar sin adoptar el producto es cómo describe y guarda la decisión previa a cada acción.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:CopilotKit/openbot",
+          "rel": "implements",
+          "dst": "concept:ag-ui-runtime",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:CopilotKit/openbot",
+          "rel": "implements",
+          "dst": "concept:approval-gate-pattern",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:CopilotKit/openbot",
+          "rel": "relevant_to",
+          "dst": "concept:agent-policy-governance",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "copilotkit-openbot",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "tailscale/tailcat",
+      "url": "https://github.com/tailscale/tailcat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Reutiliza las piezas libres del cliente de Tailscale para hacer túneles punto a punto cifrados con WireGuard sin pasar por su plano de control. Un extremo abre un oyente y devuelve una dirección corta; el otro la usa para conectar. Los metadatos de la conexión se intercambian fuera de banda como se quiera, el arranque se apoya en un servidor de relevo y después se intenta el salto directo por UDP cuando el NAT lo permite. Se usa como herramienta de línea de órdenes o como biblioteca de Go, no toca las rutas ni el DNS del equipo y no pide root.",
+        "por_que_importa": "Montar un agente o un servicio entre dos máquinas suele acabar en abrir un puerto, pagar una coordinación o meter una red privada virtual completa. Aquí se separa lo que cuesta dinero —el plano de control— de lo que hace falta técnicamente —el túnel— y el emparejamiento queda en manos de quien lo use. El túnel punto a punto cifrado y la ejecución remota local-first ya los tocamos el 2026-08-27; lo nuevo es hacerlo sin el plano de control y sin root, sin tocar rutas ni DNS. Para quien monta infraestructura local es una pieza pequeña con consecuencias grandes.",
+        "madurez_senales": "9.126 estrellas · 419 forks · Go · creado 2024-10-29 · último push 2026-11-05 · BSD-3-Clause · 41 incidencias abiertas · sin topics · +173 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — conectar dos máquinas de la misma red doméstica y medir cuándo se queda en el relevo y cuándo consigue el salto directo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tailscale/tailcat",
+          "rel": "implements",
+          "dst": "concept:p2p-encrypted-tunnel",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:tailscale/tailcat",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-remote-execution",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tailscale-tailcat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(34.012 estrellas, último push 2026-11-13, JavaScript) — saca la salida de las herramientas del contexto del agente, la indexa en SQLite sobre la máquina y le devuelve solo lo que pide; licencia ELv2 según su README, la API devuelve NOASSERTION — señales: https://github.com/mksglu/context-mode",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mksglu/context-mode",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mksglu-context-mode",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "NVIDIA/SkillSpector",
+      "url": "https://github.com/NVIDIA/SkillSpector",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25.746 estrellas, último push 2026-11-13, Python) — escáner de seguridad de skills que busca inyección de instrucciones, exfiltración y riesgos de cadena de suministro antes de instalar — señales: https://github.com/NVIDIA/SkillSpector",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/NVIDIA/SkillSpector",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-skillspector",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "PurpleDoubleD/locally-uncensored",
+      "url": "https://github.com/PurpleDoubleD/locally-uncensored",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.120 estrellas, último push 2026-11-09, TypeScript) — estudio local todo en uno para escritorio con chat, imagen, vídeo y agente de código, sin Docker ni terminal, con licencia AGPL-3.0 — señales: https://github.com/PurpleDoubleD/locally-uncensored",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/PurpleDoubleD/locally-uncensored",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "purpledoubled-locally-uncensored",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "shanliuling/dsh-image-gen",
+      "url": "https://github.com/shanliuling/dsh-image-gen",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.415 estrellas, último push 2026-11-12, TypeScript) — plugin de generación y edición de imágenes dentro de la conversación para el arnés de DeepSeek, con biblioteca de indicaciones y flujos con ComfyUI — señales: https://github.com/shanliuling/dsh-image-gen",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/shanliuling/dsh-image-gen",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shanliuling-dsh-image-gen",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "adewaskar/jarvis",
+      "url": "https://github.com/adewaskar/jarvis",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(868 estrellas, último push 2026-11-07, TypeScript) — asistente de voz en el navegador que usa Claude Code en modo desatendido como cerebro, sin claves de interfaz de programación propias — señales: https://github.com/adewaskar/jarvis",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/adewaskar/jarvis",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "adewaskar-jarvis",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "oaustegard/claude-skills",
+      "url": "https://github.com/oaustegard/claude-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(380 estrellas, último push 2026-11-13, Python) — colección de skills distribuida como mercado de plugins de Claude Code, con el aviso de que están pensadas para el entorno de Claude en la web — señales: https://github.com/oaustegard/claude-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/oaustegard/claude-skills",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "oaustegard-claude-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "simpsoka/zigzag",
+      "url": "https://github.com/simpsoka/zigzag",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(374 estrellas, último push 2026-11-13, Rust) — editor visual de bordado que convierte SVG en puntadas, exporta a PES, DST, EXP, JEF y VP3, y expone MCP para que un agente dibuje el diseño — señales: https://github.com/simpsoka/zigzag",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/simpsoka/zigzag",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "simpsoka-zigzag",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

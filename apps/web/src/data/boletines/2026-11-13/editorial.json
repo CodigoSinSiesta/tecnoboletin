@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-13",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Vercel y NVIDIA coinciden en darle reglas al agente, no piezas",
+  "posicionamiento": "El agente deja de recibir catálogos y empieza a recibir contratos. Vercel publica comportamientos en vez de componentes y NVIDIA pone puertas de calidad a las skills; en el otro extremo, una tele de 1 GB recuerda que el sustrato manda.",
+  "convergencia_stack_css": "El stack local-first aparece por el flanco de la infraestructura: smolmaxxing estira llama.cpp hasta 1 GB de RAM y tailcat abre túnel punto a punto sin plano de control ni root, que es justo la ejecución remota local-first. Ninguno toca el grafo ni la memoria.",
+  "cruzado_grafo": "Los cinco hallazgos refuerzan nodos ya vistos, ninguno estrena fecha: agent-native-design-system (2026-11-07), agent-skills-evaluation con SkillSpector (2026-08-14 y 09-05), moe-edge-inference (2026-10-04) y ag-ui-runtime (2026-08-20).",
+  "tendencias_5_boletines": "Los dos días previos iban de meter conocimiento curado donde el agente lo cargue a demanda; hoy ese gesto se formaliza en contratos y se le añaden compuertas de calidad, mientras el coste vuelve por el hardware ocioso.",
+  "alertas": [
+    "vercel-labs/ui solo cumple si el resultado pasa el teclado y el lector de pantalla; el andamiaje de primitivas no lo garantiza.",
+    "Las cifras de smolmaxxing (7,7 y 5,1 tokens por segundo) son del README y no se han reproducido.",
+    "SkillEvaluator con umbral 70 por defecto: sin clave de API ni GPU solo corre la parte estática, y el juicio con modelo sigue siendo una opinión.",
+    "El registro de OpenBot no vale nada si nadie lo lee; empaquetado como escritorio, la autonomía crece más rápido que la auditoría.",
+    "tailcat entrega el túnel pero deja el emparejamiento fuera de banda: la seguridad depende del canal que elija quien lo use."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el único hallazgo que cambia el contrato de trabajo con el agente en la interfaz; merece probar definePrimitive y medir la accesibilidad real."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Si la parte estática de SkillEvaluator se integra en CI, se convierte en el filtro por defecto antes de instalar cualquier skill."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Sustituye abrir puertos y montar VPN por un túnel sin plano de control: encaja directo en el taller local-first."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 2,
+      "razon": "Da material para un artículo sobre el límite real del hardware ocioso con cifras medidas en el dispositivo, no estimadas."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

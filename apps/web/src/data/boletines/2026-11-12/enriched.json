@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-12",
+  "boletin_origen": "2026-11-12-trending.md",
+  "resumen_ejecutivo": "- El día lo gana AWS: publica un emulador local de sus propias interfaces de programación, en Rust, con licencia de dominio público y una skill para que el agente lo monte sin intervención.\n- Dos frentes técnicos se cruzan: servir modelos de mezcla de expertos desde el disco cuando la memoria no llega (Edge0 y InferSSD) y meter la seguridad dentro del bucle del agente con un paso explícito de validación (Codex Security).\n- En agentes, el patrón que se repite es el del procedimiento guardado con compuertas humanas: LoopForge lo empaqueta en un espacio de trabajo autoalojado, y astryx vuelve porque publicó la 0.7.14 ayer y hoy es el mayor salto del día.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily global y cortes de TypeScript, Python, Rust, Go y JavaScript (72 repositorios únicos), GitHub API (20 repositorios verificados, README leído en la rama por defecto de cada hallazgo). Blogwatcher no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "aws/aws-emulator",
+      "url": "https://github.com/aws/aws-emulator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "emulador local de las interfaces de programación de AWS, escrito en Rust, con un crate por servicio y un modelo Smithy que define el protocolo de cada uno. Sirve HTTPS en el puerto 9297 con certificado autofirmado; el CLI o el SDK se apuntan con variables de entorno y no hace falta cuenta de AWS. Tiene modo servidor y modo embebido: como dependencia de desarrollo, el emulador se compila dentro del binario de pruebas de Rust. No acepta peticiones de cambios; los fallos se reportan como problemas de fidelidad, servicio por servicio.",
+        "por_que_importa": "El cambio no es técnico, es de quién firma el sustituto: el emulador local de nube ya salió el 2026-11-04, cuando el referente era una reimplementación ajena como LocalStack; que lo publique el propio proveedor cambia la referencia de comportamiento. Su enlace con el estándar de skills para agentes es de concepto, y ese sí lo cubrimos el 2026-09-13. Para un equipo, lo aprovechable es el modo embebido: la prueba arranca el servicio falso en el mismo proceso, sin contenedor ni demonio. Dos matices al citarlo: la telemetría viene activada por defecto y su documentación avisa de que no sirve para producción ni para auditar seguridad.",
+        "madurez_senales": "3.071 estrellas · 69 forks · Rust · creado 2026-09-11 · último push 2026-11-11 · CC0-1.0, con el directorio vendor en Apache-2.0 · 52 incidencias abiertas · sin topics · primera posición en Trendshift (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — montarlo en un proyecto que ya hable con AWS y contar cuántas operaciones pasan antes de necesitar la nube de verdad.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:aws/aws-emulator",
+          "rel": "implements",
+          "dst": "concept:local-cloud-emulator",
+          "primera_mencion": "2026-11-04"
+        },
+        {
+          "src": "repo:aws/aws-emulator",
+          "rel": "competes_with",
+          "dst": "repo:localstack/localstack",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aws/aws-emulator",
+          "rel": "integrates",
+          "dst": "concept:agent-skills-standard",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aws-aws-emulator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sistema de diseño que Meta usó ocho años de forma interna y que publica en beta sobre React 19 y StyleX. Trae más de 150 componentes accesibles, siete temas, modo oscuro, plantillas y una CLI con documentación por componente, andamios, copia de componentes al proyecto y codemods. Se instala como CSS ya construido y componentes tipados, sin plugin de compilación ni biblioteca de estilos que adoptar; la interfaz, la documentación y la CLI están escritas juntas para que una persona y un asistente construyan igual.",
+        "por_que_importa": "Ya lo tratamos como sistema de diseño para agentes el 2026-11-07, la deriva que aparece cuando lo usa un agente el 2026-09-15 y la biblioteca de componentes React que extiende el 2026-10-29; ahora vuelve por un cambio concreto, no por el catálogo. La corrección del paquete raíz para componentes de servidor en React quita la marca de cliente de los ficheros índice, así que las piezas que no necesitan JavaScript se renderizan en el servidor, y la nota de la versión mide la diferencia en la carga inicial de una página concreta. Ese es el tipo de decisión que un agente copia mal si no la lee.",
+        "madurez_senales": "25.622 estrellas · 1.994 forks · TypeScript · creado 2026-01-09 · último push 2026-11-12 · MIT · 659 incidencias abiertas · sin topics · +2.776 hoy en Trending; versión 0.7.14 publicada el 2026-11-11 (verificado vía GitHub API y su API de versiones; README en `main`).",
+        "accion_sugerida": "**leer** — la nota de la 0.7.14 sobre los límites de cliente y servidor enseña más que la portada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:meta/astryx",
+          "rel": "implements",
+          "dst": "concept:agent-native-design-system",
+          "primera_mencion": "2026-11-07"
+        },
+        {
+          "src": "repo:meta/astryx",
+          "rel": "solves",
+          "dst": "problem:agent-design-system-drift",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:meta/astryx",
+          "rel": "extends",
+          "dst": "concept:react-component-library",
+          "primera_mencion": "2026-10-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "meta-astryx",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "Edge0-AI/Edge0",
+      "url": "https://github.com/Edge0-AI/Edge0",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "marco de inferencia para modelos de mezcla de expertos que descarga expertos desde el SSD cuando no caben en memoria, con dos piezas propias: un enrutador previo entrenado que predice qué expertos se van a necesitar un paso antes, y un ajuste de bajo rango llamado Recover-LoRA. Publica modelos propios en Hugging Face —35B, 8B, 120B y 145B— y un mismo programa para macOS, iOS, Android, Linux y Windows. El método está descrito en el artículo arXiv 2609.18063.",
+        "por_que_importa": "El debate sobre modelos locales llevaba meses en cuantizar más; esto mueve otra palanca: sacar peso muerto de la memoria y esconder la latencia prediciendo la siguiente carga de expertos. Ya cubrimos el desvío de expertos a SSD el 2026-10-04, incluida la comparación con inferssd, así que aquí lo nuevo es el enrutador previo entrenado y el ajuste Recover-LoRA. Para quien escribe sobre desarrollo, el límite práctico de un modelo no es solo el número de parámetros, sino qué se puede dejar en disco y qué se puede predecir. Aviso: la portada promete cifras de velocidad que no hemos reproducido; conviene leer los puntos de referencia del repositorio antes de repetirlas.",
+        "madurez_senales": "10.059 estrellas · 1.520 forks · C++ · creado 2026-09-08 · último push 2026-11-12 · Apache-2.0 · 34 incidencias abiertas · sin topics · quinta posición en Trendshift (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — el código del enrutador previo es la pieza que no está en los otros proyectos del mismo tipo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "implements",
+          "dst": "technique:ssd-expert-offload",
+          "primera_mencion": "2026-10-04"
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "extends",
+          "dst": "concept:moe_streaming_inference",
+          "primera_mencion": "2026-10-04"
+        },
+        {
+          "src": "repo:Edge0-AI/Edge0",
+          "rel": "competes_with",
+          "dst": "repo:wici-ai/inferssd",
+          "primera_mencion": "2026-10-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "edge0-ai-edge0",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI y kit de desarrollo en TypeScript de OpenAI para encontrar, investigar y arreglar vulnerabilidades. Hace análisis estándar y profundo sobre repositorios, rutas o cambios de Git; valida los hallazgos candidatos antes de darlos por buenos, genera parches, comprueba arreglos existentes y agrupa duplicados. Exporta en SARIF, JSON y CSV, se conecta con Linear, Jira y GitHub, y trae una acción de GitHub y un plugin para usarlo dentro de Codex. Se instala con npm y el acceso se abre con una orden de entrada.",
+        "por_que_importa": "A los escáneres con modelo les faltaba descartar, no encontrar. Aquí la validación es explícita y queda guardada con evidencia y con los límites de cobertura, y eso cambia el informe: cien avisos sin validar no se leen. Ya tocamos los agentes de DevSecOps y el descubrimiento de vulnerabilidades a escala el 2026-08-07, y la seguridad de agentes el 2026-08-03; este es el caso de producto donde el agente debe decir qué no ha mirado. Reverso: el acceso pasa por su nube y el paquete exige versiones concretas de Node y Python.",
+        "madurez_senales": "11.955 estrellas · 954 forks · TypeScript · creado 2026-07-13 · último push 2026-11-12 · Apache-2.0 · 139 incidencias abiertas · topics: `ai-security`, `code-scanning`, `devsecops`, `vulnerability-scanning` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — una pasada sobre un repositorio propio dice en minutos si el informe se puede leer o es otro muro de avisos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:openai/codex-security",
+          "rel": "implements",
+          "dst": "concept:devsecops-agents",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:openai/codex-security",
+          "rel": "solves",
+          "dst": "problem:vulnerability-discovery-at-scale",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:openai/codex-security",
+          "rel": "complements",
+          "dst": "concept:agent-security",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openai-codex-security",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Tencent/LoopForge",
+      "url": "https://github.com/Tencent/LoopForge",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "espacio de trabajo autoalojado donde se describe un requisito al bot principal por chat; el bot abre un contenedor aislado, descarga los repositorios, reparte el trabajo entre roles de proyecto y abre la petición de cambios. Lo que hace distinto es el envoltorio: cuando una forma de trabajar demuestra que funciona, se guarda como procedimiento —agentes, guiones y compuertas humanas— y el siguiente requisito se entrega igual. CodeBuddy, Codex y Claude Code hacen el trabajo; LoopForge pone los roles, los contenedores, los puntos de control y el historial.",
+        "por_que_importa": "Es el patrón de compuerta de aprobación que ya vimos el 2026-09-04, y el flujo con humano en el bucle del 2026-08-19, pero empaquetado para un equipo y con historial de lo aprobado. Para Código Sin Siesta importa el patrón más que el producto: convertir una entrega en un procedimiento repetible —agentes, guiones, compuertas— es lo que separa usar un agente de depender de él. La licencia merece nota: el fichero dice MIT con excepción de componentes de terceros y la API devuelve NOASSERTION, así que quien lo adopte debería leerla antes.",
+        "madurez_senales": "391 estrellas · 74 forks · Go · creado 2026-07-28 · último push 2026-11-12 · MIT con excepción de componentes de terceros, la API devuelve NOASSERTION · 56 incidencias abiertas · topics: `agent-orchestration`, `ai-agents`, `claude-code`, `human-on-the-loop`, `multi-agent` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — la definición de los procedimientos se puede reutilizar sin adoptar la herramienta.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent/LoopForge",
+          "rel": "implements",
+          "dst": "concept:approval-gate-pattern",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "repo:Tencent/LoopForge",
+          "rel": "uses",
+          "dst": "concept:multi-harness-orchestration",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "repo:Tencent/LoopForge",
+          "rel": "relevant_to",
+          "dst": "concept:human-in-the-loop-agent-workflow",
+          "primera_mencion": "2026-08-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-loopforge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "tylertms/Stela",
+      "url": "https://github.com/tylertms/Stela",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "programa de arranque UEFI que levanta un Mac de silicio de Apple sobre un PC x86-64. Lleva un traductor de arm64e a x86-64 que cubre más de tres mil codificaciones de instrucción, con compilación anticipada y al vuelo, y un controlador de Metal para tarjetas NVIDIA que compila el lenguaje intermedio de sombreadores de Apple al de Mesa. Modela un Mac mini M2 y arranca macOS 27. Está en la versión 0.1.0 y el propio autor avisa de que las probabilidades de que arranque son bajas y de que falta mucho por probar.",
+        "por_que_importa": "No se recomienda instalarlo; se lee, porque junta dos capas que casi nadie toca a la vez: traducción binaria entre arquitecturas y traducción de sombreadores entre dos pilas gráficas. La traducción de sombreadores ya apareció el 2026-10-05 y Metal el 2026-08-11; aquí lo nuevo es el traductor arm64e a x86-64, con más de tres mil codificaciones de instrucción. Para una audiencia de desarrollo el interés está en el método —qué resuelve una capa y qué hay que modelar del hardware—, no en el resultado: el autor avisa de que las probabilidades de que arranque son bajas. GPL-2.0 y la nota de que no contiene software de Apple son parte de la historia.",
+        "madurez_senales": "904 estrellas · 38 forks · Rust · creado 2026-10-12 · último push 2026-11-12 · GPL-2.0 · 7 incidencias abiertas · sin topics · tercera posición en Trendshift (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el traductor y el controlador de sombreadores son dos piezas que se pueden estudiar por separado.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tylertms/Stela",
+          "rel": "implements",
+          "dst": "concept:binary-translation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:tylertms/Stela",
+          "rel": "uses",
+          "dst": "framework:apple-metal",
+          "primera_mencion": "2026-08-11"
+        },
+        {
+          "src": "repo:tylertms/Stela",
+          "rel": "relevant_to",
+          "dst": "concept:shader-compilation",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tylertms-stela",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "wici-ai/inferssd",
+      "url": "https://github.com/wici-ai/inferssd",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(618 estrellas, último push 2026-11-12, C++) — el mismo truco del disco aplicado a llama.cpp y a ficheros GGUF, con puntos de referencia publicados y una interfaz compatible con OpenAI — señales: https://github.com/wici-ai/inferssd",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/wici-ai/inferssd",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wici-ai-inferssd",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "garrytan/gbrain",
+      "url": "https://github.com/garrytan/gbrain",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(32.728 estrellas, último push 2026-11-12, TypeScript) — memoria con hechos explícitos, fuentes y derecho a corregir o retirar, compartida entre agentes y autoalojable — señales: https://github.com/garrytan/gbrain",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/garrytan/gbrain",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "garrytan-gbrain",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(50.074 estrellas, último push 2026-11-12, Rust) — herramienta de línea de comandos para que un agente maneje un navegador, con 583 incidencias abiertas que dicen bastante de su ritmo — señales: https://github.com/vercel-labs/agent-browser",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vercel-labs/agent-browser",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-browser",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(122.746 estrellas, último push 2026-11-12, TypeScript) — escritorio y móvil para llevar una flota de agentes de código con la suscripción propia, con 8.214 incidencias abiertas — señales: https://github.com/stablyai/orca",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/stablyai/orca",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "yt1988/who-are-you",
+      "url": "https://github.com/yt1988/who-are-you",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(581 estrellas, último push 2026-11-12, HTML) — ejecuta los 127 rastreadores que cualquier web puede lanzar sin permisos y escribe el retrato que sale, con las contradicciones que delatan un proxy — señales: https://github.com/yt1988/who-are-you",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/yt1988/who-are-you",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "yt1988-who-are-you",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "n8n-io/nod",
+      "url": "https://github.com/n8n-io/nod",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(592 estrellas, último push 2026-11-12, TypeScript) — agente personal con su propio ordenador, que actúa en webs reales y pregunta antes de hacerlo, del equipo de n8n — señales: https://github.com/n8n-io/nod",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/n8n-io/nod",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "n8n-io-nod",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.048 estrellas, último push 2026-11-12, TypeScript) — repositorio fuente de la guía web que salió ayer en este boletín, con 374 incidencias abiertas sobre el corpus — señales: https://github.com/GoogleChrome/modern-web-guidance-src",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/GoogleChrome/modern-web-guidance-src",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googlechrome-modern-web-guidance-src",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "ranxianglei/billion-context",
+      "url": "https://github.com/ranxianglei/billion-context",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.931 estrellas, último push 2026-11-12, TypeScript) — plugin de compresión de contexto para sesiones de un mes, con 1.117 incidencias abiertas y una licencia que la API no identifica — señales: https://github.com/ranxianglei/billion-context",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ranxianglei/billion-context",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ranxianglei-billion-context",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": true,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
