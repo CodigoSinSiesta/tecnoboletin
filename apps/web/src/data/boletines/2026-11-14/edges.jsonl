@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-cloudflare-kitesurf", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-cloudflare-kitesurf", "dst": "tema:cloudflare-kitesurf", "rel": "trata", "added": "2026-11-14"}
+{"src": "repo:cloudflare/kitesurf", "dst": "concept:browser-cdp-harness", "rel": "implements", "added": "2026-11-14", "primera_mencion": "2026-08-23"}
+{"src": "repo:cloudflare/kitesurf", "dst": "concept:agent-browser", "rel": "relevant_to", "added": "2026-11-14", "primera_mencion": "2026-08-08"}
+{"src": "repo:cloudflare/kitesurf", "dst": "repo:ChromeDevTools/chrome-devtools-mcp", "rel": "relevant_to", "added": "2026-11-14", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-alibaba-open-code-review", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-alibaba-open-code-review", "dst": "tema:alibaba-open-code-review", "rel": "trata", "added": "2026-11-14"}
+{"src": "repo:alibaba/open-code-review", "dst": "concept:agentic-code-review", "rel": "implements", "added": "2026-11-14", "primera_mencion": "2026-09-15"}
+{"src": "repo:alibaba/open-code-review", "dst": "problem:code-review-automation", "rel": "solves", "added": "2026-11-14", "primera_mencion": "2026-09-13"}
+{"src": "repo:alibaba/open-code-review", "dst": "repo:anthropics/claude-code", "rel": "competes_with", "added": "2026-11-14", "primera_mencion": "2026-07-28"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-libracoder-kiri", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-libracoder-kiri", "dst": "tema:libracoder-kiri", "rel": "trata", "added": "2026-11-14"}
+{"src": "repo:libracoder/kiri", "dst": "tool:docker-desktop", "rel": "competes_with", "added": "2026-11-14", "primera_mencion": "2026-09-09"}
+{"src": "repo:libracoder/kiri", "dst": "concept:container-runtime", "rel": "implements", "added": "2026-11-14", "primera_mencion": null}
+{"src": "repo:libracoder/kiri", "dst": "concept:local-first-development", "rel": "relevant_to", "added": "2026-11-14", "primera_mencion": null}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-kajisho5-ffmpeg-skill", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-kajisho5-ffmpeg-skill", "dst": "tema:kajisho5-ffmpeg-skill", "rel": "trata", "added": "2026-11-14"}
+{"src": "repo:kajisho5/ffmpeg-skill", "dst": "concept:agent-skill-contract", "rel": "implements", "added": "2026-11-14", "primera_mencion": null}
+{"src": "repo:kajisho5/ffmpeg-skill", "dst": "concept:mcp-server", "rel": "integrates", "added": "2026-11-14", "primera_mencion": "2026-08-24"}
+{"src": "repo:kajisho5/ffmpeg-skill", "dst": "concept:video-editing-agent", "rel": "enables", "added": "2026-11-14", "primera_mencion": null}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-deepseek-ai-chat-demo", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-deepseek-ai-chat-demo", "dst": "tema:deepseek-ai-chat-demo", "rel": "trata", "added": "2026-11-14"}
+{"src": "repo:deepseek-ai/chat-demo", "dst": "concept:client-side-llm-chat", "rel": "implements", "added": "2026-11-14", "primera_mencion": null}
+{"src": "repo:deepseek-ai/chat-demo", "dst": "concept:client-side-api-key-exposure", "rel": "risk", "added": "2026-11-14", "primera_mencion": null}
+{"src": "repo:deepseek-ai/chat-demo", "dst": "concept:llm-gateway", "rel": "relevant_to", "added": "2026-11-14", "primera_mencion": "2026-09-09"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-aimod-cc-agent2api", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-aimod-cc-agent2api", "dst": "tema:aimod-cc-agent2api", "rel": "trata", "added": "2026-11-14"}
+{"src": "repo:aimod-cc/Agent2API", "dst": "concept:local-ai-gateway", "rel": "implements", "added": "2026-11-14", "primera_mencion": "2026-10-02"}
+{"src": "repo:aimod-cc/Agent2API", "dst": "concept:client-account-takeover", "rel": "risk", "added": "2026-11-14", "primera_mencion": null}
+{"src": "repo:aimod-cc/Agent2API", "dst": "concept:llm-gateway", "rel": "relevant_to", "added": "2026-11-14", "primera_mencion": "2026-09-09"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-googlechrome-modern-web-guidance-src", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-googlechrome-modern-web-guidance-src", "dst": "tema:googlechrome-modern-web-guidance-src", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-ahujasid-mcp-for-blender", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-ahujasid-mcp-for-blender", "dst": "tema:ahujasid-mcp-for-blender", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-callstack-agent-device", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-callstack-agent-device", "dst": "tema:callstack-agent-device", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-tradermonty-claude-trading-skills", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-tradermonty-claude-trading-skills", "dst": "tema:tradermonty-claude-trading-skills", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-baarai-artex", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-baarai-artex", "dst": "tema:baarai-artex", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-routinemiku-apkstart", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-routinemiku-apkstart", "dst": "tema:routinemiku-apkstart", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-vernette-warpscout", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-vernette-warpscout", "dst": "tema:vernette-warpscout", "rel": "trata", "added": "2026-11-14"}
+{"src": "boletin:2026-11-14", "dst": "item:https-github-com-berkantay-gpucanvas", "rel": "menciona", "added": "2026-11-14"}
+{"src": "item:https-github-com-berkantay-gpucanvas", "dst": "tema:berkantay-gpucanvas", "rel": "trata", "added": "2026-11-14"}

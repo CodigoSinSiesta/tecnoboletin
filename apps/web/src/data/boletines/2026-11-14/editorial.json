@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-14",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Cloudflare sirve el navegador del agente desde un Worker",
+  "posicionamiento": "La jornada sustituye sustrato por protocolo: kitesurf quita Chrome, kiri quita Docker Desktop y el revisor de Alibaba quita contexto a cambio de recall. Todas hablan una interfaz que ya existía, así que el cambio no se nota en el flujo sino en lo que cada pieza deja de hacer.",
+  "convergencia_stack_css": "kiri entra al stack por donde menos duele: respeta la API de Docker y solo pide cambiar de contexto, que es justo lo que el local-first necesita para no romper hábitos. Agent2API y chat-demo son la tensión de siempre: pasarela local frente a la clave guardada en el navegador de cada usuario.",
+  "cruzado_grafo": "Aparecen sin fecha previa cinco nodos: contrato de skill, edición de vídeo con agente, chat en cliente, exposición de clave en el navegador y toma de control de cuentas. Los viejos se refuerzan con sus fechas reales: browser-cdp-harness del 2026-08-23, agentic-code-review del 2026-09-15 y llm-gateway del 2026-09-09.",
+  "tendencias_5_boletines": "Ayer el eje era el contrato antes que el catálogo; hoy el sustituto llega con su propia interfaz y, a veces, con su método de medida. kiri publica el JSON de su prueba y kitesurf se declara experimental: frente al 2026-11-12, el emulador ya se puede auditar.",
+  "alertas": [
+    "kiri tiene doce días de vida y cifras de arranque espectaculares; método publicado, adopción ninguna",
+    "open-code-review baja el recall a propósito: menos ruido también significa hallazgos que nunca se ven",
+    "Agent2API reescribe la configuración de otros clientes y reutiliza sesiones abiertas; los términos de uso no aparecen en el repositorio",
+    "kitesurf implementa una parte del CDP, no Chrome: huella, vídeo y PDF no llegan por arte de magia, y exige plan de pago de Workers",
+    "chat-demo deja la clave de API en el navegador de cada usuario: en una herramienta interna hay que elegir entre asumirlo o poner pasarela"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Conectar un cliente tipo Puppeteer a su WebSocket y ver qué comandos del CDP fallan. Eso mide el alcance real mejor que el README."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Correr su comando de prueba en esta máquina y repetir el JSON de arranque. Doce días de vida solo se compensan con medición propia."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "El patrón contrato generado, superficie MCP derivada y verificación posterior es lo que falta en casi toda skill publicada."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "La reescritura de configuraciones ajenas y los forks rápidos dicen más de su adopción que las estrellas."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "El trueque recall contra contexto es el debate que viene: conviene seguir si otros revisores copian la compuerta determinista."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-14",
+  "boletin_origen": "2026-11-14-trending.md",
+  "resumen_ejecutivo": "- Cloudflare publica kitesurf, un motor de navegador que corre dentro de Workers y habla el protocolo de DevTools: el navegador del agente deja de necesitar un Chrome en un contenedor.\n- Alibaba abre su revisor de código interno, hoy el hallazgo de mayor tamaño de la jornada, y pone por escrito el trueque: gasta mucho menos contexto a cambio de callar hallazgos.\n- En local se mueven dos piezas de infraestructura: kiri, un sustituto de Docker Desktop en Rust con doce días de vida, y Agent2API, una pasarela de modelos que además reescribe la configuración de otros clientes.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust y Go (63 repositorios únicos), GitHub API (17 repositorios verificados, README leído en la rama por defecto de cada hallazgo y de cada item del radar). El blogwatcher de las 08:00 no publicó archivo hoy.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "cloudflare/kitesurf",
+      "url": "https://github.com/cloudflare/kitesurf",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "motor de navegador experimental que corre dentro de Cloudflare Workers. Interpreta el HTML, aplica el CSS, ejecuta el JavaScript de la página y saca capturas sin Chrome ni contenedor de navegador. Habla el protocolo de DevTools de Chrome, así que un cliente como Puppeteer se conecta a su WebSocket y hace lo de siempre. Cada página se aísla en un Worker dinámico, lo que exige el plan de pago de Workers; en local se levanta con `pnpm run dev`.",
+        "por_que_importa": "Si el navegador se puede servir como endpoint, la receta de levantar un Chrome sin cabeza por tarea se sustituye por una llamada HTTP que habla el mismo protocolo. Cuidado con el alcance: implementa una parte del CDP, no Chrome entero, y lo que falta no aparece por arte de magia; el propio repositorio se declara experimental. La pregunta editorial es cuánto del trabajo de un agente de navegador depende de lo que solo el Chrome completo hace (huella, vídeo, PDF). Ya tocamos el arnés CDP el 2026-08-23 y el navegador para agentes el 2026-08-08, y el 2026-08-20 cubrimos chrome-devtools-mcp: esto es la pieza que faltaba, el motor del otro lado del protocolo.",
+        "madurez_senales": "717 estrellas · 27 forks · TypeScript · creado 2026-09-30 · último push 2026-11-14 · Apache-2.0 · 35 incidencias abiertas · topics: `agents`, `browser-automation` · posición 7 en Trendshift · el repositorio se declara experimental y el aislamiento por página requiere plan de pago (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — arrancarlo en local y pedirle una captura con Puppeteer; la pregunta útil no es si funciona, es qué página real se rompe primero.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cloudflare/kitesurf",
+          "rel": "implements",
+          "dst": "concept:browser-cdp-harness",
+          "primera_mencion": "2026-08-23"
+        },
+        {
+          "src": "repo:cloudflare/kitesurf",
+          "rel": "relevant_to",
+          "dst": "concept:agent-browser",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:cloudflare/kitesurf",
+          "rel": "relevant_to",
+          "dst": "repo:ChromeDevTools/chrome-devtools-mcp",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cloudflare-kitesurf",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de revisión de código que reparte el trabajo entre una canalización determinista y un agente con herramientas. Lee el diff, deja que el agente abra ficheros completos y busque en el repositorio, y emite comentarios anclados a una línea concreta; el subcomando de escaneo revisa ficheros enteros cuando no hay diff. Nació como asistente interno de Alibaba y se publica con Apache-2.0 y un conjunto de reglas propio para fallos de puntero nulo, concurrencia y XSS.",
+        "por_que_importa": "El dato interesante no es que revise, sino lo que el equipo eligió perder: frente a un agente general con el mismo modelo sube precisión y F1 y gasta cerca de una novena parte de los tokens, pero baja el recall a propósito. Ese trueque es el tema —un revisor que se calla hallazgos para no inundar de ruido— y añade una parte determinista que cubre lo mecánico sin gastar modelo: compuerta barata primero, juicio caro después. Ya tratamos la revisión con agente el 2026-09-15, el problema de automatizarla el 2026-09-13 y el 2026-07-28 pusimos claude-code como referencia de agente general, que es justo el rival contra el que se mide.",
+        "madurez_senales": "50.885 estrellas · 3.792 forks · Go · creado 2026-05-18 · último push 2026-11-14 · Apache-2.0 · 340 incidencias abiertas · topics: `agent`, `agent-skills`, `code-review`, `harness`, `repository-level-context` · +215 hoy en Trending · el README cifra en cerca de 1/9 los tokens frente a un agente general con el mismo modelo, con más precisión y F1 y menos recall, y declara dos años de uso interno (cifras del repositorio, no reproducidas aquí) (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el apartado de la comparativa es lo que se puede citar sin repetir el argumentario de marketing.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alibaba/open-code-review",
+          "rel": "implements",
+          "dst": "concept:agentic-code-review",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:alibaba/open-code-review",
+          "rel": "solves",
+          "dst": "problem:code-review-automation",
+          "primera_mencion": "2026-09-13"
+        },
+        {
+          "src": "repo:alibaba/open-code-review",
+          "rel": "competes_with",
+          "dst": "repo:anthropics/claude-code",
+          "primera_mencion": "2026-07-28"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-open-code-review",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "libracoder/kiri",
+      "url": "https://github.com/libracoder/kiri",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "sustituto de Docker Desktop y OrbStack escrito en Rust. Corre las imágenes en una máquina virtual Linux pequeña —o directamente sobre el núcleo en Linux—, habla la API del motor de Docker y crea un contexto propio, así que `docker`, Compose y buildx siguen funcionando sin cambiar de flujo. El invitado no lleva runc: un agente de menos de un mega que, como proceso uno, lanza cada contenedor con una llamada al núcleo hacia espacios de nombres y un cgroup. Suma Kubernetes de un nodo, máquinas Linux por comando e importación desde OrbStack o Docker Desktop.",
+        "por_que_importa": "La pieza que más cuesta en un portátil de desarrollo es la que nadie escribe: el escritorio de contenedores. Un reemplazo que respeta la API de Docker y solo te pide cambiar de contexto no obliga a cambiar hábitos, y ahí está su ventaja. La cautela es la fecha: doce días de vida para algo de lo que depende todo el entorno, con cifras de 2,55 ms por contenedor frente a 213 ms de Docker Desktop. A favor, publica método, JSON de resultados y un comando para repetir la prueba en tu máquina; ya cubrimos Docker Desktop como pieza a batir el 2026-09-09.",
+        "madurez_senales": "2.489 estrellas · 150 forks · Rust · creado 2026-11-02 · último push 2026-11-14 · Apache-2.0 · 56 incidencias abiertas · sin topics · el README declara 2,55 ms por contenedor efímero frente a 213 ms de Docker Desktop y 380 ms de OrbStack, con método y resultados en el repositorio y un comando para repetirlo (cifras del autor, no reproducidas aquí) (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — instalarlo en un portátil y repetir su propia medida; si el orden de magnitud se sostiene, la conversación pasa a ser la estabilidad.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:libracoder/kiri",
+          "rel": "competes_with",
+          "dst": "tool:docker-desktop",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:libracoder/kiri",
+          "rel": "implements",
+          "dst": "concept:container-runtime",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:libracoder/kiri",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-development",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "libracoder-kiri",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "kajisho5/ffmpeg-skill",
+      "url": "https://github.com/kajisho5/ffmpeg-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill de agente para editar vídeo en local. Enseña un flujo fijo —sondear el archivo, cortar sin recomprimir cuando se pueda, comprobar el resultado y verificarlo— y trae 42 herramientas en Python sobre ffmpeg y ffprobe: cortes, uniones, quitar silencios, encajar duración y formato, subtítulos con karaoke, superposiciones, paso de HDR a SDR, audio con límites y compuerta, multicámara y exportación por plataforma. Todo se puede llamar como herramienta MCP y cada herramienta está descrita en un contrato en JSON. Sin nube y sin claves.",
+        "por_que_importa": "Lo valioso no es el editor, sino cómo está montado: el esquema de entrada de cada herramienta se genera desde el analizador de la línea de órdenes, la lista de herramientas MCP se deriva de ese contrato y una prueba comprueba que no se separan. Después de ejecutar, el archivo escrito se mide y, si cambió la imagen, el agente mira una hoja de contactos. Ese patrón —contrato generado, superficie MCP derivada, verificación posterior— es lo que le falta a casi todo lo que se publica como skill. Ya cubrimos el servidor MCP como pieza el 2026-08-24; esto es la misma idea aplicada al contrato de la skill.",
+        "madurez_senales": "5.485 estrellas · 473 forks · Python · creado 2026-09-03 · último push 2026-11-14 · MIT · 24 incidencias abiertas · topics: `agent-skills`, `ffmpeg`, `mcp-server`, `subtitles`, `transcoding`, `video-editing`, `whisper` · +168 hoy en Trending · integración continua probada con FFmpeg 6.1, 7.1, 8 y 9 (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — ejecutar su diagnóstico y luego un corte con la comprobación de plataforma; la prueba de verdad es si la verificación detecta un fallo que el ojo no vio.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:kajisho5/ffmpeg-skill",
+          "rel": "implements",
+          "dst": "concept:agent-skill-contract",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:kajisho5/ffmpeg-skill",
+          "rel": "integrates",
+          "dst": "concept:mcp-server",
+          "primera_mencion": "2026-08-24"
+        },
+        {
+          "src": "repo:kajisho5/ffmpeg-skill",
+          "rel": "enables",
+          "dst": "concept:video-editing-agent",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "kajisho5-ffmpeg-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "deepseek-ai/chat-demo",
+      "url": "https://github.com/deepseek-ai/chat-demo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "interfaz de chat estática sobre la API de DeepSeek, sin servidor de aplicación: el navegador llama directamente al servicio que configures. El paquete de publicación se abre sin compilar y sin instalar nada. Guarda la clave y los ajustes en el almacenamiento local del navegador y las conversaciones y adjuntos en IndexedDB; trae ramas de mensajes, búsqueda con enlaces y citas, matemáticas y diagramas, entrada por voz y exportación del historial en un archivo comprimido.",
+        "por_que_importa": "Cuando el dueño del modelo publica su propio cliente, ese cliente se vuelve la referencia de cómo se ve un chat \"de casa\", y muchos lo copiarán como base interna. La decisión que merece artículo es la ausencia de servidor: la clave vive en el navegador de cada usuario y las conversaciones en su perfil, así que en una herramienta interna toca elegir entre aceptar esa exposición o poner una pasarela delante. De pasarelas ya hablamos el 2026-09-09; esto es el mismo dilema en versión estática.",
+        "madurez_senales": "1.217 estrellas · 201 forks · TypeScript · creado 2026-11-12 · último push 2026-11-13 · MIT · 1 incidencia abierta · sin topics · posición 2 en Trendshift · el README documenta el almacenamiento en el navegador y la compilación a sitio estático (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — sirve como referencia de interfaz, y su sección de datos es la que hay que citar antes de reutilizarlo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/chat-demo",
+          "rel": "implements",
+          "dst": "concept:client-side-llm-chat",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deepseek-ai/chat-demo",
+          "rel": "risk",
+          "dst": "concept:client-side-api-key-exposure",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deepseek-ai/chat-demo",
+          "rel": "relevant_to",
+          "dst": "concept:llm-gateway",
+          "primera_mencion": "2026-09-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-ai-chat-demo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "aimod-cc/Agent2API",
+      "url": "https://github.com/aimod-cc/Agent2API",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pasarela local de enrutado de modelos escrita en Rust. Expone una API unificada compatible con OpenAI y con Anthropic, con catálogo y mapeo de modelos, prioridad de cuentas, reparto de carga, fijación de sesión y reintentos. Su función menos habitual es la toma de control de clientes: importa la configuración de los agentes instalados en la máquina, la reescribe para que apunten a la pasarela y permite volver atrás. Añade proxies de salida, claves con alcance e informes de consumo.",
+        "por_que_importa": "Hay dos historias y la segunda es la que conviene contar. La técnica es limpia: respetar los formatos de OpenAI y de Anthropic permite mover un cliente de proveedor sin tocarlo. La otra es de límites: reutilizar sesiones ya abiertas de otros clientes y reescribir sus ajustes es exactamente el atajo que choca con los términos de uso de esos servicios, y el repositorio no lo aborda, solo avisa de que las credenciales se cifran en la base local. Un fork por cada cuatro estrellas invita a mirar quién lo copia; ya cubrimos la pasarela local el 2026-10-02 y el concepto general el 2026-09-09.",
+        "madurez_senales": "2.282 estrellas · 602 forks · Rust · creado 2026-09-11 · último push 2026-11-09 · AGPL-3.0 · 150 incidencias abiertas · topics: `local-proxy`, `openai-compatible`, `cline`, `trae`, `qoder` · +59 hoy en Trending · el README avisa de que copias, exportaciones y ficheros de claves pueden contener datos sensibles (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — interesa por el mecanismo de importar y reescribir ajustes ajenos, no por instalarlo hoy.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:aimod-cc/Agent2API",
+          "rel": "implements",
+          "dst": "concept:local-ai-gateway",
+          "primera_mencion": "2026-10-02"
+        },
+        {
+          "src": "repo:aimod-cc/Agent2API",
+          "rel": "risk",
+          "dst": "concept:client-account-takeover",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:aimod-cc/Agent2API",
+          "rel": "relevant_to",
+          "dst": "concept:llm-gateway",
+          "primera_mencion": "2026-09-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "aimod-cc-agent2api",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.134 estrellas, último push 2026-11-14, TypeScript) — repositorio fuente de la guía web que ya salió aquí el 11 y el 12; hoy es la mayor subida del día en Trending y sigue con cientos de incidencias abiertas sobre el corpus — señales: https://github.com/GoogleChrome/modern-web-guidance-src",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/GoogleChrome/modern-web-guidance-src",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googlechrome-modern-web-guidance-src",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "ahujasid/mcp-for-blender",
+      "url": "https://github.com/ahujasid/mcp-for-blender",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(34.358 estrellas, último push 2026-11-13, Python) — el antiguo blender-mcp, ahora empaquetado como mcp-for-blender, que maneja Blender desde cualquier modelo mediante indicaciones — señales: https://github.com/ahujasid/mcp-for-blender",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ahujasid/mcp-for-blender",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ahujasid-mcp-for-blender",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "callstack/agent-device",
+      "url": "https://github.com/callstack/agent-device",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.383 estrellas, último push 2026-11-14, TypeScript) — capa de dispositivos para agentes con línea de órdenes, servidor MCP y API en Node para manejar aplicaciones móviles, web, televisión y escritorio en emuladores o en la nube — señales: https://github.com/callstack/agent-device",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/callstack/agent-device",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "callstack-agent-device",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "tradermonty/claude-trading-skills",
+      "url": "https://github.com/tradermonty/claude-trading-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.331 estrellas, último push 2026-11-14, Python) — conjunto de skills para ordenar la revisión de mercado, el riesgo y el diario de operaciones, con el aviso explícito de que no es un servicio de señales — señales: https://github.com/tradermonty/claude-trading-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/tradermonty/claude-trading-skills",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tradermonty-claude-trading-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "BaaRai/ARTEX",
+      "url": "https://github.com/BaaRai/ARTEX",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.926 estrellas, último push 2026-11-14, Go) — sistema autónomo de pruebas de penetración con panel en Next.js, traducción al inglés del original chino y licencia AGPL-3.0; acumula más de mil forks — señales: https://github.com/BaaRai/ARTEX",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/BaaRai/ARTEX",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "baarai-artex",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "RoutineMiku/apkstart",
+      "url": "https://github.com/RoutineMiku/apkstart",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.169 estrellas, último push 2026-11-14, JavaScript) — ejecutor de aplicaciones Android en Windows que registra la extensión del paquete, instala con doble clic y abre cada aplicación en su ventana con un QEMU propio, sin abrir el emulador — señales: https://github.com/RoutineMiku/apkstart",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/RoutineMiku/apkstart",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "routinemiku-apkstart",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "vernette/warpscout",
+      "url": "https://github.com/vernette/warpscout",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(649 estrellas, último push 2026-10-24, Go) — busca puntos de salida de Cloudflare WARP que funcionen desde tu red y muestra por qué región y nodo acabas saliendo — señales: https://github.com/vernette/warpscout",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vernette/warpscout",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vernette-warpscout",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "berkantay/gpucanvas",
+      "url": "https://github.com/berkantay/gpucanvas",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(248 estrellas, último push 2026-11-13, TypeScript) — pone miles de nodos del DOM vivos en un lienzo infinito dibujado con WebGPU, con editor para mover y redimensionar y un agente que puede leerlos y señalarlos — señales: https://github.com/berkantay/gpucanvas",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/berkantay/gpucanvas",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "berkantay-gpucanvas",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
