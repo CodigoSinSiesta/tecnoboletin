@@ -1,0 +1,45 @@
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-ag-ui-protocol-ag-ui", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-ag-ui-protocol-ag-ui", "dst": "tema:ag-ui-protocol-ag-ui", "rel": "trata", "added": "2026-11-15"}
+{"src": "repo:ag-ui-protocol/ag-ui", "dst": "protocol:ag-ui", "rel": "implements", "added": "2026-11-15", "primera_mencion": "2026-08-20"}
+{"src": "protocol:ag-ui", "dst": "tool:mcp", "rel": "complements", "added": "2026-11-15", "primera_mencion": "2026-08-08"}
+{"src": "repo:ag-ui-protocol/ag-ui", "dst": "concept:agent-user-interaction-protocol", "rel": "relevant_to", "added": "2026-11-15", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-ifixai-ai-ifixai", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-ifixai-ai-ifixai", "dst": "tema:ifixai-ai-ifixai", "rel": "trata", "added": "2026-11-15"}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "concept:agent-alignment-audit", "rel": "implements", "added": "2026-11-15", "primera_mencion": "2026-08-09"}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "problem:false-assurance", "rel": "solves", "added": "2026-11-15", "primera_mencion": "2026-08-09"}
+{"src": "repo:ifixai-ai/iFixAi", "dst": "concept:eu-ai-act-agent-compliance", "rel": "relevant_to", "added": "2026-11-15", "primera_mencion": "2026-08-09"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-elementalsouls-claude-bughunter", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-elementalsouls-claude-bughunter", "dst": "tema:elementalsouls-claude-bughunter", "rel": "trata", "added": "2026-11-15"}
+{"src": "repo:elementalsouls/Claude-BugHunter", "dst": "concept:offensive-security-skills", "rel": "implements", "added": "2026-11-15", "primera_mencion": null}
+{"src": "repo:elementalsouls/Claude-BugHunter", "dst": "concept:agent-skills", "rel": "extends", "added": "2026-11-15", "primera_mencion": "2026-10-22"}
+{"src": "repo:elementalsouls/Claude-BugHunter", "dst": "problem:red-team-automation", "rel": "solves", "added": "2026-11-15", "primera_mencion": "2026-09-13"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-heardlabs-heard", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-heardlabs-heard", "dst": "tema:heardlabs-heard", "rel": "trata", "added": "2026-11-15"}
+{"src": "repo:heardlabs/heard", "dst": "concept:agent-voice-output", "rel": "implements", "added": "2026-11-15", "primera_mencion": null}
+{"src": "repo:heardlabs/heard", "dst": "tool:claude-code", "rel": "integrates", "added": "2026-11-15", "primera_mencion": "2026-09-15"}
+{"src": "repo:heardlabs/heard", "dst": "tool:kokoro", "rel": "uses", "added": "2026-11-15", "primera_mencion": null}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-mobai-app-simslim", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-mobai-app-simslim", "dst": "tema:mobai-app-simslim", "rel": "trata", "added": "2026-11-15"}
+{"src": "repo:MobAI-App/simslim", "dst": "concept:simulator-density", "rel": "implements", "added": "2026-11-15", "primera_mencion": null}
+{"src": "repo:MobAI-App/simslim", "dst": "concept:mobile-agent-testing", "rel": "enables", "added": "2026-11-15", "primera_mencion": null}
+{"src": "repo:MobAI-App/simslim", "dst": "repo:callstack/agent-device", "rel": "complements", "added": "2026-11-15", "primera_mencion": "2026-11-14"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-google-research-paper-orchestra", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-google-research-paper-orchestra", "dst": "tema:google-research-paper-orchestra", "rel": "trata", "added": "2026-11-15"}
+{"src": "repo:google-research/paper-orchestra", "dst": "concept:automated-paper-writing", "rel": "implements", "added": "2026-11-15", "primera_mencion": null}
+{"src": "repo:google-research/paper-orchestra", "dst": "concept:research-agent", "rel": "relevant_to", "added": "2026-11-15", "primera_mencion": "2026-09-09"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-cherryhq-cherry-studio", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-cherryhq-cherry-studio", "dst": "tema:cherryhq-cherry-studio", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-backnotprop-plannotator", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-backnotprop-plannotator", "dst": "tema:backnotprop-plannotator", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-dream-num-univer", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-dream-num-univer", "dst": "tema:dream-num-univer", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-arjun988-blender-skills", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-arjun988-blender-skills", "dst": "tema:arjun988-blender-skills", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-fujiwarachoki-supoclip", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-fujiwarachoki-supoclip", "dst": "tema:fujiwarachoki-supoclip", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-pnnbao97-vieneu-tts", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-pnnbao97-vieneu-tts", "dst": "tema:pnnbao97-vieneu-tts", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-microsoft-pyrit", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-microsoft-pyrit", "dst": "tema:microsoft-pyrit", "rel": "trata", "added": "2026-11-15"}
+{"src": "boletin:2026-11-15", "dst": "item:https-github-com-duwqijlk-muse-protocol", "rel": "menciona", "added": "2026-11-15"}
+{"src": "item:https-github-com-duwqijlk-muse-protocol", "dst": "tema:duwqijlk-muse-protocol", "rel": "trata", "added": "2026-11-15"}

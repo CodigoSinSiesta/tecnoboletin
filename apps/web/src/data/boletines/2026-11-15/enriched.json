@@ -1,0 +1,467 @@
+{
+  "version": 2,
+  "date": "2026-11-15",
+  "boletin_origen": "2026-11-15-trending.md",
+  "resumen_ejecutivo": "- La pila de protocolos para agentes cierra su tercera pata: AG-UI estandariza el tramo entre el agente y la interfaz, justo donde MCP pone herramientas y A2A pone comunicación entre agentes.\n- La auditoría de agentes se presenta como producto: iFixAi mete al agente en una simulación del negocio y hace que un juez de otro proveedor puntúe cada respuesta, con 45.720 estrellas acumuladas.\n- El resto del día es periferia útil: densidad de simuladores iOS para probar agentes móviles, una capa de voz local para agentes de código y un paquete de 83 skills de bug bounty; como contraste, el framework de escritura automática de artículos de Google llega a Trendshift con el repositorio parado desde mayo.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust, Go y JavaScript (67 repositorios únicos), GitHub API (17 repositorios verificados, README leído en la rama por defecto de cada hallazgo y de cada item del radar). El blogwatcher de las 08:00 no publica desde julio, así que hoy tampoco hay archivo de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "ag-ui-protocol/ag-ui",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "protocolo abierto y ligero, basado en eventos, que estandariza cómo un agente se conecta con una aplicación de usuario. El agente emite eventos compatibles con una de sus dieciséis formas estándar y la aplicación le devuelve unas pocas entradas simples; una capa intermedia admite cualquier transporte (SSE, WebSocket, webhooks) y tolera formatos de evento poco estrictos. Trae una implementación HTTP de referencia y un conector por defecto.",
+        "por_que_importa": "El README sitúa el protocolo en una pila de tres piezas y ahí está el artículo: MCP da herramientas al agente (su relación con AG-UI la cubrimos el 2026-08-08), A2A lo comunica con otros agentes y AG-UI lo conecta con la interfaz, que ya apareció el 2026-08-20. La consecuencia práctica: el estado de la conversación deja de vivir en el componente de turno y pasa a ser un flujo de eventos con sincronización bidireccional, interfaz generada por el modelo y contexto enriquecido en caliente. Merece discusión qué se gana al fijar ese contrato y qué se pierde en latencia, control de estado y depuración.",
+        "madurez_senales": "17.482 estrellas · 1.730 forks · TypeScript · creado 2025-05-07 · último push 2026-11-15 · MIT · 591 incidencias abiertas · topics: `ag-ui-protocol`, `agent-frontend`, `agent-ui`, `agentic-workflow`, `ai-agents` · posición 14 en Trendshift · +9 hoy en Trending · su capa de integración declara compatibilidad con múltiples marcos de agentes y una demostración pública de ejemplos (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — la sección donde compara su sitio en la pila es el material citable, sin necesidad de montar la demostración.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ag-ui-protocol/ag-ui",
+          "rel": "implements",
+          "dst": "protocol:ag-ui",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "protocol:ag-ui",
+          "rel": "complements",
+          "dst": "tool:mcp",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:ag-ui-protocol/ag-ui",
+          "rel": "relevant_to",
+          "dst": "concept:agent-user-interaction-protocol",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ag-ui-protocol-ag-ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "ifixai-ai/iFixAi",
+      "url": "https://github.com/ifixai-ai/iFixAi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "auditor independiente de agentes. Construye una simulación del negocio a partir de un perfil, le manda al agente las peticiones de un día real —incluidas las que se salen de su rol— y un juez puntúa cada respuesta; cada hallazgo muestra qué se pidió y qué hizo el agente. Para una auditoría real elige un juez de un proveedor distinto al del agente auditado, y funciona con cualquier extremo compatible con OpenAI. Se instala con `pip install ifixai` y trae un modo de demostración sin claves.",
+        "por_que_importa": "Responde en público a una pregunta que casi nadie contesta: cómo se comprueba que un agente hace lo que debía y nada más. Es la auditoría de alineación de agentes que ya cubrimos el 2026-08-09, ahora como respuesta comercial. Dos decisiones dan para artículo: juicio por simulación en vez de por lista de casos, y separar proveedor entre juez y auditado para que el modelo no se valide a sí mismo. El README mapea el asunto a marcos de cumplimiento europeos y estadounidenses; sirve para discutir si la auditoría acaba en casilla o en prueba técnica real.",
+        "madurez_senales": "45.720 estrellas · 1.811 forks · Python · creado 2026-04-27 · último push 2026-11-13 · Apache-2.0 · 5 incidencias abiertas · topics: `agent-evaluation`, `ai-governance`, `eu-ai-act`, `iso-42001`, `nist-ai-rmf`, `owasp-llm`, `prompt-injection` · posición 19 en Trendshift · el registro interno del boletín le daba 2.085 estrellas el 25 de julio, así que el crecimiento es de veinte veces en cuatro meses, con una relación de un fork por cada 25 estrellas y solo cinco incidencias abiertas (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — el modo de demostración sin claves permite ver el formato del informe antes de conectar un agente propio, que es lo único que decide si sirve.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ifixai-ai/iFixAi",
+          "rel": "implements",
+          "dst": "concept:agent-alignment-audit",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:ifixai-ai/iFixAi",
+          "rel": "solves",
+          "dst": "problem:false-assurance",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:ifixai-ai/iFixAi",
+          "rel": "relevant_to",
+          "dst": "concept:eu-ai-act-agent-compliance",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ifixai-ai-ifixai",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paquete de skills para Claude Code orientado a caza de fallos y trabajo de equipo rojo externo. Apila cuatro capas: método y disciplina de operador, 58 skills de caza web derivadas de 681 informes divulgados en HackerOne, cadenas de explotación sobre plataformas empresariales (Microsoft 365 y Entra, Okta, vCenter, VPN, SharePoint) y una capa de entrega con triaje, severidad y limpieza de datos personales en las pruebas. Las skills se activan por tema: describes lo que estás probando y se carga la que toca.",
+        "por_que_importa": "El interés no está en el dominio, está en el molde: 681 informes públicos se convierten en patrones de detección y tablas de evasión, empaquetados como conocimiento que el agente carga solo cuando el tema lo pide. Ese patrón de skills por tema ya lo tratamos el 2026-10-22, y la automatización de equipo rojo el 2026-09-13. Aplicado a un terreno donde equivocarse tiene consecuencias legales, el paquete insiste en alcance autorizado e higiene de evidencias: esa parte es tan editorial como la técnica.",
+        "madurez_senales": "5.865 estrellas · 901 forks · Python · creado 2026-05-05 · último push 2026-11-14 · MIT · 5 incidencias abiertas · topics: `ai-security`, `bug-bounty`, `claude-skills`, `offensive-security`, `pentesting`, `red-team`, `web-security` · +124 hoy en Trending · el README declara 83 skills, 15 comandos y 681 patrones, de los cuales 433 están citados uno a uno, y el autor publica su perfil profesional (cifras del repositorio, no reproducidas aquí) (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — vale la pena por cómo convierte informes divulgados en patrones cargables, no por instalar el paquete.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:elementalsouls/Claude-BugHunter",
+          "rel": "implements",
+          "dst": "concept:offensive-security-skills",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:elementalsouls/Claude-BugHunter",
+          "rel": "extends",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-10-22"
+        },
+        {
+          "src": "repo:elementalsouls/Claude-BugHunter",
+          "rel": "solves",
+          "dst": "problem:red-team-automation",
+          "primera_mencion": "2026-09-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elementalsouls-claude-bughunter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "heardlabs/heard",
+      "url": "https://github.com/heardlabs/heard",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "capa de voz para agentes de código en macOS. Instala ganchos en la configuración de Claude Code y de Codex, sigue la sesión y dice en voz alta un resumen corto de lo que el agente hizo, falló o necesita aprobar, en lugar de leer la respuesta entera. La voz sale de Kokoro en local, sin cuenta ni clave; también acepta una clave propia de un servicio externo. El motor es Apache-2.0 y permite envolver cualquier agente de línea de órdenes con `heard run`.",
+        "por_que_importa": "El bucle de voz con un agente tenía solo la mitad de entrada, dictar; esto cubre la salida por el camino barato: modelo pequeño en la propia máquina y una frase en vez de un párrafo. La integración con Claude Code ya la seguimos el 2026-09-15, y aquí hay un detalle de gobierno: para funcionar escribe ganchos en el archivo de ajustes del agente, así que instalar la capa de voz es ceder un punto de control sobre cada llamada a herramienta. Quien mida la superficie de confianza de su entorno debería mirar ese archivo antes y después.",
+        "madurez_senales": "328 estrellas · 30 forks · Python · creado 2026-04-24 · último push 2026-11-13 · Apache-2.0 · 9 incidencias abiertas · topics: `agent-notifications`, `claude-code-hooks`, `coding-agents`, `kokoro`, `local-first`, `text-to-speech`, `voice` · posición 20 en Trendshift · el README avisa de que la aplicación de escritorio y los ganchos son para macOS y de que los ganchos devuelven el control de inmediato para no bloquear al agente (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — leer el código de los ganchos es la forma rápida de entender qué ve una capa de notificaciones de tu sesión.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:heardlabs/heard",
+          "rel": "implements",
+          "dst": "concept:agent-voice-output",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:heardlabs/heard",
+          "rel": "integrates",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:heardlabs/heard",
+          "rel": "uses",
+          "dst": "tool:kokoro",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "heardlabs-heard",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "MobAI-App/simslim",
+      "url": "https://github.com/MobAI-App/simslim",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de línea de órdenes en Go para macOS que apaga los servicios de fondo que un simulador de iOS, tvOS, watchOS o visionOS no necesita: Siri, indexación, análisis de fotos, sincronización con la nube. Actúa sobre una lista blanca de servicios desactivables mediante las herramientas de simulación de Xcode, y trae comandos para medir el consumo real de cada simulador encendido.",
+        "por_que_importa": "El cuello de botella de probar agentes que manejan móviles no es el modelo, es cuántos dispositivos caben a la vez: doce simuladores en un portátil de 16 GB, cada uno con su sesión de agente, frente a los cinco en los que la máquina empieza a paginar. Los números del README son la prueba: 258 procesos y 4,0 GB por simulador de serie frente a 70 y 0,9 GB apagado. Es infraestructura aburrida que habilita una práctica nueva, y complementa la capa de dispositivos para agentes que salió el 2026-11-14.",
+        "madurez_senales": "3.967 estrellas · 164 forks · Go · creado 2026-07-20 · último push 2026-11-07 · MIT · 5 incidencias abiertas · sin topics · posición 12 en Trendshift · el README declara 258 procesos y 4,0 GB en un simulador de serie frente a 70 procesos y 0,9 GB apagado, medido con la huella física de memoria en un M1 Pro de 16 GB, y documenta qué servicios no se pueden apagar en watchOS y visionOS (cifras del repositorio, no reproducidas aquí) (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — en un Mac con Xcode, su comando de medida da la cifra propia en un minuto y desmonta o confirma la promesa.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:MobAI-App/simslim",
+          "rel": "implements",
+          "dst": "concept:simulator-density",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MobAI-App/simslim",
+          "rel": "enables",
+          "dst": "concept:mobile-agent-testing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:MobAI-App/simslim",
+          "rel": "complements",
+          "dst": "repo:callstack/agent-device",
+          "primera_mencion": "2026-11-14"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mobai-app-simslim",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "google-research/paper-orchestra",
+      "url": "https://github.com/google-research/paper-orchestra",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework multiagente de Google Cloud AI Research que convierte material previo sin estructurar —ideas y registros de experimentos— en un manuscrito de LaTeX listo para enviar. Reparte el trabajo en agentes especializados: esquema, revisión de literatura con búsqueda en Semantic Scholar, redacción por secciones, refinado y generación de gráficas. Se ejecuta por línea de órdenes o con una demostración en Streamlit, y necesita claves de modelo y de la API de literatura.",
+        "por_que_importa": "El tema no es que redacte, es qué pasa con la revisión por pares cuando el manuscrito se genera desde un registro de experimentos. Viene de la línea de agentes de investigación que ya tocamos el 2026-09-09, y el README deja dos datos incómodos para el artículo: el conjunto de datos usado no se publica y el repositorio no recibe commits desde el 17 de mayo. Lo que hoy está en tendencia es la idea, no un proyecto en mantenimiento: caso perfecto para separar promesa de estado real.",
+        "madurez_senales": "606 estrellas · 102 forks · Python · creado 2026-05-01 · último push 2026-05-17 · Apache-2.0 · 0 incidencias abiertas · topics: `ai-research-assistant`, `multi-agent-systems` · posición 11 en Trendshift · seis meses sin commits y el conjunto de datos anunciado sin fecha (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**vigilar** — no hay nada que probar hoy, pero el día que publique el conjunto de datos se podrá medir de verdad.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google-research/paper-orchestra",
+          "rel": "implements",
+          "dst": "concept:automated-paper-writing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:google-research/paper-orchestra",
+          "rel": "relevant_to",
+          "dst": "concept:research-agent",
+          "primera_mencion": "2026-09-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-research-paper-orchestra",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "CherryHQ/cherry-studio",
+      "url": "https://github.com/CherryHQ/cherry-studio",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(53.529 estrellas, último push 2026-11-15, TypeScript) — estación de trabajo de IA de escritorio con agentes, base de conocimiento, MCP y modelos locales; licencia AGPL-3.0 y 2.759 incidencias abiertas — señales: https://github.com/CherryHQ/cherry-studio",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/CherryHQ/cherry-studio",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cherryhq-cherry-studio",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.395 estrellas, último push 2026-11-15, TypeScript) — capa de revisión para anotar planes, especificaciones y diferencias de código, y devolver el comentario al agente en un clic; +408 hoy en Trending — señales: https://github.com/backnotprop/plannotator",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/backnotprop/plannotator",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "backnotprop-plannotator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25.125 estrellas, último push 2026-11-15, TypeScript) — SDK de oficina en el navegador que ahora se vende como sustrato para agentes; ojo, su rama por defecto es `dev`, no `main` — señales: https://github.com/dream-num/univer",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/dream-num/univer",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "arjun988/blender-skills",
+      "url": "https://github.com/arjun988/blender-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.379 estrellas, último push 2026-11-06, TypeScript) — 94 skills de Blender para Cursor, Claude Code, Kiro y Codex, con ejecución por MCP; el listado en el mercado de Anthropic sigue en revisión — señales: https://github.com/arjun988/blender-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/arjun988/blender-skills",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "arjun988-blender-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "FujiwaraChoki/supoclip",
+      "url": "https://github.com/FujiwaraChoki/supoclip",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.138 estrellas, último push 2026-11-15, Python) — alternativa abierta a OpusClip que detecta los momentos con gancho de un vídeo largo y los monta en vertical con subtítulos; AGPL-3.0 y versión alojada de pago — señales: https://github.com/FujiwaraChoki/supoclip",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/FujiwaraChoki/supoclip",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fujiwarachoki-supoclip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "pnnbao97/VieNeu-TTS",
+      "url": "https://github.com/pnnbao97/VieNeu-TTS",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.364 estrellas, último push 2026-11-12, Python) — síntesis de voz vietnamita en el dispositivo con clonación instantánea; la versión 4, la de mayor fidelidad, es propietaria y no se libera — señales: https://github.com/pnnbao97/VieNeu-TTS",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/pnnbao97/VieNeu-TTS",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pnnbao97-vieneu-tts",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "microsoft/PyRIT",
+      "url": "https://github.com/microsoft/PyRIT",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.849 estrellas, último push 2026-11-15, Python) — kit de pruebas de ataque contra sistemas de IA generativa del equipo rojo de Microsoft, con escáner, interfaz gráfica y marco extensible en Python — señales: https://github.com/microsoft/PyRIT",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/microsoft/PyRIT",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-pyrit",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "duwqijlk/muse-protocol",
+      "url": "https://github.com/duwqijlk/muse-protocol",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(666 estrellas, último push 2026-11-15, Python) — implementación en HTTP puro del registro por lotes y el canje de invitaciones de un servicio ajeno, sin licencia reconocible por la API — señales: https://github.com/duwqijlk/muse-protocol",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/duwqijlk/muse-protocol",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "duwqijlk-muse-protocol",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

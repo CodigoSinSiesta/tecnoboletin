@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "date": "2026-11-15",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "AG-UI cierra el tramo interfaz-agente de la pila de protocolos",
+  "posicionamiento": "La pila de protocolos para agentes deja de ser un par de piezas sueltas: con AG-UI en el tramo de interfaz, MCP en herramientas y A2A en comunicación, el contrato queda completo. El resto del día son periféricos que solo tienen sentido si esa base se sostiene.",
+  "convergencia_stack_css": "Nada de hoy toca el stack local-first de forma directa. Lo más cercano es heard, que sintetiza voz con Kokoro en local y sin clave, y simslim, que abarata tener doce simuladores en un portátil; ambas son infraestructura para agentes, no piezas del grafo ni del LLM local.",
+  "cruzado_grafo": "AG-UI refuerza aristas viejas: interfaz desde el 2026-08-20 y relación con MCP desde el 2026-08-08. Los estrenos reales de hoy son cuatro nodos sin primera_mencion: offensive-security-skills, agent-voice-output, simulator-density y automated-paper-writing.",
+  "tendencias_5_boletines": "Las dos jornadas previas iban de sustituir sustrato y de recibir contratos en vez de catálogos; el contrato se estandariza y la auditoría se convierte en producto. La línea se mantiene: menos piezas nuevas, más reglas sobre cómo encajan las que ya existen.",
+  "alertas": [
+    "paper-orchestra no recibe commits desde el 17 de mayo y no publica el conjunto de datos: está en tendencia la idea, no un proyecto mantenido.",
+    "iFixAi exhibe 45.720 estrellas acumuladas sin documentar en el README la tasa de falsos positivos de su juez.",
+    "heard escribe ganchos en los ajustes de Claude Code: instalar la capa de voz cede un punto de control sobre cada llamada a herramienta.",
+    "Claude-BugHunter deriva 58 skills de 681 informes divulgados; en terreno ofensivo un patrón mal generalizado tiene consecuencias legales."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el hallazgo con más recorrido editorial: fija un contrato que hoy no tiene dueño claro. El README permite discutir latencia, control de estado y depuración con material concreto."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Propone auditar por simulación y con juez de otro proveedor, dos decisiones discutibles por separado. Da pie a contrastar auditoría técnica frente a casilla de cumplimiento."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "El repositorio está parado desde el 17 de mayo y el conjunto de datos no se publica. Conviene seguirlo como síntoma, no recomendarlo como herramienta."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Pasar de 258 procesos y 4 GB a 70 y 0,9 GB por simulador es un dato medido que habilita probar varios agentes móviles a la vez. Encaja con la línea de infraestructura aburrida."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Voz local con Kokoro y sin clave encaja con el stack local-first, y el detalle de los ganchos abre la conversación sobre superficie de confianza."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
