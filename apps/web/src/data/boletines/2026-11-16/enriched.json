@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-16",
+  "boletin_origen": "2026-11-16-trending.md",
+  "resumen_ejecutivo": "- DeepSeek publica su propio arnés de agentes con una arquitectura en la que todo es un plugin, y el ecosistema ya se organiza a su alrededor: 281.968 estrellas en tres meses y un tema propio para los complementos.\n- El coste y la revisión se consolidan como las dos superficies de ingeniería alrededor del agente: TokenEconomizer mide un recorte de gasto sin tocar el agente y FastMCP 4.2 mueve las skills de cada carpeta local al servidor.\n- El resto del día es herramienta de nicho con historia propia: pruebas por propiedades para interfaces, una capa de revisión para varios agentes a la vez y un agregador de niveles gratuitos que guarda el catálogo vivo detrás de una suscripción.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust, Go y JavaScript (67 repositorios únicos), GitHub API (15 repositorios verificados, README leído en la rama por defecto de cada hallazgo y de cada item del radar). El blogwatcher de las 08:00 no publica desde julio, así que hoy tampoco hay archivo de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "arnés de agentes de código abierto de DeepSeek AI, en TypeScript, que se arranca con una orden de npm y abre una interfaz web local en el puerto 3080. Se construye sobre Cordis, un marco de composición por plugins descrito en un artículo propio: herramientas, proveedores de modelo y hasta la interfaz son plugins registrados. Está en vista previa para desarrolladores y el README avisa en mayúsculas de que habrá cambios incompatibles.",
+        "por_que_importa": "Es el primer arnés firmado por un laboratorio de modelos que se plantea como plataforma de extensión: el debate deja de ser qué agente es mejor y pasa a ser quién controla el registro de plugins. Ya cubrimos el concepto el 2026-08-14, y ahora hay ecosistema medible (tema propio en GitHub) para contar complementos por semana. Frente a Claude Code y Codex —extensiones sí, bucle completo como plugin no—, la comparación pendiente es esta. Aviso: está en vista previa y el README anticipa cambios incompatibles, así que hoy sirve para leer arquitectura, no para adoptar.",
+        "madurez_senales": "281.968 estrellas · 34.897 forks · TypeScript · creado 2026-08-13 · último push 2026-11-13 · MIT · sin incidencias abiertas porque el repositorio las tiene desactivadas y el canal es Discussions · topics: `ai-agents`, `cordis`, `dsh`, `dsh-plugin` · última versión dsh-v0.2.2-rc.3 del 2026-11-13 · posición 24 en Trendshift (verificado vía GitHub API; README en `master`).",
+        "accion_sugerida": "**leer** — el documento de arquitectura explica el modelo de plugins mejor que el README y sirve para comparar con los otros arneses.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "implements",
+          "dst": "concept:agent-harness",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "extends",
+          "dst": "concept:everything-is-a-plugin",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:deepseek-ai/deepseek-harness",
+          "rel": "integrates",
+          "dst": "tool:cordis",
+          "primera_mencion": "2026-08-14"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deepseek-ai-deepseek-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "microsoft/TokenEconomizer",
+      "url": "https://github.com/microsoft/TokenEconomizer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "tres mecanismos que aprenden de las sesiones anteriores del agente en un mismo repositorio para recortar el gasto de las siguientes sesiones. Las micro-skills guardan hechos del repositorio —el comando que funciona, la variable que hace falta— y los enuncian al empezar la sesión cuando tres sesiones los han confirmado, con la posibilidad de retirarlos si otra los contradice. La poda de herramientas deja fuera las definiciones cuyos prompts no se usan. El guardián de bucles consulta a un modelo juez si el turno está atascado y, por encima de un umbral de confianza, deja una nota de redirección. No modifica al agente: actúa sobre su configuración.",
+        "por_que_importa": "Aquí el coste se trata como propiedad medida y no como consejo, y eso ya lo tocamos el 2026-10-31 al hablar del derroche de tokens. Lo nuevo es el método: es de caja negra, deduce el derroche de la experiencia previa sin ver el prompt por dentro, así que se puede aplicar a agentes de terceros como Claude Code, que seguimos desde el 2026-09-15. El hallazgo incómodo está en su propia medición: en una de las cinco combinaciones el ahorro llega con caída de precisión, lo que convierte el artículo en una discusión sobre qué se está comprando.",
+        "madurez_senales": "6.784 estrellas · 437 forks · Python · creado 2026-10-13 · último push 2026-11-16 · Apache-2.0 · 22 incidencias abiertas · topics: `agentic-coding`, `ai-coding`, `anthropic`, `claude-code`, `codex` · versión v0.1.0 del 2026-10-26 · artículo arXiv 2610.22732 firmado por la Universidad de California en Berkeley, Microsoft Research y Microsoft Security · medida sobre tareas de SWE-Bench: entre 18,4% y 30,9% menos coste medio en cinco combinaciones de agente y modelo, más barato en las 30 celdas de repositorio por combinación y precisión mejor en 4 de las 5 · posición 18 en Trendshift · ya fue hallazgo el 31 de octubre y vuelve con el artículo y la medición publicados (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el apartado de resultados separa coste de precisión por combinación y ahí está la discusión, no en el titular del ahorro.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:microsoft/TokenEconomizer",
+          "rel": "solves",
+          "dst": "problem:agent-token-waste",
+          "primera_mencion": "2026-10-31"
+        },
+        {
+          "src": "repo:microsoft/TokenEconomizer",
+          "rel": "integrates",
+          "dst": "tool:claude-code",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:microsoft/TokenEconomizer",
+          "rel": "relevant_to",
+          "dst": "concept:agent-cost-control",
+          "primera_mencion": "2026-10-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-tokeneconomizer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "superficie de revisión local que se abre en el navegador. Cuando el agente propone un plan, un documento o un cambio, la herramienta lo presenta para anotar, comentar y devolver el comentario al propio agente. Incluye revisión de diferencias locales y de solicitudes de cambio remotas, y un buzón donde los agentes dejan preguntas, ficheros y revisiones mientras siguen trabajando, de forma que la sesión que pregunta no se queda esperando la respuesta. Se engancha por plugins y ganchos a una lista larga de agentes.",
+        "por_que_importa": "El cuello de botella deja de estar en el modelo y pasa a estar donde se toman las decisiones, hilo que abrimos el 2026-08-27 con la revisión humana y el plan mode. El buzón es la decisión de diseño que merece artículo: desacopla la pregunta de la sesión, así que el agente sigue trabajando y tú contestas cuando puedes, sin terminal bloqueada. Que su lista de clientes incluya Hermes y OpenClaw lo vuelve buen sitio para observar cómo se gobierna el trabajo asíncrono de varios agentes desde una sola ventana. Con 168 incidencias abiertas, es superficie todavía movediza.",
+        "madurez_senales": "12.091 estrellas · 1.135 forks · TypeScript · creado 2025-12-28 · último push 2026-11-16 · Apache-2.0 · 168 incidencias abiertas · topics: `agents`, `claude-code`, `code-review`, `codex`, `obsidian`, `opencode`, `plan-mode` · +866 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — el buzón es lo único que no se entiende leyendo: con dos agentes en paralelo se ve si el desacople funciona o estorba.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "implements",
+          "dst": "concept:human-in-the-loop-review",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "competes_with",
+          "dst": "concept:agent-plan-mode",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:backnotprop/plannotator",
+          "rel": "relevant_to",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "backnotprop-plannotator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "PrefectHQ/fastmcp",
+      "url": "https://github.com/PrefectHQ/fastmcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "marco completo para construir servidores, clientes y aplicaciones MCP en Python: declaras una función y el esquema, la validación y la documentación salen solos; te conectas a un servidor por URL y se negocian transporte y autenticación. La versión 4.2.0, del 13 de noviembre, añade que el servidor sirva skills: una skill vive junto a las herramientas que describe y cualquier cliente puede leer sus ficheros como recursos; los clientes que hablan la extensión experimental de skills obtienen además un listado con manifiesto y huella por fichero, y el cliente del propio marco verifica tamaño y resumen al instalar.",
+        "por_que_importa": "El problema que resuelve es de distribución, no de formato: con la skill en el servidor, un despliegue actualiza a todos los agentes que la leen, en vez de pedir a cada máquina que reinstale. Seguimos MCP desde el 2026-09-21 y las skills de agente desde el 2026-10-22; esto es la bisagra entre ambos, aunque la relación con la distribución de skills no tiene mención previa. El detalle de transición da para artículo: la interfaz de skills de la 4.1 queda obsoleta y se retira en la 4.3, así que quien construyó sobre ella tiene una ventana corta para migrar, y esa ventana es el coste de apostar por un contrato joven.",
+        "madurez_senales": "28.560 estrellas · 2.611 forks · Python · creado 2024-11-30 · último push 2026-11-16 · Apache-2.0 · 238 incidencias abiertas · topics: `agents`, `mcp`, `mcp-clients`, `mcp-servers`, `mcp-tools`, `model-context-protocol` · versión 4.2.0 del 2026-11-13, con 120 contribuyentes en el ciclo · el README declara un millón de descargas diarias y que alguna versión suya sostiene el 70% de los servidores MCP en todos los lenguajes · +82 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — las notas de la versión explican la migración de la interfaz de skills y ese es el material que caduca antes.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:PrefectHQ/fastmcp",
+          "rel": "implements",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:PrefectHQ/fastmcp",
+          "rel": "extends",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-10-22"
+        },
+        {
+          "src": "repo:PrefectHQ/fastmcp",
+          "rel": "enables",
+          "dst": "concept:skill-distribution",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "prefecthq-fastmcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "antithesishq/bombadil",
+      "url": "https://github.com/antithesishq/bombadil",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta en Rust que explora por su cuenta una interfaz web o de terminal y comprueba que ciertas propiedades se cumplen durante toda la sesión, en lugar de recorrer un guion fijo de pasos. Corre en el entorno local, en integración continua y dentro de la plataforma de simulación de la empresa que la mantiene, y usa Playwright como motor de navegador. La documentación propia es un manual aparte del README.",
+        "por_que_importa": "Las interfaces que genera un agente multiplican los caminos posibles y un guion solo cubre el que alguien imaginó; escribir propiedades —el total cuadra, el foco no se pierde, el carrito no revive un pedido cancelado— es la parte que no se automatiza sola. El enfoque traslada las pruebas por propiedades a la interfaz y se apoya en Playwright, que ya salió el 2026-10-02. Su segundo gancho editorial es la política escrita sobre el uso de modelos generativos en contribuciones, debate del momento. Aviso: versión 0.7.10 y 46 incidencias abiertas, herramienta temprana y no estándar.",
+        "madurez_senales": "2.021 estrellas · 78 forks · Rust · creado 2025-12-17 · último push 2026-11-13 · MIT · 46 incidencias abiertas · topics: `antithesis`, `pbt`, `playwright`, `property-based-testing`, `testing`, `ui` · versión 0.7.10 del 2026-10-21 · +202 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — con una sola pantalla propia y tres propiedades se ve en una tarde si el enfoque aguanta algo real.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:antithesishq/bombadil",
+          "rel": "implements",
+          "dst": "concept:property-based-testing",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:antithesishq/bombadil",
+          "rel": "uses",
+          "dst": "tool:playwright",
+          "primera_mencion": "2026-10-02"
+        },
+        {
+          "src": "repo:antithesishq/bombadil",
+          "rel": "relevant_to",
+          "dst": "concept:agent-generated-ui-testing",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "antithesishq-bombadil",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "tashfeenahmed/freellmapi",
+      "url": "https://github.com/tashfeenahmed/freellmapi",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "pasarela que reúne los niveles gratuitos de decenas de proveedores y los expone detrás de un único punto de entrada compatible con OpenAI. Un enrutador elige el modelo disponible para cada petición, salta al siguiente proveedor cuando uno limita y lleva la cuenta por clave para no pasarse de cada tope gratuito; las claves se guardan cifradas y acepta endpoints propios que también sean compatibles. Trae aplicación de escritorio, imagen para contenedores y aplicaciones móviles.",
+        "por_que_importa": "El dato no es la agregación de niveles gratuitos, es el reparto del producto: la instalación gratuita recibe una instantánea mensual del catálogo, así que un modelo nuevo tarda treinta días en llegarle, y quien paga 19 dólares al año lo recibe el mismo día. Ya tratamos el enrutador de LLM y la economía del nivel gratuito el 2026-11-04; esto añade el caso limpio de gratis con retraso sobre una lista que controla el proveedor. Y ese es el riesgo que entonces marcamos: construir el flujo de trabajo sobre cuotas y catálogos ajenos que cambian sin avisar.",
+        "madurez_senales": "53.040 estrellas · 7.433 forks · TypeScript · creado 2026-04-21 · último push 2026-11-15 · MIT · 51 incidencias abiertas · el README declara 10.100 millones de tokens al mes, 87 proveedores gratuitos y 1.313 extremos de modelo · suscripción de 19 dólares al año para el catálogo vivo, con la instantánea mensual en la versión gratuita · +579 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**vigilar** — lo relevante es si los proveedores empiezan a cerrar el acceso que el agregador aprovecha; eso se ve en las incidencias, no en el README.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:tashfeenahmed/freellmapi",
+          "rel": "implements",
+          "dst": "concept:llm-router",
+          "primera_mencion": "2026-11-04"
+        },
+        {
+          "src": "repo:tashfeenahmed/freellmapi",
+          "rel": "relevant_to",
+          "dst": "concept:free-tier-economics",
+          "primera_mencion": "2026-11-04"
+        },
+        {
+          "src": "repo:tashfeenahmed/freellmapi",
+          "rel": "risk",
+          "dst": "problem:provider-terms-fragility",
+          "primera_mencion": "2026-11-04"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tashfeenahmed-freellmapi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "HKUDS/AutoSwarm",
+      "url": "https://github.com/HKUDS/AutoSwarm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.553 estrellas, último push 2026-11-15, Python) — escritorio para coordinar varios agentes en un espacio privado, con reparto de contexto entre ellos y artículo en arXiv sobre el diseño; +64 hoy en Trending — señales: https://github.com/HKUDS/AutoSwarm",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/AutoSwarm",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-autoswarm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(26.674 estrellas, último push 2026-11-16, TypeScript) — SDK de hojas de cálculo y documentos para incrustar oficina en un producto, ahora presentado para conectar agentes; +988 hoy en Trending, la mayor subida del día — señales: https://github.com/dream-num/univer",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/dream-num/univer",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "clice-io/clice",
+      "url": "https://github.com/clice-io/clice",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.583 estrellas, último push 2026-11-16, C++) — servidor de lenguaje para C++ que compila en un grupo de procesos aislados, así que un fallo se lleva un trabajador y no el servidor — señales: https://github.com/clice-io/clice",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/clice-io/clice",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "clice-io-clice",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "hitkeeen/blender-ai-mcp-addon",
+      "url": "https://github.com/hitkeeen/blender-ai-mcp-addon",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.860 estrellas, último push 2026-11-12, sin lenguaje detectado) — complemento de Blender con asistente y servidor MCP que en cuatro días acumula 74 incidencias abiertas, compitiendo con el complemento veterano del mismo nicho — señales: https://github.com/hitkeeen/blender-ai-mcp-addon",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/hitkeeen/blender-ai-mcp-addon",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hitkeeen-blender-ai-mcp-addon",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "bex-co/beancount-io",
+      "url": "https://github.com/bex-co/beancount-io",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(509 estrellas, último push 2026-11-16, TypeScript) — contabilidad por partida doble en un fichero de texto que se versiona con Git, con aplicación móvil, orden de terminal y agentes que pueden llevar las cuentas — señales: https://github.com/bex-co/beancount-io",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/bex-co/beancount-io",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bex-co-beancount-io",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "SnailSploit/Claude-Red",
+      "url": "https://github.com/SnailSploit/Claude-Red",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(11.061 estrellas, último push 2026-11-11, Python) — biblioteca de 78 skills de seguridad ofensiva empaquetadas como ficheros de instrucciones — señales: https://github.com/SnailSploit/Claude-Red",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/SnailSploit/Claude-Red",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "snailsploit-claude-red",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "ggml-org/ggml",
+      "url": "https://github.com/ggml-org/ggml",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.016 estrellas, último push 2026-11-13, C++) — biblioteca de tensores sobre la que se apoya buena parte de la inferencia local; vuelve a Trending sin novedad visible — señales: https://github.com/ggml-org/ggml",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ggml-org/ggml",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ggml-org-ggml",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "maillab/cloud-mail",
+      "url": "https://github.com/maillab/cloud-mail",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.243 estrellas, último push 2026-11-12, JavaScript) — servicio de correo completo sobre Cloudflare, con 23.768 forks que delatan el patrón de desplegar bifurcando; fuera del ámbito del boletín — señales: https://github.com/maillab/cloud-mail",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/maillab/cloud-mail",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "maillab-cloud-mail",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-deepseek-ai-deepseek-harness", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-deepseek-ai-deepseek-harness", "dst": "tema:deepseek-ai-deepseek-harness", "rel": "trata", "added": "2026-11-16"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "concept:agent-harness", "rel": "implements", "added": "2026-11-16", "primera_mencion": "2026-08-14"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "concept:everything-is-a-plugin", "rel": "extends", "added": "2026-11-16", "primera_mencion": "2026-08-14"}
+{"src": "repo:deepseek-ai/deepseek-harness", "dst": "tool:cordis", "rel": "integrates", "added": "2026-11-16", "primera_mencion": "2026-08-14"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-microsoft-tokeneconomizer", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-microsoft-tokeneconomizer", "dst": "tema:microsoft-tokeneconomizer", "rel": "trata", "added": "2026-11-16"}
+{"src": "repo:microsoft/TokenEconomizer", "dst": "problem:agent-token-waste", "rel": "solves", "added": "2026-11-16", "primera_mencion": "2026-10-31"}
+{"src": "repo:microsoft/TokenEconomizer", "dst": "tool:claude-code", "rel": "integrates", "added": "2026-11-16", "primera_mencion": "2026-09-15"}
+{"src": "repo:microsoft/TokenEconomizer", "dst": "concept:agent-cost-control", "rel": "relevant_to", "added": "2026-11-16", "primera_mencion": "2026-10-31"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-backnotprop-plannotator", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-backnotprop-plannotator", "dst": "tema:backnotprop-plannotator", "rel": "trata", "added": "2026-11-16"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:human-in-the-loop-review", "rel": "implements", "added": "2026-11-16", "primera_mencion": "2026-08-27"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:agent-plan-mode", "rel": "competes_with", "added": "2026-11-16", "primera_mencion": "2026-08-27"}
+{"src": "repo:backnotprop/plannotator", "dst": "concept:multi-agent-orchestration", "rel": "relevant_to", "added": "2026-11-16", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-prefecthq-fastmcp", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-prefecthq-fastmcp", "dst": "tema:prefecthq-fastmcp", "rel": "trata", "added": "2026-11-16"}
+{"src": "repo:PrefectHQ/fastmcp", "dst": "protocol:mcp", "rel": "implements", "added": "2026-11-16", "primera_mencion": "2026-09-21"}
+{"src": "repo:PrefectHQ/fastmcp", "dst": "concept:agent-skills", "rel": "extends", "added": "2026-11-16", "primera_mencion": "2026-10-22"}
+{"src": "repo:PrefectHQ/fastmcp", "dst": "concept:skill-distribution", "rel": "enables", "added": "2026-11-16", "primera_mencion": null}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-antithesishq-bombadil", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-antithesishq-bombadil", "dst": "tema:antithesishq-bombadil", "rel": "trata", "added": "2026-11-16"}
+{"src": "repo:antithesishq/bombadil", "dst": "concept:property-based-testing", "rel": "implements", "added": "2026-11-16", "primera_mencion": null}
+{"src": "repo:antithesishq/bombadil", "dst": "tool:playwright", "rel": "uses", "added": "2026-11-16", "primera_mencion": "2026-10-02"}
+{"src": "repo:antithesishq/bombadil", "dst": "concept:agent-generated-ui-testing", "rel": "relevant_to", "added": "2026-11-16", "primera_mencion": null}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-tashfeenahmed-freellmapi", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-tashfeenahmed-freellmapi", "dst": "tema:tashfeenahmed-freellmapi", "rel": "trata", "added": "2026-11-16"}
+{"src": "repo:tashfeenahmed/freellmapi", "dst": "concept:llm-router", "rel": "implements", "added": "2026-11-16", "primera_mencion": "2026-11-04"}
+{"src": "repo:tashfeenahmed/freellmapi", "dst": "concept:free-tier-economics", "rel": "relevant_to", "added": "2026-11-16", "primera_mencion": "2026-11-04"}
+{"src": "repo:tashfeenahmed/freellmapi", "dst": "problem:provider-terms-fragility", "rel": "risk", "added": "2026-11-16", "primera_mencion": "2026-11-04"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-hkuds-autoswarm", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-hkuds-autoswarm", "dst": "tema:hkuds-autoswarm", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-dream-num-univer", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-dream-num-univer", "dst": "tema:dream-num-univer", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-clice-io-clice", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-clice-io-clice", "dst": "tema:clice-io-clice", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-hitkeeen-blender-ai-mcp-addon", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-hitkeeen-blender-ai-mcp-addon", "dst": "tema:hitkeeen-blender-ai-mcp-addon", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-bex-co-beancount-io", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-bex-co-beancount-io", "dst": "tema:bex-co-beancount-io", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-snailsploit-claude-red", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-snailsploit-claude-red", "dst": "tema:snailsploit-claude-red", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-ggml-org-ggml", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-ggml-org-ggml", "dst": "tema:ggml-org-ggml", "rel": "trata", "added": "2026-11-16"}
+{"src": "boletin:2026-11-16", "dst": "item:https-github-com-maillab-cloud-mail", "rel": "menciona", "added": "2026-11-16"}
+{"src": "item:https-github-com-maillab-cloud-mail", "dst": "tema:maillab-cloud-mail", "rel": "trata", "added": "2026-11-16"}

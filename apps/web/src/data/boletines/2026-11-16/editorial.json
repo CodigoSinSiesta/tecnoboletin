@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-16",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "DeepSeek convierte su arnés de agentes en una plataforma de plugins",
+  "posicionamiento": "La discusión se desplaza del modelo a lo que lo rodea: un arnés definido por su registro de plugins, un gasto que se mide desde fuera y una superficie donde el humano decide. Las piezas compiten por el mismo sitio, el contrato que el agente no controla.",
+  "convergencia_stack_css": "Tres piezas tocan el stack: FastMCP 4.2 mueve las skills al servidor MCP, que es la vía para que un despliegue actualice a todos los clientes; freellmapi enruta niveles gratuitos con compatibilidad OpenAI y acepta endpoints propios, así que un Ollama local entra sin fricción.",
+  "cruzado_grafo": "Tres nodos aparecen sin mención previa: distribución de skills, pruebas por propiedades y validación de interfaz generada. Lo demás refuerza lo trazado: agent-harness desde el 2026-08-14, derroche de tokens desde el 2026-10-31, MCP desde el 2026-09-21 y revisión humana desde el 2026-08-27.",
+  "tendencias_5_boletines": "El 2026-11-15 cerraba la pila de protocolos con AG-UI, MCP y A2A; hoy ese contrato empieza a transportar carga y no solo a conectar: skills que viajan con el servidor, coste medido en el borde. El sustrato cede, como el 2026-11-14, ya dentro del protocolo.",
+  "alertas": [
+    "deepseek-harness está en vista previa y su README anticipa cambios incompatibles: sirve para leer arquitectura, no para adoptar.",
+    "TokenEconomizer registra caída de precisión en una de sus cinco combinaciones: el ahorro no sale gratis en todos los casos.",
+    "fastmcp retira en la 4.3 la interfaz de skills de la 4.1: ventana de migración corta para quien ya construyó encima.",
+    "bombadil va por la 0.7.10 con 46 incidencias abiertas y plannotator acumula 168: ambas son superficie movediza.",
+    "freellmapi entrega el catálogo con treinta días de retraso en el plan gratuito y depende de cuotas y términos ajenos."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Leer Cordis y el registro de plugins es la arquitectura que otros arneses probablemente copien."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Que la skill viaje con el servidor MCP resuelve distribución, no formato: hay artículo de bisagra entre dos líneas ya cubiertas."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "El método de caja negra se aplica a agentes de terceros; conviene seguir si el recorte aguanta sin perder precisión."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Pruebas por propiedades sobre interfaz generada por agente: si madura, cambia cómo se valida una SPA."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Gratis con retraso de treinta días es un caso limpio de economía de nivel gratuito para seguir en el tiempo."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
