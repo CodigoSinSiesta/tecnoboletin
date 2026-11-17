@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-17",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Google y NVIDIA convierten las skills en contratos medibles",
+  "posicionamiento": "El eje del día es la rendición de cuentas del agente: dos artefactos nuevos existen solo para medir lo que el modelo hace. Google firma las reglas que el navegador instala, NVIDIA mide si cargan, Alibaba separa lo determinista del juicio. La pregunta deja de ser qué modelo y pasa a ser quién responde.",
+  "convergencia_stack_css": "El stack local-first entra por dos puertas concretas: SkillEvaluator nombra a Hermes y OpenClaw entre los arneses que cargan la skill e invita a pasar el medidor por la biblioteca propia; LoopForge se ofrece autoalojado, con contenedor Docker y repos propios. Nada de hoy toca Ollama ni el grafo.",
+  "cruzado_grafo": "Ningún nodo nace hoy: agent-skills (2026-10-22) y web-platform-guidance (2026-11-11) se refuerzan, agentic-code-review (2026-09-15) suma un implementador, human-in-the-loop (2026-10-24) gana un nodo de flujo y agent-user-interaction-protocol (2026-08-20) llega a 1.0. Lo nuevo son relaciones de competencia y complemento.",
+  "tendencias_5_boletines": "La continuidad es literal: el 15 se cerró la pila de protocolos con AG-UI en la interfaz, y hoy ese mismo tramo congela su 1.0. El 16 el arnés se definía por su registro de plugins; hoy Google y NVIDIA convierten ese registro en algo que se audita y se mide.",
+  "alertas": [
+    "Univer: núcleo Apache-2.0 con extensiones comerciales; la frontera de licencia decide qué puedes construir encima.",
+    "La comparación de Alibaba con Claude Code corre sobre su propio banco de 200 solicitudes; sin replicarlo es un claim del README.",
+    "Dos entradas de Trendshift devolvieron 404 y no se listan: el radar de hoy está incompleto por esa parte.",
+    "SkillEvaluator prueba carga y solapamiento en los arneses de su ejemplo; no garantiza que la skill mejore el resultado.",
+    "El blogwatcher no publica desde julio, así que el corte se apoya solo en GitHub."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Pasar SkillEvaluator por la biblioteca propia responde una pregunta abierta: qué skills carga Hermes y cuáles se degradan en silencio."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Su banco de 200 solicitudes permite comparar cobertura y precisión por nuestra cuenta en vez de fiarse del README."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Con AG-UI 1.0 congelado, los SDK generados del esquema JSON marcan si el protocolo se adopta o queda en especificación."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 0,
+      "razon": "El par de repos, uno de consumo y otro de auditoría, es un patrón editorial reutilizable para publicar guías propias."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

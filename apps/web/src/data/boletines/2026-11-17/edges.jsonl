@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-googlechrome-modern-web-guidance-src", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-googlechrome-modern-web-guidance-src", "dst": "tema:googlechrome-modern-web-guidance-src", "rel": "trata", "added": "2026-11-17"}
+{"src": "repo:GoogleChrome/modern-web-guidance-src", "dst": "concept:agent-skills", "rel": "implements", "added": "2026-11-17", "primera_mencion": "2026-10-22"}
+{"src": "repo:GoogleChrome/modern-web-guidance-src", "dst": "concept:web-platform-guidance", "rel": "enables", "added": "2026-11-17", "primera_mencion": "2026-11-11"}
+{"src": "repo:GoogleChrome/modern-web-guidance-src", "dst": "repo:NVIDIA/SkillEvaluator", "rel": "complements", "added": "2026-11-17", "primera_mencion": "2026-11-12"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-alibaba-open-code-review", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-alibaba-open-code-review", "dst": "tema:alibaba-open-code-review", "rel": "trata", "added": "2026-11-17"}
+{"src": "repo:alibaba/open-code-review", "dst": "concept:agentic-code-review", "rel": "implements", "added": "2026-11-17", "primera_mencion": "2026-09-15"}
+{"src": "repo:alibaba/open-code-review", "dst": "problem:code-review-automation", "rel": "solves", "added": "2026-11-17", "primera_mencion": "2026-09-13"}
+{"src": "repo:alibaba/open-code-review", "dst": "concept:agent-skills", "rel": "complements", "added": "2026-11-17", "primera_mencion": "2026-09-15"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-nvidia-skillevaluator", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-nvidia-skillevaluator", "dst": "tema:nvidia-skillevaluator", "rel": "trata", "added": "2026-11-17"}
+{"src": "repo:NVIDIA/SkillEvaluator", "dst": "concept:agent-skills-evaluation", "rel": "implements", "added": "2026-11-17", "primera_mencion": "2026-08-14"}
+{"src": "repo:NVIDIA/SkillEvaluator", "dst": "problem:skills-dir-fragmentation", "rel": "solves", "added": "2026-11-17", "primera_mencion": "2026-09-04"}
+{"src": "repo:NVIDIA/SkillEvaluator", "dst": "concept:agent-skill-contract", "rel": "relevant_to", "added": "2026-11-17", "primera_mencion": "2026-11-13"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-tencent-loopforge", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-tencent-loopforge", "dst": "tema:tencent-loopforge", "rel": "trata", "added": "2026-11-17"}
+{"src": "repo:Tencent/LoopForge", "dst": "concept:human-in-the-loop", "rel": "implements", "added": "2026-11-17", "primera_mencion": "2026-10-24"}
+{"src": "repo:Tencent/LoopForge", "dst": "concept:multi-harness-orchestration", "rel": "relevant_to", "added": "2026-11-17", "primera_mencion": "2026-09-04"}
+{"src": "repo:Tencent/LoopForge", "dst": "repo:mdiri-ai/SoduWork", "rel": "competes_with", "added": "2026-11-17", "primera_mencion": "2026-11-12"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-ag-ui-protocol-ag-ui", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-ag-ui-protocol-ag-ui", "dst": "tema:ag-ui-protocol-ag-ui", "rel": "trata", "added": "2026-11-17"}
+{"src": "repo:ag-ui-protocol/ag-ui", "dst": "protocol:ag-ui", "rel": "implements", "added": "2026-11-17", "primera_mencion": "2026-08-20"}
+{"src": "repo:ag-ui-protocol/ag-ui", "dst": "concept:agent-user-interaction-protocol", "rel": "enables", "added": "2026-11-17", "primera_mencion": "2026-08-20"}
+{"src": "repo:ag-ui-protocol/ag-ui", "dst": "concept:agent-review-ui", "rel": "relevant_to", "added": "2026-11-17", "primera_mencion": "2026-08-20"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-dream-num-univer", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-dream-num-univer", "dst": "tema:dream-num-univer", "rel": "trata", "added": "2026-11-17"}
+{"src": "repo:dream-num/univer", "dst": "concept:office-suite-for-agents", "rel": "implements", "added": "2026-11-17", "primera_mencion": "2026-08-07"}
+{"src": "repo:dream-num/univer", "dst": "concept:office-harness-ai", "rel": "enables", "added": "2026-11-17", "primera_mencion": "2026-08-07"}
+{"src": "repo:dream-num/univer", "dst": "repo:dream-num/univer-workspace", "rel": "extends", "added": "2026-11-17", "primera_mencion": "2026-08-07"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-googlechrome-modern-web-guidance", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-googlechrome-modern-web-guidance", "dst": "tema:googlechrome-modern-web-guidance", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-chromedevtools-chrome-devtools-mcp", "dst": "tema:chromedevtools-chrome-devtools-mcp", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-mdiri-ai-soduwork", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-mdiri-ai-soduwork", "dst": "tema:mdiri-ai-soduwork", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-elementalsouls-claude-bughunter", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-elementalsouls-claude-bughunter", "dst": "tema:elementalsouls-claude-bughunter", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-vstorm-co-agenticos", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-vstorm-co-agenticos", "dst": "tema:vstorm-co-agenticos", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-gnacho-netpulse", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-gnacho-netpulse", "dst": "tema:gnacho-netpulse", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-nyllon-software-signudoc", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-nyllon-software-signudoc", "dst": "tema:nyllon-software-signudoc", "rel": "trata", "added": "2026-11-17"}
+{"src": "boletin:2026-11-17", "dst": "item:https-github-com-immortal-protocols-lastbook", "rel": "menciona", "added": "2026-11-17"}
+{"src": "item:https-github-com-immortal-protocols-lastbook", "dst": "tema:immortal-protocols-lastbook", "rel": "trata", "added": "2026-11-17"}

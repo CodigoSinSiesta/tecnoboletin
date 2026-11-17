@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-17",
+  "boletin_origen": "2026-11-17-trending.md",
+  "resumen_ejecutivo": "- Dos de los hallazgos de hoy no son herramientas sino contratos: Google publica como skills las guías del navegador que corrigen los sesgos del modelo, y NVIDIA publica el medidor que dice si tu skill carga en cada arnés.\n- El otro eje es el determinismo frente al agente general: Alibaba abre el banco de revisión de código con el que compara su pipeline contra Claude Code, incluida la métrica en la que pierde.\n- Completan el día el proceso de entrega como configuración versionada (LoopForge), el protocolo de interfaz que congela su versión 1.0 y una oficina que se ofrece como SDK para agentes.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust, Go y JavaScript (68 repositorios únicos), GitHub API (14 repositorios verificados de 16 consultados; dos entradas de Trendshift devolvieron 404 y no se listan). El blogwatcher de las 08:00 no publica desde julio, así que hoy tampoco hay archivo de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repositorio de origen, no el de consumo, de las guías web que Chrome instala en un agente de código. Aquí vive el código y la documentación para escribir, calibrar y evaluar esas guías; el CLI se instala con `npx modern-web-guidance@latest install` y también permite buscar, recuperar una guía por identificador y rastrear patrones antiguos en un código propio. El contenido lo custodian los equipos de Chrome, Edge, Firefox y MDN.",
+        "por_que_importa": "Ataca un problema que rara vez se nombra: el modelo escribe JavaScript hinchado porque aprendió de código heredado, y una guía con criterio lo empuja hacia la plataforma. Lo editorial es la forma del artefacto: el contenido deja de ser un blog y pasa a ser una skill con instalador, partida en dos repos, el que se consume y el que se audita, con panel de evaluación público. La idea de skill instalable la cubrimos el 2026-10-22 y las guías de plataforma el 2026-11-11; lo nuevo es quién firma esas reglas y con qué se mide que sirven, que es justo lo que hace SkillEvaluator, reseñado el 2026-11-12.",
+        "madurez_senales": "8.163 estrellas · 708 forks · TypeScript · creado 2026-01-27 · último push 2026-11-17 · Apache-2.0 · 405 incidencias abiertas · +1.200 hoy en Trending · el repositorio de distribución acumula 21.221 estrellas y publicó la versión 1.0.1 el 2026-11-16 · el README declara que las guías se podan con evaluaciones para quitar lo que el modelo ya sabe (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el apartado de evaluación explica mejor que el README de consumo qué se considera una guía buena.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:GoogleChrome/modern-web-guidance-src",
+          "rel": "implements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-10-22"
+        },
+        {
+          "src": "repo:GoogleChrome/modern-web-guidance-src",
+          "rel": "enables",
+          "dst": "concept:web-platform-guidance",
+          "primera_mencion": "2026-11-11"
+        },
+        {
+          "src": "repo:GoogleChrome/modern-web-guidance-src",
+          "rel": "complements",
+          "dst": "repo:NVIDIA/SkillEvaluator",
+          "primera_mencion": "2026-11-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googlechrome-modern-web-guidance-src",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de revisión de código nacida como asistente interno de Alibaba. Lee el diff de Git y separa lo que debe decidir una máquina de lo que debe decidir un modelo: la selección y el agrupado de ficheros, el emparejamiento de reglas por tipo de fichero y la colocación exacta del comentario los resuelve la lógica determinista; el agente aporta recuperación de contexto y juicio. Se instala como CLI (`npm install -g @alibaba-group/open-code-review`) o como skill para otro agente, y tiene dos modos: el nativo, con proveedor propio, y el de delegación, donde el agente anfitrión ejecuta el pipeline con su propio modelo.",
+        "por_que_importa": "El README nombra los tres fallos del agente general en esta tarea —cobertura incompleta en cambios grandes, comentarios que se desvían de la línea y calidad que oscila con el prompt— y los atribuye a una causa concreta: faltan restricciones duras en el proceso. De ahí la tesis: lo que se resuelve con código no debería pedirse al modelo. La automatización de la revisión ya la tocamos el 2026-09-13 y la revisión agéntica el 2026-09-15; la novedad es discutir qué parte del trabajo no debe hacer el modelo, y su banco de 200 solicitudes reales permite comparar cobertura y precisión con datos, no con impresiones.",
+        "madurez_senales": "53.225 estrellas · 4.360 forks · Go · creado 2026-05-18 · último push 2026-11-17 · Apache-2.0 · 352 incidencias abiertas · +951 hoy en Trending · versión v1.13.11 del 2026-11-17 · banco AACR-Bench con 50 repositorios, 200 solicitudes de cambio reales, 10 lenguajes y 1.505 fallos anotados por más de 80 ingenieros · el README declara más precisión y mejor F1 que Claude Code con el mismo modelo, alrededor de un noveno de los tokens y menos recall (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el apartado de diseño híbrido es el que se puede trasladar a otros flujos, más que el resultado del banco.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alibaba/open-code-review",
+          "rel": "implements",
+          "dst": "concept:agentic-code-review",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:alibaba/open-code-review",
+          "rel": "solves",
+          "dst": "problem:code-review-automation",
+          "primera_mencion": "2026-09-13"
+        },
+        {
+          "src": "repo:alibaba/open-code-review",
+          "rel": "complements",
+          "dst": "concept:agent-skills",
+          "primera_mencion": "2026-09-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alibaba-open-code-review",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "NVIDIA/SkillEvaluator",
+      "url": "https://github.com/NVIDIA/SkillEvaluator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "marco de tres niveles para evaluar skills y complementos de agente: comprobaciones de calidad que no necesitan clave ni modelo, detección de solapamiento semántico entre skills, generación de conjuntos de evaluación y comparación de ejecuciones con y sin la skill para medir su efecto real. Trae además una comprobación de arnés que responde en segundos si cada cliente carga la skill o la degrada, y una plantilla para integrar la comprobación en la integración continua de un repositorio. Forma parte de la pipeline de skills verificadas de NVIDIA.",
+        "por_que_importa": "Hasta ahora una skill se publicaba y nadie medía dos cosas básicas: si el arnés la lee y si cambia el resultado. El detalle es el contrato de carga: la descripción se recorta o se descarta según el límite de cada cliente, y un directorio que un arnés escanea el otro no lo mira. Eso vuelve el empaquetado un problema de compatibilidad, no de redacción. Evaluamos el marco el 2026-08-14 y la fragmentación de directorios de skills el 2026-09-04; el contrato de skill, el 2026-11-13. En el ejemplo del README Hermes y OpenClaw aparecen entre los que cargan: invita a pasar el medidor por la biblioteca propia.",
+        "madurez_senales": "3.026 estrellas · 432 forks · Python · creado 2026-06-24 · último push 2026-11-17 · Apache-2.0 · 60 incidencias abiertas · +873 hoy en Trending · versión v0.9.0 del 2026-11-13 · artículo arXiv 2608.20614 y documentación propia en docs.nvidia.com · el nivel 1 se ejecuta sin clave de modelo (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — la comprobación de arnés no gasta cuota y se puede lanzar sobre una skill propia en un minuto.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:NVIDIA/SkillEvaluator",
+          "rel": "implements",
+          "dst": "concept:agent-skills-evaluation",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:NVIDIA/SkillEvaluator",
+          "rel": "solves",
+          "dst": "problem:skills-dir-fragmentation",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "repo:NVIDIA/SkillEvaluator",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skill-contract",
+          "primera_mencion": "2026-11-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nvidia-skillevaluator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Tencent/LoopForge",
+      "url": "https://github.com/Tencent/LoopForge",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "espacio de trabajo autoalojado donde escribes el encargo a un bot principal, que abre un contenedor Docker, descarga tus repositorios, reparte el trabajo entre roles de proyecto y abre la solicitud de cambio. La pieza propia son los procedimientos guardados: cada uno es un grafo con nodos de agente, de script, de puerta humana y de subprocedimiento, con estados, trazas de herramientas y artefactos por nodo, y se puede reanudar o devolver a un paso anterior. Hay diez ejecutores disponibles, entre ellos Codex, Claude Code, OpenCode, Cursor CLI, Pi y el arnés de DeepSeek.",
+        "por_que_importa": "Aquí el reparto de roles no es una convención de prompts, sino un objeto con permisos, modelo y herramientas por nodo, y el cambio queda ligado al requisito que lo pidió, con su coste. La tesis para Código Sin Siesta: si el proceso es datos, se versiona, se revisa y se compara entre equipos; si vive en el prompt, cada ejecución es distinta. La puerta humana ya la tratamos el 2026-10-24 y la orquestación de varios arneses el 2026-09-04; el 2026-11-12 cubrimos a su competidor SoduWork. La novedad es que la intervención humana pasa de excepción a nodo del flujo.",
+        "madurez_senales": "2.533 estrellas · 383 forks · Go · creado 2026-07-28 · último push 2026-11-17 · licencia MIT con atribuciones de terceros, que la API marca como NOASSERTION por la cabecera propia · 165 incidencias abiertas · +1.020 hoy en Trending · versión v0.3.9-rc.1 del 2026-11-13 · instalación con `./start.sh` sobre Docker y MySQL (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el documento de procedimientos aclara si el grafo es una jaula o una red de seguridad, y esa es la discusión.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tencent/LoopForge",
+          "rel": "implements",
+          "dst": "concept:human-in-the-loop",
+          "primera_mencion": "2026-10-24"
+        },
+        {
+          "src": "repo:Tencent/LoopForge",
+          "rel": "relevant_to",
+          "dst": "concept:multi-harness-orchestration",
+          "primera_mencion": "2026-09-04"
+        },
+        {
+          "src": "repo:Tencent/LoopForge",
+          "rel": "competes_with",
+          "dst": "repo:mdiri-ai/SoduWork",
+          "primera_mencion": "2026-11-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-loopforge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "ag-ui-protocol/ag-ui",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "protocolo abierto basado en eventos para conectar agentes con aplicaciones. Un agente es cualquier extremo HTTP que acepta una petición de ejecución y devuelve un flujo de eventos tipados: el texto que se escribe, la llamada a herramienta a mitad de respuesta, el cambio de estado compartido, la pausa para preguntar a una persona. La versión 1.0 fija la especificación con un esquema JSON del que se generan los SDK de TypeScript, Python y .NET, y declara compatibilidad en los dos sentidos con la serie 0.x.",
+        "por_que_importa": "Las herramientas ya tenían contrato con MCP; la interfaz era el eslabón que cada producto resolvía con su propio cableado. Lo interesante del 1.0 no es la congelación, sino de dónde salen los SDK: del esquema JSON, así que la compatibilidad se comprueba en lugar de prometerse. Ya cubrimos este protocolo el 2026-08-20; lo nuevo es el flujo de eventos nombrados y la compatibilidad declarada en ambos sentidos con la serie 0.x. Da para un artículo de arquitectura sobre qué cambia cuando la conversación deja de ser petición y respuesta.",
+        "madurez_senales": "19.540 estrellas · 2.020 forks · TypeScript · creado 2025-05-07 · último push 2026-11-17 · MIT · 591 incidencias abiertas · +791 hoy en Trending · versiones con fecha y ritmo casi diario, la última release/2026-11-13 · SDK para TypeScript, Python y .NET generados del esquema (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — la especificación 1.0 son pocas páginas y aclara qué eventos existen y cuáles no.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ag-ui-protocol/ag-ui",
+          "rel": "implements",
+          "dst": "protocol:ag-ui",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ag-ui-protocol/ag-ui",
+          "rel": "enables",
+          "dst": "concept:agent-user-interaction-protocol",
+          "primera_mencion": "2026-08-20"
+        },
+        {
+          "src": "repo:ag-ui-protocol/ag-ui",
+          "rel": "relevant_to",
+          "dst": "concept:agent-review-ui",
+          "primera_mencion": "2026-08-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ag-ui-protocol-ag-ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "SDK de oficina para incrustar edición, cálculo, colaboración y procesamiento de ficheros en un producto propio. El repositorio publica el núcleo web bajo Apache-2.0, con modelos de contenido, motor de fórmulas, sistema de comandos y una API de fachada con eventos pensada para que una aplicación o un agente edite el documento; alrededor hay SDK de servidor y de IA, y extensiones comerciales. Ayer entró en el radar con el mismo producto; hoy vuelve con la mayor subida del día y el reposicionamiento explícito hacia agentes.",
+        "por_que_importa": "El documento deja de ser el sitio donde el agente vuelca texto y pasa a ser una superficie con API, estados y deshacer, que es donde aparecen los problemas interesantes: quién valida el cambio, cómo se conserva el historial y qué ve el usuario mientras el agente escribe. El producto ya apareció ayer, pero su idea de suite de oficina para agentes la cubrimos el 2026-08-07. Y el modelo de negocio da para otra discusión: núcleo abierto, extensiones de pago y una frontera que conviene leer antes de construir encima.",
+        "madurez_senales": "28.539 estrellas · 2.571 forks · TypeScript · creado 2022-09-29 · último push 2026-11-17 · Apache-2.0 en el núcleo, con extensiones comerciales · 211 incidencias abiertas · +1.828 hoy en Trending, la mayor subida del día · versión v1.5.2 del 2026-11-16 · rama por defecto `dev` (verificado vía GitHub API; README en la rama por defecto).",
+        "accion_sugerida": "**vigilar** — lo que hay que seguir es dónde queda la frontera entre núcleo abierto y extensiones de pago.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:dream-num/univer",
+          "rel": "implements",
+          "dst": "concept:office-suite-for-agents",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:dream-num/univer",
+          "rel": "enables",
+          "dst": "concept:office-harness-ai",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:dream-num/univer",
+          "rel": "extends",
+          "dst": "repo:dream-num/univer-workspace",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dream-num-univer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "GoogleChrome/modern-web-guidance",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(21.221 estrellas, último push 2026-11-16, sin lenguaje detectado) — el repositorio de distribución del que se instalan las guías, con la versión 1.0.1 publicada el 16 — señales: https://github.com/GoogleChrome/modern-web-guidance",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/GoogleChrome/modern-web-guidance",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "googlechrome-modern-web-guidance",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(57.853 estrellas, último push 2026-11-17, TypeScript) — servidor MCP oficial que da al agente control del navegador con trazas de rendimiento y depuración de red; +841 hoy en Trending — señales: https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "chromedevtools-chrome-devtools-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "mdiri-ai/SoduWork",
+      "url": "https://github.com/mdiri-ai/SoduWork",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.310 estrellas, último push 2026-11-17, JavaScript) — motor autoalojado con varios arneses donde uno hace el trabajo y otro, con modelo distinto, lo revisa contra criterios de aceptación antes de que firme una persona — señales: https://github.com/mdiri-ai/SoduWork",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mdiri-ai/SoduWork",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mdiri-ai-soduwork",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(7.808 estrellas, último push 2026-11-16, Python) — paquete de 83 skills y 15 órdenes para investigación de fallos y trabajo ofensivo, con 681 patrones extraídos de informes divulgados; +1.094 hoy en Trending — señales: https://github.com/elementalsouls/Claude-BugHunter",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/elementalsouls/Claude-BugHunter",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elementalsouls-claude-bughunter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "vstorm-co/agenticos",
+      "url": "https://github.com/vstorm-co/agenticos",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(381 estrellas, último push 2026-11-17, Python) — plataforma de agentes autoalojada sobre Pydantic AI con chat compartido, permisos, presupuestos y rastro de auditoría — señales: https://github.com/vstorm-co/agenticos",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vstorm-co/agenticos",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vstorm-co-agenticos",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "gnacho/netpulse",
+      "url": "https://github.com/gnacho/netpulse",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(361 estrellas, último push 2026-11-16, Go) — panel para redes domésticas con OpenWrt o GL.iNet que dibuja la topología desde la tabla del puente y calcula una nota de salud cada cinco segundos — señales: https://github.com/gnacho/netpulse",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/gnacho/netpulse",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gnacho-netpulse",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "NYLLON-SOFTWARE/SignuDoc",
+      "url": "https://github.com/NYLLON-SOFTWARE/SignuDoc",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.040 estrellas, último push 2026-11-17, TypeScript) — firma de documentos autoalojada en una cuenta propia de Vercel y Neon, con sello PAdES y registro de auditoría encadenado por resumen — señales: https://github.com/NYLLON-SOFTWARE/SignuDoc",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/NYLLON-SOFTWARE/SignuDoc",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nyllon-software-signudoc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "Immortal-Protocols/lastbook",
+      "url": "https://github.com/Immortal-Protocols/lastbook",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(924 estrellas, último push 2026-11-17, Python) — biblioteca de consulta sin conexión con manuales, mapas y un chat local que cita sus fuentes; cinco días de vida — señales: https://github.com/Immortal-Protocols/lastbook",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Immortal-Protocols/lastbook",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "immortal-protocols-lastbook",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
