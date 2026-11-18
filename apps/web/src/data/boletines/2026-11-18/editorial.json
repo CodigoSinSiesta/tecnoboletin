@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "date": "2026-11-18",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Landmines e Impeccable escriben el criterio como reglas que fallan",
+  "posicionamiento": "El criterio se muda del prompt a la regla: landmines veta el atajo que pone un test en verde e Impeccable cuenta 62 reglas contra el diseño genérico. Orca hace lo mismo con la flota y OpenMotion con el plan de vídeo. Fijar por escrito lo que no se negocia con el modelo y dejarle al agente solo el relleno.",
+  "convergencia_stack_css": "Dos piezas tocan el stack por nombre: superpowers se instala en Hermes Agent y Graphify ya es nuestra herramienta de grafos, hoy con correcciones de resolución de nombres en Java, Go y Rust. OpenMotion añade el matiz local-first de traer tu agente y tus claves.",
+  "cruzado_grafo": "Solo dos aristas nacen hoy sin fecha previa: motion-editor y el complemento de landmines a anti-slop. El resto refuerza nodos ya viejos: linting para agentes desde el 2026-09-15, pack de skills y human-in-the-loop desde el 2026-08-08, grafo de código desde el 2026-08-09.",
+  "tendencias_5_boletines": "Engancha con el hilo de los dos días previos: la rendición de cuentas del agente y el contrato que no controla. Si ayer eran firmar reglas, medir si cargan y separar lo determinista, hoy lo determinista se vuelve lint y cola de revisión. Tercer día mirando el arnés, no el modelo.",
+  "alertas": [
+    "OpenMotion: 11.376 estrellas pero versión 0.1.0 del 2026-11-17; tracción no es madurez.",
+    "Orca acumula 8.424 incidencias abiertas, la cifra más alta del día.",
+    "Las 62 reglas de Impeccable y las 5 de landmines son criterio de sus autores, no un estándar.",
+    "Superpowers mide a ciegas pero no publica banco replicable: los números no se pueden verificar."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Es el hallazgo más accionable: pasar las 9 reglas por un repo propio y ver cuáles fallan de verdad dice más que leer el README."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Sus 0.9.112 corrigen resolución de nombres en Java, Go y Rust. Conviene comprobar si nuestro grafo sufre los mismos fallos."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Los números (41 a 23 preguntas de relleno, motivo antes que enfoque en 33 de 33) dan un artículo sobre cómo se evalúa una skill cuando no hay banco público."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "El envoltorio es interesante, pero 8.424 incidencias abiertas piden esperar antes de recomendarlo como herramienta de flota."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

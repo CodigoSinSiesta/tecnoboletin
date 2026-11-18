@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-interfere-inc-landmines", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-interfere-inc-landmines", "dst": "tema:interfere-inc-landmines", "rel": "trata", "added": "2026-11-18"}
+{"src": "repo:interfere-inc/landmines", "dst": "concept:agent-friendly-linting", "rel": "implements", "added": "2026-11-18", "primera_mencion": "2026-09-15"}
+{"src": "repo:interfere-inc/landmines", "dst": "repo:dmmulroy/anti-slop", "rel": "complements", "added": "2026-11-18", "primera_mencion": null}
+{"src": "repo:interfere-inc/landmines", "dst": "concept:anti-slop-agent-patterns", "rel": "relevant_to", "added": "2026-11-18", "primera_mencion": "2026-08-27"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-pbakaus-impeccable", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-pbakaus-impeccable", "dst": "tema:pbakaus-impeccable", "rel": "trata", "added": "2026-11-18"}
+{"src": "repo:pbakaus/impeccable", "dst": "concept:design-skill-for-agents", "rel": "implements", "added": "2026-11-18", "primera_mencion": "2026-07-11"}
+{"src": "repo:pbakaus/impeccable", "dst": "problem:agent-design-system-drift", "rel": "mitigates", "added": "2026-11-18", "primera_mencion": "2026-07-11"}
+{"src": "repo:pbakaus/impeccable", "dst": "concept:agentic-ui-quality", "rel": "relevant_to", "added": "2026-11-18", "primera_mencion": "2026-07-11"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-nexu-io-openmotion", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-nexu-io-openmotion", "dst": "tema:nexu-io-openmotion", "rel": "trata", "added": "2026-11-18"}
+{"src": "repo:nexu-io/openmotion", "dst": "concept:motion-editor", "rel": "implements", "added": "2026-11-18", "primera_mencion": null}
+{"src": "repo:nexu-io/openmotion", "dst": "concept:agent-video-pipeline", "rel": "extends", "added": "2026-11-18", "primera_mencion": "2026-09-09"}
+{"src": "repo:nexu-io/openmotion", "dst": "concept:video-rendering-for-agents", "rel": "relevant_to", "added": "2026-11-18", "primera_mencion": "2026-10-03"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-11-18"}
+{"src": "repo:stablyai/orca", "dst": "concept:parallel-agent-orchestration", "rel": "implements", "added": "2026-11-18", "primera_mencion": "2026-07-16"}
+{"src": "repo:stablyai/orca", "dst": "concept:git-worktree-primitive", "rel": "uses", "added": "2026-11-18", "primera_mencion": "2026-07-16"}
+{"src": "repo:stablyai/orca", "dst": "concept:agent-orchestration-ide", "rel": "relevant_to", "added": "2026-11-18", "primera_mencion": "2026-07-16"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-obra-superpowers", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-obra-superpowers", "dst": "tema:obra-superpowers", "rel": "trata", "added": "2026-11-18"}
+{"src": "repo:obra/superpowers", "dst": "concept:agent-skills-pack", "rel": "implements", "added": "2026-11-18", "primera_mencion": "2026-08-08"}
+{"src": "repo:obra/superpowers", "dst": "concept:agent-skill", "rel": "relevant_to", "added": "2026-11-18", "primera_mencion": "2026-08-08"}
+{"src": "repo:obra/superpowers", "dst": "concept:human-in-the-loop", "rel": "enables", "added": "2026-11-18", "primera_mencion": "2026-08-08"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-graphify-labs-graphify", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-graphify-labs-graphify", "dst": "tema:graphify-labs-graphify", "rel": "trata", "added": "2026-11-18"}
+{"src": "repo:Graphify-Labs/graphify", "dst": "concept:code_knowledge_graph", "rel": "implements", "added": "2026-11-18", "primera_mencion": "2026-08-09"}
+{"src": "repo:Graphify-Labs/graphify", "dst": "repo:vitali87/code-graph-rag", "rel": "competes_with", "added": "2026-11-18", "primera_mencion": "2026-08-09"}
+{"src": "repo:Graphify-Labs/graphify", "dst": "concept:knowledge-graph-with-evidence", "rel": "relevant_to", "added": "2026-11-18", "primera_mencion": "2026-08-09"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-burntsushi-jiff", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-burntsushi-jiff", "dst": "tema:burntsushi-jiff", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-dograh-hq-dograh", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-dograh-hq-dograh", "dst": "tema:dograh-hq-dograh", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-hkuds-rag-anything", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-hkuds-rag-anything", "dst": "tema:hkuds-rag-anything", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-crossplane-crossplane", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-crossplane-crossplane", "dst": "tema:crossplane-crossplane", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-microsoft-ai-agents-for-beginners", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-microsoft-ai-agents-for-beginners", "dst": "tema:microsoft-ai-agents-for-beginners", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-getarcaneapp-arcane", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-getarcaneapp-arcane", "dst": "tema:getarcaneapp-arcane", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-minglink-dsh-infinite-gen-5", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-minglink-dsh-infinite-gen-5", "dst": "tema:minglink-dsh-infinite-gen-5", "rel": "trata", "added": "2026-11-18"}
+{"src": "boletin:2026-11-18", "dst": "item:https-github-com-lodash-lodash", "rel": "menciona", "added": "2026-11-18"}
+{"src": "item:https-github-com-lodash-lodash", "dst": "tema:lodash-lodash", "rel": "trata", "added": "2026-11-18"}

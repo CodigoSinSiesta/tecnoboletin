@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-18",
+  "boletin_origen": "2026-11-18-trending.md",
+  "resumen_ejecutivo": "- El día va de puertas de calidad que no dependen del modelo: `landmines` convierte en regla de lint los atajos con los que un agente pone un test en verde, e Impeccable cuenta 62 reglas deterministas contra el diseño genérico.\n- El segundo eje es la flota: Orca empaqueta un agente por espacio de trabajo con escritorio, móvil y remoto, y Superpowers cuenta cómo afinó su interrogatorio midiendo conversaciones calificadas a ciegas.\n- Y el vídeo deja de ser una caja negra: OpenMotion reduce el encargo a un Markdown con el orden de planos, los tiempos y las transiciones, que el agente reescribe y el humano retoca en una línea de tiempo.\n- Descartes: Trendshift abre con un script que canjea una prueba gratuita de Google One con listas de cuentas y tarjetas, y nueve de sus veinticinco entradas son instaladores falsos de ofimática. No entran.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust, Go y JavaScript (77 repositorios únicos), GitHub API (16 repositorios verificados de 17 consultados; una entrada de Trendshift devolvió 404 y no se lista). El blogwatcher de las 08:00 no publica desde julio, así que hoy tampoco hay archivo de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "interfere-inc/landmines",
+      "url": "https://github.com/interfere-inc/landmines",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paquete de reglas para Oxlint que prohíbe los atajos con los que un agente deja una prueba en verde sin que la prueba diga la verdad. Cinco reglas de pruebas (dobles de test, MSW sin `onUnhandledRequest: \"error\"`, esperas fijas, sondeos sin señal, reintentos y tiempos de espera subidos), una de estilo que veta los comentarios de relleno, tres de estructura de ficheros y una de tipos. Se instala con `bun add -d oxlint @interfere/landmines` y se activa extendiendo una configuración recomendada o registrando solo los plugins que interesen.",
+        "por_que_importa": "La tesis ya la cubrimos el 2026-09-15 al hablar de linting pensado para agentes, y el 2026-08-27 con los patrones anti-slop: el agente optimiza para el check en verde. Landmines no responde con un prompt más largo, sino con reglas que fallan y, al fallar, dicen qué hacer en su lugar. Bloquea cinco atajos de prueba (dobles, MSW sin `onUnhandledRequest: \"error\"`, esperas fijas, sondeos sin señal, reintentos y tiempos subidos), y tres de las reglas aceptan excepciones con recuento exacto por fichero que avisa cuando sobra margen: el número solo puede bajar.",
+        "madurez_senales": "358 estrellas · 3 forks · TypeScript · creado 2026-10-28 · último push 2026-11-17 · MIT · 7 incidencias abiertas · primer release `@interfere/landmines@0.1.0` el 2026-11-17 · requiere Oxlint 1.81 o posterior y Node 22.18 · posición 15 en Trendshift · topics: `agents`, `lint`, `oxlint-plugin`, `testing` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — se puede limitar al plugin de pruebas y medir cuántas excepciones pide un proyecto propio antes de decidir si entra.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:interfere-inc/landmines",
+          "rel": "implements",
+          "dst": "concept:agent-friendly-linting",
+          "primera_mencion": "2026-09-15"
+        },
+        {
+          "src": "repo:interfere-inc/landmines",
+          "rel": "complements",
+          "dst": "repo:dmmulroy/anti-slop",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:interfere-inc/landmines",
+          "rel": "relevant_to",
+          "dst": "concept:anti-slop-agent-patterns",
+          "primera_mencion": "2026-08-27"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "interfere-inc-landmines",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill de diseño que se instala con `npx impeccable install` y se maneja con órdenes como `critique`, `polish`, `bolder` o `quieter`. En la inicialización escribe dos ficheros de contexto, `PRODUCT.md` y `DESIGN.md`, y a partir de ahí ofrece 24 órdenes repartidas entre dirigir el gusto, revisar y arreglar. Trae además un detector de 62 reglas deterministas que marca el repertorio genérico —Inter para todo, degradados, tarjetas dentro de tarjetas— sin LLM ni clave, y, en la última versión, el ciclo Loop, una cola de tarjetas donde el agente pregunta y se despierta cuando respondes.",
+        "por_que_importa": "Ya lo tratamos el 2026-07-11 al hablar de skills de diseño para agentes y de la deriva de sistema de diseño. Aquí el criterio estético no se le pide al modelo: se escribe como 62 reglas deterministas y el modelo solo aplica el vocabulario. Ese reparto —determinista para detectar, generativo para ejecutar— es el patrón que hoy repiten dos proyectos del día y da un artículo redondo. Loop, además, saca la revisión del chat y la convierte en una cola con estado y avisos, donde un agente deja de dar vueltas esperando una respuesta que nadie escribió.",
+        "madurez_senales": "112.458 estrellas · 6.703 forks · Rust · creado 2025-11-16 · último push 2026-11-18 · Apache-2.0 · 53 incidencias abiertas · +748 hoy en Trending · CLI 4.9.2 del 2026-11-16 y Loop 0.1.3 del 2026-11-15 · declara compatibilidad con 19 clientes, entre ellos Claude Code, Codex, Cursor, Pi y Hermes Agent · topics: `agent-skills`, `anti-slop`, `design` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — lanzar `critique` sobre una página propia dice en dos minutos si las 62 reglas aportan o solo repiten lo obvio.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "implements",
+          "dst": "concept:design-skill-for-agents",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "mitigates",
+          "dst": "problem:agent-design-system-drift",
+          "primera_mencion": "2026-07-11"
+        },
+        {
+          "src": "repo:pbakaus/impeccable",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-ui-quality",
+          "primera_mencion": "2026-07-11"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pbakaus-impeccable",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "nexu-io/openmotion",
+      "url": "https://github.com/nexu-io/openmotion",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "estudio de vídeo agéntico autoalojado que toma un vídeo de referencia, un fichero o un enlace social, y lo reconstruye con la marca y el texto propios. El plan vive en `Motion.md`, un Markdown con el orden de planos, los tiempos y las transiciones; el agente escribe el vídeo en HTML, genera los recursos que faltan con proveedores multimodales y el resultado se retoca en una línea de tiempo y se exporta a MP4. Se ofrece como skill para agentes locales con claves propias o como plugin de un mercado de extensiones.",
+        "por_que_importa": "El formato es la noticia: si el plan de un vídeo cabe en Markdown (`Motion.md`), se revisa como un diff y se comparte como una receta, en vez de quedar enterrado en un prompt que nadie relee. Extiende el pipeline de vídeo agéntico que cubrimos el 2026-09-09 y el render para agentes del 2026-10-03, y añade un detalle práctico: trae tu agente y trae tus claves, así que el coste cae en tu cuenta. Esa es la discusión real de quien publica vídeo corto sin equipo. Filtro: 11.376 estrellas pero versión 0.1.0 del 2026-11-17; es proyecto joven y conviene decirlo.",
+        "madurez_senales": "11.376 estrellas · 1.130 forks · TypeScript · creado 2026-05-11 · último push 2026-11-18 · Apache-2.0 · 64 incidencias abiertas · versión 0.1.0 publicada el 2026-11-17 · posición 7 en Trendshift · declara 200 referencias de vídeo, 190 kits de marca y más de 10 proveedores multimodales · topics: `motion-graphics`, `video-editing`, `local-first`, `mcp` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — leer el esquema de `Motion.md` antes que instalar nada; es la pieza que se puede reutilizar en otro flujo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:nexu-io/openmotion",
+          "rel": "implements",
+          "dst": "concept:motion-editor",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:nexu-io/openmotion",
+          "rel": "extends",
+          "dst": "concept:agent-video-pipeline",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:nexu-io/openmotion",
+          "rel": "relevant_to",
+          "dst": "concept:video-rendering-for-agents",
+          "primera_mencion": "2026-10-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nexu-io-openmotion",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio, móvil y servidor remoto para llevar varios agentes de código a la vez. Cada tarea vive en su propio espacio de trabajo de Git; se puede alternar entre interfaz de chat y terminal sin perder el contexto; un agente coordinador reparte el trabajo entre los agentes que ejecutan, y los resultados vuelven con diferencias, navegador y terminal en la misma ventana. Se conecta con las suscripciones de Claude Code y Codex que ya tenga el usuario.",
+        "por_que_importa": "No es idea nueva: el 2026-07-16 ya cubrimos la orquestación de agentes en paralelo y el worktree de Git como primitiva. Lo que cambia aquí es el envoltorio completo —un espacio de trabajo por tarea, ejecución en remoto cuando el portátil se duerme, móvil para aprobar— y la cadencia de publicación diaria, que se nota en detalles como memoria de la interfaz o autoría de línea en la barra de estado. El cuello de botella deja de ser el modelo y pasa a ser cuántos agentes puedes vigilar; Orca es la versión de producto de esa discusión. Ojo: 8.424 incidencias abiertas, la cifra más alta del día.",
+        "madurez_senales": "128.223 estrellas · 8.122 forks · TypeScript · creado 2026-03-17 · último push 2026-11-18 · MIT · 8.424 incidencias abiertas, la cifra más alta del día · +1.066 hoy en Trending · versión 1.4.262 del 2026-11-17 · topics: `agent-ide`, `worktrees`, `orchestration`, `swarm` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**vigilar** — lo que hay que seguir no es la aplicación sino si el modelo de agentes en paralelo aguanta con esa cola de incidencias.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "implements",
+          "dst": "concept:parallel-agent-orchestration",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "uses",
+          "dst": "concept:git-worktree-primitive",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:stablyai/orca",
+          "rel": "relevant_to",
+          "dst": "concept:agent-orchestration-ide",
+          "primera_mencion": "2026-07-16"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "metodología de desarrollo empaquetada como skills que se instalan en el arnés de turno: Claude Code, Codex, Cursor, Gemini CLI, Copilot CLI, Kimi Code, OpenCode, Pi o Hermes Agent, entre otros. Interroga al usuario antes de escribir código, convierte la respuesta en una especificación por trozos cortos, escribe un plan que un júnior pueda seguir y lanza subagentes que ejecutan y revisan tarea a tarea.",
+        "por_que_importa": "Lo publicable no es la metodología sino cómo la afinaron. Las notas de la 7.0.2 dicen que midieron conversaciones calificadas a ciegas: bajaron las preguntas de relleno de 41 a 23 y el motivo de la petición apareció antes que la propuesta de enfoque en 33 de 33 casos. Es un ejemplo poco común de una skill evaluada como se evalúa un modelo, y sirve para escribir sobre qué significa mejorar un prompt sin banco público de referencia. Ya cubrimos el pack de skills y el human-in-the-loop el 2026-08-08; lo nuevo son esos números.",
+        "madurez_senales": "319.584 estrellas · 28.490 forks · Shell · creado 2025-10-09 · último push 2026-11-03 · MIT · 358 incidencias abiertas · +1.917 hoy en Trending, la mayor subida del día · versión 7.0.2 del 2026-11-03, cuyas notas cifran el recorte de preguntas de relleno de 41 a 23 y el acierto de 33 sobre 33 en el orden de las preguntas · vuelve tras un mes fuera del radar y no trae release de hoy · topics: `skills`, `subagent-driven-development`, `sdlc` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — las notas de la 7.0.2 sobre el interrogatorio son más útiles que la guía de instalación.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:obra/superpowers",
+          "rel": "implements",
+          "dst": "concept:agent-skills-pack",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:obra/superpowers",
+          "rel": "relevant_to",
+          "dst": "concept:agent-skill",
+          "primera_mencion": "2026-08-08"
+        },
+        {
+          "src": "repo:obra/superpowers",
+          "rel": "enables",
+          "dst": "concept:human-in-the-loop",
+          "primera_mencion": "2026-08-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "obra-superpowers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "convierte un repositorio —código, documentación, esquemas SQL, configuración, PDF— en un grafo consultable con análisis de sintaxis determinista, sin almacén de vectores y con cada arista explicada. Se usa como skill dentro de Claude Code, Cursor, Codex o Gemini CLI, y también como orden de terminal con comandos de consulta y de sección. La rama por defecto es `v8` y publica versiones casi a diario.",
+        "por_que_importa": "Cubrimos Graphify el 2026-08-09, incluida su competencia con code-graph-rag; vuelve con +649 y lo interesante no es el crecimiento sino el trabajo que publica. La 0.9.112 corrige que las sobrecargas de Java se fundan en un solo nodo, que un receptor de Go se resuelva contra tipos homónimos de otro paquete y que un `use` de Rust se salga de su crate. Son fallos que solo aparecen cuando alguien usa el grafo de verdad, y enseñan dónde duele: la resolución de nombres, no el dibujo. Con releases el 14, 15 y 17 de noviembre, el ritmo también es señal.",
+        "madurez_senales": "149.817 estrellas · 14.393 forks · Python · creado 2026-04-03 · último push 2026-11-17 · Apache-2.0 · 1.659 incidencias abiertas · +649 hoy en Trending · versión 0.9.112 del 2026-11-17, con releases el 14, el 15 y el 17 de noviembre · rama por defecto `v8` · topics: `knowledge-graph`, `ast`, `tree-sitter`, `mcp` (verificado vía GitHub API; README en la rama por defecto).",
+        "accion_sugerida": "**leer** — el registro de cambios de una semana dice mejor que la web qué lenguajes aguantan y cuáles no.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Graphify-Labs/graphify",
+          "rel": "implements",
+          "dst": "concept:code_knowledge_graph",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:Graphify-Labs/graphify",
+          "rel": "competes_with",
+          "dst": "repo:vitali87/code-graph-rag",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:Graphify-Labs/graphify",
+          "rel": "relevant_to",
+          "dst": "concept:knowledge-graph-with-evidence",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "graphify-labs-graphify",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "BurntSushi/jiff",
+      "url": "https://github.com/BurntSushi/jiff",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.197 estrellas, último push 2026-11-18, Rust) — fechas y zonas horarias con integración en la base de datos de zonas, aritmética consciente del horario de verano y licencia Unlicense — señales: https://github.com/BurntSushi/jiff",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/BurntSushi/jiff",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "burntsushi-jiff",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "dograh-hq/dograh",
+      "url": "https://github.com/dograh-hq/dograh",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(6.195 estrellas, último push 2026-11-16, Python) — plataforma de agentes de voz autoalojada, alternativa a Vapi y Retell, con constructor visual, MCP y telefonía — señales: https://github.com/dograh-hq/dograh",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/dograh-hq/dograh",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dograh-hq-dograh",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "HKUDS/RAG-Anything",
+      "url": "https://github.com/HKUDS/RAG-Anything",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(24.615 estrellas, último push 2026-11-16, Python) — marco de recuperación aumentada multimodal que se presenta como solución única y viene acompañado de un paper en arXiv — señales: https://github.com/HKUDS/RAG-Anything",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/RAG-Anything",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-rag-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "crossplane/crossplane",
+      "url": "https://github.com/crossplane/crossplane",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12.251 estrellas, último push 2026-11-18, Go) — plano de control cloud native; la 2.4.3 sube el compilador de Go a 1.26.10 para rechazar las CA intermedias comprometidas de eMudhra — señales: https://github.com/crossplane/crossplane",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/crossplane/crossplane",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "crossplane-crossplane",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "microsoft/ai-agents-for-beginners",
+      "url": "https://github.com/microsoft/ai-agents-for-beginners",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(80.224 estrellas, último push 2026-11-17, Jupyter Notebook) — 18 lecciones de agentes con Foundry y Semantic Kernel; es material de curso, no una herramienta — señales: https://github.com/microsoft/ai-agents-for-beginners",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/microsoft/ai-agents-for-beginners",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "microsoft-ai-agents-for-beginners",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "getarcaneapp/arcane",
+      "url": "https://github.com/getarcaneapp/arcane",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(9.507 estrellas, último push 2026-11-18, Go) — panel web autoalojado para gestionar Docker y Compose — señales: https://github.com/getarcaneapp/arcane",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/getarcaneapp/arcane",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "getarcaneapp-arcane",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "Minglink/dsh-infinite-gen-5",
+      "url": "https://github.com/Minglink/dsh-infinite-gen-5",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.501 estrellas, último push 2026-11-11, JavaScript) — utilidad en chino para el arnés de DeepSeek cuya licencia la API no reconoce; sin README legible para este boletín — señales: https://github.com/Minglink/dsh-infinite-gen-5",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Minglink/dsh-infinite-gen-5",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "minglink-dsh-infinite-gen-5",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "lodash/lodash",
+      "url": "https://github.com/lodash/lodash",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(61.408 estrellas, último push 2026-10-01, JavaScript) — vuelve a Trending sin novedad: la última versión es la 4.18.1 de abril — señales: https://github.com/lodash/lodash",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/lodash/lodash",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lodash-lodash",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
