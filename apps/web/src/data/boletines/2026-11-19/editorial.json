@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-19",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Bitwarden saca las credenciales del contexto del agente",
+  "posicionamiento": "El agente deja de ser el centro y pasa a pedir permiso: Bitwarden le niega el vault, unslop-ui le exige contar antes de borrar y Heretic mueve el comportamiento del prompt al archivo. La frontera se dibuja fuera del modelo, no dentro de sus instrucciones.",
+  "convergencia_stack_css": "Linger toca de lleno el stack local-first: repartir expertos entre GPU, RAM y SSD es la única vía para que un modelo bueno quepa en un PC de consumo, y T3 Code asume lo mismo al correr el servidor en tu máquina. Bitwarden añade la pieza que faltaba, el secreto fuera del contexto.",
+  "cruzado_grafo": "Dos nodos entran sin mención previa: infisical/agent-vault y heydamir/unslop, ambos como competencia directa de los hallazgos de hoy. Bitwarden reabre credential exposure (2026-10-23) y el túnel cifrado (2026-11-13); unslop-ui engancha con anti-slop del 2026-11-18 y Linger con local-first del 2026-09-10.",
+  "tendencias_5_boletines": "La línea del 2026-11-18 se confirma: si ayer el criterio se escribía como regla (landmines, Impeccable), hoy Heretic lo lleva al archivo del modelo y unslop-ui lo convierte en procedimiento contable. La rendición de cuentas del 2026-11-17 cambia de forma: Bitwarden no mide al agente, le quita el secreto.",
+  "alertas": [
+    "Heretic es AGPL-3.0 y la v2.1.0 rompe configs de la rama 1.x, aunque el repo documenta la migración",
+    "Cifras de velocidad y memoria de Linger salen de su propio README, sin medición independiente",
+    "La licencia de Linger aparece sin identificar en la API de GitHub",
+    "El modo proactivo de Linger reescribe sus reglas cada noche: auto-mejora sin verificar, mismo patrón del 2026-10-25",
+    "T3 Code es su tercera entrada; lo nuevo es el worktree por hilo y el control remoto, no el concepto"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "El túnel con Noise e inyección por variables de entorno del proceso hijo es el patrón que falta explicar sin jerga de identidad empresarial. Merece artículo propio."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Si Linger publica mediciones fuera del README o aclara licencia, pasa de curiosidad a candidato serio para el stack local. Hasta entonces, solo seguimiento."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "unslop-ui continúa las reglas de lint del 2026-11-18 y encaja como pieza práctica en el hilo anti-slop de la casa."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "La comparación entre pedir comportamiento en el prompt y optimizarlo con scorers enchufables da un artículo sin depender de los benchmarks del proyecto."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

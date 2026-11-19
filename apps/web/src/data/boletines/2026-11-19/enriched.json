@@ -1,0 +1,406 @@
+{
+  "version": 2,
+  "date": "2026-11-19",
+  "boletin_origen": "2026-11-19-trending.md",
+  "resumen_ejecutivo": "- El día va de cerrar los agujeros que aparecen cuando el agente toca el mundo real: Bitwarden publica un túnel de credenciales que deja el vault fuera del alcance del modelo, y T3 Code convierte el móvil en el mando de los agentes que ya corren en tu máquina.\n- Segundo eje: quitar el slop deja de ser una recomendación de estilo y pasa a ser herramienta con nombre. Heretic 2.1 trae perfiles que suprimen slop y adulación, y unslop-ui convierte la limpieza de los textos de interfaz en un paso que el agente ejecuta y reporta.\n- Tercero: Linger intenta meter un agente personal completo en un PC de consumo repartiendo los expertos del modelo entre GPU, RAM y SSD; sus cifras son del propio proyecto y la licencia aparece sin identificar.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust, Go y JavaScript (83 repositorios únicos), GitHub API (16 repositorios verificados). El blogwatcher de las 08:00 sigue sin publicar desde julio, así que hoy tampoco hay archivo de blogs. Tres nombres llegaban truncados desde Trendshift (`craft-anythin`, `unslop-u`, `trypos`) y se resolvieron contra la API antes de listarlos.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "bitwarden/agent-access",
+      "url": "https://github.com/bitwarden/agent-access",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "protocolo abierto, CLI (`aac`) y SDK en Rust para dar credenciales a sistemas remotos sin exponer el vault entero. Levanta un túnel cifrado de extremo a extremo con Noise entre el agente y el gestor de contraseñas; `aac run --domain example.com --env DB_PASSWORD=password -- psql` inyecta los campos como variables de entorno del proceso hijo, sin pasar por la salida estándar ni por el disco. Incluye clientes de ejemplo en Python con UniFFI, en JavaScript sobre WebAssembly y en Rust, una skill para OpenClaw y una acción de GitHub.",
+        "por_que_importa": "El patrón normalizado es pegar el secreto en el prompt o dejarlo en un .env que el agente lee entero; esto saca la credencial del contexto del modelo y deja al gestor como única fuente, con el agente pidiendo por dominio o por identificador. Ya cubrimos la exposición de credenciales de agentes el 2026-10-23 y el túnel cifrado punto a punto el 2026-11-13, así que aquí el ángulo es la implementación concreta: inyección por variables de entorno del proceso hijo, sin pasar por stdout ni por disco. El propio README avisa de no meter credenciales reales en un LLM. Material directo para hablar de identidad de agentes sin jerga empresarial.",
+        "madurez_senales": "491 estrellas · 24 forks · Rust · creado 2025-12-19 · último push 2026-11-16 · Apache-2.0 · 32 incidencias abiertas · posición 8 en Trendshift · release etiquetado más reciente v0.11.0 (2026-03-21) · sin topics (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — con `aac listen --provider example` y `aac run` sobre un proyecto propio se ve en una sesión si el flujo encaja, antes de tocar el vault real.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:bitwarden/agent-access",
+          "rel": "solves",
+          "dst": "problem:agent-credential-exposure",
+          "primera_mencion": "2026-10-23"
+        },
+        {
+          "src": "repo:bitwarden/agent-access",
+          "rel": "implements",
+          "dst": "concept:p2p-encrypted-tunnel",
+          "primera_mencion": "2026-11-13"
+        },
+        {
+          "src": "repo:bitwarden/agent-access",
+          "rel": "competes_with",
+          "dst": "repo:infisical/agent-vault",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bitwarden-agent-access",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "pingdotgg/t3code",
+      "url": "https://github.com/pingdotgg/t3code",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio con servidor local, versión web y apps de iOS y Android que conduce los agentes de código que ya tienes instalados: Claude Code, Codex, Cursor, OpenCode, Grok Build, Antigravity, Kiro, Pi, Muse Code, fx y cualquiera que hable ACP. Cada hilo puede correr en su propio worktree de git, con revisión de diferencias, commit, push y pull request desde la misma interfaz.",
+        "por_que_importa": "No revende tokens ni pide suscripción: usa las cuentas ya autenticadas en la máquina, y eso lo vuelve pieza neutra en la discusión de arnés frente a IDE. Ya cubrimos el concepto de plano de control de agentes el 2026-08-09, y el repo volvió a aparecer el 2026-11-06: esta es su tercera entrada. Lo nuevo es el worktree por hilo, respuesta práctica a dos agentes pisándose el mismo repositorio, y el control desde el teléfono: el agente corre en tu equipo, pero la aprobación de un comando puede llegar desde cualquier sitio.",
+        "madurez_senales": "65.619 estrellas · 11.486 forks · TypeScript · creado 2026-02-08 · último push 2026-11-19 · MIT · 3.549 incidencias y pull requests abiertos · +1.220 hoy en Trending · solo builds nocturnas en Releases (verificado vía GitHub API; README en `main`). Re-entrada: ya apareció el 2026-11-06 y hoy vuelve con apps móviles y tracción diaria.",
+        "accion_sugerida": "**probar** — instalar con `npx t3@latest`, apuntarlo a un agente ya autenticado y comprobar si el worktree por hilo sustituye la costumbre de abrir varias terminales.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pingdotgg/t3code",
+          "rel": "implements",
+          "dst": "concept:agent-harness-control-plane",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:pingdotgg/t3code",
+          "rel": "integrates",
+          "dst": "protocol:acp",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:pingdotgg/t3code",
+          "rel": "relevant_to",
+          "dst": "problem:remote-agent-control",
+          "primera_mencion": "2026-08-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pingdotgg-t3code",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "p-e-w/heretic",
+      "url": "https://github.com/p-e-w/heretic",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de modificación de modelos sin entrenamiento. En vez de ajustar pesos con un corpus, optimiza puntuaciones calculadas por plugins contra parejas de prompts contrastados. Trae perfiles listos para quitar negativas, suprimir slop, eliminar humor, reducir adulación, cambiar el tono emocional o acortar respuestas, y cualquiera puede escribir su propio scorer para definir qué se optimiza.",
+        "por_que_importa": "Lo interesante no es el modelo sin negativas, sino el patrón: comportamiento del modelo como configuración versionada en un archivo, revisable y reproducible, en vez de un ajuste fino opaco. Ya tocamos abliteration el 2026-08-31 y los patrones anti-slop el 2026-08-27; aquí la novedad es que la optimización se define con scorers enchufables sobre parejas de prompts contrastados, sin tocar pesos. Para un artículo, la comparación entre pedirlo en el prompt y cambiar el modelo sale sola. Aviso útil: AGPL-3.0 y v2.1.0 rompe configs de la rama 1.x, aunque el repo documenta la migración.",
+        "madurez_senales": "42.072 estrellas · 5.182 forks · Python · creado 2025-09-21 · último push 2026-11-16 · AGPL-3.0 · 68 incidencias abiertas · +515 hoy en Trending · v2.1.0 publicada el 2026-11-08, con configuraciones de la rama 1.x incompatibles con la 2.x · topics: `abliteration`, `llm` (verificado vía GitHub API; README en `master`).",
+        "accion_sugerida": "**leer** — el README y los perfiles de configuración explican el método sin exigir entender el interior del transformer; la parte de scorers es la que conviene estudiar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:p-e-w/heretic",
+          "rel": "implements",
+          "dst": "concept:abliteration",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "repo:p-e-w/heretic",
+          "rel": "relevant_to",
+          "dst": "concept:anti-slop-agent-patterns",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:p-e-w/heretic",
+          "rel": "risk",
+          "dst": "problem:license-agpl-restriction",
+          "primera_mencion": "2026-08-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "p-e-w-heretic",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "simplexai-labs/linger",
+      "url": "https://github.com/simplexai-labs/linger",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente personal open source que corre entero en el ordenador. Su motor, PolyStrata, mantiene los expertos más usados del modelo en la GPU y deja el resto en RAM o en SSD, de modo que un modelo grande no necesita caber entero en la tarjeta; el instalador detecta el hardware, elige el modelo y solo lo da por instalado cuando responde a una pregunta real. Encima monta memoria en forma de wiki, con una página por entidad, y un modo proactivo que reescribe sus propias reglas cada noche según cómo cayeron sus mensajes.",
+        "por_que_importa": "El freno del local-first no es que los modelos pequeños sean peores, sino que los buenos no caben. Repartir expertos entre GPU, RAM y SSD es la misma técnica de offload que ya contamos el 2026-09-10 al hablar de agentes local-first, aplicada ahora a un agente de escritorio; se puede explicar sin enseñar una gráfica de pruebas. Dos cautelas: las cifras de velocidad y memoria son del propio README, y la licencia aparece sin identificar en la API. Y el modo proactivo que reescribe sus reglas cada noche entra en la auto-mejora sin verificar que ya señalamos el 2026-10-25.",
+        "madurez_senales": "831 estrellas · 60 forks · TypeScript · creado 2026-11-10 · último push 2026-11-19 · licencia no identificada por la API (NOASSERTION) · 21 incidencias abiertas · posición 2 en Trendshift · topics: `local-llm`, `personal-agent`, `memory` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**vigilar** — novedad de nueve días con promesas fuertes; conviene ver si terceros reproducen las cifras y se aclara la licencia antes de meterlo en una guía.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:simplexai-labs/linger",
+          "rel": "implements",
+          "dst": "concept:local-first-agent",
+          "primera_mencion": "2026-09-10"
+        },
+        {
+          "src": "repo:simplexai-labs/linger",
+          "rel": "uses",
+          "dst": "technique:moe-expert-offload",
+          "primera_mencion": "2026-09-10"
+        },
+        {
+          "src": "repo:simplexai-labs/linger",
+          "rel": "risk",
+          "dst": "problem:unverified-agent-self-improvement",
+          "primera_mencion": "2026-10-25"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "simplexai-labs-linger",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "felipebasurto/unslop-ui",
+      "url": "https://github.com/felipebasurto/unslop-ui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill de agente que borra las marcas de IA de los textos de interfaz y, opcionalmente, de su decoración: etiquetas en mayúsculas sobre cada título, numeración decorativa tipo `01 //`, subtítulos que repiten el título, pies que explican el botón que tienes delante, insignias y puntos de estado sin conexión real. Sin el modificador `--surface` solo toca el texto visible y la decoración, respeta `aria-label`, `alt` y etiquetas de formulario, y termina con una tabla de recuentos y la lista de lo que reescribió.",
+        "por_que_importa": "Es el complemento exacto de las reglas de lint que ya cubrimos el 2026-11-18, y se apoya en los patrones anti-slop que venimos siguiendo desde el 2026-08-27. En vez de pedir al agente que escriba mejor, le da un procedimiento que cuenta, borra, vuelve a contar y reporta, con el criterio de qué es marca de IA escrito en reglas numeradas. Que no se dispare solo es la decisión de diseño más honesta: cortar texto es una decisión editorial y la autoriza el humano. Sin --surface no toca aria-label, alt ni etiquetas de formulario.",
+        "madurez_senales": "311 estrellas · 8 forks · HTML · creado 2026-10-27 · último push 2026-11-18 · MIT · 0 incidencias abiertas · posición 12 en Trendshift · topics: `agent-skills`, `ai-slop`, `ux-writing` · pruebas en GitHub Actions (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — `npx skills add felipebasurto/unslop-ui -g` y pasarlo sobre una pantalla propia sin `--surface` para medir cuánto texto sobra.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:felipebasurto/unslop-ui",
+          "rel": "complements",
+          "dst": "repo:dmmulroy/anti-slop",
+          "primera_mencion": "2026-11-18"
+        },
+        {
+          "src": "repo:felipebasurto/unslop-ui",
+          "rel": "implements",
+          "dst": "concept:anti-slop-agent-patterns",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:felipebasurto/unslop-ui",
+          "rel": "competes_with",
+          "dst": "repo:heydamir/unslop",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "felipebasurto-unslop-ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Leonxlnx/taste-skill",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(118.617 estrellas, último push 2026-11-08, JavaScript) — skill que impone dirección de arte, imágenes de referencia y verificación en navegador; vuelve cuatro meses después con +737 hoy y una aplicación de escritorio propia — señales: https://github.com/Leonxlnx/taste-skill",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Leonxlnx/taste-skill",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "leonxlnx-taste-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "storytold/craft-anything",
+      "url": "https://github.com/storytold/craft-anything",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(37.579 estrellas, último push 2026-11-19, Rust) — motor de inspección y reconstrucción de software en Rust, con 320 herramientas expuestas como comandos y como herramientas MCP; ya fue hallazgo el 2026-11-02 y vuelve con 408 incidencias abiertas — señales: https://github.com/storytold/craft-anything",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/storytold/craft-anything",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "storytold-craft-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "HKUDS/PhoneGo",
+      "url": "https://github.com/HKUDS/PhoneGo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.150 estrellas, último push 2026-11-19, Python) — agente que opera aplicaciones de Android desde el propio teléfono, combinando comandos reutilizables y visión de pantalla, con APK 0.4.0 y artículo en arXiv — señales: https://github.com/HKUDS/PhoneGo",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/PhoneGo",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-phonego",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "trypostit/trypost",
+      "url": "https://github.com/trypostit/trypost",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.272 estrellas, último push 2026-11-18, PHP) — planificador de redes sociales autoalojado, con MCP y API REST para que un agente programe y publique — señales: https://github.com/trypostit/trypost",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/trypostit/trypost",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trypostit-trypost",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "trycua/cua",
+      "url": "https://github.com/trycua/cua",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(32.635 estrellas, último push 2026-11-19, Rust) — controlador de escritorio, máquinas virtuales locales y banco de pruebas para agentes que usan la computadora — señales: https://github.com/trycua/cua",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/trycua/cua",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trycua-cua",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "imxieyi/Kernarium",
+      "url": "https://github.com/imxieyi/Kernarium",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(627 estrellas, último push 2026-11-18, C++) — kernel Linux real con User-mode Linux compilado a arm64 y enlazado a un runtime de iOS, con una aplicación de emulador de Android ya en la App Store — señales: https://github.com/imxieyi/Kernarium",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/imxieyi/Kernarium",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "imxieyi-kernarium",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(60.065 estrellas, último push 2026-09-22, Python) — el hub de CLIs para volver agéntico cualquier programa sigue creciendo por la comunidad, pero el repositorio principal lleva dos meses sin commits — señales: https://github.com/HKUDS/CLI-Anything",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/CLI-Anything",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-cli-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 12,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 7,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "12/12 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
