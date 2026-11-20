@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "date": "2026-11-20",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Orquestar los CLIs reales gana a reimplementar el bucle del agente",
+  "posicionamiento": "No hay modelo nuevo: hay plomería. Un orquestador reparte trabajo entre CLIs ya autenticados; un grafo preindexado decide qué contexto merece entrar; un arnés exige coincidencia byte a byte. El control ya vive en un artefacto comprobable.",
+  "convergencia_stack_css": "Dos piezas tocan el stack de cerca: codegraph se compara con Graphify, que ya usamos para mapear proyectos, y opensre corre en local con ruta para Ollama. Ninguna sustituye lo instalado, y codegraph arrastra telemetría.",
+  "cruzado_grafo": "Se refuerzan dos nodos con historia: multi-agent-orchestration (desde 2026-08-27) llega por partida doble, y protocol:mcp (2026-09-21) aparece en tres repos. Estrenan nodo verified-code-migration y yagni-as-agent-policy, ambos sin mención previa.",
+  "tendencias_5_boletines": "La racha de dos días se mantiene: el 18 el criterio se escribió como reglas, el 19 los permisos salieron del modelo, y hoy la garantía es una puerta que bloquea. gate y diff no juzgan la intención del agente, exigen coincidencia.",
+  "alertas": [],
+  "acciones_concretas": [],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

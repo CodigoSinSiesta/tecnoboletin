@@ -1,0 +1,516 @@
+{
+  "version": 2,
+  "date": "2026-11-20",
+  "boletin_origen": "2026-11-20-trending.md",
+  "resumen_ejecutivo": "- El día no trae un modelo nuevo sino las piezas que faltaban alrededor: un orquestador que reparte trabajo entre CLIs reales en sesiones de tmux aisladas, un grafo de código preindexado que sirve de contexto, y un arnés que demuestra que una reescritura en Rust se comporta igual que el original.\n- Segundo eje: la sobreproducción se ataca por resta. Ponytail premia al agente que escribe menos líneas y rust-anything no deja avanzar hasta que la salida coincide byte a byte con la grabación.\n- Tercero: el móvil y la integración continua entran como superficie de agente, y dos de los repositorios con más movimiento del día son recaídas sin release nueva: superpowers y ponytail.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust, Go y JavaScript (82 repositorios únicos), GitHub API (16 repositorios verificados). El blogwatcher de las 08:00 sigue sin publicar desde julio, así que hoy tampoco hay archivo de blogs. Un nombre llegaba truncado desde Trendshift (`rust-anythin`) y se resolvió contra la API antes de listarlo.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "awslabs/cli-agent-orchestrator",
+      "url": "https://github.com/awslabs/cli-agent-orchestrator",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "orquestador de agentes de código que levanta un servidor local (`cao-server`), arranca los CLIs de proveedor ya autenticados en sesiones de terminal aisladas sobre tmux y entrega al supervisor herramientas para repartir trabajo a especialistas, en paralelo o en secuencia. Los agentes siguen siendo procesos CLI completos con su autenticación nativa; se observan desde la terminal, por una interfaz web en el puerto 9889 o adjuntándose a la sesión de tmux. Trae guías por proveedor (Kiro, Claude Code, Codex, Antigravity, Hermes, Kimi, Qwen, MiniMax, Copilot, OpenCode, Cursor y Grok Build) y dos cursos interactivos.",
+        "por_que_importa": "Lo de orquestar agentes CLI ya lo tocamos el 2026-08-27 y el concepto de multi-agent-cli el 2026-09-08; la diferencia es que no reimplementa el bucle: coordina los binarios que ya tienes autenticados y deja el rastro de cada trabajador en una sesión de tmux legible después. Orquestar procesos reales se audita mejor que orquestar objetos en memoria, y aislar por sesión evita dos agentes escribiendo el mismo árbol. Compite con LoopForge, cubierto el 2026-11-12, y aquí manda el CLI de proveedor, no un SDK propio. Viene de AWS Labs, Apache-2.0 y 191 incidencias abiertas.",
+        "madurez_senales": "1.603 estrellas · 338 forks · Python · creado 2025-07-29 · último push 2026-11-20 · Apache-2.0 · 191 incidencias abiertas · +14 hoy en Trending (corte de Python) · empaquetado en PyPI · topics: `agent-orchestration`, `tmux`, `mcp`, `multi-agent-systems` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — levantar `cao-server`, instalar el perfil `code_supervisor` y lanzar `cao launch` sobre un proyecto propio dice en una sesión si el reparto por sesiones encaja con tu flujo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:awslabs/cli-agent-orchestrator",
+          "rel": "implements",
+          "dst": "concept:multi-agent-cli",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:awslabs/cli-agent-orchestrator",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:awslabs/cli-agent-orchestrator",
+          "rel": "competes_with",
+          "dst": "repo:Tencent/LoopForge",
+          "primera_mencion": "2026-11-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "awslabs-cli-agent-orchestrator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "erkamyaman/rust-anything",
+      "url": "https://github.com/erkamyaman/rust-anything",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de migración incremental a Rust en cuatro pasos. `record` ejecuta el original sobre casos generados y guarda qué devuelve o qué excepción lanza; `bridge` genera el crate y un envoltorio para que quien llama conserve la API; `diff` reproduce cada caso grabado contra la parte ya portada, y `gate` bloquea hasta que coincidan; `app lift` convierte la aplicación en Rust puro cuando no queda ninguna reserva al original. Funciona con Node.js, Python, C, Go, Ruby, Java y Kotlin, y se registra como servidor MCP y skill en Claude Code, Codex, Cursor, Gemini CLI y OpenCode.",
+        "por_que_importa": "«Reescribir en Rust» era una broma recurrente; aquí es un procedimiento con criterio de parada verificable: `gate` no deja avanzar si la salida no coincide con la grabación. Los números del proyecto sirven para enseñar el método, no para prometer velocidad: Prettier, 15.837 de 17.224 ejecuciones ya en Rust con las 17.224 idénticas byte a byte, y json-server, 514 de 514 casos HTTP. El límite está escrito en el README y es la parte más honesta: solo detecta lo que cubre la grabación. Se registra como servidor MCP y skill, dos piezas que ya vimos el 2026-09-21 y el 2026-09-08.",
+        "madurez_senales": "5.676 estrellas · 456 forks · Rust · creado 2026-11-16 · último push 2026-11-20 · MIT · 4 incidencias abiertas · posición 20 en Trendshift · publicado en crates.io y npm · cifras de rendimiento medidas por el autor sobre un Apple M4 (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el documento sobre qué no puede detectar la grabación es más útil que la tabla de mejoras.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:erkamyaman/rust-anything",
+          "rel": "implements",
+          "dst": "concept:verified-code-migration",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:erkamyaman/rust-anything",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:erkamyaman/rust-anything",
+          "rel": "uses",
+          "dst": "concept:agent-skill",
+          "primera_mencion": "2026-09-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "erkamyaman-rust-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "colbymchenry/codegraph",
+      "url": "https://github.com/colbymchenry/codegraph",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "grafo de conocimiento del código preindexado que se resincroniza cuando cambian los ficheros y se consulta por MCP desde el agente. El núcleo está escrito en Rust y se distribuye como binario con Node embebido, sin exigir Node en el sistema; expone CLI y herramientas MCP, funciona en local y declara soporte para Claude Code, Codex, Cursor, OpenCode, Hermes Agent, Gemini, Copilot, Windsurf, Qwen Code y Pi, entre otros.",
+        "por_que_importa": "El 2026-10-01 ya hablamos del grafo de código como herramienta para agentes; lo que cambia es el enfoque: no busca texto, acota qué ficheros merecen entrar en el contexto y el agente pregunta por símbolos y relaciones en vez de leer de más. Compite con Graphify, que cubrimos el 2026-08-09, y la comparación es útil: preindexar y sincronizar frente a extraer y etiquetar comunidades. Dos avisos para el artículo: el repositorio empuja una plataforma de pago en camino y registra telemetría, conviene mirarlas antes de recomendarlo. Se integra por MCP, ya tratado el 2026-09-21.",
+        "madurez_senales": "78.183 estrellas · 5.217 forks · TypeScript con núcleo en Rust · creado 2026-01-18 · último push 2026-11-19 · MIT · 214 incidencias abiertas · +153 hoy en Trending (corte de TypeScript) · releases firmadas y con procedencia en npm (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — sobre un proyecto propio y en local se ve cuánto baja el contexto antes de decidir si sustituye al índice que ya uses.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "implements",
+          "dst": "concept:code-graph-for-agents",
+          "primera_mencion": "2026-10-01"
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "competes_with",
+          "dst": "repo:Graphify-Labs/graphify",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:colbymchenry/codegraph",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "colbymchenry-codegraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill que se instala en el arnés y empuja al agente hacia la solución más corta que funcione: menos abstracciones, menos ficheros, menos líneas. La versión 5 está reconstruida y publica su propia comparación: el mismo agente con y sin la skill, 39 tareas —entre ellas un repositorio real de FastAPI y React— y cinco ejecuciones por caso.",
+        "por_que_importa": "La conversación sobre agentes se ha llenado de «más»: más contexto, más herramientas, más subagentes. Aquí el eje es el contrario y la métrica es incómoda: menos código y a la vez más pruebas en la lógica arriesgada. Enlaza con los patrones anti-slop que tratamos el 2026-08-27 y complementa unslop-ui, del 2026-11-19; juntos dan pie a un artículo sobre qué se mide cuando se mide un agente, porque reducir líneas es fácil de vender y lo que importa es si lo que queda está cubierto. Dos cautelas: los porcentajes son del propio proyecto y el repositorio ya empuja una lista de espera de producto.",
+        "madurez_senales": "195.108 estrellas · 10.992 forks · JavaScript · creado 2026-06-12 · último push 2026-10-29 · MIT · 308 incidencias abiertas · +878 hoy en Trending (corte de JavaScript) · datos de la versión 5 medidos por el autor en Claude Code (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — la tabla de métricas y el método de las 39 tareas son lo aprovechable, no las instrucciones de instalación.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:DietrichGebert/ponytail",
+          "rel": "implements",
+          "dst": "concept:yagni-as-agent-policy",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:DietrichGebert/ponytail",
+          "rel": "relevant_to",
+          "dst": "concept:anti-slop-agent-patterns",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:DietrichGebert/ponytail",
+          "rel": "complements",
+          "dst": "repo:felipebasurto/unslop-ui",
+          "primera_mencion": "2026-11-19"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dietrichgebert-ponytail",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "phone-harness/phone-harness",
+      "url": "https://github.com/phone-harness/phone-harness",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "CLI y skill que dejan a un agente usar un teléfono real: desplazarse, tocar, escribir y leer la pantalla. En iPhone se apoya en la ventana de duplicación del Mac; en Android, en adb desde macOS, Linux o Windows; no pide ni jailbreak, ni Xcode, ni nada instalado en el dispositivo. El comando `phone-harness doctor` comprueba la conexión y existe un servicio en la nube propio con teléfonos alojados.",
+        "por_que_importa": "El 2026-11-19 el radar traía PhoneGo, un agente que corre dentro del móvil; esto es el movimiento inverso y más pragmático: el agente se queda en el ordenador y usa el teléfono como una herramienta más. El teléfono como herramienta de agente ya salió el 2026-08-09. Que funcione sin tocar el dispositivo cambia el cálculo de riesgos: no hay que modificar nada del sistema, pero el agente hereda el acceso a las aplicaciones ya abiertas y autenticadas. Ese es el detalle que un artículo sobre agentes de computadora debe tratar con cuidado, y el servicio en la nube que promete números reales y doble factor merece un párrafo aparte.",
+        "madurez_senales": "5.241 estrellas · 546 forks · Python · creado 2026-08-07 · último push 2026-11-20 · MIT · 101 incidencias abiertas · +18 hoy en Trending (corte de Python) · requisitos por plataforma documentados, macOS 15 o superior para iPhone (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — con un Android y adb, primero `doctor` y después una tarea corta, sin dejar sesión iniciada en aplicaciones sensibles.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:phone-harness/phone-harness",
+          "rel": "implements",
+          "dst": "concept:phone-as-agent-tool",
+          "primera_mencion": "2026-08-09"
+        },
+        {
+          "src": "repo:phone-harness/phone-harness",
+          "rel": "complements",
+          "dst": "repo:HKUDS/PhoneGo",
+          "primera_mencion": "2026-11-19"
+        },
+        {
+          "src": "repo:phone-harness/phone-harness",
+          "rel": "relevant_to",
+          "dst": "concept:desktop-computer-use",
+          "primera_mencion": "2026-10-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "phone-harness-phone-harness",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "Tracer-Cloud/opensre",
+      "url": "https://github.com/Tracer-Cloud/opensre",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente de línea de comandos para la fiabilidad de la integración continua: coge la ejecución que ha fallado, sigue la causa hasta el origen y prepara un parche para revisar. Corre en local con los modelos que configures, con ruta para Ollama incluida, y se conecta a las herramientas de observabilidad y aviso habituales.",
+        "por_que_importa": "Casi todos los agentes que se anuncian viven en el editor y escriben código; este trabaja sobre el resultado, que es donde aparece el coste. Le basta el registro del fallo, los ficheros que toca y las métricas del servicio: no necesita razonar sobre todo el repositorio. Ya cubrimos el CI/CD con agentes el 2026-08-18 y el análisis de causa raíz agéntico el 2026-08-25; el ángulo publicable es el cambio de dueño del diagnóstico, de la persona que mira el registro a un proceso que propone el parche, con la revisión humana como único punto de control. Está en alfa pública y con doce incidencias abiertas.",
+        "madurez_senales": "13.275 estrellas · 1.910 forks · Python · creado 2026-01-13 · último push 2026-11-20 · Apache-2.0 · 12 incidencias abiertas · posición 23 en Trendshift · +38 hoy en Trending · estado declarado alfa pública (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el flujo de trabajo y las preguntas frecuentes explican el alcance mejor que la demostración.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "implements",
+          "dst": "concept:ci-cd-with-agents",
+          "primera_mencion": "2026-08-18"
+        },
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "enables",
+          "dst": "concept:agentic-root-cause-analysis",
+          "primera_mencion": "2026-08-25"
+        },
+        {
+          "src": "repo:Tracer-Cloud/opensre",
+          "rel": "relevant_to",
+          "dst": "concept:local-first-agent",
+          "primera_mencion": "2026-08-25"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tracer-cloud-opensre",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "agentscope-ai/agentscope",
+      "url": "https://github.com/agentscope-ai/agentscope",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework en Python para construir y ejecutar agentes con el comportamiento a la vista: multiagente, multimodal, herramientas MCP, agentes de voz y en tiempo real, con documentación en inglés y chino y hoja de ruta pública. Nació en 2024 y tiene artículo en arXiv.",
+        "por_que_importa": "El ecosistema de este año se ha llenado de skills empaquetadas y arneses, y casi todo lo nuevo es una capa encima de un agente que ya existe. Este es la cara contraria: infraestructura para construir el agente desde cero, con artículo en arXiv y casi dos años de recorrido. Su orquestación multiagente ya salió el 2026-08-27 y compite con Mastra, que cubrimos el 2026-08-26; sirve de contrapeso en un artículo sobre de dónde vienen estas piezas y qué se gana al no depender de un arnés concreto. El dato menos favorable también cuenta: 820 incidencias abiertas para 36.000 estrellas indican mucha superficie y poca capacidad de cierre.",
+        "madurez_senales": "36.336 estrellas · 3.892 forks · Python · creado 2024-01-12 · último push 2026-11-20 · Apache-2.0 · 820 incidencias abiertas · +67 hoy en Trending (corte de Python) · artículo arXiv 2402.14034 (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — el README y la hoja de ruta bastan para situarlo; solo merece instalación si vas a compararlo con lo que ya usas.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:agentscope-ai/agentscope",
+          "rel": "implements",
+          "dst": "concept:multi-agent-orchestration",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:agentscope-ai/agentscope",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:agentscope-ai/agentscope",
+          "rel": "competes_with",
+          "dst": "repo:mastra-ai/mastra",
+          "primera_mencion": "2026-08-26"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agentscope-ai-agentscope",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(307.425 estrellas, último push 2026-11-20, JavaScript) — capa de rendimiento para el arnés con skills, memoria, seguridad e investigación previa; suma +959 hoy y ofrece edición de pago desde 19 dólares por asiento — señales: https://github.com/affaan-m/ECC",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/affaan-m/ECC",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "affaan-m-ecc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(71.038 estrellas, último push 2026-11-20, Python) — skill de investigación que busca en Reddit, X, YouTube, Hacker News y Polymarket y ordena por votos y dinero real en lugar de criterio editorial — señales: https://github.com/mvanhorn/last30days-skill",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mvanhorn/last30days-skill",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvanhorn-last30days-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "vercel-labs/agent-skills",
+      "url": "https://github.com/vercel-labs/agent-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(34.570 estrellas, último push 2026-11-12, JavaScript) — skills oficiales de Vercel para auditar coste y rendimiento de un despliegue y aplicar más de 40 reglas de React y Next.js; la API no detecta licencia — señales: https://github.com/vercel-labs/agent-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/vercel-labs/agent-skills",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vercel-labs-agent-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "haydenschmitty/floorplan",
+      "url": "https://github.com/haydenschmitty/floorplan",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.307 estrellas, último push 2026-11-16, JavaScript) — Claude o Codex leen el repositorio y dibujan un mapa interactivo con nombres en lenguaje llano, sin dependencias — señales: https://github.com/haydenschmitty/floorplan",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/haydenschmitty/floorplan",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "haydenschmitty-floorplan",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "mdiri-ai/SoduWork",
+      "url": "https://github.com/mdiri-ai/SoduWork",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.823 estrellas, último push 2026-11-20, JavaScript) — motor autoalojado que coordina varios arneses y agentes para un equipo; vuelve tres días después de su última aparición y sin release nueva — señales: https://github.com/mdiri-ai/SoduWork",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mdiri-ai/SoduWork",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mdiri-ai-soduwork",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "mjmirza/app-store-compliance",
+      "url": "https://github.com/mjmirza/app-store-compliance",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.192 estrellas, último push 2026-11-19, Shell) — manual de 117 patrones de rechazo de App Store y Google Play con comprobaciones previas al envío; licencia sin identificar — señales: https://github.com/mjmirza/app-store-compliance",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mjmirza/app-store-compliance",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mjmirza-app-store-compliance",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(322.345 estrellas, último push 2026-11-03, Shell) — la metodología en skills que fue hallazgo anteayer vuelve a lo más alto con +2.028 hoy y sin cambios desde la versión 7.0.2 — señales: https://github.com/obra/superpowers",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/obra/superpowers",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "obra-superpowers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 14,
+      "titulo": "FlashML-org/FreeVideo",
+      "url": "https://github.com/FlashML-org/FreeVideo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.553 estrellas, último push 2026-11-19, Python) — ejecuta un modelo de vídeo con 8 GB de memoria de tarjeta gráfica, con 739 incidencias abiertas para 3.500 estrellas — señales: https://github.com/FlashML-org/FreeVideo",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/FlashML-org/FreeVideo",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "flashml-org-freevideo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 15,
+    "items_hallazgo_principal": 7,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "15/15 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "7/7 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

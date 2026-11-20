@@ -1,0 +1,51 @@
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-awslabs-cli-agent-orchestrator", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-awslabs-cli-agent-orchestrator", "dst": "tema:awslabs-cli-agent-orchestrator", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:awslabs/cli-agent-orchestrator", "dst": "concept:multi-agent-cli", "rel": "implements", "added": "2026-11-20", "primera_mencion": "2026-09-08"}
+{"src": "repo:awslabs/cli-agent-orchestrator", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-11-20", "primera_mencion": "2026-08-27"}
+{"src": "repo:awslabs/cli-agent-orchestrator", "dst": "repo:Tencent/LoopForge", "rel": "competes_with", "added": "2026-11-20", "primera_mencion": "2026-11-12"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-erkamyaman-rust-anything", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-erkamyaman-rust-anything", "dst": "tema:erkamyaman-rust-anything", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:erkamyaman/rust-anything", "dst": "concept:verified-code-migration", "rel": "implements", "added": "2026-11-20", "primera_mencion": null}
+{"src": "repo:erkamyaman/rust-anything", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-20", "primera_mencion": "2026-09-21"}
+{"src": "repo:erkamyaman/rust-anything", "dst": "concept:agent-skill", "rel": "uses", "added": "2026-11-20", "primera_mencion": "2026-09-08"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-colbymchenry-codegraph", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-colbymchenry-codegraph", "dst": "tema:colbymchenry-codegraph", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:colbymchenry/codegraph", "dst": "concept:code-graph-for-agents", "rel": "implements", "added": "2026-11-20", "primera_mencion": "2026-10-01"}
+{"src": "repo:colbymchenry/codegraph", "dst": "repo:Graphify-Labs/graphify", "rel": "competes_with", "added": "2026-11-20", "primera_mencion": "2026-08-09"}
+{"src": "repo:colbymchenry/codegraph", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-20", "primera_mencion": "2026-09-21"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-dietrichgebert-ponytail", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-dietrichgebert-ponytail", "dst": "tema:dietrichgebert-ponytail", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:DietrichGebert/ponytail", "dst": "concept:yagni-as-agent-policy", "rel": "implements", "added": "2026-11-20", "primera_mencion": null}
+{"src": "repo:DietrichGebert/ponytail", "dst": "concept:anti-slop-agent-patterns", "rel": "relevant_to", "added": "2026-11-20", "primera_mencion": "2026-08-27"}
+{"src": "repo:DietrichGebert/ponytail", "dst": "repo:felipebasurto/unslop-ui", "rel": "complements", "added": "2026-11-20", "primera_mencion": "2026-11-19"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-phone-harness-phone-harness", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-phone-harness-phone-harness", "dst": "tema:phone-harness-phone-harness", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:phone-harness/phone-harness", "dst": "concept:phone-as-agent-tool", "rel": "implements", "added": "2026-11-20", "primera_mencion": "2026-08-09"}
+{"src": "repo:phone-harness/phone-harness", "dst": "repo:HKUDS/PhoneGo", "rel": "complements", "added": "2026-11-20", "primera_mencion": "2026-11-19"}
+{"src": "repo:phone-harness/phone-harness", "dst": "concept:desktop-computer-use", "rel": "relevant_to", "added": "2026-11-20", "primera_mencion": "2026-10-31"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-tracer-cloud-opensre", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-tracer-cloud-opensre", "dst": "tema:tracer-cloud-opensre", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "concept:ci-cd-with-agents", "rel": "implements", "added": "2026-11-20", "primera_mencion": "2026-08-18"}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "concept:agentic-root-cause-analysis", "rel": "enables", "added": "2026-11-20", "primera_mencion": "2026-08-25"}
+{"src": "repo:Tracer-Cloud/opensre", "dst": "concept:local-first-agent", "rel": "relevant_to", "added": "2026-11-20", "primera_mencion": "2026-08-25"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-agentscope-ai-agentscope", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-agentscope-ai-agentscope", "dst": "tema:agentscope-ai-agentscope", "rel": "trata", "added": "2026-11-20"}
+{"src": "repo:agentscope-ai/agentscope", "dst": "concept:multi-agent-orchestration", "rel": "implements", "added": "2026-11-20", "primera_mencion": "2026-08-27"}
+{"src": "repo:agentscope-ai/agentscope", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-20", "primera_mencion": "2026-09-21"}
+{"src": "repo:agentscope-ai/agentscope", "dst": "repo:mastra-ai/mastra", "rel": "competes_with", "added": "2026-11-20", "primera_mencion": "2026-08-26"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-affaan-m-ecc", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-affaan-m-ecc", "dst": "tema:affaan-m-ecc", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-mvanhorn-last30days-skill", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-mvanhorn-last30days-skill", "dst": "tema:mvanhorn-last30days-skill", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-vercel-labs-agent-skills", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-vercel-labs-agent-skills", "dst": "tema:vercel-labs-agent-skills", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-haydenschmitty-floorplan", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-haydenschmitty-floorplan", "dst": "tema:haydenschmitty-floorplan", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-mdiri-ai-soduwork", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-mdiri-ai-soduwork", "dst": "tema:mdiri-ai-soduwork", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-mjmirza-app-store-compliance", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-mjmirza-app-store-compliance", "dst": "tema:mjmirza-app-store-compliance", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-obra-superpowers", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-obra-superpowers", "dst": "tema:obra-superpowers", "rel": "trata", "added": "2026-11-20"}
+{"src": "boletin:2026-11-20", "dst": "item:https-github-com-flashml-org-freevideo", "rel": "menciona", "added": "2026-11-20"}
+{"src": "item:https-github-com-flashml-org-freevideo", "dst": "tema:flashml-org-freevideo", "rel": "trata", "added": "2026-11-20"}
