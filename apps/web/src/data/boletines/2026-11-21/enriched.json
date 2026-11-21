@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-21",
+  "boletin_origen": "2026-11-21-trending.md",
+  "resumen_ejecutivo": "- El día separa al agente de la infraestructura que lo sostiene: un runtime que suspende agentes inactivos y los reanuda en menos de medio segundo, un catálogo que se queda con las claves de los proveedores y un rastreador de errores que habla el protocolo de Sentry en lugar de inventarse uno propio.\n- El control de calidad se desplaza de sitio: un lenguaje que exige una demostración formal cuando alguien cambia el código y una skill que convierte el diagrama en un fichero con la marca del proyecto.\n- Día de recaídas: los 71 repositorios del corte de GitHub ya constaban en el registro y de las 25 entradas de Trendshift solo 11 son nombres nuevos, casi todos utilidades de nicho. Los tres hallazgos con más sustancia del día llevaban semanas en el radar sin haber sido publicados.\n- Fuentes consultadas: Trendshift daily (25 entradas), GitHub Trending daily y cortes de TypeScript, Python, Rust y Go (71 repositorios únicos), GitHub API (17 repositorios verificados). El blogwatcher de las 08:00 sigue sin publicar desde julio, así que hoy tampoco hay archivo de blogs.",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "agent-substrate/substrate",
+      "url": "https://github.com/agent-substrate/substrate",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "runtime de ejecución sobre Kubernetes para agentes encerrados en cajas fuertes: cada actor recibe cómputo, identidad, red y almacenamiento aislados, y las credenciales quedan fuera del alcance del código que no es de confianza. Su idea central es que un agente espera casi siempre a un modelo, a una herramienta o a una persona, así que guarda una instantánea del actor inactivo y la restaura cuando llega una petición, sobre un grupo pequeño de procesos ya calientes. Admite microVMs y gVisor y se declara un runtime de bajo criterio, no un kit de desarrollo de agentes.",
+        "por_que_importa": "La conversación sobre agentes se ha centrado en el bucle de razonamiento y poco en dónde viven y cuánto cuestan cuando no hacen nada. Ya tocamos la densidad de agentes el 2026-07-18 con Kubernetes y CubeSandbox; este repo lo ataca con cifras propias (reanudación bajo 500 ms, más de 500 activaciones por segundo) sin reescribir el agente. Ojo: las cifras las publica el proyecto y sus 958 incidencias abiertas para 8.044 estrellas indican mucha superficie por cerrar.",
+        "madurez_senales": "8.044 estrellas · 882 forks · Go · creado 2026-05-13 · último push 2026-11-21 · Apache-2.0 · 958 incidencias abiertas · +224 hoy en Trending (corte de Go) · reanudación declarada por debajo de 500 ms y más de 500 activaciones por segundo · topics: `agents`, `cncf`, `sandboxing` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — la guía de seguridad y el documento de arquitectura explican el modelo de actores y trabajadores mejor que la portada, y de ahí sale el artículo sobre coste de la inactividad.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:agent-substrate/substrate",
+          "rel": "implements",
+          "dst": "concept:agent-density-scheduling",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "repo:agent-substrate/substrate",
+          "rel": "relevant_to",
+          "dst": "tool:kubernetes",
+          "primera_mencion": "2026-07-18"
+        },
+        {
+          "src": "repo:agent-substrate/substrate",
+          "rel": "competes_with",
+          "dst": "repo:TencentCloud/CubeSandbox",
+          "primera_mencion": "2026-07-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agent-substrate-substrate",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "bendlang/bend",
+      "url": "https://github.com/bendlang/bend",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "lenguaje de programación que se presenta como la segunda versión de Bend y cuyo argumento central es la verificación: en un fichero `LAWS.bend` se declaran las reglas que la aplicación no puede romper y el compilador exige una demostración matemática cada vez que el código cambia. Compila a ejecutables comparables a C en un solo núcleo y reparte el trabajo por todos los núcleos y por la tarjeta gráfica sin hilos ni bloqueos. El mismo compilador verifica demostraciones y publica su propia comparación con asistentes de pruebas conocidos.",
+        "por_que_importa": "El problema es el correcto: cómo confiar en código de una IA sin leerlo entero. Ya lo tratamos el 2026-09-18 con la verificación de código generado por agentes; aquí la regla se escribe en un fichero y el compilador exige demostrarla cada vez que el código cambia. Dos cautelas: la velocidad y la verificación las mide el propio proyecto, y la presentación mezcla la propuesta técnica con un discurso sobre la economía posterior a la AGI que conviene separar. Además la dirección antigua redirige aquí: no es nuevo, es la reposición de un lenguaje con 25.707 estrellas.",
+        "madurez_senales": "25.707 estrellas · 821 forks · TypeScript · creado 2023-08-29 · último push 2026-11-18 · Apache-2.0 · 161 incidencias abiertas · +95 hoy en Trending (corte de TypeScript) · la dirección antigua de la organización redirige a este repositorio, comprobado con la API · topics: `bend`, `dependent-types`, `proof`, `cuda`, `gpu` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el ejemplo de la ley que impide ganar la partida es la mejor explicación del mecanismo; el resto del texto es marketing.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:bendlang/bend",
+          "rel": "implements",
+          "dst": "concept:proof-backed-agent-code",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "repo:bendlang/bend",
+          "rel": "mitigates",
+          "dst": "concern:agent-verifiability",
+          "primera_mencion": "2026-09-18"
+        },
+        {
+          "src": "repo:bendlang/bend",
+          "rel": "relevant_to",
+          "dst": "concept:verified-code-migration",
+          "primera_mencion": "2026-09-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bendlang-bend",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "superdesigndev/treg",
+      "url": "https://github.com/superdesigndev/treg",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "registro y proxy de herramientas para agentes que se describe como un OpenRouter de herramientas en vez de modelos: un único punto de acceso y un único token para llamar a miles de puntos de venta de datos (posicionamiento, enlaces entrantes, redes sociales, generación de imagen y vídeo), con precio por llamada y sin que el usuario tenga cuenta en cada proveedor. También registra las herramientas propias del equipo, incluidas claves de API, conexiones OAuth y programas de línea de comandos; en ese caso la clave propia siempre prevalece sobre la del servicio y la llamada no se factura. El proxy reenvía e inyecta la autenticación en el servidor; nunca modela la respuesta del proveedor.",
+        "por_que_importa": "Resuelve un problema que aparece en cuanto un agente pasa de demostración a trabajo real: la custodia de credenciales. Ya lo abordamos el 2026-10-23 y el 2026-09-21 al hablar de MCP; aquí el intermediario guarda la clave y cobra por llamada en vez de suscripción, pero ese mismo intermediario puede leer todas las peticiones. La trampa es la licencia: la API la marca como no identificada y el fichero real es Apache-2.0 con condiciones que prohíben ofrecerlo como servicio alojado a terceros. Se puede autoalojar para uso propio; no revender.",
+        "madurez_senales": "8.667 estrellas · 851 forks · Python · creado 2026-07-15 · último push 2026-11-21 · Apache-2.0 con condiciones adicionales que restringen el servicio alojado · 363 incidencias abiertas · +100 hoy en Trending (corte de Python) · topics: `agents`, `credentials`, `mcp`, `proxy`, `registry`, `secrets` (verificado vía GitHub API y fichero de licencia; README en `main`).",
+        "accion_sugerida": "**leer** — la sección de arquitectura de autenticación y las condiciones adicionales de la licencia son lo que hay que entender antes de plantearlo como pieza de infraestructura propia.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:superdesigndev/treg",
+          "rel": "implements",
+          "dst": "concept:agent-tool-catalog",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:superdesigndev/treg",
+          "rel": "solves",
+          "dst": "problem:agent-credential-exposure",
+          "primera_mencion": "2026-10-23"
+        },
+        {
+          "src": "repo:superdesigndev/treg",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "superdesigndev-treg",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "google-research/paper-orchestra",
+      "url": "https://github.com/google-research/paper-orchestra",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework de varios agentes que convierte materiales sueltos (una idea y un registro de experimentos) en un manuscrito en LaTeX listo para enviar, con búsqueda y síntesis de bibliografía, redacción por secciones, revisión del contenido y generación de gráficas y diagramas. Lo firma el equipo de investigación de Google Cloud y separa el trabajo en agentes especializados: esquema, revisión de literatura, redacción, refinamiento y trazado de figuras.",
+        "por_que_importa": "Es el ejemplo más explícito de una tendencia incómoda: la parte mecánica de la investigación se automatiza y queda el criterio. Ya cubrimos la escritura automática de artículos el 2026-11-15 y el bucle de autoinvestigación el 2026-09-01; este repo enseña el patrón con agentes separados por función y evaluadores automáticos incluidos. También enseña sus límites sin querer: el conjunto de datos de evaluación no está en el repositorio y se anuncia para más adelante, así que hoy se puede leer el método pero no reproducir los resultados. Y no es un producto soportado por Google.",
+        "madurez_senales": "5.512 estrellas · 691 forks · Python · creado 2026-05-01 · último push 2026-11-15 · Apache-2.0 · 50 incidencias abiertas · +454 hoy en Trending (corte de Python) · artículo arXiv 2604.05018 · conjunto de datos no incluido en el repositorio · declarado como proyecto no soportado oficialmente (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — merece la pena el reparto de agentes y los evaluadores automáticos; la instalación no aporta nada mientras falte el conjunto de datos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:google-research/paper-orchestra",
+          "rel": "implements",
+          "dst": "concept:automated-paper-writing",
+          "primera_mencion": "2026-11-15"
+        },
+        {
+          "src": "repo:google-research/paper-orchestra",
+          "rel": "relevant_to",
+          "dst": "paper:arxiv-2604-05018",
+          "primera_mencion": "2026-11-15"
+        },
+        {
+          "src": "repo:google-research/paper-orchestra",
+          "rel": "relevant_to",
+          "dst": "concept:autoresearch-loop",
+          "primera_mencion": "2026-09-01"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-research-paper-orchestra",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill de agente que dibuja diagramas en un único fichero HTML con SVG dentro, sin dependencias ni visor. Cubre más de cincuenta tipos de diagrama (arquitectura, secuencia, cuadrantes, mapas de calor), admite importar desde draw.io, Mermaid, Excalidraw y PlantUML, exporta a imagen y tiene un paso de incorporación que lee la paleta y las tipografías de un sitio web para que los diagramas posteriores salgan con esa misma identidad.",
+        "por_que_importa": "Muchos agentes ya producen un diagrama, y el resultado suele ser el mismo gráfico genérico de Mermaid que nadie enseña en una presentación. Ya hablamos de esto el 2026-08-15 al comparar skills de diagramas con Mermaid y el 2026-08-07 al tratar la salida documental de agentes; aquí el argumento es el formato como decisión de producto: un HTML autocontenido con SVG, la tipografía del proyecto y sin dependencias. Es material para discutir qué es un entregable cuando lo produce un agente. Señal de adopción: 69.465 estrellas y funciona en arneses distintos, no en un solo editor.",
+        "madurez_senales": "69.465 estrellas · 4.663 forks · HTML · creado 2026-04-16 · último push 2026-11-19 · MIT · 44 incidencias abiertas · +636 hoy en Trending · el README declara 51 tipos de diagrama · topics: `agent-skills`, `diagrams`, `svg`, `data-visualization` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — generar un diagrama de arquitectura de un proyecto propio y compararlo con lo que produce el agente sin la skill es la prueba que decide si aporta.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cathrynlavery/diagram-design",
+          "rel": "implements",
+          "dst": "concept:agent-skill-diagram",
+          "primera_mencion": "2026-08-15"
+        },
+        {
+          "src": "repo:cathrynlavery/diagram-design",
+          "rel": "competes_with",
+          "dst": "tool:mermaid",
+          "primera_mencion": "2026-08-15"
+        },
+        {
+          "src": "repo:cathrynlavery/diagram-design",
+          "rel": "enables",
+          "dst": "concept:agent-document-output",
+          "primera_mencion": "2026-08-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cathrynlavery-diagram-design",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "rustrak/rustrak",
+      "url": "https://github.com/rustrak/rustrak",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "rastreador de errores autoalojado que añade registros, transacciones, salud de versiones y trazas de agentes de IA. Habla el protocolo de Sentry de verdad, no una imitación, así que el SDK que ya está instalado apunta aquí cambiando una cadena; corre como un solo proceso con SQLite por defecto y se instala con un fichero de composición.",
+        "por_que_importa": "La observabilidad de agentes se ha llenado de plataformas nuevas que exigen cambiar de SDK y de modelo de datos; esta hace lo contrario y por eso interesa. Ya cubrimos el seguimiento de errores el 2026-10-03 y la observabilidad de agentes el 2026-08-29; aquí el SDK de Sentry que ya está instalado apunta a este servidor cambiando una cadena, y las trazas de agente entran como un tipo más de suceso. Hablar el protocolo ajeno en vez de inventar uno propio es una decisión de ingeniería que merece contarse. Dos peros: AGPL-3.0 y 1.276 estrellas, un proyecto pequeño.",
+        "madurez_senales": "1.276 estrellas · 68 forks · Rust · creado 2026-01-22 · último push 2026-11-20 · AGPL-3.0 · 49 incidencias abiertas · posición 6 en Trendshift · imagen Docker publicada · topics: `apm`, `error-tracking`, `observability`, `sqlite`, `postgresql` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — levantar el contenedor y apuntar un SDK de Sentry que ya uses comprueba en diez minutos si la compatibilidad es tan literal como dice.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:rustrak/rustrak",
+          "rel": "implements",
+          "dst": "concept:error-tracking-platform",
+          "primera_mencion": "2026-10-03"
+        },
+        {
+          "src": "repo:rustrak/rustrak",
+          "rel": "competes_with",
+          "dst": "getsentry/sentry",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:rustrak/rustrak",
+          "rel": "relevant_to",
+          "dst": "concept:agent-observability",
+          "primera_mencion": "2026-08-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "rustrak-rustrak",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(205.559 estrellas, último push 2026-11-21, TypeScript) — infraestructura de conocimiento para agentes que ahora se presenta como acceso a más de 550 proveedores de datos bajo una sola interfaz; licencia AGPL-3.0 — señales: https://github.com/firecrawl/firecrawl",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/firecrawl/firecrawl",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "firecrawl-firecrawl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "jingyaogong/minimind",
+      "url": "https://github.com/jingyaogong/minimind",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(67.855 estrellas, último push 2026-11-18, Python) — entrenar desde cero un modelo de lenguaje de 64 millones de parámetros en dos horas, con material didáctico en chino e inglés — señales: https://github.com/jingyaogong/minimind",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/jingyaogong/minimind",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jingyaogong-minimind",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "multica-ai/multica",
+      "url": "https://github.com/multica-ai/multica",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(56.983 estrellas, último push 2026-11-21, Go) — tablero donde los agentes cogen incidencias como un compañero más y devuelven el trabajo para revisión; licencia propia basada en Apache-2.0 con directorios comerciales y 2.010 incidencias abiertas — señales: https://github.com/multica-ai/multica",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/multica-ai/multica",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-multica",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "gastownhall/beads",
+      "url": "https://github.com/gastownhall/beads",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(28.880 estrellas, último push 2026-11-21, Go) — seguidor de incidencias en grafo con dependencias sobre Dolt, pensado como memoria persistente del agente en tareas largas — señales: https://github.com/gastownhall/beads",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/gastownhall/beads",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "gastownhall-beads",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(17.929 estrellas, último push 2026-11-21, TypeScript) — especificación de plugins de Cursor y catálogo oficial, con un plugin dedicado a cómo diseñar líneas de comandos que un agente pueda ejecutar sin romper nada; la API no detecta licencia — señales: https://github.com/cursor/plugins",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/cursor/plugins",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cursor-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "tianma-if/edgeever",
+      "url": "https://github.com/tianma-if/edgeever",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.465 estrellas, último push 2026-11-21, TypeScript) — aplicación de notas con sincronización instantánea, recortador web y servidor MCP, autoalojable en Cloudflare o Docker; AGPL-3.0 — señales: https://github.com/tianma-if/edgeever",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/tianma-if/edgeever",
+        "accion_sugerida": "probar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tianma-if-edgeever",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "AgenticOrgLab/ExecOrchestra",
+      "url": "https://github.com/AgenticOrgLab/ExecOrchestra",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(745 estrellas, último push 2026-11-19, Python) — orquestación de recursos heterogéneos con planes ejecutables que deciden en cada paso si actúa una herramienta, un modelo o un agente; posición 17 en Trendshift y licencia no detectada — señales: https://github.com/AgenticOrgLab/ExecOrchestra",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/AgenticOrgLab/ExecOrchestra",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "agenticorglab-execorchestra",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "danielwh2/sprite-stacking",
+      "url": "https://github.com/danielwh2/sprite-stacking",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(202 estrellas, último push 2026-11-21, HTML) — skill que convierte cuatro vistas de pixel art en un sprite con giro falso en tres dimensiones; útil como ejemplo de skill muy concreta y nada más — señales: https://github.com/danielwh2/sprite-stacking",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/danielwh2/sprite-stacking",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "danielwh2-sprite-stacking",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

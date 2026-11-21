@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "date": "2026-11-21",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Substrate y rustrak apartan al agente de su propia plomería",
+  "posicionamiento": "Tres hallazgos sacan la infraestructura del cuerpo del agente: Substrate lo encierra en Kubernetes, treg se queda con las claves de los proveedores y rustrak habla el protocolo de Sentry. En paralelo, Bend y la skill de diagramas mueven el control de calidad a un fichero comprobable.",
+  "convergencia_stack_css": "Lo local-first gana dos piezas autoalojables: rustrak corre como un proceso único con SQLite y treg se puede montar en casa para uso propio, no revender. La custodia de claves en un intermediario choca con la frontera que ya dibujamos al hablar de vaults que niegan el acceso.",
+  "cruzado_grafo": "Ningún nodo estrena fecha hoy: agent-tool-catalog entra por primera vez sin primera_mencion, igual que la competencia rustrak-Sentry. El resto refuerza nodos ya vistos: densidad de agentes desde 2026-07-18, código verificado desde 2026-09-18, error tracking desde 2026-10-03.",
+  "tendencias_5_boletines": "Los dos días previos ya habían movido el control fuera del modelo: un arnés que exige coincidencia byte a byte, un vault que niega el acceso. Se repite el patrón, con un giro: hoy el control se compra hecho en lugar de escribirse a mano.",
+  "alertas": [
+    "treg: la API marca licencia no identificada; el fichero real es Apache-2.0 y prohíbe ofrecerlo como servicio alojado.",
+    "rustrak es AGPL-3.0 y tiene 1.276 estrellas: proyecto pequeño, sin validación de terceros.",
+    "Substrate publica sus propias cifras (500 ms, 500 activaciones/s) y arrastra 958 incidencias abiertas sobre 8.044 estrellas.",
+    "Bend mide velocidad y verificación en casa, y mezcla la propuesta técnica con un discurso sobre economía post-AGI.",
+    "paper-orchestra no incluye el conjunto de datos de evaluación: el método se puede leer, los resultados no reproducir."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "vigilar",
+      "item_idx": 0,
+      "razon": "El modelo de suspender y reanudar agentes inactivos ataca el coste real de tener densidad. Esperar a que cierren parte de las 958 incidencias antes de probarlo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "Un proceso único con SQLite y el SDK de Sentry ya instalado apuntando aquí con cambiar una cadena: la barrera de entrada es mínima."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Útil como patrón de custodia de credenciales, pero solo autoalojado y para uso propio: la licencia impide revenderlo."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Da material para discutir qué es un entregable cuando lo produce un agente: HTML autocontenido con SVG y la tipografía del proyecto."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

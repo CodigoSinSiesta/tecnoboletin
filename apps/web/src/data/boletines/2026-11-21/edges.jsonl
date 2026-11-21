@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-agent-substrate-substrate", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-agent-substrate-substrate", "dst": "tema:agent-substrate-substrate", "rel": "trata", "added": "2026-11-21"}
+{"src": "repo:agent-substrate/substrate", "dst": "concept:agent-density-scheduling", "rel": "implements", "added": "2026-11-21", "primera_mencion": "2026-07-18"}
+{"src": "repo:agent-substrate/substrate", "dst": "tool:kubernetes", "rel": "relevant_to", "added": "2026-11-21", "primera_mencion": "2026-07-18"}
+{"src": "repo:agent-substrate/substrate", "dst": "repo:TencentCloud/CubeSandbox", "rel": "competes_with", "added": "2026-11-21", "primera_mencion": "2026-07-18"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-bendlang-bend", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-bendlang-bend", "dst": "tema:bendlang-bend", "rel": "trata", "added": "2026-11-21"}
+{"src": "repo:bendlang/bend", "dst": "concept:proof-backed-agent-code", "rel": "implements", "added": "2026-11-21", "primera_mencion": "2026-09-18"}
+{"src": "repo:bendlang/bend", "dst": "concern:agent-verifiability", "rel": "mitigates", "added": "2026-11-21", "primera_mencion": "2026-09-18"}
+{"src": "repo:bendlang/bend", "dst": "concept:verified-code-migration", "rel": "relevant_to", "added": "2026-11-21", "primera_mencion": "2026-09-18"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-superdesigndev-treg", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-superdesigndev-treg", "dst": "tema:superdesigndev-treg", "rel": "trata", "added": "2026-11-21"}
+{"src": "repo:superdesigndev/treg", "dst": "concept:agent-tool-catalog", "rel": "implements", "added": "2026-11-21", "primera_mencion": null}
+{"src": "repo:superdesigndev/treg", "dst": "problem:agent-credential-exposure", "rel": "solves", "added": "2026-11-21", "primera_mencion": "2026-10-23"}
+{"src": "repo:superdesigndev/treg", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-21", "primera_mencion": "2026-09-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-google-research-paper-orchestra", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-google-research-paper-orchestra", "dst": "tema:google-research-paper-orchestra", "rel": "trata", "added": "2026-11-21"}
+{"src": "repo:google-research/paper-orchestra", "dst": "concept:automated-paper-writing", "rel": "implements", "added": "2026-11-21", "primera_mencion": "2026-11-15"}
+{"src": "repo:google-research/paper-orchestra", "dst": "paper:arxiv-2604-05018", "rel": "relevant_to", "added": "2026-11-21", "primera_mencion": "2026-11-15"}
+{"src": "repo:google-research/paper-orchestra", "dst": "concept:autoresearch-loop", "rel": "relevant_to", "added": "2026-11-21", "primera_mencion": "2026-09-01"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-cathrynlavery-diagram-design", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-cathrynlavery-diagram-design", "dst": "tema:cathrynlavery-diagram-design", "rel": "trata", "added": "2026-11-21"}
+{"src": "repo:cathrynlavery/diagram-design", "dst": "concept:agent-skill-diagram", "rel": "implements", "added": "2026-11-21", "primera_mencion": "2026-08-15"}
+{"src": "repo:cathrynlavery/diagram-design", "dst": "tool:mermaid", "rel": "competes_with", "added": "2026-11-21", "primera_mencion": "2026-08-15"}
+{"src": "repo:cathrynlavery/diagram-design", "dst": "concept:agent-document-output", "rel": "enables", "added": "2026-11-21", "primera_mencion": "2026-08-07"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-rustrak-rustrak", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-rustrak-rustrak", "dst": "tema:rustrak-rustrak", "rel": "trata", "added": "2026-11-21"}
+{"src": "repo:rustrak/rustrak", "dst": "concept:error-tracking-platform", "rel": "implements", "added": "2026-11-21", "primera_mencion": "2026-10-03"}
+{"src": "repo:rustrak/rustrak", "dst": "getsentry/sentry", "rel": "competes_with", "added": "2026-11-21", "primera_mencion": null}
+{"src": "repo:rustrak/rustrak", "dst": "concept:agent-observability", "rel": "relevant_to", "added": "2026-11-21", "primera_mencion": "2026-08-29"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-firecrawl-firecrawl", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-firecrawl-firecrawl", "dst": "tema:firecrawl-firecrawl", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-jingyaogong-minimind", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-jingyaogong-minimind", "dst": "tema:jingyaogong-minimind", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-multica-ai-multica", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-multica-ai-multica", "dst": "tema:multica-ai-multica", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-gastownhall-beads", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-gastownhall-beads", "dst": "tema:gastownhall-beads", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-cursor-plugins", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-cursor-plugins", "dst": "tema:cursor-plugins", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-tianma-if-edgeever", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-tianma-if-edgeever", "dst": "tema:tianma-if-edgeever", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-agenticorglab-execorchestra", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-agenticorglab-execorchestra", "dst": "tema:agenticorglab-execorchestra", "rel": "trata", "added": "2026-11-21"}
+{"src": "boletin:2026-11-21", "dst": "item:https-github-com-danielwh2-sprite-stacking", "rel": "menciona", "added": "2026-11-21"}
+{"src": "item:https-github-com-danielwh2-sprite-stacking", "dst": "tema:danielwh2-sprite-stacking", "rel": "trata", "added": "2026-11-21"}
