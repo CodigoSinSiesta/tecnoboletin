@@ -1,0 +1,334 @@
+{
+  "version": 2,
+  "date": "2026-11-22",
+  "boletin_origen": "2026-11-22-trending.md",
+  "resumen_ejecutivo": "- El día lo marca a2ui: en vez de que el agente devuelva HTML, devuelve datos de interfaz y la aplicación los pinta con sus componentes nativos en React, Angular, Flutter o SwiftUI.\n- Baidu publica OCR de horizonte ilimitado: parsea documentos de cientos de páginas en una sola petición con atención de ventana deslizante sobre un conjunto fijo de referencias.\n- La tercera pata es la ejecución: OpenComputer saca el agente de código a una máquina propia y a Slack, y Leonida traduce 26.503 shaders de consola a Vulkan aunque el juego todavía no arranque.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (portada, TypeScript, Python, Rust, Go y JavaScript) y GitHub API (14 repos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "a2ui-project/a2ui",
+      "url": "https://github.com/a2ui-project/a2ui",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "marco abierto de interfaz generativa con un protocolo pensado para emitir interfaz en streaming, adaptadores nativos para React, Angular, Lit, Flutter, SwiftUI y Jetpack Compose, y SDK de agente en varios lenguajes. La interfaz se expresa como datos, no como código, y un catálogo de componentes limita lo que el agente puede construir.",
+        "por_que_importa": "A2UI ataca el punto donde casi todo el mundo improvisa: si el agente devuelve HTML o un iframe, heredas estilos ajenos y una superficie que no puedes auditar. El contrato cambia: el agente propone una composición con componentes que ya existen en tu app y el render sigue siendo tu código, así que el catálogo de componentes acota lo que el modelo puede construir. Compite con json-render, que ya cubrimos el 2026-09-19, y el concepto de framework de interfaz generativa lo tocamos el 2026-09-21: es el primer intento serio de separar «qué quiere el modelo» de «cómo se ve», con render remoto para web y móvil.",
+        "madurez_senales": "17.899 estrellas · 1.441 forks · TypeScript · creado 2025-09-24 · último push 2026-11-22 · Apache-2.0 · 495 incidencias abiertas · releases del 17 de noviembre (`v0.11.0+swift`, `a2ui-core 0.7.0`, `a2ui-agent-sdk 0.12.0`) · topics: `a2ui`, `generative-ui`, `react`, `angular`, `flutter`, `swiftui`, `jetpack-compose`, `mcp` (verificado vía GitHub API)",
+        "accion_sugerida": "**leer** — la especificación del protocolo antes que el README, porque ahí están las reglas de qué puede pedir el agente y qué decide la aplicación.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:a2ui-project/a2ui",
+          "rel": "implements",
+          "dst": "protocol:a2ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:a2ui-project/a2ui",
+          "rel": "competes_with",
+          "dst": "repo:vercel-labs/json-render",
+          "primera_mencion": "2026-09-19"
+        },
+        {
+          "src": "repo:a2ui-project/a2ui",
+          "rel": "enables",
+          "dst": "concept:generative-ui-framework",
+          "primera_mencion": "2026-09-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "a2ui-project-a2ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "baidu/Unlimited-OCR",
+      "url": "https://github.com/baidu/Unlimited-OCR",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "modelo de OCR de la familia Paddle de Baidu que parsea un documento completo, página a página, en una sola petición. La versión 2 introduce una atención de ventana deslizante con referencias escasas que acota el coste de la atención a un conjunto fijo de tokens de trabajo en lugar de hacerlo crecer con el número de páginas.",
+        "por_que_importa": "El parseo de PDF largos es la parte aburrida de cualquier RAG y casi siempre se resuelve encadenando recortes, detección de tablas y heurísticas de orden de lectura. Aquí el problema se mueve al modelo: una pasada con atención de ventana deslizante cuyo coste queda acotado a un conjunto fijo de tokens, no al número de páginas, así que deja de importar cuántas tenga el documento. Es el sucesor de PaddleOCR, que ya cubrimos el 2026-07-31, y ataca el desbordamiento de contexto que tratamos el 2026-11-13. Si aguanta en documentos reales, cambia el trabajo de quien monta ingestas: menos tubería propia, más control de la salida.",
+        "madurez_senales": "31.613 estrellas · 3.395 forks · Python · creado 2026-06-18 · último push 2026-11-16 · MIT · 97 incidencias abiertas · sin releases en GitHub; la versión 2 se anunció el 16 de noviembre con pesos en Hugging Face y ModelScope y artículo en arXiv · topics: no declarados (verificado vía GitHub API)",
+        "accion_sugerida": "**probar** — con un PDF de más de cincuenta páginas propio antes de fiarse de las cifras del artículo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:baidu/Unlimited-OCR",
+          "rel": "extends",
+          "dst": "repo:PaddlePaddle/PaddleOCR",
+          "primera_mencion": "2026-07-31"
+        },
+        {
+          "src": "repo:baidu/Unlimited-OCR",
+          "rel": "mitigates",
+          "dst": "problem:context_overflow",
+          "primera_mencion": "2026-11-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "baidu-unlimited-ocr",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "diggerhq/opencomputer",
+      "url": "https://github.com/diggerhq/opencomputer",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente de código que se invoca desde Slack con una mención, trabaja en su propia máquina virtual y deja que el equipo mire y corrija mientras avanza. El stack completo se puede autoalojar en una sola máquina virtual con salida de red únicamente, o usar su nube; por debajo lanza Claude Code, Codex u OpenCode en sesiones aisladas.",
+        "por_que_importa": "La diferencia con los agentes de escritorio no es la calidad del modelo, es dónde vive la sesión y quién puede mirarla. Poner el agente en una máquina virtual con salida de red restringida y un puente que solo escucha eventos de Slack es una arquitectura defendible para un equipo: la revisión ocurre en el hilo, no en la terminal de una sola persona. Compite con Orca, que ya cubrimos el 2026-07-16, y se solapa con el uso del ordenador de escritorio que tratamos el 2026-10-31. La cifra de «3,3 veces más rápido que Devin» es del propio banco de pruebas del proyecto, no verificada de forma independiente.",
+        "madurez_senales": "1.324 estrellas · 160 forks · TypeScript · creado 2025-12-09 · último push 2026-11-22 · Apache-2.0 · 96 incidencias abiertas · release `v0.6.0.50` del 9 de noviembre · el README reclama 3,3 veces más rápido que Devin en su propio banco de pruebas (cifra del proyecto, no verificada de forma independiente) (verificado vía GitHub API)",
+        "accion_sugerida": "**leer** — la guía de autoalojamiento y el esquema de red, que es donde se decide si esto entra en una empresa.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:diggerhq/opencomputer",
+          "rel": "competes_with",
+          "dst": "repo:stablyai/orca",
+          "primera_mencion": "2026-07-16"
+        },
+        {
+          "src": "repo:diggerhq/opencomputer",
+          "rel": "relevant_to",
+          "dst": "concept:desktop-computer-use",
+          "primera_mencion": "2026-10-31"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "diggerhq-opencomputer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "ItsNotRexed/Leonida",
+      "url": "https://github.com/ItsNotRexed/Leonida",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "proyecto de recompilación estática de la versión de Xbox Series de Grand Theft Auto VI. No emula la consola: carga el código x86-64 del juego en el PC, reimplementa el sistema de la consola y traduce los programas de GPU RDNA2 precompilados a SPIR-V para Vulkan. No incluye el juego, las claves ni un ejecutable; hay que compilar desde una copia propia.",
+        "por_que_importa": "Es el ejemplo más claro del día de una técnica que se está comiendo la emulación clásica: recompilar en vez de interpretar. Y el estado del proyecto es la parte honesta: los 21.545 shaders están desmontados y traducidos a SPIR-V, pero el juego no llega a arrancar porque falta el ejecutable y las claves. Como pieza editorial sirve para explicar qué cuesta pasar de un binario de consola a un programa de PC con detalle verificable, en vez de con titulares; ojo con presentarlo como algo más que una prueba de concepto, y con la advertencia de que en GPU de 32 hilos algunas operaciones siguen siendo aproximadas.",
+        "madurez_senales": "7.992 estrellas · 635 forks · Python · creado 2026-11-20 · último push 2026-11-22 · GPL-3.0 · 214 incidencias abiertas · sin releases · el README reconoce que 21.545 shaders son wave64 y que en GPU de 32 hilos algunas operaciones siguen siendo aproximadas (verificado vía GitHub API)",
+        "accion_sugerida": "**vigilar** — por la técnica, con la advertencia de que el riesgo legal de estos proyectos recae siempre en quien los usa.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ItsNotRexed/Leonida",
+          "rel": "uses",
+          "dst": "concept:static-recompilation",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ItsNotRexed/Leonida",
+          "rel": "relevant_to",
+          "dst": "repo:mchughalex/skate3recomp",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "itsnotrexed-leonida",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Augani/openreel-video",
+      "url": "https://github.com/Augani/openreel-video",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "editor de vídeo que corre por completo en el cliente con React, TypeScript, WebCodecs y WebGPU: línea de tiempo multitrack, keyframes, corrección de color, subtítulos por palabra y exportación acelerada por GPU. Llegó a la versión 1.0 el 20 de noviembre.",
+        "por_que_importa": "Durante años la respuesta a «editar vídeo en el navegador» era subir los archivos a un servidor y montar un backend caro. WebCodecs y WebGPU permiten lo contrario, y este proyecto marca hasta dónde llega hoy: línea de tiempo multitrack, keyframes, corrección de color, subtítulos por palabra y exportación acelerada por GPU, todo en el cliente y sin instalar nada. WebGPU ya lo tratamos el 2026-08-31 y el editor de vídeo con agente el 2026-08-29, así que sirve para medir qué se puede hacer sin nube. Ojo: el README cifra 130.000 líneas de código propio pero el proyecto sigue marcado como beta pese al 1.0.",
+        "madurez_senales": "5.884 estrellas · 875 forks · TypeScript · creado 2026-01-19 · último push 2026-11-20 · MIT · 32 incidencias abiertas · release `v1.0.0` del 20 de noviembre · el README cifra 130.000 líneas de código y mantiene el estado beta pese al 1.0 (verificado vía GitHub API)",
+        "accion_sugerida": "**probar** — exportar un clip de dos minutos en un portátil sin GPU dedicada; ahí se ve si WebGPU es promesa o realidad.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Augani/openreel-video",
+          "rel": "uses",
+          "dst": "concept:webgpu",
+          "primera_mencion": "2026-08-31"
+        },
+        {
+          "src": "repo:Augani/openreel-video",
+          "rel": "relevant_to",
+          "dst": "concept:agent-video-editor",
+          "primera_mencion": "2026-08-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "augani-openreel-video",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "shinyobjectz/raea",
+      "url": "https://github.com/shinyobjectz/raea",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.532 estrellas, último push 2026-11-22, TypeScript) — reentrada respecto al 9 de noviembre, cuando tenía 903 estrellas, y release 0.1.8 el 20 de noviembre; convierte una instrucción en vídeo, 3D o juego escrito en React y TypeScript y lo renderiza en la GPU local, con licencia FSL-1.1-ALv2 que la API no identifica — señales: https://github.com/shinyobjectz/raea",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/shinyobjectz/raea",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shinyobjectz-raea",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "m1guelpf/Exo",
+      "url": "https://github.com/m1guelpf/Exo",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(146 estrellas, último push 2026-11-22, Rust) — cliente de Gmail nativo para macOS escrito en Rust, sin Electron y sin servidores intermedios: el usuario crea su propio cliente OAuth de Google y la aplicación habla directamente con la API — señales: https://github.com/m1guelpf/Exo",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/m1guelpf/Exo",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "m1guelpf-exo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "video-db/call.md",
+      "url": "https://github.com/video-db/call.md",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.393 estrellas, último push 2026-11-18, TypeScript) — graba y transcribe reuniones y las deja como un bucle de agente consultable desde Claude o ChatGPT por MCP remoto; la API no detecta licencia — señales: https://github.com/video-db/call.md",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/video-db/call.md",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "video-db-call-md",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "swamimalode07/rare-ui",
+      "url": "https://github.com/swamimalode07/rare-ui",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.329 estrellas, último push 2026-11-21, TypeScript) — registro de componentes shadcn con animaciones, licencia MIT con cláusula de uso común y atribución, que la API no identifica; los componentes se copian al repositorio — señales: https://github.com/swamimalode07/rare-ui",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/swamimalode07/rare-ui",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "swamimalode07-rare-ui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "bol-van/zapret",
+      "url": "https://github.com/bol-van/zapret",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(16.930 estrellas, último push 2026-11-13, C) — evasión de inspección profunda de paquetes en Linux, macOS, Windows y OpenWrt, activo desde 2016 y sin licencia declarada; interesante como herramienta de red, aunque ajeno al eje del boletín — señales: https://github.com/bol-van/zapret",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/bol-van/zapret",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "bol-van-zapret",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 10,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "10/10 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

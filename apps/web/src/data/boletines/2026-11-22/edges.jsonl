@@ -1,0 +1,31 @@
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-a2ui-project-a2ui", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-a2ui-project-a2ui", "dst": "tema:a2ui-project-a2ui", "rel": "trata", "added": "2026-11-22"}
+{"src": "repo:a2ui-project/a2ui", "dst": "protocol:a2ui", "rel": "implements", "added": "2026-11-22", "primera_mencion": null}
+{"src": "repo:a2ui-project/a2ui", "dst": "repo:vercel-labs/json-render", "rel": "competes_with", "added": "2026-11-22", "primera_mencion": "2026-09-19"}
+{"src": "repo:a2ui-project/a2ui", "dst": "concept:generative-ui-framework", "rel": "enables", "added": "2026-11-22", "primera_mencion": "2026-09-21"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-baidu-unlimited-ocr", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-baidu-unlimited-ocr", "dst": "tema:baidu-unlimited-ocr", "rel": "trata", "added": "2026-11-22"}
+{"src": "repo:baidu/Unlimited-OCR", "dst": "repo:PaddlePaddle/PaddleOCR", "rel": "extends", "added": "2026-11-22", "primera_mencion": "2026-07-31"}
+{"src": "repo:baidu/Unlimited-OCR", "dst": "problem:context_overflow", "rel": "mitigates", "added": "2026-11-22", "primera_mencion": "2026-11-13"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-diggerhq-opencomputer", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-diggerhq-opencomputer", "dst": "tema:diggerhq-opencomputer", "rel": "trata", "added": "2026-11-22"}
+{"src": "repo:diggerhq/opencomputer", "dst": "repo:stablyai/orca", "rel": "competes_with", "added": "2026-11-22", "primera_mencion": "2026-07-16"}
+{"src": "repo:diggerhq/opencomputer", "dst": "concept:desktop-computer-use", "rel": "relevant_to", "added": "2026-11-22", "primera_mencion": "2026-10-31"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-itsnotrexed-leonida", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-itsnotrexed-leonida", "dst": "tema:itsnotrexed-leonida", "rel": "trata", "added": "2026-11-22"}
+{"src": "repo:ItsNotRexed/Leonida", "dst": "concept:static-recompilation", "rel": "uses", "added": "2026-11-22", "primera_mencion": null}
+{"src": "repo:ItsNotRexed/Leonida", "dst": "repo:mchughalex/skate3recomp", "rel": "relevant_to", "added": "2026-11-22", "primera_mencion": null}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-augani-openreel-video", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-augani-openreel-video", "dst": "tema:augani-openreel-video", "rel": "trata", "added": "2026-11-22"}
+{"src": "repo:Augani/openreel-video", "dst": "concept:webgpu", "rel": "uses", "added": "2026-11-22", "primera_mencion": "2026-08-31"}
+{"src": "repo:Augani/openreel-video", "dst": "concept:agent-video-editor", "rel": "relevant_to", "added": "2026-11-22", "primera_mencion": "2026-08-29"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-shinyobjectz-raea", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-shinyobjectz-raea", "dst": "tema:shinyobjectz-raea", "rel": "trata", "added": "2026-11-22"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-m1guelpf-exo", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-m1guelpf-exo", "dst": "tema:m1guelpf-exo", "rel": "trata", "added": "2026-11-22"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-video-db-call-md", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-video-db-call-md", "dst": "tema:video-db-call-md", "rel": "trata", "added": "2026-11-22"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-swamimalode07-rare-ui", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-swamimalode07-rare-ui", "dst": "tema:swamimalode07-rare-ui", "rel": "trata", "added": "2026-11-22"}
+{"src": "boletin:2026-11-22", "dst": "item:https-github-com-bol-van-zapret", "rel": "menciona", "added": "2026-11-22"}
+{"src": "item:https-github-com-bol-van-zapret", "dst": "tema:bol-van-zapret", "rel": "trata", "added": "2026-11-22"}

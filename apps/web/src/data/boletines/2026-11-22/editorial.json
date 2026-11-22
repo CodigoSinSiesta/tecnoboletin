@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-22",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "a2ui separa lo que el modelo quiere pintar del código que lo pinta",
+  "posicionamiento": "La responsabilidad de representar se desplaza al contrato: a2ui manda datos de interfaz en vez de HTML, Unlimited-OCR se traga el documento entero en una pasada y OpenComputer saca la sesión del agente de tu portátil. Menos código propio que auditar, más superficie ajena que aceptar.",
+  "convergencia_stack_css": "El stack local-first asoma por el lado del cliente: openreel-video edita vídeo entero en el navegador con WebCodecs y WebGPU, y Leonida traduce shaders RDNA2 a SPIR-V en la máquina de casa. a2ui y OpenComputer van en la dirección opuesta, hacia contratos y sesiones fuera de tu control.",
+  "cruzado_grafo": "Dos nodos entran sin fecha previa: el protocolo a2ui y la recompilación estática que Leonida arrastra junto a skate3recomp. El resto son aristas que vuelven: json-render desde el 2026-09-19, PaddleOCR desde el 2026-07-31, webgpu desde el 2026-08-31.",
+  "tendencias_5_boletines": "Tercer día seguido sacando el control del cuerpo del agente: plomería el 2026-11-20, infraestructura el 2026-11-21, y ahora el contrato es el formato. a2ui y Unlimited-OCR convierten la salida en algo acotado y comprobable; Leonida enseña el coste real de ese movimiento.",
+  "alertas": [
+    "El resumen ejecutivo cifra 26.503 shaders en Leonida y el hallazgo dice 21.545: confirmar la cifra antes de publicar.",
+    "El 3,3 veces más rápido que Devin sale del banco de pruebas del propio OpenComputer, sin verificación independiente.",
+    "Leonida no arranca el juego: falta el ejecutable y las claves, y en GPU de 32 hilos algunas operaciones son aproximadas.",
+    "openreel-video se anuncia como 1.0 y el proyecto sigue marcado beta; las 130.000 líneas son recuento propio del README.",
+    "a2ui depende de tu catálogo de componentes: si es pobre, el agente no tiene con qué componer."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Contrato de interfaz como datos con adaptadores nativos: es la pieza que separa qué pide el modelo de cómo se pinta, y se puede auditar."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 1,
+      "razon": "Si la atención de ventana deslizante aguanta documentos reales, se cae buena parte de la tubería propia de parseo en las ingestas RAG."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Prueba de concepto con estado verificable y sin ejecutable: sirve para explicar qué cuesta recompilar, no para presentarlo como logro."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 4,
+      "razon": "Edición de vídeo completa en cliente con WebCodecs y WebGPU mide hasta dónde se puede llegar sin nube, que es la línea editorial de casa."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "Arquitectura defendible para equipo: sesión en máquina virtual con salida de red restringida y revisión en el hilo, no en una terminal."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}
