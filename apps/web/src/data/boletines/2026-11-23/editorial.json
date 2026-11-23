@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "date": "2026-11-23",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "El kernel de macOS corre como módulo dentro de Linux, sin hipervisor",
+  "posicionamiento": "El hilo del día es el contrato verificable: xnulinux hospeda un kernel ajeno sin hipervisor, y los tres repos nacidos esta semana —testers móviles, port a Rust, escáner de agentes— ponen la prueba por delante del agente. Las skills, mientras, se empaquetan como producto.",
+  "convergencia_stack_css": "Ningún hallazgo toca el stack local-first de forma directa. Lo más cercano es safe-anything auditando los permisos y el .mcp.json del propio agente, y cursor/plugins metiendo skills, reglas y servidores MCP en un mismo paquete: la misma superficie que conviene auditar en casa.",
+  "cruzado_grafo": "Tres nodos aparecen sin mención previa: kernel-module-hosting, hot-path-porting y capability_based_agent_security. El resto refuerza lo trazado: lima-macos vuelve desde el 2026-09-25, static-recompilation desde ayer mismo y plugin-marketplace encadena ya varias entradas desde el 2026-08-13.",
+  "tendencias_5_boletines": "La continuidad empuja en la misma dirección: ayer el peso cayó en el contrato y en aceptar superficie ajena; anteayer, en sacar la infraestructura del cuerpo del agente. Hoy se juntan: xnulinux acepta un kernel ajeno y los tres repos nuevos exigen prueba antes de fiarse del agente.",
+  "alertas": [
+    "xnulinux relaja SIP y parchea AMFI: dos kernels en el mismo espacio de usuario son superficie de fallo, no un truco gratis.",
+    "Claude-BugHunter suma 18.474 estrellas sin release desde junio: tracción mediática, no mantenimiento.",
+    "En seguridad ofensiva el criterio empaquetado como skill arrastra consecuencias legales que ningún manifiesto cubre."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 2,
+      "razon": "El método de fast-anything —grabar llamadas reales y reproducirlas contra el port— sirve para cualquier migración parcial, no solo a Rust."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Separar emular, virtualizar y hospedar un kernel ajeno da material conceptual sólido; conviene leer los atajos que el propio repo documenta."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "safe-anything audita permisos y skills del agente, el hueco que ningún linter de aplicación cubre y que nos toca de cerca."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "cursor/plugins fija la especificación de empaquetado con skills, reglas y MCP juntos; marca hacia dónde va el formato."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

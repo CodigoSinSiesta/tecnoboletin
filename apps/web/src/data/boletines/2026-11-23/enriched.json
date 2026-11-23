@@ -1,0 +1,467 @@
+{
+  "version": 2,
+  "date": "2026-11-23",
+  "boletin_origen": "2026-11-23-trending.md",
+  "resumen_ejecutivo": "- La pieza del día es xnulinux: compila el kernel de macOS desde las fuentes de Apple y lo carga como módulo dentro de Linux, sin hipervisor, hasta llegar al escritorio.\n- Tres repos nacidos esta misma semana comparten el mismo patrón: el agente hace el trabajo aburrido, pero con una prueba que lo respalda. mobile-agent-testers pone veinte agentes a usar apps en veinte teléfonos, fast-anything porta a Rust solo la función caliente y verifica con llamadas grabadas, safe-anything audita el código y también los permisos del propio agente.\n- Las skills se consolidan como producto: Claude-BugHunter triplica sus estrellas en ocho días con el último release de junio, y cursor/plugins publica un catálogo de 146 plugins con manifiesto, reglas y servidores MCP en el mismo paquete.\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (portada, TypeScript, Python, Rust, Go y JavaScript) y GitHub API (15 repos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "AFK-surf/xnulinux",
+      "url": "https://github.com/AFK-surf/xnulinux",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "construye XNU, el kernel de código abierto de macOS, a partir de las fuentes publicadas por Apple y lo ejecuta como módulo cargable (`xnu.ko`) dentro de un kernel Linux arm64 sin modificar. Un segundo módulo (`fki.ko`) le presta CPU, memoria, fallos de página, ficheros, red y GPU; cada CPU hospedada es un hilo del kernel de Linux. Con un Ubuntu de serie, `insmod xnu.ko` arranca un disco de macOS 27 creado por el instalador de Apple hasta el escritorio, con loginwindow, WindowServer, Finder y Safari. Metal llega a la GPU del anfitrión con un puente que pasa por Vulkan.",
+        "por_que_importa": "cambia la pregunta de «cómo virtualizo macOS» por «quién manda en la CPU»: no hay hipervisor, el kernel de macOS corre como módulo dentro del kernel Linux y los procesos de ambos sistemas comparten máquina. Frente a Lima/macOS, que ya cubrimos el 2026-09-25, aquí no hay VM. Sirve para separar emular, virtualizar y hospedar un kernel ajeno, y enlaza con la recompilación estática que tratamos el 2026-11-22. Ojo: el propio proyecto documenta sus atajos (SIP relajado, AMFI parcheado, memoria más lenta) y dos kernels en el mismo espacio de usuario son también una superficie de fallo enorme.",
+        "madurez_senales": "440 estrellas · 11 forks · Objective-C++ · creado 2026-11-20 · último push 2026-11-23 · la API devuelve NOASSERTION: el LICENSE reparte licencias por fichero (APSL-2.0 para el lado de XNU, GPL-2.0 para el lado Linux, BSD-2-Clause-Patent y MIT en piezas concretas) · 0 incidencias abiertas · sin releases en GitHub · topics no declarados (verificado vía GitHub API)",
+        "accion_sugerida": "**explorar** — leer `docs/production.md` antes que el README con capturas, porque ahí están los atajos que separan la demostración de un sistema usable.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:AFK-surf/xnulinux",
+          "rel": "implements",
+          "dst": "concept:kernel-module-hosting",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:AFK-surf/xnulinux",
+          "rel": "competes_with",
+          "dst": "concept:lima-macos",
+          "primera_mencion": "2026-09-25"
+        },
+        {
+          "src": "repo:AFK-surf/xnulinux",
+          "rel": "relevant_to",
+          "dst": "concept:static-recompilation",
+          "primera_mencion": "2026-11-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "afk-surf-xnulinux",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "pierridotite/mobile-agent-testers",
+      "url": "https://github.com/pierridotite/mobile-agent-testers",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plantilla de GitHub Actions que levanta hasta veinte agentes de Claude Code, cada uno en su simulador de iOS o emulador de Android, con una persona distinta: un iPhone SE en sueco con el texto al tamaño máximo, un Pixel 7 con la fuente al doble, un iPad en alemán, un móvil en árabe de derecha a izquierda. Cada agente usa la app como usuario nuevo o recorre una función concreta y devuelve un informe con capturas numeradas. Cubre Flutter, React Native, Expo, Kotlin, Swift, Kotlin Multiplatform, Capacitor y .NET MAUI, y corre en los runners gratuitos de GitHub: solo se paga el modelo.",
+        "por_que_importa": "convierte el QA exploratorio en algo que corre en cada push sin escribir guiones. Lo interesante no es «IA que prueba apps», sino el contrato: personas declaradas en un fichero, presupuesto de acciones por agente, informes cifrados y comparación de dos ramas con las mismas personas. Ya tocamos las pruebas E2E móviles el 2026-10-20 y el testing de UI con agentes el 2026-08-13; esto lo empaqueta como plantilla de Actions. Da material para separar qué prueba manual se automatiza de verdad (idiomas, tamaño de texto, flujos rotos, traducciones olvidadas) y qué sigue pidiendo criterio humano.",
+        "madurez_senales": "933 estrellas · 92 forks · Python · creado 2026-11-16 · último push 2026-11-23 · MIT · 0 incidencias abiertas · release `v0.1.0` del 19 de noviembre · topics: `ai-testing`, `e2e-testing`, `ios-simulator`, `android-emulator`, `github-actions`, `accessibility-testing`, `react-native`, `flutter` (verificado vía GitHub API) · el README cifra entre 0,15 y 0,55 dólares por teléfono en sus ejecuciones de ejemplo",
+        "accion_sugerida": "**probar** — lanzar el workflow de demostración con su app de ejemplo y sus fallos plantados; en una hora se ve si los informes sirven o son ruido.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pierridotite/mobile-agent-testers",
+          "rel": "implements",
+          "dst": "concept:mobile-agent-testing",
+          "primera_mencion": "2026-11-15"
+        },
+        {
+          "src": "repo:pierridotite/mobile-agent-testers",
+          "rel": "solves",
+          "dst": "problem:mobile-e2e-testing",
+          "primera_mencion": "2026-10-20"
+        },
+        {
+          "src": "repo:pierridotite/mobile-agent-testers",
+          "rel": "relevant_to",
+          "dst": "concept:agentic-ui-testing",
+          "primera_mencion": "2026-08-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pierridotite-mobile-agent-testers",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "EL4CTEO/fast-anything",
+      "url": "https://github.com/EL4CTEO/fast-anything",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta de línea de comandos que perfila una aplicación —Python, Node, TypeScript, Ruby, Java, Kotlin, Go, PHP, C, C++, C# o R— y ordena las funciones por tiempo y por facilidad de portar. Después encarga a tu agente de código que traduzca solo esas funciones a Rust. Antes de activar nada graba hasta quinientas llamadas reales, las reproduce contra la versión en Rust, añade casos derivados (NaN, infinitos, cero negativo, texto no ASCII, entradas hasta dieciséis veces mayores) y exige que todos coincidan. `enable` y `disable` dejan el cambio en un bloque marcado que se quita byte a byte.",
+        "por_que_importa": "ataca el consejo más repetido —«reescríbelo en Rust»— con una versión pequeña y, sobre todo, verificable. El valor está en el método: no compara benchmarks, graba hasta quinientas llamadas reales, las reproduce contra el código en Rust y añade casos derivados (NaN, infinitos, cero negativo, texto no ASCII); rechaza el port si sale más caro por llamada que el trabajo que ahorra. Enlaza con los tests de regresión generados por agente que ya vimos el 2026-08-22. Sirve para escribir sobre migraciones parciales: cómo demostrar equivalencia sin fiarse de la corazonada del modelo.",
+        "madurez_senales": "2.382 estrellas · 147 forks · Rust · creado 2026-11-21 · último push 2026-11-23 · MIT · 12 incidencias abiertas · releases `v0.8.0` del 23 de noviembre, `v0.7.0` y `v0.6.2` del 22 · publicado en npm y crates.io · topics: `profiler`, `pyo3`, `napi-rs`, `agent-skills`, `claude-code-plugin`, `mcp-server`, `optimization` (verificado vía GitHub API)",
+        "accion_sugerida": "**probar** — con un script propio cuyo cuello de botella ya conozcas; si el port no pasa las llamadas grabadas, ese veredicto también es contenido.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:EL4CTEO/fast-anything",
+          "rel": "implements",
+          "dst": "concept:hot-path-porting",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:EL4CTEO/fast-anything",
+          "rel": "uses",
+          "dst": "concept:agentic-regression-tests",
+          "primera_mencion": "2026-08-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "el4cteo-fast-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "erkamyaman/safe-anything",
+      "url": "https://github.com/erkamyaman/safe-anything",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "escáner de vulnerabilidades escrito en Rust con setenta y dos reglas. Revisa el código (inyección SQL y de comandos, XSS, `eval`, SSRF, recorrido de rutas, deserialización insegura, criptografía débil) en nueve lenguajes y SQL; busca secretos filtrados, configuración arriesgada de móvil y de nube, y dependencias con CVE vía OSV. La parte distinta es la última capa: audita la configuración del agente, con tokens dentro de `.mcp.json`, `bypassPermissions`, Bash preaprobado, hooks que descargan y ejecutan un script, skills que leen claves privadas, Unicode invisible y servidores MCP sin versión fijada. Se distribuye como binario nativo, plugin de Claude Code y acción de GitHub.",
+        "por_que_importa": "casi todas las herramientas de seguridad para agentes auditan el código que el agente produce; esta audita también el entorno que le da permisos. Ese es el hueco real: un `.mcp.json` con un token o una skill que abre claves privadas no lo detecta ningún linter de aplicación, y hoy es la forma más común de regalar acceso. El escaneo de skills de agente ya apareció el 2026-09-05 y los escáneres nativos del fabricante el 2026-08-07; esto los junta con SAST y detección de secretos. El tema se escribe solo: la superficie de ataque que nace cuando el agente tiene herramientas, hooks y permisos heredados del usuario.",
+        "madurez_senales": "169 estrellas · 11 forks · Rust · creado 2026-11-22 · último push 2026-11-23 · MIT · 3 incidencias abiertas · releases `v1.0.0`, `v1.0.1` y `v1.0.2` del 22 de noviembre · en crates.io y npm · topics: `sast`, `secret-scanning`, `vulnerability-scanner`, `mcp`, `claude-code-plugin`, `devsecops`, `owasp`, `osv` (verificado vía GitHub API) · el README publica una tabla de resultados medida a mano sobre Juice Shop, DVWA y Express, con falsos positivos reconocidos",
+        "accion_sugerida": "**probar** — pasarlo por el repositorio propio y por la carpeta de configuración del agente; los hallazgos que no esperas están en la segunda.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:erkamyaman/safe-anything",
+          "rel": "implements",
+          "dst": "concept:agent-skill-security-scanner",
+          "primera_mencion": "2026-09-05"
+        },
+        {
+          "src": "repo:erkamyaman/safe-anything",
+          "rel": "competes_with",
+          "dst": "concept:vendor-native-security-scanner",
+          "primera_mencion": "2026-08-07"
+        },
+        {
+          "src": "repo:erkamyaman/safe-anything",
+          "rel": "relevant_to",
+          "dst": "concept:capability_based_agent_security",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "erkamyaman-safe-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "paquete de skills para Claude Code orientado a bug bounty y red team externo. Ochenta y tres skills y quince comandos que se activan por tema —describes qué estás probando y se carga la skill correspondiente—, con 681 patrones sacados de informes divulgados en 24 clases de vulnerabilidad, cadenas de CVE de plataformas empresariales (M365 y Entra, Okta, vCenter, dispositivos VPN, SharePoint, IAM de nube), integración con Burp por MCP y una capa de triaje con severidad VRT, réplicas de descarte y redacción de datos personales. Se instala como plugin desde su propio marketplace.",
+        "por_que_importa": "es el ejemplo más claro de que las skills se han vuelto producto: no enseña a programar, empaqueta el criterio de un dominio concreto y lo entrega como una instalación, con higiene de alcance y evidencia incluidas. El pentesting con IA lo seguimos desde el 2026-08-14, el formato de skill desde el 2026-09-08 y los marketplaces de plugins desde el 2026-08-13; aquí se cruzan los tres. Y el dominio —seguridad ofensiva— es justo donde el criterio empaquetado tiene consecuencias legales. La pregunta incómoda que deja: 18.474 estrellas y ningún release desde junio.",
+        "madurez_senales": "18.474 estrellas · 2.025 forks · Python · creado 2026-05-05 · último push 2026-11-23 · MIT · 21 incidencias abiertas · último release `v2.1` del 5 de junio · +1.716 hoy en Trending · el registro del 15 de noviembre lo dejaba en 5.865 estrellas · topics: `claude-skills`, `bug-bounty`, `red-team`, `pentesting`, `ai-security`, `hackerone`, `offensive-security` (verificado vía GitHub API)",
+        "accion_sugerida": "**vigilar** — lo que hay que seguir no son las estrellas, es si el catálogo se mantiene al día: con el último tag de junio, la señal es el próximo release.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:elementalsouls/Claude-BugHunter",
+          "rel": "relevant_to",
+          "dst": "concept:ai-pentesting",
+          "primera_mencion": "2026-08-14"
+        },
+        {
+          "src": "repo:elementalsouls/Claude-BugHunter",
+          "rel": "uses",
+          "dst": "concept:agent-skill",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:elementalsouls/Claude-BugHunter",
+          "rel": "integrates",
+          "dst": "concept:plugin-marketplace",
+          "primera_mencion": "2026-08-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elementalsouls-claude-bughunter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "especificación oficial de plugins de Cursor y catálogo de referencia. Cada plugin es un directorio autónomo con manifiesto `.cursor-plugin/plugin.json`, skills en `SKILL.md`, reglas `.mdc`, `mcp.json` y su propio registro de cambios. El catálogo mezcla plugins del fabricante —revisión profunda de ramas, orquestación de agentes en paralelo con planificadores y verificadores, lienzos de revisión de PR y de documentación, un plugin que consulta a un modelo más fuerte antes de tomar decisiones— con integraciones de terceros: Gmail, Drive, Calendar, Salesforce, GitHub, Playwright, HubSpot, Semrush, Zoom.",
+        "por_que_importa": "el editor deja de ser una herramienta y pasa a ser un mercado con contrato propio. Lo relevante para quien escribe sobre agentes es la forma del paquete: skills, reglas `.mdc` y servidores MCP viajan juntos, así que instalar un plugin cambia a la vez lo que el agente sabe y a qué tiene acceso, y el catálogo mezcla plugins propios con Gmail, Salesforce o Playwright. Ya cubrimos los marketplaces de plugins de agentes el 2026-08-13; esto es Cursor publicando la especificación oficial. El foso no es el modelo: es el directorio y quién lo cura.",
+        "madurez_senales": "18.589 estrellas · 2.024 forks · TypeScript · creado 2026-01-23 · último push 2026-11-22 · MIT según el README; la API no identifica licencia en la raíz del repositorio · 694 incidencias abiertas · +294 hoy en Trending · sin releases · 146 plugins distintos en la tabla del README (verificado vía GitHub API)",
+        "accion_sugerida": "**explorar** — abrir dos plugins pequeños, `create-plugin` y `cli-for-agent`, para entender el contrato antes de escribir uno.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:cursor/plugins",
+          "rel": "implements",
+          "dst": "concept:plugin-marketplace",
+          "primera_mencion": "2026-08-13"
+        },
+        {
+          "src": "repo:cursor/plugins",
+          "rel": "extends",
+          "dst": "spec:agentskills-io",
+          "primera_mencion": "2026-08-13"
+        },
+        {
+          "src": "repo:cursor/plugins",
+          "rel": "relevant_to",
+          "dst": "cluster:agentic-plugin-marketplaces",
+          "primera_mencion": "2026-08-13"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cursor-plugins",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(63.050 estrellas, último push 2026-11-20, Python) — reentrada: el registro lo tenía en 47.490 estrellas el 16 de agosto y hoy vuelve a Trending; su CLI-Hub instala con un comando las interfaces de línea de comandos que generan los agentes para manejar software ajeno — señales: https://github.com/HKUDS/CLI-Anything",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/CLI-Anything",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-cli-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "google-labs-code/stitch-skills",
+      "url": "https://github.com/google-labs-code/stitch-skills",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(12.055 estrellas, último push 2026-11-20, TypeScript) — biblioteca de skills de Google Labs para Stitch, con el estándar abierto de skills y una tabla de instalación como marketplace para Codex, Antigravity, Gemini CLI o Claude Code — señales: https://github.com/google-labs-code/stitch-skills",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/google-labs-code/stitch-skills",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-labs-code-stitch-skills",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "Fission-AI/OpenSpec",
+      "url": "https://github.com/Fission-AI/OpenSpec",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(75.505 estrellas, último push 2026-11-23, TypeScript) — desarrollo guiado por especificación para asistentes de código; la versión 2.1.1 del 19 de noviembre añade instalación de skills sin conexión y archivos más seguros — señales: https://github.com/Fission-AI/OpenSpec",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Fission-AI/OpenSpec",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "fission-ai-openspec",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "multica-ai/multica",
+      "url": "https://github.com/multica-ai/multica",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(57.388 estrellas, último push 2026-11-23, Go) — plataforma autoalojable para que personas y agentes trabajen como un solo equipo; la API no identifica su licencia — señales: https://github.com/multica-ai/multica",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/multica-ai/multica",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "multica-ai-multica",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Tencent/LoopForge",
+      "url": "https://github.com/Tencent/LoopForge",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.779 estrellas, último push 2026-11-23, Go) — workflows autoalojados para entregar código con CodeBuddy, Codex o Claude Code y puertas de aprobación humana; licencia no identificada por la API — señales: https://github.com/Tencent/LoopForge",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Tencent/LoopForge",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "tencent-loopforge",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "earendil-works/pi",
+      "url": "https://github.com/earendil-works/pi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(123.424 estrellas, último push 2026-11-23, TypeScript) — toolkit de agente con API unificada de modelos, bucle de agente y CLI de código; reentrada con 159 estrellas hoy; ya es una de las alternativas locales que usamos — señales: https://github.com/earendil-works/pi",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/earendil-works/pi",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "earendil-works-pi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "lipku/LiveTalking",
+      "url": "https://github.com/lipku/LiveTalking",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(10.755 estrellas, último push 2026-10-20, Python) — avatar digital en tiempo real con sincronización de labios para streaming; sin push desde octubre y fuera del eje del boletín — señales: https://github.com/lipku/LiveTalking",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/lipku/LiveTalking",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lipku-livetalking",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "os6/nospeaker",
+      "url": "https://github.com/os6/nospeaker",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(681 estrellas, último push 2026-11-22, Swift) — hace hablar al trackpad del MacBook con su motor háptico; curiosidad de fin de semana, sin recorrido editorial — señales: https://github.com/os6/nospeaker",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/os6/nospeaker",
+        "accion_sugerida": "ignorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "os6-nospeaker",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

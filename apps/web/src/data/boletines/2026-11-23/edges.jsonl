@@ -1,0 +1,45 @@
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-afk-surf-xnulinux", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-afk-surf-xnulinux", "dst": "tema:afk-surf-xnulinux", "rel": "trata", "added": "2026-11-23"}
+{"src": "repo:AFK-surf/xnulinux", "dst": "concept:kernel-module-hosting", "rel": "implements", "added": "2026-11-23", "primera_mencion": null}
+{"src": "repo:AFK-surf/xnulinux", "dst": "concept:lima-macos", "rel": "competes_with", "added": "2026-11-23", "primera_mencion": "2026-09-25"}
+{"src": "repo:AFK-surf/xnulinux", "dst": "concept:static-recompilation", "rel": "relevant_to", "added": "2026-11-23", "primera_mencion": "2026-11-22"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-pierridotite-mobile-agent-testers", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-pierridotite-mobile-agent-testers", "dst": "tema:pierridotite-mobile-agent-testers", "rel": "trata", "added": "2026-11-23"}
+{"src": "repo:pierridotite/mobile-agent-testers", "dst": "concept:mobile-agent-testing", "rel": "implements", "added": "2026-11-23", "primera_mencion": "2026-11-15"}
+{"src": "repo:pierridotite/mobile-agent-testers", "dst": "problem:mobile-e2e-testing", "rel": "solves", "added": "2026-11-23", "primera_mencion": "2026-10-20"}
+{"src": "repo:pierridotite/mobile-agent-testers", "dst": "concept:agentic-ui-testing", "rel": "relevant_to", "added": "2026-11-23", "primera_mencion": "2026-08-13"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-el4cteo-fast-anything", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-el4cteo-fast-anything", "dst": "tema:el4cteo-fast-anything", "rel": "trata", "added": "2026-11-23"}
+{"src": "repo:EL4CTEO/fast-anything", "dst": "concept:hot-path-porting", "rel": "implements", "added": "2026-11-23", "primera_mencion": null}
+{"src": "repo:EL4CTEO/fast-anything", "dst": "concept:agentic-regression-tests", "rel": "uses", "added": "2026-11-23", "primera_mencion": "2026-08-22"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-erkamyaman-safe-anything", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-erkamyaman-safe-anything", "dst": "tema:erkamyaman-safe-anything", "rel": "trata", "added": "2026-11-23"}
+{"src": "repo:erkamyaman/safe-anything", "dst": "concept:agent-skill-security-scanner", "rel": "implements", "added": "2026-11-23", "primera_mencion": "2026-09-05"}
+{"src": "repo:erkamyaman/safe-anything", "dst": "concept:vendor-native-security-scanner", "rel": "competes_with", "added": "2026-11-23", "primera_mencion": "2026-08-07"}
+{"src": "repo:erkamyaman/safe-anything", "dst": "concept:capability_based_agent_security", "rel": "relevant_to", "added": "2026-11-23", "primera_mencion": null}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-elementalsouls-claude-bughunter", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-elementalsouls-claude-bughunter", "dst": "tema:elementalsouls-claude-bughunter", "rel": "trata", "added": "2026-11-23"}
+{"src": "repo:elementalsouls/Claude-BugHunter", "dst": "concept:ai-pentesting", "rel": "relevant_to", "added": "2026-11-23", "primera_mencion": "2026-08-14"}
+{"src": "repo:elementalsouls/Claude-BugHunter", "dst": "concept:agent-skill", "rel": "uses", "added": "2026-11-23", "primera_mencion": "2026-09-08"}
+{"src": "repo:elementalsouls/Claude-BugHunter", "dst": "concept:plugin-marketplace", "rel": "integrates", "added": "2026-11-23", "primera_mencion": "2026-08-13"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-cursor-plugins", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-cursor-plugins", "dst": "tema:cursor-plugins", "rel": "trata", "added": "2026-11-23"}
+{"src": "repo:cursor/plugins", "dst": "concept:plugin-marketplace", "rel": "implements", "added": "2026-11-23", "primera_mencion": "2026-08-13"}
+{"src": "repo:cursor/plugins", "dst": "spec:agentskills-io", "rel": "extends", "added": "2026-11-23", "primera_mencion": "2026-08-13"}
+{"src": "repo:cursor/plugins", "dst": "cluster:agentic-plugin-marketplaces", "rel": "relevant_to", "added": "2026-11-23", "primera_mencion": "2026-08-13"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-hkuds-cli-anything", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-hkuds-cli-anything", "dst": "tema:hkuds-cli-anything", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-google-labs-code-stitch-skills", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-google-labs-code-stitch-skills", "dst": "tema:google-labs-code-stitch-skills", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-fission-ai-openspec", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-fission-ai-openspec", "dst": "tema:fission-ai-openspec", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-multica-ai-multica", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-multica-ai-multica", "dst": "tema:multica-ai-multica", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-tencent-loopforge", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-tencent-loopforge", "dst": "tema:tencent-loopforge", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-earendil-works-pi", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-earendil-works-pi", "dst": "tema:earendil-works-pi", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-lipku-livetalking", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-lipku-livetalking", "dst": "tema:lipku-livetalking", "rel": "trata", "added": "2026-11-23"}
+{"src": "boletin:2026-11-23", "dst": "item:https-github-com-os6-nospeaker", "rel": "menciona", "added": "2026-11-23"}
+{"src": "item:https-github-com-os6-nospeaker", "dst": "tema:os6-nospeaker", "rel": "trata", "added": "2026-11-23"}
