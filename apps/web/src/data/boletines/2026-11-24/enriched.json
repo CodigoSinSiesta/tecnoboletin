@@ -1,0 +1,401 @@
+{
+  "version": 2,
+  "date": "2026-11-24",
+  "boletin_origen": "2026-11-24-trending.md",
+  "resumen_ejecutivo": "- Dos repositorios aplican hoy la misma técnica a la misma consola: en vez de emular hardware, sustituyen las librerías de Xbox Series que Windows no tiene y dejan que el código x86-64 del juego corra nativo. Uno de ellos ya tiene juegos de tienda jugables; el otro arranca el mundo de GTA VI pero todavía no lo dibuja.\n- OpenAI y Cisco publican shirudo, una plataforma de seguridad para Linux basada en eBPF que solo acepta microparches firmados y verifica el estado de cada máquina con evidencia de TPM.\n- Anthropic mantiene formalizaciones en Lean 4 verificadas por un kernel independiente, con el enunciado separado de la prueba: es el patrón que merece copiarse cuando alguien dice «lo he demostrado con IA».\n- Fuentes consultadas: Trendshift daily, GitHub Trending daily (portada, TypeScript, Python, Rust, Go y JavaScript) y GitHub API (11 repos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "ivall/xcl",
+      "url": "https://github.com/ivall/xcl",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "capa de compatibilidad que ejecuta juegos de Xbox Series X|S en un PC con Windows. El código x64 del juego corre sin cambios y XCL ocupa el lugar de las librerías de consola que el PC no tiene (`kernelx.dll`, XGameRuntime, `d3d12_xs.dll`), al estilo de Wine o Proton; el código de GPU RDNA2 se recompila a shaders DXIL. El README afirma que Minecraft Preview y Unicorn Overlord son totalmente jugables, y que Fortnite y XDefiant funcionan hasta donde llega cada juego sin sus servicios en línea. Los 26.698 programas de un paquete de shaders de tienda se traducen a HLSL y las texturas de consola se decodifican byte a byte en 909 de 912 casos, con más de 370 pruebas automatizadas, varias de ellas de GPU, que comparan shaders instrucción por instrucción.",
+        "por_que_importa": "Es la ilustración más limpia de una técnica que se confunde con la emulación: aquí no se traducen instrucciones, se sustituye el sistema operativo y se recompilan shaders a DXIL. Ya tocamos la recompilación estática el 2026-11-22; este repo la lleva al caso concreto de una consola cerrada y documenta qué falla (juegos que dependen de servidores, minimapas rechazados) en vez de vender una demo. Da para un artículo que separe emular, traducir y suplantar. Queda la pregunta legal: GPL-2.0 sobre reversing de una consola cerrada es terreno que nadie ha aclarado.",
+        "madurez_senales": "5.085 estrellas · 646 forks · Rust · creado 2026-11-20 · último push 2026-11-24 · GPL-2.0 · 534 incidencias abiertas · topics: `d3d12`, `gdk`, `rdna2`, `xbox` (verificado vía GitHub API)",
+        "accion_sugerida": "**leer** — empezar por `HANDOFF.md` y por el documento de diseño en `docs/specs/`, que es donde están las mediciones y lo que falta.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:ivall/xcl",
+          "rel": "implements",
+          "dst": "concept:console-compatibility-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ivall/xcl",
+          "rel": "competes_with",
+          "dst": "repo:Marvisak/VIctory",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:ivall/xcl",
+          "rel": "relevant_to",
+          "dst": "concept:static-recompilation",
+          "primera_mencion": "2026-11-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ivall-xcl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "Marvisak/VIctory",
+      "url": "https://github.com/Marvisak/VIctory",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "intento de ejecutar Grand Theft Auto VI (versión de Xbox Series X|S) de forma nativa en Windows, desde ficheros que aporta el usuario. El código x86-64 del juego corre sin cambios dentro del proceso de VIctory; el proyecto pone la plataforma por debajo y convierte los datos, con los shaders traducidos al primer uso. El estado que declara el README no es ambiguo: no es jugable. Arranca, mueve los menús a 30 fotogramas por segundo y carga el mundo, pero el renderizado falla y cada fotograma tarda entre medio segundo y casi dos. Avisa además de que entrar al mundo con una GPU real puede colgar el controlador de pantalla, y propone una compilación de diagnóstico que dibuja en el adaptador de software.",
+        "por_que_importa": "El valor editorial no está en el juego, está en la tabla: un proyecto nacido esta semana publica qué funciona, qué no y qué falta, subsistema por subsistema, y avisa de un fallo que puede dejar la pantalla en negro. Compite con Leonida y se apoya en la misma recompilación estática que ya tratamos el 2026-11-22; aquí la lección es otra: la técnica que en el hallazgo anterior ya mueve juegos se cuenta con honestidad sobre lo que aún no llega. Sirve para escribir sobre madurez de un repo sin mirar las estrellas.",
+        "madurez_senales": "6.169 estrellas · 796 forks · Rust · creado 2026-11-23 · último push 2026-11-24 · GPL-3.0 · 582 incidencias abiertas · sin topics declarados (verificado vía GitHub API)",
+        "accion_sugerida": "**leer** — el README y `docs/architecture.md` son la mejor plantilla de informe de estado que ha pasado por este boletín.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Marvisak/VIctory",
+          "rel": "implements",
+          "dst": "concept:console-compatibility-layer",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:Marvisak/VIctory",
+          "rel": "competes_with",
+          "dst": "repo:ItsNotRexed/Leonida",
+          "primera_mencion": "2026-11-22"
+        },
+        {
+          "src": "repo:Marvisak/VIctory",
+          "rel": "relevant_to",
+          "dst": "concept:static-recompilation",
+          "primera_mencion": "2026-11-22"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "marvisak-victory",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "shirudo-dev/shirudo",
+      "url": "https://github.com/shirudo-dev/shirudo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "plataforma de seguridad para Linux basada en BPF. Después de inicializarse en el arranque, restringe la carga de programas BPF desde espacio de usuario a cargadores firmados; los operadores envían microparches firmados, llamados upatches, y verifican el estado medido de cada máquina con evidencia firmada por TPM. Declara usos de seguridad en tiempo de ejecución, mitigaciones en caliente sobre rutas vulnerables en el kernel o en código Java, endurecimiento de contenedores, Kubernetes y agentes de lenguaje, y entrega de parches a dispositivos embebidos con ciclos de actualización largos. Está en prelanzamiento y los objetivos de producción exigen un kernel con el ABI de cargador firmado, parches propios y TPM 2.0. Se anunció en los blogs de OpenAI y de Cisco.",
+        "por_que_importa": "El ángulo no es otra capa de agentes: un laboratorio de IA publica infraestructura de kernel con licencia permisiva y un modelo de confianza explícito, donde firmas, medición en el arranque y un verificador independiente del software que protege hacen el trabajo. Ya hablamos de seguridad de agentes el 2026-08-03; esto la resuelve por debajo del prompt, que es donde de verdad se decide. Un upatch firmado también cambia el ciclo de vida de un dispositivo industrial, donde actualizar el kernel hoy es un proyecto de meses. Ojo: prelanzamiento, exige kernel con ABI de cargador firmado y TPM 2.0.",
+        "madurez_senales": "913 estrellas · 75 forks · C · creado 2026-10-13 · último push 2026-11-24 · BSD-2-Clause · 61 incidencias abiertas · topics: `bpf`, `kernel`, `live-patching`, `lsm`, `observability`, `security` (verificado vía GitHub API)",
+        "accion_sugerida": "**leer** — los dos anuncios primero y luego `docs/operate/plan/system-requirements` para ver cuánto de esto se puede probar fuera de una máquina virtual.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:shirudo-dev/shirudo",
+          "rel": "implements",
+          "dst": "concept:ebpf-kernel-security",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:shirudo-dev/shirudo",
+          "rel": "enables",
+          "dst": "concept:signed-kernel-micropatch",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:shirudo-dev/shirudo",
+          "rel": "relevant_to",
+          "dst": "concept:agent-security",
+          "primera_mencion": "2026-08-03"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "shirudo-dev-shirudo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "anthropics/formal-math",
+      "url": "https://github.com/anthropics/formal-math",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "repositorio de formalizaciones en Lean 4 comprobadas por máquina y publicadas por Anthropic. Cada subdirectorio es un proyecto Lake autocontenido, con su propia versión de Lean y de Mathlib fijada, y sigue la plantilla de envío del registro Palomar: un módulo `Challenge` con el enunciado, un módulo `Solution` con la prueba y un `comparator.json` que declara qué se comprueba. Hay tres proyectos: uno sobre los ceros de la función zeta; otro con cotas para 3SUM, el producto mínimo-suma y el problema de los caminos más cortos entre todos los pares; y un tercero sobre una máquina de Turing que contaría asignaciones de fórmulas k-CNF, con un artículo dentro de la carpeta atribuido a Claude. La integración continua exige que `lake build` termine sin `sorry` fuera de los ficheros de enunciado y que el comparador de Palomar, con un kernel independiente y un entorno aislado, confirme cada configuración.",
+        "por_que_importa": "Es el patrón que conviene copiar cuando alguien afirma que una IA ha demostrado algo: separa enunciado y prueba, deja que un verificador distinto compile el resultado y publica el comando para repetirlo en local. Ya tocamos matemáticas formales con IA el 2026-10-07, el bucle de verificación el 2026-11-06 y la verificabilidad de agentes el 2026-10-20; esto es el caso concreto. Permite hablar de la refutación de la hipótesis del tiempo exponencial sin convertirla en titular: lo garantizado es que la prueba compila y pasa el comparador, no que la comunidad la haya revisado.",
+        "madurez_senales": "794 estrellas · 115 forks · Lean · creado 2026-08-06 · último push 2026-11-23 · Apache-2.0 · 33 incidencias abiertas · sin topics declarados (verificado vía GitHub API)",
+        "accion_sugerida": "**leer** — la estructura de tres ficheros por proyecto es lo reutilizable, más que los teoremas.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anthropics/formal-math",
+          "rel": "implements",
+          "dst": "concept:ai-formal-mathematics",
+          "primera_mencion": "2026-10-07"
+        },
+        {
+          "src": "repo:anthropics/formal-math",
+          "rel": "enables",
+          "dst": "concept:verification-loop",
+          "primera_mencion": "2026-11-06"
+        },
+        {
+          "src": "repo:anthropics/formal-math",
+          "rel": "relevant_to",
+          "dst": "concern:agent-verifiability",
+          "primera_mencion": "2026-10-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anthropics-formal-math",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "Developing-Gamer/agent-sim",
+      "url": "https://github.com/Developing-Gamer/agent-sim",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "herramienta que ejecuta el runtime del simulador de iOS de Apple dentro de una máquina virtual Linux x86-64 y da a un agente lo que necesita para probar una app: instalar un paquete `.ipa`, leer la pantalla como texto con la jerarquía de accesibilidad y coordenadas, tocar, escribir, desplazar y verlo en vivo en el navegador. Ofrece una línea de comandos para scripts e integración continua, y un servidor MCP para Claude Code, Cursor o Codex. Pide Ubuntu 24.04, ocho núcleos, 16 GB de memoria y 60 GB de disco; la instalación inicial tarda media hora porque descarga el runtime de Apple, y el arranque posterior va de 12 a 30 segundos. El propio proyecto avisa de que está en estado temprano y mantiene una lista de problemas conocidos.",
+        "por_que_importa": "Complementa lo que vimos el 2026-11-23 con mobile-agent-testers, y por una razón muy concreta: allí los agentes usaban simuladores en ejecutores de macOS; aquí el simulador corre en Linux, que es donde están la integración continua barata y los servidores. La barrera para probar iOS nunca fue el agente, era el Mac. Conexión con el grafo: el problema de desarrollar iOS fuera de macOS ya salió el 2026-10-10 y el servidor MCP nativo el 2026-09-23. Sirve para una pieza sobre coste real: qué se paga en máquinas, descargas y tiempo de arranque.",
+        "madurez_senales": "274 estrellas · 35 forks · Rust · creado 2026-11-21 · último push 2026-11-24 · Apache-2.0 · 0 incidencias abiertas · topics: `ai-agents`, `claude-code`, `ios`, `ios-simulator`, `linux`, `mcp`, `mobile-testing`, `testing` (verificado vía GitHub API)",
+        "accion_sugerida": "**probar** — el instalador en una máquina virtual Ubuntu; si el arranque se queda en los 30 segundos, entra en cualquier integración continua sin discusión.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:Developing-Gamer/agent-sim",
+          "rel": "complements",
+          "dst": "repo:pierridotite/mobile-agent-testers",
+          "primera_mencion": "2026-11-23"
+        },
+        {
+          "src": "repo:Developing-Gamer/agent-sim",
+          "rel": "solves",
+          "dst": "concept:cross-platform-ios-development",
+          "primera_mencion": "2026-10-10"
+        },
+        {
+          "src": "repo:Developing-Gamer/agent-sim",
+          "rel": "uses",
+          "dst": "concept:mcp-server-native",
+          "primera_mencion": "2026-09-23"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "developing-gamer-agent-sim",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "deterministic-machines/deslop-please",
+      "url": "https://github.com/deterministic-machines/deslop-please",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "linter para Rust con opinión, construido sobre la idea de módulos profundos e interfaces estrechas que defiende *A Philosophy of Software Design*. Señala campos que se conocen fuera de su módulo, módulos superficiales, ciclos entre módulos y marañas de dependencias, y dibuja en texto quién usa qué y desde cuántos sitios. Publica un contador propio como distintivo en la integración continua y permite congelar los errores existentes en un fichero de permisos para no bloquear el trabajo en curso. En el README recomienda añadirlo a las instrucciones del agente con una orden explícita: arreglar desde los principios, no con movimientos mecánicos para ocultar el aviso.",
+        "por_que_importa": "Es la respuesta más concreta del boletín al problema de que un agente escribe mucho código y nadie mira la estructura. Enlaza con los patrones anti-slop del 2026-08-27 y con el linting pensado para agentes del 2026-09-15: frente a los linters de estilo, este mide algo comprobable —un campo visible fuera de su módulo, un ciclo de dependencias— y por eso sirve como puerta de integración continua. El detalle de las instrucciones para el agente es lo mejor: la herramienta no arregla, obliga a decidir qué capa de abstracción falta.",
+        "madurez_senales": "412 estrellas · 11 forks · Rust · creado 2026-11-22 · último push 2026-11-24 · MIT · 0 incidencias abiertas · publicado en crates.io · sin topics declarados (verificado vía GitHub API)",
+        "accion_sugerida": "**probar** — sobre un módulo propio que ya sabes que está mal separado; el gráfico de fugas es el argumento de venta.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:deterministic-machines/deslop-please",
+          "rel": "implements",
+          "dst": "concept:deep-module-linter",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:deterministic-machines/deslop-please",
+          "rel": "extends",
+          "dst": "concept:anti-slop-agent-patterns",
+          "primera_mencion": "2026-08-27"
+        },
+        {
+          "src": "repo:deterministic-machines/deslop-please",
+          "rel": "enables",
+          "dst": "concept:agent-friendly-linting",
+          "primera_mencion": "2026-09-15"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deterministic-machines-deslop-please",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "4lwayz/portwatch-vi",
+      "url": "https://github.com/4lwayz/portwatch-vi",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.291 estrellas, último push 2026-11-24, JavaScript) — sitio estático que puntúa en una misma escala todos los intentos serios de portar, emular o recompilar GTA VI, con un explorador que refresca cada tres horas, avisos de descargas falsas y vigilancia del registro público de retiradas por derechos de autor; la API no devuelve licencia — señales: https://github.com/4lwayz/portwatch-vi",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/4lwayz/portwatch-vi",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "4lwayz-portwatch-vi",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "wzyn20051216/solidworks-automation-skill",
+      "url": "https://github.com/wzyn20051216/solidworks-automation-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(2.531 estrellas, último push 2026-11-22, Python) — skill y servidor MCP para automatizar CAD de escritorio desde Codex, Claude o Cursor, con una regla que da título a su enfoque: que la herramienta responda no significa que la tarea esté hecha, así que valida los ficheros entregados y rechaza los de ejecuciones anteriores — señales: https://github.com/wzyn20051216/solidworks-automation-skill",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/wzyn20051216/solidworks-automation-skill",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "wzyn20051216-solidworks-automation-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "grape-dev/grape",
+      "url": "https://github.com/grape-dev/grape",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(977 estrellas, último push 2026-11-24, Python) — convierte cualquier repositorio en un flujo de trabajo dirigido por agentes: la persona define requisitos y revisa, el agente entrega, con despliegue de un clic en Railway y comunidad en Feishu y WeChat — señales: https://github.com/grape-dev/grape",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/grape-dev/grape",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "grape-dev-grape",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "Ciao1019/ArcMD",
+      "url": "https://github.com/Ciao1019/ArcMD",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(494 estrellas, último push 2026-11-24, Go) — editor de Markdown nativo escrito en Go con interfaz propia, que presume de 120 hercios y de ser local-first; interesante como prueba de que aún se puede escribir una app de escritorio sin Electron — señales: https://github.com/Ciao1019/ArcMD",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Ciao1019/ArcMD",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "ciao1019-arcmd",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "zed-industries/gpui",
+      "url": "https://github.com/zed-industries/gpui",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(909 estrellas, último push 2026-11-23, Rust) — Zed saca su framework de interfaz a un repositorio propio que de momento solo tiene una nota de espera, un sitio en gpui.rs y el paquete publicado en crates.io; señal de un lanzamiento independiente a corto plazo — señales: https://github.com/zed-industries/gpui",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/zed-industries/gpui",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zed-industries-gpui",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 5,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

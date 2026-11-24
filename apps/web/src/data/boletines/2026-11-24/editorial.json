@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-24",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "xcl y VIctory suplantan la consola en vez de emularla",
+  "posicionamiento": "Dos repos atacan la misma consola desde el mismo ángulo: no traducen instrucciones, ocupan el lugar de las librerías que Windows no tiene. El resto del día repite esa jugada de suplantar la capa ausente y exigir que un tercero lo compruebe.",
+  "convergencia_stack_css": "Ningún hallazgo toca el stack local-first de LLM y grafo. Lo más cercano son agent-sim, que saca la prueba de iOS del Mac a un Linux barato, y deslop-please, que se ofrece como puerta de CI para código escrito por agentes: la misma lógica de quitar dependencia ajena.",
+  "cruzado_grafo": "console-compatibility-layer, signed-kernel-micropatch y deep-module-linter aparecen sin primera_mencion: nodos nuevos de hoy. Se refuerzan static-recompilation y Leonida (2026-11-22), agent-security (2026-08-03) y el bucle de verificación (2026-11-06).",
+  "tendencias_5_boletines": "La línea de ayer, el contrato verificable, aguanta: entonces eran testers móviles y escáneres de agentes; hoy son tablas de estado, un comparador de Lean 4 y firmas de TPM. Cambia la pieza, no la exigencia de que algo externo lo mida.",
+  "alertas": [
+    "xcl declara jugabilidad leyendo su propio README; no hay verificación independiente",
+    "GPL-2.0 sobre reversing de una consola cerrada: terreno legal que nadie ha aclarado",
+    "VIctory no es jugable: arranca el mundo de GTA VI pero no lo dibuja y avisa de pantalla en negro",
+    "shirudo está en prelanzamiento y exige kernel con ABI de cargador firmado y TPM 2.0",
+    "formal-math: que la prueba compile y pase el comparador no equivale a revisión por la comunidad"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "El README separa qué falla y qué funciona, y da material para un artículo que distinga emular, traducir y suplantar. La pregunta legal queda abierta y es parte del valor."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 5,
+      "razon": "Mide estructura, no estilo: campos visibles fuera de módulo, ciclos, dependencias. Es candidato directo a puerta de CI junto al flujo con agentes."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "El patrón enunciado separado de prueba, con verificador distinto, es la respuesta citable a «lo he demostrado con IA». Sirve como referencia editorial reutilizable."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Un laboratorio de IA publicando infraestructura de kernel con firmas y medición TPM merece seguimiento: si sale de prelanzamiento cambia el ciclo de actualización de dispositivos."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "Si el simulador de iOS sobre Linux x86-64 aguanta coste y arranque, mueve la prueba móvil fuera del Mac. Hoy solo hay promesa de CLI y CI."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

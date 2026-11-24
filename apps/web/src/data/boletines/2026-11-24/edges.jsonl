@@ -1,0 +1,40 @@
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-ivall-xcl", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-ivall-xcl", "dst": "tema:ivall-xcl", "rel": "trata", "added": "2026-11-24"}
+{"src": "repo:ivall/xcl", "dst": "concept:console-compatibility-layer", "rel": "implements", "added": "2026-11-24", "primera_mencion": null}
+{"src": "repo:ivall/xcl", "dst": "repo:Marvisak/VIctory", "rel": "competes_with", "added": "2026-11-24", "primera_mencion": null}
+{"src": "repo:ivall/xcl", "dst": "concept:static-recompilation", "rel": "relevant_to", "added": "2026-11-24", "primera_mencion": "2026-11-22"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-marvisak-victory", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-marvisak-victory", "dst": "tema:marvisak-victory", "rel": "trata", "added": "2026-11-24"}
+{"src": "repo:Marvisak/VIctory", "dst": "concept:console-compatibility-layer", "rel": "implements", "added": "2026-11-24", "primera_mencion": null}
+{"src": "repo:Marvisak/VIctory", "dst": "repo:ItsNotRexed/Leonida", "rel": "competes_with", "added": "2026-11-24", "primera_mencion": "2026-11-22"}
+{"src": "repo:Marvisak/VIctory", "dst": "concept:static-recompilation", "rel": "relevant_to", "added": "2026-11-24", "primera_mencion": "2026-11-22"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-shirudo-dev-shirudo", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-shirudo-dev-shirudo", "dst": "tema:shirudo-dev-shirudo", "rel": "trata", "added": "2026-11-24"}
+{"src": "repo:shirudo-dev/shirudo", "dst": "concept:ebpf-kernel-security", "rel": "implements", "added": "2026-11-24", "primera_mencion": null}
+{"src": "repo:shirudo-dev/shirudo", "dst": "concept:signed-kernel-micropatch", "rel": "enables", "added": "2026-11-24", "primera_mencion": null}
+{"src": "repo:shirudo-dev/shirudo", "dst": "concept:agent-security", "rel": "relevant_to", "added": "2026-11-24", "primera_mencion": "2026-08-03"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-anthropics-formal-math", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-anthropics-formal-math", "dst": "tema:anthropics-formal-math", "rel": "trata", "added": "2026-11-24"}
+{"src": "repo:anthropics/formal-math", "dst": "concept:ai-formal-mathematics", "rel": "implements", "added": "2026-11-24", "primera_mencion": "2026-10-07"}
+{"src": "repo:anthropics/formal-math", "dst": "concept:verification-loop", "rel": "enables", "added": "2026-11-24", "primera_mencion": "2026-11-06"}
+{"src": "repo:anthropics/formal-math", "dst": "concern:agent-verifiability", "rel": "relevant_to", "added": "2026-11-24", "primera_mencion": "2026-10-20"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-developing-gamer-agent-sim", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-developing-gamer-agent-sim", "dst": "tema:developing-gamer-agent-sim", "rel": "trata", "added": "2026-11-24"}
+{"src": "repo:Developing-Gamer/agent-sim", "dst": "repo:pierridotite/mobile-agent-testers", "rel": "complements", "added": "2026-11-24", "primera_mencion": "2026-11-23"}
+{"src": "repo:Developing-Gamer/agent-sim", "dst": "concept:cross-platform-ios-development", "rel": "solves", "added": "2026-11-24", "primera_mencion": "2026-10-10"}
+{"src": "repo:Developing-Gamer/agent-sim", "dst": "concept:mcp-server-native", "rel": "uses", "added": "2026-11-24", "primera_mencion": "2026-09-23"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-deterministic-machines-deslop-please", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-deterministic-machines-deslop-please", "dst": "tema:deterministic-machines-deslop-please", "rel": "trata", "added": "2026-11-24"}
+{"src": "repo:deterministic-machines/deslop-please", "dst": "concept:deep-module-linter", "rel": "implements", "added": "2026-11-24", "primera_mencion": null}
+{"src": "repo:deterministic-machines/deslop-please", "dst": "concept:anti-slop-agent-patterns", "rel": "extends", "added": "2026-11-24", "primera_mencion": "2026-08-27"}
+{"src": "repo:deterministic-machines/deslop-please", "dst": "concept:agent-friendly-linting", "rel": "enables", "added": "2026-11-24", "primera_mencion": "2026-09-15"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-4lwayz-portwatch-vi", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-4lwayz-portwatch-vi", "dst": "tema:4lwayz-portwatch-vi", "rel": "trata", "added": "2026-11-24"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-wzyn20051216-solidworks-automation-skill", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-wzyn20051216-solidworks-automation-skill", "dst": "tema:wzyn20051216-solidworks-automation-skill", "rel": "trata", "added": "2026-11-24"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-grape-dev-grape", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-grape-dev-grape", "dst": "tema:grape-dev-grape", "rel": "trata", "added": "2026-11-24"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-ciao1019-arcmd", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-ciao1019-arcmd", "dst": "tema:ciao1019-arcmd", "rel": "trata", "added": "2026-11-24"}
+{"src": "boletin:2026-11-24", "dst": "item:https-github-com-zed-industries-gpui", "rel": "menciona", "added": "2026-11-24"}
+{"src": "item:https-github-com-zed-industries-gpui", "dst": "tema:zed-industries-gpui", "rel": "trata", "added": "2026-11-24"}
