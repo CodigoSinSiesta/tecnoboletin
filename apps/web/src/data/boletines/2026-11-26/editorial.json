@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-26",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La inferencia local deja de pedir GPU por dos caminos opuestos",
+  "posicionamiento": "Dos maneras de demostrar que algo es cierto compiten hoy: el artefacto que compila y el número que se mide. La inferencia local abandona la GPU por dos vías opuestas, pesos ternarios y modelo troceado, mientras Lean 4 reduce una prueba de Riemann a axiomas imprimibles.",
+  "convergencia_stack_css": "Esto toca el núcleo local-first: magnitude nombra a Hermes entre sus clientes y openset sirve API compatible con OpenAI en el puerto 8080. Ambos mueven la frontera de qué cabe sin pagar por token, y llm.asm lleva la idea al extremo: el modelo arranca antes que el sistema.",
+  "cruzado_grafo": "cpu-inference se refuerza desde el 2026-08-03 con tres repos del día, y mcp vuelve desde el 2026-09-21 ya con dos editores de vídeo. Aparecen sin mención previa ternary-quantization y bare-metal-llm; el resto de nodos ya tenía fecha.",
+  "tendencias_5_boletines": "El contrato verificable del 2026-11-23 reaparece en Lean 4, y la jugada de suplantar la capa ausente del 2026-11-24 vuelve literal en llm.asm, que arranca el modelo sin sistema operativo. Inferencia y vídeo corrigen esa línea más que continuarla.",
+  "alertas": [
+    "La prueba de Riemann solo ha pasado comprobaciones automáticas: nadie ha leído las 300.000 líneas, y compilar no es entender",
+    "openset-llm exige AVX-512; un Core de 12ª generación se queda en la ruta lenta",
+    "davinci-resolve-mcp depende de Resolve Studio de pago y solo sirve en la rama 21.0.x",
+    "magnitude declara el doble de velocidad que Ollama sin metodología visible en el resumen",
+    "De 82 repos del trending, 81 ya estaban registrados: el día es más delgado de lo que sugiere la lista"
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Separar lo que el compilador verifica de lo que el autor afirma es el ejercicio del día. Leer la lista de axiomas declarados cuesta poco y fija el criterio para cualquier resultado generado por un modelo."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Material didáctico real para explicar un transformer sin pasar por Python: 14.712 bytes con tokenizador, GQA y caché KV se leen enteros."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "El filtro AVX-512 decide si sirve en una máquina concreta. Conviene comprobar el procesador antes de descargar 5,95 GB."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Nombra a Hermes entre sus clientes y compite en el mismo hueco que openset. Encaja directo en la línea local-first del stack."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 5,
+      "razon": "Caso de estudio de licencias y límites de integración: funciona solo en la rama 21.0.x de la versión de pago."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

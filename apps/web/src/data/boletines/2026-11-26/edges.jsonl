@@ -1,0 +1,46 @@
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-lsernau-grh-lean", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-lsernau-grh-lean", "dst": "tema:lsernau-grh-lean", "rel": "trata", "added": "2026-11-26"}
+{"src": "repo:lsernau/grh-lean", "dst": "concept:ai-formal-mathematics", "rel": "implements", "added": "2026-11-26", "primera_mencion": "2026-10-07"}
+{"src": "repo:lsernau/grh-lean", "dst": "repo:anthropics/formal-math", "rel": "relevant_to", "added": "2026-11-26", "primera_mencion": "2026-11-24"}
+{"src": "repo:lsernau/grh-lean", "dst": "repo:openai/math", "rel": "relevant_to", "added": "2026-11-26", "primera_mencion": "2026-10-07"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-alesha-pro-llm-asm", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-alesha-pro-llm-asm", "dst": "tema:alesha-pro-llm-asm", "rel": "trata", "added": "2026-11-26"}
+{"src": "repo:alesha-pro/llm.asm", "dst": "concept:cpu-inference", "rel": "implements", "added": "2026-11-26", "primera_mencion": "2026-08-03"}
+{"src": "repo:alesha-pro/llm.asm", "dst": "concept:bare-metal-llm", "rel": "implements", "added": "2026-11-26", "primera_mencion": null}
+{"src": "repo:alesha-pro/llm.asm", "dst": "repo:jamesob/local-llm", "rel": "relevant_to", "added": "2026-11-26", "primera_mencion": null}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-opensetlabs-openset-llm", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-opensetlabs-openset-llm", "dst": "tema:opensetlabs-openset-llm", "rel": "trata", "added": "2026-11-26"}
+{"src": "repo:opensetlabs/openset-llm", "dst": "concept:cpu-inference", "rel": "implements", "added": "2026-11-26", "primera_mencion": "2026-08-03"}
+{"src": "repo:opensetlabs/openset-llm", "dst": "concept:ternary-quantization", "rel": "implements", "added": "2026-11-26", "primera_mencion": null}
+{"src": "repo:opensetlabs/openset-llm", "dst": "repo:magnitudedev/magnitude", "rel": "competes_with", "added": "2026-11-26", "primera_mencion": "2026-08-21"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-magnitudedev-magnitude", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-magnitudedev-magnitude", "dst": "tema:magnitudedev-magnitude", "rel": "trata", "added": "2026-11-26"}
+{"src": "repo:magnitudedev/magnitude", "dst": "concept:disaggregated-inference", "rel": "implements", "added": "2026-11-26", "primera_mencion": "2026-08-21"}
+{"src": "repo:magnitudedev/magnitude", "dst": "concept:agent-harness-environment", "rel": "relevant_to", "added": "2026-11-26", "primera_mencion": "2026-08-21"}
+{"src": "repo:magnitudedev/magnitude", "dst": "repo:opensetlabs/openset-llm", "rel": "competes_with", "added": "2026-11-26", "primera_mencion": "2026-08-21"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-jub0t-concat", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-jub0t-concat", "dst": "tema:jub0t-concat", "rel": "trata", "added": "2026-11-26"}
+{"src": "repo:jub0t/Concat", "dst": "concept:agent-video-editor", "rel": "implements", "added": "2026-11-26", "primera_mencion": "2026-08-29"}
+{"src": "repo:jub0t/Concat", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-26", "primera_mencion": "2026-09-21"}
+{"src": "repo:jub0t/Concat", "dst": "concept:video-editing-rust", "rel": "relevant_to", "added": "2026-11-26", "primera_mencion": "2026-10-05"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-samuelgursky-davinci-resolve-mcp", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-samuelgursky-davinci-resolve-mcp", "dst": "tema:samuelgursky-davinci-resolve-mcp", "rel": "trata", "added": "2026-11-26"}
+{"src": "repo:samuelgursky/davinci-resolve-mcp", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-26", "primera_mencion": "2026-09-21"}
+{"src": "repo:samuelgursky/davinci-resolve-mcp", "dst": "repo:jub0t/Concat", "rel": "relevant_to", "added": "2026-11-26", "primera_mencion": "2026-10-30"}
+{"src": "repo:samuelgursky/davinci-resolve-mcp", "dst": "problem:vendor-lockin", "rel": "risk", "added": "2026-11-26", "primera_mencion": "2026-10-20"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-elementalsouls-claude-bughunter", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-elementalsouls-claude-bughunter", "dst": "tema:elementalsouls-claude-bughunter", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-dietrichgebert-ponytail", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-dietrichgebert-ponytail", "dst": "tema:dietrichgebert-ponytail", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-stablyai-orca", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-stablyai-orca", "dst": "tema:stablyai-orca", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-mvanhorn-last30days-skill", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-mvanhorn-last30days-skill", "dst": "tema:mvanhorn-last30days-skill", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-cathrynlavery-diagram-design", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-cathrynlavery-diagram-design", "dst": "tema:cathrynlavery-diagram-design", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-hkuds-cli-anything", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-hkuds-cli-anything", "dst": "tema:hkuds-cli-anything", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-vuilabsai-luna-translator", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-vuilabsai-luna-translator", "dst": "tema:vuilabsai-luna-translator", "rel": "trata", "added": "2026-11-26"}
+{"src": "boletin:2026-11-26", "dst": "item:https-github-com-petergyang-video-explainer", "rel": "menciona", "added": "2026-11-26"}
+{"src": "item:https-github-com-petergyang-video-explainer", "dst": "tema:petergyang-video-explainer", "rel": "trata", "added": "2026-11-26"}

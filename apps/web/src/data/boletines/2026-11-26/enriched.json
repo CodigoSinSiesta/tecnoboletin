@@ -1,0 +1,473 @@
+{
+  "version": 2,
+  "date": "2026-11-26",
+  "boletin_origen": "2026-11-26-trending.md",
+  "resumen_ejecutivo": "- GitHub Trending repite casi entera la lista de ayer: de los 82 repos que aparecen en las seis rebanadas, 81 ya estaban registrados y solo uno entra por primera vez, así que el día se lee en Trendshift y en el resto de lo nuevo.\n- La pieza con más fondo es una prueba en Lean 4 de la hipótesis de Riemann publicada como repositorio, con el aviso explícito de que solo ha pasado comprobaciones automáticas y nadie la ha leído entera.\n- El otro frente es la inferencia sin GPU, y hoy llega por dos caminos opuestos: un motor que mete un modelo de 27B en 8 GB de RAM con cuantización ternaria y otro que reparte el modelo entre GPU, memoria y disco afinando los kernels para cada chip.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily (portada, TypeScript, Python, Rust, Go y JavaScript) y GitHub API (16 repos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "lsernau/grh-lean",
+      "url": "https://github.com/lsernau/grh-lean",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Dos ediciones de una prueba en Lean 4 de la hipótesis de Riemann y de la hipótesis de Riemann generalizada para funciones L de Dirichlet, construidas sobre Mathlib y usando solo los axiomas `propext`, `Classical.choice` y `Quot.sound`. La edición legible ocupa unas 300.000 líneas y la compacta unas 76.000, con los mismos cinco teoremas. Se basa en la prueba de Levent Alpöge y se hizo en colaboración con colegas de Anthropic. Compilar exige Lean 4.35.0 y un commit concreto de Mathlib, y tarda una o dos horas en 12 núcleos con 24 GB de memoria. El README lo dice sin adornos: solo ha pasado comprobaciones automáticas, ningún matemático la ha leído entera y no hay artículo que la acompañe.",
+        "por_que_importa": "El interés no está en si la hipótesis es cierta sino en el formato: un artefacto que se compila, con una lista de axiomas imprimible, y un autor que marca el límite de lo que eso significa. Ese es el criterio para leer cualquier resultado generado por un modelo: separar lo que una máquina comprueba de lo que una persona entiende. La matemática formal ya apareció el 2026-10-07 con el catálogo de OpenAI, donde la formalización era opcional y parcial; aquí es el entregable entero y sin prosa que la explique, y además conecta con anthropics/formal-math, cubierto el 2026-11-24.",
+        "madurez_senales": "588 estrellas · 54 forks · Lean · creado 2026-11-25 · último push 2026-11-25 · Apache-2.0 · 1 incidencia abierta · sin topics declarados · copyright de Anthropic en el LICENSE (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el README y la guía de cada edición dicen qué axiomas se usan y qué no se ha revisado, que es lo único comprobable sin ser matemático.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:lsernau/grh-lean",
+          "rel": "implements",
+          "dst": "concept:ai-formal-mathematics",
+          "primera_mencion": "2026-10-07"
+        },
+        {
+          "src": "repo:lsernau/grh-lean",
+          "rel": "relevant_to",
+          "dst": "repo:anthropics/formal-math",
+          "primera_mencion": "2026-11-24"
+        },
+        {
+          "src": "repo:lsernau/grh-lean",
+          "rel": "relevant_to",
+          "dst": "repo:openai/math",
+          "primera_mencion": "2026-10-07"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "lsernau-grh-lean",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "alesha-pro/llm.asm",
+      "url": "https://github.com/alesha-pro/llm.asm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Tres proyectos escritos en NASM puro para x86-64, sin C, sin libc y sin dependencias de ejecución: inferencia de Qwen3-0.6B en un binario de 14.712 bytes con tokenizador BPE incluido, atención con GQA y caché KV para conversación multiturno; un sistema operativo arrancable de 24.252 bytes que carga el modelo sin Linux ni Windows, con consola VGA y teclado PS/2; y un entrenador Mini-GPT de 32.944 bytes con retropropagación analítica y una interfaz en Braille de 80x24. El README incluye una comparativa contra llama.cpp en CPU: entre un 18% y un 36% más rápido en decodificación con cuantización Q8_0 según el número de hilos, y 64 de 64 tokens idénticos a PyTorch en FP32.",
+        "por_que_importa": "Si el motor cabe en un icono y cada función matemática está escrita a mano, no queda caja negra donde esconderse: normalización, rotación posicional, atención, cuantización y muestreo se leen línea a línea. Es material didáctico para explicar de qué está hecho un transformer sin pasar por Python, y el sistema operativo arrancable convierte «local-first» en algo literal, porque el modelo corre antes que cualquier sistema. La comparativa con llama.cpp —entre un 18% y un 36% más rápido en decodificación Q8_0— pone un listón medible a la idea de que el código diminuto es un juguete. Seguimos la inferencia en CPU desde el 2026-08-03; esto baja otro escalón, hasta el ensamblador.",
+        "madurez_senales": "719 estrellas · 102 forks · Assembly · creado 2026-11-25 · último push 2026-11-25 · MIT · 1 incidencia abierta · topics: `assembly`, `avx2`, `bare-metal`, `llm`, `nasm`, `osdev`, `qwen`, `x86-64` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el README lleva la tabla de rendimiento y el desglose de kernels, así que se puede juzgar sin compilar nada.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:alesha-pro/llm.asm",
+          "rel": "implements",
+          "dst": "concept:cpu-inference",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:alesha-pro/llm.asm",
+          "rel": "implements",
+          "dst": "concept:bare-metal-llm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:alesha-pro/llm.asm",
+          "rel": "relevant_to",
+          "dst": "repo:jamesob/local-llm",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "alesha-pro-llm-asm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "opensetlabs/openset-llm",
+      "url": "https://github.com/opensetlabs/openset-llm",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de inferencia para CPU que ejecuta Qwen3.8-27B en versión ternaria (Bonsai-2-27B, fichero de 5,95 GB) en equipos x86 con AVX-512, sin GPU ni memoria unificada. Se arranca con un script que comprueba el procesador, compila y descarga el modelo, y luego sirve una API compatible con OpenAI y una página de chat en el puerto 8080. El README declara 17-20 tokens por segundo en un Xeon Ice Lake de 8 vCPU y 8 GB, entre cuatro y seis veces lo medido con dos variantes de llama.cpp en la misma máquina, y añade que las aceleraciones no degradan la calidad: 39 de 40 en GSM8K y 83,1% de pass@1 en código.",
+        "por_que_importa": "La conversación sobre modelos locales llevaba años atada a «modelos pequeños porque no cabe más». Aquí, cuantización ternaria y kernels reescritos meten un 27B en 5,95 GB donde antes no entraba, con la misma API de OpenAI que ya hablan los clientes existentes, y eso mueve la frontera de qué se puede hacer sin pagar por token. Un filtro concreto antes de descargar: exige AVX-512, y un Core de 12ª generación en adelante se queda en la ruta lenta. Seguimos la inferencia en CPU desde el 2026-08-03 y el pulso con magnitude desde el 2026-08-21.",
+        "madurez_senales": "1.180 estrellas · 111 forks · C++ · creado 2026-11-13 · último push 2026-11-26 · MIT · 25 incidencias abiertas · topics: `cpu-inference`, `avx512`, `gguf`, `no-gpu`, `local-llm`, `on-device-ai` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — `./install.sh --check` dice si el procesador tiene AVX-512 antes de bajar los 7,3 GB del modelo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:opensetlabs/openset-llm",
+          "rel": "implements",
+          "dst": "concept:cpu-inference",
+          "primera_mencion": "2026-08-03"
+        },
+        {
+          "src": "repo:opensetlabs/openset-llm",
+          "rel": "implements",
+          "dst": "concept:ternary-quantization",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:opensetlabs/openset-llm",
+          "rel": "competes_with",
+          "dst": "repo:magnitudedev/magnitude",
+          "primera_mencion": "2026-08-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "opensetlabs-openset-llm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "magnitudedev/magnitude",
+      "url": "https://github.com/magnitudedev/magnitude",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Motor de inferencia en Rust que trocea el modelo para usar a la vez la GPU, la memoria y el disco, en lugar de exigir que todo quepa en memoria de vídeo. Ajusta los kernels por modelo y por hardware, se instala con paquete para macOS, Windows, Linux x64 y ARM64 o con un script, y se conecta en un clic a Pi, OpenCode, Hermes, Codex y otros agentes. Declara más del doble de velocidad que Ollama, cachés de prefijo compartidas y memoria KV flexible para varios agentes en paralelo, con todo el cálculo en local.",
+        "por_que_importa": "Es una reentrada con número: el registro lo tenía en 7.581 estrellas el 30 de octubre y ahora son 8.714. El proyecto ya estaba en el radar desde el 2026-08-21, y lo relevante es que nombra a Hermes entre sus clientes y compite en el mismo hueco que openset-llm: motores que asumen hardware de usuario final y varios agentes a la vez, no un servidor central. Visto junto al hallazgo anterior, el argumento de que la inferencia local exige GPU se rompe por dos vías: bajar la precisión de los pesos y repartir el modelo por niveles de memoria (GPU, RAM y disco).",
+        "madurez_senales": "8.714 estrellas · 630 forks · Rust · creado 2026-06-12 · último push 2026-11-26 · Apache-2.0 · 49 incidencias abiertas · sin topics declarados · reentrada: el registro lo tenía en 7.581 estrellas el 30 de octubre (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — instalarlo y medir con el mismo modelo que ya corre en Ollama da una comparación directa en nuestro propio equipo.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "implements",
+          "dst": "concept:disaggregated-inference",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "relevant_to",
+          "dst": "concept:agent-harness-environment",
+          "primera_mencion": "2026-08-21"
+        },
+        {
+          "src": "repo:magnitudedev/magnitude",
+          "rel": "competes_with",
+          "dst": "repo:opensetlabs/openset-llm",
+          "primera_mencion": "2026-08-21"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "magnitudedev-magnitude",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "jub0t/Concat",
+      "url": "https://github.com/jub0t/Concat",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Editor de vídeo multiplataforma para macOS, Windows, Linux, Android e iOS con subtítulos automáticos, aislamiento de voz, texto a voz, eliminación de fondo, animaciones con keyframes y exportación en 4K, sin marca de agua, sin cuenta y sin subir archivos a ningún sitio. La versión publicada es la 0.2.12 y el README anuncia una API JSON-RPC y soporte de MCP para guionizar la edición desde un agente. Está bajo AGPL-3.0 y se distribuye con CI propio y compilaciones para todas las plataformas.",
+        "por_que_importa": "La rama de vídeo para agentes ya tenía servidores MCP sueltos —el protocolo lo seguimos desde el 2026-09-21, el concepto de editor de vídeo para agentes desde el 2026-08-29 y su variante en Rust desde el 2026-10-05—, pero esto es un editor completo que expone sus operaciones. Es el mismo movimiento que la suite ofimática que cubrimos hace poco, con una diferencia incómoda: el resultado no es un documento que se revisa leyendo, es una línea de tiempo, y revisarla exige abrir el programa. Justo por eso vale seguirlo: ahí el patrón «el agente prepara, la persona aprueba» se pone a prueba de verdad.",
+        "madurez_senales": "20.697 estrellas · 2.516 forks · Rust · creado 2026-08-25 · último push 2026-11-25 · AGPL-3.0 · 321 incidencias abiertas · versión 0.2.12 · reentrada: 12.714 estrellas el 10 de noviembre (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**vigilar** — sigue en 0.2.12 con más de trescientas incidencias abiertas, así que la interfaz de guion puede cambiar antes de que merezca la pena escribir contra ella.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:jub0t/Concat",
+          "rel": "implements",
+          "dst": "concept:agent-video-editor",
+          "primera_mencion": "2026-08-29"
+        },
+        {
+          "src": "repo:jub0t/Concat",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:jub0t/Concat",
+          "rel": "relevant_to",
+          "dst": "concept:video-editing-rust",
+          "primera_mencion": "2026-10-05"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "jub0t-concat",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "samuelgursky/davinci-resolve-mcp",
+      "url": "https://github.com/samuelgursky/davinci-resolve-mcp",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Servidor MCP en Python que controla DaVinci Resolve Studio mediante su API oficial de scripting: edición, organización del pool de medios, ajustes de render, marcadores de revisión, etalonaje, Fusion y Fairlight, con 37 herramientas en el modo por defecto y 390 en el modo completo. Se instala con `npx davinci-resolve-mcp setup` y configura Claude Desktop, Claude Code, Cursor, VS Code, Zed, Codex CLI o los IDE de JetBrains. Añade un panel de control en el navegador y un puente para la edición gratuita que aprovecha el menú de scripts interno del programa.",
+        "por_que_importa": "Es la primera vez que un servidor MCP cubre de verdad una herramienta profesional de vídeo: seguimos el protocolo desde el 2026-09-21 y lo cruzamos con Concat el 2026-10-30. El README documenta lo que casi nunca se documenta: Blackmagic reserva el scripting externo a la versión de pago, y desde Resolve 21.1 movió también el scripting interno en Python, así que el puente solo sirve en la rama 21.0.x. Eso lo convierte en caso de estudio de licencias y límites de integración —ya tocamos el riesgo de dependencia del proveedor el 2026-10-20—, no solo de automatización.",
+        "madurez_senales": "4.377 estrellas · 497 forks · Python · creado 2025-03-18 · último push 2026-11-25 · MIT · 7 incidencias abiertas · versión 5.5.1 · cobertura declarada del 100% de la API · +27 hoy en Trending (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — con Resolve abierto y el scripting externo puesto en Local, el instalador monta el servidor en un par de minutos.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:samuelgursky/davinci-resolve-mcp",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:samuelgursky/davinci-resolve-mcp",
+          "rel": "relevant_to",
+          "dst": "repo:jub0t/Concat",
+          "primera_mencion": "2026-10-30"
+        },
+        {
+          "src": "repo:samuelgursky/davinci-resolve-mcp",
+          "rel": "risk",
+          "dst": "problem:vendor-lockin",
+          "primera_mencion": "2026-10-20"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "samuelgursky-davinci-resolve-mcp",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(23.483 estrellas, último push 2026-11-26, Python) — el que más sube hoy (+1.652) y ya va por 85 skills y 681 patrones de informes divulgados; desde ayer ha ganado 1.447 estrellas y una skill — señales: https://github.com/elementalsouls/Claude-BugHunter",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/elementalsouls/Claude-BugHunter",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elementalsouls-claude-bughunter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(198.929 estrellas, último push 2026-11-22, JavaScript) — le da al agente la persona del senior más vago de la sala para que aplique YAGNI y no escriba código que nadie pidió; sigue creciendo sin release nueva — señales: https://github.com/DietrichGebert/ponytail",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/DietrichGebert/ponytail",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "dietrichgebert-ponytail",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(139.004 estrellas, último push 2026-11-26, TypeScript) — flota de agentes con tu propia suscripción, en escritorio, móvil y entorno remoto; arrastra más de diez mil incidencias abiertas, así que el tamaño no es la señal — señales: https://github.com/stablyai/orca",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/stablyai/orca",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "stablyai-orca",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(75.346 estrellas, último push 2026-11-26, Python) — skill que busca en Reddit, X, YouTube, Hacker News y Polymarket y sintetiza un resumen con fuentes; ya está instalada en este Hermes — señales: https://github.com/mvanhorn/last30days-skill",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/mvanhorn/last30days-skill",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "mvanhorn-last30days-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(73.356 estrellas, último push 2026-11-25, HTML) — skill de diagramas editoriales en HTML y SVG autocontenidos para agentes, con 52 tipos y sin sombras ni Mermaid — señales: https://github.com/cathrynlavery/diagram-design",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/cathrynlavery/diagram-design",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "cathrynlavery-diagram-design",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 11,
+      "titulo": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(65.926 estrellas, último push 2026-11-20, Python) — catálogo que instala con un comando las interfaces de línea de comandos que generan los agentes para manejar software ajeno — señales: https://github.com/HKUDS/CLI-Anything",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/CLI-Anything",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-cli-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 12,
+      "titulo": "VUILabsAI/Luna-Translator",
+      "url": "https://github.com/VUILabsAI/Luna-Translator",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(366 estrellas, último push 2026-11-26, TypeScript) — traducción simultánea de voz a voz autoalojada con subtítulos en vivo, edición web e iOS y despliegue por Docker Compose; entró hoy en Trendshift como tercer repo de TypeScript del día — señales: https://github.com/VUILabsAI/Luna-Translator",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/VUILabsAI/Luna-Translator",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "vuilabsai-luna-translator",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 13,
+      "titulo": "petergyang/video-explainer",
+      "url": "https://github.com/petergyang/video-explainer",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(303 estrellas, último push 2026-11-25, Python) — skill que convierte un tema, un documento o un repositorio en un vídeo explicativo de un minuto en tres estilos visuales, con voz y subtítulos generados en local o en la nube — señales: https://github.com/petergyang/video-explainer",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/petergyang/video-explainer",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "petergyang-video-explainer",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 14,
+    "items_hallazgo_principal": 6,
+    "items_radar_secundario": 8,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "14/14 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "6/6 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}
