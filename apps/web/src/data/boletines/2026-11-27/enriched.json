@@ -1,0 +1,382 @@
+{
+  "version": 2,
+  "date": "2026-11-27",
+  "boletin_origen": "2026-11-27-trending.md",
+  "resumen_ejecutivo": "- GitHub Trending repite por tercer día la misma lista: 83 repos entre las seis rebanadas y un solo recién llegado, así que el día se lee en Trendshift.\n- Trendshift trae seis repos nuevos con fundamento y once descartes por spam o suplantación: dos de los nuevos se crearon anteayer y ya pasan de mil estrellas, que es lanzamiento con audiencia previa, no descubrimiento.\n- El patrón del día: agentes que entregan un artefacto completo —un juego jugable, un veredicto repetible— en lugar de parches de código.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily (portada, TypeScript, Python, Rust, Go y JavaScript) y GitHub API (13 repos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "nexu-io/opengame",
+      "url": "https://github.com/nexu-io/opengame",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "un estudio de juegos completo que se maneja desde un agente de código local. Trae 25 plantillas jugables en HTML5 y Three.js con su código editable, expone 12 herramientas MCP (`openmotion_game_*`) que abren ese estudio en el navegador y declara soporte para 22 agentes locales, entre ellos Claude Code, Codex, OpenCode, Gemini CLI, Aider y Hermes. Publica a WeChat Mini Games, Douyin, TikTok e itch.io. El repositorio ocupa cerca de un giga porque lleva los recursos en Git LFS, y el arranque pide Node 22.18 o superior.",
+        "por_que_importa": "Lo interesante no es que un agente escriba código de juego, sino que el estudio entero quede detrás de MCP, el protocolo que el agente ya habla: ya cubrimos MCP el 2026-09-21. La idea de IDE de juego nativo de agente la tratamos el 2026-10-09 y las agent skills el 2026-09-08, así que aquí lo nuevo es juntar las tres piezas con plantillas que se remezclan en vez de generarse desde cero. Capa a leer con lupa: el README enlaza una suscripción de modelos del mismo fabricante, con descuento de Black Friday; infraestructura abierta y embudo comercial a la vez.",
+        "madurez_senales": "1.532 estrellas · 259 forks · TypeScript · creado 2026-11-25 · último push 2026-11-27 · Apache-2.0 · 32 incidencias abiertas · topics: `agent-skills`, `mcp`, `game-engine`, `threejs`, `local-first`, `wechat-minigame` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — el README documenta la instalación y el catálogo de agentes; montar el estudio es la única forma de saber si las plantillas aguantan una edición real.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:nexu-io/opengame",
+          "rel": "implements",
+          "dst": "concept:ai-native-game-ide",
+          "primera_mencion": "2026-10-09"
+        },
+        {
+          "src": "repo:nexu-io/opengame",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-21"
+        },
+        {
+          "src": "repo:nexu-io/opengame",
+          "rel": "uses",
+          "dst": "concept:agent-skill",
+          "primera_mencion": "2026-09-08"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "nexu-io-opengame",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "billion-token-one-task/Deepgraph",
+      "url": "https://github.com/billion-token-one-task/Deepgraph",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "agente de investigación autónomo del laboratorio JouleBeat. Cosecha arXiv, extrae afirmaciones y las une en un grafo de evidencia; diez detectores escritos en SQL puro buscan preguntas abiertas sin pasar por un modelo; cada pregunta se convierte en un experimento con presupuesto y solo se emite veredicto si la comparación es justa. El README declara 24.407 artículos cosechados, 248.441 entidades y 735.913 relaciones en el grafo, y 150 veredictos auditados; en agosto de 2026 el sistema detectó y retiró 11 conclusiones propias que se apoyaban en salidas vacías del modelo.",
+        "por_que_importa": "Lo copiable no es el agente, es el filtro. Hablamos de agentes de investigación el 2026-09-09 y del bucle de autoinvestigación el 2026-09-01; lo que añade este caso es el grafo de evidencia que ya cubrimos el 2026-10-08 y, sobre todo, que el sistema publique 150 veredictos auditados y haya retirado 11 conclusiones propias apoyadas en salidas vacías del modelo en agosto de 2026. Ese es el problema de cualquier grafo que se llene solo: lo caro no es generar hipótesis, es decidir cuál se sostiene. Sirve como caso práctico de veredicto auditable frente a resumen plausible.",
+        "madurez_senales": "2.718 estrellas · 38 forks · Python · creado 2026-03-18 · último push 2026-10-24 · MIT · 2 incidencias abiertas · topics: sin declarar · el README remite a un sitio propio y a un motor de evolución aparte (verificado vía GitHub API; README en `master`).",
+        "accion_sugerida": "**leer** — el README y el documento de resultados explican cómo se emite un veredicto y cómo se retira, que es la parte reutilizable.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:billion-token-one-task/Deepgraph",
+          "rel": "implements",
+          "dst": "concept:research-agent",
+          "primera_mencion": "2026-09-09"
+        },
+        {
+          "src": "repo:billion-token-one-task/Deepgraph",
+          "rel": "uses",
+          "dst": "concept:knowledge-graph-with-evidence",
+          "primera_mencion": "2026-10-08"
+        },
+        {
+          "src": "repo:billion-token-one-task/Deepgraph",
+          "rel": "relevant_to",
+          "dst": "concept:autoresearch-loop",
+          "primera_mencion": "2026-09-01"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "billion-token-one-task-deepgraph",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "egoist/mygo",
+      "url": "https://github.com/egoist/mygo",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "framework para aplicaciones de escritorio escritas en Go, sin cgo. Cada ventana mezcla página web en el motor del sistema (WKWebView en macOS, WebKitGTK en Linux, WebView2 en Windows) o interfaz nativa dibujada por el propio framework en la GPU, con un cliente TypeScript generado a partir del código Go para la comunicación entre ambas partes. Compila a un binario único de pocos megabytes y el mismo proyecto sale también a iOS y Android.",
+        "por_que_importa": "El escritorio multiplataforma llevaba años resuelto empaquetando un navegador; aquí el argumento es el contrario: binario único de pocos megabytes, sin cgo y con interfaz nativa en la GPU como opción. Ya lo comparamos con Tauri el 2026-10-12 y con GPUI el 2026-10-18, así que toca mirar el tercer camino: Go, el lenguaje que muchos equipos ya tienen en el servidor. Para quien mantiene herramientas internas, cambia el coste de distribuir y el consumo en reposo, y la pregunta deja de ser qué envoltorio web usar. Aviso de madurez: creado el 2026-09-26 y ya con 190 incidencias abiertas.",
+        "madurez_senales": "7.002 estrellas · 459 forks · Go · creado 2026-09-26 · último push 2026-11-27 · MIT · 190 incidencias abiertas · topics: sin declarar (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**explorar** — publica sitio propio con guías y un CLI; compilar una ventana de prueba dice más que el README.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:egoist/mygo",
+          "rel": "competes_with",
+          "dst": "tech:tauri",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:egoist/mygo",
+          "rel": "enables",
+          "dst": "concept:go-desktop-ui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:egoist/mygo",
+          "rel": "relevant_to",
+          "dst": "tool:gpui",
+          "primera_mencion": "2026-10-18"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "egoist-mygo",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "Reukix/Reloc",
+      "url": "https://github.com/reukix/reloc",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación para iPhone que simula la posición del sistema haciéndose pasar por un periférico externo. Se conecta por el bucle local al servicio de CarPlay, negocia la sesión de emparejamiento, sincroniza el enlace del protocolo de accesorios, completa la autenticación del chip y emite tramas de posición en formato NMEA con las coordenadas. Añade mapas alternativos, corrección de datum para China y un panel que muestra si el sistema marca la ubicación como simulada o como producida por accesorio. El README está solo en chino y exige un proxy externo que exponga ese bucle local.",
+        "por_que_importa": "Es un caso de estudio de una frontera de confianza, no un truco de GPS: el sistema acepta la posición porque viene de un accesorio autenticado con un protocolo diseñado para hardware físico, y aquí todo el intercambio ocurre en la misma máquina, con un periférico simulado por software. La pregunta útil es de seguridad: qué garantiza esa autenticación y qué marcas deja el sistema cuando alguien lo hace; el propio panel del proyecto (ubicación simulada frente a accesorio) permite auditarlo. Dos límites antes de probarlo: el README está solo en chino y exige un proxy externo que exponga el bucle local.",
+        "madurez_senales": "1.091 estrellas · 207 forks · Swift · creado 2026-11-25 · último push 2026-11-26 · AGPL-3.0 · 12 incidencias abiertas · topics: sin declarar · README solo en chino (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el README describe el intercambio de protocolo paso a paso; entender qué se autentica vale más que instalar la app.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:reukix/reloc",
+          "rel": "implements",
+          "dst": "concept:accessory-location-injection",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:reukix/reloc",
+          "rel": "relevant_to",
+          "dst": "repo:akudamatata/iOS-Location-Spoofer-Web",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:reukix/reloc",
+          "rel": "risk",
+          "dst": "concept:accessory-trust-boundary",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "reukix-reloc",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "grapedjuice/ytm-rs",
+      "url": "https://github.com/grapedjuice/ytm-rs",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "cliente de YouTube Music de escritorio escrito en Rust con egui para la interfaz y rodio para el audio, sin navegador embebido. Dibuja todo él mismo, sincroniza letras tipo karaoke, incluye 30 temas, presencia en Discord y registro en Last.fm. El README publica una tabla de consumo medida en el mismo equipo: 130 MB con una canción sonando frente a 496 MB de la web en Chrome y 638 MB de otro cliente basado en navegador, con 11 MB de descarga y 36 MB instalado.",
+        "por_que_importa": "La discusión sobre empaquetar interfaces en un navegador se hace casi siempre con opiniones; aquí hay una tabla con el método escrito (130 MB con música frente a 496 MB de la web en Chrome y 638 MB de otro cliente basado en navegador), que es lo que permite discutirla en serio. Enlaza con Tauri, que vimos el 2026-10-12, y con GPUI, el 2026-10-18: mismo patrón de interfaz nativa, aquí con egui y separando la interfaz del audio para que el consumo en reposo no dependa de un motor web. Sirve para decidir cuándo merece la pena reescribir en nativo y cuándo no, no como veredicto general.",
+        "madurez_senales": "1.056 estrellas · 89 forks · Rust · creado 2026-10-06 · último push 2026-11-27 · GPL-3.0 · 13 incidencias abiertas · topics: `egui`, `electron-alternative`, `synced-lyrics`, `rust-gui` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el README trae la tabla de consumo y el desglose de dependencias; se juzga sin compilar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:grapedjuice/ytm-rs",
+          "rel": "implements",
+          "dst": "concept:native-gui-rust-egui",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:grapedjuice/ytm-rs",
+          "rel": "relevant_to",
+          "dst": "tool:gpui",
+          "primera_mencion": "2026-10-18"
+        },
+        {
+          "src": "repo:grapedjuice/ytm-rs",
+          "rel": "relevant_to",
+          "dst": "tech:tauri",
+          "primera_mencion": "2026-10-12"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "grapedjuice-ytm-rs",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(25.097 estrellas, último push 2026-11-27, Python) — el que más sube hoy (+1.597) con 85 skills y 681 patrones de informes divulgados; desde ayer ha ganado 1.614 estrellas — señales: https://github.com/elementalsouls/Claude-BugHunter",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/elementalsouls/Claude-BugHunter",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "elementalsouls-claude-bughunter",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(211.189 estrellas, último push 2026-11-27, TypeScript) — extr — señales: https://github.com/firecrawl/firecrawl",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/firecrawl/firecrawl",
+        "accion_sugerida": "y búsqueda web para agentes que ahora se presenta como acceso a 550 proveedores de datos con una sola interfaz — Acción: **vigilar**",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "firecrawl-firecrawl",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(66.594 estrellas, último push 2026-11-20, Python) — catálogo que instala con un comando las interfaces de línea de comandos que generan los agentes para manejar software ajeno; sigue en la portada sin release nueva — señales: https://github.com/HKUDS/CLI-Anything",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/HKUDS/CLI-Anything",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hkuds-cli-anything",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "deeplethe/sandstorm",
+      "url": "https://github.com/deeplethe/sandstorm",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(5.719 estrellas, último push 2026-11-20, Rust) — miles de sandboxes de agente en las máquinas más baratas, con instantáneas y restauración sobre gVisor; vuelve a Trendshift una semana después sin cambios en el código — señales: https://github.com/deeplethe/sandstorm",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/deeplethe/sandstorm",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deeplethe-sandstorm",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 9,
+      "titulo": "scottsturrock/mate-wayland-desktop",
+      "url": "https://github.com/scottsturrock/mate-wayland-desktop",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(762 estrellas, último push 2026-11-17, Shell) — MATE, la continuación de GNOME 2, corriendo sobre Wayland con el compositor labwc y base Ubuntu 26.04; publica la ISO y todo el sistema de compilación — señales: https://github.com/scottsturrock/mate-wayland-desktop",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/scottsturrock/mate-wayland-desktop",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "scottsturrock-mate-wayland-desktop",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 10,
+      "titulo": "Belobug/VIctory-Belobug-AMD",
+      "url": "https://github.com/Belobug/VIctory-Belobug-AMD",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(3.562 estrellas, último push 2026-11-26, Rust) — bifurcación de una capa de compatibilidad que ejecuta un título de Xbox Series en Windows a partir de archivos que aporta el usuario, con traducción de shaders por adelantado; pasó de 280 ms por fotograma a unos 45 en tres días — señales: https://github.com/Belobug/VIctory-Belobug-AMD",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/Belobug/VIctory-Belobug-AMD",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "belobug-victory-belobug-amd",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 11,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 6,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "11/11 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

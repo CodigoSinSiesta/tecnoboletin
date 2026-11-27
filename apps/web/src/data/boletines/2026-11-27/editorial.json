@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-27",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "Los agentes dejan de parchear código y entregan artefactos cerrados",
+  "posicionamiento": "El hilo del día es el artefacto terminado: un juego jugable que se remezcla y un veredicto que se puede auditar. Frente al agente que parchea código a ciegas, estos dos entregan una pieza que un tercero puede comprobar y repetir.",
+  "convergencia_stack_css": "Dos hallazgos tocan de cerca el stack local-first: opengame declara soporte para 22 agentes locales, Hermes incluido, y Deepgraph resuelve sus diez detectores en SQL puro, sin pasar por modelo. El resto del día va por la vía nativa, no por la web empaquetada.",
+  "cruzado_grafo": "MCP (2026-09-21), agent skills (2026-09-08) y el IDE de juego nativo de agente (2026-10-09) se juntan por primera vez en un mismo repo. Reaparecen Tauri (2026-10-12) y GPUI (2026-10-18); go-desktop-ui y la inyección de posición por accesorio estrenan mención.",
+  "tendencias_5_boletines": "Continúa la tensión de ayer entre el artefacto que compila y el número que se mide: hoy el par es el juego jugable frente al veredicto auditable. Se sostiene el criterio de exigir prueba reproducible, ahora aplicado a agentes.",
+  "alertas": [
+    "opengame mezcla infraestructura abierta con embudo comercial: su README enlaza una suscripción propia con descuento de Black Friday.",
+    "mygo tiene 190 incidencias abiertas y menos de dos meses de vida; el binario ligero aún no está probado en producción.",
+    "Reloc está solo en chino, exige un proxy externo y su función es suplantar una frontera de confianza del sistema.",
+    "Dos repos nuevos se crearon anteayer y ya pasan de mil estrellas: es audiencia previa, no descubrimiento.",
+    "Deepgraph retiró 11 conclusiones propias en agosto por salidas vacías del modelo: sus veredictos son auditables, no infalibles."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Las 12 herramientas MCP y el soporte declarado para Hermes permiten probarlo con el agente local en una tarde; la capa comercial se ignora sin problema."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Los diez detectores en SQL puro son la parte copiable: se pueden reutilizar sobre cualquier grafo de evidencia propio sin depender del agente."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "Go con interfaz nativa en GPU y binario de pocos megabytes es un tercer camino frente a Tauri; conviene esperar a que baje el volumen de incidencias."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 4,
+      "razon": "Su tabla de consumo con método escrito da argumentos medidos para decidir cuándo reescribir una interfaz en nativo."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 3,
+      "razon": "Útil como caso de estudio de autenticación de accesorios; no como herramienta, por el proxy externo y el README sin traducir."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

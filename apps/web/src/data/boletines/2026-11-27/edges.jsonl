@@ -1,0 +1,37 @@
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-nexu-io-opengame", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-nexu-io-opengame", "dst": "tema:nexu-io-opengame", "rel": "trata", "added": "2026-11-27"}
+{"src": "repo:nexu-io/opengame", "dst": "concept:ai-native-game-ide", "rel": "implements", "added": "2026-11-27", "primera_mencion": "2026-10-09"}
+{"src": "repo:nexu-io/opengame", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-27", "primera_mencion": "2026-09-21"}
+{"src": "repo:nexu-io/opengame", "dst": "concept:agent-skill", "rel": "uses", "added": "2026-11-27", "primera_mencion": "2026-09-08"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-billion-token-one-task-deepgraph", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-billion-token-one-task-deepgraph", "dst": "tema:billion-token-one-task-deepgraph", "rel": "trata", "added": "2026-11-27"}
+{"src": "repo:billion-token-one-task/Deepgraph", "dst": "concept:research-agent", "rel": "implements", "added": "2026-11-27", "primera_mencion": "2026-09-09"}
+{"src": "repo:billion-token-one-task/Deepgraph", "dst": "concept:knowledge-graph-with-evidence", "rel": "uses", "added": "2026-11-27", "primera_mencion": "2026-10-08"}
+{"src": "repo:billion-token-one-task/Deepgraph", "dst": "concept:autoresearch-loop", "rel": "relevant_to", "added": "2026-11-27", "primera_mencion": "2026-09-01"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-egoist-mygo", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-egoist-mygo", "dst": "tema:egoist-mygo", "rel": "trata", "added": "2026-11-27"}
+{"src": "repo:egoist/mygo", "dst": "tech:tauri", "rel": "competes_with", "added": "2026-11-27", "primera_mencion": "2026-10-12"}
+{"src": "repo:egoist/mygo", "dst": "concept:go-desktop-ui", "rel": "enables", "added": "2026-11-27", "primera_mencion": null}
+{"src": "repo:egoist/mygo", "dst": "tool:gpui", "rel": "relevant_to", "added": "2026-11-27", "primera_mencion": "2026-10-18"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-reukix-reloc", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-reukix-reloc", "dst": "tema:reukix-reloc", "rel": "trata", "added": "2026-11-27"}
+{"src": "repo:reukix/reloc", "dst": "concept:accessory-location-injection", "rel": "implements", "added": "2026-11-27", "primera_mencion": null}
+{"src": "repo:reukix/reloc", "dst": "repo:akudamatata/iOS-Location-Spoofer-Web", "rel": "relevant_to", "added": "2026-11-27", "primera_mencion": null}
+{"src": "repo:reukix/reloc", "dst": "concept:accessory-trust-boundary", "rel": "risk", "added": "2026-11-27", "primera_mencion": null}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-grapedjuice-ytm-rs", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-grapedjuice-ytm-rs", "dst": "tema:grapedjuice-ytm-rs", "rel": "trata", "added": "2026-11-27"}
+{"src": "repo:grapedjuice/ytm-rs", "dst": "concept:native-gui-rust-egui", "rel": "implements", "added": "2026-11-27", "primera_mencion": null}
+{"src": "repo:grapedjuice/ytm-rs", "dst": "tool:gpui", "rel": "relevant_to", "added": "2026-11-27", "primera_mencion": "2026-10-18"}
+{"src": "repo:grapedjuice/ytm-rs", "dst": "tech:tauri", "rel": "relevant_to", "added": "2026-11-27", "primera_mencion": "2026-10-12"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-elementalsouls-claude-bughunter", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-elementalsouls-claude-bughunter", "dst": "tema:elementalsouls-claude-bughunter", "rel": "trata", "added": "2026-11-27"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-firecrawl-firecrawl", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-firecrawl-firecrawl", "dst": "tema:firecrawl-firecrawl", "rel": "trata", "added": "2026-11-27"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-hkuds-cli-anything", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-hkuds-cli-anything", "dst": "tema:hkuds-cli-anything", "rel": "trata", "added": "2026-11-27"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-deeplethe-sandstorm", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-deeplethe-sandstorm", "dst": "tema:deeplethe-sandstorm", "rel": "trata", "added": "2026-11-27"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-scottsturrock-mate-wayland-desktop", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-scottsturrock-mate-wayland-desktop", "dst": "tema:scottsturrock-mate-wayland-desktop", "rel": "trata", "added": "2026-11-27"}
+{"src": "boletin:2026-11-27", "dst": "item:https-github-com-belobug-victory-belobug-amd", "rel": "menciona", "added": "2026-11-27"}
+{"src": "item:https-github-com-belobug-victory-belobug-amd", "dst": "tema:belobug-victory-belobug-amd", "rel": "trata", "added": "2026-11-27"}
