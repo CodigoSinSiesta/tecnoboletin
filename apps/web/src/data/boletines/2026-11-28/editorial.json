@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "date": "2026-11-28",
+  "lentes_aplicadas": [
+    "rigor_tecnico",
+    "claridad_accesibilidad",
+    "relevancia_editorial"
+  ],
+  "titular": "La interfaz se declara antes de construir la herramienta",
+  "posicionamiento": "Declarar el contrato antes que el código es el gesto del día: un kernel que se deja leer como módulo, bloques con precondiciones recorribles y un vídeo en texto llano que cualquier agente interpreta. OpenCode-Rune elige lo contrario y renuncia a las pruebas.",
+  "convergencia_stack_css": "El stack local-first comparece por dos vías: autoclip corta y renderiza en el equipo con Ollama o LM Studio y habla MCP, y clipy deja la grabación en un archivo que no necesita servicio. unkernel retoma el sandbox wasm ya cubierto.",
+  "cruzado_grafo": "Cinco conceptos entran sin fecha previa: kernel en wasm, verificación de bloques, código nativo sobre webview, captura legible por agentes y mercado de plugins. Se refuerzan wasm (2026-10-12), el bucle de verificación (2026-11-06) y el pipeline de vídeo (2026-09-09).",
+  "tendencias_5_boletines": "Viene de dos días preguntando cómo se demuestra que algo funciona: artefacto jugable el 27 y prueba reducible el 26. Hoy la respuesta se desplaza al contrato previo, y el correctivo aparece en OpenCode-Rune, que publica su escritorio sin pruebas.",
+  "alertas": [
+    "clipy: 280 estrellas frente a 1.445 bifurcaciones y seis días de vida; el formato se lee, el binario se instala con calma. Solo macOS.",
+    "opencode-rune: cero pruebas automatizadas por política del repositorio; el rendimiento declarado no es verificable por un tercero.",
+    "100x-engineer-skill: las cifras de portada no traen método; lo auditable es el código del comprobador.",
+    "unkernel: las tareas que cargan el procesador van muy por detrás de una máquina real, y el README lo admite.",
+    "autoclip: patrocinador en su propia portada; conviene mirar qué condiciona en un proyecto MIT."
+  ],
+  "acciones_concretas": [
+    {
+      "tipo": "explora",
+      "item_idx": 0,
+      "razon": "Arrancar el módulo wasm y medir la brecha de CPU frente al README: es la prueba que el propio proyecto no da."
+    },
+    {
+      "tipo": "explora",
+      "item_idx": 1,
+      "razon": "Leer el comprobador de estados antes que las cifras de portada; ahí está lo que se puede juzgar."
+    },
+    {
+      "tipo": "comparte-hallazgo-con-CSS",
+      "item_idx": 3,
+      "razon": "Reciclar directos y entrevistas en local, sin subir material, es aplicación directa al flujo del boletín."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 4,
+      "razon": "El formato arec en texto llano merece seguimiento; el binario, solo cuando salga de macOS."
+    },
+    {
+      "tipo": "vigilar",
+      "item_idx": 2,
+      "razon": "La política de cero pruebas se vuelve deuda en cuanto entre gente al repositorio."
+    }
+  ],
+  "generado_por": "generate_editorial.py --llm hermes (generacion nueva)"
+}

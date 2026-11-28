@@ -1,0 +1,334 @@
+{
+  "version": 2,
+  "date": "2026-11-28",
+  "boletin_origen": "2026-11-28-trending.md",
+  "resumen_ejecutivo": "- Tres de los cinco hallazgos de hoy hacen lo mismo: declaran la interfaz antes de construir la herramienta. Un kernel compilado a wasm, bloques con precondiciones que una máquina recorre y un archivo de vídeo en texto llano que cualquier agente puede leer.\n- El contraste está en el escritorio oficial de OpenCode: reescrito en Rust sin Chromium y, por política del repositorio, sin una sola prueba automatizada.\n- En GitHub Trending no hay caras nuevas: 85 repositorios únicos entre las seis rebanadas y casi todos repiten de ayer, así que el material fresco viene de Trendshift.\n- Fuentes consultadas: Trendshift daily (25 items), GitHub Trending daily (portada, TypeScript, Python, Rust, Go y JavaScript) y GitHub API (17 repos verificados).",
+  "items": [
+    {
+      "idx": 0,
+      "titulo": "pithings/unkernel",
+      "url": "https://github.com/pithings/unkernel",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "Linux 7.x compilado a un único módulo wasm con MMU real (tablas Sv48 en `arch/wasm`). El kernel —llamadas al sistema, planificador, memoria, ext4, pila TCP/IP— es código compilado; solo se emulan los programas de usuario, binarios aarch64 sin modificar, así que los paquetes de Alpine y Debian corren tal cual. Añade disco persistente sobre ext4, red a través de los sockets del host o de un proxy Wisp, framebuffer, teclado, sonido y un SDK de JavaScript. El README publica las medidas: `/init` a unos 70 ms del arranque, aviso de Alpine 0,3 s después de lanzar node, unos 10 MB de descarga y 48 MiB de memoria de invitado; `getppid` ronda los 170 ns frente a 110 nativos y 1,7 µs con qemu-system; `fork` más `exit` y `wait` unos 60 µs frente a 70 nativos y 1,2 ms con qemu; un JIT de aarch64 a wasm que acelera un bucle de shell 1,6 veces y `sort` 2,3 veces; OpenSSL dentro del invitado a unos 100 MB/s en AES-128-GCM y 160 MB/s en SHA-256. systemd arranca Ubuntu 26.10 hasta `multi-user.target`.",
+        "por_que_importa": "Ya cubrimos wasm el 2026-10-12 y el sandbox wasm el 2026-10-30; aquí el giro es compilar el sistema operativo entero y dejar la emulación solo en el código de usuario. Tres lecturas para Código Sin Siesta. Técnica: qué parte del comportamiento de Linux sobrevive cuando el kernel es el mismo código y cambia el conjunto de instrucciones. Práctica: una máquina Linux con disco y red que arranca en una pestaña abarata demos y entornos de prueba. Metodológica: el README separa lo que mide de lo que no y fecha cada medida. El contrapunto lo pone el proyecto: las tareas que cargan el procesador van muy por detrás de una máquina real.",
+        "madurez_senales": "2.614 estrellas · 165 forks · TypeScript · creado 2026-11-12 · último push 2026-11-27 · GPL-2.0 · 33 incidencias abiertas · topics: sin declarar (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — el sitio del proyecto abre la máquina en el navegador; medir el arranque en el equipo propio es la comprobación que el README no puede dar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:pithings/unkernel",
+          "rel": "implements",
+          "dst": "concept:kernel-in-wasm",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:pithings/unkernel",
+          "rel": "uses",
+          "dst": "tech:wasm",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:pithings/unkernel",
+          "rel": "relevant_to",
+          "dst": "tool:wasm-sandbox",
+          "primera_mencion": "2026-10-30"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "pithings-unkernel",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 1,
+      "titulo": "DeadInternetStudios/100x-engineer-skill",
+      "url": "https://github.com/DeadInternetStudios/100x-engineer-skill",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "skill para Claude Code, Cursor y Codex que parte el encargo en bloques pequeños y obliga a responder seis preguntas por bloque: qué estados existen, cómo cambian, cuándo se permite un paso, qué queda cierto después, qué se cumple siempre y qué debe ocurrir al final. Con esas respuestas construye un modelo pequeño que ejecuta las funciones reales y un comprobador que visita todos los estados alcanzables e imprime la lista más corta de pasos que lleva al fallo. Después revisa las costuras entre bloques; un segundo modelo revisa el conjunto y entrega un informe con capturas, pruebas y lo que sigue abierto. El README afirma 1.000 PRs al mes con menos del 2 % de reversiones, 136.000 millones de tokens en 30 días y 250.000 dólares de ahorro de caché; ninguna de esas cifras viene con un método reproducible.",
+        "por_que_importa": "La verificación formal se descartaba para aplicaciones enteras porque el estado es inabarcable; aquí la unidad es el bloque, que sí se puede enunciar y recorrer. Ya hablamos de skills de agente el 2026-09-08 y del bucle de verificación el 2026-11-06: esto extiende ambas ideas. Choca con el desarrollo guiado por especificación, donde el contrato es un documento en lenguaje llano y no un modelo de estados que una herramienta ejecuta; las dos caben en el mismo flujo y esa comparación es material de artículo. El titular también es el tema: las cifras de portada no traen método, así que lo que se puede juzgar es el código del comprobador.",
+        "madurez_senales": "1.188 estrellas · 149 forks · JavaScript · creado 2026-11-23 · último push 2026-11-28 · MIT · 0 incidencias abiertas · topics: `agent-skills`, `claude-code`, `codex`, `cursor`, `formal-verification` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**leer** — el README detalla las seis preguntas y el comprobador; en esas dos secciones se ve si hay verificación o solo vocabulario.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:DeadInternetStudios/100x-engineer-skill",
+          "rel": "implements",
+          "dst": "concept:model-checked-code-blocks",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:DeadInternetStudios/100x-engineer-skill",
+          "rel": "extends",
+          "dst": "concept:agent-skill",
+          "primera_mencion": "2026-09-08"
+        },
+        {
+          "src": "repo:DeadInternetStudios/100x-engineer-skill",
+          "rel": "relevant_to",
+          "dst": "concept:verification-loop",
+          "primera_mencion": "2026-11-06"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "deadinternetstudios-100x-engineer-skill",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 2,
+      "titulo": "anomalyco/opencode-rune",
+      "url": "https://github.com/anomalyco/opencode-rune",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "cliente de escritorio de OpenCode reescrito desde cero en Rust sobre Rune, el framework de la misma organización, sin Electron ni DOM. Dibuja el texto en la GPU a partir del contorno vectorial de cada glifo, usa la biblioteca de terminal de Ghostty para las pestañas y SQLite con diario en memoria mapeada para el estado; el panel de navegador descarga un Chromium embebido aparte solo si se abre. Declara entre 10 y 100 veces más rápido y ligero, publica compilaciones para macOS, Windows y Linux en el canal `dev` y permite plugins en Luau con recarga en caliente. El repositorio declara por política que no tiene pruebas automatizadas ni mocks: el código de la aplicación es la verdad.",
+        "por_que_importa": "OpenCode es el agente de código abierto con más estrellas del grafo: ya cubrimos el repositorio base el 2026-09-06 y la comparación con Tauri el 2026-10-12, y ahora su escritorio oficial tira el envoltorio web, la decisión contraria a la de casi todo el sector. Lo discutible no es el rendimiento declarado sino la política de cero pruebas: se sostiene mientras el proyecto es pequeño y alguien mira cada pantalla, y se vuelve deuda en cuanto entra gente. Puesto junto al hallazgo anterior, el boletín de hoy deja las dos posturas enfrentadas: verificar bloques con una máquina o renunciar a verificar y confiar en la inspección.",
+        "madurez_senales": "448 estrellas · 23 forks · Rust · creado 2026-11-04 · último push 2026-11-28 · MIT · 35 incidencias abiertas · topics: sin declarar · rama por defecto `dev` (verificado vía GitHub API; README en `dev`).",
+        "accion_sugerida": "**vigilar** — solo hay compilaciones `dev` y la política de pruebas es explícita; interesa seguir la decisión, no adoptarla hoy.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:anomalyco/opencode-rune",
+          "rel": "extends",
+          "dst": "repo:anomalyco/opencode",
+          "primera_mencion": "2026-09-06"
+        },
+        {
+          "src": "repo:anomalyco/opencode-rune",
+          "rel": "competes_with",
+          "dst": "tech:tauri",
+          "primera_mencion": "2026-10-12"
+        },
+        {
+          "src": "repo:anomalyco/opencode-rune",
+          "rel": "relevant_to",
+          "dst": "concept:native-code-over-webview",
+          "primera_mencion": null
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "anomalyco-opencode-rune",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 3,
+      "titulo": "zhouxiaoka/autoclip",
+      "url": "https://github.com/zhouxiaoka/autoclip",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "aplicación de escritorio que convierte un vídeo largo, un enlace o la repetición de un directo en clips verticales: busca los momentos, sigue al hablante, quema subtítulos y genera portada y textos de publicación. El corte y el render ocurren en el equipo, con clave de API propia o, del todo offline, con Ollama o LM Studio y Whisper o SenseVoice. Expone un servidor MCP (`io.github.zhouxiaoka/autoclip-mcp`) para que un agente lo maneje y exporta para TikTok, Shorts, Reels, Douyin, Xiaohongshu y Bilibili. La versión 1.6 añade repeticiones de directos, y la cabecera del README lleva un patrocinador de API de imagen y vídeo junto a un correo para patrocinar.",
+        "por_que_importa": "Es el patrón local-first con MCP aplicado a vídeo, y ya lo tocamos: el recorte local-first y la integración con MCP salieron el 2026-09-20, y el editor de vídeo para agentes el 2026-08-29. Para Código Sin Siesta abre una vía concreta para reciclar directos y entrevistas sin subir el material a un servicio, y el modo offline permite probarlo con contenido propio. Hay una lectura de modelo de negocio: un proyecto MIT financiado con un patrocinador en su propia portada, sin suscripción para el usuario; ese detalle se cuenta mejor que la lista de funciones.",
+        "madurez_senales": "17.755 estrellas · 2.503 forks · Python · creado 2025-07-08 · último push 2026-11-28 · MIT · 34 incidencias abiertas · topics: `local-first`, `ai-video-editor`, `mcp` (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**probar** — hay binarios por release y modo offline; un directo propio de diez minutos basta para saber si los cortes sirven.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:zhouxiaoka/autoclip",
+          "rel": "implements",
+          "dst": "concept:local-first-video-clipping",
+          "primera_mencion": "2026-09-20"
+        },
+        {
+          "src": "repo:zhouxiaoka/autoclip",
+          "rel": "integrates",
+          "dst": "protocol:mcp",
+          "primera_mencion": "2026-09-20"
+        },
+        {
+          "src": "repo:zhouxiaoka/autoclip",
+          "rel": "relevant_to",
+          "dst": "concept:agent-video-editor",
+          "primera_mencion": "2026-08-29"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "zhouxiaoka-autoclip",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 4,
+      "titulo": "clipy-recorder/clipy",
+      "url": "https://github.com/clipy-recorder/clipy",
+      "url_inferida": false,
+      "seccion": "hallazgo_principal",
+      "contenido": {
+        "que_es": "grabador de pantalla que, además del vídeo, escribe `recording.arec`, un archivo en Markdown llano con transcripción, momentos e índices de tiempo que cualquier agente puede leer. El formato AREC va por la versión 1.4 y tiene especificación pública en su propio sitio. Se instala como plugin en Claude Code (`/plugin install watch@clipy`) o se conecta a Codex y Cursor con `clipy agents install`; graba la aplicación local, no la nube, y en esta etapa está pensado para macOS.",
+        "por_que_importa": "Lo reutilizable no es el grabador sino el contrato del archivo: un agente no necesita visión si el archivo le entrega transcripción e índices, y un formato abierto en texto llano sobrevive a la herramienta que lo escribió. Ya tratamos el pipeline de vídeo para agentes el 2026-09-09 y esto encaja ahí. La advertencia está en las señales: 280 estrellas frente a 1.445 bifurcaciones y un proyecto creado hace seis días, así que el formato se lee con interés y el binario se instala con calma. Y en esta etapa solo funciona en macOS.",
+        "madurez_senales": "280 estrellas · 1.445 forks · Rust · creado 2026-11-22 · último push 2026-11-27 · Apache-2.0 · 153 incidencias abiertas · topics: `agent-readable`, `local-first`, `macos` — el desequilibrio entre bifurcaciones y estrellas es anómalo (verificado vía GitHub API; README en `main`).",
+        "accion_sugerida": "**vigilar** — el formato merece lectura; el repositorio es demasiado joven y el ratio de bifurcaciones pide esperar.",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [
+        {
+          "src": "repo:clipy-recorder/clipy",
+          "rel": "implements",
+          "dst": "concept:agent-readable-screen-capture",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:clipy-recorder/clipy",
+          "rel": "integrates",
+          "dst": "concept:agent-plugin-marketplace",
+          "primera_mencion": null
+        },
+        {
+          "src": "repo:clipy-recorder/clipy",
+          "rel": "relevant_to",
+          "dst": "concept:agent-video-pipeline",
+          "primera_mencion": "2026-09-09"
+        }
+      ],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "clipy-recorder-clipy",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 5,
+      "titulo": "google-gemini/demolab",
+      "url": "https://github.com/google-gemini/demolab",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(1.224 estrellas, último push 2026-11-27, sin lenguaje declarado) — Google publica como plugin instalable los skills, prompts y guiones con los que arma sus demos de Gemini, usando el mismo comando de mercado que Claude Code y Codex — señales: https://github.com/google-gemini/demolab",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/google-gemini/demolab",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "google-gemini-demolab",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 6,
+      "titulo": "openBitFun/OpenBitFun",
+      "url": "https://github.com/openBitFun/OpenBitFun",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.600 estrellas, último push 2026-11-28, Rust) — banco de trabajo de agente con cuatro modos de harness, control remoto desde el móvil a través de un relay propio y mercado de mini apps — señales: https://github.com/openBitFun/OpenBitFun",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/openBitFun/OpenBitFun",
+        "accion_sugerida": "explorar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "openbitfun-openbitfun",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 7,
+      "titulo": "trustno1-coder/VIctory-NVIDIA",
+      "url": "https://github.com/trustno1-coder/VIctory-NVIDIA",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(4.466 estrellas, último push 2026-11-28, Rust) — bifurcación por tarjeta de la capa de compatibilidad que ayer seguíamos en su versión AMD, ahora con perfiles Series X y S y generación de fotogramas DLSS o FSR 3 — señales: https://github.com/trustno1-coder/VIctory-NVIDIA",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/trustno1-coder/VIctory-NVIDIA",
+        "accion_sugerida": "vigilar",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "trustno1-coder-victory-nvidia",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    },
+    {
+      "idx": 8,
+      "titulo": "hfwang2001/PhysCapBench",
+      "url": "https://github.com/hfwang2001/PhysCapBench",
+      "url_inferida": true,
+      "seccion": "radar_secundario",
+      "contenido": {
+        "que_es": "(532 estrellas, último push 2026-11-26, Python) — benchmark entre dominios para descripciones de vídeo que respeten la física, con conjunto de datos publicado en Hugging Face — señales: https://github.com/hfwang2001/PhysCapBench",
+        "por_que_importa": "",
+        "madurez_senales": "https://github.com/hfwang2001/PhysCapBench",
+        "accion_sugerida": "leer",
+        "descripcion_raw": ""
+      },
+      "relacion_grafo": [],
+      "clasificacion": {
+        "tipo": "repo",
+        "idioma": "en",
+        "autor": null,
+        "medio": null,
+        "tema_principal": "hfwang2001-physcapbench",
+        "temas_secundarios": [],
+        "confianza": 0.4
+      }
+    }
+  ],
+  "stats": {
+    "items_total": 9,
+    "items_hallazgo_principal": 5,
+    "items_radar_secundario": 4,
+    "llm_backend": "hermes",
+    "llm_polish_notes": "9/9 items pulidos",
+    "metadata_carried_forward": false,
+    "critica_lentes_aplicada": true,
+    "critica_notes": "5/5 items reescritos",
+    "lentes": [
+      "rigor_tecnico",
+      "claridad_accesibilidad",
+      "relevancia_editorial"
+    ]
+  }
+}

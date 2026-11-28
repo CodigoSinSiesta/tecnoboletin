@@ -1,0 +1,33 @@
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-pithings-unkernel", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-pithings-unkernel", "dst": "tema:pithings-unkernel", "rel": "trata", "added": "2026-11-28"}
+{"src": "repo:pithings/unkernel", "dst": "concept:kernel-in-wasm", "rel": "implements", "added": "2026-11-28", "primera_mencion": null}
+{"src": "repo:pithings/unkernel", "dst": "tech:wasm", "rel": "uses", "added": "2026-11-28", "primera_mencion": "2026-10-12"}
+{"src": "repo:pithings/unkernel", "dst": "tool:wasm-sandbox", "rel": "relevant_to", "added": "2026-11-28", "primera_mencion": "2026-10-30"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-deadinternetstudios-100x-engineer-skill", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-deadinternetstudios-100x-engineer-skill", "dst": "tema:deadinternetstudios-100x-engineer-skill", "rel": "trata", "added": "2026-11-28"}
+{"src": "repo:DeadInternetStudios/100x-engineer-skill", "dst": "concept:model-checked-code-blocks", "rel": "implements", "added": "2026-11-28", "primera_mencion": null}
+{"src": "repo:DeadInternetStudios/100x-engineer-skill", "dst": "concept:agent-skill", "rel": "extends", "added": "2026-11-28", "primera_mencion": "2026-09-08"}
+{"src": "repo:DeadInternetStudios/100x-engineer-skill", "dst": "concept:verification-loop", "rel": "relevant_to", "added": "2026-11-28", "primera_mencion": "2026-11-06"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-anomalyco-opencode-rune", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-anomalyco-opencode-rune", "dst": "tema:anomalyco-opencode-rune", "rel": "trata", "added": "2026-11-28"}
+{"src": "repo:anomalyco/opencode-rune", "dst": "repo:anomalyco/opencode", "rel": "extends", "added": "2026-11-28", "primera_mencion": "2026-09-06"}
+{"src": "repo:anomalyco/opencode-rune", "dst": "tech:tauri", "rel": "competes_with", "added": "2026-11-28", "primera_mencion": "2026-10-12"}
+{"src": "repo:anomalyco/opencode-rune", "dst": "concept:native-code-over-webview", "rel": "relevant_to", "added": "2026-11-28", "primera_mencion": null}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-zhouxiaoka-autoclip", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-zhouxiaoka-autoclip", "dst": "tema:zhouxiaoka-autoclip", "rel": "trata", "added": "2026-11-28"}
+{"src": "repo:zhouxiaoka/autoclip", "dst": "concept:local-first-video-clipping", "rel": "implements", "added": "2026-11-28", "primera_mencion": "2026-09-20"}
+{"src": "repo:zhouxiaoka/autoclip", "dst": "protocol:mcp", "rel": "integrates", "added": "2026-11-28", "primera_mencion": "2026-09-20"}
+{"src": "repo:zhouxiaoka/autoclip", "dst": "concept:agent-video-editor", "rel": "relevant_to", "added": "2026-11-28", "primera_mencion": "2026-08-29"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-clipy-recorder-clipy", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-clipy-recorder-clipy", "dst": "tema:clipy-recorder-clipy", "rel": "trata", "added": "2026-11-28"}
+{"src": "repo:clipy-recorder/clipy", "dst": "concept:agent-readable-screen-capture", "rel": "implements", "added": "2026-11-28", "primera_mencion": null}
+{"src": "repo:clipy-recorder/clipy", "dst": "concept:agent-plugin-marketplace", "rel": "integrates", "added": "2026-11-28", "primera_mencion": null}
+{"src": "repo:clipy-recorder/clipy", "dst": "concept:agent-video-pipeline", "rel": "relevant_to", "added": "2026-11-28", "primera_mencion": "2026-09-09"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-google-gemini-demolab", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-google-gemini-demolab", "dst": "tema:google-gemini-demolab", "rel": "trata", "added": "2026-11-28"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-openbitfun-openbitfun", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-openbitfun-openbitfun", "dst": "tema:openbitfun-openbitfun", "rel": "trata", "added": "2026-11-28"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-trustno1-coder-victory-nvidia", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-trustno1-coder-victory-nvidia", "dst": "tema:trustno1-coder-victory-nvidia", "rel": "trata", "added": "2026-11-28"}
+{"src": "boletin:2026-11-28", "dst": "item:https-github-com-hfwang2001-physcapbench", "rel": "menciona", "added": "2026-11-28"}
+{"src": "item:https-github-com-hfwang2001-physcapbench", "dst": "tema:hfwang2001-physcapbench", "rel": "trata", "added": "2026-11-28"}
